@@ -1,0 +1,25 @@
+Tuto6_while{
+	
+	void ajouterUn(int[] tab){
+		int i=0;
+		while(i<tab.length){
+			tab[i]=1;	
+			i++;
+		}	
+	}
+	
+	void afficher(int[] tab){
+      for(int i=0 ; i<tab.length; i++){
+         println(tab[i]+"");
+      }
+   }
+
+	
+	
+ 	void main(){
+		
+	   	int[] tab = new int[10];
+	   	ajouterUn(tab);
+      	afficher(tab);
+   }
+}

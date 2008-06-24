@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Tutoriels java's cool" topic="html/toc.html">
+   <topic label="Turoriel 1 : notions de bases">
+      <anchor id="tuto1"/>
+   </topic>
+   <topic label="Tutoriel 2 : HelloWorld">
+      <anchor id="tuto2"/>
+   </topic>
+   <topic label="Tutoriel 3 : Lecture sur la sortie Standard">
+      <anchor id="tuto3"/>
+   </topic>
+   <topic label="Tutoriel 4 : les boucles">
+      <anchor id="tuto4"/>
+   </topic>
+   <topic label="Tutoriel 5 : variables temporaires">
+      <anchor id="tuto5"/>
+   </topic>
+     <topic label="Tutoriel 6 : les tableaux">
+      <anchor id="tuto6"/>
+   </topic>
+   <topic label="Tutoriel 7 : conversion binaire->decimal">
+      <anchor id="tuto7"/>
+   </topic>
+   <topic label="Tutoriel 8 : conversion Hexadecimal->decimal">
+      <anchor id="tuto8"/>
+   </topic>
+   <topic label="Tutoriel 9 : conversion decimal->binaire">
+      <anchor id="tuto9"/>
+   </topic>
+    <topic label="Tutoriel 10 : Lecture de fichiers">
+      <anchor id="tuto10"/>
+   </topic>
+</toc>
