@@ -137,7 +137,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 						initPlugIn();
 					}
 					else
-						System.out.println("Aucun Orphy n'est actuellement branche.");
+						System.out.println("Aucun Orphy n'est actuellement branch\u00e9.");
 				}
 				else
 					initPlugIn();
@@ -232,7 +232,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 						try {
 							valueEA10 = orphy.getAnalogInput(10, typeG);
 						} catch (RemoteException e) {
-							System.out.println("probleme rencontree durante l'acquisition");
+							System.out.println("probleme rencontr\u00e9 durant l'acquisition");
 						}
 					}
 
@@ -241,7 +241,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 						try {
 							valueEA11 = orphy.getAnalogInput(11, typeH);
 						} catch (RemoteException e) {
-							System.out.println("probleme rencontree durante l'acquisition");
+							System.out.println("probleme rencontr\u00e9 durant l'acquisition");
 						}
 					}
 
@@ -250,7 +250,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 							res10 = orphy.getProgramedInput( typeG, (int)nbAcqu, (int)(interTime*1000), (int)10);
 						//	res11 = orphy.getProgramedInput( typeH, (int)nbAcqu, (int)(interTime*1000), (int)10);
 						} catch (RemoteException e1) {
-							System.out.println("probleme rencontre durant l'acquisition programmee");
+							System.out.println("probleme rencontr\u00e9 durant l'acquisition programm\u00e9e");
 						}
 						final Runnable tableFill=new Runnable(){
 							public void run() {
@@ -590,7 +590,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 
 
 		aquiParam=new Button(autoAcqu, SWT.PUSH);
-		aquiParam.setText("Parametrer"); //$NON-NLS-1$
+		aquiParam.setText("Param\u00e9trer"); //$NON-NLS-1$
 		aquiParam.setEnabled(true);
 		Listener aquiParamListener=new Listener(){
 			public void handleEvent(Event event){
@@ -783,7 +783,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 		askTypeShell.setLayout(aquisitionParamLayout);		
 
 		Label questionType = new Label(askTypeShell, SWT.NULL);
-		questionType.setText("Vous voulez faire une acquisition de donnees avec comme parametres : \n");
+		questionType.setText("Vous voulez faire une acquisition de donn\u00e9es avec comme parametres : \n");
 		GridData questionTypeData = new GridData();
 		questionTypeData.horizontalSpan = 2;
 		questionType.setLayoutData(questionTypeData);
@@ -813,7 +813,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 		});
 
 		Label type1param = new Label(askTypeShell, SWT.NULL);
-		type1param.setText(" une duree et un interval de temps entre chaque acquisition.");
+		type1param.setText(" une dur\u00e9e et un interval de temps entre chaque acquisition.");
 
 
 		checkBoxType2 = new Button(askTypeShell, SWT.CHECK);
@@ -840,7 +840,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 		});
 
 		Label type2param = new Label(askTypeShell, SWT.NULL);
-		type2param.setText(" une duree et un nombre d'acquisitions.");
+		type2param.setText(" une dur\u00e9e et un nombre d'acquisitions.");
 
 		checkBoxType3 = new Button(askTypeShell, SWT.CHECK);
 		checkBoxType3.addSelectionListener(new SelectionAdapter() {
@@ -891,7 +891,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 		});
 
 		Label type4param = new Label(askTypeShell, SWT.NULL);
-		type4param.setText(" un interval de temps pour une duree indeterminee.");
+		type4param.setText(" un interval de temps pour une dur\u00e9e indeterminee.");
 
 		validerType = new Button(askTypeShell, SWT.PUSH);
 		validerType.setText("valider");
