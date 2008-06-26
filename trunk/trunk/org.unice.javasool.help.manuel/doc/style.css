@@ -1,0 +1,72 @@
+body {
+font-family: Arial, "Times New Roman", "Arial Black", Verdana, serif;
+background-color:black;
+color:white;
+font-size: 18;
+text-align: justify;
+}
+
+h4{
+color:#00FF66;
+}
+
+
+#prev {
+  text-align: left;
+  position: relative;
+  bottom: 5;
+  left: 0;
+  padding:0px 23% 0px 0%;
+  z-index: 2;
+}
+
+#next {
+  text-align: right;
+  position: relative;
+  right: 0;
+  bottom: 23;
+  float: right;
+  padding:0px 0% 0px 23%;
+  z-index: 3;
+}
+
+.graphe {
+	 text-align: center;	
+     position: relative; /* IE hack */
+     width: 200px;
+     border: 1px solid #FFFFFF;
+     padding: 2px;
+     margin: 0 0 0 auto ;
+}
+
+.graphe .barre {
+     display: block;
+     position: relative;
+     background: #FFFFFF;
+     color: #FF0000;
+     height: 1em;
+	 width: 1em ;
+     line-height: 1em;
+}
+
+a:link {
+font-family:verdana, sans-serif;
+font-size:80%;
+color:white;
+background-color:transparent;
+text-decoration:underline;
+}
+a:visited {
+font-family:verdana, sans-serif;
+font-size:80%;
+color:#32CD32;
+background-color:transparent;
+text-decoration:underline;
+}
+a:hover {
+font-family:verdana, sans-serif;
+font-size:80%;
+color:green;
+background-color:transparent;
+text-decoration:underline;
+}

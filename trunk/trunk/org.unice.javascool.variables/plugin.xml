@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Inspection"
+            visible="true"
+            id="org.unice.javascool.variables.actionSet">
+         <action
+               class="org.unice.javascool.variables.actions.windowVariables"
+               icon="/icons/inspecteur.png"
+               id="org.unice.javascool.variables.actions.windowVariables"
+               label="Inspection"
+               toolbarPath="console/compile"
+               tooltip="Inspecter Des Variables">
+         </action>
+      </actionSet>
+   </extension>
+
+</plugin>

@@ -1,0 +1,13 @@
+Tuto8{
+	
+	void main(){
+		int[] hexa = new int[]{1,9,2,6}; //le nombre hexadecimal a traduire
+		
+		double somme = 0;
+		for(int i=1; i<=4; i++){
+			somme = somme + hexa[i-1]*pow(16,4-i);	
+		}
+		
+		println("en decimal ce nombre vaut : "+ somme);
+	}
+}
