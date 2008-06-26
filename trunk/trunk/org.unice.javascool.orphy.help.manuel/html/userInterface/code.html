@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK rel="stylesheet" type="text/css" href="../../doc/style.css">	
+  <title>
+   Java's Cool->Code
+  </title>
+ </head>
+ <body>
+<div id="bordure-left">
+  <div id="bordure-right">
+  <div id="corps">
+  <div id="banner">
+	  <center><img src="../../doc/banner_guide.jpg" alt="Guide banner" width=60%></center>
+  </div>
+  <h1><center>Java's Cool Guide Orphy : Code</center></h1>
+  <br/>
+  <br/>
+  <p>
+Ce chapitre vous explique comment faire des acquisitions sur ORPHY en utilisant du code Java's Cool.
+  </p>
+<h2> Corps du programme </h2>
+<p>
+	Un programme utilisant ORPHY dans son code doit etre form&eacute; de la maniere suivante : <br />
+	
+	-ouverture d'orphy <br />
+	-lecture du ou des entr&eacute;es d&eacute;sir&eacute;es, le temps et le nombre de fois que l'on veut <br />
+	-fermeture d'orphy <br />
+ </p>
+ <br/>
+ <h2> Maccros </h2>
+ <p>
+ 	Vous avez &agrave; disposition 3 maccros Orphy :<br />
+ 	
+ 	-void demarrerOrphy(), qui permet de demarrer Orphy afin de l'utiliser.
+ 	-lireEntreeAnalogique(String entreeAnalogique, String type), permet de faire l'acquisition de l'entr&eacute;e analogique <br/>
+ 	pass&eacute;e en param&egrave;tre de la fonction, ayant une sonde de type pass&eacute; en param&egrave;tre. Les diff&eacute;rents types de sondes reconnus sont<br/>
+ 	(bien faire attention &agrave; l'orthographe et aux majuscules) :"Thermometre", "Voltmetre", "Capteur de pression" et "Conductim&egrave;tre".<br/>
+ 	-void arreterOrphy(), qui permet d'arreter Orphy quand on ne l'utilise plus(ATTENTION, ne pas oublier d'appeler cette fonction)
+ </p>
+ <br/>
+ <h2> Reinitialisation </h2>
+ <p>
+ 	La fonction "reinitialiserOrphy" &agrave; &eacute;t&eacute; mise en place pour remettre la configuration d'orphy dans son &eacute;tat initial si vous rencontrez<br/>
+ 	des probl&egrave;mes. Il faut appeler cette fonction si :<br/>
+ 		- vous avez stopp&eacute; un programme utilisant orphy avec le bouton STOP.<br/>
+ 		- si les valeurs fournies par Orphy ne semblent pas du tout coherentes.<br/>
+ </p>
+ <br/>
+ 
+ <h2> Exemple </h2>
+ 
+ <P>
+ Voici un exemple de programme r&eacute;cup&eacute;rant la valeur de l'entr&eacute;e G ayant un capteur de pression branch&eacute; :<br/>
+ <br/>
+ 
+ <img src="../../doc/codeAcqu.png" alt="exemple code orphy" width=50%></center>
+ </p>
+ 
+ <br/>
+ 
+  <b>
+  <a href="../Index.html"><h3>< Index</h3> </a>
+ </b>
+ </br>
+  <b>
+  <a href="../intro/Introduction.html"><h3>< Introduction</h3> </a>
+ </b>
+ </div>
+ </div>
+ </div>
+ </body>
+ </html>

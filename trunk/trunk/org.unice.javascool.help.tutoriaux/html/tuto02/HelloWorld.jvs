@@ -1,0 +1,10 @@
+HelloWorld{
+
+	void afficher(){
+		println("HelloWorld");		
+	}
+	
+	void main(){
+		afficher();
+	}
+}

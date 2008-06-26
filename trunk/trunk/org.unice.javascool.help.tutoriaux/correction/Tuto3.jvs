@@ -1,0 +1,23 @@
+Tuto3{
+	
+	String lirePrenom(){
+		println("entrez votre prenom :");
+		String prenom = readString();
+		return prenom;	
+	}
+	
+	int lireAge(){
+		println("entrez votre age :");
+		int age = readInt();
+		return age;
+	}
+	
+	void main(){
+		
+		String prenom = lirePrenom();
+		int age = lireAge();	
+		
+		println("prenom : " + prenom);
+		println("age : " +age);
+	}
+}

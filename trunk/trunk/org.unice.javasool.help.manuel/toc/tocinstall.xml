@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Installation" link_to="toc.xml#install"> 
+	<topic label="Installation"  href="html/install/Installation.html"> 
+	</topic>
+</toc>

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<LINK rel="stylesheet" type="text/css" href="../../doc/style.css">	
+	
+	<title>Tutoriel 2</title>
+</head>
+
+<body>
+<div id="banner">
+	<img src="../../doc/help_banner.jpg" alt="Help banner">
+</div>
+
+	<h1><center>Tutoriel 2 : "HelloWorld"<center></h1><br><br><br>
+
+	<!--sous-titre-->
+	<div class=soustitre><p>Objectif : </p></div>	
+	<br>
+
+<div id="content">
+	<P>	Le but  de ce tutoriel est de vous
+		apprendre &agrave; &eacute;crire des programmes qui &eacute;crivent
+		des cha&icirc;nes de caract&egrave;res, des nombres, .... sur la
+		<FONT COLOR="#0000ff"><A  NAME="sdfootnote1anc" HREF="#sdfootnote1sym">sortie standard
+		<SUP>1</SUP></A></FONT>.
+	</P>
+</div>
+	
+	<br>
+
+	<!--sous-titre-->
+	<div class=soustitre><p>Notes : </p></div>	
+	<br>
+
+<div id="content">
+	<p>
+		Pour r&eacute;aliser ce tutoriel vous
+		pouvez utiliser les fonctions pr&eacute;sentes dans la bo&icirc;te &agrave;
+		outils dont le fonctionnement est rappel&eacute; dans le manuel d'utilisation.
+	</p>
+	<p>	Voici un exemple de programme qui
+		affiche sur la <FONT COLOR="#0000ff"><A  NAME="sdfootnote1anc" HREF="#sdfootnote1sym">sortie standard
+		<SUP>1</SUP></A></FONT>&nbsp;la
+		phrase "HelloWorld".
+	</P>
+	<br>
+	<!--l'exemple de code source-->
+	<table border="1" align =center>
+		<tr><th>
+		
+			<P ALIGN=LEFT>HelloWordl{</P>
+			<P ALIGN=LEFT >&nbsp;&nbsp;&nbsp;<FONT COLOR="#990000"><B>void</B></FONT> afficher(){</P>
+			<P ALIGN=LEFT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#990000"><B>println</B></FONT>(<FONT COLOR="#008000">&quot;HelloWorld&quot;</FONT>);</P>
+			<P ALIGN=LEFT>&nbsp;&nbsp;&nbsp;}</P>
+			<P ALIGN=LEFT>&nbsp;&nbsp;&nbsp;<FONT COLOR="#990000"><B>void </B></FONT>main(){</P>
+			<P ALIGN=LEFT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN STYLE="background: #00dcff">afficher();</SPAN></P>
+			<P ALIGN=LEFT>&nbsp;&nbsp;&nbsp;}<br>}</P>
+		
+		</th></tr>		
+	</table>
+	<center>
+	Le fichier correspondant : <a href="HelloWorld.jvs">HelloWorld.jvs</a>
+	</center>
+</div>
+
+	<br>
+	<!--sous-tite-->
+	<div class=soustitre><p>Travaille demand&eacute; :</p></div>
+	<br>
+
+<div id="content">
+	<P>	
+		Dans le programme qui vous est donn&eacute;
+		en exemple essayez; de comprendre le r&ocirc;le de la phrase
+		sur-lign&eacute; en bleue.
+	</P>
+	<br>
+	<P>
+		Cr&eacute;ez un nouveau fichier de
+		type &laquo;&nbsp;jvs&nbsp;&raquo; que vous pouvez nommer par
+		exemple : &laquo;&nbsp;Tuto2.jvs&nbsp;&raquo;.
+	</P>
+	<P>
+		Dans ce nouveau fichier cr&eacute;ez
+		une fonction &laquo;&nbsp;afficherPrenom&nbsp;&raquo; qui prend en param&egrave;tre une chaine de caract&egrave;re (le pr&eacutenom;)  
+		et qui affiche sur la <FONT COLOR="#0000ff"><A  NAME="sdfootnote1anc" HREF="#sdfootnote1sym">sortie standard
+		<SUP>1</SUP></A></FONT>&nbsp; le pr&eacute;nom en param&egrave;tre.
+		
+	</p>
+	<P>
+		Cr&eacute;ez
+		une seconde fonction &laquo;&nbsp;afficherNom&nbsp;&raquo; qui prend en param&egrave;tres une chaine de caract&egrave;re (le nom)  
+		et qui affiche sur la <FONT COLOR="#0000ff"><A  NAME="sdfootnote1anc" HREF="#sdfootnote1sym">sortie standard
+		<SUP>1</SUP></A></FONT>&nbsp; le nom en param&egrave;tre.
+		
+	</p>
+	<p>
+		Cr&eacute;ez une fonction main 
+	</P>
+	<br>
+	<P>
+		Ensuite cr&eacute;ez la fonction
+		&laquo;<FONT COLOR="#0000ff"><A  NAME="sdfootnote2anc" HREF="#sdfootnote2sym">
+		&nbsp;main&nbsp;&raquo;<SUP>2</SUP></A></FONT>
+		qui appelle les deux fonctions d&eacute;finis pr&eacute;c&eacute;demment
+		 pour afficher le pr&eacute;nom et le nom.
+	</P>
+</div>
+
+
+	<!--espace entre texte et bas de page-->
+	<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+	
+	<!--notes de bas de pages-->	
+	<hr>	
+	<div id="sdfootnote1">
+		<p class="sdfootnote"><A class="sdfootnotesym" name="sdfootnote1sym" href="#sdfootnote1anc">1</A>
+		<FONT COLOR="#0000ff">La
+			sortie standard </FONT>est le flux de sortie dans lequel les donn&eacute;es
+			sont &eacute;crites par le programme. Une mani&egrave;re simple,
+			bien que techniquement inexacte, de concevoir le principe de la
+			sortie standard est de le consid&eacute;rer comme &laquo;&nbsp;le
+			p&eacute;riph&eacute;rique vers lequel le programme envoie les
+			donn&eacute;es&nbsp;&raquo;. Ainsi, si le p&eacute;riph&eacute;rique
+			en question est l'&eacute;cran, &laquo;&nbsp;&eacute;crire dans la
+			sortie standard&nbsp;&raquo; revient &agrave; &laquo;&nbsp;&eacute;crire
+			sur l'&eacute;cran&nbsp;&raquo; ou &laquo;&nbsp;afficher &agrave;
+			l'&eacute;cran&nbsp;&raquo;.</P>
+			<P STYLE="margin-bottom: 0cm"><BR></P>
+	</div>
+	<div id="sdfootnote2">
+		<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote2sym" HREF="#sdfootnote2anc">2</A>Pour
+		rappelle la Signature de la fonction <FONT COLOR="#0000ff">main </FONT>est
+		: &laquo;&nbsp;void main(){...}&nbsp;&raquo;</P>
+	</div>
+
+</body>
+</html>

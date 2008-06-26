@@ -1,0 +1,21 @@
+Tuto5{
+	
+	void main(){
+				
+		int a = 5;
+		int b = -1;
+		
+		println("avant echange les variables valent:");
+		println("a = "+a);
+		println("b = "+b);
+		
+		int tmp = a;
+		a = b;
+		b = tmp;	
+		
+		println("apres echange les variables valent:");
+		println("a = "+a);
+		println("b = "+b);
+		println(""+a);
+	}
+}
