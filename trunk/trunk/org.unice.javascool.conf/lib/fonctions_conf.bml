@@ -1,0 +1,242 @@
+outils {
+	fonctions {
+		abs {
+			desc="valeur absolue";
+			import="java.lang.Math.abs";
+			signature="double abs(int a)";
+			type="math";
+		}
+		acos {
+			desc="arcosinus";
+			import="java.lang.Math.acos";
+			signature="double acos(double a)";
+			type="math";
+		}
+		asin {
+			desc="arcsinus";
+			import="java.lang.Math.asin";
+			signature="double asin(double a)";
+			type="math";
+		}
+		atan {
+			desc="arctangente";
+			import="java.lang.Math.atan";
+			signature="double atan(double a)";
+			type="math";
+		}
+		atan2 {
+			desc="arctangente carree";
+			import="java.lang.Math.atan2";
+			signature="double atan2(double y, double x)";
+			type="math";
+		}
+		cos {
+			desc="cosinus";
+			import="java.lang.Math.cos";
+			signature="double cos(double a)";
+			type="math";
+		}
+		exp {
+			desc="exponentielle";
+			import="java.lang.Math.exp";
+			signature="double exp(double a)";
+			type="math";
+		}
+		floor {
+			desc="troncature";
+			import="java.lang.Math.floor";
+			signature="double floor(double a)";
+			type="math";
+		}
+		log {
+			desc="logarithme en base 10";
+			import="java.lang.Math.log";
+			signature="double log(double a)";
+			type="math";
+		}
+		max {
+			desc="maximum entre 2 nombres";
+			import="java.lang.Math.max";
+			signature="int max(int a,int b)";
+			type="math";
+		}
+		pow {
+			desc="a exposant b";
+			import="java.lang.Math.pow";
+			signature="double pow(double a, double b)";
+			type="math";
+		}
+		sin {
+			desc="sinus";
+			import="java.lang.Math.sin";
+			signature="double sin(double a)";
+			type="math";
+		}
+		sqrt {
+			desc="racine carree";
+			import="java.lang.Math.sqrt";
+			signature="double sqrt(double a)";
+			type="math";
+		}
+		tan {
+			desc="tangente";
+			import="java.lang.Math.tan";
+			signature="double tan(double a)";
+			type="math";
+		}
+		toDegrees {
+			desc="conversion radians -> degres";
+			import="java.lang.Math.toDegrees";
+			signature="double toDegrees(double angrad)";
+			type="math";
+		}
+		toRadians {
+			desc="conversion degres -> radians";
+			import="java.lang.Math.toRadians";
+			signature="double toRadians(double angdeg)";
+			type="math";
+		}
+		
+		decimalToHexa{
+			desc="conversion decimal -> Hexadecimal";
+			import="javascool.Conversion.decimalToHexa";
+			signature="String decimalToHexa(int nb)";
+			type="conversion";
+		}
+		
+		decimalToBinaire{
+			desc="conversion decimal -> Binaire";
+			import="javascool.Conversion.decimalToBinaire";
+			signature="int[] decimalToBinaire(int nb)";
+			type="conversion";
+		}
+		
+		binaireToDecimal{
+			desc="conversion binaire -> decimal";
+			import="javascool.Conversion.binaireToDecimal";
+			signature="int binaireToDecimal(int[] tab)";
+			type="conversion";
+		}
+		
+		binaireToHexa{
+			desc="conversion binaire -> Hexadecimal";
+			import="javascool.Conversion.binaireToHexa";
+			signature="String binaireToHexa(int[] tab)";
+			type="conversion";
+		}
+				
+		hexaToBinaire{
+			desc="conversion Hexadecimal -> binaire";
+			import="javascool.Conversion.hexaToBinaire";
+			signature="int[] hexaToBinaire(String s)";
+			type="conversion";
+		}
+		
+		hexaToDecimal{
+			desc="conversion hexadecimal -> decimal";
+			import="javascool.Conversion.hexaToDecimal";
+			signature="int hexaToDecimal(String s)";
+			type="conversion";
+		}
+		
+		
+		readString{
+			desc = "lecture d'une chaine de caractere";
+			import="javascool.Read.readString";
+			signature="String readString()";
+			type="lecture";
+		}
+		
+		readChar{
+			desc = "lecture d'un caractere";
+			import="javascool.Read.readChar";
+			signature="char readChar()";
+			type="lecture";
+		}
+		
+		readInt{
+			desc = "lecture d'un entier";
+			import="javascool.Read.readInt";
+			signature="int readInt()";
+			type="lecture";
+		}
+		
+		readFloat{
+			desc = "lecture d'un flottant";
+			import="javascool.Read.readFloat";
+			signature="float readFloat()";
+			type="lecture";
+		}
+		
+		readDouble{
+			desc = "lecture d'un double";
+			import="javascool.Read.readDouble";
+			signature="double readDouble()";
+			type="lecture";
+		}
+		
+		readBoolean{
+			desc = "lecture d'un booleen";
+			import="javascool.Read.readBoolean";
+			signature="boolean readBoolean()";
+			type="lecture";
+		}
+		
+		openReadFile{
+			desc = "ouverture d'un fichier en lecture";
+			import = "javascool.JavascoolFile.openReadFile";
+			signature = "void openReadFile(String path)";
+			type = "fichier";
+		}
+		
+		openWriteFile{
+			desc = "ouverture d'un fichier en ecriture";
+			import = "javascool.JavascoolFile.openWriteFile";
+			signature ="void openWriteFile(String path)";
+			type = "fichier";
+		}
+		
+			
+		closeReadFile{
+			desc = "fermeture d'un fichier ouvert en lecture";
+			import = "javascool.JavascoolFile.closeReadFile";
+			signature = "void closeReadFile()";
+			type = "fichier";
+		}
+		
+		closeWriteFile{
+			desc = "fermeture d'un fichier ouvert en ecriture";
+			import = "javascool.JavascoolFile.closeWriteFile";
+			signature = "void closeWriteFile()";
+			type = "fichier";
+		}
+		
+		nbBitToFile{
+			desc = "cette fonction permet de connaitre le nombres de caracteres d'un fichier";
+			import = "javascool.JavascoolFile.nbBitToFile";
+			signature = "int nbBitToFile(String path)";
+			type = "fichier";
+		}
+		
+		readBit{
+			desc = "cette fonction permet de lire n bits sur un fichier";
+			import = "javascool.JavascoolFile.readBit";
+			signature = "int[] readBit(int n)";
+			type = "fichier";
+		}
+		
+		printlnFile{
+			desc="cette fonction permet d'ecrire une ligne dans un fichier ouvert en ecriture";
+			import="javascool.JavascoolFile.printlnFile";
+			signature="void printlnFile(String s)";
+			type="fichier";
+		}
+		
+		printFile{
+			desc="cette fonction permet d'ecrire une ligne dans un fichier ouvert en ecriture";
+			import="javascool.JavascoolFile.printFile";
+			signature="void printFile(String s)";
+			type="fichier";
+		}
+	}
+}

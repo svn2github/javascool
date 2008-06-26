@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.unice.javascool.folders.command.CommandAjout"
+            id="org.unice.javascool.folders.command.ajout"
+            name="Ajouter Dossier">
+      </command>
+      <command
+            defaultHandler="org.unice.javascool.folders.command.CommandDetruire"
+            id="org.unice.javascool.folders.command.detruire"
+            name="Detruire Dossier">
+      </command>
+      <command
+            defaultHandler="org.unice.javascool.folders.command.CommandSauver"
+            id="org.unice.javascool.folders.command.save"
+            name="Sauver Editeur">
+         <commandParameter
+               id="org.unice.javascool.command.save.param.folder"
+               name="org.unice.javascool.command.save.param.folder">
+         </commandParameter>
+      </command>
+      <command
+            defaultHandler="org.unice.javascool.folders.command.CommandExplor"
+            id="org.unice.javascool.folders.command.explor"
+            name="Explorer Dossier">
+         <commandParameter
+               id="org.unice.javascool.command.explor.param.folder"
+               name="org.unice.javascool.command.explor.param.folder">
+         </commandParameter>
+      </command>
+      <command
+            id="org.unice.javascool.folders.dropdown"
+            name="DropDown">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            description="Acceder a ses dossiers"
+            id="org.unice.javascool.folders.actionSet.folders"
+            label="Mes Dossiers"
+            visible="true">
+      
+         <action
+               class="org.unice.javascool.folders.actions.MesDossiersToolbar"
+               icon="icons/charger.png"
+               id="org.unice.javascool.folders.actions.toolbar"
+               label="Ouvrir Fichier"
+               style="pulldown"
+               toolbarPath="main/FileGroup"
+               tooltip="Charger un fichier a partir de ses dossiers preferes">
+         </action>
+       
+       <!--
+        <action
+             icon="icons/charger_16px.png"
+             class="org.unice.javascool.folders.actions.MesDossiersToolbar"
+             id="org.unice.javascool.folders.actions.toolbar"
+             label="Open File"
+             style="pulldown"
+             menubarPath="file/fileStart"
+             tooltip="Charger un fichier à partir de ses dossiers préférés">
+       </action>
+         -->
+         
+      </actionSet>
+   </extension>
+
+   <!-- locationURI="menu:file?after=new" -->
+   <extension
+         id="org.unice.javascool.folders.menu"
+         name="Ouvrir Fichier"
+         point="org.eclipse.ui.menus">
+      <menuContribution
+           locationURI="menu:file?before=close">
+            
+         <menu
+               id="org.unice.javascool.folders.menu"
+               tooltip="Charger un fichier a partir de ses dossiers preferes"
+               label="Ouvrir Fichier"
+               icon="icons/charger_16px.png"
+               mnemonic="m">
+            <command
+                  commandId="org.unice.javascool.folders.command.ajout"
+                  id="org.unice.javascool.folders.command.ajout"
+                  mnemonic="a">
+            </command>
+            <dynamic
+                  class="org.unice.javascool.folders.compound.CompoundMenu"
+                  id="org.unice.javascool.folders.command.dynamic">
+            </dynamic>
+         </menu>
+      </menuContribution>
+   </extension>
+   
+
+</plugin>

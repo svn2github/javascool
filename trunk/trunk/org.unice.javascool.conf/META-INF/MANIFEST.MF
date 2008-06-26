@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Conf Plug-in
+Bundle-SymbolicName: org.unice.javascool.conf
+Bundle-Version: 1.0.0
+Bundle-Activator: org.unice.javascool.conf.Activator
+Bundle-Vendor: Unice
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Eclipse-LazyStart: true
+Export-Package: fr.unice.util.bml;uses:="org.w3c.dom",
+ org.unice.javascool.conf;uses:="org.w3c.dom"
+Bundle-ClassPath: .
