@@ -137,7 +137,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 						initPlugIn();
 					}
 					else
-						System.out.println("Aucun Orphy n'est actuellement branche.");
+						System.out.println("Aucun Orphy n'est actuellement branch\u00e9.");
 				}
 				else
 					initPlugIn();
