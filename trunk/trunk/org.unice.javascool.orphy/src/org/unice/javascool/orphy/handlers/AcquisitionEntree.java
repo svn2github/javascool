@@ -27,7 +27,7 @@ public class AcquisitionEntree extends AbstractHandler {
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		insert_code("void Orphy.AcquisitionEntree(String entree, String typeCapteur)", window);
+		insert_code("void Orphy.acquisitionEntree(String entree, String typeCapteur)", window);
 		return null;
 	}
 	

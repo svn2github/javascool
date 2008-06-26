@@ -43,7 +43,7 @@ public class ReinitialiserOrphy extends AbstractHandler {
 			e.printStackTrace();
 		}
 		
-		System.out.println("orphy a ete reinitialise");
+		System.out.println("orphy a \u00e9t\u00e9 r\u00e9initialis\u00e9");
 		
 		return null;
 	}
