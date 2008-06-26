@@ -107,11 +107,11 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		int i = 0;
 		double coef = 1;
 
-		if(type.compareTo("Thermometre")==0)
+		if(type.compareTo("Thermom\u00e8tre")==0)
 			coef = 11;
 		else if(type.compareTo("Capteur de pression")==0)
 			coef = 2;
-		else if(type.compareTo("Conductimetre")==0)
+		else if(type.compareTo("Conductim\u00e8tre")==0)
 			coef = 3.0/5.0;
 
 		try {
@@ -206,13 +206,13 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		
 		res =( pint + sint*256.0 )/65535.0 * 20.0;
 
-		if(type.compareTo("Thermometre")==0)
+		if(type.compareTo("Thermom\u00e8tre")==0)
 			res = res * 11;
 		else if(type.compareTo("Capteur de pression")==0)
 			res = res * 2;
-		else if(type.compareTo("Voltmetre")==0)
+		else if(type.compareTo("Voltm\u00e8tre")==0)
 			res = res + 0;
-		else if(type.compareTo("Conductimetre")==0)
+		else if(type.compareTo("Conductim\u00e8tre")==0)
 			res = res * (3.0/5.0);
 
 
@@ -413,7 +413,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 						}
 					}
 					*/
-					System.out.println("temperature :  " + orphy.getAnalogInput(10, "Thermometre"));
+					System.out.println("temperature :  " + orphy.getAnalogInput(10, "Thermom\u00e8tre"));
 					orphy.resetSerialPort();
 					try {
 						Thread.sleep(200);
@@ -433,7 +433,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 				while (true) {
 					System.out.println("n : " + n++);
 					if(n == 25){
-						double[] res = orphy.getProgramedInput("Thermometre", 150, 5, 11);
+						double[] res = orphy.getProgramedInput("Thermom\u00e8tre", 150, 5, 11);
 						for(int i = 0; i<res.length; i++){
 							System.out.println(res[i]);
 						}
