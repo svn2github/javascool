@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?NLS TYPE="org.eclipse.help.toc"?>
-
-<toc label="Tasks" link_to="toc.xml#tuto3"> 
-	<topic label="Sujet"  href="html/tuto03/sujet.html"> 
-	</topic>
-	<topic label="Correction"  href="html/tuto03/correction.html">
-	</topic> 
-</toc>

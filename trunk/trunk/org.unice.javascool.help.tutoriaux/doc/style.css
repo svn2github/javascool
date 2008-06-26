@@ -1,48 +1,0 @@
-/* following font face declarations need to be removed for DBCS */body, h1, h2, h3, h4, h5, h6, p, table, td, caption, th, ul, ol, dl, li, dd, dt {
-	font-family: Arial, "Times New Roman", "Arial Black", Verdana, serif;
-}
-
-body{	font-size: 83%; 
-	background: #FFFFFF;
-	background-image: url("light.jpg");	margin-bottom: 1em	
-}p{ text-align : left;}ul{text-align : left;}
-h2	{ font-size: 140%; margin-top: 25px; margin-bottom: 3px }
-
-#banner {	width: 100%;	overflow: hidden;}
-
-#content {
-	font-size: 14px;	margin: 0px 10px 0px 10px;
-	text-indent: 10px;}
-
-/*style des sous-titres*/
-.soustitre
-{
-	font-size: 18px;
-	/*font-style: italic; mise italique*/
- 	font-weight: bold;  /*mise en gras*/
-	text-decoration: underline; /*souligne*/	
-	text-indent: 30px; /* On décale un peu les sous-titres */
-	color: #0000a0
-}
-
-/*style des sous-titres 2*/
-.soustitre2
-{
-	font-size: 14px;
-	font-weight: bold;  /*mise en gras*/
-	text-decoration: underline; /*souligne*/	
-	text-indent: 60px; /* On décale un peu les sous-titres */
-	color: #336600
-}
-/*style des notes de bas de pages*/
-.sdfootnote{
-	margin-left: 0.5cm;
-	text-indent: -0.5cm;
-	margin-bottom: 0cm;
-	font-size: 10pt 
-}
-
-
-.texte{
-	text-indent: 60px; /* On décale un peu les sous-titres */
-}
