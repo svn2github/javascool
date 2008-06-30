@@ -77,7 +77,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 	private ArrayList<Capteur> listCapteurs;
 
 	/**
-	 * The constructor.
+	 * Constructeur, initialisation des variables, créations des capteurs existants.
 	 */
 	public OrphyAction(){
 		//storage of the values in function of time
@@ -151,6 +151,9 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 		}
 	}
 
+	/**
+	 * Initialise les threads
+	 */
 	public void initPlugIn(){
 		//initialization of the pluged material
 		try {
@@ -169,7 +172,11 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 		createUIThread();
 	}
 
-	//set orphy's entry to TRUE if something's pluged
+	/**
+	 * Initialise les variables booléennes et detecte les ports utilisés
+	 * 
+	 * @throws RemoteException
+	 */
 	public void initPlugs() throws RemoteException{
 
 		PROG = false;
@@ -189,7 +196,9 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 
 	}
 
-	//create the UI thread
+	/**
+	 * Cré le thread gérant l'interface graphique d'orphy
+	 */
 	public void createUIThread(){
 		//thread updating the UI
 		threadUI = new Thread(new Runnable() {
@@ -221,7 +230,9 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 		threadUI.start();
 	}
 
-	//Create the thread computing the values of orphy
+	/**
+	 * cré le thread gérant l'acquisition automatique des entrés activées
+	 */
 	public void createPlugThreads(){
 
 		getValues = new Thread(new Runnable() {
@@ -286,7 +297,9 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 
 	}
 
-	//Function creating all the graphic
+	/**
+	 * Cré l'interface
+	 */
 	public void createWindow(){
 
 		GridLayout gridLayout = new GridLayout();
@@ -772,6 +785,9 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 		fenetre.open();
 	}
 
+	/**
+	 * Cré la fenêtre pour les paramètres de l'acquisition paramétrée
+	 */
 	public void createAskTypeWindow(){
 		GridLayout aquisitionParamLayout=new GridLayout();
 		aquisitionParamLayout.numColumns = 2;
@@ -1033,6 +1049,9 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 		askTypeShell.open();
 	}
 
+	/**
+	 * Ferme de facon propre tout ce qui doit l'etre
+	 */
 	public static void cleanClose(){
 		closePlugThreads();
 		try {
@@ -1055,7 +1074,9 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 
 	}
 
-	// close all the connected threads
+	/**
+	 * Ferme les threads de la classe
+	 */
 	public static void closePlugThreads(){
 		if(threadCompteur != null){
 			threadCompteur.interrupt();
@@ -1069,7 +1090,11 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 		}
 	}
 
-	//draw the points in a new window
+	/**
+	 * Trace l'apercu graphique d'un ensemble de relevé
+	 * 
+	 * @param recorder l'ensemble de relevés à tracer
+	 */
 	public void tracerGraphe(final Record recorder){
 		display = Display.getCurrent();
 		graphe = new Shell(display);
@@ -1142,6 +1167,12 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 		graphe.open();
 	}
 
+	/**
+	 * Renvoi le capteur ayant le type donné en paramètres
+	 * 
+	 * @param type le type du capteur cherché
+	 * @return le Capteur ayant ce type
+	 */
 	public Capteur findType(String type){
 		for(int i=0 ; i<listCapteurs.size() ; i++){
 			if(listCapteurs.get(i).getType().compareTo(type) == 0)
