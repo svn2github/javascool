@@ -25,6 +25,12 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 
 	private static Orphy orphy;
 
+	
+	/**
+	 * Constructeur
+	 * 
+	 * @throws RemoteException
+	 */
 	public Orphy() throws RemoteException{
 		READING = false;
 		port = "";
