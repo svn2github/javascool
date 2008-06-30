@@ -5,6 +5,14 @@ public class Capteur {
 	private String unite;
 	private String abreviation;
 	
+	
+	/**
+	 * Constructeur
+	 * 
+	 * @param type le type de du capteur
+	 * @param unite l'unité de la mesure faite avec le capteur
+	 * @param abreviation l'abreviation du capteur
+	 */
 	public Capteur(String type, String unite, String abreviation){
 		this.type = type;
 		this.unite = unite;
