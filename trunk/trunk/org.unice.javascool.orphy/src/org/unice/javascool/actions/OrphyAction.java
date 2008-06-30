@@ -259,6 +259,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 					if(PROG){
 						try {
 							res10 = orphy.getProgramedInput( typeG, (int)nbAcqu, (int)(interTime*1000), (int)10);
+							System.out.println(" : " + res10.length);
 						//	res11 = orphy.getProgramedInput( typeH, (int)nbAcqu, (int)(interTime*1000), (int)11);
 						} catch (RemoteException e1) {
 							System.out.println("probl\u00e8me rencontr\u00e9 durant l'acquisition programm\u00e9e");
