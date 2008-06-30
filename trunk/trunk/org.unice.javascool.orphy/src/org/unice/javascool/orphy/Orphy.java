@@ -160,6 +160,17 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 				indexEnd = res.indexOf(",", indexStart + 1);
 				result[i++] = tmp;
 			}
+			res = bufRead.readLine();
+			res = res.concat(",");
+			indexStart = indexEnd + 1;
+			indexEnd = res.substring(indexStart, indexEnd).indexOf(",");
+			while(indexEnd != -1){
+				double tmp = Integer.parseInt(res.substring(indexStart, indexEnd))/65535.0*20.0*coef;
+				//	System.out.println(tmp);
+				indexStart = indexEnd + 1;
+				indexEnd = res.indexOf(",", indexStart + 1);
+				result[i++] = tmp;
+			}
 		} catch (IOException e) {
 			//if it fails... retry ^^(i guess some bugs of orphy, or some bug of me :s)
 			getProgramedInput(type, nombreAcqu, interval, analogInput);
