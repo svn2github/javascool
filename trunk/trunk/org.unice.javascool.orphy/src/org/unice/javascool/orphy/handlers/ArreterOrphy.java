@@ -30,7 +30,11 @@ public class ArreterOrphy extends AbstractHandler {
 		insert_code("void Orphy.arreter()", window);
 		return null;
 	}
-	
+	/**
+	 * insert du texte dans l'editeur
+	 * 
+	 * @param sign le texte à insérer
+	 */
 	private void insert_code(String sign, IWorkbenchWindow window) {
 		JVSEditor editor = (JVSEditor)PlatformUI.getWorkbench().getActiveWorkbenchWindow().
 		getActivePage().getActiveEditor();
