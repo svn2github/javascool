@@ -53,7 +53,13 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 	}
 
 
-	//open the specified port to start communication
+	/** 
+	 * Ouvre un port avec l'API rxtx pour pouvoir communiquer avec
+	 *
+	 * @param port le port à ouvrir
+	 * @param from spécifie depuis quelle utilisation d'Orphy on ouvre un port, "code" ou "ui"
+	 * return -1 si l'ouverture n'a pas reussie
+	 */
 	public int openPort(String port, String from){
 		try {
 			portId = CommPortIdentifier.getPortIdentifier(port);
@@ -107,7 +113,17 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 
 		return 0;
 	}
-
+	
+	/** 
+	 * Methode programmant une acquisition de précision avec le systeme de programmation interne d'orphy,
+	 *	elle est utilisé quand l'intervalle d'acquisition descende en dessous de 0.01 seconde
+	 *
+	 * @param type le type de sonde dont on veut faire l'acquisition
+	 * @param nombreAcqu le nombre d'acquisition à faire
+	 * @param interval l'intervalle entre chaque acquisition
+	 * @param analogInput l'entrée d'orphy sur laquelle on veut faire l'acquisition
+	 * return le tableau des acquisitions effectuées
+	 */
 	public synchronized double[] getProgramedInput(String type, int nombreAcqu, int interval, int analogInput){
 		double[] result = new double[nombreAcqu];
 		int i = 0;
@@ -151,6 +167,11 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		return result;
 	}
 
+	/** Methode permettant de savoir si une entrée est utilisée
+	 *
+	 * @param analogInput l'entrée à vérifier
+	 * return true si l'entrée est utilisée, false sinon
+	 */
 	public boolean isAnalogInputEnabled(int analogInput){
 
 		int sint;
@@ -172,6 +193,12 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		return true;
 	}
 
+	/** Methode retournant la valeur d'un port orphy en fonction de son type de capteur.
+	 *
+	 * @param analogInput l'entrée à vérifier
+	 * @param type le type du capteur dont on veut la valeur
+	 * return la valeur de l'acquisition
+	 */
 	public synchronized double getAnalogInput(int analogInput, String type){
 		int pint;
 		int sint = 0;
@@ -227,6 +254,9 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		return res;
 	}
 
+	/** Methode permettant la réinitialisation du port série, son utilisation est du à un bug inexpliqué concernant l'acquisition en continu
+	 *
+	 */
 	public void resetSerialPort(){
 		sPort.close();
 		try {
@@ -263,7 +293,9 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 
 	}
 
-	//read all analogics entry of ORPHY
+	/** 
+	 * Lit toute les entrées
+	 */
 	public void lireAllAnalogiques(){
 
 		try{
@@ -277,7 +309,10 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 
 	}
 
-	//ask ORPHY his version, return "" if it fails
+	/**
+	 *	Demande à Orphy sa version
+	 * return la version d'orphy
+	 */
 	public String askVersion(){
 		String res = null;
 
@@ -294,7 +329,10 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		return res;
 	}
 
-	//try to reset ORPHY, return -1 if it fails
+	/**
+	 * Reset Orphy
+	 * return -1 si le reset a réussi
+	 */
 	public int reset(){
 
 		try{
@@ -309,8 +347,12 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		return 1;
 	}
 
-	//test all the available COM port to find the one where ORPHY is plugged
-
+	/** Trouve le port série sur lequel un orphy est branché
+	 *
+	 * @param from précise d'où est appelé la fonction "Code" ou "ui"
+	 *
+	 * return le nom du port où est orphy, "" si il n'y a pas d'orphy branché
+	 */
 	public String findPort(String from) throws RemoteException{
 
 		String res = null;
@@ -352,7 +394,11 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 
 	}
 
-	//close everything
+	/** Ferme les stream et le port série
+	 *
+	 * @param from précise d'où est appelé la fonction "Code" ou "ui"
+	 *
+	 */
 	public void close(String from) throws RemoteException{
 		try {
 			bufRead.close();
@@ -373,7 +419,10 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		//System.exit(0);
 	}
 
-
+	/** Récupère des informations concernant la derniere fonction d'orphy utilisée
+	 *
+	 * return le retour d'erreur
+	 */
 	public String getError(){
 		String res = null;
 
@@ -390,8 +439,10 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		return res;
 	}
 
-	//main de test des methodes de relevÈ
-
+	/** Main de test "off-javascool"
+	 *
+	 *
+	 */
 	public static void main(String[] args){
 		try {
 			orphy = new Orphy();
