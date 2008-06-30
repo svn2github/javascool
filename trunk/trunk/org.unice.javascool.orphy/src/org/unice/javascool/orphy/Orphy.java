@@ -125,7 +125,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 	 * return le tableau des acquisitions effectuées
 	 */
 	public synchronized double[] getProgramedInput(String type, int nombreAcqu, int interval, int analogInput){
-		double[] result = new double[nombreAcqu];
+		double[] result = new double[nombreAcqu*2];
 		int i = 0;
 		double coef = 1;
 
