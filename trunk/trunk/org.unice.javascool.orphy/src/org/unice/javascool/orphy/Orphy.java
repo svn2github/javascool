@@ -138,7 +138,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 
 		try {
 		//	bufWrite.write("WPE 1 200 10 5000 10");
-			bufWrite.write("WPE"+ " " + 1 + " " + nombreAcqu + " 10 " + interval*100+ " " + analogInput);
+			bufWrite.write("WPE"+ " " + 1 + " " + nombreAcqu + " 10 " + interval*100+ " " + analogInput + " 11");
 			bufWrite.newLine();
 			bufWrite.flush();
 			bufWrite.write("WGOR");
