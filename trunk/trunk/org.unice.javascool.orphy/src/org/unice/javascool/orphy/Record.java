@@ -2,23 +2,40 @@ package org.unice.javascool.orphy;
 
 import java.util.ArrayList;
 import java.io.*;
-
+/**
+ * Record est la classe où l'on stock les valeures des acquisitions faites avec l'interface graphique
+ * 
+ * @author super_coin
+ *
+ */
 public class Record {
 	private ArrayList<Double> temps;
 	private ArrayList<Double> value;
 	private String destination;
-	
+
+	/**
+	 * Constructeur
+	 */
 	public Record(){
 		temps = new ArrayList<Double>();
 		value = new ArrayList<Double>();
 		destination = Messages.getString("Record.0"); //$NON-NLS-1$
 	}
-	
+	/**
+	 * ajoute une valeure avec sa "date" d'acquisition
+	 * @param sec la "date" de la l'acquisition en secondes
+	 * @param val la valeure de l'acquisition
+	 */
 	public void add(double sec, double val){
 			temps.add(sec);
 			value.add(val);
 	}
 	
+	/**
+	 * Methode d'exportation des valeur d'un objet record sous format texte compatible regressi
+	 * 
+	 * @param type le type du capteur dont on a les relevés
+	 */
 	public void save(String type){
 		try {
 			
