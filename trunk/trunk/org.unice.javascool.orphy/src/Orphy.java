@@ -10,7 +10,14 @@ public class Orphy {
 
 	private static IOrphy orphy;
 	
-	
+	/**
+	 * Retourne la valeur de l'entrée passée en paramètre en fonction du type de capteur fournit. Les
+	 * differents types de capteurs possibles sont ajouté dans OrphyAction par la classe Capteur.
+	 *
+	 * @param entree l'entrée d'orphy sur laquelle on va faire l'acquisition
+	 * @param typeCapteur le type de capteur branché sur l'entrée
+	 * @return            la valeur de l'entrée en fonction du type de capteur
+	 */
 	public static double acquisitionEntree(String entree, String typeCapteur){
 		
 		try {
@@ -32,6 +39,11 @@ public class Orphy {
 		return 0.0;
 	}
 	
+	/**
+	 * Fonction permettant de savoir si Orphy est utilisé actuellement par l'interface graphique
+	 *
+	 * @return true si l'interface graphique est lancé, false sinon.
+	 */
 	public static boolean isUIUsed(){
 		try {
 			return orphy.UIUsed();
@@ -42,6 +54,11 @@ public class Orphy {
 		return false;
 	}
 	
+	/**
+	 * Fonction permettant de savoir si Orphy est utilisé actuellement par du code javascool
+	 *
+	 * @return true si du code javascool utilise orphy, false sinon.
+	 */
 	public static boolean isCodeUsed(){
 		try {
 			return orphy.CodeUsed();
@@ -52,6 +69,10 @@ public class Orphy {
 		return false;
 	}
 
+	/**
+	 * Code de la maccro "demarrer" destinée à etre utilisée dans du code javascool pour initialiser Orphy
+	 *
+	 */
 	public static void demarrer(){
 		final String string = JavaScoolServerRegister.getProtocol() + OrphyRegister.getServer();
 		try {
@@ -77,6 +98,10 @@ public class Orphy {
 		}
 	}
 	
+	/**
+	 * Code de la maccro "arreter" destinée à etre utilisée dans du code javascool pour arreter Orphy proprement
+	 *
+	 */
 	public static void arreter(){
 		try {
 			if(!orphy.UIUsed()){
