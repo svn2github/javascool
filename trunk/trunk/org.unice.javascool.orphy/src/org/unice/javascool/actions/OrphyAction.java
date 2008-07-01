@@ -259,22 +259,22 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 					if(PROG){
 						try {
 							res10 = orphy.getProgramedInput( typeG, (int)nbAcqu, (int)(interTime*1000), (int)10);
-							System.out.println(" : " + res10.length + "  ;  " + nbAcqu);
+						//	System.out.println(" : " + res10.length + "  ;  " + nbAcqu);
 						//	res11 = orphy.getProgramedInput( typeH, (int)nbAcqu, (int)(interTime*1000), (int)11);
 						} catch (RemoteException e1) {
 							System.out.println("probl\u00e8me rencontr\u00e9 durant l'acquisition programm\u00e9e");
 						}
 						final Runnable tableFill=new Runnable(){
 							public void run() {
-								for(int i = 0; i <res10.length ; i = i + 2){
+								for(int i = 0; i <res10.length ; i++){
 									TableItem item = new TableItem (table, SWT.NONE);
 									item.setText (0, (interTime*i) + Messages.getString("OrphyAction.27")); //$NON-NLS-1$
 									recorderG.add ( interTime*i, res10[i]);
-									recorderH.add ( interTime*i, res10[i+1]);
+						//			recorderH.add ( interTime*i, res10[i+1]);
 
 									item.setText (1, df.format(res10[i]) + findType(typeG).getUnite());
 
-									item.setText (2, df.format(res10[i+1]) + findType(typeH).getUnite());
+						//			item.setText (2, df.format(res10[i+1]) + findType(typeH).getUnite());
 
 									fenetre.layout();
 								}

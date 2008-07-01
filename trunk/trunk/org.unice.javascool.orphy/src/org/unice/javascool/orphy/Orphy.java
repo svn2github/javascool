@@ -125,10 +125,8 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 	 * return le tableau des acquisitions effectuées
 	 */
 	public synchronized double[] getProgramedInput(String type, int nombreAcqu, int interval, int analogInput){
-		double[] result = new double[nombreAcqu*2];
-		for(int j = 0; j < result.length ;j++){
-			result[j] = 0;
-		}
+		double[] result = new double[nombreAcqu];
+
 		int i = 0;
 		double coef = 1;
 
@@ -141,7 +139,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 
 		try {
 		//	bufWrite.write("WPE 1 200 10 5000 10");
-			bufWrite.write("WPE"+ " " + 1 + " " + nombreAcqu + " 10 " + interval*100+ " " + analogInput + " 11");
+			bufWrite.write("WPE"+ " " + 1 + " " + nombreAcqu + " 10 " + interval*100+ " " + analogInput);
 			bufWrite.newLine();
 			bufWrite.flush();
 			bufWrite.write("WGOR");
@@ -163,17 +161,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 				indexEnd = res.indexOf(",", indexStart + 1);
 				result[i++] = tmp;
 			}
-			res = bufRead.readLine();
-			res = res.concat(",");
-			indexStart = indexEnd + 1;
-			indexEnd = res.substring(indexStart, indexEnd).indexOf(",");
-			while(indexEnd != -1){
-				double tmp = Integer.parseInt(res.substring(indexStart, indexEnd))/65535.0*20.0*coef;
-				//	System.out.println(tmp);
-				indexStart = indexEnd + 1;
-				indexEnd = res.indexOf(",", indexStart + 1);
-				result[i++] = tmp;
-			}
+
 		} catch (IOException e) {
 			//if it fails... retry ^^(i guess some bugs of orphy, or some bug of me :s)
 			getProgramedInput(type, nombreAcqu, interval, analogInput);
