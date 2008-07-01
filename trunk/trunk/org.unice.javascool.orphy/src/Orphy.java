@@ -11,12 +11,12 @@ public class Orphy {
 	private static IOrphy orphy;
 	
 	/**
-	 * Retourne la valeur de l'entrée passée en paramètre en fonction du type de capteur fournit. Les
-	 * differents types de capteurs possibles sont ajouté dans OrphyAction par la classe Capteur.
+	 * Retourne la valeur de l'entr&eacute;e pass&eacute;e en param&egrave;tre en fonction du type de capteur fournit. Les
+	 * differents types de capteurs possibles sont ajout&eacute; dans OrphyAction par la classe Capteur.
 	 *
-	 * @param entree l'entrée d'orphy sur laquelle on va faire l'acquisition
-	 * @param typeCapteur le type de capteur branché sur l'entrée
-	 * @return            la valeur de l'entrée en fonction du type de capteur
+	 * @param entree l'entr&eacute;e d'orphy sur laquelle on va faire l'acquisition
+	 * @param typeCapteur le type de capteur branch&eacute; sur l'entr&eacute;e
+	 * @return            la valeur de l'entr&eacute;e en fonction du type de capteur
 	 */
 	public static double acquisitionEntree(String entree, String typeCapteur){
 		
@@ -40,9 +40,9 @@ public class Orphy {
 	}
 	
 	/**
-	 * Fonction permettant de savoir si Orphy est utilisé actuellement par l'interface graphique
+	 * Fonction permettant de savoir si Orphy est utilis&eacute; actuellement par l'interface graphique
 	 *
-	 * @return true si l'interface graphique est lancé, false sinon.
+	 * @return true si l'interface graphique est lanc&eacute;, false sinon.
 	 */
 	public static boolean isUIUsed(){
 		try {
@@ -55,7 +55,7 @@ public class Orphy {
 	}
 	
 	/**
-	 * Fonction permettant de savoir si Orphy est utilisé actuellement par du code javascool
+	 * Fonction permettant de savoir si Orphy est utilis&eacute; actuellement par du code javascool
 	 *
 	 * @return true si du code javascool utilise orphy, false sinon.
 	 */
@@ -70,7 +70,7 @@ public class Orphy {
 	}
 
 	/**
-	 * Code de la maccro "demarrer" destinée à etre utilisée dans du code javascool pour initialiser Orphy
+	 * Code de la maccro "demarrer" destin&eacute;e &agrave; etre utilis&eacute;e dans du code javascool pour initialiser Orphy
 	 *
 	 */
 	public static void demarrer(){
@@ -99,7 +99,7 @@ public class Orphy {
 	}
 	
 	/**
-	 * Code de la maccro "arreter" destinée à etre utilisée dans du code javascool pour arreter Orphy proprement
+	 * Code de la maccro "arreter" destin&eacute;e &agrave; etre utilis&eacute;e dans du code javascool pour arreter Orphy proprement
 	 *
 	 */
 	public static void arreter(){

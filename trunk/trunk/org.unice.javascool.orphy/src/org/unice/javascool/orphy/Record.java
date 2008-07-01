@@ -3,7 +3,7 @@ package org.unice.javascool.orphy;
 import java.util.ArrayList;
 import java.io.*;
 /**
- * Record est la classe où l'on stock les valeures des acquisitions faites avec l'interface graphique
+ * Record est la classe o&ugrave; l'on stock les valeures des acquisitions faites avec l'interface graphique
  * 
  * @author super_coin
  *

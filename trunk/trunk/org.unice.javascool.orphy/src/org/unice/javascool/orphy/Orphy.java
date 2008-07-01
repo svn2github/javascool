@@ -56,8 +56,8 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 	/** 
 	 * Ouvre un port avec l'API rxtx pour pouvoir communiquer avec
 	 *
-	 * @param port le port à ouvrir
-	 * @param from spécifie depuis quelle utilisation d'Orphy on ouvre un port, "code" ou "ui"
+	 * @param port le port &agrave; ouvrir
+	 * @param from sp&eacute;cifie depuis quelle utilisation d'Orphy on ouvre un port, "code" ou "ui"
 	 * return -1 si l'ouverture n'a pas reussie
 	 */
 	public int openPort(String port, String from){
@@ -115,14 +115,14 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 	}
 	
 	/** 
-	 * Methode programmant une acquisition de précision avec le systeme de programmation interne d'orphy,
-	 *	elle est utilisé quand l'intervalle d'acquisition descende en dessous de 0.01 seconde
+	 * Methode programmant une acquisition de pr&eacute;cision avec le systeme de programmation interne d'orphy,
+	 *	elle est utilis&eacute; quand l'intervalle d'acquisition descende en dessous de 0.01 seconde
 	 *
 	 * @param type le type de sonde dont on veut faire l'acquisition
-	 * @param nombreAcqu le nombre d'acquisition à faire
+	 * @param nombreAcqu le nombre d'acquisition &agrave; faire
 	 * @param interval l'intervalle entre chaque acquisition
-	 * @param analogInput l'entrée d'orphy sur laquelle on veut faire l'acquisition
-	 * return le tableau des acquisitions effectuées
+	 * @param analogInput l'entr&eacute;e d'orphy sur laquelle on veut faire l'acquisition
+	 * return le tableau des acquisitions effectu&eacute;es
 	 */
 	public synchronized double[] getProgramedInput(String type, int nombreAcqu, int interval, int analogInput){
 		double[] result = new double[nombreAcqu];
@@ -138,6 +138,9 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 			coef = 3.0/5.0;
 
 		try {
+			bufRead =
+				new BufferedReader(
+						new InputStreamReader(sPort.getInputStream()));
 		//	bufWrite.write("WPE 1 200 10 5000 10");
 			bufWrite.write("WPE"+ " " + 1 + " " + nombreAcqu + " 10 " + interval*100+ " " + analogInput);
 			bufWrite.newLine();
@@ -161,6 +164,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 				indexEnd = res.indexOf(",", indexStart + 1);
 				result[i++] = tmp;
 			}
+			bufRead.close();
 
 		} catch (IOException e) {
 			//if it fails... retry ^^(i guess some bugs of orphy, or some bug of me :s)
@@ -169,10 +173,10 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		return result;
 	}
 
-	/** Methode permettant de savoir si une entrée est utilisée
+	/** Methode permettant de savoir si une entr&eacute;e est utilis&eacute;e
 	 *
-	 * @param analogInput l'entrée à vérifier
-	 * return true si l'entrée est utilisée, false sinon
+	 * @param analogInput l'entr&eacute;e &agrave; v&eacute;rifier
+	 * return true si l'entr&eacute;e est utilis&eacute;e, false sinon
 	 */
 	public boolean isAnalogInputEnabled(int analogInput){
 
@@ -197,7 +201,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 
 	/** Methode retournant la valeur d'un port orphy en fonction de son type de capteur.
 	 *
-	 * @param analogInput l'entrée à vérifier
+	 * @param analogInput l'entr&eacute;e &agrave; v&eacute;rifier
 	 * @param type le type du capteur dont on veut la valeur
 	 * return la valeur de l'acquisition
 	 */
@@ -256,7 +260,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		return res;
 	}
 
-	/** Methode permettant la réinitialisation du port série, son utilisation est du à un bug inexpliqué concernant l'acquisition en continu
+	/** Methode permettant la r&eacute;initialisation du port s&eacute;rie, son utilisation est du &agrave; un bug inexpliqu&eacute; concernant l'acquisition en continu
 	 *
 	 */
 	public void resetSerialPort(){
@@ -296,7 +300,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 	}
 
 	/** 
-	 * Lit toute les entrées
+	 * Lit toute les entr&eacute;es
 	 */
 	public void lireAllAnalogiques(){
 
@@ -312,7 +316,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 	}
 
 	/**
-	 *	Demande à Orphy sa version
+	 *	Demande &agrave; Orphy sa version
 	 * return la version d'orphy
 	 */
 	public String askVersion(){
@@ -333,7 +337,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 
 	/**
 	 * Reset Orphy
-	 * return -1 si le reset a réussi
+	 * return -1 si le reset a r&eacute;ussi
 	 */
 	public int reset(){
 
@@ -349,11 +353,11 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		return 1;
 	}
 
-	/** Trouve le port série sur lequel un orphy est branché
+	/** Trouve le port s&eacute;rie sur lequel un orphy est branch&eacute;
 	 *
-	 * @param from précise d'où est appelé la fonction "Code" ou "ui"
+	 * @param from pr&eacute;cise d'o&ugrave; est appel&eacute; la fonction "Code" ou "ui"
 	 *
-	 * return le nom du port où est orphy, "" si il n'y a pas d'orphy branché
+	 * return le nom du port o&ugrave; est orphy, "" si il n'y a pas d'orphy branch&eacute;
 	 */
 	public String findPort(String from) throws RemoteException{
 
@@ -396,9 +400,9 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 
 	}
 
-	/** Ferme les stream et le port série
+	/** Ferme les stream et le port s&eacute;rie
 	 *
-	 * @param from précise d'où est appelé la fonction "Code" ou "ui"
+	 * @param from pr&eacute;cise d'o&ugrave; est appel&eacute; la fonction "Code" ou "ui"
 	 *
 	 */
 	public void close(String from) throws RemoteException{
@@ -421,7 +425,7 @@ public class Orphy extends UnicastRemoteObject implements IOrphy{
 		//System.exit(0);
 	}
 
-	/** Récupère des informations concernant la derniere fonction d'orphy utilisée
+	/** R&eacute;cup&egrave;re des informations concernant la derniere fonction d'orphy utilis&eacute;e
 	 *
 	 * return le retour d'erreur
 	 */

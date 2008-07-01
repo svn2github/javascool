@@ -77,7 +77,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 	private ArrayList<Capteur> listCapteurs;
 
 	/**
-	 * Constructeur, initialisation des variables, créations des capteurs existants.
+	 * Constructeur, initialisation des variables, cr&eacute;ations des capteurs existants.
 	 */
 	public OrphyAction(){
 		//storage of the values in function of time
@@ -173,7 +173,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 	}
 
 	/**
-	 * Initialise les variables booléennes et detecte les ports utilisés
+	 * Initialise les variables bool&eacute;ennes et detecte les ports utilis&eacute;s
 	 * 
 	 * @throws RemoteException
 	 */
@@ -197,7 +197,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 	}
 
 	/**
-	 * Cré le thread gérant l'interface graphique d'orphy
+	 * Cr&eacute; le thread g&eacute;rant l'interface graphique d'orphy
 	 */
 	public void createUIThread(){
 		//thread updating the UI
@@ -231,7 +231,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 	}
 
 	/**
-	 * cré le thread gérant l'acquisition automatique des entrés activées
+	 * cr&eacute; le thread g&eacute;rant l'acquisition automatique des entr&eacute;s activ&eacute;es
 	 */
 	public void createPlugThreads(){
 
@@ -259,8 +259,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 					if(PROG){
 						try {
 							res10 = orphy.getProgramedInput( typeG, (int)nbAcqu, (int)(interTime*1000), (int)10);
-						//	System.out.println(" : " + res10.length + "  ;  " + nbAcqu);
-						//	res11 = orphy.getProgramedInput( typeH, (int)nbAcqu, (int)(interTime*1000), (int)11);
+							res11 = orphy.getProgramedInput( typeH, (int)nbAcqu, (int)(interTime*1000), (int)11);
 						} catch (RemoteException e1) {
 							System.out.println("probl\u00e8me rencontr\u00e9 durant l'acquisition programm\u00e9e");
 						}
@@ -270,11 +269,11 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 									TableItem item = new TableItem (table, SWT.NONE);
 									item.setText (0, (interTime*i) + Messages.getString("OrphyAction.27")); //$NON-NLS-1$
 									recorderG.add ( interTime*i, res10[i]);
-						//			recorderH.add ( interTime*i, res10[i+1]);
+									recorderH.add ( interTime*i, res11[i]);
 
 									item.setText (1, df.format(res10[i]) + findType(typeG).getUnite());
 
-						//			item.setText (2, df.format(res10[i+1]) + findType(typeH).getUnite());
+									item.setText (2, df.format(res11[i]) + findType(typeH).getUnite());
 
 									fenetre.layout();
 								}
@@ -299,7 +298,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 	}
 
 	/**
-	 * Cré l'interface
+	 * Cr&eacute; l'interface
 	 */
 	public void createWindow(){
 
@@ -465,7 +464,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 						recorderH.add ( chronoTime, valueEA11);
 
 						item.setText (1, df.format(valueEA10) + findType(typeG).getUnite());
-
+						
 						item.setText (2, df.format(valueEA11) + findType(typeH).getUnite());
 
 						fenetre.layout();
@@ -701,8 +700,6 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 				launchAcqu.setText("Lancer");
 				launched = false;
 
-				typeButtonG.select(0);
-				typeButtonH.select(0);
 			}
 		};
 
@@ -787,7 +784,7 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 	}
 
 	/**
-	 * Cré la fenêtre pour les paramètres de l'acquisition paramétrée
+	 * Cr&eacute; la fenêtre pour les param&egrave;tres de l'acquisition param&eacute;tr&eacute;e
 	 */
 	public void createAskTypeWindow(){
 		GridLayout aquisitionParamLayout=new GridLayout();
@@ -1092,9 +1089,9 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 	}
 
 	/**
-	 * Trace l'apercu graphique d'un ensemble de relevé
+	 * Trace l'apercu graphique d'un ensemble de relev&eacute;
 	 * 
-	 * @param recorder l'ensemble de relevés à tracer
+	 * @param recorder l'ensemble de relev&eacute;s &agrave; tracer
 	 */
 	public void tracerGraphe(final Record recorder){
 		display = Display.getCurrent();
@@ -1169,9 +1166,9 @@ public class OrphyAction implements IWorkbenchWindowActionDelegate {
 	}
 
 	/**
-	 * Renvoi le capteur ayant le type donné en paramètres
+	 * Renvoi le capteur ayant le type donn&eacute; en param&egrave;tres
 	 * 
-	 * @param type le type du capteur cherché
+	 * @param type le type du capteur cherch&eacute;
 	 * @return le Capteur ayant ce type
 	 */
 	public Capteur findType(String type){
