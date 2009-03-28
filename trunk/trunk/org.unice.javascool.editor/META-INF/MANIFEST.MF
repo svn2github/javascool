@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Editor Plug-in
 Bundle-SymbolicName: org.unice.javascool.editor;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.1
 Bundle-Activator: org.unice.javascool.editor.Activator
 Bundle-Vendor: UNICE
 Require-Bundle: org.eclipse.ui,

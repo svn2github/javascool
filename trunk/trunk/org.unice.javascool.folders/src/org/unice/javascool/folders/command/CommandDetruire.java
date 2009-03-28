@@ -30,7 +30,7 @@ public class CommandDetruire extends AbstractHandler {
 	public static final String ID="org.unice.javascool.folders.command.detruire";
 
 
-	@Override
+	//TODO seb @Override
 	public Object execute(ExecutionEvent arg0) throws ExecutionException {
 		shell_create = new Shell(SWT.DIALOG_TRIM );
 		Wizard wizard=new Wizard(){

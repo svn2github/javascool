@@ -4,6 +4,23 @@ package javascool;
 public class Conversion {
 
 	/**
+	 * ces deux variables ont utiles pour les fonctions ou(double tension) 
+	 * et compare()
+	 */
+	
+	private static double value = 0;
+	private static double trueValue = 0.987;
+	
+	
+	public static void  out(double tension){
+		value = tension; 
+	}
+    
+	public static int compare(){
+		return trueValue < value ? -1 : 1; 
+	}
+    
+	/**
 	 * cette fonction foncvertit un nombre decimal en base 16
 	 * @param nb le nombre a convertir
 	 * @return le nombre en base 16 resultat de la conversion

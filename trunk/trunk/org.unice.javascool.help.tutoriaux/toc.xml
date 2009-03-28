@@ -32,4 +32,7 @@
     <topic label="Tutoriel 10 : Lecture de fichiers">
       <anchor id="tuto10"/>
    </topic>
+    <topic label="Tutoriel 11 : La conversion analogique-numérique">
+       <anchor id="tuto11"/>
+    </topic>
 </toc>

@@ -38,6 +38,9 @@
       <toc
             file="toc/toctuto10.xml">
       </toc>
+      <toc
+            file="toc/toctuto11.xml">
+      </toc>
    </extension>
 
 </plugin>

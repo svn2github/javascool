@@ -37,7 +37,7 @@ public class CommandAjout extends AbstractHandler {
 	private Text nameText=null;
 	private Text pathText=null;
 
-	@Override
+	//TODO seb @Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		final Shell shell_create = new Shell(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),SWT.DIALOG_TRIM );
 		shell_create.setSize(600,200);

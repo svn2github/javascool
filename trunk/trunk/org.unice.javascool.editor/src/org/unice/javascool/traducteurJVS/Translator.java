@@ -22,6 +22,7 @@ import javax.tools.*;
 /**
  * cette classe contient toutes les methodes nececssaire a la traduction du code javascool 
  * en code java
+ * @author Chalmeton Sébastien 
  */
 public class Translator {
 
@@ -52,7 +53,7 @@ public class Translator {
 	}
 
 	/**
-	 * cette methode initialise le traducteur, elle crï¿½e la classe Macro en fonction des fichiers de
+	 * cette methode initialise le traducteur, elle cree la classe Macro en fonction des fichiers de
 	 * configuration et ajoute les imports necessaires
 	 * @param path le chemin ou l'on veut sauvegarder le fichier Macro
 	 */
@@ -133,8 +134,9 @@ public class Translator {
 			//ajout de pulic class devant nom de la class
 			text = "public class "+buffer.readLine()+System.getProperty("line.separator");
 
+			//on recupere les imports neccessaire a faire
 			while ((line = buffer.readLine()) != null){
-				getImportFct(line);//on recupere les imports neccessaire a faire
+				getImportFct(line);
 				text+=line+System.getProperty("line.separator");
 			}
 
@@ -265,6 +267,8 @@ public class Translator {
 	 * @param fields
 	 */
 	private static void replaceField(Field[] fields) {
+		if(fields.length == 0 ) return;//case of no fields
+		
 		int index_firstMeth = text.indexOf(list_methods[0].getName());
 		
 		if(index_firstMeth != -1){
