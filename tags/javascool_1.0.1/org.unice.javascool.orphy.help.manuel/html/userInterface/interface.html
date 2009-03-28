@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK rel="stylesheet" type="text/css" href="../../doc/style.css">	
+  <title>
+   Java's Cool->Interface
+  </title>
+ </head>
+ <body>
+<div id="bordure-left">
+  <div id="bordure-right">
+  <div id="corps">
+  <div id="banner">
+	  <center><img src="../../doc/banner_guide.jpg" alt="Guide banner" width=60%></center>
+  </div>
+  <h1><center>Java's Cool Guide Orphy : Interface</center></h1>
+  <br/>
+  <br/>
+  <p>
+  Ce guide vous permet de prendre en main l'interface graphique d'aquisition d'Orphy GTSII.
+  </p>
+  <br/>
+  <h2> Presentation </h2>
+  
+  L'interace se pr&eacute;sente de la mani&egrave;re suivante : 
+  <ol>
+	<li>une zone permettant l'acquisition manuelle</li>
+	<li>une zone permettant l'acquisition param&eacute;tr&eacute;e</li>
+	<li>la valeur des entr&eacute;es G et H de ORPHY GTS 2</li>
+	<li>la r&eacute;initialisation de l'interface</li>
+	<li>l'apercu graphique des relev&eacute;s</li>
+	<li>l'exportation des relev&eacute; en fichier texte</li>
+	<li>la liste des relev&eacute;s faits sur les entr&eacute;es</li>
+	<li>le bouton pour fermer l'interface</li>
+  </ol>
+  <br/>
+  
+  <img src="../../doc/interfaceGraphique.gif" alt="interface graphique" width=40%></center>
+  <br/>
+  <h2> R&eacute;glages </h2>
+  
+  <P>
+  	Un menu d&eacute;roulant situ&eacute; sous l'affichage des entr&eacute;es permet de choisir le type de sonde branch&eacute; sur orphy, il est important<br/>
+  	de le pr&eacute;ciser pour ne pas avoir des r&eacute;sultats incoherents.<br/>
+  </p>
+  <br/>
+  <img src="../../doc/typeSonde.png" alt="menu deroulant" width=25%></center>
+  <br/>
+  <h2>Acquisition manuelle</h2> 
+  <p> 
+  	Cette partie de l'interface vous permet de faire des acquisitions manuelles des entr&eacute;es.
+  </p>
+  
+  <p>
+  	Une acquisition manuelle se passe de la mani&egrave;re suivante :
+  <ol>
+	<li>lancer le timer avec le bouton Lecture</li>
+	<li>utiliser le bouton Acquisition manuelle pour faire un relev&eacute;</li>
+	<li>arreter le timer quand on a fait tout les relev&eacute;s n&eacute;cessaires avec le bouton Stop</li>
+  </ol>
+  </p>
+  <br/>
+  
+  <h2> Acquisition param&eacute;tr&eacute;e</h2>
+  <p>
+  	Cette partie de l'interface vous permet de faire des acquisitions param&eacute;tr&eacute;es des entr&eacute;es en fonctions de differents param&egrave;tres.
+  </p>
+  
+  <p>
+  	Une acquisition param&eacute;tr&eacute;e se passe de la mani&egrave;re suivante :
+  <ol>
+  	<li> appuier sur le bouton Param&eacute;trer pour afficher la fenetre de selection </li>
+  	<li> cocher la case correspondant &agrave; l'exp&eacute;rience d&eacute;sir&eacute;e </li>
+  	<li> appuier sur valider </li>
+  	<li> remplir les param&egrave;tres </li>
+  	<li> appuier sur valider </li>
+  	<li> lancer l'acquisition param&eacute;tr&eacute;e avec le bouton Lancer</li>
+  	<li> attendre qu'elle se finisse, ou la stopper avec le bouton Arreter si il y a un probleme ou qu'il s'agit d'une experience &agrave; dur&eacute;e ind&eacute;termin&eacute;e</li>
+  </ol>
+  </p>
+  <br/>
+  
+  <img src="../../doc/parametrageAcqu.png" alt="acquisition paramŽtrŽe" width=30%></center>
+  
+  <br/>
+  <p>
+  	Si l'interval de temps entre deux mesure est inf&eacute;rieur &agrave; 0.01 secondes, l'interface utilisera alors le syst&egrave;me de programmation<br/>
+  	interne d'Orphy, et le timer ne sera pas disponible. L'acquisition peut alors prendre plusieurs secondes, merci de patienter.
+  </p>
+  <br/>
+  
+  <h2> Reinitialisation </h2>
+  
+  <p>
+  	Il est important, que se soit pour une acquisition param&eacute;tr&eacute;e ou manuelle, que vous r&eacute;initialisiez l'interface avec le bouton Reinitialiser <br/>
+  	entre chaque acquisition. Mais faites bien attention d'avoir exploit&eacute; ou sauvegard&eacute; les relev&eacute;, ceux-ci seront d&eacute;finitivement perdus en r&eacute;initialisant<br/>
+  	l'interface !
+  </p>
+  <br/>
+  
+  <h2> Apercu Graphique </h2>
+  
+  <p>
+  	Il est possible d'avoir un apercu graphique de la courbe des relev&eacute;s effectu&eacute;s sur l'entr&eacute;e G ou H d'ORPHY.<br/>
+  	Voici un exemple d'apercu graphique : <br/>
+  </p>
+  <br/>
+  
+  <img src="../../doc/graphPression.png" alt="aprecu graphique" width=40%></center>
+  
+  <br/>
+  
+  <h2> Exportation des relev&eacute;s </h2>
+  
+  <p>
+  	Il est possible d'exporter les relev&eacute;s en fichier .txt compatible regressi.<br/>
+  	Voici un exemple de fichier ainsi cr&eacute;&eacute; : <br/>
+  </p>
+  	<br/>
+  	<img src="../../doc/exportRegressi.png" alt="exportation relevŽes" width=30%></center>
+  	<br/>
+  <p>
+   <div id="prev">
+ <a href="../Index.html"> < Index</a>
+ </div>
+  </p>	
+  <br/>
+   <div id="prev">
+ <a href="../intro/introduction.html"> < Introduction</a>
+ </div>
+ <div id="next">
+  <a href="./code.html"> Acquisition par du code > </a>
+ </div>
+  
+ </div>
+ </div>
+ </div>
+ </body>
+ </html>

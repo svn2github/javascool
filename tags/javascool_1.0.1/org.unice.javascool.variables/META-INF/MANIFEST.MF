@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Variables Plug-in
+Bundle-SymbolicName: org.unice.javascool.variables;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: org.unice.javascool.variables.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.unice.javascool.editor,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.editors
+Eclipse-LazyStart: true
+Export-Package: org.unice.javascool.variables
+Bundle-Vendor: UNICE
