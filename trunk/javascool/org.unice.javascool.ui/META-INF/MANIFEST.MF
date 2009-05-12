@@ -19,4 +19,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.forms,
  org.unice.javascool.editor
 Eclipse-LazyStart: true
-Export-Package: org.unice.javascool.ui.console;x-friends:="org.unice.javascool.editor"
+Export-Package: org.unice.javascool.ui,
+ org.unice.javascool.ui.console;x-friends:="org.unice.javascool.editor",
+ org.unice.javascool.ui.console.input,
+ org.unice.javascool.ui.toolsBox,
+ org.unice.javascool.ui.unique

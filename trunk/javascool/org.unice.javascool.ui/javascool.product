@@ -28,9 +28,9 @@ Projet soutenu par l&apos;INRIA http://www-sop.inria.fr/
    <windowImages i16="/org.unice.javascool.ui/icons/logo_JVS_16.gif" i32="/org.unice.javascool.ui/icons/logo_JVS_32.gif" i64="/org.unice.javascool.ui/icons/logo_JVS_64.gif" i128="/org.unice.javascool.ui/icons/logo_JVS_128.gif"/>
 
    <splash
-      startupProgressRect="0,0,500,15"
+      startupProgressRect="0,100,500,15"
       startupMessageRect="200,20,200,22"
-      startupForegroundColor="000000" />
+      startupForegroundColor="8000FF" />
    <launcher>
       <macosx icon="/org.unice.javascool.ui/icons/icon_JVS_Mac.icns"/>
       <solaris/>
@@ -39,7 +39,6 @@ Projet soutenu par l&apos;INRIA http://www-sop.inria.fr/
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
