@@ -83,7 +83,8 @@ public class CompilButtonAction implements IWorkbenchWindowActionDelegate {
 						MessageDialog.openError(window.getShell(), "Erreur", 
 								"une erreur inattendue lors de la traduction du code javasccol" +
 								" en java a eu lieu. \n\n une modification de votre code est succeptible " +
-								"de corriger le probleme");
+								"de corriger le probleme.\n\n merci de nous faire parvenir par email à l'adresse suivante : bugs@javascool.com\n\nle code source que vous essayez\n\n" +
+								"de compiler pour que l'on puisse corriger le problème.");
 				}
 			} catch (Exception e) {}
 		}else{//compilation d'un fichier java

@@ -21,6 +21,11 @@ import org.unice.javascool.util.rmi.*;
 
 import java.rmi.*;
 
+/**
+ * cette classe permet de definir l'action d'execution du code, precedemment compile
+ * @author sebastien chalmeton
+ *
+ */
 public class ExecuteButtonAction implements IWorkbenchWindowActionDelegate {
 
 	public final static String ID="org.unice.javascool.editor.execute";
