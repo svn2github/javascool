@@ -82,7 +82,7 @@
        </action>
        <action
              class="org.unice.javascool.actions.CompilButtonAction"
-             icon="icons/compile_16px.gif"
+             icon="icons/compile_16px.png"
              id="org.unice.javascool.actions.CompilButtonActionMenu"
              label="Compilation Du Code"
              menubarPath="compile/Group1"
@@ -113,7 +113,7 @@
        
          <action
              class="org.unice.javascool.actions.NewButtonAction"
-             icon="icons/nouveau_document2.png"
+             icon="icons/nouveau.png"
              id="org.unice.javascool.actions.NewButtonActionToolBar"
              label="Nouveau"
              toolbarPath="main/FileGroup"
@@ -129,7 +129,7 @@
              id="org.unice.javascool.actions.NewButtonActionMenu"
              label="Nouveau"
              menubarPath="file/fileStart"
-             icon="icons/nouveau_document2_16px.png"
+             icon="icons/nouveau_16px.png"
              tooltip="Nouveau document">
        </action>
   
