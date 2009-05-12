@@ -114,7 +114,7 @@ public class Translator {
 		listImport.add("import static javascool.Macro.*;");
 		listImport.add("import java.util.ArrayList;");
 		nbLigne = nbLigne +2;
-		
+
 		className = path.substring(path.lastIndexOf(File.separator)+1, path.lastIndexOf("."));
 		BufferedReader buffer = null;
 		PrintWriter myFile = null;
@@ -143,7 +143,7 @@ public class Translator {
 			buffer.close();
 
 			addImport(text);//ajout des imports
-			
+
 			myFile.println(text);//ecriture dans le fichier
 			myFile.close();
 
@@ -175,14 +175,16 @@ public class Translator {
 	private static void getImportFct(String line){
 		for(int i=0; i< listFonctions.size(); i++){
 			BeanFonctions bean = listFonctions.get(i);
+
 			if(line.contains(bean.getNom())){
-				if(!listImport.contains(bean.getImport())){
-					listImport.add("import static "+bean.getImport()+";");
+				String expr_import = "import static "+bean.getImport()+";";
+
+				if(!listImport.contains(expr_import)){
+					listImport.add(expr_import);
 					nbLigne++;
 				}
 			}
 		}
-
 	}
 
 	/**
@@ -192,35 +194,34 @@ public class Translator {
 	public static void SetSignatureCode(String path) {
 		//list_methods = null ;
 		try {
-			
+
+			//on re"cupere le nom de la classe par rapport au nom du fchier
 			String tmp =  path.substring(0, path.lastIndexOf(File.separator)+1);
-			
+
 			File f = new File(tmp);
 			URL url = f.toURI().toURL();
-			
+
 			URLClassLoader loader = URLClassLoader.newInstance(new URL[] {url});
-			
 			Class<?> c = loader.loadClass(className);
-			list_methods = c.getDeclaredMethods();
-			Field[] fields = c.getDeclaredFields();
+			list_methods = c.getDeclaredMethods();//la liste de methods declare
+			Field[] fields = c.getDeclaredFields();//la liste des vairiable de classe declare
 
 			for(Method m : list_methods){
 				String name = m.getName();
 				String type = m.getReturnType().getSimpleName();
-				
-				
-				String expr_meth = "[^\"public static\"]"+type+"((\\s)*)"+name;
-				text = text.replaceAll(expr_meth, "public static "+type+" "+name);
-				
+
+				String expr_meth = type+"((\\s)*)"+name+"((\\s)*)"+"[(]";
+				text = text.replaceAll(expr_meth, "public static "+type+" "+name+" (");
+
 			}	
 
 			replaceField(fields);
-			
+
 			String tmp_path = path.substring(path.lastIndexOf(File.separator)+1, path.length());
-			
-			insertMyMain(tmp_path);
-			
-			
+
+			insertMain(tmp_path);
+
+
 			PrintWriter myFile = new PrintWriter(path);	
 			myFile.println(text);//ecriture dans le fichier
 			myFile.close();
@@ -235,18 +236,19 @@ public class Translator {
 	 * a la fonction main definie par l'utilisateur
 	 * @param filename le nom du fichier
 	 */
-	private static void insertMyMain(String filename) {
-		String tmp = System.getProperty("line.separator")+"public static void main(String[] args){"+System.getProperty("line.separator");
-		tmp+= "try{"+System.getProperty("line.separator");
-		if(containsMain(list_methods))
+	private static void insertMain(String filename) {
+		if (containsMain(list_methods)){
+			String tmp = System.getProperty("line.separator")+"public static void main(String[] args){"+System.getProperty("line.separator");
+			tmp+= "try{"+System.getProperty("line.separator");
 			tmp+= "main();"+System.getProperty("line.separator");
-		tmp+= "}catch(Exception e){org.unice.javascool.util.erreur.ReThrower.log(e, \""+filename+"\", "+nbLigne+");}"+System.getProperty("line.separator");
-		tmp+= "}"+System.getProperty("line.separator");
-		tmp+= "}"+System.getProperty("line.separator");
-				
-		int index_lastBracket = text.lastIndexOf("}");
-		text = text.substring(0,index_lastBracket);
-		text += tmp;
+			tmp+= "}catch(Exception e){org.unice.javascool.util.erreur.ReThrower.log(e, \""+filename+"\", "+nbLigne+");}"+System.getProperty("line.separator");
+			tmp+= "}"+System.getProperty("line.separator");
+			tmp+= "}"+System.getProperty("line.separator");
+
+			int index_lastBracket = text.lastIndexOf("}");
+			text = text.substring(0,index_lastBracket);
+			text += tmp;
+		}
 	}
 
 	/**
@@ -267,26 +269,26 @@ public class Translator {
 	 * @param fields
 	 */
 	private static void replaceField(Field[] fields) {
-		if(fields.length == 0 ) return;//case of no fields
-		
-		int index_firstMeth = text.indexOf(list_methods[0].getName());
-		
-		if(index_firstMeth != -1){
-			String tmp_textPart1 = text.substring(0, index_firstMeth);
+
+
+		if(list_methods.length != 0){
+			int index_firstMeth = text.indexOf(list_methods[0].getName());
+			if (index_firstMeth != -1){	String tmp_textPart1 = text.substring(0, index_firstMeth);
 			String tmp_textPart2 = text.substring(index_firstMeth, text.length());
 
 			for(Field f : fields){
 				String type = f.getType().getSimpleName();//.toString();
 				String nom = f.getName();
-				
+
 				String type_tmp = type.replace("[", "(\\s)*\\[(\\s)*");
 				type_tmp = type_tmp.replace("]", "\\]");
-						
+
 				String expr = "[^\"public static\"]"+type_tmp+"(\\s)+"+nom;
 				tmp_textPart1 = tmp_textPart1.replaceAll(expr, "public static "+type+" "+nom);
-				
+
 			}
 			text = tmp_textPart1+tmp_textPart2;
+			}
 		}else{
 
 			for(Field f : fields){
