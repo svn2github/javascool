@@ -1,0 +1,12 @@
+TestSeb{
+
+int a;
+
+
+int fct(int a, int b){
+ return a+b;
+}
+
+
+int t;
+}
