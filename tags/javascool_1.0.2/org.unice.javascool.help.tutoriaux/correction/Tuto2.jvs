@@ -1,0 +1,16 @@
+Tuto2{
+
+	void afficherPrenom(String prenom){
+		println("mon prenom est : "+prenom);
+	}
+
+	void afficherNom(String nom){
+		println("mon nom est : "+nom);
+	}	
+	void main(){
+	
+		afficherPrenom("prenom");// appel de la fonction qui affiche le prenom
+		
+		afficherNom("nom");//appel de la fonction qui affiche le nom
+	}
+}

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="%currencyeditor.EDITOR_NAME"
+            extensions="jvs,java"
+            icon="icons/sample.gif"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            class="org.unice.javascool.editor.editors.JVSEditor"
+            id="org.unice.javascool.editor.editors.JVSEditor">
+      </editor>
+   </extension>
+ <extension
+       point="org.eclipse.core.runtime.preferences">
+    <initializer
+          class="org.unice.javascool.editor.preferences.PreferenceInitializer">
+    </initializer>
+ </extension>
+
+ <extension
+      point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.unice.javascool.editor.preferences.ColorPreferencePage"
+            id="org.unice.javascool.editor.prefrerences.ColorPreferencePage"
+            name="coloration syntaxique">
+      </page>
+	</extension>
+ 
+ 	<extension
+       point="org.eclipse.ui.actionSets">
+    <actionSet
+          id="org.unice.javascool.editor.actionSet1"
+          label="label"
+          visible="true">
+          
+          
+          
+        <action
+             class="org.unice.javascool.actions.StopButtonAction"
+             icon="icons/stop.gif"
+             id="org.unice.javascool.actions.StopButtonActionToolBar"
+             label="Stop"
+             toolbarPath="console/stop"
+             tooltip="Arret Du Programme">
+       </action>
+       <action
+             class="org.unice.javascool.actions.StopButtonAction"
+             icon="icons/stop_16px.gif"
+             id="org.unice.javascool.actions.StopButtonActionMenu"
+             label="Arret Du Programme"
+             menubarPath="compile/Group1"
+             tooltip="Arret Du Compilateur">
+       </action>
+       
+       <action
+             class="org.unice.javascool.actions.ExecuteButtonAction"
+             icon="icons/Execute.gif"
+             id="org.unice.javascool.actions.ExecuteButtonActionToolBar"
+             label="Execute"
+             toolbarPath="console/compile"
+             tooltip="Executer Le Programme">
+       </action>
+       <action
+             class="org.unice.javascool.actions.ExecuteButtonAction"
+             icon="icons/Execute_16px.gif"
+             id="org.unice.javascool.actions.ExecuteButtonActionMenu"
+             label="Executer Le Programme"
+             menubarPath="compile/Group1"
+             tooltip="Executer Le Programme">
+       </action>
+          
+       <action
+             class="org.unice.javascool.actions.CompilButtonAction"
+             icon="icons/compile.png"
+             id="org.unice.javascool.actions.CompilButtonActionToolBar"
+             label="Compiler"
+             toolbarPath="console/compile"
+             tooltip="Compilation Du Code">
+       </action>
+       <action
+             class="org.unice.javascool.actions.CompilButtonAction"
+             icon="icons/compile_16px.png"
+             id="org.unice.javascool.actions.CompilButtonActionMenu"
+             label="Compilation Du Code"
+             menubarPath="compile/Group1"
+             tooltip="Compilation Du Code">
+       </action>
+      
+      <!-- 
+       <action
+             class="org.unice.javascool.actions.OpenFileAction"
+             icon="icons/charger.png"
+             id="org.unice.javascool.actions.OpenFileAction"
+             label="Open File"
+             toolbarPath="main/FileGroup"
+             tooltip="Charger un fichier">
+       </action>
+       
+       
+        <action
+             icon="icons/charger_16px.png"
+             class="org.unice.javascool.actions.OpenFileAction"
+             id="org.unice.javascool.actions.OpenFileAction"
+             label="Open File"
+             menubarPath="file/fileStart"
+             tooltip="Charger un fichier">
+       </action>
+       -->
+       
+       
+         <action
+             class="org.unice.javascool.actions.NewButtonAction"
+             icon="icons/nouveau.png"
+             id="org.unice.javascool.actions.NewButtonActionToolBar"
+             label="Nouveau"
+             toolbarPath="main/FileGroup"
+             tooltip="Nouveau document">
+       </action>
+  
+  
+  
+  
+    <!-- icon="icons/nouveau_document2_16px.png"-->
+        <action
+             class="org.unice.javascool.actions.NewButtonAction"
+             id="org.unice.javascool.actions.NewButtonActionMenu"
+             label="Nouveau"
+             menubarPath="file/fileStart"
+             icon="icons/nouveau_16px.png"
+             tooltip="Nouveau document">
+       </action>
+  
+  
+ 
+  
+       <menu
+             id="compile"
+             label="Source">
+       </menu>
+       <action
+             class="org.unice.javascool.actions.viewSourceAction"
+             icon="icons/source.gif"
+             id="org.unice.javascool.editor.action1"
+             label="Afficher code source java"
+             menubarPath="compile/Group2"
+             tooltip="afficher le code source java">
+       </action>
+    </actionSet>
+ </extension>
+ <extension
+       point="org.eclipse.ui.startup">
+    <startup
+          class="org.unice.javascool.editor.AutoOpenEditorAtStart">
+    </startup>
+ </extension>
+
+	
+</plugin>

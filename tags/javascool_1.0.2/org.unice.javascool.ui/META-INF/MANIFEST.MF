@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ui Plug-in
+Bundle-SymbolicName: org.unice.javascool.ui;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: org.unice.javascool.ui.Activator
+Bundle-Vendor: UNICE
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.ui.console,
+ org.eclipse.jface.text,
+ org.unice.javascool.conf,
+ org.eclipse.ui.editors,
+ org.eclipse.help,
+ org.eclipse.help.appserver,
+ org.eclipse.help.base,
+ org.eclipse.help.ui,
+ org.eclipse.help.webapp,
+ org.eclipse.ui.forms,
+ org.unice.javascool.editor
+Eclipse-LazyStart: true
+Export-Package: org.unice.javascool.ui,
+ org.unice.javascool.ui.console;x-friends:="org.unice.javascool.editor",
+ org.unice.javascool.ui.console.input,
+ org.unice.javascool.ui.toolsBox,
+ org.unice.javascool.ui.unique

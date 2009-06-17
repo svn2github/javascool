@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+      <toc
+            file="toc/toctuto1.xml">
+      </toc>
+      <toc
+            file="toc/toctuto2.xml">
+      </toc>
+      <toc
+            file="toc/toctuto3.xml">
+      </toc>
+      <toc
+            file="toc/toctuto4.xml">
+      </toc>
+      <toc
+            file="toc/toctuto5.xml">
+      </toc>
+      <toc
+            file="toc/toctuto6.xml">
+      </toc>
+      <toc
+            file="toc/toctuto7.xml">
+      </toc>
+      <toc
+            file="toc/toctuto8.xml">
+      </toc>
+      <toc
+            file="toc/toctuto9.xml">
+      </toc>
+      <toc
+            file="toc/toctuto10.xml">
+      </toc>
+      <toc
+            file="toc/toctuto11.xml">
+      </toc>
+   </extension>
+
+</plugin>
