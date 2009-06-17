@@ -32,7 +32,7 @@ import org.unice.javascool.util.rmi.UtilServer;
  */
 public class CompilButtonAction implements IWorkbenchWindowActionDelegate {
 
-	public static final String ID="org.unice.javascool.actions.CompilButtonAction";
+	public static final String ID = "org.javascool.ui.editor.actions.compilAction";
 
 	@SuppressWarnings("unused")
 	private IWorkbenchWindow window;

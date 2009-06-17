@@ -148,6 +148,22 @@
              menubarPath="compile/Group2"
              tooltip="afficher le code source java">
        </action>
+       <action
+             class="org.unice.javascool.actions.OpenFileActionNew"
+             icon="icons/charger_16px.png"
+             id="org.unice.javascool.actions.OpenFileActionToolBar"
+             label="Ouvrir"
+             menubarPath="file/fileStart"
+             tooltip="Ouvrir un fichier">
+       </action>
+       <action
+             class="org.unice.javascool.actions.OpenFileActionNew"
+             icon="icons/charger.png"
+             id="org.unice.javascool.actions.OpenFileActionToolBar"
+             label="Ouvrir"
+             toolbarPath="main/FileGroup"
+             tooltip="Ouvrir un fichier">
+       </action>
     </actionSet>
  </extension>
  <extension

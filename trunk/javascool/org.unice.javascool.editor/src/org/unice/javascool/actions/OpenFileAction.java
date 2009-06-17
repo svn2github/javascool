@@ -67,6 +67,9 @@ public class OpenFileAction extends Action implements IWorkbenchWindowActionDele
 	 * @see org.eclipse.jface.action.Action#run()
 	 */
 	public void run(IAction action) {
+		System.out.println("action : OpenFileAction");
+		
+		
 		File file= queryFile();
 		if (file != null) {
 			IWorkbenchPage page= fWindow.getActivePage();
