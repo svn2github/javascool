@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: org.javascool.translator
-Bundle-SymbolicName: org.javascool.translator
-Bundle-Version: 2.0.0
-Export-Package: compilation,
- translation
-Require-Bundle: org.eclipse.core.runtime;bundle-version="3.4.0",
- org.javascool.conf;bundle-version="2.0.0"
