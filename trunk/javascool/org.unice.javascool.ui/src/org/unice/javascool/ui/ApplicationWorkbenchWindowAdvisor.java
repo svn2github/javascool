@@ -26,6 +26,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setInitialSize(new Point(1000, 800));
 		configurer.setShowCoolBar(true);
 		configurer.setShowStatusLine(true);
+		configurer.setShowPerspectiveBar(false);
 		configurer.setTitle("Java's Cool");
 		IWorkbenchWindow window = configurer.getWindow();
 		PreferenceManager pm = window.getWorkbench( ).getPreferenceManager( );

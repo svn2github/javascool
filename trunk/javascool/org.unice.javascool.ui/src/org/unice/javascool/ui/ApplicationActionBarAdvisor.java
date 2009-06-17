@@ -227,14 +227,19 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		menu.add(new GroupMarker(IWorkbenchActionConstants.FILE_START));
 
 		IContributionItem[] items=menu.getItems();
+		
+		
 		menu.add(new GroupMarker(IWorkbenchActionConstants.NEW_EXT));
+		
+		
 		/**/
 		/**/
+		
 		menu.add(getAction(ActionFactory.CLOSE.getId()));
 		menu.add(new GroupMarker(IWorkbenchActionConstants.CLOSE_EXT));
 
 		menu.add(new Separator());
-
+		
 		menu.add(getAction(ActionFactory.SAVE.getId()));
 		menu.add(getAction(ActionFactory.SAVE_AS.getId()));
 		//menu.add(getAction(ActionFactory.REVERT.getId()));

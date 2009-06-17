@@ -10,5 +10,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide,
  org.eclipse.ui.editors
 Eclipse-LazyStart: true
-Export-Package: org.unice.javascool.variables
+Export-Package: org.unice.javascool.variables,
+ org.unice.javascool.variables.actions
 Bundle-Vendor: UNICE
