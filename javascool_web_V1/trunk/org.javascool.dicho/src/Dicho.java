@@ -103,20 +103,20 @@ public class Dicho {
    * @return The page index or -1 if the name is not on some page.
    */
   public static int getIndex(String name) {
-    int i0 = 0, i1 = length();
+    int debut = 0, fin = length();
     while(true) {
-      int i = (i0 + i1) / 2;
-      int c = compareTo(name, i);
-      //System.out.println("'"+name+"'"+(c < 0 ? " < " : c > 0 ? " > " : " = ")+ "dicho["+i0+"<"+i+"<"+i1+"] = '"+dicho[i][0]+"'");
+      int milieu = (debut + fin) / 2;
+      int c = compareTo(name, milieu);
+      // System.out.println("'"+name+"'"+(c < 0 ? " < " : c > 0 ? " > " : " = ")+ "dicho["+debut+"<"+milieu+"<"+fin+"] = '"+dicho[i][0]+"'");
       if (c == 0) {
-	return i;
+	return milieu;
       } else {
-	if (i0 == i1)
+	if (debut == fin)
 	  return -1;
 	if (c < 0)
-	  i1 = i;
+	  fin = milieu;
 	else
-	  i0 = i;
+	  debut = milieu;
       }
     }
   }
