@@ -1,7 +1,14 @@
+
 all :
-	#javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d doc Dicho.java
-	javac Dicho.java 
+	javac Dicho.java	
 	java Dicho
+
+doc :  Dicho.html
+
+%.html : %.java
+	javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d doc $*.java
+	cp doc/$*.html .
+	rm -rf doc
 
 clean :
 	rm -rf *.class doc

@@ -25,45 +25,47 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /** Defines a javascool panel which allows to experiment the dichotomic search. */
-public class Dicho extends JPanel {
-  /** Constructs the panel. */
-  public Dicho() {
-    super(new BorderLayout()); 
-    setBackground(Color.WHITE);
-    // Adds the background icon
-    JLayeredPane book = new JLayeredPane(); book.setPreferredSize(new Dimension(550, 350)); add(book);
-    JLabel icon = new JLabel(); icon.setBounds(10, 0, 550, 350); icon.setIcon(new ImageIcon("../img/vieuxlivre.jpg")); book.add(icon, new Integer(1), 0);
-    // Adds the label and flag
-    name = new JLabel(); name.setBounds(90, 50, 150, 100); book.add(name, new Integer(2), 0);
-    flag = new JLabel(); flag.setBounds(340, 100, 200, 100); book.add(flag, new Integer(2), 1);
-    // Adds the prev/next buttons and page count label
-    JPanel tail = new JPanel(); add(tail, BorderLayout.SOUTH);
-    JButton prev = new JButton("<-"); tail.add(prev); 
-    prev.addActionListener(new ActionListener() {
-	public void actionPerformed(ActionEvent e) {
-	  show(--current);
-	}
-      });
-    JButton next = new JButton("->"); tail.add(next); 
-    next.addActionListener(new ActionListener() {
-	public void actionPerformed(ActionEvent e) {
-	  show(++current);
-	}
-      });
-    tail.add(new JLabel("       ")); 
-    num = new JLabel(); tail.add(num);
-    show(63);
-   }
-  /** Shows a given page. 
-   * @param page The page index from 0 to getSize().
-   */
-  public void show(int page) {
-    if (page < 0) page = 0; if (page >= getLength()) page = getLength() - 1; current = page;
-    num.setText(""+page);
-    name.setText("<html><h2>"+dicho[page][0]+"</h2></html>"); 
-    try { flag.setIcon(new ImageIcon(new URL(dicho[page][1]))); } catch(Exception e) { }
-  } 
-  private JLabel name, flag, num; private int current;
+public class Dicho {
+  private static class Panel extends JPanel {
+    /** Constructs the panel. */
+    public Panel() {
+      super(new BorderLayout()); 
+      setBackground(Color.WHITE);
+      // Adds the background icon
+      JLayeredPane book = new JLayeredPane(); book.setPreferredSize(new Dimension(550, 350)); add(book);
+      JLabel icon = new JLabel(); icon.setBounds(10, 0, 550, 350); icon.setIcon(new ImageIcon("../img/vieuxlivre.jpg")); book.add(icon, new Integer(1), 0);
+      // Adds the label and flag
+      name = new JLabel(); name.setBounds(90, 50, 150, 100); book.add(name, new Integer(2), 0);
+      flag = new JLabel(); flag.setBounds(340, 100, 200, 100); book.add(flag, new Integer(2), 1);
+      // Adds the prev/next buttons and page count label
+      JPanel tail = new JPanel(); add(tail, BorderLayout.SOUTH);
+      JButton prev = new JButton("<-"); tail.add(prev); 
+      prev.addActionListener(new ActionListener() {
+	  public void actionPerformed(ActionEvent e) {
+	    show(--current);
+	  }
+	});
+      JButton next = new JButton("->"); tail.add(next); 
+      next.addActionListener(new ActionListener() {
+	  public void actionPerformed(ActionEvent e) {
+	    show(++current);
+	  }
+	});
+      tail.add(new JLabel("       ")); 
+      num = new JLabel(); tail.add(num);
+      show(63);
+    }
+    /** Shows a given page. 
+     * @param page The page index from 0 to getSize().
+     */
+    public void show(int page) {
+      if (page < 0) page = 0; if (page >= getLength()) page = getLength() - 1; current = page;
+      num.setText(""+page);
+      name.setText("<html><h2>"+dicho[page][0]+"</h2></html>"); 
+      try { flag.setIcon(new ImageIcon(new URL(dicho[page][1]))); } catch(Exception e) { }
+    } 
+    private JLabel name, flag, num; private int current;
+  }
 
   // Static instantiation of a panel
   /** Returns the panel. */
@@ -331,5 +333,5 @@ public class Dicho extends JPanel {
     { "Zimbabwe", "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Flag_of_Zimbabwe.svg/100px-Flag_of_Zimbabwe.svg.png", "http://fr.wikipedia.org/wiki/Zimbabwe" }
   };  
 
-  private static Dicho panel = new Dicho();
+  private static Dicho.Panel panel = new Dicho.Panel();
 }
