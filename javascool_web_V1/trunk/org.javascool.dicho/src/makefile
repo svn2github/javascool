@@ -1,9 +1,9 @@
 
-all :
+all : doc
 	javac *.java	
 	java Dicho
 
-doc :  Dicho.html
+doc :  Dicho.html sujet.html correction.html
 
 ##########################################################################################################################
 
@@ -15,7 +15,7 @@ XML2XML = /usr/java/jdk1.5.0_13/bin/java -classpath /usr/java/saxon6-5-5/saxon.j
 	rm -rf doc
 
 %.html : %.xml
-	$(XML2XML) -o $*.htm $*.xml ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_$*.xsl
+	$(XML2XML) -o $@ $^ ../../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_$*.xsl
 
 clean :
 	rm -rf *.class doc
