@@ -1,9 +1,11 @@
 
+SOURCE=$(patsubst %.java,%,$(wildcard *.java))
+
 all : doc
 	javac *.java	
-	java Dicho
+	java $(SOURCE)
 
-doc :  Dicho.html sujet.html correction.html
+doc :  $(SOURCE).html sujet.html correction.html
 
 ##########################################################################################################################
 

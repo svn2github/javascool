@@ -25,11 +25,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /** Defines a javascool panel which allows to experiment the dichotomic search. 
- * Usage: <pre>
+ * Static method import: <pre>
  * import static Dicho.compare;
  * import static Dicho.length;
  * </pre>
-*/
+ * Used files: <pre>
+ * ./dicho_background.jpg
+ * http://upload.wikimedia.org/wikipedia/*
+ * </pre>
+ * Documentation: <a href="sujet.html">subject</a> and <a href="correction.html">correction</a>.
+ */
 public class Dicho {
   private static class Panel extends JPanel {
     /** Constructs the panel. */
@@ -38,7 +43,7 @@ public class Dicho {
       setBackground(Color.WHITE);
       // Adds the background icon
       JLayeredPane book = new JLayeredPane(); book.setPreferredSize(new Dimension(550, 350)); add(book);
-      JLabel icon = new JLabel(); icon.setBounds(10, 0, 550, 350); icon.setIcon(new ImageIcon("../img/vieuxlivre.jpg")); book.add(icon, new Integer(1), 0);
+      JLabel icon = new JLabel(); icon.setBounds(10, 0, 550, 350); icon.setIcon(new ImageIcon("dicho_background.jpg")); book.add(icon, new Integer(1), 0);
       // Adds the label and flag
       name = new JLabel(); name.setBounds(90, 50, 150, 100); book.add(name, new Integer(2), 0);
       flag = new JLabel(); flag.setBounds(340, 100, 200, 100); book.add(flag, new Integer(2), 1);
@@ -76,6 +81,26 @@ public class Dicho {
   /** Returns the panel. */
   public static JPanel getPanel() { return panel; } 
   
+  /** Used to test this panel.
+   * <div>Simply use: <tt>javac Dicho.java ; java Dicho</tt> to test.</div>
+   * @param arguments No argument, do not user.
+   */
+  public static void main(String arguments[]) {
+    // Opens the panel in a frame
+    {
+      JFrame frame = new JFrame();
+      frame.setTitle("Dicho test"); frame.setSize(550, 400); frame.getContentPane().add(getPanel()); frame.pack(); frame.setVisible(true);
+    }
+    // Tests if the dico is sorted
+    for(int i = 1; i < dicho.length; i++)
+      if (compare(dicho[i][0], i - 1) <= 0)
+	System.out.println("Ahhh bad sort between "+dicho[i][0]+"#"+i+(compare(dicho[i][0], i - 1) == 0 ? " == " : " << ")+dicho[i-1][0]+"#"+(i-1));
+    // Tests the index function
+    for(int i = 0; i < dicho.length; i++)
+      if (i != getIndex(dicho[i][0]))
+	System.out.println("Ohhh bad index for "+dicho[i][0]+"#"+i+" <> "+getIndex(dicho[i][0]));
+  }
+
   /** Returns the number of pages. */
   public static int length() { return dicho.length; }
 
@@ -120,26 +145,6 @@ public class Dicho {
       }
     }
   }
-
-  /** Used to test this panel.
-   * <div>Simply use: <tt>javac Dicho.java ; java Dicho</tt> to test.</div>
-   * @param arguments No argument, do not user.
-   */
-  public static void main(String arguments[]) {
-    // Opens the panel in a frame
-    {
-      JFrame frame = new JFrame();
-      frame.setTitle("Dicho test"); frame.setSize(550, 400); frame.getContentPane().add(getPanel()); frame.pack(); frame.setVisible(true);
-    }
-    // Tests if the dico is sorted
-    for(int i = 1; i < dicho.length; i++)
-      if (compare(dicho[i][0], i - 1) <= 0)
-	System.out.println("Ahhh bad sort between "+dicho[i][0]+"#"+i+(compare(dicho[i][0], i - 1) == 0 ? " == " : " << ")+dicho[i-1][0]+"#"+(i-1));
-    // Tests the index function
-    for(int i = 0; i < dicho.length; i++)
-      if (i != getIndex(dicho[i][0]))
-	System.out.println("Ohhh bad index for "+dicho[i][0]+"#"+i+" <> "+getIndex(dicho[i][0]));
-   }
 
   // All the data sorted in alphabetic order
   private static String dicho[][] = {
