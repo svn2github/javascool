@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 // Used to open an window
 import javax.swing.JFrame;
 
-/** Defines a javascool panel which allows to experiment the konsoltomic search. 
+/** Defines a javascool proglet which allows to experiment the konsoltomic search. 
  * Static method import: <pre>
  * import static Konsol.echo;
  * import static Konsol.readString;
@@ -94,7 +94,7 @@ public class Konsol {
    }
 
   //
-  // This now defines the javascool interface
+  // This defines the javascool interface
   //
 
   /** Outputs a string in the output windows.

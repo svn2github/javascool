@@ -24,7 +24,7 @@ import java.awt.event.ActionListener;
 // Used to open an window
 import javax.swing.JFrame;
 
-/** Defines a javascool panel which allows to experiment the dichotomic search. 
+/** Defines a javascool proglet which allows to experiment the dichotomic search. 
  * Static method import: <pre>
  * import static Dicho.compare;
  * import static Dicho.length;
@@ -102,7 +102,7 @@ public class Dicho {
   }
 
   //
-  // This now defines the javascool interface
+  // This defines the javascool interface
   //
 
   /** Returns the number of pages. */
