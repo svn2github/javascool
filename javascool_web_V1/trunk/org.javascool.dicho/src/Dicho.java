@@ -24,7 +24,12 @@ import java.awt.event.ActionListener;
 // Used to open an window
 import javax.swing.JFrame;
 
-/** Defines a javascool panel which allows to experiment the dichotomic search. */
+/** Defines a javascool panel which allows to experiment the dichotomic search. 
+ * Usage: <pre>
+ * import static Dicho.compare;
+ * import static Dicho.length;
+ * </pre>
+*/
 public class Dicho {
   private static class Panel extends JPanel {
     /** Constructs the panel. */
@@ -59,7 +64,7 @@ public class Dicho {
      * @param page The page index from 0 to getSize().
      */
     public void show(int page) {
-      if (page < 0) page = 0; if (page >= getLength()) page = getLength() - 1; current = page;
+      if (page < 0) page = 0; if (page >= length()) page = length() - 1; current = page;
       num.setText(""+page);
       name.setText("<html><h2>"+dicho[page][0]+"</h2></html>"); 
       try { flag.setIcon(new ImageIcon(new URL(dicho[page][1]))); } catch(Exception e) { }
@@ -72,15 +77,15 @@ public class Dicho {
   public static JPanel getPanel() { return panel; } 
   
   /** Returns the number of pages. */
-  public static int getLength() { return dicho.length; }
+  public static int length() { return dicho.length; }
 
   /** Compares a name to the page's name. 
    * @param name The name to compare with.
-   * @param page The page index from 0 to getLength().
+   * @param page The page index from 0 to length().
    * @return -1 if the name is before the given page, +1 if the name is after the given page, 0 if it is the right page.
    */
   public static int compare(String name, int page) { 
-    if (page < 0) page = 0; if (page >= getLength()) page = getLength() - 1;
+    if (page < 0) page = 0; if (page >= length()) page = length() - 1;
     panel.show(page); 
     return compareTo(name, page);
   }
@@ -98,7 +103,7 @@ public class Dicho {
    * @return The page index or -1 if the name is not on some page.
    */
   public static int getIndex(String name) {
-    int i0 = 0, i1 = getLength();
+    int i0 = 0, i1 = length();
     while(true) {
       int i = (i0 + i1) / 2;
       int c = compareTo(name, i);

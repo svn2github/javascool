@@ -1,7 +1,7 @@
 
 all :
-	javac Dicho.java	
-	java Dicho
+	javac *.java	
+	java Test #Dicho
 
 doc :  Dicho.html
 
