@@ -36,6 +36,8 @@ import javax.swing.JFrame;
  * Documentation: <a href="sujet.html">subject</a> and <a href="correction.html">correction</a>.
  */
 public class Dicho {
+
+  // This defines the panel display
   private static class Panel extends JPanel {
     /** Constructs the panel. */
     public Panel() {
@@ -50,21 +52,18 @@ public class Dicho {
       // Adds the prev/next buttons and page count label
       JPanel tail = new JPanel(); add(tail, BorderLayout.SOUTH);
       JButton prev = new JButton("<-"); tail.add(prev); 
-      prev.addActionListener(new ActionListener() {
-	  public void actionPerformed(ActionEvent e) {
+      prev.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
 	    show(--current);
-	  }
-	});
+      }});
       JButton next = new JButton("->"); tail.add(next); 
-      next.addActionListener(new ActionListener() {
-	  public void actionPerformed(ActionEvent e) {
-	    show(++current);
-	  }
-	});
+      next.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
+	show(++current);
+      }});
       tail.add(new JLabel("       ")); 
       num = new JLabel(); tail.add(num);
       show(63);
     }
+
     /** Shows a given page. 
      * @param page The page index from 0 to getSize().
      */
@@ -81,9 +80,10 @@ public class Dicho {
   /** Returns the panel. */
   public static JPanel getPanel() { return panel; } 
   
+  // This defines the tests on the panel
   /** Used to test this panel.
-   * <div>Simply use: <tt>javac Dicho.java ; java Dicho</tt> to test.</div>
-   * @param arguments No argument, do not user.
+   * <div>Simply used for tests: <tt>javac Dicho.java ; java Dicho</tt>.</div>
+   * @param arguments No argument, do not use.
    */
   public static void main(String arguments[]) {
     // Opens the panel in a frame
@@ -100,6 +100,10 @@ public class Dicho {
       if (i != getIndex(dicho[i][0]))
 	System.out.println("Ohhh bad index for "+dicho[i][0]+"#"+i+" <> "+getIndex(dicho[i][0]));
   }
+
+  //
+  // This now defines the javascool interface
+  //
 
   /** Returns the number of pages. */
   public static int length() { return dicho.length; }
