@@ -1,5 +1,7 @@
 package compiler;
 
+
+
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JApplet;
@@ -21,7 +23,11 @@ import javax.swing.JTextPane;
 import javax.swing.JEditorPane;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class InterfacePrincipale extends JApplet {
 
@@ -35,16 +41,17 @@ public class InterfacePrincipale extends JApplet {
 	private JScrollPane jProgramScrollPane = null;
 	private JTextArea jProgramEditorPane = null;
 	private JPanel jResultPanel = null;
-	private JPanel jConsolePanel = null;
+	private  JPanel  jConsolePanel = null;
 	private JScrollPane jScrollPane = null;
 	private JEditorPane jResultEditorPane = null;
 	private JScrollPane jConsolScrollPane1 = null;
-	private JEditorPane jConsolEditorPane = null;
+	private JTextArea jConsolEditorPane = null;
 	private JMyFileChooser fileChosser=null;
 	private String message;
 	private JButton jNewButton = null; 
-
-
+	PrintStream ps=null;
+    static Konsol console;  //  @jve:decl-index=0:
+    Thread tache;
 
 	/**
 	 * This is the xxx default constructor
@@ -145,6 +152,17 @@ public class InterfacePrincipale extends JApplet {
 			jCompileButton.setMnemonic(KeyEvent.VK_UNDEFINED);
 			jCompileButton.setText("Compiler");
 			jCompileButton.setIcon(new ImageIcon(getClass().getResource("/compile24.png")));
+			jCompileButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+					doCompile();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}});
+		
 		}
 		return jCompileButton;
 	}
@@ -250,7 +268,7 @@ public class InterfacePrincipale extends JApplet {
 	 * 	
 	 * @return javax.swing.JPanel	
 	 */
-	private JPanel getJConsolePanel() {
+	private  JPanel  getJConsolePanel() {
 		if (jConsolePanel == null) {
 			GridBagConstraints gridBagConstraints1 = new GridBagConstraints();
 			gridBagConstraints1.fill = GridBagConstraints.BOTH;
@@ -262,10 +280,13 @@ public class InterfacePrincipale extends JApplet {
 			jConsolePanel.setLayout(new GridBagLayout());
 			jConsolePanel.setBounds(new Rectangle(15, 509, 873, 176));
 			jConsolePanel.setBorder(BorderFactory.createTitledBorder(null, "Console", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			jConsolePanel.add(getJConsolScrollPane1(), gridBagConstraints1);
+			
+	
+			jConsolePanel.add(	Konsol.getPanel() , gridBagConstraints1);
 		}
-		return jConsolePanel;
+		return jConsolePanel ;
 	}
+	static Konsol getKonsol(){return(console);}
 
 	/**
 	 * This method initializes jScrollPane	
@@ -300,25 +321,31 @@ public class InterfacePrincipale extends JApplet {
 	 * 	
 	 * @return javax.swing.JScrollPane	
 	 */
-	private JScrollPane getJConsolScrollPane1() {
+/*	private JScrollPane getJConsolScrollPane1() {
 		if (jConsolScrollPane1 == null) {
 			jConsolScrollPane1 = new JScrollPane();
-			jConsolScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-			jConsolScrollPane1.setViewportView(getJConsolEditorPane());
-			jConsolScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			//jConsolScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+			 console  = new Konsol();
+			 //jConsolePanel=
+			jConsolScrollPane1.setViewportView(console.getPanel());
+			//jConsolScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		}
 		return jConsolScrollPane1;
-	}
+	}*/
 
 	/**
 	 * This method initializes jConsolEditorPane	
 	 * 	
 	 * @return javax.swing.JEditorPane	
 	 */
-	private JEditorPane getJConsolEditorPane() {
+	private JTextArea getJConsolEditorPane() {
 		if (jConsolEditorPane == null) {
-			jConsolEditorPane = new JEditorPane();
+			jConsolEditorPane =new JTextArea();
 			jConsolEditorPane.setEditable(false);
+		    /*ps= new PrintStream(new TextAreaOutputStream(jConsolEditorPane));
+			System.setOut(ps);
+			System.setErr(ps);*/
+
 		}
 		return jConsolEditorPane;
 	}
@@ -357,6 +384,71 @@ public class InterfacePrincipale extends JApplet {
 		}
 		return jNewButton;
 	}
+	private void doCompile() throws Exception {
+	    
+	      String sourceFile = "compiler//Ctest2.java";
+	       FileWriter fw = new FileWriter(sourceFile);
+	       fw.write(getJProgramEditorPane().getText());
+	       fw.close();
+	    
+		
+	       CompilingClassLoader ccl = new CompilingClassLoader();
+	       final String progArgs[] = {""," " };
+	       String progClass ="compiler.Ctest2";
+	   	Class clas = ccl.loadClass( progClass );
+	   	Class mainArgType[] = { (new String[0]).getClass() };
 	
+		final Method main = clas.getMethod( "test", mainArgType );
+		
+		 final Object argsArray[] = { progArgs };
+		
+	
+		new Thread(new Runnable(){public void run(){ try {
+			main.invoke( null, argsArray );
+		} catch (IllegalArgumentException e) {
+			
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			
+			e.printStackTrace();
+		}
+			
+			//Ctest.test(progArgs);
+		/*	InterfacePrincipale.getKonsol().echo("Bonjour, qui est tu ?");
+		    String nom = InterfacePrincipale.getKonsol().readString();
+		    InterfacePrincipale.getKonsol().echo ("Echanté "+nom+" ! Quel age as tu ?");
+		     int age = InterfacePrincipale.getKonsol().readInteger();
+		     for(int n = 0; n < 100; n++)
+		    	 InterfacePrincipale.getKonsol().echo("He je suis plus vieux que toi !!");
+			*/}}).start();
+	       /*  // run it
+	         
+	         Object objectParameters[] = {new String[]{}};
+	         Class classParameters[] = 
+	                     {objectParameters[0].getClass()};
+	         Class aClass = 
+	                   Class.forName(className.getText());
+	         Object instance = aClass.newInstance();
+	         Method theMethod = aClass.getDeclaredMethod(
+	                              "main", classParameters);
+	         theMethod.invoke(instance, objectParameters);
+	/////////////////////////////////////////////	
+		/*
+		System.out.println("compilation");
+	
+		
+		 new Thread(new Runnable(){public void run(){  Konsol.echo("Bonjour, qui est tu ?");
+		    String nom = Konsol.readString();
+		    Konsol.echo ("Echanté "+nom+" ! Quel age as tu ?");
+		     int age = Konsol.readInteger();
+		     for(int n = 0; n < 100; n++)
+			Konsol.echo("He je suis plus vieux que toi !!");
+				}}).start();
+			System.out.println("compilation");*/
+
+	     }	
 
 }
