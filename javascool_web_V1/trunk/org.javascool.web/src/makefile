@@ -1,5 +1,5 @@
 tst : $(HOME)/.hotjava/properties
-	appletviewer index.html 
+	cd ../img ; appletviewer index.html 
 
 run:
 	java compiler/ChargeClasse
