@@ -35,7 +35,6 @@ public class Activator extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		Runtime.getRuntime().addShutdownHook(new Thread(myRunnable));
-		System.out.println("org.javascool.conf.Activator is used");
 		BeanFactory.init();
 	}
 

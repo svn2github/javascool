@@ -25,16 +25,20 @@ public class Compile {
 	//@Override
 	public static void run(String filePath, String classPath) {
 		
+		
 		if(filePath.endsWith(".jvs")){	//compilation d'un fichier jvs
+		
 			try {
 				filePath = filePath.replace(".jvs",".java");
 				//first Compilation
 				boolean comp = compiler(filePath, classPath, true, true);
+				
 				if(comp){
 					Translator.SetSignatureCode(filePath);//set signature of methods and fields
 						
 					//second compilation
 					boolean comp2 = compiler(filePath, classPath, true, false);
+				
 					if(!comp2)
 						System.err.println("Erreur :\n"+ 
 								"Une erreur interne de traduction s'est produite.\n\n" +

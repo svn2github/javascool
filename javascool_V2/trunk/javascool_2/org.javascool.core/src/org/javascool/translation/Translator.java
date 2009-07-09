@@ -321,7 +321,6 @@ public class Translator {
 		}
 		
 		else{
-			System.err.println("ici et pas la");
 			for(Field f : fields){
 				String type = f.getType().toString();
 				String nom = f.getName();

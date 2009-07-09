@@ -15,11 +15,11 @@ public class Main {
 	public static void main(String[] args) {
 
 		//TODO ici le chemin du fichier qu'on veut compiler
-		String filePath = "I:\\worspace_javascool\\org.javascool.core\\test\\TestSeb.jvs";
+		String filePath = "C:\\Users\\seb\\Desktop\\TestSeb.java";
 		
 		
 		//TODO remplacer ici par le chemin vers le projet org.javascool.conf
-		String pathClassConf = "I:\\worspace_javascool\\org.javascool.core";
+		String pathClassConf = "E:\\workspaceJavascool_fusion\\org.javascool.core";
 		
 		
 		
@@ -31,10 +31,10 @@ public class Main {
 			ex.printStackTrace();
 		}
 		
-		
-		Translator.translate(filePath);
+		if(filePath.endsWith(".jvs"))
+			Translator.translate(filePath);
 
 		Compile.run(filePath, pathClassConf+File.separator+"bin");
-
+		
 	}
 }

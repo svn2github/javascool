@@ -7,6 +7,7 @@ Export-Package: .,
  javascool,
  org.javascool.compilation,
  org.javascool.conf,
+ org.javascool.core,
  org.javascool.translation,
  org.javascool.util.bml,
  org.javascool.util.erreur
