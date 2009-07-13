@@ -30,9 +30,10 @@ import javax.swing.JFrame;
  * import static Dicho.length;
  * </pre>
  * Fichiers utilisés: <pre>
- * ./dicho_background.jpg
- * pre>
- * Documentation: <a href="sujet.html">sujet</a> et <a href="correction.html">correction</a>.
+ * ./dicho_background.png
+ * ./100px-Flag_of_*.svg.png
+ * </pre>
+ * Documentation: <a href="dicho-sujet.html">sujet</a> et <a href="dicho-correction.html">correction</a>.
  */
 public class Dicho {
 

@@ -29,7 +29,7 @@ import javax.swing.JFrame;
  * import static Konsol.readInteger;
  * import static Konsol.readFloat;
  * </pre>
- * Documentation: <a href="sujet.html">subjet</a> et <a href="correction.html">correction</a>.
+ * Documentation: <a href="konsol-sujet.html">sujet</a> et <a href="konsol-correction.html">correction</a>.
  */
 public class Konsol {
 

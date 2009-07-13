@@ -29,7 +29,7 @@ import javax.swing.JFrame;
  * import static Smiley.readInteger;
  * import static Smiley.readFloat;
  * </pre>
- * Documentation: <a href="sujet.html">sujet</a> et <a href="correction.html">correction</a>.
+ * Documentation: <a href="smiley-sujet.html">sujet</a> et <a href="smiley-correction.html">correction</a>.
  */
 public class Smiley {
 
