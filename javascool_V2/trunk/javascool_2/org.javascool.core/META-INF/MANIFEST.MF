@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JavaSCool Core
+Bundle-SymbolicName: org.javascool.core
+Bundle-Version: 2.0.0
+Export-Package: .,
+ javascool,
+ org.javascool.compilation,
+ org.javascool.conf,
+ org.javascool.core,
+ org.javascool.translation,
+ org.javascool.util.bml,
+ org.javascool.util.erreur
+Bundle-Vendor: Javascool
+Require-Bundle: org.eclipse.ui;bundle-version="3.4.2",
+ org.eclipse.core.runtime;bundle-version="3.4.0"
+Bundle-Activator: org.javascool.conf.Activator
+Bundle-ActivationPolicy: lazy
+Import-Package: org.javascool.compilation

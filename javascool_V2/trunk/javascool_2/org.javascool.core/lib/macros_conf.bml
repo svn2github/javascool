@@ -1,0 +1,18 @@
+outils {
+	macros {
+		println {
+			signature="void println(String s)";
+			traduction="System.out.println(s);";
+		}
+		print {
+			signature="void print(String s)";
+			traduction="System.out.print(s);";
+		}
+		
+		dort {
+			signature="void dort(int time)";
+			traduction="try{Thread.currentThread().sleep(time);}catch(InterruptedException e){e.printStackTrace();}";
+		}
+				
+	}
+}
