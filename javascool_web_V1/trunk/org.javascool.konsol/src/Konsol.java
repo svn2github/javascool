@@ -73,7 +73,7 @@ public class Konsol {
   //
 
   /** Test du panel. */
-  public static void test() {
+  static void test() {
     new Thread(new Runnable() { public void run() {
       echo("Bonjour, qui est tu ?");
       String nom = readString();
@@ -129,7 +129,7 @@ public class Konsol {
   //
 
   /** Renvoie le panel affiché. */
-  public static JPanel getPanel() { return panel; } 
+  static JPanel getPanel() { return panel; } 
   
   private static Panel panel = new Panel();
 }

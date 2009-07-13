@@ -60,7 +60,7 @@ public class Smiley {
   //
 
   /** Test du panel. */
-  public static void test() { 
+  static void test() { 
     for(int size = 1; size < 400; size++) {
       reset(size, size);
       setPeaceSign();
@@ -83,10 +83,10 @@ public class Smiley {
   /** Change la valeur d'un pixel de l'image. 
    * @param x Abcisse de l'image, comptée à partir du milieu.
    * @param y Ordonnée de l'image, comptée à partir du milieu.
-   * @bool  black Valeur noir ou blanche.
+   * @param  black Valeur noir ou blanche.
    * @return Renvoie true si le pixel est dans l'image, false si il est en dehors des limites d el'image.
    */
-  static boolean set(int x, int y, boolean black) {   
+  static public boolean set(int x, int y, boolean black) {   
     if (-width <= x && x <= width && -height <= y && y <= height) {
       image[(x + width) + (y + height) * (1 + 2 * width)] = black;
       panel.draw(x + width, y + height, black);
@@ -100,20 +100,20 @@ public class Smiley {
    * @param x Abcisse de l'image, comptée à partir du milieu.
    * @param y Ordonnée de l'image, comptée à partir du milieu.
    */
-  static boolean get(int x, int y) {
+  static public boolean get(int x, int y) {
     return (width <= x && x <= width && -height <= y && y <= height) ? image[(x + width) + (y + height) * (1 + 2 * width)] : false;
   }
 
   /** Trace un disque circulaire au centre de l'image. 
    * @param radius Rayon du disque
    */
-  static void setCircle(int radius) {
+  static public void setCircle(int radius) {
     for(int x = 0; x <= radius; x++) for(int y = 0; y <= radius; y++) if (radius * radius - x * x - y * y <= 1) { 
       set(x, y, true); set(x, -y, true); set(-x, y, true); set(-x, -y, true); }
   }
 
   /** Trace le signe de la paix dans l'image. */
-  static void setPeaceSign() {
+  static public void setPeaceSign() {
     int radius = width < height ? width - 2 : height - 2;
     setCircle(radius); for(int y = 0; y <= radius; y++) { set(0, -y, true); if (y < Math.rint(1/Math.sqrt(2) * radius)) { set(y, y, true); set(-y, y, true); } }
   }
@@ -123,7 +123,7 @@ public class Smiley {
   //
 
   /** Renvoie le panel affiché. */
-  public static JPanel getPanel() { return panel; } 
+  static JPanel getPanel() { return panel; } 
   
   private static Panel panel = new Panel();
 }
