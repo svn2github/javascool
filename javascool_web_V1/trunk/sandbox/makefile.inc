@@ -28,7 +28,7 @@ test : test.class $(SOURCE).class
 	rm test.java test.class
 
 test.java : makefile
-	echo 'import javax.swing.JFrame; public class test { public static void main(String args[]) { JFrame f = new JFrame(); f.setSize(550, 500); f.getContentPane().add($(SOURCE).getPanel()); f.pack(); f.setVisible(true); $(SOURCE).test(); }}' >$@
+	echo 'import javax.swing.JFrame; public class test { public static void main(String args[]) { JFrame f = new JFrame(); f.setSize(550, 500); f.getContentPane().add($(SOURCE).getPanel(null)); f.pack(); f.setVisible(true); $(SOURCE).test(); }}' >$@
 
 #
 

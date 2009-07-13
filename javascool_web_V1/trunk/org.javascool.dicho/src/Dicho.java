@@ -5,6 +5,8 @@
 //package org.javascool.dicho;
 
 // Used to define the gui
+import java.applet.Applet;
+
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.BorderLayout;
@@ -20,9 +22,6 @@ import java.net.URL;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-// Used to open an window
-import javax.swing.JFrame;
 
 /** Définit une proglet javascool qui permet d'expérimenter la recherche dichotomique.
  * Méthodes statiques à importer: <pre>
@@ -44,7 +43,7 @@ public class Dicho {
       setBackground(Color.WHITE);
       // Adds the background icon
       JLayeredPane book = new JLayeredPane(); book.setPreferredSize(new Dimension(550, 350)); add(book);
-      JLabel icon = new JLabel(); icon.setBounds(10, 0, 550, 350); icon.setIcon(new ImageIcon("./dicho_background.png")); book.add(icon, new Integer(1), 0);
+      JLabel icon = new JLabel(); icon.setBounds(10, 0, 550, 350); icon.setIcon(getIcon("dicho_background.png")); book.add(icon, new Integer(1), 0);
       // Adds the label and flag
       name = new JLabel(); name.setBounds(90, 50, 150, 100); book.add(name, new Integer(2), 0);
       flag = new JLabel(); flag.setBounds(340, 100, 200, 100); book.add(flag, new Integer(2), 1);
@@ -70,10 +69,15 @@ public class Dicho {
       if (page < 0) page = 0; if (page >= length()) page = length() - 1; current = page;
       num.setText(""+page);
       name.setText("<html><h2>"+dicho[page][0]+"</h2></html>"); 
-      flag.setIcon(new ImageIcon("./"+dicho[page][1]));
+      flag.setIcon(getIcon(dicho[page][1]));
     } 
     private JLabel name, flag, num; private int current;
   }
+
+  private static ImageIcon getIcon(String file) {
+    try { return new ImageIcon(new URL(base+file)); } catch(Exception e) { return new ImageIcon(); }
+  }
+  private static String base = "";
 
   //
   // This defines the tests on the panel
@@ -342,7 +346,7 @@ public class Dicho {
   //
 
   /** Renvoie le panel affiché. */
-  static JPanel getPanel() { return panel; } 
+  static JPanel getPanel(Applet applet) { base = applet == null ? "" : applet.getCodeBase().toString()+"/"; return panel = new Panel(); } 
   
   private static Panel panel = new Panel();
 }

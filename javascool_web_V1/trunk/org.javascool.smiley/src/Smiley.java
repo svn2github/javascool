@@ -5,6 +5,8 @@
 //package org.javascool.konsol;
 
 // Used to define the gui
+import java.applet.Applet;
+
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.BorderLayout;
@@ -123,7 +125,7 @@ public class Smiley {
   //
 
   /** Renvoie le panel affiché. */
-  static JPanel getPanel() { return panel; } 
+  static JPanel getPanel(Applet applet) { return panel; } 
   
   private static Panel panel = new Panel();
 }
