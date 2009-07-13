@@ -1,0 +1,1 @@
+../../org.javascool.konsol/src/makefile
