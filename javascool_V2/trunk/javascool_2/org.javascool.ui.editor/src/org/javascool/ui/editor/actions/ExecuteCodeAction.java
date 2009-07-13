@@ -1,5 +1,11 @@
 package org.javascool.ui.editor.actions;
 
+import java.io.File;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.ArrayList;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -31,6 +37,18 @@ public class ExecuteCodeAction implements IWorkbenchWindowActionDelegate {
 
 	@Override
 	public void run(IAction action) {
+
+
+		clearConsole();
+		JVSEditor editor = (JVSEditor) window.getWorkbench().getActiveWorkbenchWindow().
+		getActivePage().getActiveEditor();
+		String path = editor.getFilePath();
+
+		final String root=path.substring(0,path.lastIndexOf(File.separator));
+		final String file=path.substring(path.lastIndexOf(File.separator)+1,path.lastIndexOf("."));
+
+		execute(root,file);
+		/*
 		String path = null;
 		try{
 			JVSEditor editor = (JVSEditor) window.getWorkbench().getActiveWorkbenchWindow().
@@ -41,7 +59,8 @@ public class ExecuteCodeAction implements IWorkbenchWindowActionDelegate {
 		}
 
 		clearConsole();
-	
+
+
 		job = new Job("execution") {
 			protected IStatus run(IProgressMonitor monitor) {
 
@@ -56,27 +75,61 @@ public class ExecuteCodeAction implements IWorkbenchWindowActionDelegate {
 				return Status.OK_STATUS;
 			}
 		};
-		
+
 		job.setPriority(Job.BUILD);
 		job.schedule(); // start as soon as possible
 
+		 */
 
-				
 	}
 
 
 	/**
-	 * this method clear the default console of the application
+	 * this method clear the default console of the application.
 	 */
 	private void clearConsole(){
 		ConsolePlugin tmp = org.eclipse.ui.console.ConsolePlugin.getDefault();
 		IConsole[] b = tmp.getConsoleManager().getConsoles();
 
 		TextConsole console = (TextConsole) b[0];
-		console.clearConsole();
-		//console.getDocument().set("");
+		console.getDocument().set("");
 	}
 
+
+	//emploi temporaire aide au support pour la culture scientifique
+
+	/**
+	 * Execute a file class.
+	 * 
+	 * @param	root	the path of the file.
+	 * @file 	file	the name of the file.
+	 */
+	public void execute(String root,final String file){
+		try{
+			URL first_url=new File(root).toURI().toURL();
+			ArrayList<URL> arrayListRes=new ArrayList<URL>();
+			arrayListRes.add(first_url);
+			String jvm_path = System.getProperty("java.class.path");
+			for(String s:jvm_path.split(File.pathSeparator)) arrayListRes.add(new File(s).toURI().toURL());
+			URL[] res=new URL[arrayListRes.size()];
+			for(int i=0;i<arrayListRes.size();i++) res[i]=arrayListRes.get(i);
+
+			URL[] url = res;
+
+			URLClassLoader cl = new URLClassLoader(url,null) ;
+			Class myClass = Class.forName(file,false, cl);
+			final Method myMethod=myClass.getMethod("main",String[].class);
+			final Object[] args0=new String[1];
+			try {
+				myMethod.invoke(null,(Object[])args0);
+			}catch (Exception e) {
+				System.err.println("Une erreur s'est produite pendant l'execution du programme");
+			}
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public void dispose() {

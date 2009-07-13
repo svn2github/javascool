@@ -1,7 +1,14 @@
 package org.javascool.ui.editor;
 
+import java.io.File;
+import java.net.URL;
+
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.javascool.translation.Translator;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -26,6 +33,19 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
+		//init translator
+		/*
+		try{
+			URL url = Platform.getBundle(org.javascool.core.Activator.PLUGIN_ID).getEntry("/");
+			url = FileLocator.resolve(url);
+			Path res=new Path(url.getPath());
+			//initialisation des macros par rapport au fichier de configuration	
+			Translator.init(res.toOSString()+"bin");	
+		}catch(Exception ex){
+			System.out.println("erreur initTranslator");
+			ex.printStackTrace();
+		}
+		*/
 		super.start(context);
 		plugin = this;
 	}
