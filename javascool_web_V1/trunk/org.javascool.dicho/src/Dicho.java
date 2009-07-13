@@ -70,7 +70,7 @@ public class Dicho {
       if (page < 0) page = 0; if (page >= length()) page = length() - 1; current = page;
       num.setText(""+page);
       name.setText("<html><h2>"+dicho[page][0]+"</h2></html>"); 
-      try { flag.setIcon(new ImageIcon(new URL(dicho[page][1]))); } catch(Exception e) { }
+      flag.setIcon(new ImageIcon(dicho[page][1].replaceAll(".*/", "")));
     } 
     private JLabel name, flag, num; private int current;
   }
@@ -296,7 +296,7 @@ public class Dicho {
     { "Sainte-Lucie", "http://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Saint_Lucia.svg/100px-Flag_of_Saint_Lucia.svg.png", "http://fr.wikipedia.org/wiki/Sainte-Lucie" },    
     { "Salomon (Îles)", "http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Flag_of_the_Solomon_Islands.svg/100px-Flag_of_the_Solomon_Islands.svg.png", "http://fr.wikipedia.org/wiki/Salomon_%28pays%29" },    
     { "Salvador", "http://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Flag_of_El_Salvador.svg/100px-Flag_of_El_Salvador.svg.png", "http://fr.wikipedia.org/wiki/Salvador" },    
-    { "Samoa", "http://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Flag_of_Samoa.svg/21px-Flag_of_Samoa.svg.png", "http://fr.wikipedia.org/wiki/Samoa" },    
+    { "Samoa", "http://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Flag_of_Samoa.svg/100px-Flag_of_Samoa.svg.png", "http://fr.wikipedia.org/wiki/Samoa" },    
     { "São Tomé-et-Principe", "http://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Sao_Tome_and_Principe.svg/100px-Flag_of_Sao_Tome_and_Principe.svg.png", "http://fr.wikipedia.org/wiki/Sao_Tom%C3%A9-et-Principe" },    
     { "Sénégal", "http://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Flag_of_Senegal.svg/100px-Flag_of_Senegal.svg.png", "http://fr.wikipedia.org/wiki/S%C3%A9n%C3%A9gal" },    
     { "Serbie", "http://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Flag_of_Serbia.svg/100px-Flag_of_Serbia.svg.png", "http://fr.wikipedia.org/wiki/Serbie" },    
@@ -329,13 +329,23 @@ public class Dicho {
     { "Ukraine", "http://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/100px-Flag_of_Ukraine.svg.png", "http://fr.wikipedia.org/wiki/Ukraine" },    
     { "Uruguay", "http://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Uruguay.svg/100px-Flag_of_Uruguay.svg.png", "http://fr.wikipedia.org/wiki/Uruguay" },    
     { "Vanuatu", "http://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Vanuatu.svg/100px-Flag_of_Vanuatu.svg.png", "http://fr.wikipedia.org/wiki/Vanuatu" },    
-    { "Vatican", "http://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_the_Vatican_City.svg/18px-Flag_of_the_Vatican_City.svg.png", "http://fr.wikipedia.org/wiki/Vatican" },    
+    { "Vatican", "http://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_the_Vatican_City.svg/100px-Flag_of_the_Vatican_City.svg.png", "http://fr.wikipedia.org/wiki/Vatican" },    
     { "Venezuela", "http://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Flag_of_Venezuela_%28state%29.svg/100px-Flag_of_Venezuela_%28state%29.svg.png", "http://fr.wikipedia.org/wiki/Venezuela" },    
     { "Viêt Nam", "http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/100px-Flag_of_Vietnam.svg.png", "http://fr.wikipedia.org/wiki/Vi%C3%AAt_Nam" },    
     { "Yémen", "http://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Flag_of_Yemen.svg/100px-Flag_of_Yemen.svg.png", "http://fr.wikipedia.org/wiki/Y%C3%A9men" },    
     { "Zambie", "http://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Zambia.svg/100px-Flag_of_Zambia.svg.png", "http://fr.wikipedia.org/wiki/Zambie" },    
     { "Zimbabwe", "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Flag_of_Zimbabwe.svg/100px-Flag_of_Zimbabwe.svg.png", "http://fr.wikipedia.org/wiki/Zimbabwe" }
   };  
+
+  /*
+  public static void main(String args[]) { 
+    for(int i = 1; i < dicho.length; i++) {
+      try { 
+	javax.imageio.ImageIO.write(javax.imageio.ImageIO.read(new URL(dicho[i][1])), "png", new java.io.File(dicho[i][1].replaceAll(".*\/", "")));
+      } catch(Exception e) { System.err.println(dicho[i][1] + e); }
+    }
+  }
+  */
 
   //
   // This defines the javascool embedded

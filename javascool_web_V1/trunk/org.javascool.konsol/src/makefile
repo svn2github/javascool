@@ -10,7 +10,7 @@ all :  $(SOURCE).class $(SOURCE).html sujet.html correction.html jtest.html jtes
 %.class : %.java
 	javac $^
 
-tst : test.class
+tst : test.class $(SOURCE).class
 	java test
 	rm test.java test.class
 
