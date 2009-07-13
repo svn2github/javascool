@@ -24,22 +24,21 @@ import java.awt.event.ActionListener;
 // Used to open an window
 import javax.swing.JFrame;
 
-/** Defines a javascool proglet which allows to experiment the dichotomic search. 
- * Static method import: <pre>
+/** Définit une proglet javascool qui permet d'expérimenter la recherche dichotomique.
+ * Méthodes statiques à importer: <pre>
  * import static Dicho.compare;
  * import static Dicho.length;
  * </pre>
- * Used files: <pre>
+ * Fichiers utilisés: <pre>
  * ./dicho_background.jpg
  * http://upload.wikimedia.org/wikipedia/*
  * </pre>
- * Documentation: <a href="sujet.html">subject</a> and <a href="correction.html">correction</a>.
+ * Documentation: <a href="sujet.html">sujet</a> et <a href="correction.html">correction</a>.
  */
 public class Dicho {
 
-  // This defines the panel display
+  // This defines the panel to display
   private static class Panel extends JPanel {
-    /** Constructs the panel. */
     public Panel() {
       super(new BorderLayout()); 
       setBackground(Color.WHITE);
@@ -64,8 +63,8 @@ public class Dicho {
       show(63);
     }
 
-    /** Shows a given page. 
-     * @param page The page index from 0 to getSize().
+    /** Affiche une page.
+     * @param page L'index de la page de 0 à getSize() exclu.
      */
     public void show(int page) {
       if (page < 0) page = 0; if (page >= length()) page = length() - 1; current = page;
@@ -76,21 +75,12 @@ public class Dicho {
     private JLabel name, flag, num; private int current;
   }
 
-  // Static instantiation of a panel
-  /** Returns the panel. */
-  public static JPanel getPanel() { return panel; } 
-  
+  //
   // This defines the tests on the panel
-  /** Used to test this panel.
-   * <div>Simply used for tests: <tt>javac Dicho.java ; java Dicho</tt>.</div>
-   * @param arguments No argument, do not use.
-   */
-  public static void main(String arguments[]) {
-    // Opens the panel in a frame
-    {
-      JFrame frame = new JFrame();
-      frame.setTitle("Dicho test"); frame.setSize(550, 400); frame.getContentPane().add(getPanel()); frame.pack(); frame.setVisible(true);
-    }
+  //
+
+  /** Test du panel. */
+  static void test() {
     // Tests if the dico is sorted
     for(int i = 1; i < dicho.length; i++)
       if (compare(dicho[i][0], i - 1) <= 0)
@@ -101,37 +91,12 @@ public class Dicho {
 	System.out.println("Ohhh bad index for "+dicho[i][0]+"#"+i+" <> "+getIndex(dicho[i][0]));
   }
 
-  //
-  // This defines the javascool interface
-  //
-
-  /** Returns the number of pages. */
-  public static int length() { return dicho.length; }
-
-  /** Compares a name to the page's name. 
-   * @param name The name to compare with.
-   * @param page The page index from 0 to length().
-   * @return -1 if the name is before the given page, +1 if the name is after the given page, 0 if it is the right page.
-   */
-  public static int compare(String name, int page) { 
-    if (page < 0) page = 0; if (page >= length()) page = length() - 1;
-    panel.show(page); 
-    return compareTo(name, page);
-  }
-  // Compares without accents
-  private static int compareTo(String name, int page) { 
-    return noAccent(name).compareTo(noAccent(dicho[page][0])); 
-  }
-  private static String noAccent(String name) {
-    return name.replaceAll("[éè]", "e").replace("É", "E").replace("Î", "I").replace("ô", "o").replace("ã", "a");
-  }
-
   /** Gets the index of a given page.
    * <div><tt>- DO NOT USE !!! This is the solution of the excercice !!!</tt></div>
    * @param name The name to compare with.
    * @return The page index or -1 if the name is not on some page.
    */
-  public static int getIndex(String name) {
+  private static int getIndex(String name) {
     int debut = 0, fin = length();
     while(true) {
       int milieu = (debut + fin) / 2;
@@ -148,6 +113,31 @@ public class Dicho {
 	  debut = milieu;
       }
     }
+  }
+
+  //
+  // This defines the javascool interface
+  //
+
+  /** Renvoie le nombre de page. */
+  public static int length() { return dicho.length; }
+
+  /** Compare un nom au nom affiché sur une page.
+   * @param name Le nom à comparer.
+   * @param page L'index de la page, de 0 à length() exclut.
+   * @return -1 si le nom se situe avant celui de la page, +1 si le nom se situe après celui de la page, 0 si il correspond à celui de la page.
+   */
+  public static int compare(String name, int page) { 
+    if (page < 0) page = 0; if (page >= length()) page = length() - 1;
+    panel.show(page); 
+    return compareTo(name, page);
+  }
+  // Compares without accents
+  private static int compareTo(String name, int page) { 
+    return noAccent(name).compareTo(noAccent(dicho[page][0])); 
+  }
+  private static String noAccent(String name) {
+    return name.replaceAll("[éè]", "e").replace("É", "E").replace("Î", "I").replace("ô", "o").replace("ã", "a");
   }
 
   // All the data sorted in alphabetic order
@@ -347,5 +337,12 @@ public class Dicho {
     { "Zimbabwe", "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Flag_of_Zimbabwe.svg/100px-Flag_of_Zimbabwe.svg.png", "http://fr.wikipedia.org/wiki/Zimbabwe" }
   };  
 
-  private static Dicho.Panel panel = new Dicho.Panel();
+  //
+  // This defines the javascool embedded
+  //
+
+  /** Renvoie le panel affiché. */
+  static JPanel getPanel() { return panel; } 
+  
+  private static Panel panel = new Panel();
 }

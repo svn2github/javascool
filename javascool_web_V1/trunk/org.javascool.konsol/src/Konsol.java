@@ -22,20 +22,19 @@ import java.awt.event.ActionListener;
 // Used to open an window
 import javax.swing.JFrame;
 
-/** Defines a javascool proglet which allows to experiment the konsoltomic search. 
- * Static method import: <pre>
+/** Définit une proglet javascool qui permet d'expérimenter la recherche dichotomique.
+ * Méthodes statiques à importer: <pre>
  * import static Konsol.echo;
  * import static Konsol.readString;
  * import static Konsol.readInteger;
  * import static Konsol.readFloat;
  * </pre>
- * Documentation: <a href="sujet.html">subject</a> and <a href="correction.html">correction</a>.
+ * Documentation: <a href="sujet.html">subjet</a> et <a href="correction.html">correction</a>.
  */
 public class Konsol {
 
-  // This defines the panel display
+  // This defines the panel to display
   private static class Panel extends JPanel {
-    /** Constructs the panel. */
     public Panel() {
       super(new BorderLayout()); 
       setBackground(Color.WHITE); setPreferredSize(new Dimension(400, 500));
@@ -49,7 +48,7 @@ public class Konsol {
       }});
     }
 
-    /** Writes a string. 
+    /** Write a string.
      * @param string The string to write.
      */
     public void writeString(String string) {
@@ -57,8 +56,9 @@ public class Konsol {
     }
     private JTextArea out; private JScrollPane pane;
 
-    /** Reads a string. 
-     * @param retry If true the reading is a retry, the previous reading being erroneous.
+    /** Read a string.
+     * @param retry Set to true in retry mode, after a wrong input.
+     * @return The read string.
      */
     public String readString(boolean retry) {
       prompt.setText(retry ? "!error!" : "input>"); in.setText(retry ? in.getText() : ""); in.setEditable(true); 
@@ -68,21 +68,12 @@ public class Konsol {
     private JLabel prompt; private JTextField in; private String input;
   }
 
-  // Static instantiation of a panel
-  /** Returns the panel. */
-  public static JPanel getPanel() { return panel; } 
-  
-  /** Used to test this panel.
-   * <div>Simply use: <tt>javac Konsol.java ; java Konsol</tt> to test.</div>
-   * @param arguments No argument, do not user.
-   */
-  public static void main(String arguments[]) {
-    // Opens the panel in a frame
-    {
-      JFrame frame = new JFrame();
-      frame.setTitle("Konsol test"); frame.setSize(400, 500); frame.getContentPane().add(getPanel()); frame.pack(); frame.setVisible(true);
-    }
-    // Tests the mechanism
+  //
+  // This defines the tests on the panel
+  //
+
+  /** Test du panel. */
+  public static void test() {
     new Thread(new Runnable() { public void run() {
       echo("Bonjour, qui est tu ?");
       String nom = readString();
@@ -91,25 +82,29 @@ public class Konsol {
       for(int n = 0; n < 100; n++)
 	echo("He je suis plus vieux que toi !!");
     }}).start();
-   }
+  }
 
   //
   // This defines the javascool interface
   //
 
-  /** Outputs a string in the output windows.
-   * @param string The string to write.
+  /** Ecrit une chaine de caractères dans la fenêtre de sortie (output).
+   * @param string La chaine à écrire.
    */
   public static void echo(String string) {
     panel.writeString(string);
   }
 
-  /** Inputs a string from the input window. */
+  /** Lit une chaîne de caractère dans la fenêtre d'entrée (input).
+   * @return La chaîne lue.
+   */
   public static String readString() {
     return panel.readString(false);
   }
   
-  /** Inputs an integer number from the input window. */
+  /** Lit un nombre entier dans la fenêtre d'entrée (input).
+   * @return Le nombre entier lu.
+   */
   public static int readInteger() {
     for(boolean retry = false; true; retry = true) {
       try {
@@ -118,7 +113,9 @@ public class Konsol {
     }
   }
 
-  /** Inputs a floating point number from the input window. */
+  /** Lit un nombre flottant dans la fenêtre d'entrée (input).
+   * @return Le nombre flottant lu.
+   */
   public static double readFloat() {
     for(boolean retry = false; true; retry = true) {
       try {
@@ -127,5 +124,12 @@ public class Konsol {
     }
   }
 
-  private static Konsol.Panel panel = new Konsol.Panel();
+  //
+  // This defines the javascool embedded
+  //
+
+  /** Renvoie le panel affiché. */
+  public static JPanel getPanel() { return panel; } 
+  
+  private static Panel panel = new Panel();
 }
