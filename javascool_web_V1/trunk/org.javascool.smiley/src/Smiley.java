@@ -2,8 +2,6 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-//package org.javascool.konsol;
-
 // Used to define the gui
 import java.applet.Applet;
 
@@ -12,12 +10,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-/** Définit une proglet javascool qui permet de manipuler les pixels d'une image. d'expérimenter la recherche dichotomique.
+/** Définit une proglet javascool qui permet de manipuler les pixels d'une image.
  * Méthodes statiques à importer: <pre>
- * import static Smiley.echo;
- * import static Smiley.readString;
- * import static Smiley.readInteger;
- * import static Smiley.readFloat;
+ * import static Smiley.reset;
+ * import static Smiley.get;
+ * import static Smiley.set;
+ * import static Smiley.circle;
+ * import static Smiley.peace;
  * </pre>
  * Documentation: <a href="smiley-sujet.html">sujet</a> et <a href="smiley-correction.html">correction</a>.
  */
@@ -45,8 +44,8 @@ public class Smiley {
     }
     
     /** Sets a pixel value.
-     * @param x Pixel abscissa.
-     * @param y Pixel Ordinate.
+     * @param x Pixel abscissa, in {0, width{.
+     * @param y Pixel Ordinate, in {0, height{.
      * @param  c Color: "black" (default), "blue", "cyan", "gray", "green", "magenta", "orange", "pink", "red", "white", "yellow"
      * @return True if the pixel location is in the image bounds.
      */
@@ -63,8 +62,8 @@ public class Smiley {
     }
 
     /** Gets a pixel value.
-     * @param x Pixel abscissa.
-     * @param y Pixel Ordinate.
+     * @param x Pixel abscissa, in {0, width{.
+     * @param y Pixel Ordinate, in {0, height{.
      */
     public String get(int x, int y) {
       if (0 <= x && x < width && 0 <= y && y < height) {
@@ -133,15 +132,15 @@ public class Smiley {
   /** Trace un disque circulaire au centre de l'image. 
    * @param radius Rayon du disque
    */
-  static public void setCircle(int radius) {
+  static public void circle(int radius) {
     for(int x = 0; x <= radius; x++) for(int y = 0; y <= radius; y++) if (radius * radius - x * x - y * y <= 1) { 
       set(x, y, true); set(x, -y, true); set(-x, y, true); set(-x, -y, true); }
   }
 
   /** Trace le signe de la paix dans l'image. */
-  static public void setPeaceSign() {
+  static public void peace() {
     int radius = width < height ? width - 2 : height - 2;
-    setCircle(radius); for(int y = 0; y <= radius; y++) { set(0, -y, true); if (y < Math.rint(1/Math.sqrt(2) * radius)) { set(y, y, true); set(-y, y, true); } }
+    circle(radius); for(int y = 0; y <= radius; y++) { set(0, -y, true); if (y < Math.rint(1/Math.sqrt(2) * radius)) { set(y, y, true); set(-y, y, true); } }
   }
   
   //

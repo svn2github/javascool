@@ -39,8 +39,7 @@ public class Dicho {
   // This defines the panel to display
   private static class Panel extends JPanel {
     public Panel() {
-      super(new BorderLayout()); 
-      setBackground(Color.WHITE);
+      super(new BorderLayout()); setBackground(Color.WHITE);
       // Adds the background icon
       JLayeredPane book = new JLayeredPane(); book.setPreferredSize(new Dimension(550, 350)); add(book);
       JLabel icon = new JLabel(); icon.setBounds(10, 0, 550, 350); icon.setIcon(getIcon("dicho_background.png")); book.add(icon, new Integer(1), 0);
@@ -74,10 +73,11 @@ public class Dicho {
     private JLabel name, flag, num; private int current;
   }
 
+  // This defines an applet context image loader
   private static ImageIcon getIcon(String file) {
     try { return new ImageIcon(new URL(base+file)); } catch(Exception e) { return new ImageIcon(); }
   }
-  private static String base = "";
+  private static String base = "file:";
 
   //
   // This defines the tests on the panel
@@ -346,7 +346,7 @@ public class Dicho {
   //
 
   /** Renvoie le panel affiché. */
-  static JPanel getPanel(Applet applet) { base = applet == null ? "" : applet.getCodeBase().toString()+"/"; return panel = new Panel(); } 
+  static JPanel getPanel(Applet applet) { base = applet == null ? "file:" : applet.getCodeBase().toString()+"/"; return panel = new Panel(); } 
   
   private static Panel panel = new Panel();
 }
