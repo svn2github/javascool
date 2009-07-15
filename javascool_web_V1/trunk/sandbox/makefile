@@ -6,7 +6,7 @@ PROGLETS = konsol dicho smiley
 
 build : clean
 	for p in $(PROGLETS) ; do pushd ../org.javascool.$$p/src > /dev/null ;\
-	 $(MAKE) -f ../../sandbox/makefile.inc ;\
+	 $(MAKE) -f ../../sandbox/makefile.inc all ;\
 	 for m in sujet correction ; do mv $$m.html ../../sandbox/$$p-$$m.html ; done ; mv *.class *.html ../../sandbox ; cp *.png ../../sandbox 2> /dev/null ; ok=1 ;\
 	popd  > /dev/null ; done
 	$(MAKE) index.html
@@ -25,7 +25,7 @@ applets :
 
 
 applet%.html : %.html makefile
-	echo '<html><body><applet code="applet$*.class" width="550" height="500"></applet></body></html>' > $@
+	echo '<html><body><applet code="applet$*.class" width="550" height="550"></applet></body></html>' > $@
 
 %.class : %.java
 	javac $^

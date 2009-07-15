@@ -1,3 +1,6 @@
+
+dft : tst
+
 #
 # Compile proglet's files
 # 
@@ -23,14 +26,14 @@ XML2XML = /usr/java/jdk1.5.0_13/bin/java -classpath /usr/java/saxon6-5-5/saxon.j
 
 #
 
-test : test.class $(SOURCE).class
+tst : test.class $(SOURCE).class
 	java test
 	rm test.java test.class
 
 test.java : makefile
-	echo 'import javax.swing.JFrame; public class test { public static void main(String args[]) { JFrame f = new JFrame(); f.setSize(550, 500); f.getContentPane().add($(SOURCE).getPanel(null)); f.pack(); f.setVisible(true); $(SOURCE).test(); }}' >$@
+	echo 'import javax.swing.JFrame; public class test { public static void main(String args[]) { JFrame f = new JFrame(); f.setSize(550, 550); f.getContentPane().add($(SOURCE).getPanel(null)); f.pack(); f.setVisible(true); $(SOURCE).test(); }}' >$@
 
 #
 
 clean :
-	rm -f *.class $(ALL)
+	rm -f *.class test.java $(ALL)

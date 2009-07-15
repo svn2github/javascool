@@ -9,20 +9,8 @@ import java.applet.Applet;
 
 import javax.swing.JPanel;
 import java.awt.Color;
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import javax.swing.BorderFactory;
-
-// Used for the read/write
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-// Used to open an window
-import javax.swing.JFrame;
+import java.awt.Graphics;
 
 /** Définit une proglet javascool qui permet de manipuler les pixels d'une image. d'expérimenter la recherche dichotomique.
  * Méthodes statiques à importer: <pre>
@@ -38,24 +26,65 @@ public class Smiley {
   // This defines the panel to display
   private static class Panel extends JPanel {
     public Panel() {
-      setBackground(Color.WHITE); setPreferredSize(new Dimension(400, 500));
+      setBackground(Color.WHITE); setPreferredSize(new Dimension(550, 550));
+    }
+    
+    public void paint(Graphics g) {
+      super.paint(g);
+      g.setPaintMode(); 
+      setBounds();
+      for(int j = 0, ij = 0; j < height; j++)
+	for(int i = 0; i < width; i++, ij++) {
+	  g.setColor(image[ij]);
+	  g.fillRect(i0 + i * di, j0 + j * dj, di, dj);
+	}
+    }
+    private void setBounds() {
+      di = getWidth() / width; if (di <= 0) di = 1; i0 = (getWidth() - width * di) / 2; 
+      dj = getHeight() / height; if (dj <= 0) dj = 1; j0 = (getHeight() - height * dj) / 2;
     }
     
     /** Sets a pixel value.
      * @param x Pixel abscissa.
      * @param y Pixel Ordinate.
-     * @bool  v True for black, false for white.
+     * @param  c Color: "black" (default), "blue", "cyan", "gray", "green", "magenta", "orange", "pink", "red", "white", "yellow"
+     * @return True if the pixel location is in the image bounds.
      */
-    public void draw(int x, int y, boolean v) {
+    public boolean set(int x, int y, String c) {
+      if (0 <= x && x < width && 0 <= y && y < height) {
+	Color v; try { v = (Color) Class.forName("java.awt.Color").getField(c).get(null); } catch(Exception e) { v = Color.BLACK; c = "black"; }
+	setBounds(); int ij = x + y * width;
+	image[ij] = v; color[ij] = c;
+	repaint(i0 + x * di, j0 + y * dj, di, dj);
+	Thread.yield();
+	return true;
+      } else
+	return false;
+    }
+
+    /** Gets a pixel value.
+     * @param x Pixel abscissa.
+     * @param y Pixel Ordinate.
+     */
+    public String get(int x, int y) {
+      if (0 <= x && x < width && 0 <= y && y < height) {
+	return color[x + y * width];
+      } else
+	return "white";
     }
 
     /** Clears the image.
      * @param width Image width.
      * @param height Image height.
      */
-    public void clear(int width, int height) {
+    public void reset(int width, int height) {
+      image = new Color[(this.width = (width > 0 ? width : 1)) * (this.height = (height > 0 ? height : 1))]; color = new String[width * height];
+      for(int ij = 0; ij < width * height; ij++) { image[ij] = Color.WHITE; color[ij] = "white"; };
+      repaint(0, 0, getWidth(), getHeight());
+      Thread.yield();
     }
-  }
+    private Color image[]; private String color[]; private int width, height, i0, j0, di, dj;
+  } 
 
   //
   // This defines the tests on the panel
@@ -63,9 +92,10 @@ public class Smiley {
 
   /** Test du panel. */
   static void test() { 
-    for(int size = 1; size < 400; size++) {
+    for(int size = 1, SIZE = 512; size < SIZE; size *= 2) {
       reset(size, size);
       setPeaceSign();
+      try { Thread.sleep(1000 - size); } catch(Exception e) { }
     }
   }
 
@@ -74,36 +104,30 @@ public class Smiley {
   //
 
   /** Initialise l'image.
-   * @param width Demie largeur de l'image.
-   * @param height Demie hauteur de l'image.
+   * @param width Demie largeur de l'image de taille {-width, width}.
+   * @param height Demie hauteur de l'image de taille {-height, height}.
    */
   static public void reset(int width, int height) {
-    image = new boolean[(2 * width + 1) * (2 * height + 1)]; panel.clear(2 * (Smiley.width = width) + 1, 2 * (Smiley.height = height) + 1);
+    panel.reset(2 * (Smiley.width = width) + 1, 2 * (Smiley.height = height) + 1);
   }
-  static private boolean image[]; static private int width, height;
+  static private int width, height;
 
   /** Change la valeur d'un pixel de l'image. 
-   * @param x Abcisse de l'image, comptée à partir du milieu.
-   * @param y Ordonnée de l'image, comptée à partir du milieu.
-   * @param  black Valeur noir ou blanche.
+   * @param x Abcisse de l'image, comptée à partir du milieu, valeur entre {-width, width}.
+   * @param y Ordonnée de l'image, comptée à partir du milieu, valeur entre  {-height, height}.
+   * @param  black Valeur noire ou blanche.
    * @return Renvoie true si le pixel est dans l'image, false si il est en dehors des limites d el'image.
    */
   static public boolean set(int x, int y, boolean black) {   
-    if (-width <= x && x <= width && -height <= y && y <= height) {
-      image[(x + width) + (y + height) * (1 + 2 * width)] = black;
-      panel.draw(x + width, y + height, black);
-      return true;
-    } else {
-      return false;
-    }      
+    return panel.set(x + width, y + height, black ? "black" : "white");
   }
   
   /** Lit la valeur d'un pixel de l'image.
-   * @param x Abcisse de l'image, comptée à partir du milieu.
-   * @param y Ordonnée de l'image, comptée à partir du milieu.
+   * @param x Abcisse de l'image, comptée à partir du milieu, valeur entre {-width, width}.
+   * @param y Ordonnée de l'image, comptée à partir du milieu, valeur entre {-height, height}.
    */
   static public boolean get(int x, int y) {
-    return (width <= x && x <= width && -height <= y && y <= height) ? image[(x + width) + (y + height) * (1 + 2 * width)] : false;
+    return panel.get(x + width, y + height).equals("black");
   }
 
   /** Trace un disque circulaire au centre de l'image. 
