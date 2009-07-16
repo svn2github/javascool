@@ -39,6 +39,13 @@ public class Proglet {
     try { return (JPanel) Class.forName(proglet).getField("panel").get(null); } catch(Exception e) { System.err.println(e); return new JPanel(); }
   }
 
+  /** Runs one proglet's test.
+   * @param proglet The proglet class name.
+   */
+  public static void test(String proglet) {
+    try { Class.forName(proglet).getDeclaredMethod("test").invoke(null); } catch(Exception err) { System.err.println(err); }
+  }
+
   /** Returns an icon loaded from in the applet context.
    * @param file The icon file name. The icon must be located in the img directory.
    * @return The related image icon or an empty icon if not loaded.
@@ -64,9 +71,9 @@ public class Proglet {
       getContentPane().setLayout(new BorderLayout()); 
       JButton t = new JButton("test"); getContentPane().add(t, BorderLayout.NORTH); 
       t.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { 
-	try { Class.forName(getParameter("proglet")).getDeclaredMethod("test").invoke(null); } catch(Exception err) { System.err.println(err); }
+	Proglet.test(getParameter("proglet"));
       }});
-      getContentPane().add(getPanel(this, getParameter("proglet")));
+      getContentPane().add(Proglet.getPanel(this, getParameter("proglet")));
     }
   }
 }

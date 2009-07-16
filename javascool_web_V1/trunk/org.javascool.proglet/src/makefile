@@ -12,7 +12,7 @@ build :
 	echo 'javac ..' ; javac *.java ; mv *.class ..
 	echo 'jadoc ..' ; javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d ../api *.java
 	echo 'index ..' ; $(MAKE) ../index.html
-	echo 'rsunc ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ ../* loria.loria.fr:/local/web-homepages/vthierry/proglet
+	echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ ../* loria.loria.fr:/local/web-homepages/vthierry/proglet
 
 clean :
 	rm -rf *~ ../*.class ../api ../*.html
@@ -22,7 +22,7 @@ clean :
 ../index.html : $(patsubst %,../applet%.html,$(PROGLETS))	
 	echo '<html><body><h2>Proglets disponibles</h2><table border="1" width="80%" align="center">' > $@	
 	for f in $(PROGLETS) ; do echo "<tr><td valign='middle' width='75%'><h4>$$f</h4></td><td valign='middle' align='center'><h4><a href='applet$$f.html'>TEST</a></h4></td><td valign='middle' align='center'><h4><a href='api/$$f.html'>DOC</a></h4></td></tr>" ; done >> $@
-	echo '</table></body></html>' >> $@
+	(echo '</table>'; cat header.xml ; echo '</body></html>') >> $@
 
 ../applet%.html : makefile
 	echo '<html><body><applet code="Proglet$$Test.class" width="550" height="550"><param name="proglet" value="$*"/></applet></body></html>' > $@
