@@ -118,5 +118,5 @@ public class Konsol {
     }
   }
 
-  private static Panel panel = new Panel();
+  public static final Panel panel = new Panel();
 }

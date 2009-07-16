@@ -64,5 +64,5 @@ public class Scope {
     panel.scope.set(x, y, c);
   }
 
-  private static Panel panel = new Panel();
+  public static final Panel panel = new Panel();
 }

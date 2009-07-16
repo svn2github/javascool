@@ -1,15 +1,21 @@
 
 PROGLETS = Konsol Dicho Smiley Scope
+PROGLET = $(lastword $(PROGLETS))
 
+test : build
+#	cd .. ; java Proglet $(PROGLET)
+#	cd .. ; appletviewer applet$(PROGLET).html 
+#	cd .. ; firefox index.html
+	cd .. ; firefox http://www.loria.fr/~vthierry/proglet/index.html
 
 build :
 	echo 'javac ..' ; javac *.java ; mv *.class ..
 	echo 'jadoc ..' ; javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d ../api *.java
 	echo 'index ..' ; $(MAKE) ../index.html
+	echo 'rsunc ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ ../* loria.loria.fr:/local/web-homepages/vthierry/proglet
 
 clean :
 	rm -rf *~ ../*.class ../api ../*.html
-
 
 #
 
@@ -19,8 +25,9 @@ clean :
 	echo '</table></body></html>' >> $@
 
 ../applet%.html : makefile
-	echo '<html><body><applet code="Proglet.Test.class" width="550" height="550"><param name="proglet" value="$*"/></applet></body></html>' > $@
+	echo '<html><body><applet code="Proglet$$Test.class" width="550" height="550"><param name="proglet" value="$*"/></applet></body></html>' > $@
 
+#
 
 XML2XML = /usr/java/jdk1.5.0_13/bin/java -classpath /usr/java/saxon6-5-5/saxon.jar com.icl.saxon.StyleSheet
 

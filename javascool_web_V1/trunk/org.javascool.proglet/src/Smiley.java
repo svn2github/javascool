@@ -83,6 +83,6 @@ public class Smiley {
     circle(radius); for(int y = 0; y <= radius; y++) { set(0, -y, true); if (y < Math.rint(1/Math.sqrt(2) * radius)) { set(y, y, true); set(-y, y, true); } }
   }
   
-  private static Panel panel = new Panel();
+  public static final Panel panel = new Panel();
 }
 

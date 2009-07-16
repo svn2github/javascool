@@ -330,5 +330,5 @@ public class Dicho {
     { "Zimbabwe", "100px-Flag_of_Zimbabwe.svg.png", "http://fr.wikipedia.org/wiki/Zimbabwe" }
   };  
 
-  private static Panel panel = new Panel();
+  public static final Panel panel = new Panel();
 }
