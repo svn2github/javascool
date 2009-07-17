@@ -2,6 +2,8 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
+package proglet;
+
 // Used to define the gui
 import java.applet.Applet;
 import javax.swing.JPanel;
