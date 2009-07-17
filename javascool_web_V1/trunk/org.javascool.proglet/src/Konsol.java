@@ -70,14 +70,12 @@ public class Konsol {
 
   /** Test du panel. */
   static void test() {
-    new Thread(new Runnable() { public void run() {
-      echo("Bonjour, qui est tu ?");
-      String nom = readString();
-      echo ("Echanté "+nom+" ! Quel age as tu ?");
-      int age = readInteger();
-      for(int n = 0; n < 100; n++)
-	echo("He je suis plus vieux que toi !!");
-    }}).start();
+    echo("Bonjour, qui est tu ?");
+    String nom = readString();
+    echo ("Echanté "+nom+" ! Quel age as tu ?");
+    int age = readInteger();
+    for(int n = 0; n < 100; n++)
+      echo("He je suis plus vieux que toi !!");
   }
 
   //

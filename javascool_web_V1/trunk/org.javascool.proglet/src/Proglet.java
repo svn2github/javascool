@@ -22,7 +22,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// Used to echo a throwable
+// Used to report a throwable
 import java.lang.reflect.InvocationTargetException;
 
 /** This factory allows to interface with proglets.
@@ -39,19 +39,25 @@ public class Proglet {
    * @return The static instanciation of the proglet.
    */
   public static JPanel getPanel(Applet applet, String proglet) {
-    base = applet == null ? "file:img/" : applet.getCodeBase().toString()+"/img/"; 
-    try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
+    base = (Proglet.applet = applet) == null ? "file:img/" : applet.getCodeBase().toString()+"/img/"; 
+    try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } 
+    catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
+  static private Applet applet = null;
 
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
    */
   public static void test(String proglet) {
-    try { Class.forName("proglet."+proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { echo(error); }
+    Proglet.proglet = proglet;
+    new Thread(new Runnable() { public void run() {
+      try { Class.forName("proglet."+Proglet.proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { report(error); }
+    }}).start();
   }
-  // Echos a throwable with the related context.
-  private static void echo(Throwable error) {
-    if (error instanceof InvocationTargetException) echo(error.getCause());
+  private static String proglet;
+  // Reports a throwable with the related context.
+  private static void report(Throwable error) {
+    if (error instanceof InvocationTargetException) report(error.getCause());
     System.err.println("At:\n"+error.getStackTrace()[0]+"\n"+error.getStackTrace()[1]+"\n"+error.getStackTrace()[2]+"\n"+error.getStackTrace()[3]+"\n");
     System.err.println(error.toString());
   }
@@ -71,6 +77,7 @@ public class Proglet {
   public static void sleep(int delay) {
     try { if (delay > 0) Thread.sleep(delay); else Thread.yield(); } catch(Exception e) { }
   }
+  static boolean purge = true;
 
   /** Used to test a proglet as a standalone program. 
    * @param usage <tt>java Proglet &lt;proglet-name></tt>

@@ -27,8 +27,8 @@ class IconOutput extends JPanel {
       }
   }
   private void setBounds() {
-    di = getWidth() / width; if (di <= 0) di = 1; i0 = (getWidth() - width * di) / 2; 
-    dj = getHeight() / height; if (dj <= 0) dj = 1; j0 = (getHeight() - height * dj) / 2;
+    di = width > 0 ? getWidth() / width : 1; if (di <= 0) di = 1; i0 = (getWidth() - width * di) / 2; 
+    dj = height > 0 ? getHeight() / height : 1; if (dj <= 0) dj = 1; j0 = (getHeight() - height * dj) / 2;
   }
   
   /** Clears the image.

@@ -1,24 +1,24 @@
 
-PROGLETS = Konsol Dicho Smiley Scope Tortue
+PROGLETS = Konsol Dicho Scope Tortue Smiley 
 PROGLET = $(lastword $(PROGLETS))
 
 test : build
-#	cd .. ; java Proglet $(PROGLET)
+#	cd .. ; java proglet.Proglet $(PROGLET)
 #	cd .. ; appletviewer applet$(PROGLET).html 
 	cd .. ; firefox index.html
-#	cd .. ; firefox http://www.loria.fr/~vthierry/proglet/index.html
 
 build :
 	echo 'javac ..' ; javac *.java 
 	echo 'jadoc ..' ; javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d ../api *.java
-	echo 'index ..' ; mkdir ../proglet ; mv *.class ../proglet ; $(MAKE) ../index.html
+	echo 'index ..' ; mkdir -p ../proglet ; mv *.class ../proglet ; $(MAKE) ../index.html
 
 publish : build
 	echo 'svnci ..' ; cd .. ; svn up ; svn ci -m ''
 	echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ ../* loria.loria.fr:/local/web-homepages/vthierry/proglet
+	firefox http://www.loria.fr/~vthierry/proglet/index.html
 
 clean :
-	rm -rf *~ ../*.class ../api ../*.html
+	rm -rf *~ ../proglet ../api ../*.html
 
 #
 
