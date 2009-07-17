@@ -11,7 +11,7 @@ test : build
 build :
 	echo 'javac ..' ; javac *.java 
 	echo 'jadoc ..' ; javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d ../api *.java
-	echo 'index ..' ; mv *.class .. ; $(MAKE) ../index.html
+	echo 'index ..' ; mkdir ../proglet ; mv *.class ../proglet ; $(MAKE) ../index.html
 
 publish : build
 	echo 'svnci ..' ; cd .. ; svn up ; svn ci -m ''
@@ -28,7 +28,7 @@ clean :
 	echo '</table></body></html>' >> $@
 
 ../applet%.html : makefile
-	echo '<html><body><applet code="Proglet$$Test.class" width="550" height="550"><param name="proglet" value="$*"/></applet></body></html>' > $@
+	echo '<html><body><applet code="proglet.Proglet$$Test.class" width="550" height="550"><param name="proglet" value="$*"/></applet></body></html>' > $@
 
 #
 

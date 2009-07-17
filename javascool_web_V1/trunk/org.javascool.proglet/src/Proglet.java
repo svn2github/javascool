@@ -40,14 +40,14 @@ public class Proglet {
    */
   public static JPanel getPanel(Applet applet, String proglet) {
     base = applet == null ? "file:img/" : applet.getCodeBase().toString()+"/img/"; 
-    try { return (JPanel) Class.forName(proglet).getField("panel").get(null); } catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
+    try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
 
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
    */
   public static void test(String proglet) {
-    try { Class.forName(proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { echo(error); }
+    try { Class.forName("proglet."+proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { echo(error); }
   }
   // Echos a throwable with the related context.
   private static void echo(Throwable error) {
