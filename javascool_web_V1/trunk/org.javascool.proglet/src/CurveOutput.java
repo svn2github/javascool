@@ -21,20 +21,22 @@ import java.net.URL;
 class CurveOutput extends JPanel {
   public CurveOutput() {
     setBackground(Color.WHITE); setPreferredSize(new Dimension(512, 421));
-    JLabel icon = new JLabel(); icon.setIcon(Proglet.getIcon("scope_screen.png")); add(icon);
+    icon = new JLabel(); icon.setIcon(Proglet.getIcon("scope_screen.png")); icon.setLocation(0, 0); add(icon); 
+    reset();
   }
   public void paint(Graphics g) {
     super.paint(g);
     g.setPaintMode(); 
+    int i0 = (int) icon.getLocation().getX(), j0 = (int) icon.getLocation().getY();
     for(int j = 0, ij = 1; j < 10; j++, ij++) {
       g.setColor(colors[j]);
       for(int i = 1; i < 512; i++, ij++) 
 	if (values[ij] >= 0 && values[ij - 1] >= 0) {
-	  g.drawLine(i - 1, values[ij - 1], i, values[ij]);
+	  g.drawLine(i0 + i - 1, j0 + values[ij - 1], i0 + i, j0 + values[ij]);
 	}
     }
   }
-  private int values[];
+  private JLabel icon; private int values[];
   
   /** Resets the curve value. */
   public void reset() {
@@ -50,7 +52,7 @@ class CurveOutput extends JPanel {
   public void set(double x, double y, int c) {
     int i = (int) Math.rint(255 + x * 233);
     if (0 <= c && c < 10 && 0 <= i && i < 512) {
-      values[i + 512 * c] = -1 <= y & y <= 1 ? 425 - (int) Math.rint(210 + y * 185) : -1;
+      values[i + 512 * c] = -1 <= y & y <= 1 ? 421 - (int) Math.rint(210 + y * 185) : -1;
       repaint(i - 1, 0, 2, getHeight());
     }
   }

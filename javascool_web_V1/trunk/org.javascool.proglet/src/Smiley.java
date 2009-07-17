@@ -35,7 +35,7 @@ public class Smiley {
     for(int size = 1, SIZE = 512; size < SIZE; size *= 2) {
       reset(size, size);
       peace();
-      try { Thread.sleep(1000 - size); } catch(Exception e) { }
+      Proglet.sleep(1000 - size);
     }
   }
 

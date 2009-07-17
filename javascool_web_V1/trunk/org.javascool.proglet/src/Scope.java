@@ -5,7 +5,6 @@
 // Used to define the gui
 import javax.swing.JPanel;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.BorderLayout;
 
 /** Définit une proglet javascool qui permet d'expérimenter la recherche scopetomique.
@@ -16,7 +15,6 @@ import java.awt.BorderLayout;
  * Fichiers utilisés: <pre>
  * img/scope_screen.png
  * </pre>
- * Documentation: <a href="scope-sujet.html">sujet</a> et <a href="scope-correction.html">correction</a>.
  */
 public class Scope {
 

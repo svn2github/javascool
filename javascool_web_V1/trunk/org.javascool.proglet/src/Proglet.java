@@ -20,6 +20,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Used to echo a throwable
+import java.lang.reflect.InvocationTargetException;
 
 /** This factory allows to interface with proglets.
  * By contract, a proglet must define: <ul>
@@ -36,14 +38,20 @@ public class Proglet {
    */
   public static JPanel getPanel(Applet applet, String proglet) {
     base = applet == null ? "file:img/" : applet.getCodeBase().toString()+"/img/"; 
-    try { return (JPanel) Class.forName(proglet).getField("panel").get(null); } catch(Exception e) { System.err.println(e); return new JPanel(); }
+    try { return (JPanel) Class.forName(proglet).getField("panel").get(null); } catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
 
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
    */
   public static void test(String proglet) {
-    try { Class.forName(proglet).getDeclaredMethod("test").invoke(null); } catch(Exception err) { System.err.println(err); }
+    try { Class.forName(proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { echo(error); }
+  }
+  // Echos a throwable with the related context.
+  private static void echo(Throwable error) {
+    if (error instanceof InvocationTargetException) echo(error.getCause());
+    System.err.println("At:\n"+error.getStackTrace()[0]+"\n"+error.getStackTrace()[1]+"\n"+error.getStackTrace()[2]+"\n"+error.getStackTrace()[3]+"\n");
+    System.err.println(error.toString());
   }
 
   /** Returns an icon loaded from in the applet context.
@@ -55,12 +63,18 @@ public class Proglet {
   }
   private static String base = "file:img/";
 
+  /** Sleeps and purge the graphic's drawings.
+   * @param delay Delay in msec.
+   */
+  public static void sleep(int delay) {
+    try { if (delay > 0) Thread.sleep(delay); else Thread.yield(); } catch(Exception e) { }
+  }
+
   /** Used to test a proglet as a standalone program. 
    * @param usage <tt>java Proglet &lt;proglet-name></tt>
    */
   public static void main(String usage[]) { 
-    JFrame f = new JFrame(); f.setSize(550, 550); f.getContentPane().add(getPanel(null, usage[0])); f.pack(); f.setVisible(true); 
-    try { Class.forName(usage[0]).getDeclaredMethod("test").invoke(null); } catch(Exception err) { System.err.println(err); }
+    JFrame f = new JFrame(); f.setSize(550, 550); f.getContentPane().add(getPanel(null, usage[0])); f.pack(); f.setVisible(true); test(usage[0]);
   }
 
   /** Used to test a proglet in a browser. 

@@ -37,7 +37,6 @@ class IconOutput extends JPanel {
     image = new Color[(this.width = (width > 0 ? width : 1)) * (this.height = (height > 0 ? height : 1))]; color = new String[width * height];
     for(int ij = 0; ij < width * height; ij++) { image[ij] = Color.WHITE; color[ij] = "white"; };
     repaint(0, 0, getWidth(), getHeight());
-    Thread.yield();
   }
 
   /** Sets a pixel value.
@@ -52,7 +51,6 @@ class IconOutput extends JPanel {
       setBounds(); int ij = x + y * width;
       image[ij] = v; color[ij] = c;
       repaint(i0 + x * di, j0 + y * dj, di, dj);
-      Thread.yield();
       return true;
     } else
       return false;
