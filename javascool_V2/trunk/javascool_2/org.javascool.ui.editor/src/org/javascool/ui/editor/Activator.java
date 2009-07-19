@@ -34,7 +34,7 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public void start(BundleContext context) throws Exception {
 		//init translator
-		/*
+		
 		try{
 			URL url = Platform.getBundle(org.javascool.core.Activator.PLUGIN_ID).getEntry("/");
 			url = FileLocator.resolve(url);
@@ -45,7 +45,7 @@ public class Activator extends AbstractUIPlugin {
 			System.out.println("erreur initTranslator");
 			ex.printStackTrace();
 		}
-		*/
+		
 		super.start(context);
 		plugin = this;
 	}

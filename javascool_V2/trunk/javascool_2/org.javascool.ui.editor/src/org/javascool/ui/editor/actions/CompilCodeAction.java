@@ -61,8 +61,6 @@ public class CompilCodeAction implements IWorkbenchWindowActionDelegate {
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
-		
-		
 		String classPath = res.toOSString()+"bin";
 		String path = editor.getFilePath();
 		
@@ -71,14 +69,9 @@ public class CompilCodeAction implements IWorkbenchWindowActionDelegate {
 		//translate just JVS file
 		if(path.endsWith(".jvs"))
 			Translator.translate(path);
-		
-		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-		
-		if(compiler==null){
-			System.out.println("MERDE !!!!!!!!!!!!!!!!!!!!!");
-		}
-		
-		//Compile.run(path, classPath);
+			
+		System.out.println("classPath = "+classPath);
+		Compile.run(path, classPath);
 	}
 
 	

@@ -1,29 +1,67 @@
 package org.javascool.ui.editor.actions;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+import org.eclipse.core.filesystem.EFS;
+import org.eclipse.core.filesystem.IFileStore;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.ide.FileStoreEditorInput;
+import org.javascool.ui.editor.editors.JVSEditor;
 
 public class ShowJavaSourceAction implements IWorkbenchWindowActionDelegate {
 
 	public static final String ID = "org.javascool.ui.editor.actions.showJavaSourceAction";
 	
+	private IWorkbenchWindow window;
+	
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void init(IWorkbenchWindow window) {
-		// TODO Auto-generated method stub
+		this.window = window;
 
 	}
 
 	@Override
 	public void run(IAction action) {
-		// TODO Auto-generated method stub
+		JVSEditor editor = (JVSEditor)PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+		.getActivePage().getActiveEditor();
+
+		String path = editor.getFilePath();
+		if(path.endsWith(".jvs")){//si fichier jvs
+			path = path.replace(".jvs",".java");
+			FileReader doc = null;
+			try {
+				doc = new FileReader(path);
+				IWorkbenchPage page= window.getActivePage();
+				try {
+					File file = new File(path);
+					IFileStore fileStore= EFS.getStore(file.toURI());
+					page.openEditor(new FileStoreEditorInput(fileStore), JVSEditor.ID);
+				} catch (CoreException e) {
+					e.printStackTrace();
+				}
+			} catch (FileNotFoundException e) {
+				MessageDialog.openWarning(window.getShell(), "affichage du code source java",
+						"Le fichier : "+path+"\n"+
+				"doit etre precedemment compile");
+			} 
+		}else{
+			MessageDialog.openError(window.getShell(), "affichage du code source java",
+			"Operation impossible\n\nVous editez deja un fichier java");
+		}
 
 	}
 

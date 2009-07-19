@@ -46,7 +46,8 @@
                class="org.javascool.ui.editor.actions.OpenFileAction"
                icon="img/charger.png"
                id="org.unice.javascool.actions.OpenFileAction"
-               label="Open File"
+               label="Ouvrir un fichier..."
+               menubarPath="file/fileStart"
                style="push"
                toolbarPath="main/FileGroup"
                tooltip="Ouvrir un fichier">
@@ -65,7 +66,7 @@
                icon="img/compile.png"
                id="org.javascool.ui.editor.actions.compileCodeAction"
                label="Compilation"
-               menubarPath="org.javascool.ui.editor.menuSource/Group1"
+               menubarPath="compile/compil"
                style="push"
                toolbarPath="console/compil"
                tooltip="Compiler le code Source">
@@ -75,7 +76,7 @@
                icon="img/Execute.gif"
                id="org.javascool.ui.editor.actions.executeCodeAction"
                label="Execution"
-               menubarPath="org.javascool.ui.editor.menuSource/Group1"
+               menubarPath="compile/execute"
                style="push"
                toolbarPath="console/execute">
          </action>
@@ -84,7 +85,7 @@
                icon="img/stop.gif"
                id="org.javascool.ui.editor.actions.stopAction"
                label="Stop execution"
-               menubarPath="org.javascool.ui.editor.menuSource/Group1"
+               menubarPath="compile/stop"
                style="push"
                toolbarPath="console/stop">
          </action>
@@ -92,6 +93,15 @@
                id="compile"
                label="Source">
          </menu>
+         <action
+               class="org.javascool.ui.editor.actions.ShowJavaSourceAction"
+               icon="img/source.gif"
+               id="org.javascool.ui.editor.actions.showJavaSourceAction"
+               label="Afficher le code source Java"
+               menubarPath="compile/Group2"
+               style="push"
+               tooltip="afficher le code source java">
+         </action>
       </actionSet>
    </extension>
    <extension

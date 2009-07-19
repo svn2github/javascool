@@ -29,20 +29,11 @@ public class NewEditorAction implements IWorkbenchWindowActionDelegate {
 
 	@Override
 	public void run(IAction action) {
-		IPath stateLocation = EditorsPlugin.getDefault().getStateLocation();
-		IPath path= stateLocation.append("/Tmp" +nbFile+".jvs"); //$NON-NLS-1$
-		++nbFile;
-		
-		IFileStore fileStore= EFS.getLocalFileSystem().getStore(path);
-		
-		IWorkbenchPage page= PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		try {
-			page.openEditor(new FileStoreEditorInput(fileStore), JVSEditor.ID);
-		} catch (PartInitException e) {
+			NewAction.action();
+		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
-
+		}	
 	}
 
 	
