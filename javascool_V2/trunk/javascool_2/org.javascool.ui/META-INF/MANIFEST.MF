@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ui
+Bundle-SymbolicName: org.javascool.ui; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.javascool.ui.Activator
+Bundle-Vendor: JavaSCool
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.javascool.ui.editor;bundle-version="2.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
