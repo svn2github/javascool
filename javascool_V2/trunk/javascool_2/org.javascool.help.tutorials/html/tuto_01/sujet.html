@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<LINK rel="stylesheet" type="text/css" href="../../doc/style.css">	
+	
+	<title>Tutoriel 1</title>
+</head>
+
+<body>
+<div id="banner">
+	<img src="../../doc/help_banner.jpg" alt="Help banner">
+</div>
+
+	<h1><center>Tutoriel 1 : Notions de bases<center></h1><br><br><br>
+
+	<!--sous-titre-->
+	<div class=soustitre><p>Objectif : </p></div>	
+	<br>
+
+	<div id="content">
+		<p>
+		Le but de ce tutoriel est de vous apprendre les bases de la programmation
+		 et de vous familiariser avec le langage de programmation. 
+		</P>
+	</div>
+
+	<br>
+	<!--sous-titre-->
+	<div class=soustitre><p>Notes : </p></div>	
+	<br>
+
+	<p>Voici un exemple de programme : 
+	</p>
+	<br>
+	<img src="../../doc/exemple.jpg" height="120%" width="100%" >.
+	<br>
+	<br>
+<div class=soustitre2><p>le nom des fichiers et des classes : </p></div>
+<div id="content">
+	<p>
+		Le nom de la classe que vous &eacute;crivez doit toujours avoir comme premi&egrave;re 
+		lettre une majuscule et doit &ecirc;tre sauvegard&eacute; dans un fichier comportant
+		exactement le m&ecirc;me nom que la classe.</P>
+	<p>
+</div>
+<br>
+<div class=soustitre2><p>les fonctions : </p></div>
+<div id="content">
+	<p>
+		Un programme est essentiellement compos&eacute; de d&eacute;clarations de fonctions.<br>
+		Une Fonction comporte : 
+	</P>
+	<p>
+	<UL>
+		<LI>un type de retour
+		<LI>un nom
+		<LI>des param&egrave;tres (il peut ne pas y en avoir)
+		<LI>et un corps (correspond au code de la fonction)
+	</p>
+	</UL>
+	<br>
+	<P>
+		voici un exemple de fonction dont le type de retour est un entier
+		et qui poss&egrave;de deux param&egrave;tres de type entier : 
+	</P>
+	<table align=center border="1"><tr><th>
+	<P ALIGN=LEFT>
+		<FONT COLOR="#990000"><B>int </B></FONT>maximum(<FONT COLOR="#990000">
+		<B>int </B></FONT>a, <FONT COLOR="#990000"><B>int </B></FONT>b){....}
+	</P>
+	</th></tr></table>
+	<br>
+	<P>
+		voici un exemple de fonction ne retournant aucun r&eacute;sultat et qui
+		 ne poss&egrave;de pas de param&egrave;tres : 
+	</P>
+	<table align=center border="1"><tr><th>
+		<P ALIGN=LEFT><FONT COLOR="#990000"><B>void</B></FONT> fonction1(){....}</P>
+	</th></tr></table>
+	<br>
+</div>
+
+<br>
+<div class=soustitre2><p>La concat&eacute;nation de cha&icirc;nes de caract&egrave;res : </p></div>
+<div id="content">
+	<p>
+		Les cha&icirc;nes de caract&egrave;res sont des phases misent entre 
+		des guillemets, voici un exemple de cha&icirc;ne de caract&egrave;re : 
+	</p>
+	<table align=center border="1"><tr><th>
+		<p> <FONT COLOR="#008000">&nbsp;&quot;ceci est un chaine de caractere&quot;&nbsp;</FONT></p>
+	</th></tr></table>
+	<br>
+	<p>
+		il est possible de concat&eacute;ner, c'est-&agrave;-dire d'assembler des cha&icirc;nes 
+		de caract&egrave;res, l'op&eacute;rateur qui permet cette op&eacute;ration est l'op&eacute;rateur
+		&laquo;&nbsp;+&nbsp;&raquo;.<br>
+		On peut concat&eacute;ner des cha&icirc;nes
+		de caract&egrave;res entre elles, comme dans cet exemple : 
+	</p>
+	<table align=center border="1"><tr><th>
+		<P>&nbsp;<FONT COLOR="#008000">&quot;chaine 1&quot;</FONT> + <FONT COLOR="#008000">&quot;chaine 2&quot;</FONT>&nbsp;</P>
+	</th></tr></table>
+	<br>
+	<p>ce qui aura pour effet :</p>
+	<table align=center border="1"><tr><th>
+		<P>&nbsp;<FONT COLOR="#008000">&quot;chaine 1chaine 2&quot;</FONT>&nbsp;</P>
+	</th></tr></table>
+	<p>
+		Mais on peut &eacute;galement
+		concat&eacute;ner une cha&icirc;ne de caract&egrave;re avec une
+		variable de n'importe quel type. En voici un exemple :
+	</p>
+	<table align=center border="1"><tr><th>
+		<P align=left>
+		&nbsp;<FONT COLOR="#990000"><B>int</B></FONT> age = <FONT COLOR="#ff33cc">17</FONT>;<br>
+		&nbsp;<FONT COLOR="#990000"><B>String </B></FONT>chaine = 
+		<FONT COLOR="#008000">&quot;mon age est de &quot;</FONT>+age+<FONT COLOR="#008000">&quot;ans&quot;</FONT>;
+		&nbsp;</P>
+	</th></tr></table>
+	<p>ce qui aura pour effet :</p>
+	<table align=center border="1"><tr><th>
+		<P>&nbsp;<FONT COLOR="#008000">&quot;mon age est de 17 ans&quot;</FONT>&nbsp;</P>
+	</th></tr></table>
+</div>
+
+<br>
+<div class=soustitre2><p>La fonction "Main" : </p></div>
+<div id="content">
+	<p>
+		Tout programme doit comporter dans son code une fonction
+		&laquo;&nbsp;main&nbsp;&raquo; dont la signature est la suivante : 
+	</p>
+	<table border="1" align =center><tr><th>
+		<P>
+			<FONT COLOR="#990000"><B>void </B></FONT>main(){ ... }</P>
+	</th></tr></table>
+	<br>
+	<p>
+	Cette fonction est obligatoire. C'est
+cette fonction qui sera appel&eacute;e lors de l'ex&eacute;cution de
+votre programme. 
+</P>
+</div>
+
+<br>
+<div class=soustitre2><p>Les tableaux : </p></div>
+<div id="content">
+	<p>
+		Un tableau est une structure de donn&eacutees;
+		dans lequel on peut ranger des &eacute;l&eacute;ments du type
+		choisit.<br>Il est important de savoir
+		que dans un tableau on ne peut mettre qu'un seul type de donn&eacute;es.
+		On ne peut donc pas avoir un tableau qui contient des cha&icirc;nes
+		de caract&egrave;res et des entiers en m&ecirc;me temps.
+	</p>
+	<p>
+		Voici un exemple de d&eacute;claration de tableau d'entiers de taile 8 : 
+	</p>
+	<table border="1" align =center><tr><th>
+		<P ALIGN=LEFT>&nbsp;&nbsp;<FONT COLOR="#990000"><B>int</B></FONT>[] tab;&nbsp
+		= <FONT COLOR="#990000"><B>new int</B></FONT>[ <FONT COLOR="#ff33cc">8</FONT> ];&nbsp;&nbsp;
+		</p>
+	</tr></table>
+	<br>
+	<p>Voici les fonctions utilisables sur un tableau :</p>
+	<table border="1" align=center>
+	
+	<tr>
+		<td><b><FONT COLOR="#990000"><B>int</b></font> length</b></td>
+		<td>&nbsp;&nbsp;nous retourne la taille du tableau&nbsp;&nbsp;</td>
+	</tr>
+	</table>
+	<br>
+	<p>Voici l'exemple d'une fonction qui affiche le contenu d'un tableau :</p>
+	<table border="1" align=center>
+	<tr><th>
+		<p align=left>
+		<FONT COLOR="#990000"><B>void </B></FONT>afficher(<FONT COLOR="#990000"><B>int</B></FONT>[] tab){<br><br>
+		&nbsp;&nbsp;&nbsp;<FONT COLOR="#990000"><B>for</B></FONT>(<FONT COLOR="#990000"><B>int</B></FONT> i=<FONT COLOR="#ff33cc">0</FONT>; i&lt; tab.size(); i++){<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#990000"><B>println</B></FONT>(tab[i]);<br>
+		&nbsp;&nbsp;&nbsp;}<br>
+		<br>
+		}
+		<p/>
+	</th></tr>
+	</table>
+	<br>
+</div>
+	
+	
+
+	
+
+</body>
+</html>

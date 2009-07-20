@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+      <toc
+            file="toc/toc_tuto_01.xml">
+      </toc>
+      <toc
+            file="toc/toc_tuto_02.xml">
+      </toc>
+      <toc
+            file="toc/toc_tuto_03.xml">
+      </toc>
+      <toc
+            file="toc/toc_tuto_04.xml">
+      </toc>
+      <toc
+            file="toc/toc_tuto_05.xml">
+      </toc>
+      <toc
+            file="toc/toc_tuto_06.xml">
+      </toc>
+      <toc
+            file="toc/toc_tuto_06bis.xml">
+      </toc>
+      <toc
+            file="toc/toc_tuto_07.xml">
+      </toc>
+      <toc
+            file="toc/toc_tuto_08.xml">
+      </toc>
+      <toc
+            file="toc/toc_tuto_09.xml">
+      </toc>
+      <toc
+            file="toc/toc_tuto_10.xml">
+      </toc>
+      <toc
+            file="toc/toc_tuto_11.xml">
+      </toc>
+   </extension>
+
+</plugin>

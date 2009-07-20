@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet href="../../doc/style_correction.xsl" type="text/xsl"?>
+
+<correction>
+	<titre>Correction du tutoriel 6</titre>
+	<answers>
+		<answer href="../../correction/Tuto6_for.jvs" name="Tuto6_for.jvs" sup="(version avec la boucle for)"/>
+		<answer href="../../correction/Tuto6_while.jvs" name="Tuto6_while.jvs" sup="(version avec la boucle while)"/>
+	
+	</answers>
+</correction>

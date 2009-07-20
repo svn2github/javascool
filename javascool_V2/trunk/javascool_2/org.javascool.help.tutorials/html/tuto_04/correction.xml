@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet href="../../doc/style_correction.xsl" type="text/xsl"?>
+
+<correction>
+	<titre>Correction du tutoriel 4</titre>
+	<info>
+		L'expression "i++" signifie que l'on incrémente de 1 la valeur de la variable i.<br/>
+		Cette expression est indentique à celles-ci :<br/><br/>
+		i = i+1<br/>
+		ou encore :<br/>
+		i+=1;<br/>
+		ou encore :<br/>
+		++i;
+	</info>
+	<info>
+		Le fait de remplacer l'expression " i &lt;3 "
+		par " i&lt;=2 " ne change pas le fonctionnement du programme, on rentrera
+		toujours trois fois dans le corps de la boucle for.
+	</info>
+	<info>
+		Les deux exemples donnés
+		effectuent exactement la même chose, la seule différence
+		entre les deux programmes est le fait que dans l'un on utilise une
+		boucle " for ", tandis que dans le second on
+		utilise une boucle " while ".
+	</info>
+	<info>
+		Si on oublie de mettre l'expression " i++ " dans le second exemple, le programme
+		compilera mais à l'exécution le programme tournera
+		en boucle et ne s'arrêtera jamais car on n'incrémente
+		jamais la valeur de la variable " i " et donc
+		la condition " i&lt;3 " sera toujours vrai.
+	</info>
+
+	<answers>
+		<answer href="../../correction/Tuto4_for.jvs" name="Tuto4_for.jvs" sup="(version avec la boucle for)"/>
+		<answer href="../../correction/Tuto4_for.while" name="Tuto4_for.jvs" sup="(version avec la boucle while)"/>
+	
+	</answers>
+</correction>
+	
