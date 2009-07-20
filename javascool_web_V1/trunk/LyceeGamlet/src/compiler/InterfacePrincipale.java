@@ -460,7 +460,7 @@ public class InterfacePrincipale extends JApplet {
 	private JButton getJNewButton() {
 		if (jNewButton == null) {
 			jNewButton = new JButton();
-			jNewButton.setIcon(new ImageIcon(getClass().getResource("/nouveau2.png")));
+			jNewButton.setIcon(new ImageIcon(getClass().getResource("nouveau2.png")));
 			jNewButton.setMnemonic(KeyEvent.VK_UNDEFINED);
 			jNewButton.setText("Nouveau");
 		}

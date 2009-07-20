@@ -1,3 +1,6 @@
 <ul>
+  <li>Les tutoriels<ul>
+    <li>S'initier à l'outil avec le <a href="doc/sujet-hello-world.htm">``Hello World´´</a></li>
+  </ul></li>
   <li><a href="api/index.html">Proglet's java doc</a></li>
 </ul>

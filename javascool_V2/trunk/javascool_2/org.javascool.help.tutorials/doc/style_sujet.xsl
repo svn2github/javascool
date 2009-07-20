@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<xsl:import href="style_common.xsl"/>
+
 <xsl:output 
   method="html"
   encoding="ISO-8859-1"
@@ -8,70 +10,63 @@
   doctype-system="http://www.w3.org/TR/html4/strict.dtd"
   indent="yes" />
   
-	<xsl:template match="sujet">
+<xsl:template match="sujet">
+  <html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="style.css"/>	
+    </head>
+    <body>
+      <div id="banner">
+        <img src="help_banner.jpg" alt="Help banner"/>
+      </div>
+      <xsl:apply-templates/>
+    </body>
+  </html>
+</xsl:template>
+  
+<xsl:template match="titre">
+  <h1><xsl:value-of select="." /></h1><div align="right">[<a href="#notes">introduction</a>] [<a href="#works">travail proposé</a>] [<a href="#footnotes">remarques</a>]</div><br/><br/>
+</xsl:template>
 
-	<html>
-		<head>
-			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
-			<LINK rel="stylesheet" type="text/css" href="../../doc/style.css"/>	
-		</head>
-
-		<body>
-			<div id="banner">
-				<img src="../../doc/help_banner.jpg" alt="Help banner"/>
-			</div>
-
-      		<xsl:apply-templates select="*" />
-
-		</body>
-
-		</html>
-	</xsl:template >
-
-
-	<!-- traitment of title-->
-	<xsl:template match="titre" >
-		<h1><xsl:value-of select="." /></h1><br/><br/><br/>
-	</xsl:template >
+<xsl:template match="objectif" >
+  <div class="soustitre"><p>Objectif : </p></div>	
+  <br/>
+  <div id="objectif">
+    <p align="center"><xsl:apply-templates/></p>
+  </div>
+  <br/>	
+</xsl:template>
 	
-	<!-- traitment of objectif-->
-	<xsl:template match="objectif" >
-		<div class="soustitre"><p>Objectif : </p></div>	
-		<br/>
-		
-		<div id="content">
-			<P><xsl:value-of select="." /></P>
-		</div>
-		<br/>	
-	</xsl:template >
+<xsl:template match="notes" >
+  <div class="soustitre"><p>Introduction : </p></div>	
+  <br/>
+  <ul id="notes">
+    <xsl:apply-templates select="note"/>
+  </ul>
+  <br/>
+</xsl:template>
 	
-	<!-- traitment of notes-->
-	<xsl:template match="notes" >
-		<div class="soustitre"><p>Notes : </p></div>	
-		<br/>
-		<div id="content">
-			<xsl:apply-templates select="note" />
-		</div>
-		<br />
-	</xsl:template >
+<xsl:template match="note" >
+  <li><b><xsl:value-of select="@title"/> </b>: <xsl:apply-templates/><br/></li>
+</xsl:template>
+  
+<xsl:template match="works" >
+  <div class="soustitre"><p>Travail proposé :</p></div>
+  <br/>
+  <ul id="works">
+    <xsl:apply-templates select="work"/>
+  </ul>
+</xsl:template>
 	
-	<!-- traitment of note-->
-	<xsl:template match="note" >
-		<P><xsl:value-of select="." /></P>
-	</xsl:template >
-	
-	<!-- traitment of work-->
-	<xsl:template match="work" >
-		<div class="soustitre"><p>Travaille demandé :</p></div>
-		<br/>
-		<div id="content">
-			<xsl:value-of select="." />
-		</div>
-	</xsl:template >
-	
-	<!-- traitment of footnote-->
-	<xsl:template match="footnote" >
-		<xsl:value-of select="." />
-	</xsl:template >
+<xsl:template match="work" >
+  <li><b><xsl:value-of select="@title"/> </b>: <xsl:apply-templates/><br/></li>
+</xsl:template>
+  
+<xsl:template match="footnotes">
+  <div class="soustitre"><p>Remarques :</p></div>
+  <div id="footnotes"><xsl:for-each select="*">
+  <p><sup><xsl:value-of select="position()"/></sup> <b><i><xsl:value-of select="@title"/></i></b> <xsl:apply-templates/></p>
+  </xsl:for-each></div>
+</xsl:template>
 	
 </xsl:stylesheet>
