@@ -23,8 +23,8 @@ import java.awt.event.ActionListener;
  * Méthodes statiques à importer: <pre>
  * import static Konsol.println;
  * import static Konsol.readString;
- * import static Konsol.readInteger;
- * import static Konsol.readFloat;
+ * import static Konsol.readInt;
+ * import static Konsol.readDouble;
  * </pre>
  */
 public class Konsol {
@@ -73,7 +73,7 @@ public class Konsol {
     println("Bonjour, qui est tu ?");
     String nom = readString();
     println ("Echanté "+nom+" ! Quel age as tu ?");
-    int age = readInteger();
+    int age = readInt();
     for(int n = 0; n < 100; n++)
       println("He je suis plus vieux que toi !!");
   }
@@ -99,7 +99,7 @@ public class Konsol {
   /** Lit un nombre entier dans la fenêtre d'entrée (input).
    * @return Le nombre entier lu.
    */
-  public static int readInteger() {
+  public static int readInt() {
     for(boolean retry = false; true; retry = true) {
       try {
 	return Integer.parseInt(panel.readString(retry));
@@ -110,7 +110,7 @@ public class Konsol {
   /** Lit un nombre flottant dans la fenêtre d'entrée (input).
    * @return Le nombre flottant lu.
    */
-  public static double readFloat() {
+  public static double readDouble() {
     for(boolean retry = false; true; retry = true) {
       try {
 	return Double.parseDouble(panel.readString(retry));

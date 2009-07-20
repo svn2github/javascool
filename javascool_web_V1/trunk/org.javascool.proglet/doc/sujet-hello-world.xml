@@ -16,7 +16,7 @@
       et la chaine de caractères <s>HelloWorld</s> qui est un mot ``à nous´´.</p>
       Regardons à quoi correspondent ces trois lignes d'instructions: <ol>
       <li>Ce que nous demandons, notre ``instruction´´, est juste d'imprimer <s>HelloWorld</s>; 
-      <br/> où, par convention, nous plaçons la chaine de caractères entre guillemets <s></s> pour signifier que c'est juste une chaine de caractère.</li>
+      <br/> où, par convention, nous plaçons la chaine de caractères entre guillemets <s></s> pour signifier que c'est juste une chaine de caractères.</li>
       <li>Nous spécifions donc l'instruction <r>println</r>(<s>HelloWorld</s>), où <r>println</r> signifie ``imprime <i>(print)</i> sur une ligne´´ et
       <br/> où, par convention, ce qui doit être imprimé est placé entre parenthèse après le mot <r>println</r> et la l'instruction se finit par <b>;</b>.</li>
       <li>Et c'est dans le bloc <b><r>void main</r>() { ../.. }</b> que se placent, entre les accolades, les instructions qui doivent être exécuter par le programme,
@@ -28,7 +28,8 @@
     <note title="Compiler et exécuter notre premier programme">Comment faire exécuter ce programme minimal par l'ordinateur ? Il y a trois étapes.
     <ol>
       <li><img src="img/save.png"/> D'abord toujours . . sauver le texte source du programme dans un fichier d'extension <c>.jvs</c>, 
-      par exemple <c>Hi.jvs</c>, il faut <i>régulièrement</i> penser à sauvegarder ce qui a été entré au clavier !.</li>
+      par exemple <c>Hi1.jvs</c>, puis <c>Hi2.jvs</c> pour la version suivante, etc.. 
+      Il faut <i>régulièrement</i> penser à sauvegarder ce qui a été entré au clavier !.</li>
       <li><img src="img/compile.png"/> Puis . . compiler le programme: celà veut dire le traduire dans le langage de l'ordinateur.<ul>
         <li>En effet, l'ordinateur est une machine électronique et le ``langage qu'il comprend´´ est extrêment basique (ouvrir tel interrupteur, 
         connecter telle partie du circuit à une autre, etc..) et tout ceci est bien trop fastidieux à décrire directement 
@@ -48,12 +49,12 @@
     <work title="A nous de jouer"> Taper sans se tromper les trois lignes dans la fenêtre de gauche (attention la moindre faute de frappe et il y aura une erreur, 
     n'oublions qu'un ordinateur n'a aucune intelligence pour ``intuiter´´ ce que nous voulons spécifier) puis sauver, compiler et exécuter. <ul>
     <li>Sauf étourderie . . ça y est . . nous avons donner notre première instruction à l'ordinateur !</li>
-      <li>Au lieu de faire écrire <s>HelloWorld</s> programmons une salutation en français: remplacer la chaine de carctère par une autre phrase de salutation dans le programme source, puis essayer (c'est à dire: sauver, compiler et . . exécuter).</li>
+      <li>Au lieu de faire écrire <s>HelloWorld</s> programmons une salutation en français: remplacer la chaine de caractères par une autre phrase de salutation dans le programme source, puis essayer (c'est à dire: sauver, compiler et . . exécuter).</li>
       <li>Au lieu de ne faire écrire qu'une ligne, programmons l'écriture de deux lignes par exemple <s>Bonjour très cher:</s> et <s>Quel bon vent vous amène</s>: pour celà mettre deux instructions <r>println</r> l'une en dessous de l'autre dans le bloc <r>void main</r> (donc bien <i>entre</i> les accolades et sans oublier le <b>;</b> !),  puis essayer.</li>
     </ul></work>
     <work title="Que se passe t'il en cas d'erreur"> Peut-être involontairement déja, maintenant volontairement, faisons des ``erreurs de syntaxe´´ c'est à dire écrivons de manière erronnée une petite partie du programme, Par exemple, oublier le <b>;</b> ou un <b>"</b>, ou mettre un <b>}</b> de trop, ou encore taper <r>printl</r> (sans le <r>n</r> !), etc.. <ul>
       <li>Que se passe t'il alors lors de la compilation ? Noter que le compilateur (le traducteur de <javascool/> en langage machine) est prévu pour renseigner au maximum sur l'erreur rencontrée, le numéro de ligne est fourni, le message d'erreur essaye de décrire le problème, etc..</li>
-      <li>Travailler maintenant en binôme: l'un de vous introduit volontairement une erreur dans le code à l'insu de l'autre, puis laisse la place à l'autre qui doit retrouver et corriger l'erreur. Faites le au moins cinq fois. Essayer avec des variantes du code (plusieurs <r>println</r>, des chaines de caractère compliquées)</li>
+      <li>Travailler maintenant en binôme: l'un de vous introduit volontairement une erreur dans le code à l'insu de l'autre, puis laisse la place à l'autre qui doit retrouver et corriger l'erreur. Faites le au moins cinq fois. Essayer avec des variantes du code (plusieurs <r>println</r>, des chaines de caractères compliquées)</li>
     </ul> C'est très important de prendre l'habitude de trouver où il y a des erreurs de syntaxe pour facilement les corriger.</work>
   </works>
   

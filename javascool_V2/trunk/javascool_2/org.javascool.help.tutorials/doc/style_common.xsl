@@ -15,7 +15,7 @@
 -->
 
 <xsl:template match="code">
-  <table border="1" align="center"><tr><th>
+  <table border="1" align="center"><tr><th align="left">
   <xsl:apply-templates/>
   </th></tr></table>
 </xsl:template>

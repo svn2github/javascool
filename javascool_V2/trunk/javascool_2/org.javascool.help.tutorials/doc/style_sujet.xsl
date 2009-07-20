@@ -13,11 +13,11 @@
 <xsl:template match="sujet">
   <html>
     <head>
-      <link rel="stylesheet" type="text/css" href="style.css"/>	
+      <link rel="stylesheet" type="text/css" href="img/style.css"/>	
     </head>
     <body>
       <div id="banner">
-        <img src="help_banner.jpg" alt="Help banner"/>
+        <img src="img/help_banner.jpg" alt="Help banner"/>
       </div>
       <xsl:apply-templates/>
     </body>
@@ -32,7 +32,7 @@
   <div class="soustitre"><p>Objectif : </p></div>	
   <br/>
   <div id="objectif">
-    <p align="center"><xsl:apply-templates/></p>
+    <div align="center"><xsl:apply-templates/></div>
   </div>
   <br/>	
 </xsl:template>
@@ -47,7 +47,7 @@
 </xsl:template>
 	
 <xsl:template match="note" >
-  <li><b><xsl:value-of select="@title"/> </b>: <xsl:apply-templates/><br/></li>
+  <li><div><b><xsl:value-of select="@title"/> </b>: <xsl:apply-templates/></div><br/></li>
 </xsl:template>
   
 <xsl:template match="works" >
@@ -65,8 +65,12 @@
 <xsl:template match="footnotes">
   <div class="soustitre"><p>Remarques :</p></div>
   <div id="footnotes"><xsl:for-each select="*">
-  <p><sup><xsl:value-of select="position()"/></sup> <b><i><xsl:value-of select="@title"/></i></b> <xsl:apply-templates/></p>
+  <p id="{position()}"><sup><xsl:value-of select="position()"/></sup> <b><i><xsl:value-of select="@title"/></i></b> <xsl:apply-templates/></p>
   </xsl:for-each></div>
 </xsl:template>
 	
+<xsl:template match="footnote">
+  <sup><a href="{concat('#',@id)}"><xsl:value-of select="@id"/></a></sup>
+</xsl:template>
+
 </xsl:stylesheet>

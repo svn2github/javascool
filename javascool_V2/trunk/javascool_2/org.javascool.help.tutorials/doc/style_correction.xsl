@@ -12,11 +12,11 @@
   <html>
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
-      <link rel="stylesheet" type="text/css" href="../../doc/style.css"/>	
+      <link rel="stylesheet" type="text/css" href="img/style.css"/>	
     </head>
     <body>
       <div id="banner">
-        <img src="../../doc/help_banner.jpg" alt="Help banner"/>
+        <img src="img/help_banner.jpg" alt="Help banner"/>
       </div>
       <xsl:apply-templates select="*" />
     </body>
