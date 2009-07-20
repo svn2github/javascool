@@ -14,7 +14,7 @@ build :
 
 publish : build
 	echo 'svnci ..' ; cd ../../.. ; svn up ; svn ci -m ''
-	echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ ./* loria.loria.fr:/local/web-homepages/vthierry/proglet
+	echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude src ./* loria.loria.fr:/local/web-homepages/vthierry/proglet
 	firefox http://www.loria.fr/~vthierry/proglet/index.html
 
 clean :
