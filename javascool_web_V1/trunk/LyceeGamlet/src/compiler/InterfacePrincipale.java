@@ -533,4 +533,16 @@ public class InterfacePrincipale extends JApplet {
 		
 	     }	
 
+
+
+  /** Method overwrittem to manage the call via an AppletFrame interface. */
+  public String getParameter(String name) {
+    try {
+      return super.getParameter(name);
+    } catch(Exception e) {
+      // Juste pour retourner progelt
+      return args[0];
+    }
+  }
+  void setArgs(String[] args) { this.args = args; } private String[] args;
 }

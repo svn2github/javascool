@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 public class AppletFrame {
   public static void main(String[] args) {
 	  final InterfacePrincipale myApplet = new InterfacePrincipale(); 
+	  myApplet.setArgs(args); // Added to overwrite getParameter()
     Frame myFrame = new Frame("Applet Holder"); 
    
   

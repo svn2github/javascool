@@ -2,7 +2,7 @@
   <titre>Le tutoriel "Hello World"</titre>
   
   <objectif>
-    Le but de ce tutoriel est de se familiariser avec l'outil de programmation <javascool/>, pour pouvoir réaliser les autres tutoriels.
+    Le but de ce tutoriel est de se familiariser avec l'outil de programmation <javascool/>, pour pouvoir réaliser les autres <a href="../index.html">tutoriels</a>.
   </objectif>
   
   <notes>
@@ -63,6 +63,6 @@
     <c><a href="http://fr.wikipedia.org/wiki/Javascript">Javascript</a></c> ou <c><a href="http://fr.wikipedia.org/wiki/PHP">PHP</a></c> qui est un langage ``<a href="http://fr.wikipedia.org/wiki/Programmation_impérative">impératif</a>´´ qui décrit les opérations en termes de séquences d'instructions exécutées par l'ordinateur pour modifier l'état du programme. La bonne nouvelle est que ce que nous apprenons ici, servira donc ensuite <i>quelque soit</i> le langage de programmation: ce seront les mêmes mécanismes, juste exprimés parfois un peu différement.</p>
     <p title="Pourquoi appeler ce langage commun ``Java'sCool´´ ?"> Parce que le langage ``caché´´ derrière notre outil est le <c><a href="http://fr.wikipedia.org/wiki/Java_(langage)">Java</a></c> qui a été un peu simplifié ici pour le rendre ``cool´´. D'ailleurs il est possible (à vos riques et bénéfices..) d'utiliser <i>tout</i> le langage 
 <c><a href="http://fr.wikipedia.org/wiki/Java_(langage)">Java</a></c> ici. Simplement, un certain nombre de spécifications sont devenues optionelles en <javascool/> pour faciliter les choses aux débutants. C'est donc une école de <c><a href="http://fr.wikipedia.org/wiki/Java_(langage)">Java</a></c> <i>(a Java school)</i> avec laquelle <c><a href="http://fr.wikipedia.org/wiki/Java_(langage)">Java</a></c> <i>is cool</i>. Cette idée a été mise au point par des étudiants en informatique de l'<a href="http://deptinfo.unice.fr">Université de Nice Sophia-Antipolis</a> auteurs de <a href="http://javascool.gforge.inria.fr"><javascool/></a>.</p>
-<p title="Que veux dire «void main» en fait ?"> Patience nous le comprendrons avec le tutoriel sur les <a href="sujet-fonctions.htm">fonctions</a>.</p>
+<p title="Que veux dire «void main» en fait ?"> Patience nous le comprendrons avec le tutoriel sur les <a href="sujet-about-functions.htm">fonctions</a>.</p>
   </footnotes>
 </sujet>

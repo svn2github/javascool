@@ -25,6 +25,7 @@ import java.awt.event.ActionListener;
  * import static Konsol.readString;
  * import static Konsol.readInt;
  * import static Konsol.readDouble;
+ * import static Konsol.rint;
  * </pre>
  */
 public class Konsol {
@@ -116,6 +117,14 @@ public class Konsol {
 	return Double.parseDouble(panel.readString(retry));
       } catch(Exception e) { }
     }
+  }
+
+  /** Retourne l'entier le plus proche du double.
+   * @param value La valeur à arrondir.
+   * @return La valeur entière la plus proche de la valeur à arrondir.
+   */
+  public static double rint(double value) {
+    return (int) Math.rint(value);
   }
 
   public static final Panel panel = new Panel();

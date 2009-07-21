@@ -1,4 +1,6 @@
 
+dft : run
+
 PROGLETS = Konsol Dicho Scope Tortue Smiley 
 PROGLET = $(lastword $(PROGLETS))
 
@@ -22,7 +24,7 @@ clean :
 
 #
 
-doc : $(patsubst %.xml,%.htm,$(wildcard doc/about-*.xml doc/sujet-*.xml doc/correction-*.xml)) doc/img/style.css doc/img/help_banner.jpg
+doc : index.html $(patsubst %.xml,%.htm,$(wildcard doc/about-*.xml doc/sujet-*.xml doc/correction-*.xml)) doc/img/style.css doc/img/help_banner.jpg
 
 XML2XML = /usr/java/jdk1.5.0_13/bin/java -classpath /usr/java/saxon6-5-5/saxon.jar com.icl.saxon.StyleSheet
 
@@ -53,13 +55,11 @@ applet%.html : makefile
 #
 
 run : 
-	cd ../LyceeGamlet/bin ; java compiler.AppletFrame
+	cd ../LyceeGamlet/src ; javac -nowarn -classpath /usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/lib/tools.jar -d ../bin */*.java
+	cd ../LyceeGamlet/bin ; java compiler.AppletFrame Konsol
 
 # -> cd ../LyceeGamlet/bin ; firefox test.html
 
 ../LyceeGamlet/bin/test.html : makefile
 	echo '<html><body><applet code="compiler.InterfacePrincipale.class" width="800" height="600"><param name="proglet" value="$(PROGLET)"/></applet></body></html>' > $@
-
-# -> javac -nowarn -classpath /usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/lib/tools.jar -d bin LyceeGamlet/src/compiler/*.java
-
 
