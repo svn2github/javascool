@@ -1,11 +1,9 @@
 
-dft : run
-
-PROGLETS = Konsol Dicho Scope Tortue Smiley 
+PROGLETS = Dicho Scope Tortue Smiley Konsol  
 PROGLET = $(lastword $(PROGLETS))
 
 test : build
-#	java proglet.Proglet $(PROGLET)
+	java proglet.Proglet $(PROGLET)
 #	appletviewer applet$(PROGLET).html 
 	firefox index.html
 

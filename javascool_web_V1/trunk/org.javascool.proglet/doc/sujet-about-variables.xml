@@ -10,7 +10,7 @@
       <code>
         <p><r>void main</r>() {</p>
         <p><t/><r>println</r>(<s>Bonjour, quel est ton nom ?</s>);</p>
-        <p><t/><r>String</r> whoisit = <r>readString()</r>;</p>
+        <p><t/><r>String</r> whoisit = <r>readString</r>();</p>
         <p><t/><r>println</r>(<s>Enchanté </s> + whoisit + <s>, et . . à bientôt !</s>);</p>
         <p>}</p>
       </code>
@@ -24,11 +24,12 @@
           mais nous aurions pu choisir un autre nom simple.</li>
           <li>La <i>valeur</i> de cette variable est une chaîne de caractères, on parle de <r>String</r> en anglais et . . en <javascool/>.</li>
           <li>La fonction <r>readString()</r> lit un <r>String</r>.</li>
-        </ul> La ligne <b><r>String</r> whoisit = <r>readString()</r>;</b> signifie donc, de droite à gauche, <ol>
+        </ul> La ligne <b><r>String</r> whoisit = <r>readString</r>();</b> signifie donc, de droite à gauche, <ol>
           <li><b><r>readString()</r>;</b> Lire une chaine de caratère . . </li>
           <li><b>whoisit = <r>readString()</r>;</b> Et mettre le résultat dans la variable de nom <b>whoisit</b> . . </li>
           <li><b><r>String</r> whoisit = <r>readString()</r>;</b> Cette variable étant de type <r>String</r>, une chaine de caratères donc.</li>
-        </ol></li>
+        </ol>On voit donc ici que le symbole <b>=</b> signifie <i>affecter une valeur à une variable</i> 
+        (ici affecter la valeur lue grâce à <r>readString</r> à la variable <b>whoisit</b>.</li>
         <li>La dernière ligne met bout à bout <s>Enchanté </s>, <b>whoisit</b> (dont la valeur est le nom entré par l'utilisateur) et <s>, et . . à bientôt !</s> pour imprimer un message de salutation où le nom de l'utilisateur est employé.</li>
       </ul>
     </note>
@@ -98,10 +99,10 @@
     <p title="Comment garder une trace du travail réalisé"> Sauver le texte source du programme dans un fichier d'extension <c>.jvs</c>, 
     par exemple <c>Var1.jvs</c>, puis <c>Var2.jvs</c> pour la version suivante, etc.. De cette façon chaque version du travail peut-être gardée, corrigée, etc..
     De plus, on peut facilement ajouter des <i>lignes de commentaires</i> qui permettent de sauvegarder les réponses aux questions posées. 
-    Ce sont des lignes qui commencent par <b>//</b> et sont donc de la forme
+    Ce sont des lignes qui commencent par <c>//</c> et sont donc de la forme
     <code>
-      <p>// Voici deux lignes de commentaire ignorée par l'ordinateur . .</p>
-      <p>// et qui permettent de donner des informations aux humains qui lisent ce code !</p>
+      <m>Voici deux lignes de commentaire ignorée par l'ordinateur . .</m>
+      <m> . . et qui permettent de donner des informations aux humains qui lisent ce code !</m>
     </code></p>
   </footnotes>
 </sujet>

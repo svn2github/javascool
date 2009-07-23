@@ -25,7 +25,7 @@ import java.awt.event.ActionListener;
  * import static Konsol.readString;
  * import static Konsol.readInt;
  * import static Konsol.readDouble;
- * import static Konsol.rint;
+ * import static Konsol.readBoolean;
  * </pre>
  */
 public class Konsol {
@@ -54,11 +54,11 @@ public class Konsol {
     private JTextArea out; private JScrollPane pane;
 
     /** Read a string.
-     * @param retry Set to true in retry mode, after a wrong input.
+     * @param what Define the prompt symbol. Default is "input>"
      * @return The read string.
      */
-    public String readString(boolean retry) {
-      prompt.setText(retry ? "!error!" : "input>"); in.setText(retry ? in.getText() : ""); in.setEditable(true); 
+    public String readString(String what) {
+      prompt.setText(what == null ? "input>" : what); in.setText(what == null || !what.startsWith("!") ? "" : in.getText()); in.setEditable(true); 
       input = null; while(input == null) Thread.yield(); 
       prompt.setText("input>"); in.setEditable(false); return input;
     }
@@ -73,8 +73,10 @@ public class Konsol {
   static void test() {
     println("Bonjour, qui est tu ?");
     String nom = readString();
-    println ("Echanté "+nom+" ! Quel age as tu ?");
+    println("Echanté "+nom+" ! Quel age as tu ?");
     int age = readInt();
+    println("Okayyyy ?");
+    boolean r = readBoolean();
     for(int n = 0; n < 100; n++)
       println("He je suis plus vieux que toi !!");
   }
@@ -94,7 +96,7 @@ public class Konsol {
    * @return La chaîne lue.
    */
   public static String readString() {
-    return panel.readString(false);
+    return panel.readString(null);
   }
   
   /** Lit un nombre entier dans la fenêtre d'entrée (input).
@@ -103,7 +105,7 @@ public class Konsol {
   public static int readInt() {
     for(boolean retry = false; true; retry = true) {
       try {
-	return Integer.parseInt(panel.readString(retry));
+	return Integer.parseInt(panel.readString(retry ? "!error!" : null));
       } catch(Exception e) { }
     }
   }
@@ -114,17 +116,20 @@ public class Konsol {
   public static double readDouble() {
     for(boolean retry = false; true; retry = true) {
       try {
-	return Double.parseDouble(panel.readString(retry));
+	return Double.parseDouble(panel.readString(retry ? "!error!" : null));
       } catch(Exception e) { }
     }
   }
 
-  /** Retourne l'entier le plus proche du double.
-   * @param value La valeur à arrondir.
-   * @return La valeur entière la plus proche de la valeur à arrondir.
+  /** Lit une valeur booléenne (input).
+   * @return La valeur booléenne lue.
    */
-  public static double rint(double value) {
-    return (int) Math.rint(value);
+  public static boolean readBoolean() {
+    for(boolean retry = false; true; retry = true) {
+      String r = panel.readString(retry ? "! Vrai/Faux ?" : "Vrai/Faux ?").trim().toLowerCase().substring(0, 1);
+      if (r.equals("v")) return true;
+      if (r.equals("f")) return false;
+    }
   }
 
   public static final Panel panel = new Panel();
