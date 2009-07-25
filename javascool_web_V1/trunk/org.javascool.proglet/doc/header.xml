@@ -1,11 +1,11 @@
 <ul>
   <li>Les tutoriels<ul>
-    <li>Les ingrédients des algorithmes<ul>
-      <li>S'initier à l'outil et son <a href="doc/sujet-hello-world.htm">interface</a></li>
-      <li>Apprendre à se servir de <a href="doc/sujet-about-variables.htm">variables</a></li>
-      <li>Découvrir l'instruction <a href="doc/sujet-about-if.htm">conditionnelle</a></li>
-      <li>Se familiariser avec les <a href="doc/sujet-about-functions.htm">fonctions</a></li>
-      <li>Utiliser des <a href="doc/sujet-about-while.htm">boucles</a></li>
+    <li>Les cinq ingrédients des algorithmes<ul>
+      <li>S'initier à l'outil et son <a href="doc/sujet-hello-world.htm">interface</a> voir les séquences d'instructions.</li>
+      <li>Apprendre à se servir de <a href="doc/sujet-about-variables.htm">variables</a>.</li>
+      <li>Découvrir l'instruction <a href="doc/sujet-about-if.htm">conditionnelle</a>.</li>
+      <li>Se familiariser avec les <a href="doc/sujet-about-functions.htm">fonctions</a>.</li>
+      <li>Utiliser des <a href="doc/sujet-about-while.htm">boucles</a>.</li>
     </ul></li>
     <li>Quelques applications amusantes:<ul>
       <li>Une <a href="doc/sujet-appli-imc.htm">calculette de son indice de masse corporelle</a></li>
