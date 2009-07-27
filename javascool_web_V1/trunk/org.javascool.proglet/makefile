@@ -27,13 +27,13 @@ doc : index.html $(patsubst %.xml,%.htm,$(wildcard doc/about-*.xml doc/sujet-*.x
 XML2XML = /usr/java/jdk1.5.0_13/bin/java -classpath /usr/java/saxon6-5-5/saxon.jar com.icl.saxon.StyleSheet
 
 doc/about-%.htm : doc/about-%.xml
-	(echo '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>[<a href="../index.html"><img src="../img/home.png"/></a>]<hr/>' ; cat $^ ; echo '</body></html>') > $@
+	(echo '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="img/style.css"/></head><body><div id="banner"><img src="img/help_banner.jpg" alt="Help banner"/></div>[<a href="../index.html"><img src="../img/home.png"/></a>]<hr/>' ; cat $^ ; echo '</body></html>') > $@
 
 doc/sujet-%.htm : doc/sujet-%.xml
-	$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_sujet.xsl
+	$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_sujet2.xsl
 
 doc/correction-%.htm : doc/correction-%.xml
-	$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_correction.xsl
+	$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_correction2.xsl
 
 doc/img/% : ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/%
 	cp $^ $@

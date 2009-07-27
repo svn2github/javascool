@@ -9,13 +9,14 @@
      <r></r> : reserved words
      <s></s> : strings
      <h></h> : hightlighted words
+     <m></m> : to define a comment ligne
      <p></p> : to define a ligne
      <t/>    : tabulation
-     <c></c> : piece of code (outtside the code tag)
+     <c></c> : piece of code (outside the code tag)
 -->
 
 <xsl:template match="code">
-  <table border="1" align="center"><tr><th align="left">
+  <table border="1" align="center" width="80%"><tr><th align="left">
   <xsl:apply-templates/>
   </th></tr></table>
 </xsl:template>
@@ -36,13 +37,17 @@
   &#160;&#160;&#160;
 </xsl:template>
 
+<xsl:template match="m">
+  <p><tt><big><font color="#808080">//</font></big></tt>&#160;<xsl:apply-templates/></p>
+</xsl:template>
+
 <xsl:template match="c">
   <tt><xsl:apply-templates/></tt>
 </xsl:template>
 
 <!-- All other allowed tags are mirrored in the output -->
 
-<xsl:template match="p|ul|ol|li|i|b|br|a|img"><xsl:text>
+<xsl:template match="p|ul|ol|li|table|tr|td|i|b|br|a|img"><xsl:text>
 </xsl:text>
 <xsl:element name="{name(.)}">
   <xsl:for-each select="@*"><xsl:if test="name(.) != 'class' and name(.) != 'style'"><xsl:attribute name="{name(.)}"><xsl:value-of select="."/></xsl:attribute></xsl:if></xsl:for-each>

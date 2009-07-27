@@ -1,4 +1,12 @@
 <ul>
+  <li>A propos de cette démarche<ul>
+    <li>En guise de <a href="doc/about-manifeste.htm">manifeste</a>.</li>
+    <li>Quelques éléments sur <a href="doc/about-prg2nd.htm">l'enseignement</a> de l'informatique au lycée en seconde.</li>
+  </ul></li>
+  <li>Deux textes sur les fondements de l'informatique<ul>
+    <li>Qu'est ce que l'<a href="doc/about-information.htm">information</a> ?</li>
+    <li>Les ingrédients des <a href="doc/about-algoritm.htm">algorithmes</a> ?</li>
+  </ul></li>
   <li>Les tutoriels<ul>
     <li>Les cinq ingrédients des algorithmes<ul>
       <li>S'initier à l'outil et son <a href="doc/sujet-hello-world.htm">interface</a> voir les séquences d'instructions.</li>

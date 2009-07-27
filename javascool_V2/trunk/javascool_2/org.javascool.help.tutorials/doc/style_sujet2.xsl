@@ -32,7 +32,7 @@
   <div class="soustitre"><p>Objectif : </p></div>	
   <br/>
   <div id="objectif">
-    <div align="center"><xsl:apply-templates/></div>
+    <table align="center" width="80%"><tr><td align="left"><xsl:apply-templates/></td></tr></table>
   </div>
   <br/>	
 </xsl:template>
