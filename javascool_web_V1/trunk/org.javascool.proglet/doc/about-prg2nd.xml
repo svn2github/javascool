@@ -1,0 +1,70 @@
+<div><h1>A propos de l'enseignement de l'informatique au lycée</h1>
+
+  <p>Il faut être clair: dans l'ère numérique dans laquelle nous vivons, les fondements de l'informatique constituent un savoir indispensable comme peut l'être la lecture ou l'écriture, et tôt ou tard (et plutôt <i><a href="about-manifeste.htm">tantôt que trop tard</a></i> !), c'est une discipline à part entière qu'il faut pouvoir enseigner à nos jeunes, probablement en trois étapes: <ol>
+  <li>[primaire-collège] Apprentissage de <i>l'usage des outils</i>: apprendre à utiliser les outils: édition, communication, (et un clavier !), .. profiter des ressources de l'internet, etc..</li>
+  <li>[collège-lycée] Apprentissage des méthodes par la pratique expérimentale: c'est à dire ici apprentissage des algorithmes et de la programmation. <ul>
+    <li>Il est indispensable d'apprendre l' « algorithmique » (et les fondements théoriques qui y conduisent), c'est le levier pour pouvoir comprendre et maîtriser, voir adapter les logiciels et pas uniquement les subir.</li>
+    <li>Il est impossible de s'approprier ce savoir sans une vraie pratique, une démarche expérimentale, il faut donc incarner cette algorithmique en faisant de la programmation.</li>
+  </ul></li>
+  <li>[fin de lycée-et au delà] commence la formation scientifiquedans le domaine: par exemple la théorie de l'information, de la compilation, traitement des données, etc..</li>
+ </ol> Sans oublier, à tout niveaux le développement de la réflexion et de la culture: comprendre d'où vient l'informatique, que change t'elle dans la société, etc..
+</p>
+
+<p>Dans cette situation encore transitoire, l'usage des outils commence à être enseigné de manière structurée et systématique à travers les <a href="">B2I</a> et, à plus haut niveau, <a href="">C2I</a>. Mais l'enseignement des fondements de l'informatique, c'est à dire, pour ce qui est du lycée: l'apprentissage des méthodes par la pratique expérimentale, reste encore très parcelaire et se retrouve à ce jour incluse dans deux matières, comme détaillé ici.</p>
+
+
+<p><h2>Informatique et programmation dans l'option Mesure Physique et Informatique (MPI) en sciences physique</h2>
+
+</p>
+
+<p><h2>Algorithmique et programmation en mathématiques (depuis la rentrée 2009)</h2>
+
+<p><h4>Objectifs pour le lycée.</h4>
+
+  <p>La démarche algorithmique est, depuis les origines, une composante essentielle de l’activité mathématique. Au collège, les élèves ont rencontré des algorithmes (algorithmes opératoires, algorithme des différences, algorithme d’Euclide, algorithmes de construction en géométrie). Ce qui est proposé dans le programme est une formalisation en langage naturel propre à donner lieu à traduction sur une calculatrice ou à l’aide d’un logiciel. Il s’agit de familiariser les élèves avec les grands principes d’organisation d’un algorithme : gestion des entrées-sorties, affectation d’une valeur et mise en forme d’un calcul, en opérant essentiellement sur des nombres entiers.</p>
+
+  <p>Dans le cadre de cette activité algorithmique, les élèves sont entraînés :<ul>
+    <li>à décrire certains algorithmes en langage naturel ou dans un langage symbolique ;</li>
+    <li>à en réaliser quelques uns à l’aide d’un tableur ou d’un petit programme réalisé sur une calculatrice ou avec un logiciel adapté ;</li>
+    <li>à interpréter des algorithmes plus complexes.</li>
+  </ul></p>
+
+  <p>Aucun langage, aucun logiciel n’est imposé.</p>
+
+  <p>L’algorithmique a une place naturelle dans tous les champs des mathématiques et les problèmes posés doivent être en relation avec les autres parties du programme (fonctions, géométrie, statistiques et probabilité, logique) mais aussi avec les autres disciplines ou la vie courante.</p>
+
+  <p>À l’occasion de l’écriture d’algorithmes et de petits programmes, il convient de donner aux élèves de bonnes habitudes de rigueur et de les entraîner aux pratiques systématiques de vérification et de contrôle.</p>
+
+</p>
+
+<p><h3>Contenu du programme</h3><ul>
+
+  <li><h4>Instructions élémentaires (affectation, calcul, entrée, sortie).</h4> Les élèves, dans le cadre d’une résolution de problèmes, doivent être capables :<ul>
+    <li>d’écrire une formule permettant un calcul ;</li>
+    <li>d’écrire un programme calculant et donnant la valeur d’une fonction ;</li>
+  </ul>ainsi que les instructions d’entrées et sorties nécessaires au traitement.</li>
+
+  <li><h4>Boucle et itérateur, instruction conditionnelle</h4> Les élèves, dans le cadre d’une résolution de problèmes, doivent être capables :<ul>
+    <li>de programmer un calcul itératif, le nombre d’itérations étant donné ;</li>
+    <li>de programmer une instruction conditionnelle, un calcul itératif, avec une fin de boucle conditionnelle.</li>
+  </ul></li>
+
+</ul></p>
+
+<p><h3>Présence d'exemples de mise en œuvre de l'algorithmique dans chacune des trois parties du programme.</h3><ul>
+
+  <li><h4>[Etude des] Fonctions</h4> Même si les logiciels traceurs de courbes permettent d’obtenir rapidement la représentation graphique d’une fonction définie par une formule algébrique, il est intéressant, notamment pour les fonctions définies par morceaux, de faire écrire aux élèves un algorithme de tracé de courbe.</li>
+
+  <li><h4>[En] Géométrie</h4> Le cadre de la géométrie repérée offre la possibilité de traduire numériquement des propriétés géométriques et permet de résoudre certains problèmes par la mise en oeuvre d’algorithmes simples.</li>
+
+  <li><h4>Statistiques et probabilités</h4><ul>
+    <li>Utiliser un logiciel (par exemple, un tableur) ou une calculatrice pour étudier une série statistique (moyenne, dispersion).</li>
+    <li>À l’occasion de la mise en place d’une simulation, on peut : utiliser les fonctions logiques d’un tableur ou d’une calculatrice, mettre en place des instructions conditionnelles dans un algorithme.</li>
+    <li>La répétition d’expériences aléatoires peut donner lieu à l’écriture d’algorithmes (marches aléatoires).</li>
+  </ul></li>
+
+</ul></p>
+
+</p>
+
+</div>
