@@ -6,6 +6,7 @@ test : build
 	java proglet.Proglet $(PROGLET)
 #	appletviewer applet$(PROGLET).html 
 	firefox index.html
+	firefox http://interstices.info/jcms/c_45621/gamletlycee?preview=true
 
 build :
 	echo 'javac ..' ; javac src/*.java 
