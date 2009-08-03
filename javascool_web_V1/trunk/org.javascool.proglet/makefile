@@ -1,4 +1,14 @@
 
+EJARS=/home/vthierry/doc/pres/JavasCool/plugins
+ECP=$(shell echo '$(wildcard $(EJARS)/*.jar)' | sed 's/ /:/g'):../../../javascool_V2/trunk/javascool_2/org.javascool.core/src:.
+
+tst2 : build
+	javac -classpath $(ECP) Test.java 
+	java -classpath $(ECP) Test
+
+#####################################################################################################################################
+
+
 PROGLETS = Dicho Scope Tortue Smiley Konsol  
 PROGLET = $(lastword $(PROGLETS))
 
@@ -18,7 +28,7 @@ publish : build
 	firefox http://www.loria.fr/~vthierry/proglet/index.html
 
 clean :
-	rm -rf *~ proglet api doc/*.htm *.html
+	rm -rf *~ proglet api doc/*.htm *.html *.class
 
 #
 
@@ -54,3 +64,4 @@ applet%.html : makefile
 run :
 	rm -f work/*.class
 	firefox http://interstices.info/jcms/c_45621/gamletlycee?preview=true
+
