@@ -9,13 +9,13 @@ test : build
 	firefox http://interstices.info/jcms/c_45621/gamletlycee?preview=true
 
 build :
-	echo 'javac ..' ; javac src/*.java 
-	echo 'jadoc ..' ; javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d api src/*.java
-	echo 'index ..' ; mkdir -p proglet ; mv src/*.class proglet ; $(MAKE) doc index.html 
+	echo 'javac ..' ; javac src0/*.java 
+	echo 'jadoc ..' ; javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d api src0/*.java
+	echo 'index ..' ; mkdir -p proglet ; mv src0/*.class proglet ; $(MAKE) doc index.html 
 
 publish : build
 	echo 'svnci ..' ; cd ../../.. ; svn up ; svn ci -m ''
-	echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude src ./* loria.loria.fr:/local/web-homepages/vthierry/proglet
+	echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude src0 ./* loria.loria.fr:/local/web-homepages/vthierry/proglet
 	firefox http://www.loria.fr/~vthierry/proglet/index.html
 
 clean :
