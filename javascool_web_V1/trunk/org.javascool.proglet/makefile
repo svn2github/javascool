@@ -48,16 +48,4 @@ index.html : doc/header.xml $(patsubst %,applet%.html,$(PROGLETS))
 applet%.html : makefile
 	echo '<html><body><applet code="proglet.Proglet$$Test.class" width="550" height="550"><param name="proglet" value="$*"/></applet></body></html>' > $@
 
-#
-# Run Hamdi classes
-#
-
-run : 
-	cd ../LyceeGamlet/src ; javac -nowarn -classpath /usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/lib/tools.jar -d ../bin */*.java
-	cd ../LyceeGamlet/bin ; java compiler.AppletFrame Konsol
-
-# -> cd ../LyceeGamlet/bin ; firefox test.html
-
-../LyceeGamlet/bin/test.html : makefile
-	echo '<html><body><applet code="compiler.InterfacePrincipale.class" width="800" height="600"><param name="proglet" value="$(PROGLET)"/></applet></body></html>' > $@
 
