@@ -6,7 +6,6 @@ test : build
 	java proglet.Proglet $(PROGLET)
 #	appletviewer applet$(PROGLET).html 
 	firefox index.html
-	firefox http://interstices.info/jcms/c_45621/gamletlycee?preview=true
 
 build :
 	echo 'javac ..' ; javac src0/*.java 
@@ -50,3 +49,8 @@ applet%.html : makefile
 	echo '<html><body><applet code="proglet.Proglet$$Test.class" width="550" height="550"><param name="proglet" value="$*"/></applet></body></html>' > $@
 
 
+# 
+
+run :
+	rm -f work/*.class
+	firefox http://interstices.info/jcms/c_45621/gamletlycee?preview=true
