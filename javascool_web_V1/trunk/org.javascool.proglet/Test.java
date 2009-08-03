@@ -6,14 +6,20 @@ import org.javascool.compilation.Compile;
 public class Test {
   public static void main(String[] args) {
     // Juste pour verifier que on est ok cote classpath
-    proglet.Proglet.sleep(1);
+    //proglet.Proglet.sleep(1);
 
     //TODO ici le chemin du fichier qu'on veut compiler
     String filePath = "/home/vthierry/Work/culsci/javascool/javascool_web_V1/trunk/org.javascool.proglet/work/Ctest.java";
 
     //TODO remplacer ici par le chemin vers les classpath
-    String pathClass = "/home/vthierry/Work/culsci/javascool/javascool_web_V1/trunk/org.javascool.proglet";
-
+    //OK is classes generees en local: 		String pathClass = "/home/vthierry/Work/culsci/javascool/javascool_web_V1/trunk/org.javascool.proglet:.";
+    //KK: meme si y a les classes compilees: 	String pathClass = ".:.";
+    //KK bien que vachement sans mot de passe: 	String pathClass = "http://www.loria.fr/~vthierry/testJavaWeb26.jar:.";
+    //KK : 					String pathClass = "http://interstices.info/upload/hamdi/testJavaWeb26.jar:.";
+    //OK: 					String pathClass = "./testJavaWeb26.jar:.";
+    //KK: il veut vraiment le ":." !!!!		String pathClass = "./testJavaWeb26.jar";
+    //AH QUE ON VOUDRAIT CCCCAAAAA  !!!
+    String pathClass = "http://interstices.info/upload/hamdi/testJavaWeb26.jar:.";
     /*
     try { 
       //initialisation des macros par rapport au fichier de configuration	

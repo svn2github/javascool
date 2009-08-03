@@ -65,3 +65,6 @@ run :
 	rm -f work/*.class
 	firefox http://interstices.info/jcms/c_45621/gamletlycee?preview=true
 
+
+jar : 
+	wget http://interstices.info/upload/hamdi/testJavaWeb26.jar
