@@ -1,6 +1,6 @@
 all :
 	$(MAKE) -C .. doc
-	firefox .
+	firefox ../index.html
 
 clean :
 	$(MAKE) -C .. clean

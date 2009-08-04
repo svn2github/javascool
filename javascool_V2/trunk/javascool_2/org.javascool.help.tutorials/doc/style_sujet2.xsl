@@ -62,15 +62,4 @@
   <li><b><xsl:value-of select="@title"/> </b>: <xsl:apply-templates/><br/></li>
 </xsl:template>
   
-<xsl:template match="footnotes">
-  <div class="soustitre"><p>Remarques :</p></div>
-  <div id="footnotes"><xsl:for-each select="*">
-  <p id="{position()}"><sup><xsl:value-of select="position()"/></sup> <b><i><xsl:value-of select="@title"/></i></b> <xsl:apply-templates/></p>
-  </xsl:for-each></div>
-</xsl:template>
-	
-<xsl:template match="footnote">
-  <sup><a href="{concat('#',@id)}"><xsl:value-of select="@id"/></a></sup>
-</xsl:template>
-
 </xsl:stylesheet>

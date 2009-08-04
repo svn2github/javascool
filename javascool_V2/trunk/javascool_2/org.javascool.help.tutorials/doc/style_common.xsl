@@ -5,6 +5,17 @@
   <tt>Java'sCool</tt>
 </xsl:template>
 
+<xsl:template match="footnotes">
+  <div class="soustitre"><p>Remarques :</p></div>
+  <div id="footnotes"><xsl:for-each select="*">
+  <p id="{position()}"><sup><xsl:value-of select="position()"/></sup> <b><i><xsl:value-of select="@title"/></i></b> <xsl:apply-templates/></p>
+  </xsl:for-each></div>
+</xsl:template>
+	
+<xsl:template match="footnote">
+  <sup><a href="{concat('#',@id)}"><xsl:value-of select="@id"/></a></sup>
+</xsl:template>
+
 <!-- These tags allows to show pieces of code: 
      <r></r> : reserved words
      <s></s> : strings
@@ -47,7 +58,7 @@
 
 <!-- All other allowed tags are mirrored in the output -->
 
-<xsl:template match="p|ul|ol|li|table|tr|td|i|b|br|a|img"><xsl:text>
+<xsl:template match="p|ul|ol|li|table|tr|td|span|sup|i|b|br|a|img"><xsl:text>
 </xsl:text>
 <xsl:element name="{name(.)}">
   <xsl:for-each select="@*"><xsl:if test="name(.) != 'class' and name(.) != 'style'"><xsl:attribute name="{name(.)}"><xsl:value-of select="."/></xsl:attribute></xsl:if></xsl:for-each>

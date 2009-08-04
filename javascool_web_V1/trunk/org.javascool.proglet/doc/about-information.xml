@@ -1,0 +1,322 @@
+<p title = "Tout a un reflet numérique">
+ 
+<p title="Qu'est-ce que l'information ?">
+
+  <p>A chaque instant, notre cerveau capte, enregistre, et traite des informations. 
+  Ainsi pouvons nous regarder, mémoriser, analyser et puis retranscrire une image, un texte ou un son.
+  Mais qu'en est-il pour une machine, c'est dire avec une intelligence mécanique ?</p>
+
+  <p title="L'information et son reflet"> Prenons l'exemple d'une calculette électronique: quand nous disons qu'elle ``calcule´´, 
+  ses circuits s'ouvrent et se ferment mais le fait que cela <i>prenne le sens d'un calcul</i> est le fait de l'humain qui utilise cette calculette,
+  la machine ne ``comprend´´ évidemment pas les calcul qui s'exécutent grâce aux propriétés électriques des circuits:
+  La calculette ne possède que le <i>reflet</i> électronique du calcul.</p>
+  
+  <p title="Information, hasard et complexité"> Regardons cette suite de chiffres:
+    <p align="center">14159 26535 89793 23846 26433 83279 50288 41971</p>
+    il y a sûrement plus d'informations dans cette suite de nombre que dans la suite:
+      <p align="center">00000 00000 00000 00000 00000 00000 00000 00000</p>
+      qui est bêtement une suite de zéro. Ah oui mais en quoi la première suite de nombre est elle plus complexe? <ul>
+      <li>Est-elle juste aléatoire, chaotique, bref sans ordre ni régularité ?</li>
+      <li>Ou bien organisée, fortement structurée, riche en information ``utile´´ ?</li>
+    </ul>en fait si nous regardons bien le début de cette suite, nous reconnaissons les premières décimales de <c><a href="http://fr.wikipedia.org/wiki/Pi">π</a></c>, 
+    peut-être le nombre le plus célèbre de toute l'histoire des mathématiques: autant dire que son information est très utile . . enfin pour les géomètres et les mathématiciens !
+    En tout cas, il est bien compliqué de retenir les chiffres de la première suite (peut-être même le mieux est il de les apprendre par coeur), 
+    mais dans le deuxième cas, il suffit de retenir ``voilà 8 x 4 zéros´´. 
+    Cet exemple<footnote id="1"/> est très instructif car il nous montre que nous devons bien distinguer: <ul>
+      <li>Le contenu <i>brut</i> en information qui ne dépend pas du sens.</li>
+      <li>La <i>valeur</i> d’une information dépend du but fixé.</li>
+  </ul></p>
+
+  <p title="Fabriquer un reflet numérique à tous les objets réels"> Commençons par la première étape: la façon dont on introduit l'information dans une machine, dont on la code pour pouvoir ensuite la manipuler. Nous allons commencer par regarder en détail un exemple: comment coder un dessin, puis découvrirons que la méthode peut-être aussi appliquée à une image, un texte, un son, des nombres, et que finalement . . on peut convenir d'un codage pour toutes les informations ! Les codages que nous allons décrire ici sont des <i>codages binaires</i> et nous expliquerons pourquoi et verrons en particulier comment se <i>mesure l'information</i>, ``presque´´ comme toute autre quantité.</p>
+
+  Une très intéressante introduction au sujet traité ici est <a href="http://interstices.info/nom-de-code-binaire">disponible</a> sur <a href="http://interstices.info">)i(nterstices</a>.
+
+  </p>
+
+<p title="Décrire tous les dessins du monde"> 
+
+  <p title="Décrire avec des définitions structurées"> Comment faire pour décrire un dessin ? Par exemple, comment décrire le dessin suivant ?
+    <p align="center"><img src="img/algo-1.jpg"/></p>
+  Une solution est de dire : « Cette image est formée d'un cercle ». 
+  Nous pouvons même être plus précis et indiquer les coordonnées du centre du cercle, son rayon, sa couleur, l'épaisseur du trait, ... 
+  Et à partir de cette description, n'importe qui pourrait reconstituer le dessin.<br/>
+  Cette méthode marche bien pour ce dessin-ci, et nous en parlerons dans un chapitre suivant. Mais tout décrire avec des mots serait bien moins pratique pour le dessin suivant:
+    <p align="center"><img src="img/algo-2.jpg"/></p>
+  car comment décrire en détail facilement ces traits ou pire un dessin ``réel´´ ?</p>
+
+  <p title="Décrire avec des nombres binaires"> Une autre méthode, qui a l'avantage de pouvoir être utilisée pour n'importe quel dessin, 
+  consiste à superposer un quadrillage au tracé:
+    <p align="center"><img src="img/algo-3.jpg"/></p>
+  Chacune des cases de ce quadrillage s'appelle un pixel. On noircit ensuite les pixels qui contiennent un bout de trait :
+    <p align="center"><img src="img/algo-4.jpg"/></p>
+  Puis, il nous suffit d'indiquer la couleur de chacun des pixels, en les lisant de gauche à droite et de haut en bas comme un texte. 
+  Ici cela donne: 
+    <c>blanc, noir, noir, noir, blanc, noir, noir, blanc, noir, noir, noir, blanc, blanc, blanc, noir, noir, noir , blanc, noir, noir, blanc, noir, noir, noir, blanc</c>.<br/>
+  Bien entendu, cette description est un peu approximative et il y a une grande différence entre ces deux images:
+    <p align="center"><img src="img/algo-5.1.jpg" width="300"/> <img src="img/algo-5.2.jpg" width="300"/></p>
+  Mais, nous pouvons la rendre plus précise en utilisant un quadrillage, non de <c>cinq x cinq</c>, mais de <c>cent x cent</c> pixels:
+    <p align="center"><img src="img/algo-6.1.jpg" width="300"/> <img src="img/algo-6.2.jpg" width="300"/></p>
+  Et à partir de quelques millions de pixels, nous ne serions plus capables de faire la différence entre les deux images. 
+  La méthode est donc approximative mais universelle: un dessin même très compliqué se décrit exactement comment un dessin simple.</p>
+
+  <p> Ce dessin se décrit donc par une suite de mots « blanc » ou  « noir ». 
+  Comme seuls les  mots « noir », ou « blanc » sont utilisés, nous pouvons être plus économes et remplacer chacun de ces mots par une seule lettre, 
+  par exemple le mot « noir » par la lettre « n » ou le chiffre « 0 » et le mot « blanc » par la lettre « b » ou le chiffre « 1 ». 
+  Le dessin ci-dessus se décrit alors par la suite de 25 lettres ou de 25 chiffres:
+    <p align="center"><c>1000100100011100010010001</c></p>
+    et voilà une représentation bien compacte de notre dessin.<br/>
+    Toutes ces descriptions sont équivalentes : l'image se décrit toujours par une suite de symboles choisis parmi deux. 
+    Le nom de ces deux symboles importe peu, et nous pourrions les appeler noir et blanc, a et b, 0 et 1, pile et face, - et +, dupond et dupont, ... 
+    et cela ne changerait pas grand-chose. En général, on choisit 0 et 1. 
+    Ces symboles s'appellent les chiffres binaires ou bits (abréviation de binary digits, « chiffres binaires », en anglais). 
+    Une suite de 0 et de 1 s'appelle une suite binaire, ou parfois un mot binaire. 
+  Notre dessin se décrit ainsi avec 25 chiffres binaires, ou encore 25 bits pour indiquer que sa longueur est 25.</p>
+
+  <p title="Le point clé: convenir d'un standard pour tou(te)s"> Bien entendu il faut que nous soyons tous d'accord pour décrire tous les dessins de la même façon ! 
+   Décider que le noir est représenté par 0 et le blanc par 1 et que les pixels se lisent de gauche à droite et de bas en haut. 
+  Il faut se mettre d'accord sur un standard. Le codage de l'information est avant tout une affaire de . . convention.</p>
+
+    Regardons alors comment nous pourrions convenir de représenter d'autres objets.
+ </p>
+
+ <p title="Décrire numériquement des objets">
+
+  <p title="Du dessin aux images">Si nous voulons maintenant décrire une image en couleur, 
+  par exemple une image dans laquelle chaque pixel peut être blanc, rouge, vert ou bleu, 
+  une première méthode consiste à la décrire par suite une dont chaque élément est l'un de quatre mots « noir », « rouge », « vert », « bleu ». Par exemple, l'image 
+    <p align="center"><img src="img/algo-7.jpg"/></p>
+  se décrit par la suite : 
+    <c>noir, rouge, noir, rouge, noir, noir, rouge, noir, rouge, noir, bleu, noir, bleu, noir, vert, bleu, bleu , noir, bleu, vert, bleu, bleu, vert, vert, vert</c>.<br/>
+  Comme pour les images en noir et blanc, on peut être plus économe et décrire chaque couleur par une seule lettre ou un seul chiffre. 
+  Par exemple, en utilisant la correspondance:
+    <p align="center"><table border="1">
+      <tr><td><c>n</c></td><td>noir</td></tr>
+      <tr><td><c>r</c></td><td>rouge</td></tr>
+      <tr><td><c>v</c></td><td>vert</td></tr>
+      <tr><td><c>b</c></td><td>bleu</td></tr>
+    </table></p>
+  cette image se décrit par la suite 
+   <p align="center"><c>nrnrnnrnrnbnbnvbbnbvbbvvv</c></p>
+  à condition, bien entendu, que qui code et qui décode cette image sont suivre parfaitement le standard proposé ici.
+   <br/>
+  Cette méthode utilise quatre symboles différents. 
+  Il est possible aussi de décrire cette image par une suite binaire, c'est-à-dire dans laquelle on utilise deux symboles différents et non quatre. 
+  Comme il y a plus de deux couleurs, il est impossible de décrire chaque couleur par un chiffre binaire : un « 0 » ou « 1 ». 
+  En revanche, on peut décrire chaque couleur par une suite de deux bits. Par exemple:
+    <p align="center"><table border="1">
+      <tr><td><c>'00'</c></td><td>noir</td></tr>
+      <tr><td><c>'01'</c></td><td>rouge</td></tr>
+      <tr><td><c>'10'</c></td><td>vert</td></tr>
+      <tr><td><c>'11'</c></td><td>bleu</td></tr>
+    </table></p>
+  L'image ci-dessus se décrit alors par la suite
+    <p align="center"><c>00 10 00 10 00 00 10 00 10 00 01 00 01 00 11 01 01 00 01 11 01 01 11 11</c></p>
+    donc 25 x2 = 25 bits. Les espaces entre chaque couple de valeur binaires sont inutiles, sauf pour . . vous en faciliter la lecture !
+    <br/>
+  Une fois choisis le nombre de pixels de l'image (ici 5 x 5, en réalité quelques millions) et le nombre de bits sur lequel on représente la couleur de chaque pixel 
+    (ici 2 bits, en réalité  de 8 à 32 bits, selon la palette des couleurs) toutes les images se représentent par une suite binaire de la même longueur : 
+    cette longueur s'obtient simplement en multipliant le nombre de pixels de l'image par le nombre de bits utilisés pour décrire la couleur d'un pixel. 
+    C'est ainsi que se décrivent les  « vraies » images dans les ordinateurs et les autres machines numériques.
+  </p>
+
+  <p title="Décrire des textes par des suites binaires">
+    Décrire un texte est a priori plus simple que décrire une image, puisqu'un texte est déjà une suite de symboles : c'est déjà une suite de lettres de l'alphabet. 
+    L'alphabet latin, que l'on utilise en français, contient 26 lettres. 
+    Mais, en réalité, quand on compte les majuscules et les minuscules, les lettres accentuées, les chiffres et les symboles de ponctuation, 
+    il contient plutôt une centaine de symboles. 
+    Et puis il faut aussi pouvoir décrire toutes les langues du monde. Par exemple, les 28 jolis symboles de l'alphabet arabe et ses symboles complémentaires, 
+    comme on les devine sur cette ancienne machine à écrire:
+      <p align="center"><img src="img/algo-8.jpg" width="300"/></p>
+    Ainsi la phrase   « tout se code en binaire » s'écrira «<span lang="ar-SA">كل شيء في ثنائي الكود</span>» (qui se lit de droite à gauche) et se codera, par exemple:
+      <p align="center"><c>1011 1100 <t/> 1001 1111 0000 <t/> 1010 1111 <t/> 0111 1101 0110 0101 1111 <t/> 0110 1100 1011 1110 1000</c></p>
+    en utilisant les codes binaires à 4 bits des 16 lettres suivantes:
+      <p align="center"><table border="1">
+       <tr><td><span lang="ar-SA">ء</span></td><td><c>0000</c></td></tr>
+       <tr><td><span lang="ar-SA">آ</span></td><td><c>0001</c></td></tr>
+       <tr><td><span lang="ar-SA">أ</span></td><td><c>0010</c></td></tr>
+       <tr><td><span lang="ar-SA">ؤ</span></td><td><c>0011</c></td></tr>
+       <tr><td><span lang="ar-SA">إ</span></td><td><c>0100</c></td></tr>
+       <tr><td><span lang="ar-SA">ئ</span></td><td><c>0101</c></td></tr>
+       <tr><td><span lang="ar-SA">ا</span></td><td><c>0110</c></td></tr>
+       <tr><td><span lang="ar-SA">ث</span></td><td><c>0111</c></td></tr>
+       <tr><td><span lang="ar-SA">د</span></td><td><c>1000</c></td></tr>
+       <tr><td><span lang="ar-SA">ش</span></td><td><c>1001</c></td></tr>
+       <tr><td><span lang="ar-SA">ف</span></td><td><c>1010</c></td></tr>
+       <tr><td><span lang="ar-SA">ك</span></td><td><c>1011</c></td></tr>
+       <tr><td><span lang="ar-SA">ل</span></td><td><c>1100</c></td></tr>
+       <tr><td><span lang="ar-SA">ن</span></td><td><c>1101</c></td></tr>
+       <tr><td><span lang="ar-SA">و</span></td><td><c>1110</c></td></tr>
+       <tr><td><span lang="ar-SA">ي</span></td><td><c>1111</c></td></tr>
+     </table></p>
+     où nous nous sommes amusé à inventer un code de seize lettres, juste pour cette présentation.<br/>
+   Cependant, là encore, pour partager les informations, il ne faut pas utiliser un code particulier comme celui-ci, mais un code standard, adopté par tous et qui représente 
+   tous les caractères de la langue utilisée.
+   Les caractères les plus courants, ceux que l'on tape au clavier, sont codés sur 8 bits, avec un code universel, 
+   dit <a href="http://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange">ASCII</a> étendu.  
+   Pour coder tous les textes du monde, c'est l'Unicode qui contient . . plus de 120 000 caractères, qui est utilisé. 
+   Ce code utilise le <a href="http://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange">code ASCII</a> et 
+   le complète en utilisant des codes complémentaires à 16 ou 24 bits.</p>
+
+   <p title="Décrire des nombres"> Le codage des valeurs numériques est de nature différente, car ce n'est pas un code arbitraire « standard », 
+   mais . . un choix issu de l'arithmétique. Découvrons le ensemble. <br/>
+   Pour les chiffres, les 10 premiers nombres, c'est facile, il faut quatre bits:
+     <p align="center"><img src="img/algo-n-1.jpg" width="300"/></p>
+   mais si vous regardez bien ce codage il est le résultat d'un calcul.
+     <p title="Du codage binaire au nombre entier positif">Voici comment retrouver un nombre à partir de son code binaire:
+     en ajoutant chaque bits multiplié par une puissance de deux comme ci dessous, on calcule exactement le nombre.
+       <p align="center"><img src="img/algo-n-2.jpg" width="300"/></p><ul>
+       <li>A la première ligne nous avons ajouté 1, 2, 4, .. de droite à gauche aux bits qui représentent 9.</li>
+       <li>A la seconde ligne nous nous sommes aperçu que 1, 2, 4, .. sont en fait les puissances de 2: <c>2<sup>0</sup>, 2<sup>1</sup>, 2<sup>2</sup></c>, ..</li>
+       <li>A la troisième ligne, nous réalisons qu'avec des parenthèses bien placée, il suffit de multiplier par deux puis d'additionner les bits de gauche à droite pour retrouver le nombre.</li>
+     </ul>Voilà donc un calcul, une méthode mécanique que l'on appelle algorithme, qui permet de passer du codage binaire au nombre dans sa représentation usuelle.</p>
+     <p title="Du nombre entier positif à son codage binaire"> A l'inverse il existe un calcul pour obtyenir le code binaire de n'importe quel nombre entier: 
+     Si nous notons 9 % 2 = 1 le reste de la division par 2 de 9 ou 4 % 2 = 0 le reste de la division de 4 par 2, etc.. alors le calcul inverse suivant:
+       <p align="center"><img src="img/algo-n-3.jpg" width="300"/></p>
+     où nous avons successivement calculé les reste de la division par deux puis divisé par deux nous a donné . . le codage binaire du nombre 9. 
+     Bien-sûr cela marche avec tous les nombres et nous pouvons facilement calculer combien de bits sont nécessaires pour les coder:
+       <p align="center"><img src="img/algo-n-4.jpg" width="300"/></p>
+     Nos ordinateurs utilisent aujourd'hui souvent 32 ou 64 bits pour coder les nombres entiers, ils peuvent donc coder directement des nombres très grands et 
+     si besoin était en utilisant plus de bits . . des nombres vertigineusement grands !
+    </p>     
+    <p title="Calculer directement sur les nombres binaires"> 
+      Nous pouvons donc représenter des nombres entiers positifs par la suite de bits de leur représentation binaire.
+      Nous verrons dans la suite que ce codage est très précieux car il permet de faire directement des opérations sur ces nombres. 
+      Par exemple ajouter deux entiers positifs, revient à ajouter leur représentation binaire: on obtient directement le codage binaire du résultat.  
+      De même pour toutes les autres opérations numériques, pour comparer ces entiers entre eux etc...
+      Souvenons nous que toutes les valeurs numériques sont non seulement stockées en binaire mais aussi <i>manipulées en binaire</i> dans l'ordinateur.</p>
+    <p title="Représenter des nombres entiers négatifs et positifs"> 
+      Comment représenter des nombres entiers soit positifs, soit négatifs ? Et bien choisissons de représenter le signe par un bit supplémentaire:
+      <p align="center"><table border="1">
+        <tr><td><c>'0'</c></td><td>+</td></tr>
+        <tr><td><c>'1'</c></td><td>-</td></tr>
+      </table></p>
+      Avec cet ajout, nous représentons la valeur absolue du nombre comme un entier positif et son signe avec ce bit en plus. 
+      Il est alors très facile de définir toutes les opérations numériques que nous connaissons en tenant compte de ce signe.</p>
+      <p title="Approximer les nombres décimaux">
+      Pour représenter les nombres réels, qui ont des décimaux tels que <c>3.1416 = 3146 10<sup>-4</sup></c> nous utilisons la « notation scientifique », 
+      et codons l'exposant (ici <c>-4</c>) et les décimales du nombre, sa mantisse (ici <c>3146</c>) sous forme de deux entiers, codés en binaire, et mis bout à bout. 
+      C'est de cette façon que sont codés les nombres dans nos calculatrices et les ordinateurs. 
+      Les calculs numériques se font alors directement sur les  nombres binaires et sont ensuite arrangés pour donner le résultat attendu.
+      Mais <i>attention</i>: les fractions comme <c>10/3 = 3.333333333 ...</c> ou 
+      les nombres réels comme <c><a href="http://fr.wikipedia.org/wiki/Pi">π</a> = 3.1415926535897932384626433832795028841971 ...</c>, ont une suite . . infinie de décimales !!
+      Celà veut dire que nous ne pouvons pas représenter leur valeur numérique mais uniquement une <i>approximation</i> de cette valeur: et <i>tous</i> les calculs que nous
+      ferons avec un ordinateur ne seront jamais ``juste´´ ! Ils ne seront jamais ``faux´´ non plus, il seront <i>approximatifs.</i>.</p>
+   </p>
+
+   <p title="Et puis toutes les informations humaines..">
+
+   <p title="Coder une mesure physique ?"> Par exemple la courbe de température de votre chambre au fil du jour ? 
+   Il suffit, par exemple, de coder le nombre qui correspond à chaque mesure de température à chaque heure et de les mettre bout à bout. . 
+     <p align="center"><img src="img/algo-9.jpg" width="300"/></p>
+   Ces 24 nombres vont donner une bonne approximation du chaud et froid et du fait que . .  votre chauffage est visiblement coupé la nuit . . . brrrr.</p>
+
+   <p title="Coder un son ?"> Le son est représenté par une courbe qui correspond aux vibrations de votre voix, des bruits ou des instruments. 
+   Coder un son revient à coder la suite des valeurs numériques qui correspondent à la courbe de l'intensité sonore. 
+   Bien sûr il faut beaucoup de valeurs: environ 10000 par seconde, pour bien approximer toutes les vibrations sonores. 
+   Il faut 16bits pour coder correctement chaque valeur. Alors pour coder une minute de son il faut:
+     <p align="center"><c>16 bits x 10000 valeurs/seconde x 60 secondes = presque 10 millions de bits</c></p>
+   C'est ce qui se passe dans les lecteurs MP3 par exemple, à une différence importante près. Le codage de son avec le standard MP3 est « astucieux »: 
+   si les valeurs se ressemblent alors au lieu de répéter bêtement les mêmes nombres ou presque, le codage les regroupent pour gagner de la place, 
+   c'est une approximation supplémentaire qui permet de compresser l'information et de gagner de la place mémoire et du temps lors de la communication.</p>
+
+   <p title="Coder un film ?"> Un film n'est jamais qu'une séquence d'image ! 
+   Alors il suffit de coder les images et de mettre ces suite de bits bout à bout. Sans oublier de coder aussi le son.
+   Là encore il y a des astuces pour regrouper les parties qui se ressemblent et gagner de la place et du temps. 
+   Mais le principe reste le même.</p>
+
+   <p title="Coder de la musique ?"> Il suffit de choisir un code binaire pour chaque note, sa hauteur (aigue ou grave) et sa durée, chaque instrument. 
+   Ensuite en mettant bout à bout ces codes, nous avons la séquences des notes . . c'est à dire la partition musicale. 
+   Ce codage existe, il est standard et se nomme <a href="http://fr.wikipedia.org/wiki/Musical_Instrument_Digital_Interface">MIDI (Musical Instrument Digital Interface)</a>.</p>
+
+
+   Nous verrons aussi plus loin comment coder aussi toutes les données de notre quotidien, nos agendas, nos carnet d'adresse, etc... 
+   Que découvrons ici ? La polyvalence des ordinateurs et des autres machines numériques : 
+   ils traitent des données très diverses mais toujours décrites de la même manière par des suites binaires à deux symboles.
+   Et d'ailleurs . . pourquoi utiliser exactement deux symboles ?
+
+ </p></p>
+
+  <p title="Pourquoi utiliser un codage binaire avec deux symboles ?">
+
+    <p title="Au moins deux !">Pouvons nous utiliser moins de deux symboles pour décrire les images, les textes ou les nombres ? 
+    Non, car, si nous avons un seul symbole, par exemple 0, un fois fixé le nombre de bits à 10, 100 ou 1 million, il n'y a qu'une seule suite de 10, 100 ou 1000000 symboles : 
+      <p align="center"><c>00000000000000000000000000 ..</c></p>
+    qui ne peut donc décrire qu'une seule image ! Et non servir à décrire toutes les images ...<br/>
+    L'information commence avec la dualité, avec l'opposition du 0 et 1,  du chaud du froid, du bas du haut, ... Quand on a un unique symbole, tout est uniforme. 
+    Sans forme. Et il n'y a pas d'information.</p>
+
+    <p title="Et en utiliser deux . . c'est bien pratique !">En revanche, nous aurions pu choisir d'utiliser plus de deux symboles : 
+      les dix chiffres arabes, les vingt-deux lettres de l'alphabet phénicien, les vingt-quatre lettres de l'alphabet grec ou les vingt-six lettres de l'alphabet latin. 
+     <p>Mais n'utiliser deux symboles a plusieurs avantages. Le premier est que ce choix est indépendant de la nature des informations décrites. 
+     Il aurait été dommage de concevoir des ordinateurs grecs qui utilisent 24 symboles et des ordinateurs latins qui en utilisent 26. </p>
+     <p>Par ailleurs, la description de l'information avec deux symboles est plus simple à mettre en œuvre dans un ordinateur. 
+     Cela se réalise électriquement avec un interrupteur ouvert ou fermé, un courant électrique présent ou absent, etc. 
+     Ce choix rend aussi les ordinateurs plus robustes : 
+     s'il y avait plusieurs états intermédiaires et pas seulement  0 et 1 le système physique pourrait plus facilement les mélanger, donc créer plus facilement des erreurs. 
+     En se limitant à 0 et 1 ce risque est minimisé.</p>
+   </p>
+
+   <p title="Et celà permet de . . compter/mesurer la quantité d'information">
+     Il y a une idée aussi plus profonde ici. Le nombre de bits est exactement <i>la quantité brute d'information qui a été codée</i>. 
+     Pour comprendre cette idée jouons au jeu du portrait: devinez une personne en ne posant <i>que des questions où on réponde par oui ou non</i>. Avec l'exemple ci dessous:
+       <p align="center"><img src="img/algo-a-2.jpg"/></p>
+     En trois questions : 
+       <p align="center"><c>Fille ou garçon ? Aime t'il/elle le look Emo ? A t'il/elle moins de 15 ans ?</c></p>
+     vous allez <i>forcément</i> deviner parmi les huit personnes qui est le portrait car vous aurez toute l'information utile ici. 
+     D'ailleurs nous avons symbolisé ce fait en utilisant un bit pour chaque question binaire reporté dans la colonne de droite. 
+     Deux questions binaires, c'est à dire deux bits d'information ne suffisent pas ici. 
+     Par exemple si vous ne savez pas qui a moins de 15 ans, alors Adèle et Nadia ou Igor et Pierre, par exemple, 
+       ne peuvent pas être distingués puisqu'ils pensent la même chose du look Emo.
+     On voit que le nombre de bits, correspond au nombre de questions binaires à poser pour deviner toute l'information. Cela correspond donc à la taille en information.
+   </p>
+
+   <p>Prenons un autre exemple: devinons l'âge d'un élève du secondaire entre 11 et 18 ans. Nous pourrions poser 8 questions: 
+     <c>A t'il 11 ans ? A t'il 12 ans ? A t'il 13 ans ? A t'il 14 ans ? A t'il 15 ans ? A t'il 16 ans ? A t'il 17 ans ? A t'il 18 ans ?</c>
+     .. avec le risque, si nous manquons de chance de devoir poser les huit questions avant de connaître la solution.<br/>
+     Voici une meilleure solution: demandons d'abord si l'élève a moins de 15 ans: si la réponse est oui, alors nous savons que l'élève a entre 11 et 14 ans, 
+     si la réponse est non, alors nous savons que l'élève a entre 15 et 18 ans: dans les deux cas nous sommes passés d'une fourchette de 8 ans a une  fourchette de 4 ans, 
+     nous avons divisé l'intervalle de recherche par deux, nous avons gagné un « atome » d'information, un bit d'information.<br/>
+     Si nous continuons à poser une question qui divise l'intervalle de recherche par deux, nous arrivons à une fourchette de deux ans, 
+     puis à la troisième question, à une fourchette d'un an . . et nous avons trouvé l'âge de l'élève.
+       <p align="center"><img src="img/algo-a-1.jpg"/></p>
+    Nous voyons bien ici que ce choix parmi 8 valeurs correspond à 3 questions et 3 bits d'information, 
+    chaque bit correspondant de gauche à droite aux réponse oui (= 1) ou non (= 0) aux trois questions:
+       <p align="center"><img src="img/algo-a-3.jpg"/></p>
+    Un  « atome » d'information c'est donc un bit, la réponse oui ou non à une question binaire, le choix entre deux options, etc .. 
+   </p>
+
+   <p>La <i>taille en information d'une valeur correspond au nombre de bits pour le coder</i>. 
+     Par exemple choisir entre quatre couleurs: noir, rouge, vert, bleu nécessite deux bits. 
+     Choisir entre les sept couleurs que nous voyons aujourd'hui dans l'arc en ciel nécessite trois bits:
+       <p align="center"><img src="img/algo-a-4.jpg"/></p>
+    tandis que le code '000' n'est pas utilisé ici, ce qui importe peu.
+   </p>
+
+   <p>La <i>taille en information de deux informations indépendantes s'additionnent</i>. 
+    Par exemple si nous codons l'âge d'un élève du secondaire sur 3 bits et son genre (fille/garçon) alors il faudra 4 bits.
+    <br/>
+    Mais la taille en information de deux informations redondantes ne s'additionnent pas. 
+    Par exemple si nous codons l'âge d'un élève du secondaire sur 3 bits et le fait qu'il ait le droit ou non de conduire un scooter sur 1 bit, 
+    puisque nous savons que toute personne de 14 ans et plus peut conduire un scooter, 
+    il est inutile de rajouter cette information, car  elle est « contenue »  dans l'âge . . donc nous avons toujours 3 bits d'information.
+    <br/>
+    Nous avons découvert une mesure physique très intéressante: de même que la chaleur se mesure avec la température en degré, la tension électrique en volt, 
+    la quantité brute d'information se mesure en bits. 
+    <br/>
+    Cette mesure correspond tout simplement au nombre de bit minimum nécessaire pour stocker l'information sans la tronquer.
+  </p>
+
+  <p>Evidemment, cette mesure ne dit rien de la valeur de l'information, ni de sa complexité.  Par exemple la séquence binaire:
+  <p align="center"><c>11.00100100001111110110101010001000100001011010001100001000110100</c></p>
+    est constituée de 65 bits. A t'elle un grande valeur ? Aucune si les 0 et les 1 ont été choisis sans raison. 
+    A t'elle un grand complexité ? (C'est à dire: est-elle difficile à calculer ?) Sûrement pas si nous avons juste appuyé au petit bonheur la chance, sur les 0 et 1 du clavier. 
+    Mais voilà que cette séquence correspond au codage binaire au milliardième près du nombre le plus utilisé en mathématiques: le nombre π. 
+   Voilà qui le rend plus précieux et qui indique qu'il est un peu complexe à calculer. 
+   Et pourtant, il est toujours constitué de 65 bits. Voila pourquoi on mesure ici le contenu brut en information, indépendamment de sa valeur ou de sa complexité.
+  </p>
+</p>
+
+  <footnotes>
+    <p title="Information, hasard et complexité"> est le titre d'un <a href="http://www.lavoisier.fr/notice/fr305043.html">ouvrage scientifique fondamental</a> d'un de nos grands chercheurs en informatique <a href="http://www2.lifl.fr/~delahaye">Jean-Paul Delahaye</a> qui <a href="http://www.loria.fr/~vthierry/cours/information-theories.pdf">présente</a> aux étudiants de l'enseignement supérieur les notions que nous évoquons ici. Grâce à son conseil, nous pouvons les évoquer simplement dans ce document.</p>
+  </footnotes>
+</p>

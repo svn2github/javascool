@@ -1,8 +1,14 @@
 
+dft : test1
+
+
+#####################################################################################################################################
+
+
 EJARS=/home/vthierry/doc/pres/JavasCool/plugins
 ECP=$(shell echo '$(wildcard $(EJARS)/*.jar)' | sed 's/ /:/g'):../../../javascool_V2/trunk/javascool_2/org.javascool.core/src:.
 
-tst2 : build
+test2 : build
 	javac -classpath $(ECP) Test.java 
 	java -classpath $(ECP) Test
 
@@ -12,8 +18,8 @@ tst2 : build
 PROGLETS = Dicho Scope Tortue Smiley Konsol  
 PROGLET = $(lastword $(PROGLETS))
 
-test : build
-	java proglet.Proglet $(PROGLET)
+test1 : build
+#	java proglet.Proglet $(PROGLET)
 #	appletviewer applet$(PROGLET).html 
 	firefox index.html
 
@@ -29,15 +35,16 @@ publish : build
 
 clean :
 	rm -rf *~ proglet api doc/*.htm *.html *.class
+	rm -f `svn status ../../../javascool_V2/trunk | grep '^\?.*\.class' | awk '{print $2}'`
 
 #
 
 doc : index.html $(patsubst %.xml,%.htm,$(wildcard doc/about-*.xml doc/sujet-*.xml doc/correction-*.xml)) doc/img/style.css doc/img/help_banner.jpg
 
-XML2XML = /usr/java/jdk1.5.0_13/bin/java -classpath /usr/java/saxon6-5-5/saxon.jar com.icl.saxon.StyleSheet
+XML2XML = /usr/java/jdk1.5.0_13/bin/java -classpath /usr/java/saxon6-5-5/saxon.jar com.icl.saxon.StyleSheet -l
 
 doc/about-%.htm : doc/about-%.xml
-	(echo '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="img/style.css"/></head><body><div id="banner"><img src="img/help_banner.jpg" alt="Help banner"/></div>[<a href="../index.html"><img src="../img/home.png"/></a>]<hr/>' ; cat $^ ; echo '</body></html>') > $@
+	$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_about2.xsl
 
 doc/sujet-%.htm : doc/sujet-%.xml
 	$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_sujet2.xsl
