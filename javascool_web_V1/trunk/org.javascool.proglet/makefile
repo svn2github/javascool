@@ -68,7 +68,7 @@ applet%.html : makefile
 
 # 
 
-run :
+run : clean
 	rm -f work/*.class
 	firefox http://interstices.info/jcms/c_45621/gamletlycee?preview=true
 
