@@ -1,5 +1,5 @@
 
-dft : test1
+dft : sgn
 
 
 #####################################################################################################################################
@@ -36,6 +36,7 @@ publish : build
 clean :
 	rm -rf *~ proglet api doc/*.htm *.html *.class
 	rm -f `svn status ../../../javascool_V2/trunk | grep '^\?.*\.class' | awk '{print $2}'`
+	rm proglet.jar proglet.crt
 
 #
 
@@ -74,4 +75,23 @@ run : clean
 
 
 jar : 
-	wget http://interstices.info/upload/hamdi/testJavaWeb26.jar
+	wget http://interstices.info/upload/hamdi/testJavaWeb66.jar
+
+
+# Signature de l'applet
+
+name=proglet
+vendor=hamdi.ben_abdallah@inria.fr, ou=interstices.fr, o=inria.fr, c=fr
+public-key=hello-world
+private-key=mer,d,azof
+version=0.0
+
+sgn: build
+	rm -f $(name).jar
+	(echo 'Summary: $(name)'; echo 'Created-By: $(version) (interstices.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'`") > /tmp/manifest.mf
+	(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> /tmp/manifest.mf
+	jar cfm /tmp/tmp.jar /tmp/manifest.mf proglet
+	keytool -genkey -alias $(name) -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore
+	jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore -signedjar $(name).jar /tmp/tmp.jar $(name)
+	keytool -export -alias $(name) -storepass '$(public-key)' -keystore /tmp/keystore -file $(name).crt
+	rm -rf /tmp/manisfest.mf /tmp/keystore /tmp/tmp.jar

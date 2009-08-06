@@ -1,4 +1,25 @@
 <p title="Les ingrédients des algorithmes">
+
+  <p title="Algorithme . . une recette de cuisine ?">
+    Un algorithme c'est ``presque´´ comme une recette de cuisine. Presque. Prenons un exemple: le quatre-quart à l'orange ou au chocolat, 
+    même les garçons <img src="img/smiley-cool.png/> devraient savoir cuisiner ce gateau de notre enfance. Il suffit de prendre un oeuf, 
+    le même poids de farine, de beurre et de sucre, ajouter la parfum, mélanger le tout et mettre dans le four une petite demi-heure, facile non ?
+    <br/>
+    Ah mais que se passerait-il si nous confions cette recette à une intelligence mécanique ? Eh bien elle réaliserait votre recette, 
+    <i>exactement</i> comme nous venons de le spécifier. Excatement. Ah ben oui. <ul>
+      <li>Vas y de mélanger les oeufs avec le reste, ah ben oui, les oeufs <i>avec</i> leurs coquilles, qui a dit de les enlever ?</li>
+      <li>Une ``petite´´ demi-heure dans le four ? Euh . . voilà notre intelligence mécanique bloquée: ``petite´´ ?!? De combien ?</li>
+    </ul>sans compter que personne n'a précisé de le mettre en marche, ce four..
+    <br/>
+    Disons alors qu'un algorithme c'est bien une recette de cuisine . . mais alors, pire que pour un garçon <img src="img/smiley-innocent.png/>, 
+    c'est une recette à prévoir . . pour un abruti complet. 
+    En clair, l'intelligence mécanique n'a <i>aucune information contextuelle</i>, tous ces éléments qui font la richesse de notre intelligence humaine, 
+    il faut que <i>que chaque étape soit entièrement spécifiée dans ses moindres détails</i>.
+    <br/>
+    Celà semble presque une tâche impossible et pourtant . . il suffit de <i>cinq ingrédients</i> pour décrire tous les algorithmes du monde, 
+    regardons lequels.
+  </p>
+
  
 http://interstices.info/algo-mode-emploi
 
