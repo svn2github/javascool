@@ -16,14 +16,14 @@ public class Compiler {
   /** Compiles a Java code source
    * @param filename The file path to compile
    * @param classPath The path of configuration files
-   * @param offest Source line offset 
+   * @param offest Source line offset for Jvs file
    * @return true if the compilation was successful
    */
   public static boolean compile(String filename, String classPath, int offset) throws IOException {
     JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
     
     if(compiler == null) {
-      System.err.println("Aucun JDK detecte !");
+      System.err.println("Aucun JDK disponible: demander de l'aide au responsable informatique.");
       return false;	
     }
 		
@@ -36,12 +36,12 @@ public class Compiler {
 
     boolean success = task.call();
     if(success) {
-      System.out.println("Compilation réussie.");
+      System.out.println("Compilation ok.");
     } else {
       for (int i = 0; i < diagnostics.getDiagnostics().size(); i++) {
 	Diagnostic diag = diagnostics.getDiagnostics().get(i);
 	String errorMess  = diag.getMessage(null);
-	errorMess = errorMess.substring(errorMess.lastIndexOf(File.separator)+1,errorMess.length());
+	errorMess = errorMess.substring(errorMess.lastIndexOf(File.separator)+1, errorMess.length());
 	long start = diag.getStartPosition();
 	long end = diag.getEndPosition() - start;
 	if(offset > 0) {

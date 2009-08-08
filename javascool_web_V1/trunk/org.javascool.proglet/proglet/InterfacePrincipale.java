@@ -419,131 +419,76 @@ public class InterfacePrincipale extends JApplet {
   private String main = null, file = null;
 
   private void doLire(String pFile) throws IOException {
-    try { 
-      BufferedReader in = new BufferedReader(new FileReader(pFile));
-      getJProgramEditorPane().setText("");
-      for(String line; (line = in.readLine()) != null; ) {
-	getJProgramEditorPane().append(line+"\n");
-      }
-      in.close(); 
-      setMainFile(pFile);
-    } catch (IOException e) {
-      Proglet.report(e);
+    BufferedReader in = new BufferedReader(new FileReader(pFile));
+    getJProgramEditorPane().setText("");
+    for(String line; (line = in.readLine()) != null; ) {
+      getJProgramEditorPane().append(line+"\n");
     }
+    in.close(); 
+    setMainFile(pFile);
   }
 
-  private void doSave(String pFile)throws IOException {
-    try { 
-      BufferedWriter out = new BufferedWriter(new FileWriter(pFile));
-      out.write(getJProgramEditorPane().getText()); 
-      out.close(); 
-      setMainFile(pFile);
-    } catch (IOException e) {
-      Proglet.report(e);
-    }
+  private void doSave(String pFile) throws IOException {
+    BufferedWriter out = new BufferedWriter(new FileWriter(pFile));
+    out.write(getJProgramEditorPane().getText()); 
+    out.close(); 
+    setMainFile(pFile);
   }
 
-  private void doCompile() throws Exception {
-    try { 
-      if (main != null) {
-	Translator.translate(file+".jvs");
-	Compiler.compile(file+".java", System.getProperty("java.class.path"), 0);
-      } else {
-	System.out.println("Impossible de compiler avant de sauvegarder le fichier !");
-      }
-    } catch (IOException e) {
-      Proglet.report(e);
+  private boolean doCompile() throws Exception {
+    if (main != null) {
+      // Save and manage the temporary java file if any
+      if (main != null)
+	doSave(file+".jvs");
+      if (new File(file+".java").exists())
+	new File(file+".java").renameTo(new File(file+".java~"));
+      // Translate and compile
+      int offset = Translator.translate(file+".jvs", proglet);
+      if (offset < 0)
+	return false;
+      boolean ok = Compiler.compile(file+".java", System.getProperty("java.class.path"), 0);
+      // Cleanup
+      new File(file+".java").delete();
+      return ok;
+    } else {
+      System.out.println("Impossible de compiler avant d'ouvrir ou sauvegarder le fichier !");
+      return false;
     }
   }
 
   private void doRun() throws Exception {
-    try {
-      doStop();
-      if (main != null) {
-	File obj = new File(file+".class");
-	// Compilation du fichier si il ne l'est pas déjà
-	if (!obj.exists())
-	  doCompile();
-	URL[] urls = new URL[] { new URL("file:"+obj.getParent()+File.separator) };
+    doStop();
+    if (main != null) {
+      if (new File(file+".class").exists() || doCompile()) {
+	URL[] urls = new URL[] { new URL("file:"+new File(file+".class").getParent()+File.separator) };
 	System.out.println(urls[0]);
 	final Class<?> s = new URLClassLoader(urls).loadClass(main);
 	tache = new Thread(new Runnable() { public void run() {
 	  try {
 	    s.getDeclaredMethod("main").invoke(null);
-	  } catch (Exception e) {
-	    Proglet.report(e);
+	  } catch (Exception e) {  
+	    if (e instanceof InvocationTargetException && e.getCause() instanceof java.lang.Error) {
+	      System.err.println("Execution stoppee!");
+	    } else {
+	      Proglet.report(e);
+	    }
 	  }
 	}});
 	tache.start();
       } else {
-	System.out.println("Impossible de compiler et exécuter avant de sauvegarder le fichier !");
+	System.out.println("La compilation a echouee !");
       }
-    } catch (IOException e) {
-      Proglet.report(e);
+    } else {
+      System.out.println("Impossible de compiler et executer avant d'ouvrir ou sauvegarder le fichier !");
     }
   }
 
   private void doStop() throws Exception {
     if (tache != null) {
-      // tache.stop();
+      tache.interrupt();
       tache = null;
     }
   }
 
   private Thread tache = null;
-
-  /*
-  public static boolean deplacer(File source, File destination) {
-    if( !destination.exists() ) {
-      System .out.println(" copie ok");
-      boolean result = source.renameTo(destination);
-      return(result);
-    } else {
-      System .out.println(" copie Non");
-      return(false);
-    } 
-  } 
-	
-  private static boolean deleteClassFile(  File file ) {
-    if ( file.exists() )
-      file.delete();
-    return !file.exists();
-  }
-  public static boolean copier(InputStream  source, File destination ){ //Methode permettant la copie d'un fichier
-    boolean resultat = false;
-    //System.out.println("taille: "+((CharSequence) source).length());
-    // Declaration des flux
-    InputStream  sourceFile=null;
-    java.io.FileOutputStream destinationFile=null;
-    try {
-      // Création du fichier :
-      destination.createNewFile();
-      // Ouverture des flux
-      sourceFile = source;
-      destinationFile = new java.io.FileOutputStream(destination);
-      // Lecture par segment de 0.5Mo
-      int taille = Math.min(1024, 4*1024);
-		
-      byte buffer[]=new byte[512*1024];
-      int nbLecture;
-      while( (nbLecture = sourceFile.read(buffer)) != -1 ) {
-	destinationFile.write(buffer, 0, nbLecture);
-      }
-
-      System.out.println("copie ok");
-      resultat = true;
-    } catch( java.io.FileNotFoundException f ) {
-    } catch( java.io.IOException e ) {
-    } finally {
-      // Quoi qu'il arrive, on ferme les flux
-      try {
-	sourceFile.close();
-      } catch(Exception e) { }
-      try {
-	destinationFile.close();
-      } catch(Exception e) { }
-    }
-    return( resultat );
-  }
-  */	
 }

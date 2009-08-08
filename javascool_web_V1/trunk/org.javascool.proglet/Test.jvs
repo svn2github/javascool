@@ -1,6 +1,5 @@
 main() {
      echo("OK5555 : " + sin(3.1416));
-     println("HII"); 
-     String me = readString();
-     println("Hio " + me);
+     while(true)
+        println("HII"); 
 }

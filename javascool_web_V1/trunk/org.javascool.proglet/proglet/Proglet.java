@@ -71,6 +71,13 @@ public class Proglet {
     System.err.println(error.getStackTrace()[0]+"\n"+error.getStackTrace()[1]+"\n"+error.getStackTrace()[2]+"\n"+error.getStackTrace()[3]);
   }
 
+  /** Echos a string in the console.
+   * @param string The string to echo.
+   */
+  public static void echo(String string) {
+    System.out.println(string);
+  }
+
   /** Returns an icon loaded from in the applet context.
    * @param file The icon file name. The icon must be located in the img directory.
    * @return The related image icon or an empty icon if not loaded.
@@ -89,12 +96,14 @@ public class Proglet {
   static boolean purge = true;
 
   /** Used to test a proglet as a standalone program. 
-   * @param usage <tt>java proglet.Proglet &lt;proglet-name></tt>
+   * @param usage <tt>java proglet.Proglet &lt;proglet-name> [-test]</tt>
    * <hr/>Applet usage: <tt>&lt;applet code="proglet.InterfacePrincipale.class" width="920" height="720">&lt;param name="proglet" value=" &lt;proglet-name>"/>&lt;/applet></tt>
    */
   public static void main(String usage[]) { 
     InterfacePrincipale applet = new InterfacePrincipale(); applet.setProglet(usage[0]);
-    JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); f.setSize(920, 720); f.setVisible(true); test(usage[0]);
+    JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); f.setSize(920, 720); f.setVisible(true); 
+    if (usage.length >= 2 && "-test".equals(usage[1])) 
+      test(usage[0]);
   }
 
   /*
