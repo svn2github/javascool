@@ -1,0 +1,12 @@
+Ctest{
+
+int a;
+
+
+int fct(int a, int b){
+ return a+b+10;
+}
+
+
+int t;
+}

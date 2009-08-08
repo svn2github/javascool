@@ -31,7 +31,7 @@ import java.io.DataInputStream ;
 
 
  String lire() throws IOException {
- System.out.println("Lecture du fichier "+ FileName );
+ 
  LigneLue = lecteur.readLine();
  return LigneLue ;
  }

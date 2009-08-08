@@ -34,7 +34,8 @@ public class JMyFileChooser extends JFileChooser{
     JFileFilter filtre = new JFileFilter();
     filtre.addType("txt");
     filtre.addType("java");
-    filtre.setDescription("Fichiers Java: .txt, .java");
+    filtre.addType("jvs");
+    filtre.setDescription("Fichiers Java: .txt, .java, .jvs");
 
     //On va faire un preview
     this.addChoosableFileFilter(filtre);

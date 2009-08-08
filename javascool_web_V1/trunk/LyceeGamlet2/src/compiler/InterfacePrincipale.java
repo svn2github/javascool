@@ -25,6 +25,8 @@ import javax.swing.JTextPane;
 import javax.swing.JEditorPane;
 import javax.tools.ToolProvider;
 
+import compilation.Compile;
+
 import proglet.Konsol;
 import proglet.Proglet;
 
@@ -32,6 +34,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,12 +43,13 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.JarURLConnection;
+import java.net.URI;
 import java.net.URL;
 //import compiler.Konsol;Konsol;
-//import compilation.Compile;
+import compilation.Compile;
 //import compilation.CompilingClassLoader;
 //import compilation.Ctest;
-import org.javascool.compilation.*;
+import compilation.Translator;
 public class InterfacePrincipale extends JApplet {
 
 	private JPanel jContentPane = null;
@@ -137,9 +142,10 @@ public class InterfacePrincipale extends JApplet {
 			jMenuPanel.setBounds(new Rectangle(9, 7, 878, 70));
 			jMenuPanel.add(getJNewButton(), null);
 			jMenuPanel.add(getJOpenButton(), null);
+			jMenuPanel.add(getJButton1(), null);
 			jMenuPanel.add(getJCompileButton(), null);
 			jMenuPanel.add(getJRunButton1(), null);
-			jMenuPanel.add(getJButton1(), null);
+			
 		
 		}
 		return jMenuPanel;
@@ -488,25 +494,52 @@ public class InterfacePrincipale extends JApplet {
 	}
 	private void doCompile() throws Exception {
 		
-		System.out.println(System.getProperty("user.dir" ));
-	String filePath =  "work"+File.separator+"Ctest.java";
+     System.out.println("userdir"+System.getProperty("user.dir" ));
+	String filePath =System.getProperty("user.dir" )+File.separator+"work"+File.separator+"Ctest.jvs";
 		 FileWriter fw = new FileWriter(filePath);
 	     fw.write(getJProgramEditorPane().getText());
 	     fw.close();
-		///filePath =  "Ctest.java";
-		//String filePath2 = "Ctest.bin";
-	       String filePath2 = System.getProperty("user.dir" );
-	      //deleteClassFile(  new File("..\\bin\\Work\\Ctest.class") );
-	      Compile.run(filePath, filePath2);
-	       
-	    deplacer(new File("..\\src\\work\\Ctest.class"),new File("..\\bin\\work\\Ctest.class"));
-	
 		
-
-	 final Class s=ToolProvider.getSystemToolClassLoader().loadClass("work.Ctest");
-	 ///progletM = "main"
-	 //proglet= "work.Ctest"
+	  
 	
+	       
+	     // deleteClassFile(  new File("..\\bin\\work\\Ctest.class") );
+	      // URL url = new URL("http://interstices.info/upload/hamdi/testJavaWeb52.jar");
+	     //  url.openConnection();
+	      // InputStream ins = url.openStream();
+	       String filePath2 =System.getProperty("user.dir" )+File.separator+"work"+File.separator+"tools.jar";
+	       System.out.println("classPath1"+ System.getProperty("java.class.path"));
+	     //  copier( ins,new File(System.getProperty("user.dir" )+File.separator+"work"+File.separator+"proglet.jar"));
+	    
+	   
+			
+			
+			//TODO remplacer ici par le chemin vers le projet org.javascool.conf
+			String pathClassConf = "D:\\projetLycée\\seb\\org.javascool.conf";
+			
+			
+			
+			try{
+				//initialisation des macros par rapport au fichier de configuration	
+				Translator.init(pathClassConf+File.separator+"bin");
+			}catch(Exception ex){
+				System.out.println("erreur initTranslator");
+				ex.printStackTrace();
+			}
+			
+			
+			
+			Translator.translate(filePath);
+			Compile.run(filePath, pathClassConf+File.separator+"bin");
+	      
+	      
+	      
+	  
+		System.out.println("classPath1"+ System.getProperty("java.class.path"));
+		
+	 final Class s=ToolProvider.getSystemToolClassLoader().loadClass("work.Ctest");
+
+
 		 new Thread(new Runnable(){public void run(){
 			
 			 try {
@@ -533,14 +566,15 @@ public class InterfacePrincipale extends JApplet {
 	     }	
 	public static boolean deplacer(File source,File destination) {
         if( !destination.exists() ) {
-              
+              System .out.println(" copie ok");
                 boolean result = source.renameTo(destination);
            return(result);
         } else {
-               
+        	 System .out.println(" copie Non");
                 return(false);
         } 
 } 
+	
 	private static boolean deleteClassFile(  File file )
 	{
 		
@@ -548,5 +582,43 @@ public class InterfacePrincipale extends JApplet {
 				file.delete();
 		return !file.exists();
 	}
+	public static boolean copier(InputStream  source, File destination ){ //Methode permettant la copie d'un fichier
+		boolean resultat = false;
+		//System.out.println("taille: "+((CharSequence) source).length());
+		// Declaration des flux
+		InputStream  sourceFile=null;
+		java.io.FileOutputStream destinationFile=null;
+		try {
+		// Création du fichier :
+		destination.createNewFile();
+		// Ouverture des flux
+		sourceFile = source;
+		destinationFile = new java.io.FileOutputStream(destination);
+		// Lecture par segment de 0.5Mo
+		int taille=(int) Math.min(1024, 4*1024);
+		
+		byte buffer[]=new byte[512*1024];
+		int nbLecture;
+		while( (nbLecture = sourceFile.read(buffer)) != -1 ) {
+		destinationFile.write(buffer, 0, nbLecture);
+		}
+
+		System.out.println("copie ok");
+		resultat = true;
+		} catch( java.io.FileNotFoundException f ) {
+		} catch( java.io.IOException e ) {
+		} finally {
+		// Quoi qu'il arrive, on ferme les flux
+		try {
+		sourceFile.close();
+		} catch(Exception e) { }
+		try {
+		destinationFile.close();
+		} catch(Exception e) { }
+		}
+		return( resultat );
+		}
+	
+	
 
 }
