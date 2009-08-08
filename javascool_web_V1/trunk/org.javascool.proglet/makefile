@@ -9,11 +9,11 @@
 #  - le code a été intégré au package proglet, 
 #  - le file-previwer a été desactivé : utile ici ?
 #  - les icones utilisent Proglet.getIcon() pour se charger et la methode setProglet() a ete ajoutee pour les tests en tant que standalone
-#  - le bouton stop a été ajouté
+#  - le bouton nouveau a ete enlevé (trop de risque détruire le source !!!) et le bouton stop a été ajouté
 
 # 
 
-dft : tst2
+dft : tst1
 
 #####################################################################################################################################
 ##      Generation des fichiers javascool'proglet, contacts Hamdi.Ben_Abdallah@inria.fr Thierry.Vieville@sophia.inria.fr           ##
@@ -22,7 +22,7 @@ dft : tst2
 all : cmp doc
 
 clean :
-	rm -rf proglet.jar proglet.crt proglet/*.class index.html api doc/*.htm
+	rm -rf proglet.jar proglet.crt *.class */*.class index.html api doc/*.htm
 
 # Parametres pour la signature
 
@@ -95,5 +95,8 @@ tst1 : cmp
 
 tst2 : cmp $(patsubst %.xml,%.htm,$(wildcard doc/proglet-*.xml)) 
 	firefox doc/proglet-konsol.htm 
+
+tst3 : cmp doc
+	firefox index.html
 
 #####################################################################################################################################

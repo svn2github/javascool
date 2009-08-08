@@ -32,10 +32,10 @@ import java.awt.GridBagConstraints;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.InputStream;
@@ -46,9 +46,11 @@ import java.net.JarURLConnection;
 import java.net.URI;
 import java.net.URL;
 
+import java.net.URLClassLoader;
+
+
 /** Interface principale pour utiliser des proglets.
  * Fichiers utilisés: <pre>
- * img/nouveau.png
  * img/charger.png
  * img/save.png
  * img/compile.png
@@ -65,7 +67,6 @@ public class InterfacePrincipale extends JApplet {
 
   private JPanel jContentPane = null;
   private JPanel jMenuPanel = null;
-  private JButton jNewButton = null; 
   private JButton jOpenButton = null;
   private JButton jSaveButton = null;
   private JButton jCompileButton = null;
@@ -78,7 +79,7 @@ public class InterfacePrincipale extends JApplet {
   private JPanel  jConsolePanel = null;
   private JScrollPane jScrollPane = null;
   private JEditorPane jResultEditorPane = null;
-  private JScrollPane jConsolScrollPane1 = null;
+  private JScrollPane jConsolScrollPane = null;
   private JTextArea jConsolEditorPane = null;
   private JFileChooser fileChooser=null;
 
@@ -96,7 +97,7 @@ public class InterfacePrincipale extends JApplet {
       try {
 	jContentPane.add(getJResultPanel(), null);
       } catch (Exception e) {
-	e.printStackTrace();
+	Proglet.report(e);
       }
       jContentPane.add(getJConsolePanel(), null);
     }
@@ -110,7 +111,6 @@ public class InterfacePrincipale extends JApplet {
       jMenuPanel.setBorder(BorderFactory.createTitledBorder(null, "Commande", 
          TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
       jMenuPanel.setBounds(new Rectangle(9, 7, 878, 70));
-      jMenuPanel.add(getJNewButton(), null);
       jMenuPanel.add(getJOpenButton(), null);
       jMenuPanel.add(getJSaveButton(), null);
       jMenuPanel.add(getJCompileButton(), null);
@@ -118,16 +118,6 @@ public class InterfacePrincipale extends JApplet {
       jMenuPanel.add(getJStopButton(), null);
     }
     return jMenuPanel;
-  }
-
-  private JButton getJNewButton() {
-    if (jNewButton == null) {
-      jNewButton = new JButton();
-      jNewButton.setIcon(Proglet.getIcon("nouveau.png"));
-      jNewButton.setMnemonic(KeyEvent.VK_UNDEFINED);
-      jNewButton.setText("Nouveau");
-    }
-    return jNewButton;
   }
 
   private JButton getJOpenButton() {
@@ -186,12 +176,12 @@ public class InterfacePrincipale extends JApplet {
       jCompileButton.setMnemonic(KeyEvent.VK_UNDEFINED);
       jCompileButton.setText("Compiler");
       jCompileButton.setIcon(Proglet.getIcon("compile.png"));
-      jCompileButton.addActionListener(new ActionListener(){
-	  public void actionPerformed(ActionEvent e){
+      jCompileButton.addActionListener(new ActionListener() {
+	  public void actionPerformed(ActionEvent e) {
 	    try {
 	      doCompile();
 	    } catch (Exception e1) {
-	      e1.printStackTrace();
+	      Proglet.report(e1);
 	    }
 	  }});
     }
@@ -203,12 +193,12 @@ public class InterfacePrincipale extends JApplet {
       jRunButton = new JButton();
       jRunButton.setIcon(Proglet.getIcon("execute.png"));
       jRunButton.setText("Executer");
-      jRunButton.addActionListener(new ActionListener(){
-	  public void actionPerformed(ActionEvent e){
+      jRunButton.addActionListener(new ActionListener() {
+	  public void actionPerformed(ActionEvent e) {
 	    try {
 	      doRun();
 	    } catch (Exception e1) {
-	      e1.printStackTrace();
+	      Proglet.report(e1);
 	    }
 	  }});
     }
@@ -220,12 +210,12 @@ public class InterfacePrincipale extends JApplet {
       jStopButton = new JButton();
       jStopButton.setIcon(Proglet.getIcon("stop.png"));
       jStopButton.setText("Arrêter");
-      jStopButton.addActionListener(new ActionListener(){
-	  public void actionPerformed(ActionEvent e){
+      jStopButton.addActionListener(new ActionListener() {
+	  public void actionPerformed(ActionEvent e) {
 	    try {
 	      doStop();
 	    } catch (Exception e1) {
-	      e1.printStackTrace();
+	      Proglet.report(e1);
 	    }
 	  }});
     }
@@ -309,7 +299,7 @@ public class InterfacePrincipale extends JApplet {
       jConsolePanel.setBounds(new Rectangle(15, 509, 873, 176));
       jConsolePanel.setBorder(BorderFactory.createTitledBorder(null, "Console", 
 	TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-      jConsolePanel.add(getJConsolScrollPane1(), gridBagConstraints1);
+      jConsolePanel.add(getJConsolScrollPane(), gridBagConstraints1);
     }
     return jConsolePanel;
   }
@@ -332,14 +322,14 @@ public class InterfacePrincipale extends JApplet {
     return jResultEditorPane;
   }
 
-  private JScrollPane getJConsolScrollPane1() {
-    if (jConsolScrollPane1 == null) {
-      jConsolScrollPane1 = new JScrollPane();
-      jConsolScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-      jConsolScrollPane1.setViewportView(getJConsolEditorPane());
-      jConsolScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+  private JScrollPane getJConsolScrollPane() {
+    if (jConsolScrollPane == null) {
+      jConsolScrollPane = new JScrollPane();
+      jConsolScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+      jConsolScrollPane.setViewportView(getJConsolEditorPane());
+      jConsolScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
-    return jConsolScrollPane1;
+    return jConsolScrollPane;
   }
 
   private JTextArea getJConsolEditorPane() {
@@ -364,10 +354,7 @@ public class InterfacePrincipale extends JApplet {
 
   private JFileChooser getFileChooser() {
     if (fileChooser== null) {
-      File vF = new File (System.getProperty("user.dir" )+File.separator+"work");
-      if (!vF.exists()) {
-	vF.mkdir(); 
-      }
+      // - Canceled // File vF = new File (System.getProperty("user.dir" )+File.separator+"work"); if (!vF.exists()) vF.mkdir(); 
       fileChooser = new JFileChooser() {
 	  private static final long serialVersionUID = 1L;
 	  {
@@ -383,7 +370,7 @@ public class InterfacePrincipale extends JApplet {
 	    filtre.addType("jvs");
 	    filtre.setDescription("Fichiers Java: .txt, .java, .jvs");
 	    this.addChoosableFileFilter(filtre);
-	    //this.setAccessory(new FilePreviewer(this));
+	    // - Canceled // this.setAccessory(new FilePreviewer(this));
 	  }
 	};
     }
@@ -423,9 +410,15 @@ public class InterfacePrincipale extends JApplet {
   // Cette section définie les actions de l'applet
   //
 	
-  private String prog = null;
+  // Sets the class name and file
+  private void setMainFile(String pFile) {
+    main = pFile.replaceAll(".*/([^/]+)\\.[a-z]+$", "$1");
+    file = pFile.replaceAll("\\.[a-z]+$", "");
+    System.out.println("Prog name = "+ main);  
+  }  
+  private String main = null, file = null;
 
-  private void doLire(String pFile)throws IOException {
+  private void doLire(String pFile) throws IOException {
     try { 
       BufferedReader in = new BufferedReader(new FileReader(pFile));
       getJProgramEditorPane().setText("");
@@ -433,10 +426,9 @@ public class InterfacePrincipale extends JApplet {
 	getJProgramEditorPane().append(line+"\n");
       }
       in.close(); 
-      prog = pFile.replaceAll("\\.[a-z]+$", "");
-      System.out.println("Prog name = "+ prog);
+      setMainFile(pFile);
     } catch (IOException e) {
-      e.printStackTrace();
+      Proglet.report(e);
     }
   }
 
@@ -445,52 +437,51 @@ public class InterfacePrincipale extends JApplet {
       BufferedWriter out = new BufferedWriter(new FileWriter(pFile));
       out.write(getJProgramEditorPane().getText()); 
       out.close(); 
-      prog = pFile.replaceAll("\\.[a-z]+$", "");
-      System.out.println("Prog name = "+ prog);
+      setMainFile(pFile);
     } catch (IOException e) {
-      e.printStackTrace();
+      Proglet.report(e);
     }
   }
 
   private void doCompile() throws Exception {
-    if (prog != null) {
-
-
-      String filePath = System.getProperty("user.dir" )+File.separator+"work"+File.separator+"Ctest.jvs";
-      FileWriter fw = new FileWriter(filePath);
-      fw.write(getJProgramEditorPane().getText());
-      fw.close();
-      String filePath2 =System.getProperty("user.dir" )+File.separator+"work"+File.separator+"tools.jar";
-      System.out.println("classPath1"+ System.getProperty("java.class.path"));
-      String pathClassConf = "D:\\projetLycée\\seb\\org.javascool.conf";
-      try {
-	// Initialisation des macros par rapport au fichier de configuration	
-	//// Translator.init(pathClassConf+File.separator+"bin");
-      } catch(Exception ex){
-	System.out.println("erreur initTranslator");
-	ex.printStackTrace();
+    try { 
+      if (main != null) {
+	Translator.translate(file+".jvs");
+	Compiler.compile(file+".java", System.getProperty("java.class.path"), 0);
+      } else {
+	System.out.println("Impossible de compiler avant de sauvegarder le fichier !");
       }
-      //// Translator.translate(filePath);
-      //// Compile.run(filePath, pathClassConf+File.separator+"bin");
-
-      System.out.println("classPath1"+ System.getProperty("java.class.path"));
-    } else {
-      System.out.println("Impossible de compiler avant de sauvegarder le fichier !");
+    } catch (IOException e) {
+      Proglet.report(e);
     }
   }
 
   private void doRun() throws Exception {
-    doStop();
-    final Class<?> s = ToolProvider.getSystemToolClassLoader().loadClass("work.Ctest");
-    tache = new Thread(new Runnable(){public void run(){
-      try {
-	s.getDeclaredMethod("main").invoke(null);
-      } catch (Exception e) {
-	e.printStackTrace();
+    try {
+      doStop();
+      if (main != null) {
+	File obj = new File(file+".class");
+	// Compilation du fichier si il ne l'est pas déjà
+	if (!obj.exists())
+	  doCompile();
+	URL[] urls = new URL[] { new URL("file:"+obj.getParent()+File.separator) };
+	System.out.println(urls[0]);
+	final Class<?> s = new URLClassLoader(urls).loadClass(main);
+	tache = new Thread(new Runnable() { public void run() {
+	  try {
+	    s.getDeclaredMethod("main").invoke(null);
+	  } catch (Exception e) {
+	    Proglet.report(e);
+	  }
+	}});
+	tache.start();
+      } else {
+	System.out.println("Impossible de compiler et exécuter avant de sauvegarder le fichier !");
       }
-    }});
-    tache.start();
-  }		
+    } catch (IOException e) {
+      Proglet.report(e);
+    }
+  }
 
   private void doStop() throws Exception {
     if (tache != null) {
@@ -501,10 +492,7 @@ public class InterfacePrincipale extends JApplet {
 
   private Thread tache = null;
 
-  //
-  // Ces methodes sont des essais
-  //
-
+  /*
   public static boolean deplacer(File source, File destination) {
     if( !destination.exists() ) {
       System .out.println(" copie ok");
@@ -516,9 +504,7 @@ public class InterfacePrincipale extends JApplet {
     } 
   } 
 	
-  private static boolean deleteClassFile(  File file )
-  {
-		
+  private static boolean deleteClassFile(  File file ) {
     if ( file.exists() )
       file.delete();
     return !file.exists();
@@ -559,7 +545,5 @@ public class InterfacePrincipale extends JApplet {
     }
     return( resultat );
   }
-	
-	
-
+  */	
 }

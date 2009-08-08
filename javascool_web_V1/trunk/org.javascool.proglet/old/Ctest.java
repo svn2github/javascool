@@ -1,9 +1,8 @@
-package work;
-
 public class Ctest {
    public static void main() {
-     System.out.println("OK5");
+     System.out.println("OK5555");
+     proglet.Konsol.println("HII"); 
      String me = proglet.Konsol.readString();
-     proglet.Konsol.echo("Hio " + me);
+     proglet.Konsol.printlt("Hio " + me);
   }
 }

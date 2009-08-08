@@ -40,7 +40,7 @@ public class Proglet {
    * @param proglet The proglet class name.
    * @return The static instanciation of the proglet.
    */
-  public static JPanel getPanel(Applet applet, String proglet) {
+  static JPanel getPanel(Applet applet, String proglet) {
     try {
       base = applet.getCodeBase().toString()+"/img/"; 
     } catch(Exception e) {
@@ -54,25 +54,28 @@ public class Proglet {
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
    */
-  public static void test(String proglet) {
+  static void test(String proglet) {
     Proglet.proglet = proglet;
     new Thread(new Runnable() { public void run() {
       try { Class.forName("proglet."+Proglet.proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { report(error); }
     }}).start();
   }
   private static String proglet;
-  // Reports a throwable with the related context.
-  private static void report(Throwable error) {
+
+  /** Reports a throwable with the related context.
+   * @param error The error or exception to report.
+   */
+  static void report(Throwable error) {
     if (error instanceof InvocationTargetException) report(error.getCause());
-    System.err.println("At:\n"+error.getStackTrace()[0]+"\n"+error.getStackTrace()[1]+"\n"+error.getStackTrace()[2]+"\n"+error.getStackTrace()[3]+"\n");
     System.err.println(error.toString());
+    System.err.println(error.getStackTrace()[0]+"\n"+error.getStackTrace()[1]+"\n"+error.getStackTrace()[2]+"\n"+error.getStackTrace()[3]);
   }
 
   /** Returns an icon loaded from in the applet context.
    * @param file The icon file name. The icon must be located in the img directory.
    * @return The related image icon or an empty icon if not loaded.
    */
-  public static ImageIcon getIcon(String file) {
+  static ImageIcon getIcon(String file) {
     try { return new ImageIcon(new URL(base+file)); } catch(Exception err) { System.err.println(err); return new ImageIcon(); }
   }
   private static String base = "file:img/";
@@ -87,7 +90,7 @@ public class Proglet {
 
   /** Used to test a proglet as a standalone program. 
    * @param usage <tt>java proglet.Proglet &lt;proglet-name></tt>
-   * Usage: <tt>&lt;applet code="proglet.InterfacePrincipale.class" width="920" height="720">&lt;param name="proglet" value=" &lt;proglet-name>"/>&lt;/applet></tt>
+   * <hr/>Applet usage: <tt>&lt;applet code="proglet.InterfacePrincipale.class" width="920" height="720">&lt;param name="proglet" value=" &lt;proglet-name>"/>&lt;/applet></tt>
    */
   public static void main(String usage[]) { 
     InterfacePrincipale applet = new InterfacePrincipale(); applet.setProglet(usage[0]);
