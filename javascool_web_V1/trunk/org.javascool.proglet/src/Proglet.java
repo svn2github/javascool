@@ -39,7 +39,11 @@ public class Proglet {
    * @return The static instanciation of the proglet.
    */
   public static JPanel getPanel(Applet applet, String proglet) {
-    base = (Proglet.applet = applet) == null ? "file:img/" : applet.getCodeBase().toString()+"/img/"; 
+    try {
+      base = applet.getCodeBase().toString()+"/img/"; 
+    } catch(Exception e) {
+      base  = "file:img/";
+    }
     try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } 
     catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
@@ -83,12 +87,15 @@ public class Proglet {
    * @param usage <tt>java Proglet &lt;proglet-name></tt>
    */
   public static void main(String usage[]) { 
-    JFrame f = new JFrame(); f.setSize(550, 550); f.getContentPane().add(getPanel(null, usage[0])); f.pack(); f.setVisible(true); test(usage[0]);
+    InterfacePrincipale applet = new InterfacePrincipale(); applet.setProglet(usage[0]);
+    JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); f.setSize(910, 720); f.setVisible(true); test(usage[0]);
   }
 
   /** Used to test a proglet in a browser. 
-   * Usage: <tt>&lt;applet code="Proglet$Test.class" width="550" height="550">&lt;param name="proglet" value=" &lt;proglet-name>"/>&lt;/applet></tt>
+   * Usage: <tt>&lt;applet code="Proglet$Test.class" width="800" height="600">&lt;param name="proglet" value=" &lt;proglet-name>"/>&lt;/applet></tt>
    */
+  public static class Test extends InterfacePrincipale { }
+  /*
   public static class Test extends JApplet { 
     public void init() { 
       getContentPane().setLayout(new BorderLayout()); 
@@ -99,6 +106,7 @@ public class Proglet {
       getContentPane().add(Proglet.getPanel(this, getParameter("proglet")));
     }
   }
+  */
 }
 
 

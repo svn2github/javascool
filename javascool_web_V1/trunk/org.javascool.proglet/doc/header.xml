@@ -6,7 +6,8 @@
   <li>Deux textes sur les fondements de l'informatique<ul>
     <li>Qu'est ce que l'<a href="doc/about-information.htm">information</a> ?</li>
     <li>Les ingrédients des <a href="doc/about-algorithm.htm">algorithmes</a> ?</li>
-  </ul></li>
+  </ul>
+  </li>
   <li>Les tutoriels<ul>
     <li>Les cinq ingrédients des algorithmes<ul>
       <li>S'initier à l'outil et son <a href="doc/sujet-hello-world.htm">interface</a> voir les séquences d'instructions.</li>

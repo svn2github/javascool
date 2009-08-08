@@ -1,29 +1,157 @@
 <p title="Les ingrédients des algorithmes">
 
-  <p title="Algorithme . . une recette de cuisine ?">
-    Un algorithme c'est ``presque´´ comme une recette de cuisine. Presque. Prenons un exemple: le quatre-quart à l'orange ou au chocolat, 
-    même les garçons <img src="img/smiley-cool.png/> devraient savoir cuisiner ce gateau de notre enfance. Il suffit de prendre un oeuf, 
-    le même poids de farine, de beurre et de sucre, ajouter la parfum, mélanger le tout et mettre dans le four une petite demi-heure, facile non ?
+  Texte collectif<footnote id="1"/>.
+
+  <p title="La différence entre une machine à café et un ordinateur">
+    Une très intéressante introduction au sujet traité ici est <a href="http://interstices.info/demandez-le-programme">disponible</a> 
+    (avec un document <a href="http://interstices.info/algo-mode-emploi">complémentaire</a>) sur <a href="http://interstices.info">)i(nterstices</a>.
+
+    Nous avons vu, <a href="about-information.htm">par ailleurs</a>, qu'un ordinateur peut effectuer des opérations très variées sur des types de données très variées : 
+    des nombres, des lettres, des images, des sons, des textes, des vidéos, .. 
+    Il peut être utilisé pour retoucher une photo, la mettre sur un blog ou un site web, la conserver dans un album, ..
+    Un ordinateur est donc une machine complètement polyvalente: tout les automatismes peuvent être programmés sur un ordinateur.
+    A l'inverse des machines à café ou des aspirateurs qui servent à une seule chose : faire le café, aspirer la poussière, ..
+    Dès la sortie de l'usine, une machine à café ``sait´´ faire le café, un aspirateur ``sait´´ aspirer la poussière. 
+    En revanche, un ordinateur ne sait quasiment rien faire. Un ordinateur doit ``être programmé´´ pour retoucher une photo, la mettre sur un blog ou un site web, ..
+    C'est pour cela que les ordinateurs ont besoin de programmes. 
+    Cette notion de programme est également ce qui distingue l'ordinateur de certaines machines comme les calculatrices, 
+    qui donnent une illusion de polyvalence dans la mesure où elles peuvent effectuer des tâches variées. 
+    Cependant, ces tâches sont fixées une fois pour toutes et on ne peut pas programmer une calculatrice pour lire une vidéo,
+    alors qu'on peut programmer un ordinateur pour faire tout ce que fait une calculatrice.
     <br/>
-    Ah mais que se passerait-il si nous confions cette recette à une intelligence mécanique ? Eh bien elle réaliserait votre recette, 
-    <i>exactement</i> comme nous venons de le spécifier. Excatement. Ah ben oui. <ul>
-      <li>Vas y de mélanger les oeufs avec le reste, ah ben oui, les oeufs <i>avec</i> leurs coquilles, qui a dit de les enlever ?</li>
-      <li>Une ``petite´´ demi-heure dans le four ? Euh . . voilà notre intelligence mécanique bloquée: ``petite´´ ?!? De combien ?</li>
-    </ul>sans compter que personne n'a précisé de le mettre en marche, ce four..
-    <br/>
-    Disons alors qu'un algorithme c'est bien une recette de cuisine . . mais alors, pire que pour un garçon <img src="img/smiley-innocent.png/>, 
-    c'est une recette à prévoir . . pour un abruti complet. 
-    En clair, l'intelligence mécanique n'a <i>aucune information contextuelle</i>, tous ces éléments qui font la richesse de notre intelligence humaine, 
-    il faut que <i>que chaque étape soit entièrement spécifiée dans ses moindres détails</i>.
-    <br/>
-    Celà semble presque une tâche impossible et pourtant . . il suffit de <i>cinq ingrédients</i> pour décrire tous les algorithmes du monde, 
-    regardons lequels.
+    Découvrons comment ici, à partir d'un exemple très concret.
   </p>
 
+  <p title="Algorithme . . une recette de cuisine ?">
+    On appelle <a href="http://interstices.info/algo">algorithme</a>, la méthode, la façon systématique de procéder pour faire quelque chose :
+    trier des objets, situer des villes sur une carte, multiplier deux nombres, extraire une racine carrée, chercher un mot dans le dictionnaire, ..
+    Il se trouve que certaines actions mécaniques - peut-être toutes ! - se prêtent bien à cette décortication. 
+    On peut les décrire de manière générale, identifier des procédures, des suites d'actions ou de manipulations précises à accomplir séquentiellement. 
+    C'est cela, un algorithme: 
+    le concept, qui traduit la notion intuitive de procédé systématique, applicable mécaniquement, sans réfléchir, en suivant simplement un mode d'emploi précis.
+    <br/>
+    Un algorithme c'est donc ``presque´´ comme une recette de cuisine. Presque. Prenons un exemple: le quatre-quart au citron ou au chocolat, 
+    même les garçons<footnote id="2"/> <img src="img/smiley-cool.png"/> devraient savoir cuisiner ce gateau de notre enfance. Il suffit de <c>prendre deux oeufs, 
+    le même poids de farine, de beurre et de sucre, ajouter le parfum, mélanger le tout et mettre dans le four une petite demi-heure</c>, facile non ?
+    <br/>
+    Ah ben oui. Mais que se passerait-il si nous confions cette recette à une intelligence mécanique (robot, ordinateur, automate, ..) ? 
+    Eh bien elle réaliserait notre recette, <i>exactement</i> comme nous venons de le spécifier. Exactement. Ah ben oui. <ul>
+      <li>Vas y de mélanger les oeufs avec le reste, ah ben oui, les oeufs .. <i>avec</i> leurs coquilles, qui a dit de les enlever ? <img src="img/smiley-innocent.png"/></li>
+      <li>Une ``petite´´ demi-heure dans le four ? Euh . . voilà notre intelligence mécanique bloquée: ``petite´´ ?!? Par rapport à quoi ? 
+      De combien ? <img src="img/smiley-cool.png"/></li>
+    </ul>sans compter que personne n'a précisé de le mettre en marche, ce four.. Bref toute instruction ambigue, incomplètement spécifiée, etc... va échouer.
+    <br/>
+    Disons alors qu'un algorithme c'est bien une recette de cuisine . . mais alors, pire que pour un garçon<footnote id="2"/> <img src="img/smiley-innocent.png"/>, 
+    c'est une recette . . à définir, à spécifier, pour un ``<a href="http://interstices.info/algo-mode-emploi">abruti complet</a>´´. 
+    En clair, l'intelligence mécanique n'a <i>aucune information contextuelle</i>, aucun de ces éléments qui font la richesse de notre intelligence humaine.
+    Il faut donc que <i>que chaque étape soit entièrement spécifiée dans ses moindres détails</i>.
+    <br/>
+    <b>[séquence d'instruction]</b> Retournons dans la cuisine. Nous voilà plus prudent. Nous allons lui donner à exécuter <i>la séquence de toutes les opérations</i> 
+    (ex: <c>ouvrir le vaisselier, sortir le grand compotier, ouvrir le frigo, compartiment supérieur de la porte, sortir le beurre, 
+    ouvrir le placard, 3ème étagère à droite, prendre la farine, etc..</c>). 
+    Notre algorithme est donc une séquence d'instructions, un chemin à parcourir pas à pas.
+    Ouf, pour peu que chaque instruction comme ``<c>ouvrir le frigo</c>´´ aient été bien programmée par ailleurs, nous commençons à voir apparaître la pâte du gateau.
+    <br/>
+    <b>[instruction conditionnelle]</b> Euh . . à condition que tout soit exactement comme prévu ! Que faire si le compotier n'est pas à sa place, 
+    ou si il n'y a plus de beurre ? <c>Si il n'y a plus de beurre, il suffit de prendre de la margarine, sinon il vaut mieux arrêter de faire le gâteau</c>. Bien.
+    Mais voilà que notre recette n'est plus une simple séquence d'instruction, ce n'est plus un simple chemin, mais un itinéraire avec des ``carrefours´´ où 
+    le choix du chemin se fait en fonction d'une condition (<c>pas de beurre</c>, ou <c>ni beurre ni margarine</c>).
+    Notre algorithme est donc réseau d'instructions, à parcourir pas à pas, en bifurquant à chque condition.
+    <br/>
+    <b>[boucles d'instructions]</b> Bien, voilà notre quatre-quart en bonne voie, <c>prenons la cuillère et tournons les ingrédients dans le compotier, 
+    tournons les ingrédients dans le compotier,  tournons les ingrédients dans le compotier,  tournons les ingrédients dans le compotier,  
+    tournons les ingrédients dans le compotier, tournons les ingrédients dans le compotier,  tournons les ingrédients dans le compotier,  tourn</c>.. ah mince !
+    Mmm . . comment expliquer de tourner une bonne trentaine fois les ingrédients dans le compotier sans devoir recopier une bonne trentaine fois l'instruction ?
+    Surtout que le but n'est pas de tourner trente fois, mais plutôt tourner jusqu'à ce que la pâte soit bien homogène. 
+    Nous avons alors besoin d'une autre construction une boucle de la forme <c>tant que la pâte n'est pas bien homogène, tourner les ingrédients dans le compotier</c>.
+    Avec cette boucle nous avons la possibilité de faire durer ou répéter une opération (<c>cuire au four tant que la pâte reste liquide</c>, 
+    <c>fabriquer 200 quatre-quart pour tout le quartier</c>) de manière concise.
+    <br/>
+    <b>[introduire des paramètres]</b> Ouf, nous voilà avec un quatre-quart . . au citron, ou au chocolat, ou à la vanille. 
+    Ah oui, mais . . va t'il falloir re-écrire la recette complète pour <i>chaque</i> parfum ?
+    Alors que seule l'étape <c>ajouter trois zestes de citron</c> ou <c>ajouter 50 grammes de poudre de chocolat</c> ou <c>ajouter 50 grammes de ketchup<footnote id="3"/></c>
+    change d'une recette à l'autre ? Certes pas, si nous introduisons la notion de paramètre ou de <i>variable</i>. La recette est maintenant <i>paramétrée</i> par la variable
+    <c>parfum</c> et en fonction de sa <i>valeur</i> (<c>citron</c>, <c>chocolat</c>, ..) un instruction conditionnelle changera juste la ligne de la recette liée au parfum.
+    <br/>
+    <b>[regrouper un bloc d'instruction dans une fonction]</b> Mmm . . prenons un peu de recul. 
+    Nous avons utilisé des instructions comme <c>ouvrir le frigo</c> ou <c>tourner les ingrédients dans le compotier</c>, 
+    qui ont sûrement dues être programmées par quelqu'un d'autre et nous avons produit l'instruction 
+    <c>faire un quatre-quart au goût de $parfum</c> où <c>$parfum</c> prend la valeur <c>citron</c> ou <c>chocolat</c>. 
+    Bref nous avons utilisé des fonctionnalités pré-définies, des ``briques de base´´ pour créer une autre fonctionnalité, 
+    qui pourra être utilisé par quelqu'un qui fait un menu (par exemple<footnote id="3"/> <c>faire de la viande aux patates</c>, <c>faire un quatre-quart au ketchup</c>).
+    Cette dernière construction va nous permettre de réutiliser comme dans un légo, chaque fonctionnalité pour réaliser une construction logicielle.
+    <br/>
+    Ce qui est vraiment très intéressant ici, c'est qu'il <b>il suffit de ces <i>cinq ingrédients</i> pour décrire tous les algorithmes</b> de manière efficace,
+    et nous vous proposons par ailleurs de vous initier concrètement à la prorammation en découvrant comment utiliser chacun des cinq ingrédients des algorithmes.<ul>
+      <li>Voir comment définir <a href="sujet-hello-world.htm">séquences d'instructions.</a></li>
+      <li>Se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
+      <li>Découvrir l'instruction <a href="sujet-about-if.htm">conditionnelle</a>.</li>
+      <li>Se familiariser avec les <a href="sujet-about-functions.htm">fonctions</a>.</li>
+      <li>Utiliser des <a href="sujet-about-while.htm">boucles</a>.</li>
+    </ul>
+    Il y a toutefois une autre différence importante entre les recettes de cuisine ou les partitions et les programmes, 
+    c'est que les programmes sont destinés à être lus, non seulement pas des humains, mais aussi par des ordinateurs, 
+    ce qui demande que ces programmes soient écrits dans des langages très particuliers : les langages de programmation. 
+    Il y a de nombreux langages de programmation (C, C++, Java, Caml, Prolog, Basic, …). Ici nous utilisons <javascool/>, une forme simplifiée de Java.
+    Toutefois, nous n'utiliserons aucune particularité de ce langage et les programmes que nous écrirons pourront être traduits sans peine dans un autre langage. 
+    <br/>
+    Mais essayons d'expliquer de manière plus précise comment ces cinq ingrédients sont définis rigoureusement.
+  </p>
+
+  <p title="Algorithme . . une définition rigoureuse ?">
+    Une <a href="http://stream-serv.inrialpes.fr/Roc/SeminaireInformatiqueObjetsNumeriques/G_Dowek.rm">présentation vidéo</a> 
+    accompagnée de ses <a href="more/slides-dowek.pdf">supports</a> complète ce document.
+    <br/>
+    Les différents langages de programmation sont organisés autour d'un <i>petit nombre</i> de fonctionnalités, présentes dans de <i>nombreux</i> langages, 
+    relativement <i>stables</i> depuis des décénnies, et que l'on peut décrire <i>simplement</i> avec les outils adéquats 
+    (affectation, séquence, test, boucle, fonction, récursivité, enregistrement, cellule, module, objet, ...).
+    Et le <i>noyau</i> (on parle de <i>noyau impératif</i> puisqu'il s'agit d'<i>instructions</i>) de la plus part des langages<footnote id="4"/>
+    est justement constitué des 5 ingrédients que nous expliquons ici. Pour chacune d'entre elles, nous allons décrire:<ul>
+      <li>Sa syntaxe : <i>la manière dont cette instruction s'écrit</i>. La question importante est de savoir de quoi est constituée cette instruction,
+      quels sont ses paramètres, etc.. Le fait de savoir comment cela s'écrit-il dans le langage particulier que l'on utilise est accessoire
+      Comme lorsque l'on apprend à conduire une voiture: ce qui est important est de savoir ce que frein, levier de vitesse, etc.. signifie et comment s'en servir.
+      Que ces commandes aient tel ou tel aspect sur une deux-chevaux ou une renault, est accessoire.</li>
+      <li>Sa sémantique : <i> ce qui se passe quand on l'exécute</i>. Détaillons ce point.</li>
+    </ul>
  
-http://interstices.info/algo-mode-emploi
+    <p title="Sémantique d'un programme: définir l'effet d'une instruction"> 
+
+  </p>
+ 
+Ce que fait un programme : transformer un {\red état}
+
+Un {\red état} indique la valeur de chaque variable à un instant donné 
+
+(une fonction d'un ens. fini de variables dans l'ens. des valeurs)
 
 
-http://interstices.info/demandez-le-programme
+    <p title="La manière dont une instruction s'écrit">   </p>
+  
 
+
+
+    <p title="Séquence d'instructions">
+      Un programme, comme une recette de cuisine ou une partition de musique, doit indiquer dans quel ordre exécuter les différentes instructions élémentaires. 
+      Par exemple, il faut battre les œufs en neige, puis incorporer le sucre. Il faut jouer un ré, puis jouer un do.
+      La première construction qui permet d’assembler des instructions élémentaires en un programme est la notion de séquence. 
+      La séquence indique qu’il faut exécuter une instruction puis une autre. Pour cela, il suffit de juxtaposer les deux instructions. 
+
+
+
+    </p>
+
+  </p>
+
+
+  <footnotes>
+    <p>Ce texte à été co-préparé par <a href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a>, 
+    Jean-Pierre Archimbault, Emmanuel Baccelli, Thierry Viéville et Benjamon Wack.</p>
+    <p>Bien-sûr, le rédacteur de ces lignes est lui même un garçon . .</p>
+    <p>Ah ben oui, le rédacteur de ces lignes est <i>vraiment</i> un <a href="http://www.youtube.com/watch?v=8CXiqz7xPbo">garçon</a> . .</p>
+
+    <p title="Programmation impérative et au delà"> Nous parlons ici de <a href="http://fr.wikipedia.org/wiki/Programmation_impérative">programmation impérative</a>,
+    c'est à dire un paradigme qui décrit les opérations en termes de séquences d'instructions exécutées par l'ordinateur pour modifier l'état du programme.
+    Bien d'<a href="http://fr.wikipedia.org/wiki/Programmation_informatique#Techniques_de_programmation">autres paradigmes</a> existent mais ils sont tous
+    soit dérivés de la programmation impérative, soit nécessitent de d'abord comprendre celle-ci pour les appréhender.</p>
+  </footnotes>
 </p>

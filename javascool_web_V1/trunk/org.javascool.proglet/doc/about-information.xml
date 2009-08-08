@@ -1,4 +1,6 @@
 <p title = "Tout a un reflet numérique">
+
+  Texte collectif<footnote id="1"/>.
  
 <p title="Qu'est-ce que l'information ?">
 
@@ -22,14 +24,20 @@
     peut-être le nombre le plus célèbre de toute l'histoire des mathématiques: autant dire que son information est très utile . . enfin pour les géomètres et les mathématiciens !
     En tout cas, il est bien compliqué de retenir les chiffres de la première suite (peut-être même le mieux est il de les apprendre par coeur), 
     mais dans le deuxième cas, il suffit de retenir ``voilà 8 x 4 zéros´´. 
-    Cet exemple<footnote id="1"/> est très instructif car il nous montre que nous devons bien distinguer: <ul>
+    Cet exemple<footnote id="2"/> est très instructif car il nous montre que nous devons bien distinguer: <ul>
       <li>Le contenu <i>brut</i> en information qui ne dépend pas du sens.</li>
       <li>La <i>valeur</i> d’une information dépend du but fixé.</li>
   </ul></p>
 
   <p title="Fabriquer un reflet numérique à tous les objets réels"> Commençons par la première étape: la façon dont on introduit l'information dans une machine, dont on la code pour pouvoir ensuite la manipuler. Nous allons commencer par regarder en détail un exemple: comment coder un dessin, puis découvrirons que la méthode peut-être aussi appliquée à une image, un texte, un son, des nombres, et que finalement . . on peut convenir d'un codage pour toutes les informations ! Les codages que nous allons décrire ici sont des <i>codages binaires</i> et nous expliquerons pourquoi et verrons en particulier comment se <i>mesure l'information</i>, ``presque´´ comme toute autre quantité.</p>
 
-  Une très intéressante introduction au sujet traité ici est <a href="http://interstices.info/nom-de-code-binaire">disponible</a> sur <a href="http://interstices.info">)i(nterstices</a>.
+  Une très intéressante introduction au sujet traité ici est <a href="http://interstices.info/nom-de-code-binaire">disponible</a> 
+  sur <a href="http://interstices.info">)i(nterstices</a>, 
+  tandis qu'une tandis qu'une <a href="http://stream-serv.inrialpes.fr/Roc/SeminaireInformatiqueObjetsNumeriques/G_Berry.rm">présentation vidéo</a> 
+  disponible aussi sous forme d'un <a href="http://www.college-de-france.fr/default/EN/all/inn_tec2007">cours pour adultes</a> 
+  (<a href="http://www.college-de-france.fr/default/EN/all/inn_tec2007/lecon_inaugurale___1.jsp">vidéo</a>, 
+  <a href="http://www.college-de-france.fr/audio/berry/berry-20080117.mp3">audio</a>
+  <a href="http://www.college-de-france.fr/media/inn_tec2007/UPL13472_Le_on_inaugurale_G_rard_Berry.pdf">support visuel </a>)
 
   </p>
 
@@ -317,6 +325,8 @@
 </p>
 
   <footnotes>
+    <p>Ce texte à été co-préparé par <a href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a>, 
+    Jean-Pierre Archimbault, Emmanuel Baccelli, Thierry Viéville et Benjamon Wack.</p>
     <p title="Information, hasard et complexité"> est le titre d'un <a href="http://www.lavoisier.fr/notice/fr305043.html">ouvrage scientifique fondamental</a> d'un de nos grands chercheurs en informatique <a href="http://www2.lifl.fr/~delahaye">Jean-Paul Delahaye</a> qui <a href="http://www.loria.fr/~vthierry/cours/information-theories.pdf">présente</a> aux étudiants de l'enseignement supérieur les notions que nous évoquons ici. Grâce à son conseil, nous pouvons les évoquer simplement dans ce document.</p>
   </footnotes>
 </p>
