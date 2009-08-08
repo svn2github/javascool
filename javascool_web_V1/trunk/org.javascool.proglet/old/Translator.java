@@ -1,0 +1,1 @@
+../../../../javascool_V2/trunk/javascool_2/org.javascool.core/src/org/javascool/translation/Translator.java

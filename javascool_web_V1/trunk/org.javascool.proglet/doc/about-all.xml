@@ -20,7 +20,9 @@
       <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
     </ul></li>
   </ul></li>
-  <li><a href="http://javascool.gforge.inria.fr">Le site Java's Cool</a></li>
-  <li><a href="api/index.html">Proglet's java doc</a></li>
+  <li>Autres liens: <ul>
+    <li><a href="http://javascool.gforge.inria.fr">Le site Java's Cool</a></li>
+    <li><a href="../api/index.html">Proglet's java doc</a></li>
+  </ul></li>
 </ul>
 </p>

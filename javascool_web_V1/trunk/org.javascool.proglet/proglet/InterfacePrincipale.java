@@ -206,7 +206,7 @@ public class InterfacePrincipale extends JApplet {
       jRunButton.addActionListener(new ActionListener(){
 	  public void actionPerformed(ActionEvent e){
 	    try {
-	      doCompile();
+	      doRun();
 	    } catch (Exception e1) {
 	      e1.printStackTrace();
 	    }
@@ -219,11 +219,11 @@ public class InterfacePrincipale extends JApplet {
     if (jStopButton == null) {
       jStopButton = new JButton();
       jStopButton.setIcon(Proglet.getIcon("stop.png"));
-      jStopButton.setText("Executer");
+      jStopButton.setText("Arrêter");
       jStopButton.addActionListener(new ActionListener(){
 	  public void actionPerformed(ActionEvent e){
 	    try {
-	      doCompile();
+	      doStop();
 	    } catch (Exception e1) {
 	      e1.printStackTrace();
 	    }
@@ -371,11 +371,12 @@ public class InterfacePrincipale extends JApplet {
       fileChooser = new JFileChooser() {
 	  private static final long serialVersionUID = 1L;
 	  {
-	    //Initialisation
+	    // Initialisation
+	    this.setCurrentDirectory(new File(System.getProperty("user.dir")));
 	    this.setFileSelectionMode(JFileChooser.FILES_ONLY);
 	    this.setDialogType(JFileChooser.OPEN_DIALOG);
 	    this.setMultiSelectionEnabled(false);
-	    //Définition des extensions
+	    // Définition des extensions
 	    JFileFilter filtre = new JFileFilter();
 	    filtre.addType("txt");
 	    filtre.addType("java");
@@ -422,52 +423,60 @@ public class InterfacePrincipale extends JApplet {
   // Cette section définie les actions de l'applet
   //
 	
-  private  void doLire(String pFile)throws IOException{
-    String message;
-    int index = 0;
-    BufferedReader lecture = new BufferedReader(new FileReader(pFile));
-    getJProgramEditorPane().setText("");
-    while (( message = lecture.readLine())!= null){
-      index++;
-      getJProgramEditorPane().append(message+ "\n" );
+  private String prog = null;
+
+  private void doLire(String pFile)throws IOException {
+    try { 
+      BufferedReader in = new BufferedReader(new FileReader(pFile));
+      getJProgramEditorPane().setText("");
+      for(String line; (line = in.readLine()) != null; ) {
+	getJProgramEditorPane().append(line+"\n");
+      }
+      in.close(); 
+      prog = pFile.replaceAll("\\.[a-z]+$", "");
+      System.out.println("Prog name = "+ prog);
+    } catch (IOException e) {
+      e.printStackTrace();
     }
-    lecture.close(); 
   }
 
-  private  void doSave(String pFile)throws IOException{
-    int index = 0;
-    try
-      { FileWriter lu = new FileWriter(pFile);
-		
-	BufferedWriter out = new BufferedWriter(lu);
-	
-	out.write(getJProgramEditorPane().getText()); 
-		    
-	out.close(); 
-		 
-      } catch (IOException er) {;}
-		
+  private void doSave(String pFile)throws IOException {
+    try { 
+      BufferedWriter out = new BufferedWriter(new FileWriter(pFile));
+      out.write(getJProgramEditorPane().getText()); 
+      out.close(); 
+      prog = pFile.replaceAll("\\.[a-z]+$", "");
+      System.out.println("Prog name = "+ prog);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   private void doCompile() throws Exception {
-    System.out.println("userdir"+System.getProperty("user.dir" ));
-    String filePath =System.getProperty("user.dir" )+File.separator+"work"+File.separator+"Ctest.jvs";
-    FileWriter fw = new FileWriter(filePath);
-    fw.write(getJProgramEditorPane().getText());
-    fw.close();
-    String filePath2 =System.getProperty("user.dir" )+File.separator+"work"+File.separator+"tools.jar";
-    System.out.println("classPath1"+ System.getProperty("java.class.path"));
-    String pathClassConf = "D:\\projetLycée\\seb\\org.javascool.conf";
-    try {
-      // Initialisation des macros par rapport au fichier de configuration	
-      //// Translator.init(pathClassConf+File.separator+"bin");
-    } catch(Exception ex){
-      System.out.println("erreur initTranslator");
-      ex.printStackTrace();
+    if (prog != null) {
+
+
+      String filePath = System.getProperty("user.dir" )+File.separator+"work"+File.separator+"Ctest.jvs";
+      FileWriter fw = new FileWriter(filePath);
+      fw.write(getJProgramEditorPane().getText());
+      fw.close();
+      String filePath2 =System.getProperty("user.dir" )+File.separator+"work"+File.separator+"tools.jar";
+      System.out.println("classPath1"+ System.getProperty("java.class.path"));
+      String pathClassConf = "D:\\projetLycée\\seb\\org.javascool.conf";
+      try {
+	// Initialisation des macros par rapport au fichier de configuration	
+	//// Translator.init(pathClassConf+File.separator+"bin");
+      } catch(Exception ex){
+	System.out.println("erreur initTranslator");
+	ex.printStackTrace();
+      }
+      //// Translator.translate(filePath);
+      //// Compile.run(filePath, pathClassConf+File.separator+"bin");
+
+      System.out.println("classPath1"+ System.getProperty("java.class.path"));
+    } else {
+      System.out.println("Impossible de compiler avant de sauvegarder le fichier !");
     }
-    //// Translator.translate(filePath);
-    //// Compile.run(filePath, pathClassConf+File.separator+"bin");
-    System.out.println("classPath1"+ System.getProperty("java.class.path"));
   }
 
   private void doRun() throws Exception {
@@ -485,7 +494,7 @@ public class InterfacePrincipale extends JApplet {
 
   private void doStop() throws Exception {
     if (tache != null) {
-      //// 
+      // tache.stop();
       tache = null;
     }
   }
