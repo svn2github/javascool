@@ -40,21 +40,21 @@ public class Proglet {
    * @param proglet The proglet class name.
    * @return The static instanciation of the proglet.
    */
-  static JPanel getPanel(Applet applet, String proglet) {
+  public static JPanel getPanel(Applet applet, String proglet) {
     try {
       base = applet.getCodeBase().toString()+"/img/"; 
     } catch(Exception e) {
       base  = "file:img/";
     }
     try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } 
-    catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
+    catch(Exception e) { System.out.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
   static private Applet applet = null;
 
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
    */
-  static void test(String proglet) {
+  public static void test(String proglet) {
     Proglet.proglet = proglet;
     new Thread(new Runnable() { public void run() {
       try { Class.forName("proglet."+Proglet.proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { report(error); }
@@ -65,10 +65,10 @@ public class Proglet {
   /** Reports a throwable with the related context.
    * @param error The error or exception to report.
    */
-  static void report(Throwable error) {
+  public static void report(Throwable error) {
     if (error instanceof InvocationTargetException) report(error.getCause());
-    System.err.println(error.toString());
-    System.err.println(error.getStackTrace()[0]+"\n"+error.getStackTrace()[1]+"\n"+error.getStackTrace()[2]+"\n"+error.getStackTrace()[3]);
+    System.out.println(error.toString());
+    System.out.println(error.getStackTrace()[0]+"\n"+error.getStackTrace()[1]+"\n"+error.getStackTrace()[2]+"\n"+error.getStackTrace()[3]);
   }
 
   /** Echos a string in the console.
@@ -83,7 +83,7 @@ public class Proglet {
    * @return The related image icon or an empty icon if not loaded.
    */
   static ImageIcon getIcon(String file) {
-    try { return new ImageIcon(new URL(base+file)); } catch(Exception err) { System.err.println(err); return new ImageIcon(); }
+    try { return new ImageIcon(new URL(base+file)); } catch(Exception err) { System.out.println(err); return new ImageIcon(); }
   }
   private static String base = "file:img/";
 
@@ -96,14 +96,12 @@ public class Proglet {
   static boolean purge = true;
 
   /** Used to test a proglet as a standalone program. 
-   * @param usage <tt>java proglet.Proglet &lt;proglet-name> [-test]</tt>
+   * @param usage <tt>java proglet.Proglet &lt;proglet-name></tt>
    * <hr/>Applet usage: <tt>&lt;applet code="proglet.InterfacePrincipale.class" width="920" height="720">&lt;param name="proglet" value=" &lt;proglet-name>"/>&lt;/applet></tt>
    */
   public static void main(String usage[]) { 
     InterfacePrincipale applet = new InterfacePrincipale(); applet.setProglet(usage[0]);
     JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); f.setSize(920, 720); f.setVisible(true); 
-    if (usage.length >= 2 && "-test".equals(usage[1])) 
-      test(usage[0]);
   }
 
   /*

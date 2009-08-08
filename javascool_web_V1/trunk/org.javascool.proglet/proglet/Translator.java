@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.FileWriter;
 
+import java.util.regex.Pattern;
+
 public class Translator {
 
   /** Translates a Jvs code source.
@@ -19,14 +21,14 @@ public class Translator {
     String main = filename.replaceAll(".*/([^/]+)\\.[a-z]+$", "$1"), file = filename.replaceAll("\\.[a-z]+$", "");
     File jvs = new File(file+".jvs"), jav = new File(file+".java");
     if (!jvs.exists()) {
-      System.err.println("Le fichier "+file+".jvs n'existe pas!");
+      System.out.println("Le fichier "+file+".jvs n'existe pas!");
       return -1;	
     }     
     try {
       BufferedReader in = new BufferedReader(new FileReader(file+".jvs"));
       PrintWriter out = new PrintWriter(new FileWriter(file+".java"));
       // Here is the translation loop
-      final int offset = 2;
+      final int offset = 3;
       {
 	out.println("import static java.lang.Math.*;");
 	out.println("import static proglet.Proglet.echo;");

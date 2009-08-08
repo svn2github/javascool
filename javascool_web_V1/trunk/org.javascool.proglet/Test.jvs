@@ -1,5 +1,0 @@
-main() {
-     echo("OK5555 : " + sin(3.1416));
-     while(true)
-        println("HII"); 
-}

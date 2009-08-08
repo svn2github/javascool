@@ -37,8 +37,9 @@ public class Konsol {
     public Panel() {
       super(new BorderLayout()); 
       setBackground(Color.WHITE); setPreferredSize(new Dimension(400, 500));
-      out = new JTextArea(); out.setEditable(false); out.setBorder(BorderFactory.createTitledBorder("output")); 
+      out = new JTextArea(); out.setEditable(false); 
       pane = new JScrollPane(); pane.setViewportView(out); pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); add(pane);
+      pane.setBorder(BorderFactory.createTitledBorder("output")); 
       JPanel bar = new JPanel(); add(bar, BorderLayout.NORTH);    
       prompt = new JLabel("input>"); bar.add(prompt);
       in = new JTextField(); in.setEditable(false); in.setPreferredSize(new Dimension(300, 30)); bar.add(in);    

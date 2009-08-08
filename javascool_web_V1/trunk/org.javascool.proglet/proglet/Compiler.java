@@ -23,7 +23,7 @@ public class Compiler {
     JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
     
     if(compiler == null) {
-      System.err.println("Aucun JDK disponible: demander de l'aide au responsable informatique.");
+      System.out.println("Aucun JDK disponible: demander de l'aide au responsable informatique.");
       return false;	
     }
 		
@@ -36,7 +36,7 @@ public class Compiler {
 
     boolean success = task.call();
     if(success) {
-      System.out.println("Compilation ok.");
+      // inutile // System.out.println("Compilation ok.");
     } else {
       for (int i = 0; i < diagnostics.getDiagnostics().size(); i++) {
 	Diagnostic diag = diagnostics.getDiagnostics().get(i);
@@ -49,7 +49,7 @@ public class Compiler {
 	  errorMess = errorMess.replace(""+line, ""+(line - offset));
 	  errorMess = errorMess.replace(".java", ".jvs");
 	}
-	System.err.println(errorMess);
+	System.out.println(errorMess);
       }
     }
     fileManager.close();

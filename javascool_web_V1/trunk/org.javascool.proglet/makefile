@@ -5,15 +5,31 @@
 
 # Intégration de InterfacePrincipale
 #  - le code source a été mise en page et mis en conformite avec -Xlint
-#  - les petites classes FileChooser et TextAreaOutputStream mis dans le code
+#  - les petites classes FileChooser et TextAreaOutputStream sont mis dans le code
 #  - le code a été intégré au package proglet, 
 #  - le file-previwer a été desactivé : utile ici ?
-#  - les icones utilisent Proglet.getIcon() pour se charger et la methode setProglet() a ete ajoutee pour les tests en tant que standalone
-#  - le bouton nouveau a ete enlevé (trop de risque détruire le source !!!) et le bouton stop a été ajouté
-
+#  - les icones utilisent Proglet.getIcon() pour se charger et la methode setProglet() a ete ajoutee (utile pour les tests en standalone)
+#  - le bouton nouveau a ete enlevé (trop de risque détruire le source !!!) 
+#  - la dependence au repertoire work et au fichier Ctest a ete enlevee
+# Ajout de fonctionnalité
+#  + le bouton stop a été ajouté et validé
+#  + la console gère les accents en UTF-8 et des tags html pour une meilleure lisibilité
+#  + les actions doCompile() et doRun() sont correctement codées avec sauvegarde de fichier etc.. 
+#  + un bouton démo a ete ajoute
 # 
 
-dft : tst1
+# PAGE FIREFOX VIDE POUR PLACE ET CENTREE DANS PAGE style_proglet2.xsl
+# AJUSTER LES TAILLES DES PROGLETS 512 x 512
+
+
+# PB DE securite exception au 2eme applel apore validation
+# PB D threading en mode applet
+# PB DE non rechargement du fichier en applet -> cht le nom du java ? avec time ?
+# PB DE non acces au proglet konsol si applet
+
+# rm $HOME/.java
+
+dft : tst
 
 #####################################################################################################################################
 ##      Generation des fichiers javascool'proglet, contacts Hamdi.Ben_Abdallah@inria.fr Thierry.Vieville@sophia.inria.fr           ##
@@ -45,10 +61,10 @@ proglet.jar proglet.crt : makefile $(wildcard proglet/*.java)
 	@#Build the raw jar
 	jar cfm /tmp/tmp.jar /tmp/tmp.mf proglet
 	@#Sign the jar file
-	keytool -genkey -alias proglet -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore
+	keytool -genkey -alias proglet -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore
 	jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore -signedjar proglet.jar /tmp/tmp.jar proglet
-	keytool -export -alias proglet -storepass '$(public-key)' -keystore /tmp/keystore -file proglet.crt
-	jarsigner -verify proglet.jar
+	@##keytool -export -alias proglet -storepass '$(public-key)' -keystore /tmp/keystore -file proglet.crt
+	@##jarsigner -verify -verbose -certs proglet.jar
 	@#Cleanup
 	rm -rf /tmp/manisfest.mf /tmp/keystore /tmp/tmp.jar proglet/*.class
 
@@ -90,10 +106,13 @@ pub : cmp doc
 
 #####################################################################################################################################
 
+tst : tst1
+
 tst1 : cmp
 	java -cp proglet.jar proglet.Proglet Konsol
 
 tst2 : cmp $(patsubst %.xml,%.htm,$(wildcard doc/proglet-*.xml)) 
+	rm -f *.class
 	firefox doc/proglet-konsol.htm 
 
 tst3 : cmp doc
