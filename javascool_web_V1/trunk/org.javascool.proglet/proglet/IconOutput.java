@@ -12,6 +12,8 @@ import java.awt.Graphics;
 
 /** Defines a pixelic color icon panel. */
 class IconOutput extends JPanel {
+  private static final long serialVersionUID = 1L;
+
   public IconOutput() {
     setBackground(Color.WHITE); setPreferredSize(new Dimension(550, 550));
   }

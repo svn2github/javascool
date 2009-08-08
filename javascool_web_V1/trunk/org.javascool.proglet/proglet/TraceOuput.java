@@ -21,6 +21,8 @@ import java.util.Enumeration;
 
 /** This defines a trace output. */
 class TraceOutput extends JPanel {
+  private static final long serialVersionUID = 1L;
+
   public TraceOutput() {
     setBackground(Color.WHITE); setPreferredSize(new Dimension(512, 512));
     reset();

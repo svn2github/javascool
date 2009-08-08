@@ -33,6 +33,8 @@ import java.lang.reflect.InvocationTargetException;
  * </ul>
  */
 public class Proglet {
+  private static final long serialVersionUID = 1L;
+
   /** Constructs a proglet attached to the related applet.
    * @param applet The related applet, set to null when run in a standalone application context.
    * @param proglet The proglet class name.
@@ -84,17 +86,14 @@ public class Proglet {
   static boolean purge = true;
 
   /** Used to test a proglet as a standalone program. 
-   * @param usage <tt>java Proglet &lt;proglet-name></tt>
+   * @param usage <tt>java proglet.Proglet &lt;proglet-name></tt>
+   * Usage: <tt>&lt;applet code="proglet.InterfacePrincipale.class" width="920" height="720">&lt;param name="proglet" value=" &lt;proglet-name>"/>&lt;/applet></tt>
    */
   public static void main(String usage[]) { 
     InterfacePrincipale applet = new InterfacePrincipale(); applet.setProglet(usage[0]);
-    JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); f.setSize(910, 720); f.setVisible(true); test(usage[0]);
+    JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); f.setSize(920, 720); f.setVisible(true); test(usage[0]);
   }
 
-  /** Used to test a proglet in a browser. 
-   * Usage: <tt>&lt;applet code="Proglet$Test.class" width="800" height="600">&lt;param name="proglet" value=" &lt;proglet-name>"/>&lt;/applet></tt>
-   */
-  public static class Test extends InterfacePrincipale { }
   /*
   public static class Test extends JApplet { 
     public void init() { 

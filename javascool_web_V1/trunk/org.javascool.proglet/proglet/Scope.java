@@ -19,9 +19,12 @@ import java.awt.BorderLayout;
  * </pre>
  */
 public class Scope {
+  private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
   private static class Panel extends JPanel {
+    private static final long serialVersionUID = 1L;
+
     public Panel() {
       super(new BorderLayout()); setPreferredSize(new Dimension(512, 421 + 50 * 2));
       add(scope = new CurveOutput(), BorderLayout.NORTH);

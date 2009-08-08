@@ -28,9 +28,12 @@ import java.awt.event.ActionListener;
  * </pre>
  */
 public class Konsol {
+  private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
   private static class Panel extends JPanel {
+    private static final long serialVersionUID = 1L;
+
     public Panel() {
       super(new BorderLayout()); 
       setBackground(Color.WHITE); setPreferredSize(new Dimension(400, 500));

@@ -19,9 +19,12 @@ import java.awt.Dimension;
  * </pre>
  */
 public class Smiley {
+  private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
   private static class Panel extends JPanel {
+    private static final long serialVersionUID = 1L;
+
     public Panel() {
       add(icon = new IconOutput());
     }

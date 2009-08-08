@@ -22,6 +22,8 @@ import java.awt.event.MouseListener;
 
 /** This defines a numeric input. */
 class NumberInput extends JPanel {
+  private static final long serialVersionUID = 1L;
+
   /** Construct the field.
    * @param name Field name.
    * @param min Minimal input value.

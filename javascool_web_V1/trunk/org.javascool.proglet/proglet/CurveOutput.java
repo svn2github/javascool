@@ -21,6 +21,8 @@ import java.net.URL;
  * </pre>
  */
 class CurveOutput extends JPanel {
+  private static final long serialVersionUID = 1L;
+
   public CurveOutput() {
     setBackground(Color.WHITE); setPreferredSize(new Dimension(512, 421));
     icon = new JLabel(); icon.setIcon(Proglet.getIcon("scope_screen.png")); icon.setLocation(0, 0); add(icon); 
