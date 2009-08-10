@@ -115,14 +115,16 @@
     </ul>
  
     <p title="Sémantique d'un programme: définir l'effet d'une instruction"> 
-      Ce que fait une instruction ou un groupe d'instruction c'est transformer un <i>état</i>, c'est à dire <i>la valeur de chacune de ses variables</i> 
-      
-  </p>
- 
-
-Un {\red état} indique la valeur de chaque variable à un instant donné 
-
-(une fonction d'un ens. fini de variables dans l'ens. des valeurs)
+      Ce que fait une instruction ou un groupe d'instruction c'est transformer un <i>état</i>, c'est à dire <i>la valeur de chacune de ses variables</i>.
+      <br/>
+      L'état indique donc la valeur de chaque variable à un instant donné. Par exemple si le programme a trois variables <t>x</t>, <t>y</t>, <t>z</t>
+        <p align="center"><img src="img/etat1.png"/></p>
+      qui représentent trois ``boites´´ dans lequelles nous pouvons ranger des valeurs, une instruction va donc modifier les valeurs de ces boites lors de son exécution,
+      et de modification en modification un programme fera passer l'état de sa valeur initiale à sa valeur finale.
+      <br/>
+      Un programme a bien-sûr des entrées et des sorties, ce sont des boites particulières: les sorties sont des boites dont les valeurs sont visibles d'un dispositif externe,
+      les entrées<footnote id="5"/> sont des variables dont les valeurs ont été prédéfinies par l'utilisateur ou un dispositif externe aussi.
+    </p>
 
 
     <p title="La manière dont une instruction s'écrit">   </p>
@@ -153,5 +155,13 @@ Un {\red état} indique la valeur de chaque variable à un instant donné
     c'est à dire un paradigme qui décrit les opérations en termes de séquences d'instructions exécutées par l'ordinateur pour modifier l'état du programme.
     Bien d'<a href="http://fr.wikipedia.org/wiki/Programmation_informatique#Techniques_de_programmation">autres paradigmes</a> existent mais ils sont tous
     soit dérivés de la programmation impérative, soit nécessitent de d'abord comprendre celle-ci pour les appréhender.</p>
-  </footnotes>
+
+    <p title="Variables d'entrées d'un programme"> Si les entrées du programme ne sont définies qu'une seule fois, 
+    alors elles peuvent être vues comme des variables dont les valeurs ont été prédéfinies par l'utilisateur ou un dispositif externe.
+    Si les entrées du programme sont lues plusieurs fois au cours de l'exécution du programme alors il faut considérer chaquelecture de l'entrée comme une variable différente.
+    Le modèle à utiliser lorsque entrées et sorties changent tout le temps,
+    c'est à dire lorsque le programme est enfoui dans un environnement qui interagit en permanence avec lui est différent,
+    il faut utiliser un paradigme de programmation dit <i>réactif</i>, comme pour le <a href="http://fr.wikipedia.org/wiki/Esterel_(langage)">langage Esterel</a>.</p>
+
+ </footnotes>
 </p>

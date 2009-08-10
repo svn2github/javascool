@@ -36,6 +36,7 @@
   
 <xsl:template match="p">
   <p style="text-indent: 30px" id="{saxon:line-number()}">
+    <xsl:if test="count(@align)=1"><xsl:attribute name="align"><xsl:value-of select="@align"/></xsl:attribute></xsl:if>
     <xsl:if test="count(@title)=1"><xsl:choose>
     <xsl:when test=".. = /"><h2><xsl:value-of select="@title"/>.</h2></xsl:when>
       <xsl:when test="../.. = /"><h3><xsl:value-of select="@title"/>.</h3></xsl:when>
