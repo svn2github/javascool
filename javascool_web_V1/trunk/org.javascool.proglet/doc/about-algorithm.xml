@@ -115,10 +115,10 @@
     </ul>
  
     <p title="Sémantique d'un programme: définir l'effet d'une instruction"> 
-
+      Ce que fait une instruction ou un groupe d'instruction c'est transformer un <i>état</i>, c'est à dire <i>la valeur de chacune de ses variables</i> 
+      
   </p>
  
-Ce que fait un programme : transformer un {\red état}
 
 Un {\red état} indique la valeur de chaque variable à un instant donné 
 

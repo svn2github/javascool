@@ -42,9 +42,8 @@ public class Proglet {
    */
   public static JPanel getPanel(Applet applet, String proglet) {
     Proglet.applet = applet;
-    try { base = applet.getCodeBase().toString()+"/img/"; } catch(Exception e) { base  = "file:img/"; }
     try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } 
-    catch(Exception e) { System.out.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
+    catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
   static private Applet applet = null;
 
@@ -64,29 +63,30 @@ public class Proglet {
    */
   public static void report(Throwable error) {
     if (error instanceof InvocationTargetException) report(error.getCause());
-    System.out.println(error.toString());
-    System.out.println(error.getStackTrace()[0]+"\n"+error.getStackTrace()[1]+"\n"+error.getStackTrace()[2]+"\n"+error.getStackTrace()[3]);
+    System.err.println(error.toString());
+    System.err.println(error.getStackTrace()[0]+"\n"+error.getStackTrace()[1]+"\n"+error.getStackTrace()[2]+"\n"+error.getStackTrace()[3]);
   }
 
   /** Echos a string in the console.
    * @param string The string to echo.
    */
   public static void echo(String string) {
-    try {
-      ((InterfacePrincipale) applet).echo(string, 'c');
-    } catch(Exception e) {
-      System.out.println(string);
-    }
+    try { ((InterfacePrincipale) applet).echo(string, 'c'); } catch(Exception e) { System.out.println(string); }
   }
 
-  /** Returns an icon loaded from in the applet context.
-   * @param file The icon file name. The icon must be located in the img directory.
+  /** Returns an icon loaded from the applet context.
+   * @param file The icon file name. The icon must be located in the <tt>img/</tt> directory (directory on the server or on the client side or in the jar).
    * @return The related image icon or an empty icon if not loaded.
    */
   static ImageIcon getIcon(String file) {
-    try { return new ImageIcon(new URL(base+file)); } catch(Exception err) { System.out.println(err); return new ImageIcon(); }
+    try { return new ImageIcon(ClassLoader.getSystemResource("img/"+file)); } catch(Exception e1) {
+      try { return new ImageIcon(new URL(applet.getCodeBase().toString()+"/img/"+file)); } catch(Exception e2) { 
+	try { return new ImageIcon(new URL("file:img/"+file)); } catch(Exception e3) { 
+	  System.err.println("Unable to load the '"+file+"' icon, check your configuration or your img/ files"); return new ImageIcon(); 
+	}
+      }
+    }
   }
-  private static String base = "file:img/";
 
   /** Sleeps and purge the graphic's drawings.
    * @param delay Delay in msec.
@@ -94,7 +94,6 @@ public class Proglet {
   public static void sleep(int delay) {
     try { if (delay > 0) Thread.sleep(delay); else Thread.yield(); } catch(Exception e) { }
   }
-  static boolean purge = true;
 
   /** Used to test a proglet as a standalone program. 
    * @param usage <tt>java proglet.Proglet &lt;proglet-name></tt>
@@ -104,19 +103,6 @@ public class Proglet {
     InterfacePrincipale applet = new InterfacePrincipale(); applet.setProglet(usage[0]);
     JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); f.setSize(920, 720); f.setVisible(true); 
   }
-
-  /*
-  public static class Test extends JApplet { 
-    public void init() { 
-      getContentPane().setLayout(new BorderLayout()); 
-      JButton t = new JButton("test"); getContentPane().add(t, BorderLayout.NORTH); 
-      t.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { 
-	Proglet.test(getParameter("proglet"));
-      }});
-      getContentPane().add(Proglet.getPanel(this, getParameter("proglet")));
-    }
-  }
-  */
 }
 
 

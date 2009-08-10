@@ -495,7 +495,7 @@ public class InterfacePrincipale extends JApplet {
       echo("Le fichier "+main+".jvs est traduit en java", 'i');
       if (Compiler.compile(file+".java", System.getProperty("java.class.path"), 0)) {
 	echo("Le fichier "+main+".class est compilé", 'i');
-	//// new File(file+".java").delete();
+	new File(file+".java").delete();
 	return true;
       } else {
 	echo("Le fichier "+main+".jvs n'a pas pu être compilé", 'b');
@@ -508,9 +508,15 @@ public class InterfacePrincipale extends JApplet {
   }
 
   private void doRun() throws Exception {
+    try {
+      getAppletContext().showDocument(new URL("file:"+System.getProperty("user.dir")+"//doc/about-all.xml"), "_blank");
+    } catch(Exception e) {
+      Proglet.report(e);
+    }
+    //
     doStop();
     if (main != null) {
-      if (new File(file+".class").exists() || doCompile()) {
+      if (doCompile()) {
 	URL[] urls = new URL[] { new URL("file:"+new File(file+".class").getParent()+File.separator) };
 	final Class<?> s = new URLClassLoader(urls).loadClass(main);
 	echo("Le programme "+main+" va s'exécuter", 'i');
