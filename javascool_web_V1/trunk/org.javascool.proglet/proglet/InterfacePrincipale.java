@@ -356,8 +356,10 @@ public class InterfacePrincipale extends JApplet {
       jConsoleTextPane.setContentType("text/html; charset=UTF-8");
       jConsoleTextPane.setEditable(false);
       PrintStream ps = new PrintStream(console = new ConsoleOutputStream());
-      System.setOut(ps);
-      System.setErr(ps);
+      /* Ecarté car pb au reload
+	 //// System.setOut(ps);
+	 //// System.setErr(ps);
+      */
     }
     return jConsoleTextPane;
   }
@@ -384,11 +386,12 @@ public class InterfacePrincipale extends JApplet {
   }
   /** Echos a message in the console.
    * @param string The text-line to echo.
-   * @param 'b' for bold, 'i' for italic.
+   * @param style The line style: 'b' for bold, 'i' for italic, 'c' for code.
    */
-  public void echo(String string, char c) { 
-    switch(c) {
+  public void echo(String string, char style) { 
+    switch(style) {
     case 'b': string = "<b>" + string + "</b>"; break;
+    case 'c': string = "<tt>" + string + "</tt>"; break;
     case 'i': string = "<i>" + string + "</i>"; break;
     }
     console.writeln(string);
@@ -492,7 +495,7 @@ public class InterfacePrincipale extends JApplet {
       echo("Le fichier "+main+".jvs est traduit en java", 'i');
       if (Compiler.compile(file+".java", System.getProperty("java.class.path"), 0)) {
 	echo("Le fichier "+main+".class est compilé", 'i');
-	new File(file+".java").delete();
+	//// new File(file+".java").delete();
 	return true;
       } else {
 	echo("Le fichier "+main+".jvs n'a pas pu être compilé", 'b');

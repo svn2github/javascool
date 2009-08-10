@@ -41,11 +41,8 @@ public class Proglet {
    * @return The static instanciation of the proglet.
    */
   public static JPanel getPanel(Applet applet, String proglet) {
-    try {
-      base = applet.getCodeBase().toString()+"/img/"; 
-    } catch(Exception e) {
-      base  = "file:img/";
-    }
+    Proglet.applet = applet;
+    try { base = applet.getCodeBase().toString()+"/img/"; } catch(Exception e) { base  = "file:img/"; }
     try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } 
     catch(Exception e) { System.out.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
@@ -75,7 +72,11 @@ public class Proglet {
    * @param string The string to echo.
    */
   public static void echo(String string) {
-    System.out.println(string);
+    try {
+      ((InterfacePrincipale) applet).echo(string, 'c');
+    } catch(Exception e) {
+      System.out.println(string);
+    }
   }
 
   /** Returns an icon loaded from in the applet context.

@@ -16,7 +16,7 @@ public class Compiler {
   /** Compiles a Java code source
    * @param filename The file path to compile
    * @param classPath The path of configuration files
-   * @param offest Source line offset for Jvs file
+   * @param offset Source line offset for Jvs file
    * @return true if the compilation was successful
    */
   public static boolean compile(String filename, String classPath, int offset) throws IOException {

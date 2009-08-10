@@ -3,7 +3,7 @@
 
 # Travail de vthierry apres Hamdi sur les proglets 
 
-# Intégration de InterfacePrincipale
+# > Intégration de InterfacePrincipale
 #  - le code source a été mise en page et mis en conformite avec -Xlint
 #  - les petites classes FileChooser et TextAreaOutputStream sont mis dans le code
 #  - le code a été intégré au package proglet, 
@@ -11,7 +11,7 @@
 #  - les icones utilisent Proglet.getIcon() pour se charger et la methode setProglet() a ete ajoutee (utile pour les tests en standalone)
 #  - le bouton nouveau a ete enlevé (trop de risque détruire le source !!!) 
 #  - la dependence au repertoire work et au fichier Ctest a ete enlevee
-# Ajout de fonctionnalité
+# > Ajout de fonctionnalité
 #  + le bouton stop a été ajouté et validé
 #  + la console gère les accents en UTF-8 et des tags html pour une meilleure lisibilité
 #  + les actions doCompile() et doRun() sont correctement codées avec sauvegarde de fichier etc.. 
@@ -21,15 +21,27 @@
 # PAGE FIREFOX VIDE POUR PLACE ET CENTREE DANS PAGE style_proglet2.xsl
 # AJUSTER LES TAILLES DES PROGLETS 512 x 512
 
+# PB de echo user qui passe pas en console 
+
 
 # PB DE securite exception au 2eme applel apore validation
 # PB D threading en mode applet
 # PB DE non rechargement du fichier en applet -> cht le nom du java ? avec time ?
 # PB DE non acces au proglet konsol si applet
 
-# rm $HOME/.java
+dft : tst2
 
-dft : tst
+tst1 : cmp
+	java -cp proglet.jar proglet.Proglet Konsol
+
+tst2 : cmp $(patsubst %.xml,%.htm,$(wildcard doc/proglet-*.xml)) 
+	rm -f *.class
+	firefox doc/proglet-konsol.htm 
+
+tst3 : cmp doc
+	firefox index.html
+
+#####################################################################################################################################
 
 #####################################################################################################################################
 ##      Generation des fichiers javascool'proglet, contacts Hamdi.Ben_Abdallah@inria.fr Thierry.Vieville@sophia.inria.fr           ##
@@ -49,9 +61,10 @@ version=0.0
 
 # Compilation du code
 
-cmp : proglet.jar proglet.crt
+cmp : proglet.jar
 
-proglet.jar proglet.crt : makefile $(wildcard proglet/*.java)
+proglet.jar : makefile $(wildcard proglet/*.java)
+	@echo 'build $@'
 	@rm -f proglet.jar proglet.crt
 	@#Compile the sources
 	javac -Xlint proglet/*.java
@@ -80,7 +93,7 @@ doc/about-%.htm : doc/about-%.xml
 	$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_about2.xsl
 
 doc/proglet-%.htm : doc/proglet-%.xml
-	$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_about2.xsl
+	$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_proglet2.xsl
 
 doc/sujet-%.htm : doc/sujet-%.xml
 	$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_sujet2.xsl
@@ -103,19 +116,5 @@ pub : cmp doc
 	echo 'svnci ..' ; cd ../../.. ; svn up ; svn ci -m ''
 	echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ ./* loria.loria.fr:/local/web-homepages/vthierry/proglet
 	firefox http://www.loria.fr/~vthierry/proglet/index.html
-
-#####################################################################################################################################
-
-tst : tst1
-
-tst1 : cmp
-	java -cp proglet.jar proglet.Proglet Konsol
-
-tst2 : cmp $(patsubst %.xml,%.htm,$(wildcard doc/proglet-*.xml)) 
-	rm -f *.class
-	firefox doc/proglet-konsol.htm 
-
-tst3 : cmp doc
-	firefox index.html
 
 #####################################################################################################################################
