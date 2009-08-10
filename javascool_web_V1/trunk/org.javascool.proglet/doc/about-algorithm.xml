@@ -123,27 +123,146 @@
       et de modification en modification un programme fera passer l'état de sa valeur initiale à sa valeur finale.
       <br/>
       Un programme a bien-sûr des entrées et des sorties, ce sont des boites particulières: les sorties sont des boites dont les valeurs sont visibles d'un dispositif externe,
-      les entrées<footnote id="5"/> sont des variables dont les valeurs ont été prédéfinies par l'utilisateur ou un dispositif externe aussi.
+      les entrées<footnote id="5"/> sont des variables dont les valeurs ont été prédéfinies par l'utilisateur ou un dispositif externe.
+      <br/>
+      Nous pouvons utiliser de belles notations mathématiques (mais si elles ne vous plaisent pas, ne vous inquiétez pas, nous les traduisons toujours en mot) pour formaliser
+      la sémantique d'une instruction:<ul>
+        <li>L'état est représenté par une liste d'équations <c>[x = 12, y = "Hi", z = 0]</c> qui donnent la valeur des variables.</li>
+        <li>Pour une instruction <c>p</c> la construction <c>∑(p, s) = s'</c> signifie qu'elle transforme un état <c>s</c> en un état <c>s'</c>.</li>
+      </ul>et nous allons maintenant détailler chaque instruction.
     </p>
 
+    <p title="Affectation d'une valeur à une variable">
+      La première action est de donner des valeurs aux variables: c'est l'affectation.
+      <p title="La manière dont l'instruction s'écrit"><ul>
+        <li>L'affectation est constituée d'une variable <c>x</c> et d'une valeur <c>v</c>.</li>
+        <li>Selon les languages elle s'écrit <c>x = v</c>, <c>x := v</c>, <c>x = v;</c>, etc, par exemple <c>x = 15</c>.</li>
+        <li>Informellement: la variable <c>x</c> prend comme valeur <c>v</c>; sa veleur précédente est effacée;
+        elle gardera toujours la valeur <c>v</c> tant qu'elle ne sera pas changée par une autre affectation de la variable <c>x</c>.</li>
+      </ul>
+      L'affectation est donc une ``action´´: celle d'affecter à la variable <c>x</c> la valeur de l'expression <c>e</c>. 
+      Il faut aussi bien distinguer l'affectation de l'égalité (souvent notée <c>x == 15</c>, ici qui est <c>vraie</c> si <c>x</c> est égal à <c>15</c>, <c>faux</c> sinon).</p>
 
-    <p title="La manière dont une instruction s'écrit">   </p>
-  
-
-
-
-    <p title="Séquence d'instructions">
-      Un programme, comme une recette de cuisine ou une partition de musique, doit indiquer dans quel ordre exécuter les différentes instructions élémentaires. 
-      Par exemple, il faut battre les œufs en neige, puis incorporer le sucre. Il faut jouer un ré, puis jouer un do.
-      La première construction qui permet d’assembler des instructions élémentaires en un programme est la notion de séquence. 
-      La séquence indique qu’il faut exécuter une instruction puis une autre. Pour cela, il suffit de juxtaposer les deux instructions. 
-
-
-
+      <p title="Le sens de l'instruction"> Il est facile de comprendre ce que fait cette instruction, elle change l'état en lui ajoutant le fait que désormais <c>x = v</c>.
+      Nous pouvons le noter ainsi, avec nos notations mathématiques:
+        <p align="center"><c>∑(x = v, s) = s + [x = v]</c></p>
+      où on ajoute à l'état la nouvelle équation qui définit la valeur de la variable affectée. Mais l'essentiel de surtout de bien comprendre ce qui se passe !</p>
     </p>
 
-  </p>
+    <p title="Fonctions et expressions">
+      La valeur que nous donnons à une variable n'est pas forcément une constante, mais nous voulons aussi évaluer des expressions: 
+      écrire par exemple <c>x = 12 + z / 2</c> pour calculer <c>x</c> à partir de <c>z</c>. 
+     <p title="La manière dont une expression s'écrit"><ul>
+       <li>Une expression numérique (c'est à dire qui porte sur des nombres) se construit comme sur une calculette avec des additions <c>+</c> (par exemple <c>2 + 3</c>), 
+       des soustractions <c>-</c>, des multiplications (en utilisant le symbole <c>*</c>) et des divisions (en utilisant le symbole <c>/</c>).
+       Il y a d'autres symboles algébriques que nous n'utiliserons pas ici: il suffit de retenir que celà s'écrit comme pour une calculette.</li>
+       <li>Une expression logique (c'est à dire qui donne la valeur <c>vraie</c> ou <c>fausse</c>) se construit avec: <ul>
+         <li>Des comparaisons pour tester si deux valeurs sont égales ou non, si une valeur numérique est plus petite qu'une autre, etc..</li>
+         <li>Des opérateurs logiques comme <i>et</i> (souvent noté <c>&amp;&amp;</c>, <i>ou</i>  (souvent noté <c>||</c>), ainsi que la négation (souvent notée <c>!</c>)</li>
+       </ul></li>
+       <li>On peut aussi manipuler des chaines de caractères et :<ul>
+         <li>les concaténer, par exemple <c>"pa"</c> et <c>"py"</c> se concatennent en écrivant <c>"pa" + "py"</c> se qui donne <c>"papy"</c>.</li>
+         <li>les comparer en utilisant la fonction <c>equals()</c>: l'expression <c>equals("pa", "py")</c> renverra la valeur <c>faux</c> puisque les chaines de caractères
+         <c>"pa"</c> et <c>"py"</c> ne sont pas égales, tandis que <c>equals("pa", "pa")</c> renverra la valeur <c>vraie</c> puisque ce sont les même valeurs.</li>
+       </ul>etc..</li>
+       <li>D'autres fonctions que les opérations numériques ou logiques peuvent donc être utilisées, comme la fonction <c>equals()</c>, 
+       elles s'écrivent en utilisant des parenthèses, comme <c>f(x)</c> qui correspond à une fonction de nom <c>f</c> qui prend comme argument en entrée <c>x</c> et 
+       va renvoyer un résultat, par exemple <c>f(x) = x * x</c> calcule <c>x * x</c> c'est à dire le carré de <c>x</c>. 
+       Les fonctions peuvent avoir plusieurs arguments comme par exemple <c>g(x, y, z)</c> qui a trois arguments.</li>
+     </ul>
+     Nous verrons d'ailleurs comment définir nous même de nouvelles fonctions.</p>
+     <p title="Le sens d'une expression"> Pour une expression <c>e</c> (par exemple <c>12 + 6 / 2</c>), 
+     nous utilisons une nouvelle notation <c>Θ(e, s) = r</c> pour signifier que la valeur du résultat de son évaluation est <c>r</c> (ici <c>15</c>).
+     <br/>
+     Il faut donc bien distiguer une expression (ici, <c>12 + 6 / 2</c>), une valeur (ici, <c>15</c>) et une affectation (ici, <c>x = ../..</c>).
+     <br/>
+     La valeur d'une expression dépend de l'état, par exemple l'expression <c>12 + z / 2</c> dépend de la valeur de <c>z</c>.
+     Avec nos notations mathématiques cela se note <c>Θ(12 + z / 2, [z = 0]) = 12</c> ou <c>Θ(12 + z / 2, [z = 6]) = 15</c>.</p>
+     <br/>
+     Nous pouvons alors très facilement définir l'affectation d'une expression à une variable, avec ces notations:
+       <p align="center"><c>∑(x = e, s) = s + [x = Θ(e, s)]</c></p>
+     qui signifie que la variable prend comme valeur le résultat de l'évaluation de l'expression.
+   </p>
 
+   <p title="Séquence d'instructions">
+     Un programme, comme une recette de cuisine ou une partition de musique, doit indiquer dans quel ordre exécuter les différentes instructions élémentaires. 
+     Par exemple, il faut casser les œufs, puis incorporer le sucre. Il faut jouer un ré, puis jouer un do.
+     La première construction qui permet d’assembler des instructions élémentaires en un programme est la notion de séquence. 
+     La séquence indique qu’il faut exécuter une instruction puis une autre. Pour cela, il suffit de juxtaposer les deux instructions. 
+      <p title="La manière dont l'instruction s'écrit"><ul>
+        <li>La séquence est consitutée de deux instructions <c>p</c> et <c>q</c>.</li>
+        <li>Selon les languages elle s'écrit <c>{p q}</c>, <c>p ; q</c>, etc, par exemple <c>x = 15; z = 2</c>.</li>
+        <li>Informellement: la 1ère instruction est exécutée, ce qui va changer l'état, <i>puis</i> la 2ème instruction est exécutée, ce qui va rechanger l'état.</li>
+      </ul>
+      Bien entendu, on peut combiner plus de deux instructions, puisqu'une de ces instructions peut être elle même une séquence. 
+      Cette combinaison est associative, 
+      c'est à dire que nous pouvons juste écrire pour cinq instructions <c>p</c>, <c>q</c>, <c>r</c>, <c>s</c> et <c>t</c> en séquence <c>p ; q ; r ; s ; t</c>.
+      <br/>
+      Mais, on ne peut pas commuter les instructions, par exemple <c>p ; q</c> ne donne pas toujours la même chose que <c>q ; p</c>.
+      Prenons un exemple
+      avec <c>[x = 0, z = 0]</c>, si nous écrivons: <c>x = 15; z = x + 2</c> nous aurons  <c>[x = 2, z = 17]</c>, 
+      mais si nous écrivons <c>z = x + 2; z = 15</c> nous aurons  <c>[x = 2, z = 2]</c>, upss, ce n'est pas pareil !!</p>
+      <p title="Le sens de l'instruction"> Avec nos notations mathématiques cela se note:
+        <p align="center"><c>∑(p ; q, s) = ∑(q, ∑(p, s))</c></p>
+      où on applique d'abord <c>p</c> à l'état, puis <c>q</c>.</p>
+    </p>
+ 
+    <p title="Instruction conditionnelle">
+      Un programme, comme une recette de cuisine ou un plan d'action, a besoin d'inclure des tests pour modifier les instructions selon les conditions observées.
+      Par exemple, il faut prendre de la margarine à la place du beurre, si celui-ci vient à manquer. 
+      La construction qui permet de faire ces tests est l'instruction conditionnelle.
+      <p title="La manière dont l'instruction s'écrit"><ul>
+        <li>L'instruction conditionnelle est consitutée d'une expression logique <c>t</c>, et de deux instructions <c>p</c> et <c>q</c>.</li>
+        <li>Selon les languages elle s'écrit <c>if (t) p else q</c>, <c>if t then p else q</c>, etc..</li>
+        <li>Informellement: si <c>t</c> a la valeur <c>vraie</c> alors exécuter <c>p</c>, sinon exécuter <c>q</c>.</li>
+      </ul>
+      Bien entendu, on peut combiner plusieurs tests pour considérer plusieurs options, 
+      par exemple la construction <c>if (t) p else if (s) q else r</c> exécutera <c>p</c> si <c>t</c> est vrai, sinon <c>q</c> si <c>s</c> est vrai, sinon <c>r</c>.
+      <br/>
+      Bien entendu, on peut ommettre le <c>else</c>, 
+      par exemple la construction <c>if (t) p</c> exécutera <c>p</c> si <c>t</c> est vrai, sinon rien ne se fera.</p>
+      <p title="Le sens de l'instruction"> Avec nos notations mathématiques cela se note:
+       <p align="center">si  <c>Θ(t, s)</c> est vrai <c>∑(if (t) p else q, s) = ∑(p, s)</c></p>
+       <p align="center">si  <c>Θ(t, s)</c> est faux <c>∑(if (t) p else q, s) = ∑(q, s)</c></p>
+       où on applique soit <c>p</c> à l'état, soit <c>q</c>, selon <c>t</c>.</p>
+     </p>
+
+    <p title="Boucle d'instruction">
+      Un programme, comme une recette de cuisine ou un plan d'action, a besoin de répéter plusieurs fois une instruction tant que nécessaire.
+      Par exemple, il faut tourner la pâte tant que celle-ci n'est pas bien homogène.
+      La construction qui permet de faire ces tests est la boucle d'instruction.
+      <p title="La manière dont l'instruction s'écrit"><ul>
+        <li>L'instruction conditionnelle est consitutée d'une expression logique <c>t</c>, et d'uneinstruction <c>p</c>.</li>
+        <li>Selon les languages elle s'écrit <c>while (t) p</c>, <c>while t do p</c>, etc..</li>
+        <li>Informellement: tant que <c>t</c> a la valeur <c>vraie</c> alors exécuter <c>p</c>, et ré-évaluer <c>t</c> pour voir si il faut recommencer.</li>
+      </ul>
+      Bien entendu, l'instruction <c>p</c> peut être elle même une séquence complexe d'instruction.
+      <br/>
+      Bien entendu, il y a beaucoup d'autres formes de boucles, qui permettent par exemple d'exécuter une instruction un nombre fixé de fois, etc..
+      Mais toutes ces boucles s'écrivent à partir de cette instruction <c>while</c>.
+      <br/>
+      Bien entendu, c'est <i>là</i> que les choses se compliquent, puisque nous pouvons créer un programme qui . . boucle sans fin et ne s'arrête jamais!</p>
+      <p title="Le sens de l'instruction"> Avec nos notations mathématiques cela se note . . mmm . . de manière un peu plus compliquée:
+         <p align="center">si  <c>Θ(t, s)</c> est vrai <c>∑(while (t) p, s) = ∑(while (t) p, ∑(p, s))</c></p>
+         <p align="center">si  <c>Θ(t, s)</c> est faux <c>∑(while (t) p, s) = s</c></p>
+       où si la condition est vraie nous voyons que nous devons recommencer à évaluer la boucle d'instruction sur l'état modifié par <c>p</c>, 
+       tandis que si la condition est fausse, rien ne se passe, l'état est inchangé: l'instruction est ``vide´´, c'est un ``élément neutre´´ qui ne change rien.
+       <br/>
+       Une autre façon de formaliser cette instruction est de la ré-écrire avec une suite (infinie !) de tests:
+         <p align="center"><c>while (t) p</c> = <c>if (t) { p ; if (t) { p ; if (t) { p ; if (t) { p ; if (t) { p ; if (t) { p ; if (t) { p ; ... } } } } } } }</c></p>
+         où chaque fois que le test <c>t</c> est vrai, nous exécutons <c>p</c> et refaisons le test, ...
+       <br/>
+       Avec ces instructions de boucles la fonction <c>∑(p, s)</c> n'est plus une ``vraie´´ fonction, mais une fonction partielle, 
+       c'est à dire qui n'est pas définie sur les états qui la conduisent à boucler indéfiniment. 
+       C'est ce phénomène qui est principalement à l'origine de beaucoup de bugs, et du fait qu'au niveau théorique, l'informatique est très compliquée. 
+       Par exemple, beaucoup de problèmes ne sont pas ``décidables´´ automatiquement, 
+       car tous les programmes qui donnnt une solution peuvent . . mettre un temps infini à calculer.
+       C'est un problème passionnant . . 
+       <br/>
+       . . mais qui ne nous empêchera pas de commencer à apprendre à programmer !
+     </p>
+   </p>
+ </p>
 
   <footnotes>
     <p>Ce texte à été co-préparé par <a href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a>, 

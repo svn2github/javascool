@@ -74,6 +74,12 @@ public class Proglet {
     try { ((InterfacePrincipale) applet).echo(string, 'c'); } catch(Exception e) { System.out.println(string); }
   }
 
+  /** Returns true of two strings are equals else false.
+   * @param string1 The string to compare.
+   * @param string2 The other string to compre.
+   */
+  public static boolean equals(String string1, String string2) { return string1.equals(string2); }
+
   /** Returns an icon loaded from the applet context.
    * @param file The icon file name. The icon must be located in the <tt>img/</tt> directory (directory on the server or on the client side or in the jar).
    * @return The related image icon or an empty icon if not loaded.

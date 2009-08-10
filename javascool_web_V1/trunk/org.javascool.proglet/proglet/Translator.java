@@ -28,10 +28,11 @@ public class Translator {
       BufferedReader in = new BufferedReader(new FileReader(file+".jvs"));
       PrintWriter out = new PrintWriter(new FileWriter(file+".java"));
       // Here is the translation loop
-      final int offset = 3;
+      final int offset = 4;
       {
-	out.println("import static java.lang.Math.*;");
 	out.println("import static proglet.Proglet.echo;");
+	out.println("import static proglet.Proglet.equals;");
+	out.println("import static java.lang.Math.*;");
 	out.println("import static proglet."+proglet+".*;");
 	out.println("public class "+main+ " {");
 	for(String line; (line = in.readLine()) != null; ) {
