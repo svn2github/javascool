@@ -19,7 +19,17 @@
 #  + les actions doCompile() et doRun() sont correctement codées avec sauvegarde de fichier etc.. 
 #  + un bouton démo a ete ajoute
 
+# En cours:
+# noter chaque sujet quelle proglet utilisée <proglet name=""/> avec tag unplug.
+
 # Merdier en cours:
+
+# - Ajouter tools.jar et tester selon classpath (avec jre seule ordi do ou adele)
+# - AJouter numero de classe different et charge avec proglet.jar a cote
+# The com.sun.tools.javac.Main class provides two static methods to invoke the compiler from a program:
+# public static int compile(String[] args);
+# public static int compile(String[] args, PrintWriter out);
+
 
 # PB DE securite exception au 2eme applel apore validation
 # PB DE threading en mode applet
@@ -30,7 +40,7 @@
 # Modifs a faire qd le macanismes est valide
 # - Ajuster les tailles des proglets 512 x 512
 
-dft : tst3
+dft : tst1
 
 tst1 : cmp
 	java -cp proglet.jar proglet.Proglet Konsol

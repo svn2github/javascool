@@ -107,7 +107,7 @@ public class Proglet {
    */
   public static void main(String usage[]) { 
     InterfacePrincipale applet = new InterfacePrincipale(); applet.setProglet(usage[0]);
-    JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); f.setSize(920, 720); f.setVisible(true); 
+    JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); f.setSize(560, 720); f.setVisible(true); 
   }
 }
 

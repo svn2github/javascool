@@ -8,17 +8,15 @@
     <li>Les ingrédients des <a href="about-algorithm.htm">algorithmes</a> ?</li>
   </ul>
   </li>
-  <li>Les tutoriels<ul>
-    <li>Les cinq ingrédients des algorithmes<ul>
-      <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a> voir les séquences d'instructions.</li>
-      <li>Apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
-      <li>Découvrir l'instruction <a href="sujet-about-if.htm">conditionnelle</a>.</li>
-      <li>Se familiariser avec les <a href="sujet-about-functions.htm">fonctions</a>.</li>
-      <li>Utiliser des <a href="sujet-about-while.htm">boucles</a>.</li>
-    </ul></li>
-    <li>Quelques applications amusantes:<ul>
-      <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
-    </ul></li>
+  <li>Les cinq ingrédients des algorithmes<ul>
+    <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a> voir les séquences d'instructions.</li>
+    <li>Apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
+    <li>Découvrir l'instruction <a href="sujet-about-if.htm">conditionnelle</a>.</li>
+    <li>Se familiariser avec les <a href="sujet-about-functions.htm">fonctions</a>.</li>
+    <li>Utiliser des <a href="sujet-about-while.htm">boucles</a>.</li>
+  </ul></li>
+  <li>Quelques applications, exercices et activités:<ul>
+    <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
   </ul></li>
   <li>Autres liens: <ul>
     <li><a href="http://javascool.gforge.inria.fr">Le site Java's Cool</a></li>

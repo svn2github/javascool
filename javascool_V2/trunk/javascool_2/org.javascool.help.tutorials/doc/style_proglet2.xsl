@@ -10,9 +10,18 @@
   
 <xsl:template match="proglet">
   <div align = "center">
+    <script language="javascript">
+      // The function window.query("name") allows to get a http:location?name=value query parameter
+      window.query = function(name) {
+        var q = window.location.search.substring(1).split("&amp;");  
+        for (var i = 0; i &lt; q.length; i++) {  
+          var p = q[i].split("=");  
+          if (p[0] == name) return p[1];
+        }
+       } 
+    </script>
     <applet code="proglet.InterfacePrincipale.class" archive="../proglet.jar" width="920" height="720">
       <param name="proglet" value="{@name}"/>
-      <!--param name="cache_archive" value="http://interstices.info/upload/hamdi/tools.jar"/-->
     </applet>
   </div>
 </xsl:template>

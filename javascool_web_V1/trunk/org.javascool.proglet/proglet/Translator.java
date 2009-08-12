@@ -14,7 +14,7 @@ public class Translator {
 
   /** Translates a Jvs code source.
    * @param filename The file path to translate.
-   * @param proglet The static imported proglet name.
+1   * @param proglet The static imported proglet name.
    * @return The Java line number offset with respect to the Jvs source. -1 if it fails.
    */
   public static int translate(String filename, String proglet) throws IOException {
@@ -30,11 +30,12 @@ public class Translator {
       // Here is the translation loop
       final int offset = 4;
       {
-	out.println("import static proglet.Proglet.echo;");
-	out.println("import static proglet.Proglet.equals;");
-	out.println("import static java.lang.Math.*;");
-	out.println("import static proglet."+proglet+".*;");
-	out.println("public class "+main+ " {");
+	out.print("import static proglet.Proglet.echo;");
+	out.print("import static proglet.Proglet.equals;");
+	out.print("import static java.lang.Math.*;");
+	out.print("import static proglet."+proglet+".*;");
+	out.print("public class "+main+ " {");
+	out.print("  private static final long serialVersionUID = "+ (System.currentTimeMillis() % 10000000) + "L;");
 	for(String line; (line = in.readLine()) != null; ) {
 	  out.println(translateOnce(line));
 	}

@@ -71,21 +71,20 @@ public class InterfacePrincipale extends JApplet {
   private JButton jSaveButton = null;
   private JButton jCompileButton = null;
   private JButton jRunButton = null;
-  private JButton jStopButton = null;
-  private JButton jDemoButton = null;
+  ///private JButton jStopButton = null;
+  ///private JButton jDemoButton = null;
   private JPanel jProgramPanel = null;
   private JScrollPane jProgramScrollPane = null;
   private JTextArea jProgramEditorPane = null;
-  private JPanel jResultPanel = null;
+  ///private JPanel jResultPanel = null;
   private JPanel  jConsolePanel = null;
   private JScrollPane jScrollPane = null;
-  private JEditorPane jResultEditorPane = null;
+  ///private JEditorPane jResultEditorPane = null;
   private JScrollPane jConsoleScrollPane = null;
   private JEditorPane jConsoleTextPane = null;
   private JFileChooser fileChooser=null;
 
   public void init() {
-    this.setSize(920, 720);
     this.setContentPane(getJContentPane());
   }
 
@@ -95,11 +94,13 @@ public class InterfacePrincipale extends JApplet {
       jContentPane.setLayout(null);
       jContentPane.add(getJMenuPanel(), null);
       jContentPane.add(getJProgramPanel(), null);
+      /*
       try {
 	jContentPane.add(getJResultPanel(), null);
       } catch (Exception e) {
 	Proglet.report(e);
       }
+      */
       jContentPane.add(getJConsolePanel(), null);
     }
     return jContentPane;
@@ -111,14 +112,14 @@ public class InterfacePrincipale extends JApplet {
       jMenuPanel.setLayout(new FlowLayout());
       jMenuPanel.setBorder(BorderFactory.createTitledBorder(null, "Commandes", 
          TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-      jMenuPanel.setBounds(new Rectangle(9, 7, 878, 70));
+      jMenuPanel.setBounds(new Rectangle(9, 7, 540, 70)); /// setBounds(new Rectangle(9, 7, 878, 70));
       jMenuPanel.add(getJOpenButton(), null);
       jMenuPanel.add(getJSaveButton(), null);
       jMenuPanel.add(getJCompileButton(), null);
       jMenuPanel.add(getJRunButton(), null);
-      jMenuPanel.add(getJStopButton(), null);
-      jMenuPanel.add(new JLabel(" "), null);
-      jMenuPanel.add(getJDemoButton(), null);
+      //jMenuPanel.add(getJStopButton(), null);
+      //jMenuPanel.add(new JLabel(" "), null);
+      //jMenuPanel.add(getJDemoButton(), null);
     }
     return jMenuPanel;
   }
@@ -206,6 +207,7 @@ public class InterfacePrincipale extends JApplet {
     return jRunButton;
   }
 
+  /*
   private JButton getJStopButton() {
     if (jStopButton == null) {
       jStopButton = new JButton();
@@ -239,12 +241,13 @@ public class InterfacePrincipale extends JApplet {
     }
     return jDemoButton;
   }
+  */
 
   private JPanel getJProgramPanel() {
     if (jProgramPanel == null) {
       jProgramPanel = new JPanel();
       jProgramPanel.setLayout( null);
-      jProgramPanel.setBounds(new Rectangle(11, 92, 479, 398));
+      jProgramPanel.setBounds(new Rectangle(11, 92, 540, 398)); ///setBounds(new Rectangle(11, 92, 479, 398));
       jProgramPanel.setBorder(BorderFactory.createTitledBorder(null, "Programme", 
         TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
       jProgramPanel.add(getJProgramScrollPane(), null);
@@ -255,7 +258,7 @@ public class InterfacePrincipale extends JApplet {
   private JScrollPane getJProgramScrollPane() {
     if (jProgramScrollPane == null) {
       jProgramScrollPane = new JScrollPane();
-      jProgramScrollPane.setBounds(new Rectangle(8, 18, 459, 364));
+      jProgramScrollPane.setBounds(new Rectangle(8, 18, 520, 364));
       jProgramScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
       jProgramScrollPane.setViewportView(getJProgramEditorPane());
       jProgramScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -268,6 +271,15 @@ public class InterfacePrincipale extends JApplet {
       jProgramEditorPane = new JTextArea();
     }
     return jProgramEditorPane;
+  }
+
+  /*
+  private JEditorPane getJResultEditorPane() {
+    if (jResultEditorPane == null) {
+      jResultEditorPane = new JEditorPane();
+      jResultEditorPane.setEditable(false);
+    }
+    return jResultEditorPane;
   }
 
   private JPanel getJResultPanel() 
@@ -288,6 +300,8 @@ public class InterfacePrincipale extends JApplet {
     }
     return jResultPanel;
   }
+  */
+
   private String getProglet() {
     try {
       return getParameter("proglet");
@@ -295,7 +309,6 @@ public class InterfacePrincipale extends JApplet {
       return proglet;
     }
   }
-  
   /** Sets the proglet to use in this interface.
    * @param proglet The proglet class name.
    */
@@ -303,6 +316,16 @@ public class InterfacePrincipale extends JApplet {
     this.proglet = proglet;
   }
   private String proglet = "Konsol";
+
+  private JScrollPane getJConsoleScrollPane() {
+    if (jConsoleScrollPane == null) {
+      jConsoleScrollPane = new JScrollPane();
+      jConsoleScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+      jConsoleScrollPane.setViewportView(getJConsoleTextPane());
+      jConsoleScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    }
+    return jConsoleScrollPane;
+  }
 
   private JPanel getJConsolePanel() {
     if (jConsolePanel == null) {
@@ -314,7 +337,7 @@ public class InterfacePrincipale extends JApplet {
       gridBagConstraints1.gridx = 0;
       jConsolePanel = new JPanel();
       jConsolePanel.setLayout(new GridBagLayout());
-      jConsolePanel.setBounds(new Rectangle(15, 509, 873, 176));
+      jConsolePanel.setBounds(new Rectangle(15, 509, 540, 176)); // setBounds(new Rectangle(15, 509, 873, 176));
       jConsolePanel.setBorder(BorderFactory.createTitledBorder(null, "Console", 
 	TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
       jConsolePanel.add(getJConsoleScrollPane(), gridBagConstraints1);
@@ -327,27 +350,9 @@ public class InterfacePrincipale extends JApplet {
       jScrollPane = new JScrollPane();
       jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
       jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-      jScrollPane.setViewportView(getJResultEditorPane());
+      //jScrollPane.setViewportView(getJResultEditorPane());
     }
     return jScrollPane;
-  }
-
-  private JEditorPane getJResultEditorPane() {
-    if (jResultEditorPane == null) {
-      jResultEditorPane = new JEditorPane();
-      jResultEditorPane.setEditable(false);
-    }
-    return jResultEditorPane;
-  }
-
-  private JScrollPane getJConsoleScrollPane() {
-    if (jConsoleScrollPane == null) {
-      jConsoleScrollPane = new JScrollPane();
-      jConsoleScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-      jConsoleScrollPane.setViewportView(getJConsoleTextPane());
-      jConsoleScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-    }
-    return jConsoleScrollPane;
   }
 
   private JEditorPane getJConsoleTextPane() {
@@ -356,10 +361,8 @@ public class InterfacePrincipale extends JApplet {
       jConsoleTextPane.setContentType("text/html; charset=UTF-8");
       jConsoleTextPane.setEditable(false);
       PrintStream ps = new PrintStream(console = new ConsoleOutputStream());
-      /* Ecarté car pb au reload
-	 //// System.setOut(ps);
-	 //// System.setErr(ps);
-      */
+      System.setOut(ps);
+      System.setErr(ps);
     }
     return jConsoleTextPane;
   }
@@ -458,7 +461,7 @@ public class InterfacePrincipale extends JApplet {
     main = pFile.replaceAll(".*/([^/]+)\\.[a-z]+$", "$1");
     file = pFile.replaceAll("\\.[a-z]+$", "");
   }  
-  private String main = null, file = null;
+  private String main = null, suffix = "", file = null;
 
   private void doLire(String pFile) throws IOException {
     BufferedReader in = new BufferedReader(new FileReader(pFile));
@@ -508,15 +511,19 @@ public class InterfacePrincipale extends JApplet {
   }
 
   private void doRun() throws Exception {
+    /*
     try {
       getAppletContext().showDocument(new URL("file:"+System.getProperty("user.dir")+"//doc/about-all.xml"), "_blank");
     } catch(Exception e) {
       Proglet.report(e);
     }
-    //
+    */
+    /*
     doStop();
+    */
     if (main != null) {
       if (doCompile()) {
+	/*
 	URL[] urls = new URL[] { new URL("file:"+new File(file+".class").getParent()+File.separator) };
 	final Class<?> s = new URLClassLoader(urls).loadClass(main);
 	echo("Le programme "+main+" va s'exécuter", 'i');
@@ -535,12 +542,14 @@ public class InterfacePrincipale extends JApplet {
 	  }
 	}});
 	tache.start();
+	*/
       }
     } else {
       echo("Impossible de compiler et exécuter avant d'ouvrir ou sauvegarder le fichier !", 'b');
     }
   }
 
+  /*
   private void doStop() throws Exception {
     if (tache != null) {
       tache.interrupt();
@@ -549,4 +558,5 @@ public class InterfacePrincipale extends JApplet {
   }
 
   private Thread tache = null;
+  */
 }
