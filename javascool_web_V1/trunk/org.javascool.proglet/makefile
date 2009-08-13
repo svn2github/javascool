@@ -26,14 +26,16 @@
 #  ? Exceptions de sécurité à la pelle, malgré la certification: lors du rechargement, selon la version du compilateur utilisé, etc...
 #  ? Lors du chargement de la classe compilee, non certifiée, il y a de fait une exception de sécurite à l'exécution puisque dès qu'il y a un accès à des ressources certifiées
 #  ? Lors du chargement de la classe compilee, si les expections de sécurité ne se produisent pas, elle s'exécute parfois ``dans le vide´´ sans accéder à la proglet affichée
+# DONC ABANDON DE LA SOLUTION ET PASSAGE A UNE SOLUTION EN MODE SERVEUR
 
 # En cours:
 # Corrections des textes de base
-# Noter chaque sujet quelle proglet utilisée <proglet name=""/> avec tag unplug.
+# Noter chaque sujet quelle proglet utilisée <proglet name=""/> avec tag unplug aussi
 # Ajouts de tous les sujets au brouillon
 
 # A prévoir:
 #  - Avoir plusieurs instances simultanées sur le serveur
+#  - Voir le pb de l'acces aux icones parfois
 #  - Voir le pb du setLocation() en mode standalone
 #  - Voir pb des droits qd on rsync sur javascool
 
@@ -48,12 +50,12 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst0
+dft : tst1
 
 # Test en standalone
 
-tst1 : cmp
-	$(JAVA)/bin/java -cp $(CP):proglet.jar proglet.Proglet
+tst1 : wproglet.jar
+	$(JAVA)/bin/java -jar $^
 
 # Test du service web
 
@@ -63,13 +65,13 @@ tst2 : scp
 # Test de la génération de la documentation
 
 tst0 : pub
-	firefox http://javascool.gforge.inria.fr/proglet/index.html
+	firefox http://javascool.gforge.inria.fr/proglet
 
 #####################################################################################################################################
 ##      Generation des fichiers javascool'proglet, contacts Hamdi.Ben_Abdallah@inria.fr Thierry.Vieville@sophia.inria.fr           ##
 #####################################################################################################################################
 
-all : cmp doc
+all : scp pub
 
 clean :
 	@rm -rf proglet.jar proglet.crt wproglet.jar *.class */*.class index.html api doc/*.htm
@@ -81,9 +83,7 @@ public-key=hello-world
 private-key=mer,d,azof
 version=0.0
 
-# Compilation du code
-
-cmp : proglet.jar
+# Compilation du code et creation d'une jar certifiée
 
 proglet.jar : makefile $(wildcard proglet/*.java)
 	@rm -f proglet.jar proglet.crt
@@ -103,7 +103,7 @@ proglet.jar : makefile $(wildcard proglet/*.java)
 	@#Cleanup
 	rm -rf /tmp/manisfest.mf /tmp/keystore /tmp/tmp.jar proglet/*.class
 
-# Creation d'un jar en standalone avec les classes du compilateur intégrées
+# Creation d'une jar en standalone avec les classes du compilateur intégrées
 
 wproglet.jar : proglet.jar $(CP)
 	@rm -rf tmp ; mkdir tmp
