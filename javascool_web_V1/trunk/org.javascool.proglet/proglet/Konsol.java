@@ -48,15 +48,21 @@ public class Konsol {
       }});
     }
 
-    /** Write a string.
+    /** Writes a string.
      * @param string The string to write.
      */
     public void writeString(String string) {
-      out.setText(out.getText()+string+"\n"); pane.getVerticalScrollBar().setValue(pane.getVerticalScrollBar().getMaximum());
+      out.setText(out.getText()+string+"\n"); 
+      pane.getVerticalScrollBar().setValue(pane.getVerticalScrollBar().getMaximum());
     }
     private JTextArea out; private JScrollPane pane;
 
-    /** Read a string.
+    /** Clears the output. */
+    public void clear() {
+      out.setText("");
+    }
+
+    /** Reads a string.
      * @param retry Set to true in retry mode, after a wrong input.
      * @return The read string.
      */
@@ -74,6 +80,7 @@ public class Konsol {
 
   /** Test du panel. */
   static void test() {
+    clear();
     println("Bonjour, qui est tu ?");
     String nom = readString();
     println ("Echanté "+nom+" ! Quel age as tu ?");
@@ -91,6 +98,11 @@ public class Konsol {
    */
   public static void println(String string) {
     panel.writeString(string);
+  }
+
+  /** Efface tout ce qui est déjà écrit dans la console. */
+  public static void clear() {
+    panel.clear();
   }
 
   /** Lit une chaîne de caractère dans la fenêtre d'entrée (input).

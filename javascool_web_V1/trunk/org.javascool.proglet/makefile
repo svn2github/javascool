@@ -17,40 +17,37 @@
 #  + le bouton stop a été ajouté et validé
 #  + la console gère les accents en UTF-8 et des tags html pour une meilleure lisibilité
 #  + les actions doCompile() et doRun() sont correctement codées avec sauvegarde de fichier etc.. 
-#  + un bouton démo a ete ajoute
+#  + un bouton démo a été ajouté
+#  + lors de la compilation le Translator définit un serialVersionUID différent pour entraîner la mise à jour de la classe et ne pas ré-exécuter une classe compilée précédemment
+#  ! l'applet a ete separee en deux modes d'affichage [edit/compil] et [execute]
+#  ! Du coup de tout ces pbs, la compilation a été refaite en jdk5 pour tourner sur MacOS aussi.
+# > Bugs sans solution recontres en mode applet avec compilateur intégré
+#  ? Exceptions de sécurité à la pelle, malgré la certification: lors du rechargement, selon la version du compilateur utilisé, etc...
+#  ? Lors du chargement de la classe compilee, non certifiée, il y a de fait une exception de sécurite à l'exécution puisque dès qu'il y a un accès à des ressources certifiées
+#  ? Lors du chargement de la classe compilee, si les expections de sécurité ne se produisent pas, elle s'exécute parfois ``dans le vide´´ sans accéder à la proglet affichée
 
 # En cours:
-# noter chaque sujet quelle proglet utilisée <proglet name=""/> avec tag unplug.
+# Noter chaque sujet quelle proglet utilisée <proglet name=""/> avec tag unplug.
+# Publier les fichiers html sur javacsool/proglet
 
-# Merdier en cours:
+# A prévoir:
+#  - Avoir plusieurs instances simultanées sur le serveur
+#  - Voir le pb du setLocation() en mode standalone
 
-# - Ajouter tools.jar et tester selon classpath (avec jre seule ordi do ou adele)
-# - AJouter numero de classe different et charge avec proglet.jar a cote
-# The com.sun.tools.javac.Main class provides two static methods to invoke the compiler from a program:
-# public static int compile(String[] args);
-# public static int compile(String[] args, PrintWriter out);
+JAVA=/usr/java/jdk1.5.0_13
 
+CP=/usr/java/jdk1.5.0_13/lib/tools.jar
+# .. en fait cette référence est uniquement nécessaire au mode standalone pour la classe Compiler, inutile en mode serveur
 
-# PB DE securite exception au 2eme applel apore validation
-# PB DE threading en mode applet
-# PB DE non rechargement du fichier en applet -> cht le nom du java ? avec time ?
-# PB DE non acces au proglet konsol si applet
-# PB DE apllet a null qd on execute du thread
-
-# Modifs a faire qd le macanismes est valide
-# - Ajuster les tailles des proglets 512 x 512
-
-dft : tst1
+dft : tst2
 
 tst1 : cmp
-	java -cp proglet.jar proglet.Proglet Konsol
+	$(JAVA)/bin/java -cp proglet.jar:$(CP) proglet.Proglet edit Konsol
 
-tst2 : cmp $(patsubst %.xml,%.htm,$(wildcard doc/proglet-*.xml)) 
+tst2 : cmp 
+	@echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded index.php proglet.jar facets.inria.fr:javascool
 	rm -f *.class
-	firefox doc/proglet-konsol.htm 
-
-tst3 : pub
-	@firefox http://www.loria.fr/~vthierry/proglet/doc/proglet-konsol.htm 
+	firefox http://facets.inria.fr/javascool
 
 tst0 : cmp doc
 	firefox index.html
@@ -81,15 +78,15 @@ proglet.jar : makefile $(wildcard proglet/*.java)
 	@echo 'build $@'
 	@rm -f proglet.jar proglet.crt
 	@#Compile the sources
-	javac -Xlint proglet/*.java
+	$(JAVA)/bin/javac -Xlint -cp $(CP) proglet/*.java
 	@# Generates the manifest file
 	(echo 'Summary: proglet'; echo 'Created-By: $(version) (interstices.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'`") > /tmp/tmp.mf
 	(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> /tmp/tmp.mf
 	@#Build the raw jar
-	jar cfm /tmp/tmp.jar /tmp/tmp.mf proglet img
+	$(JAVA)/bin/jar cfm /tmp/tmp.jar /tmp/tmp.mf proglet img
 	@#Sign the jar file
-	keytool -genkey -alias proglet -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore
-	jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore -signedjar proglet.jar /tmp/tmp.jar proglet
+	$(JAVA)/bin/keytool -genkey -alias proglet -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore
+	$(JAVA)/bin/jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore -signedjar proglet.jar /tmp/tmp.jar proglet
 	@##keytool -export -alias proglet -storepass '$(public-key)' -keystore /tmp/keystore -file proglet.crt
 	@##jarsigner -verify -verbose -certs proglet.jar
 	@#Cleanup
@@ -106,14 +103,8 @@ XML2XML = /usr/java/jdk1.5.0_13/bin/java -classpath /usr/java/saxon6-5-5/saxon.j
 doc/about-%.htm : doc/about-%.xml
 	@$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_about2.xsl
 
-doc/proglet-%.htm : doc/proglet-%.xml
-	@$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_proglet2.xsl
-
 doc/sujet-%.htm : doc/sujet-%.xml
 	@$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_sujet2.xsl
-
-doc/correction-%.htm : doc/correction-%.xml
-	@$(XML2XML) -o $@ $^  ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/style_correction2.xsl
 
 doc/img/%.png : doc/img/%.fig
 	fig2dev -L png $^ > $@
@@ -131,7 +122,7 @@ index.html : makefile
 
 pub : cmp doc
 	@#echo 'svnci ..' ; cd ../../.. ; svn up ; svn ci -m ''
-	@echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ ./* loria.loria.fr:/local/web-homepages/vthierry/proglet
+	###@echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ ./* facets.inria.fr.fr:javascool
 	@#firefox http://www.loria.fr/~vthierry/proglet/index.html
 
 ssh :

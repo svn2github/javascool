@@ -11,49 +11,38 @@ import java.io.FileWriter;
 import java.util.regex.Pattern;
 
 public class Translator {
+  static int uid = 1;
 
   /** Translates a Jvs code source.
    * @param filename The file path to translate.
-1   * @param proglet The static imported proglet name.
-   * @return The Java line number offset with respect to the Jvs source. -1 if it fails.
+   * @param proglet The static imported proglet name.
    */
-  public static int translate(String filename, String proglet) throws IOException {
+  public static void translate(String filename, String proglet) throws IOException {
     String main = filename.replaceAll(".*/([^/]+)\\.[a-z]+$", "$1"), file = filename.replaceAll("\\.[a-z]+$", "");
     File jvs = new File(file+".jvs"), jav = new File(file+".java");
-    if (!jvs.exists()) {
-      System.out.println("Le fichier "+file+".jvs n'existe pas!");
-      return -1;	
-    }     
-    try {
-      BufferedReader in = new BufferedReader(new FileReader(file+".jvs"));
-      PrintWriter out = new PrintWriter(new FileWriter(file+".java"));
-      // Here is the translation loop
-      final int offset = 4;
-      {
-	out.print("import static proglet.Proglet.echo;");
-	out.print("import static proglet.Proglet.equals;");
-	out.print("import static java.lang.Math.*;");
-	out.print("import static proglet."+proglet+".*;");
-	out.print("public class "+main+ " {");
-	out.print("  private static final long serialVersionUID = "+ (System.currentTimeMillis() % 10000000) + "L;");
-	for(String line; (line = in.readLine()) != null; ) {
-	  out.println(translateOnce(line));
-	}
-	out.println("}");
+    if (!jvs.exists()) throw new IOException("File not found: "+jvs);
+    BufferedReader in = new BufferedReader(new FileReader(file+".jvs"));
+    PrintWriter out = new PrintWriter(new FileWriter(file+".java"));
+    // Here is the translation loop
+    {
+      out.print("import static proglet.Macros.*;");
+      out.print("import static java.lang.Math.*;");
+      out.print("import static proglet."+proglet+".*;");
+      out.print("public class "+main+ " extends proglet.InterfacePrincipale {");
+      out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
+      for(String line; (line = in.readLine()) != null; ) {
+	out.println(translateOnce(line));
       }
-      in.close();
-      out.close();
-      return offset;
-    } catch(Exception e) {
-      Proglet.report(e);
-      return -1;
+      out.println("}");
     }
+    in.close();
+    out.close();
   }
 
   // Translates one line of the source file
   private static String translateOnce(String line) {
-    // Expands the static public modifiers
-    line = line.replaceFirst("main[ \t]*\\(\\)", "static public void main()");
+    // Adds the void to main
+    line = line.replaceFirst("main[ \t]*\\(\\)", "public void main()");
     return line;
   }
 }

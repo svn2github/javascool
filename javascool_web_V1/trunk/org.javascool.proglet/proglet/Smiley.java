@@ -40,7 +40,7 @@ public class Smiley {
     for(int size = 1, SIZE = 512; size < SIZE; size *= 2) {
       reset(size, size);
       peace();
-      Proglet.sleep(1000 - size);
+      Macros.sleep(1000 - size);
     }
   }
 

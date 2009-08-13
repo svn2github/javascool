@@ -41,8 +41,8 @@ public class Dicho {
     public Panel() {
       super(new BorderLayout()); setBackground(Color.WHITE);
       // Adds the background icon
-      JLayeredPane book = new JLayeredPane(); book.setPreferredSize(new Dimension(550, 350)); add(book);
-      JLabel icon = new JLabel(); icon.setBounds(10, 0, 550, 350); icon.setIcon(Proglet.getIcon("dicho_background.png")); book.add(icon, new Integer(1), 0);
+      JLayeredPane book = new JLayeredPane(); book.setPreferredSize(new Dimension(540, 350)); add(book);
+      JLabel icon = new JLabel(); icon.setBounds(10, 0, 540, 350); icon.setIcon(Proglet.getIcon("dicho_background.png")); book.add(icon, new Integer(1), 0);
       // Adds the label and flag
       name = new JLabel(); name.setBounds(90, 50, 150, 100); book.add(name, new Integer(2), 0);
       flag = new JLabel(); flag.setBounds(340, 100, 200, 100); book.add(flag, new Integer(2), 1);
@@ -82,11 +82,16 @@ public class Dicho {
     // Tests if the dico is sorted
     for(int i = 1; i < dicho.length; i++)
       if (compare(dicho[i][0], i - 1) <= 0)
-	System.out.println("Ahhh bad sort between "+dicho[i][0]+"#"+i+(compare(dicho[i][0], i - 1) == 0 ? " == " : " << ")+dicho[i-1][0]+"#"+(i-1));
+	Macros.echo("Ahhh bad sort between "+dicho[i][0]+"#"+i+(compare(dicho[i][0], i - 1) == 0 ? " == " : " << ")+dicho[i-1][0]+"#"+(i-1));
     // Tests the index function
     for(int i = 0; i < dicho.length; i++)
       if (i != getIndex(dicho[i][0]))
-	System.out.println("Ohhh bad index for "+dicho[i][0]+"#"+i+" <> "+getIndex(dicho[i][0]));
+	Macros.echo("Ohhh bad index for "+dicho[i][0]+"#"+i+" <> "+getIndex(dicho[i][0]));
+    // Shows a few random pages
+    for(int i = 0; i < 10; i++) {
+      Macros.sleep(500);
+      panel.show(((int) (Math.random() * dicho.length)));
+    }
   }
 
   /** Gets the index of a given page.
@@ -99,7 +104,7 @@ public class Dicho {
     while(true) {
       int milieu = (debut + fin) / 2;
       int c = compareTo(name, milieu);
-      // System.out.println("'"+name+"'"+(c < 0 ? " < " : c > 0 ? " > " : " = ")+ "dicho["+debut+"<"+milieu+"<"+fin+"] = '"+dicho[i][0]+"'");
+      // Macros.echo("'"+name+"'"+(c < 0 ? " < " : c > 0 ? " > " : " = ")+ "dicho["+debut+"<"+milieu+"<"+fin+"] = '"+dicho[i][0]+"'");
       if (c == 0) {
 	return milieu;
       } else {

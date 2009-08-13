@@ -15,6 +15,7 @@ import java.net.URL;
 
 // Used to test as standalone
 import javax.swing.JFrame;
+import java.awt.Point;
 
 // Used to test as applet
 import javax.swing.JApplet;
@@ -26,10 +27,10 @@ import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
 
 /** This factory allows to interface with proglets.
- * By contract, a proglet must define: <ul>
- *  <li><tt>public static final JPanel panel;</tt> which is the static instantiation of the proglet's swing panel.</li>
- *  <li>Its sizes as the panel preferred sizes.</li>
- *  <li>A <tt>static void test()</tt> to test the proglet panel.</li>
+ * By contract, a proglet must: <ul>
+ *  <li>Define <tt>public static final JPanel panel;</tt> which is the static instantiation of the proglet's swing panel.</li>
+ *  <li>Its sizes as the panel preferred sizes must be within <tt>[540 x 580]</tt>.</li>
+ *  <li>Provide a <tt>static void test()</tt> method to test/demo the proglet panel.</li>
  * </ul>
  */
 public class Proglet {
@@ -47,6 +48,20 @@ public class Proglet {
   }
   static private Applet applet = null;
 
+  /** Returns an icon loaded from the applet context.
+   * @param file The icon file name. The icon must be located in the <tt>img/</tt> directory (directory on the server or on the client side or in the jar).
+   * @return The related image icon or an empty icon if not loaded.
+   */
+  static ImageIcon getIcon(String file) {
+    try { return new ImageIcon(ClassLoader.getSystemResource("img/"+file)); } catch(Exception e1) {
+      try { return new ImageIcon(new URL(applet.getCodeBase().toString()+"/img/"+file)); } catch(Exception e2) { 
+	try { return new ImageIcon(new URL("file:img/"+file)); } catch(Exception e3) { 
+	  System.err.println("Unable to load the '"+file+"' icon, check your configuration or your img/ files"); return new ImageIcon(); 
+	}
+      }
+    }
+  }
+
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
    */
@@ -63,51 +78,33 @@ public class Proglet {
    */
   public static void report(Throwable error) {
     if (error instanceof InvocationTargetException) report(error.getCause());
+    System.out.println(error.toString());
     System.err.println(error.toString());
-    System.err.println(error.getStackTrace()[0]+"\n"+error.getStackTrace()[1]+"\n"+error.getStackTrace()[2]+"\n"+error.getStackTrace()[3]);
-  }
-
-  /** Echos a string in the console.
-   * @param string The string to echo.
-   */
-  public static void echo(String string) {
-    try { ((InterfacePrincipale) applet).echo(string, 'c'); } catch(Exception e) { System.out.println(string); }
-  }
-
-  /** Returns true of two strings are equals else false.
-   * @param string1 The string to compare.
-   * @param string2 The other string to compre.
-   */
-  public static boolean equals(String string1, String string2) { return string1.equals(string2); }
-
-  /** Returns an icon loaded from the applet context.
-   * @param file The icon file name. The icon must be located in the <tt>img/</tt> directory (directory on the server or on the client side or in the jar).
-   * @return The related image icon or an empty icon if not loaded.
-   */
-  static ImageIcon getIcon(String file) {
-    try { return new ImageIcon(ClassLoader.getSystemResource("img/"+file)); } catch(Exception e1) {
-      try { return new ImageIcon(new URL(applet.getCodeBase().toString()+"/img/"+file)); } catch(Exception e2) { 
-	try { return new ImageIcon(new URL("file:img/"+file)); } catch(Exception e3) { 
-	  System.err.println("Unable to load the '"+file+"' icon, check your configuration or your img/ files"); return new ImageIcon(); 
-	}
-      }
-    }
-  }
-
-  /** Sleeps and purge the graphic's drawings.
-   * @param delay Delay in msec.
-   */
-  public static void sleep(int delay) {
-    try { if (delay > 0) Thread.sleep(delay); else Thread.yield(); } catch(Exception e) { }
+    for(int i = 0; i < 4 && i < error.getStackTrace().length; i++)
+      System.err.println(error.getStackTrace()[i]);
   }
 
   /** Used to test a proglet as a standalone program. 
-   * @param usage <tt>java proglet.Proglet &lt;proglet-name></tt>
-   * <hr/>Applet usage: <tt>&lt;applet code="proglet.InterfacePrincipale.class" width="920" height="720">&lt;param name="proglet" value=" &lt;proglet-name>"/>&lt;/applet></tt>
+   * @param usage <tt>java proglet.Proglet &lt;edit|run> &lt;proglet-name></tt>
+   * <hr/>Applet usage: <tt>&lt;applet code="proglet.InterfacePrincipale.class" width="560" height="720">&lt;param name="proglet" value=" &lt;proglet-name>"/>&lt;/applet></tt>
    */
   public static void main(String usage[]) { 
-    InterfacePrincipale applet = new InterfacePrincipale(); applet.setProglet(usage[0]);
-    JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); f.setSize(560, 720); f.setVisible(true); 
+    InterfacePrincipale applet = new InterfacePrincipale(); applet.setEdit("edit".equals(usage[0])); applet.setProglet(usage[1]); 
+    show(applet, "javascool'proglet editor for «"+usage[1].toLowerCase()+"»", new Point(570, 0), 560, 720);
+  }
+
+  /** Opens an applet in a standalone frame.
+   * @param applet The applet to display.
+   * @param title  Frame title. If null no title.
+   * @param where  Position on the screen. If null set to the default value.
+   * @param width  Applet width.
+   * @param height Applet height.
+   * @return The opened frame.  Use <tt>frame.dispose()</tt> to close the frame.
+   */
+  public static JFrame show(JApplet applet, String title, Point where, int width, int height) {
+    JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); 
+    if (title != null) f.setTitle(title); f.setSize(width, height); if (where != null) { f.setLocationByPlatform(false); f.setLocation(where); } f.setVisible(true); 
+    return f;
   }
 }
 

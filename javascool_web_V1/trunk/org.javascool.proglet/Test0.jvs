@@ -1,6 +1,5 @@
 main() {
-    echo("OK18 : " + sin(3.1416/4)); 
-     // while(true)  
-        println("HII"); 
-       println("HII"); 
+  clear();
+  // while(true)  
+    println("HIIIIU-----------UIII");
 }

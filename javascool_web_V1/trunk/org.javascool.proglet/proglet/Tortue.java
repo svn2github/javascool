@@ -39,7 +39,7 @@ public class Tortue {
     panel.tortue.set(1000);
     for(int t = 0; t < 9000; t++) {
       add(Math.cos(0.0015 * t), Math.sin(0.0045 * t), (t / 1000) % 10 );
-      Proglet.sleep(10);
+      Macros.sleep(10);
     }
   }
 
