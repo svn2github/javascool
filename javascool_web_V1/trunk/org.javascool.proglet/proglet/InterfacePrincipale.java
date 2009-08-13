@@ -25,6 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
+import javax.swing.JComboBox;
 import javax.swing.filechooser.FileFilter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -59,6 +60,7 @@ import java.net.URLClassLoader;
  * img/compile.png
  * img/execute.png
  * img/stop.png
+ * img/demo.png
  * </pre>
  */
 public class InterfacePrincipale extends JApplet {
@@ -68,18 +70,16 @@ public class InterfacePrincipale extends JApplet {
   // Cette partie définie le paramétrage de l'interface graphique
   //
 
+  /** Sets the proglet to use in this interface.
+   * @param proglet The proglet class name.
+   */
+  public void setProglet(String proglet) { getJProgletButton(); jProgletBox.setSelectedItem(this.proglet = proglet); } private String proglet = "Konsol";
+	
   /** Sets the mode to use in this interface.
    * @param edit If true in edit mode, else in run mode.
    */
   public void setEdit(boolean edit) { this.edit = edit; } private boolean edit = false;
-  private boolean getEdit() { try { return getParameter("edit") != null; } catch(Exception e) { return edit; } }
-
-  /** Sets the proglet to use in this interface.
-   * @param proglet The proglet class name.
-   */
-  public void setProglet(String proglet) { this.proglet = proglet; } private String proglet = "Konsol";
-  private String getProglet() { try { return getParameter("proglet"); } catch(Exception e) { return proglet; } }
-	
+  
   // Sets the class name and file
   private void setMainFile(String pFile) {
     main = pFile.replaceAll(".*/([^/]+)\\.[a-z]+$", "$1");
@@ -88,22 +88,15 @@ public class InterfacePrincipale extends JApplet {
   private String main = null, path = null;
 
   /** This routines is overloaded to run a program. */
-  public void main() { Proglet.test(getProglet()); }
+  public void main() { Proglet.test(proglet); }
 
   boolean standalone = true; 
 
-  // Echos a message in the console. Style: 'b' for bold, 'i' for italic, 'c' for code.
-  private void printConsole(String string, char style) { 
-    if (console != null) {
-      switch(style) {
-      case 'b': string = "<b>" + string + "</b>"; break;
-      case 'c': string = "<b><tt>" + string + "</tt></b>"; break;
-      case 'i': string = "<i>" + string + "</i>"; break;
-      }
-      console.writeln(string);
-    } else {
-      Proglet.report(new IllegalStateException("Echoing: "+string));
-    }
+  private void initParameters() {
+    { try { if (getParameter("proglet") != null) setProglet(getParameter("proglet")); } catch(Exception e) { } }
+    { try { if (getParameter("edit") != null) setEdit(true); } catch(Exception e) { } }
+    { try { if (getParameter("path") != null) doLire(getParameter("path")+".jvs");  } catch(Exception e) { } }
+    { try { standalone = getAppletContext() == null; } catch(Exception e) { } }
   }
 
   //
@@ -112,6 +105,8 @@ public class InterfacePrincipale extends JApplet {
 
   private JPanel jContentPane = null;
   private JPanel jMenuPanel = null;
+  private JPanel jProgletButton = null;
+  private JComboBox jProgletBox = null;
   private JButton jOpenButton = null;
   private JButton jSaveButton = null;
   private JButton jCompileButton = null;
@@ -129,10 +124,8 @@ public class InterfacePrincipale extends JApplet {
   private JFileChooser fileChooser=null;
 
   public void init() {
+    initParameters();
     this.setContentPane(getJContentPane());
-    // Init the applet parameters
-    { try { standalone = getAppletContext() == null; } catch(Exception e) { } }
-    { try { if (getParameter("path") != null) doLire(getParameter("path")+".jvs");  } catch(Exception e) { } }
   }
 
   private JPanel getJContentPane() {
@@ -140,7 +133,7 @@ public class InterfacePrincipale extends JApplet {
       jContentPane = new JPanel();
       jContentPane.setLayout(null);
       jContentPane.add(getJMenuPanel(), null);
-      if (getEdit()) {
+      if (edit) {
 	jContentPane.add(getJProgramPanel(), null);
 	jContentPane.add(getJConsolePanel(), null);
       } else {
@@ -157,7 +150,8 @@ public class InterfacePrincipale extends JApplet {
       jMenuPanel.setBorder(BorderFactory.createTitledBorder(null, "Commandes", 
          TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
       jMenuPanel.setBounds(new Rectangle(9, 7, 540, 70));
-      if (getEdit()) {
+      if (edit) {
+	jMenuPanel.add(getJProgletButton(), null);
 	jMenuPanel.add(getJOpenButton(), null);
 	jMenuPanel.add(getJSaveButton(), null);
 	jMenuPanel.add(getJCompileButton(), null);
@@ -170,7 +164,27 @@ public class InterfacePrincipale extends JApplet {
     }
     return jMenuPanel;
   }
-  
+
+  private JPanel getJProgletButton() {
+    if (jProgletButton == null) {
+      jProgletButton = new JPanel();
+      jProgletButton.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+      JLabel jProgletLabel = new JLabel();
+      jProgletLabel.setIcon(Proglet.getIcon("execute.png"));
+      jProgletButton.add(jProgletLabel);
+      String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Tortue" };
+      jProgletBox = new JComboBox(proglets);
+      jProgletBox.setEditable(false);
+      jProgletBox.addActionListener(new ActionListener(){
+	  public void actionPerformed(ActionEvent e){
+	    proglet = (String) jProgletBox.getSelectedItem();
+	  }
+	});
+      jProgletButton.add(jProgletBox);
+    }
+    return jProgletButton;
+  }
+
   private JButton getJOpenButton() {
     if (jOpenButton == null) {
       jOpenButton = new JButton();
@@ -279,7 +293,7 @@ public class InterfacePrincipale extends JApplet {
       jDemoButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
 	    try {
-	      Proglet.test(getProglet());
+	      Proglet.test(proglet);
 	    } catch (Exception e1) {
 	      Proglet.report(e1);
 	    }
@@ -331,7 +345,7 @@ public class InterfacePrincipale extends JApplet {
       jResultPanel.setBounds(new Rectangle(8, 92, 540, 580));
       jResultPanel.setBorder(BorderFactory.createTitledBorder(null, "Résultat", 
         TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-      jResultPanel.add(Proglet.getPanel(this, getProglet()), gridBagConstraints);
+      jResultPanel.add(Proglet.getPanel(this, proglet), gridBagConstraints);
     }
     return jResultPanel;
   }
@@ -386,6 +400,20 @@ public class InterfacePrincipale extends JApplet {
     return jConsoleTextPane;
   }
   private ConsoleOutputStream console = null;
+
+  // Echos a message in the console. Style: 'b' for bold, 'i' for italic, 'c' for code.
+  private void printConsole(String string, char style) { 
+    if (console != null) {
+      switch(style) {
+      case 'b': string = "<b>" + string + "</b>"; break;
+      case 'c': string = "<b><tt>" + string + "</tt></b>"; break;
+      case 'i': string = "<i>" + string + "</i>"; break;
+      }
+      console.writeln(string);
+    } else {
+      Proglet.report(new IllegalStateException("Echoing: "+string));
+    }
+  }
 
   // Defines a writer able to append chars as a stream and strings
   private class ConsoleOutputStream extends OutputStream {
@@ -491,17 +519,17 @@ public class InterfacePrincipale extends JApplet {
       if (new File(path+".class").exists())
 	new File(path+".class").delete();
       // Translate and compile
-      Translator.translate(path+".jvs", getProglet());
+      Translator.translate(path+".jvs", proglet);
       if (standalone) {
 	doStandAloneCompile();
       } else {
 	// Compiles an dload via a web service
 	String body = URLEncoder.encode(loadString(path+".java"), "UTF-8");
-	getAppletContext().showDocument(new URL("http://facets.inria.fr/javascool/index.php?prog="+getProglet()+"&main="+main+"&path="+path+"&body="+body), "_self");
+	getAppletContext().showDocument(new URL("http://facets.inria.fr/javascool/index.php?prog="+proglet+"&main="+main+"&path="+path+"&body="+body), "_self");
       }
       new File(path+".java").delete();
     } else
-      printConsole("Impossible de compiler avant d'ouvrir ou sauvegarder le fichier !", 'b');
+      printConsole("Impossible de compiler avant de définir/sauvegarder une programme !", 'b');
   }
   private JFrame runWindow = null;
 
@@ -511,14 +539,15 @@ public class InterfacePrincipale extends JApplet {
     if (compilation.length() > 0) {
       // Reports compilation errors
       printConsole("Le fichier "+main+".jvs n'a pas pu être compilé", 'b');
-      printConsole(compilation, 'c');
+      printConsole(compilation.replaceAll("\n", "<br/>\n"), 'c');
     } else {
       // Loads the compiled proglet for execution
       URL[] urls = new URL[] { new URL("file:"+new File(path+".class").getParent()+File.separator) };
       final Class<?> s = new URLClassLoader(urls).loadClass(main);
+      InterfacePrincipale r = (InterfacePrincipale) s.newInstance(); r.setProglet(proglet);
       if (runWindow != null) { runWindow.dispose(); runWindow = null; }
       Point where = getLocationOnScreen(); where.x -= 570;
-      runWindow = Proglet.show((JApplet) s.newInstance(), "javascool'proglet runner for «"+getProglet().toLowerCase()+ "»", null, 560, 720);
+      runWindow = Proglet.show(r, "javascool «"+proglet+ "» proglet's runner", null, 560, 720);
     }
   }
 

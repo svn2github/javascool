@@ -53,12 +53,8 @@ public class Proglet {
    * @return The related image icon or an empty icon if not loaded.
    */
   static ImageIcon getIcon(String file) {
-    try { return new ImageIcon(ClassLoader.getSystemResource("img/"+file)); } catch(Exception e1) {
-      try { return new ImageIcon(new URL(applet.getCodeBase().toString()+"/img/"+file)); } catch(Exception e2) { 
-	try { return new ImageIcon(new URL("file:img/"+file)); } catch(Exception e3) { 
-	  System.err.println("Unable to load the '"+file+"' icon, check your configuration or your img/ files"); return new ImageIcon(); 
-	}
-      }
+    try { return new ImageIcon(Thread.currentThread().getContextClassLoader().getResource("img/"+file)); } catch(Exception e1) {
+      System.err.println("Unable to load the '"+file+"' icon, check your configuration or your img/ files"); return new ImageIcon(); 
     }
   }
 
@@ -85,12 +81,13 @@ public class Proglet {
   }
 
   /** Used to test a proglet as a standalone program. 
-   * @param usage <tt>java proglet.Proglet &lt;edit|run> &lt;proglet-name></tt>
-   * <hr/>Applet usage: <tt>&lt;applet code="proglet.InterfacePrincipale.class" width="560" height="720">&lt;param name="proglet" value=" &lt;proglet-name>"/>&lt;/applet></tt>
+   * @param usage <tt>java proglet.Proglet [edit|run] [proglet-name]</tt>
    */
   public static void main(String usage[]) { 
-    InterfacePrincipale applet = new InterfacePrincipale(); applet.setEdit("edit".equals(usage[0])); applet.setProglet(usage[1]); 
-    show(applet, "javascool'proglet editor for «"+usage[1].toLowerCase()+"»", new Point(570, 0), 560, 720);
+    InterfacePrincipale applet = new InterfacePrincipale(); 
+    String prog = usage.length == 2 ? usage[1] : usage.length == 1 ? usage[0] : "Konsol"; applet.setProglet(prog); 
+    boolean edit = usage.length == 2 ? "edit".equals(usage[0]) : true; applet.setEdit(edit); 
+    show(applet, "javascool proglet editor", new Point(570, 0), 560, 720);
   }
 
   /** Opens an applet in a standalone frame.

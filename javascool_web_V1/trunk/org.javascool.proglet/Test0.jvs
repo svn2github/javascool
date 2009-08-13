@@ -1,5 +1,2 @@
 main() {
-  clear();
-  // while(true)  
-    println("HIIIIU-----------UIII");
 }

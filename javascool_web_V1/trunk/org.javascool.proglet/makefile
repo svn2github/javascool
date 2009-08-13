@@ -18,41 +18,52 @@
 #  + la console gère les accents en UTF-8 et des tags html pour une meilleure lisibilité
 #  + les actions doCompile() et doRun() sont correctement codées avec sauvegarde de fichier etc.. 
 #  + un bouton démo a été ajouté
+#  + un bouton de choix dynamique de la proglet a ete ajoute
 #  + lors de la compilation le Translator définit un serialVersionUID différent pour entraîner la mise à jour de la classe et ne pas ré-exécuter une classe compilée précédemment
-#  ! l'applet a ete separee en deux modes d'affichage [edit/compil] et [execute]
+#  ! L'applet a ete separee en deux modes d'affichage [edit/compil] et [execute] pour un meilleur graphisme et un usage a travers le service web
 #  ! Du coup de tout ces pbs, la compilation a été refaite en jdk5 pour tourner sur MacOS aussi.
-# > Bugs sans solution recontres en mode applet avec compilateur intégré
+# > Bugs, sans solution, rencontres en mode applet avec compilateur intégré
 #  ? Exceptions de sécurité à la pelle, malgré la certification: lors du rechargement, selon la version du compilateur utilisé, etc...
 #  ? Lors du chargement de la classe compilee, non certifiée, il y a de fait une exception de sécurite à l'exécution puisque dès qu'il y a un accès à des ressources certifiées
 #  ? Lors du chargement de la classe compilee, si les expections de sécurité ne se produisent pas, elle s'exécute parfois ``dans le vide´´ sans accéder à la proglet affichée
 
 # En cours:
+# Corrections des textes de base
 # Noter chaque sujet quelle proglet utilisée <proglet name=""/> avec tag unplug.
-# Publier les fichiers html sur javacsool/proglet
+# Ajouts de tous les sujets au brouillon
 
 # A prévoir:
 #  - Avoir plusieurs instances simultanées sur le serveur
 #  - Voir le pb du setLocation() en mode standalone
+#  - Voir pb des droits qd on rsync sur javascool
+
+# Environnement utilisé:
 
 JAVA=/usr/java/jdk1.5.0_13
 
 CP=/usr/java/jdk1.5.0_13/lib/tools.jar
-# .. en fait cette référence est uniquement nécessaire au mode standalone pour la classe Compiler, inutile en mode serveur
-
-dft : tst2
-
-tst1 : cmp
-	$(JAVA)/bin/java -cp proglet.jar:$(CP) proglet.Proglet edit Konsol
-
-tst2 : cmp 
-	@echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded index.php proglet.jar facets.inria.fr:javascool
-	rm -f *.class
-	firefox http://facets.inria.fr/javascool
-
-tst0 : cmp doc
-	firefox index.html
+# .. en fait, cette référence est uniquement nécessaire au mode standalone pour la classe Compiler, inutile en mode serveur
 
 #####################################################################################################################################
+
+# Commande de test par défaut
+
+dft : tst0
+
+# Test en standalone
+
+tst1 : cmp
+	$(JAVA)/bin/java -cp $(CP):proglet.jar proglet.Proglet
+
+# Test du service web
+
+tst2 : scp
+	firefox http://facets.inria.fr/javascool
+
+# Test de la génération de la documentation
+
+tst0 : pub
+	firefox http://javascool.gforge.inria.fr/proglet/index.html
 
 #####################################################################################################################################
 ##      Generation des fichiers javascool'proglet, contacts Hamdi.Ben_Abdallah@inria.fr Thierry.Vieville@sophia.inria.fr           ##
@@ -61,7 +72,7 @@ tst0 : cmp doc
 all : cmp doc
 
 clean :
-	@rm -rf proglet.jar proglet.crt *.class */*.class index.html api doc/*.htm
+	@rm -rf proglet.jar proglet.crt wproglet.jar *.class */*.class index.html api doc/*.htm
 
 # Parametres pour la signature
 
@@ -75,15 +86,15 @@ version=0.0
 cmp : proglet.jar
 
 proglet.jar : makefile $(wildcard proglet/*.java)
-	@echo 'build $@'
 	@rm -f proglet.jar proglet.crt
 	@#Compile the sources
 	$(JAVA)/bin/javac -Xlint -cp $(CP) proglet/*.java
 	@# Generates the manifest file
 	(echo 'Summary: proglet'; echo 'Created-By: $(version) (interstices.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'`") > /tmp/tmp.mf
+	(echo 'Main-Class: proglet.Proglet') > /tmp/tmp.mf
 	(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> /tmp/tmp.mf
 	@#Build the raw jar
-	$(JAVA)/bin/jar cfm /tmp/tmp.jar /tmp/tmp.mf proglet img
+	$(JAVA)/bin/jar cfm /tmp/tmp.jar /tmp/tmp.mf proglet/*.class img/*.png
 	@#Sign the jar file
 	$(JAVA)/bin/keytool -genkey -alias proglet -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore
 	$(JAVA)/bin/jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore -signedjar proglet.jar /tmp/tmp.jar proglet
@@ -92,9 +103,31 @@ proglet.jar : makefile $(wildcard proglet/*.java)
 	@#Cleanup
 	rm -rf /tmp/manisfest.mf /tmp/keystore /tmp/tmp.jar proglet/*.class
 
+# Creation d'un jar en standalone avec les classes du compilateur intégrées
+
+wproglet.jar : proglet.jar $(CP)
+	@rm -rf tmp ; mkdir tmp
+	@unzip -qod tmp $(CP)
+	@unzip -qod tmp proglet.jar
+	@cd tmp ; $(JAVA)/bin/jar cfm ../$@ META-INF/MANIFEST.MF proglet img com/sun/tools/javac sun/tools/javac
+	@rm -rf tmp
+
+# Copie des fichiers pour le service web
+
+scp : proglet.jar
+	@rsync --rsh='ssh -C' --archive --delete-excluded proglet/index.php proglet.jar facets.inria.fr:javascool
+
 # Génération des pages du site web
 
 doc : index.html api/index.html $(patsubst %.xml,%.htm,$(wildcard doc/*.xml)) $(patsubst %.fig,%.png,$(wildcard doc/img/*.fig)) doc/img/style.css doc/img/help_banner.jpg
+
+# Copie des fichiers de documentation sur le site web
+
+pub : wproglet.jar doc
+	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ index.html doc api wproglet.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet
+
+ftp :
+	sftp scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet
 
 # - génération des fichiers de documentation
 
@@ -117,15 +150,5 @@ api/index.html : $(wildcard proglet/*.java)
 
 index.html : makefile
 	@echo '<script>location.replace("doc/about-all.htm");</script>' >$@	
-
-# Publication sur le site externe
-
-pub : cmp doc
-	@#echo 'svnci ..' ; cd ../../.. ; svn up ; svn ci -m ''
-	###@echo 'rsync ..' ; rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ ./* facets.inria.fr.fr:javascool
-	@#firefox http://www.loria.fr/~vthierry/proglet/index.html
-
-ssh :
-	sftp scm.gforge.inria.fr:/home/groups/javascool/htdocs
 
 #####################################################################################################################################

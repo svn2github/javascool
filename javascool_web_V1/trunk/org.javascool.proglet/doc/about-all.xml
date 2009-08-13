@@ -8,7 +8,7 @@
     <li>Les ingrédients des <a href="about-algorithm.htm">algorithmes</a> ?</li>
   </ul>
   </li>
-  <li>Les cinq ingrédients des algorithmes<ul>
+  <li>Les cinq ingrédients des algorithmes (utilisant la <proglet name="Konsol"/>)<ul>
     <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a> voir les séquences d'instructions.</li>
     <li>Apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
     <li>Découvrir l'instruction <a href="sujet-about-if.htm">conditionnelle</a>.</li>
@@ -20,7 +20,8 @@
   </ul></li>
   <li>Autres liens: <ul>
     <li><a href="http://javascool.gforge.inria.fr">Le site Java's Cool</a></li>
-    <li><a href="../api/index.html">Proglet's java doc</a></li>
+    <li><a href="../wproglet.jar">Le lien pour utiliser les proglet's en standalone</a> (java devant être installé sur l'ordinateur)</li>
+    <li><a href="../api/index.html">La documentation java des proglet's</a></li>
   </ul></li>
 </ul>
 </p>
