@@ -16,9 +16,7 @@
       <link rel="stylesheet" type="text/css" href="img/style.css"/>	
     </head>
     <body>
-      <div id="banner">
-        <img src="img/help_banner.jpg" alt="Help banner"/>
-      </div>
+      <xsl:call-template name="banner"/>
       <xsl:apply-templates/>
     </body>
   </html>
