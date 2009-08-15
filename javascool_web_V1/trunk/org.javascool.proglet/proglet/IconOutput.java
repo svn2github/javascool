@@ -10,14 +10,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-/** Defines a pixelic color icon panel. */
-class IconOutput extends JPanel {
+/** This widget defines a pixelic color icon panel. 
+ * @see <a href="IconOutput.java">source code</a>
+ */
+public class IconOutput extends JPanel {
   private static final long serialVersionUID = 1L;
-
-  public IconOutput() {
+  {
     setBackground(Color.WHITE); setPreferredSize(new Dimension(550, 550));
   }
-  
+  /** Internal routine: do not use. */
   public void paint(Graphics g) {
     super.paint(g);
     g.setPaintMode(); 

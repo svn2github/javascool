@@ -20,8 +20,10 @@ import javax.swing.JSlider;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-/** This defines a numeric input. */
-class NumberInput extends JPanel {
+/** This widget defines a numeric input.
+ * @see <a href="NumberInput.java">source code</a>
+ */
+public class NumberInput extends JPanel {
   private static final long serialVersionUID = 1L;
 
   /** Construct the field.
@@ -70,7 +72,7 @@ class NumberInput extends JPanel {
   public double getValue() { return value; }
 
   /** Sets the runnable called when the input is changed. 
-   * @param The runnable to call, set to null if no runnable.
+   * @param run The runnable to call, set to null if no runnable.
    */
   public void setRunnable(Runnable run) { this.run = run; } private Runnable run = null;
 

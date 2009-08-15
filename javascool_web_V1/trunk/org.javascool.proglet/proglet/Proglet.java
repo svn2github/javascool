@@ -27,13 +27,9 @@ import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
 
 /** This factory allows to interface with proglets.
- * By contract, a proglet must: <ul>
- *  <li>Define <tt>public static final JPanel panel;</tt> which is the static instantiation of the proglet's swing panel.</li>
- *  <li>Its sizes as the panel preferred sizes must be within <tt>[540 x 580]</tt>.</li>
- *  <li>Provide a <tt>static void test()</tt> method to test/demo the proglet panel.</li>
- * </ul>
+ * @see <a href="Proglet.java">source code</a>
  */
-public class Proglet {
+class Proglet { private Proglet() { }
   private static final long serialVersionUID = 1L;
 
   /** Constructs a proglet attached to the related applet.
@@ -80,7 +76,7 @@ public class Proglet {
       System.err.println(error.getStackTrace()[i]);
   }
 
-  /** Used to test a proglet as a standalone program. 
+  /** Used to run a proglet as a standalone program. 
    * @param usage <tt>java proglet.Proglet [edit|run] [proglet-name]</tt>
    */
   public static void main(String usage[]) { 

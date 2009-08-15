@@ -1,4 +1,5 @@
-
+#####################################################################################################################################
+##  Hamdi.Ben_Abdallah@inria.fr et Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved.                     ##
 #####################################################################################################################################
 
 # Travail de vthierry apres Hamdi sur les proglets 
@@ -26,10 +27,11 @@
 #  ? Exceptions de sécurité à la pelle, malgré la certification: lors du rechargement, selon la version du compilateur utilisé, etc...
 #  ? Lors du chargement de la classe compilee, non certifiée, il y a de fait une exception de sécurite à l'exécution puisque dès qu'il y a un accès à des ressources certifiées
 #  ? Lors du chargement de la classe compilee, si les expections de sécurité ne se produisent pas, elle s'exécute parfois ``dans le vide´´ sans accéder à la proglet affichée
-# DONC ABANDON DE LA SOLUTION ET PASSAGE A UNE SOLUTION EN MODE SERVEUR
+#  -> Donc abandon de la solution et passage a une solution en mode serveur
 
 # En cours:
 # Corrections des textes de base
+# Creer les docs des applets Smiley, Scope (en fixant les paramètres en entrée) et Tortue (en ajoutant les primitives graphiques)
 # Noter chaque sujet quelle proglet utilisée <proglet name=""/> avec tag unplug aussi
 # Ajouts de tous les sujets au brouillon
 
@@ -50,7 +52,7 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst1
+dft : tst2
 
 # Test en standalone
 
@@ -115,7 +117,7 @@ wproglet.jar : proglet.jar $(CP)
 # Copie des fichiers pour le service web
 
 scp : proglet.jar
-	@rsync --rsh='ssh -C' --archive --delete-excluded proglet/index.php proglet.jar facets.inria.fr:javascool
+	@rsync --rsh='ssh -C' --archive --delete-excluded img/home.png proglet/index.php proglet.jar facets.inria.fr:javascool
 
 # Génération des pages du site web
 
@@ -147,6 +149,7 @@ doc/img/% : ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials
 
 api/index.html : $(wildcard proglet/*.java)
 	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d api proglet/*.java
+	@cp proglet/*.java api/proglet
 
 index.html : makefile
 	@echo '<script>location.replace("doc/about-all.htm");</script>' >$@	

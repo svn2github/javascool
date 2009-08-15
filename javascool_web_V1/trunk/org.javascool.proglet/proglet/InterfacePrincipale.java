@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Hamdi.Ben_Abdallah@inria.fr, Copyright (C) 2009.  All rights reserved.      *
+ *******************************************************************************/
+
 package proglet;
 
 import java.awt.BorderLayout;
@@ -52,9 +56,8 @@ import java.net.URLEncoder;
 
 import java.net.URLClassLoader;
 
-
-/** Interface principale pour utiliser des proglets.
- * Fichiers utilisés: <pre>
+/** Defines the main javascool proglet interface.
+ * File used: <pre>
  * img/charger.png
  * img/save.png
  * img/compile.png
@@ -62,6 +65,7 @@ import java.net.URLClassLoader;
  * img/stop.png
  * img/demo.png
  * </pre>
+ * @see <a href="InterfacePrincipale.java">source code</a>
  */
 public class InterfacePrincipale extends JApplet {
   private static final long serialVersionUID = 1L;
@@ -90,13 +94,18 @@ public class InterfacePrincipale extends JApplet {
   /** This routines is overloaded to run a program. */
   public void main() { Proglet.test(proglet); }
 
+  // Flag whether we are in standalone mode or web-browser mode
   boolean standalone = true; 
+
+  // Flags whether we have derived an application derivating this class or if this class hase been constructed.
+  boolean application = false; 
 
   private void initParameters() {
     { try { if (getParameter("proglet") != null) setProglet(getParameter("proglet")); } catch(Exception e) { } }
     { try { if (getParameter("edit") != null) setEdit(true); } catch(Exception e) { } }
     { try { if (getParameter("path") != null) doLire(getParameter("path")+".jvs");  } catch(Exception e) { } }
     { try { standalone = getAppletContext() == null; } catch(Exception e) { } }
+    { try { application = !getClass().getName().equals("proglet.InterfacePrincipale"); } catch(Exception e) { } }
   }
 
   //
@@ -156,8 +165,10 @@ public class InterfacePrincipale extends JApplet {
 	jMenuPanel.add(getJSaveButton(), null);
 	jMenuPanel.add(getJCompileButton(), null);
       } else {
-	jMenuPanel.add(getJRunButton(), null);
-	jMenuPanel.add(getJStopButton(), null);
+	if (application) {
+	  jMenuPanel.add(getJRunButton(), null);
+	  jMenuPanel.add(getJStopButton(), null);
+	}
 	jMenuPanel.add(new JLabel(" "), null);
 	jMenuPanel.add(getJDemoButton(), null);
       }
@@ -523,7 +534,7 @@ public class InterfacePrincipale extends JApplet {
       if (standalone) {
 	doStandAloneCompile();
       } else {
-	// Compiles an dload via a web service
+	// Compiles and load via a web service
 	String body = URLEncoder.encode(loadString(path+".java"), "UTF-8");
 	getAppletContext().showDocument(new URL("http://facets.inria.fr/javascool/index.php?prog="+proglet+"&main="+main+"&path="+path+"&body="+body), "_self");
       }
@@ -547,7 +558,7 @@ public class InterfacePrincipale extends JApplet {
       InterfacePrincipale r = (InterfacePrincipale) s.newInstance(); r.setProglet(proglet);
       if (runWindow != null) { runWindow.dispose(); runWindow = null; }
       Point where = getLocationOnScreen(); where.x -= 570;
-      runWindow = Proglet.show(r, "javascool «"+proglet+ "» proglet's runner", null, 560, 720);
+      runWindow = Proglet.show(r, "javascool «"+proglet+"» proglet's runner", null, 560, 720);
     }
   }
 

@@ -22,16 +22,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Définit une proglet javascool qui permet d'expérimenter la recherche dichotomique.
- * Méthodes statiques à importer: <pre>
- * import static Dicho.compare;
- * import static Dicho.length;
- * </pre>
  * Fichiers utilisés: <pre>
  * img/dicho_background.png
  * img/100px-Flag_of_*.svg.png
  * </pre>
+ * @see <a href="Dicho.java">code source</a>
  */
-public class Dicho {
+public class Dicho { private Dicho() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -125,9 +122,9 @@ public class Dicho {
   /** Renvoie le nombre de page. */
   public static int length() { return dicho.length; }
 
-  /** Compare un nom au nom affiché sur une page.
+  /** Ouvre le libre à une page et compare un nom au nom affiché sur cette page.
    * @param name Le nom à comparer.
-   * @param page L'index de la page, de 0 à length() exclut.
+   * @param page L'index de la page, de 0 à length() exclu.
    * @return -1 si le nom se situe avant celui de la page, +1 si le nom se situe après celui de la page, 0 si il correspond à celui de la page.
    */
   public static int compare(String name, int page) { 
@@ -143,7 +140,7 @@ public class Dicho {
     return name.replaceAll("[éè]", "e").replace("É", "E").replace("Î", "I").replace("ô", "o").replace("ã", "a");
   }
 
-  // All the data sorted in alphabetic order
+  // All the data sorted in alphabetic order, flags icons are available thanks to http://fr.wikipedia.org !
   private static String dicho[][] = {
     { "Afghanistan", "100px-Flag_of_Afghanistan.svg.png", "http://fr.wikipedia.org/wiki/Afghanistan" },  
     { "Afrique du Sud", "100px-Flag_of_South_Africa.svg.png", "http://fr.wikipedia.org/wiki/Afrique_du_Sud" },  
@@ -340,5 +337,6 @@ public class Dicho {
     { "Zimbabwe", "100px-Flag_of_Zimbabwe.svg.png", "http://fr.wikipedia.org/wiki/Zimbabwe" }
   };  
 
+  /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
 }

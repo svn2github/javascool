@@ -20,14 +20,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Définit une proglet javascool qui permet d'expérimenter la recherche dichotomique.
- * Méthodes statiques à importer: <pre>
- * import static Konsol.println;
- * import static Konsol.readString;
- * import static Konsol.readInteger;
- * import static Konsol.readFloat;
- * </pre>
+ * @see <a href="Konsol.java">code source</a>
  */
-public class Konsol {
+public class Konsol { private Konsol() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -85,8 +80,7 @@ public class Konsol {
     String nom = readString();
     println ("Echanté "+nom+" ! Quel age as tu ?");
     int age = readInteger();
-    for(int n = 0; n < 100; n++)
-      println("He je suis plus vieux que toi !!");
+    println("He je suis plus vieux que toi !!");
   }
 
   //
@@ -134,5 +128,6 @@ public class Konsol {
     }
   }
 
+  /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
 }

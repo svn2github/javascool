@@ -15,19 +15,22 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.net.URL;
 
-/** This defines a multi-curve output.
+/** This widget defines a multi-curve output.
  * File used: <pre>
- * ./scope_screen.png
+ * img/scope_screen.png
  * </pre>
+ * @see <a href="CurveOutput.java">source code</a>
  */
-class CurveOutput extends JPanel {
+public class CurveOutput extends JPanel {
   private static final long serialVersionUID = 1L;
 
-  public CurveOutput() {
+  private JLabel icon; private int values[];
+  {
     setBackground(Color.WHITE); setPreferredSize(new Dimension(512, 421));
     icon = new JLabel(); icon.setIcon(Proglet.getIcon("scope_screen.png")); icon.setLocation(0, 0); add(icon); 
     reset();
   }
+  /** Internal routine: do not use. */
   public void paint(Graphics g) {
     super.paint(g);
     g.setPaintMode(); 
@@ -40,7 +43,6 @@ class CurveOutput extends JPanel {
 	}
     }
   }
-  private JLabel icon; private int values[];
   
   /** Resets the curve value. */
   public void reset() {

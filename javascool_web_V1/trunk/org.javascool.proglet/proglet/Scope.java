@@ -10,15 +10,12 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 
 /** Définit une proglet javascool qui permet d'expérimenter la recherche scopetomique.
- * Méthodes statiques à importer: <pre>
- * import static Scope.reset;
- * import static Scope.plot;
- * </pre>
  * Fichiers utilisés: <pre>
  * img/scope_screen.png
  * </pre>
+ * @see <a href="Scope.java">code source</a>
  */
-public class Scope {
+public class Scope { private Scope() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -67,5 +64,6 @@ public class Scope {
     panel.scope.set(x, y, c);
   }
 
+  /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
 }

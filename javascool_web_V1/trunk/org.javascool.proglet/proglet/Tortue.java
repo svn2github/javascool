@@ -9,13 +9,10 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 
 /** Définit une proglet javascool qui permet d'expérimenter la recherche tortue ``logo´´.
- * Méthodes statiques à importer: <pre>
- * import static Tortue.reset;
- * import static Tortue.plot;
- * </pre>
- * <a href="http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_Logo">ref</a>
+ * @see <a href="http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_Logo">La référence du langage logo</a>
+ * @see <a href="Tortue.java">code source</a>
  */
-public class Tortue {
+public class Tortue { private Tortue() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -61,5 +58,6 @@ public class Tortue {
     panel.tortue.add(x, y, c);
   }
 
+  /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
 }

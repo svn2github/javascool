@@ -10,15 +10,9 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 
 /** Définit une proglet javascool qui permet de manipuler les pixels d'une image.
- * Méthodes statiques à importer: <pre>
- * import static Smiley.reset;
- * import static Smiley.get;
- * import static Smiley.set;
- * import static Smiley.circle;
- * import static Smiley.peace;
- * </pre>
+ * @see <a href="Smiley.java">code source</a>
  */
-public class Smiley {
+public class Smiley { private Smiley() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -87,7 +81,8 @@ public class Smiley {
     int radius = width < height ? width - 2 : height - 2;
     circle(radius); for(int y = 0; y <= radius; y++) { set(0, -y, true); if (y < Math.rint(1/Math.sqrt(2) * radius)) { set(y, y, true); set(-y, y, true); } }
   }
-  
+
+  /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
 }
 

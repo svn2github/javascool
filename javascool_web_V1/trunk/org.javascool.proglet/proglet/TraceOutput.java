@@ -19,14 +19,17 @@ import java.net.URL;
 import java.util.Vector;
 import java.util.Enumeration;
 
-/** This defines a trace output. */
-class TraceOutput extends JPanel {
+/** This widget defines a trace output.
+ * It used to draw parametric courves of different colors.
+ * @see <a href="TraceOutput.java">source code</a>
+ */
+public class TraceOutput extends JPanel {
   private static final long serialVersionUID = 1L;
-
-  public TraceOutput() {
+  {
     setBackground(Color.WHITE); setPreferredSize(new Dimension(512, 512));
     reset();
   }
+  /** Internal routine: do not use. */
   public void paint(Graphics g) {
     super.paint(g);
     g.setPaintMode(); 
@@ -43,7 +46,7 @@ class TraceOutput extends JPanel {
   }
 
   /** Sets the maximal trace size. 
-   * @param size The maximal size of the trace. Unbounded trace if size = 0.
+   * @param size The maximal size of the trace. Unbounded trace if size = 0 (default).
    */
   public void set(int size) { 
     if ((this.size = size) > 0) while(values.size() > size) { Point p = values.get(0); repaint(p.x - 1, p.y - 1, 3, 3); values.remove(0); }

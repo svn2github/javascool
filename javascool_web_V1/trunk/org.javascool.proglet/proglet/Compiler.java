@@ -5,8 +5,11 @@ import java.io.File;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 
-/** This class calls the java compiler in the jdk5 (and earlier) case. */
-public class Compiler {
+/** This factory calls the java compiler in the jdk5 (and earlier) case. 
+ * It is used in standalone mode. 
+ * @see <a href="Compiler.java">source code</a>
+ */
+class Compiler { private Compiler() { }
 
   /** Compiles a Java code source
    * @param filename The file path to compile

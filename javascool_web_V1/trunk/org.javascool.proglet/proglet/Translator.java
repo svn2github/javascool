@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
+ *******************************************************************************/
+
 package proglet;
 
 import java.io.File;
@@ -10,7 +14,13 @@ import java.io.FileWriter;
 
 import java.util.regex.Pattern;
 
-public class Translator {
+/** This factory defines how a Jvs code is translated into a Java code. 
+ * The goal is to ease the syntax when starting to program in an imperative language, like Java. 
+ * @see <a href="Translator.java">source code</a>
+ */
+class Translator { private Translator() { }
+
+  // Counter used to increment the serialVersionUID in order to reload the different versions of the class
   static int uid = 1;
 
   /** Translates a Jvs code source.

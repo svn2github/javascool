@@ -1,4 +1,4 @@
-<p><ul>
+<p title=")i(nterstices s'ouvre vers les lycées avec Javascool, à l'initiative de l'INRIA"><ul>
   <li>A propos de cette démarche<ul>
     <li>En guise de <a href="about-manifeste.htm">manifeste</a>.</li>
     <li>Quelques éléments sur <a href="about-prg2nd.htm">l'enseignement</a> de l'informatique au lycée en seconde.</li>
@@ -15,13 +15,31 @@
     <li>Se familiariser avec les <a href="sujet-about-functions.htm">fonctions</a>.</li>
     <li>Utiliser des <a href="sujet-about-while.htm">boucles</a>.</li>
   </ul></li>
+  <li>Des proglets pour s'initier à la programmation<ul>
+    <li>La <proglet name="Konsol"/></li>
+    <li>La <proglet name="Dicho"/></li>
+  </ul></li>
   <li>Quelques applications, exercices et activités:<ul>
     <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
+    <li><i> .. cette liste ayant vocation à s'étoffer au cours de l'année scolaire 2009-2010</i>.</li>
   </ul></li>
   <li>Autres liens: <ul>
+  <li><a href="http://facets.inria.fr/javascool">L'environnement de programmation en web service</a></li>
     <li><a href="http://javascool.gforge.inria.fr">Le site Java's Cool</a></li>
+    <li><a href="http://interstices.fr">Le site )i(nterstices</a></li>
     <li><a href="../wproglet.jar">Le lien pour utiliser les proglet's en standalone</a> (java devant être installé sur l'ordinateur)</li>
     <li><a href="../api/index.html">La documentation java des proglet's</a></li>
   </ul></li>
 </ul>
+
+<a name="contact"/>
+  <form action="mailto:Thierry.Vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet" method="post" enctype="text/plain"><table border="1">
+    <tr><td><b>Nous contacter:</b> <select name="Le-sujet">
+     <option>Commentaire général, avis, etc..</option>
+     <option>Demande d'aide ou de support, etc..</option>
+     <option>Signaler un problème ou rapporter une erreur</option>
+     <option>Demander ou proposer une nouvelle fonctionnalité</option>
+   </select><input type="submit" value="[Créer le message]" /><input type="hidden" name="Mon-message"/></td></tr>
+ </table></form>
+
 </p>
