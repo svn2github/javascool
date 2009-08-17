@@ -406,8 +406,7 @@ public class InterfacePrincipale extends JApplet {
       jConsoleTextPane.setEditable(false);
       PrintStream ps = new PrintStream(console = new ConsoleOutputStream());
       System.setOut(ps);
-      if (!standalone)
-	System.setErr(ps);
+      //-virer car messages de tests encore en place-// if (!standalone) System.setErr(ps);
     }
     return jConsoleTextPane;
   }
@@ -415,16 +414,14 @@ public class InterfacePrincipale extends JApplet {
 
   // Echos a message in the console. Style: 'b' for bold, 'i' for italic, 'c' for code.
   private void printConsole(String string, char style) { 
-    if (console != null) {
-      switch(style) {
-      case 'b': string = "<b>" + string + "</b>"; break;
-      case 'c': string = "<b><tt>" + string + "</tt></b>"; break;
-      case 'i': string = "<i>" + string + "</i>"; break;
-      }
-      console.writeln(string);
-    } else {
-      Proglet.report(new IllegalStateException("Echoing: "+string));
+    if (console == null)
+      getJConsoleTextPane();
+    switch(style) {
+    case 'b': string = "<b>" + string + "</b>"; break;
+    case 'c': string = "<b><tt>" + string + "</tt></b>"; break;
+    case 'i': string = "<i>" + string + "</i>"; break;
     }
+    console.writeln(string);
   }
 
   // Defines a writer able to append chars as a stream and strings

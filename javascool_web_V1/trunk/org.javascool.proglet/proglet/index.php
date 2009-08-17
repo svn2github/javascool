@@ -34,7 +34,7 @@ if(strlen($main) > 0 && strlen($body) > 0) {
   mkdir($dir, 0777);
   file_put_contents($dir."/".$main.".java", $body);
   unlink($dir."/".$main.".class");
-  $comp = trim(shell_exec("sh -c 'javac -cp proglet.jar ".$dir."/".$main.".java 2>&1'"));
+  $comp = ereg_replace("$dir"."/", "", trim(shell_exec("sh -c 'javac -cp proglet.jar ".$dir."/".$main.".java 2>&1'")));
   unlink($dir."/".$main.".java");
   chmod($dir."/".$main.".class", 0777);
 

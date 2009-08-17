@@ -53,19 +53,19 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst1
+dft : tst2
 
-# Test en standalone
+# Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar
 	$(JAVA)/bin/java -jar $^ run Tortue
 
-# Test du service web
+# Test du service web (pour vérifier l'intégration)
 
 tst2 : scp
-	firefox http://facets.inria.fr/javascool
+	cd tst ; firefox http://facets.inria.fr/javascool
 
-# Test de la génération de la documentation
+# Test du site web (pour vérifier la génération des docs)
 
 tst0 : pub
 	firefox http://javascool.gforge.inria.fr/proglet
@@ -75,8 +75,8 @@ tst0 : pub
 #####################################################################################################################################
 
 all : scp pub
-	@cd ../../.. ; svn up ; svn ci -m ''
 	@$(MAKE) clean
+	@cd ../../.. ; svn up ; svn ci -m '' ; svn status
 
 clean :
 	@rm -rf proglet.jar proglet.crt wproglet.jar *.class */*.class index.html api doc/*.htm
@@ -108,7 +108,7 @@ proglet.jar : makefile $(wildcard proglet/*.java) $(wildcard img/*.*)
 	@#Cleanup
 	rm -rf /tmp/manisfest.mf /tmp/keystore /tmp/tmp.jar proglet/*.class
 
-# Creation d'une jar en standalone avec les classes du compilateur intégrées
+# Creation d'une jar en standalone avec les classes du compilateur jdk5 intégrées
 
 wproglet.jar : proglet.jar $(CP)
 	@rm -rf tmp ; mkdir tmp

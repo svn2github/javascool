@@ -130,7 +130,7 @@ public class Tortue { private Tortue() { }
   public static void clear() { panel.clear(); }
 
   /** Retour au milieu du carré de salade, au point (256, 256). */
-  public static void home() { update(x = panel.width/2, y = panel.height/2, a); }
+  public static void home() { update(panel.width/2, panel.height/2, a); }
 
   /** La tortue avance de n pas. */
   public static void forward(double n) { set_position(x + n * Math.cos(a), y + n * Math.sin(a)); }
@@ -142,7 +142,7 @@ public class Tortue { private Tortue() { }
   public static void leftward(double n) { a += Math.PI / 180.0 * n; }
 
   /** La tortue tourne de n degrés d'angle vers la droite. */
-  public static void rightward(double n) { a += Math.PI / 180.0 * n; }
+  public static void rightward(double n) { leftward(-n); }
 
   /** Fixe la position absolue de la tortue. */
   public static void set_position(double x, double y) { update((int) x, (int) y, a); }
