@@ -80,10 +80,11 @@ public class Dicho { private Dicho() { }
     for(int i = 1; i < dicho.length; i++)
       if (compare(dicho[i][0], i - 1) <= 0)
 	Macros.echo("Ahhh bad sort between "+dicho[i][0]+"#"+i+(compare(dicho[i][0], i - 1) == 0 ? " == " : " << ")+dicho[i-1][0]+"#"+(i-1));
-    // Tests the index function
+    /* Tests the index function
     for(int i = 0; i < dicho.length; i++)
       if (i != getIndex(dicho[i][0]))
 	Macros.echo("Ohhh bad index for "+dicho[i][0]+"#"+i+" <> "+getIndex(dicho[i][0]));
+    */
     // Shows a few random pages
     for(int i = 0; i < 10; i++) {
       Macros.sleep(500);
