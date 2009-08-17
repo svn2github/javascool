@@ -31,14 +31,14 @@
 
 # En cours:
 # Ajout les sujets annoncés en-cours etc...
-# Finir la proglet Tortue . . mis en conformité doc/test.
 # Voir ok Gilles et soumission à )i( ; comm a animatestroumpf et infolycee + lycee-inria + yannick, avec cc rev-com/dir-sophia
 
 # A revoir:
-#  - Voir le pb de l'acces aux icones à partir du jar qui se fait mal aujourd'hui et nécessite une copie sur le site.
-#  - Voir le pb du Jslider qui affiche sa valeur entière et perturbe la lecture.
+#  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.
+#  - Voir le pb du JSlider qui affiche sa valeur entière et perturbe la lecture.
 #  - Voir le pb du setLocation() en mode standalone qui affiche mal les deux fenetres edit et run
 #  - Voir pb des droits qd on rsync sur javascool
+
 # A développer:
 #  - Ajouter un éditeur couleur dans l'applet
 
@@ -90,7 +90,7 @@ version=0.0
 
 # Compilation du code et creation d'une jar certifiée
 
-proglet.jar : makefile $(wildcard proglet/*.java)
+proglet.jar : makefile $(wildcard proglet/*.java) $(wildcard img/*.*)
 	@rm -f proglet.jar proglet.crt
 	@#Compile the sources
 	$(JAVA)/bin/javac -Xlint -cp $(CP) proglet/*.java
@@ -99,7 +99,7 @@ proglet.jar : makefile $(wildcard proglet/*.java)
 	(echo 'Main-Class: proglet.Proglet') > /tmp/tmp.mf
 	(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> /tmp/tmp.mf
 	@#Build the raw jar
-	$(JAVA)/bin/jar cfm /tmp/tmp.jar /tmp/tmp.mf proglet/*.class img/*.png
+	$(JAVA)/bin/jar cfm /tmp/tmp.jar /tmp/tmp.mf proglet/*.class img/*.*
 	@#Sign the jar file
 	$(JAVA)/bin/keytool -genkey -alias proglet -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore
 	$(JAVA)/bin/jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore -signedjar proglet.jar /tmp/tmp.jar proglet

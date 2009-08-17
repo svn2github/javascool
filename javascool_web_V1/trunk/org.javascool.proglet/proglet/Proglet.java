@@ -52,12 +52,13 @@ public class Proglet { private Proglet() { }
    * @return The related image icon or an empty icon if not loaded.
    */
   static ImageIcon getIcon(String file) {
-    try { return new ImageIcon(Thread.currentThread().getContextClassLoader().getResource("img/"+file)); } catch(Exception e1) {
-      try { return new ImageIcon(new URL("http://javascool.gforge.inria.fr/proglet/img/"+file)); } catch(Exception e2) {
+    try { return newImageIcon(file, Thread.currentThread().getContextClassLoader().getResource("img/"+file)); } catch(Exception e1) {
+      try { return newImageIcon(file, new URL("http://javascool.gforge.inria.fr/proglet/img/"+file)); } catch(Exception e2) {
 	System.err.println("Unable to load the '"+file+"' icon, check your configuration or your img/ files ("+e1+";"+e2+")"); return new ImageIcon(); 
       }
     }
   }
+  static ImageIcon newImageIcon(String file, URL url) throws Exception { System.err.println("notice: loading " + file + " @ " + url); return new ImageIcon(url); }
 
   /** Runs one proglet's test.
    * @param proglet The proglet class name.

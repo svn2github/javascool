@@ -37,7 +37,6 @@ public class Tortue { private Tortue() { }
     /** Internal routine: do not use. */
     public void paint(Graphics g) {
       super.paint(g);
-      g.setPaintMode(); 
       for(int j = 0; j < height; j++)
 	for(int i = 0; i < width; i++)
 	  if (garden[i + j * width] != null) {
@@ -81,23 +80,12 @@ public class Tortue { private Tortue() { }
 
   /** Test du panel. */
   static void test() {
-    clear();
-    for(int t = 0; t < 9000; t++) {
-      double x = Math.cos(0.0015 * t), y = Math.sin(0.0045 * t); 
-      int i = (int) (Panel.width/2 + x * (Panel.width/2 - 20)), j = (int) (Panel.height/2 + y *  (Panel.height/2 - 20)), c = (t / 1000) % 10;
-      pen = t > 0;
-      pen_color = colors[c];
-      panel.add(i, j, pen_color); panel.show(i, j);
-      Macros.sleep(2);
-    }
-    /*
-      clear(); pen_up(); set_position(256 + 250, 256); pen_down();
-      int t = 0; while(t < 9000) { 
+    clear(); pen_up();
+    int t = 0; while(t < 9000) { 
       set_color((t / 1000) % 10);
-      set_position(256 + 250 * Math.cos(0.0015 * t), 256 + 250 * Math.sin(0.0045 * t))
-      t = t + 1;
-      }
-    */
+      set_position(256 + 250 * Math.cos(0.0015 * t), 256 + 250 * Math.sin(0.0045 * t));
+      pen_down(); t = t + 1;
+    }
   }
 
   //
@@ -106,23 +94,36 @@ public class Tortue { private Tortue() { }
 
   // Updates the turtle position and draw if required
   private static void update(int x, int y, double a) {
-    if (pen) {
-      if (Math.abs(x - Tortue.x) > Math.abs(y - Tortue.y) && Math.abs(x - Tortue.x) > 0) {
-	for(int i = Tortue.x ; i <= x; i++) {
-	  int j = Tortue.y + ((y - Tortue.y) * (i - Tortue.x)) / (x - Tortue.x);
-	  panel.add(i, j, pen_color);
-	}
-      } else if (Math.abs(y - Tortue.y) > 0) {
-	for(int j = Tortue.y ; j <= y; j++) {
-	  int i = Tortue.x + ((x - Tortue.x) * (j - Tortue.y)) / (y - Tortue.y);
-	  panel.add(i, j, pen_color);
-	}
-      }
-    }
+    if (pen)
+      draw(Tortue.x, x, Tortue.y, y);
     Tortue.x = x; Tortue.y = y;
     panel.show(x, y);
-    Macros.sleep(2);
+    Macros.sleep(3);
   }
+  private static void draw(int x1, int x2, int y1, int y2) {
+    if(Math.abs(x1 - x2) > Math.abs(y1 - y2)) {
+      if (x1 < x2)
+	draw_x(x1, x2, y1, y2);
+      else if (x1 > x2)
+	draw_x(x2, x1, y2, y1);
+    } else {
+      if (y1 < y2)
+	draw_y(x1, x2, y1, y2);
+      else if (y1 > y2)
+	draw_y(x2, x1, y2, y1);
+    }
+  }
+  private static void draw_x(int x1, int x2, int y1, int y2) {
+    for(int x = x1 ; x <= x2; x++) {
+      panel.add(x, y1 + ((y2 - y1) * (x - x1)) / (x2 - x1), pen_color);
+    }
+  }
+  private static void draw_y(int x1, int x2, int y1, int y2) {
+    for(int y = y1 ; y <= y2; y++) {
+      panel.add(x1 + ((x2 - x1) * (y - y1)) / (y2 - y1), y, pen_color);
+    }
+  }
+
   private static int x = 0, y = 0; private static double a = 0; private static Color pen_color = Color.BLACK; private static boolean pen = true;
 
   /** Efface toutes traces du carré de salade de taille (512, 512). */
@@ -156,10 +157,10 @@ public class Tortue { private Tortue() { }
   public static void pen_down() { pen = true; }
 
   /** Change la couleur du fond, n est un entier positif. */
-  public static void set_background(int n) { panel.setBackground(colors[n < 0 || n > 0 ? 0 : n]); }
+  public static void set_background(int n) { panel.setBackground(colors[n < 0 || n > 9 ? 0 : n]); }
 
   /** Change la couleur du crayon, n est un entier positif. */
-  public static void set_color(int n) { pen_color = colors[n < 0 || n > 0 ? 0 : n]; }
+  public static void set_color(int n) { pen_color = colors[n < 0 || n > 9 ? 0 : n]; }
 
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
