@@ -18,6 +18,9 @@ import java.awt.BorderLayout;
 public class Scope { private Scope() { }
   private static final long serialVersionUID = 1L;
 
+  /** Définition de l'interface graphique de la proglet. */
+  public static final Panel panel = new Panel();
+
   // This defines the panel to display
   private static class Panel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -63,7 +66,4 @@ public class Scope { private Scope() { }
   static public void set(double x, double y, int c) {
     panel.scope.set(x, y, c);
   }
-
-  /** Définition de l'interface graphique de la proglet. */
-  public static final Panel panel = new Panel();
 }

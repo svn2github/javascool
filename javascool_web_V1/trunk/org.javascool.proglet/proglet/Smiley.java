@@ -15,6 +15,9 @@ import java.awt.Dimension;
 public class Smiley { private Smiley() { }
   private static final long serialVersionUID = 1L;
 
+  /** Définition de l'interface graphique de la proglet. */
+  public static final Panel panel = new Panel();
+
   // This defines the panel to display
   private static class Panel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -81,8 +84,5 @@ public class Smiley { private Smiley() { }
     int radius = width < height ? width - 2 : height - 2;
     circle(radius); for(int y = 0; y <= radius; y++) { set(0, -y, true); if (y < Math.rint(1/Math.sqrt(2) * radius)) { set(y, y, true); set(-y, y, true); } }
   }
-
-  /** Définition de l'interface graphique de la proglet. */
-  public static final Panel panel = new Panel();
 }
 

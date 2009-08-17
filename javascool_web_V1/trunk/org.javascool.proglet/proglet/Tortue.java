@@ -15,6 +15,9 @@ import java.awt.Dimension;
 public class Tortue { private Tortue() { }
   private static final long serialVersionUID = 1L;
 
+  /** Définition de l'interface graphique de la proglet. */
+  public static final Panel panel = new Panel();
+
   // This defines the panel to display
   private static class Panel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -57,7 +60,4 @@ public class Tortue { private Tortue() { }
   static public void add(double x, double y, int c) {
     panel.tortue.add(x, y, c);
   }
-
-  /** Définition de l'interface graphique de la proglet. */
-  public static final Panel panel = new Panel();
 }

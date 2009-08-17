@@ -25,6 +25,9 @@ import java.awt.event.ActionListener;
 public class Konsol { private Konsol() { }
   private static final long serialVersionUID = 1L;
 
+  /** Définition de l'interface graphique de la proglet. */
+  public static final Panel panel = new Panel();
+
   // This defines the panel to display
   private static class Panel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -127,7 +130,4 @@ public class Konsol { private Konsol() { }
       } catch(Exception e) { }
     }
   }
-
-  /** Définition de l'interface graphique de la proglet. */
-  public static final Panel panel = new Panel();
 }
