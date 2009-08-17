@@ -1,6 +1,8 @@
 <sujet>
   <titre>Un tutoriel sur les valeurs numériques</titre>
   
+  <proglet name="Konsol" mode="edit"/>
+  
   <objectif>
     Le but de ce tutoriel d'appliquer quelques unes de notions fondamentales. Il faut déja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,
   se servir de <a href="sujet-about-variables.htm">variables</a> et avoir découvert l'<a href="sujet-about-if.htm">instruction conditionnelle</a>.

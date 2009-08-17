@@ -1,0 +1,26 @@
+<p title="La «proglet» Scope">
+  <proglet name="Scope" mode="demo">
+    Cette proglet<footnote id="1"/> permet d'afficher des tracés de couleurs différentes et de lire une valeur numérique.
+    <p>Pour tracer un point de la courbe: <code>
+      <p><r>set</r>(x, y, c);</p>
+    </code><ul>
+    <li>où <b>x</b> est un <r>double</r>, entre <b>[-1, +1]</b>, abscisse du point de la courbe;</li>
+    <li>où <b>y</b> est un <r>double</r>, entre <b>[-1, +1]</b>, ordonnée du point de la courbe;</li>
+    <li>où <b>c</b> est un <r>int</r> qui est le numéro de la courbe: 
+      <c>0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</c></li>
+    </ul>tandis que la fonction <r>reset()</r> permet d'effacer la courbe. Le système de coordonnée est donc de la forme:
+     <p align="center"><img src="img/scope.png"/></p>
+   </p>
+   <p>Pour lire une valeur numérique:<code>
+     <p><r>double</r> valeur = <r>getValue</r>();</p>
+   </code> permet de lire respectivement une valeur numérique entre <c>0</c> et <c>100%</c>.
+   </p>
+    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/smiley-cool.png"/> <b>Demo</b>] 
+    se tracent une sinusoïde bleue et une exponentielle violette, tandis qu'il est possible de changer la valeur numérique.</p>
+  </proglet>
+
+  <footnotes>
+    <p>Cette proglet un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Scope.html">documenté</a> 
+    pour sa libre redistribution, l'accès <a href=" ../api/proglet/Scope.java">au code source</a>, et permettre des développements dérivés.</p>
+  </footnotes>
+</p>

@@ -37,12 +37,15 @@ public class Proglet { private Proglet() { }
    * @param proglet The proglet class name.
    * @return The static instanciation of the proglet.
    */
-  static JPanel getPanel(Applet applet, String proglet) {
-    Proglet.applet = applet;
+  static JPanel getPanel(String proglet) {
     try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } 
     catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
-  static private Applet applet = null;
+
+  /** Sets the current main applet.
+   * @param applet The related applet, set to null when run in a standalone application context.
+   */
+  static void setApplet(Applet applet) { Proglet.applet = applet; } static private Applet applet = null;
 
   /** Returns an icon loaded from the applet context.
    * @param file The icon file name. The icon must be located in the <tt>img/</tt> directory (directory on the server or on the client side or in the jar).
@@ -50,7 +53,9 @@ public class Proglet { private Proglet() { }
    */
   static ImageIcon getIcon(String file) {
     try { return new ImageIcon(Thread.currentThread().getContextClassLoader().getResource("img/"+file)); } catch(Exception e1) {
-      System.err.println("Unable to load the '"+file+"' icon, check your configuration or your img/ files"); return new ImageIcon(); 
+      try { return new ImageIcon(new URL("http://javascool.gforge.inria.fr/proglet/img/"+file)); } catch(Exception e2) {
+	System.err.println("Unable to load the '"+file+"' icon, check your configuration or your img/ files ("+e1+";"+e2+")"); return new ImageIcon(); 
+      }
     }
   }
 

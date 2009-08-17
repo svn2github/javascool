@@ -30,14 +30,15 @@
 #  -> Donc abandon de la solution et passage a une solution en mode serveur
 
 # En cours:
-# Creer les docs des applets Smiley, Scope (en fixant les paramètres en entrée) et Tortue (en ajoutant les primitives graphiques)
-# Noter chaque sujet quelle proglet utilisée <proglet name=""/> avec tag unplug aussi
-# Ajouts de tous les sujets au brouillon
+# Finir la proglet Tortue (en ajoutant les primitives graphiques)
+# Ajout les sujets annoncés en-cours etc...
 
-# A prévoir:
-#  - Voir le pb de l'acces aux icones parfois
-#  - Voir le pb du setLocation() en mode standalone
+# A revoir:
+#  - Voir le pb de l'acces aux icones à partir du jar qui se fait mal aujourd'hui et nécessite une copie sur le site.
+#  - Voir le pb du Jslider qui affiche sa valeur entière et perturbe la lecture.
+#  - Voir le pb du setLocation() en mode standalone qui affiche mal les deux fenetres edit et run
 #  - Voir pb des droits qd on rsync sur javascool
+# A développer:
 #  - Ajouter un éditeur couleur dans l'applet
 
 # Environnement utilisé:
@@ -51,12 +52,12 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst2
+dft : tst1
 
 # Test en standalone
 
 tst1 : wproglet.jar
-	$(JAVA)/bin/java -jar $^
+	$(JAVA)/bin/java -jar $^ run Tortue
 
 # Test du service web
 
@@ -120,12 +121,12 @@ scp : proglet.jar
 
 # Génération des pages du site web
 
-doc : index.html api/index.html $(patsubst %.xml,%.htm,$(wildcard doc/*.xml)) $(patsubst %.fig,%.png,$(wildcard doc/img/*.fig)) doc/img/style.css doc/img/help_banner.jpg
+doc : index.html wproglet.jar api/index.html $(patsubst %.xml,%.htm,$(wildcard doc/*.xml)) $(patsubst %.fig,%.png,$(wildcard doc/img/*.fig)) doc/img/style.css
 
 # Copie des fichiers de documentation sur le site web
 
-pub : wproglet.jar doc
-	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ index.html doc api wproglet.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet
+pub : doc
+	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ index.html doc api img wproglet.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet
 
 ftp :
 	sftp scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet

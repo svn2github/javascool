@@ -1,6 +1,8 @@
 <sujet>
   <titre>Un tutoriel sur les variables</titre>
   
+  <proglet name="Konsol" mode="edit"/>
+  
   <objectif>
     Le but de ce tutoriel est de comprendre comment utiliser des variables. Il faut déja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>.
   </objectif>

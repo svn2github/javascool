@@ -1,6 +1,7 @@
 all :
 	$(MAKE) -C .. doc
-	firefox ../index.html
+	firefox ./about-proglet-Tortue.htm
+	@#firefox ../index.html
 
 clean :
 	$(MAKE) -C .. clean

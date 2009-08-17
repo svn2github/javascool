@@ -7,16 +7,17 @@ package proglet;
 // Used to define the gui
 import javax.swing.JPanel;
 import java.awt.Dimension;
+import java.awt.Color;
+import javax.swing.JLayeredPane;
+import javax.swing.JLabel;
 
-/** Définit une proglet javascool qui permet d'expérimenter la recherche tortue ``logo´´.
+
+/** Définit une proglet javascool qui permet de simuler la tortue ``logo´´.
  * @see <a href="http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_Logo">La référence du langage logo</a>
  * @see <a href="Tortue.java">code source</a>
  */
 public class Tortue { private Tortue() { }
   private static final long serialVersionUID = 1L;
-
-  /** Définition de l'interface graphique de la proglet. */
-  public static final Panel panel = new Panel();
 
   // This defines the panel to display
   private static class Panel extends JPanel {
@@ -24,9 +25,32 @@ public class Tortue { private Tortue() { }
 
     public Panel() {
       setPreferredSize(new Dimension(512, 512));
-      add(tortue = new TraceOutput());
+      setBackground(Color.GREEN); 
+      // Adds the turtle
+      turtle = new JLabel();
+      turtle.setIcon(Proglet.getIcon("turtle.gif"));
+      turtle.setBounds(256, 256, 42, 35);
+      add(turtle);
+      // Adds the garden
+      garden = new IconOutput();
+      garden.reset(500, 500);
+      // add(garden)
     }
-    public TraceOutput tortue;
+    
+    /** Show the turtle at a given location. 
+     * @param x Turtle horizontal position, not shown if &lt; 0.
+     * @param y Turtle vertical position, not shown if &lt; 0.
+     */
+    public void show(int x, int y) {
+      if (x < 0 || y < 0) {
+	turtle.setVisible(false);
+      } else {
+	turtle.setBounds(x, y, 42, 35);
+	turtle.setVisible(true);
+      }
+    }
+      
+    public IconOutput garden; public JLabel turtle;
   }
 
   //
@@ -35,29 +59,32 @@ public class Tortue { private Tortue() { }
 
   /** Test du panel. */
   static void test() {
-    reset();
-    panel.tortue.set(1000);
+    clean();
     for(int t = 0; t < 9000; t++) {
-      add(Math.cos(0.0015 * t), Math.sin(0.0045 * t), (t / 1000) % 10 );
-      Macros.sleep(10);
+      double x = Math.cos(0.0015 * t), y = Math.sin(0.0045 * t); int c = (t / 1000) % 10;
+      // panel.jardin.set(x, y, c);
+      panel.show((int) (255 + x * 250), (int) (255 + y * 250));
+      Macros.sleep(3);
     }
   }
 
   //
-  // This defines the javascool interface
+  // This defines the javascool interface 
   //
+  private static int x = 0, y = 0; private static boolean pen = true;
 
-  /** Initialise le tracé. */
-  static public void reset() {
-    panel.tortue.reset(); 
-  }
+  /** Efface toutes traces du carré de salade de taille (500, 500). */
+  public static void clean() { panel.garden.reset(500, 500); }
 
-  /** Ajoute une valeur au tracé.
-   * @param x Abcisse du tracé, dans [-1, 1].
-   * @param y Ordonnée du tracé, dans [-1, 1].
-   * @param c Couleur du tracé: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
-   */
-  static public void add(double x, double y, int c) {
-    panel.tortue.add(x, y, c);
-  }
+  /** Retour au milieu du carré de salade, au point (250, 250). */
+  public static void home() { x = panel.garden.getWidth()/2; y = panel.garden.getHeight()/2; }
+
+  /** La tortue ne laisse pas de trace. */
+  public static void pen_up() { pen = false; }
+
+  /** La tortue laisse sa trace (par défaut). */
+  public static void pen_down() { pen = true; }
+
+  /** Définition de l'interface graphique de la proglet. */
+  public static final Panel panel = new Panel();
 }

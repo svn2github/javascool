@@ -31,9 +31,6 @@ import java.awt.event.ActionListener;
 public class Dicho { private Dicho() { }
   private static final long serialVersionUID = 1L;
 
-  /** Définition de l'interface graphique de la proglet. */
-  public static final Panel panel = new Panel();
-
   // This defines the panel to display
   private static class Panel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -339,4 +336,7 @@ public class Dicho { private Dicho() { }
     { "Zambie", "100px-Flag_of_Zambia.svg.png", "http://fr.wikipedia.org/wiki/Zambie" },    
     { "Zimbabwe", "100px-Flag_of_Zimbabwe.svg.png", "http://fr.wikipedia.org/wiki/Zimbabwe" }
   };  
+
+  /** Définition de l'interface graphique de la proglet. */
+  public static final Panel panel = new Panel();
 }

@@ -20,7 +20,7 @@ import java.util.Vector;
 import java.util.Enumeration;
 
 /** This widget defines a trace output.
- * It used to draw parametric courves of different colors.
+ * It used to draw parametric curves of different colors.
  * @see <a href="TraceOutput.java">source code</a>
  */
 public class TraceOutput extends JPanel {

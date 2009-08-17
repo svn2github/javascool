@@ -133,6 +133,7 @@ public class InterfacePrincipale extends JApplet {
   private JFileChooser fileChooser=null;
 
   public void init() {
+    Proglet.setApplet(this);
     initParameters();
     this.setContentPane(getJContentPane());
   }
@@ -356,7 +357,7 @@ public class InterfacePrincipale extends JApplet {
       jResultPanel.setBounds(new Rectangle(8, 92, 540, 580));
       jResultPanel.setBorder(BorderFactory.createTitledBorder(null, "Résultat", 
         TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-      jResultPanel.add(Proglet.getPanel(this, proglet), gridBagConstraints);
+      jResultPanel.add(Proglet.getPanel(proglet), gridBagConstraints);
     }
     return jResultPanel;
   }

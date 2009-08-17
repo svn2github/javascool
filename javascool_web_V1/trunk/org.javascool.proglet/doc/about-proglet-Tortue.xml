@@ -1,0 +1,22 @@
+<p title="La «proglet» Tortue">
+  <proglet name="Tortue" mode="demo">
+    Cette proglet<footnote id="1"/> permet de simuler la célèbre <a href="http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_Logo">tortue logo</a>.
+
+  <p>Dans ce contexte les instructions à utiliser sont celles de <javascool/>, la tortue évolue dans un carré de salade de taille <c>[500 x 500]</c>
+  tandis que les primitives graphiques usuelles de la tortue logo sont disponibles:
+  <code><p><t/><t/><t/><t/><a href=" ../api/proglet/Tortue.html">Primitives de la tortue logo disponibles</a></p></code>
+  </p>
+
+  <p>Que les nostalgiques de cette ancienne façon d'apprendre à programmer en profite, la tortue est de retour:
+    <p align="center"><img src="img/turtle.gif"/></p>
+  </p>
+
+  <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/smiley-cool.png"/> <b>Demo</b>],
+  la tortue trace de belles <a href="http://fr.wikipedia.org/wiki/Courbe_de_Lissajous">courbes de Lissajous</a> en changeant la couleur.</p>
+  </proglet>
+
+  <footnotes>
+    <p>Cette proglet un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Tortue.html">documenté</a> 
+    pour sa libre redistribution, l'accès <a href=" ../api/proglet/Tortue.java">au code source</a>, et permettre des développements dérivés.</p>
+  </footnotes>
+</p>
