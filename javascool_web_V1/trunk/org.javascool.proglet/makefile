@@ -31,7 +31,7 @@
 
 # En cours:
 # Ajout les sujets annoncés en-cours etc...
-# Voir ok Gilles et soumission à )i( ; comm a animatestroumpf et infolycee + lycee-inria + yannick, avec cc rev-com/dir-sophia
+# Voir le 27, ok Gilles et soumission à )i( ; comm a animatestroumpf et infolycee + lycee-inria + yannick + AurélienLaurents, avec cc rev-com/dir-sophia.
 
 # A revoir:
 #  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.
@@ -79,7 +79,7 @@ all : scp pub
 	@cd ../../.. ; svn up ; svn ci -m '' ; svn status
 
 clean :
-	@rm -rf proglet.jar proglet.crt wproglet.jar *.class */*.class index.html api doc/*.htm
+	@rm -rf proglet.jar wproglet.jar *.class */*.class index.html api doc/*.htm
 
 # Parametres pour la signature
 
@@ -91,22 +91,22 @@ version=0.0
 # Compilation du code et creation d'une jar certifiée
 
 proglet.jar : makefile $(wildcard proglet/*.java) $(wildcard img/*.*)
-	@rm -f proglet.jar proglet.crt
+	@rm -f $@
 	@#Compile the sources
 	$(JAVA)/bin/javac -Xlint -cp $(CP) proglet/*.java
 	@# Generates the manifest file
-	(echo 'Summary: proglet'; echo 'Created-By: $(version) (interstices.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'`") > /tmp/tmp.mf
-	(echo 'Main-Class: proglet.Proglet') > /tmp/tmp.mf
-	(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> /tmp/tmp.mf
+	(echo 'Summary: javascool proglets'; echo 'Created-By: $(version) (interstices.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'`") > tmp.mf
+	(echo 'Main-Class: proglet.Proglet') > tmp.mf
+	(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr/proglet' ; echo 'Implementation-Version: $(version)') >> tmp.mf
 	@#Build the raw jar
-	$(JAVA)/bin/jar cfm /tmp/tmp.jar /tmp/tmp.mf proglet/*.class img/*.*
+	$(JAVA)/bin/jar cfm tmp.jar tmp.mf proglet/*.class img/*.*
 	@#Sign the jar file
-	$(JAVA)/bin/keytool -genkey -alias proglet -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore
-	$(JAVA)/bin/jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore /tmp/keystore -signedjar proglet.jar /tmp/tmp.jar proglet
-	@##keytool -export -alias proglet -storepass '$(public-key)' -keystore /tmp/keystore -file proglet.crt
+	$(JAVA)/bin/keytool -genkey -alias proglet -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key
+	$(JAVA)/bin/jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key -signedjar proglet.jar tmp.jar proglet
+	@##keytool -export -alias proglet -storepass '$(public-key)' -keystore tmp.key -file proglet.crt
 	@##jarsigner -verify -verbose -certs proglet.jar
 	@#Cleanup
-	rm -rf /tmp/manisfest.mf /tmp/keystore /tmp/tmp.jar proglet/*.class
+	rm -rf tmp.mf tmp.key tmp.jar proglet/*.class
 
 # Creation d'une jar en standalone avec les classes du compilateur jdk5 intégrées
 

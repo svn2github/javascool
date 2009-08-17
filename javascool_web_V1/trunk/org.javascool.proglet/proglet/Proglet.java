@@ -58,7 +58,7 @@ public class Proglet { private Proglet() { }
       }
     }
   }
-  static ImageIcon newImageIcon(String file, URL url) throws Exception { System.err.println("notice: loading " + file + " @ " + url); return new ImageIcon(url); }
+  static ImageIcon newImageIcon(String file, URL url) throws Exception { /*System.err.println("Notice: loading " + file + " @ " + url);*/ return new ImageIcon(url); }
 
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
