@@ -25,14 +25,16 @@
 <xsl:template match="proglet">
   <xsl:choose>
     <xsl:when test="@mode='demo'">
-      <table><tr><td valign="top" width="560"><xsl:apply-templates/></td><td>
-        <applet code="proglet.InterfacePrincipale.class" archive="http://facets.inria.fr/javascool/proglet.jar" width="560" height="720">
+      <table><tr><td valign="top" width="560"><xsl:apply-templates/></td><td valign="top">
+        <applet code="proglet.InterfacePrincipale.class" archive="../wproglet.jar" width="560" height="720">
           <param name="proglet" value="{@name}"/>
         </applet>
       </td></tr></table>
     </xsl:when>
     <xsl:when test="@mode='edit'">
-      <i>«proglet» </i> <tt><a href="{concat('http://facets.inria.fr/javascool?prog=',@name)}"><src img="img/execute.png"/><xsl:value-of select="@name"/></a></tt>
+      <div align="right">
+        Utiliser la <i>«proglet» </i> <tt><a href="{concat('http://facets.inria.fr/javascool?prog=',@name)}"><src img="img/execute.png"/><xsl:value-of select="@name"/></a></tt>.
+      </div>
     </xsl:when>
     <xsl:otherwise>  
       <i>«proglet» </i> <tt><a href="{concat('about-proglet-',@name,'.htm')}"><xsl:value-of select="@name"/></a></tt>

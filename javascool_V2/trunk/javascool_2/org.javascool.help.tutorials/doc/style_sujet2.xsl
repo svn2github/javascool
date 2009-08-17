@@ -23,7 +23,11 @@
 </xsl:template>
   
 <xsl:template match="titre">
-  <h1><xsl:value-of select="." /></h1><div align="right">[<a href="#notes">introduction</a>] [<a href="#works">travail proposé</a>] [<a href="#footnotes">remarques</a>]</div><br/><br/>
+  <h1>
+    <a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"/></a>
+    <xsl:value-of select="." />
+  </h1>
+  <div align="right">[<a href="#notes">introduction</a>] [<a href="#works">travail proposé</a>] [<a href="#footnotes">remarques</a>]</div><br/><br/>
 </xsl:template>
 
 <xsl:template match="objectif" >

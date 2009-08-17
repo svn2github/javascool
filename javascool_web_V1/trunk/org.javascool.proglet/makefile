@@ -74,7 +74,7 @@ tst0 : pub
 #####################################################################################################################################
 
 all : scp pub
-	@../../.. ; svn -q up ; svn -q ci -m ''
+	@cd ../../.. ; svn -q up ; svn -q ci -m ''
 
 clean :
 	@rm -rf proglet.jar proglet.crt wproglet.jar *.class */*.class index.html api doc/*.htm
