@@ -74,7 +74,8 @@ tst0 : pub
 #####################################################################################################################################
 
 all : scp pub
-	@cd ../../.. ; svn -q up ; svn -q ci -m ''
+	@cd ../../.. ; svn up ; svn ci -m ''
+	@$(MAKE) clean
 
 clean :
 	@rm -rf proglet.jar proglet.crt wproglet.jar *.class */*.class index.html api doc/*.htm
@@ -127,7 +128,8 @@ doc : index.html wproglet.jar api/index.html $(patsubst %.xml,%.htm,$(wildcard d
 # Copie des fichiers de documentation sur le site web
 
 pub : doc
-	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ index.html doc api img wproglet.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet
+	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ index.html doc api img wproglet.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet \
+	 egrep -v '^(rsync: failed to set permissions|rsync error: some files/attrs were not transferred)'
 
 ftp :
 	sftp scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet
