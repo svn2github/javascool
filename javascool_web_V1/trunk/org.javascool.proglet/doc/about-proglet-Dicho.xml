@@ -15,7 +15,7 @@
         <li><c>0</c> si il correspond à celui de la page.</li>
       </ul></li>
     </ul></p>
-    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/smiley-cool.png"/> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
+    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
     secondes à une dizaine de page au hasard.</p>
     <p>En appuyant sur les touches <c>&lt;-</c> et <c>-></c> nous pouvons tourner manuellement les pages à gauche ou à droite.</p>
   </proglet>

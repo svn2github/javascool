@@ -11,7 +11,7 @@
     <p align="center"><img src="img/turtle.gif"/></p>
   </p>
 
-  <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/smiley-cool.png"/> <b>Demo</b>],
+  <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>],
   la tortue trace de belles <a href="http://fr.wikipedia.org/wiki/Courbe_de_Lissajous">courbes de Lissajous</a> en changeant la couleur.</p>
   </proglet>
 

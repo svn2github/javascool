@@ -17,7 +17,7 @@
        <p><t/><r>println</r>(<s>Valeur = </s> + valeur);</p>
      </code>où ici <b>valeur</b> est une variable numérique entière ou décimale.</li>
    </ul>
-   <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/smiley-cool.png"/> <b>Demo</b>] le programme suivant:
+   <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] le programme suivant:
    <code>
      <m>Efface le contenu de la fenêtre de sortie</m>
      <p><r>clear</r>();</p>

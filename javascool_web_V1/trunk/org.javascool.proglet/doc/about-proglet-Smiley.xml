@@ -18,7 +18,7 @@
       <p><r>reset</r>(width, height);</p>
     </code>où <b>width</b> et <b>height</b> sont des <r>int</r> permet d'afficher une nouvelle image de largeur et hauteur données.
    </p>
-    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/smiley-cool.png"/> <b>Demo</b>] le signe de la paix va s'afficher:
+    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] le signe de la paix va s'afficher:
       <p align="center"><img src="img/smiley2.jpg"/></p>
       ceci, à différentes résolutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne résolution il sera très lisible, puis petit à petit il se réduira à quelques pixels.
    </p>
