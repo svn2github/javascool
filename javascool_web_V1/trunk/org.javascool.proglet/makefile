@@ -30,8 +30,8 @@
 #  -> Donc abandon de la solution et passage a une solution en mode serveur
 
 # En cours:
-# Finir la proglet Tortue (en ajoutant les primitives graphiques)
 # Ajout les sujets annoncés en-cours etc...
+# Finir la proglet Tortue . . mis en conformité doc/test.
 # Voir ok Gilles et soumission à )i( ; comm a animatestroumpf et infolycee + lycee-inria + yannick, avec cc rev-com/dir-sophia
 
 # A revoir:
