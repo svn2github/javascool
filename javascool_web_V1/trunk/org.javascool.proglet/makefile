@@ -32,6 +32,7 @@
 # En cours:
 # Finir la proglet Tortue (en ajoutant les primitives graphiques)
 # Ajout les sujets annoncés en-cours etc...
+# Voir ok Gilles et soumission à )i( ; comm a animatestroumpf et infolycee, avec cc rev-com/dir-sophia
 
 # A revoir:
 #  - Voir le pb de l'acces aux icones à partir du jar qui se fait mal aujourd'hui et nécessite une copie sur le site.
