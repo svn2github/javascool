@@ -9,13 +9,13 @@ import java.io.PrintWriter;
  * It is used in standalone mode. 
  * @see <a href="Compiler.java">source code</a>
  */
-class Compiler { private Compiler() { }
+public class Compiler { private Compiler() { }
 
   /** Compiles a Java code source
    * @param filename The file path to compile
    * @return An empty string if the compilation succeeds, else the error message's text.
    */
-  public static String compile(String filename) throws IOException {
+  static String compile(String filename) throws IOException {
     String args[] = { filename };
     StringWriter out = new StringWriter();
     com.sun.tools.javac.Main.compile(args, new PrintWriter(out));

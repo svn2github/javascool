@@ -1,15 +1,15 @@
 <p title=")i(nterstices s'ouvre vers les lycées avec Javascool, à l'initiative de l'INRIA"><ul>
   <li>A propos de cette démarche<ul>
     <li>En guise de <a href="about-manifeste.htm">manifeste</a>.</li>
-    <li>Quelques éléments sur <a href="about-prg2nd.htm">l'enseignement</a> de l'informatique au lycée en seconde.</li>
+    <li>Quelques éléments sur <a href="about-prg2nd.htm">l'enseignement</a> de l'informatique au lycée en seconde, dont un <a href="about-prg2nd.htm#temoignage">témoignage</a>.</li>
   </ul></li>
   <li>Deux textes sur les fondements de l'informatique<ul>
     <li>Qu'est ce que l'<a href="about-information.htm">information</a> ?</li>
-    <li>Les ingrédients des <a href="about-algorithm.htm">algorithmes</a> ?</li>
+    <li>Les ingrédients des <a href="about-algorithm.htm">algorithmes</a> !</li>
   </ul>
   </li>
   <li>Les cinq ingrédients des algorithmes (utilisant la <proglet name="Konsol"/>)<ul>
-    <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a> voir les séquences d'instructions.</li>
+    <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a>, utiliser les séquences d'instructions.</li>
     <li>Apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
     <li>Découvrir l'instruction <a href="sujet-about-if.htm">conditionnelle</a>.</li>
     <li>Se familiariser avec les <a href="sujet-about-functions.htm">fonctions</a>.</li>

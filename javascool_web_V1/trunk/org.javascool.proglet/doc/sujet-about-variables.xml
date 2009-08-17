@@ -42,7 +42,7 @@
         et du signe ``_´´, par exemple vous pouvez écrire <c>leprenom</c> ou <c>le_prenom</c> mais PAS 
         <c>le-prenom</c> (on ne peut utiliser le tiret ``-´´) ou <c>leprénom</c> (on ne peut utiliser d'accent).</li>
       </ul></li>
-      <li>Les mots en vert sont des chaines de caractères, constantes, que nous utilisons ``tel quel´´.</li>
+      <li>Les mots en vert sont des chaines de caractères, constantes, que nous utilisons ``telles quelles´´.</li>
     </ul>Apprenons à bien distinguer ces trois sortes de mots.
   </note>
   <note title="Les ``verbes´´ et les ``adjectifs´´ du langage">Parmi les mots en ocre qui forment la base du langage, nous découvrons qu'ils sont de deux sortes:<ol>
@@ -74,7 +74,7 @@
       cela ne change pas le fonctionnement du programme.</li>
       <li>Constatez bien que l'<i>identificateur</i> (le nom de la variable ici, <b>whoisit</b>)  n'a rien à voir avec la <i>valeur</i> de la variable (ici le nom entré par
       l'utilisateur).</li>
-      <li>Modifier maintenant le programme (la forme de la question, l'utilisation de la réponse) pour le rendre un peu original.</li>
+      <li>Modifier maintenant le programme (la forme de la question, l'utilisation de la réponse) pour le rendre un peu original, à vous de jouer.</li>
     </ul></work>
     <work title="Utilisons une variable numérique"> Modifions un peu le programme en utilisant au bon endroit les trois lignes supplémentaires suivantes:
       <code>
@@ -86,15 +86,15 @@
         <li>Essayer le code modifié et vérifier qu'il fonctionne de manière satisfaisante.</li>
         <li>Noter que maintenant nous avons une autre variable, qui n'est plus de type <r>String</r> mais de type numérique.</li>
         <li>Remplacer le <r>int</r> par un <r>double</r> (c'est à dire avec la ligne <b><r>double</r> age = <r>readDouble()</r>;</b>, que constatons nous ?</li>
-        <li>L'age de quelqu'un (son nombre d'années de vie) est il plutôt un nombre entier (un <r>int</r>) ou un nombre décimal (un <r>double</r>) ? Et sa taille en mètre ? Et le numéro de sa classe au collège ? Et sa note scolaire moyenne ? Voyez comment selon la valeur numérique que l'on cherche à représenter numériquement il faut utiliser soit un <r>int</r> soit un <r>double</r>.</li>
+        <li>L'age de quelqu'un (son nombre d'années de vie) est il plutôt un nombre entier (un <r>int</r>) ou un nombre décimal (un <r>double</r>) ? Ou, mais, .. sa taille en mètre ? Et le numéro de sa classe au collège ? Et sa note scolaire moyenne ? Voyez comment selon la valeur numérique que l'on cherche à représenter numériquement il faut utiliser soit un <r>int</r> soit un <r>double</r>.</li>
       </ul>
     </work>
    </works>
   
   <footnotes>
     <p title="A propos des identificateurs"> Selon les langages informatiques et les règles de codage les identificateurs peuvent être composés avec <i>autre chose</i>
-    que des lettres minuscules sans accent et du signe ``_´´ (par exemple on peut glisser des chiffres après l'indentificateur, mettre des majuscules, etc..) mais ce n'est
-    PAS une bonne habitude de le faire, car cela a tendance à embrouiller les choses, dépend des langages, etc... En programmation il faut non seulement respecter la syntaxe
+    que des lettres minuscules sans accent et du signe ``_´´ (par exemple on peut glisser des chiffres après l'identificateur, mettre des majuscules, etc..) mais ce n'est
+    PAS une bonne habitude de le faire, car cela a tendance à embrouiller les choses, cela dépend des langages, etc... En programmation il faut non seulement respecter la syntaxe
     mais aussi choisir de bonnes habitudes pour spécifier ses programmes.</p>
     <p title="Comment garder une trace du travail réalisé"> Sauver le texte source du programme dans un fichier d'extension <c>.jvs</c>, 
     par exemple <c>Var1.jvs</c>, puis <c>Var2.jvs</c> pour la version suivante, etc.. De cette façon chaque version du travail peut-être gardée, corrigée, etc..

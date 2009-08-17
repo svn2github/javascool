@@ -59,7 +59,7 @@
      </code>
      ce qui nous permet de définir des expressions aussi complexes que nous avons besoin, par exemple:
      <code>
-       <m>Vrai si et seulement si x est plus grand que a et plus petit que b donc dans l'intervale ]a, b]:</m>
+       <m>Vrai si et seulement si x est plus grand que a et plus petit que b donc dans l'intervale ]a, b[:</m>
        <p><t/><t/><t/>a <r>&lt;</r> x <r>&amp;&amp;</r> x <r>&lt;</r> b</p> 
        <m>Vrai si et seulement si la reponse égale oui en minuscule ou majuscule:</m>
        <p><t/><t/><t/><r>equals</r>(reponse, <s>oui</s>) <r>||</r> <r>equals</r>(reponse, <s>OUI</s>)</p>
@@ -68,7 +68,7 @@
      </code>
      en utilisant des parenthèses pour ne pas mélanger les termes de ces expressions.
    </note>
-   <note title = "Un nouveau type de variable"> Les variables qui ne prennent que les valeurs <r>true</r> et <r>false</r> ce sont des variables booléennes.
+   <note title = "Un nouveau type de variable"> Les variables qui ne prennent que les valeurs <r>true</r> et <r>false</r>. Ce sont des variables booléennes.
       La valeur <r>true</r> veut dire vrai est la valeur <r>false</r> veut dire faux, par exemple <r>true &amp;&amp; true</r> donne <r>true</r> puisque 
       si deux choses sont vraies alors on peut dire que l'une ET l'autre sont vraies. De même <r>true &amp;&amp; false</r> donne <r>false</r> puisque 
       si une chose est vraie et l'autre fausse on ne peut dire que l'une ET l'autre sont vraies. Le code:
@@ -86,13 +86,13 @@
       au bon endroit:
       <code>
         <p><r>if</r>(<r>equals</r>(whoisit, "Toto")) {</p>
-        <p><t/>print(<s>Eh : Toto est pas un vrai nom, dis donc !</s>;</p>
+        <p><t/>print(<s>Eh : Toto est pas un vrai nom, dis donc !</s>);</p>
         <p>}</p>
       </code>
       puis tester ce code pour vérifier le mécanisme conditionnel. Ajouter ensuite des conditions pour signaler que: <ul>
         <li>Si l'âge est inférieur à 3 ans ou supérieur à 120 ans, ce n'est pas sérieux</li>
         <li>Si le nom est Dieu ou Toto, ce n'est pas crédible</li>
-        <li>Si le nom est Nadia, alors c'est super, imprimons un message sympa !</li>
+        <li>Si le nom est, par exemple, Nadia, alors c'est super, imprimons un message sympa !</li>
       </ul>
     </work>
     <work title = "Deviner des conditions"> Essayer de deviner ce qui va être imprimer, puis tester dans un petit code et expliquer le résultat
@@ -102,7 +102,7 @@
         <p>if (x <r>>=</r> 12 <r>&amp;&amp;</r> (x <r>&lt;</r> 0 <r>||</r> x <r>></r> 10)) { <r>print</r>(<s>OK</s>); } <r>else</r> { <r>print</r>(<s>KO</s>); }</p>
       </code>Votre commentaire commencera par : <i>Comme x vaut 12 alors <b>x <r>&lt;</r> 0</b> est [vrai?faux?], et <b> x <r>></r> 10</b> est [vrai?faux?],
       donc (x <r>&lt;</r> 0 <r>||</r> x <r>></r> 10) etc..</i></li>
-      <li>Upps ?<code>
+      <li>Que va donner le code suivant ?<code>
         <p><r>String</r> nom = <r>readString</r>();</p>
         <p>if (<r>equals</r>(nom, "John") <r>&amp;&amp;</r> <r>equals</r>(nom, "Joan")) { <r>print</r>(<s>OK</s>); } <r>else</r> { <r>print</r>(<s>KO</s>); }</p>
       </code></li>
@@ -118,9 +118,9 @@
         <p><r>print</r>(<s>Réponse 8 = </s> + (equals(<s>toto</s>, <s>titi</s>) <r>||</r> 14 <r>></r> 13));</p>
       </code> et donner une phrase explicative pour chaque réponse.</li>
     </ol>
-    <p align="center"><b>(la suite du travail proposé n'est pas indispensable pour comprendre la suite, mais permet d'approfondir le sujet)</b></p>
+    <p align="center"><b>(la suite du travail proposé n'est pas indispensable pour notre apprentissage de la programmation, mais permet d'approfondir le sujet)</b></p>
     </work>
-    <work title ="Calculer les tables de vérité">De même que nous conaissons les tables de multiplication, il y des tables pour les ``opérateurs´´ logiques ET, OU et PAS.
+    <work title ="Calculer les tables de vérité">De même que nous connaissons les tables de multiplication, il y des tables pour les ``opérateurs´´ logiques ET, OU et PAS.
       Compléter les tableaux suivants: <table align="center"><tr>
       <td valign="top"><table border ="1"><tr><td><b>x</b></td><td><b><r>!</r>x</b></td></tr>
         <tr><td><r>false</r></td><td><r>?</r></td></tr>
@@ -141,7 +141,7 @@
     </tr></table></work>
     <work title = "Programmer le ou exclusif">Il y a le ou <i>inclusif</i> comme par exemple ``grand ou gentil´´ (on peut être les deux !) c'est le cas de <r>||</r>,
      et le ou ``exclusif´´ comme par exemple ``grand ou petit´´ (mais pas les deux !). 
-    Nous voulons donc: <ul>
+    Nous voulons étudier ici comment: <ul>
       <li>non pas écrire ``<b>x</b> OU <b>y</b>´´ (<b>x</b> <r>||</r> <b>y</b>) c'est à dire soit <b>x</b> est vrai, soit <b>y</b> est vrai, soit les deux le sont</li>
       <li>mais écrire ``SOIT <b>x</b> SOIT <b>y</b>´´ c'est à dire soit <b>x</b> est vrai et <b>y</b> est faux, soit <b>x</b> est faux et <b>y</b> est vrai.</li>
     </ul>Prenons deux variables booléennes <b>x</b> et <b>y</b>.<ul>
@@ -176,7 +176,7 @@
         <tr><td><r>true</r></td><td><r>false</r></td><td><r>?</r></td></tr>
         <tr><td><r>true</r></td><td><r>true</r></td><td><r>?</r></td></tr>
       </table></li>
-      <li>En prenant l'exemple: <i>Savoir écrire implique toujours de savoir lire</i> ré-écrire avec des mots l'explication ci dessus qui commencent par 
+      <li>En prenant l'exemple: <i>Savoir écrire implique toujours de savoir lire</i>, ré-écrire avec des mots l'explication ci dessus qui commencent par 
         <c>Vraie</c> et <c>Ou encore</c> et celle qui commence par <c>Certes</c>, <c>De plus</c>, <c>Par ailleurs</c>.</li>
       <li>Prenons deux variables booléennes <b>x</b> et <b>y</b>, écrire (à partir de la phrase qui commence par <c>Vraie</c> ou bien celle
       qui commence par <c>Ou encore</c>) une formule avec des <r>&amp;&amp;</r>,  <r>||</r> et <r>!</r> et qui corresponde à <b>x <r>IMPLIQUE</r> y</b>.</li>

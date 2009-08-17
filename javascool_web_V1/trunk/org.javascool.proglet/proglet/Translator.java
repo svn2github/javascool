@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  * The goal is to ease the syntax when starting to program in an imperative language, like Java. 
  * @see <a href="Translator.java">source code</a>
  */
-class Translator { private Translator() { }
+public class Translator { private Translator() { }
 
   // Counter used to increment the serialVersionUID in order to reload the different versions of the class
   static int uid = 1;
@@ -27,7 +27,7 @@ class Translator { private Translator() { }
    * @param filename The file path to translate.
    * @param proglet The static imported proglet name.
    */
-  public static void translate(String filename, String proglet) throws IOException {
+  static void translate(String filename, String proglet) throws IOException {
     String main = filename.replaceAll(".*/([^/]+)\\.[a-z]+$", "$1"), file = filename.replaceAll("\\.[a-z]+$", "");
     File jvs = new File(file+".jvs"), jav = new File(file+".java");
     if (!jvs.exists()) throw new IOException("File not found: "+jvs);
@@ -36,7 +36,6 @@ class Translator { private Translator() { }
     // Here is the translation loop
     {
       out.print("import static proglet.Macros.*;");
-      out.print("import static java.lang.Math.*;");
       out.print("import static proglet."+proglet+".*;");
       out.print("public class "+main+ " extends proglet.InterfacePrincipale {");
       out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
@@ -51,8 +50,8 @@ class Translator { private Translator() { }
 
   // Translates one line of the source file
   private static String translateOnce(String line) {
-    // Adds the void to main
-    line = line.replaceFirst("main[ \t]*\\(\\)", "public void main()");
+    // Adds the public tag to the main() 
+    line = line.replaceFirst("void[ \t]+main[ \t]*\\(\\)", "public void main()");
     return line;
   }
 }

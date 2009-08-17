@@ -30,16 +30,15 @@
 #  -> Donc abandon de la solution et passage a une solution en mode serveur
 
 # En cours:
-# Corrections des textes de base
 # Creer les docs des applets Smiley, Scope (en fixant les paramètres en entrée) et Tortue (en ajoutant les primitives graphiques)
 # Noter chaque sujet quelle proglet utilisée <proglet name=""/> avec tag unplug aussi
 # Ajouts de tous les sujets au brouillon
 
 # A prévoir:
-#  - Avoir plusieurs instances simultanées sur le serveur
 #  - Voir le pb de l'acces aux icones parfois
 #  - Voir le pb du setLocation() en mode standalone
 #  - Voir pb des droits qd on rsync sur javascool
+#  - Ajouter un éditeur couleur dans l'applet
 
 # Environnement utilisé:
 

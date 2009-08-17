@@ -25,7 +25,7 @@ if (isset($_REQUEST['clean-up'])) shell_exec("sh -c '/bin/rm -rf ./tmp-*'");
 {
   $eh = set_error_handler(create_function('$errno, $errstr', 'return true;')); $date = getdate(); set_error_handler($eh); 
   $date = $date['year'].'-'.$date['mon'].'-'.$date['mday'].':'.$date['hours'].':'.$date['minutes'].':'.$date['seconds'];
-  $fp = fopen('access.log', 'a'); fwrite($fp, $_SERVER['REMOTE_ADDR'].'@'.$date.';prog='.$prog.(strlen($main) > 0 ? ';main='.$main : ';edit')); fclose($fp);
+  $fp = fopen('access.log', 'a'); fwrite($fp, $_SERVER['REMOTE_ADDR'].'@'.$date.';prog='.$prog.(strlen($main) > 0 ? ';main='.$main : ';edit')."\n"); fclose($fp);
 }
 
 // Compilation and execution

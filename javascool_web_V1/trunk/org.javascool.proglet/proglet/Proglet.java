@@ -29,7 +29,7 @@ import java.lang.reflect.InvocationTargetException;
 /** This factory allows to interface with proglets.
  * @see <a href="Proglet.java">source code</a>
  */
-class Proglet { private Proglet() { }
+public class Proglet { private Proglet() { }
   private static final long serialVersionUID = 1L;
 
   /** Constructs a proglet attached to the related applet.
@@ -37,7 +37,7 @@ class Proglet { private Proglet() { }
    * @param proglet The proglet class name.
    * @return The static instanciation of the proglet.
    */
-  public static JPanel getPanel(Applet applet, String proglet) {
+  static JPanel getPanel(Applet applet, String proglet) {
     Proglet.applet = applet;
     try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } 
     catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
@@ -57,7 +57,7 @@ class Proglet { private Proglet() { }
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
    */
-  public static void test(String proglet) {
+  static void test(String proglet) {
     Proglet.proglet = proglet;
     new Thread(new Runnable() { public void run() {
       try { Class.forName("proglet."+Proglet.proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { report(error); }
@@ -68,7 +68,7 @@ class Proglet { private Proglet() { }
   /** Reports a throwable with the related context.
    * @param error The error or exception to report.
    */
-  public static void report(Throwable error) {
+  static void report(Throwable error) {
     if (error instanceof InvocationTargetException) report(error.getCause());
     System.out.println(error.toString());
     System.err.println(error.toString());
@@ -94,7 +94,7 @@ class Proglet { private Proglet() { }
    * @param height Applet height.
    * @return The opened frame.  Use <tt>frame.dispose()</tt> to close the frame.
    */
-  public static JFrame show(JApplet applet, String title, Point where, int width, int height) {
+  static JFrame show(JApplet applet, String title, Point where, int width, int height) {
     JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); 
     if (title != null) f.setTitle(title); f.setSize(width, height); if (where != null) { f.setLocationByPlatform(false); f.setLocation(where); } f.setVisible(true); 
     return f;

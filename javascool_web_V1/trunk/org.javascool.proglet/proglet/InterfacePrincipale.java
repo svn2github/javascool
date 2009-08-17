@@ -77,12 +77,12 @@ public class InterfacePrincipale extends JApplet {
   /** Sets the proglet to use in this interface.
    * @param proglet The proglet class name.
    */
-  public void setProglet(String proglet) { getJProgletButton(); jProgletBox.setSelectedItem(this.proglet = proglet); } private String proglet = "Konsol";
+  void setProglet(String proglet) { getJProgletButton(); jProgletBox.setSelectedItem(this.proglet = proglet); } private String proglet = "Konsol";
 	
   /** Sets the mode to use in this interface.
    * @param edit If true in edit mode, else in run mode.
    */
-  public void setEdit(boolean edit) { this.edit = edit; } private boolean edit = false;
+  void setEdit(boolean edit) { this.edit = edit; } private boolean edit = false;
   
   // Sets the class name and file
   private void setMainFile(String pFile) {
@@ -91,7 +91,7 @@ public class InterfacePrincipale extends JApplet {
   }  
   private String main = null, path = null;
 
-  /** This routines is overloaded to run a program. */
+  /** This routines is the entry point to run the proglet pupil's program. */
   public void main() { Proglet.test(proglet); }
 
   // Flag whether we are in standalone mode or web-browser mode

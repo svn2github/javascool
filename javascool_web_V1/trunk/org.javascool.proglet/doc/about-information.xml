@@ -6,11 +6,12 @@
 
   <p>A chaque instant, notre cerveau capte, enregistre, et traite des informations. 
   Ainsi pouvons nous regarder, mémoriser, analyser et puis retranscrire une image, un texte ou un son.
-  Mais qu'en est-il pour une machine, c'est dire avec une intelligence mécanique ?</p>
+  Mais qu'en est-il pour une machine, c'est dire un dispositif avec une intelligence mécanique ?</p>
 
   <p title="L'information et son reflet"> Prenons l'exemple d'une calculette électronique: quand nous disons qu'elle ``calcule´´, 
-  ses circuits s'ouvrent et se ferment mais le fait que cela <i>prenne le sens d'un calcul</i> est le fait de l'humain qui utilise cette calculette,
-  la machine ne ``comprend´´ évidemment pas les calcul qui s'exécutent grâce aux propriétés électriques des circuits:
+  ses circuits électriques s'ouvrent et se ferment de manière à ce que l'affichage corresponde au résultat du calcul à affectuer.
+  Mais le fait que cela <i>prenne le sens d'un calcul</i> est le <i>fait de l'humain qui utilise cette calculette</i>,
+  la machine ne ``comprend´´ évidemment pas les calcul qui s'exécutent uniquement grâce aux propriétés électriques de ses circuits:
   La calculette ne possède que le <i>reflet</i> électronique du calcul.</p>
   
   <p title="Information, hasard et complexité"> Regardons cette suite de chiffres:
@@ -20,24 +21,27 @@
       qui est bêtement une suite de zéro. Ah oui mais en quoi la première suite de nombre est elle plus complexe? <ul>
       <li>Est-elle juste aléatoire, chaotique, bref sans ordre ni régularité ?</li>
       <li>Ou bien organisée, fortement structurée, riche en information ``utile´´ ?</li>
-    </ul>en fait si nous regardons bien le début de cette suite, nous reconnaissons les premières décimales de <c><a href="http://fr.wikipedia.org/wiki/Pi">π</a></c>, 
+    </ul>En fait si nous regardons bien le début de cette suite, nous reconnaissons les premières décimales de <c><a href="http://fr.wikipedia.org/wiki/Pi">π</a></c>, 
     peut-être le nombre le plus célèbre de toute l'histoire des mathématiques: autant dire que son information est très utile . . enfin pour les géomètres et les mathématiciens !
     En tout cas, il est bien compliqué de retenir les chiffres de la première suite (peut-être même le mieux est il de les apprendre par coeur), 
-    mais dans le deuxième cas, il suffit de retenir ``voilà 8 x 4 zéros´´. 
-    Cet exemple<footnote id="2"/> est très instructif car il nous montre que nous devons bien distinguer: <ul>
+    mais dans le deuxième cas, il suffit de retenir ``voilà 8 x 5 zéros´´. 
+    <p>Cet exemple, du à <a href="http://www2.lifl.fr/~delahaye">Jean-Paul Delahaye</a><footnote id="2"/>,
+    est très instructif car il nous montre que nous devons bien distinguer: <ul>
       <li>Le contenu <i>brut</i> en information qui ne dépend pas du sens.</li>
-      <li>La <i>valeur</i> d’une information dépend du but fixé.</li>
-  </ul></p>
+      <li>La <i>valeur</i> d’une information, qui dépend du but fixé.</li>
+    </ul></p>
+  </p>
 
   <p title="Fabriquer un reflet numérique à tous les objets réels"> Commençons par la première étape: la façon dont on introduit l'information dans une machine, dont on la code pour pouvoir ensuite la manipuler. Nous allons commencer par regarder en détail un exemple: comment coder un dessin, puis découvrirons que la méthode peut-être aussi appliquée à une image, un texte, un son, des nombres, et que finalement . . on peut convenir d'un codage pour toutes les informations ! Les codages que nous allons décrire ici sont des <i>codages binaires</i> et nous expliquerons pourquoi et verrons en particulier comment se <i>mesure l'information</i>, ``presque´´ comme toute autre quantité.</p>
 
-  Une très intéressante introduction au sujet traité ici est <a href="http://interstices.info/nom-de-code-binaire">disponible</a> 
+  <p>Une très intéressante introduction au sujet traité ici est <a href="http://interstices.info/nom-de-code-binaire">disponible</a> 
   sur <a href="http://interstices.info">)i(nterstices</a>, 
   tandis qu'une tandis qu'une <a href="http://stream-serv.inrialpes.fr/Roc/SeminaireInformatiqueObjetsNumeriques/G_Berry.rm">présentation vidéo</a> 
+  de <a href="http://fr.wikipedia.org/wiki/Gérard_Berry">Gérard Berry</a>,
   disponible aussi sous forme d'un <a href="http://www.college-de-france.fr/default/EN/all/inn_tec2007">cours pour adultes</a> 
   (<a href="http://www.college-de-france.fr/default/EN/all/inn_tec2007/lecon_inaugurale___1.jsp">vidéo</a>, 
   <a href="http://www.college-de-france.fr/audio/berry/berry-20080117.mp3">audio</a>
-  <a href="http://www.college-de-france.fr/media/inn_tec2007/UPL13472_Le_on_inaugurale_G_rard_Berry.pdf">support visuel </a>)
+  <a href="http://www.college-de-france.fr/media/inn_tec2007/UPL13472_Le_on_inaugurale_G_rard_Berry.pdf">support visuel </a>) complète et met en perspective ce sujet.</p>
 
   </p>
 
@@ -48,7 +52,7 @@
   Une solution est de dire : « Cette image est formée d'un cercle ». 
   Nous pouvons même être plus précis et indiquer les coordonnées du centre du cercle, son rayon, sa couleur, l'épaisseur du trait, ... 
   Et à partir de cette description, n'importe qui pourrait reconstituer le dessin.<br/>
-  Cette méthode marche bien pour ce dessin-ci, et nous en parlerons dans un chapitre suivant. Mais tout décrire avec des mots serait bien moins pratique pour le dessin suivant:
+  Cette méthode marche bien pour ce dessin-ci, et nous en parlerons en annexe. Mais tout décrire avec des mots serait bien moins pratique pour le dessin suivant:
     <p align="center"><img src="img/algo-2.jpg"/></p>
   car comment décrire en détail facilement ces traits ou pire un dessin ``réel´´ ?</p>
 
@@ -70,10 +74,10 @@
   <p> Ce dessin se décrit donc par une suite de mots « blanc » ou  « noir ». 
   Comme seuls les  mots « noir », ou « blanc » sont utilisés, nous pouvons être plus économes et remplacer chacun de ces mots par une seule lettre, 
   par exemple le mot « noir » par la lettre « n » ou le chiffre « 0 » et le mot « blanc » par la lettre « b » ou le chiffre « 1 ». 
-  Le dessin ci-dessus se décrit alors par la suite de 25 lettres ou de 25 chiffres:
+  Le dessin ci-dessus se décrit alors, avec une grille de 5x5, par la suite de 25 lettres ou de 25 chiffres:
     <p align="center"><c>1000100100011100010010001</c></p>
     et voilà une représentation bien compacte de notre dessin.<br/>
-    Toutes ces descriptions sont équivalentes : l'image se décrit toujours par une suite de symboles choisis parmi deux. 
+    Toutes ces descriptions sont équivalentes : le dessin se décrit toujours par une suite de symboles choisis parmi deux. 
     Le nom de ces deux symboles importe peu, et nous pourrions les appeler noir et blanc, a et b, 0 et 1, pile et face, - et +, dupond et dupont, ... 
     et cela ne changerait pas grand-chose. En général, on choisit 0 et 1. 
     Ces symboles s'appellent les chiffres binaires ou bits (abréviation de binary digits, « chiffres binaires », en anglais). 
@@ -105,7 +109,7 @@
     </table></p>
   cette image se décrit par la suite 
    <p align="center"><c>nrnrnnrnrnbnbnvbbnbvbbvvv</c></p>
-  à condition, bien entendu, que qui code et qui décode cette image sont suivre parfaitement le standard proposé ici.
+  à condition, bien entendu, que qui code et qui décode cette image suive parfaitement le standard proposé ici.
    <br/>
   Cette méthode utilise quatre symboles différents. 
   Il est possible aussi de décrire cette image par une suite binaire, c'est-à-dire dans laquelle on utilise deux symboles différents et non quatre. 
@@ -119,7 +123,7 @@
     </table></p>
   L'image ci-dessus se décrit alors par la suite
     <p align="center"><c>00 10 00 10 00 00 10 00 10 00 01 00 01 00 11 01 01 00 01 11 01 01 11 11</c></p>
-    donc 25 x2 = 25 bits. Les espaces entre chaque couple de valeur binaires sont inutiles, sauf pour . . vous en faciliter la lecture !
+    donc 25 x 2 = 50 bits. Les espaces entre chaque couple de valeur binaires sont inutiles, sauf pour . . vous en faciliter la lecture !
     <br/>
   Une fois choisis le nombre de pixels de l'image (ici 5 x 5, en réalité quelques millions) et le nombre de bits sur lequel on représente la couleur de chaque pixel 
     (ici 2 bits, en réalité  de 8 à 32 bits, selon la palette des couleurs) toutes les images se représentent par une suite binaire de la même longueur : 
@@ -132,7 +136,7 @@
     L'alphabet latin, que l'on utilise en français, contient 26 lettres. 
     Mais, en réalité, quand on compte les majuscules et les minuscules, les lettres accentuées, les chiffres et les symboles de ponctuation, 
     il contient plutôt une centaine de symboles. 
-    Et puis il faut aussi pouvoir décrire toutes les langues du monde. Par exemple, les 28 jolis symboles de l'alphabet arabe et ses symboles complémentaires, 
+    Et puis il faut aussi pouvoir décrire toutes les langues du monde. Par exemple, les 28 symboles de l'alphabet arabe, avec ses symboles complémentaires, 
     comme on les devine sur cette ancienne machine à écrire:
       <p align="center"><img src="img/algo-8.jpg" width="300"/></p>
     Ainsi la phrase   « tout se code en binaire » s'écrira «<span lang="ar-SA">كل شيء في ثنائي الكود</span>» (qui se lit de droite à gauche) et se codera, par exemple:
@@ -167,9 +171,12 @@
 
    <p title="Décrire des nombres"> Le codage des valeurs numériques est de nature différente, car ce n'est pas un code arbitraire « standard », 
    mais . . un choix issu de l'arithmétique. Découvrons le ensemble. <br/>
-   Pour les chiffres, les 10 premiers nombres, c'est facile, il faut quatre bits:
+   Pour les chiffres, les 10 premiers nombres, c'est facile, il faut quatre bits. 
+   Le tableau suivant donne le chiffre dans la colonne du milieu et sa représentation binaire dans la colonne de droite:
      <p align="center"><img src="img/algo-n-1.jpg" width="300"/></p>
-   mais si vous regardez bien ce codage il est le résultat d'un calcul.
+   mais si vous regardez bien ce codage, il y a quelque chose de plus: il est le résultat d'un calcul, montré dans la colonne de gauche.
+     Le codage binaire d'un nombre (que nous, humains, écrivons quasiment toujours en base 10, en utilisant 10 chiffres), <i>est ce même nombre, écrit en base 2</i>.
+     
      <p title="Du codage binaire au nombre entier positif">Voici comment retrouver un nombre à partir de son code binaire:
      en ajoutant chaque bits multiplié par une puissance de deux comme ci dessous, on calcule exactement le nombre.
        <p align="center"><img src="img/algo-n-2.jpg" width="300"/></p><ul>
@@ -177,22 +184,28 @@
        <li>A la seconde ligne nous nous sommes aperçu que 1, 2, 4, .. sont en fait les puissances de 2: <c>2<sup>0</sup>, 2<sup>1</sup>, 2<sup>2</sup></c>, ..</li>
        <li>A la troisième ligne, nous réalisons qu'avec des parenthèses bien placée, il suffit de multiplier par deux puis d'additionner les bits de gauche à droite pour retrouver le nombre.</li>
      </ul>Voilà donc un calcul, une méthode mécanique que l'on appelle algorithme, qui permet de passer du codage binaire au nombre dans sa représentation usuelle.</p>
-     <p title="Du nombre entier positif à son codage binaire"> A l'inverse il existe un calcul pour obtyenir le code binaire de n'importe quel nombre entier: 
+
+     <p title="Du nombre entier positif à son codage binaire"> A l'inverse il existe un calcul pour obtenir le code binaire de n'importe quel nombre entier: 
      Si nous notons 9 % 2 = 1 le reste de la division par 2 de 9 ou 4 % 2 = 0 le reste de la division de 4 par 2, etc.. alors le calcul inverse suivant:
        <p align="center"><img src="img/algo-n-3.jpg" width="300"/></p>
-     où nous avons successivement calculé les reste de la division par deux puis divisé par deux nous a donné . . le codage binaire du nombre 9. 
+       où nous avons successivement calculé les restes de la division par deux puis divisé par deux nous a donné . . le codage binaire du nombre 9. </p>
+
+    <p title="Représenter des nombres positifs de toutes tailles"> 
      Bien-sûr cela marche avec tous les nombres et nous pouvons facilement calculer combien de bits sont nécessaires pour les coder:
        <p align="center"><img src="img/algo-n-4.jpg" width="300"/></p>
      Nos ordinateurs utilisent aujourd'hui souvent 32 ou 64 bits pour coder les nombres entiers, ils peuvent donc coder directement des nombres très grands et 
      si besoin était en utilisant plus de bits . . des nombres vertigineusement grands !
     </p>     
+
     <p title="Calculer directement sur les nombres binaires"> 
       Nous pouvons donc représenter des nombres entiers positifs par la suite de bits de leur représentation binaire.
       Nous verrons dans la suite que ce codage est très précieux car il permet de faire directement des opérations sur ces nombres. 
       Par exemple ajouter deux entiers positifs, revient à ajouter leur représentation binaire: on obtient directement le codage binaire du résultat.  
       De même pour toutes les autres opérations numériques, pour comparer ces entiers entre eux etc...
       Souvenons nous que toutes les valeurs numériques sont non seulement stockées en binaire mais aussi <i>manipulées en binaire</i> dans l'ordinateur.</p>
+
     <p title="Représenter des nombres entiers négatifs et positifs"> 
+      Jusqu'ici nous ne considérions que des nombres entiers positifs.
       Comment représenter des nombres entiers soit positifs, soit négatifs ? Et bien choisissons de représenter le signe par un bit supplémentaire:
       <p align="center"><table border="1">
         <tr><td><c>'0'</c></td><td>+</td></tr>
@@ -227,17 +240,16 @@
    si les valeurs se ressemblent alors au lieu de répéter bêtement les mêmes nombres ou presque, le codage les regroupent pour gagner de la place, 
    c'est une approximation supplémentaire qui permet de compresser l'information et de gagner de la place mémoire et du temps lors de la communication.</p>
 
+   <p title="Coder de la musique ?"> Il suffit de choisir un code binaire pour chaque note, sa hauteur (aigue ou grave) et sa durée, chaque instrument. 
+   Ensuite en mettant bout à bout ces codes, nous avons la séquences des notes . . c'est à dire la partition musicale. 
+   Ce codage existe, il est standard et se nomme <a href="http://fr.wikipedia.org/wiki/Musical_Instrument_Digital_Interface">MIDI (Musical Instrument Digital Interface)</a>.</p>
+
    <p title="Coder un film ?"> Un film n'est jamais qu'une séquence d'image ! 
    Alors il suffit de coder les images et de mettre ces suite de bits bout à bout. Sans oublier de coder aussi le son.
    Là encore il y a des astuces pour regrouper les parties qui se ressemblent et gagner de la place et du temps. 
    Mais le principe reste le même.</p>
 
-   <p title="Coder de la musique ?"> Il suffit de choisir un code binaire pour chaque note, sa hauteur (aigue ou grave) et sa durée, chaque instrument. 
-   Ensuite en mettant bout à bout ces codes, nous avons la séquences des notes . . c'est à dire la partition musicale. 
-   Ce codage existe, il est standard et se nomme <a href="http://fr.wikipedia.org/wiki/Musical_Instrument_Digital_Interface">MIDI (Musical Instrument Digital Interface)</a>.</p>
-
-
-   Nous verrons aussi plus loin comment coder aussi toutes les données de notre quotidien, nos agendas, nos carnet d'adresse, etc... 
+   Nous verrons aussi en annexe comment peuvent se coder aussi toutes les données de notre quotidien, nos agendas, nos carnet d'adresse, etc... 
    Que découvrons ici ? La polyvalence des ordinateurs et des autres machines numériques : 
    ils traitent des données très diverses mais toujours décrites de la même manière par des suites binaires à deux symboles.
    Et d'ailleurs . . pourquoi utiliser exactement deux symboles ?
@@ -255,7 +267,7 @@
 
     <p title="Et en utiliser deux . . c'est bien pratique !">En revanche, nous aurions pu choisir d'utiliser plus de deux symboles : 
       les dix chiffres arabes, les vingt-deux lettres de l'alphabet phénicien, les vingt-quatre lettres de l'alphabet grec ou les vingt-six lettres de l'alphabet latin. 
-     <p>Mais n'utiliser deux symboles a plusieurs avantages. Le premier est que ce choix est indépendant de la nature des informations décrites. 
+     <p>Mais n'utiliser que deux symboles a plusieurs avantages. Le premier est que ce choix est indépendant de la nature des informations décrites. 
      Il aurait été dommage de concevoir des ordinateurs grecs qui utilisent 24 symboles et des ordinateurs latins qui en utilisent 26. </p>
      <p>Par ailleurs, la description de l'information avec deux symboles est plus simple à mettre en œuvre dans un ordinateur. 
      Cela se réalise électriquement avec un interrupteur ouvert ou fermé, un courant électrique présent ou absent, etc. 
@@ -308,7 +320,7 @@
     puisque nous savons que toute personne de 14 ans et plus peut conduire un scooter, 
     il est inutile de rajouter cette information, car  elle est « contenue »  dans l'âge . . donc nous avons toujours 3 bits d'information.
     <br/>
-    Nous avons découvert une mesure physique très intéressante: de même que la chaleur se mesure avec la température en degré, la tension électrique en volt, 
+    Nous avons donc découvert une mesure physique très intéressante: de même que la chaleur se mesure avec la température en degré, la tension électrique en volt, 
     la quantité brute d'information se mesure en bits. 
     <br/>
     Cette mesure correspond tout simplement au nombre de bit minimum nécessaire pour stocker l'information sans la tronquer.
@@ -324,9 +336,94 @@
   </p>
 </p>
 
-  <footnotes>
+<p title="Annexe: Décrire symboliquement des objets">
+   Explorons rapidement maintenant une autre voie pour décrire, par exemple, le dessin suivant utilisé au début:
+      <p align="center"><img src="img/algo-1.jpg"/></p>
+    Une solution est donc de dire : « Cette image est formée d'un cercle». 
+    Nous devons être plus précis et indiquer les coordonnées du centre du cercle, son rayon, sa couleur, ... 
+    Comment formaliser, structurer de manière rigoureuse tous ces éléments ? 
+    Nous ne pouvons pas nous exprimer avec des phrases: la machine ne comprendrait rien ! 
+    Nous pouvons, en revanche, oublier la belle syntaxe de notre langue humaine et écrire quelque chose comme:
+    <code>
+     <p>&lt;cercle</p>
+     <p><t/>abscisse=<s>100</s></p>
+     <p><t/>ordonnée=<s>100</s></p>
+     <p><t/>rayon=<s>200</s></p>
+     <p><t/>couleur=<s>noir</s></p>
+     <p>/></p>
+   </code>
+   qui se traduirait par «voilà un cercle de centre le point d'abscisse (ou position horiontale) 100 et d'ordonnée (ou position verticale) 100, de rayon 200 et de couleur noire».
+   Cette façon de <i>spécifier</i> notre information sous forme structurée est universelle. Nous pourrions, par exemple, spécifier un dessin plus compliqué comme celui ci:
+     <p align="center"><img src="img/algo-11.jpg"/></p>
+   à savoir:
+   <code>
+     <p>&lt;dessin></p>
+     <p><t/>&lt;cercle</p>
+     <p><t/><t/>abscisse=<s>100</s></p>
+     <p><t/><t/>ordonnée=<s>100</s></p>
+     <p><t/><t/>rayon=<s>200</s></p>
+     <p><t/><t/>couleur=<s>noir</s></p>
+     <p><t/>/></p>
+     <p><t/>&lt;cercle</p>
+     <p><t/><t/>abscisse=<s>100</s></p>
+     <p><t/><t/>ordonnée=<s>100</s></p>
+     <p><t/><t/>rayon=<s>100</s></p>
+     <p><t/><t/>couleur=<s>vert</s></p>
+     <p><t/>/></p>
+     <p>&lt;/dessin></p>
+   </code>
+   qui se traduirait par «voilà un dessin constitué de deux cercles .. [ etc ..]  .. de couleur noire  et .. [ etc ..]  .. de couleur verte». 
+   Nous avons en quelque sorte "démonté la grammaire de la phrase" pour n'en garder que la structure logique et les données qui y sont contenues. 
+   En d'autres termes nous avons <i>séparé le fond de la forme</i>, pour permettre à l'intelligence mécanique de l'ordinateur de manipuler facilement cette information symbolique.
+
+   <p>Cette façon de présenter l'information de manière symbolique utilise une syntaxe que l'on appelle 
+     «structure logique <a href="http://fr.wikipedia.org/wiki/Extensible_Markup_Language">XML</a>». 
+     Elle utilise deux constructions très simples: <ul>
+      <li>Des <i>ensemble d'attributs</i>, par exemple les paramètres de notre cercle.</li>
+      <li>Des <i>listes d'éléments</i>, par exemple notre dessin constitué d'une liste de deux éléments, les deux cercles qui le composent.</li> 
+    </ul> Nous apprendrons dans d'autres leçons (qui ne sont pas données ici), comment définir et manipuler de telles constructions.
+  </p>
+
+  <p>En fait, <i>en fait</i> le texte qui est devant vous et que vous lisez en ce moment: <ul>
+     <li>a été écrit en <a href="http://fr.wikipedia.org/wiki/Extensible_Markup_Language">XML</a> !!!</li>
+     <li>pour rendre explicite la structure du texte, ses liens, etc..</li>
+   </ul> 
+   Il se présente ainsi:
+   <code>
+      <p>En fait, &lt;i>en fait&lt;/i> le texte qui est devant vous et que vous lisez en ce moment: &lt;ul></p>
+      <p><t/>&lt;li>a été écrit en &lt;a href="http://fr.wikipedia.org/wiki/Extensible_Markup_Language">XML&lt;/a> !!!&lt;/li></p>
+      <p><t/>&lt;li>pour rendre explicite la structure du texte, ses liens, etc..&lt;/li></p>
+      <p>&lt;/ul>il se présente . .</p>
+    </code>
+    où nous voyons que la construction <c>&lt;i>en fait&lt;/i></c> permet de signaler que c'est une information importante à faire ressortir,
+    la construction utilisant <c>&lt;ul></c> et <c>&lt;li></c> permet de spécifier que nous faisons une énumération, 
+    tandis que la construction <c>&lt;a href="http://fr.wikipedia.org/wiki/Extensible_Markup_Language">XML&lt;/a></c> permet de spécifier un lien.
+
+    <p>En effet, un texte n'est pas juste une suite de mots, 
+      il a une structure (des paragraphes, des sections, des références, ..), 
+      il a des <i>méta-données</i> (son titre, son auteur, la langue dans laquelle il a été écrit, etc..) 
+      et tous ces éléments ont été spécifiés grâce aux constructions que nous évoquons ici.
+      Sous le nom de <a href="http://fr.wikipedia.org/wiki/HTML">HTML</a> que vous connaissez sûrement déjà, 
+     toutes les pages de l'internet sont codées de manière similaire. La syntaxe (c'est à dire la façon de coder cette information symbolique) varie un peu, 
+     mais les fondements sont les mêmes. 
+    </p>
+  </p>
+  <p>Ce qui nous permet de conclure en vous disant:
+  <code>
+     <p>&lt;message</p>
+     <p><t/>titre=<s>Merci de votre lecture et bonne chance pour apprendre l'informatique !</s></p>
+     <p><t/>smiley=<s><img src="img/smiley-cool.png"/></s></p>
+     <p><t/>suite=<s>Les  <a href="about-algorithm.htm">ingrédients des algorithmes</a></s></p>
+     <p><t/>reference=<s><a href="about-all.htm">table des matières</a></s></p>
+     <p>/></p>
+   </code>
+ </p>
+</p>
+
+<footnotes>
     <p>Ce texte à été co-préparé par <a href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a>, 
     Jean-Pierre Archimbault, Emmanuel Baccelli, Thierry Viéville et Benjamon Wack.</p>
     <p title="Information, hasard et complexité"> est le titre d'un <a href="http://www.lavoisier.fr/notice/fr305043.html">ouvrage scientifique fondamental</a> d'un de nos grands chercheurs en informatique <a href="http://www2.lifl.fr/~delahaye">Jean-Paul Delahaye</a> qui <a href="http://www.loria.fr/~vthierry/cours/information-theories.pdf">présente</a> aux étudiants de l'enseignement supérieur les notions que nous évoquons ici. Grâce à son conseil, nous pouvons les évoquer simplement dans ce document.</p>
-  </footnotes>
+</footnotes>
+
 </p>
