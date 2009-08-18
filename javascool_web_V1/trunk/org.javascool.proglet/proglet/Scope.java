@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 
-/** Définit une proglet javascool qui permet d'expérimenter la recherche scopetomique.
+/** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
  * Fichiers utilisés: <pre>
  * img/scope_screen.png
  * </pre>

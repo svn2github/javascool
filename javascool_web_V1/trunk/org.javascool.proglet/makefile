@@ -23,13 +23,14 @@
 #  + lors de la compilation le Translator définit un serialVersionUID différent pour entraîner la mise à jour de la classe et ne pas ré-exécuter une classe compilée précédemment
 #  ! L'applet a ete separee en deux modes d'affichage [edit/compil] et [execute] pour un meilleur graphisme et un usage a travers le service web
 #  ! Du coup de tout ces pbs, la compilation a été refaite en jdk5 pour tourner sur MacOS aussi.
-# > Bugs, sans solution, rencontres en mode applet avec compilateur intégré
+# > Bugs, sans solution, rencontres en mode applet avec compilateur intégré en jdk6
 #  ? Exceptions de sécurité à la pelle, malgré la certification: lors du rechargement, selon la version du compilateur utilisé, etc...
 #  ? Lors du chargement de la classe compilee, non certifiée, il y a de fait une exception de sécurite à l'exécution puisque dès qu'il y a un accès à des ressources certifiées
 #  ? Lors du chargement de la classe compilee, si les expections de sécurité ne se produisent pas, elle s'exécute parfois ``dans le vide´´ sans accéder à la proglet affichée
 #  -> Donc abandon de la solution et passage a une solution en mode serveur
 
 # En cours:
+# Tester sous windows , sous jre , etc...
 # Ajout les sujets annoncés en-cours etc...
 # Voir le 27, ok Gilles et soumission à )i( ; comm a animatestroumpf et infolycee + lycee-inria + yannick + AurélienLaurents, avec cc rev-com/dir-sophia.
 
@@ -53,12 +54,12 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst2
+dft : tst1
 
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar
-	$(JAVA)/bin/java -jar $^ run Tortue
+	cd tst ; /usr/bin/java -jar ../$^ edit Konsol
 
 # Test du service web (pour vérifier l'intégration)
 
@@ -68,7 +69,7 @@ tst2 : scp
 # Test du site web (pour vérifier la génération des docs)
 
 tst0 : pub
-	firefox http://javascool.gforge.inria.fr/proglet
+	cd tst ; firefox http://javascool.gforge.inria.fr/proglet
 
 #####################################################################################################################################
 ##      Generation des fichiers javascool'proglet, contacts Hamdi.Ben_Abdallah@inria.fr Thierry.Vieville@sophia.inria.fr           ##
@@ -151,7 +152,7 @@ doc/img/%.png : doc/img/%.fig
 doc/img/% : ../../../javascool_V2/trunk/javascool_2/org.javascool.help.tutorials/doc/%
 	@cp $^ $@
 
-api/index.html : $(wildcard proglet/*.java)
+api/index.html : proglet/package.html $(wildcard proglet/*.java)
 	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d api proglet/*.java
 	@cp proglet/*.java api/proglet
 

@@ -15,6 +15,15 @@
     <li>Se familiariser avec les <a href="sujet-about-functions.htm">fonctions</a>.</li>
     <li>Utiliser des <a href="sujet-about-while.htm">boucles</a>.</li>
   </ul></li>
+  <li>Trois instanciations du logiciel javascool pour travailler en classe selon la configuration informatique: <ul>
+  <li><a href="http://javascool.gforge.inria.fr">Le logiciel Java'sCool dans sa forme complète</a>
+    avec un éditeur coloré, des menus adaptés, un interface <a href="http://christian.rellier.free.fr/orphy/ORPHYGTS.htm">Orphy</a>, etc...
+    (nécessite une <a href="http://javascool.gforge.inria.fr/html/javascool/install/Installation.html">installation spécifique</a> sur chaque machine utilisée).</li>
+    <li><a href="http://facets.inria.fr/javascool">L'environnement de programmation simplifié pour utiliser les proglet's en web service</a>
+      (nécessite une installation standard de Java et un accès au réseau pendant le travail en classe).</li>
+    <li><a href="../wproglet.jar">L'environnement de programmation simplifié pour utiliser les proglet's en standalone</a> 
+      (nécessite une installation standard de Java).</li>
+  </ul> et de pouvoir nous contacter (voir <a href="#contact">ci-dessous</a>) si il y a le moindre problème.</li>
   <li>Des proglets pour s'initier à la programmation<ul>
     <li>La <proglet name="Konsol"/>.</li>
     <li>La <proglet name="Dicho"/>.</li>
@@ -24,7 +33,7 @@
   </ul></li>
   <li>Quelques applications, exercices et activités:<ul>
     <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
-    <li><i> .. cette liste ayant vocation à s'étoffer au cours de l'année scolaire 2009-2010</i>, sont en préparation:<ul>
+    <li><i> .. cette liste ayant vocation à s'étoffer au cours de l'année scolaire 2009-2010</i>. Sont en préparation (pour mi-septembre 2009):<ul>
       <li>Un mécanisme de tri dichotomique.</li>
       <li>Jouons avec les pixels d'une image !</li>
       <li>Peut-on craquer un code de carte bleue ?</li>
@@ -34,16 +43,13 @@
     </ul> . . non sans vous inviter à nous demander de nouveaux sujets, à nous faire partager les vôtres, etc..</li>
   </ul></li>
   <li>Autres liens: <ul>
-  <li><a href="http://facets.inria.fr/javascool">L'environnement de programmation en web service</a></li>
-    <li><a href="http://javascool.gforge.inria.fr">Le site Java's Cool</a></li>
     <li><a href="http://interstices.fr">Le site )i(nterstices</a></li>
-    <li><a href="../wproglet.jar">Le lien pour utiliser les proglet's en standalone</a> (java devant être installé sur l'ordinateur)</li>
     <li><a href="../api/index.html">La documentation java des proglet's</a></li>
   </ul></li>
 </ul>
 
 <a name="contact"/>
-  <form action="mailto:Thierry.Vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet" method="post" enctype="text/plain"><table border="1">
+  <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de qq proglet" method="post" enctype="text/plain"><table border="1">
     <tr><td><b>Nous contacter:</b> <select name="Le-sujet">
      <option>Commentaire général, avis, etc..</option>
      <option>Demande d'aide ou de support, etc..</option>

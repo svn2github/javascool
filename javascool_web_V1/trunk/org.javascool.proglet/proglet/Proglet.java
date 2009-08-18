@@ -26,7 +26,7 @@ import java.awt.event.ActionListener;
 // Used to report a throwable
 import java.lang.reflect.InvocationTargetException;
 
-/** This factory allows to interface with proglets.
+/** This factory allows to integrate proglets in the Java environments.
  * @see <a href="Proglet.java">source code</a>
  */
 public class Proglet { private Proglet() { }

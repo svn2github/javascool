@@ -17,8 +17,8 @@
     </head>
     <body>
       <xsl:call-template name="banner"/>
-      <h1><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"/> </a>
-      <xsl:value-of select="@title"/></h1>
+      <h1><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"/> </a> <xsl:text>
+      </xsl:text><xsl:value-of select="@title"/></h1>
       <xsl:call-template name="toc"/><hr/>
       <xsl:apply-templates/>
     </body>

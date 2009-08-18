@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/** Définit une proglet javascool qui permet d'expérimenter la recherche dichotomique.
+/** Définit une proglet javascool qui permet de faire des entrées/sorties au clavier.
  * @see <a href="Konsol.java">code source</a>
  */
 public class Konsol { private Konsol() { }
