@@ -86,7 +86,8 @@ public class InterfacePrincipale extends JApplet {
   
   // Sets the class name and file
   private void setMainFile(String pFile) {
-    main = pFile.replaceAll(".*/([^/]+)\\.[a-z]+$", "$1");
+    String s = File.separatorChar == '\\' ? "\\\\" : File.separator;
+    main = pFile.replaceAll(".*"+s+"([^"+s+"]+)\\.[a-z]+$", "$1");
     path = pFile.replaceAll("\\.[a-z]+$", "");
   }  
   private String main = null, path = null;

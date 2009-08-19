@@ -31,6 +31,7 @@
 
 # En cours:
 # Tester sous windows , sous jre , etc...
+# Integrer xsl dans xml avec copie des fichiers et virer ln -s xsl
 # Ajout les sujets annoncés en-cours etc...
 # Voir le 27, ok Gilles et soumission à )i( ; comm a animatestroumpf et infolycee + lycee-inria + yannick + AurélienLaurents, avec cc rev-com/dir-sophia.
 
@@ -54,7 +55,7 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst1
+dft : tst2
 
 # Test en standalone (pour débugger une proglet)
 

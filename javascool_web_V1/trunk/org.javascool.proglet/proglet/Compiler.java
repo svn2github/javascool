@@ -19,7 +19,7 @@ public class Compiler { private Compiler() { }
     String args[] = { filename };
     StringWriter out = new StringWriter();
     com.sun.tools.javac.Main.compile(args, new PrintWriter(out));
-    return out.toString().trim().replaceAll(filename, new File(filename).getName());
+    return out.toString().trim().replaceAll(filename.replaceAll("\\\\", "\\\\\\\\"), new File(filename).getName());
   }
 }
 

@@ -28,7 +28,8 @@ public class Translator { private Translator() { }
    * @param proglet The static imported proglet name.
    */
   static void translate(String filename, String proglet) throws IOException {
-    String main = filename.replaceAll(".*/([^/]+)\\.[a-z]+$", "$1"), file = filename.replaceAll("\\.[a-z]+$", "");
+    String s = File.separatorChar == '\\' ? "\\\\" : File.separator, 
+      main = filename.replaceAll(".*"+s+"([^"+s+"]+)\\.[a-z]+$", "$1"), file = filename.replaceAll("\\.[a-z]+$", "");
     File jvs = new File(file+".jvs"), jav = new File(file+".java");
     if (!jvs.exists()) throw new IOException("File not found: "+jvs);
     BufferedReader in = new BufferedReader(new FileReader(file+".jvs"));
