@@ -2,8 +2,7 @@
 ##  Hamdi.Ben_Abdallah@inria.fr et Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved.                     ##
 #####################################################################################################################################
 
-# Travail de vthierry apres Hamdi sur les proglets 
-
+# Rapport sur le travail de vthierry en aout apres Hamdi
 # > Intégration de InterfacePrincipale
 #  - le code source a été mise en page et mis en conformite avec -Xlint
 #  - les petites classes FileChooser et TextAreaOutputStream sont mis dans le code
@@ -29,19 +28,19 @@
 #  ? Lors du chargement de la classe compilee, si les expections de sécurité ne se produisent pas, elle s'exécute parfois ``dans le vide´´ sans accéder à la proglet affichée
 #  -> Donc abandon de la solution et passage a une solution en mode serveur
 
-# En cours:
-# Tester sous windows , sous jre , etc...
-# Integrer xsl dans xml avec copie des fichiers et virer ln -s xsl
-# Ajout les sujets annoncés en-cours etc...
-# Voir le 27, ok Gilles et soumission à )i( ; comm a animatestroumpf et infolycee + lycee-inria + yannick + AurélienLaurents, avec cc rev-com/dir-sophia.
+# Travail de Thierry en cours:
+# - Ajout les sujets annoncés en-cours etc...
+# - Voir le 27, ok Gilles et soumission à )i( ; comm a animatestroumpf et infolycee + lycee-inria + yannick + AurélienLaurents, avec cc rev-com/dir-sophia.
 
-# A revoir:
+# Détails d'implémentation à revoir:
 #  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.
 #  - Voir le pb du JSlider qui affiche sa valeur entière et perturbe la lecture.
 #  - Voir le pb du setLocation() en mode standalone qui affiche mal les deux fenetres edit et run
 #  - Voir pb des droits qd on rsync sur javascool
+#  - Voir comment remplacer l'usage de saxon:line-number() dans style_about2.xsl pour mise en ligne directe du xml/xsl
 
-# A développer:
+# Nouvelles fonctionnalités à développer:
+#  - Refaire des tests sous windows/macos/etc..
 #  - Ajouter un éditeur couleur dans l'applet
 
 # Environnement utilisé:
@@ -55,12 +54,12 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst2
+dft : tst1
 
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar
-	cd tst ; /usr/bin/java -jar ../$^ edit Konsol
+	cd tst ; /usr/bin/java -jar ../$^ run Konsol
 
 # Test du service web (pour vérifier l'intégration)
 

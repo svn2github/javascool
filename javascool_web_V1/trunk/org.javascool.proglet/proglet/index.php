@@ -12,7 +12,7 @@ $path = isset($_REQUEST['path']) ? $_REQUEST['path'] : "";       // Java source 
 $body = isset($_REQUEST['body']) ? $_REQUEST['body'] : "";       // Java source file body
 
 echo '<html><head></head><body>';
-//print_r($_REQUEST);
+//in case of debug// print_r($_REQUEST);
 echo '<table><tr><td valign="top"><a href="http://javascool.gforge.inria.fr/proglet"><img src="home.png"/></a></td>
 <td width="570" height="730" valign="top" align="center"><applet code="proglet.InterfacePrincipale.class" archive="proglet.jar" width="560" height="720">
   <param name="proglet" value="'.$prog.'"/>

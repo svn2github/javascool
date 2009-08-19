@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -38,8 +39,13 @@ public class Konsol { private Konsol() { }
       JPanel bar = new JPanel(); add(bar, BorderLayout.NORTH);    
       prompt = new JLabel("input>"); bar.add(prompt);
       in = new JTextField(); in.setEditable(false); in.setPreferredSize(new Dimension(300, 30)); bar.add(in);    
-      in.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
-	input = ((JTextField) e.getSource()).getText();
+      in.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
+	// Reads the input text and reset the interface
+	input = ((JTextField) e.getSource()).getText(); in.setEditable(false);
+      }});
+      bar.add(new JLabel("|")); JButton clear = new JButton("clear output"); bar.add(clear);
+      clear.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
+	clear();
       }});
     }
 
@@ -62,9 +68,11 @@ public class Konsol { private Konsol() { }
      * @return The read string.
      */
     public String readString(boolean retry) {
-      prompt.setText(retry ? "!error!" : "input>"); in.setText(retry ? in.getText() : ""); in.setEditable(true); 
-      input = null; while(input == null) Thread.yield(); 
-      prompt.setText("input>"); in.setEditable(false); return input;
+      if (retry) prompt.setText("!error!"); else in.setText(""); 
+      // Interaction loop with in action listener
+      in.setEditable(true); while(in.isEditable()) Macros.sleep(100);
+      prompt.setText("input>"); 
+      return input == null ? "" : input;
     }
     private JLabel prompt; private JTextField in; private String input;
   }
@@ -80,7 +88,8 @@ public class Konsol { private Konsol() { }
     String nom = readString();
     println ("Echanté "+nom+" ! Quel age as tu ?");
     int age = readInteger();
-    println("He je suis plus vieux que toi !!");
+    for(int i = 0; i < 100; i++)
+      println("He je suis plus vieux que toi !!");
   }
 
   //
