@@ -32,12 +32,19 @@ if (isset($_REQUEST['clean-up'])) shell_exec("sh -c '/bin/rm -rf ./tmp-*'");
 
 // Compilation and execution
 if(strlen($main) > 0 && strlen($body) > 0) {
-  $dir = "tmp-".$_SERVER['REMOTE_ADDR'];
-  mkdir($dir, 0777);
-  file_put_contents($dir."/".$main.".java", $body);
+  // Makes one directory per remote client
+  $dir = "tmp-".$_SERVER['REMOTE_ADDR']; mkdir($dir, 0777);
+  // Changes the java name at each run in order to reload a fresh class event with older java's versions
+  {
+    for($nn = 0; file_exists($dir."/".$main."_".$nn.".java") && $nn < 10000; $nn++);
+    $body =  ereg_replace("public class ".$main, "public class ".$main."_".$nn, $body);
+    $main = $main."_".$nn;
+  }
+  // Creates the local java copy
+  file_put_contents($dir."/".$main.".java",$body); chmod($dir."/".$main.".java", 0777);
+  // Runs the server's compiler
   unlink($dir."/".$main.".class");
   $comp = ereg_replace("$dir"."/", "", trim(shell_exec("sh -c 'javac -cp proglet.jar ".$dir."/".$main.".java 2>&1'")));
-  unlink($dir."/".$main.".java");
   chmod($dir."/".$main.".class", 0777);
 
   if(strlen($comp) > 0) {
