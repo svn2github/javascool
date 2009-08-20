@@ -34,16 +34,16 @@
 </xsl:template>
   
 <xsl:template match="p">
-  <p style="text-indent: 30px" id="{saxon:line-number()}">
-    <xsl:if test="count(@align)=1"><xsl:attribute name="align"><xsl:value-of select="@align"/></xsl:attribute></xsl:if>
-    <xsl:if test="count(@title)=1"><xsl:choose>
+  <xsl:if test="count(@title)=1"><xsl:choose>
     <xsl:when test=".. = /"><h2><xsl:value-of select="@title"/>.</h2></xsl:when>
-      <xsl:when test="../.. = /"><h3><xsl:value-of select="@title"/>.</h3></xsl:when>
-      <xsl:when test="../../.. = /"><h4><xsl:value-of select="@title"/>.</h4></xsl:when>
-      <xsl:otherwise><b><xsl:value-of select="@title"/>.</b><xsl:text> </xsl:text></xsl:otherwise>
-    </xsl:choose></xsl:if>
+    <xsl:when test="../.. = /"><h3><xsl:value-of select="@title"/>.</h3></xsl:when>
+    <xsl:when test="../../.. = /"><h4><xsl:value-of select="@title"/>.</h4></xsl:when>
+    <xsl:otherwise><b><xsl:value-of select="@title"/>.</b><xsl:text> </xsl:text></xsl:otherwise>
+  </xsl:choose></xsl:if>
+  <div style="text-indent: 30px" id="{saxon:line-number()}">
+    <xsl:if test="count(@align)=1"><xsl:attribute name="align"><xsl:value-of select="@align"/></xsl:attribute></xsl:if>
     <xsl:apply-templates/>
-  </p>
+  </div>
 </xsl:template>
 
 </xsl:stylesheet>

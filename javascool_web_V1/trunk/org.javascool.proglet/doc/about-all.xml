@@ -30,15 +30,16 @@
     <li>La <proglet name="Smiley"/>.</li>
     <li>La <proglet name="Scope"/>.</li>
     <li>La <proglet name="Tortue"/>.</li>
+    <li>La <proglet name="Conva"/>.</li>
   </ul></li>
   <li>Quelques applications, exercices et activités:<ul>
     <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
+    <li>Comment marche un <a href="sujet-appli-conva.htm">convertisseur analogique-numérique</a>.</li>
     <li><i> .. cette liste ayant vocation à s'étoffer au cours de l'année scolaire 2009-2010</i>. Sont en préparation (pour mi-septembre 2009):<ul>
       <li>Un mécanisme de tri dichotomique.</li>
       <li>Jouons avec les pixels d'une image !</li>
       <li>Peut-on craquer un code de carte bleue ?</li>
       <li>Découvrir moyenne et écart-type: comment un signal peut sortir du bruit.</li>
-      <li>Comment marche un convertisseur analogique-numérique.</li>
       <li>etc..</li>
     </ul> . . non sans vous inviter à nous demander de nouveaux sujets, à nous faire partager les vôtres, etc..</li>
   </ul></li>
