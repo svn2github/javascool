@@ -185,7 +185,7 @@ public class InterfacePrincipale extends JApplet {
       JLabel jProgletLabel = new JLabel();
       jProgletLabel.setIcon(Proglet.getIcon("execute.png"));
       jProgletButton.add(jProgletLabel);
-      String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Tortue" };
+      String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Tortue", "Conva" };
       jProgletBox = new JComboBox(proglets);
       jProgletBox.setEditable(false);
       jProgletBox.addActionListener(new ActionListener(){
