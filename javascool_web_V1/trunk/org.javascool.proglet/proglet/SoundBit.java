@@ -214,6 +214,7 @@ public class SoundBit {
 	  AudioInputStream stream = (AudioInputStream) r.getData();
 	  int length = AudioSystem.write(stream, AudioFileFormat.Type.WAVE, new File("snd/"+name+".wav"));
 	  System.out.println("\t "+name+" \t(lenght = "+stream.getFrameLength()+" <= "+length+", "+stream.getFormat()+" fund ="+getFundFreq((AudioInputStream) r.getData())+")");
+	  //-//play((AudioInputStream) r.getData());
 	}
       }
     } catch(MidiUnavailableException e) { throw new IOException(e.toString()); }
@@ -285,8 +286,8 @@ public class SoundBit {
       } else {
 	s.setLength(Double.valueOf(length));
       }
-      //System.out.print("playing .."); System.out.flush(); s.play(); System.out.println(" done."); 
-      midi_dump();
+      System.out.print("playing .."); System.out.flush(); s.play(); System.out.println(" done."); 
+      //midi_dump();
     } catch(Exception e) { System.err.println(e); e.printStackTrace(); }
   }
 }
