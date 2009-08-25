@@ -41,6 +41,9 @@ if(strlen($main) > 0 && strlen($body) > 0) {
     $main = $main."_".$nn;
   }
   // Creates the local java copy
+  if(strlen($body) > 10000) {
+    echo'<div><b>Le programme '.$main.' de taille '.strlen($body).'octets est bien trop long !:</b></div><div align="left" style="background:#DDDDDD;"><pre>Impossible de le compiler ici !</pre></div>';  
+  }
   file_put_contents($dir."/".$main.".java",$body); chmod($dir."/".$main.".java", 0777);
   // Runs the server's compiler
   unlink($dir."/".$main.".class");
