@@ -46,6 +46,8 @@ import java.awt.Color;
  * @see <a href="SoundBit.java">source code</a>
  */
 public class SoundBit {
+  private static final long serialVersionUID = 1L;
+
   /** Sampling frequency. */
   static public final float SAMPLING = 44100.0F;
   static private final int FRAME_SIZE = 4;
@@ -85,6 +87,7 @@ public class SoundBit {
 
   // Defines the audio stream 
   private class Stream extends AudioInputStream {
+    private static final long serialVersionUID = 1L;
     
     /** Constructs a 16 bit, stereo, sound bit, with a standard PCM 44.1 KHz signed audio format. */
     public Stream() {
@@ -240,6 +243,7 @@ public class SoundBit {
   private static void showFFT(AudioInputStream stream, int offset, int length) throws IOException {
     fft = getFFT(stream, offset, length);
     new JFrame() {
+      private static final long serialVersionUID = 1L;
       int hsize = 16 * 50, vsize = 200, b = 40, m = 20, width = 2 * m +  hsize, height= b + 4 * m + 3 * vsize, height2 = b + 2 * m + 2 * vsize; 
       double f0 = 440.0 / 16, f1 = 440.0 * 16;
       { pack(); setTitle("FFT"); setSize(width, height); setVisible(true); }
