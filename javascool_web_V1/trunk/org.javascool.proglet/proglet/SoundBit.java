@@ -37,6 +37,11 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Soundbank;
 import javax.sound.midi.SoundbankResource;
 
+// Used to show a curve
+import javax.swing.JFrame;
+import java.awt.Graphics;
+import java.awt.Color;
+
 /** This widget defines a general sound bit.
  * @see <a href="SoundBit.java">source code</a>
  */
@@ -72,7 +77,7 @@ public class SoundBit {
    * @param length Stream length in second.
    */
   public void setLength(double length) { stream.setLength(length); }
-  
+
   /** Returns the 16 bit, stereo, sound bit, PCM standard, signed PCM, 44.1 KHz sampled, audio stream, supporting mark and reset. 
    * - Notice: this stream is never closed, but can be reset when to be reused.
    */
@@ -151,7 +156,7 @@ public class SoundBit {
   public void play() throws IOException { play(stream); }
 
   /** Plays a recorded sound on the standard audio system line. 
-   * @param The audio file URLocation.
+   * @param location The audio file URLocation.
    */
   public static void play(String location) throws IOException { 
     try {
@@ -177,30 +182,87 @@ public class SoundBit {
     } catch(LineUnavailableException e) { throw new IOException(e.toString()); }
   }
 
+  /** Shows the spectrum of the sound.
+   * - Opens a frame with the frequencies amplitudes (in red, in normalized dB (log coordinates)) and phases (in green, between -Pi and Pi),
+   * frequencies being drawn between A0 (27.5Hz) and A9 (6400Hz) around A3 (440Hz).
+   */
+  public void show() throws IOException { showFFT(stream, 0, (int) stream.getFrameLength()); }
+
   // Converts a mono 16bit stream to a data buffer 
   private static double[] getData(AudioInputStream stream, int offset, int length) throws IOException {
-    if(stream.getFormat().getChannels() == 1 && 
+    if((stream.getFormat().getChannels() == 1 || stream.getFormat().getChannels() == 2) && 
        stream.getFormat().getSampleSizeInBits() == 16 && 
        stream.getFormat().getEncoding()  == AudioFormat.Encoding.PCM_SIGNED &&
        stream.getFormat().isBigEndian() == false) {
-      int len = (int) stream.getFrameLength(); byte read[] = new byte[2 * len]; stream.read(read); stream.close();
-      double data[] = new double[length]; for(int i = 0, j = 2 * offset; i < length; i++, j += 2) data[i] = ((read[j] << 8) | read[j+1]) / 65535.0;
+      int n = stream.getFormat().getChannels() * 2, len = (int) stream.getFrameLength(); byte read[] = new byte[n * len]; stream.read(read); stream.close();
+      double data[] = new double[length]; for(int i = 0, j = n * offset; i < length; i++, j += n) data[i] = ((read[j] << 8) | read[j+1]) / 65535.0;
       return data;
     } else
       throw new IllegalArgumentException("Bad stream format: "+stream.getFormat().toString());
   }
 
-  // Returns the 1st harmonic of an input stream or 0 if it fails
-  private static double getFundFreq(AudioInputStream stream) throws IOException {
-    double data[] = getData(stream, 0, (int) stream.getFrameLength()), m = 0, c[] = new double[3];
-    if (data.length > 2) {
-      for(int i = 2; i < data.length; i++) { m += data[i]; for(int k = 0; k < 3; k++) c[k] += data[i] * data[i - k]; }
-      m /= (data.length - 2); for(int k = 0; k < 3; k++) c[k] = c[k] / (data.length - 2) - m * m;
-      double fn = c[2] + Math.sqrt(8 * c[1] * c[1] + c[2] * c[2]), fd = 4 * c[1], f = fn < fd ? 2 * Math.PI / Math.acos(fn / fd) : 0;
-      return f == 0 ? 0 : SAMPLING / f;
-    } else
-      return 0;
+  // Computes the FFT of a stream after http://www.cs.princeton.edu/introcs/97data/FFT.java.html
+  private static complex[] getFFT(AudioInputStream stream, int offset, int length) throws IOException {
+    // Calculates the largest power, of two not greater than data length
+    double data[] = getData(stream, offset, length); length = (int) Math.pow(2, Math.ceil(Math.log(data.length)/Math.log(2)));
+    // Test etalon
+    for(int i = 0; i < data.length; i++) data[i] = 
+      0.5 * Math.sin(2 * Math.PI * 110 * i / SAMPLING) + Math.cos(2 * Math.PI * 440 * i / SAMPLING) - 0.5 * Math.sin(2 * Math.PI * 1760 * i / SAMPLING) + 1 * Math.random();
+    // Builds the complex buffer and computes fft
+    complex cdata[] = new complex[length]; for (int i = 0; i < length; i++) cdata[i] = new complex(i < data.length ? data[i]/65535.0 : 0, 0); return fft(cdata);
   }
+  // Defines a complex number and its multiplication
+  private static class complex { complex(double x, double y) { this.x = x; this.y = y; } double x, y; 
+    complex mul(complex w) { return new complex(x * w.x - y * w.y, x * w.y + y * w.x); } 
+  }
+  // Implements the Cooley-Tukey FFT algorithm assuming x.length is a power of two
+  private static complex[] fft(complex[] x) {
+    int n = x.length; if(n == 1) return new complex[] { x[0] };
+    // Applies FFT on event and odd parts of the signal
+    complex e[] = new complex[n/2], o[] =  new complex[n/2]; for(int i = 0; i < n/2; i++) { e[i] = x[2*i]; o[i] = x[2*i+1]; } e = fft(e); o = fft(o);
+    // Combines the resukt
+    complex s[] = new complex[n];
+    for(int i = 0; i < n/2; i++) {
+      double k = -2 * i * Math.PI / n; complex w = new complex(Math.cos(k), Math.sin(k)); w = w.mul(o[i]);
+      s[i] = new complex(e[i].x + w.x, e[i].y + w.y); s[i+n/2] = new complex(e[i].x - w.x, e[i].y - w.y);  
+    }
+    return s;
+  }
+  // Returns the inverse FFT of spectrum which length is a power of two
+  private double[] getInvFFT(complex[] spectrum) {
+    for(int i = 0; i < spectrum.length; i++) spectrum[i].y = -spectrum[i].y;
+    complex[] sp = fft(spectrum); double s[] = new double[spectrum.length];
+    for(int i = 0; i < spectrum.length; i++) { s[i] = sp[i].x = sp[i].x/spectrum.length; sp[i].y = -sp[i].y/spectrum.length; spectrum[i].y = -spectrum[i].y; }
+    return s;    
+  }
+  
+  // Show the FFT of a stream
+  private static void showFFT(AudioInputStream stream, int offset, int length) throws IOException {
+    fft = getFFT(stream, offset, length);
+    new JFrame() {
+      int hsize = 16 * 50, vsize = 200, b = 40, m = 20, width = 2 * m +  hsize, height= b + 4 * m + 3 * vsize, height2 = b + 2 * m + 2 * vsize; 
+      double f0 = 440.0 / 16, f1 = 440.0 * 16;
+      { pack(); setTitle("FFT"); setSize(width, height); setVisible(true); }
+      public void paint(Graphics g) {
+	super.paint(g); 
+	// Backgrounds and axis
+	g.setColor(Color.GRAY); g.fillRect(m, b + m, hsize, 2 * vsize); g.fillRect(m, height2 + m, hsize, vsize); 
+	g.setColor(Color.BLACK); g.drawLine(m, height2, width - m, height2); 
+	g.drawLine(m/2, height2 + m + vsize/2, m, height2 + m + vsize/2); g.drawLine(width - m/2, height2 + m + vsize/2, width - m, height2 + m + vsize/2);
+	for(int i = m; i <= width-m; i+= hsize/16) g.drawLine(i, height2-(i == width/2 ? m : m/2), i, height2+(i == width/2 ? m : m/2)); 
+	// Amplitude and phase curves
+	for(int i = m, a1 = 0, p1 = 0; i <= width - m; i++) { 
+	  int k = (int) Math.rint(fft.length * f0 * Math.pow(f1/ f0, (i - m) / (double) hsize) / SAMPLING);
+	  double a = Math.log(1 + 9 * Math.sqrt(fft[k].x * fft[k].x + fft[k].y * fft[k].y))/Math.log(10), p = a < 0.1 ? 0 : Math.atan2(fft[k].y, fft[k].x);
+	  int a0 = height2 - m - (int) Math.rint(2 * vsize * a);
+	  int p0 = height - m - (int) Math.rint(vsize * (0.5 + p / (2 * Math.PI)));
+	  g.setColor(Color.RED); if (i > m) g.drawLine(i - 1, a1, i, a0); a1 = a0;
+	  g.setColor(Color.GREEN); if (i > m) g.drawLine(i - 1, p1, i, p0); p1 = p0; 
+	}
+      }
+    };
+  }
+  private static complex[] fft;
 
   // Used to dump the default MIDI synthetizer sounds as "snd/*.wav" files
   private static void midi_dump() throws IOException {
@@ -213,7 +275,7 @@ public class SoundBit {
 	  String name = r.getName().toLowerCase().replaceAll(" ", "_");
 	  AudioInputStream stream = (AudioInputStream) r.getData();
 	  int length = AudioSystem.write(stream, AudioFileFormat.Type.WAVE, new File("snd/"+name+".wav"));
-	  System.out.println("\t "+name+" \t(lenght = "+stream.getFrameLength()+" <= "+length+", "+stream.getFormat()+" fund ="+getFundFreq((AudioInputStream) r.getData())+")");
+	  System.out.println("\t "+name+" \t(lenght = "+stream.getFrameLength()+" <= "+length+", "+stream.getFormat()+")");
 	  //-//play((AudioInputStream) r.getData());
 	}
       }
@@ -286,7 +348,8 @@ public class SoundBit {
       } else {
 	s.setLength(Double.valueOf(length));
       }
-      System.out.print("playing .."); System.out.flush(); s.play(); System.out.println(" done."); 
+      s.show();
+      //System.out.print("playing .."); System.out.flush(); s.play(); System.out.println(" done."); 
       //midi_dump();
     } catch(Exception e) { System.err.println(e); e.printStackTrace(); }
   }
