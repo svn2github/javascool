@@ -132,6 +132,7 @@ doc : index.html wproglet.jar api/index.html $(patsubst %.xml,%.htm,$(wildcard d
 pub : doc
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ index.html doc api img wproglet.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet \
 	 2>&1 | egrep -v '^(rsync: failed to set permissions|rsync error: some files/attrs were not transferred)'
+	@-rsync index.html scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglets 
 
 ftp :
 	sftp scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet
@@ -157,6 +158,6 @@ api/index.html : proglet/package.html $(wildcard proglet/*.java)
 	@cp proglet/*.java api/proglet
 
 index.html : makefile
-	@echo '<script>location.replace("doc/about-all.htm");</script>' >$@	
+	@echo '<script>location.replace("http://javascool.gforge.inria.fr/proglet/doc/about-all.htm");</script>' >$@	
 
 #####################################################################################################################################
