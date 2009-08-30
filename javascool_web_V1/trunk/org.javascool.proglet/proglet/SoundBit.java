@@ -1,7 +1,6 @@
 /*******************************************************************************
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
-// Credits: this widget has been developped thanks to http://www.jsresources.org Matthias Pfisterer's OscillatorPlayer example.
 
 //
 // To be done:
@@ -16,17 +15,17 @@ import javax.sound.sampled.AudioFormat;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-// Used to play/save an audio stream
+// Used to play an audio stream
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.File;
-import javax.sound.sampled.AudioFileFormat;
 
 // Used to play/save an audio file
 import java.net.URL; 
+import java.io.File;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.AudioFileFormat;
 
 // Used to build a notes'frequencies
 import java.util.Vector;
@@ -38,9 +37,11 @@ import javax.sound.midi.Soundbank;
 import javax.sound.midi.SoundbankResource;
 
 // Used to show a curve
+import javax.swing.JLabel;
 import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Font;
 
 /** This widget defines a general sound bit.
  * @see <a href="SoundBit.java">source code</a>
@@ -48,69 +49,71 @@ import java.awt.Color;
 public class SoundBit {
   private static final long serialVersionUID = 1L;
 
-  /** Sampling frequency. */
-  static public final float SAMPLING = 44100.0F;
-  static private final int FRAME_SIZE = 4;
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //                                                                                                                                                //
+  //  Wraps a functional defined (via the get() sound function method) soundbit to an AudioInputStream and the AudioSystem basic functionnalities   //
+  //                                                                                                                                                //
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   /** Defines the sound function.
    * <div>This methods is to be overloaded to define your own sound.</div>
-   * <div>The default is a mad tone with white-noise, unless <a href="#setNotes(java.lang.String)">notes</a> are defined.</div>
+   * <div>The default is a mad tone.</div>
    * @param channel Left 'l' or right 'r' channel.
    * @param index  Sound time index. The time in second writes: <tt>time = index / SAMPLING</tt>.
-   * @return The sound value between 0.0 and 1.0 (maximal amplitude).
+   * @return The sound value between -1.0 and 1.0 (maximal amplitude, linear scale).
    */
   public double get(char channel, long index) {
-    if (notes == null) {
-      return 
-	0.5 * Math.sin(2 * Math.PI * ((channel == 'l' ? 200 : 100) + 500 * Math.sin(index/SAMPLING)) / SAMPLING * index) + 
-	(0.5 + 0.5 * Math.sin(0.44 * index/SAMPLING)) * Math.random();
-    } else {
-      double t = index/SAMPLING; return Math.sin(2 * Math.PI * notes[(int) (t / tempo)] * t);
-    }
+    double t = index/SAMPLING, a = 0.5 * (1 + sin(t / 4)), f = 440 + 10 * sin(t / 0.5), n = 0.25 * (1 + sin(t / 2.4));
+    return (channel == 'l' ? 1 - a : a) * (0.5 * sin(f * t) + n * Math.random());
   }
-
-  /** Sets a sequence of notes to be played as on a `` piccolo´´ (via a sine wave).
-   * @param notes The <a href="#getNotes(java.lang.String)">note's sequence</a>
-   * @param tempo The minimal note duration in second.
+  private static double sin(double t) { return Math.sin(2 * Math.PI * t); }
+  
+  /** Gets the sound name.
+   * @return Either the sound java class or the sound file name.
    */
-  public void setNotes(String notes, double tempo) { this.notes = getNotes(notes); setLength((this.tempo = tempo) * this.notes.length); } private double notes[] = null, tempo;
+  public String getName() { return name == null ? getClass().getName() : name; } protected String name;
 
   /** Sets the stream length.
-   * @param length Stream length in second.
+   * @param length Stream length in second. If 0, the length remains undefined (in fact maximal).
+   * @throws IllegalStateException If it is a buffered sound-bit of fixed length, thus not adjustable.
    */
-  public void setLength(double length) { stream.setLength(length); }
+  public void setLength(double length) { this.length = length; }
+
+  /** Gets the stream length.
+   * @return The stream length in second.
+   */
+  public double getLength() { return length > 0 ? length :  Long.MAX_VALUE/FRAME_SIZE/SAMPLING; } private double length = 0;
 
   /** Returns the 16 bit, stereo, sound bit, PCM standard, signed PCM, 44.1 KHz sampled, audio stream, supporting mark and reset. 
    * - Notice: this stream is never closed, but can be reset when to be reused.
    */
-  public AudioInputStream getStream() { return stream; } private Stream stream = new Stream();
+  public AudioInputStream getStream() { return new Stream(length); }
 
-  // Defines the audio stream 
+  /** Sampling frequency. */
+  static public final float SAMPLING = 44100.0F;
+  static private final int FRAME_SIZE = 4;
+
+  /** Defines the audio stream wrapper. */
   private class Stream extends AudioInputStream {
     private static final long serialVersionUID = 1L;
     
-    /** Constructs a 16 bit, stereo, sound bit, with a standard PCM 44.1 KHz signed audio format. */
-    public Stream() {
+    /** Constructs a 16 bit, stereo, sound bit, with a standard PCM 44.1 KHz signed audio format. 
+     * @param length Stream length in second. If 0, the length remains undefined (in fact maximal).
+     */
+    public Stream(double length) {
       super(new ByteArrayInputStream(new byte[0]),
 	    // Data format: 16 bit stereo: each frame contains two bytes x two channels = four bytes
 	    new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,
-			    SAMPLING, // Sample rate in Hz
-			    16,       // Sampling bits
-			    2,        // Number of channels
-			    FRAME_SIZE,        // Frame size in bytes
-			    SAMPLING, // Frame rate in Hz
-			    false),   // Little-endian byte order
-	    Long.MAX_VALUE/FRAME_SIZE);
+			    SAMPLING,  // Sample rate in Hz
+			    16,        // Sampling bits
+			    2,         // Number of channels
+			    FRAME_SIZE,// Frame size in bytes
+			    SAMPLING,  // Frame rate in Hz
+			    false),    // Little-endian byte order
+	    length > 0 ? (long) (length * SAMPLING) : Long.MAX_VALUE/FRAME_SIZE);
     }
 
-    /** Sets the stream length.
-     * @param length Stream length in second.
-     */
-    public void setLength(double length) { frameLength = (long) (length * SAMPLING); }
-
-    //
     // Implementation of the stream read methods
-    //
 
     /**  Reads up to byteLength from the stream into the data array of bytes, starting from offset.
      * @return The total number of bytes read into the buffer, or -1 is there is no more to read because the end of the stream has been reached. 
@@ -123,13 +126,13 @@ public class SoundBit {
       // Reads sound samples
       for(int n = 0, i = offset; n < nFrame; n++, i += frameSize) {
 	// Gets and converts sample's values: max amplitude is: 2^16-1=65535
-	long l = Math.round(65535 * get('l', framePos)), r =  Math.round(65535 * get('r', framePos)); framePos++;
-	if (l < 0) l =0; if(l > 65535) l = 65535; if (r < 0) r = 0; if(r > 65535) r = 65535;
+	long l = Math.round(32767.0 * (1.0 + get('l', framePos))), r = Math.round(32767.0 * (1.0 + get('r', framePos))); framePos++;
+	if (l < 0) l = 0; if(l > 65535) l = 65535; if (r < 0) r = 0; if(r > 65535) r = 65535;
 	// Reports in buffer: this is valid for 16 bit stereo, little endian
-	data[i + 0] = (byte) (l & 0xFF);
-	data[i + 1] = (byte) ((l >>> 8) & 0xFF);
-	data[i + 2] = (byte) (r & 0xFF);
-	data[i + 3] = (byte) ((r >>> 8) & 0xFF);
+	data[i + 0] = (byte) ((l & 0xFF) - 128);
+	data[i + 1] = (byte) (((l >>> 8) & 0xFF) - 128);
+	data[i + 2] = (byte) ((r & 0xFF) - 128);
+	data[i + 3] = (byte) (((r >>> 8) & 0xFF) - 128);
       }
       return byteLength <= 0 ? -1 : byteLength;
     }
@@ -153,22 +156,14 @@ public class SoundBit {
   /** Saves the sound in a waveformn audio vector file.
    * @param path The file path, the <tt>.wav</tt> extension is automatically added.
    */
-  public void save(String path) throws IOException { AudioSystem.write(stream, AudioFileFormat.Type.WAVE, new File(path.replaceFirst("\\.wav$", "")+".wav")); }
-
-  /** Plays the sound on the standard audio system line. */
-  public void play() throws IOException { play(stream); }
-
-  /** Plays a recorded sound on the standard audio system line. 
-   * @param location The audio file URLocation.
-   */
-  public static void play(String location) throws IOException { 
-    try {
-      play(AudioSystem.getAudioInputStream(new URL(location))); 
-    } catch(UnsupportedAudioFileException e) { throw new IOException(e.toString()); }
+  public void save(String path) throws IOException {
+    AudioSystem.write(getStream(), AudioFileFormat.Type.WAVE, new File(path.replaceFirst("\\.wav$", "")+".wav")); 
   }
 
-  // Plays a stream on the standard audio system line. 
-  private static void play(AudioInputStream stream) throws IOException {
+  /** Plays the sound on the standard audio system line. */
+  public void play() throws IOException { 
+    AudioInputStream stream = getStream();
+    // Plays a stream on the standard audio system line. 
     try {
       // Opens the audio line
       SourceDataLine line = (SourceDataLine) AudioSystem.getLine(new DataLine.Info(SourceDataLine.class, stream.getFormat()));
@@ -185,34 +180,160 @@ public class SoundBit {
     } catch(LineUnavailableException e) { throw new IOException(e.toString()); }
   }
 
-  /** Shows the spectrum of the sound.
-   * - Opens a frame with the frequencies amplitudes (in red, in normalized dB (log coordinates)) and phases (in green, between -Pi and Pi),
-   * frequencies being drawn between A0 (27.5Hz) and A9 (6400Hz) around A3 (440Hz).
+  /** Creates a sound-bit from an audio file.
+   * @param location Audio file path.
+   * @return A sound-bit defined by the audio-file.
    */
-  public void show() throws IOException { showFFT(stream, 0, (int) stream.getFrameLength()); }
+  public static SoundBit getSound(String location) throws IOException { return new FileSoundBit(location); }
 
-  // Converts a mono 16bit stream to a data buffer 
-  private static double[] getData(AudioInputStream stream, int offset, int length) throws IOException {
+  /** Defines the data-file sound-bit wrapper. */
+  private static class FileSoundBit extends SoundBit {
+    /** Constructs a sound defined from two buffer files.
+     * @param location Audio file path.
+     */
+    public FileSoundBit(String location) throws IOException {    
+      this.name = location;
+      try {
+	AudioInputStream stream = AudioSystem.getAudioInputStream(new URL(location.matches("^(file|ftp|http|https):.*$") ? location : "file:"+location));
+	if((stream.getFormat().getChannels() == 1 || stream.getFormat().getChannels() == 2) && 
+	   stream.getFormat().getSampleSizeInBits() == 16 && 
+	   stream.getFormat().getEncoding()  == AudioFormat.Encoding.PCM_SIGNED &&
+	   stream.getFormat().isBigEndian() == false) {
+	  c = stream.getFormat().getChannels(); s = stream.getFormat().getFrameSize();
+	  buffer = new byte[(int) stream.getFrameLength() * stream.getFormat().getFrameSize()]; stream.read(buffer); stream.close();
+	  super.setLength(stream.getFrameLength() / SAMPLING);
+	} else
+	  throw new IllegalArgumentException("Bad stream format: "+stream.getFormat().toString()+" in "+location);
+      } catch(UnsupportedAudioFileException e) { throw new IOException(e.toString()); }
+    } 
+    private int c, s; private byte[] buffer;
+    public double get(char channel, long index) { 
+      int i = (int) index * s + (c == 1 || channel == 'l' ? 0 : 2), h = buffer[i+1], l = buffer[i], v = ((128 + h) << 8) | (128 + l); return 1 * (v / 32767.0 - 1);
+    }
+    public void setLength(double length) { throw new IllegalStateException("Cannot adjust length of buffered sound-bit"); }
+  }
+
+  /** Defines the data-buffer sound-bit wrapper. */
+  private static class DataSoundBit extends SoundBit {
+    /** Constructs a sound defined from two buffer files.
+     * @param name Sound name.
+     * @param left Left buffer data.
+     * @param right Right buffer data if any. Set to null for a monophonic sound.
+     */
+    public DataSoundBit(String name, double[] left, double[] right) {
+      this.name = name;
+      if (left == null) throw new IllegalArgumentException("Undefined left channel data");
+      if (right != null && left.length != right.length) new IllegalArgumentException("Left and right channel length differs: "+left.length+" != "+right.length);
+      this.left = left; this.right = right == null ? left : right; super.setLength(left.length / SAMPLING);
+    } private double left[], right[];
+    public double get(char channel, long index) { return (index < 0 || index >= left.length) ? 0 : channel == 'r' ? right[(int) index] : left[(int) index]; }
+    public void setLength(double length) { throw new IllegalStateException("Cannot adjust length of buffered sound-bit"); }
+  }
+
+  /** Converts a mono/stereo 16bit stream to a data buffer.
+   * @param stream The audio stream to convert.
+   * @param channel Left 'l' or right 'r' channel.
+   */
+  private static double[] getData(AudioInputStream stream, char channel) throws IOException {
     if((stream.getFormat().getChannels() == 1 || stream.getFormat().getChannels() == 2) && 
        stream.getFormat().getSampleSizeInBits() == 16 && 
        stream.getFormat().getEncoding()  == AudioFormat.Encoding.PCM_SIGNED &&
        stream.getFormat().isBigEndian() == false) {
-      int n = stream.getFormat().getChannels() * 2, len = (int) stream.getFrameLength(); byte read[] = new byte[n * len]; stream.read(read); stream.close();
-      double data[] = new double[length]; for(int i = 0, j = n * offset; i < length; i++, j += n) data[i] = ((read[j] << 8) | read[j+1]) / 65535.0;
+      if (stream.getFrameLength() > (long) Integer.MAX_VALUE) throw new IllegalArgumentException("Cannot convert huge audio stream to buffer");
+      int length = (int) stream.getFrameLength(); double data[] = new double[length]; 
+      int n = stream.getFormat().getChannels() * 2, o = stream.getFormat().getChannels() == 1 || channel == 'l' ? 0 : 2; byte read[] = new byte[n];
+      for(int i = 0; i < length; i++) {	
+	stream.read(read); int h = read[o+1], l = read[o], v = ((128 + h) << 8) | (128 + l); data[i] = 1 * (v / 32767.0 - 1);
+      }
+      stream.close();
       return data;
     } else
       throw new IllegalArgumentException("Bad stream format: "+stream.getFormat().toString());
   }
+  static int nnn = 0;
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  // Used ``once´´ to dump the default MIDI synthetizer sounds as "snd/*.wav" files
+  private static void midi_dump() throws IOException {
+    try {
+      Soundbank s = MidiSystem.getSynthesizer().getDefaultSoundbank();
+      System.out.println("sound-bank: " + s.getDescription());
+      for(int i = 0; i < s.getResources().length; i++) {
+	SoundbankResource r = s.getResources()[i];
+	if (r.getDataClass() != null && r.getDataClass().getName().equals("javax.sound.sampled.AudioInputStream")) {
+	  String name = r.getName().toLowerCase().replaceAll(" ", "_");
+	  AudioInputStream stream = (AudioInputStream) r.getData();
+	  int length = AudioSystem.write(stream, AudioFileFormat.Type.WAVE, new File("snd/"+name+".wav"));
+	  System.out.println("\t "+name+" \t(lenght = "+stream.getFrameLength()+" <= "+length+", "+stream.getFormat()+")");
+	}
+      }
+    } catch(MidiUnavailableException e) { throw new IOException(e.toString()); }
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //                                                                                                                                                //
+  //             Defines miscellaneous frequency analysis and synthesis methods in order to manipulate sounds and sound-bits                        //
+  //                                                                                                                                                //
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+  /** Shows the spectrum and trace's start of the sound.
+   * <div>Opens a frame with the frequencies amplitudes (in red, in normalized dB (log coordinates)) and phases (in green, between -Pi and Pi),
+   * frequencies being drawn between A0 (27.5Hz) and A9 (6400Hz) around A3 (440Hz).</div>
+   * <div>The 1st samples are drawn in yellow.</div>
+   * @param channel Left 'l' or right 'r' channel.
+   */
+  public void show(char channel) throws IOException { new Show(channel); }
+
+  // Defines a drawing of the FTT and of the signal
+  private class Show extends JFrame {
+    private static final long serialVersionUID = 1L;
+    /** Defines and display the spectrum and trace's start of the sound.
+     * @param channel Left 'l' or right 'r' channel.
+     */
+    public Show(char channel) throws IOException { 
+      data = getData(getStream(), channel); fft = getFFT(data); 
+      freqs = new double[fft.length]; amax = 0; fmax = 0; for(int i = 0; i < fft.length; i++) {
+	freqs[i] = Math.sqrt(fft[i].x * fft[i].x + fft[i].y * fft[i].y); 
+	double f = i * SAMPLING / fft.length; if (f0 <= f && f <= f1 && amax < freqs[i]) { fmax = f; amax = freqs[i]; }
+      }
+      label = name + " (|fft| < "+((int)amax)+", f_max = "+((int)fmax)+"Hz) ";
+      { pack(); setTitle("FFT"); setSize(width, height); setVisible(true); }
+    } 
+    int hsize = 16 * 50, vsize = 200, b = 40, m = 20, width = 2 * m +  hsize, height= b + 4 * m + 3 * vsize, height2 = b + 2 * m + 2 * vsize; 
+    double f0 = 440.0 / 16, f1 = 440.0 * 16;
+    /** Internal routine: do not use. */
+    public void paint(Graphics g) {
+      super.paint(g); 
+      // Backgrounds and axis
+      g.setColor(Color.GRAY); g.fillRect(m, b + m, hsize, 2 * vsize); g.fillRect(m, height2 + m, hsize, vsize); 
+      g.setColor(Color.BLACK); g.drawLine(m, height2, width - m, height2); 
+      g.drawLine(m/2, height2 + m + vsize/2, m, height2 + m + vsize/2); g.drawLine(width - m/2, height2 + m + vsize/2, width - m, height2 + m + vsize/2);
+      for(int i = m; i <= width-m; i+= hsize/16) g.drawLine(i, height2-(i == width/2 ? m : m/2), i, height2+(i == width/2 ? m : m/2)); 
+      // Amplitude and phase curves
+      for(int i = m, a1 = 0, p1 = 0, d1 = 0; i <= width - m; i++) { 
+	int k = (int) Math.rint(fft.length * f0 * Math.pow(f1/ f0, (i - m) / (double) hsize) / SAMPLING);
+	double a = Math.log(1 + 9 * freqs[k] / amax)/Math.log(10), p = freqs[k] < 0.1 * amax ? 0 : Math.atan2(fft[k].y, fft[k].x);
+	int a0 = height2 - m - (int) Math.rint(2 * vsize * a);
+	int p0 = height - m - (int) Math.rint(vsize * (0.5 + p / (2 * Math.PI)));
+	g.setColor(Color.RED); if (i > m) g.drawLine(i - 1, a1, i, a0); a1 = a0;
+	g.setColor(Color.GREEN); if (i > m) g.drawLine(i - 1, p1, i, p0); p1 = p0; 
+	// Drawing the 1st data samples
+	int d0 = height - m - (int) Math.rint(vsize * (0.5 * (1 + data[i - m])));
+	g.setColor(Color.YELLOW); if (i > m) g.drawLine(i - 1, d1, i, d0); d1 = d0;
+      }
+      g.setColor(Color.BLACK); g.setFont(new Font("Times", Font.BOLD, 16)); g.drawString(label, 2 * m, b + m/2);
+    }
+    private double data[], freqs[], fmax, amax; private complex fft[]; private String label;
+  }
 
   // Computes the FFT of a stream after http://www.cs.princeton.edu/introcs/97data/FFT.java.html
-  private static complex[] getFFT(AudioInputStream stream, int offset, int length) throws IOException {
-    // Calculates the largest power, of two not greater than data length
-    double data[] = getData(stream, offset, length); length = (int) Math.pow(2, Math.ceil(Math.log(data.length)/Math.log(2)));
-    // Test etalon
-    for(int i = 0; i < data.length; i++) data[i] = 
-      0.5 * Math.sin(2 * Math.PI * 110 * i / SAMPLING) + Math.cos(2 * Math.PI * 440 * i / SAMPLING) - 0.5 * Math.sin(2 * Math.PI * 1760 * i / SAMPLING) + 1 * Math.random();
+  private static complex[] getFFT(double data[]) {
+    // Calculates the largest power of two not greater than data length
+    int length = (int) Math.pow(2, Math.ceil(Math.log(data.length)/Math.log(2)));
     // Builds the complex buffer and computes fft
-    complex cdata[] = new complex[length]; for (int i = 0; i < length; i++) cdata[i] = new complex(i < data.length ? data[i]/65535.0 : 0, 0); return fft(cdata);
+    complex cdata[] = new complex[length]; for (int i = 0; i < length; i++) cdata[i] = new complex(i < data.length ? data[i] : 0, 0); return fft(cdata);
   }
   // Defines a complex number and its multiplication
   private static class complex { complex(double x, double y) { this.x = x; this.y = y; } double x, y; 
@@ -238,54 +359,7 @@ public class SoundBit {
     for(int i = 0; i < spectrum.length; i++) { s[i] = sp[i].x = sp[i].x/spectrum.length; sp[i].y = -sp[i].y/spectrum.length; spectrum[i].y = -spectrum[i].y; }
     return s;    
   }
-  
-  // Show the FFT of a stream
-  private static void showFFT(AudioInputStream stream, int offset, int length) throws IOException {
-    fft = getFFT(stream, offset, length);
-    new JFrame() {
-      private static final long serialVersionUID = 1L;
-      int hsize = 16 * 50, vsize = 200, b = 40, m = 20, width = 2 * m +  hsize, height= b + 4 * m + 3 * vsize, height2 = b + 2 * m + 2 * vsize; 
-      double f0 = 440.0 / 16, f1 = 440.0 * 16;
-      { pack(); setTitle("FFT"); setSize(width, height); setVisible(true); }
-      public void paint(Graphics g) {
-	super.paint(g); 
-	// Backgrounds and axis
-	g.setColor(Color.GRAY); g.fillRect(m, b + m, hsize, 2 * vsize); g.fillRect(m, height2 + m, hsize, vsize); 
-	g.setColor(Color.BLACK); g.drawLine(m, height2, width - m, height2); 
-	g.drawLine(m/2, height2 + m + vsize/2, m, height2 + m + vsize/2); g.drawLine(width - m/2, height2 + m + vsize/2, width - m, height2 + m + vsize/2);
-	for(int i = m; i <= width-m; i+= hsize/16) g.drawLine(i, height2-(i == width/2 ? m : m/2), i, height2+(i == width/2 ? m : m/2)); 
-	// Amplitude and phase curves
-	for(int i = m, a1 = 0, p1 = 0; i <= width - m; i++) { 
-	  int k = (int) Math.rint(fft.length * f0 * Math.pow(f1/ f0, (i - m) / (double) hsize) / SAMPLING);
-	  double a = Math.log(1 + 9 * Math.sqrt(fft[k].x * fft[k].x + fft[k].y * fft[k].y))/Math.log(10), p = a < 0.1 ? 0 : Math.atan2(fft[k].y, fft[k].x);
-	  int a0 = height2 - m - (int) Math.rint(2 * vsize * a);
-	  int p0 = height - m - (int) Math.rint(vsize * (0.5 + p / (2 * Math.PI)));
-	  g.setColor(Color.RED); if (i > m) g.drawLine(i - 1, a1, i, a0); a1 = a0;
-	  g.setColor(Color.GREEN); if (i > m) g.drawLine(i - 1, p1, i, p0); p1 = p0; 
-	}
-      }
-    };
-  }
-  private static complex[] fft;
 
-  // Used to dump the default MIDI synthetizer sounds as "snd/*.wav" files
-  private static void midi_dump() throws IOException {
-    try {
-      Soundbank s = MidiSystem.getSynthesizer().getDefaultSoundbank();
-      System.out.println("sound-bank: " + s.getDescription());
-      for(int i = 0; i < s.getResources().length; i++) {
-	SoundbankResource r = s.getResources()[i];
-	if (r.getDataClass() != null && r.getDataClass().getName().equals("javax.sound.sampled.AudioInputStream")) {
-	  String name = r.getName().toLowerCase().replaceAll(" ", "_");
-	  AudioInputStream stream = (AudioInputStream) r.getData();
-	  int length = AudioSystem.write(stream, AudioFileFormat.Type.WAVE, new File("snd/"+name+".wav"));
-	  System.out.println("\t "+name+" \t(lenght = "+stream.getFrameLength()+" <= "+length+", "+stream.getFormat()+")");
-	  //-//play((AudioInputStream) r.getData());
-	}
-      }
-    } catch(MidiUnavailableException e) { throw new IOException(e.toString()); }
-  }
-  
   /** Gets the frequency of a given note.
    * @param note The note is written as <tt>A4</tt> for the middle-board <tt>A</tt> (<i>La</i>) at 440Hz. <ul>
    * <li>The letter: <table>
@@ -297,7 +371,7 @@ public class SoundBit {
    * </ul> e.g., <tt>G1#</tt> is the 1st piano fingerboard G sharp. Lowercase letters are understood.
    * @return The note frequency in Hz.
    */
-  public static double getNote(String note) {
+  private static double getNote(String note) {
     // Frequency constants
     final double 
       SharpPitch = Math.pow(2.0, 1.0/12.0), FlatPitch = Math.pow(SharpPitch, -1), 
@@ -323,7 +397,7 @@ public class SoundBit {
    * </ul>
    * @return An array of frequencies in Hz.
    */
-  public static double[] getNotes(String notes) {
+  private static double[] getNotes(String notes) {
     Vector<Double> freqs = new Vector<Double>();
     String n[] = notes.split("[ \t\n]"); int d = 1;
     for(int i = 0; i < n.length; i++) {
@@ -336,25 +410,21 @@ public class SoundBit {
     final boolean DEBUG = false; if(DEBUG) System.out.println(freqs.toString());
     double f[] = new double[freqs.size()]; for(int i = 0; i < freqs.size(); i++) f[i] = freqs.get(i).doubleValue(); return f;
   }
+   // The Elise'letter piano right-hand 1st notes are played as on a ``piccolo´´ (for debugging purpose only !).
+  // s.setNotes("e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g# 4 a", 0.25);
 
-  /** Plays a sound.
-   * @param usage <tt>java SoundBit [sound-bit-class-name] [length-in-second]</tt>
-   * Default is a mad tone with white-noise during 10 seconds.
-   * If length == 0 the Elise'letter piano right-hand 1st notes are played as on a ``piccolo´´ (for debugging purpose only !).
+  /** Plays and shows a sound.
+   * @param usage <tt>java SoundBit ([sound-bit-class-name] [length-in-second] | sound-file-name)</tt>
+   * <div>Plays the sound and shows the left channel spectrum and trace's start.</div>
    */
   public static void main(String usage[]) { 
     String sound = usage.length == 1 && !usage[0].matches("[0-9\\.]+") ? usage[0] : "proglet.SoundBit";
     String length = usage.length == 2  && usage[1].matches("[0-9\\.]+") ? usage[1] : usage.length == 1 && usage[0].matches("[0-9\\.]+") ? usage[0] : "10";
     try { 
-      SoundBit s = (SoundBit) Class.forName(sound).newInstance();
-      if (length.matches("0+")) {
-	s.setNotes("e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g# 4 a", 0.25);
-      } else {
-	s.setLength(Double.valueOf(length));
-      }
-      s.show();
-      //System.out.print("playing .."); System.out.flush(); s.play(); System.out.println(" done."); 
-      //midi_dump();
+      SoundBit s = new SoundBit(); try { s = (SoundBit) Class.forName(sound).newInstance(); s.setLength(Double.valueOf(length)); } catch(Exception e1) { 
+	try { s = getSound(sound); } catch(Exception e2) { System.err.println("Unable to define the sound: "+sound); System.exit(-1); } }
+      s.show('l');
+      System.out.print("playing .."); System.out.flush(); s.play(); System.out.println(" done."); 
     } catch(Exception e) { System.err.println(e); e.printStackTrace(); }
   }
 }
