@@ -1,5 +1,5 @@
 void main() {
- set("16A");
- TONE: 0.5 * tri(t) + 0.1 * sin(t/2) + 0.3 * tri(2*t) + 0.1 * sqr(3 * t)
- run();
+ //TONE: 0.5 * tri(t) * sin(t/4) + 0.1 * sin(t/2) + 0.3 * tri(2*t) + 0.1 * sqr(3 * t)
+ TONE: tan(t)
+ play();
 }

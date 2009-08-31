@@ -19,7 +19,7 @@ public class Macros { private Macros() { }
    * @param string1 L'une des chaines à comparer.
    * @param string2 L'autre des chaines à comparer.
    */
-  public static boolean equals(String string1, String string2) { return string1.equals(string2); }
+  public static boolean equal(String string1, String string2) { return string1.equals(string2); }
 
   /** Temporise une durée fixée.
    * Cela permet aussi de mettre à jour l'affichage.

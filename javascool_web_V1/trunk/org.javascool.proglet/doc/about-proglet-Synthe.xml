@@ -17,7 +17,7 @@
    </code></p>
 
    <p>Pour écouter le son ou la séquence de notes il faut utiliser la fonction:<code>
-     <p><r>run</r>();</p>
+     <p><r>play</r>();</p>
    </code></p>
 
    <p>La visualisation du son s'effectue en montrant: <ul>
@@ -34,15 +34,20 @@
    </code> où la syntaxe de <s>séquence-de-note</s> est définie dans la <a href=" ../api/proglet/SoundBit.html#notes">documentation</a> de la proglet.</p>
 
   <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>], 
-  où les 1ères notes de quelque chose qui ressemble à la «Lettre à Elise» de L.v.Beethoven est jouée et son spectre affiché, en utilisant différent sons:<code>
+  les différents sons:<code>
      <p><r>TONE:</r> cos(t)</p>
+     <p><r>play</r>();</p>
    </code>puis<code>
+     <p><r>play</r>();</p>
      <p><r>TONE:</r> 0.5 * sqr(t)</p>
    </code>puis<code>
+     <p><r>play</r>();</p>
      <p><r>TONE:</r> 0.8 * tri(t) + 0.2 * noi(t)</p>
    </code>puis<code>
+     <p><r>play</r>();</p>
      <p><r>TONE:</r> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t)</p>
-   </code> et ensuite . . à vous de jouer !</p>
+   </code>sont présentés, puis les 1ères notes de quelque chose qui ressemble à la «Lettre à Elise» de L.v.Beethoven est jouée et son spectre affiché et ensuite 
+   <br/> . . à vous de jouer !</p>
 
   </proglet>
 

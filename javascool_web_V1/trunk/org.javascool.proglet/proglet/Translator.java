@@ -36,13 +36,22 @@ public class Translator { private Translator() { }
     PrintWriter out = new PrintWriter(new FileWriter(file+".java"));
     // Here is the translation loop
     {
+      // Imports proglet's static methods
       out.print("import static proglet.Macros.*;");
       out.print("import static proglet."+proglet+".*;");
-      out.print("public class "+main+ " extends proglet.InterfacePrincipale {");
-      out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
+      // Declare the proglet's core as a Runnable
+      out.print("class ProgletRunnable implements Runnable {");
       for(String line; (line = in.readLine()) != null; ) {
 	out.println(translateOnce(line));
       }
+      // Tails the runnable
+      out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
+      out.println("  public void run() { main(); }");
+      out.println("}");
+      // Encapsulates this runnable in the applet
+      out.print("public class "+main+ " extends proglet.InterfacePrincipale {");
+      out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
+      out.print("  { runnable = new ProgletRunnable(); }");
       out.println("}");
     }
     in.close();
@@ -51,8 +60,7 @@ public class Translator { private Translator() { }
 
   // Translates one line of the source file
   private static String translateOnce(String line) {
-    // Adds the public tag to the main() 
-    line = line.replaceFirst("void[ \t]+main[ \t]*\\(\\)", "public void main()");
+    // Translates the Synthe proglet TONE macro
     line = line.replaceFirst("TONE:(.*)", "proglet.Synthe.tone = new proglet.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.Synthe.set(\"16 a\");");
     return line;
   }

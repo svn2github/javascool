@@ -92,9 +92,9 @@ public class InterfacePrincipale extends JApplet {
   }  
   private String main = null, path = null;
 
-  /** This routines is the entry point to run the proglet pupil's program. */
-  public void main() { Proglet.test(proglet); }
-
+  // This is the entry point to run the proglet pupil's program.
+  protected Runnable runnable = new Runnable() { public void run() { Proglet.test(proglet); } };
+  
   // Flag whether we are in standalone mode or web-browser mode
   boolean standalone = true; 
 
@@ -573,7 +573,7 @@ public class InterfacePrincipale extends JApplet {
     doStop();
     tache = new Thread(new Runnable() { public void run() {
       try {
-	main();
+	runnable.run();
       } catch (Throwable e) {  
 	if (e instanceof java.lang.Error) {
 	  // This exception thrown when a interrupt() is issued

@@ -48,7 +48,7 @@
        <p><t/><t/><t/>a <r>==</r> b</p>
        <m>avec bien sûr les symboles similares pour <r>></r> et <r>>=</r> (strictement plus grand et plus grand ou égal) et <r>!=</r> (pas égal).</m>
        <m>Vrai si et seulement si la chaîne s est égale à la chaîne c<footnote id="1"/></m>
-       <p><t/><t/><t/><r>equals</r>(s, c)</p>
+       <p><t/><t/><t/><r>equal</r>(s, c)</p>
      </code>
      Nous pouvons ensuite <i>combiner</i> ces conditions:
      <code>
@@ -64,9 +64,9 @@
        <m>Vrai si et seulement si x est plus grand que a et plus petit que b donc dans l'intervale ]a, b[:</m>
        <p><t/><t/><t/>a <r>&lt;</r> x <r>&amp;&amp;</r> x <r>&lt;</r> b</p> 
        <m>Vrai si et seulement si la reponse égale oui en minuscule ou majuscule:</m>
-       <p><t/><t/><t/><r>equals</r>(reponse, <s>oui</s>) <r>||</r> <r>equals</r>(reponse, <s>OUI</s>)</p>
+       <p><t/><t/><t/><r>equal</r>(reponse, <s>oui</s>) <r>||</r> <r>equal</r>(reponse, <s>OUI</s>)</p>
        <m>Vrai si et seulement si l'age est plus que 10 et le nom n'est pas Jean:</m>
-       <p><t/><t/><t/>age > 10 <r>&amp;&amp;</r> (<r>!</r> <r>equals</r>(nom, <s>Jean</s>))</p>
+       <p><t/><t/><t/>age > 10 <r>&amp;&amp;</r> (<r>!</r> <r>equal</r>(nom, <s>Jean</s>))</p>
      </code>
      en utilisant des parenthèses pour ne pas mélanger les termes de ces expressions.
    </note>
@@ -87,7 +87,7 @@
       qui demande le <i>nom</i> et l'<i>âge</i> de l'utilisateur et ajouter
       au bon endroit:
       <code>
-        <p><r>if</r>(<r>equals</r>(whoisit, "Toto")) {</p>
+        <p><r>if</r>(<r>equal</r>(whoisit, "Toto")) {</p>
         <p><t/>print(<s>Eh : Toto est pas un vrai nom, dis donc !</s>);</p>
         <p>}</p>
       </code>
@@ -106,7 +106,7 @@
       donc (x <r>&lt;</r> 0 <r>||</r> x <r>></r> 10) etc..</i></li>
       <li>Que va donner le code suivant ?<code>
         <p><r>String</r> nom = <r>readString</r>();</p>
-        <p>if (<r>equals</r>(nom, "John") <r>&amp;&amp;</r> <r>equals</r>(nom, "Joan")) { <r>print</r>(<s>OK</s>); } <r>else</r> { <r>print</r>(<s>KO</s>); }</p>
+        <p>if (<r>equal</r>(nom, "John") <r>&amp;&amp;</r> <r>equal</r>(nom, "Joan")) { <r>print</r>(<s>OK</s>); } <r>else</r> { <r>print</r>(<s>KO</s>); }</p>
       </code></li>
       <li>Deviner <i>puis</i> vérifier ces 8 réponses:<code>
         <p><r>print</r>(<s>Réponse 1 = </s> + (<r>false</r> <r>||</r> <r>false</r>));</p>
@@ -117,7 +117,7 @@
         <p><r>print</r>(<s>Réponse 6 = </s> + (<r>!</r>(<r>!</r><r>false</r>)));</p>
         <p><r>print</r>(<s>Réponse 6 = </s> + (<r>!</r>(<r>true</r> <r>&amp;&amp;</r> <r>false</r>)));</p>
         <p><r>print</r>(<s>Réponse 7 = </s> + (<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r><r>false</r>)))))))))))))))))))));</p>
-        <p><r>print</r>(<s>Réponse 8 = </s> + (equals(<s>toto</s>, <s>titi</s>) <r>||</r> 14 <r>></r> 13));</p>
+        <p><r>print</r>(<s>Réponse 8 = </s> + (equal(<s>toto</s>, <s>titi</s>) <r>||</r> 14 <r>></r> 13));</p>
       </code> et donner une phrase explicative pour chaque réponse.</li>
     </ol>
     <p align="center"><b>(la suite du travail proposé n'est pas indispensable pour notre apprentissage de la programmation, mais permet d'approfondir le sujet)</b></p>
@@ -187,7 +187,7 @@
   
   <footnotes>
     <p title="A propos de l'égalité"> Notez que le signe <r>=</r> veut dire ``<a href="sujet-about-variables.htm">affecter une valeur</a>´´ 
-    tandis que être égal s'écrit <r>==</r> pour les nombres et <b><r>equals</r>(s, c)</b> pour les chaines de caractères: voici quelque chose d'un peu compliqué.</p>
+    tandis que être égal s'écrit <r>==</r> pour les nombres et <b><r>equal</r>(s, c)</b> pour les chaines de caractères: voici quelque chose d'un peu compliqué.</p>
     <p title="A propos de l'implication"> Dire <b>A implique B</b> consiste à dire que si <b>A</b> est vrai alors forcément <b>B</b> est vrai, 
     tandis que si <b>A</b> est faux et bien tout peut arriver à <b>B</b> vrai ou faux, c'est ok.</p>
   </footnotes>

@@ -173,10 +173,10 @@
        </ul> (elle sera étudiée en détail avec <a href="sujet-about-if.htm">l'instruction conditionnelle</a>).</li>
        <li>On peut aussi manipuler des chaines de caractères et :<ul>
          <li>les concaténer, par exemple <c>"pa"</c> et <c>"py"</c> se concatennent en écrivant <c>"pa" + "py"</c> se qui donne <c>"papy"</c>.</li>
-         <li>les comparer en utilisant la fonction <c>equals()</c>: l'expression <c>equals("pa", "py")</c> renverra la valeur <c>faux</c> puisque les chaines de caractères
-         <c>"pa"</c> et <c>"py"</c> ne sont pas égales, tandis que <c>equals("pa", "pa")</c> renverra la valeur <c>vraie</c> puisque ce sont les même valeurs.</li>
+         <li>les comparer en utilisant la fonction <c>equal()</c>: l'expression <c>equal("pa", "py")</c> renverra la valeur <c>faux</c> puisque les chaines de caractères
+         <c>"pa"</c> et <c>"py"</c> ne sont pas égales, tandis que <c>equal("pa", "pa")</c> renverra la valeur <c>vraie</c> puisque ce sont les même valeurs.</li>
        </ul>etc..</li>
-       <li>D'autres fonctions que les opérations numériques ou logiques peuvent donc être utilisées, comme la fonction <c>equals()</c>, 
+       <li>D'autres fonctions que les opérations numériques ou logiques peuvent donc être utilisées, comme la fonction <c>equal()</c>, 
        elles s'écrivent en utilisant des parenthèses, comme <c>f(x)</c> qui correspond à une fonction de nom <c>f</c> qui prend comme argument en entrée <c>x</c> et 
        va renvoyer un résultat, par exemple <c>f(x) = x * x</c> calcule <c>x * x</c> c'est à dire le carré de <c>x</c>. 
        Les fonctions peuvent avoir plusieurs arguments comme par exemple <c>g(x, y, z)</c> qui a trois arguments.</li>
