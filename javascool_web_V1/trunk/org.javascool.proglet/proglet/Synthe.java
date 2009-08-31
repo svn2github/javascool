@@ -26,7 +26,7 @@ public class Synthe { private Synthe() { }
     public SoundBit sound = new SoundBit.NotesSoundBit() {
 	public double get(char channel, double time) { return Synthe.tone == null ? Math.sin(2 * Math.PI * time) : Synthe.tone.get(channel, time); }
       };
-    public Panel() { reset(sound, 'l'); }
+    public Panel() { reset(sound, 'l'); sound.reset("16 A"); }
   }
 
   //
@@ -39,10 +39,10 @@ public class Synthe { private Synthe() { }
     test(new SoundBit() { public double get(char c, double t) { return 0.5 * sqr(t); } });
     test(new SoundBit() { public double get(char c, double t) { return 0.8 * tri(t) + 0.2 * noi(t); } });
     test(new SoundBit() { public double get(char c, double t) { return 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t); } });
+    set("e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g# 4 a"); run();
   } 
   private static void test(SoundBit sound) {
-    proglet.Synthe.tone = sound; proglet.Synthe.set("16 a"); run(); 
-    set("e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g# 4 a"); run();
+    tone = sound; set("16 a"); run(); 
   }
 
   //

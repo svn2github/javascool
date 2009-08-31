@@ -339,7 +339,7 @@ public class SoundBit {
   /** Shows the spectrum and trace's start of the sound.
    * <div>Opens a frame, drawing: <ul>
    *  <li>drawing the frequencies amplitudes (in red, in normalized dB (log coordinates)), frequencies being drawn between A0 (27.5Hz) and A9 (6400Hz) around A3 (440Hz);</li>
-   *  <li>drawing the 1st samples of the signal (in yellow).</li>
+   *  <li>drawing the 1st samples of the signal (in yellow, the 1st <tt>11</tt>ms).</li>
    * </ul> while the sound name main frequency and spectral magnitude is printed.
    * @param channel Left 'l' or right 'r' channel.
    */
@@ -391,7 +391,8 @@ public class SoundBit {
 	int d0 = height - m - (int) Math.rint(vsize * (0.5 * (1 + (i - m < data.length ? data[i - m] : 0))));
 	g.setColor(Color.YELLOW); if (i > m) g.drawLine(i - 1, d1, i, d0); d1 = d0;
       }
-      //-g.setColor(Color.BLACK); g.setFont(new Font("Times", Font.BOLD, 16)); g.drawString(label, 2 * m, b + m/2);
+      g.setColor(Color.BLACK); g.setFont(new Font("Times", Font.BOLD, 16)); 
+      g.drawString("Amplitudes du spectre", m + m/2, b + 2 * m); g.drawString("Début du signal", m + m/2, height2 + 2 * m);
     }
     private double data[], mag[], mag_max, smag[]; private String label;
   }
