@@ -1,7 +1,5 @@
 
-snd:
-	javac SoundBit.java
-	#echo "run" ; cd .. ; java proglet.SoundBit
-
 all:
+#	javac SoundBit.java
+#	cd .. ; java proglet.SoundBit
 	$(MAKE) -C ..

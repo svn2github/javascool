@@ -33,11 +33,10 @@ public class Proglet { private Proglet() { }
   private static final long serialVersionUID = 1L;
 
   /** Constructs a proglet attached to the related applet.
-   * @param applet The related applet, set to null when run in a standalone application context.
    * @param proglet The proglet class name.
    * @return The static instanciation of the proglet.
    */
-  static JPanel getPanel(String proglet) {
+  static public JPanel getPanel(String proglet) {
     try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } 
     catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
@@ -63,7 +62,7 @@ public class Proglet { private Proglet() { }
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
    */
-  static void test(String proglet) {
+  static public void test(String proglet) {
     Proglet.proglet = proglet;
     new Thread(new Runnable() { public void run() {
       try { Class.forName("proglet."+Proglet.proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { report(error); }

@@ -53,6 +53,7 @@ public class Translator { private Translator() { }
   private static String translateOnce(String line) {
     // Adds the public tag to the main() 
     line = line.replaceFirst("void[ \t]+main[ \t]*\\(\\)", "public void main()");
+    line = line.replaceFirst("TONE:(.*)", "proglet.Synthe.tone = new proglet.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.Synthe.set(\"16 a\");");
     return line;
   }
 }

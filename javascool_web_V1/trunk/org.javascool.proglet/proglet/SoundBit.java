@@ -37,8 +37,9 @@ import javax.sound.midi.Soundbank;
 import javax.sound.midi.SoundbankResource;
 
 // Used to show a curve
-import javax.swing.JLabel;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Font;
@@ -50,24 +51,23 @@ public class SoundBit {
   private static final long serialVersionUID = 1L;
 
   /** Plays and shows a sound.
-   * @param usage <tt>java SoundBit ([sound-bit-class-name] [length-in-second] | sound-file-location | 'notes:...' [tempo-in-second])</tt>
+   * @param usage <tt>java SoundBit ([sound-bit-class-name] [length-in-second] | sound-file-location | 'notes:...')</tt>
    * <div>Plays the sound and shows the left channel spectrum and trace's start.</div>
    */
   public static void main(String usage[]) { 
     // Default sound
-    String dsound = "notes:"; // "notes:" // "proglet.SoundBit" // "snd/clarinet.wav"
+    String dsound = "notes:"; // "notes:" // "snd/clarinet.wav"
     // Sound name
     String sound = usage.length == 1 && !usage[0].matches("[0-9\\.]+") ? usage[0] : dsound;
     // Sound length or tempo
-    double T = 
-      Double.valueOf(usage.length == 2  && usage[1].matches("[0-9\\.]+") ? usage[1] : usage.length == 1 && usage[0].matches("[0-9\\.]+") ? usage[0] : sound.startsWith("notes:") ? "0.25" : "10");
+    double T = Double.valueOf(usage.length == 2  && usage[1].matches("[0-9\\.]+") ? usage[1] : usage.length == 1 && usage[0].matches("[0-9\\.]+") ? usage[0] : "10");
     try { 
       SoundBit s = null;
       // Consider NotesSoundBit
       if (sound.startsWith("notes:")) {
 	// The Elise'letter piano right-hand 1st notes played as on a ``piccolo´´ (for debugging purpose only !).
 	if (sound.equals("notes:")) sound = "notes:e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g# 4 a";
-	s = newNotesSound(sound.substring(6), T);
+	s = newNotesSound(sound.substring(6));
       } else {
 	// Consider Java SoundBit
 	try { s = (SoundBit) Class.forName(sound).newInstance(); } catch(Exception e) { } if(s != null) s.setLength(T); 
@@ -90,17 +90,29 @@ public class SoundBit {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   /** Defines the sound function.
-   * <div>This methods is to be overloaded to define your own sound.</div>
-   * <div>By contract this methop is called for <tt>index = 0, 1, 2, ..</tt> in consecutive increasing order.</tt>
-   * <div>The default is a mad tone.</div>
+   * <div>One <tt>get()</tt> methods i to be overloaded to define your own sound.</div>
+   * <div>By contract this method is called for <tt>index = 0, 1, 2, ..</tt> in consecutive increasing order.</tt>
    * @param channel Left 'l' or right 'r' channel.
    * @param index  Sound time index. The time in second writes: <tt>time = index / SAMPLING</tt>.
    * @return The sound value between -1.0 and 1.0 (maximal amplitude, linear scale).
    */
-  public double get(char channel, long index) {
-    double t = index/SAMPLING, a = 0.5 * (1 + sin(t / 4)), f = 440 + 10 * sin(t / 0.5), n = 0.25 * (1 + sin(t / 2.4));
-    return (channel == 'l' ? 1 - a : a) * (0.5 * sin(f * t) + n * Math.random());
-  }
+  public double get(char channel, long index) { return get(channel, index/SAMPLING); }
+
+  /** Defines the sound function.
+   * <div>One <tt>get()</tt> methods i to be overloaded to define your own sound.</div>
+   * <div>By contract this method is called for <tt>index = 0, 1, 2, ..</tt> in consecutive increasing order.</tt>
+   * @param channel Left 'l' or right 'r' channel.
+   * @param time  Sound time in second.
+   * @return The sound value between -1.0 and 1.0 (maximal amplitude, linear scale).
+   */
+  public double get(char channel, double time) { return 0; } 
+
+  /** Resets the sound properties.
+   * <a name ="reset"></a><div>This methods is to be overloaded to manage your own sound property.</div>
+   * @param definition The sound properties given as a string: the semantic depends on the sound, it is documented for each sound's type.
+   * @return true if the operation succeed, false if it fails.
+   */
+  public boolean reset(String definition) { return true; }
   
   /** Gets the sound name.
    * @return Either the sound java class or the sound file name.
@@ -108,7 +120,7 @@ public class SoundBit {
   public String getName() { return name == null ? getClass().getName() : name; } protected String name = null;
 
   /** Sets the stream length.
-   * @param length Stream length in second. If 0, the length remains undefined (in fact maximal).
+   * @param length Stream length in second. If -1, the length remains undefined (in fact maximal).
    * @throws IllegalStateException If it is a buffered sound-bit of fixed length, thus not adjustable.
    */
   public void setLength(double length) { this.length = length; }
@@ -116,7 +128,7 @@ public class SoundBit {
   /** Gets the stream length.
    * @return The stream length in second.
    */
-  public double getLength() { return length > 0 ? length :  Long.MAX_VALUE/FRAME_SIZE/SAMPLING; } protected double length = 0;
+  public double getLength() { return length >= 0 ? length :  Long.MAX_VALUE/FRAME_SIZE/SAMPLING; } protected double length = 0;
 
   /** Returns the 16 bit, stereo, sound bit, PCM standard, signed PCM, 44.1 KHz sampled, audio stream, supporting mark and reset. 
    * <div>- Notice: this stream is never closed, but can be reset when to be reused.</div>
@@ -133,7 +145,7 @@ public class SoundBit {
     private static final long serialVersionUID = 1L;
     
     /** Constructs a 16 bit, stereo, sound bit, with a standard PCM 44.1 KHz signed audio format. 
-     * @param length Stream length in second. If 0, the length remains undefined (in fact maximal).
+     * @param length Stream length in second. If -1, the length remains undefined (in fact maximal).
      */
     public Stream(double length) {
       super(new ByteArrayInputStream(new byte[0]),
@@ -145,7 +157,7 @@ public class SoundBit {
 			    FRAME_SIZE,// Frame size in bytes
 			    SAMPLING,  // Frame rate in Hz
 			    false),    // Little-endian byte order
-	    length > 0 ? (long) (length * SAMPLING) : Long.MAX_VALUE/FRAME_SIZE);
+	    length >= 0 ? (long) (length * SAMPLING) : Long.MAX_VALUE/FRAME_SIZE);
     }
 
     // Implementation of the stream read methods
@@ -222,11 +234,11 @@ public class SoundBit {
   }
 
   /** Creates a sound-bit from an audio file.
-   * @param location Audio file path: either a file-name or a URL-name.
+   * <div>The sound-bit audio-file can be changed using the <tt><a href="#reset">reset</a>(location)</tt> method.</div>
+   * @param location Audio file path: either a file-name or a URL-name. 
    * @return The sound-bit stored in the audio-file.
-   * @throws IOException If the file can not be read or is of the current: 16 bit, mono or stereo, standard PCM, 44.1 KHz, signed, little-endian audio format.
    */
-  public static SoundBit newFileSound(String location) throws IOException { return new FileSoundBit(location); }
+  public static SoundBit newFileSound(String location) { SoundBit s = new FileSoundBit(); s.reset(location); return s; }
 
   /** Defines the super-class of buffered sound-bit wrappers. */
   private static class BufferedSoundBit extends SoundBit {
@@ -238,7 +250,7 @@ public class SoundBit {
     /** Constructs a sound defined from two buffer files.
      * @param location Audio file path: either a file-name or a URL-name.
      */
-    public FileSoundBit(String location) throws IOException {    
+    public boolean reset(String location) {    
       try {
 	AudioInputStream stream = AudioSystem.getAudioInputStream(new URL(location.matches("^(file|ftp|http|https):.*$") ? location : "file:"+location));
 	checkFormat(stream);
@@ -246,10 +258,13 @@ public class SoundBit {
 	buffer = new byte[(int) stream.getFrameLength() * stream.getFormat().getFrameSize()]; stream.read(buffer); stream.close();
 	name = location;
 	length = stream.getFrameLength() / SAMPLING;
-      } catch(UnsupportedAudioFileException e) { throw new IOException(e.toString()); }
+      } catch(UnsupportedAudioFileException e) { buffer = null; return false; } catch(IOException e) { buffer = null; return false; }
+      return true;
     } 
     public double get(char channel, long index) { 
-      int i = (int) index * s + (c == 1 || channel == 'l' ? 0 : 2), h = buffer[i+1], l = buffer[i], v = ((128 + h) << 8) | (128 + l); return 1 * (v / 32767.0 - 1);
+      int i = (int) index * s + (c == 1 || channel == 'l' ? 0 : 2);
+      if(buffer == null || i < 0 || i >= buffer.length) return 0;
+      int h = buffer[i+1], l = buffer[i], v = ((128 + h) << 8) | (128 + l); return 1 * (v / 32767.0 - 1);
     }
     private int c, s; private byte[] buffer;
   }
@@ -328,17 +343,20 @@ public class SoundBit {
    * </ul> while the sound name main frequency and spectral magnitude is printed.
    * @param channel Left 'l' or right 'r' channel.
    */
-  public void show(char channel) { new Show(channel); }
+  public void show(char channel) { 
+    Panel p = new Panel(); p.reset(this, channel);
+    { JFrame f = new JFrame(); f.getContentPane().add(p); f.pack(); f.setTitle(getName()); f.setSize(540, 600); f.setVisible(true); }
+  }
 
   // Defines a drawing of the FTT and of the signal
-  private class Show extends JFrame {
+  static class Panel extends JPanel {
     private static final long serialVersionUID = 1L;
-    /** Defines and display the spectrum and trace's start of the sound.
+    /** Defines the spectrum and trace's start of the sound.
      * @param channel Left 'l' or right 'r' channel.
      */
-    public Show(char channel) { 
+    public void reset(SoundBit sound, char channel) { 
       // Calculates the spectrum magnitude and phase
-      data = getData(getStream(), channel); complex fft[] = getFFT(data); mag = new double[hsize+1];
+      data = getData(sound.getStream(), channel); complex fft[] = getFFT(data); mag = new double[hsize+1];
       for(int i = 0; i <= hsize; i++) { 
 	double f = f0 * Math.pow(f1/ f0, i / (double) hsize); int k = (int) Math.rint(fft.length * f / SAMPLING); mag[i] = Math.sqrt(fft[k].x * fft[k].x + fft[k].y * fft[k].y);
       }
@@ -348,10 +366,10 @@ public class SoundBit {
 	double n = 0, v = 0; for(int j = Math.max(0, i - w); j <= Math.min(hsize, i + w); j++) { n++; v += mag[j]; } smag[i] = v / n;
 	double f = f0 * Math.pow(f1/ f0, i / (double) hsize); if (mag_max < smag[i]) { f_max = f; mag_max = smag[i]; }
       }      
-      label = SoundBit.this.getName() + " (|fft| < "+((int)mag_max)+", f_max = "+((int)f_max)+"Hz) ";
-      { pack(); setTitle("FFT"); setSize(width, height); setVisible(true); }
+      label = sound.getName() + " (|fft| < "+((int)mag_max)+", f_max = "+((int)f_max)+"Hz) ";
+      repaint();
     } 
-    int hsize = 16 * 50, vsize = 200, b = 40, m = 20, width = 2 * m +  hsize, height= b + 4 * m + 3 * vsize, height2 = b + 2 * m + 2 * vsize; 
+    int hsize = 16 * 31, vsize = 160, b = 0, m = 20, width = 2 * m +  hsize, height= b + 4 * m + 3 * vsize, height2 = b + 2 * m + 2 * vsize; 
     double f0 = 440.0 / 16, f1 = 440.0 * 16;
     /** Internal routine: do not use. */
     public void paint(Graphics g) {
@@ -360,17 +378,20 @@ public class SoundBit {
       g.setColor(Color.GRAY); g.fillRect(m, b + m, hsize, 2 * vsize); g.fillRect(m, height2 + m, hsize, vsize); 
       g.setColor(Color.BLACK); g.drawLine(m, height2, width - m, height2); 
       g.drawLine(m/2, height2 + m + vsize/2, m, height2 + m + vsize/2); g.drawLine(width - m/2, height2 + m + vsize/2, width - m, height2 + m + vsize/2);
-      for(int i = m; i <= width-m; i+= hsize/16) g.drawLine(i, height2-(i == width/2 ? m : m/2), i, height2+(i == width/2 ? m : m/2)); 
+      g.setFont(new Font("Times", 0, 10)); for(int i = m; i <= width-m; i+= hsize/16) {
+	g.drawLine(i, height2-(i == width/2 ? m : m/2), i, height2+(i == width/2 ? m-2 : m/2)); 
+	double f = f0 * Math.pow(f1/ f0, (i - m) / (double) hsize);  if(i < width-m) g.drawString(Integer.toString((int) f), i+1, height2-1);
+      }
       // Amplitude and phase curves
       for(int i = m, a1 = 0, d1 = 0; i <= width - m; i++) { 
 	double a = Math.log(1 + 9 * mag[i - m] / mag_max) / Math.log(10);
 	int a0 = height2 - m - (int) Math.rint(2 * vsize * a); if (a0 < b + m) a0 = b + m;
 	g.setColor(Color.RED); if (i > m) g.drawLine(i - 1, a1, i, a0); a1 = a0;
 	// Drawing the 1st data samples
-	int d0 = height - m - (int) Math.rint(vsize * (0.5 * (1 + data[i - m])));
+	int d0 = height - m - (int) Math.rint(vsize * (0.5 * (1 + (i - m < data.length ? data[i - m] : 0))));
 	g.setColor(Color.YELLOW); if (i > m) g.drawLine(i - 1, d1, i, d0); d1 = d0;
       }
-      g.setColor(Color.BLACK); g.setFont(new Font("Times", Font.BOLD, 16)); g.drawString(label, 2 * m, b + m/2);
+      //-g.setColor(Color.BLACK); g.setFont(new Font("Times", Font.BOLD, 16)); g.drawString(label, 2 * m, b + m/2);
     }
     private double data[], mag[], mag_max, smag[]; private String label;
   }
@@ -378,7 +399,7 @@ public class SoundBit {
   // Computes the FFT of a stream after http://www.cs.princeton.edu/introcs/97data/FFT.java.html
   private static complex[] getFFT(double data[]) {
     // Calculates the largest power of two not greater than data length
-    int length = (int) Math.pow(2, Math.ceil(Math.log(data.length)/Math.log(2)));
+    int length = (int) Math.pow(2, Math.ceil(Math.log(data.length)/Math.log(2))); if (length == 0) length = 1;
     // Builds the complex buffer and computes fft
     complex cdata[] = new complex[length]; for (int i = 0; i < length; i++) cdata[i] = new complex(i < data.length ? data[i] : 0, 0); return fft(cdata);
   }
@@ -414,12 +435,15 @@ public class SoundBit {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   /** Creates a monophonic ``piccolo´´ sound-bit from a note sequence (still in development).
-   * @param notes Definition of note's sequuence and note:<ul>
+   * <div>The sound-bit can be changed using the <tt><a href="#reset">reset</a>(notes)</tt> method.</div>
+   * @param notes <a name="notes"></a> Definition of note's sequence and note:<ul>
    * <li>The notes sequences is written as:<ul>
    *   <li> a sequence of notes, separated with spaces;</li>
    *   <li> while note's duration is noted by an integer, from <tt>1</tt> to <tt>999</tt>, separated with spaces;
    *     <br>here, <tt>1</tt> stands for the minimal note duration (e.g. quaver), 
    *     <br>the note duration being valid until a new duration is set;</li>
+   *   <li> while note's intensity is written using the construct <tt>I<i>value</i></tt> where value is from <tt>0</tt> to <tt>0.999</tt>, 
+   *     e.g. <i>I0.5</tt> or <tt>I5</tt> (the <tt>0.</tt> number prefix can be omitted) refers to a half-scale intensity.</li>
    *   <li>other pattern being ignored.</li>
    * </ul> e.g. <tt>e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g# 4 a</tt> is more or less the Elise'letter piano right-hand 1st notes.</li>
    * <li>Each note is written as <tt>A4</tt> for the middle-board <tt>A</tt> (<i>La</i>) at 440Hz. <ul>
@@ -429,40 +453,62 @@ public class SoundBit {
    *   </table> stands for the note name. The <tt>h</tt> stands for a ``halt´´, a silence.</li>
    *   <li>The digit, from <tt>0</tt> to <tt>8</tt> included, stands for the octave, default is <tt>4</tt>.</li>
    *   <li>The <tt>#</tt> or <tt>b</tt> suffix stands for the <i>sharp</i> or <i>flat</i> modulation respectively.</li>
-   * </ul> e.g., <tt>G1#</tt> is the 1st piano fingerboard G sharp. The notation is case insensitive.</li>
+   *  </ul> e.g., <tt>G1#</tt> is the 1st piano fingerboard G sharp. The notation is case insensitive.</li>
    * </ul>
-   * @param tempo The minimal note duration in second.
+   * <li>The <i>tempo</i>, i.e. the minimal note duration in second, is declared a the beginning of the note sequence using the <tt>T<i>value</i></tt> construct.
+   *   Default is <tt>0.25</tt>s, while this declarations is to be done once.</li>
    * @return The sound-bit defined by the note sequence.
    */
-  public static SoundBit newNotesSound(String notes, double tempo) { return new NotesSoundBit(notes, tempo); }
+  public static SoundBit newNotesSound(String notes) { SoundBit s = new NotesSoundBit(); s.reset(notes); return s; }
 
-  /** Defines the data-file sound-bit wrapper. */
-  private static class NotesSoundBit extends BufferedSoundBit {
+  // Defines a notes sound-bit wrapper.
+  static class NotesSoundBit extends BufferedSoundBit {
     /** Constructs a sound defined from a note sequence.
      * @param notes The note sequence.
      * @param tempo The sequence tempo.
      */
-    public NotesSoundBit(String notes, double tempo) { freqs = getNotes(notes); this.tempo = tempo; pl = pr = 0; name = "notes:.."; length = freqs.length * tempo; } 
-    public double get(char channel, long index) { double t = index / SAMPLING, f = freqs[(int)(t / tempo)], d = f / SAMPLING; return 0.5 * sin(channel == 'l' ? (pl += d) : (pr += d)); }
-    private double pl,pr, freqs[], tempo;
+    public boolean reset(String notes) { 
+      freqs = getNotes(notes); tempo = getTempo(notes); name = "notes:.."; sound.setLength(length = freqs.length * tempo); return true;
+    } 
+    // Default sound is a piccolo
+    public double get(char channel, double time) { return Math.sin(2 * Math.PI * time); }
+    // Internal sound used to sample the notes
+    private SoundBit sound = new SoundBit() {
+	public double get(char channel, double time) { 
+	  int i = (int)(time / tempo); if (i < freqs.length) { 
+	    double d = freqs[i].f / SAMPLING; return freqs[i].a * NotesSoundBit.this.get(channel, channel == 'l' ? (pl += d) : (pr += d)); 
+	  } else 
+	    return 0;
+	}
+	private double pl = 0, pr = 0;
+      };
+     private note freqs[] = new note[0]; private double tempo = 0.25;
+    public Stream getStream() { return sound.getStream(); }
   }
 
-  // Returns a sinusoide of unary frequency
-  private static double sin(double t) { return Math.sin(2 * Math.PI * t); }
+  // Gets the low-level tempo of a given note sequence. 
+  private static double getTempo(String notes) {
+    return notes.matches(".*[ \t\n]+T[0-9]*\\.?[0-9]+[ \t\n]+.*") ? Double.valueOf(notes.replaceFirst(".*[ \t\n]+T([0-9]*\\.?[0-9]+)[ \t\n]+.*", "\\1")) : 0.25;
+  }
 
-  // Gets the frequency array of a given note sequence. 
-  private static double[] getNotes(String notes) {
-    Vector<Double> freqs = new Vector<Double>();
-    String n[] = notes.split("[ \t\n]"); int d = 1;
+  // Gets the low-level array of a given note sequence.
+  private static note[] getNotes(String notes) {
+    Vector<note> freqs = new Vector<note>();
+    String n[] = notes.trim().toLowerCase().split("[ \t\n]"); 
+    int d = 1; double a = 0.999;
     for(int i = 0; i < n.length; i++) {
-      if(n[i].matches("[1-9][0-9]?[0-9]?")) {
+      if(n[i].matches("[1-9][0-9]*")) {
 	d = Integer.valueOf(n[i]);
+      } else if(n[i].matches("i0?\\.?[0-9]+")) {
+	a = Double.valueOf(n[i].matches("[0-9]+") ? "0\\."+n[i] : n[i]);
       } else if(n[i].matches("[a-h][0-8]?[#b]?")) {
-	double f = getNote(n[i]); for(int k = 0; k < d; k++) freqs.add(f);
+	double f = getNote(n[i]); for(int k = 0; k < d; k++) freqs.add(new note(f, a));
       }
     }
-    double f[] = new double[freqs.size()]; for(int i = 0; i < freqs.size(); i++) f[i] = freqs.get(i).doubleValue(); return f;
+    return freqs.toArray(new note[freqs.size()]);
   }
+  // Low-level note defined by a frequency and a intensity
+  private static class note { note(double f, double a) { this.f = f; this.a = a; } double f, a; }
 
   // Gets the frequency of a given note.
   private static double getNote(String note) {

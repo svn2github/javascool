@@ -185,7 +185,7 @@ public class InterfacePrincipale extends JApplet {
       JLabel jProgletLabel = new JLabel();
       jProgletLabel.setIcon(Proglet.getIcon("execute.png"));
       jProgletButton.add(jProgletLabel);
-      String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Tortue", "Conva" };
+      String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Synthe", "Tortue" };
       jProgletBox = new JComboBox(proglets);
       jProgletBox.setEditable(false);
       jProgletBox.addActionListener(new ActionListener(){
@@ -537,7 +537,6 @@ public class InterfacePrincipale extends JApplet {
 	String body = URLEncoder.encode(loadString(path+".java"), "UTF-8");
 	getAppletContext().showDocument(new URL("http://facets.inria.fr/javascool/index.php?prog="+proglet+"&main="+main+"&path="+path+"&body="+body), "_self");
       }
-      new File(path+".java").delete();
     } else
       printConsole("Impossible de compiler avant de définir/sauvegarder une programme !", 'b');
   }
@@ -551,6 +550,7 @@ public class InterfacePrincipale extends JApplet {
       printConsole("Le fichier "+main+".jvs n'a pas pu être compilé", 'b');
       printConsole(compilation.replaceAll("\n", "<br/>\n"), 'c');
     } else {
+      new File(path+".java").delete();
       // Loads the compiled proglet for execution
       URL[] urls = new URL[] { new URL("file:"+new File(path+".class").getParent()+File.separator) };
       final Class<?> s = new URLClassLoader(urls).loadClass(main);
