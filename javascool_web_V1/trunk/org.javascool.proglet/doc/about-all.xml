@@ -1,30 +1,89 @@
-<p title=")i(nterstices s'ouvre vers les lycées avec Javascool, à l'initiative de l'INRIA"><ul>
-  <li>A propos de cette démarche<ul>
-    <li>En guise de <a href="about-manifeste.htm">manifeste</a>.</li>
-    <li>Quelques éléments sur <a href="about-prg2nd.htm">l'enseignement</a> de l'informatique au lycée en seconde.</li>
-  </ul></li>
-  <li>Deux textes sur les fondements de l'informatique<ul>
-    <li>Qu'est ce que l'<a href="about-information.htm">information</a> ?</li>
-    <li>Les ingrédients des <a href="about-algorithm.htm">algorithmes</a> !</li>
-  </ul>
-  </li>
-  <li>Les cinq ingrédients des algorithmes (utilisant la <proglet name="Konsol"/>)<ul>
-    <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a>, utiliser les séquences d'instructions.</li>
-    <li>Apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
-    <li>Découvrir l'instruction <a href="sujet-about-if.htm">conditionnelle</a>.</li>
-    <li>Se familiariser avec les <a href="sujet-about-functions.htm">fonctions</a>.</li>
-    <li>Utiliser des <a href="sujet-about-while.htm">boucles</a>.</li>
-  </ul></li>
-  <li>Trois instanciations du logiciel javascool pour travailler en classe selon la configuration informatique: <ul>
-  <li><a href="http://javascool.gforge.inria.fr">Le logiciel Java'sCool dans sa forme complète</a>
-    avec un éditeur coloré, des menus adaptés, un interface <a href="http://christian.rellier.free.fr/orphy/ORPHYGTS.htm">Orphy</a>, etc...
-    (nécessite une <a href="http://javascool.gforge.inria.fr/html/javascool/install/Installation.html">installation spécifique</a> sur chaque machine utilisée).</li>
-    <li><a href="http://facets.inria.fr/javascool">L'environnement de programmation simplifié pour utiliser les proglet's en web service</a>
-      (nécessite une installation standard de Java et un accès au réseau pendant le travail en classe).</li>
-    <li><a href="../wproglet.jar">L'environnement de programmation simplifié pour utiliser les proglet's en standalone</a> 
-      (nécessite une installation standard de Java).</li>
-  </ul> et de pouvoir nous contacter (voir <a href="#contact">ci-dessous</a>) si il y a le moindre problème.</li>
-  <li>Des proglets pour s'initier à la programmation<ul>
+<p title=")i(nterstices s'ouvre vers les lycées avec Javascool, à l'initiative de l'INRIA"><table>
+<tr><td><table width="100%" border="1" bgcolor="#EEE"><tr>
+  <td align="center" width="10%"><b><a style="text-decoration:none;" href="#quoi">Qu'est ce ?</a></b></td>
+  <td align="center" width="10%"><b><a style="text-decoration:none;" href="#qui">Pour qui est-ce ?</a></b></td>
+  <td align="center" width="10%"><b><a style="text-decoration:none;" href="#dwnl">Téléchargement <br/> du logiciel</a></b></td>
+  <td align="center" width="15%"><b><a style="text-decoration:none;" href="#polys">Polys de cours <br/> et documents</a></b></td>
+  <td align="center" width="15%"><b><a style="text-decoration:none;" href="#parcours">Parcours pour s'initier <br/> à la programmation</a></b></td>
+  <td align="center" width="15%"><b><a style="text-decoration:none;" href="#exos">Exercices et <br/> applications</a></b></td>
+  <td align="center" width="15%"><b><a style="text-decoration:none;" href="#more">Créer de nouvelles <br/> activités</a></b></td>
+  <td align="center" width="10%"><b><a style="text-decoration:none;" href="#contact">Contacts</a></b></td>
+</tr></table></td></tr>
+
+<tr><td><hr/></td></tr>
+
+<tr><td style="background-color:#EEE"><b><a name="quoi">Qu'est ce que c'est ?</a></b>
+<p>Un recueil de ressources pour <i>aider les enseignants des lycées au niveau de l'enseignement de l'informatique</i> en seconde.<ol>
+  <li>La démarche est expliquée dans  ce <a href="about-manifeste.htm">manifeste</a>.</li>
+  <li>Une <a href="about-prg2nd.htm">analyse</a> de l'enseignement actuel de l'algorithmique au lycée en seconde, sert de cadrage à ce travail.</li>
+</ol></p>
+<p><i>Remarques:</i><p>
+  <p>Site web ``provisoire´´<footnote id="3"/>: Cette mise en ligne permet d'avoir ces documents disponibles dès cette rentrée scolaire 2009.</p>
+  <p>N'hésitez pas à nous soummettre vos <a href="#contact">avis et critiques</a>, nous en profiterons tous:!.</p>
+  <p>Ces éléments ont a été conçus par des chercheurs et enseignants de l'INRIA<footnote id="4"/> avec des enseignants<footnote id="4"/> de lycées, 
+   et utilisés ``pour de vrai´´ en classe: c'est ce qui fait leur valeur.</p>
+</p></p>
+</td></tr>
+
+<tr><td><hr/></td></tr>
+
+<tr><td style="background-color:#EEE"><b><a name="qui">Pour qui est-ce ?</a></b> <ol>
+  <li>Pour les enseignants, puisque l'enseignement actuel inclut l'apprentissage de l'algorithmique au lycée en seconde 
+  <a href="about-prg2nd.htm">(Option MPI et programme de Mathématiques)</a>.</li>
+  <li>Pour les clubs de maths ou les autres initiatives péris-scolaires de découverte scientifique.</li>
+</ol>
+<p><i>Remarque:</i> Ces documents ne sont pas conçus pour apprendre la programmation en ``autodidacte´´<footnote id="2"/>.</p>
+</td></tr>
+
+
+<tr><td><hr/></td></tr>
+
+<tr><td style="background-color:#EEE"><b><a name="polys">Polys de cours et documents de référence</a></b>: 
+<p>Deux textes sur les fondements de l'informatique, accessibles à un public lycéen sont disponibles ici:<ol>
+  <li>Qu'est ce que l'<a href="about-information.htm">information</a> ?</li>
+  <li>Les ingrédients des <a href="about-algorithm.htm">algorithmes</a> !</li>
+</ol>tandis qu'<a href="http://interstices.fr">)i(nterstices</a> propose de nombreux documents de référence sur ces sujets: <ul>
+  <li>Sur les <a href="http://interstices.info/jcms/c_5389/algorithmes">algorithmes</a>.</li>
+  <li>Sur <a href="http://interstices.info/turing">Alan Turing</a>, pionnier de l'informatique et 
+  sur la différence entre <a href="http://interstices.info/calculer-penser">calculer (avec un ordinateur) et penser (avec un cerveau)</a>.</li>
+  <li>Mais aussi . . sur la <a href="http://interstices.info/crypto-chiffre-lettres">cryptographie</a></li>
+</ul>etc..</p>
+</td></tr>
+
+<tr><td><hr/></td></tr>
+
+<tr><td style="background-color:#EEE"><b><a name="parcours">Un parcours pour s'initier à la programmation</a></b>:
+<p>Ce parcours permet de s'approprier les cinq ingrédients des algorithmes (utilisant<footnote id="1"/> la <proglet name="Konsol"/>)<ul>
+  <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a>, utiliser les séquences d'instructions.</li>
+  <li>Apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
+  <li>Découvrir l'instruction <a href="sujet-about-if.htm">conditionnelle</a>.</li>
+  <li>Se familiariser avec les <a href="sujet-about-functions.htm">fonctions</a>.</li>
+  <li>Utiliser des <a href="sujet-about-while.htm">boucles</a>.</li>
+</ul></p>
+</td></tr>
+
+<tr><td><hr/></td></tr>
+
+<tr><td style="background-color:#EEE"><b><a name="exos">Exercices et applications</a></b>
+<p>Quelques applications, exercices et activités:<ul>
+  <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
+  <li>Comment marche un <a href="sujet-appli-conva.htm">convertisseur analogique-numérique</a>.</li>
+  <li><i> .. cette liste ayant vocation à s'étoffer au cours de l'année scolaire 2009-2010</i>. Sont en préparation (pour mi-septembre 2009):<ul>
+    <li>Un mécanisme de tri dichotomique.</li>
+    <li>Jouons avec les pixels d'une image !</li>
+    <li>Peut-on craquer un code de carte bleue ?</li>
+    <li>Découvrir moyenne et écart-type: comment un signal peut sortir du bruit.</li>
+    <li>Programmer soi-même une sonnerie de portable.</li>
+    <li>etc..</li>
+  </ul> . . non sans vous inviter à nous demander de nouveaux sujets, à nous faire partager les vôtres, etc..</li>
+</ul></p>
+</td></tr>
+
+
+<tr><td><hr/></td></tr>
+
+<tr><td style="background-color:#EEE"><b><a name="more">Créer de nouvelles activités</a></b><ol>
+<li>Plusieurs proglets<footnote id="1"/> sont disponibles ici, pour s'initier à la programmation et créer des exercices animés et interactifs<ul>
     <li>La <proglet name="Konsol"/>.</li>
     <li>La <proglet name="Dicho"/>.</li>
     <li>La <proglet name="Smiley"/>.</li>
@@ -33,32 +92,77 @@
     <li>La <proglet name="Tortue"/>.</li>
     <li>La <proglet name="Synthe"/>.</li>
   </ul></li>
-  <li>Quelques applications, exercices et activités:<ul>
-    <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
-    <li>Comment marche un <a href="sujet-appli-conva.htm">convertisseur analogique-numérique</a>.</li>
-    <li><i> .. cette liste ayant vocation à s'étoffer au cours de l'année scolaire 2009-2010</i>. Sont en préparation (pour mi-septembre 2009):<ul>
-      <li>Un mécanisme de tri dichotomique.</li>
-      <li>Jouons avec les pixels d'une image !</li>
-      <li>Peut-on craquer un code de carte bleue ?</li>
-      <li>Découvrir moyenne et écart-type: comment un signal peut sortir du bruit.</li>
-      <li>Programmer soi-même une sonnerie de portable.</li>
-      <li>etc..</li>
-    </ul> . . non sans vous inviter à nous demander de nouveaux sujets, à nous faire partager les vôtres, etc..</li>
-  </ul></li>
-  <li>Autres liens: <ul>
-    <li><a href="http://interstices.fr">Le site )i(nterstices</a></li>
-    <li><a href="../api/index.html">La documentation java des proglet's</a></li>
-  </ul></li>
-</ul>
+<li>Chaque proglet<footnote id="1"/> est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, 
+programmée en Java et <a href=" ../api/index.html">documenté</a> pour sa libre redistribution, avec un accès au code source, 
+et permettre des développements dérivés.
+<p>Un enseignant qui connait un peu de programmation peut facilement développer ces <a href="../api/index.html">propre proglet's</a>,
+non sans vous inviter à nous demander (dans la mesure de notre disponibilité) de le faire à partir de votre idée, 
+de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
+</ol>
+</td></tr>
 
-<a name="contact"/>
-  <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de qq proglet" method="post" enctype="text/plain"><table border="1">
-    <tr><td><b>Nous contacter:</b> <select name="Le-sujet">
+<tr><td><hr/></td></tr>
+
+<tr><td style="background-color:#EEE"><b><a name="dwnl">Téléchargement du logiciel</a></b>
+<p>Trois instanciations du logiciel javascool sont proposées pour travailler en classe selon la configuration informatique: <ul>
+  <li><a href="http://javascool.gforge.inria.fr">Le logiciel Java'sCool dans sa forme complète</a>
+    avec un éditeur coloré, des menus adaptés, un interface <a href="http://christian.rellier.free.fr/orphy/ORPHYGTS.htm">Orphy</a>, etc...
+    (nécessite une <a href="http://javascool.gforge.inria.fr/html/javascool/install/Installation.html">installation spécifique</a> sur chaque machine utilisée).</li>
+   <li><a href="http://facets.inria.fr/javascool">L'environnement de programmation simplifié pour utiliser les proglet's en web service</a>
+      (nécessite une installation standard de Java et un accès au réseau pendant le travail en classe).</li>
+  <li><a href="../wproglet.jar">L'environnement de programmation simplifié pour utiliser les proglet's en standalone</a> 
+      (nécessite une installation standard de Java).</li>
+</ul> et de pouvoir nous contacter (voir <a href="#contact">ci-dessous</a>) si il y a le moindre problème.</p>
+</td></tr>
+
+
+<tr><td><hr/></td></tr>
+
+<tr><td style="background-color:#EEE"><b><a name="contact">Nous contacter:</a></b>
+  <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de qq proglet" method="post" enctype="text/plain"><table align="center">
+    <tr><td><select name="Le-sujet">
      <option>Commentaire général, avis, etc..</option>
      <option>Demande d'aide ou de support, etc..</option>
      <option>Signaler un problème ou rapporter une erreur</option>
      <option>Demander ou proposer une nouvelle fonctionnalité</option>
    </select><input type="submit" value="[Créer le message]" /><input type="hidden" name="Mon-message"/></td></tr>
  </table></form>
+</td></tr>
+
+<tr><td><hr/></td></tr>
+
+</table>
+
+<footnotes>
+
+  <p>Une <c>proglet</c> est une petite <a href="http://fr.wikipedia.org/wiki/Applet">applette</a> qui permet de s'initier à la programmation de manière ludique,
+  puisque les petits programmes crées animent un élément visuel ou sonore, à la fois pour mieux comprendre ces objets numériques et pour offrir une démarche
+  expérimentale concrète, vers la compréhension des notions abstraites qui forment le fondement des sciences de l'information. 
+  Ces <c>proglets</c> sont des exemples de «<c>gamelet</c>» (c'est à dire de grains pédagogiques interactifs pour un apprentissage ludique d'une notion).</p>
+
+  <p>Ces documents ne sont pas conçus pour apprendre la programmation en ``autodidacte´´ . .  
+  mais si vous le souhaitez et si vous pouvez dialoguer avec quelqu'un de votre entourage qui sait programmer 
+  (afin de ne pas être bloqué sur des détails de syntaxe ou d'implémentation) 
+  alors n'hésitez pas à suivre le <a href="#parcours">parcours</a> pour s'initier à la programmation: 
+  vous allez vite épater ceux qui pensent être les seuls à savoir programmer !</p>
+
+  <p>Ces ressources ont vocation à être publiées de manière définitive sur les sites de ressources en ligne aux quels participent l'<a href="http://www-inria.fr">INRIA</a>,
+  tel que le site <a href="http://interstices.fr">)i(nterstices</a> ou <a href="http://fuscia.info">fuscia</a>. Elles resteront évidemment accessibles à partir de cette page.
+  Et . . soyons indulgents avec cette 1ère mise en forme ! Le fond a été privilégié à la forme ici, pour aller à l'essentiel.</p>
+
+  <p>Ont contribué à <c>http://javascool.gforge.inria.fr/proglet</c>:
+  <!-- Frédérique Ancel (Professeure de Physique, lycée Léonard de Vinci, Antibes), -->
+  Jean-Pierre Archambault (Professeur de mathématiques et Chargé de Mission «veille technologique»),
+  Aurélien Astroux (Professeur de Physique, lycée Léonard de Vinci, Antibes), 
+  Hamdi Ben Abdallah (Ingénieur en Informatique et Enseignant en Informatique au lycée, INRIA),
+  Emmanuel Baccelli (Chercheur en Informatique à l'INRIA),
+  <a href="http://fr.wikipedia.org/wiki/Gérard_Berry">Gérard Berry</a> (Chercheur en Informatique à l'INRIA et Professeur invité au Collège de France),
+  Sébastien Chalmeton (Mastérien en Informatique, Université de Nice Sophia-Antipolis),
+  <a href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a> (Chercheur et Professeur en Informatique, Ecole Polytechnique),
+  Laurent Mongiat (Professeur de Physique, lycée Régional de Valbonne),
+  Thierry Viéville (Chercheur en Informatique à l'INRIA),
+  Benjamin Wack (Chercheur et Professeur, à l'ENS Lyon).</p>
+
+</footnotes>
 
 </p>

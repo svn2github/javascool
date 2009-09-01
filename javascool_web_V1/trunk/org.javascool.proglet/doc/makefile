@@ -1,6 +1,6 @@
 all :
 	$(MAKE) -C .. doc
-	firefox file:`pwd`/about-all.html
+	firefox about-all.htm
 
 clean :
 	$(MAKE) -C .. clean

@@ -97,10 +97,10 @@
 
 <!-- All other allowed tags are mirrored in the output -->
 
-<xsl:template match="p|ul|ol|li|table|tr|td|span|sup|i|b|br|a|img|form|input|select|option"><xsl:text>
+<xsl:template match="p|ul|ol|li|table|tr|td|span|sup|i|b|br|a|img|form|input|select|option|hr"><xsl:text>
 </xsl:text>
 <xsl:element name="{name(.)}">
-  <xsl:for-each select="@*"><xsl:if test="name(.) != 'class' and name(.) != 'style'"><xsl:attribute name="{name(.)}"><xsl:value-of select="."/></xsl:attribute></xsl:if></xsl:for-each>
+  <xsl:for-each select="@*"><xsl:attribute name="{name(.)}"><xsl:value-of select="."/></xsl:attribute></xsl:for-each>
   <xsl:apply-templates/>
 </xsl:element>
 </xsl:template>
