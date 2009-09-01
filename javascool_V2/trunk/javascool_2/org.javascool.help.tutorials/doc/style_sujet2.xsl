@@ -14,6 +14,8 @@
   <html>
     <head>
       <link rel="stylesheet" type="text/css" href="img/style.css"/>	
+      <title>JavaScool . . and Java is so cool.</title>	  
+      <link rel="shortcut icon" href="img/icon.jpg"/>
     </head>
     <body>
       <xsl:call-template name="banner"/>

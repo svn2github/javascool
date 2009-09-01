@@ -1,5 +1,5 @@
-<p title=")i(nterstices s'ouvre vers les lycées avec Javascool, à l'initiative de l'INRIA"><table>
-<tr><td><table width="100%" border="1" bgcolor="#EEE"><tr>
+<p title=")i(nterstices s'ouvre vers les lycées avec Javascool, à l'initiative de l'INRIA."><table>
+<tr><td><table width="100%" border="1" bgcolor="#DDD"><tr>
   <td align="center" width="10%"><b><a style="text-decoration:none;" href="#quoi">Qu'est ce ?</a></b></td>
   <td align="center" width="10%"><b><a style="text-decoration:none;" href="#qui">Pour qui est-ce ?</a></b></td>
   <td align="center" width="10%"><b><a style="text-decoration:none;" href="#dwnl">Téléchargement <br/> du logiciel</a></b></td>
@@ -12,7 +12,7 @@
 
 <tr><td><hr/></td></tr>
 
-<tr><td style="background-color:#EEE"><b><a name="quoi">Qu'est ce que c'est ?</a></b>
+<tr><td style="background-color:#DDD"><b><a name="quoi">Qu'est ce que c'est ?</a></b>
 <p>Un recueil de ressources pour <i>aider les enseignants des lycées au niveau de l'enseignement de l'informatique</i> en seconde.<ol>
   <li>La démarche est expliquée dans  ce <a href="about-manifeste.htm">manifeste</a>.</li>
   <li>Une <a href="about-prg2nd.htm">analyse</a> de l'enseignement actuel de l'algorithmique au lycée en seconde, sert de cadrage à ce travail.</li>
@@ -27,7 +27,7 @@
 
 <tr><td><hr/></td></tr>
 
-<tr><td style="background-color:#EEE"><b><a name="qui">Pour qui est-ce ?</a></b> <ol>
+<tr><td style="background-color:#DDD"><b><a name="qui">Pour qui est-ce ?</a></b> <ol>
   <li>Pour les enseignants, puisque l'enseignement actuel inclut l'apprentissage de l'algorithmique au lycée en seconde 
   <a href="about-prg2nd.htm">(Option MPI et programme de Mathématiques)</a>.</li>
   <li>Pour les clubs de maths ou les autres initiatives péri-scolaires de découverte scientifique, 
@@ -39,7 +39,7 @@
 
 <tr><td><hr/></td></tr>
 
-<tr><td style="background-color:#EEE"><b><a name="polys">Polys de cours et documents de référence</a></b>: 
+<tr><td style="background-color:#DDD"><b><a name="polys">Polys de cours et documents de référence</a></b>: 
 <p>Deux textes sur les fondements de l'informatique, accessibles à un public lycéen sont disponibles ici:<ol>
   <li>Qu'est ce que l'<a href="about-information.htm">information</a> ?</li>
   <li>Les ingrédients des <a href="about-algorithm.htm">algorithmes</a> !</li>
@@ -53,7 +53,7 @@
 
 <tr><td><hr/></td></tr>
 
-<tr><td style="background-color:#EEE"><b><a name="parcours">Un parcours pour s'initier à la programmation</a></b>:
+<tr><td style="background-color:#DDD"><b><a name="parcours">Un parcours pour s'initier à la programmation</a></b>:
 <p>Ce parcours permet de s'approprier les cinq ingrédients des algorithmes (en utilisant<footnote id="1"/> la <proglet name="Konsol"/>)<ul>
   <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a>, utiliser les séquences d'instructions.</li>
   <li>Apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
@@ -65,7 +65,7 @@
 
 <tr><td><hr/></td></tr>
 
-<tr><td style="background-color:#EEE"><b><a name="exos">Exercices et applications</a></b>
+<tr><td style="background-color:#DDD"><b><a name="exos">Exercices et applications</a></b>
 <p>Quelques applications, exercices et activités:<ul>
   <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
   <li>Comment marche un <a href="sujet-appli-conva.htm">convertisseur analogique-numérique</a>.</li>
@@ -83,7 +83,7 @@
 
 <tr><td><hr/></td></tr>
 
-<tr><td style="background-color:#EEE"><b><a name="more">Créer de nouvelles activités</a></b><ol>
+<tr><td style="background-color:#DDD"><b><a name="more">Créer de nouvelles activités</a></b><ol>
 <li>Plusieurs proglets<footnote id="1"/> sont disponibles ici, pour s'initier à la programmation et créer des exercices animés et interactifs<ul>
     <li>La <proglet name="Konsol"/>.</li>
     <li>La <proglet name="Dicho"/>.</li>
@@ -104,7 +104,7 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
 
 <tr><td><hr/></td></tr>
 
-<tr><td style="background-color:#EEE"><b><a name="dwnl">Téléchargement du logiciel</a></b>
+<tr><td style="background-color:#DDD"><b><a name="dwnl">Téléchargement du logiciel</a></b>
 <p>Trois instanciations du logiciel javascool sont proposées pour travailler en classe selon la configuration informatique: <ul>
   <li><a href="http://javascool.gforge.inria.fr">Le logiciel Java'sCool dans sa forme complète</a>
     avec un éditeur coloré, des menus adaptés, un interface <a href="http://christian.rellier.free.fr/orphy/ORPHYGTS.htm">Orphy</a>, etc...
@@ -119,7 +119,7 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
 
 <tr><td><hr/></td></tr>
 
-<tr><td style="background-color:#EEE"><b><a name="contact">Nous contacter:</a></b>
+<tr><td style="background-color:#DDD"><b><a name="contact">Nous contacter:</a></b>
   <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de qq proglet" method="post" enctype="text/plain"><table align="center">
     <tr><td><select name="Le-sujet">
      <option>Commentaire général, avis, etc..</option>
