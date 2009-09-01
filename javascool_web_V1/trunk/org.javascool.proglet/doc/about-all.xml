@@ -20,8 +20,8 @@
 <p><i>Remarques:</i><p>
   <p>Site web ``provisoire´´<footnote id="3"/>: Cette mise en ligne permet d'avoir ces documents disponibles dès cette rentrée scolaire 2009.</p>
   <p>N'hésitez pas à nous soummettre vos <a href="#contact">avis et critiques</a>, nous en profiterons tous:!.</p>
-  <p>Ces éléments ont a été conçus par des chercheurs et enseignants de l'INRIA<footnote id="4"/> avec des enseignants<footnote id="4"/> de lycées, 
-   et utilisés ``pour de vrai´´ en classe: c'est ce qui fait leur valeur.</p>
+  <p>Ces éléments ont a été conçus par des chercheurs<footnote id="4"/> et enseignants du supérieur et des lycées<footnote id="4"/>,
+  et sont utilisés ``pour de vrai´´ en classe: c'est ce qui fait leur valeur.</p>
 </p></p>
 </td></tr>
 
@@ -30,7 +30,8 @@
 <tr><td style="background-color:#EEE"><b><a name="qui">Pour qui est-ce ?</a></b> <ol>
   <li>Pour les enseignants, puisque l'enseignement actuel inclut l'apprentissage de l'algorithmique au lycée en seconde 
   <a href="about-prg2nd.htm">(Option MPI et programme de Mathématiques)</a>.</li>
-  <li>Pour les clubs de maths ou les autres initiatives péris-scolaires de découverte scientifique.</li>
+  <li>Pour les clubs de maths ou les autres initiatives péri-scolaires de découverte scientifique, 
+  ainsi que pour faire des <a href="http://www-sop.inria.fr/science-participative/index.php?page=quelques-t-p-e">TPE</a>.</li>
 </ol>
 <p><i>Remarque:</i> Ces documents ne sont pas conçus pour apprendre la programmation en ``autodidacte´´<footnote id="2"/>.</p>
 </td></tr>
@@ -46,14 +47,14 @@
   <li>Sur les <a href="http://interstices.info/jcms/c_5389/algorithmes">algorithmes</a>.</li>
   <li>Sur <a href="http://interstices.info/turing">Alan Turing</a>, pionnier de l'informatique et 
   sur la différence entre <a href="http://interstices.info/calculer-penser">calculer (avec un ordinateur) et penser (avec un cerveau)</a>.</li>
-  <li>Mais aussi . . sur la <a href="http://interstices.info/crypto-chiffre-lettres">cryptographie</a></li>
-</ul>etc..</p>
+  <li>Mais aussi . . sur la <a href="http://interstices.info/crypto-chiffre-lettres">cryptographie</a>, etc..</li>
+</ul></p>
 </td></tr>
 
 <tr><td><hr/></td></tr>
 
 <tr><td style="background-color:#EEE"><b><a name="parcours">Un parcours pour s'initier à la programmation</a></b>:
-<p>Ce parcours permet de s'approprier les cinq ingrédients des algorithmes (utilisant<footnote id="1"/> la <proglet name="Konsol"/>)<ul>
+<p>Ce parcours permet de s'approprier les cinq ingrédients des algorithmes (en utilisant<footnote id="1"/> la <proglet name="Konsol"/>)<ul>
   <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a>, utiliser les séquences d'instructions.</li>
   <li>Apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
   <li>Découvrir l'instruction <a href="sujet-about-if.htm">conditionnelle</a>.</li>
@@ -68,7 +69,7 @@
 <p>Quelques applications, exercices et activités:<ul>
   <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
   <li>Comment marche un <a href="sujet-appli-conva.htm">convertisseur analogique-numérique</a>.</li>
-  <li><i> .. cette liste ayant vocation à s'étoffer au cours de l'année scolaire 2009-2010</i>. Sont en préparation (pour mi-septembre 2009):<ul>
+  <li><i> .. cette liste ayant vocation à s'étoffer au cours de l'année scolaire 2009-2010</i>. Sont en préparation:<ul>
     <li>Un mécanisme de tri dichotomique.</li>
     <li>Jouons avec les pixels d'une image !</li>
     <li>Peut-on craquer un code de carte bleue ?</li>
@@ -138,7 +139,8 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
   <p>Une <c>proglet</c> est une petite <a href="http://fr.wikipedia.org/wiki/Applet">applette</a> qui permet de s'initier à la programmation de manière ludique,
   puisque les petits programmes crées animent un élément visuel ou sonore, à la fois pour mieux comprendre ces objets numériques et pour offrir une démarche
   expérimentale concrète, vers la compréhension des notions abstraites qui forment le fondement des sciences de l'information. 
-  Ces <c>proglets</c> sont des exemples de «<c>gamelet</c>» (c'est à dire de grains pédagogiques interactifs pour un apprentissage ludique d'une notion).</p>
+  Ces <c>proglets</c> sont des exemples de «<c>gamelet</c>» (c'est à dire de grains pédagogiques interactifs pour un apprentissage ludique d'une notion), 
+  telle que définie par <a href="http://fuscia.info">fuscia</a></p>
 
   <p>Ces documents ne sont pas conçus pour apprendre la programmation en ``autodidacte´´ . .  
   mais si vous le souhaitez et si vous pouvez dialoguer avec quelqu'un de votre entourage qui sait programmer 
