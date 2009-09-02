@@ -13,9 +13,9 @@
 <tr><td><hr/></td></tr>
 
 <tr><td style="background-color:#DDD"><b><a name="quoi">Qu'est ce que c'est ?</a></b>
-<p>Un recueil de ressources pour <i>aider les enseignants des lycées au niveau de l'enseignement de l'informatique</i> en seconde.<ol>
+<p>Un recueil de ressources pour <i>aider les professeur(e)s des lycées au niveau de l'enseignement de l'informatique</i> en seconde.<ol>
   <li>La démarche est expliquée dans  ce <a href="about-manifeste.htm">manifeste</a>.</li>
-  <li>Une <a href="about-prg2nd.htm">analyse</a> de l'enseignement actuel de l'algorithmique au lycée en seconde, sert de cadrage à ce travail.</li>
+  <li>Une <a href="about-prg2nd.htm">analyse</a> de l'enseignement actuel de l'algorithmique au lycée en seconde sert de cadrage à ce travail.</li>
 </ol></p>
 <p><i>Remarques:</i><p>
   <p>Site web ``provisoire´´<footnote id="3"/>: Cette mise en ligne permet d'avoir ces documents disponibles dès cette rentrée scolaire 2009.</p>
@@ -140,7 +140,7 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
   puisque les petits programmes crées animent un élément visuel ou sonore, à la fois pour mieux comprendre ces objets numériques et pour offrir une démarche
   expérimentale concrète, vers la compréhension des notions abstraites qui forment le fondement des sciences de l'information. 
   Ces <c>proglets</c> sont des exemples de «<c>gamelet</c>» (c'est à dire de grains pédagogiques interactifs pour un apprentissage ludique d'une notion), 
-  telle que définie par <a href="http://fuscia.info">fuscia</a></p>
+  telle que définie par <a href="http://fuscia.info">fuscia</a>.</p>
 
   <p>Ces documents ne sont pas conçus pour apprendre la programmation en ``autodidacte´´ . .  
   mais si vous le souhaitez et si vous pouvez dialoguer avec quelqu'un de votre entourage qui sait programmer 
@@ -149,7 +149,8 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
   vous allez vite épater ceux qui pensent être les seuls à savoir programmer !</p>
 
   <p>Ces ressources ont vocation à être publiées de manière définitive sur les sites de ressources en ligne aux quels participent l'<a href="http://www-inria.fr">INRIA</a>,
-  tel que le site <a href="http://interstices.fr">)i(nterstices</a> ou <a href="http://fuscia.info">fuscia</a>. Elles resteront évidemment accessibles à partir de cette page.
+  tel que le site <a href="http://interstices.fr">)i(nterstices</a> ou <a href="http://fuscia.info">fuscia</a>, créés à l'initiative de l'<a href="http://www-inria.fr">INRIA</a>. 
+  Elles resteront évidemment accessibles à partir de cette page.
   Et . . soyons indulgents avec cette 1ère mise en forme ! Le fond a été privilégié à la forme ici, pour aller à l'essentiel.</p>
 
   <p>Ont contribué à <c>http://javascool.gforge.inria.fr/proglet</c>:
