@@ -1,0 +1,34 @@
+<p title="A propos de logiciels libres pour aider les enseignants au lycée">
+  Bien entendu, <a href="about-resume.htm"><c>JavaScool</c></a> n'est pas 
+  le seul outil proposé pour les professeur(e)s des lycées au niveau de l'enseignement de l'algorithmique, 
+  donc de <i>l'informatique</i> au lycée. Voici quelques autres très beaux exemples que nous vous recommendons tout autant, selon les besoins et les aspirations:<ul>
+
+  <li><p title="Contenus culturels"> Le site <a href="http://interstices.info">)i(nterstices</a> offre de nombreux contenus culturels sur ces sujets.<br/></p></li>
+
+  <li><p  title="Simulation et objets animés"> Découvrir l'ingénerie numérique: <a href="http://www-sop.inria.fr/culture_scient/poster-mobinet.pdf">MobiNet</a>,
+  est un logiciel et un ensemble de ressources permettant de programmer le comportement d'objets mobiles animés à l'aide d'une interface et d'un langage
+  intuitifs. Totalement interactif, facilitant apprentissage et mise au point des mobiles, il est conçu pour fonctionner aussi en réseau.
+  C'est un outil idéal pour permettre à un chercheur de venir montrer en lasse quels mécanismes permettent de simuler les phénomènes
+  physiques qui gouvernent les objets que développe les ingénieurs. Un moyen de faire des maquettes numériques des ces objets avant de construire les
+  objets réels.<br/></p></li>
+
+  <li><p  title="Calcul numérique"> Si Scilab est un logiciel de calcul scientifique qui peut aussi bien être utilisé comme une super calculatrice graphique ou 
+  comme un outil complet pour résoudre des problèmes mathématiques, avec sa version ``<a href="http://www.scilab.org/lycee">Scilab pour les lycéen(ne)s</a>´´ 
+  une ressource libre et gratuite est offerte à la fois au professeur pour illustrer son cours et à l'élève en travaux dirigés comme en travail personnel, 
+  un grand nombre de contenus étant proposés sur le site. 
+  Par exemple, en lycée technique, il est utilisé pour la <a href="http://www-sop.inria.fr/culture_scient/poster-rdmschool.pdf">simulation
+  et optimisation d'un pont en fil de fer et en nylon</a>, (simulation de calculs mécaniques, logiciels numériques intégrés, ..) avec <a
+  href="http://rdmschool.gforge.inria.fr">RdmSchool</a>.<br/></p></li>
+
+  <li><p title="Calcul symbolique"> Le logiciel <a href="http://www-fourier.ujf-grenoble.fr/%7Eparisse/giac_fr.html">Giac/Xcas</a> est un couteau suisse pour les mathématiques
+  en lycée qui permet de faire du calcul formel (c'est à dire avec des symboles, et on pas simplement des nombres), des représentations
+  graphiques dans le plan ou l'espace, de la géométrie dynamique (dans le plan ou dans l'espace), du tableur, des statistiques et de la programmation. 
+  Très utilisé, il est donc accompagné d'un grand nombre d'<a href="http://www-fourier.ujf-grenoble.fr/%7Eparisse/giac/doc/fr/casexo/casexo.html">activités
+  pédagogiques</a> prêtes à être utilisées.<br/></p></li>
+
+</ul>
+
+  Voir aussi : <a href="http://linuxfr.org/2009/06/26/25652.html">A propos des logiciels libres dans les programmes de mathématiques du lycée.</a>
+
+</p>
+
