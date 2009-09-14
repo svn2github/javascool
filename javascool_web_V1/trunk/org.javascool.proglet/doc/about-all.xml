@@ -154,25 +154,28 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
   Elles resteront évidemment accessibles à partir de cette page.
   Et . . soyons indulgents avec cette 1ère mise en forme ! Le fond a été privilégié à la forme ici, pour aller à l'essentiel.</p>
 
-  <p>Ont contribué à <c>http://javascool.gforge.inria.fr/proglet</c>: <table align="center" width="80%">
+  <p>Ont contribué à <c>http://javascool.gforge.inria.fr/proglet</c>: <table align="center" width="90%">
   <tr><td>
-  <!-- Frédérique Ancel (Professeure de Physique, lycée Léonard de Vinci, Antibes), -->
-  Jean-Pierre Archambault (Professeur de mathématiques et Chargé de Mission «veille technologique»),
-  Aurélien Astroux (Professeur de Physique, lycée Léonard de Vinci, Antibes), 
-  Hamdi Ben Abdallah (Ingénieur en Informatique et Enseignant en Informatique au lycée, INRIA),
-  Emmanuel Baccelli (Chercheur en Informatique à l'INRIA),
-  <a href="http://fr.wikipedia.org/wiki/Gérard_Berry">Gérard Berry</a> (Chercheur en Informatique à l'INRIA et Professeur invité au Collège de France),
-  Sébastien Chalmeton (Mastérien en Informatique, Université de Nice Sophia-Antipolis),
-  <a href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a> (Chercheur et Professeur en Informatique, Ecole Polytechnique),
-  Laurent Mongiat (Professeur de Physique, lycée Régional de Valbonne),
-  Thierry Viéville (Chercheur en Informatique à l'INRIA),
-  Benjamin Wack (Professeur de mathématiques, collège Jean Prévost, Villard-de-Lans).
+  <!-- <i>Frédérique Ancel</i> (Professeure de Physique, lycée Léonard de Vinci, Antibes), -->
+  <i>Jean-Pierre Archambault</i> (Professeur de mathématiques et Chargé de Mission «veille technologique»),
+  <i>Aurélien Astroux</i> (Professeur de Physique, lycée Léonard de Vinci, Antibes), 
+  <i>Hamdi Ben Abdallah</i> (Ingénieur en Informatique et Enseignant en Informatique au lycée, INRIA),
+  <i>Emmanuel Baccelli</i> (Chercheur en Informatique à l'INRIA),
+  <i><a href="http://fr.wikipedia.org/wiki/Gérard_Berry">Gérard Berry</a></i> (Chercheur en Informatique à l'INRIA et Professeur invité au Collège de France),
+  <i>Sébastien Chalmeton</i> (Mastérien en Informatique, Université de Nice Sophia-Antipolis),
+  <i><a href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a></i> (Chercheur et Professeur en Informatique, Ecole Polytechnique),
+  <i>Laurent Mongiat</i> (Professeur de Physique, lycée Régional de Valbonne),
+  <i>Thierry Viéville</i> (Chercheur en Informatique à l'INRIA),
+  <i>Benjamin Wack</i> (Professeur de mathématiques, collège Jean Prévost, Villard-de-Lans).
   </td></tr><tr><td>
-  Le travail pédagogique initial a été réalisé aux lycées <a href="http://www.ac-nice.fr/lycvalbonne">Régional de Valbonne</a>, 
-  puis <a href="http://leonarddevinci.net">Léonard de Vinci d'Antibes.</a>
+  Le travail pédagogique initial a été réalisé aux lycées 
+  <i><a href="http://www.ac-nice.fr/lycvalbonne">Régional de Valbonne</a></i>, puis 
+  <i><a href="http://leonarddevinci.net">Léonard de Vinci d'Antibes.</a></i>
   </td></tr><tr><td>
-  Le développement logiciel et documentaire est un travail collaboratiif entre l'équipe <a href="http://interstices.info">d')i(nterstices</a>,
-  l'<a href="http://deptinfo.unice.fr">Université de Nice - Sophia Antipolis</a> et l'<a href="http://www.inria.fr/sophia">INRIA</a>. 
+  Le développement logiciel et documentaire est un travail collaboratiif entre l'équipe 
+  <i><a href="http://interstices.info">d')i(nterstices</a></i>,
+  l'<i><a href="http://deptinfo.unice.fr">Université de Nice - Sophia Antipolis</a></i> et 
+  l'<i><a href="http://www.inria.fr/sophia">INRIA</a></i>. 
   </td></tr>
  </table></p>
 </footnotes>
