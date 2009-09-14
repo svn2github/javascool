@@ -120,16 +120,45 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
 
 <tr><td><hr/></td></tr>
 
-<tr><td style="background-color:#DDD"><b><a name="contact">Nous contacter:</a></b>
-  <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de qq proglet" method="post" enctype="text/plain"><table align="center">
+<tr><td style="background-color:#DDD"><b><a name="contact">Nous contacter:</a></b><ul>
+
+<li>A votre écoute: <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de qq proglet" method="post" enctype="text/plain"><table align="center">
     <tr><td><select name="Le-sujet">
      <option>Commentaire général, avis, etc..</option>
      <option>Demande d'aide ou de support, etc..</option>
      <option>Signaler un problème ou rapporter une erreur</option>
      <option>Demander ou proposer une nouvelle fonctionnalité</option>
    </select><input type="submit" value="[Créer le message]" /><input type="hidden" name="Mon-message"/></td></tr>
- </table></form>
-</td></tr>
+ </table></form><hr/></li>
+
+ <li>Si le logiciel ne marche pas chez vous, pour mieux vous aider, il faut nous préciser: 
+  <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de proglet: pb logiciel !" method="post" enctype="text/plain"><table align="center">
+  <tr><td>La forme du logiciel utilisée:</td><td><select name="logiciel">
+      <option>------------------------------------------------------</option>
+      <option>Java'sCool dans sa forme complète</option>
+      <option>Le web-service http://facets.inria.fr/javascool avec firefox</option>
+      <option>Le web-service http://facets.inria.fr/javascool avec internet-explorer de microsoft</option>
+      <option>Le web-service http://facets.inria.fr/javascool avec  . . (préciser dans le mail)</option>
+      <option>Le programme java wproglet.jar en local sur la machine</option>
+    </select></td></tr>
+    <tr><td>Le système utilisé:</td><td><select name="systeme">
+      <option>------------------------------------------------------</option>
+      <option>Linux</option>
+      <option>Mac Os X</option>
+      <option>Windows XP</option>
+      <option>Windows Vista</option>
+      <option>autres . . (préciser dans le mail)</option>
+    </select></td></tr>
+    <tr><td>Votre version de java:</td><td><select name="systeme">
+      <option>------------------------------------------------------</option>
+      <option>Java 1.5 (préciser si possible la version: ex 1.5.13)</option>
+      <option>Java 1.6 (préciser si possible la version: ex 1.6.0)</option>
+      <option>Je ne sais pas</option>
+    </select></td></tr>
+    <tr><td></td><td><input type="submit" value="[Créer le message]" /><input type="hidden" name="Mon-message"/></td></tr>
+  </table></form><hr/></li>
+
+</ul></td></tr>
 
 <tr><td><hr/></td></tr>
 
@@ -150,7 +179,8 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
   vous allez vite épater ceux qui pensent être les seuls à savoir programmer !</p>
 
   <p>Ces ressources ont vocation à être publiées de manière définitive sur les sites de ressources en ligne aux quels participent l'<a href="http://www-inria.fr">INRIA</a>,
-  tel que le site <a href="http://interstices.fr">)i(nterstices</a> ou <a href="http://fuscia.info">fuscia</a>, créés à l'initiative de l'<a href="http://www-inria.fr">INRIA</a>. 
+  tel que le site <a href="http://interstices.fr">)i(nterstices</a> ou <a href="http://fuscia.info">fuscia</a>, 
+  créés à l'initiative de l'<a href="http://www-inria.fr">INRIA</a>. 
   Elles resteront évidemment accessibles à partir de cette page.
   Et . . soyons indulgents avec cette 1ère mise en forme ! Le fond a été privilégié à la forme ici, pour aller à l'essentiel.</p>
 
