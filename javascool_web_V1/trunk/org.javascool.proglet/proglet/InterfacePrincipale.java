@@ -535,7 +535,7 @@ public class InterfacePrincipale extends JApplet {
       } else {
 	// Compiles and load via a web service
 	String body = URLEncoder.encode(loadString(path+".java"), "UTF-8");
-	getAppletContext().showDocument(new URL("http://facets.inria.fr/javascool/index.php?id="+(index_id++)+"prog="+proglet+"&main="+main+"&path="+path+"&body="+body), "_self");
+	getAppletContext().showDocument(new URL("http://facets.inria.fr/javascool/index.php?id="+(index_id++)+"&prog="+proglet+"&main="+main+"&path="+path+"&body="+body), "_self");
       }
     } else
       printConsole("Impossible de compiler avant de définir/sauvegarder une programme !", 'b');
