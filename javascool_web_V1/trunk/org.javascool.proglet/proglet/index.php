@@ -18,7 +18,8 @@ echo '<table><tr><td valign="top"><a href="http://javascool.gforge.inria.fr/prog
   <param name="proglet" value="'.$prog.'"/>
   <param name="edit" value="true"/>'.
   (strlen($path) > 0 ? '  <param name="path" value="'.$path.'"/>' : '').
-'</applet></td><td width="570" height="730" valign="top" align="center">';
+'</applet></td><td width="570" height="730" valign="top" align="center">
+';
 
 // Cleanup on request
 if (isset($_REQUEST['clean-up'])) shell_exec("sh -c '/bin/rm -rf ./tmp-*'");
@@ -42,7 +43,8 @@ if(strlen($main) > 0 && strlen($body) > 0) {
   }
   // Creates the local java copy
   if(strlen($body) > 10000) {
-    echo'<div><b>Le programme '.$main.' de taille '.strlen($body).'octets est bien trop long !:</b></div><div align="left" style="background:#DDDDDD;"><pre>Impossible de le compiler ici !</pre></div>';  
+    echo'<div><b>Le programme '.$main.' de taille '.strlen($body).'octets est bien trop long !:</b></div><div align="left" style="background:#DDDDDD;"><pre>Impossible de le compiler ici !</pre></div>'; 
+    exit(0);
   }
   file_put_contents($dir."/".$main.".java",$body); chmod($dir."/".$main.".java", 0777);
   // Runs the server's compiler
