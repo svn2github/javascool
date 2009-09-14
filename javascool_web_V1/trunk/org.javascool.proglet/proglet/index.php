@@ -11,14 +11,13 @@ $main = isset($_REQUEST['main']) ? $_REQUEST['main'] : "";       // Java class n
 $path = isset($_REQUEST['path']) ? $_REQUEST['path'] : "";       // Java source file path
 $body = isset($_REQUEST['body']) ? $_REQUEST['body'] : "";       // Java source file body
 
-// Patch pour forcer un appel avec un auyre URL
+// Patch pour forcer un appel avec un autre URL
 if (!isset($_REQUEST['id'])) {
   $error_handler = set_error_handler(create_function('$errno, $errstr', 'return true;')); $date = getdate(); $date = $date[0]; set_error_handler($error_handler);
-  header("Location: ?id=$date&prog=$prog&main=$main&path=$path&body=$body");
-  exit();
+  header("Location: ?id=$date&prog=$prog&main=$main&path=$path&body=".rawurlencode($body)."");
 }
 
-echo '<html><head></head><body>';
+echo '<html><head><meta http-equiv="pragma" content="no-cache"/></head><body>';
 //in case of debug// print_r($_REQUEST);
 echo '<table><tr><td valign="top"><a href="http://javascool.gforge.inria.fr/proglet"><img src="home.png"/></a></td>
 <td width="570" height="730" valign="top" align="center"><applet code="proglet.InterfacePrincipale.class" archive="proglet.jar" width="560" height="720">
