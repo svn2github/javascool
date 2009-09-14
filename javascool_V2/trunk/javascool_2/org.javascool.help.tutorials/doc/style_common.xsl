@@ -6,7 +6,7 @@
     <td width="33%" style="border:0;padding:0;margin:0">
       <a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr"><img height="36" width="150" src="img/logo-javascool.jpg"/></a></td>
     <td width="33%" align="center" style="border:0;padding:0;margin:0">
-      <!--a style="padding:0;margin:0;text-decoration:none" href="http://interstices.fr"><img height="36" src="img/logo-interstices.jpg"/></a--></td>
+      <a style="padding:0;margin:0;text-decoration:none" href="about-all.htm#4"><img height="36" src="img/logo-lycees.jpg"/></a></td>
     <td width="33%" align="right" style="border:0;padding:0;margin:0">
       <a style="padding:0;margin:0;text-decoration:none" href="http://www.inria.fr"><img height="36" src="img/logo-inria.jpg"/></a></td>
   </tr></table>
