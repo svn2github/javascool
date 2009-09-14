@@ -11,6 +11,13 @@ $main = isset($_REQUEST['main']) ? $_REQUEST['main'] : "";       // Java class n
 $path = isset($_REQUEST['path']) ? $_REQUEST['path'] : "";       // Java source file path
 $body = isset($_REQUEST['body']) ? $_REQUEST['body'] : "";       // Java source file body
 
+// Patch pour forcer un appel avec un auyre URL
+if (!isset($_REQUEST['id'])) {
+  $error_handler = set_error_handler(create_function('$errno, $errstr', 'return true;')); $date = getdate(); $date = $date[0]; set_error_handler($error_handler);
+  header("Location: ?id=$date&prog=$prog&main=$main&path=$path&body=$body");
+  exit();
+}
+
 echo '<html><head></head><body>';
 //in case of debug// print_r($_REQUEST);
 echo '<table><tr><td valign="top"><a href="http://javascool.gforge.inria.fr/proglet"><img src="home.png"/></a></td>
