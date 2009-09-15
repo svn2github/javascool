@@ -11,13 +11,9 @@ $main = isset($_REQUEST['main']) ? $_REQUEST['main'] : "";       // Java class n
 $path = isset($_REQUEST['path']) ? $_REQUEST['path'] : "";       // Java source file path
 $body = isset($_REQUEST['body']) ? $_REQUEST['body'] : "";       // Java source file body
 
-// Patch pour forcer un appel avec un autre URL
-if (!isset($_REQUEST['id'])) {
-  $error_handler = set_error_handler(create_function('$errno, $errstr', 'return true;')); $date = getdate(); $date = $date[0]; set_error_handler($error_handler);
-  header("Location: ?id=$date&prog=$prog&main=$main&path=$path&body=".rawurlencode($body)."");
-}
-
-echo '<html><head><meta http-equiv="pragma" content="no-cache"/></head><body>';
+echo '<html><head>
+ <meta http-equiv="pragma" content="no-cache"/>
+</head><body>';
 //in case of debug// print_r($_REQUEST);
 echo '<table><tr><td valign="top"><a href="http://javascool.gforge.inria.fr/proglet"><img src="home.png"/></a></td>
 <td width="570" height="730" valign="top" align="center"><applet code="proglet.InterfacePrincipale.class" archive="proglet.jar" width="560" height="720">
@@ -28,7 +24,7 @@ echo '<table><tr><td valign="top"><a href="http://javascool.gforge.inria.fr/prog
 ';
 
 // Cleanup on request
-if (isset($_REQUEST['clean-up'])) shell_exec("sh -c '/bin/rm -rf ./tmp-*'");
+if (isset($_REQUEST['kezaquo']) && $_REQUEST['kezaquo'] == 'nettoie-tout') shell_exec("sh -c '/bin/rm -rf ./tmp-*'");
 
 // Log the access
 {
@@ -43,18 +39,19 @@ if(strlen($main) > 0 && strlen($body) > 0) {
   $dir = "tmp-".$_SERVER['REMOTE_ADDR']; mkdir($dir, 0777);
   // Changes the java name at each run in order to reload a fresh class event with older java's versions
   {
-    for($nn = 0; file_exists($dir."/".$main."_".$nn.".java") && $nn < 10000; $nn++);
-    $body =  ereg_replace("public class ".$main, "public class ".$main."_".$nn, $body);
-    $main = $main."_".$nn;
+    for($nn = 0; file_exists($dir."/".$main."".$nn.".java") && $nn < 10000; $nn++);
+    $body =  ereg_replace("public class ".$main, "public class ".$main."".$nn, $body);
+    $main = $main."".$nn;
   }
   // Creates the local java copy
   if(strlen($body) > 10000) {
-    echo'<div><b>Le programme '.$main.' de taille '.strlen($body).'octets est bien trop long !:</b></div><div align="left" style="background:#DDDDDD;"><pre>Impossible de le compiler ici !</pre></div>'; 
+    echo'<div><b>Le programme '.$main.' de taille '.strlen($body).'octets est bien trop long !:</b></div><div align="left" style="background:#DDDDDD;">
+      <pre>Impossible de le compiler ici !</pre></div>'; 
     exit(0);
   }
   file_put_contents($dir."/".$main.".java",$body); chmod($dir."/".$main.".java", 0777);
   // Runs the server's compiler
-  unlink($dir."/".$main.".class");
+  shell_exec("/bin/rm -f ".$dir."/*.class");
   $comp = ereg_replace("$dir"."/", "", trim(shell_exec("sh -c 'javac -cp proglet.jar ".$dir."/".$main.".java 2>&1'")));
   chmod($dir."/".$main.".class", 0777);
 
@@ -63,6 +60,7 @@ if(strlen($main) > 0 && strlen($body) > 0) {
     echo'<div><b>Le programme '.$main.' a des erreurs de compilation:</b></div><div align="left" style="background:#DDDDDD;"><pre>'.$comp.'</pre></div>';  
   } else { 
     // Applet execution
+    echo '<div align="right">$main</div>'; 
     echo '<applet code="'.$main.'.class" codebase="'.$dir.'" archive="../proglet.jar" width="560" height="720"><param name="proglet" value="'.$prog.'"/></applet>';
   }
 } else {
