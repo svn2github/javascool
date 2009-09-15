@@ -38,6 +38,7 @@
 #  - Voir le pb du setLocation() en mode standalone qui affiche mal les deux fenetres edit et run
 #  - Voir pb des droits qd on rsync sur javascool
 #  - Voir comment remplacer l'usage de saxon:line-number() dans style_about2.xsl pour mise en ligne directe du xml/xsl
+#  - Utiliser la methode POST dans InterfacePrincipale pour appeler http://facets.inria.fr/javascool
 
 # Nouvelles fonctionnalités à développer:
 #  - Refaire des tests sous windows/macos/etc..

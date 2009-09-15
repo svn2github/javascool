@@ -37,7 +37,6 @@
 <p><i>Remarque:</i> Ces documents ne sont pas conçus pour apprendre la programmation en ``autodidacte´´<footnote id="2"/>.</p>
 </td></tr>
 
-
 <tr><td><hr/></td></tr>
 
 <tr><td style="background-color:#DDD"><b><a name="polys">Polys de cours et documents de référence</a></b>: 
@@ -131,7 +130,7 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
    </select><input type="submit" value="[Créer le message]" /><input type="hidden" name="Mon-message"/></td></tr>
  </table></form><hr/></li>
 
- <li>Si le logiciel ne marche pas chez vous, pour mieux vous aider, il faut nous préciser: 
+ <li>Si le logiciel ne marche pas chez vous, pour mieux vous aider, il est utile de nous préciser: 
   <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de proglet: pb logiciel !" method="post" enctype="text/plain"><table align="center">
   <tr><td>La forme du logiciel utilisée:</td><td><select name="logiciel">
       <option>------------------------------------------------------</option>
@@ -155,7 +154,7 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
       <option>Java 1.6 (préciser si possible la version: ex 1.6.0)</option>
       <option>Je ne sais pas</option>
     </select></td></tr>
-    <tr><td></td><td><input type="submit" value="[Créer le message]" /><input type="hidden" name="Mon-message"/></td></tr>
+    <tr><td></td><td> <input type="submit" value="[Créer le message]" /><input type="hidden" name="Mon-message"/></td></tr>
   </table></form><hr/></li>
 
 </ul></td></tr>
