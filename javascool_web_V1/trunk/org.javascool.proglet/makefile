@@ -30,7 +30,6 @@
 
 # Travail de Thierry en cours:
 # - Ajout les sujets annoncés en-cours etc...
-# - Voir le 27, ok Gilles et soumission à )i( ; comm a animatestroumpf et infolycee + lycee-inria + yannick + AurélienLaurents, avec cc rev-com/dir-sophia.
 
 # Détails d'implémentation à revoir:
 #  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.

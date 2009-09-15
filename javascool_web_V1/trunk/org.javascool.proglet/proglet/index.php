@@ -39,9 +39,11 @@ if(strlen($main) > 0 && strlen($body) > 0) {
   $dir = "tmp-".$_SERVER['REMOTE_ADDR']; mkdir($dir, 0777);
   // Changes the java name at each run in order to reload a fresh class event with older java's versions
   {
-    for($nn = 0; file_exists($dir."/".$main."".$nn.".java") && $nn < 10000; $nn++);
-    $body =  ereg_replace("public class ".$main, "public class ".$main."".$nn, $body);
-    $main = $main."".$nn;
+    for($nn = 0; file_exists($dir."/".($main_nn = $main."_".$nn).".java") && $nn < 10000; $nn++);
+    $body =  ereg_replace("public class ".$main, "public class ".$main_nn, 
+	     ereg_replace("ProgletRunnable", "ProgletRunnable_$nn", 
+			  $body));
+    $main = $main_nn;
   }
   // Creates the local java copy
   if(strlen($body) > 10000) {
@@ -60,7 +62,7 @@ if(strlen($main) > 0 && strlen($body) > 0) {
     echo'<div><b>Le programme '.$main.' a des erreurs de compilation:</b></div><div align="left" style="background:#DDDDDD;"><pre>'.$comp.'</pre></div>';  
   } else { 
     // Applet execution
-    echo '<div align="right">$main</div>'; 
+    echo '<div align="right">'.$main.'</div>'; 
     echo '<applet code="'.$main.'.class" codebase="'.$dir.'" archive="../proglet.jar" width="560" height="720"><param name="proglet" value="'.$prog.'"/></applet>';
   }
 } else {
