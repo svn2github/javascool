@@ -39,19 +39,19 @@ public class Translator { private Translator() { }
       // Imports proglet's static methods
       out.print("import static proglet.Macros.*;");
       out.print("import static proglet."+proglet+".*;");
-      // Declare the proglet's core as a Runnable
-      out.print("class ProgletRunnable implements Runnable {");
+      // Declares the proglet's core as a Runnable in the Applet
+      out.print("public class "+main+ " extends proglet.InterfacePrincipale {");
+      out.print("  private static class ProgletRunnable implements Runnable {");
+      // Copies the user's code
       for(String line; (line = in.readLine()) != null; ) {
 	out.println(translateOnce(line));
       }
-      // Tails the runnable
-      out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
-      out.println("  public void run() { main(); }");
-      out.println("}");
-      // Encapsulates this runnable in the applet
-      out.print("public class "+main+ " extends proglet.InterfacePrincipale {");
-      out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
-      out.print("  { runnable = new ProgletRunnable(); }");
+      // Tails the runnable and the applet
+      out.println("    private static final long serialVersionUID = "+ (uid++) + "L;");
+      out.println("    public void run() { main(); }");
+      out.println("  }");
+      out.println("  private static final long serialVersionUID = "+ (uid++) + "L;");
+      out.println("  { runnable = new ProgletRunnable(); }");
       out.println("}");
     }
     in.close();
@@ -62,7 +62,7 @@ public class Translator { private Translator() { }
   private static String translateOnce(String line) {
     // Translates the Synthe proglet TONE macro
     line = line.replaceFirst("TONE:(.*)", "proglet.Synthe.tone = new proglet.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.Synthe.set(\"16 a\");");
-    return line;
+    return "    "+line;
   }
 }
 

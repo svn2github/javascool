@@ -512,8 +512,12 @@ public class InterfacePrincipale extends JApplet {
   }
 
   private void doSave(String pFile) throws IOException {
+    // Adds a newline at line 1 if not yet done to avoid compilation errors mixed with header 
+    String text = "\n"+getJProgramEditorPane().getText().trim()+"\n";
+    getJProgramEditorPane().setText(text);
+    // Saves in file
     BufferedWriter out = new BufferedWriter(new FileWriter(pFile));
-    out.write(getJProgramEditorPane().getText()); 
+    out.write(text); 
     out.close(); 
     setMainFile(pFile);
     printConsole("Le fichier "+(new File(pFile).getName())+" est sauvegardé", 'i');
