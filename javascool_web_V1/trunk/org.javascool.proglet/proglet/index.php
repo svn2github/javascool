@@ -60,7 +60,6 @@ if(strlen($main) > 0 && strlen($body) > 0) {
     echo'<div><b>Le programme '.$main.' a des erreurs de compilation:</b></div><div align="left" style="background:#DDDDDD;"><pre>'.$comp.'</pre></div>';  
   } else { 
     // Applet execution
-    echo '<div align="right">'.$main.'</div>'; 
     echo '<applet code="'.$main.'.class" codebase="'.$dir.'" archive="../proglet.jar" width="560" height="720"><param name="proglet" value="'.$prog.'"/></applet>';
   }
 } else {
