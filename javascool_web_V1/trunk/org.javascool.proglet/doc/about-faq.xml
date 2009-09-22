@@ -1,0 +1,62 @@
+<p title = "La foire aux questions">
+ Vous nous avez posé des questions à propos de <javascool/>, les voici avec nos meilleures réponses:
+ 
+<p title="A propos de l'enseignement de l'informatique ?"><hr/>
+
+  <p title="Quels sont les liens avec les cours de Gérard Berry sur le monde numérique ?">
+    Ils ont multiples: <a href="http://fr.wikipedia.org/wiki/Gérard_Berry">Gérard Berry</a> avec <a href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a>
+    sont des initiateurs (et de bienveillants conseillers) des contenus disponibles sur <javascool/>, 
+    tout particulièrement sur ce qu'est l'<a href="about-information.htm">information</a> et sur les ingrédients des <a href="about-algorithm.htm">algorithmes</a>.
+    <p>Une très intéressante <a href="rtsp://stream-serv.inrialpes.fr/Roc/SeminaireInformatiqueObjetsNumeriques/G_Berry.rm">présentation vidéo</a> 
+    de <a href="http://fr.wikipedia.org/wiki/Gérard_Berry">Gérard Berry</a>, est disponible, 
+    ainsi que son cours au <a href="http://www.college-de-france.fr/default/EN/all/inn_tec2007">Collège de France</a> 
+    (<a href="http://www.college-de-france.fr/default/EN/all/inn_tec2007/lecon_inaugurale___1.jsp">vidéo</a>, 
+    <a href="http://www.college-de-france.fr/audio/berry/berry-20080117.mp3">audio</a>
+    <a href="http://www.college-de-france.fr/media/inn_tec2007/UPL13472_Le_on_inaugurale_G_rard_Berry.pdf">support visuel </a>).</p>
+    <p>De même <a href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a> fait une 
+    <a href="rtsp://stream-serv.inrialpes.fr/Roc/SeminaireInformatiqueObjetsNumeriques/G_Dowek.rm">présentation vidéo</a> 
+    accompagnée de ses <a href="more/slides-dowek.pdf">supports</a> pour mettre en perspective les cours sur l'algorithmique.</p>
+  <hr/></p>
+
+  <p title="Je suis professeur et j'ai plusieurs idées de sujets, comment aider et se faire aider?">
+    Facilement ! Plus de 20% de nos contenus ont été crées ou initiés par des professeurs des lycées (par exemple ce <a href="sujet-appli-imc.htm">sujet</a>).
+    Nous donnons toutes les informations <a href="about-all.htm#more">ici</a>, tandis que la méthodes est simple: il suffit de nous <a href="about-all.htm#contact">contacter</a>.
+  <hr/></p>
+
+<hr/></p>
+
+<p title="Des petites astuces pour jouer avec les proglets"><hr/>
+
+  <p title="Peut-on écrire en couleur avec la proglet Konsol?">
+    Oui, grâce à une suggestion de <c>Naïs, Elève en 2nd, Lycée Audiberti, Antibes</c> il est désormais possible, 
+    dans la <proglet name="Konsol"/>, d'utiliser l'instruction:
+    <code>
+      <p><r><a style="text-decoration:none;" href="../api/proglet/Konsol.html#printHtml(java.lang.String)">printHtml</a></r>(chaine);</p>
+    </code>
+    qui écrit permet d'utiliser toutes les balises HTML pour écrire dans la console. Par exemple:
+    <code>
+      <p><r>printHtml</r>(<s>Oh, je vois &lt;span style='color:red;font-weight:bold'>rouge&lt;/span> !</s>);</p>
+    </code>
+    va imprimer <c>Oh, je vois <span style='color:red;font-weight:bold'>rouge</span> !</c>.
+    <p>Mais bien sûr, il faut connaitre un peu de langage HTML (et d'un langage de style appellé CSS) en <i>plus</i> de <javascool/> pour s'amuser avec !</p>
+  <hr/></p>
+
+  <p title="Peut-on insérer des smiley quand on écrit avec Konsol?">
+    Upps, plutôt non. Enfin pas facilement. Oh . . c'est toujours possible ! Par exemple, 
+    dans la <proglet name="Konsol"/>, on peut écrire:
+    <code>
+      <p><r>printHtml</r>(<s>C'est cool &lt;img src='http://javascool.gforge.inria.fr/proglet/doc/img/smiley-cool.png'/> !</s>)</p>
+    </code>
+    va imprimer <c>C'est cool <img src='http://javascool.gforge.inria.fr/proglet/doc/img/smiley-cool.png'/> !</c>, ce qui fait ``techniquement´´ un smiley, 
+    mais c'est une solution tirée par les cheveux <img src="img/smiley-innocent.png"/> ! 
+    <hr/></p>
+
+</p>
+
+</p>
+
+
+
+
+
+  
