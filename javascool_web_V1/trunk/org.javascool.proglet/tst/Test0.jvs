@@ -1,4 +1,5 @@
 
-void main() {
-  // println("Hiiioooi");
+void main () {
+  println("Hi Guy! <span style='color:red'>Yeah</span>");
+  printHtml("Hi Guy! <span style='color:red;font-weight:bold'>Yeah</span>");
 }

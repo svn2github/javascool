@@ -12,8 +12,8 @@
       <code>
         <p><r>void main</r>() {</p>
         <p><t/><r>println</r>(<s>Bonjour, quel est ton nom ?</s>);</p>
-        <p><t/><r>String</r> whoisit = <r>readString</r>();</p>
-        <p><t/><r>println</r>(<s>Enchanté </s> + whoisit + <s>, et . . à bientôt !</s>);</p>
+        <p><t/><r>String</r> texte = <r>readString</r>();</p>
+        <p><t/><r>println</r>(<s>Enchanté </s> + texte + <s>, et . . à bientôt !</s>);</p>
         <p>}</p>
       </code>
       Analysons ces quelques lignes:<ul>
@@ -22,23 +22,23 @@
         <li>Nous retrouvons un <r>println</r> qui permet d'imprimer une ligne pour saluer l'utilisateur.</li>
         <li>Mais voici quelque chose de nouveau: il va entrer son <i>nom</i>. Or chaque utilisateur a un nom probablement différent, il faut donc prévoir une ``boite´´, 
         une <i>variable</i> où mémoriser le nom que l'utilisateur va entrer au clavier. <ul>
-          <li>Cette boite est une <i>variable</i>, nous lui avons donné le nom ``whoisit´´ <i>(who_is_it, c'est à dire ``qui est-ce´´)</i>, 
+          <li>Cette boite est une <i>variable</i>, nous lui avons donné le nom ``texte´´ <i>(who_is_it, c'est à dire ``qui est-ce´´)</i>, 
           mais nous aurions pu choisir un autre nom simple.</li>
           <li>La <i>valeur</i> de cette variable est une chaîne de caractères, on parle de <r>String</r> en anglais et . . en <javascool/>.</li>
           <li>La fonction <r>readString()</r> lit un <r>String</r>.</li>
-        </ul> La ligne <b><r>String</r> whoisit = <r>readString</r>();</b> signifie donc, de droite à gauche, <ol>
+        </ul> La ligne <b><r>String</r> texte = <r>readString</r>();</b> signifie donc, de droite à gauche, <ol>
           <li><b><r>readString()</r>;</b> Lire une chaine de caratère . . </li>
-          <li><b>whoisit = <r>readString()</r>;</b> Et mettre le résultat dans la variable de nom <b>whoisit</b> . . </li>
-          <li><b><r>String</r> whoisit = <r>readString()</r>;</b> Cette variable étant de type <r>String</r>, une chaine de caratères donc.</li>
+          <li><b>texte = <r>readString()</r>;</b> Et mettre le résultat dans la variable de nom <b>texte</b> . . </li>
+          <li><b><r>String</r> texte = <r>readString()</r>;</b> Cette variable étant de type <r>String</r>, une chaine de caratères donc.</li>
         </ol>On voit donc ici que le symbole <b>=</b> signifie <i>affecter une valeur à une variable</i> 
-        (ici affecter la valeur lue grâce à <r>readString</r> à la variable <b>whoisit</b>.</li>
-        <li>La dernière ligne met bout à bout <s>Enchanté </s>, <b>whoisit</b> (dont la valeur est le nom entré par l'utilisateur) et <s>, et . . à bientôt !</s> pour imprimer un message de salutation où le nom de l'utilisateur est employé.</li>
+        (ici affecter la valeur lue grâce à <r>readString</r> à la variable <b>texte</b>.</li>
+        <li>La dernière ligne met bout à bout <s>Enchanté </s>, <b>texte</b> (dont la valeur est le nom entré par l'utilisateur) et <s>, et . . à bientôt !</s> pour imprimer un message de salutation où le nom de l'utilisateur est employé.</li>
       </ul>
     </note>
     <note title="Trois couleurs pour trois sortes de mots"> Regardons ces lignes, il y a des mots en ocre, en vert et en noir: <ul>
       <li>Les mots en ocre (<r>String</r>, <r>println</r>, ..) sont les mots de base du langage et ceux des fonctions prédéfinies. Ils sont fixés à l'avance 
       (ce sont les mots du langage <javascool/>), et doivent être utilisés tel quel.  Chaque mot a un sens précis que nous découvrons au fur et à mesure.</li>
-      <li>Les mots en noir (ici <b>whoisit</b>) sont les identificateurs de nos variables, <i>nous</i> les choisissons et nous donnons à ces variables des <i>valeurs</i>, 
+      <li>Les mots en noir (ici <b>texte</b>) sont les identificateurs de nos variables, <i>nous</i> les choisissons et nous donnons à ces variables des <i>valeurs</i>, 
       un peu comme les ``x´´ et les ``y´´ en mathématiques.<ul>
       <li><i>Attention<footnote id="1"/>:</i> Les identificateurs en <javascool/> sont uniquement composées de lettres minuscules sans accent 
         et du signe ``_´´, par exemple vous pouvez écrire <c>leprenom</c> ou <c>le_prenom</c> mais PAS 
@@ -53,7 +53,7 @@
     certaines de ces actions retournent le résultat de leurs opérations (par exemple <r>readString()</r> renvoie la chaine de caractères lue au clavier), 
     d'autres font une action sans retourner de résultat (par exemple <r>println</r> imprime une chaine de caractères et voilà).
     Nous découvrirons plus en détail ces <a href="sujet-about-functions.htm">fonctions</a>: nous pourrons même définir <i>nous même</i> de nouvelles fonctions.</li>
-    <li>Les <b>adjectifs</b> comme <r>String</r> qui permet de spécifier que la variable <b>whoisit</b> est une chaine de caractères 
+    <li>Les <b>adjectifs</b> comme <r>String</r> qui permet de spécifier que la variable <b>texte</b> est une chaine de caractères 
     (et pas un nombre ou un autre objet numérique). Il est bien sûr essentiel de bien préciser quel est le <i>type</i> de chaque variable grâce à ces adjectifs. 
     Voici les premiers adjectifs que nous devons connaître: <ul>
       <li><r>String</r> qui désigne les chaines de caractères, nous les utilisons déja!</li>
@@ -72,22 +72,22 @@
   <works>
     <work title="A nous de jouer"> Taper sans se tromper les cinq lignes du programme, puis  essayer (c'est à dire: sauver<footnote id="2"/>, compiler et . . exécuter).<ul>
       <li>Vérifier que si l'utilisateur entre des noms différents, alors le programme va bien stocker le nom dans la variable le réutiliser pour dire <s>Enchanté ..</s>.</li>
-      <li>Vérifier que si nous changeons l'identificateur de la variable (par exemple remplacer <b>whoisit</b> par <b>son_nom</b>),
+      <li>Vérifier que si nous changeons l'identificateur de la variable (par exemple remplacer <b>texte</b> par <b>son_nom</b>),
       cela ne change pas le fonctionnement du programme.</li>
-      <li>Constatez bien que l'<i>identificateur</i> (le nom de la variable ici, <b>whoisit</b>)  n'a rien à voir avec la <i>valeur</i> de la variable (ici le nom entré par
+      <li>Constatez bien que l'<i>identificateur</i> (le nom de la variable ici, <b>texte</b>)  n'a rien à voir avec la <i>valeur</i> de la variable (ici le nom entré par
       l'utilisateur).</li>
       <li>Modifier maintenant le programme (la forme de la question, l'utilisation de la réponse) pour le rendre un peu original, à vous de jouer.</li>
     </ul></work>
     <work title="Utilisons une variable numérique"> Modifions un peu le programme en utilisant au bon endroit les trois lignes supplémentaires suivantes:
       <code>
-        <p><t/><r>println</r>(<s>Enchanté </s> + whoisit + <s>, quel est ton age ?</s>);</p>
-        <p><t/><r>int</r> age = <r>readInt();</r></p>
+        <p><t/><r>println</r>(<s>Enchanté </s> + texte + <s>, quel est ton age ?</s>);</p>
+        <p><t/><r>int</r> age = <r>readInteger();</r></p>
         <p><t/><r>println</r>(<s>Oh,</s> + age + <s>, est un bel âge !</s>);</p>
       </code>
       <ul>
         <li>Essayer le code modifié et vérifier qu'il fonctionne de manière satisfaisante.</li>
         <li>Noter que maintenant nous avons une autre variable, qui n'est plus de type <r>String</r> mais de type numérique.</li>
-        <li>Remplacer le <r>int</r> par un <r>double</r> (c'est à dire avec la ligne <b><r>double</r> age = <r>readDouble()</r>;</b>, que constatons nous ?</li>
+        <li>Remplacer le <r>int</r> par un <r>double</r> (c'est à dire avec la ligne <b><r>double</r> age = <r>readFloat()</r>;</b>, que constatons nous ?</li>
         <li>L'age de quelqu'un (son nombre d'années de vie) est il plutôt un nombre entier (un <r>int</r>) ou un nombre décimal (un <r>double</r>) ? Ou, mais, .. sa taille en mètre ? Et le numéro de sa classe au collège ? Et sa note scolaire moyenne ? Voyez comment selon la valeur numérique que l'on cherche à représenter numériquement il faut utiliser soit un <r>int</r> soit un <r>double</r>.</li>
       </ul>
     </work>

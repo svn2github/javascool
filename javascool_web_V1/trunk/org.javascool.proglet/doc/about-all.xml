@@ -8,6 +8,7 @@
   <td align="center" width="15%"><b><a style="text-decoration:none;" href="#exos">Exercices et <br/> applications</a></b></td>
   <td align="center" width="15%"><b><a style="text-decoration:none;" href="#more">Créer de nouvelles <br/> activités</a></b></td>
   <td align="center" width="10%"><b><a style="text-decoration:none;" href="#contact">Contacts</a></b></td>
+  <td align="center" width="10%"><b><a style="text-decoration:none;" href="about-faq.htm"> Vos <br/> questions!</a></b></td>
   <td align="center" width="10%"><b><a style="text-decoration:none;" href="about-autres.htm"> Ailleurs <br/> .. aussi!</a></b></td>
 </tr></table></td></tr>
 
@@ -35,7 +36,7 @@
   <li>Pour les clubs de maths ou les autres initiatives péri-scolaires de découverte scientifique, 
   ainsi que pour faire des <a href="http://www-sop.inria.fr/science-participative/index.php?page=quelques-t-p-e">TPE</a>.</li>
 </ol>
-<p><i>Remarque:</i> Ces documents ne sont pas conçus pour apprendre la programmation en ``autodidacte´´<footnote id="2"/>.</p>
+<p><i>Remarque:</i> Ces documents ne sont pas vraiment conçus pour apprendre la programmation en ``autodidacte´´<footnote id="2"/>.</p>
 </td></tr>
 
 <tr><td><hr/></td></tr>
@@ -81,7 +82,6 @@
 </ul></p>
 </td></tr>
 
-
 <tr><td><hr/></td></tr>
 
 <tr><td style="background-color:#DDD"><b><a name="more">Créer de nouvelles activités</a></b><ol>
@@ -106,15 +106,22 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
 <tr><td><hr/></td></tr>
 
 <tr><td style="background-color:#DDD"><b><a name="dwnl">Téléchargement du logiciel</a></b>
-<p>Trois instanciations du logiciel javascool sont proposées pour travailler en classe selon la configuration informatique: <ul>
-  <li><a href="http://javascool.gforge.inria.fr">Le logiciel Java'sCool dans sa forme complète</a>
+<p>Trois instanciations du logiciel javascool sont proposées pour travailler en classe selon la configuration informatique: <ol>
+  <li>[luxe] <a href="http://javascool.gforge.inria.fr">Le logiciel Java'sCool dans sa forme complète</a>
     avec un éditeur coloré, des menus adaptés, un interface <a href="http://christian.rellier.free.fr/orphy/ORPHYGTS.htm">Orphy</a>, etc...
     (nécessite une <a href="http://javascool.gforge.inria.fr/html/javascool/install/Installation.html">installation spécifique</a> sur chaque machine utilisée).</li>
-   <li><a href="http://facets.inria.fr/javascool">L'environnement de programmation simplifié pour utiliser les proglet's en web service</a>
+   <li>[web] <a href="http://facets.inria.fr/javascool">L'environnement de programmation simplifié pour utiliser les proglet's en web service</a>
       (nécessite une installation standard de Java et un accès au réseau pendant le travail en classe).</li>
-  <li><a href="../wproglet.jar">L'environnement de programmation simplifié pour utiliser les proglet's en standalone</a> 
-      (nécessite une installation standard de Java).</li>
-</ul> et de pouvoir nous contacter (voir <a href="#contact">ci-dessous</a>) si il y a le moindre problème.</p>
+  <li>[facile] <a href="../wproglet.jar">L'environnement de programmation simplifié pour utiliser les proglet's en standalone</a> 
+      (nécessite une installation standard de Java puis de cliquer [<b><a href="../wproglet.jar">ICI</a> </b>] !).</li>
+</ol> et de pouvoir nous contacter (voir <a href="#contact">ci-dessous</a>) si il y a le moindre problème.</p>
+
+<p><b>Quelle forme du logiciel utiliser ?</b> Probablement la forme <c>3</c>, dite <c>[facile]</c>, pour commencer: c'est un simple fichier ``<c>jar</c>´´, 
+qui se lance en cliquant [<b><a href="../wproglet.jar">ICI</a> </b>]
+qui peut se copier sur une clé USB pour le dupliquer sur tous les ordinateurs de la classe si ils ne sont pas en réseau,
+qui ne nécessite que les installations de Java usuelles et permet de faire tout ce qui est proposé ici.
+Bien entendu, la forme <c>1</c>, dite <c>[luxe]</c> est plus intéressante, mais il faudra attendre la version 2, pour que les <a href="#more">proglets</a> y soient intégrés).
+</p>
 
 <hr/>
 
@@ -141,6 +148,8 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
      <option>Demander ou proposer une nouvelle fonctionnalité</option>
    </select><input type="submit" value="[Créer le message]" /><input type="hidden" name="Mon-message"/></td></tr>
  </table></form><hr/></li>
+
+ <li><b> Voici nos réponses à vos premières <a style="text-decoration:none;" href="about-faq.htm">questions!</a> !</b><hr/></li>
 
  <li>Si le logiciel ne marche pas chez vous, pour mieux vous aider, il est utile de nous préciser: 
   <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de proglet: pb logiciel !" method="post" enctype="text/plain"><table align="center">

@@ -13,7 +13,7 @@ import javax.swing.BorderFactory;
 
 // Used for the read/write
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
+import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -33,7 +33,7 @@ public class Konsol { private Konsol() { }
     public Panel() {
       super(new BorderLayout()); 
       setBackground(Color.WHITE); setPreferredSize(new Dimension(400, 500));
-      out = new JTextArea(); out.setEditable(false); 
+      out = new JEditorPane(); out.setEditable(false);  out.setContentType("text/html; charset=UTF-8");
       pane = new JScrollPane(); pane.setViewportView(out); pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); add(pane);
       pane.setBorder(BorderFactory.createTitledBorder("output")); 
       JPanel bar = new JPanel(); add(bar, BorderLayout.NORTH);    
@@ -51,16 +51,18 @@ public class Konsol { private Konsol() { }
 
     /** Writes a string.
      * @param string The string to write.
+     * @param html If true writes in html else in plain text
      */
-    public void writeString(String string) {
-      out.setText(out.getText()+string+"\n"); 
+    public void writeString(String string, boolean html) {
+      output += (html ? string : string.replaceAll("&", "&amp;").replaceAll("<", "&lt;"))+"<br/>\n";
+      out.setText("<html><body>"+output+"</body></html>"); 
       pane.getVerticalScrollBar().setValue(pane.getVerticalScrollBar().getMaximum());
     }
-    private JTextArea out; private JScrollPane pane;
+    private JEditorPane out; private JScrollPane pane;
 
     /** Clears the output. */
     public void clear() {
-      out.setText("");
+      out.setText(output = "");
     }
 
     /** Reads a string.
@@ -74,7 +76,7 @@ public class Konsol { private Konsol() { }
       prompt.setText("input>"); 
       return input == null ? "" : input;
     }
-    private JLabel prompt; private JTextField in; private String input;
+    private JLabel prompt; private JTextField in; private String input, output = "";
   }
 
   //
@@ -100,7 +102,17 @@ public class Konsol { private Konsol() { }
    * @param string La chaine à écrire.
    */
   public static void println(String string) {
-    panel.writeString(string);
+    panel.writeString(string, false);
+  }
+
+  /** Ecrit une chaine de caractères avec des codes HTML dans la fenêtre de sortie (output).
+   * <br>-Pour écrire en couleur on peut par exemple utiliser: 
+   * <div><tt>printHtml("Oh, je vois &lt;span style='color:red;font-weight:bold'>rouge&lt;/span> !");</tt></div> 
+   * où le code HTML spécifie la couleur du texte en rouge (<tt>color:red</tt>) et d'utiliser des caractères gras (<tt>font-weight:bold</tt>).
+   * @param string La chaine à écrire.
+   */
+  public static void printHtml(String string) {
+    panel.writeString(string, true);
   }
 
   /** Efface tout ce qui est déjà écrit dans la console. */
@@ -117,6 +129,7 @@ public class Konsol { private Konsol() { }
   
   /** Lit un nombre entier dans la fenêtre d'entrée (input).
    * @return Le nombre entier lu.
+   * <br> Voir <a href="#readInt()">readInt</a> dont il est synonyme.
    */
   public static int readInteger() {
     for(boolean retry = false; true; retry = true) {
@@ -125,9 +138,18 @@ public class Konsol { private Konsol() { }
       } catch(Exception e) { }
     }
   }
+  
+  /** Lit un nombre entier dans la fenêtre d'entrée (input).
+   * @return Le nombre entier lu.
+   * <br> Voir <a href="#readInteger()">readInteger</a> dont il est synonyme.
+   */
+  public static int readInt() {
+    return readInteger();
+  }
 
-  /** Lit un nombre flottant dans la fenêtre d'entrée (input).
-   * @return Le nombre flottant lu.
+  /** Lit un nombre décimal dans la fenêtre d'entrée (input).
+   * @return Le nombre décimal lu.
+   * <br> Voir <a href="#readDouble()">readDouble</a> dont il est synonyme.
    */
   public static double readFloat() {
     for(boolean retry = false; true; retry = true) {
@@ -135,6 +157,14 @@ public class Konsol { private Konsol() { }
 	return Double.parseDouble(panel.readString(retry));
       } catch(Exception e) { }
     }
+  }
+
+  /** Lit un nombre décimal dans la fenêtre d'entrée (input).
+   * @return Le nombre décimal lu.
+   * <br> Voir <a href="#readFloat()">readFloat</a> dont il est synonyme.
+   */
+  public static double readDouble() {
+    return readFloat();
   }
 
   /** Définition de l'interface graphique de la proglet. */

@@ -14,9 +14,9 @@
     <code>
       <p><r>void main</r>() {</p>
       <p><t/><r>println</r>(<s>Quel est ton poids ?</s>);</p>
-      <p><t/><r>int</r> poids = <r>readInt()</r>;</p>
+      <p><t/><r>int</r> poids = <r>readInteger()</r>;</p>
       <p><t/><r>println</r>(<s>Quel est ta taille ?</s>);</p>
-      <p><t/><r>double</r> taille = <r>readDouble()</r>;</p>
+      <p><t/><r>double</r> taille = <r>readFloat()</r>;</p>
       <p><t/><r>int OU double ?</r> imc = poids + taille / (poids * taille);</p>
       <p><t/><r>println</r>(<s>Ton indice de masse corporelle est donc: </s> + imc);</p>
       <p>}</p>
