@@ -30,9 +30,19 @@
   <p title="Peut-on écrire en couleur avec la proglet Konsol?">
     Oui, grâce à une suggestion de <c>Naïs, Elève en 2nd, Lycée Audiberti, Antibes</c> il est désormais possible, 
     dans la <proglet name="Konsol"/>, d'utiliser l'instruction:
-    <code>
-      <p><r><a style="text-decoration:none;" href="../api/proglet/Konsol.html#printHtml(java.lang.String)">printHtml</a></r>(chaine);</p>
-    </code>
+   <code>
+     <p><r><a style="color:#990000" href="../api/proglet/Konsol.html#println(java.lang.String, java.lang.String)">println</a></r>(chaine, couleur);</p>
+   </code>
+   qui permet d'écrire la ligne avec une couleur, par exemple:
+   <code>
+     <p><r><a style="color:#990000" href="../api/proglet/Konsol.html#println(java.lang.String, java.lang.String)">println</a></r>(<s>Voici un message bleu !</s>, <s>blue</s>);</p>
+   </code>
+   va imprimer: <c><span style='color:blue'>Voici un message bleu !</span></c> . . en bleu.
+   <br/>
+   On peut plus généralement utiliser:
+   <code>
+     <p><r><a style="color:#990000" href="../api/proglet/Konsol.html#printHtml(java.lang.String)">printHtml</a></r>(chaine);</p>
+   </code>
     qui écrit permet d'utiliser toutes les balises HTML pour écrire dans la console. Par exemple:
     <code>
       <p><r>printHtml</r>(<s>Oh, je vois &lt;span style='color:red;font-weight:bold'>rouge&lt;/span> !</s>);</p>

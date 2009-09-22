@@ -54,7 +54,7 @@ public class Konsol { private Konsol() { }
      * @param html If true writes in html else in plain text
      */
     public void writeString(String string, boolean html) {
-      output += (html ? string : string.replaceAll("&", "&amp;").replaceAll("<", "&lt;"))+"<br/>\n";
+      output += (html ? string : quote(string))+"<br/>\n";
       out.setText("<html><body>"+output+"</body></html>"); 
       pane.getVerticalScrollBar().setValue(pane.getVerticalScrollBar().getMaximum());
     }
@@ -78,6 +78,9 @@ public class Konsol { private Konsol() { }
     }
     private JLabel prompt; private JTextField in; private String input, output = "";
   }
+
+  // Quotes a string for HTML
+  private static String quote(String string) { return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;"); }
 
   //
   // This defines the tests on the panel
@@ -103,6 +106,14 @@ public class Konsol { private Konsol() { }
    */
   public static void println(String string) {
     panel.writeString(string, false);
+  }
+
+  /** Ecrit une chaine de caractères colorée dans la fenêtre de sortie (output).
+   * @param string La chaine à écrire.
+   * @param couleur La couleur: "black" (default), "blue", "cyan", "gray", "green", "magenta", "orange", "pink", "red", "white", "yellow".
+   */
+  public static void println(String string, String couleur) {
+    panel.writeString("<span style='color:"+couleur+"'>"+quote(string)+"</span>", true);
   }
 
   /** Ecrit une chaine de caractères avec des codes HTML dans la fenêtre de sortie (output).
