@@ -102,7 +102,7 @@
   </p>
 
   <p title="Algorithme . . une définition rigoureuse ?">
-    Une <a href="http://stream-serv.inrialpes.fr/Roc/SeminaireInformatiqueObjetsNumeriques/G_Dowek.rm">présentation vidéo</a> 
+    Une <a href="rtsp://stream-serv.inrialpes.fr/Roc/SeminaireInformatiqueObjetsNumeriques/G_Dowek.rm">présentation vidéo</a> 
     accompagnée de ses <a href="more/slides-dowek.pdf">supports</a> complète cette partie du document.
     <br/>
     Les différents langages de programmation sont organisés autour d'un <i>petit nombre</i> de fonctionnalités, présentes dans de <i>nombreux</i> langages, 
