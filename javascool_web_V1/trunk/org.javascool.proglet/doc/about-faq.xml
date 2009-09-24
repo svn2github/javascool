@@ -18,6 +18,36 @@
     accompagnée de ses <a href="more/slides-dowek.pdf">supports</a> pour mettre en perspective les cours sur l'algorithmique.</p>
   <hr/></p>
 
+  <p title="Pourquoi n'y a t'il pas un manuel avec toutes les instructions ?"><a name="manuel"></a>
+    Bien entenu ce ``manuel´´ existe à la fois: <ul>
+    <li>Au niveau du langage Java, par exemple <a href="http://www.eteks.com/coursjava/tdm.html">celui-ci</a>, pour se limiter à un document francophone, il explique:<ul>
+      <li>les <a href="http://www.eteks.com/coursjava/notionsbase.html#TypesBase">types de base</a></li>
+      <li>les <a href="http://www.eteks.com/coursjava/instructions.html">instructions et opérateurs</a></li>
+      <li>les <a href="http://www.eteks.com/coursjava/objetstab.html#Tableaux">tableaux</a> (qui ne sont pas abordés ici)</li>
+    </ul> mais cela va bien au delà du programme de 2nd sur ces sujets !</li>
+    <li>Au niveau des fonctions proposées dans les excercices se sont . . 
+    tous les <a href="http://java.sun.com/javase/6/docs/api/overview-summary.html">objets Java</a> qui peuvent être utilisés (!) 
+    en plus des fonctions définies pour chaque proglet et <a href="about-all.htm#more">présentés ici</a> et 
+    <a href="../api/proglet/package-summary.html">documentés en détail</a> aussi.</li>
+  </ul><hr/></p>
+
+  <p title="Peut-on consulter un ``vrai´´ cours d'algorithmique ?"><a name="cours-algo"></a>
+    Oui et non. <ul>
+    <li>Non au niveau du <a href="about-prg2nd.htm">programme de 2nd</a> ce cours n'est pas écrit puisque le programme a été publié tardivement et reste en évolution.</li>
+    <li>Oui et non: il n'y a pas <i>un</i> cours d'algorithmique ``en général´´ mais des chapitres selon les grands domaines de l'informatique: 
+    calcul numérique, manipulation de graphes, optimisation et recherche opérationnelle, automatique et contrôle de système, mesures et statistiques, etc..
+    Ce sont les <i>fondements de la programmation</i> 
+    (voir la <a href="rtsp://stream-serv.inrialpes.fr/Roc/SeminaireInformatiqueObjetsNumeriques/G_Dowek.rm">présentation vidéo</a>,  
+    accompagnée de ses <a href="more/slides-dowek.pdf">supports</a>, sur le sujet) qui forment le socle communs de ces domaines.</li>
+    <li>Oui ! De très bons cours existent en ligne, nous pensons pour se limiter à aux documents francophones:<ul>
+      <li>les documents d')i(nterstices sur <a href="http://interstices.info/jcms/c_5389/algorithmes">les algorithmes</a> 
+      avec une bonne <a href="http://interstices.info/algo">introduction</a> et une <a href="http://interstices.info/algo-mode-emploi">discussion</a> sur la théorie.</li>
+      <li>Le <a href="http://www.pise.info/algo/codage.htm">cours</a> de l'université Paris VII, orienté ``programmation´´.</li>
+      <li>Et des cours académiques sur les <a href="http://www.unit.eu/ori-oai-search/notice/view/unit-ori-wf-1-345">concepts de base</a>, 
+      parmi de nombreuses <a href="http://fuscia.info/fr/index.php">ressources en ligne</a>.</li>
+    </ul></li>
+  </ul><hr/></p>
+
   <p title="Je suis professeur et j'ai plusieurs idées de sujets, comment aider et se faire aider?">
     Facilement ! Plus de 20% de nos contenus ont été crées ou initiés par des professeurs des lycées (par exemple ce <a href="sujet-appli-imc.htm">sujet</a>).
     Nous donnons toutes les informations <a href="about-all.htm#more">ici</a>, tandis que la méthodes est simple: il suffit de nous <a href="about-all.htm#contact">contacter</a>.
