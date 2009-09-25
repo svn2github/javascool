@@ -126,12 +126,16 @@ Bien entendu, la forme <c>1</c>, dite <c>[luxe]</c> est plus intéressante, mais
 <hr/>
 
 <p><b><a name="licence">Licence</a></b>: tout le code source de <javascool/> et de ses variantes logicielles est distribué sous la licence 
-  <a href="http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html">CeCILL-A</a>, et les documents attenants sont sous licence 
+  <a href="http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html">CeCILL</a>, et les documents attenants sont sous licence 
   <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/legalcode">CreativeCommons</a>. 
- Cette licence définit dans ce cadre les principes d'utilisation et de diffusion des logiciels libres tout en restant dans l'esprit de la GNU GPL. Cette licence permet de diffuser nos éléments sous licence de logiciel libre. <br/>
-  (<i>The source code of all JavaScool components are distributed under the CeCiLL-C A license.
- This License is a Free-Software license, adapted to the distribution of library components. It is close in its terms to the LGPL license.
- Such CeCill licenses have been created under the supervision of French computer science major institutions. They comply to international regulation rules.
+  La licence CeCILL est une licence de logiciel libre,  conformes au droit français et à la législation européenne, élaborée par le CEA, le CNRS et l'INRIA, 
+  qui affirme ici une vision pragmatique du logiciel libre et ouvert.
+  Cette licence définit les principes d'utilisation et de diffusion de logiciels libres comme <javascool/>, 
+  elle est proche de la <a href="http://fr.wikipedia.org/wiki/Licence_publique_générale_GNU">GNU-GPL</a>. 
+  Cette licence permet de diffuser nos éléments sous licence de logiciel libre. <br/>
+  (<i>The source code of all JavaScool components are distributed under the CeCiLL license.
+  This License is a Free Open Source Software license, adapted to the distribution of library components. It is close in its terms to the LGPL license.
+  Such CeCill licenses have been created under the supervision of French computer science major institutions. They comply to european regulation rules.
   Documents are distributed under the CreativeCommons standard licence.</i>)</p>
 
 </td></tr>
