@@ -133,10 +133,10 @@ Bien entendu, la forme <c>1</c>, dite <c>[luxe]</c> est plus intéressante, mais
   Cette licence définit les principes d'utilisation et de diffusion de logiciels libres comme <javascool/>, 
   elle est proche de la <a href="http://fr.wikipedia.org/wiki/Licence_publique_générale_GNU">GNU-GPL</a>. 
   Cette licence permet de diffuser nos éléments sous licence de logiciel libre. <br/>
-  (<i>The source code of all JavaScool components are distributed under the CeCiLL license.
-  This License is a Free Open Source Software license, adapted to the distribution of library components. It is close in its terms to the LGPL license.
-  Such CeCill licenses have been created under the supervision of French computer science major institutions. They comply to european regulation rules.
-  Documents are distributed under the CreativeCommons standard licence.</i>)</p>
+  (<i>The source code of all <javascool/> components are distributed under the CeCiLL license.
+  This License is a Free Open Source Software license. It is close in its terms to the LGPL license.
+  Such CeCill licenses have been created under the supervision of French computer science major institutions. They comply to European regulation rules.
+  Documents are distributed under the Creative-Commons standard license.</i>)</p>
 
 </td></tr>
 
