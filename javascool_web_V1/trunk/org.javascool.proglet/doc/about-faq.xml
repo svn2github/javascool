@@ -3,7 +3,7 @@
  
 <p title="A propos de l'enseignement de l'informatique ?"><hr/>
 
-  <p title="Quels sont les liens avec les cours de Gérard Berry sur le monde numérique ?">
+  <p title="Quels sont les liens avec les cours de Gérard Berry sur le monde numérique ?">><a name="berry"></a>
     Ils ont multiples: <a href="http://fr.wikipedia.org/wiki/Gérard_Berry">Gérard Berry</a> avec <a href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a>
     sont des initiateurs (et de bienveillants conseillers) des contenus disponibles sur <javascool/>, 
     tout particulièrement sur ce qu'est l'<a href="about-information.htm">information</a> et sur les ingrédients des <a href="about-algorithm.htm">algorithmes</a>.
