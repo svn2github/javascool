@@ -63,6 +63,8 @@ public class Konsol { private Konsol() { }
     /** Clears the output. */
     public void clear() {
       out.setText(output = "");
+      prompt.setText("input>"); 
+      in.setText(""); 
     }
 
     /** Reads a string.

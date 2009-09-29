@@ -2,34 +2,15 @@
 ##  Hamdi.Ben_Abdallah@inria.fr et Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved.                     ##
 #####################################################################################################################################
 
-# Rapport sur le travail de vthierry en aout apres Hamdi
-# > Intégration de InterfacePrincipale
-#  - le code source a été mise en page et mis en conformite avec -Xlint
-#  - les petites classes FileChooser et TextAreaOutputStream sont mis dans le code
-#  - le code a été intégré au package proglet, 
-#  - le file-previwer a été desactivé : utile ici ?
-#  - les icones utilisent Proglet.getIcon() pour se charger indiferrement du jar our de repertoire locaux
-#  - la methode setProglet() a ete ajoutee (utile pour les tests en standalone)
-#  - le bouton nouveau a ete enlevé (trop de risque détruire le source !!!) 
-#  - la dependence au repertoire work et au fichier Ctest a ete enlevee
-#  - la compilation du jar est entirement automatisee dans ce makefile (voir ci dessous)
-# > Ajout de fonctionnalité
-#  + le bouton stop a été ajouté et validé
-#  + la console gère les accents en UTF-8 et des tags html pour une meilleure lisibilité
-#  + les actions doCompile() et doRun() sont correctement codées avec sauvegarde de fichier etc.. 
-#  + un bouton démo a été ajouté
-#  + un bouton de choix dynamique de la proglet a ete ajoute
-#  + lors de la compilation le Translator définit un serialVersionUID différent pour entraîner la mise à jour de la classe et ne pas ré-exécuter une classe compilée précédemment
-#  ! L'applet a ete separee en deux modes d'affichage [edit/compil] et [execute] pour un meilleur graphisme et un usage a travers le service web
-#  ! Du coup de tout ces pbs, la compilation a été refaite en jdk5 pour tourner sur MacOS aussi.
-# > Bugs, sans solution, rencontres en mode applet avec compilateur intégré en jdk6
-#  ? Exceptions de sécurité à la pelle, malgré la certification: lors du rechargement, selon la version du compilateur utilisé, etc...
-#  ? Lors du chargement de la classe compilee, non certifiée, il y a de fait une exception de sécurite à l'exécution puisque dès qu'il y a un accès à des ressources certifiées
-#  ? Lors du chargement de la classe compilee, si les expections de sécurité ne se produisent pas, elle s'exécute parfois ``dans le vide´´ sans accéder à la proglet affichée
-#  -> Donc abandon de la solution et passage a une solution en mode serveur
-
 # Travail de Thierry en cours:
+# - Faire une liste des instructions
 # - Ajout les sujets annoncés en-cours etc...
+# - Ajouter numero de ligne a l editeur
+# - Ajouter undo/redo et doc dans console/menu
+# - Ajouter insertion dans editeur
+
+# Nouvelles fonctionnalités à développer:
+#  - Ajouter un éditeur couleur dans l'applet
 
 # Détails d'implémentation à revoir:
 #  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.
@@ -38,10 +19,6 @@
 #  - Voir pb des droits qd on rsync sur javascool
 #  - Voir comment remplacer l'usage de saxon:line-number() dans style_about2.xsl pour mise en ligne directe du xml/xsl
 #  - Utiliser la methode POST dans InterfacePrincipale pour appeler http://facets.inria.fr/javascool
-
-# Nouvelles fonctionnalités à développer:
-#  - Refaire des tests sous windows/macos/etc..
-#  - Ajouter un éditeur couleur dans l'applet
 
 # Environnement utilisé:
 

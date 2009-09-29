@@ -331,7 +331,7 @@ public class InterfacePrincipale extends JApplet {
   private JPanel getJProgramPanel() {
     if (jProgramPanel == null) {
       jProgramPanel = new JPanel();
-      jProgramPanel.setLayout( null);
+      jProgramPanel.setLayout(null);
       jProgramPanel.setBounds(new Rectangle(11, 92, 540, 398));
       jProgramPanel.setBorder(BorderFactory.createTitledBorder(null, "Programme", 
         TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
@@ -529,15 +529,21 @@ public class InterfacePrincipale extends JApplet {
   }
 
   private void doSave(String pFile) throws IOException {
-    // Adds a newline at line 1 if not yet done to avoid compilation errors mixed with header 
-    String text = "\n"+getJProgramEditorPane().getText().trim()+"\n";
-    getJProgramEditorPane().setText(text);
-    // Saves in file
-    BufferedWriter out = new BufferedWriter(new FileWriter(pFile));
-    out.write(text); 
-    out.close(); 
-    setMainFile(pFile);
-    printConsole("Le fichier "+(new File(pFile).getName())+" est sauvegardé", 'i');
+    pFile = pFile.replaceFirst("\\.[a-z]+$", "");
+    String pName = new File(pFile).getName();
+    Macros.echo(">"+pFile);
+    if (pName.matches("([A-Za-z0-9_])+")) {
+      // Adds a newline at line 1 if not yet done to avoid compilation errors mixed with header 
+      String text = "\n"+getJProgramEditorPane().getText().trim()+"\n";
+      getJProgramEditorPane().setText(text);
+      // Saves in file
+      BufferedWriter out = new BufferedWriter(new FileWriter(pFile+".jvs"));
+      out.write(text); 
+      out.close(); 
+      setMainFile(pFile);
+      printConsole("Le fichier "+(new File(pFile).getName())+" est sauvegardé", 'i');
+    } else
+      printConsole("Impossible de sauver dans un fichier de nom ``"+pName+"´´ !<br>(n'utiliser que des lettres et des chiffres)", 'b');
   }
 
   private void doCompile() throws Exception {
@@ -568,6 +574,8 @@ public class InterfacePrincipale extends JApplet {
 
   // Compiles and load in standalone mode
   private void doStandAloneCompile() throws Exception {
+    if (runWindow != null) { runWindow.dispose(); runWindow = null; }
+    Konsol.clear();
     String compilation = Compiler.compile(path+".java");
     if (compilation.length() > 0) {
       // Reports compilation errors
@@ -579,7 +587,6 @@ public class InterfacePrincipale extends JApplet {
       URL[] urls = new URL[] { new URL("file:"+new File(path+".class").getParent()+File.separator) };
       final Class<?> s = new URLClassLoader(urls).loadClass(main);
       InterfacePrincipale r = (InterfacePrincipale) s.newInstance(); r.setProglet(proglet);
-      if (runWindow != null) { runWindow.dispose(); runWindow = null; }
       Point where = getLocationOnScreen(); where.x -= 570;
       runWindow = Proglet.show(r, "javascool «"+proglet+"» proglet's runner", null, 560, 720);
     }
