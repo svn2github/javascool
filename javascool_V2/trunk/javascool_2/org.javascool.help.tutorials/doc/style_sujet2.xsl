@@ -30,7 +30,7 @@
     </xsl:text>
     <xsl:value-of select="." />
   </h1>
-  <div align="right">[<a href="#notes">introduction</a>] [<a href="#works">travail proposé</a>] [<a href="#footnotes">remarques</a>]</div><br/><br/>
+  <div align="right">[<a href="#notes">introduction</a>] [<a href="#works">travail proposé</a>] [<a href="#footnotes">remarques</a>] [<a href="about-memo.htm">mémo des fonctions</a>]</div><br/><br/>
 </xsl:template>
 
 <xsl:template match="objectif" >

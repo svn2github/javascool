@@ -2,7 +2,7 @@
   <titre>Un tutoriel utiliser des boucles.</titre>
   
   <proglet name="Konsol" mode="edit"/>
-  
+
   <objectif>
     Le but de ce tutoriel d'apprendre à  utiliser des boucles. Il faut déja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,
   se servir de <a href="sujet-about-variables.htm">variables</a>, avoir découvert l'instruction <a href="sujet-about-if.htm">conditionnelle</a>, 

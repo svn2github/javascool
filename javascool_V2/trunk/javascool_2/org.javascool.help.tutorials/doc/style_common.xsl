@@ -37,7 +37,7 @@
       </div>
     </xsl:when>
     <xsl:otherwise>  
-      <i>«proglet» </i> <tt><a href="{concat('about-proglet-',@name,'.htm')}"><xsl:value-of select="@name"/></a></tt>
+    <i>«proglet» </i> <tt><a href="{concat('about-proglet-',@name,'.htm')}"><xsl:value-of select="@name"/></a></tt>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
