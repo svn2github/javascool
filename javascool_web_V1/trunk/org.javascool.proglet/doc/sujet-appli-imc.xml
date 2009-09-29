@@ -17,12 +17,15 @@
       <p><t/><r>int</r> poids = <r>readInteger()</r>;</p>
       <p><t/><r>println</r>(<s>Quel est ta taille ?</s>);</p>
       <p><t/><r>double</r> taille = <r>readFloat()</r>;</p>
-      <p><t/><r>int OU double ?</r> imc = poids + taille / (poids * taille);</p>
+      <p><t/><r>???</r> imc = poids + taille / (poids * taille);</p>
       <p><t/><r>println</r>(<s>Ton indice de masse corporelle est donc: </s> + imc);</p>
       <p>}</p>
      </code>
      Le début du code ressemble à celui utilisé pour apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>: 
-     on demande à l'utilisateur son poids et sa taille. Ensuite on calcule l'indice de masse corporelle . . mais . . la formule est fausse !!! Ce sera à vous de la corriger.
+     on demande à l'utilisateur son poids et sa taille. Ensuite on calcule l'indice de masse corporelle . . mais . . attention:<ul>
+       <li>La formule est fausse !!! Ce sera à vous de la corriger.</li>
+       <li>Il faut remplacer <r>???</r> par le bon ``adjectif´´ (<r>int</r> ? <r>double</r> ?)</li>
+     </ul>
    </note>
  </notes>
 

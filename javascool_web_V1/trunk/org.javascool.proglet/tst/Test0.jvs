@@ -1,6 +1,6 @@
 
 void main () {
-  println("Hi Guy! <span style='color:red'>Yeah</span>");
-  println("Hi Guy! <span style='color:red'>Yeah</span>", "blue");
-  printHtml("Hi Guy! <span style='color:red;font-weight:bold'>Yeah</span>");
+  println(12);
+  println(123.4);
+  println(readBoolean());
 }

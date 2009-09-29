@@ -93,7 +93,8 @@ public class InterfacePrincipale extends JApplet {
   private String main = null, path = null;
 
   // This is the entry point to run the proglet pupil's program.
-  protected Runnable runnable = new Runnable() { public void run() { Proglet.test(proglet); } };
+  private Runnable demoRunnable = new Runnable() { public void run() { Proglet.test(proglet); } };
+  protected Runnable runnable = demoRunnable;
   
   // Flag whether we are in standalone mode or web-browser mode
   boolean standalone = true; 
@@ -272,7 +273,13 @@ public class InterfacePrincipale extends JApplet {
       jRunButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
 	    try {
-	      doRun();
+	      doRun(new Runnable() { public void run() {
+		try {
+		  runnable.run();
+		}  catch (Exception e) {
+		  Proglet.report(e);
+		}
+	      }});
 	    } catch (Exception e1) {
 	      Proglet.report(e1);
 	    }
@@ -306,7 +313,7 @@ public class InterfacePrincipale extends JApplet {
       jDemoButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
 	    try {
-	      Proglet.test(proglet);
+	      doRun(demoRunnable);
 	    } catch (Exception e1) {
 	      Proglet.report(e1);
 	    }
@@ -439,9 +446,13 @@ public class InterfacePrincipale extends JApplet {
     public synchronized void writeln(String s) {
       text.append(s+"<br>\n");
       show();
+    }    
+    public void clear() {
+      text = new StringBuffer();
+      show();
     }
     private void show() {
-      jConsoleTextPane.setText("<html><body>"+text+"</body></html>");
+      jConsoleTextPane.setText("<html><body>"+text+"\n</body></html>");
       jConsoleScrollPane.getVerticalScrollBar().setValue(jConsoleScrollPane.getVerticalScrollBar().getMaximum());
     }
   }
@@ -524,6 +535,9 @@ public class InterfacePrincipale extends JApplet {
   }
 
   private void doCompile() throws Exception {
+    if (standalone) {
+      getJConsoleTextPane(); console.clear();
+    }
     if (main != null) {
       // Save and manage the temporary java file if any
       if (main != null)
@@ -573,25 +587,15 @@ public class InterfacePrincipale extends JApplet {
     return buffer.toString();
   }
 
-  private void doRun() throws Exception {
+  private void doRun(Runnable runnable) throws Exception {
     doStop();
-    tache = new Thread(new Runnable() { public void run() {
-      try {
-	runnable.run();
-      } catch (Throwable e) {  
-	if (e instanceof java.lang.Error) {
-	  // This exception thrown when a interrupt() is issued
-	} else {
-	  Proglet.report(e);
-	}
-      }
-    }});
+    tache = new Thread(runnable);
     tache.start();
   }
 
   private void doStop() throws Exception {
     if (tache != null) { tache.interrupt(); tache = null; }
   }
-  private Thread tache = null;
+  private static Thread tache = null;
 
 }

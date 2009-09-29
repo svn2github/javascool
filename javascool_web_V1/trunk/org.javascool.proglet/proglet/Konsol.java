@@ -108,6 +108,27 @@ public class Konsol { private Konsol() { }
     panel.writeString(string, false);
   }
 
+  /** Ecrit une chaine de caractères dans la fenêtre de sortie (output).
+   * @param string La chaine à écrire.
+   */
+  public static void println(long string) {
+    panel.writeString(""+string, false);
+  }
+
+  /** Ecrit une chaine de caractères dans la fenêtre de sortie (output).
+   * @param string La chaine à écrire.
+   */
+  public static void println(double string) {
+    panel.writeString(""+string, false);
+  }
+
+  /** Ecrit une chaine de caractères dans la fenêtre de sortie (output).
+   * @param string La chaine à écrire.
+   */
+  public static void println(boolean string) {
+    panel.writeString(""+string, false);
+  }
+
   /** Ecrit une chaine de caractères colorée dans la fenêtre de sortie (output).
    * @param string La chaine à écrire.
    * @param couleur La couleur: "black" (default), "blue", "cyan", "gray", "green", "magenta", "orange", "pink", "red", "white", "yellow".
@@ -176,6 +197,17 @@ public class Konsol { private Konsol() { }
    */
   public static double readDouble() {
     return readFloat();
+  }
+
+  /** Lit un booléen dans la fenêtre d'entrée (input).
+   * @return Le booléen lu
+   */
+  public static boolean readBoolean() {
+    for(boolean retry = false; true; retry = true) {
+      String rep = panel.readString(retry).toLowerCase().trim();
+      if (rep.matches("(true|t|oui|o|yes|y|1|ok)")) return true;
+      if (rep.matches("(false|f|non|n|no|0|ko)")) return false;
+    }
   }
 
   /** Définition de l'interface graphique de la proglet. */

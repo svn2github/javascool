@@ -47,25 +47,20 @@
       <p><t/><t/><t/>}</p>
       <p><t/><t/>}</p>
       <p><t/>}</p>
-      <p><t/><r>print</r>(<s>z = </s> + z);</p>
+      <p><t/><r>println</r>(<s>z = </s> + z);</p>
       <p>}</p>
     </code>
     Mmmm . . et bien oui, il est un peu long, un peu lourd et si il faut le recopier chaque fois que nous avons besoin de calculer la plus petite des valeurs absolues,
     celà va vite devenir ingérable de fait. En plus on mélange calcul de la valeur absolue et calcul du maximum et tout cela semble redondant et bien inutilement complexe.
     Nous avons une façon bien plus élégante de définir le même calcul en utilisant des fonctions:
     <code>
-      <p><r>void main</r>() {</p>
-      <p><t/><r>int</r> x = 12;</p>
-      <p><t/><r>int</r> y = -14;</p>
-      <p><t/><r>int</r> z = <r>max</r>(<r>abs</r>(x), <r>abs</r>(y));</p>
-      <p><t/><r>print</r>(<s>z = </s> + z);</p>
-      <p>}</p>
       <m>Définition de la fonction maximum de deux valeurs</m>
       <p><r>int</r> max(<r>int</r> x, <r>int</r> y) {</p>
       <p><t/><r>if</r> (x <r>></r> y) {</p>
       <p><t/><t/><r>return</r> x;</p>
       <p><t/>} <r>else</r> {</p>
       <p><t/><t/><r>return</r> y;</p>
+      <p><t/>}</p>
       <p>}</p>
       <m>Définition de la fonction valeur absolue<footnote id="1"/></m>
       <p><r>int</r> abs(<r>int</r> x) {</p>
@@ -73,6 +68,13 @@
       <p><t/><t/><r>return</r> x;</p>
       <p><t/>} <r>else</r> {</p>
       <p><t/><t/><r>return</r> -x;</p>
+      <p><t/>}</p>
+      <p>}</p>
+      <p><r>void main</r>() {</p>
+      <p><t/><r>int</r> x = 12;</p>
+      <p><t/><r>int</r> y = -14;</p>
+      <p><t/><r>int</r> z = <r>max</r>(<r>abs</r>(x), <r>abs</r>(y));</p>
+      <p><t/><r>println</r>(<s>z = </s> + z);</p>
       <p>}</p>
     </code>
     Ouf ! Ici tout a changé:<ul>
@@ -110,7 +112,8 @@
       tandis que l'entrée (par l'utilisateur) est <i>externe</i> au programme.</li>
       <li>Cette fonction renvoie une valeur: la chaine lue sur le clavier.</li>
     </ul></li>
-    <li>La fonction <b><r>void</r> <r>print</r>(<r>String</r> s);</b> qui imprime une chaine de caractère en sortie pour l'utilisateur: <ul> 
+    <li>La fonction <b><r>void</r> <r>println</r>(<r>String</r> s);</b> 
+      qui imprime une chaine de caractère en sortie pour l'utilisateur: <ul> 
       <li>Cette fonction a un argument en entrée, la chaine de caratère, notée ici <b>s</b>, qui doit être imprimée.</li>
       <li>Cette fonction ne renvoie aucun résultat en sortie, puisque la sortie est <i>externe</i> au programme (en affichant à l'écran). C'est le mot <r>void</r>, 
       vide, qui signifie ``rien´´ pas de résultat. Voilà le sens de ce mot du langage: l'instruction est ``imprime et c'est tout´´.</li>
@@ -137,9 +140,11 @@
       <li>A partir du 2ème exemple de code, puisque la valeur absolue<footnote id="1"/> de x est aussi la plus grande entre x et -x, reprogrammer la fonction valeur absolue en une ligne, sans utiliser de <r>if</r>, mais en utilisant la fonction <r>max</r>.</li>
     </ul></work> 
     <work title="Programmer d'autres fonctions">Programmer les fonctions suivantes et faire un petit <r>main</r> pour un programme de test:<ul>
-      <li>Programmer la fonction ``division sans bêtise´´ <b><r>int</r> div(<r>int</r> x, <r>int</r> y)</b>, 
-      qui renvoie <b>x</b> divisé par <b>y</b> (cela se note comme sur les calculettes <b>x / y</b>) si <b>y</b> n'est pas zéro,
-      et imprime un message d'erreur avant de renvoyer <b>0</b> si <b>y</b> est nul (<b>y == 0</b>).</li>
+      <li>Programmer la fonction ``division sans bêtise´´ <b><r>double</r> div(<r>double</r> x, <r>double</r> y)</b>, 
+      qui renvoie <ul>
+        <li><b>x</b> divisé par <b>y</b> (cela se note comme sur les calculettes <b>x / y</b>), si <b>y</b> n'est pas zéro,</li>
+        <li>imprime un message d'erreur, puis renvoie la valeur <b>Double.NaN</b>, si <b>y</b> est nul (<b>y == 0</b>) .</li>
+      </ul>(la valeur <b>Double.NaN</b> qui se lie ``Not-a-Number´´ signifie que le résulat n'est pas un nombre, mais est indéfini.</li>
       <li>Programmer la fonction ``ou exclusif´´ <b><r>boolean</r> xor(<r>boolean</r> x, <r>boolean</r> y)</b>,
       découverte avec l'<a href="doc/sujet-about-if.htm">instruction conditionnelle</a>, 
       qui renvoie <r>true</r> (vrai) si soit <b>x</b>, soit <b>y</b> est <r>true</r> mais pas les deux à la fois.</li> 

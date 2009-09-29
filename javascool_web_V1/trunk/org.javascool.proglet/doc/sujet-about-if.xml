@@ -14,25 +14,25 @@
      pour implémenter ce mécanisme. Par exemple:
     <code>
       <p><r>if</r>(temperature <r>&lt;</r> 15) {</p>
-      <p><t/>allumer_chauffage();</p>
+      <p><t/><r>println</r>(<s>allumer_chauffage</s>);</p>
       <p>}</p>
     </code>
     où la construction permet de n'allumer le chauffage qu'en cas de besoin. Tandis que:
     <code>
       <p><r>if</r>(temperature <r>&lt;</r> 15) {</p>
-      <p><t/>allumer_chauffage();</p>
+      <p><t/><r>println</r>(<s>allumer_chauffage</s>);</p>
       <p>} <r>else</r> {</p>
-      <p><t/>ne_rien_faire();</p>
+      <p><t/><r>println</r>(<s>ne_rien_faire</s>);</p>
       <p>}</p>
     </code>
     montre comment se traduit la construction <i><b>si</b> la température est en dessous de 15 degré à lors allumer le chauffage <b>sinon</b> ne rien faire.</i> Ou encore:
     <code>
       <p><r>if</r>(temperature <r>&lt;</r> 15) {</p>
-      <p><t/>allumer_chauffage();</p>
+      <p><t/><r>println</r>(<s>allumer_chauffage</s>);</p>
       <p>} <r>else if</r>(temperature <r>></r> 100) {</p>
-      <p><t/>appeler_les_pompiers();</p>
+      <p><t/><r>println</r>(<s>appeler_les_pompiers</s>);</p>
       <p>} <r>else</r> {</p>
-      <p><t/>ne_rien_faire();</p>
+      <p><t/><r>println</r>(<s>ne_rien_faire</s>);</p>
       <p>}</p>
     </code>
     montre comment emboiter les instructions conditionnelles.
@@ -88,7 +88,7 @@
       au bon endroit:
       <code>
         <p><r>if</r>(<r>equal</r>(whoisit, "Toto")) {</p>
-        <p><t/>print(<s>Eh : Toto est pas un vrai nom, dis donc !</s>);</p>
+        <p><t/>println(<s>Eh : Toto est pas un vrai nom, dis donc !</s>);</p>
         <p>}</p>
       </code>
       puis tester ce code pour vérifier le mécanisme conditionnel. Ajouter ensuite des conditions pour signaler que: <ul>
