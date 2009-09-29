@@ -18,8 +18,9 @@
     accompagnée de ses <a href="more/slides-dowek.pdf">supports</a> pour mettre en perspective les cours sur l'algorithmique.</p>
   <hr/></p>
 
-  <p title="Pourquoi n'y a t'il pas un manuel avec toutes les instructions ?"><a name="manuel"></a>
+  <p title="Y a t'il un manuel avec toutes les constructions et instructions ?"><a name="manuel"></a>
     Bien entenu ce ``manuel´´ existe à la fois: <ul>
+    <li>Pour ce qui est utilisé dans le cadre de <javascool/> (<a href="about-memo.htm">mémorandum des constructions et instructions</a>).</li>
     <li>Au niveau du langage Java, par exemple <a href="http://www.eteks.com/coursjava/tdm.html">celui-ci</a>, pour se limiter à un document francophone, il explique:<ul>
       <li>les <a href="http://www.eteks.com/coursjava/notionsbase.html#TypesBase">types de base</a></li>
       <li>les <a href="http://www.eteks.com/coursjava/instructions.html">instructions et opérateurs</a></li>

@@ -1,0 +1,46 @@
+<p title = "Mémorandum des constructions et instructions">
+  <p title="Adjectifs: type de données utilisées"><ul>
+    <li><r>String</r> Chaîne de caractères (ex: <b><r>String</r> nom = <s>Bod</s>;</b>).</li>
+    <li><r>int</r> Entier positif ou négatif, de environ -16 à +16 milliards.</li>
+    <li><r>double</r> Entier décimal, comme sur une calculette (ex:<b><r>double</r> pi = 3.1416;</b>).</li>
+    <li><r>boolean</r> Valeur vraie ou fausse, utilisée dans les tests.</li>
+  </ul></p>
+  <p title="Verbes: fonctions utilisées">
+    <p title="Macros générales"><ul>
+      <li><b><r>boolean</r> <c>equal</c>(<r>String</r> string1, <r>String</r> string2)</b> Compare deux chaînes de caratères et renvoie <c>true</c> si elles sont égales.</li>
+      <li><b><r>double</r> <c>pow</c>(<r>double</r> x, <r>double</r> y)</b> Calcul <b>x</b> à la puissance <b>y</b> (soit <b>x<sup>y</sup></b>).</li>
+    </ul>(note: <r>Math.pow</r> est synonyme de <r>pow</r>).</p>
+    <p title="Fonctions de la proglet Konsol"><ul>
+      <li><b><r>void</r> <c>println</c>(<r>String</r> string)</b> Ecrit une chaînes de caratères dans la fenêtre de sortie.</li>
+      <li><b><r>String</r> <c>readString</c>()</b> Lit une chaîne de caratères dans la fenêtre d'entrée (ex: <b><r>String</r> nom = <r>readString</r>();</b>).</li>
+      <li><b><r>int</r> <c>readInteger</c>()</b> Lit un nombre entier dans la fenêtre d'entrée (ex: <b><r>int</r> x = <r>readInteger</r>();</b>). </li>
+      <li><b><r>double</r> <c>readDouble</c>()</b> Lit un nombre décimal  dans la fenêtre d'entrée (ex: <b><r>double</r> x = <r>readDouble</r>();</b>).</li>
+      <li><b><r>boolean</r> <c>readBoolean</c>()</b> Lit une valeur vraie (<c>true, vrai, oui, 1</c>) ou fausse (<c>false, faux, non, 0</c>) dans la fenêtre d'entrée.</li>
+    </ul> (note: <r>readInt</r> est synonyme de <r>readInteger</r>, <r>readFloat</r> est synonyme de <r>readDouble</r>).</p>
+    <p title="Fonctions des autres proglets"> Voir la description dans la documentation de chaque <a href="about-all.htm#more">proglet</a>.</p>
+  </p>
+  <hr/>
+  <p title="Grammaire: constructions utilisées ici">
+    <p title="Blocs de séquences d'instructions"> Un bloc se note entre <b>{ }</b> et englobe un ensemble de déclarations et d'instructions séparées par un <b>;</b>.</p>
+    <p title="Opérateurs"><table border="1">
+      <tr><td><c>=</c></td><td>Affectation d'une valeur à une variable (ex: <b>x = 0;</b>)</td></tr>
+      <tr><td><c>||</c> <c>&amp;&amp;</c> <c>!</c></td><td>Opérateur logique OU, ET et NON</td></tr>
+      <tr><td><c>==</c> <c>!=</c> <c>&lt;=</c> <c>&lt;</c> <c>>=</c> <c>></c> </td><td>Opérateur égalité, différence et comparaison numérique</td></tr>
+      <tr><td><c>+</c> <c>-</c> <c>*</c> <c>/</c> <c>%</c> </td><td>Addition, soustraction, multiplication, division, reste (appelé aussi modulo).</td></tr>
+    </table></p>
+    <p title="Instruction conditionnelle"> Elle se note <p><b><r>if</r> (expressionBooleenne) { BlocD'InstructionsSiVrai } <r>else</r> { BlocD'InstructionsSiFaux }</b></p>
+    le <r>else</r> et le bloc qui suit peut être omis (voir l'activité sur les <a href="sujet-about-if.htm">instruction conditionnelle</a> pour plus de détail).</p>
+    <p title="Boucle"> Elle se note <p><b><r>while</r> (expressionBooleenne) { BlocD'Instructions }</b></p>
+    (voir l'activité sur les <a href="sujet-about-while.htm">boucles</a> pour plus de détail).</p>
+    <p title="Déclaration de fonctions"> Elle se note <p><r>TypeDuResultat</r> <b>NomDeLaFonction</b> 
+    (<r>TypeParametre1</r> <b>NomParametre1</b>, ..., <r>TypeParametreN</r> <b>NomParametreN</b>) { BlocD'Instructions }</p>
+    (voir l'activité sur les <a href="sujet-about-functions.htm">fonctions</a> pour plus de détail).</p>
+    <p title="Programme principal"> Il se note <b><r>void main</r>{ }</b> avec les instructions définies entre <b>{ }</b>.</p>
+    tandis que le langage Java a beaucoup d'autres <a href="http://www.eteks.com/coursjava/instructions.html">instructions et opérateurs</a>.</p>
+</p>
+
+
+
+
+
+  

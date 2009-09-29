@@ -215,8 +215,8 @@ public class Konsol { private Konsol() { }
   public static boolean readBoolean() {
     for(boolean retry = false; true; retry = true) {
       String rep = panel.readString(retry).toLowerCase().trim();
-      if (rep.matches("(vrai|v|true|t|oui|o|yes|y|1|ok)")) return true;
-      if (rep.matches("(faux|f|false|non|n|no|0|ko)")) return false;
+      if (rep.matches("(vrai|vraie|v|true|t|oui|o|yes|y|1|ok)")) return true;
+      if (rep.matches("(faux|fausse|f|false|non|n|no|0|ko)")) return false;
     }
   }
 
