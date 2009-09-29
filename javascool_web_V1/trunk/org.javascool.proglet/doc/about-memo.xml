@@ -21,7 +21,7 @@
   </p>
   <hr/>
   <p title="Grammaire: constructions utilisées ici">
-    <p title="Blocs de séquences d'instructions"> Un bloc se note entre <b>{ }</b> et englobe un ensemble de déclarations et d'instructions séparées par un <b>;</b>.</p>
+    <p title="Bloc de séquences d'instructions"> Un bloc se note entre <b>{ }</b> et englobe un ensemble de déclarations et d'instructions séparées par un <b>;</b>.</p>
     <p title="Opérateurs"><table border="1">
       <tr><td><c>=</c></td><td>Affectation d'une valeur à une variable (ex: <b>x = 0;</b>)</td></tr>
       <tr><td><c>||</c> <c>&amp;&amp;</c> <c>!</c></td><td>Opérateur logique OU, ET et NON</td></tr>
@@ -32,7 +32,7 @@
     le <r>else</r> et le bloc qui suit peut être omis (voir l'activité sur les <a href="sujet-about-if.htm">instruction conditionnelle</a> pour plus de détail).</p>
     <p title="Boucle"> Elle se note <p><b><r>while</r> (expressionBooleenne) { BlocD'Instructions }</b></p>
     (voir l'activité sur les <a href="sujet-about-while.htm">boucles</a> pour plus de détail).</p>
-    <p title="Déclaration de fonctions"> Elle se note <p><r>TypeDuResultat</r> <b>NomDeLaFonction</b> 
+    <p title="Déclaration de fonction"> Elle se note <p><r>TypeDuResultat</r> <b>NomDeLaFonction</b> 
     (<r>TypeParametre1</r> <b>NomParametre1</b>, ..., <r>TypeParametreN</r> <b>NomParametreN</b>) { BlocD'Instructions }</p>
     (voir l'activité sur les <a href="sujet-about-functions.htm">fonctions</a> pour plus de détail).</p>
     <p title="Programme principal"> Il se note <b><r>void main</r>{ }</b> avec les instructions définies entre <b>{ }</b>.</p>
