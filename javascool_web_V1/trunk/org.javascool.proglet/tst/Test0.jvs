@@ -1,6 +1,5 @@
 
 void main () {
-  println(12);
-  println(123.4);
+  println("v ou f ?");
   println(readBoolean());
 }

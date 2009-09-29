@@ -64,9 +64,7 @@ public class Proglet { private Proglet() { }
    */
   static public void test(String proglet) {
     Proglet.proglet = proglet;
-    new Thread(new Runnable() { public void run() {
-      try { Class.forName("proglet."+Proglet.proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { report(error); }
-    }}).start();
+    try { Class.forName("proglet."+Proglet.proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { }
   }
   private static String proglet;
 

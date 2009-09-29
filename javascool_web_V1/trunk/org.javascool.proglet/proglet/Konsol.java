@@ -72,7 +72,15 @@ public class Konsol { private Konsol() { }
     public String readString(boolean retry) {
       if (retry) prompt.setText("!error!"); else in.setText(""); 
       // Interaction loop with in action listener
-      in.setEditable(true); while(in.isEditable()) Macros.sleep(100);
+      in.setEditable(true); 
+      try {
+	while(in.isEditable()) 
+	  Thread.sleep(100);
+      } catch(Exception e) {
+	in.setEditable(false); 
+	prompt.setText("input>"); 
+	throw new RuntimeException("Program stopped !");
+      }
       prompt.setText("input>"); 
       return input == null ? "" : input;
     }
@@ -93,8 +101,8 @@ public class Konsol { private Konsol() { }
     String nom = readString();
     println ("Echanté "+nom+" ! Quel age as tu ?");
     int age = readInteger();
-    for(int i = 0; i < 100; i++)
-      println("He je suis plus vieux que toi !!");
+    //for(int i = 0; i < 100; i++)
+    println("He je suis plus vieux que toi !!");
   }
 
   //
@@ -205,8 +213,8 @@ public class Konsol { private Konsol() { }
   public static boolean readBoolean() {
     for(boolean retry = false; true; retry = true) {
       String rep = panel.readString(retry).toLowerCase().trim();
-      if (rep.matches("(true|t|oui|o|yes|y|1|ok)")) return true;
-      if (rep.matches("(false|f|non|n|no|0|ko)")) return false;
+      if (rep.matches("(vrai|v|true|t|oui|o|yes|y|1|ok)")) return true;
+      if (rep.matches("(faux|f|false|non|n|no|0|ko)")) return false;
     }
   }
 

@@ -93,8 +93,7 @@ public class InterfacePrincipale extends JApplet {
   private String main = null, path = null;
 
   // This is the entry point to run the proglet pupil's program.
-  private Runnable demoRunnable = new Runnable() { public void run() { Proglet.test(proglet); } };
-  protected Runnable runnable = demoRunnable;
+  protected Runnable runnable = null;
   
   // Flag whether we are in standalone mode or web-browser mode
   boolean standalone = true; 
@@ -273,13 +272,14 @@ public class InterfacePrincipale extends JApplet {
       jRunButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
 	    try {
-	      doRun(new Runnable() { public void run() {
-		try {
-		  runnable.run();
-		}  catch (Exception e) {
-		  Proglet.report(e);
-		}
-	      }});
+	      if (runnable != null) 
+		doRun(new Runnable() { public void run() {
+		  try {
+		    runnable.run();
+		  }  catch (Exception e) {
+		    Proglet.report(e);
+		  }
+		}});
 	    } catch (Exception e1) {
 	      Proglet.report(e1);
 	    }
@@ -313,7 +313,13 @@ public class InterfacePrincipale extends JApplet {
       jDemoButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
 	    try {
-	      doRun(demoRunnable);
+	      doRun(new Runnable() { public void run() {
+		try {
+		  Proglet.test(proglet);
+		}  catch (Exception e) {
+		  Proglet.report(e);
+		}
+	      }});
 	    } catch (Exception e1) {
 	      Proglet.report(e1);
 	    }
