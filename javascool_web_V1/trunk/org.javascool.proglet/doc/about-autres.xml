@@ -28,11 +28,11 @@
   et optimisation d'un pont en fil de fer et en nylon</a>, (simulation de calculs mécaniques, logiciels numériques intégrés, ..) avec <a
   href="http://rdmschool.gforge.inria.fr">RdmSchool</a>.<br/></p></li>
 
-  <li><p title="Programmation graphique"> Le logiciel <a href="http://scratch.mit.edu">Scratch</a> est un alternative qui permet de programmer 
+  <li><p title="Programmation graphique"> Le logiciel <a href="http://scratch.mit.edu">Scratch</a> est une alternative qui permet de programmer 
   à-la <a href="http://fr.wikipedia.org/wiki/Logo_(langage)">LOGO</a> et dont plusieurs exercices 
   liés au programme de seconde sont <a href="http://wiki.inria.fr/sciencinfolycee/Scratch">proposés ici</a>.
   La programmation se fait en assemblant graphiquement des blocs de commandes, dont les primitives permettent de créer des histoires, des jeux et des animations
-  qui sont ensuite publiées sur le Web.<br/></p></li>
+  qui sont ensuite publiés sur le Web.<br/></p></li>
 
   <li><p title="Calcul symbolique"> Le logiciel <a href="http://www-fourier.ujf-grenoble.fr/%7Eparisse/giac_fr.html">Giac/Xcas</a> est un couteau suisse pour les mathématiques
   en lycée qui permet de faire du calcul formel (c'est à dire avec des symboles, et on pas simplement des nombres), des représentations
