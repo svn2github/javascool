@@ -401,8 +401,9 @@ public class SoundBit {
   private static complex[] getFFT(double data[]) {
     // Calculates the largest power of two not greater than data length
     int length = (int) Math.pow(2, Math.ceil(Math.log(data.length)/Math.log(2))); if (length == 0) length = 1;
-    // Builds the complex buffer and computes fft
-    complex cdata[] = new complex[length]; for (int i = 0; i < length; i++) cdata[i] = new complex(i < data.length ? data[i] : 0, 0); return fft(cdata);
+    // Builds the complex buffer and computes fft, appkying a Hann's windowing
+    complex cdata[] = new complex[length]; for (int i = 0; i < length; i++) 
+      cdata[i] = new complex(i < data.length ? 0.5 * (1 - Math.cos(2.0 * Math.PI * i / data.length)) * data[i] : 0, 0); return fft(cdata);
   }
   // Defines a complex number and its multiplication
   private static class complex { complex(double x, double y) { this.x = x; this.y = y; } double x, y; 

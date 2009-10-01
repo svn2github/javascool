@@ -1,6 +1,6 @@
 
 tst :
-	javac -Xlint:deprecation SourceEditor.java 
+	javac -Xlint SourceEditor.java 
 	cd .. ; java proglet.SourceEditor
 
 all:
