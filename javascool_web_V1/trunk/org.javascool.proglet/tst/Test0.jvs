@@ -1,5 +1,16 @@
 
 void main () {
-  println("vrrraii    ou f ?");
+  // Ceci est un test
+
+  println("vrrraii ou f ?");
   println(readBoolean());
+}
+
+int max(int x, int y) {
+  if (x < y) {
+    return x;
+  }
+  else {
+    return y;
+  }
 }

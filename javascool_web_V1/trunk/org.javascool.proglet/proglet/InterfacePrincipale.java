@@ -24,7 +24,7 @@ import javax.swing.BorderFactory;
 import javax.swing.border.TitledBorder;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JTextArea;
+//import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JEditorPane;
@@ -77,7 +77,7 @@ public class InterfacePrincipale extends JApplet {
   /** Sets the proglet to use in this interface.
    * @param proglet The proglet class name.
    */
-  void setProglet(String proglet) { getJProgletButton(); jProgletBox.setSelectedItem(this.proglet = proglet); } private String proglet = "Konsol";
+  void setProglet(String proglet) { getJProgletButton(); jProgletBox.setSelectedItem(this.proglet = proglet); }  private String proglet = "Konsol";
 	
   /** Sets the mode to use in this interface.
    * @param edit If true in edit mode, else in run mode.
@@ -125,7 +125,7 @@ public class InterfacePrincipale extends JApplet {
   private JButton jDemoButton = null;
   private JPanel jProgramPanel = null;
   private JScrollPane jProgramScrollPane = null;
-  private JTextArea jProgramEditorPane = null;
+  private SourceEditor jProgramEditorPane = null;
   private JPanel jResultPanel = null;
   private JPanel  jConsolePanel = null;
   private JScrollPane jScrollPane = null;
@@ -191,6 +191,7 @@ public class InterfacePrincipale extends JApplet {
       jProgletBox.addActionListener(new ActionListener(){
 	  public void actionPerformed(ActionEvent e){
 	    proglet = (String) jProgletBox.getSelectedItem();
+	    getJProgramEditorPane().setProglet(proglet); 
 	  }
 	});
       jProgletButton.add(jProgletBox);
@@ -351,9 +352,10 @@ public class InterfacePrincipale extends JApplet {
     return jProgramScrollPane;
   }
 
-  private JTextArea getJProgramEditorPane() {
+  private SourceEditor getJProgramEditorPane() {
     if (jProgramEditorPane == null) {
-      jProgramEditorPane = new JTextArea();
+      jProgramEditorPane = new SourceEditor();
+      jProgramEditorPane.setProglet(proglet);
     }
     return jProgramEditorPane;
   }
@@ -519,10 +521,11 @@ public class InterfacePrincipale extends JApplet {
 
   private void doLire(String pFile) throws IOException {
     BufferedReader in = new BufferedReader(new FileReader(pFile));
-    getJProgramEditorPane().setText("");
+    StringBuffer text = new StringBuffer();
     for(String line; (line = in.readLine()) != null; ) {
-      getJProgramEditorPane().append(line+"\n");
+      text.append(line+"\n");
     }
+    getJProgramEditorPane().setText(text.toString());
     in.close(); 
     setMainFile(pFile);
     printConsole("Le fichier "+(new File(pFile).getName())+" est chargé", 'i');
@@ -531,13 +534,13 @@ public class InterfacePrincipale extends JApplet {
   private void doSave(String pFile) throws IOException {
     pFile = pFile.replaceFirst("\\.[a-z]+$", "");
     String pName = new File(pFile).getName();
-    Macros.echo(">"+pFile);
+    pFile += ".jvs";
     if (pName.matches("([A-Za-z0-9_])+")) {
       // Adds a newline at line 1 if not yet done to avoid compilation errors mixed with header 
       String text = "\n"+getJProgramEditorPane().getText().trim()+"\n";
       getJProgramEditorPane().setText(text);
       // Saves in file
-      BufferedWriter out = new BufferedWriter(new FileWriter(pFile+".jvs"));
+      BufferedWriter out = new BufferedWriter(new FileWriter(pFile));
       out.write(text); 
       out.close(); 
       setMainFile(pFile);

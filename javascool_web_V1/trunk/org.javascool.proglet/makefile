@@ -3,11 +3,9 @@
 #####################################################################################################################################
 
 # Travail de Thierry en cours:
-# - Faire une liste des instructions
+# !!! Pb de classe not found !!
+# ! Pb avec le elseet retrun sur commentaire
 # - Ajout les sujets annoncés en-cours etc...
-# - Ajouter numero de ligne a l editeur
-# - Ajouter undo/redo et doc dans console/menu
-# - Ajouter insertion dans editeur
 
 # Nouvelles fonctionnalités à développer:
 #  - Ajouter un éditeur couleur dans l'applet
@@ -36,7 +34,7 @@ dft : tst1
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar
-	cd tst ; /usr/bin/java -jar ../$^ run Synthe
+	cd tst ; /usr/bin/java -jar ../$^ edit Konsol
 
 # Test du service web (pour vérifier l'intégration)
 
@@ -57,7 +55,7 @@ all : scp pub
 	@cd ../../.. ; svn up ; svn ci -m '' ; svn status
 
 clean :
-	@rm -rf proglet.jar wproglet.jar *.class */*.class index.html api doc/*.htm
+	@rm -rf proglet.jar wproglet.jar *.class */*.class index.html api doc/*.htm tmp.*
 
 # Parametres pour la signature
 
