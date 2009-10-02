@@ -3,7 +3,7 @@
 #####################################################################################################################################
 
 # Travail de Thierry en cours:
-# Tester le code sur les fonctions
+# Ajouter le id dans <p> et elinimner les ancres html
 # - Ajout les sujets annoncés en-cours etc...
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
@@ -13,12 +13,12 @@
 
 # Pour Hamdi ou Thierry: Détails d'implémentation à revoir:
 #  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.
-#  - Voir le pb du JSlider qui affiche sa valeur entière et perturbe la lecture.
 #  - Voir le pb du setLocation() en mode standalone qui affiche mal les deux fenetres edit et run
 #  - Utiliser la methode POST dans InterfacePrincipale pour appeler http://facets.inria.fr/javascool et non GET
 
 # Pour Thierry: Détails d'implémentation à revoir:
 #  - Voir pb des droits qd on rsync sur javascool
+#  - Voir le pb du JSlider qui affiche sa valeur entière et perturbe la lecture.
 #  - Voir comment remplacer l'usage de saxon:line-number() dans style_about2.xsl pour mise en ligne directe du xml/xsl
 
 #####################################################################################################################################

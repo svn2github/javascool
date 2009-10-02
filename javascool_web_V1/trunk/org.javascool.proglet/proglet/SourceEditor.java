@@ -59,13 +59,13 @@ public class SourceEditor extends JPanel {
   /** Sets the editing text. 
    * @param text The text to edit.
    */
-  public void setText(String text) { pane.setText(text); }
+  public void setText(String text) { pane.setText(text); pane.setCaretPosition(0); }
 
   /** Gets the edited text. */
   public String getText() { return pane.getText(); }
 
   // Widget construction
-  private JTextArea pane; private JLabel line; private JMenuBar bar;
+  private JTextArea pane; private JLabel line; private int iline = 0; private JMenuBar bar;
   {
     // Builds the widget
     setLayout(new BorderLayout());
@@ -83,7 +83,10 @@ public class SourceEditor extends JPanel {
 	  public void caretUpdate(CaretEvent e) {
 	    try { 
 	      int l = 1 + pane.getLineOfOffset(e.getDot());
-	      line.setText("ligne : " + (l < 10 ? "  " : l < 100 ? " " : "") + l + " | ");
+	      if (l != iline) {
+		line.setText("ligne : " + (l < 10 ? "  " : l < 100 ? " " : "") + l + " | ");
+		iline = l;
+	      }
 	    } catch(Exception err) {
 	      line.setText(err.getMessage());
 	    }
@@ -105,23 +108,6 @@ public class SourceEditor extends JPanel {
       menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.pasteAction))); item.setText("^V Paste");
       menu.addSeparator();
       menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.selectAllAction))); item.setText("^A Select all");
-
-      // Save binding
-      {
-	AbstractAction saveAction = new AbstractAction("^S Save") {
-	    private static final long serialVersionUID = 1L;
-	    public void actionPerformed(ActionEvent evt) { 
-	      try {
-		if (applet != null)
-		  applet.doSave();
-	      } catch(Exception e) {
-		Macros.echo("Erreur: impossible de sauver le texte !");
-	      }
-	    }
-	  };
-	menu.addSeparator();
-	menu.add(item = new JMenuItem(saveAction)); addBinding(pane, KeyEvent.VK_S, saveAction);
-      }
 
       // Textfind/replace manager: to be improved before use
       // menu.addSeparator();
@@ -154,14 +140,13 @@ public class SourceEditor extends JPanel {
     }
 
     // Defines the tool-box menu
-    setProglet(null, "");
+    setProglet("");
   }
 
   /** Sets the insertion menu for a given proglet.
    * @param proglet The proglet currently used.
    */
-  void setProglet(InterfacePrincipale applet, String proglet) {
-    this.applet = applet;
+  void setProglet(String proglet) {
     JMenu menu = new JMenu();
     menu.setText("Insertions");
     if (bar.getComponentCount() == 4)
@@ -177,7 +162,6 @@ public class SourceEditor extends JPanel {
     }
     bar.validate();
   }
-  private InterfacePrincipale applet = null;
 
   // Defines the text redraw
   private void doRedraw() {
@@ -197,8 +181,7 @@ public class SourceEditor extends JPanel {
 	}
       }
     }
-    pane.setText("\n"+text1.replaceAll("/--/--/;", ""));
-    pane.setCaretPosition(0);
+    setText("\n"+text1.replaceAll("/--/--/;", ""));
   }
 
   // Defines a  text insertion
@@ -260,10 +243,10 @@ public class SourceEditor extends JPanel {
     }
   }
 
-  // Defines a text search and replace manager.
+  /* Defines a text search and replace manager.
   private static class TextReplaceManager {
     private static final long serialVersionUID = 1L;
-    /** Constructs a text search/replace manager for the given pane. */
+    /** Constructs a text search/replace manager for the given pane. * /
     public TextReplaceManager(JTextComponent pane) {
       this.pane = pane;
       addBinding(pane, KeyEvent.VK_S, search_action);
@@ -284,13 +267,13 @@ public class SourceEditor extends JPanel {
 	    doFindReplace(search.getText(), replace.getText());
 	}
       };
-    /** Returns the search button. */
+    /** Returns the search button. * /
     public JPanel getSearchItem(JMenu menu) {
       if (search == null)
 	search = new JMenuField(menu, "^S   Search", search_action);
       return search;
     }
-    /** Returns the replace button. */
+    /** Returns the replace button. * /
     public JPanel getReplaceItem(JMenu menu) {
       if (replace == null)
 	replace = new JMenuField(menu, "^R Replace", replace_action);
@@ -298,7 +281,7 @@ public class SourceEditor extends JPanel {
     }
     private JMenuField search = null, replace = null;
 
-    /** Closes a menu and its sub-menu. */
+    /** Closes a menu and its sub-menu. * /
     public static void close(JMenu menu) {
       menu.setPopupMenuVisible(false);
       menu.setSelected(false);
@@ -332,14 +315,14 @@ public class SourceEditor extends JPanel {
       return false;
     }
 
-    /** Defines a menu textual field. */
+    /** Defines a menu textual field. * /
     static class JMenuField extends JPanel {
       private static final long serialVersionUID = 1L;
       /** Constructs a menu textual field.
        * @param menu this textual field is added to.
        * @param name Field name.
        * @param action Action to be fired when the textual field is input.
-       */
+       * /
       public JMenuField(JMenu menu, String name, Action action) { 
 	this.menu = menu;
 	add(new JLabel(name));
@@ -355,11 +338,12 @@ public class SourceEditor extends JPanel {
 		  }});
 	    }});
       }
-      /** Returns the input textual field. */
+      /** Returns the input textual field. * /
       public String getText() { return field.getText(); }
       private JMenu menu; private Action action; private JTextField field;
     }
   }
+  */
   
   // Adds a key binding
   private static void addBinding(JTextComponent pane, int key, Action action) {

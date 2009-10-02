@@ -1,14 +1,37 @@
 
-void main () {
-  // Ceci est un test
-  println("vrrraiie ou fauxx ?");
-  println(readBoolean());
-}
-
-int max(int x, int y) {
-  if (x < y) {
-    return x;
+void main() {
+  int x = -13;
+  int y = 19;
+  int z;
+  // Calcul selon que x ou y soient positif ou négatif, de la plus petite valeur positive entre x et -x, y et -y
+  if (x > 0) {
+    if (y > 0) {
+      if (x > y) {
+        z = x;
+      } else {
+        z = y;
+      }
+    } else {
+      if (x > -y) {
+        z = x;
+      } else {
+        z = -y;
+      }
+    }
   } else {
-    return y;
+    if (y > 0) {
+      if (-x > y) {
+        z = -x;
+      } else {
+        z = y;
+      }
+    } else {
+      if (-x > -y) {
+        z = -x;
+      } else {
+        z = -y;
+      }
+    }
   }
+  println("z = " + z);
 }

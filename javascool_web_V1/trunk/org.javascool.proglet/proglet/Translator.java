@@ -41,17 +41,17 @@ public class Translator { private Translator() { }
       out.print("import static proglet."+proglet+".*;");
       // Declares the proglet's core as a Runnable in the Applet
       out.print("public class "+main+ " extends proglet.InterfacePrincipale {");
-      out.print("  private static class ProgletRunnable implements Runnable {");
+      out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
+      out.print("  { runnable = new ProgletRunnableInterfacePrincipale(); }");
+      out.print("}");
+      out.print("class ProgletRunnableInterfacePrincipale implements Runnable {");
       // Copies the user's code
       for(String line; (line = in.readLine()) != null; ) {
 	out.println(translateOnce(line));
       }
       // Tails the runnable and the applet
-      out.println("    private static final long serialVersionUID = "+ (uid++) + "L;");
-      out.println("    public void run() { main(); }");
-      out.println("  }");
       out.println("  private static final long serialVersionUID = "+ (uid++) + "L;");
-      out.println("  { runnable = new ProgletRunnable(); }");
+      out.println("  public void run() { main(); }");
       out.println("}");
     }
     in.close();

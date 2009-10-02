@@ -123,7 +123,6 @@ public class InterfacePrincipale extends JApplet {
   private JButton jStopButton = null;
   private JButton jDemoButton = null;
   private JPanel jProgramPanel = null;
-  private JScrollPane jProgramScrollPane = null;
   private SourceEditor jProgramEditorPane = null;
   private JPanel jResultPanel = null;
   private JPanel  jConsolePanel = null;
@@ -190,7 +189,7 @@ public class InterfacePrincipale extends JApplet {
       jProgletBox.addActionListener(new ActionListener(){
 	  public void actionPerformed(ActionEvent e){
 	    proglet = (String) jProgletBox.getSelectedItem();
-	    getJProgramEditorPane().setProglet(InterfacePrincipale.this, proglet); 
+	    getJProgramEditorPane().setProglet(proglet); 
 	  }
 	});
       jProgletButton.add(jProgletBox);
@@ -227,23 +226,27 @@ public class InterfacePrincipale extends JApplet {
       jSaveButton = new JButton();
       jSaveButton.setIcon(Proglet.getIcon("save.png"));
       jSaveButton.setText("Enregister");
-      jSaveButton.addActionListener(new ActionListener(){
-	  public void actionPerformed(ActionEvent e){
-	    getFileChooser().setDialogTitle("Enregister un programme");
-	    getFileChooser().setApproveButtonText("Enregister ");
-	    int value = getFileChooser().showOpenDialog(null);
-	    if (value == 0) {
-	      try { 
-		String check = getFileChooser().getSelectedFile().getPath();
-		doSave(check); 
-	      } catch(Exception e1){ 
-		Proglet.report(e1);
-	      }
-	    }
+      jSaveButton.addActionListener(new ActionListener() {
+	  public void actionPerformed(ActionEvent e) {
+	    doSaveAs();
 	  }
         });
     }
     return jSaveButton;
+  }
+
+  private void doSaveAs() {
+    getFileChooser().setDialogTitle("Enregister un programme");
+    getFileChooser().setApproveButtonText("Enregister ");
+    int value = getFileChooser().showOpenDialog(null);
+    if (value == 0) {
+      try { 
+	String check = getFileChooser().getSelectedFile().getPath();
+	doSave(check); 
+      } catch(Exception e1){ 
+	Proglet.report(e1);
+      }
+    }
   }
 	
   private JButton getJCompileButton() {
@@ -335,26 +338,16 @@ public class InterfacePrincipale extends JApplet {
       jProgramPanel.setBounds(new Rectangle(11, 92, 540, 398));
       jProgramPanel.setBorder(BorderFactory.createTitledBorder(null, "Programme", 
         TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-      jProgramPanel.add(getJProgramScrollPane(), null);
+      jProgramPanel.add(getJProgramEditorPane(), null);
     }
     return jProgramPanel;
-  }
-
-  private JScrollPane getJProgramScrollPane() {
-    if (jProgramScrollPane == null) {
-      jProgramScrollPane = new JScrollPane();
-      jProgramScrollPane.setBounds(new Rectangle(8, 18, 520, 364));
-      jProgramScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-      jProgramScrollPane.setViewportView(getJProgramEditorPane());
-      jProgramScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-    }
-    return jProgramScrollPane;
   }
 
   private SourceEditor getJProgramEditorPane() {
     if (jProgramEditorPane == null) {
       jProgramEditorPane = new SourceEditor();
-      jProgramEditorPane.setProglet(this, proglet);
+      jProgramEditorPane.setBounds(new Rectangle(8, 18, 520, 364));
+      jProgramEditorPane.setProglet(proglet);
     }
     return jProgramEditorPane;
   }
@@ -547,10 +540,6 @@ public class InterfacePrincipale extends JApplet {
     } else
       printConsole("Impossible de sauver dans un fichier de nom ``"+pName+"´´ !<br>(n'utiliser que des lettres et des chiffres)", 'b');
   }
-  void doSave() throws IOException {
-    if (main != null)
-      doSave(path+".jvs");
-  }
 
   private void doCompile() throws Exception {
     if (standalone) {
@@ -575,7 +564,11 @@ public class InterfacePrincipale extends JApplet {
     } else
       printConsole("Impossible de compiler avant de définir/sauvegarder une programme !", 'b');
   }
-  private JFrame runWindow = null;
+
+  private void doSave() throws IOException  {
+    if (main != null) 
+      doSave(path+".jvs");
+  }
 
   // Compiles and load in standalone mode
   private void doStandAloneCompile() throws Exception {
@@ -596,6 +589,7 @@ public class InterfacePrincipale extends JApplet {
       runWindow = Proglet.show(r, "javascool «"+proglet+"» proglet's runner", null, 560, 720);
     }
   }
+  private JFrame runWindow = null;
 
   // Loads the contents of a text file
   private static String loadString(String location) throws IOException {

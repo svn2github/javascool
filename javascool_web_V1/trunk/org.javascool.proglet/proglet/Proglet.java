@@ -103,6 +103,3 @@ public class Proglet { private Proglet() { }
     return f;
   }
 }
-
-
-

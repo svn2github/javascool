@@ -40,7 +40,8 @@ if(strlen($main) > 0 && strlen($body) > 0) {
   // Changes the java name at each run in order to reload a fresh class event with older java's versions
   {
     for($nn = 0; file_exists($dir."/".($main_nn = $main."_".$nn).".java") && $nn < 10000; $nn++);
-    $body =  ereg_replace("public class ".$main, "public class ".$main_nn, $body);
+    $body =  ereg_replace("public class ".$main, "public class ".$main_nn, 
+   	       ereg_replace("ProgletRunnableInterfacePrincipale", "ProgletRunnableInterfacePrincipale"."_".$nn, $body));
     $main = $main_nn;
   }
   // Creates the local java copy
