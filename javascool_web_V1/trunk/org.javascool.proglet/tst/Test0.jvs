@@ -1,7 +1,7 @@
 
 void main() {
-  int x = -13;
-  int y = 19;
+  int x = -11;
+  int y = 16;
   int z;
   // Calcul selon que x ou y soient positif ou négatif, de la plus petite valeur positive entre x et -x, y et -y
   if (x > 0) {
