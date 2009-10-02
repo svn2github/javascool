@@ -24,7 +24,6 @@ import javax.swing.BorderFactory;
 import javax.swing.border.TitledBorder;
 import java.awt.Font;
 import java.awt.Color;
-//import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JEditorPane;
@@ -191,7 +190,7 @@ public class InterfacePrincipale extends JApplet {
       jProgletBox.addActionListener(new ActionListener(){
 	  public void actionPerformed(ActionEvent e){
 	    proglet = (String) jProgletBox.getSelectedItem();
-	    getJProgramEditorPane().setProglet(proglet); 
+	    getJProgramEditorPane().setProglet(InterfacePrincipale.this, proglet); 
 	  }
 	});
       jProgletButton.add(jProgletBox);
@@ -355,7 +354,7 @@ public class InterfacePrincipale extends JApplet {
   private SourceEditor getJProgramEditorPane() {
     if (jProgramEditorPane == null) {
       jProgramEditorPane = new SourceEditor();
-      jProgramEditorPane.setProglet(proglet);
+      jProgramEditorPane.setProglet(this, proglet);
     }
     return jProgramEditorPane;
   }
@@ -548,6 +547,10 @@ public class InterfacePrincipale extends JApplet {
     } else
       printConsole("Impossible de sauver dans un fichier de nom ``"+pName+"´´ !<br>(n'utiliser que des lettres et des chiffres)", 'b');
   }
+  void doSave() throws IOException {
+    if (main != null)
+      doSave(path+".jvs");
+  }
 
   private void doCompile() throws Exception {
     if (standalone) {
@@ -555,8 +558,7 @@ public class InterfacePrincipale extends JApplet {
     }
     if (main != null) {
       // Save and manage the temporary java file if any
-      if (main != null)
-	doSave(path+".jvs");
+      doSave();
       if (new File(path+".java").exists())
 	new File(path+".java").renameTo(new File(path+".java~"));
       if (new File(path+".class").exists())
