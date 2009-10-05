@@ -19,7 +19,7 @@
       <p><t/><r>int</r> x = 12;</p>
       <p><t/><r>int</r> y = -14;</p>
       <p><t/><r>int</r> z;</p>
-      <m>Calcul selon que x ou y soient positif ou négatif, de la plus petite valeur positive entre x et -x, y et -y</m>
+      <m>Calcul selon que x ou y soient positif ou négatif, de la plus grande valeur positive entre x et -x, y et -y</m>
       <p><t/><r>if</r> (x <r>></r> 0) {</p>
       <p><t/><t/><r>if</r> (y <r>></r> 0) {</p>
       <p><t/><t/><t/><r>if</r> (x <r>></r> y) { </p>

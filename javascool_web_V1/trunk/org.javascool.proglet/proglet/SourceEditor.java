@@ -44,6 +44,8 @@ import javax.swing.JTextField;
 import javax.swing.event.CaretListener;
 import javax.swing.event.CaretEvent;
 
+// Used to show the font
+import java.awt.Font;
 
 /** This widget defines the proglet source editor.
  * @see <a href="SourceEditor.java">source code</a>
@@ -73,6 +75,7 @@ public class SourceEditor extends JPanel {
     add(bar, BorderLayout.NORTH);
     pane = new JTextArea();
     pane.setEditable(true);
+    pane.setFont(new Font("Dialog", Font.PLAIN, 16));
     JScrollPane scroll = new JScrollPane(pane);
     add(scroll, BorderLayout.CENTER);
 
@@ -135,8 +138,23 @@ public class SourceEditor extends JPanel {
 	  private static final long serialVersionUID = 1L;
 	  public void actionPerformed(ActionEvent evt) { 
 	    doRedraw();
-	  }
-	}));
+	  }}));
+      menu.addSeparator();
+      menu.add(new JMenuItem(new AbstractAction("Zoom -") {
+	  private static final long serialVersionUID = 1L;
+	  public void actionPerformed(ActionEvent evt) { 
+	    pane.setFont(new Font("Dialog", Font.PLAIN, 12));
+	  }}));
+      menu.add(new JMenuItem(new AbstractAction("Zoom 0") {
+	  private static final long serialVersionUID = 1L;
+	  public void actionPerformed(ActionEvent evt) { 
+	    pane.setFont(new Font("Dialog", Font.PLAIN, 16));
+	  }}));
+      menu.add(new JMenuItem(new AbstractAction("Zoom +") {
+	  private static final long serialVersionUID = 1L;
+	  public void actionPerformed(ActionEvent evt) { 
+	    pane.setFont(new Font("Dialog", Font.PLAIN, 22));
+	  }}));
     }
 
     // Defines the tool-box menu

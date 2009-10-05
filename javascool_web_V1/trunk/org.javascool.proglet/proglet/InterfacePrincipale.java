@@ -578,7 +578,7 @@ public class InterfacePrincipale extends JApplet {
     if (compilation.length() > 0) {
       // Reports compilation errors
       printConsole("Le fichier "+main+".jvs n'a pas pu être compilé", 'b');
-      printConsole(compilation.replaceAll("\n", "<br/>\n"), 'c');
+      printConsole(compilation.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll("\n", "<br/>\n"), 'c');
     } else {
       new File(path+".java").delete();
       // Loads the compiled proglet for execution

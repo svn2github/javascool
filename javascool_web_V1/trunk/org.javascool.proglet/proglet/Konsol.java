@@ -43,7 +43,7 @@ public class Konsol { private Konsol() { }
 	// Reads the input text and reset the interface
 	input = ((JTextField) e.getSource()).getText(); in.setEditable(false);
       }});
-      bar.add(new JLabel("|")); JButton clear = new JButton("clear output"); bar.add(clear);
+      JButton clear = new JButton("clear output"); add(clear, BorderLayout.SOUTH);
       clear.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
 	clear();
       }});
@@ -54,7 +54,7 @@ public class Konsol { private Konsol() { }
      * @param html If true writes in html else in plain text
      */
     public void writeString(String string, boolean html) {
-      output += (html ? string : quote(string))+"<br/>\n";
+      output += (html ? string : quote(string));
       out.setText("<html><body>"+output+"</body></html>"); 
       pane.getVerticalScrollBar().setValue(pane.getVerticalScrollBar().getMaximum());
     }
@@ -68,17 +68,18 @@ public class Konsol { private Konsol() { }
     }
 
     /** Reads a string.
-     * @param retry Set to true in retry mode, after a wrong input.
      * @return The read string.
      */
-    public String readString(boolean retry) {
-      if (retry) prompt.setText("!error!"); else in.setText(""); 
+    public String readString() {
       // Interaction loop with in action listener
+      in.setText("");
       in.setEditable(true); 
+      in.requestFocus();
       try {
 	while(in.isEditable()) 
 	  Thread.sleep(100);
       } catch(Exception e) {
+	in.setText("");
 	in.setEditable(false); 
 	prompt.setText("input>"); 
 	throw new RuntimeException("Program stopped !");
@@ -111,35 +112,23 @@ public class Konsol { private Konsol() { }
   // This defines the javascool interface
   //
 
-  /** Ecrit une chaine de caractères dans la fenêtre de sortie (output).
+  /** Ecrit une chaine de caractères dans la fenêtre de sortie (output) et passe à la ligne.
    * @param string La chaine à écrire.
    */
-  public static void println(String string) {
-    panel.writeString(string, false);
-  }
+  public static void println(String string) { panel.writeString(string, false);  panel.writeString("<br/>\n", true); }
+  public static void println(long string) { println(""+string); }
+  public static void println(double string) { println(""+string); }
+  public static void println(boolean string) { println(""+string); }
 
-  /** Ecrit une chaine de caractères dans la fenêtre de sortie (output).
+  /** Ecrit une chaine de caractères dans la fenêtre de sortie (output) et sans passer à la ligne.
    * @param string La chaine à écrire.
    */
-  public static void println(long string) {
-    panel.writeString(""+string, false);
-  }
+  public static void print(String string) { panel.writeString(string, false); }
+  public static void print(long string) { print(""+string); }
+  public static void print(double string) { print(""+string); }
+  public static void print(boolean string) { print(""+string); }
 
-  /** Ecrit une chaine de caractères dans la fenêtre de sortie (output).
-   * @param string La chaine à écrire.
-   */
-  public static void println(double string) {
-    panel.writeString(""+string, false);
-  }
-
-  /** Ecrit une chaine de caractères dans la fenêtre de sortie (output).
-   * @param string La chaine à écrire.
-   */
-  public static void println(boolean string) {
-    panel.writeString(""+string, false);
-  }
-
-  /** Ecrit une chaine de caractères colorée dans la fenêtre de sortie (output).
+  /** Ecrit une chaine de caractères colorée dans la fenêtre de sortie (output) et passe à la ligne.
    * @param string La chaine à écrire.
    * @param couleur La couleur: "black" (default), "blue", "cyan", "gray", "green", "magenta", "orange", "pink", "red", "white", "yellow".
    */
@@ -166,23 +155,23 @@ public class Konsol { private Konsol() { }
    * @return La chaîne lue.
    */
   public static String readString() {
-    return panel.readString(false);
+    return panel.readString();
   }
   
   /** Lit un nombre entier dans la fenêtre d'entrée (input).
-   * @return Le nombre entier lu.
+   * @return Le nombre entier lu ou 0 en cas d'erreur.
    * <br> Voir <a href="#readInt()">readInt</a> dont il est synonyme.
    */
   public static int readInteger() {
-    for(boolean retry = false; true; retry = true) {
-      try {
-	return Integer.parseInt(panel.readString(retry));
-      } catch(Exception e) { }
+    try {
+      return Integer.parseInt(panel.readString());
+    } catch(Exception e) { 
+      return 0;
     }
   }
   
   /** Lit un nombre entier dans la fenêtre d'entrée (input).
-   * @return Le nombre entier lu.
+   * @return Le nombre entier lu ou 0 en cas d'erreur.
    * <br> Voir <a href="#readInteger()">readInteger</a> dont il est synonyme.
    */
   public static int readInt() {
@@ -190,19 +179,19 @@ public class Konsol { private Konsol() { }
   }
 
   /** Lit un nombre décimal dans la fenêtre d'entrée (input).
-   * @return Le nombre décimal lu.
+   * @return Le nombre décimal lu ou 0 en cas d'erreur.
    * <br> Voir <a href="#readDouble()">readDouble</a> dont il est synonyme.
    */
   public static double readFloat() {
-    for(boolean retry = false; true; retry = true) {
-      try {
-	return Double.parseDouble(panel.readString(retry));
-      } catch(Exception e) { }
+    try {
+      return Double.parseDouble(panel.readString());
+    } catch(Exception e) { 
+      return 0;
     }
   }
 
   /** Lit un nombre décimal dans la fenêtre d'entrée (input).
-   * @return Le nombre décimal lu.
+   * @return Le nombre décimal lu ou 0 en cas d'erreur.
    * <br> Voir <a href="#readFloat()">readFloat</a> dont il est synonyme.
    */
   public static double readDouble() {
@@ -213,11 +202,10 @@ public class Konsol { private Konsol() { }
    * @return Le booléen lu
    */
   public static boolean readBoolean() {
-    for(boolean retry = false; true; retry = true) {
-      String rep = panel.readString(retry).toLowerCase().trim();
-      if (rep.matches("(vrai|vraie|v|true|t|oui|o|yes|y|1|ok)")) return true;
-      if (rep.matches("(faux|fausse|f|false|non|n|no|0|ko)")) return false;
-    }
+    String rep = panel.readString().toLowerCase().trim();
+    if (rep.matches("(vrai|vraie|v|true|t|oui|o|yes|y|1|ok)")) return true;
+    if (rep.matches("(faux|fausse|f|false|non|n|no|0|ko)")) return false;
+    return false;
   }
 
   /** Définition de l'interface graphique de la proglet. */

@@ -14,6 +14,9 @@ public class Macros { private Macros() { }
    * @param string La chaine à afficher.
    */
   public static void echo(String string) { System.out.println(string); }
+  public static void echo(int string) { echo (""+string); }
+  public static void echo(double string) { echo (""+string); }
+  public static void echo(boolean string) { echo (""+string); }
 
   /** Renvoie true si deux chaines de caratères sont égales, faux sinon.
    * @param string1 L'une des chaines à comparer.
