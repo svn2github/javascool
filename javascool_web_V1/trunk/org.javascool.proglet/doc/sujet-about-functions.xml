@@ -9,6 +9,37 @@
   </objectif>
   
   <notes>
+    <note title="Décortiquer un exemple de fonction"> Voici un exemple de fonction qui se nomme «valeur absolue<footnote id="1"/>» et qui se définit ainsi: <ul>
+      <li>Si la variable <c>x</c> a une valeur est positive alors on retourne cette valeur positive.</li>
+      <li>Si la variable <c>x</c> a une valeur est négative alors on retourne l'opposé de cette valeur (noté <c>-x</c>), donc une valeur encore positive.</li>
+    </ul>
+    <code>
+      <m>Définition de la fonction valeur absolue<footnote id="1"/></m>
+      <p><r>int</r> abs(<r>int</r> x) {</p>
+      <p><t/><r>if</r> (x <r>></r> 0) {</p>
+      <p><t/><t/><r>return</r> x;</p>
+      <p><t/>} <r>else</r> {</p>
+      <p><t/><t/><r>return</r> -x;</p>
+      <p><t/>}</p>
+      <p>}</p>
+    </code>
+     Regardons plus en détail cette fonction: <ul>
+      <li>La ligne de commentaire ``Définition de la fonction valeur absolue´´ explique à tous ceux qui vont utiliser le code, ce que fait cette fonction:
+      c'est bien utile !</li>
+      <li>La ligne <b><r>int</r> abs(<r>int</r> x)</b> nous dit, de gauche à droite, que: <ul>
+        <li>la fonction renvoie, en sortie, un résultat qui est un entier, donc un <r>int</r>;</li>
+        <li>le nom de la fonction est <r>abs</r>;</li>
+        <li>la fonction reçoit, en entrée, un argument <b>x</b> qui est un entier;</li>
+      </ul>Cette ligne <i>définit donc la fonction</i>, c'est son <i>interface</i> ou sa <i>signature</i>. 
+      Nous avons besoin de connaître cette ligne pour savoir comment appeler cette fonction.</li>
+      <li>Les 4 lignes suivantes forment le <i>corps</i> de la fonction: 
+      on y lit que si <b>x</b> est plus grand que <b>0</b>, le résultat est <b>x</b>, sinon le résultat est  <b>-x</b>. 
+      En effet:<ul>
+        <li>l'instruction <b><r>return</r> x;</b> signifie <i>renvoyer le résulat</i>: le calcul est fini et la fonction retourne la valeur calculée.</li>
+        <li>On note aussi les accolades { } qui permettent de délimiter le corps de la fonction: ce sont comme des parenthèses qui encapsulent les instructions.</li>
+      </ul>
+    </li></ul></note>
+
     <note title="Faire en sorte de réutiliser des portions de code"> Prenons un exemple.
     Voici un bout de code, sûrement fort utile, qui calcule <i>la plus grande des valeurs absolues<footnote id="1"/></i> de deux variables <b>x</b> et <b>y</b>.
     Si nous notons <b><r>abs</r>(x)</b> la valeur absolue<footnote id="1"/> de <b>x</b>, et <b><r>max</r>(x, y)</b> la plus petite valeur entre <b>x</b> et <b>y</b>,

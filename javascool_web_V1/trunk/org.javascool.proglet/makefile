@@ -59,7 +59,7 @@ all : scp pub
 	@cd ../../.. ; svn up ; svn ci -m '' ; svn status
 
 clean :
-	@rm -rf proglet.jar wproglet.jar *.class */*.class index.html api doc/*.htm tmp.*
+	@rm -rf proglet.jar proglet.zip wproglet.jar *.class */*.class index.html api doc/*.htm tmp.*
 
 # Parametres pour la signature
 
