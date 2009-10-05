@@ -76,7 +76,7 @@
       si une chose est vraie et l'autre fausse on ne peut dire que l'une ET l'autre sont vraies. Le code:
       <code>
         <p><r>boolean</r> x = <r>readBoolean</r>();</p> 
-        <p>if (x) { <r>print</r>(<s>OK</s>); } <r>else</r> { <r>print</r>(<s>KO</s>); }</p>
+        <p>if (x) { <r>println</r>(<s>OK</s>); } <r>else</r> { <r>println</r>(<s>KO</s>); }</p>
        </code>
        nous permet de lire la variable boolénne x et va imprimer OK/KO selon que sa valeur est Vraie/Fausse. Nous allons l'utiliser.
      </note>
@@ -101,23 +101,23 @@
       en <i>traduisant en mot (par une phrase) ce qui a été calculé</i>.<ol>
       <li>Vrai pour <b>x</b> ?<code>
         <p><r>int</r> x = 12;</p>
-        <p>if (x <r>>=</r> 12 <r>&amp;&amp;</r> (x <r>&lt;</r> 0 <r>||</r> x <r>></r> 10)) { <r>print</r>(<s>OK</s>); } <r>else</r> { <r>print</r>(<s>KO</s>); }</p>
+        <p>if (x <r>>=</r> 12 <r>&amp;&amp;</r> (x <r>&lt;</r> 0 <r>||</r> x <r>></r> 10)) { <r>println</r>(<s>OK</s>); } <r>else</r> { <r>println</r>(<s>KO</s>); }</p>
       </code>Votre commentaire commencera par : <i>Comme x vaut 12 alors <b>x <r>&lt;</r> 0</b> est [vrai?faux?], et <b> x <r>></r> 10</b> est [vrai?faux?],
       donc (x <r>&lt;</r> 0 <r>||</r> x <r>></r> 10) etc..</i></li>
       <li>Que va donner le code suivant ?<code>
         <p><r>String</r> nom = <r>readString</r>();</p>
-        <p>if (<r>equal</r>(nom, "John") <r>&amp;&amp;</r> <r>equal</r>(nom, "Joan")) { <r>print</r>(<s>OK</s>); } <r>else</r> { <r>print</r>(<s>KO</s>); }</p>
+        <p>if (<r>equal</r>(nom, "John") <r>&amp;&amp;</r> <r>equal</r>(nom, "Joan")) { <r>println</r>(<s>OK</s>); } <r>else</r> { <r>println</r>(<s>KO</s>); }</p>
       </code></li>
       <li>Deviner <i>puis</i> vérifier ces 8 réponses:<code>
-        <p><r>print</r>(<s>Réponse 1 = </s> + (<r>false</r> <r>||</r> <r>false</r>));</p>
-        <p><r>print</r>(<s>Réponse 2 = </s> + (<r>true</r> <r>||</r> <r>false</r>));</p>
-        <p><r>print</r>(<s>Réponse 3 = </s> + (<r>false</r> <r>||</r> <r>true</r>));</p>
-        <p><r>print</r>(<s>Réponse 4 = </s> + (<r>true</r> <r>||</r> <r>true</r>));</p>
-        <p><r>print</r>(<s>Réponse 5 = </s> + (<r>true</r> <r>&amp;&amp;</r> (<r>!</r><r>false</r>)));</p>
-        <p><r>print</r>(<s>Réponse 6 = </s> + (<r>!</r>(<r>!</r><r>false</r>)));</p>
-        <p><r>print</r>(<s>Réponse 6 = </s> + (<r>!</r>(<r>true</r> <r>&amp;&amp;</r> <r>false</r>)));</p>
-        <p><r>print</r>(<s>Réponse 7 = </s> + (<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r><r>false</r>)))))))))))))))))))));</p>
-        <p><r>print</r>(<s>Réponse 8 = </s> + (equal(<s>toto</s>, <s>titi</s>) <r>||</r> 14 <r>></r> 13));</p>
+        <p><r>println</r>(<s>Réponse 1 = </s> + (<r>false</r> <r>||</r> <r>false</r>));</p>
+        <p><r>println</r>(<s>Réponse 2 = </s> + (<r>true</r> <r>||</r> <r>false</r>));</p>
+        <p><r>println</r>(<s>Réponse 3 = </s> + (<r>false</r> <r>||</r> <r>true</r>));</p>
+        <p><r>println</r>(<s>Réponse 4 = </s> + (<r>true</r> <r>||</r> <r>true</r>));</p>
+        <p><r>println</r>(<s>Réponse 5 = </s> + (<r>true</r> <r>&amp;&amp;</r> (<r>!</r><r>false</r>)));</p>
+        <p><r>println</r>(<s>Réponse 6 = </s> + (<r>!</r>(<r>!</r><r>false</r>)));</p>
+        <p><r>println</r>(<s>Réponse 6 = </s> + (<r>!</r>(<r>true</r> <r>&amp;&amp;</r> <r>false</r>)));</p>
+        <p><r>println</r>(<s>Réponse 7 = </s> + (<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r><r>false</r>)))))))))))))))))))));</p>
+        <p><r>println</r>(<s>Réponse 8 = </s> + (equal(<s>toto</s>, <s>titi</s>) <r>||</r> 14 <r>></r> 13));</p>
       </code> et donner une phrase explicative pour chaque réponse.</li>
     </ol>
     <p align="center"><b>(la suite du travail proposé n'est pas indispensable pour notre apprentissage de la programmation, mais permet d'approfondir le sujet)</b></p>
@@ -155,9 +155,9 @@
       </table></li>
       <li>Vérifier à la main ou en utilisant le bout de code suivant, que l'expression <b>(((<r>!</r>x) <r>&amp;&amp;</r> y) <r>||</r> (x <r>&amp;&amp;</r> (<r>!</r>y)))</b>
         convient.<code>
-          <p><r>print</r>(<s>x ?</s>); <r>boolean</r> x = <r>readBoolean</r>();</p>
-          <p><r>print</r>(<s>y ?</s>); <r>boolean</r> y = <r>readBoolean</r>();</p>
-          <p><r>print</r>(<s>Réponse: </s> + (((<r>!</r>x) <r>&amp;&amp;</r> y) <r>||</r> (x <r>&amp;&amp;</r> (<r>!</r>y))));</p>
+          <p><r>println</r>(<s>x ?</s>); <r>boolean</r> x = <r>readBoolean</r>();</p>
+          <p><r>println</r>(<s>y ?</s>); <r>boolean</r> y = <r>readBoolean</r>();</p>
+          <p><r>println</r>(<s>Réponse: </s> + (((<r>!</r>x) <r>&amp;&amp;</r> y) <r>||</r> (x <r>&amp;&amp;</r> (<r>!</r>y))));</p>
         </code>
       </li>
       <li>Coder l'expression autrement, sous la forme ``x ou y et pas x et y´´.</li>
