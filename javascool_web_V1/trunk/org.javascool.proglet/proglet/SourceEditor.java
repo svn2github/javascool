@@ -132,7 +132,7 @@ public class SourceEditor extends JPanel {
     // Ajoute le formatage du code
     {
       JMenu menu = new JMenu();
-      menu.setText("Reformate");
+      menu.setText("Reformate/Zoom");
       bar.add(menu);
       menu.add(new JMenuItem(new AbstractAction("Reformate le code") {
 	  private static final long serialVersionUID = 1L;

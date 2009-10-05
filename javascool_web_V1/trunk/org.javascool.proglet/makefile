@@ -105,12 +105,13 @@ scp : proglet.jar
 # Génération des pages du site web
 
 doc : index.html wproglet.jar api/index.html $(patsubst %.xml,%.htm,$(wildcard doc/*.xml)) $(patsubst %.fig,%.png,$(wildcard doc/img/*.fig)) doc/img/style.css
+	@rm -f proglet.zip ; $(MAKE) proglet.zip
 
 # Copie des fichiers de documentation sur le site web
 
 pub : doc
-	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ index.html doc api img wproglet.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet \
-	 2>&1 | egrep -v '^(rsync: failed to set permissions|rsync error: some files/attrs were not transferred)'
+	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ index.html doc api img wproglet.jar proglet.zip \
+	 scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet 2>&1 | egrep -v '^(rsync: failed to set permissions|rsync error: some files/attrs were not transferred)'
 	@-rsync index.html scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglets 
 
 ftp :
@@ -137,6 +138,11 @@ api/index.html : proglet/package.html $(wildcard proglet/*.java)
 	@cp proglet/*.java api/proglet
 
 index.html : makefile
-	@echo '<script>location.replace("http://javascool.gforge.inria.fr/proglet/doc/about-all.htm");</script>' >$@	
+	@echo '<script>location.replace("./doc/about-all.htm");</script>' >$@	
+
+proglet.zip : 
+	@rm -f $@
+	@cd .. ; zip -9qr org.javascool.proglet/$@ org.javascool.proglet/index.html org.javascool.proglet/doc org.javascool.proglet/api org.javascool.proglet/wproglet.jar \
+	 -x \*/.svn/\* \*/\*/.svn/\*\*/.svn/\*/\* \*/\*/.svn/\*/\* 
 
 #####################################################################################################################################
