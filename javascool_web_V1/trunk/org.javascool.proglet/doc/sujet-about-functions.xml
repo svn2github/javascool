@@ -170,7 +170,7 @@
   
   <footnotes>
     <p title="A propos la valeur absolue"> Si x est négatif sa valeur, par exemple -12 ou -14, la valeur absolue est le nombre positif correspondant sans le signe ``-´´,
-    autrement dit -x, donc 12 ou 14 pour nos exemples. 
+    autrement dit l'opposé de x, donc 12 ou 14 pour nos exemples. 
     Si x est positif sa valeur absolue est le nombre lui même, autrement dit x. On note |x| la valeur absolue de x. 
     Comme un nombre positif est toujours plus grand qu'un nombre négatif, c'est aussi la valeur la plus grande entre x et -x.</p> 
     <p title="Les fonctions ``abs´´ et ``max´´ en Java"> Bien entendu les fonctions valeur-absolue, maximum-de-deux-valeurs existent <i>déja</i> dans tous les langages
