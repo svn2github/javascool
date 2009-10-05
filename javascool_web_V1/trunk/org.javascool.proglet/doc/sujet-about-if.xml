@@ -71,7 +71,7 @@
      en utilisant des parenthèses pour ne pas mélanger les termes de ces expressions.
    </note>
    <note title = "Un nouveau type de variable"> Les variables qui ne prennent que les valeurs <r>true</r> et <r>false</r>. Ce sont des variables booléennes.
-      La valeur <r>true</r> veut dire vrai est la valeur <r>false</r> veut dire faux, par exemple <r>true &amp;&amp; true</r> donne <r>true</r> puisque 
+      La valeur <r>true</r> veut dire vrai et la valeur <r>false</r> veut dire faux, par exemple <r>true &amp;&amp; true</r> donne <r>true</r> puisque 
       si deux choses sont vraies alors on peut dire que l'une ET l'autre sont vraies. De même <r>true &amp;&amp; false</r> donne <r>false</r> puisque 
       si une chose est vraie et l'autre fausse on ne peut dire que l'une ET l'autre sont vraies. Le code:
       <code>
