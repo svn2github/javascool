@@ -4,6 +4,7 @@
 
 # Travail de Thierry en cours:
 # - Ajout les sujets annoncés en-cours etc...
+# - Ajouter en fonction PI, abs, rint, pow, sin, cos, random, sqrt, toDegrees, toRadian 
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
 #  - Ajouter un éditeur couleur dans l'applet, 

@@ -126,7 +126,7 @@ public class SourceEditor extends JPanel {
 	    doPrint();
 	  }
 	};
-      //---menu.add(new JMenuItem(print));
+      menu.add(new JMenuItem(print));
       addBinding(pane, KeyEvent.VK_P, print);
 
       // Textfind/replace manager: to be improved before use
@@ -282,32 +282,26 @@ public class SourceEditor extends JPanel {
   // - http://java.sun.com/docs/books/tutorial/2d/printing/index.html
   private void doPrint() {
     new Thread(new Runnable() { public void run() {
+      System.out.println("Lancement de l'impression . . ");
       try {
 	Printable printable = new Printable() {
 	    public int print(Graphics g, PageFormat f, int page) {
-	      System.out.println("Printing11");
 	      if (page > 0) {
 		return NO_SUCH_PAGE;
 	      } else {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.translate(f.getImageableX(), f.getImageableY());
-		g.drawString("Hello world!", 100, 100);
-		// pane.print(g2d);
+		pane.print(g2d);
 		return PAGE_EXISTS;
 	      }
 	    }
 	  };
 	PrinterJob job = PrinterJob.getPrinterJob();
-	System.out.println("Printing not yet validated !");
-	//job.setPrintable(printable);
-	System.out.println("Printing2");
-	if (job.printDialog()) {
-	  System.out.println("Printing3");
+	job.setPrintable(printable);
+	if (job.printDialog())
 	  job.print();
-	}
-	System.out.println("Printing done");
       } catch(Exception e) {
-	System.out.println("Print fail ("+e+") !");
+	System.out.println("Echec de l'impression ("+e+") !");
       }
     }}).start();
   }

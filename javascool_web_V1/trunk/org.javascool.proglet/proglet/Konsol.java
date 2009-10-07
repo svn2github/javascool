@@ -163,11 +163,7 @@ public class Konsol { private Konsol() { }
    * <br> Voir <a href="#readInt()">readInt</a> dont il est synonyme.
    */
   public static int readInteger() {
-    try {
-      return Integer.parseInt(panel.readString());
-    } catch(Exception e) { 
-      return 0;
-    }
+    return (int) readFloat();
   }
   
   /** Lit un nombre entier dans la fenêtre d'entrée (input).
@@ -183,10 +179,13 @@ public class Konsol { private Konsol() { }
    * <br> Voir <a href="#readDouble()">readDouble</a> dont il est synonyme.
    */
   public static double readFloat() {
-    try {
-      return Double.parseDouble(panel.readString());
-    } catch(Exception e) { 
-      return 0;
+    while(true) {
+      String rep = panel.readString().replaceAll("([0-9]),([0-9])", "$1.$2");
+      try {
+	return Double.parseDouble(rep);
+      } catch(Exception e) { 
+	println("Erreur de saisie: ``"+rep+"´´ n'est pas un nombre");
+      }
     }
   }
 
@@ -202,10 +201,12 @@ public class Konsol { private Konsol() { }
    * @return Le booléen lu
    */
   public static boolean readBoolean() {
-    String rep = panel.readString().toLowerCase().trim();
-    if (rep.matches("(vrai|vraie|v|true|t|oui|o|yes|y|1|ok)")) return true;
-    if (rep.matches("(faux|fausse|f|false|non|n|no|0|ko)")) return false;
-    return false;
+    while(true) {
+      String rep = panel.readString().toLowerCase().trim();
+      if (rep.matches("(vrai|vraie|v|true|t|oui|o|yes|y|1|ok)")) return true;
+      if (rep.matches("(faux|fausse|f|false|non|n|no|0|ko)")) return false;
+      println("Erreur de saisie: ``"+rep+"´´ n'est pas un booleen (utiliser ``vrai´´ ou ``faux´´)");
+    }
   }
 
   /** Définition de l'interface graphique de la proglet. */

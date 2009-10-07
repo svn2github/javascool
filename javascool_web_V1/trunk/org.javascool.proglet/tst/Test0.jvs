@@ -2,5 +2,6 @@
 void main() {
   int z = 10;
   println("z = " + z);
-  println("z = " + z);
+  println("z = " + z); 
+  println(readBoolean());
 }
