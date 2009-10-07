@@ -1,0 +1,17 @@
+
+int fib(int n) {
+  int x0 = 0;
+  int x1 = 1;
+  while(n > 0) {
+     int x2 = x0 + x1;
+     x0 = x1;
+     x1 = x2;
+     n--;
+  }
+  return x0;
+}
+
+void main() {
+  for(int n = 0; n < 11; n = n+ 1)
+    println("fib("+n+") = "+fib(n));
+}
