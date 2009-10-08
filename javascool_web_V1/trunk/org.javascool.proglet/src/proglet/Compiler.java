@@ -18,8 +18,13 @@ public class Compiler { private Compiler() { }
   static String compile(String filename) throws IOException {
     String args[] = { filename };
     StringWriter out = new StringWriter();
-    //TODO ici inserer la reflexivite
-    //com.sun.tools.javac.Main.compile(args, new PrintWriter(out));
+    // Implements com.sun.tools.javac.Main.compile(args, new PrintWriter(out)); in reflexive form to avoid external compilation problems
+    try { 
+      Class.forName("com.sun.tools.javac.Main").getDeclaredMethod("compile", Class.forName("[Ljava.lang.String;"), Class.forName("java.io.PrintWriter")).
+	invoke(null, args, new PrintWriter(out)); 
+    } catch(Exception e) { 
+      System.err.println("Error: impossible de compiler, il y a un problème d'installation ("+e+"), contacter http://javascool.gforge.inria.fr/proglet");
+    }
     return out.toString().trim().replaceAll(filename.replaceAll("\\\\", "\\\\\\\\"), new File(filename).getName());
   }
 }

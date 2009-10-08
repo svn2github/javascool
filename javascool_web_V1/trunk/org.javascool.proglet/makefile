@@ -3,7 +3,7 @@
 #####################################################################################################################################
 
 # Travail de Thierry en cours:
-# - Rendre reflexif et maj avec l orga de fichier
+# - Tester mode reflexif du compilateur sous l'applet AVANT propagation
 # - Ajout les sujets annoncés en-cours etc...
 # - Ajouter en fonction PI, abs, rint, pow, sin, cos, random, sqrt, toDegrees, toRadian 
 
@@ -35,7 +35,7 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst1
+dft : tst2
 
 # Test en standalone (pour débugger une proglet)
 
@@ -74,6 +74,8 @@ version=0.0
 
 proglet.jar : makefile $(wildcard proglet/*.java) $(wildcard img/*.*)
 	@rm -f $@
+	@#Delete an eclipse file
+	@rm -f proglet/Activator.java
 	@#Compile the sources
 	$(JAVA)/bin/javac -Xlint -cp $(CP) proglet/*.java
 	@# Generates the manifest file
