@@ -3,6 +3,7 @@
 #####################################################################################################################################
 
 # Travail de Thierry en cours:
+# - Rendre reflexif et maj avec l orga de fichier
 # - Ajout les sujets annoncés en-cours etc...
 # - Ajouter en fonction PI, abs, rint, pow, sin, cos, random, sqrt, toDegrees, toRadian 
 
