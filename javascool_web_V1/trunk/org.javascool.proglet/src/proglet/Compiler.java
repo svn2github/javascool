@@ -18,7 +18,8 @@ public class Compiler { private Compiler() { }
   static String compile(String filename) throws IOException {
     String args[] = { filename };
     StringWriter out = new StringWriter();
-    com.sun.tools.javac.Main.compile(args, new PrintWriter(out));
+    //TODO ici inserer la reflexivite
+    //com.sun.tools.javac.Main.compile(args, new PrintWriter(out));
     return out.toString().trim().replaceAll(filename.replaceAll("\\\\", "\\\\\\\\"), new File(filename).getName());
   }
 }
