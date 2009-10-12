@@ -142,7 +142,7 @@ api/index.html : proglet/package.html $(wildcard proglet/*.java)
 	@cp proglet/*.java api/proglet
 
 index.html : makefile
-	@echo '<script>location.replace("./doc/about-all.htm");</script>' >$@	
+	@echo '<script>location.replace("../proglet/doc/about-all.htm");</script>' >$@	
 
 proglet.zip : 
 	@rm -f $@

@@ -110,15 +110,16 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
   <li>[luxe] <a href="http://javascool.gforge.inria.fr">Le logiciel Java'sCool dans sa forme complète</a>
     avec un éditeur coloré, des menus adaptés, un interface <a href="http://christian.rellier.free.fr/orphy/ORPHYGTS.htm">Orphy</a>, etc...
     (nécessite une <a href="http://javascool.gforge.inria.fr/html/javascool/install/Installation.html">installation spécifique</a> sur chaque machine utilisée).</li>
-   <li>[web] <a href="http://facets.inria.fr/javascool">L'environnement de programmation simplifié pour utiliser les proglet's en web service</a>
-      (nécessite une installation standard de Java et un accès au réseau pendant le travail en classe).</li>
+  <li>[facile] <a href="../wproglet.jar">L'environnement de programmation simplifié pour utiliser les proglet's d'un simple clic</a> 
+      (nécessite une installation standard de Java puis de cliquer [<b><a href="../wproglet.jar">ICI</a> </b>] !).</li>
    <li>[sans réseau] L'environnement de programmation simplifié et sa documentation se télécharge 
    sous <a href="http://javascool.gforge.inria.fr/proglet/proglet.zip">sous forme d'un fichier [ZIP] en cliquant ici</a>: <ul>
      <li>Il suffit en suite de le copier sur une clé USB puis d'extraire le dossier <c>org.javascool.proglet</c> sur chaque machine,</li>
      <li>Et de d'ouvrir <c>org.javascool.proglet/index.html</c> avec un navigateur.</li>
    </ul> (nécessite une installation standard de Java sans accès au réseau pendant le travail en classe).</li>
-  <li>[facile] <a href="../wproglet.jar">L'environnement de programmation simplifié pour utiliser les proglet's d'un simple clic</a> 
-      (nécessite une installation standard de Java puis de cliquer [<b><a href="../wproglet.jar">ICI</a> </b>] !).</li>
+   <li>[web] <a href="http://facets.inria.fr/javascool">L'environnement de programmation simplifié pour utiliser les proglet's en web service</a>
+   (nécessite une installation standard de Java et un accès au réseau pendant le travail en classe). 
+   <b>A n'utiliser que pour des essais: utiliser la solution [facile] sinon.</b></li>
 </ol> et de pouvoir nous contacter (voir <a href="#contact">ci-dessous</a>) si il y a le moindre problème.</p>
 
 <p><b>Quelle forme du logiciel utiliser ?</b> Probablement la forme <c>3</c>, dite <c>[facile]</c>, pour commencer: c'est un simple fichier ``<c>jar</c>´´, 
