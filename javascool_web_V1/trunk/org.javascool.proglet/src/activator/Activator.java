@@ -1,6 +1,4 @@
-package proglet;
-
-
+package activator;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -28,7 +26,6 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
-		System.out.println("DEBUG :: proglet plugin is loaded");
 		super.start(context);
 		plugin = this;
 	}
