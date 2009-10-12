@@ -22,7 +22,8 @@ import org.eclipse.ui.application.IActionBarConfigurer;
 import org.eclipse.ui.internal.WorkbenchPlugin;
 import org.eclipse.ui.internal.registry.ActionSetRegistry;
 import org.eclipse.ui.internal.registry.IActionSetDescriptor;
-
+import org.javascool.ui.toolsBox.ToolsBoxAction;
+import org.javascool.ui.toolsBox.ToolsBoxFonctions;
 /**
  * An action bar advisor is responsible for creating, adding, and disposing of
  * the actions added to a workbench window. Each window will be populated with
@@ -47,6 +48,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		// file.
 		// Registering also provides automatic disposal of the actions when
 		// the window is closed.
+				
+		
 		IWorkbenchAction save = ActionFactory.SAVE.create(window);
 		save.setText("Sauvegarder");
 		registerAsGlobal(save);
@@ -55,10 +58,11 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		saveAs.setText("Sauvegarder Sous...");
 		registerAsGlobal(saveAs);
 		
+		/*
 		IWorkbenchAction about=ActionFactory.ABOUT.create(window);
 		about.setText("A Propos");
 		registerAsGlobal(about);
-		
+		*/
 		IWorkbenchAction undo = ActionFactory.UNDO.create(window);
 		undo.setText("Defaire");
 		registerAsGlobal(undo);
@@ -95,6 +99,10 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		close.setText("Fermer");
 		registerAsGlobal(close);
 		
+		IWorkbenchAction close_all = ActionFactory.CLOSE_ALL.create(window);
+		close_all.setText("Fermer tous");
+		registerAsGlobal(close_all);
+		
 		IWorkbenchAction print=ActionFactory.PRINT.create(window);
 		print.setText("Imprimer");
 		registerAsGlobal(print);
@@ -126,9 +134,10 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		IWorkbenchWindow window = getActionBarConfigurer().getWindowConfigurer().getWindow();
 		IToolBarManager toolbar = new ToolBarManager(SWT.LEFT);
 		coolBar.add(new ToolBarContributionItem(toolbar, "main")); 
-		toolbar.add(new GroupMarker("FilegGoup"));
-
-
+	
+		toolbar.add(new GroupMarker("FileGroup"));
+		toolbar.add(new Separator());
+		
 		/*IWorkbenchAction open = ActionFactory..create(window);
 		open.setImageDescriptor(Activator.getImageDescriptor("icons/charger.png"));
 		toolbar.add(open);*/
@@ -152,6 +161,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 		toolbar.add(new GroupMarker("EditgGroup"));
 		toolbar.add(new Separator());
+		
 		IWorkbenchAction find = ActionFactory.FIND.create(window);
 		find.setImageDescriptor(Activator.getImageDescriptor("img/Find-replace.png")); //$NON-NLS-1$
 		//find.setDisabledImageDescriptor(Activator.getImageDescriptor(Messages.getString("IU.Strings.29"))); //$NON-NLS-1$
@@ -181,14 +191,13 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		
 		//toolbar.add(ActionFactory.REDO.create(window));*/
 
-		//toolbox2.png
-		/*
+		//TODO here for the toolbox
 		ToolsBoxAction toolBox = new ToolsBoxAction(window);
-		toolBox.setImageDescriptor(Activator.getImageDescriptor(Messages.getString("IU.Strings.33"))); //$NON-NLS-1$
-		toolBox.setDisabledImageDescriptor(Activator.getImageDescriptor(Messages.getString("IU.Strings.34"))); //$NON-NLS-1$
-		toolBox.setHoverImageDescriptor(Activator.getImageDescriptor(Messages.getString("IU.Strings.35"))); //$NON-NLS-1$
+		toolBox.setImageDescriptor(Activator.getImageDescriptor("img/toolbox.png"));
+		toolBox.setDisabledImageDescriptor(Activator.getImageDescriptor("img/toolbox.png"));
+		toolBox.setHoverImageDescriptor(Activator.getImageDescriptor("img/toolbox.png"));
 		toolbar.add(toolBox);
-		*/
+		
 		
 		//action_toolsBox.setMenuCreator(new IMenuCreator(){});
 	
@@ -211,7 +220,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		
 		menuBar.add(createFileMenu(window));
 		menuBar.add(createEditMenu());
-		//menuBar.add(ToolsBoxFonctions.createToolBoxMenu(window));
+		menuBar.add(createWindowMenu(window));
+		menuBar.add(ToolsBoxFonctions.createToolBoxMenu(window));
 		menuBar.add(createHelpMenu(window));
 		
 		
@@ -223,16 +233,20 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	 * @return
 	 */
 	private MenuManager createFileMenu(	IWorkbenchWindow window) {
-		MenuManager fileMenu = new MenuManager("&File", IWorkbenchActionConstants.M_FILE);
+		MenuManager fileMenu = new MenuManager("&Fichier", IWorkbenchActionConstants.M_FILE);
 		
 
 		fileMenu.add(new GroupMarker(IWorkbenchActionConstants.FILE_START));
 
 		IContributionItem[] items = fileMenu.getItems();
+		
 		fileMenu.add(new GroupMarker(IWorkbenchActionConstants.NEW_EXT));
 		
+		fileMenu.add(new Separator());
 		
 		fileMenu.add(getAction(ActionFactory.CLOSE.getId()));
+		fileMenu.add(getAction(ActionFactory.CLOSE_ALL.getId()));
+		
 		fileMenu.add(new GroupMarker(IWorkbenchActionConstants.CLOSE_EXT));
 
 		fileMenu.add(new Separator());
@@ -298,12 +312,23 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		return menu;
 	}
 	
+	private MenuManager createWindowMenu(IWorkbenchWindow window) {
+		MenuManager windowMenu = new MenuManager("&Fenetre", IWorkbenchActionConstants.M_WINDOW);
+					
+		IWorkbenchAction perspective = ActionFactory.OPEN_PERSPECTIVE_DIALOG.create(window);
+		perspective.setText("Perspective...");
+		windowMenu.add(perspective);
+		
+		return windowMenu;	
+	}
+	
+	
 	/**
 	 * Creates the 'Help' menu.
 	 * @param window 
 	 */
 	private MenuManager createHelpMenu(IWorkbenchWindow window) {
-		MenuManager helpMenu = new MenuManager("&Help", IWorkbenchActionConstants.M_HELP);
+		MenuManager helpMenu = new MenuManager("&Aide", IWorkbenchActionConstants.M_HELP);
 			
 		
 		helpMenu.add(getAction(ActionFactory.HELP_CONTENTS.getId()));	
