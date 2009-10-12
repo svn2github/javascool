@@ -15,7 +15,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		//TODO ici le chemin du fichier qu'on veut compiler
-		String filePath = "C:\\Users\\seb\\Desktop\\TestSeb.jvs";
+		String filePath = "C:\\Users\\seb\\Desktop\\Tmp0.jvs";
 		
 		
 		//TODO remplacer ici par le chemin vers le projet org.javascool.conf

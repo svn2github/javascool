@@ -24,6 +24,7 @@ public class BeanFactory {
 	public static String errConfFile=null;
 	public static String macConfFile=null;
 	public static String fonConfFile=null;
+	public static String progletConFile=null;//TODO add here for proglet
 
 	/** arraylist's beanfonctions' getter */
 	public static ArrayList<BeanFonctions> getBeanFonctions(String file) throws IOException, ConfException{
@@ -81,6 +82,7 @@ public class BeanFactory {
 		if(repConfFile==null)repConfFile=confFile;
 		if(macConfFile==null)macConfFile=confFile;
 		if(fonConfFile==null)fonConfFile=confFile;
+		if(progletConFile==null) progletConFile = confFile;//TODO add here for proglet
 		if(errConfFile==null)errConfFile=confFile;
 	}
 
@@ -91,6 +93,7 @@ public class BeanFactory {
 			else if(f.contains("macro")) macConfFile=file;
 			else if(f.contains("repertoire")) repConfFile=file;
 			else if(f.contains("fonction")) fonConfFile=file;
+			else if(f.contains("proglet")) progletConFile=file;// TODO add here for proglet
 			else if(f.equals("conf.bml")) confFile=file;
 	}
 

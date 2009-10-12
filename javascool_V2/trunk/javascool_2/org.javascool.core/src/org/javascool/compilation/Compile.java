@@ -80,9 +80,12 @@ public class Compile {
 		Iterable<? extends JavaFileObject> compilationUnits = fileManager
 		.getJavaFileObjectsFromStrings(Arrays.asList(filename));
 		//add the classpath for conf file
-		Iterable<String> options=Arrays.asList("-classpath",classPath);
+		Iterable<String> options = Arrays.asList("-classpath",classPath);
 	
 		JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager, diagnostics, options, null, compilationUnits);
+		
+		//TODO comment this line it's just a trace for DEBUG
+		//System.out.println("!!! "+options+"!!!!");
 		
 		boolean success = task.call();//compilation
 		

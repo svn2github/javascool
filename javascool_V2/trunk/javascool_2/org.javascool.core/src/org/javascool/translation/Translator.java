@@ -35,6 +35,8 @@ public class Translator {
 	private static ArrayList<BeanFonctions> listFonctions;
 	//la liste des macros presente dans le source
 	private static ArrayList<BeanMacros> listMacros;
+	// la liste des fonctions des proglets
+	private static ArrayList<BeanFonctions> listProglets;
 	//la liste des imports a faire
 	private static ArrayList<String >listImport = new ArrayList<String>();
 	//le texte correspondant au code source
@@ -50,9 +52,11 @@ public class Translator {
 			
 			BeanFactory.fonConfFile = directory+File.separator+"fonctions_conf.bml";
 			BeanFactory.macConfFile = directory+File.separator+"macros_conf.bml";
-
+			//BeanFactory.progletConFile = directory+File.separator+"proglet_conf.bml"; TODO add here for proglet
+			
 			listFonctions = BeanFactory.getBeanFonctions(BeanFactory.fonConfFile);
 			listMacros = BeanFactory.getBeanMacros(BeanFactory.macConfFile);
+			//listProglets = BeanFactory.getBeanFonctions(BeanFactory.progletConFile); TODO add here for proglet
 
 		} catch (IOException e) {
 			e.printStackTrace();
