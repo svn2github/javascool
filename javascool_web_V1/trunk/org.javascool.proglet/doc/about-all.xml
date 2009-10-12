@@ -113,7 +113,7 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
   <li>[facile] <a href="../wproglet.jar">L'environnement de programmation simplifié pour utiliser les proglet's d'un simple clic</a> 
       (nécessite une installation standard de Java puis de cliquer [<b><a href="../wproglet.jar">ICI</a> </b>] !).</li>
    <li>[sans réseau] L'environnement de programmation simplifié et sa documentation se télécharge 
-   sous <a href="http://javascool.gforge.inria.fr/proglet/proglet.zip">sous forme d'un fichier [ZIP] en cliquant ici</a>: <ul>
+   sous forme d'un <a href="http://javascool.gforge.inria.fr/proglet/proglet.zip">fichier [ZIP]</a>: <ul>
      <li>Il suffit en suite de le copier sur une clé USB puis d'extraire le dossier <c>org.javascool.proglet</c> sur chaque machine,</li>
      <li>Et de d'ouvrir <c>org.javascool.proglet/index.html</c> avec un navigateur.</li>
    </ul> (nécessite une installation standard de Java sans accès au réseau pendant le travail en classe).</li>
