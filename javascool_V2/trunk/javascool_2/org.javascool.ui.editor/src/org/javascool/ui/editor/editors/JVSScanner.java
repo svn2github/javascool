@@ -7,6 +7,8 @@ import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.jface.text.rules.*;
 import org.eclipse.jface.text.*;
 import org.eclipse.swt.SWT;
+import org.javascool.conf.BeanFactory;
+import org.javascool.conf.BeanMacros;
 import org.javascool.ui.editor.Activator;
 import org.javascool.ui.editor.preferences.PreferencesConstants;
 
@@ -26,7 +28,6 @@ public class JVSScanner extends RuleBasedScanner {
 
 
 	/*Macro**/
-	/*TODO revenir ici
 	public static String[] fgMacro;
 	static{
 		try {
@@ -37,7 +38,7 @@ public class JVSScanner extends RuleBasedScanner {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 
 	/*types*/
 	public static final String[] fgType = new String[] {
@@ -117,12 +118,11 @@ public class JVSScanner extends RuleBasedScanner {
 			wr.addWord(fgKeyword[i], keyword);
 		}
 
-		/*TODO revenir ici
 		//regles pour les types
 		for(int i = 0 ; i < fgMacro.length ; ++i) {
 			wr.addWord(fgMacro[i], macro);
 		}
-*/
+
 		//regles pour les macros
 		for(int i = 0 ; i < fgType.length ; ++i) {
 			wr.addWord(fgType[i],type);

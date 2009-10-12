@@ -2,6 +2,7 @@ package org.javascool.ui.editor.actions;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
@@ -25,13 +26,34 @@ public class StopExecutionAction implements IWorkbenchWindowActionDelegate {
 
 	@Override
 	public void run(IAction action) {
+		
+		//TODO version JOB
+		//check the execution started
+		if(!ExecuteCodeAction.jobStarted){
+			MessageDialog.openWarning(window.getShell(), "Stop Execution", "Aucun programme en cours d'execution");
+			return;
+		}
 		try{
 			ExecuteCodeAction.job.cancel();
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
-		System.out.println("arret de l'execution");
+		
+		//TODO version thread
+		/*
+		if(ExecuteCodeAction.threadExecute.isAlive()){
+			try {
+				ExecuteCodeAction.threadExecute.setPriority(Thread.MIN_PRIORITY);
+			} catch (Exception e) {
+				System.out.println("exception stop execution");
+				e.printStackTrace();
+			}
+			System.err.println("arret de l'execution du programme");
+		}else{
+			MessageDialog.openWarning(window.getShell(), "Stop Execution", "Aucun programme en cours d'execution");
+		}*/
 		
 	}
 

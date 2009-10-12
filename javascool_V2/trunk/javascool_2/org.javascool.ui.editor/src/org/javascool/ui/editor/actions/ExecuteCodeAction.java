@@ -1,24 +1,32 @@
 package org.javascool.ui.editor.actions;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.TextConsole;
+import org.javascool.compilation.Execution;
 import org.javascool.ui.editor.editors.JVSEditor;
 
 public class ExecuteCodeAction implements IWorkbenchWindowActionDelegate {
@@ -27,7 +35,10 @@ public class ExecuteCodeAction implements IWorkbenchWindowActionDelegate {
 
 	private IWorkbenchWindow window;
 	static Job job;
+	static boolean jobStarted = false; 
+	static Thread threadExecute  = new Thread();
 
+	static boolean stopThread = false;
 
 	@Override
 	public void init(IWorkbenchWindow window) {
@@ -38,49 +49,101 @@ public class ExecuteCodeAction implements IWorkbenchWindowActionDelegate {
 	@Override
 	public void run(IAction action) {
 
+		//check the unique execution
+		if(jobStarted){
+			MessageDialog.openWarning(window.getShell(), "Execution", 
+			"Une programme est deja en cours d'execution");
+			return;
+		}
+		
 
-		clearConsole();
+
 		JVSEditor editor = (JVSEditor) window.getWorkbench().getActiveWorkbenchWindow().
 		getActivePage().getActiveEditor();
 		String path = editor.getFilePath();
 
-		final String root=path.substring(0,path.lastIndexOf(File.separator));
-		final String file=path.substring(path.lastIndexOf(File.separator)+1,path.lastIndexOf("."));
+		//the path of the file
+		final String pathFile = path.substring(0,path.lastIndexOf(File.separator));
+		//the name of the file without extension
+		String className = path.substring(path.lastIndexOf(File.separator)+1,path.lastIndexOf("."));
 
-		execute(root,file);
-		/*
-		String path = null;
+		Path classPathPluginMacro = null;
+		Path classPathpluginProglet = null;
 		try{
-			JVSEditor editor = (JVSEditor) window.getWorkbench().getActiveWorkbenchWindow().
-			getActivePage().getActiveEditor();
-			path = editor.getFilePath();
-		}catch(Exception e){
-			//e.printStackTrace();
+			//here we indicate the position of plugin javascool.core an proglet
+
+			URL url = Platform.getBundle(org.javascool.core.Activator.PLUGIN_ID).getEntry("/");
+			url = FileLocator.resolve(url);
+			classPathPluginMacro = new Path(url.getPath());
+
+			URL urlProglet = Platform.getBundle(activator.Activator.PLUGIN_ID).getEntry("/");
+			urlProglet = FileLocator.resolve(urlProglet);
+			classPathpluginProglet = new Path(urlProglet.getPath());
+
+		}catch(Exception ex){
+			System.err.println("org.javascool.core.execution -> create classPath from plugin");
+
+			ex.printStackTrace();
 		}
+		String[] classPath = {classPathPluginMacro.toOSString()+File.separator+"bin",
+				classPathpluginProglet.toOSString()+File.separator+"bin"};  
 
-		clearConsole();
+		//clearConsole(); //clear the output
+		//Execution.execute(pathFile, className, classPath);	//execute the code
+
+		final String classNameFinal = className;
+		final String[] classPathFinal = Arrays.copyOf(classPath, classPath.length);
+
+		/*
+		threadExecute = new Thread(){
+			@Override
+			public void run(){
+					Execution.execute(pathFile, classNameFinal, classPathFinal);	//execute the code
+			}
+
+	//		public synchronized void stop()
+		};
+		 */
+
+		clearConsole(); //clear the output
+
+		//threadExecute.start();
 
 
-		job = new Job("execution") {
+		job = new Job("Execution"){
 			protected IStatus run(IProgressMonitor monitor) {
+				jobStarted = true;
+				monitor.beginTask("Execution", 100);
 
-				// System.out.println("execution du ficier : "+path);
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				System.out.println("execution");
+				Execution.execute(pathFile, classNameFinal, classPathFinal);	//execute the code
+				jobStarted = false;
 				return Status.OK_STATUS;
 			}
 		};
 
-		job.setPriority(Job.BUILD);
-		job.schedule(); // start as soon as possible
 
-		 */
+		job.addJobChangeListener(new JobChangeAdapter() {
 
+			@Override
+			public void done(IJobChangeEvent event) {
+
+				
+				if (event.getResult().isOK()) {
+					MessageDialog.openInformation(window.getShell(), "Arret de l'execution",
+					"Execution terminée avec succés");
+				}else{
+					MessageDialog.openWarning(window.getShell(), "Arret de l'execution",
+					"Execution du programme interrompue");
+				}
+			}
+		});
+
+
+		//job.shouldRun()
+		//int state = job.getState();
+		//if(state == job.RUNNING || state == job.WAITING || state == job.SLEEPING ){
+		
+		job.schedule(); // start as soon as possible	
 	}
 
 
@@ -96,40 +159,6 @@ public class ExecuteCodeAction implements IWorkbenchWindowActionDelegate {
 	}
 
 
-	//emploi temporaire aide au support pour la culture scientifique
-
-	/**
-	 * Execute a file class.
-	 * 
-	 * @param	root	the path of the file.
-	 * @file 	file	the name of the file.
-	 */
-	public void execute(String root,final String file){
-		try{
-			URL first_url=new File(root).toURI().toURL();
-			ArrayList<URL> arrayListRes=new ArrayList<URL>();
-			arrayListRes.add(first_url);
-			String jvm_path = System.getProperty("java.class.path");
-			for(String s:jvm_path.split(File.pathSeparator)) arrayListRes.add(new File(s).toURI().toURL());
-			URL[] res=new URL[arrayListRes.size()];
-			for(int i=0;i<arrayListRes.size();i++) res[i]=arrayListRes.get(i);
-
-			URL[] url = res;
-
-			URLClassLoader cl = new URLClassLoader(url,null) ;
-			Class myClass = Class.forName(file,false, cl);
-			final Method myMethod=myClass.getMethod("main",String[].class);
-			final Object[] args0=new String[1];
-			try {
-				myMethod.invoke(null,(Object[])args0);
-			}catch (Exception e) {
-				System.err.println("Une erreur s'est produite pendant l'execution du programme");
-			}
-
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	@Override
 	public void dispose() {

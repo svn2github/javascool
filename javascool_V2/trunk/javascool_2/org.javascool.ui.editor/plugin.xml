@@ -56,9 +56,10 @@
                class="org.javascool.ui.editor.actions.NewEditorAction"
                icon="img/nouveau.png"
                id="org.javascool.ui.editor.actions.newEditorAction"
-               label="New Editor"
+               label="Nouveau"
+               menubarPath="file/fileStart"
                style="push"
-               toolbarPath="newFile"
+               toolbarPath="main/FileGroup"
                tooltip="Nouveau Fichier">
          </action>
          <action
