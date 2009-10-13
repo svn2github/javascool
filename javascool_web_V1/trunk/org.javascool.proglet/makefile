@@ -35,7 +35,7 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst1
+dft : tst2
 
 # Test en standalone (pour débugger une proglet)
 
