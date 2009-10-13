@@ -206,6 +206,7 @@ public class InterfacePrincipale extends JApplet {
 	  public void actionPerformed(ActionEvent e){
 	    getFileChooser().setDialogTitle("Ouvrir un programme");
 	    getFileChooser().setApproveButtonText("Ouvrir");
+	    getFileChooser().setDialogType(JFileChooser.OPEN_DIALOG);
 	    int value = getFileChooser().showOpenDialog(null);
 	    if (value == 0){
 	      try { 
@@ -238,6 +239,7 @@ public class InterfacePrincipale extends JApplet {
   private void doSaveAs() {
     getFileChooser().setDialogTitle("Enregister un programme");
     getFileChooser().setApproveButtonText("Enregister ");
+    getFileChooser().setDialogType(JFileChooser.SAVE_DIALOG);
     int value = getFileChooser().showOpenDialog(null);
     if (value == 0) {
       try { 
@@ -465,7 +467,6 @@ public class InterfacePrincipale extends JApplet {
 	    // Initialisation
 	    this.setCurrentDirectory(new File(System.getProperty("user.dir")));
 	    this.setFileSelectionMode(JFileChooser.FILES_ONLY);
-	    this.setDialogType(JFileChooser.OPEN_DIALOG);
 	    this.setMultiSelectionEnabled(false);
 	    // Définition des extensions
 	    JFileFilter filtre = new JFileFilter();
