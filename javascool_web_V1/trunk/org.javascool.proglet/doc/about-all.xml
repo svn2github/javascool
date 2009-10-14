@@ -122,11 +122,11 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
    <b>A n'utiliser que pour des essais: utiliser la solution [facile] sinon.</b></li>
 </ol> et de pouvoir nous contacter (voir <a href="#contact">ci-dessous</a>) si il y a le moindre problème.</p>
 
-<p><b>Quelle forme du logiciel utiliser ?</b> Probablement la forme <c>3</c>, dite <c>[facile]</c>, pour commencer: c'est un simple fichier ``<c>jar</c>´´, 
+<p><b>Quelle forme du logiciel utiliser ?</b> Probablement la forme dite <c>[facile]</c>, pour commencer: c'est un simple fichier ``<c>jar</c>´´, 
 qui se lance en cliquant [<b><a href="../wproglet.jar">ICI</a> </b>]
 qui peut se copier sur une clé USB pour le dupliquer sur tous les ordinateurs de la classe si ils ne sont pas en réseau,
 qui ne nécessite que les installations de Java usuelles et permet de faire tout ce qui est proposé ici.
-Bien entendu, la forme <c>1</c>, dite <c>[luxe]</c> est plus intéressante, mais il faudra attendre la version 2, pour que les <a href="#more">proglets</a> y soient intégrés).
+Bien entendu, la forme dite <c>[luxe]</c> est plus intéressante, mais il faudra attendre la version 2, pour que les <a href="#more">proglets</a> y soient intégrés).
 </p>
 
 <hr/>
