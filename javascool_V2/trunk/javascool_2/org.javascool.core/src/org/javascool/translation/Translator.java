@@ -52,11 +52,11 @@ public class Translator {
 			
 			BeanFactory.fonConfFile = directory+File.separator+"fonctions_conf.bml";
 			BeanFactory.macConfFile = directory+File.separator+"macros_conf.bml";
-			//BeanFactory.progletConFile = directory+File.separator+"proglet_conf.bml"; TODO add here for proglet
+			BeanFactory.progletConFile = directory+File.separator+"proglet_conf.bml"; //TODO add here for proglet
 			
 			listFonctions = BeanFactory.getBeanFonctions(BeanFactory.fonConfFile);
 			listMacros = BeanFactory.getBeanMacros(BeanFactory.macConfFile);
-			//listProglets = BeanFactory.getBeanFonctions(BeanFactory.progletConFile); TODO add here for proglet
+			listProglets = BeanFactory.getBeanFonctions(BeanFactory.progletConFile); //TODO add here for proglet
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -155,6 +155,7 @@ public class Translator {
 			//on recupere les imports neccessaire a faire en parcourant chaque ligne du code source
 			while ((line = buffer.readLine()) != null){
 				getImportFct(line);
+				getImportProglet(line);
 				text+=line+System.getProperty("line.separator");
 			}
 
@@ -210,6 +211,29 @@ public class Translator {
 
 	}
 
+	
+	/**
+	 * cette methode regarde toutes fonctions sur une ligne et recupere les imports necessaire
+	 * pour les proglets
+	 * @param line la ligne a analyser
+	 */
+	private static void getImportProglet(String line){
+		for(int i=0; i< listProglets.size(); i++){
+			BeanFonctions bean = listProglets.get(i);
+
+			if(line.contains(bean.getNom())){
+				String expr_import = "import static "+bean.getImport()+";";
+
+				if(!listImport.contains(expr_import)){
+					listImport.add(expr_import);
+					nbLigne++;
+				}
+			}
+		}
+
+	}
+
+	
 	/**
 	 * cette methode rend tous les methodes du code javascool "public static"
 	 * @param path
