@@ -104,7 +104,8 @@ wproglet.jar : proglet.jar $(CP)
 # Copie des fichiers pour le service web
 
 scp : proglet.jar
-	@rsync --rsh='ssh -C' --archive --delete-excluded img/home.png proglet/index.php proglet.jar facets.inria.fr:javascool
+	@echo sync on facets.inria.fr
+	@-rsync --rsh='ssh -C' --archive --delete-excluded img/home.png proglet/index.php proglet.jar facets.inria.fr:javascool
 
 # Génération des pages du site web
 
@@ -114,6 +115,7 @@ doc : index.html wproglet.jar api/index.html $(patsubst %.xml,%.htm,$(wildcard d
 # Copie des fichiers de documentation sur le site web
 
 pub : doc
+	@echo sync on scm.gforge.inria.fr
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ index.html doc api img wproglet.jar proglet.zip \
 	 scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet 2>&1 | egrep -v '^(rsync: failed to set permissions|rsync error: some files/attrs were not transferred)'
 	@-rsync index.html scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglets 

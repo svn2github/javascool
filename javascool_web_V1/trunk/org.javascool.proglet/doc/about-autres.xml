@@ -45,6 +45,12 @@
   Très utilisé, il est donc accompagné d'un grand nombre d'<a href="http://www-fourier.ujf-grenoble.fr/%7Eparisse/giac/doc/fr/casexo/casexo.html">activités
   pédagogiques</a> prêtes à être utilisées.<br/></p></li>
 
+  <li><p title="Programmation formelle"> Le logiciel <a href="http://coq.inria.fr">Coq</a> qui fournit un langage formel pour rédiger des définitions mathématiques, 
+  des algorithmes et des théorèmes exécutable avec un environnement de développement semi-interactif est utilisé par quelque professeur de mathématiques 
+  (pas directement par les élèves) pour formaliser les contenus mathématiques du programme en géométrie. Ce travail est proposé par une 
+  <a href="http://www-sop.inria.fr/lemme/Frederique.Guilhot">Professeure de Mathématiques</a> et 
+  rendu <a href="http://coq.inria.fr/distrib/current/contribs/HighSchoolGeometry.html">disponible</a> avec le logiciel.</p></li>
+
 </ul> 
 
   Voir aussi : <a href="http://linuxfr.org/2009/06/26/25652.html">A propos des logiciels libres dans les programmes de mathématiques du lycée.</a>
