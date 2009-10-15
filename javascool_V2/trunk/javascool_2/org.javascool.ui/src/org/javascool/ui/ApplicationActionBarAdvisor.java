@@ -144,8 +144,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 		IWorkbenchAction save = ActionFactory.SAVE.create(window);
 		save.setImageDescriptor(Activator.getImageDescriptor("img/Save.png"));
-		save.setDisabledImageDescriptor(Activator.getImageDescriptor("img/Save.png")); //$NON-NLS-1$
-		save.setHoverImageDescriptor(Activator.getImageDescriptor("img/Save.png")); //$NON-NLS-1$
+		save.setDisabledImageDescriptor(Activator.getImageDescriptor("img/Save.png")); 
+		//save.setHoverImageDescriptor(Activator.getImageDescriptor("img/Save.png")); 
 		save.setText("Sauver");
 		save.setToolTipText("Sauver");
 		toolbar.add(save);
@@ -159,13 +159,13 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		toolbar.add(print);
 
 
-		toolbar.add(new GroupMarker("EditgGroup"));
-		toolbar.add(new Separator());
+		//toolbar.add(new GroupMarker("EditgGroup"));
+		//toolbar.add(new Separator());
 		
 		IWorkbenchAction find = ActionFactory.FIND.create(window);
-		find.setImageDescriptor(Activator.getImageDescriptor("img/Find-replace.png")); //$NON-NLS-1$
-		//find.setDisabledImageDescriptor(Activator.getImageDescriptor(Messages.getString("IU.Strings.29"))); //$NON-NLS-1$
-		//find.setHoverImageDescriptor(Activator.getImageDescriptor(Messages.getString("IU.Strings.30"))); //$NON-NLS-1$
+		find.setImageDescriptor(Activator.getImageDescriptor("img/Find-replace.png")); 
+		//find.setDisabledImageDescriptor(Activator.getImageDescriptor("img/Find-replace.png")); 
+		//Sfind.setHoverImageDescriptor(Activator.getImageDescriptor("img/Find-replace.png")); 
 		find.setText("Chercher");
 		find.setToolTipText("Chercher"); 
 		toolbar.add(find);
@@ -208,8 +208,10 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		//IToolBarManager toolbar2 = new ToolBarManager(SWT.RIGHT | SWT.FLAT | SWT.HORIZONTAL);
 		
 		//coolBar.add(new ToolBarContributionItem(toolbar2, "console"));
-		//toolbar2.add(new GroupMarker(Messages.getString("IU.Strings.37"))); //$NON-NLS-1$
-		//toolbar2.add(new GroupMarker(Messages.getString("IU.Strings.38"))); //$NON-NLS-1$
+		//toolbar2.add(new GroupMarker(Messages.getString("compile))); 
+		//toolbar2.add(new GroupMarker(Messages.getString("stop"))); 
+	
+		
 	}
 	
 	/**
@@ -238,7 +240,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 		fileMenu.add(new GroupMarker(IWorkbenchActionConstants.FILE_START));
 
-		IContributionItem[] items = fileMenu.getItems();
+		//IContributionItem[] items = fileMenu.getItems();
 		
 		fileMenu.add(new GroupMarker(IWorkbenchActionConstants.NEW_EXT));
 		
@@ -329,14 +331,13 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	 */
 	private MenuManager createHelpMenu(IWorkbenchWindow window) {
 		MenuManager helpMenu = new MenuManager("&Aide", IWorkbenchActionConstants.M_HELP);
-			
 		
 		helpMenu.add(getAction(ActionFactory.HELP_CONTENTS.getId()));	
 		helpMenu.add(new Separator());
 		IWorkbenchAction about = ActionFactory.ABOUT.create(window);
 		about.setText("A Propos");
 		helpMenu.add(about);
-		
+				
 		return helpMenu;	
 	}
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="splashExtension" name="Splash Extensions" schema="schema/splashExtension.exsd"/>
 
    <extension
          id="application"
@@ -21,6 +22,89 @@
             class="org.javascool.ui.View"
             id="org.javascool.ui.view">
       </view>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.javascool.ui.application"
+            name="Java&apos;s Cool">
+         <property
+               name="appName"
+               value="Java&apos;s Cool">
+         </property>
+         <property
+               name="aboutImage"
+               value="img/splash_help.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="Java&apos;s Cool&#x0D;&#x0A;&#x0D;&#x0A;Version: 2.0.0&#x0D;&#x0A;&#x0D;&#x0A;&quot;Java&apos;s Cool&quot; est un logiciel Open Source sous licence Cecill.&#x0D;&#x0A;Visit http :  http://javascool.gforge.inria.fr/&#x0D;&#x0A;&#x0D;&#x0A;Projet soutenu par l&apos;INRIA http://www-sop.inria.fr/&#x0D;&#x0A; et l&apos;universite de Nice Sophia-Antipolis http://www.unice.fr">
+         </property>
+         <property
+               name="windowImages"
+               value="img/logo_JVS_16.gif,img/logo_JVS_32.gif,img/logo_JVS_64.gif,img/logo_JVS_128.gif">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="000000">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="20,270,480,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="10,290,480,15">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="org.javascool.ui.splashHandlers.InteractiveSplashHandler"
+            id="org.javascool.ui.splashHandlers.interactive">
+      </splashHandler>
+      <splashHandler
+            class="org.javascool.ui.splashHandlers.BrowserSplashHandler"
+            id="org.javascool.ui.splashHandlers.browser">
+      </splashHandler>
+      <splashHandler
+            class="org.javascool.ui.splashHandlers.ExtensibleSplashHandler"
+            id="org.javascool.ui.splashHandlers.extensible">
+      </splashHandler>
+   </extension>
+   <extension
+         point="org.javascool.ui.splashExtension">
+      <splashExtension
+            icon="icons/af.png"
+            id="af"
+            tooltip="Application Framework">
+      </splashExtension>
+      <splashExtension
+            icon="icons/embedded.png"
+            id="embedded"
+            tooltip="Embedded">
+      </splashExtension>
+      <splashExtension
+            icon="icons/enterprise.png"
+            id="enterprise"
+            tooltip="Enterprise">
+      </splashExtension>
+      <splashExtension
+            icon="icons/languages.png"
+            id="languages"
+            tooltip="Languages">
+      </splashExtension>
+      <splashExtension
+            icon="icons/rcp.png"
+            id="rcp"
+            tooltip="RCP">
+      </splashExtension>
    </extension>
 
 </plugin>
