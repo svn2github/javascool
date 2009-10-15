@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
+import org.eclipse.core.runtime.jobs.IJobManager;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.action.IAction;
@@ -52,10 +53,10 @@ public class ExecuteCodeAction implements IWorkbenchWindowActionDelegate {
 		//check the unique execution
 		if(jobStarted){
 			MessageDialog.openWarning(window.getShell(), "Execution", 
-			"Une programme est deja en cours d'execution");
+			"Un programme est deja en cours d'execution");
 			return;
 		}
-		
+
 
 
 		JVSEditor editor = (JVSEditor) window.getWorkbench().getActiveWorkbenchWindow().
@@ -103,31 +104,35 @@ public class ExecuteCodeAction implements IWorkbenchWindowActionDelegate {
 
 	//		public synchronized void stop()
 		};
-		 */
+		*/
+
 
 		clearConsole(); //clear the output
 
-		//threadExecute.start();
+//		threadExecute.start();
 
-
+		
 		job = new Job("Execution"){
 			protected IStatus run(IProgressMonitor monitor) {
 				jobStarted = true;
 				monitor.beginTask("Execution", 100);
-
 				Execution.execute(pathFile, classNameFinal, classPathFinal);	//execute the code
 				jobStarted = false;
 				return Status.OK_STATUS;
 			}
+			@Override
+			protected void canceling() {
+				job.getThread().stop();
+				super.canceling();
+				jobStarted = false;
+			}
 		};
 
-
+/*
 		job.addJobChangeListener(new JobChangeAdapter() {
 
 			@Override
 			public void done(IJobChangeEvent event) {
-
-				
 				if (event.getResult().isOK()) {
 					MessageDialog.openInformation(window.getShell(), "Arret de l'execution",
 					"Execution terminée avec succés");
@@ -136,12 +141,13 @@ public class ExecuteCodeAction implements IWorkbenchWindowActionDelegate {
 					"Execution du programme interrompue");
 				}
 			}
-		});
+		});*/
 
 
 		//job.shouldRun()
 		//int state = job.getState();
 		//if(state == job.RUNNING || state == job.WAITING || state == job.SLEEPING ){
+
 		
 		job.schedule(); // start as soon as possible	
 	}

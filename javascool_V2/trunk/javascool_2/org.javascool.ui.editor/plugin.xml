@@ -47,9 +47,17 @@
                icon="img/charger.png"
                id="org.unice.javascool.actions.OpenFileAction"
                label="Ouvrir un fichier..."
-               menubarPath="file/fileStart"
                style="push"
                toolbarPath="main/FileGroup"
+               tooltip="Ouvrir un fichier">
+         </action>
+         <action
+               class="org.javascool.ui.editor.actions.OpenFileAction"
+               icon="img/charger_16px.png"
+               id="org.unice.javascool.actions.OpenFileAction"
+               label="Ouvrir un fichier..."
+               menubarPath="file/fileStart"
+               style="push"
                tooltip="Ouvrir un fichier">
          </action>
          <action
@@ -57,9 +65,17 @@
                icon="img/nouveau.png"
                id="org.javascool.ui.editor.actions.newEditorAction"
                label="Nouveau"
-               menubarPath="file/fileStart"
                style="push"
                toolbarPath="main/FileGroup"
+               tooltip="Nouveau Fichier">
+         </action>
+         <action
+               class="org.javascool.ui.editor.actions.NewEditorAction"
+               icon="img/nouveau_16px.png"
+               id="org.javascool.ui.editor.actions.newEditorActionMenu"
+               label="Nouveau"
+               menubarPath="file/fileStart"
+               style="push"
                tooltip="Nouveau Fichier">
          </action>
          <action
@@ -67,7 +83,6 @@
                icon="img/compile.png"
                id="org.javascool.ui.editor.actions.compileCodeAction"
                label="Compilation"
-               menubarPath="compile/compil"
                style="push"
                toolbarPath="console/compil"
                tooltip="Compiler le code Source">
@@ -77,23 +92,50 @@
                icon="img/Execute.gif"
                id="org.javascool.ui.editor.actions.executeCodeAction"
                label="Execution"
-               menubarPath="compile/execute"
                style="push"
-               toolbarPath="console/execute">
+               toolbarPath="console/execute"
+               tooltip="Executer le programme">
          </action>
          <action
                class="org.javascool.ui.editor.actions.StopExecutionAction"
                icon="img/stop.gif"
                id="org.javascool.ui.editor.actions.stopAction"
                label="Stop execution"
-               menubarPath="compile/stop"
                style="push"
-               toolbarPath="console/stop">
+               toolbarPath="console/stop"
+               tooltip="Arreter le programme en cours d&apos;execution">
          </action>
          <menu
                id="compile"
                label="Source">
          </menu>
+         <action
+               class="org.javascool.ui.editor.actions.CompilCodeAction"
+               icon="img/compile_16px.png"
+               id="org.javascool.ui.editor.actions.compileCodeActionMenu"
+               label="Compilation"
+               menubarPath="compile/compil"
+               style="push"
+               tooltip="Compiler le code Source">
+         </action>
+         <action
+               class="org.javascool.ui.editor.actions.ExecuteCodeAction"
+               icon="img/Execute_16px.gif"
+               id="org.javascool.ui.editor.actions.executeCodeActionMenu"
+               label="Execution"
+               menubarPath="compile/execute"
+               style="push"
+               tooltip="Executer le programme">
+         </action>
+         <action
+               class="org.javascool.ui.editor.actions.StopExecutionAction"
+               icon="img/stop_16px.gif"
+               id="org.javascool.ui.editor.actions.stopActionMenu"
+               label="Stop execution"
+               menubarPath="compile/stop"
+               style="push"
+               tooltip="Arreter le programme en cours d&apos;execution">
+         </action>
          <action
                class="org.javascool.ui.editor.actions.ShowJavaSourceAction"
                icon="img/source.gif"

@@ -51,14 +51,11 @@ public class CompilCodeAction implements IWorkbenchWindowActionDelegate {
 	public void run(IAction action) {
 
 		//verify no execution
-		
-		
-		/*if (ExecuteCodeAction.job.getState() == Status.OK){
-			MessageDialog.openError(window.getShell(), "Compilattion", 
-					"compilation impossible : un programme est en cours d'execution");
-			//return;
+		if(ExecuteCodeAction.jobStarted){
+			MessageDialog.openWarning(window.getShell(), "Compilation", 
+			"Impossible de compiler le fichier, un programme est en cours d'execution");
+			return;
 		}
-		*/
 		clearConsole();//on efface le contenu de la console
 		//l'editeur associe  la vue
 		JVSEditor editor = (JVSEditor) window.getWorkbench().getActiveWorkbenchWindow().

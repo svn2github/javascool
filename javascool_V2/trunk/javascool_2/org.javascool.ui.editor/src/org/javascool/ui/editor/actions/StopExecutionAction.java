@@ -6,6 +6,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
+import org.javascool.compilation.Execution;
 
 public class StopExecutionAction implements IWorkbenchWindowActionDelegate {
 
@@ -35,7 +36,7 @@ public class StopExecutionAction implements IWorkbenchWindowActionDelegate {
 		}
 		try{
 			ExecuteCodeAction.job.cancel();
-			
+			System.err.println("arret de l'execution du programme");		
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -44,17 +45,12 @@ public class StopExecutionAction implements IWorkbenchWindowActionDelegate {
 		//TODO version thread
 		/*
 		if(ExecuteCodeAction.threadExecute.isAlive()){
-			try {
-				ExecuteCodeAction.threadExecute.setPriority(Thread.MIN_PRIORITY);
-			} catch (Exception e) {
-				System.out.println("exception stop execution");
-				e.printStackTrace();
-			}
+			ExecuteCodeAction.threadExecute.stop();
+			ExecuteCodeAction.stopThread = true;
 			System.err.println("arret de l'execution du programme");
 		}else{
 			MessageDialog.openWarning(window.getShell(), "Stop Execution", "Aucun programme en cours d'execution");
 		}*/
-		
 	}
 
 	@Override
