@@ -146,8 +146,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		save.setImageDescriptor(Activator.getImageDescriptor("img/Save.png"));
 		save.setDisabledImageDescriptor(Activator.getImageDescriptor("img/Save.png")); 
 		//save.setHoverImageDescriptor(Activator.getImageDescriptor("img/Save.png")); 
-		save.setText("Sauver");
-		save.setToolTipText("Sauver");
+		save.setText("Sauvegarder");
+		save.setToolTipText("Sauvegarder");
 		toolbar.add(save);
 
 		IWorkbenchAction print = ActionFactory.PRINT.create(window);
@@ -222,8 +222,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		
 		menuBar.add(createFileMenu(window));
 		menuBar.add(createEditMenu());
-		menuBar.add(createWindowMenu(window));
 		menuBar.add(ToolsBoxFonctions.createToolBoxMenu(window));
+		menuBar.add(createWindowMenu(window));
 		menuBar.add(createHelpMenu(window));
 		
 		
