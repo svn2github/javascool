@@ -53,8 +53,9 @@
          </action>
          <action
                class="org.javascool.ui.editor.actions.OpenFileAction"
+               definitionId="org.javascool.ui.editor.OpenFileCommand"
                icon="img/charger_16px.png"
-               id="org.unice.javascool.actions.OpenFileAction"
+               id="org.unice.javascool.actions.OpenFileActionMenu"
                label="Ouvrir un fichier..."
                menubarPath="file/fileStart"
                style="push"
@@ -71,6 +72,7 @@
          </action>
          <action
                class="org.javascool.ui.editor.actions.NewEditorAction"
+               definitionId="org.javascool.ui.editor.newEditorCommand"
                icon="img/nouveau_16px.png"
                id="org.javascool.ui.editor.actions.newEditorActionMenu"
                label="Nouveau"
@@ -111,6 +113,7 @@
          </menu>
          <action
                class="org.javascool.ui.editor.actions.CompilCodeAction"
+               definitionId="org.javascool.ui.editor.commandCompil"
                icon="img/compile_16px.png"
                id="org.javascool.ui.editor.actions.compileCodeActionMenu"
                label="Compilation"
@@ -120,6 +123,7 @@
          </action>
          <action
                class="org.javascool.ui.editor.actions.ExecuteCodeAction"
+               definitionId="org.javascool.ui.editor.commandExecution"
                icon="img/Execute_16px.gif"
                id="org.javascool.ui.editor.actions.executeCodeActionMenu"
                label="Execution"
@@ -129,6 +133,7 @@
          </action>
          <action
                class="org.javascool.ui.editor.actions.StopExecutionAction"
+               definitionId="org.javascool.ui.editor.commandStop"
                icon="img/stop_16px.gif"
                id="org.javascool.ui.editor.actions.stopActionMenu"
                label="Stop execution"
@@ -146,6 +151,144 @@
                tooltip="afficher le code source java">
          </action>
       </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.javascool.ui.editor.OpenFileCommand"
+            name="Ouvrir un Fichier">
+      </command>
+      <command
+            id="org.javascool.ui.editor.newEditorCommand"
+            name="Nouveau">
+      </command>
+      <command
+            id="org.javascool.ui.editor.commandCompil"
+            name="Compilation">
+      </command>
+      <command
+            id="org.javascool.ui.editor.commandExecution"
+            name="Execution">
+      </command>
+      <command
+            id="org.javascool.ui.editor.commandStop"
+            name="Stop Execution">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <scheme
+            id="org.javascool.ui.editor.scheme"
+            name="org.javascool.ui.editor.scheme">
+      </scheme>
+      <key
+            commandId="org.javascool.ui.editor.OpenFileCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+O">
+      </key>
+      <key
+            commandId="org.javascool.ui.editor.newEditorCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+N">
+      </key>
+      <key
+            commandId="org.javascool.ui.editor.commandCompil"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+U">
+      </key>
+      <key
+            commandId="org.javascool.ui.editor.commandExecution"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="m1+T">
+      </key>
+      <key
+            commandId="org.javascool.ui.editor.commandStop"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+K">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.undo"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+Z">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.redo"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="m1+Y">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.cut"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+X">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.copy"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="m1+C">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.paste"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+V">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.delete"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="DEL">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.selectAll"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+A">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.findReplace"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+F">
+      </key>
+      <key
+            commandId="org.eclipse.ui.file.close"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+W">
+      </key>
+      <key
+            commandId="org.eclipse.ui.file.closeAll"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+M2+W">
+      </key>
+      <key
+            commandId="org.eclipse.ui.file.save"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+S">
+      </key>
+      <key
+            commandId="org.eclipse.ui.file.print"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+P">
+      </key>
+      <key
+            commandId="org.eclipse.ui.file.exit"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.javascool.ui.editor.scheme"
+            sequence="M1+Q">
+      </key>
    </extension>
    <extension
          point="org.eclipse.ui.startup">

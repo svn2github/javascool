@@ -29,4 +29,5 @@ Export-Package: org.javascool.ui.editor.actions;
    org.eclipse.swt.graphics,
    org.eclipse.jface.util,
    org.eclipse.jface.text.rules,
-   org.eclipse.ui.editors.text"
+   org.eclipse.ui.editors.text",
+ org.javascool.ui.editor.preferences
