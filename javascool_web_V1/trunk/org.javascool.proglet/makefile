@@ -3,7 +3,6 @@
 #####################################################################################################################################
 
 # Travail de Thierry en cours:
-# - Tester mode reflexif du compilateur sous l'applet AVANT propagation
 # - Ajout les sujets annoncés en-cours etc...
 # - Ajouter en fonction PI, abs, rint, pow, sin, cos, random, sqrt, toDegrees, toRadian 
 

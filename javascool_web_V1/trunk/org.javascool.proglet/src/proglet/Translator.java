@@ -38,6 +38,8 @@ public class Translator { private Translator() { }
     {
       // Imports proglet's static methods
       out.print("import static proglet.Macros.*;");
+      if (!proglet.equals("Konsol"))
+	out.print("import static proglet.Konsol.*;");
       out.print("import static proglet."+proglet+".*;");
       // Declares the proglet's core as a Runnable in the Applet
       out.print("public class "+main+ " extends proglet.InterfacePrincipale {");
