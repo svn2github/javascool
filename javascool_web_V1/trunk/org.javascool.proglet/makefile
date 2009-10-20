@@ -4,6 +4,7 @@
 
 # Travail de Thierry en cours:
 # - Ajout les sujets annoncés en-cours etc...
+# - Ajout des exemples du document de ressources pour la classe de seconde au niveau de l'algorithmique publié par ÉduSCOL.
 # - Ajouter en fonction PI, abs, rint, pow, sin, cos, random, sqrt, toDegrees, toRadian 
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
