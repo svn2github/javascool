@@ -190,10 +190,14 @@ public class SourceEditor extends JPanel {
     menu.add(new JMenuItem(new InsertAction("void main",   "void main() {\n  \n}\n", 16)));
     if (proglet == "Konsol") {
       menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("println",     "  println(\"\");", 11)));
-      menu.add(new JMenuItem(new InsertAction("readString",  "  String   = readString();", 10)));
-      menu.add(new JMenuItem(new InsertAction("readInteger", "  int   = readInteger();", 7)));
-      menu.add(new JMenuItem(new InsertAction("readDouble",  "  double   = readDouble();", 10)));
+      menu.add(new JMenuItem(new InsertAction("println",            "  println(\"\");", 11)));
+      menu.add(new JMenuItem(new InsertAction("readString",         "  String   = readString();", 10)));
+      menu.add(new JMenuItem(new InsertAction("readInteger",        "  int   = readInteger();", 7)));
+      menu.add(new JMenuItem(new InsertAction("readDouble",         "  double   = readDouble();", 10)));
+      menu.addSeparator();
+      menu.add(new JMenuItem(new InsertAction("pow  (x^y)",         "Math.pow( , );", 9)));
+      menu.add(new JMenuItem(new InsertAction("sqrt (racine)",      "Math.sqrt( );", 10)));
+      menu.add(new JMenuItem(new InsertAction("aleat entre 0 et 1", "  double   = Math.random();", 10)));
     }
     bar.validate();
   }
