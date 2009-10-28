@@ -82,8 +82,8 @@ public class Dicho { private Dicho() { }
 	Macros.echo("Ahhh bad sort between "+dicho[i][0]+"#"+i+(compare(dicho[i][0], i - 1) == 0 ? " == " : " << ")+dicho[i-1][0]+"#"+(i-1));
     /* Tests the index function
     for(int i = 0; i < dicho.length; i++)
-      if (i != getIndex(dicho[i][0]))
-	Macros.echo("Ohhh bad index for "+dicho[i][0]+"#"+i+" <> "+getIndex(dicho[i][0]));
+      if (i != getPage(dicho[i][0]))
+	Macros.echo("Ohhh bad index for "+dicho[i][0]+"#"+i+" <> "+getPage(dicho[i][0]));
     */
     // Shows a few random pages
     for(int i = 0; i < 10; i++) {
@@ -97,12 +97,11 @@ public class Dicho { private Dicho() { }
    * @param name The name to compare with.
    * @return The page index or -1 if the name is not on some page.
    */
-  private static int getIndex(String name) {
+  private static int getPage(String pays) {
     int debut = 0, fin = length();
     while(true) {
       int milieu = (debut + fin) / 2;
-      int c = compareTo(name, milieu);
-      // Macros.echo("'"+name+"'"+(c < 0 ? " < " : c > 0 ? " > " : " = ")+ "dicho["+debut+"<"+milieu+"<"+fin+"] = '"+dicho[i][0]+"'");
+      int c = compareTo(pays, milieu);
       if (c == 0) {
 	return milieu;
       } else {

@@ -190,14 +190,29 @@ public class SourceEditor extends JPanel {
     menu.add(new JMenuItem(new InsertAction("void main",   "void main() {\n  \n}\n", 16)));
     if (proglet == "Konsol") {
       menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("println",            "  println(\"\");", 11)));
-      menu.add(new JMenuItem(new InsertAction("readString",         "  String   = readString();", 10)));
-      menu.add(new JMenuItem(new InsertAction("readInteger",        "  int   = readInteger();", 7)));
-      menu.add(new JMenuItem(new InsertAction("readDouble",         "  double   = readDouble();", 10)));
+      menu.add(new JMenuItem(new InsertAction("println",              "  println(\"\");", 11)));
+      menu.add(new JMenuItem(new InsertAction("readString",           "  String   = readString();", 10)));
+      menu.add(new JMenuItem(new InsertAction("readInteger",          "  int   = readInteger();", 7)));
+      menu.add(new JMenuItem(new InsertAction("readDouble",           "  double   = readDouble();", 10)));
+    }
+    if (proglet == "Conva") {
       menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("pow  (x^y)",         "Math.pow( , );", 9)));
-      menu.add(new JMenuItem(new InsertAction("sqrt (racine)",      "Math.sqrt( );", 10)));
-      menu.add(new JMenuItem(new InsertAction("aleat entre 0 et 1", "  double   = Math.random();", 10)));
+      menu.add(new JMenuItem(new InsertAction("out",                  " out()", 0)));
+      menu.add(new JMenuItem(new InsertAction("compare",              " compare( )", 0)));
+    }
+    if (proglet == "Dicho") {
+      menu.addSeparator();
+      menu.add(new JMenuItem(new InsertAction("length",               " length()", 0)));
+      menu.add(new JMenuItem(new InsertAction("compareTo",            " compareTo( , )", 0)));
+    }
+    {
+      menu.addSeparator();
+      menu.add(new JMenuItem(new InsertAction("equal (entre String)", " equal( , );", 6)));
+      menu.add(new JMenuItem(new InsertAction("pow  (x^y)",           "Math.pow( , );", 9)));
+      menu.add(new JMenuItem(new InsertAction("sqrt (racine)",        "Math.sqrt( );", 10)));
+      menu.add(new JMenuItem(new InsertAction("aleat entre 0 et 1",   "  double   = random();", 10)));
+      menu.add(new JMenuItem(new InsertAction("echo",                   "  echo(\" \")", 8)));
+      menu.add(new JMenuItem(new InsertAction("sleep",                  "  sleep()", 8)));
     }
     bar.validate();
   }

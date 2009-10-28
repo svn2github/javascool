@@ -5,6 +5,7 @@
   
   <objectif>
     Le but de ce tutoriel est de comprendre comment deviner une valeur  analogique à partir de comparaisons et de découvrir la recherche dichotomique.
+    Une autre activité, plus autonome, sur la recherche dichotomique est proposée <a href="sujet-appli-dicho.htm">ici</a>.
     Il faut déja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,
     se servir de <a href="sujet-about-variables.htm">variables</a> et avoir découvert l'<a href="sujet-about-if.htm">instruction conditionnelle</a> et 
     utiliser des <a href="sujet-about-while.htm">boucles</a>.
@@ -32,7 +33,8 @@
   <works>
     <work title="Tester toutes les valeurs">Essayer le programme suivant:
     <code>
-      <p><r>int</r> v = 1023; <r>while</r>(v >= 0) {</p>
+      <p><r>int</r> v = 1023;</p>
+      <p><r>while</r>(v >= 0) {</p>
       <p><t/><r>out</r>(v);</p>
       <p><t/><r>if</r> (<r>compare</r>() == 1) {</p>
       <p><t/><t/><r>echo</r>("valeur = "+v);</p>

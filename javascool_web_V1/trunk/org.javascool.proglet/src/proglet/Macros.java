@@ -18,6 +18,16 @@ public class Macros { private Macros() { }
   public static void echo(double string) { echo (""+string); }
   public static void echo(boolean string) { echo (""+string); }
 
+  /** Renvoie x à la puissance y.
+   * @param x 1er argument.
+   * @param y 2eme argument.
+   */
+  public static double pow(double x, double y) { return Math.pow(x, y); }
+
+  /** Renvoie un nombre aléatoire uniformément distribué entre 0 et 1.
+   */
+  public static double random() { return Math.random(); }
+
   /** Renvoie true si deux chaines de caratères sont égales, faux sinon.
    * @param string1 L'une des chaines à comparer.
    * @param string2 L'autre des chaines à comparer.

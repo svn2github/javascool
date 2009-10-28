@@ -5,6 +5,7 @@
 # Travail de Thierry en cours:
 # - Ajout les sujets annoncés en-cours etc...
 # - Ajout des exemples du document de ressources pour la classe de seconde au niveau de l'algorithmique publié par ÉduSCOL.
+# - Ajout PGCD et sujet formulaire du rebeux de audiverti
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
 #  - Ajouter un éditeur couleur dans l'applet, 
