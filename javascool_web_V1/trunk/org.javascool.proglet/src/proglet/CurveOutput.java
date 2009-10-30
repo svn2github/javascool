@@ -27,7 +27,7 @@ public class CurveOutput extends JPanel {
   private JLabel icon; private int values[];
   {
     setBackground(Color.WHITE); setPreferredSize(new Dimension(512, 421));
-    icon = new JLabel(); icon.setIcon(Proglet.getIcon("scope_screen.png")); icon.setLocation(0, 0); add(icon); 
+    icon = new JLabel(); icon.setIcon(Proglets.getIcon("scope_screen.png")); icon.setLocation(0, 0); add(icon); 
     reset();
   }
   /** Internal routine: do not use. */

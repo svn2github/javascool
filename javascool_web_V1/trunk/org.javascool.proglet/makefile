@@ -29,13 +29,18 @@
 JAVA=/usr/java/jdk1.5.0_13
 
 CP=/usr/java/jdk1.5.0_13/lib/tools.jar
-# .. en fait, cette référence est uniquement nécessaire au mode standalone pour la classe Compiler, inutile en mode serveur
+# .. cette référence est nécessaire au mode standalone pour la classe Compiler
 
 #####################################################################################################################################
 
 # Commande de test par défaut
 
-dft : tst1
+dft : tst0
+
+# Test en standalone (pour générer la doc)
+
+tst0 : doc
+	firefox doc/about-all.htm
 
 # Test en standalone (pour débugger une proglet)
 
@@ -49,7 +54,7 @@ tst2 : scp
 
 # Test du site web (pour vérifier la génération des docs)
 
-tst0 : pub
+tst3 : pub
 	cd tst ; firefox http://javascool.gforge.inria.fr/proglet
 
 #####################################################################################################################################
@@ -80,7 +85,7 @@ proglet.jar : makefile $(wildcard proglet/*.java) $(wildcard img/*.*)
 	$(JAVA)/bin/javac -Xlint -cp $(CP) proglet/*.java
 	@# Generates the manifest file
 	(echo 'Summary: javascool proglets'; echo 'Created-By: $(version) (interstices.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'`") > tmp.mf
-	(echo 'Main-Class: proglet.Proglet') > tmp.mf
+	(echo 'Main-Class: proglet.Proglets') > tmp.mf
 	(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr/proglet' ; echo 'Implementation-Version: $(version)') >> tmp.mf
 	@#Build the raw jar
 	$(JAVA)/bin/jar cfm tmp.jar tmp.mf proglet/*.class img/*.*

@@ -30,7 +30,7 @@ public class Tortue { private Tortue() { }
       clear();
       // Adds the turtle
       turtle = new JLabel();
-      turtle.setIcon(Proglet.getIcon("turtle.gif"));
+      turtle.setIcon(Proglets.getIcon("turtle.gif"));
       turtle.setBounds(width/2, height/2, 42, 35);
       add(turtle);
     }
@@ -80,7 +80,7 @@ public class Tortue { private Tortue() { }
 
   /** Test du panel. */
   static void test() {
-    clear(); pen_up();
+    clear_all(); pen_up();
     int t = 0; while(t < 9000) { 
       set_color((t / 1000) % 10);
       set_position(256 + 250 * Math.cos(0.0015 * t), 256 + 250 * Math.sin(0.0045 * t));
@@ -129,7 +129,7 @@ public class Tortue { private Tortue() { }
   private static int x = 0, y = 0; private static double a = 0; private static Color pen_color = Color.BLACK; private static boolean pen = true;
 
   /** Efface toutes traces du carré de salade de taille (512, 512). */
-  public static void clear() { panel.clear(); }
+  public static void clear_all() { panel.clear(); }
 
   /** Retour au milieu du carré de salade, au point (256, 256). */
   public static void home() { update(panel.width/2, panel.height/2); }

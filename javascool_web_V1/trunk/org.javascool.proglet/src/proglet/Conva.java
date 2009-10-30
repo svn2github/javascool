@@ -27,7 +27,7 @@ public class Conva { private Conva() { }
       super(new BorderLayout()); setPreferredSize(new Dimension(560, 450));
       // Adds the figure
       JLabel fig = new JLabel();
-      fig.setIcon(Proglet.getIcon("conv.png"));
+      fig.setIcon(Proglets.getIcon("conv.png"));
       fig.setBounds(2, 0, 540, 350);
       add(fig, BorderLayout.NORTH);
       // Adds the input

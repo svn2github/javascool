@@ -132,7 +132,7 @@ public class InterfacePrincipale extends JApplet {
   private JFileChooser fileChooser=null;
 
   public void init() {
-    Proglet.setApplet(this);
+    Proglets.setApplet(this);
     initParameters();
     this.setContentPane(getJContentPane());
   }
@@ -181,7 +181,7 @@ public class InterfacePrincipale extends JApplet {
       jProgletButton = new JPanel();
       jProgletButton.setBorder(BorderFactory.createLineBorder(Color.BLUE));
       JLabel jProgletLabel = new JLabel();
-      jProgletLabel.setIcon(Proglet.getIcon("execute.png"));
+      jProgletLabel.setIcon(Proglets.getIcon("execute.png"));
       jProgletButton.add(jProgletLabel);
       String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Synthe", "Tortue" };
       jProgletBox = new JComboBox(proglets);
@@ -200,7 +200,7 @@ public class InterfacePrincipale extends JApplet {
   private JButton getJOpenButton() {
     if (jOpenButton == null) {
       jOpenButton = new JButton();
-      jOpenButton.setIcon(Proglet.getIcon("charger.png"));
+      jOpenButton.setIcon(Proglets.getIcon("charger.png"));
       jOpenButton.setText("Ouvrir");
       jOpenButton.addActionListener(new ActionListener(){
 	  public void actionPerformed(ActionEvent e){
@@ -213,7 +213,7 @@ public class InterfacePrincipale extends JApplet {
 		String check = getFileChooser().getSelectedFile().getPath();
 		doLire(check); 
 	      } catch(Exception e1){ 
-		Proglet.report(e1);
+		Proglets.report(e1);
 	      }
 	    }
 	  }
@@ -225,7 +225,7 @@ public class InterfacePrincipale extends JApplet {
   private JButton getJSaveButton() {
     if (jSaveButton == null) {
       jSaveButton = new JButton();
-      jSaveButton.setIcon(Proglet.getIcon("save.png"));
+      jSaveButton.setIcon(Proglets.getIcon("save.png"));
       jSaveButton.setText("Enregister");
       jSaveButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
@@ -246,7 +246,7 @@ public class InterfacePrincipale extends JApplet {
 	String check = getFileChooser().getSelectedFile().getPath();
 	doSave(check); 
       } catch(Exception e1){ 
-	Proglet.report(e1);
+	Proglets.report(e1);
       }
     }
   }
@@ -256,13 +256,13 @@ public class InterfacePrincipale extends JApplet {
       jCompileButton = new JButton();
       jCompileButton.setMnemonic(KeyEvent.VK_UNDEFINED);
       jCompileButton.setText("Compiler");
-      jCompileButton.setIcon(Proglet.getIcon("compile.png"));
+      jCompileButton.setIcon(Proglets.getIcon("compile.png"));
       jCompileButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
 	    try {
 	      doCompile();
 	    } catch (Exception e1) {
-	      Proglet.report(e1);
+	      Proglets.report(e1);
 	    }
 	  }});
     }
@@ -272,7 +272,7 @@ public class InterfacePrincipale extends JApplet {
   private JButton getJRunButton() {
     if (jRunButton == null) {
       jRunButton = new JButton();
-      jRunButton.setIcon(Proglet.getIcon("execute.png"));
+      jRunButton.setIcon(Proglets.getIcon("execute.png"));
       jRunButton.setText("Executer");
       jRunButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
@@ -282,11 +282,11 @@ public class InterfacePrincipale extends JApplet {
 		  try {
 		    runnable.run();
 		  }  catch (Exception e) {
-		    Proglet.report(e);
+		    Proglets.report(e);
 		  }
 		}});
 	    } catch (Exception e1) {
-	      Proglet.report(e1);
+	      Proglets.report(e1);
 	    }
 	  }});
     }
@@ -296,14 +296,14 @@ public class InterfacePrincipale extends JApplet {
   private JButton getJStopButton() {
     if (jStopButton == null) {
       jStopButton = new JButton();
-      jStopButton.setIcon(Proglet.getIcon("stop.png"));
+      jStopButton.setIcon(Proglets.getIcon("stop.png"));
       jStopButton.setText("Arrêter");
       jStopButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
 	    try {
 	      doStop();
 	    } catch (Exception e1) {
-	      Proglet.report(e1);
+	      Proglets.report(e1);
 	    }
 	  }});
     }
@@ -313,20 +313,20 @@ public class InterfacePrincipale extends JApplet {
   private JButton getJDemoButton() {
     if (jDemoButton == null) {
       jDemoButton = new JButton();
-      jDemoButton.setIcon(Proglet.getIcon("demo.png"));
+      jDemoButton.setIcon(Proglets.getIcon("demo.png"));
       jDemoButton.setText("Demo");
       jDemoButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
 	    try {
 	      doRun(new Runnable() { public void run() {
 		try {
-		  Proglet.test(proglet);
+		  Proglets.test(proglet);
 		}  catch (Exception e) {
-		  Proglet.report(e);
+		  Proglets.report(e);
 		}
 	      }});
 	    } catch (Exception e1) {
-	      Proglet.report(e1);
+	      Proglets.report(e1);
 	    }
 	  }});
     }
@@ -367,7 +367,7 @@ public class InterfacePrincipale extends JApplet {
       jResultPanel.setBounds(new Rectangle(8, 92, 540, 580));
       jResultPanel.setBorder(BorderFactory.createTitledBorder(null, "Résultat", 
         TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-      jResultPanel.add(Proglet.getPanel(proglet), gridBagConstraints);
+      jResultPanel.add(Proglets.getPanel(proglet), gridBagConstraints);
     }
     return jResultPanel;
   }
@@ -587,7 +587,7 @@ public class InterfacePrincipale extends JApplet {
       final Class<?> s = new URLClassLoader(urls).loadClass(main);
       InterfacePrincipale r = (InterfacePrincipale) s.newInstance(); r.setProglet(proglet);
       Point where = getLocationOnScreen(); where.x -= 570;
-      runWindow = Proglet.show(r, "javascool «"+proglet+"» proglet's runner", null, 560, 720);
+      runWindow = Proglets.show(r, "javascool «"+proglet+"» proglet's runner", null, 560, 720);
     }
   }
   private JFrame runWindow = null;

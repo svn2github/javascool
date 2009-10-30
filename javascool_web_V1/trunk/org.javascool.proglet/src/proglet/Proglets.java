@@ -27,9 +27,9 @@ import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
 
 /** This factory allows to integrate proglets in the Java environments.
- * @see <a href="Proglet.java">source code</a>
+ * @see <a href="Proglets.java">source code</a>
  */
-public class Proglet { private Proglet() { }
+public class Proglets { private Proglets() { }
   private static final long serialVersionUID = 1L;
 
   /** Constructs a proglet attached to the related applet.
@@ -44,7 +44,7 @@ public class Proglet { private Proglet() { }
   /** Sets the current main applet.
    * @param applet The related applet, set to null when run in a standalone application context.
    */
-  static void setApplet(Applet applet) { Proglet.applet = applet; } static private Applet applet = null;
+  static void setApplet(Applet applet) { Proglets.applet = applet; } static private Applet applet = null;
 
   /** Returns an icon loaded from the applet context.
    * @param file The icon file name. The icon must be located in the <tt>img/</tt> directory (directory on the server or on the client side or in the jar).
@@ -63,8 +63,8 @@ public class Proglet { private Proglet() { }
    * @param proglet The proglet class name.
    */
   static public void test(String proglet) {
-    Proglet.proglet = proglet;
-    try { Class.forName("proglet."+Proglet.proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { }
+    Proglets.proglet = proglet;
+    try { Class.forName("proglet."+Proglets.proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { }
   }
   private static String proglet;
 
@@ -80,13 +80,20 @@ public class Proglet { private Proglet() { }
   }
 
   /** Used to run a proglet as a standalone program. 
-   * @param usage <tt>java proglet.Proglet [edit|run] [proglet-name]</tt>
+   * @param usage <tt>java proglet.Proglets [edit|run] [proglet-name]</tt>
    */
   public static void main(String usage[]) { 
     InterfacePrincipale applet = new InterfacePrincipale(); 
     String prog = usage.length == 2 ? usage[1] : usage.length == 1 ? usage[0] : "Konsol"; applet.setProglet(prog); 
     boolean edit = usage.length == 2 ? "edit".equals(usage[0]) : true; applet.setEdit(edit); 
     show(applet, "javascool proglet editor", new Point(570, 0), 560, 720);
+  }
+
+  /** Opens an proglet pannel in a standalone frame.
+   * @param proglet  Proglets name.
+   */
+  public static void show(String proglet) {
+    JFrame f = new JFrame(); f.getContentPane().add(getPanel(proglet)); f.setTitle(proglet); f.pack(); f.setSize(540, 580); f.setVisible(true); 
   }
 
   /** Opens an applet in a standalone frame.

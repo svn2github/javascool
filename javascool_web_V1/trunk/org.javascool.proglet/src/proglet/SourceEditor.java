@@ -197,13 +197,13 @@ public class SourceEditor extends JPanel {
     }
     if (proglet == "Conva") {
       menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("out",                  " out()", 0)));
-      menu.add(new JMenuItem(new InsertAction("compare",              " compare( )", 0)));
+      menu.add(new JMenuItem(new InsertAction("convOut",              " convOut()", 0)));
+      menu.add(new JMenuItem(new InsertAction("convCompare",          " convCompare( )", 0)));
     }
     if (proglet == "Dicho") {
       menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("length",               " length()", 0)));
-      menu.add(new JMenuItem(new InsertAction("compareTo",            " compareTo( , )", 0)));
+      menu.add(new JMenuItem(new InsertAction("dichoLength",          " dichoLength()", 0)));
+      menu.add(new JMenuItem(new InsertAction("dichoCompare",         " dichoCompare( , )", 0)));
     }
     {
       menu.addSeparator();

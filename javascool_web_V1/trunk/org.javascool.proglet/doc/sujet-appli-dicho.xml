@@ -36,7 +36,7 @@
     avec un ``<r>main</r>´´ en appelant <r>getPage</r> avec un nom de pays <i>qui existe</i>.
     Noter que l'on utilise ici la construction <r>return</r> pour sortir de la boucle, tandis que <r>while(true)</r> est toujours vrai, donc boucle indéfiniment.
     <ul>
-      <li>Que se passe t'il si le pays existe pas ? Ajouter un <r>echo</r>
+      <li>Que se passe t'il si le pays existe pas ? Ajouter un <r>echo</r> XXXX </li>
       <li>Que se passe t'il si le pays n'existe pas ? Que manque t'il pour qu'il fonctionne comme nous l'espérions ? </li>
     </ul>Noter que cet algorithme est bien long car il faut essayer toutes les valeurs.</work>
     <work title="Couper le problème en deux: l'algorithme dichotomique">

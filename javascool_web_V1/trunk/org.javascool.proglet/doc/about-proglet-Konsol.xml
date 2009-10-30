@@ -7,7 +7,7 @@
        <m>Lire un nombre entier avec la fonction:</m>
        <p><t/><r>int</r> entier = <r>readInteger</r>();</p>
        <m>Lire un nombre décimal avec la fonction:</m>
-       <p><t/><r>double</r> decimal = <r>readFloat</r>();</p>
+       <p><t/><r>double</r> decimal = <r>readDouble</r>();</p>
      </code>où les constructions proposées ici utilisent des <a href="sujet-about-variables.htm">variables</a>.</li>
      <li>On peut aussi écrire dans la fenêtre <c>output</c>: <code>
        <m>Ecrire une chaine de caractère avec la fonction:</m>
