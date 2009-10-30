@@ -10,10 +10,16 @@
   </ul></p>
   <p title="Verbes: fonctions utilisées">
     <p title="Macros générales"><ul>
+      <li><b><r>void</r> <c>echo</c>(<r>String</r> string)</b> Affiche une chaîne de caractères sur la console<footnote id="1"/>.</li>
       <li><b><r>boolean</r> <c>equal</c>(<r>String</r> string1, <r>String</r> string2)</b> Compare deux chaînes de caratères et renvoie <c>true</c> si elles sont égales.</li>
-      <li><b><r>double</r> <c>pow</c>(<r>double</r> x, <r>double</r> y)</b> Calcul <b>x</b> à la puissance <b>y</b> (soit <b>x<sup>y</sup></b>).</li>
-    </ul>(note: <r>Math.pow</r> est synonyme de <r>pow</r>).</p>
+      <li><b><r>double</r> <c>pow</c>(<r>double</r> x, <r>double</r> y)</b> Calcul <b>x</b> à la puissance <b>y</b> (soit <b>x<sup>y</sup></b>). 
+      Note: <r>Math.pow</r> est synonyme de <r>pow</r>.</li>
+      <li><b><r>double</r> <c>random</c>()</b> Renvoie un nombre aléatoire uniformément distribué entre 0 et 1.
+      Note: <r>Math.random</r> est synonyme de <r>random</r>.</li>
+      <li><b><r>void</r> <c>sleep</c>(<r>int</r> duree)</b> Arrête l'exécution du programme pendant une durée fixée donnée en milli-secondes.</li>
+    </ul></p>
     <p title="Fonctions de la proglet Konsol"><ul>
+      <li><b><r>void</r> <c>clear</c>()</b> Efface tout le contenu la fenêtre de sortie.</li>
       <li><b><r>void</r> <c>println</c>(<r>String</r> string)</b> Ecrit une chaînes de caratères dans la fenêtre de sortie.</li>
       <li><b><r>String</r> <c>readString</c>()</b> Lit une chaîne de caratères dans la fenêtre d'entrée (ex: <b><r>String</r> nom = <r>readString</r>();</b>).</li>
       <li><b><r>int</r> <c>readInteger</c>()</b> Lit un nombre entier dans la fenêtre d'entrée (ex: <b><r>int</r> x = <r>readInteger</r>();</b>). </li>
@@ -40,6 +46,11 @@
     (voir l'activité sur les <a href="sujet-about-functions.htm">fonctions</a> pour plus de détail).</p>
     <p title="Programme principal"> Il se note <b><r>void main</r>{ }</b> avec les instructions définies entre <b>{ }</b>.</p>
     tandis que le langage Java a beaucoup d'autres <a href="http://www.eteks.com/coursjava/instructions.html">instructions et opérateurs</a>.</p>
+
+<footnotes>
+  <p>La différence entre <c>echo</c> et <c>println</c> est <c>echo</c> affiche la chaîne de caractères dans la console, donc marche avec toutes les proglets, 
+  tandis que <c>println</c> est dédiée à la fenêtre de sortie de la <proglet name="Konseol"/>.</p>
+</footnotes>
 </p>
 
 

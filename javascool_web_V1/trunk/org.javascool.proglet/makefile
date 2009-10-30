@@ -3,6 +3,7 @@
 #####################################################################################################################################
 
 # Travail de Thierry en cours:
+# - Pb espaces dans la console car html
 # - Ajout les sujets annoncés en-cours etc...
 # - Ajout des exemples du document de ressources pour la classe de seconde au niveau de l'algorithmique publié par ÉduSCOL.
 # - Ajout PGCD et sujet formulaire du rebeux de audiverti
@@ -35,7 +36,7 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst0
+dft : tst1
 
 # Test en standalone (pour générer la doc)
 

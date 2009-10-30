@@ -10,7 +10,7 @@ package proglet;
  */
 public class Macros { private Macros() { }
 
-  /** Affiche une chaine de caractères sur la console.
+  /** Affiche une chaîne de caractères sur la console.
    * @param string La chaine à afficher.
    */
   public static void echo(String string) { System.out.println(string); }

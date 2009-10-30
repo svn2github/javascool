@@ -3,14 +3,14 @@
     Cette proglet<footnote id="1"/> permet de programmer un <a href="http://fr.wikipedia.org/wiki/Convertisseur_analogique-numérique">convertisseur analogique-numérique</a>,
   pour comprendre le mécanisme de recherche dichotomique.
 
-    <p>Plus précisément la fonction <r>out</r> simule la sortie d'une valeur pour la comparaison
+    <p>Plus précisément la fonction <r>convOut</r> simule la sortie d'une valeur pour la comparaison
     <code>
-      <p><r>out</r>(tension);</p>
+      <p><r>convOut</r>(tension);</p>
     </code>
     cette <b>tension</b> est un <r>int</r> varie en 0 et 1.023 volts et est donnée en milli-volts,
-    et la fonction <r>compare</r> compare cette tension à la tension inconnue avec la fonction:
+    et la fonction <r>convCompare</r> compare cette tension à la tension inconnue avec la fonction:
     <code>
-      <p><r>compare</r>();</p>
+      <p><r>convCompare</r>();</p>
     </code>
      qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
     </p>

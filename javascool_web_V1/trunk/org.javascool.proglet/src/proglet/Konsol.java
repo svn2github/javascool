@@ -91,7 +91,7 @@ public class Konsol { private Konsol() { }
   }
 
   // Quotes a string for HTML
-  private static String quote(String string) { return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;"); }
+  private static String quote(String string) { return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(" ", "&nbsp;"); }
 
   //
   // This defines the tests on the panel
