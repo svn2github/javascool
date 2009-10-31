@@ -3,10 +3,9 @@
 #####################################################################################################################################
 
 # Travail de Thierry en cours:
-# - Pb espaces dans la console car html
 # - Ajout les sujets annoncés en-cours etc...
-# - Ajout des exemples du document de ressources pour la classe de seconde au niveau de l'algorithmique publié par ÉduSCOL.
-# - Ajout PGCD et sujet formulaire du rebeux de audiverti
+# - Ajout des exemples du document de ressources pour la classe de seconde au niveau de l'algorithmique publié par ÉduSCOL au wiki
+# - Ajouter doc comment utiliser les proglet dans chaque sujet
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
 #  - Ajouter un éditeur couleur dans l'applet, 

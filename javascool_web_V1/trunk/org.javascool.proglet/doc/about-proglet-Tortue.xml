@@ -15,7 +15,7 @@
   <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>],
   la tortue trace de belles <a href="http://fr.wikipedia.org/wiki/Courbe_de_Lissajous">courbes de Lissajous</a> en changeant la couleur:<code>
     <m>Initialisation du tracé</m>
-    <p><r>clear</r>();</p>
+    <p><r>clear_all</r>();</p>
     <p><r>pen_up</r>();</p>
     <m>Boucle de tracé</m>
     <p><r>int</r> t = 0; <r>while</r>(t &lt; 9000) {</p>

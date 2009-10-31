@@ -16,7 +16,7 @@ import java.awt.BorderLayout;
  * </pre>
  * @see <a href="Conva.java">code source</a>
  */
-public class Conva { private Conva() { }
+public class Conva implements Proglet { private Conva() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -47,8 +47,8 @@ public class Conva { private Conva() { }
     // Méthode brute
     { 
       int v = 1023; while(v >= 0) {
-	convOut(v);
-	if (convCompare() == 1) {
+	convaOut(v);
+	if (convaCompare() == 1) {
 	  Macros.echo("valeur = "+v);
 	  break;
 	}
@@ -61,7 +61,7 @@ public class Conva { private Conva() { }
       while(min < max - 1) {
 	Macros.echo("La valeur est comprise entre " + (min) + " et " + (max - 1));
 	int milieu = (min + max) / 2;
-	convOut(milieu); if (convCompare() == 1) {
+	convaOut(milieu); if (convaCompare() == 1) {
 	  min = milieu;
 	} else {
 	  max = milieu;
@@ -78,12 +78,12 @@ public class Conva { private Conva() { }
   /** Applique une tension en sortie.
    * @param value La tension en milli-volts entre 0 et 1023.
    */
-  static public void convOut(int value) { Conva.value = value; } private static int value = 0;
+  static public void convaOut(int value) { Conva.value = value; } private static int value = 0;
 
   /** Compare la tension appliquée en sortie à la tension inconnue.
    * @return -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
    */
-  public static int convCompare() { return panel.value.getValue() < value ? -1 : 1; }
+  public static int convaCompare() { return panel.value.getValue() < value ? -1 : 1; }
 
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();

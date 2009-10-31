@@ -12,7 +12,7 @@ import java.awt.Dimension;
 /** Définit une proglet javascool qui permet de manipuler les pixels d'une image.
  * @see <a href="Smiley.java">code source</a>
  */
-public class Smiley { private Smiley() { }
+public class Smiley implements Proglet { private Smiley() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -32,7 +32,7 @@ public class Smiley { private Smiley() { }
   /** Test du panel. */
   static void test() { 
     for(int size = 512; size > 0; size /= 2) {
-      reset(size, size);
+      smileyReset(size, size);
       peace();
       Macros.sleep(1000 - size);
     }
@@ -41,15 +41,28 @@ public class Smiley { private Smiley() { }
   /** Trace le signe de la paix dans l'image. */
   static private void peace() {
     int radius = width < height ? width - 2 : height - 2;
-    circle(radius); for(int y = 0; y <= radius; y++) { set(0, -y, "black"); if (y < Math.rint(1/Math.sqrt(2) * radius)) { set(y, y, "black"); set(-y, y, "black"); } }
+    circle(radius); 
+    for(int y = 0; y <= radius; y++) { 
+      smileySet(0, -y, "black"); 
+      if (y < Math.rint(1/Math.sqrt(2) * radius)) { 
+	smileySet(y, y, "black"); 
+	smileySet(-y, y, "black"); 
+      } 
+    }
   }
 
   /** Trace un disque circulaire au centre de l'image. 
    * @param radius Rayon du disque
    */
   static private void circle(int radius) {
-    for(int x = 0; x <= radius; x++) for(int y = 0; y <= radius; y++) if (radius * radius - x * x - y * y <= 1) { 
-      set(x, y, "black"); set(x, -y, "black"); set(-x, y, "black"); set(-x, -y, "black"); }
+    for(int x = 0; x <= radius; x++) 
+      for(int y = 0; y <= radius; y++) 
+	if (radius * radius - x * x - y * y <= 1) { 
+	  smileySet(x, y, "black"); 
+	  smileySet(x, -y, "black"); 
+	  smileySet(-x, y, "black"); 
+	  smileySet(-x, -y, "black"); 
+	}
   }
 
   //
@@ -60,7 +73,7 @@ public class Smiley { private Smiley() { }
    * @param width Demi largeur de l'image de taille {-width, width}.
    * @param height Demi hauteur de l'image de taille {-height, height}.
    */
-  static public void reset(int width, int height) {
+  static public void smileyReset(int width, int height) {
     panel.icon.reset(2 * (Smiley.width = width) + 1, 2 * (Smiley.height = height) + 1);
   }
   static private int width, height;
@@ -70,7 +83,7 @@ public class Smiley { private Smiley() { }
    * @param color Couleur: "black" (default), "blue", "cyan", "gray", "green", "magenta", "orange", "pink", "red", "white", "yellow".
    * @return Renvoie true si le pixel est dans l'image, false si il est en dehors des limites d el'image.
    */
-  static public boolean set(int x, int y, String color) {   
+  static public boolean smileySet(int x, int y, String color) {   
     return panel.icon.set(x + width, y + height, color);
   }
   
@@ -79,7 +92,7 @@ public class Smiley { private Smiley() { }
    * @param y Ordonnée de l'image, comptée à partir du milieu, valeur entre {-height, height}.
    * @return Un mot anglais désignant la couleur du pixel si celui si est dans l'image, sinon "undefined";
    */
-  static public String get(int x, int y) {
+  static public String smileyGet(int x, int y) {
     return panel.icon.get(x + width, y + height);
   }
 

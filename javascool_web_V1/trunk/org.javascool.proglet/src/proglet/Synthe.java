@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 /** Définit une proglet javascool qui permet d'expérimenter avec des signaux sonores.
  * @see <a href="Synthe.java">code source</a>
  */
-public class Synthe { private Synthe() { }
+public class Synthe implements Proglet { private Synthe() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -39,10 +39,10 @@ public class Synthe { private Synthe() { }
     test(new SoundBit() { public double get(char c, double t) { return 0.5 * sqr(t); } });
     test(new SoundBit() { public double get(char c, double t) { return 0.8 * tri(t) + 0.2 * noi(t); } });
     test(new SoundBit() { public double get(char c, double t) { return 0.3 * sqr(t/2) * sns(t) + 0.3 * sns(2 * t) + 0.3 * tri(3 * t); } });
-    set("e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g# 4 a"); play();
+    syntheSet("e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g# 4 a"); synthePlay();
   } 
   private static void test(SoundBit sound) {
-    tone = sound; set("16 a"); play(); 
+    tone = sound; syntheSet("16 a"); synthePlay(); 
   }
 
   //
@@ -69,10 +69,10 @@ public class Synthe { private Synthe() { }
   /** Définit les notes à jouer dans cet interface. 
    * @param notes Définition des <a href="SoundBit.html#notes">notes</a> selon une syntaxe simplifiée.
    */
-  static public void set(String notes) { panel.sound.reset(notes); panel.reset(panel.sound, 'l'); }
+  static public void syntheSet(String notes) { panel.sound.reset(notes); panel.reset(panel.sound, 'l'); }
 
   /** Fait entendre le son sur le système audio. */
-  static public void play() { try { panel.sound.play(); } catch(Exception e) { Macros.echo(e.toString()); } }
+  static public void synthePlay() { try { panel.sound.play(); } catch(Exception e) { Macros.echo(e.toString()); } }
 
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();

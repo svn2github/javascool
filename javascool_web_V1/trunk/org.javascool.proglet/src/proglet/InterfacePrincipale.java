@@ -86,8 +86,8 @@ public class InterfacePrincipale extends JApplet {
   // Sets the class name and file
   private void setMainFile(String pFile) {
     String s = File.separatorChar == '\\' ? "\\\\" : File.separator;
-    main = pFile.replaceAll(".*"+s+"([^"+s+"]+)\\.[a-z]+$", "$1");
-    path = pFile.replaceAll("\\.[a-z]+$", "");
+    main = pFile.replaceAll(".*"+s+"([^"+s+"]+)\\.[^\\.]+$", "$1");
+    path = pFile.replaceAll("\\.[^\\.]+$", "");
   }  
   private String main = null, path = null;
 
@@ -132,7 +132,6 @@ public class InterfacePrincipale extends JApplet {
   private JFileChooser fileChooser=null;
 
   public void init() {
-    Proglets.setApplet(this);
     initParameters();
     this.setContentPane(getJContentPane());
   }
@@ -160,10 +159,10 @@ public class InterfacePrincipale extends JApplet {
          TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
       jMenuPanel.setBounds(new Rectangle(9, 7, 540, 70));
       if (edit) {
-	jMenuPanel.add(getJProgletButton(), null);
 	jMenuPanel.add(getJOpenButton(), null);
 	jMenuPanel.add(getJSaveButton(), null);
 	jMenuPanel.add(getJCompileButton(), null);
+	jMenuPanel.add(getJProgletButton(), null);
       } else {
 	if (application) {
 	  jMenuPanel.add(getJRunButton(), null);
@@ -525,7 +524,7 @@ public class InterfacePrincipale extends JApplet {
   }
 
   private void doSave(String pFile) throws IOException {
-    pFile = pFile.replaceFirst("\\.[a-z]+$", "");
+    pFile = pFile.replaceFirst("\\.[^\\.]+$", "");
     String pName = new File(pFile).getName();
     pFile += ".jvs";
     if (pName.matches("([A-Za-z0-9_])+")) {
@@ -554,7 +553,7 @@ public class InterfacePrincipale extends JApplet {
       if (new File(path+".class").exists())
 	new File(path+".class").delete();
       // Translate and compile
-      Translator.translate(path+".jvs", proglet);
+      Translator.translate(path+".jvs");
       if (standalone) {
 	doStandAloneCompile();
       } else {

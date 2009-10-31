@@ -25,9 +25,8 @@ public class Translator { private Translator() { }
 
   /** Translates a Jvs code source.
    * @param filename The file path to translate.
-   * @param proglet The static imported proglet name.
    */
-  static void translate(String filename, String proglet) throws IOException {
+  static void translate(String filename) throws IOException {
     String s = File.separatorChar == '\\' ? "\\\\" : File.separator, 
       main = filename.replaceAll(".*"+s+"([^"+s+"]+)\\.[a-z]+$", "$1"), file = filename.replaceAll("\\.[a-z]+$", "");
     File jvs = new File(file+".jvs"), jav = new File(file+".java");
@@ -38,9 +37,8 @@ public class Translator { private Translator() { }
     {
       // Imports proglet's static methods
       out.print("import static proglet.Macros.*;");
-      if (!proglet.equals("Konsol"))
-	out.print("import static proglet.Konsol.*;");
-      out.print("import static proglet."+proglet+".*;");
+      for(String proglet : Proglets.proglets) 
+	out.print("import static proglet."+proglet+".*;");
       // Declares the proglet's core as a Runnable in the Applet
       out.print("public class "+main+ " extends proglet.InterfacePrincipale {");
       out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
@@ -62,7 +60,7 @@ public class Translator { private Translator() { }
   // Translates one line of the source file
   private static String translateOnce(String line) {
     // Translates the Synthe proglet TONE macro
-    line = line.replaceFirst("TONE:(.*)", "proglet.Synthe.tone = new proglet.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.Synthe.set(\"16 a\");");
+    line = line.replaceFirst("@tone:(.*)", "proglet.Synthe.tone = new proglet.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.Synthe.syntheSet(\"16 a\");");
     return "    "+line;
   }
 }

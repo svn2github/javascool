@@ -1,5 +1,5 @@
 
 void main() {
-  TONE: 0.5 * tri(t) * sns(t/4) + 0.1 * sns(t/2) + 0.3 * tri(2*t) + 0.1 * sqr(3 * t)
-  play(); 
+  @tone: 0.5 * tri(t) * sns(t/4) + 0.1 * sns(t/2) + 0.3 * tri(2*t) + 0.1 * sqr(3 * t)
+  synthePlay(); 
 }

@@ -19,8 +19,15 @@
     </head>
     <body>
       <xsl:call-template name="banner"/>
-      <h1><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"/> </a> <xsl:text>
-      </xsl:text><xsl:value-of select="@title"/></h1>
+      <table width="100%"><tr>
+        <td><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"/> </a></td>
+        <td><h1><xsl:value-of select="@title"/></h1></td>
+        <xsl:if test="count(@fuscia)=1">
+          <td align="right">
+            <a style="padding:0;margin:0;text-decoration:none" href="http:www.fuscia.info"><img height="30" src="http://www.fuscia.info/im/fusciaLogo11_pt.gif"/></a>
+          </td>
+        </xsl:if>
+      </tr></table>
       <xsl:call-template name="toc"/><hr/>
       <xsl:apply-templates/>
     </body>

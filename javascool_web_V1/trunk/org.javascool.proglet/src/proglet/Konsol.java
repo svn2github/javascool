@@ -23,7 +23,7 @@ import java.awt.event.ActionListener;
 /** Définit une proglet javascool qui permet de faire des entrées/sorties au clavier.
  * @see <a href="Konsol.java">code source</a>
  */
-public class Konsol { private Konsol() { }
+public class Konsol implements Proglet { private Konsol() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display

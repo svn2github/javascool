@@ -12,13 +12,14 @@
   </objectif>
   
   <notes>
+    <note><img src="img/execute.png"/> Choisir la proglet <c>Conva</c> et non <c>Konsol</c> dans le bouton lié à l'exécution.</note>
     <note>L'ordinateur peut grâce à un convertisseur numérique analogique générer une tension en volt, grâce à la fonction:
     <code>
-      <p><r>convOut</r>(tension);</p>
+      <p><r>convaOut</r>(tension);</p>
     </code>
     cette <b>tension</b> est un <r>int</r> varie en 0 et 1.023 volts et est donnée en milli-volts et il peut aussi comparer cette tension à la tension inconnue avec la fonction:
     <code>
-      <p><r>convCompare</r>();</p>
+      <p><r>convaCompare</r>();</p>
     </code>
      qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
     </note>
@@ -35,8 +36,8 @@
     <code>
       <p><r>int</r> v = 1023;</p>
       <p><r>while</r>(v >= 0) {</p>
-      <p><t/><r>convOut</r>(v);</p>
-      <p><t/><r>if</r> (<r>convCompare</r>() == 1) {</p>
+      <p><t/><r>convaOut</r>(v);</p>
+      <p><t/><r>if</r> (<r>convaCompare</r>() == 1) {</p>
       <p><t/><t/><r>echo</r>("valeur = "+v);</p>
       <p><t/>}</p>
       <p><t/>v = v - 1;</p>
@@ -50,7 +51,7 @@
       Voici une idée: On va couper l'espace de recherche en deux, puis en deux, puis en deux, etc.. Dans le programme suivant on a déjà divisé l'espace de recherche en 2 !
       <code>
         <m>La valeur est donc comprise entre 0 et 1023</m>
-        <p><r>convOut</r>(512); <r>if</r> (<r>convCompare</r>() == 1) {</p>
+        <p><r>convaOut</r>(512); <r>if</r> (<r>convaCompare</r>() == 1) {</p>
         <m>Si le test est vrai, nous savons que la valeur est plus petite que 512</m>
         <p><t/><r>echo</r>(<s>La valeur est comprise entre 0 et 511</s>);</p>
         <m>A vous de compléter en comparant à 256</m>
@@ -79,7 +80,7 @@
        <p><t/><r>echo</r>(<s>La valeur est comprise entre </s> + (min) + <s> et </s> + (max - 1));</p>
        <m> ? à vous de COMPLETER et commenter les lignes qui suivent</m>
        <p><t/><r>int</r> milieu = (min + max) / 2;</p>
-       <p><t/><r>convOut</r>(milieu); <r>if</r> (<r>convCompare</r>() == 1) {</p>
+       <p><t/><r>convaOut</r>(milieu); <r>if</r> (<r>convaCompare</r>() == 1) {</p>
        <p><t/><t/>??? = ???;</p>
        <p><t/>} <r>else</r> {</p>
        <p><t/><t/>??? = ???;</p>

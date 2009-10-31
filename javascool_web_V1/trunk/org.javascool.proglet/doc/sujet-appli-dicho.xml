@@ -12,6 +12,7 @@
   </objectif>
   
   <notes>
+    <note><img src="img/execute.png"/> Choisir la proglet <c>Dicho</c> et non <c>Konsol</c> dans le bouton lié à l'exécution.</note>
     <note>Lire en détail la description de la <proglet name="Dicho"/> et essayons de programmer la fonction: <code>
       <p><r>int</r> getPage(<r>String</r> pays) {</p>
       <p>.. / ..</p>

@@ -15,7 +15,7 @@ import java.awt.BorderLayout;
  * </pre>
  * @see <a href="Scope.java">code source</a>
  */
-public class Scope { private Scope() { }
+public class Scope implements Proglet { private Scope() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -38,10 +38,10 @@ public class Scope { private Scope() { }
 
   /** Test du panel. */
   static void test() {
-    reset();
+    scopeReset();
     for(double x = -1; x <= 1; x += 0.001) {
-      set(x, 0.5 * Math.sin(10 * x) + 0.5, 6);
-      set(x, -Math.exp(-(x + 1)), 7);
+      scopeSet(x, 0.5 * Math.sin(10 * x) + 0.5, 6);
+      scopeSet(x, -Math.exp(-(x + 1)), 7);
     }
   }
 
@@ -50,7 +50,7 @@ public class Scope { private Scope() { }
   //
 
   /** Initialise le tracé. */
-  static public void reset() {
+  static public void scopeReset() {
     panel.scope.reset();
   }
 
@@ -59,14 +59,14 @@ public class Scope { private Scope() { }
    * @param y Ordonnée de la courbe, dans [-1, 1].
    * @param c Numéro de la courbe: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
    */
-  static public void set(double x, double y, int c) {
+  static public void scopeSet(double x, double y, int c) {
     panel.scope.set(x, y, c);
   }
 
   /** Lit la valeur en entrée. 
    * @return La valeur en entrée entre 0 et 100%.
    */
-  static public double getValue() { return panel.value.getValue(); }
+  static public double scopeGet() { return panel.value.getValue(); }
 
 
   /** Définition de l'interface graphique de la proglet. */

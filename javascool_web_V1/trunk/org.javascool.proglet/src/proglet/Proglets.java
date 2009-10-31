@@ -32,6 +32,9 @@ import java.lang.reflect.InvocationTargetException;
 public class Proglets { private Proglets() { }
   private static final long serialVersionUID = 1L;
 
+  /** Defined all declared proglets. */
+  static final String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Synthe", "Tortue" };
+
   /** Constructs a proglet attached to the related applet.
    * @param proglet The proglet class name.
    * @return The static instanciation of the proglet.
@@ -40,11 +43,6 @@ public class Proglets { private Proglets() { }
     try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } 
     catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
-
-  /** Sets the current main applet.
-   * @param applet The related applet, set to null when run in a standalone application context.
-   */
-  static void setApplet(Applet applet) { Proglets.applet = applet; } static private Applet applet = null;
 
   /** Returns an icon loaded from the applet context.
    * @param file The icon file name. The icon must be located in the <tt>img/</tt> directory (directory on the server or on the client side or in the jar).
@@ -57,16 +55,16 @@ public class Proglets { private Proglets() { }
       }
     }
   }
-  static ImageIcon newImageIcon(String file, URL url) throws Exception { /*System.err.println("Notice: loading " + file + " @ " + url);*/ return new ImageIcon(url); }
+  private static ImageIcon newImageIcon(String file, URL url) throws Exception { /*System.err.println("Notice: loading " + file + " @ " + url);*/ return new ImageIcon(url); }
 
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
    */
   static public void test(String proglet) {
-    Proglets.proglet = proglet;
-    try { Class.forName("proglet."+Proglets.proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { }
+    proglet = toUcfirst(proglet);
+    try { Class.forName("proglet."+proglet).getDeclaredMethod("test").invoke(null); } catch(Exception error) { }
   }
-  private static String proglet;
+  private static String toUcfirst(String string) { return Character.toUpperCase(string.charAt(0)) + string.substring(1).toLowerCase(); }
 
   /** Reports a throwable with the related context.
    * @param error The error or exception to report.
@@ -84,7 +82,7 @@ public class Proglets { private Proglets() { }
    */
   public static void main(String usage[]) { 
     InterfacePrincipale applet = new InterfacePrincipale(); 
-    String prog = usage.length == 2 ? usage[1] : usage.length == 1 ? usage[0] : "Konsol"; applet.setProglet(prog); 
+    String proglet = usage.length == 2 ? usage[1] : usage.length == 1 ? usage[0] : "Konsol"; applet.setProglet(proglet); 
     boolean edit = usage.length == 2 ? "edit".equals(usage[0]) : true; applet.setEdit(edit); 
     show(applet, "javascool proglet editor", new Point(570, 0), 560, 720);
   }
@@ -93,7 +91,9 @@ public class Proglets { private Proglets() { }
    * @param proglet  Proglets name.
    */
   public static void show(String proglet) {
-    JFrame f = new JFrame(); f.getContentPane().add(getPanel(proglet)); f.setTitle(proglet); f.pack(); f.setSize(540, 580); f.setVisible(true); 
+    proglet = toUcfirst(proglet);
+    InterfacePrincipale applet = new InterfacePrincipale(); applet.setProglet(proglet); applet.init();
+    JFrame f = new JFrame(); f.getContentPane().add(applet); f.setTitle(proglet); f.pack(); f.setSize(560, 695); f.setVisible(true); 
   }
 
   /** Opens an applet in a standalone frame.

@@ -16,7 +16,7 @@ import java.awt.Graphics;
  * @see <a href="http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_Logo">La référence du langage logo</a>
  * @see <a href="Tortue.java">code source</a>
  */
-public class Tortue { private Tortue() { }
+public class Tortue implements Proglet { private Tortue() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display

@@ -28,7 +28,7 @@ import java.awt.event.ActionListener;
  * </pre>
  * @see <a href="Dicho.java">code source</a>
  */
-public class Dicho { private Dicho() { }
+public class Dicho implements Proglet { private Dicho() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
