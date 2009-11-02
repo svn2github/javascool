@@ -4,7 +4,8 @@
   donc de <i>l'informatique</i> au lycée. Voici quelques autres très beaux exemples que nous vous recommendons tout autant, selon les besoins et les aspirations:<ul>
 
   <li><p title="Document de référence"> Le document de <a href="more/Algo_Doc_Ress.pdf">ressources pour la classe de seconde au niveau de l'algorithmique</a> 
-   publié par <a href="http://eduscol.education.fr">ÉduSCOL</a>.<br/></p></li>
+  publié par <a href="http://eduscol.education.fr">ÉduSCOL</a>.<ul>
+   <li>Toutes les activités de ce document ont été instanciées en <javascool/>: les ``<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a>´´ (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet: accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux soluces des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature: ??">contacter</a> pour l'accès).</li></ul><br/></p></li>
 
   <li><p title="Cours d'algorithmique"> Un cours d'<a href="http://www.pise.info/algo/codage.htm">``informatique non matheux´´</a> 
   du niveau correspondant aux présents objectifs.</p></li>

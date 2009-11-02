@@ -100,9 +100,9 @@ public class Konsol implements Proglet { private Konsol() { }
   /** Test du panel. */
   static void test() {
     clear();
-    println("Bonjour, qui est tu ?");
+    println("Bonjour, qui es tu ?");
     String nom = readString();
-    println ("Echanté "+nom+" ! Quel age as tu ?");
+    println ("Enchanté "+nom+" ! Quel age as tu ?");
     int age = readInteger();
     //for(int i = 0; i < 100; i++)
     println("He je suis plus vieux que toi !!");

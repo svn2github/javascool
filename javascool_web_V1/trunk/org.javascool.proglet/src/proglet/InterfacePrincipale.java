@@ -86,8 +86,8 @@ public class InterfacePrincipale extends JApplet {
   // Sets the class name and file
   private void setMainFile(String pFile) {
     String s = File.separatorChar == '\\' ? "\\\\" : File.separator;
-    main = pFile.replaceAll(".*"+s+"([^"+s+"]+)\\.[^\\.]+$", "$1");
-    path = pFile.replaceAll("\\.[^\\.]+$", "");
+    main = pFile.replaceAll(".*"+s+"([^"+s+"]+)\\.[A-Za-z]+$", "$1");
+    path = pFile.replaceAll("\\.[A-Za-z]+$", "");
   }  
   private String main = null, path = null;
 
@@ -204,8 +204,8 @@ public class InterfacePrincipale extends JApplet {
       jOpenButton.addActionListener(new ActionListener(){
 	  public void actionPerformed(ActionEvent e){
 	    getFileChooser().setDialogTitle("Ouvrir un programme");
-	    getFileChooser().setApproveButtonText("Ouvrir");
 	    getFileChooser().setDialogType(JFileChooser.OPEN_DIALOG);
+	    getFileChooser().setApproveButtonText("Ouvrir");
 	    int value = getFileChooser().showOpenDialog(null);
 	    if (value == 0){
 	      try { 
@@ -237,9 +237,9 @@ public class InterfacePrincipale extends JApplet {
 
   private void doSaveAs() {
     getFileChooser().setDialogTitle("Enregister un programme");
-    getFileChooser().setApproveButtonText("Enregister ");
     getFileChooser().setDialogType(JFileChooser.SAVE_DIALOG);
-    int value = getFileChooser().showOpenDialog(null);
+    getFileChooser().setApproveButtonText("Enregister");
+    int value = getFileChooser().showSaveDialog(null);
     if (value == 0) {
       try { 
 	String check = getFileChooser().getSelectedFile().getPath();
@@ -524,7 +524,7 @@ public class InterfacePrincipale extends JApplet {
   }
 
   private void doSave(String pFile) throws IOException {
-    pFile = pFile.replaceFirst("\\.[^\\.]+$", "");
+    pFile = pFile.replaceFirst("\\.[A-Za-z]+$", "");
     String pName = new File(pFile).getName();
     pFile += ".jvs";
     if (pName.matches("([A-Za-z0-9_])+")) {

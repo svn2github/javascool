@@ -68,7 +68,10 @@
 <tr><td><hr/></td></tr>
 
 <tr><td style="background-color:#DDD"><b><a name="exos">Exercices et applications</a></b>
-<p>Quelques applications, exercices et activités:<ul>
+
+<p>La 20taine d'excercices activités du document de <a href="more/Algo_Doc_Ress.pdf">ressources</a> publié par <a href="http://eduscol.education.fr">ÉduSCOL</a> a été instanciées en <javascool/>: les ``<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a>´´ (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet: accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux soluces des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature: ??">contacter</a> pour l'accès). Avec le <a href="#parcours">parcours</a>  pour s'initier à la programmation, elles permettent de couvrir le programme de 2nd en algorithmique.</p>
+
+<p>Quelques autres applications, exercices et activités:<ul>
   <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
   <li>Comment marche un <a href="sujet-appli-conva.htm">convertisseur analogique-numérique</a>.</li>
   <li>Comprendre le principe de la <a href="sujet-appli-dicho.htm">recherche dichotomique</a>.</li>

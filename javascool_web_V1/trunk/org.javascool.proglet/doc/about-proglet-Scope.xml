@@ -1,6 +1,7 @@
 <p title="La «proglet» Scope">
   <proglet name="Scope" mode="demo">
-    Cette proglet<footnote id="1"/> permet d'afficher des tracés de couleurs différentes et de lire une valeur numérique.
+    Cette proglet<footnote id="1"/> permet d'afficher des tracés de couleurs différentes.
+    <p>Elle peut être utilisée à partir d'une autre proglet avec la fonction <b><r>show</r>(<s>Scope</s>);</b>.</p>
     <p>Pour tracer un point de la courbe: <code>
       <p><r>scopeSet</r>(x, y, c);</p>
     </code><ul>
@@ -13,12 +14,11 @@
     </code> permet d'effacer la courbe. Le système de coordonnée est donc de la forme:
      <p align="center"><img src="img/scope.png"/></p>
    </p>
-   <p>Pour lire une valeur numérique:<code>
-     <p><r>double</r> valeur = <r>scopeGet</r>();</p>
-   </code> permet de lire respectivement une valeur numérique entre <c>0</c> et <c>100%</c>.
+   <p>Pour ajouter une étiquette au tracé:<code>
+   <p><r>scopeAdd</r>(x, y, <s>s</s>, c);</p>
+   </code> permet d'ajouter une étiquette au tracé.
    </p>
-    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] 
-    se tracent une sinusoïde bleue et une exponentielle violette, tandis qu'il est possible de changer la valeur numérique.</p>
+    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] se tracent une sinusoïde bleue et une exponentielle violette.</p>
   </proglet>
 
   <footnotes>

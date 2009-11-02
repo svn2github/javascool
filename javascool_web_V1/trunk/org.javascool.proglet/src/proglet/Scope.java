@@ -23,13 +23,10 @@ public class Scope implements Proglet { private Scope() { }
     private static final long serialVersionUID = 1L;
 
     public Panel() {
-      super(new BorderLayout()); setPreferredSize(new Dimension(560, 720));
-      add(scope = new CurveOutput(), BorderLayout.NORTH);
-      JPanel panel = new JPanel(new BorderLayout());
-      panel.add(value = new NumberInput("valeur", 0, 100, 1, 50), BorderLayout.SOUTH);
-      add(panel, BorderLayout.SOUTH);
+      setPreferredSize(new Dimension(560, 620));
+      add(scope = new CurveOutput());
     }
-    public CurveOutput scope; public NumberInput value;
+    public CurveOutput scope;
   }
 
   //
@@ -60,14 +57,43 @@ public class Scope implements Proglet { private Scope() { }
    * @param c Numéro de la courbe: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
    */
   static public void scopeSet(double x, double y, int c) {
-    panel.scope.set(x, y, c);
+    panel.scope.add(x, y, c);
   }
 
-  /** Lit la valeur en entrée. 
-   * @return La valeur en entrée entre 0 et 100%.
+  /** Ajoute un chaîne de caratère au tracé.
+   * @param x Abcisse du coin inférieur gauche de la chaîne, dans [-1, 1].
+   * @param y Ordonnée du coin inférieur gauche de la chaîne, dans [-1, 1].
+   * @param s Valeur de la chaîne de caratère.
+   * @param c Couleur de la chaîne de caratère: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
    */
-  static public double scopeGet() { return panel.value.getValue(); }
+  static public void scopeAdd(double x, double y, String s, int c) {
+    panel.scope.add(x, y, s, c);
+  }
 
+  /** Trace un rectangle. 
+   * @param xmin Abcisse inférieure gauche, dans [-1, 1].
+   * @param ymin Ordonnée inférieure gauche, dans [-1, 1].
+   * @param xmax Abcisse supérieure droite, dans [-1, 1].
+   * @param ymax Ordonnée supérieure droite, dans [-1, 1].
+   * @param c Numéro de la courbe: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
+   */
+  static public void scopeAddRectangle(double xmin, double ymin, double xmax, double ymax, int c) {
+    scopeAddLine(xmin, ymin, xmax, ymin, c);
+    scopeAddLine(xmax, ymin, xmax, ymax, c);
+    scopeAddLine(xmax, ymax, xmin, ymax, c);
+    scopeAddLine(xmin, ymax, xmin, ymin, c);
+  }
+
+  /** Trace une ligne. 
+   * @param x1 Abcisse du 1er point, dans [-1, 1].
+   * @param y1 Ordonnée du 1er point, dans [-1, 1].
+   * @param x2 Abcisse du 2eme point, dans [-1, 1].
+   * @param y2 Ordonnée du 2eme point, dans [-1, 1].
+   * @param c Numéro de la courbe: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
+   */
+  static public void scopeAddLine(double x1, double y1, double x2, double y2, int c) {
+    panel.scope.add(x1, y1, x2, y2, c);
+  }
 
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();

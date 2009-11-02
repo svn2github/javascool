@@ -28,11 +28,20 @@ public class Macros { private Macros() { }
    */
   public static double random() { return Math.random(); }
 
+  /** Renvoie un nombre entier aléatoire uniformément distribué entre deux valeurs (maximum inclus).
+   */
+  public static int random(int min, int max) { return (int) Math.floor(min + (0.999 + max - min) * Math.random()); }
+
   /** Renvoie true si deux chaines de caratères sont égales, faux sinon.
    * @param string1 L'une des chaines à comparer.
    * @param string2 L'autre des chaines à comparer.
    */
   public static boolean equal(String string1, String string2) { return string1.equals(string2); }
+
+  /** Rend visible une proglet.
+   * @param proglet Nom de la proglet
+   */
+  public static void show(String proglet) { Proglets.show(proglet); }
 
   /** Temporise une durée fixée.
    * Cela permet aussi de mettre à jour l'affichage.
