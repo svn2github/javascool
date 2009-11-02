@@ -202,15 +202,17 @@ public class SourceEditor extends JPanel {
     }
     if (proglet == "Smiley") {
       menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("smileyReset",           "  smileyReset( , )", 14)));
-      menu.add(new JMenuItem(new InsertAction("smileySet",             "  smileySet( , , )", 12)));
+      menu.add(new JMenuItem(new InsertAction("smileyReset",           "  smileyReset( , );", 14)));
+      menu.add(new JMenuItem(new InsertAction("smileySet",             "  smileySet( , , );", 12)));
       menu.add(new JMenuItem(new InsertAction("smileyGet",             " smileyGet( , )", 11)));
     }
     if (proglet == "Scope") {
       menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("scopeReset",           "  scopeReset()", 0)));
-      menu.add(new JMenuItem(new InsertAction("scopeSet",             "  scopeSet( , , )", 12)));
-      menu.add(new JMenuItem(new InsertAction("scopeGet",             " scopeGet()", 0)));
+      menu.add(new JMenuItem(new InsertAction("scopeReset",           "  scopeReset();", 0)));
+      menu.add(new JMenuItem(new InsertAction("scopeSet",             "  scopeSet( , , );", 12)));
+      menu.add(new JMenuItem(new InsertAction("scopeAdd",             "  scopeAdd( , , , );", 12)));
+      menu.add(new JMenuItem(new InsertAction("scopeAddLine",         "  scopeAddLine( , , , );", 16)));
+      menu.add(new JMenuItem(new InsertAction("scopeAddRectangle",    "  scopeAddRectangle( , , , );", 21)));
     }
     if (proglet == "Conva") {
       menu.addSeparator();
@@ -219,8 +221,8 @@ public class SourceEditor extends JPanel {
     }
     if (proglet == "Synthe") {
       menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("synthePlay",           " synthePlay()", 0)));
-      menu.add(new JMenuItem(new InsertAction("syntheSet",            " syntheSet(\" \")", 12)));
+      menu.add(new JMenuItem(new InsertAction("synthePlay",           " synthePlay();", 0)));
+      menu.add(new JMenuItem(new InsertAction("syntheSet",            " syntheSet(\" \");", 12)));
     }
     {
       menu.addSeparator();
