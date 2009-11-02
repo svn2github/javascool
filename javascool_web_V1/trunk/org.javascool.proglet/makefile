@@ -4,8 +4,6 @@
 
 # Travail de Thierry en cours:
 # - Ajout les sujets annoncés en-cours etc...
-# - Annoncer des exemples du document de ressources pour la classe de seconde au niveau de l'algorithmique publié par ÉduSCOL au wiki
-# - Ajouter doc comment utiliser les proglet dans chaque sujet
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
 #  - Ajouter un éditeur couleur dans l'applet, 
@@ -35,7 +33,7 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst0
+dft : tst1
 
 # Test en standalone (pour générer la doc)
 

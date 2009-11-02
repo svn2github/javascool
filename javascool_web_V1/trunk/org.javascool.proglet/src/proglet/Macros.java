@@ -38,11 +38,6 @@ public class Macros { private Macros() { }
    */
   public static boolean equal(String string1, String string2) { return string1.equals(string2); }
 
-  /** Rend visible une proglet.
-   * @param proglet Nom de la proglet
-   */
-  public static void show(String proglet) { Proglets.show(proglet); }
-
   /** Temporise une durée fixée.
    * Cela permet aussi de mettre à jour l'affichage.
    * @param delay Durée d'attente en milli-secondes.
