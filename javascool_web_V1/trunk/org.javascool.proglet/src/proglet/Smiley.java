@@ -115,7 +115,7 @@ public class Smiley implements Proglet { private Smiley() { }
   /** Change la valeur d'un pixel de l'image. 
    * @param x Abcisse de l'image, comptée à partir du milieu, valeur entre {-width, width}.
    * @param y Ordonnée de l'image, comptée à partir du milieu, valeur entre  {-height, height}.
-   * @param value Une valeur entre 0 et 255 (0 pour noir, 1 pour blanc).
+   * @param valeur Une valeur entre 0 et 255 (0 pour noir, 1 pour blanc).
    * @return Renvoie true si le pixel est dans l'image, false si il est en dehors des limites d el'image.
    */
   static public boolean smileySet(int x, int y, int valeur) {   
