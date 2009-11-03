@@ -12,6 +12,8 @@
   <td align="center" width="10%"><b><a style="text-decoration:none;" href="about-autres.htm"> Ailleurs <br/> .. aussi!</a></b></td>
 </tr></table></td></tr>
 
+<tr><td><img align="left" width="60" src="img/new-icon.jpg"/> <br/> Plus d'une 20taine d'<a style="text-decoration:none;" href="#exos">exercices et applications</a> rendus disponibles avec <javascool/>, en cette rentrée de toussaint.</td></tr>
+
 <tr><td><hr/></td></tr>
 
 <tr><td style="background-color:#DDD"><b><a name="quoi">Qu'est ce que c'est ?</a></b>
@@ -67,23 +69,29 @@
 
 <tr><td><hr/></td></tr>
 
-<tr><td style="background-color:#DDD"><b><a name="exos">Exercices et applications</a></b>
+<tr><td style="background-color:#DDD"><b><a name="exos">Exercices et applications</a></b><img align="right" width="60" src="img/new-icon.jpg"/>
 
 <p>La 20taine d'excercices activités du document de <a href="more/Algo_Doc_Ress.pdf">ressources</a> publié par <a href="http://eduscol.education.fr">ÉduSCOL</a> a été instanciées en <javascool/>: les ``<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a>´´ (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet: accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux soluces des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature: ??">contacter</a> pour l'accès). Avec le <a href="#parcours">parcours</a>  pour s'initier à la programmation, elles permettent de couvrir le programme de 2nd en algorithmique.</p>
+
+<br/>
 
 <p>Quelques autres applications, exercices et activités:<ul>
   <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
   <li>Comment marche un <a href="sujet-appli-conva.htm">convertisseur analogique-numérique</a>.</li>
   <li>Comprendre le principe de la <a href="sujet-appli-dicho.htm">recherche dichotomique</a>.</li>
-  <li><i> .. cette liste ayant vocation à s'étoffer au cours de l'année scolaire 2009-2010</i>. Sont en préparation:<ul>
+</ul> Note: Aide pour l'enseignant, des <a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a> (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet: accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux soluces des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature: ??">contacter</a> pour l'accès).</p>
+
+<br/>
+
+<p>Cette liste a vocation à s'étoffer au cours de l'année scolaire 2009-2010, 
+ non sans vous inviter à nous demander de nouveaux sujets, à nous faire partager les vôtres !<br/></p>
+
+<p>Sont en préparation:<ul>
     <li>Jouons avec les pixels d'une image !</li>
     <li>Peut-on craquer un code de carte bleue ?</li>
-    <li>Découvrir moyenne et écart-type: comment un signal peut sortir du bruit.</li>
     <li>Programmer soi-même une sonnerie de portable.</li>
-    <li>etc..</li>
-  </ul> . . non sans vous inviter à nous demander de nouveaux sujets, à nous faire partager les vôtres, etc..</li>
-</ul></p>
-Note: Aide pour l'enseignant, des <a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a> (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet: accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux soluces des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature: ??">contacter</a> pour l'accès).
+  </ul></p>
+
 </td></tr>
 
 <tr><td><hr/></td></tr>
