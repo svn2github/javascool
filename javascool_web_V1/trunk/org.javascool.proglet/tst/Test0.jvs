@@ -1,4 +1,21 @@
 
+// Fonction appliquée à chaque pixel
+void filtrePixel(int i, int j) {
+  int valeur = 128 + (smileyGet(i, j) + smileyGet(i + 1, j));
+  smileySet(i, j, valeur);
+}
+
+// Boucle sur tous les pixels
+void filtre() {
+  for(int j = -smileyHeight() + 1; j <= smileyHeight() - 1; j = j + 1) {
+    for(int i = -smileyHeight() + 1; i <= smileyHeight() - 1; i = i + 1) {
+      filtrePixel(i, j);
+    }
+  }
+}
+
 void main() {
-  println("Hello numerical world !");
+  smileyLoad("http://a33.idata.over-blog.com/319x311/1/91/75/94//Doineau---800x600-.jpg");
+  
+  filtre();
 }

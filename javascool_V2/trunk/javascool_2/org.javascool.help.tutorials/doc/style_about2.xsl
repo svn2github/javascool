@@ -49,7 +49,7 @@
     <xsl:when test="../../.. = /"><h4><xsl:value-of select="@title"/>.</h4></xsl:when>
     <xsl:otherwise><b><xsl:value-of select="@title"/>.</b><xsl:text> </xsl:text></xsl:otherwise>
   </xsl:choose></xsl:if>
-  <div style="text-indent: 30px" id="{saxon:line-number()}">
+  <div class="text" id="{saxon:line-number()}">
     <xsl:if test="count(@align)=1"><xsl:attribute name="align"><xsl:value-of select="@align"/></xsl:attribute></xsl:if>
     <xsl:apply-templates/>
   </div>

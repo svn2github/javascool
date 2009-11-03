@@ -3,6 +3,7 @@
 #####################################################################################################################################
 
 # Travail de Thierry en cours:
+# - Ajouter getImage à Smiley
 # - Ajout les sujets annoncés en-cours etc...
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:

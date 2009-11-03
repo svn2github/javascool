@@ -77,34 +77,40 @@
 
 <p>Quelques autres applications, exercices et activités:<ul>
   <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
-  <li>Comment marche un <a href="sujet-appli-conva.htm">convertisseur analogique-numérique</a>.</li>
   <li>Comprendre le principe de la <a href="sujet-appli-dicho.htm">recherche dichotomique</a>.</li>
+  <li>Découvrir comment marche un <a href="sujet-appli-conva.htm">convertisseur analogique-numérique</a>.</li>
+  <li>Comprendre quelques opérations de <a href="sujet-appli-image.htm">manipulation d'images</a>.</li>
 </ul> Note: Aide pour l'enseignant, des <a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a> (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet: accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux soluces des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature: ??">contacter</a> pour l'accès).</p>
 
 <br/>
 
-<p>Cette liste a vocation à s'étoffer au cours de l'année scolaire 2009-2010, 
- non sans vous inviter à nous demander de nouveaux sujets, à nous faire partager les vôtres !<br/></p>
-
-<p>Sont en préparation:<ul>
-    <li>Jouons avec les pixels d'une image !</li>
-    <li>Peut-on craquer un code de carte bleue ?</li>
-    <li>Programmer soi-même une sonnerie de portable.</li>
-  </ul></p>
+<p>Cette liste a vocation à s'étoffer au cours de l'année scolaire 2009-2010: <ul>
+  <li>en produisant de nouveaux exercices selon les demandes des enseignants ou des groupes de TPEs,</li>
+  <li>non sans vous inviter à nous demander de nouveaux sujets, à nous faire partager les vôtres.</li>
+</ul></p>
 
 </td></tr>
 
 <tr><td><hr/></td></tr>
 
 <tr><td style="background-color:#DDD"><b><a name="more">Créer de nouvelles activités</a></b><ol>
-<li>Plusieurs proglets<footnote id="1"/> sont disponibles ici, pour s'initier à la programmation et créer des exercices animés et interactifs<ul>
-    <li>La <proglet name="Konsol"/>.</li>
-    <li>La <proglet name="Dicho"/>.</li>
-    <li>La <proglet name="Smiley"/>.</li>
-    <li>La <proglet name="Scope"/>.</li>
-    <li>La <proglet name="Conva"/>.</li>
-    <li>La <proglet name="Tortue"/>.</li>
-    <li>La <proglet name="Synthe"/>.</li>
+  <li>Plusieurs proglets<footnote id="1"/> sont disponibles ici, pour s'initier à la programmation et créer des exercices animés et interactifs<ul>
+    <li>La <proglet name="Konsol"/>, <ul>
+      <li>utilisées pour les apprentissages initiaux des ingrédients des algorithmes et</li>
+      <li>tous les excercices qui nécessitent des lectures aux clavier comme dans une «console».</li>
+    </ul></li>
+    <li>La <proglet name="Scope"/>, <ul>
+      <li>utilisées pour les exercices qui nécessitent un tracé de courbes où un petit affichage graphique.</li>
+    </ul></li>
+    <li>La <proglet name="Smiley"/>, <ul>
+      <li>utilisées pour les exercices qui nécessitent de manipuler des images ou des graphismes 2D et une <a href="sujet-appli-image.htm">activité</a> spécifique.</li>
+    </ul></li>
+    <li>La <proglet name="Dicho"/>, utilisée pour une <a href="sujet-appli-dicho.htm">activité</a> spécifique (recherche dichotomique).</li>
+    <li>La <proglet name="Conva"/>, utilisée pour une <a href="sujet-appli-conva.htm">activité</a> spécifique (conversion analogique-numérique).</li>
+    <li>La <proglet name="Tortue"/>, simule la «bonne vieille» <a href="http://fr.wikipedia.org/wiki/Logo_(langage)">tortue logo</a>, 
+    donc permet de faire beaucoup d'autres activités.</li>
+    <li>La <proglet name="Synthe"/>, est utilisée pour des activitées (plutôt d'un club de maths ou de science, ou lors d'un TPE) de découverte du signal sonore.
+    Nous <a href="#contact">contacter</a> dans ce cas.</li>
   </ul></li>
 <li>Chaque proglet<footnote id="1"/> est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, 
 programmée en Java et <a href=" ../api/index.html">documenté</a> pour sa libre redistribution, avec un accès au code source, 

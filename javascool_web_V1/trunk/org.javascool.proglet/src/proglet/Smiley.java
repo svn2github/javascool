@@ -31,10 +31,14 @@ public class Smiley implements Proglet { private Smiley() { }
 
   /** Test du panel. */
   static void test() { 
-    for(int size = 512; size > 0; size /= 2) {
-      smileyReset(size, size);
-      peace();
-      Macros.sleep(1000 - size);
+    try {
+      for(int size = 256; size > 0; size /= 2) {
+	smileyReset(size, size);
+	peace();
+	Macros.sleep(1000 - size);
+      }
+    } catch(Exception e) {
+      System.err.println(e);
     }
   }
 
@@ -70,6 +74,7 @@ public class Smiley implements Proglet { private Smiley() { }
   //
 
   /** Initialise l'image.
+   * - La taille de l'image ne doit pas être trop importante (pas plus de 500^2).
    * @param width Demi largeur de l'image de taille {-width, width}.
    * @param height Demi hauteur de l'image de taille {-height, height}.
    */
@@ -77,6 +82,26 @@ public class Smiley implements Proglet { private Smiley() { }
     panel.icon.reset(2 * (Smiley.width = width) + 1, 2 * (Smiley.height = height) + 1);
   }
   static private int width, height;
+
+  /** Charge l'image.
+   * - La taille de l'image ne doit pas être trop importante (pas plus de 500^2).
+   * @param image Nom de l'URL où se trouve l'image
+   */
+  static public void smileyLoad(String image) {
+    try {
+      Dimension dim = panel.icon.reset(image); width = (dim.width - 1) / 2; height = (dim.height - 1) / 2;
+    } catch(Exception e) {
+      smileyReset(200, 200);
+      System.out.println("Impossible de charger "+image);
+    }
+  }
+
+  /** Gets the witdh. */
+  static public int smileyWidth() { return width; }
+
+  /** Gets the height. */
+  static public int smileyHeight() { return height; }
+
   /** Change la valeur d'un pixel de l'image. 
    * @param x Abcisse de l'image, comptée à partir du milieu, valeur entre {-width, width}.
    * @param y Ordonnée de l'image, comptée à partir du milieu, valeur entre  {-height, height}.
@@ -87,13 +112,23 @@ public class Smiley implements Proglet { private Smiley() { }
     return panel.icon.set(x + width, y + height, color);
   }
   
+  /** Change la valeur d'un pixel de l'image. 
+   * @param x Abcisse de l'image, comptée à partir du milieu, valeur entre {-width, width}.
+   * @param y Ordonnée de l'image, comptée à partir du milieu, valeur entre  {-height, height}.
+   * @param value Une valeur entre 0 et 255 (0 pour noir, 1 pour blanc).
+   * @return Renvoie true si le pixel est dans l'image, false si il est en dehors des limites d el'image.
+   */
+  static public boolean smileySet(int x, int y, int valeur) {   
+    return panel.icon.set(x + width, y + height, valeur);
+  }
+  
   /** Lit la valeur d'un pixel de l'image.
    * @param x Abcisse de l'image, comptée à partir du milieu, valeur entre {-width, width}.
    * @param y Ordonnée de l'image, comptée à partir du milieu, valeur entre {-height, height}.
-   * @return Un mot anglais désignant la couleur du pixel si celui si est dans l'image, sinon "undefined";
+   * @return Une valeur entre 0 et 255 (0 pour noir, 1 pour blanc);
    */
-  static public String smileyGet(int x, int y) {
-    return panel.icon.get(x + width, y + height);
+  static public int smileyGet(int x, int y) {
+    return panel.icon.getIntensity(x + width, y + height);
   }
 
   /** Définition de l'interface graphique de la proglet. */

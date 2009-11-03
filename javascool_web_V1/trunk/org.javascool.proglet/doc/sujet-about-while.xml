@@ -98,19 +98,27 @@
       Comparer avec les valeurs du nombre d'or connues par ailleurs.</li>
       <li>Avec votre professeur (ou quelqu'un pour vous aider si besoin) calculer les 100 premières décimales de <a href="http://fr.wikipedia.org/wiki/Pi#M.C3.A9thode_d.E2.80.99Archim.C3.A8de">PI</a> par la méthode d'Archimède.</li>
     </ul></work>
+    <work title="D'autres formes de boucles"> Les langages informatiques proposent d'autres formes de boucles<footnote id="1"/>, 
+    qui sont équivalentes à la construction <r>while</r> apprise ici, mais peuvent être plus pratiques à utiliser. En voici un exemple <ul>
+      <li>La boucle <r>for</r> permet de rassembler en une ligne la boucle avec un compteur que nous avons découvert ici. Le même programme peut s'écrire:
+      <code>
+        <p><r>for</r>(<r>int</r> n = 0; n &lt; 10; n = n + 1) {</p>
+        <p><t/><r>println</r>(<s>Hello World !</s>);</p>
+        <p>}</p>
+      </code> ce qui est plus concis .. mais ne change rien sur le fond.</li>
+    </ul> A partir du travail précédent expliquer quelle est la boucle <r>while</r> équivalente.
+  </work>
   </works>
   
   <footnotes>
     <p title="D'autres formes de boucles"> Les langages informatiques proposent d'autres formes de boucles, qui sont équivalentes à la construction <r>while</r> apprise ici, 
     mais peuvent être plus pratiques à utiliser. En voici deux exemples: <ul>
-      <li>La boucle <r>for</r> permet de rassembler en une ligne la boucle avec un compteur que nous avons découvert ici. Le même programme peut s'écrire:
+      <li>La boucle <r>for</r> permet de rassembler en une ligne des boucles complexes. La construction:
       <code>
-        <p><r>void main</r>() {</p>
-        <p><t/><r>for</r>(<r>int</r> n = 0; n &lt; 10; n = n + 1) {</p>
-        <p><t/><t/><r>println</r>(<s>Hello World !</s>);</p>
-        <p><t/>}</p>
+        <p><r>for</r>(initiatisation_de_la_boucle; test_de_fin_de_boucle; increment_avant_de_recommencer_la_boucle) {</p>
+        <p><t/>corps_de_la_boucle</p>
         <p>}</p>
-      </code> ce qui est plus concis .. mais ne change rien sur le fond.</li>
+      </code> est en fait très générale.</li>
       <li>L'itérateur <r>foreach</r> permet d'énumérer tous les éléments d'une liste sans ce soucier d'utiliser un <r>while</r>, 
       par exemple (attention ce n'est PAS du <javascool/> !) 
       <code>

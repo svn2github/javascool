@@ -203,6 +203,7 @@ public class SourceEditor extends JPanel {
     if (proglet == "Smiley") {
       menu.addSeparator();
       menu.add(new JMenuItem(new InsertAction("smileyReset",           "  smileyReset( , );", 14)));
+      menu.add(new JMenuItem(new InsertAction("smileyLoad",            "  smileyLoad( , );", 13)));
       menu.add(new JMenuItem(new InsertAction("smileySet",             "  smileySet( , , );", 12)));
       menu.add(new JMenuItem(new InsertAction("smileyGet",             " smileyGet( , )", 11)));
     }

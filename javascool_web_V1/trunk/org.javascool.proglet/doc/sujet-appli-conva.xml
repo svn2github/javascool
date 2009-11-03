@@ -104,6 +104,6 @@
      </ul></work>
    </works>
    <footnotes>
-     <p>La fonction <b><r>void</r> <c>echo</c>(<r>String</r> string)</b> Affiche une chaîne de caractères sur la console.</p>
+     <p>La fonction <b><r>void</r> <c>echo</c>(<r>String</r> string)</b> affiche une chaîne de caractères sur la console.</p>
    </footnotes>
 </sujet>
