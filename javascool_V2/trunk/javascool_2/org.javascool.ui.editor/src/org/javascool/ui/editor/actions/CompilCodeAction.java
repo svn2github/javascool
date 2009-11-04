@@ -1,36 +1,28 @@
+/*
+ * Copyright (c) 2008-2010 Javascool (Java's Cool).  All rights reserved.
+ *	this source file is placed under license CeCILL
+ * see http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html
+ * or http://www.cecill.info/licences/Licence_CeCILL_V2-en.html
+ */
 package org.javascool.ui.editor.actions;
 
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
-import javax.tools.JavaCompiler;
-import javax.tools.ToolProvider;
 
 import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.IJobChangeEvent;
-import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.TextConsole;
-import org.eclipse.ui.handlers.HandlerUtil;
 import org.javascool.compilation.Compile;
 import org.javascool.translation.Translator;
-import org.javascool.ui.editor.Activator;
 import org.javascool.ui.editor.editors.JVSEditor;
 
 public class CompilCodeAction implements IWorkbenchWindowActionDelegate {
@@ -92,7 +84,7 @@ public class CompilCodeAction implements IWorkbenchWindowActionDelegate {
 			Translator.translate(path);
 
 		//TODO simple trace it's necessary to comment this line
-		//System.out.println("classPath = "+classPath);
+		//System.out.println("Compilation action classPath = "+classPath);
 		Compile.run(path, classPath);
 
 		

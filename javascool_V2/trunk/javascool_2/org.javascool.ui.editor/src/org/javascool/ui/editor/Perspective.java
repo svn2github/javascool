@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2008-2010 Javascool (Java's Cool).  All rights reserved.
+ *	this source file is placed under license CeCILL
+ * see http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html
+ * or http://www.cecill.info/licences/Licence_CeCILL_V2-en.html
+ */
 package org.javascool.ui.editor;
 
 import org.eclipse.ui.IPageLayout;
@@ -10,6 +16,9 @@ import org.javascool.ui.editor.console.JVSConsole;
 
 public class Perspective implements IPerspectiveFactory {
 
+	
+	public static final String ID = "org.javascool.ui.editor.perspectiveEditor";
+	
 	public void createInitialLayout(IPageLayout layout) {
 
 		defineActions(layout);
@@ -32,6 +41,7 @@ public class Perspective implements IPerspectiveFactory {
 
 	public void defineLayout(IPageLayout layout) {
 		// Editors are placed for free.
+		@SuppressWarnings("unused")
 		String editorArea = layout.getEditorArea();
 
 		layout.addView(IConsoleConstants.ID_CONSOLE_VIEW, IPageLayout.RIGHT, 0.5f, layout.getEditorArea());

@@ -1,12 +1,13 @@
+/*
+ * Copyright (c) 2008-2010 Javascool (Java's Cool).  All rights reserved.
+ *	this source file is placed under license CeCILL
+ * see http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html
+ * or http://www.cecill.info/licences/Licence_CeCILL_V2-en.html
+ */
 package org.javascool.ui.editor.actions;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.eclipse.core.runtime.FileLocator;
@@ -15,10 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.IJobChangeEvent;
-import org.eclipse.core.runtime.jobs.IJobManager;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -115,9 +113,17 @@ public class ExecuteCodeAction implements IWorkbenchWindowActionDelegate {
 		job = new Job("Execution"){
 			protected IStatus run(IProgressMonitor monitor) {
 				jobStarted = true;
-				monitor.beginTask("Execution", 100);
-				Execution.execute(pathFile, classNameFinal, classPathFinal);	//execute the code
-				jobStarted = false;
+				try {
+					//execute the code
+					Execution.execute(pathFile, classNameFinal, classPathFinal);
+				} catch (ClassNotFoundException e) {
+					System.err.println("Veuillez compiler votre code source,\n"+
+							"ou vous assurer que la compilation a reussie");
+				}	
+				finally{
+					jobStarted = false;
+				}
+			
 				return Status.OK_STATUS;
 			}
 			@Override

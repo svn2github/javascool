@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2008-2010 Javascool (Java's Cool).  All rights reserved.
+ *	this source file is placed under license CeCILL
+ * see http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html
+ * or http://www.cecill.info/licences/Licence_CeCILL_V2-en.html
+ */
 package org.javascool.ui.editor.actions;
 
 import java.io.File;
@@ -7,23 +13,14 @@ import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.HelpListener;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.ide.FileStoreEditorInput;
-import org.eclipse.ui.texteditor.IWorkbenchActionDefinitionIds;
 import org.javascool.ui.editor.editors.JVSEditor;
 
 public class OpenFileAction implements IWorkbenchWindowActionDelegate {
@@ -45,11 +42,10 @@ public class OpenFileAction implements IWorkbenchWindowActionDelegate {
 		fd.setFilterExtensions(new String[] {"*.jvs", "*.java"});
 		fd.setText("Open...");
 
-		IEditorPart editor = null;
 		if(fd.open() != null) {
 
 			File file = new File(fd.getFilterPath() + "/" + fd.getFileName());
-			//IWorkbenchPage page= PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		
 			if (file != null) {
 				IWorkbenchPage page= window.getActivePage();
 				try {
@@ -59,8 +55,8 @@ public class OpenFileAction implements IWorkbenchWindowActionDelegate {
 					e.printStackTrace();
 				}
 			} else if (file != null) {
-				String msg = MessageFormat.format("File is null: {0}", new String[] { file.getName() }); //$NON-NLS-1$
-				MessageDialog.openWarning(window.getShell(), "Probleme", msg); //$NON-NLS-1$
+				String msg = MessageFormat.format("File is null: {0}", new String[] { file.getName() }); 
+				MessageDialog.openWarning(window.getShell(), "Probleme", msg);
 			}
 		}
 	}

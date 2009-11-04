@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2008-2010 Javascool (Java's Cool).  All rights reserved.
+ *	this source file is placed under license CeCILL
+ * see http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html
+ * or http://www.cecill.info/licences/Licence_CeCILL_V2-en.html
+ */
 package org.javascool.ui.editor.actions;
 
 import java.io.File;
@@ -42,6 +48,7 @@ public class ShowJavaSourceAction implements IWorkbenchWindowActionDelegate {
 		String path = editor.getFilePath();
 		if(path.endsWith(".jvs")){//si fichier jvs
 			path = path.replace(".jvs",".java");
+			@SuppressWarnings("unused")
 			FileReader doc = null;
 			try {
 				doc = new FileReader(path);
