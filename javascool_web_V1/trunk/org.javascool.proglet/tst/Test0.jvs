@@ -15,7 +15,7 @@ void filtre() {
 }
 
 void main() {
-  smileyLoad("http://a33.idata.over-blog.com/319x311/1/91/75/94//Doineau---800x600-.jpg");
+  smileyLoad("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
   
   filtre();
 }

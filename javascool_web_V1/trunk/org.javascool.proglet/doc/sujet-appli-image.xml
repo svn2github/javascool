@@ -1,6 +1,6 @@
 <sujet>
   <titre>Comprendre quelques opérations de manipulation d'images</titre>
-  
+
   <proglet name="Smiley" mode="edit"/>
   
   <objectif>
@@ -31,7 +31,7 @@
         <p>}</p>
         <p></p>
         <p><r>void main</r>() {</p>
-        <p><t/><r>smileyLoad</r>("http://a33.idata.over-blog.com/319x311/1/91/75/94//Doineau---800x600-.jpg");</p>
+        <p><t/><r>smileyLoad</r>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");</p>
         <p>}</p>
       </code><ul>
         <li>Le programme principal <r>main</r> charge une belle photo noir et blanc de <a href="http://fr.wikipedia.org/wiki/Doisneau">Doisneau</a>.</li>
@@ -68,7 +68,7 @@
         <p>}</p>
         <p></p>
         <p><r>void main</r>() {</p>
-        <p><t/><r>smileyLoad</r>("http://a33.idata.over-blog.com/319x311/1/91/75/94//Doineau---800x600-.jpg");</p>
+        <p><t/><r>smileyLoad</r>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");</p>
         <p><t/><r>for</r>(<r>int</r> n = 0; n &lt; 2; n = n + 1) {</p>
         <p><t/><t/>filtre();</p>
         <p><t/>}</p>
@@ -99,7 +99,7 @@
         <p>}</p>
         <p></p>
         <p><r>void main</r>() {</p>
-        <p><t/><r>smileyLoad</r>("http://a33.idata.over-blog.com/319x311/1/91/75/94//Doineau---800x600-.jpg");</p>
+        <p><t/><r>smileyLoad</r>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");</p>
         <p><t/>filtre();</p>
         <p>}</p>
       </code><ul>

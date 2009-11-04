@@ -3,8 +3,7 @@
 #####################################################################################################################################
 
 # Travail de Thierry en cours:
-# - Ajouter getImage à Smiley
-# - Ajout les sujets annoncés en-cours etc...
+# - Ajout qq sujets au fil de l'eau . . 
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
 #  - Ajouter un éditeur couleur dans l'applet, 
@@ -34,7 +33,7 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst1
+dft : tst2
 
 # Test en standalone (pour générer la doc)
 
@@ -109,7 +108,7 @@ wproglet.jar : proglet.jar $(CP)
 
 scp : proglet.jar
 	@echo sync on facets.inria.fr
-	@-rsync --rsh='ssh -C' --archive --delete-excluded img/home.png proglet/index.php proglet.jar facets.inria.fr:javascool
+	@-rsync --rsh='ssh -C' --archive --delete-excluded img/home.png img/doisneaubuffon.jpg proglet/index.php proglet.jar facets.inria.fr:javascool
 
 # Génération des pages du site web
 

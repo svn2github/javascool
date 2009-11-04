@@ -364,7 +364,7 @@ public class InterfacePrincipale extends JApplet {
       jResultPanel = new JPanel();
       jResultPanel.setLayout(new GridBagLayout());
       jResultPanel.setBounds(new Rectangle(8, 92, 540, 580));
-      jResultPanel.setBorder(BorderFactory.createTitledBorder(null, "Résultat", 
+      jResultPanel.setBorder(BorderFactory.createTitledBorder(null, "«"+proglet+"»", 
         TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
       jResultPanel.add(Proglets.getPanel(proglet), gridBagConstraints);
     }
