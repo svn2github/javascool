@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2008-2010 Javascool (Java's Cool).  All rights reserved.
+ *	this source file is placed under license CeCILL
+ * see http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html
+ * or http://www.cecill.info/licences/Licence_CeCILL_V2-en.html
+ */
 package org.javascool.conf;
 
 import java.io.File;
@@ -5,12 +11,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import javax.tools.JavaFileManager.Location;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.PlatformObject;
+import org.javascool.core.Activator;
 
 /**
  * To distribute singleton arraylist of abstractbean to get information from conf files

@@ -1,11 +1,7 @@
 import java.io.File;
 
-import org.eclipse.core.runtime.Platform;
 import org.javascool.compilation.Compile;
 import org.javascool.translation.Translator;
-import org.osgi.framework.Bundle;
-
-
 
 
 

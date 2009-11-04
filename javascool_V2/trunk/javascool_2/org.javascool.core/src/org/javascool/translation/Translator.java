@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2008-2010 Javascool (Java's Cool).  All rights reserved.
+ *	this source file is placed under license CeCILL
+ * see http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html
+ * or http://www.cecill.info/licences/Licence_CeCILL_V2-en.html
+ */
 package org.javascool.translation;
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,10 +17,10 @@ import java.util.Arrays;
 
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.CharBuffer;
+
 import javax.tools.*;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Platform;
 import org.javascool.conf.BeanFactory;
 import org.javascool.conf.BeanFonctions;
 import org.javascool.conf.BeanMacros;
@@ -74,7 +80,6 @@ public class Translator {
 		File f = new File(path);
 		String myFile=path+File.separator+"Macro.java";
 		String ls=System.getProperty("line.separator");
-		String ps=File.separator;
 		try {
 			f.mkdir();
 			PrintWriter  file = new PrintWriter(myFile);
@@ -94,6 +99,7 @@ public class Translator {
 		}
 		listImport.add("import static javascool.Macro.*;");
 		listImport.add("import java.util.ArrayList;");
+		//listImport.add("import proglet.*;");
 		nbLigne = nbLigne +2;
 		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 		if(compiler==null){
@@ -138,6 +144,8 @@ public class Translator {
 		PrintWriter myFile = null;
 		String line="";
 
+		boolean containclassName = false;
+		
 		try{
 			buffer = new BufferedReader(new FileReader(path));
 			path = path.replace(".jvs",".java");
@@ -148,19 +156,31 @@ public class Translator {
 		}
 
 		try {
-
+			
 			//ajout de pulic class devant nom de la class
-			text = "public class "+buffer.readLine()+System.getProperty("line.separator");
-
+			//text +="public class";
+			//CharBuffer cbuf;
+			//	text += line+System.getProperty("line.separator");
+			
 			//on recupere les imports neccessaire a faire en parcourant chaque ligne du code source
 			while ((line = buffer.readLine()) != null){
 				getImportFct(line);
 				getImportProglet(line);
+				if(line.contains(className)) containclassName = true;
 				text+=line+System.getProperty("line.separator");
+				
 			}
 
 			buffer.close();
 
+			//ajout du "public class" avec ou sans le nom de la classe
+			if (containclassName){
+				text = "public class " + text;
+			}else{
+				text = "public class "+className+" {"+System.getProperty("line.separator")
+					+text+ System.getProperty("line.separator")+ "}";
+			}
+			
 			//ajout des imports ncecesssaire
 			addImport(text);
 
@@ -230,7 +250,6 @@ public class Translator {
 				}
 			}
 		}
-
 	}
 
 	

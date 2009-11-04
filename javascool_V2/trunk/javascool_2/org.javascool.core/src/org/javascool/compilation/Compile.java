@@ -1,7 +1,12 @@
+/*
+ * Copyright (c) 2008-2010 Javascool (Java's Cool).  All rights reserved.
+ *	this source file is placed under license CeCILL
+ * see http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html
+ * or http://www.cecill.info/licences/Licence_CeCILL_V2-en.html
+ */
 package org.javascool.compilation;
 import java.io.File;
 import java.io.IOException;
-import java.rmi.Naming;
 import java.util.Arrays;
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
@@ -39,13 +44,17 @@ public class Compile {
 					//second compilation
 					boolean comp2 = compiler(filePath, classPath, true, false);
 				
-					if(!comp2)
+					if(!comp2)//TODO add here error log transmition
 						System.err.println("Erreur :\n"+ 
 								"Une erreur interne de traduction s'est produite.\n\n" +
 								"Une modification de votre code est succeptible de corriger le probleme.\n\n"+
 								"Pour nous aider à améliorer le logiciel merci de nous faire parvenir par email à l'adresse suivante : bugs@javascool.com\n"+
 								"le code source que vous essayez de compiler pour que l'on puisse corriger le problème.");
 					
+				}else{//echec first compilation
+					String tmpFilePathClass = filePath.replace(".java",".class");
+					File classFile = new File(tmpFilePathClass);
+					classFile.delete();
 				}
 			} catch (Exception e) {}
 		}else{//compilation d'un fichier java
@@ -112,14 +121,14 @@ public class Compile {
 
 		else{
 			for (int i=0; i< diagnostics.getDiagnostics().size(); i++){
-				Diagnostic diag = diagnostics.getDiagnostics().get(i);
+				Diagnostic<?> diag = diagnostics.getDiagnostics().get(i);
 				
 				String errorMess  = diag.getMessage(null);
 				
 				errorMess = errorMess.substring(errorMess.lastIndexOf(File.separator)+1,errorMess.length());
 				//la ou il y a un erreur
-				long start = diag.getStartPosition();
-				long end = diag.getEndPosition() - start;
+				//long start = diag.getStartPosition();
+				//long end = diag.getEndPosition() - start;
 			
 				if(isJvsFile){
 					long line = diag.getLineNumber();
