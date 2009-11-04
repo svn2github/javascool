@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Java&apos;s Cool" uid="org.javascool.ui.product" id="org.javascool.ui.product1" application="org.javascool.ui.application" version="2.0.0" useFeatures="false" includeLaunchers="false">
+<product name="Java&apos;s Cool" uid="org.javascool.ui.product" id="org.javascool.ui.product" application="org.javascool.ui.application" version="2.0.0" useFeatures="false" includeLaunchers="false">
 
    <aboutInfo>
-      <image path="/javascool.ui/img/splash_help.gif"/>
+      <image path="/org.javascool.ui/img/splash_help.gif"/>
       <text>
          Java&apos;s Cool
 
@@ -25,20 +25,21 @@ Projet soutenu par l&apos;INRIA http://www-sop.inria.fr/
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/org.javascool.ui/img/logo_JVS_16.gif" i32="/javascool.ui/img/logo_JVS_32.gif" i64="/javascool.ui/img/logo_JVS_64.gif" i128="/javascool.ui/img/logo_JVS_128.gif"/>
+   <windowImages i16="/org.javascool.ui/img/logo_JVS_16.gif" i32="/org.javascool.ui/img/logo_JVS_32.gif" i64="/org.javascool.ui/img/logo_JVS_64.gif" i128="/org.javascool.ui/img/logo_JVS_128.gif"/>
 
    <splash
-      location="javascool.ui"
+      location="org.javascool.ui"
       startupProgressRect="10,290,480,15"
       startupMessageRect="20,270,480,20"
       startupForegroundColor="000000" />
    <launcher name="Javascool">
       <solaris/>
       <win useIco="true">
-         <ico path="/javascool.ui/img/icon_JVS_WinXp.ico"/>
+         <ico path="/org.javascool.ui/img/icon_JVS_WinXp.ico"/>
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -582,6 +583,8 @@ Version 2.0 du 2006-09-05.
       <plugin id="org.eclipse.ecf"/>
       <plugin id="org.eclipse.ecf.filetransfer"/>
       <plugin id="org.eclipse.ecf.identity"/>
+      <plugin id="org.eclipse.ecf.provider.filetransfer"/>
+      <plugin id="org.eclipse.ecf.provider.filetransfer.ssl" fragment="true"/>
       <plugin id="org.eclipse.ecf.ssl" fragment="true"/>
       <plugin id="org.eclipse.equinox.app"/>
       <plugin id="org.eclipse.equinox.common"/>
@@ -616,6 +619,7 @@ Version 2.0 du 2006-09-05.
       <plugin id="org.javascool.proglet"/>
       <plugin id="org.javascool.ui"/>
       <plugin id="org.javascool.ui.editor"/>
+      <plugin id="org.unice.javascool.orphy"/>
    </plugins>
 
 

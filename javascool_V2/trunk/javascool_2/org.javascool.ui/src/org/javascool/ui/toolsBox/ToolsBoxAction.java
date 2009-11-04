@@ -1,4 +1,11 @@
+/*
+ * Copyright (c) 2008-2010 Javascool (Java's Cool).  All rights reserved.
+ *	this source file is placed under license CeCILL
+ * see http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html
+ * or http://www.cecill.info/licences/Licence_CeCILL_V2-en.html
+ */
 package org.javascool.ui.toolsBox;
+
 
 
 import org.eclipse.jface.action.Action;
@@ -6,11 +13,7 @@ import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
-import org.javascool.ui.editor.editors.JVSEditor;
 
 
 public class ToolsBoxAction extends Action implements IMenuCreator{
@@ -42,28 +45,25 @@ public class ToolsBoxAction extends Action implements IMenuCreator{
 	
 	@Override
 	public void run (){
-		
 	}
-
-
-	//@Override
+	
+	
+	@Override
 	public void dispose (){
 		m_menu.dispose ();
 	}
 
 
 
-	//@Override
+	@Override
 	public Menu getMenu (Control parent){
 		return m_menu.createContextMenu(parent);
 	}
 
-
-
-	//@Override
-	public Menu getMenu (Menu parent){
+	@Override
+	public Menu getMenu(Menu parent) {
+		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

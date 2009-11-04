@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2008-2010 Javascool (Java's Cool).  All rights reserved.
+ *	this source file is placed under license CeCILL
+ * see http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html
+ * or http://www.cecill.info/licences/Licence_CeCILL_V2-en.html
+ */
 package org.javascool.ui;
 
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -10,7 +16,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "javascool.ui";
+	public static final String PLUGIN_ID = "org.javascool.ui";
 
 	// The shared instance
 	private static Activator plugin;
@@ -56,6 +62,7 @@ public class Activator extends AbstractUIPlugin {
 	 * @return the image descriptor
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
+	
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 }

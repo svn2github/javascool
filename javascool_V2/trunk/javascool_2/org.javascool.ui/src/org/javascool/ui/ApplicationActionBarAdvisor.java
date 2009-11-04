@@ -1,9 +1,14 @@
+/*
+ * Copyright (c) 2008-2010 Javascool (Java's Cool).  All rights reserved.
+ *	this source file is placed under license CeCILL
+ * see http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html
+ * or http://www.cecill.info/licences/Licence_CeCILL_V2-en.html
+ */
 package org.javascool.ui;
 
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -29,13 +34,14 @@ import org.javascool.ui.toolsBox.ToolsBoxFonctions;
  * the actions added to a workbench window. Each window will be populated with
  * new actions.
  */
+@SuppressWarnings("restriction")
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 	// Actions - important to allocate these only in makeActions, and then use
 	// them
 	// in the fill methods. This ensures that the actions aren't recreated
 	// when fillActionBars is called with FILL_PROXY.
-	private IWorkbenchAction exitAction;
+	//private IWorkbenchAction exitAction;
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
 		super(configurer);
@@ -194,10 +200,11 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		//TODO here for the toolbox
 		ToolsBoxAction toolBox = new ToolsBoxAction(window);
 		toolBox.setImageDescriptor(Activator.getImageDescriptor("img/toolbox.png"));
-		toolBox.setDisabledImageDescriptor(Activator.getImageDescriptor("img/toolbox.png"));
-		toolBox.setHoverImageDescriptor(Activator.getImageDescriptor("img/toolbox.png"));
+		toolBox.setDisabledImageDescriptor(Activator.getImageDescriptor("E:\\workspaceJavascool_FINAL\\org.javascool.ui\\imgtoolbox.png"));
+		toolBox.setHoverImageDescriptor(Activator.getImageDescriptor("E:\\workspaceJavascool_FINAL\\org.javascool.ui\\imgtoolbox.png"));
 		toolbar.add(toolBox);
 		
+			
 		
 		//action_toolsBox.setMenuCreator(new IMenuCreator(){});
 	
