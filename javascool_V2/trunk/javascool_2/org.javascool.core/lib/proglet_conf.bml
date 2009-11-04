@@ -50,7 +50,26 @@ outils {
 		smileyGet {
 			desc="Lit la valeur d'un pixel de l'image.";
 			import="proglet.Smiley.smileyGet";
-			signature="String smileyGet(int x, int y)";
+			signature="int smileyGet(int x, int y)";
+			type="proglet Smiley";
+		}
+		smileyHeight {
+			desc="Gets the height.";
+			import="proglet.Smiley.smileyHeight";
+			signature="int smileyHeight()";
+			type="proglet Smiley";
+		}
+		smileyWidth {
+			desc="Gets the Width.";
+			import="proglet.Smiley.smileyWidth";
+			signature="int smileyWidth()";
+			type="proglet Smiley";
+		}
+		
+		smileyLoad{
+			desc="Charge l'image.";
+			import="proglet.Smiley.smileyLoad";
+			signature="smileyLoad(String image)";
 			type="proglet Smiley";
 		}
 		smileyReset {
@@ -65,7 +84,12 @@ outils {
 			signature="boolean smileySet(int x, int y, String color)";
 			type="proglet Smiley";
 		}
-		
+		smileySet {
+			desc="Change la valeur d'un pixel de l'image.";
+			import="proglet.Smiley.smileySet";
+			signature="boolean smileySet(int x, int y, int valeur)";
+			type="proglet Smiley";
+		}
 		show {
 			desc="permet d'afficher la proglet Smiley";
 			import="proglet.Proglets.show";
@@ -76,25 +100,31 @@ outils {
 		
 		
 		
-		
-		
-		
-		scopeGet {
-			desc="Lit la valeur en entrée.";
-			import="proglet.Scope.scopeGet";
-			signature="double scopeGet()";
+		scopeAdd {
+			desc="Ajoute un chaîne de caratère au trace.";
+			signature="scopeAdd(double x, double y, String s, int c)";
+			import="proglet.Scope.scopeAdd";
 			type="proglet Scope";
 		}
+			
+		scopeAddLine {
+			desc="Trace une ligne.";
+			import="proglet.Scope.scopeAddLine";
+			signature="scopeAddLine(double x1, double y1, double x2, double y2, int c)";
+			type="proglet Scope";
+		}
+		
 		scopeReset {
 			desc="Initialise le tracé.";
 			import="proglet.Scope.scopeReset";
-			signature="void scopeReset()";
+			signature="scopeReset()";
 			type="proglet Scope";
 		}
+		
 		scopeSet {
 			desc="Change la valeur d'un point du tracé.";
 			import="proglet.Scope.scopeSet";
-			signature="void scopeSet(double x, double y, int c)";
+			signature="scopeSet(double x, double y, int c);";
 			type="proglet Scope";
 		}
 		
