@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
+import javax.swing.JLayeredPane;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
  * Fichiers utilisés: <pre>
@@ -26,16 +27,27 @@ public class Conva implements Proglet { private Conva() { }
     public Panel() {
       super(new BorderLayout()); setPreferredSize(new Dimension(560, 450));
       // Adds the figure
+      JLayeredPane pane = new JLayeredPane();
       JLabel fig = new JLabel();
       fig.setIcon(Proglets.getIcon("conv.png"));
       fig.setBounds(2, 0, 540, 350);
-      add(fig, BorderLayout.NORTH);
+      pane.add(fig, new Integer(1), 0);
+      out = new JLabel("????");
+      out.setBounds(270, 100, 100, 50);
+      pane.add(out, new Integer(2), 0);
+      cmp = new JLabel("?");
+      cmp.setBounds(270, 100, 100, 50);
+      pane.add(cmp, new Integer(2), 1);
+      add(pane, BorderLayout.NORTH);
       // Adds the input
-      JPanel panel = new JPanel(new BorderLayout());
-      panel.add(value = new NumberInput("tension inconnue", 0, 1024, 1, 500), BorderLayout.SOUTH);
-      add(panel, BorderLayout.CENTER);
+      JPanel input = new JPanel(new BorderLayout());
+      input.add(value = new NumberInput("tension inconnue", 0, 1024, 1, 300), BorderLayout.SOUTH);
+      add(input, BorderLayout.CENTER);
+      JPanel border = new JPanel();
+      border.setPreferredSize(new Dimension(560, 180));
+      add(border, BorderLayout.SOUTH);
     }
-    public NumberInput value;
+    public NumberInput value; public JLabel out, cmp;
   }
 
   //
@@ -44,7 +56,7 @@ public class Conva implements Proglet { private Conva() { }
 
   /** Test du panel. */
   static void test() {
-    // Méthode brute
+    /* Méthode brute
     { 
       int v = 1023; while(v >= 0) {
 	convaOut(v);
@@ -55,6 +67,7 @@ public class Conva implements Proglet { private Conva() { }
 	v = v - 1;
       }
     }
+    */
     // Méthode dichotomique
     {
       int min = 0, max = 1024;
@@ -66,7 +79,9 @@ public class Conva implements Proglet { private Conva() { }
 	} else {
 	  max = milieu;
 	}
+	Macros.sleep(1000);
       }
+      convaOut(min); convaCompare();
       Macros.echo("La valeur vaut "+min);
     }
   }
@@ -78,12 +93,12 @@ public class Conva implements Proglet { private Conva() { }
   /** Applique une tension en sortie.
    * @param value La tension en milli-volts entre 0 et 1023.
    */
-  static public void convaOut(int value) { Conva.value = value; } private static int value = 0;
+  static public void convaOut(int value) { Conva.value = value;  panel.out.setText(value+" mV"); } private static int value = 0;
 
   /** Compare la tension appliquée en sortie à la tension inconnue.
    * @return -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
    */
-  public static int convaCompare() { return panel.value.getValue() < value ? -1 : 1; }
+  public static int convaCompare() { int r = panel.value.getValue() < value ? -1 : 1; panel.cmp.setText(""+r); return r; }
 
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
