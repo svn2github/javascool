@@ -19,7 +19,7 @@
     </p>
 
     <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] 
-    les résultats de la conversion analogique-numérique s'affichent dans la console (écrant sous l'éditeur de programmation).</p>
+    les résultats de la conversion analogique-numérique s'affichent, avec un algorithme dichotomique.</p>
    </proglet>
 
   <footnotes>

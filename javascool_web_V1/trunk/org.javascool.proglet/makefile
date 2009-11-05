@@ -43,7 +43,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar
-	cd tst ; /usr/bin/java -jar ../$^ run Conva
+	cd tst ; /usr/bin/java -jar ../$^ edit Konsol
 
 # Test du service web (pour vérifier l'intégration)
 

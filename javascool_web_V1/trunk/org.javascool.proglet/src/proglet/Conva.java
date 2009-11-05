@@ -28,15 +28,16 @@ public class Conva implements Proglet { private Conva() { }
       super(new BorderLayout()); setPreferredSize(new Dimension(560, 450));
       // Adds the figure
       JLayeredPane pane = new JLayeredPane();
+      pane.setPreferredSize(new Dimension(540, 300));
       JLabel fig = new JLabel();
       fig.setIcon(Proglets.getIcon("conv.png"));
-      fig.setBounds(2, 0, 540, 350);
+      fig.setBounds(2, 0, 540, 300);
       pane.add(fig, new Integer(1), 0);
       out = new JLabel("????");
-      out.setBounds(270, 100, 100, 50);
+      out.setBounds(270, 80, 100, 50);
       pane.add(out, new Integer(2), 0);
       cmp = new JLabel("?");
-      cmp.setBounds(270, 100, 100, 50);
+      cmp.setBounds(190, 178, 100, 50);
       pane.add(cmp, new Integer(2), 1);
       add(pane, BorderLayout.NORTH);
       // Adds the input
@@ -44,7 +45,7 @@ public class Conva implements Proglet { private Conva() { }
       input.add(value = new NumberInput("tension inconnue", 0, 1024, 1, 300), BorderLayout.SOUTH);
       add(input, BorderLayout.CENTER);
       JPanel border = new JPanel();
-      border.setPreferredSize(new Dimension(560, 180));
+      border.setPreferredSize(new Dimension(560, 160));
       add(border, BorderLayout.SOUTH);
     }
     public NumberInput value; public JLabel out, cmp;
