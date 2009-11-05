@@ -45,7 +45,7 @@ public class Conva implements Proglet { private Conva() { }
       input.add(value = new NumberInput("tension inconnue", 0, 1024, 1, 300), BorderLayout.SOUTH);
       add(input, BorderLayout.CENTER);
       JPanel border = new JPanel();
-      border.setPreferredSize(new Dimension(560, 160));
+      border.setPreferredSize(new Dimension(560, 140));
       add(border, BorderLayout.SOUTH);
     }
     public NumberInput value; public JLabel out, cmp;
