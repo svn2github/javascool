@@ -33,7 +33,7 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst2
+dft : tst1
 
 # Test en standalone (pour générer la doc)
 

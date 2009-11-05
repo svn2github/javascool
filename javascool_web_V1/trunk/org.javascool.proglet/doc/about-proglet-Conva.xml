@@ -15,7 +15,9 @@
      qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
     </p>
 
-  </proglet>
+    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] 
+    les résultats de la conversion analogique-numérique s'affichent dans la console.</p>
+   </proglet>
 
   <footnotes>
     <p>Cette proglet un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Conva.html">documenté</a> 

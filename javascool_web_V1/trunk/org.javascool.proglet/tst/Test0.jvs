@@ -1,21 +1,4 @@
 
-// Fonction appliquée à chaque pixel
-void filtrePixel(int i, int j) {
-  int valeur = 128 + (smileyGet(i, j) + smileyGet(i + 1, j));
-  smileySet(i, j, valeur);
-}
-
-// Boucle sur tous les pixels
-void filtre() {
-  for(int j = -smileyHeight() + 1; j <= smileyHeight() - 1; j = j + 1) {
-    for(int i = -smileyHeight() + 1; i <= smileyHeight() - 1; i = i + 1) {
-      filtrePixel(i, j);
-    }
-  }
-}
-
 void main() {
-  smileyLoad("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
   
-  filtre();
 }
