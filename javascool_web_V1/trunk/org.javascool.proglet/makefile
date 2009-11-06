@@ -4,7 +4,7 @@
 
 # Travail de Thierry en cours:
 # - Ajout qq sujets au fil de l'eau . . 
-# - Ajout reticule a scope et scopeX() scopeY() à la proglet , puis proposé utilisation dans sujet avec boucle (voir si blocage)
+# - Retester sous windows le scope et cie
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
 #  - Ajouter un éditeur couleur dans l'applet, 
@@ -44,7 +44,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar
-	cd tst ; /usr/bin/java -jar ../$^ edit Scope
+	cd tst ; /usr/bin/java -jar ../$^ run Conva
 
 # Test du service web (pour vérifier l'intégration)
 

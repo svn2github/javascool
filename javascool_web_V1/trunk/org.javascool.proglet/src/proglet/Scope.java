@@ -24,7 +24,7 @@ public class Scope implements Proglet { private Scope() { }
 
     public Panel() {
       super(new BorderLayout());
-      setPreferredSize(new Dimension(560, 620));
+      setPreferredSize(new Dimension(560, 580));
       add(scope = new CurveOutput() { 
 	  private static final long serialVersionUID = 1L;
 	  public void outReticule(double x, double y) { 

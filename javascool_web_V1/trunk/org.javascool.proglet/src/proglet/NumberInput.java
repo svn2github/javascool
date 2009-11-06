@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 
 // Used for the slider
 import javax.swing.JSlider;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -34,7 +35,7 @@ public class NumberInput extends JPanel {
    * @param value Initial input value.
    */
   public NumberInput(String name, double min, double max, double step, double value) {
-    setBorder(BorderFactory.createTitledBorder(name)); setPreferredSize(new Dimension(400, 50));
+    setBorder(BorderFactory.createTitledBorder(name)); setPreferredSize(new Dimension(400, 62));
     field = new JTextField(12);
     field.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent evt) {
@@ -43,6 +44,7 @@ public class NumberInput extends JPanel {
       });
     add(field);
     slider = new JSlider();
+    slider.setFont(new Font("Dialog", Font.PLAIN, 0));
     slider.addMouseListener(new MouseListener() {
 	public void mouseClicked(MouseEvent e) { } 
 	public void mouseEntered(MouseEvent e) { }

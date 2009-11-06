@@ -1,7 +1,6 @@
 <p title="La «proglet» Scope">
   <proglet name="Scope" mode="demo">
     Cette proglet<footnote id="1"/> permet d'afficher des tracés de couleurs différentes.
-    <p>Elle peut être utilisée à partir d'une autre proglet avec la fonction <b><r>show</r>(<s>Scope</s>);</b>.</p>
     <p>Pour tracer un point de la courbe: <code>
       <p><r>scopeSet</r>(x, y, c);</p>
     </code><ul>
@@ -14,10 +13,12 @@
     </code> permet d'effacer la courbe. Le système de coordonnée est donc de la forme:
      <p align="center"><img src="img/scope.png"/></p>
    </p>
-   <p>Pour ajouter une étiquette au tracé:<code>
+   <p>Pour ajouter une étiquette <s>s</s> de couleur <c>c</c> au point <b>x, y</b>:<code>
    <p><r>scopeAdd</r>(x, y, <s>s</s>, c);</p>
-   </code> permet d'ajouter une étiquette au tracé.
-   </p>
+   </code></p>
+   <p>Pour ajouter une ligne de couleur <c>c</c> du point <b>x1, y1</b> au point <b>x2, y2</b> :<code>
+   <p><r>scopeAddLine</r>(x1, y1, x2, y2, c);</p>
+   </code></p>
    <p>Par ailleurs les valeurs du réticule peuvent être relues avec les fonctions: <code>
       <p><r>double</r> x = <r>scopeX()</r>;</p>
       <p><r>double</r> y = <r>scopeY()</r>;</p>

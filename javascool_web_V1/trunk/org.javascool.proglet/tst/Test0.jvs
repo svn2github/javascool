@@ -1,29 +1,4 @@
 
-// Calcule et affiche le quatrième somme d'un parallélogramme.
-void exo2(double x_B, double y_B, double x_C, double y_C) {
-  // Le programme boucle sans fin
-  while (true) {
-    // On lit les valeurs du réticule
-    double x_A = scopeX();
-    double y_A = scopeY();
-    // On calcule les points I et D
-    double x_I = (x_A + x_C) / 2;
-    double y_I = (y_A + y_C) / 2;
-    double x_D = 2 * x_I - x_B;
-    double y_D = 2 * y_I - y_B;
-    // Les lignes suivantes permettent de tracer les points et lignes
-    scopeReset();
-    scopeAdd(x_A, y_A, "A", 4);  
-    scopeAdd(x_B, y_B, "B", 4);
-    scopeAdd(x_C, y_C, "C", 4);
-    scopeAdd(x_D, y_D, "D", 4);
-    scopeAdd(x_I, y_I, "I", 2);
-    scopeAddLine(x_A, y_A, x_B, y_B, 6);
-    scopeAddLine(x_B, y_B, x_C, y_C, 6);
-    scopeAddLine(x_C, y_C, x_D, y_D, 6);
-    scopeAddLine(x_D, y_D, x_A, y_A, 6);
- }
-}
 void main() {
-  exo2(0.2, 0.4, 0.4, -0.6);
+  
 }
