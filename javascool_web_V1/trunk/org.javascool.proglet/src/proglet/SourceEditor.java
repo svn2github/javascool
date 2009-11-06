@@ -214,7 +214,9 @@ public class SourceEditor extends JPanel {
       menu.add(new JMenuItem(new InsertAction("scopeAdd",             "  scopeAdd( , , , );", 12)));
       menu.add(new JMenuItem(new InsertAction("scopeAddLine",         "  scopeAddLine( , , , );", 16)));
       menu.add(new JMenuItem(new InsertAction("scopeAddRectangle",    "  scopeAddRectangle( , , , );", 21)));
-    }
+      menu.add(new JMenuItem(new InsertAction("scopeX",               "  scopeX();", 0)));
+      menu.add(new JMenuItem(new InsertAction("scopeY",               "  scopeY();", 0)));
+     }
     if (proglet == "Conva") {
       menu.addSeparator();
       menu.add(new JMenuItem(new InsertAction("convaOut",             " convaOut()", 0)));

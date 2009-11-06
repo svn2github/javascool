@@ -18,7 +18,12 @@
    <p><r>scopeAdd</r>(x, y, <s>s</s>, c);</p>
    </code> permet d'ajouter une étiquette au tracé.
    </p>
-    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] se tracent une sinusoïde bleue et une exponentielle violette.</p>
+   <p>Par ailleurs les valeurs du réticule peuvent être relues avec les fonctions: <code>
+      <p><r>double</r> x = <r>scopeX()</r>;</p>
+      <p><r>double</r> y = <r>scopeY()</r>;</p>
+    </code> qui renvoie les valeurs horizontale et verticale du réticule. Le réticule est défini par les boutons en bas de l'écran ou en cliquant.
+   </p>
+   <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] se tracent une sinusoïde bleue et une exponentielle violette.</p>
   </proglet>
 
   <footnotes>

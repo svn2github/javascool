@@ -127,6 +127,18 @@ outils {
 			signature="scopeSet(double x, double y, int c);";
 			type="proglet Scope";
 		}
+		scopeX {
+			desc="Renvoie la position horizontale du réticule.";
+			import="proglet.Scope.scopeX";
+			signature="scopeX();";
+			type="proglet Scope";
+		}
+		scopeY {
+			desc="Renvoie la position verticale du réticule.";
+			import="proglet.Scope.scopeY";
+			signature="scopeY();";
+			type="proglet Scope";
+		}
 		
 		show {
 			desc="permet d'afficher la proglet Scope";

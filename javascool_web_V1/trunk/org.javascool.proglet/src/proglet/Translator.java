@@ -59,7 +59,9 @@ public class Translator { private Translator() { }
 
   // Translates one line of the source file
   private static String translateOnce(String line) {
-    // Translates the Synthe proglet TONE macro
+    // Translates the while statement with sleep
+    line = line.replaceFirst("(while.*\\{)", "$1 sleep(10);");
+    // Translates the Synthe proglet @tone macro
     line = line.replaceFirst("@tone:(.*)", "proglet.Synthe.tone = new proglet.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.Synthe.syntheSet(\"16 a\");");
     return "    "+line;
   }

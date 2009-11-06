@@ -34,7 +34,7 @@ public class NumberInput extends JPanel {
    * @param value Initial input value.
    */
   public NumberInput(String name, double min, double max, double step, double value) {
-    setBorder(BorderFactory.createTitledBorder(name)); setPreferredSize(new Dimension(400, 100));
+    setBorder(BorderFactory.createTitledBorder(name)); setPreferredSize(new Dimension(400, 50));
     field = new JTextField(12);
     field.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent evt) {
@@ -70,6 +70,9 @@ public class NumberInput extends JPanel {
 
   /** Gets the input value. */
   public double getValue() { return value; }
+
+  /** Sets the input value. */
+  public void setValue(double value) { set(value, ' ' ); }
 
   /** Sets the runnable called when the input is changed. 
    * @param run The runnable to call, set to null if no runnable.

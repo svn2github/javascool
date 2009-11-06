@@ -23,10 +23,25 @@ public class Scope implements Proglet { private Scope() { }
     private static final long serialVersionUID = 1L;
 
     public Panel() {
+      super(new BorderLayout());
       setPreferredSize(new Dimension(560, 620));
-      add(scope = new CurveOutput());
-    }
-    public CurveOutput scope;
+      add(scope = new CurveOutput() { 
+	  private static final long serialVersionUID = 1L;
+	  public void outReticule(double x, double y) { 
+	    inputX.setValue(x); inputY.setValue(y);
+	  }
+	}, BorderLayout.NORTH);
+      JPanel input = new JPanel(new BorderLayout());
+      input.add(inputX = new NumberInput("X", -1, 1, 0.001, 0), BorderLayout.NORTH);
+      input.add(inputY = new NumberInput("Y", -1, 1, 0.001, 0), BorderLayout.SOUTH);
+      Runnable run = new Runnable() { public void run() {
+	scope.setReticule(inputX.getValue(), inputY.getValue());
+      }};
+      inputX.setRunnable(run);
+      inputY.setRunnable(run);
+      add(input, BorderLayout.SOUTH);
+     }
+    public CurveOutput scope; public NumberInput inputX, inputY;
   }
 
   //
@@ -94,6 +109,12 @@ public class Scope implements Proglet { private Scope() { }
   static public void scopeAddLine(double x1, double y1, double x2, double y2, int c) {
     panel.scope.add(x1, y1, x2, y2, c);
   }
+
+  /** Renvoie la valeur horizontale du réticule. */
+  static public double scopeX() { return panel.inputX.getValue(); }
+
+  /** Renvoie la valeur verticale du réticule. */
+  static public double scopeY() { return panel.inputY.getValue(); }
 
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();

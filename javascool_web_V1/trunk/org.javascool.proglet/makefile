@@ -44,7 +44,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar
-	cd tst ; /usr/bin/java -jar ../$^ edit Konsol
+	cd tst ; /usr/bin/java -jar ../$^ edit Scope
 
 # Test du service web (pour vérifier l'intégration)
 
