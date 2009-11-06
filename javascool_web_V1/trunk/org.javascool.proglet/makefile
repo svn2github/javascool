@@ -4,6 +4,7 @@
 
 # Travail de Thierry en cours:
 # - Ajout qq sujets au fil de l'eau . . 
+# - Ajout reticule a scope et scopeX() scopeY() à la proglet , puis proposé utilisation dans sujet avec boucle (voir si blocage)
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
 #  - Ajouter un éditeur couleur dans l'applet, 
