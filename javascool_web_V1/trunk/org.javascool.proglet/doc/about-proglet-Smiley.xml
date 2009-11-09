@@ -2,7 +2,7 @@
   <proglet name="Smiley" mode="demo">
     Cette proglet<footnote id="1"/> permet de manipuler une petite image de résolution variable, dont les coordonnées se définissent ainsi:
      <p align="center"><img src="img/smiley.png"/></p>
-     c'est à dire que l'abcisse (la position horizontale ou largeur, width en anglais) va de <c>-width</c> à <c>+width</c> 
+     c'est à dire que l'abscisse (la position horizontale ou largeur, width en anglais) va de <c>-width</c> à <c>+width</c> 
      et l'ordonnée (la position verticale ou hauteur, height en anglais) va de <c>-height</c> à <c>+height</c>.
      <p>La fonction:<code>
        <p><r>smileyReset</r>(width, height);</p>
@@ -25,7 +25,7 @@
         <s>black</s>, <s>blue</s>, <s>cyan</s>, <s>gray</s>, <s>green</s>, <s>magenta</s>, <s>orange</s>, <s>pink</s>, <s>red</s>, <s>white</s>, <s>yellow</s>.</li>
       </ul>permettre d'écrire un pixel couleur dans cette image.
     </p>
-    <p>Pour définir lire/écrire un point monochrome les fonction <r>smileySet/smileyGet</r>: <code>
+    <p>Pour définir lire/écrire un point monochrome les fonctions <r>smileySet/smileyGet</r>: <code>
       <p><r>int</r> valeur = <r>smileyGet</r>(x, y);</p>
       <p><r>smileySet</r>(x, y, valeur);</p>
      </code><ul>
@@ -42,7 +42,7 @@
   </proglet>
 
   <footnotes>
-    <p>Cette proglet un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Smiley.html">documenté</a> 
+    <p>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Smiley.html">documentée</a> 
     pour sa libre redistribution, l'accès <a href=" ../api/proglet/Smiley.java">au code source</a>, et permettre des développements dérivés.</p>
   </footnotes>
 </p>

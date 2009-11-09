@@ -1,11 +1,11 @@
-<p title="La «proglet» Synthe">
+﻿<p title="La «proglet» Synthe">
   <proglet name="Synthe" mode="demo">
     Cette proglet<footnote id="1"/> permet de générer une séquence de notes et d'en regarder le spectre de fréquence.
 
    <p>Pour définir son propre son il faut utiliser la construction <javascool/>, par exemple:<code>
      <p><r>@tone:</r> sqr(t) + noi(t)</p>
-   </code>où <r>@tone:</r> est une ``macro-instruction´´, suivie, sur la même ligne d'une expression de la variable <c>t</c> qui définit la forme du son, 
-   tandis que les fonctions suivantes sont préféfinies:<code>
+   </code>où <r>@tone:</r> est une « macro-instruction », suivie, sur la même ligne d'une expression de la variable <c>t</c> qui définit la forme du son, 
+   tandis que les fonctions suivantes sont prédéfinies:<code>
      <m>Sinusoide</m>
      <p><r>double</r> <r>sns</r>(t)</p>
      <m>Signal carré</m>
@@ -26,7 +26,7 @@
      <br/>Les fréquences sont tracées entre le <i>La</i> sous-grave (octave 0 à <c>27.5<a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></c>, à peine audible) et 
      le <i>La</i> sur-aigu (octave 9 à <c>6400<a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></c>), 
      tandis que le milieu de l'échelle est le <i>La</i> du diapason (octave 3 à <c>440<a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></c>).</li>
-     <li>Le début du signal (tracé en jaune), pour permettre de voir sa forme, son décours temporel. Les premières <c>11</c>ms (<c>0.011</c> secondes) sont tracées.</li>
+     <li>Le début du signal (tracé en jaune), permet de voir sa forme et son aspect temporel. Les premières <c>11</c>ms (<c>0.011</c> secondes) sont tracées.</li>
    </ul></p>
  
    <p>Pour définir une séquence de notes il faut utiliser la fonction:<code>
@@ -52,7 +52,7 @@
   </proglet>
 
   <footnotes>
-    <p>Cette proglet un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Synthe.html">documenté</a> 
+    <p>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Synthe.html">documentée</a> 
     pour sa libre redistribution, l'accès <a href=" ../api/proglet/Synthe.java">au code source</a>, et permettre des développements dérivés.</p>
   </footnotes>
 </p>

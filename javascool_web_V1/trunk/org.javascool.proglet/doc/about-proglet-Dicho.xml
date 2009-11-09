@@ -1,11 +1,11 @@
 <p title="La «proglet» Dicho">
   <proglet name="Dicho" mode="demo">
-    Cette proglet<footnote id="1"/> permet d'apprendre la notion algorithmique de ``recherche dichotomie´´. 
+    Cette proglet<footnote id="1"/> permet d'apprendre la notion algorithmique de « recherche dichotomie ». 
     La proglet affiche un livre avec tous les drapeaux du monde 
     (répertoriés grâce à <a href="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde">wikipedia</a>)
     et permet d'ouvrir le livre à une page donnée pour comparer le nom de pays avec le nom du pays recherché. 
-    <p>Plus précisément la fonction <r>dichoCompare</r> ouvre le libre à une page et compare un nom au nom affiché sur cette page: <code>
-      <p><r>int</r> resultat = <r>dichoCompare</r>(nom, page);</p>
+    <p>Plus précisément la fonction <r>dichoCompare</r> ouvre le livre à une page et compare un nom au nom affiché sur cette page: <code>
+      <p><r>int</r> résultat = <r>dichoCompare</r>(nom, page);</p>
     </code><ul>
     <li>où <b>nom</b> est un <r>String</r> dont la valeur est le nom du pays recherché;</li>
     <li>où <b>page</b> est un <r>int</r>, le numéro de la page de 0 à 192 (il y a 193 pays);</li>
@@ -18,12 +18,12 @@
       <p><r>int</r> length = <r>dichoLength</r>();</p>
     </code> renvoie le nombre de pages.</p>
     <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
-    secondes à une dizaine de page au hasard.</p>
+    secondes à une dizaine de pages au hasard.</p>
     <p>En appuyant sur les touches <c>&lt;-</c> et <c>-></c> nous pouvons tourner manuellement les pages à gauche ou à droite.</p>
   </proglet>
 
   <footnotes>
-    <p>Cette proglet un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Dicho.html">documenté</a> 
+    <p>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Dicho.html">documentée</a> 
     pour sa libre redistribution, l'accès <a href=" ../api/proglet/Dicho.java">au code source</a>, et permettre des développements dérivés.</p>
   </footnotes>
 </p>

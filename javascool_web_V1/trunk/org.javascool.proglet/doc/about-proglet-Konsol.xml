@@ -22,19 +22,19 @@
      <m>Efface le contenu de la fenêtre de sortie</m>
      <p><r>clear</r>();</p>
      <m>Salue l'utilisateur et lit son nom</m>
-     <p><r>println</r>(<s>Bonjour, qui est tu ?</s>);</p>
+     <p><r>println</r>(<s>Bonjour, qui es-tu ?</s>);</p>
      <p><r>String</r> nom = <r>readString</r>();</p>
      <m>Lui demande alors son âge</m>
-     <p><r>println</r>(<s>Echanté "+nom+" ! Quel age as tu ?</s>);</p>
+     <p><r>println</r>(<s>Echanté "+nom+" ! Quel âge as-tu ?</s>);</p>
      <p><r>int</r> age = <r>readInteger</r>();</p>
      <m>../..</m>
-   </code> s'éxecute pour permettre d'expérimenter le fonctionnement de cette proglet.</p>
+   </code> s'exécute pour permettre d'expérimenter le fonctionnement de cette proglet.</p>
   </proglet>
 
   <footnotes>
-    <p>Cette proglet un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Konsol.html">documenté</a> 
+    <p>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Konsol.html">documentée</a> 
     pour sa libre redistribution, l'accès <a href=" ../api/proglet/Konsol.java">au code source</a>, et permettre des développements dérivés.</p>
-    <p>Une console ou ``terminal alphanumérique´´ correspond à une fenêtre où l'utilisateur peut dialoguer avec un programme en entrant des données au clavier et 
+    <p>Une console ou « terminal alphanumérique » correspond à une fenêtre où l'utilisateur peut dialoguer avec un programme en entrant des données au clavier et 
     en lisant les chaines de caractères imprimées par le programme.</p>
   </footnotes>
 </p>
