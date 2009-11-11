@@ -6,7 +6,7 @@ package proglet;
 
 import java.util.Properties;
 
-/** Defines a parameter logical-structure. 
+/** Defines a parametric logical-structure. 
  *
  * - A parameter logical-structure is a generic lightweight data structure of the form:
  *  <div style="margin-left: 40px"><tt>"{ -name value .. element .. }"</tt></div>where <ul>
@@ -24,7 +24,7 @@ import java.util.Properties;
  * - The parameter logical-structure parsing from a string is <i>weak</i> in the sense that a value is always derived without generating syntax errors.
  * - This is used to manage non-trivial routine parameters or to interface with other applications.
  */
-class Parameters extends Properties {
+class Bml extends Properties {
   private static final long serialVersionUID = 1L;
 
   /** Resets the logical-structure.
@@ -89,15 +89,10 @@ class Parameters extends Properties {
   }
 */
 
-  /** Converts the logical-structure structure as a string.
-   * - The PHP cast <tt>$string = $parameters;</tt> is also implemented.
-   * - Parameters can be saved into a file using the <tt>string_save("location", $parameters);</tt> construct.
-   *
-   * @return A string, using a syntax of the form <tt>"{ -name value .. element .. }"</tt>.
-   */
-    public String toString() {
-      return null;
-    }
+  /** Converts the logical-structure structure as a string. */
+  public String toString() {
+    return null;
+  }
 
 /*
   public function asString() {
@@ -117,6 +112,7 @@ class Parameters extends Properties {
   private function __toString() { return $this->asString(); }
 */
 
+  /** Used for tests. */
   public static void main(String[] arg) {
     System.out.println("Hi !");
   }

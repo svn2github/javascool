@@ -1,6 +1,6 @@
 tst :
-	javac Parameters.java
-	cd .. ; java proglet.Parameters
+	javac Bml.java
+	cd .. ; java proglet.Bml
 
 all :
 	$(MAKE) -C ../.. tst1
