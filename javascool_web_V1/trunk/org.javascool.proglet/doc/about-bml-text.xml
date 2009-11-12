@@ -1,0 +1,80 @@
+<p title = "Spécification d'un texte structuré et annoté, avec des liens">
+
+
+<p title="Structure du texte">
+
+  <bml name="div">
+    <bml name="title"  abbrv="t" type="string">dénomination du lien, mot simple, mot composé ou locution; affiché dans le texte, si il n'y a pas d'icone.</bml>
+    <bml name="id"     type="name">Index pour localiser (URL) cet élément du texte.</bml>
+    <bml name="class"  abbrv="c" type="name" value="">classe d'affichage, défini le style avec lequel ce lien est afffiché.</bml>
+  </bml>
+
+</p>
+
+<p title="Paragraphe de texte">
+
+ Eléments inline 
+
+  <p title="Annotation de texte">
+    Lorsque l'on souhaite annoter une partie d'un texte (mot, phrase, etc..) on utilise la construction qui
+
+VOIR SPAN 
+
+    <bml name="s">
+      <bml name="class" abbrv="c" type="name" value="">classe d'affichage, défini le style avec lequel ce lien est afffiché.</bml>
+    </bml>
+    Pour faciliter l'écriture plusieurs abréviations sont prédéfinies:
+    <bml class="abbrv">
+      <bml name="i">Equivaut à <b>s{c=i ..}</b> et 
+      distingue une portion de texte en italique sur lequel on veut mettre un emphase.</bml>
+      <bml name="b">Equivaut à <b>s{c=b ..}</b> et 
+      distingue une portion de texte en caratère gras qui doit être vu lorsque le lecteur parcours le texte sans le lire en détail.</bml>
+      <bml name="c">Equivaut à <b>s{c=c ..}</b> et 
+      distingue une portion de texte qui appartient à un langage formel (ex: code informatique ou mathématiques) et non au langage usuel.</bml>
+      <bml name="k">Equivaut à <b>s{c=k ..}</b> et 
+      distingue une portion de texte barrée qui appartient à une version antérieure du texte et est laissée là uniquement pour mémoire.</bml>
+    </bml>
+
+  </p>
+
+  
+
+  <bml name="l">
+    Définit un lien dit «hyper-texte» à l'intérieur du texte. Permet quand on clique dessus d'ouvrir le document en lien.
+    <bml name="title"  abbrv="t" type="string">dénomination du lien, mot simple, mot composé ou locution; affiché dans le texte, si il n'y a pas d'icone.</bml>
+    <bml name="icon"   abbrv="i" type="location" value="">icone descriptive du lien; affiché à la place de la dénomination, si elle existe.</bml>
+    <bml name="link"   abbrv="l" type="location" value="">localisation (URL) du document en lien; affiche un lien cliquable si défini.</bml>
+    <bml name="where"  abbrv="w" values="here there" value="there">mode d'afficchage du lien: à la place du texte (here), dans une nouvelle fenêtre (there), ..</bml>
+    <bml name="class"  abbrv="c" type="name" value="">classe d'affichage, défini le style avec lequel ce lien est afffiché.</bml>
+  </bml>
+
+  Un lien avec un unique titre, sans lien, ni icone correspond à un mot ``indexé´´, c'est à dire une abréviation, une référence bibliographique ou un mot-clé à définir 
+  dans un lexique, une annexe ou un index, attaché(s) au document. 
+
+  <p title="Correspondance avec le langage HTML et XML">
+
+Inline en dur pas partout. Mieux typé.
+
+
+    &lt;span class="$1">$2&lt;span> s{c=$1 $2}
+
+    &lt;a href="$2">$1&lt;/a> l{t=$1 l=$2}
+    &lt;img src="$2" alt="$1"/> l{ti=$1 i=$2}
+
+
+ VOIR EN DETAIL les liens defini en xml
+    
+
+  </p>
+  <p title="Correspondance avec le langage Latex">
+
+{\b #1} b{#1}
+
+\ref{#1} l{t=#1}
+    
+  </p>
+
+</p>
+
+
+</p>

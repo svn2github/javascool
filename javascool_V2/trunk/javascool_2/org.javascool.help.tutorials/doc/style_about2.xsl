@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:saxon="http://icl.com/saxon">
 
 <xsl:import href="style_common.xsl"/>
+<xsl:import href="style_bml.xsl"/>
 
 <xsl:output 
   method="html"

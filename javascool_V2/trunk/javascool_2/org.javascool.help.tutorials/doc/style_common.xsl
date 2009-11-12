@@ -108,7 +108,7 @@
 </xsl:template>
 
 <xsl:template match="*">
-  <xsl:message>Undefine tag: <xsl:value-of select="name(.)"/> !!</xsl:message>
+  <xsl:message>Undefined tag: <xsl:value-of select="name(.)"/> !!</xsl:message>
 </xsl:template>
 
 </xsl:stylesheet>

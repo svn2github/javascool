@@ -5,4 +5,16 @@
    les <a href="http://fr.wikipedia.org/wiki/Métadonnée">méta données</a> ou ce qui permet d'aborder
    d'autres <a href ="http://fr.wikipedia.org/wiki/Programmation#Techniques_de_programmation">paradigmes de programmation</a>
    que ceux abordés ici. Aucun prérequis n'est demandé ici, hormis l'usage des outils informatiques usuels (mail, web, etc..)</p>
+
+  <p titre = "Décrire les paramètres d'un objet">
+    Nous proposons de considérer la construction suivante:
+    <code>
+      <p>carte-visite { prénom = <s>Jean-Emile</s>, nom = <b>Meyer</b>, genre = <s>m</s>, email = <s>jeanemeyer@somewhere.fr</s> }</p>
+    </code>
+    qui permet de définir les paramètres d'un objet, ici une carte de visite (nommée <b>carte-visite</b>) à l'aide d'attributs, ici les <b>prénom</b>, <b>nom</b> et <b>email</b>. 
+    <p title ="La notion de type">
+      Pour que cette définition ait du sens, c'est à dire soit cohérente et utilisable, il faut convenir de . . 
+    </p>
+  </p>
+
 </p>

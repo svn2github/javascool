@@ -4,12 +4,14 @@
 
 # Travail de Thierry en cours:
 # - Ajout qq sujets au fil de l'eau . . 
-# - Retester sous windows le scope et cie
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
 #  - Ajouter un éditeur couleur dans l'applet, 
 #       donc reprendre SourceEditor avec un javax.swing.JTexEditorPane de type text/rtf; au lieu d'un TextArea,
 #       avec le pb de gérer les numéros de ligne avec un texte de structure de telle structure
+
+# Pour Thiuerry: Nouvelles fonctionnalités à développer:
+# - Spécifications et Implémentations BML.
 
 # Pour Hamdi ou Thierry: Détails d'implémentation à revoir:
 #  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.
@@ -34,7 +36,7 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst1
+dft : tst0
 
 # Test en standalone (pour générer la doc)
 
