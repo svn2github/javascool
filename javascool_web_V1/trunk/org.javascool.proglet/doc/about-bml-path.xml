@@ -1,0 +1,7 @@
+<p title = "Spécification d'un PATTERN à l'interieur d'une structure logique [EBAUCHE A NE PAS CONSIDERER]">
+
+notion de type avec un attribut de la forme ./name ou ../tag/name
+
+notion de match avec «. in path»
+
+</p>
