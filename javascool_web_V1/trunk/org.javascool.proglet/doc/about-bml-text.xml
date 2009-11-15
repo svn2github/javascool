@@ -3,7 +3,7 @@
 
 <p title="Structure du texte">
 
-  <bml name="div">
+  <bml name="div" title="Définit une division de texte. Permet de structurer le texte en chapitre/section etc..">
     <bml name="title"  abbrv="t" type="string">dénomination du lien, mot simple, mot composé ou locution; affiché dans le texte, si il n'y a pas d'icone.</bml>
     <bml name="id"     type="name">Index pour localiser (URL) cet élément du texte.</bml>
     <bml name="class"  abbrv="c" type="name" value="">classe d'affichage, défini le style avec lequel ce lien est afffiché.</bml>
@@ -16,15 +16,14 @@
  Eléments inline 
 
   <p title="Annotation de texte">
-    Lorsque l'on souhaite annoter une partie d'un texte (mot, phrase, etc..) on utilise la construction qui
 
 VOIR SPAN 
 
-    <bml name="s">
+    <bml name="s" title="Annotation de texte. Permet d'annoter une partie d'un texte (mot, phrase, etc..) et d'en enrichir le sens.">
       <bml name="class" abbrv="c" type="name" value="">classe d'affichage, défini le style avec lequel ce lien est afffiché.</bml>
     </bml>
-    Pour faciliter l'écriture plusieurs abréviations sont prédéfinies:
-    <bml class="abbrv">
+    
+    <bml class="abbrv" title="Pour faciliter l'écriture plusieurs abréviations sont prédéfinies:">
       <bml name="i">Equivaut à <b>s{c=i ..}</b> et 
       distingue une portion de texte en italique sur lequel on veut mettre un emphase.</bml>
       <bml name="b">Equivaut à <b>s{c=b ..}</b> et 
@@ -37,10 +36,7 @@ VOIR SPAN
 
   </p>
 
-  
-
-  <bml name="l">
-    Définit un lien dit «hyper-texte» à l'intérieur du texte. Permet quand on clique dessus d'ouvrir le document en lien.
+  <bml name="l" title="Définit un lien dit «hyper-texte» à l'intérieur du texte. Permet quand on clique dessus d'ouvrir le document en lien">
     <bml name="title"  abbrv="t" type="string">dénomination du lien, mot simple, mot composé ou locution; affiché dans le texte, si il n'y a pas d'icone.</bml>
     <bml name="icon"   abbrv="i" type="location" value="">icone descriptive du lien; affiché à la place de la dénomination, si elle existe.</bml>
     <bml name="link"   abbrv="l" type="location" value="">localisation (URL) du document en lien; affiche un lien cliquable si défini.</bml>

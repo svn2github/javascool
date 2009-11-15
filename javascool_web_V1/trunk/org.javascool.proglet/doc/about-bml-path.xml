@@ -1,5 +1,39 @@
 <p title = "Spécification d'un PATTERN à l'interieur d'une structure logique [EBAUCHE A NE PAS CONSIDERER]">
 
+Une structure logique est un arbre avec une <i>racine</i> et des <i>noeuds</i> reliés entre eux par le fait qu'un noeud est un <i>élément</i> d'un autre noeud.
+
+Spécification d'un chemin, à partir d'un noeud de l'arbre:<ul>
+  <li>Point de départ du chemin: <ul>
+    <li>Absolu, à partir du noeud racine de la struture logique, noté <c>/</c>.</li>
+    <li>Relatif, à partir du noeud courant de la struture logique, noté <c>./</c>.</li>
+    <li>Partout, à partir de tous les noeuds de la struture logique, noté <c>//</c>.</li>
+  </ul></li>
+  <li>Sélection des attributs et des éléments, d'un noeud: <ul>
+    <li><c>.<i>name</i></c> : sélection de l'attribut dont le nom est <i>name</i>.</li>
+    <li><c>.<i>prefix*</i></c> : sélection de tous les attributs, dont le nom commence par <i>prefix</i>.</li>
+    <li><c>.*</c> : sélection de tous les attributs.</li>
+    <li><c>/<i>name</i></c> : sélection de tous les éléments dont le nom du type est <i>name</i>.</li>
+    <li><c>/<i>prefix*</i></c> : sélection de tous les éléments, dont le nom du type commence par <i>prefix</i>.</li>
+    <li><c>/*</c> : sélection de tous les éléments.</li>
+    <li><c>/"</c> : sélection du texte défini dans l'élément d'un paragraphe.</li>
+  </ul></li>
+  <li>Navigation dans au sein des éléments de la structure logique:<ul>
+    <li><c>..</c> : sélection du parent du noeud courant.</li>
+    <li><c>...</c> : sélection de tous les éléments ancêtres du noeud courant (parent, parent de parent, etc..).</li>
+    <li><c>//</c> : sélection de tous les éléments descendants du noeud courant (enfant, enfant d'enfant parent, etc..).</li>
+    <li><c>../*</c> : sélection de tous les éléments frères du noeud courant (noeud(s) enfants du même noeud parent).</li>
+    <li><c>../></c> : sélection de tous les éléments frères cadets du noeud courant (noeud(s) enfants du même noeud parent, situés après le noeud courant).</li>
+    <li><c>../&lt;</c> : sélection de tous les éléments frères ainés du noeud courant (noeud(s) enfants du même noeud parent, situés avant le noeud courant).</li>
+  </ul></li>
+  <li>Combinaison de chemins, en utilisant l'opérateur <c>|</c>.</li>
+  <li>Chemin conditionnel, en utilisant l'opérateur<c>[]</c>. A PRECISER </li>
+</ul>
+
+
+notion de pattern avec count(path) = count(*)
+
+notion de pattern avec expression régulière.
+
 notion de type avec un attribut de la forme ./name ou ../tag/name
 
 notion de match avec «. in path»
