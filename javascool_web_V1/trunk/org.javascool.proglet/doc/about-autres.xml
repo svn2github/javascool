@@ -18,9 +18,10 @@
   <li><p title="Enseigner et apprendre les sciences informatiques à l'école"> Un <a href="http://interstices.info/upload/csunplugged/CSUnplugged_fr.pdf">document de référence</a>
   présenté par un <a href="http://interstices.info/informatique-ecole">collègue informaticien</a>.<br/></p></li>
 
-
   <li><p title="Sciences au lycée"> Le site du <a href="http://www2.cnrs.fr/multimedia/44.html">Sciences au lycée</a> 
   ou le site <a href="http://www.cnrs.fr/cw/dossiers/saga.htm">Saga Science</a> du CNRS présentent des contenus qui utlisent beaucoup d'informatique.</p></li>
+
+  <li><p title="Algobox: une alternative conviviale à la Konsol/Scope de JavaScool"> A l’aide d'un mini-langage algorithmique en français et d'une interface simple et ergonomique, le logiciel <a href="http://www.xm1math.net/algobox">algobox</a> permet de concevoir et de tester facilement les algorithmes que l'on peut rencontrer dans l’enseignement des mathématiques au secondaire (voir une discussion dans la <a href="about-faq.html#algobox">faq</a>).</p></li>
 
   <li><p  title="Simulation et objets animés"> Découvrir l'ingénerie numérique: <a href="http://mobinet.imag.fr">MobiNet</a>,
   est un logiciel et un ensemble de ressources permettant de programmer le comportement d'objets mobiles animés à l'aide d'une interface et d'un langage

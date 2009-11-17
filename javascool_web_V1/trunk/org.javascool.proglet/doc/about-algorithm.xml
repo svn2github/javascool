@@ -1,47 +1,41 @@
 <p title="Les ingrédients des algorithmes">
-
   Texte collectif<footnote id="1"/>.
-
   <p title="La différence entre une machine à café et un ordinateur">
-
-    Nous avons vu, <a href="about-information.htm">par ailleurs</a>, qu'un ordinateur peut effectuer des opérations très variées sur des types de données très variées : 
-    des nombres, des lettres, des images, des sons, des textes, des vidéos, .. 
+    Nous avons vu, <a href="about-information.htm">par ailleurs</a>, qu'un ordinateur peut effectuer des opérations très variées sur des types de données très variées : 
+des nombres, des lettres, des images, des sons, des textes, des vidéos, … 
     Il peut être utilisé pour retoucher une photo, la mettre sur un blog ou un site web, la conserver dans un album, ..
-    Un ordinateur est donc une machine complètement polyvalente: tout les automatismes peuvent être programmés sur un ordinateur.
-    A l'inverse des machines à café ou des aspirateurs qui servent à une seule chose : faire le café, aspirer la poussière, ..
+    Un ordinateur est donc une machine complètement polyvalente : tous les automatismes peuvent être programmés sur un ordinateur.
+    A l'inverse des machines à café ou des aspirateurs qui servent à une seule chose : faire le café, aspirer la poussière, ...
     Dès la sortie de l'usine, une machine à café ``sait´´ faire le café, un aspirateur ``sait´´ aspirer la poussière. 
-    En revanche, un ordinateur ne sait quasiment rien faire. Un ordinateur doit ``être programmé´´ pour retoucher une photo, la mettre sur un blog ou un site web, ..
+    En revanche, un ordinateur ne sait quasiment rien faire.  Un ordinateur doit ``être programmé´´ pour retoucher une photo, la mettre sur un blog ou un site web, ..
     C'est pour cela que les ordinateurs ont besoin de programmes. 
-    Cette notion de programme est également ce qui distingue l'ordinateur de certaines machines comme les calculatrices usuelles, 
-    qui donnent une illusion de polyvalence dans la mesure où elles peuvent effectuer des tâches variées, mais uniquement sur des objets numériques restreints.
+    Cette notion de programme est également ce qui distingue l'ordinateur de certaines machines comme les calculatrices, 
+    qui donnent une illusion de polyvalence dans la mesure où elles peuvent effectuer des tâches variées. 
     Cependant, ces tâches sont fixées une fois pour toutes et on ne peut pas programmer une calculatrice pour lire une vidéo,
     alors qu'on peut programmer un ordinateur pour faire tout ce que fait une calculatrice.
     <br/>
     Découvrons comment ici, à partir d'un exemple très concret.    
-
     <p>Une très intéressante introduction au sujet traité ici est <a href="http://interstices.info/demandez-le-programme">disponible</a> 
     (avec un document <a href="http://interstices.info/algo-mode-emploi">complémentaire</a>) sur <a href="http://interstices.info">)i(nterstices</a>.</p>
-
   </p>
-
   <p title="Algorithme . . une recette de cuisine ?">
     On appelle <a href="http://interstices.info/algo">algorithme</a>, la méthode, la façon systématique de procéder pour faire quelque chose :
-    trier des objets, situer des villes sur une carte, multiplier deux nombres, extraire une racine carrée, chercher un mot dans le dictionnaire, ..
+    trier des objets, situer des villes sur une carte, multiplier deux nombres, extraire une racine carrée,  chercher un mot dans le dictionnaire, ...
     Il se trouve que certaines actions mécaniques - peut-être toutes ! - se prêtent bien à cette décortication. 
     On peut les décrire de manière générale, identifier des procédures, des suites d'actions ou de manipulations précises à accomplir séquentiellement. 
-    C'est cela, un algorithme: 
-    le concept, qui traduit la notion intuitive de procédé systématique, applicable mécaniquement, sans réfléchir, en suivant simplement un mode d'emploi précis.
+    C'est cela, un algorithme : 
+    le concept, qui traduit la notion intuitive de procédé systématique, applicable mécaniquement,  sans réfléchir,  en suivant simplement un mode d'emploi précis.
     <br/>
-    Un algorithme c'est donc ``presque´´ comme une recette de cuisine. Presque. Prenons un exemple: le quatre-quart au citron ou au chocolat, 
-    même les garçons<footnote id="2"/> <img src="img/smiley-cool.png"/> devraient savoir cuisiner ce gateau de notre enfance. Il suffit de <c>prendre deux oeufs, 
+    Un algorithme c'est donc ``presque´´ comme une recette de cuisine. Presque. Prenons un exemple : le quatre-quarts au citron ou au chocolat, 
+    même les garçons<footnote id="2"/> <img src="img/smiley-cool.png"/> devraient savoir cuisiner ce gâteau de notre enfance. Il suffit de <c>prendre deux œufs, 
     le même poids de farine, de beurre et de sucre, ajouter le parfum, mélanger le tout et mettre au four une petite demi-heure</c>, facile non ?
     <br/>
-    Ah ben oui. Mais .. mais que se passerait-il si nous confions cette recette à une intelligence mécanique (robot, ordinateur, automate, ..) ? 
+    Ah ben oui. Mais ... mais que se passerait-il si nous confions cette recette à une intelligence mécanique (robot, ordinateur, automate, ..) ? 
     Eh bien elle réaliserait notre recette, <i>exactement</i> comme nous venons de le spécifier. Exactement. Ah ben oui. <ul>
-      <li>Vas y de mélanger les oeufs avec le reste, ah ben oui, les oeufs .. <i>avec</i> leurs coquilles, qui a dit de les enlever ? <img src="img/smiley-innocent.png"/></li>
+      <li>Vas y de mélanger les oeufs avec le reste, ah ben oui, les oeufs … <i>avec</i> leurs coquilles, qui a dit de les enlever ? <img src="img/smiley-innocent.png"/></li>
       <li>Une ``petite´´ demi-heure dans le four ? ``Petite´´ ? Euh . . voilà notre intelligence mécanique bloquée: ``petite´´ ?!? Par rapport à quoi ? 
       De combien ? <img src="img/smiley-cool.png"/></li>
-    </ul>sans compter que personne n'a précisé de le mettre en marche, ce four.. Bref toute instruction ambigue, incomplètement spécifiée, etc... va échouer.
+    </ul>sans compter que personne n'a précisé de le mettre en marche, ce four… Bref toute instruction ambigüe, incomplètement spécifiée, etc... va échouer.
     <br/>
     Disons alors qu'un algorithme c'est bien une recette de cuisine . . mais alors, pire que pour un garçon<footnote id="2"/> <img src="img/smiley-innocent.png"/>, 
     c'est une recette . . à définir, à spécifier, pour un ``<a href="http://interstices.info/algo-mode-emploi">abruti complet</a>´´. 
@@ -52,37 +46,36 @@
     (ex: <c>ouvrir le vaisselier, sortir le grand compotier, ouvrir le frigo, compartiment supérieur de la porte, sortir le beurre, 
     ouvrir le placard, 3ème étagère à droite, prendre la farine, etc..</c>). 
     Notre algorithme est donc une séquence d'instructions, un chemin à parcourir pas à pas.
-    Ouf, pour peu que chaque instruction comme ``<c>ouvrir le frigo</c>´´ aient été bien programmée par ailleurs, nous commençons à voir apparaître la pâte du gateau.
+    Ouf, pour peu que chaque instruction comme ``<c>ouvrir le frigo</c>´´ aient été bien programmée par ailleurs, nous commençons à voir apparaître la pâte du gâteau.
     <br/>
     <b>[instruction conditionnelle]</b> Euh . . à condition que tout soit exactement comme prévu ! Que faire si le compotier n'est pas à sa place, 
     ou si il n'y a plus de beurre ? <c>Si il n'y a plus de beurre, il suffit de prendre de la margarine, sinon il vaut mieux arrêter de faire le gâteau</c>. Bien.
-    Mais voilà que notre recette n'est plus une simple séquence d'instruction, ce n'est plus un simple chemin, mais un itinéraire avec des ``carrefours´´ où 
-    le choix du chemin se fait en fonction d'une condition (<c>pas de beurre</c>, ou <c>ni beurre ni margarine</c>).
+    Mais voilà que notre recette n'est plus une simple séquence d'instructions, ce n'est plus un simple chemin, mais un itinéraire avec des ``carrefours´´ où   le choix du chemin se fait en fonction d'une condition (<c>pas de beurre</c>, ou <c>ni beurre ni margarine</c>).
     Notre algorithme est donc un réseau d'instructions, à parcourir pas à pas, en bifurquant à chaque condition.
     <br/>
-    <b>[boucles d'instructions]</b> Bien, voilà notre quatre-quart en bonne voie, <c>prenons la cuillère et tournons les ingrédients dans le compotier, 
+    <b>[boucles d'instructions]</b> Bien, voilà notre quatre-quarts en bonne voie, <c>prenons la cuillère et tournons les ingrédients dans le compotier, 
     tournons les ingrédients dans le compotier,  tournons les ingrédients dans le compotier,  tournons les ingrédients dans le compotier,  
     tournons les ingrédients dans le compotier, tournons les ingrédients dans le compotier,  tournons les ingrédients dans le compotier,  tourn</c>.. ah mince !
     Mmm . . comment expliquer de tourner une bonne trentaine fois les ingrédients dans le compotier sans devoir recopier une bonne trentaine fois l'instruction ?
     Surtout que le but n'est pas de tourner trente fois, mais plutôt tourner jusqu'à ce que la pâte soit bien homogène. 
     Nous avons alors besoin d'une autre construction une boucle de la forme <c>tant que la pâte n'est pas bien homogène, tourner les ingrédients dans le compotier</c>.
     Avec cette boucle nous avons la possibilité de faire durer ou répéter une opération autant de fois que nécessaire (<c>cuire au four tant que la pâte reste liquide</c>, 
-    <c>fabriquer 200 quatre-quart pour tout le quartier</c>) de manière concise.
+    <c>fabriquer 200 quatre-quarts pour tout le quartier</c>) de manière concise.
     <br/>
-    <b>[introduire des paramètres]</b> Ouf, nous voilà avec un quatre-quart . . au citron, ou bien au chocolat, ou bien à la vanille. 
-    Ah oui, mais . . va t'il falloir re-écrire la recette complète pour <i>chaque</i> parfum ?
+    <b>[introduire des paramètres]</b> Ouf, nous voilà avec un quatre-quarts . . au citron, ou bien au chocolat, ou bien à la vanille. 
+    Ah oui, mais . . va t'il falloir réécrire la recette complète pour <i>chaque</i> parfum ?
     Alors que seule l'étape <c>ajouter trois zestes de citron</c> ou <c>ajouter 50 grammes de poudre de chocolat</c> ou <c>ajouter 50 grammes de ketchup<footnote id="3"/></c>
     change d'une recette à l'autre ? Certes pas, si nous introduisons la notion de paramètre ou de <i>variable</i>. La recette est maintenant <i>paramétrée</i> par la variable
     <c>parfum</c> et en fonction de sa <i>valeur</i> (<c>citron</c>, <c>chocolat</c>, ..) une instruction conditionnelle changera juste la ligne de la recette liée au parfum.
-    Nous avons donc maintenant, de manière concise, la recette de tous les quatre-quart du monde qui ne diffèrent que par leur parfum.
+    Nous avons donc maintenant, de manière concise, la recette de tous les quatre-quarts du monde qui ne diffèrent que par leur parfum.
     <br/>
     <b>[regrouper un bloc d'instruction dans une fonction]</b> Mmm . . prenons un peu de recul. 
     Nous avons utilisé des instructions comme <c>ouvrir le frigo</c> ou <c>tourner les ingrédients dans le compotier</c>, 
-    qui ont sûrement dues être programmées par quelqu'un d'autre et nous avons produit l'instruction 
-    <c>faire un quatre-quart au goût de $parfum</c> où <c>$parfum</c> prend la valeur <c>citron</c> ou <c>chocolat</c>. 
-    Bref nous avons utilisé des fonctionnalités pré-définies, des ``briques de base´´ pour créer une autre fonctionnalité, 
-    qui pourra être utilisée par quelqu'un qui fait un menu (par exemple<footnote id="3"/> <c>faire de la viande aux patates</c>, <c>faire un quatre-quart au ketchup</c>).
-    Cette dernière construction va nous permettre de réutiliser comme dans un légo, chaque fonctionnalité pour réaliser une construction logicielle.
+    qui ont sûrement dûes être programmées par quelqu'un d'autre et nous avons produit l'instruction 
+    <c>faire un quatre-quarts au goût de $parfum</c> où <c>$parfum</c> prend la valeur <c>citron</c> ou <c>chocolat</c>. 
+    Bref nous avons utilisé des fonctionnalités prédéfinies, des ``briques de base´´ pour créer une autre fonctionnalité, 
+    qui pourra être utilisée par quelqu'un qui fait un menu (par exemple<footnote id="3"/> <c>faire de la viande aux patates</c>, <c>faire un quatre-quarts au ketchup</c>).
+    Cette dernière construction va nous permettre de réutiliser comme dans un lego, chaque fonctionnalité pour réaliser une construction logicielle.
     <br/>
     Ce qui est vraiment très intéressant ici, c'est qu'il <b>il suffit de ces <i>cinq ingrédients</i> pour décrire tous les algorithmes</b> de manière efficace,
     et nous vous proposons par ailleurs de vous initier concrètement à la programmation en découvrant comment utiliser chacun des cinq ingrédients des algorithmes.<ul>
@@ -93,86 +86,82 @@
       <li>Utiliser des <a href="sujet-about-while.htm">boucles</a>.</li>
     </ul>
     Il y a toutefois une autre différence importante entre les recettes de cuisine ou les partitions et les programmes, 
-    c'est que les programmes sont destinés à être lus, non seulement pas des humains, mais aussi par des ordinateurs, 
-    ce qui demande que ces programmes soient écrits dans des langages très particuliers : les langages de programmation. 
+    c'est que les programmes sont destinés à être lus, non seulement par des humains, mais aussi par des ordinateurs, 
+    ce qui demande que ces programmes soient écrits dans des langages très particuliers : les langages de programmation. 
     Il y a de nombreux langages de programmation (C, C++, Java, Caml, Prolog, Basic, …). Ici nous utilisons <javascool/>, une forme simplifiée de Java.
     Toutefois, nous n'utiliserons aucune particularité de ce langage et les programmes que nous écrirons pourront être traduits sans peine dans un autre langage. 
     <br/>
     Mais essayons d'expliquer de manière plus précise comment ces cinq ingrédients sont définis rigoureusement.
   </p>
-
   <p title="Algorithme . . une définition rigoureuse ?">
     Une <a href="rtsp://stream-serv.inrialpes.fr/Roc/SeminaireInformatiqueObjetsNumeriques/G_Dowek.rm">présentation vidéo</a> 
     accompagnée de ses <a href="more/slides-dowek.pdf">supports</a> complète cette partie du document.
     <br/>
     Les différents langages de programmation sont organisés autour d'un <i>petit nombre</i> de fonctionnalités, présentes dans de <i>nombreux</i> langages, 
-    relativement <i>stables</i> depuis des décénnies, et que l'on peut décrire <i>simplement</i> avec les outils adéquats 
+    relativement <i>stables</i> depuis des décennies, et que l'on peut décrire <i>simplement</i> avec les outils adéquats 
     (affectation, séquence, test, boucle, fonction, récursivité, enregistrement, cellule, module, objet, ...).
     Et le <i>noyau</i> (on parle de <i>noyau impératif</i> puisqu'il s'agit d'<i>instructions</i>) de la plus part des langages<footnote id="4"/>
-    est justement constitué des 5 ingrédients que nous expliquons ici. Pour chacune d'entre elles, nous allons décrire:<ul>
+    est justement constitué des 5 ingrédients que nous expliquons ici. Pour chacune d'entre elles, nous allons décrire :<ul>
     <li>Sa <b>syntaxe</b> : <i>la manière dont cette instruction s'écrit</i>. La question importante est de savoir de quoi est constituée cette instruction,
-      quels sont ses paramètres, etc.. Le fait de savoir comment cela s'écrit-il dans le langage particulier que l'on utilise est accessoire
-      Comme lorsque l'on apprend à conduire une voiture: ce qui est important est de savoir ce que frein, levier de vitesse, etc.. signifie et comment s'en servir.
+      quels sont ses paramètres, etc.. Le fait de savoir comment cela s'écrit-il dans le langage particulier que l'on utilise est accessoire.
+      Comme lorsque l'on apprend à conduire une voiture : ce qui est important est de savoir ce que frein, levier de vitesse, etc.. signifie et comment s'en servir.
     Que ces commandes aient tel ou tel aspect sur une <a href="http://www.youtube.com/watch?v=SvyHnQRxm7U">twingo</a> ou 
     une <a href="http://www.youtube.com/watch?v=u-_3Zwl-V_w">ercedes</a>, est accessoire.</li>
     <li>Sa <b>sémantique</b> : <i> ce qui se passe quand on l'exécute</i>. Détaillons ce point.</li>
     </ul>
  
-    <p title="Sémantique d'un programme: définir l'effet d'une instruction"> 
+    <p title="Sémantique d'un programme : définir l'effet d'une instruction"> 
       Ce que fait une instruction ou un groupe d'instruction c'est transformer un <i>état</i>, c'est à dire <i>la valeur de chacune de ses variables</i>.
       <br/>
       L'état indique donc la valeur de chaque variable à un instant donné. Par exemple si le programme a trois variables <t>x</t>, <t>y</t>, <t>z</t>
         <p align="center"><img src="img/etat1.png"/></p>
-      qui représentent trois ``boites´´ dans lequelles nous pouvons ranger des valeurs, une instruction va donc modifier les valeurs de ces boites lors de son exécution,
+      qui représentent trois ``boites´´ dans lesquelles nous pouvons ranger des valeurs, une instruction va donc modifier les valeurs de ces boites lors de son exécution,
       et de modification en modification un programme fera passer l'état de sa valeur initiale à sa valeur finale.
       <br/>
-      Un programme a bien-sûr des entrées et des sorties, ce sont des boites particulières: les sorties sont des boites dont les valeurs sont visibles d'un dispositif externe,
+      Un programme a bien sûr des entrées et des sorties, ce sont des boites particulières : les sorties sont des boites dont les valeurs sont visibles d'un dispositif externe,
       les entrées<footnote id="5"/> sont des variables dont les valeurs ont été prédéfinies par l'utilisateur ou un dispositif externe.
       <br/>
       Nous pouvons utiliser de belles notations mathématiques (mais si elles ne vous plaisent pas, ne vous inquiétez pas, nous les traduisons toujours en mot) pour formaliser
-      la sémantique d'une instruction:<ul>
+      la sémantique d'une instruction :<ul>
         <li>L'état est représenté par une liste d'équations <c>[x = 12, y = "Hi", z = 0]</c> qui donnent la valeur des variables.</li>
         <li>Pour une instruction <c>p</c> la construction <c>∑(p, s) = s'</c> signifie qu'elle transforme un état <c>s</c> en un état <c>s'</c>.</li>
       </ul>et nous allons maintenant détailler chaque instruction.
     </p>
-
     <p title="Affectation d'une valeur à une variable">
-      La première action est de donner des valeurs aux variables: c'est l'affectation.
+      La première action est de donner des valeurs aux variables : c'est l'affectation.
       <p title="La manière dont l'instruction s'écrit"><ul>
         <li>L'affectation est constituée d'une variable <c>x</c> et d'une valeur <c>v</c>.</li>
-        <li>Selon les languages elle s'écrit <c>x = v</c>, <c>x := v</c>, <c>x = v;</c>, etc, par exemple <c>x = 15</c>.</li>
-        <li>Informellement: la variable <c>x</c> prend comme valeur <c>v</c>; sa veleur précédente est effacée;
+        <li>Selon les langages elle s'écrit <c>x = v</c>, <c>x := v</c>, <c>x = v;</c>, etc., par exemple <c>x = 15</c>.</li>
+        <li>Informellement : la variable <c>x</c> prend comme valeur <c>v</c> ; sa valeur précédente est effacée ;
         elle gardera toujours la valeur <c>v</c> tant qu'elle ne sera pas changée par une autre affectation de la variable <c>x</c>.</li>
       </ul>
-      L'affectation est donc une ``action´´: celle d'affecter à la variable <c>x</c> la valeur <c>v</c>. 
+      L'affectation est donc une ``action´´ : celle d'affecter à la variable <c>x</c> la valeur <c>v</c>. 
       <p>Il faut aussi bien distinguer l'affectation de l'égalité (souvent notée <c>x == 15</c>, ici qui est <c>vraie</c> si <c>x</c> est égal à <c>15</c>, <c>faux</c> sinon).
       Ecrire <c>x == 15</c> revient à poser la question «est-ce que x est égal à 15 ?».
       Ecrire  <c>x = 15</c> revient à donner l'ordre «désormais que x sera égal à 15 !».
     </p>
      </p>
-
       <p title="Le sens de l'instruction"> Il est facile de comprendre ce que fait cette instruction, elle change l'état en lui ajoutant le fait que désormais <c>x = v</c>.
       Nous pouvons le noter ainsi, avec nos notations mathématiques:
         <p align="center"><c>∑(x = v, s) = s + [x = v]</c></p>
-      où on ajoute à l'état la nouvelle équation qui définit la valeur de la variable affectée. Mais l'essentiel est de surtout de bien comprendre ce qui se passe !</p>
+      où on ajoute à l'état la nouvelle équation qui définit la valeur de la variable affectée. Mais l'essentiel est de surtout bien comprendre ce qui se passe !</p>
     </p>
-
     <p title="Fonctions et expressions">
-      La valeur que nous donnons à une variable n'est pas forcément une constante, mais nous voulons aussi évaluer des expressions: 
+      La valeur que nous donnons à une variable n'est pas forcément une constante, mais nous voulons aussi évaluer des expressions : 
       écrire par exemple <c>x = 12 + z / 2</c> pour calculer <c>x</c> à partir de <c>z</c>. 
      <p title="La manière dont une expression s'écrit"><ul>
        <li>Une expression numérique (c'est à dire qui porte sur des nombres) se construit comme sur une calculette avec des additions <c>+</c> (par exemple <c>2 + 3</c>), 
        des soustractions <c>-</c>, des multiplications (en utilisant le symbole <c>*</c>) et des divisions (en utilisant le symbole <c>/</c>).
-       Il y a d'autres symboles algébriques que nous n'utiliserons pas ici: il suffit de retenir que celà s'écrit comme pour une calculette. Par exemple:
+       Il y a d'autres symboles algébriques que nous n'utiliserons pas ici : il suffit de retenir que cela s'écrit comme pour une calculette. Par exemple:
        <p><c>2 + x / 3</c></p>
        <p><c>(2 + x) / 3</c></p>
-       qui ne sont bien sûr pas les mêmes expressions puisque le calcul se fait différement selon les parenthèses.</li>
-       <li>Une expression logique (c'est à dire qui donne la valeur <c>vraie</c> ou <c>fausse</c>) se construit avec: <ul>
+       qui ne sont bien sûr pas les mêmes expressions puisque le calcul se fait différemment selon les parenthèses.</li>
+       <li>Une expression logique (c'est à dire qui donne la valeur <c>vraie</c> ou <c>fausse</c>) se construit avec : <ul>
          <li>Des comparaisons pour tester si deux valeurs sont égales ou non, si une valeur numérique est plus petite qu'une autre, etc..</li>
          <li>Des opérateurs logiques comme <i>et</i> (souvent noté <c>&amp;&amp;</c>, <i>ou</i>  (souvent noté <c>||</c>), ainsi que la négation (souvent notée <c>!</c>)</li>
        </ul> (elle sera étudiée en détail avec <a href="sujet-about-if.htm">l'instruction conditionnelle</a>).</li>
        <li>On peut aussi manipuler des chaines de caractères et :<ul>
-         <li>les concaténer, par exemple <c>"pa"</c> et <c>"py"</c> se concatennent en écrivant <c>"pa" + "py"</c> se qui donne <c>"papy"</c>.</li>
+         <li>les concaténer, par exemple <c>"pa"</c> et <c>"py"</c> se concatènent en écrivant <c>"pa" + "py"</c> se qui donne <c>"papy"</c>.</li>
          <li>les comparer en utilisant la fonction <c>equal()</c>: l'expression <c>equal("pa", "py")</c> renverra la valeur <c>faux</c> puisque les chaines de caractères
          <c>"pa"</c> et <c>"py"</c> ne sont pas égales, tandis que <c>equal("pa", "pa")</c> renverra la valeur <c>vraie</c> puisque ce sont les même valeurs.</li>
        </ul>etc..</li>
@@ -185,25 +174,24 @@
      <p title="Le sens d'une expression"> Pour une expression <c>e</c> (par exemple <c>12 + 6 / 2</c>), 
      nous utilisons une nouvelle notation <c>Θ(e, s) = r</c> pour signifier que la valeur du résultat de son évaluation est <c>r</c> (ici <c>15</c>).
      <br/>
-     Il faut donc bien distiguer une expression (ici, <c>12 + 6 / 2</c>), une valeur (ici, <c>15</c>) et une affectation (ici, <c>x = 12 + 6 / 2</c>).
+     Il faut donc bien distinguer une expression (ici, <c>12 + 6 / 2</c>), une valeur (ici, <c>15</c>) et une affectation (ici, <c>x = 12 + 6 / 2</c>).
      <br/>
      La valeur d'une expression dépend de l'état, par exemple l'expression <c>12 + z / 2</c> dépend de la valeur de <c>z</c>.
      Avec nos notations mathématiques cela se note <c>Θ(12 + z / 2, [z = 0]) = 12</c> ou <c>Θ(12 + z / 2, [z = 6]) = 15</c>.</p>
      <br/>
-     Nous pouvons alors très facilement définir l'affectation d'une expression à une variable, avec ces notations:
+     Nous pouvons alors très facilement définir l'affectation d'une expression à une variable, avec ces notations :
        <p align="center"><c>∑(x = e, s) = s + [x = Θ(e, s)]</c></p>
      qui signifie que la variable prend comme valeur le résultat de l'évaluation de l'expression.
    </p>
-
    <p title="Séquence d'instructions">
      Un programme, comme une recette de cuisine ou une partition de musique, doit indiquer dans quel ordre exécuter les différentes instructions élémentaires. 
      Par exemple, il faut casser les œufs, puis incorporer le sucre. Il faut jouer un ré, puis jouer un do.
      La première construction qui permet d’assembler des instructions élémentaires en un programme est la notion de séquence. 
      La séquence indique qu’il faut exécuter une instruction puis une autre. Pour cela, il suffit de juxtaposer les deux instructions. 
       <p title="La manière dont l'instruction s'écrit"><ul>
-        <li>La séquence est consitutée de deux instructions <c>p</c> et <c>q</c>.</li>
-        <li>Selon les languages elle s'écrit <c>{p q}</c>, <c>p ; q</c>, etc, par exemple <c>x = 15; z = 2</c>.</li>
-        <li>Informellement: la 1ère instruction est exécutée, ce qui va changer l'état, <i>puis</i> la 2ème instruction est exécutée, ce qui va rechanger l'état.</li>
+        <li>La séquence est constituée de deux instructions <c>p</c> et <c>q</c>.</li>
+        <li>Selon les langages elle s'écrit <c>{p q}</c>, <c>p ; q</c>, etc., par exemple <c>x = 15; z = 2</c>.</li>
+        <li>Informellement : la 1ère instruction est exécutée, ce qui va changer l'état, <i>puis</i> la 2ème instruction est exécutée, ce qui va rechanger l'état.</li>
       </ul>
       Bien entendu, on peut combiner plus de deux instructions, puisqu'une de ces instructions peut être elle même une séquence. 
       Cette combinaison est associative, 
@@ -213,7 +201,7 @@
       Prenons un exemple
       avec <c>[x = 0, z = 0]</c>, si nous écrivons: <c>x = 15; z = x + 2</c> nous aurons  <c>[x = 2, z = 17]</c>, 
       mais si nous écrivons <c>z = x + 2; z = 15</c> nous aurons  <c>[x = 2, z = 2]</c>, upss, ce n'est pas pareil !!</p>
-      <p title="Le sens de l'instruction"> Avec nos notations mathématiques cela se note:
+      <p title="Le sens de l'instruction"> Avec nos notations mathématiques cela se note :
         <p align="center"><c>∑(p ; q, s) = ∑(q, ∑(p, s))</c></p>
       où on applique d'abord <c>p</c> à l'état, puis <c>q</c>.</p>
     </p>
@@ -223,43 +211,42 @@
       Par exemple, il faut prendre de la margarine à la place du beurre, si celui-ci vient à manquer. 
       La construction qui permet de faire ces tests est l'instruction conditionnelle.
       <p title="La manière dont l'instruction s'écrit"><ul>
-        <li>L'instruction conditionnelle est consitutée d'une expression logique <c>t</c>, et de deux instructions <c>p</c> et <c>q</c>.</li>
-        <li>Selon les languages elle s'écrit <c>if (t) p else q</c>, <c>if t then p else q</c>, etc..</li>
-        <li>Informellement: si <c>t</c> a la valeur <c>vraie</c> alors exécuter <c>p</c>, sinon exécuter <c>q</c>.</li>
+        <li>L'instruction conditionnelle est constituée d'une expression logique <c>t</c>, et de deux instructions <c>p</c> et <c>q</c>.</li>
+        <li>Selon les langages elle s'écrit <c>if (t) p else q</c>, <c>if t then p else q</c>, etc..</li>
+        <li>Informellement : si <c>t</c> a la valeur <c>vraie</c> alors exécuter <c>p</c>, sinon exécuter <c>q</c>.</li>
       </ul>
       Bien entendu, on peut combiner plusieurs tests pour considérer plusieurs options, 
       par exemple la construction <c>if (t) p else if (s) q else r</c> exécutera <c>p</c> si <c>t</c> est vrai, sinon <c>q</c> si <c>s</c> est vrai, sinon <c>r</c>.
       <br/>
-      Bien entendu, on peut ommettre le <c>else</c>, 
+      Bien entendu, on peut omettre le <c>else</c>, 
       par exemple la construction <c>if (t) p</c> exécutera <c>p</c> si <c>t</c> est vrai, sinon rien ne se fera.</p>
-      <p title="Le sens de l'instruction"> Avec nos notations mathématiques cela se note:
+      <p title="Le sens de l'instruction"> Avec nos notations mathématiques cela se note :
        <p align="center">si  <c>Θ(t, s)</c> est vrai <c>∑(if (t) p else q, s) = ∑(p, s)</c></p>
        <p align="center">si  <c>Θ(t, s)</c> est faux <c>∑(if (t) p else q, s) = ∑(q, s)</c></p>
        où on applique soit <c>p</c> à l'état, soit <c>q</c>, selon <c>t</c>.</p>
      </p>
-
     <p title="Boucle d'instruction">
       Un programme, comme une recette de cuisine ou un plan d'action, a besoin de répéter plusieurs fois une instruction tant que nécessaire.
       Par exemple, il faut tourner la pâte tant que celle-ci n'est pas bien homogène.
       La construction qui permet de faire ces tests est la boucle d'instruction.
       <p title="La manière dont l'instruction s'écrit"><ul>
-        <li>La boucle est consitutée d'une expression logique <c>t</c>, et d'uneinstruction <c>p</c>.</li>
-        <li>Selon les languages elle s'écrit <c>while (t) p</c>, <c>while t do p</c>, etc..</li>
-        <li>Informellement: tant que <c>t</c> a la valeur <c>vraie</c> alors exécuter <c>p</c>, et ré-évaluer <c>t</c> pour voir si il faut recommencer.</li>
+        <li>La boucle est constituée d'une expression logique <c>t</c>, et d'une instruction <c>p</c>.</li>
+        <li>Selon les langages elle s'écrit <c>while (t) p</c>, <c>while t do p</c>, etc..</li>
+        <li>Informellement: tant que <c>t</c> a la valeur <c>vraie</c> alors exécuter <c>p</c>, et réévaluer <c>t</c> pour voir si il faut recommencer.</li>
       </ul>
-      Bien entendu, l'instruction <c>p</c> peut être elle même une séquence complexe d'instruction.
+      Bien entendu, l'instruction <c>p</c> peut être elle même une séquence complexe d'instructions.
       <br/>
       Bien entendu, il y a beaucoup d'autres formes de boucles, qui permettent par exemple d'exécuter une instruction un nombre fixé de fois, etc..
       Mais toutes ces boucles s'écrivent à partir de cette instruction <c>while</c>.
       <br/>
-      Bien entendu, c'est <i>là</i> que les choses se compliquent ! Car nous pouvons créer un programme qui . . boucle sans fin et ne s'arrête jamais!</p>
-      <p title="Le sens de l'instruction"> Avec nos notations mathématiques cela se note . . mmm . . de manière un peu plus compliquée:
+      Bien entendu, c'est <i>là</i> que les choses se compliquent ! Car nous pouvons créer un programme qui ... boucle sans fin et ne s'arrête jamais !</p>
+      <p title="Le sens de l'instruction"> Avec nos notations mathématiques cela se note . . mmm . . de manière un peu plus compliquée :
          <p align="center">si  <c>Θ(t, s)</c> est vrai <c>∑(while (t) p, s) = ∑(while (t) p, ∑(p, s))</c></p>
          <p align="center">si  <c>Θ(t, s)</c> est faux <c>∑(while (t) p, s) = s</c></p>
        où si la condition est vraie nous voyons que nous devons recommencer à évaluer la boucle d'instruction sur l'état modifié par <c>p</c>, 
-       tandis que si la condition est fausse, rien ne se passe, l'état est inchangé: l'instruction est ``vide´´, c'est un ``élément neutre´´ qui ne change rien.
+       tandis que si la condition est fausse, rien ne se passe, l'état est inchangé : l'instruction est ``vide´´, c'est un ``élément neutre´´ qui ne change rien.
        <br/>
-       Une autre façon de formaliser cette instruction est de la ré-écrire avec une suite (infinie !) de tests:
+       Une autre façon de formaliser cette instruction est de la réécrire avec une suite (infinie !) de tests:
          <p align="center"><c>while (t) p</c> = <c>if (t) { p ; if (t) { p ; if (t) { p ; if (t) { p ; if (t) { p ; if (t) { p ; if (t) { p ; ... } } } } } } }</c></p>
          où chaque fois que le test <c>t</c> est vrai, nous exécutons <c>p</c> et refaisons le test, ...
        <br/>
@@ -267,31 +254,27 @@
        c'est à dire qui n'est pas définie sur les états qui la conduisent à boucler indéfiniment. 
        C'est ce phénomène qui est principalement à l'origine de beaucoup de bugs, et du fait qu'au niveau théorique, l'informatique est très compliquée. 
        Par exemple, beaucoup de problèmes ne sont pas ``décidables´´ automatiquement, 
-       car tous les programmes qui donnent une solution peuvent . . mettre un temps infini à calculer.
+       car tous les programmes qui donnent une solution peuvent ... mettre un temps infini à calculer.
        C'est un problème passionnant et difficile . . 
        <br/>
-       . . mais qui ne nous empêchera pas de commencer à apprendre à programmer !
-     </p>
+       ... mais qui ne nous empêchera pas de commencer à apprendre à programmer !
+</p>
    </p>
  </p>
-
   <footnotes>
     <p>Ce texte à été co-préparé par <a href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a>, 
     Jean-Pierre Archimbault, Emmanuel Baccelli, Thierry Viéville et Benjamin Wack.</p>
-    <p>Bien-sûr, le rédacteur de ces lignes est lui même un garçon . .</p>
+    <p>Bien  sûr, le rédacteur de ces lignes est lui même un garçon ...</p>
     <p>Ah ben oui, le rédacteur de ces lignes est <i>vraiment</i> un <a href="http://www.youtube.com/watch?v=8CXiqz7xPbo">garçon</a> . .</p>
-
     <p title="Programmation impérative et au delà"> Nous parlons ici de <a href="http://fr.wikipedia.org/wiki/Programmation_impérative">programmation impérative</a>,
     c'est à dire un paradigme qui décrit les opérations en termes de séquences d'instructions exécutées par l'ordinateur pour modifier l'état du programme.
     Bien d'<a href="http://fr.wikipedia.org/wiki/Programmation_informatique#Techniques_de_programmation">autres paradigmes</a> existent mais ils sont tous,
     soit dérivés de la programmation impérative, soit nécessitent de d'abord comprendre celle-ci pour les appréhender.</p>
-
     <p title="Variables d'entrées d'un programme"> Si les entrées du programme ne sont définies qu'une seule fois, 
     alors elles peuvent être vues comme des variables dont les valeurs ont été prédéfinies par l'utilisateur ou un dispositif externe.
     Si les entrées du programme sont lues plusieurs fois au cours de l'exécution du programme alors il faut considérer chaque lecture de l'entrée comme une variable différente.
     Le modèle à utiliser lorsque entrées et sorties changent tout le temps,
     c'est à dire lorsque le programme est enfoui dans un environnement qui interagit en permanence avec lui est différent,
     il faut utiliser un paradigme de programmation dit <i>réactif</i>, comme pour le <a href="http://fr.wikipedia.org/wiki/Esterel_(langage)">langage Esterel</a>.</p>
-
  </footnotes>
 </p>

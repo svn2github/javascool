@@ -4,6 +4,7 @@
 
 # Travail de Thierry en cours:
 # - Ajout qq sujets au fil de l'eau . . 
+# - La version web avait encore quelques soucis, certains exécutaient encore le programme d'un autre. Sous IE, la zone d'input ne marche pas bien, elle s'active mais impossible de taper dedans. Je ne sais pas d'ou ça vient. 
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
 #  - Ajouter un éditeur couleur dans l'applet, 
@@ -46,7 +47,7 @@ CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 # Commande de test par défaut
 
-dft : tst0
+dft : tst1
 
 # Test en standalone (pour générer la doc)
 
@@ -56,7 +57,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar
-	cd tst ; /usr/bin/java -jar ../$^ run Conva
+	cd tst ; /usr/bin/java -jar ../$^ run Synthe
 
 # Test du service web (pour vérifier l'intégration)
 

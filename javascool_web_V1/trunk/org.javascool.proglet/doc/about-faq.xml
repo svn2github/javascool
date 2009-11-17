@@ -114,5 +114,12 @@
     <a href="http://www.epi.asso.fr/revue/articles/a0809d.htm">discipline à part entière</a>.</li>
   </ol></p>
 
-</p>
+<p title="Pourquoi ne pas utiliser algobox plutôt que JavaScool ?">   
+  <a name="algobox"></a>
+  A l’aide d'un mini-langage algorithmique en français et d'une interface simple et ergonomique, le logiciel <a href="http://www.xm1math.net/algobox">algobox</a> permet de concevoir et de tester facilement les algorithmes que l'on peut rencontrer dans l’enseignement des mathématiques au secondaire. Il est plus facile à prendre en main que JavaScool car il évite de se soucier de la syntaxe et permet, comme <a href="http://scratch.mit.edu">Scratch</a>, d'insérer les instructions à la main sans les taper. Il est de plus très bien adapté aux algorithmes de mathématiques de secondes, avec beaucoup d'exercices prêts à être utilisés. Et c'est un logiciel libre, multi-plateformes, ce qui est précieux. En revanche, il a deux inconvénients: <ul>
+  <li>Du fait qu'il ne confronte pas l'élève à écrire du code, il ne permet d'appréhender les structures abstraites qui forment les ingrédients des algorithmes. Il évite en quelque sorte d'apprendre et de comprendre les structures algorithmiques fondamentales, en permettant de s'en servir immédiatement sans les apréhender. C'est un vrai gain de temps, mais aussi une perte pédagogique.</li>
+  <li>Il reste limité à des interactions de type console (lire/écrire une valeur) et l'affichage de courbe et ne permet pas de manipuler des objets numériques (ex: image de pixels) plus riches que des valeurs numériques.</li> 
+</ul> 
+Du coup, la plus value de cet outil par rapport aux calculettes programmables n'est pas certain. Si l'enseignant veut se limiter aux exercices proposés avec algobox, ils peuvent tout aussi bien être réalisés sur une calculette. Et l'investissement pour apprendre à manipuler le langage de la calculette sera réutilisable ensuite, alors que algobox «réinvente» un nouveau langage, et une interaction spécifique avec le système, ce qui va nécessiter de la part de l'élève un apprentissage provisoire supplémentaire qui ne sera pas pérennisable.</p>
 
+</p>
