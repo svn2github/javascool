@@ -94,7 +94,7 @@
 
 </p> 
 
-<p title="Mais pourquoi apprendre des choses aussi «débilisantes» que imprimer «Hello World» ? Pourquoi ne pas attaquer des sujets mathématiquement plus profonds !">
+<p title="Mais pourquoi apprendre des choses aussi «débilisantes» qu'imprimer «Hello World» ? Pourquoi ne pas attaquer des sujets mathématiquement plus profonds !">
   <a name="debile"></a>
   C'est une vraie question, et il y a quatre réponse à cette question: <ol>
     <li><i>Pas si débilisant que ça:</i> les points clé du cours ont été proposés par un professeur d'informatique à l'Ecole Polytechnique 
@@ -106,7 +106,8 @@
     En profitant ici du fait que les fondement de l'informatique s'appréhendent par des mécanismes de pensée qui ne se limitent pas aux maths 
     enseignées de la 2nd à la terminale.</li>
     <li><i>Ces sujets mathématiques existent:</i> Tous les enseignants de mathématiques disposent <i>aussi</i> d'exercices de programmation liés au programme de 2nd, comme
-    <a href="about-all.htm#eduscol">proposés ici</a> non sans mentionner des aussi mathématiques passionnantes, spécifiques de l'informatique, 
+    <a href="about-all.htm#eduscol">proposés ici</a>. Cela requière évidemment les bases de programmation de type  «Hello World», pour que l'élève maîtrise les mécanismes 
+    algorithmiques fondamentaux avant. Au delà du programme, il faut aussi mentionner des mathématiques passionnantes, spécifiques de l'informatique, 
     ébauchées <a href="http://www.loria.fr/~vthierry/cours/information-theories.pdf">ici</a> et 
     détaillées dans l'excellent livre <i>Information, complexité et hasard</i> de  Jean-Paul Delahaye.</li>
     <li><i>Et surtout, il y a effectivement une limite à l'exercice</i> d'apprendre l'informatique en mathématique ou physique/chimie alors que c'est de fait une 
