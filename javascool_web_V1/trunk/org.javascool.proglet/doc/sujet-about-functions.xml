@@ -42,8 +42,8 @@
 
     <note title="Faire en sorte de réutiliser des portions de code"> Prenons un exemple.
     Voici un bout de code, sûrement fort utile, qui calcule <i>la plus grande des valeurs absolues<footnote id="1"/></i> de deux variables <b>x</b> et <b>y</b>.
-    Si nous notons <b><r>abs</r>(x)</b> la valeur absolue<footnote id="1"/> de <b>x</b>, et <b><r>max</r>(x, y)</b> la plus petite valeur entre <b>x</b> et <b>y</b>,
-    et bien nous cherchons à calculer <b><r>max</r>(<r>abs</r>(x), <r>abs</r>(y))</b>, c'est à dire le maximum des deux valeurs absolues. Voici . . le code
+    Si nous notons <b><r>abs</r>(x)</b> la valeur absolue<footnote id="1"/> de <b>x</b>, et <b><r>max</r>(x, y)</b> la plus grande valeur entre <b>x</b> et <b>y</b>.
+    Eh bien nous cherchons à calculer <b><r>max</r>(<r>abs</r>(x), <r>abs</r>(y))</b>, c'est à dire le maximum des deux valeurs absolues. Voici . . le code
     (jeter un coup d'oeil et passer à la suite !):
     <code>
       <p><r>void main</r>() {</p>
