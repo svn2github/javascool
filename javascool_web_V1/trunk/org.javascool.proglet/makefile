@@ -7,6 +7,8 @@
 # - Ajouter l'alias pour le temps de calcul
 # - Chenger Scope avec image bien calibrée et échelle ajustable en X et Y
 # - Voir algo des cercles à entrer: demander autour de nous
+# - Ajouter commentaire implicication / causalite . . pluie / parapluie.
+# - Ajouter factorile recursif ou non et fiboinacci abvec 1 + 1 / r
 
 # Travail de Thierry en cours:
 # - Ajout qq sujets au fil de l'eau . . 
