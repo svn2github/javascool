@@ -2,7 +2,7 @@
   <p title="Adjectifs: type de données utilisées"><ul>
     <li><r>String</r> Chaîne de caractères (ex: <b><r>String</r> nom = <s>Bod</s>;</b>).</li>
     <li><r>int</r> Entier positif ou négatif, de environ -16 à +16 milliards.</li>
-    <li><r>double</r> Entier décimal, comme sur une calculette (ex:<b><r>double</r> pi = 3.1416;</b>).<code>
+    <li><r>double</r> Nombre décimal, comme sur une calculette (ex:<b><r>double</r> pi = 3.1416;</b>).<code>
     <m>Les nombres décimaux se notent avec un ``.´´ point et non une virgule !</m>
     <m>Les nombres en notations scientifique (par exemple 6.023 10<sup>23</sup>) se note avec un ``e´´ (pour exposant) : ici <c>6.023e23</c></m>
     </code></li>

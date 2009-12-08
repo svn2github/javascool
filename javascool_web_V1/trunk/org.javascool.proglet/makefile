@@ -9,6 +9,7 @@
 # - Voir algo des cercles à entrer: demander autour de nous
 # - Ajouter commentaire implicication / causalite . . pluie / parapluie.
 # - Ajouter factorile recursif ou non et fiboinacci abvec 1 + 1 / r
+# - Quid du Scope Konsol ????
 
 # Travail de Thierry en cours:
 # - Ajout qq sujets au fil de l'eau . . 
