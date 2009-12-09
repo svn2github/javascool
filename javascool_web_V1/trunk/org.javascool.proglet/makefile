@@ -9,7 +9,9 @@
 # - Voir algo des cercles à entrer: demander autour de nous
 # - Ajouter commentaire implicication / causalite . . pluie / parapluie.
 # - Ajouter factorile recursif ou non et fiboinacci abvec 1 + 1 / r
+# - Pb du reformatage qd la chaine est PAS fermee!!!!!!!!!!!!!!
 # - Quid du Scope Konsol ????
+# - Pb du scope qui clignote mal sous windows
 
 # Travail de Thierry en cours:
 # - Ajout qq sujets au fil de l'eau . . 
