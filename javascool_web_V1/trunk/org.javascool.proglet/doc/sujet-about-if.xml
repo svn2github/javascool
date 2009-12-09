@@ -87,7 +87,7 @@
       qui demande le <i>nom</i> et l'<i>âge</i> de l'utilisateur et ajouter
       au bon endroit:
       <code>
-        <p><r>if</r>(<r>equal</r>(whoisit, "Toto")) {</p>
+        <p><r>if</r>(<r>equal</r>(whoisit, <s>Toto</s>)) {</p>
         <p><t/>println(<s>Eh : Toto est pas un vrai nom, dis donc !</s>);</p>
         <p>}</p>
       </code>
@@ -106,7 +106,7 @@
       donc (x <r>&lt;</r> 0 <r>||</r> x <r>></r> 10) etc..</i></li>
       <li>Que va donner le code suivant ?<code>
         <p><r>String</r> nom = <r>readString</r>();</p>
-        <p>if (<r>equal</r>(nom, "John") <r>&amp;&amp;</r> <r>equal</r>(nom, "Joan")) { <r>println</r>(<s>OK</s>); } <r>else</r> { <r>println</r>(<s>KO</s>); }</p>
+        <p>if (<r>equal</r>(nom, <s>John</s>) <r>&amp;&amp;</r> <r>equal</r>(nom, <s>Joan</s>)) { <r>println</r>(<s>OK</s>); } <r>else</r> { <r>println</r>(<s>KO</s>); }</p>
       </code></li>
       <li>Deviner <i>puis</i> vérifier ces 8 réponses:<code>
         <p><r>println</r>(<s>Réponse 1 = </s> + (<r>false</r> <r>||</r> <r>false</r>));</p>
