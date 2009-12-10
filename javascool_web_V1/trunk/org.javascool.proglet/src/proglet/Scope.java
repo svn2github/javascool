@@ -63,6 +63,7 @@ public class Scope implements Proglet { private Scope() { }
 
   /** Initialise le tracé. */
   static public void scopeReset() {
+    Macros.sleep(100);
     panel.scope.reset();
   }
 

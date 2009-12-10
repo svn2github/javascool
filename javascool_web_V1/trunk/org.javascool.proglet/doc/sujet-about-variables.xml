@@ -58,7 +58,7 @@
     Voici les premiers adjectifs que nous devons connaître: <ul>
       <li><r>String</r> qui désigne les chaines de caractères, nous les utilisons déja!</li>
       <li><r>int</r> qui désigne les nombres entiers (<c>int</c> est l'abbéviation de ``integer number´´, nombre entier) positifs ou négatifs 
-      (entre environ -4 millards et 4 milliards, cela permet de manipuler de très grands nombres entiers . . mais pas jusqu'à l'infini !).</li>
+      (entre environ -2 millards et 2 milliards, cela permet de manipuler de très grands nombres entiers . . mais pas jusqu'à l'infini !).</li>
       <li><r>double</r> qui désigne les nombres décimaux (<c>double</c> est l'abbéviation de ``double precision floating point number´´, 
       nombre décimaux à double précision) comme sur une calculette.
       Bien entendu ces nombres sont <i>approximatifs</i>: il y a forcément des erreurs d'arrondis lorsque l'on calcule avec.

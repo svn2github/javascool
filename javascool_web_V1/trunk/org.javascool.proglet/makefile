@@ -4,18 +4,11 @@
 
 # Petits bugs a corriger:
 # - Il ne faut pas autoriser de noms de fichier qui soient des mots cles: ajouter un _ ? 
-# - Ajouter l'alias pour le temps de calcul
-# - Chenger Scope avec image bien calibrée et échelle ajustable en X et Y
+# - Changer Scope avec image bien calibrée et échelle ajustable en X et Y
 # - Voir algo des cercles à entrer: demander autour de nous
-# - Ajouter commentaire implicication / causalite . . pluie / parapluie.
-# - Ajouter factorile recursif ou non et fiboinacci abvec 1 + 1 / r
-# - Pb du reformatage qd la chaine est PAS fermee!!!!!!!!!!!!!!
-# - Quid du Scope Konsol ????
+# - Quid d'ajouter une entrée au scope et de rendre unifié println et echo.
 # - Pb du scope qui clignote mal sous windows
-# - Insertion des if et while 
-# - Corriger 4 et 16 milliard
-# - Virer les _ du sujet coinditionnel
-# - Agrandir la fenetre edition si besoin
+# - Virer l'applet web ou la redefinir
 
 # Travail de Thierry en cours:
 # - Ajout qq sujets au fil de l'eau . . 
@@ -26,7 +19,7 @@
 #       donc reprendre SourceEditor avec un javax.swing.JTexEditorPane de type text/rtf; au lieu d'un TextArea,
 #       avec le pb de gérer les numéros de ligne avec un texte de structure de telle structure
 
-# Pour Thiuerry: Nouvelles fonctionnalités à développer:
+# Pour Thierry: Nouvelles fonctionnalités à développer:
 # - Implementer style_bms.xsl
 # - Spécifications et Implémentations BML.
 #	bml-path.xsl file:///home/vthierry/doc/soft/saxon/doc/expressions.html#NodeSetExpressions
@@ -43,6 +36,7 @@
 #  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.
 #  - Voir le pb du setLocation() en mode standalone qui affiche mal les deux fenetres edit et run
 #  - Utiliser la methode POST dans InterfacePrincipale pour appeler http://facets.inria.fr/javascool et non GET
+#  - Voir à permettre d'agrandir la fenêtre d'édition en largeur si besoin.
 
 # Pour Thierry: Détails d'implémentation à revoir:
 #  - Voir pb des droits qd on rsync sur javascool
@@ -72,7 +66,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar
-	cd tst ; /usr/bin/java -jar ../$^ run Conva
+	cd tst ; /usr/bin/java -jar ../$^ edit Konsol
 
 # Test du service web (pour vérifier l'intégration)
 

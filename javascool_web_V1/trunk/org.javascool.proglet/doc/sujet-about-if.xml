@@ -14,25 +14,25 @@
      pour implémenter ce mécanisme. Par exemple:
     <code>
       <p><r>if</r>(temperature <r>&lt;</r> 15) {</p>
-      <p><t/><r>println</r>(<s>allumer_chauffage</s>);</p>
+      <p><t/><r>println</r>(<s>allumer chauffage</s>);</p>
       <p>}</p>
     </code>
     où la construction permet de n'allumer le chauffage qu'en cas de besoin. Tandis que:
     <code>
       <p><r>if</r>(temperature <r>&lt;</r> 15) {</p>
-      <p><t/><r>println</r>(<s>allumer_chauffage</s>);</p>
+      <p><t/><r>println</r>(<s>allumer chauffage</s>);</p>
       <p>} <r>else</r> {</p>
-      <p><t/><r>println</r>(<s>ne_rien_faire</s>);</p>
+      <p><t/><r>println</r>(<s>ne rien faire</s>);</p>
       <p>}</p>
     </code>
     montre comment se traduit la construction <i><b>si</b> la température est en dessous de 15 degré à lors allumer le chauffage <b>sinon</b> ne rien faire.</i> Ou encore:
     <code>
       <p><r>if</r>(temperature <r>&lt;</r> 15) {</p>
-      <p><t/><r>println</r>(<s>allumer_chauffage</s>);</p>
+      <p><t/><r>println</r>(<s>allumer chauffage</s>);</p>
       <p>} <r>else if</r>(temperature <r>></r> 100) {</p>
-      <p><t/><r>println</r>(<s>appeler_les_pompiers</s>);</p>
+      <p><t/><r>println</r>(<s>appeler les pompiers</s>);</p>
       <p>} <r>else</r> {</p>
-      <p><t/><r>println</r>(<s>ne_rien_faire</s>);</p>
+      <p><t/><r>println</r>(<s>ne rien faire</s>);</p>
       <p>}</p>
     </code>
     montre comment emboiter les instructions conditionnelles.
@@ -189,6 +189,9 @@
     <p title="A propos de l'égalité"> Notez que le signe <r>=</r> veut dire ``<a href="sujet-about-variables.htm">affecter une valeur</a>´´ 
     tandis que être égal s'écrit <r>==</r> pour les nombres et <b><r>equal</r>(s, c)</b> pour les chaines de caractères: voici quelque chose d'un peu compliqué.</p>
     <p title="A propos de l'implication"> Dire <b>A implique B</b> consiste à dire que si <b>A</b> est vrai alors forcément <b>B</b> est vrai, 
-    tandis que si <b>A</b> est faux et bien tout peut arriver à <b>B</b> vrai ou faux, c'est ok.</p>
+    tandis que si <b>A</b> est faux et bien tout peut arriver à <b>B</b> vrai ou faux, c'est ok.
+    <p>Noter aussi que l'implication ne signifie pas qu'il y a une relation de <i>de cause à effet</i>; par exemple, qu'il pleuve <i>implique</i> que je prenne mon parapluie,
+    mais ce n'est <i>pas</i> la pluie qui est la cause que je prenne mon parapluie, c'est moi !</p>
+    </p>
   </footnotes>
 </sujet>

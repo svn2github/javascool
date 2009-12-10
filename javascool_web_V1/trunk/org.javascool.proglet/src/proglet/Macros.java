@@ -4,6 +4,8 @@
 
 package proglet;
 
+import java.util.Calendar;
+
 /** Cette factory contient des functions générales pour l'utilisateur de proglets.  
  * Elle permet de définir des fonctions statiques qui seront utilisées pour faire des programmes élèves.
  * @see <a href="Macros.java">code source</a>
@@ -37,6 +39,17 @@ public class Macros { private Macros() { }
    * @param string2 L'autre des chaines à comparer.
    */
   public static boolean equal(String string1, String string2) { return string1.equals(string2); }
+
+  /** Renvoie le temps actuel en milli-secondes.
+   * @return Renvoie la différence, en millisecondes, entre le temps actuel et celui du 1 Janvier 2000, minuit, en utilisant le temps universel coordonné.
+   */
+  public static double now() { return System.currentTimeMillis() - offset; }
+  private static long offset; 
+  static {
+    Calendar ref = Calendar.getInstance(); 
+    ref.set(2000, 0, 1, 0, 0, 0);
+    offset = ref.getTimeInMillis();
+  }
 
   /** Temporise une durée fixée.
    * Cela permet aussi de mettre à jour l'affichage.

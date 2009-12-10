@@ -188,6 +188,8 @@ public class SourceEditor extends JPanel {
       bar.remove(2); 
     bar.add(menu, 2);  
     menu.add(new JMenuItem(new InsertAction("void main",   "void main() {\n  \n}\n", 16)));
+    menu.add(new JMenuItem(new InsertAction("if",          "  if() {\n  \n  } else {\n  \n  }", 5)));
+    menu.add(new JMenuItem(new InsertAction("while",       "  while() {\n  \n  }", 8)));
     if (proglet == "Konsol") {
       menu.addSeparator();
       menu.add(new JMenuItem(new InsertAction("println",              "  println(\"\");", 11)));
@@ -242,7 +244,7 @@ public class SourceEditor extends JPanel {
   // Defines the text redraw
   private void doRedraw() {
     // Gets the text and reduce all spaces
-    String text0 = pane.getText().replaceAll("((//|TONE)[^\n]*)", "$1/--/--/;").replaceAll("[ \t\n]+", " ").trim(), text1 = "";
+    String text0 = pane.getText().replaceAll("((//|@)[^\n]*)", "$1/--/--/;").replaceAll("[ \t\n]+", " ").trim(), text1 = "";
     for(int i = 0, tab = 0, par = 0; i < text0.length(); i++) {
       char c = text0.charAt(i);
       text1 += c;
@@ -250,8 +252,10 @@ public class SourceEditor extends JPanel {
       if (c == ')') par--;
       if (c == '{' || c == '}' || (c == ';' && par == 0)) {
 	if (c == '{') { tab += 2; }
-	if (c == '}') { tab -= 2; text1 = text1.substring(0, text1.length() - 3) + "}"; if (tab == 0) text1 += "\n"; }
-	if (!text0.substring(i).startsWith("} else")) {
+	if (c == '}' && tab == 0) text1 += "\n";
+	if (i < text0.length() - 2 && text0.charAt(i + 2) == '}') { tab -= 2; }
+	boolean esc = text0.substring(i).startsWith("} else");
+	if (!esc) {
 	  text1 += "\n"; for(int j = 0; j < tab; j++) text1 += " "; 
 	  if (i < text0.length() - 1 && text0.charAt(i + 1) == ' ') i++;
 	}
