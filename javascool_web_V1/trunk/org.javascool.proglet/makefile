@@ -12,6 +12,10 @@
 # - Pb du reformatage qd la chaine est PAS fermee!!!!!!!!!!!!!!
 # - Quid du Scope Konsol ????
 # - Pb du scope qui clignote mal sous windows
+# - Insertion des if et while 
+# - Corriger 4 et 16 milliard
+# - Virer les _ du sujet coinditionnel
+# - Agrandir la fenetre edition si besoin
 
 # Travail de Thierry en cours:
 # - Ajout qq sujets au fil de l'eau . . 
@@ -68,7 +72,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar
-	cd tst ; /usr/bin/java -jar ../$^ run Synthe
+	cd tst ; /usr/bin/java -jar ../$^ run Conva
 
 # Test du service web (pour vérifier l'intégration)
 
