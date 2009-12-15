@@ -21,6 +21,22 @@
   <li><p title="Sciences au lycée"> Le site du <a href="http://www2.cnrs.fr/multimedia/44.html">Sciences au lycée</a> 
   ou le site <a href="http://www.cnrs.fr/cw/dossiers/saga.htm">Saga Science</a> du CNRS présentent des contenus qui utlisent beaucoup d'informatique.</p></li>
 
+  <!--li><p title="En matière de didactique"> En matière de didactique de l'informatique, Robert Cabane, a la gentillesse de nous proposer les liens suivants 
+  (im Deutsch, sorry): <ul>
+  
+ ce sont les Suisses qui tiennent le haut du pavé :
+http://www.inf-edu.ch/de/index
+En particulier, l'argumentaire est très riche d'idées :
+http://www.inf-edu.ch/de/quovadis
+On peut aussi jeter un coup d'oeil sur les compétences, notamment
+http://www.inf-edu.ch/de/curriculum/a0_algorithms ,
+http://www.inf-edu.ch/de/curriculum/a1_iteration,
+http://www.inf-edu.ch/de/curriculum/h1_usability ,
+http://www.inf-edu.ch/de/curriculum/h4_ethics .
+Par ailleurs, un excellent livre est présenté ici :
+http://www.swisseduc.ch/informatik-didaktik/informatikunterricht-planen-durchfuehren/
+Je l'ai acheté et lu, c'est à mon sens la seule base sérieuse (actuelle) en didactique de l'informatique. -->
+
   <li><p title="Algobox: une alternative conviviale à la Konsol/Scope de JavaScool"> A l’aide d'un mini-langage algorithmique en français et d'une interface simple et ergonomique, le logiciel <a href="http://www.xm1math.net/algobox">algobox</a> permet de concevoir et de tester facilement les algorithmes que l'on peut rencontrer dans l’enseignement des mathématiques au secondaire (voir une discussion dans la <a href="about-faq.html#algobox">faq</a>).</p></li>
 
   <li><p  title="Simulation et objets animés"> Découvrir l'ingénerie numérique: <a href="http://mobinet.imag.fr">MobiNet</a>,
