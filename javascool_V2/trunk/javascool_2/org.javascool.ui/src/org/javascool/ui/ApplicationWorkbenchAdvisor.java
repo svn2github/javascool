@@ -39,14 +39,13 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 				IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS,
 				false);
 
-		//for remove unused preferences pages
+		//for remove unused preferences pages	
 		PreferenceManager pm = PlatformUI.getWorkbench().getPreferenceManager();
 		//get all subnodes
 		IPreferenceNode[] rootSubNodes = pm.getRootSubNodes();
-		String myPrefPageId = org.javascool.ui.editor.preferences.ColorPreferencePage.ID;
 		//loop over subnodes
 		for (IPreferenceNode subNode : rootSubNodes) {
-			if (!subNode.getId().equals(myPrefPageId)) {
+			if (!subNode.getId().contains("org.javascool")) {
 				pm.remove(subNode);
 			}
 		}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Java&apos;s Cool" uid="org.javascool.ui.product" id="org.javascool.ui.product" application="org.javascool.ui.application" version="2.0.0" useFeatures="false" includeLaunchers="false">
+<product name="Java&apos;s Cool" uid="org.javascool.ui.product" id="org.javascool.ui.product" application="org.javascool.ui.application" version="2.0.0" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.javascool.ui/img/splash_help.gif"/>
@@ -32,7 +32,7 @@ Projet soutenu par l&apos;INRIA http://www-sop.inria.fr/
       startupProgressRect="10,290,480,15"
       startupMessageRect="20,270,480,20"
       startupForegroundColor="000000" />
-   <launcher name="Javascool">
+   <launcher name="javascool">
       <solaris/>
       <win useIco="true">
          <ico path="/org.javascool.ui/img/icon_JVS_WinXp.ico"/>
@@ -40,8 +40,8 @@ Projet soutenu par l&apos;INRIA http://www-sop.inria.fr/
       </win>
    </launcher>
 
-
    <vm>
+      <windows>org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/OSGi%Minimum-1.0</windows>
    </vm>
 
    <license>
@@ -563,6 +563,15 @@ Version 2.0 du 2006-09-05.
 
    <plugins>
       <plugin id="com.ibm.icu"/>
+      <plugin id="javax.servlet"/>
+      <plugin id="javax.servlet.jsp"/>
+      <plugin id="org.apache.ant"/>
+      <plugin id="org.apache.commons.el"/>
+      <plugin id="org.apache.commons.logging"/>
+      <plugin id="org.apache.jasper"/>
+      <plugin id="org.apache.lucene"/>
+      <plugin id="org.apache.lucene.analysis"/>
+      <plugin id="org.eclipse.ant.core"/>
       <plugin id="org.eclipse.compare.core"/>
       <plugin id="org.eclipse.core.commands"/>
       <plugin id="org.eclipse.core.contenttype"/>
@@ -574,10 +583,13 @@ Version 2.0 du 2006-09-05.
       <plugin id="org.eclipse.core.filesystem"/>
       <plugin id="org.eclipse.core.filesystem.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.core.jobs"/>
+      <plugin id="org.eclipse.core.net"/>
+      <plugin id="org.eclipse.core.net.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.core.resources"/>
       <plugin id="org.eclipse.core.resources.compatibility" fragment="true"/>
       <plugin id="org.eclipse.core.resources.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.core.runtime"/>
+      <plugin id="org.eclipse.core.runtime.compatibility.auth"/>
       <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
       <plugin id="org.eclipse.core.variables"/>
       <plugin id="org.eclipse.ecf"/>
@@ -588,6 +600,12 @@ Version 2.0 du 2006-09-05.
       <plugin id="org.eclipse.ecf.ssl" fragment="true"/>
       <plugin id="org.eclipse.equinox.app"/>
       <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.concurrent"/>
+      <plugin id="org.eclipse.equinox.http.jetty"/>
+      <plugin id="org.eclipse.equinox.http.registry"/>
+      <plugin id="org.eclipse.equinox.http.servlet"/>
+      <plugin id="org.eclipse.equinox.jsp.jasper"/>
+      <plugin id="org.eclipse.equinox.jsp.jasper.registry"/>
       <plugin id="org.eclipse.equinox.p2.artifact.repository"/>
       <plugin id="org.eclipse.equinox.p2.core"/>
       <plugin id="org.eclipse.equinox.p2.engine"/>
@@ -600,6 +618,10 @@ Version 2.0 du 2006-09-05.
       <plugin id="org.eclipse.equinox.security"/>
       <plugin id="org.eclipse.equinox.security.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.help"/>
+      <plugin id="org.eclipse.help.appserver"/>
+      <plugin id="org.eclipse.help.base"/>
+      <plugin id="org.eclipse.help.ui"/>
+      <plugin id="org.eclipse.help.webapp"/>
       <plugin id="org.eclipse.jface"/>
       <plugin id="org.eclipse.jface.databinding"/>
       <plugin id="org.eclipse.jface.text"/>
@@ -611,15 +633,20 @@ Version 2.0 du 2006-09-05.
       <plugin id="org.eclipse.ui"/>
       <plugin id="org.eclipse.ui.console"/>
       <plugin id="org.eclipse.ui.editors"/>
+      <plugin id="org.eclipse.ui.forms"/>
       <plugin id="org.eclipse.ui.ide"/>
+      <plugin id="org.eclipse.ui.views"/>
       <plugin id="org.eclipse.ui.win32" fragment="true"/>
       <plugin id="org.eclipse.ui.workbench"/>
       <plugin id="org.eclipse.ui.workbench.texteditor"/>
       <plugin id="org.javascool.core"/>
+      <plugin id="org.javascool.help.manual"/>
+      <plugin id="org.javascool.help.tutorials"/>
       <plugin id="org.javascool.proglet"/>
       <plugin id="org.javascool.ui"/>
       <plugin id="org.javascool.ui.editor"/>
-      <plugin id="org.unice.javascool.orphy"/>
+      <plugin id="org.mortbay.jetty.server"/>
+      <plugin id="org.mortbay.jetty.util"/>
    </plugins>
 
 

@@ -64,11 +64,11 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		saveAs.setText("Sauvegarder Sous...");
 		registerAsGlobal(saveAs);
 		
-		/*
+		
 		IWorkbenchAction about=ActionFactory.ABOUT.create(window);
 		about.setText("A Propos");
 		registerAsGlobal(about);
-		*/
+		
 		IWorkbenchAction undo = ActionFactory.UNDO.create(window);
 		undo.setText("Defaire");
 		registerAsGlobal(undo);
@@ -200,8 +200,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		//TODO here for the toolbox
 		ToolsBoxAction toolBox = new ToolsBoxAction(window);
 		toolBox.setImageDescriptor(Activator.getImageDescriptor("img/toolbox.png"));
-		toolBox.setDisabledImageDescriptor(Activator.getImageDescriptor("E:\\workspaceJavascool_FINAL\\org.javascool.ui\\imgtoolbox.png"));
-		toolBox.setHoverImageDescriptor(Activator.getImageDescriptor("E:\\workspaceJavascool_FINAL\\org.javascool.ui\\imgtoolbox.png"));
+		toolBox.setDisabledImageDescriptor(Activator.getImageDescriptor("img/toolbox.png"));
+		toolBox.setHoverImageDescriptor(Activator.getImageDescriptor("img/toolbox.png"));
 		toolbar.add(toolBox);
 		
 			
@@ -337,7 +337,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	 * @param window 
 	 */
 	private MenuManager createHelpMenu(IWorkbenchWindow window) {
-		MenuManager helpMenu = new MenuManager("&Aide", IWorkbenchActionConstants.M_HELP);
+		//MenuManager helpMenu = new MenuManager("&Aide", IWorkbenchActionConstants.M_HELP);
+		MenuManager helpMenu = new MenuManager("&Aide");
 		
 		helpMenu.add(getAction(ActionFactory.HELP_CONTENTS.getId()));	
 		helpMenu.add(new Separator());
