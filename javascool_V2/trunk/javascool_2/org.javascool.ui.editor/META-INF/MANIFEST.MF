@@ -11,7 +11,9 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.5.0",
  org.eclipse.jface.text;bundle-version="3.5.0",
  org.eclipse.ui.console;bundle-version="3.4.0";visibility:=reexport,
  org.javascool.core;bundle-version="2.0.0",
- org.javascool.proglet;bundle-version="1.0.0"
+ org.javascool.proglet;bundle-version="1.0.0",
+ org.javascool.help.tutorials;bundle-version="2.0.0",
+ org.javascool.help.manual;bundle-version="2.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.filesystem,

@@ -18,4 +18,5 @@ public class PreferencesConstants {
      public static final String P_MACRO = "colorMacro";
      public static final String P_TYPE = "colorType";
      public static final String P_NUMBER = "colorNumber";
-}
+    
+ }

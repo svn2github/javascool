@@ -6,6 +6,8 @@
  */
 package org.javascool.ui.editor.editors;
 
+import java.util.ArrayList;
+
 import org.eclipse.swt.graphics.RGB;
 
 public interface JVSColorConstants {
@@ -24,4 +26,8 @@ public interface JVSColorConstants {
 	RGB TYPE = new RGB(153, 0, 0);
 	//couleur des nombres
 	RGB NUMBER = new RGB(255, 51, 204);
+	
+	ArrayList<String> listPorts = new ArrayList<String>();
+	String portName = "COM3";
+	 
 }
