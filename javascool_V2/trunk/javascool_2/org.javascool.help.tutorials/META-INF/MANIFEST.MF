@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.javascool.help.tutorials; singleton:=true
 Bundle-Version: 2.0.0.qualifier
 Bundle-Activator: org.javascool.help.tutorials.Activator
 Bundle-Vendor: Javascool
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+Require-Bundle: org.eclipse.ui;bundle-version="3.5.1",
+ org.eclipse.core.runtime;bundle-version="3.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
