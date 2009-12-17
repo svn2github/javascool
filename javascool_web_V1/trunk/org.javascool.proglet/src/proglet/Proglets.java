@@ -91,9 +91,18 @@ public class Proglets { private Proglets() { }
    * @param proglet  Proglets name.
    */
   public static void show(String proglet) {
-    proglet = toUcfirst(proglet);
-    InterfacePrincipale applet = new InterfacePrincipale(); applet.setProglet(proglet); applet.init();
-    JFrame f = new JFrame(); f.getContentPane().add(applet); f.setTitle(proglet); f.pack(); f.setSize(560, 695); f.setVisible(true); 
+	/*
+	  InterfacePrincipale applet = new InterfacePrincipale(); 
+		applet.setProglet(proglet);
+	    
+		Proglets.show(applet, proglet, null, 560, 720);
+		*/
+	  
+	  proglet = toUcfirst(proglet);
+	  InterfacePrincipale applet = new InterfacePrincipale(); 
+	  applet.setProglet(proglet); applet.init();
+	  JFrame f = new JFrame(); f.getContentPane().add(applet); f.setTitle(proglet); f.pack(); f.setSize(560, 695); f.setVisible(true); 
+  	
   }
 
   /** Opens an applet in a standalone frame.
@@ -104,7 +113,7 @@ public class Proglets { private Proglets() { }
    * @param height Applet height.
    * @return The opened frame.  Use <tt>frame.dispose()</tt> to close the frame.
    */
-  static JFrame show(JApplet applet, String title, Point where, int width, int height) {
+  public static JFrame show(JApplet applet, String title, Point where, int width, int height) {
     JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); 
     if (title != null) f.setTitle(title); f.setSize(width, height); if (where != null) { f.setLocationByPlatform(false); f.setLocation(where); } f.setVisible(true); 
     return f;

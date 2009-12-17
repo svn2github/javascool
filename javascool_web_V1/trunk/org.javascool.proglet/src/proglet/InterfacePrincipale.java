@@ -76,7 +76,7 @@ public class InterfacePrincipale extends JApplet {
   /** Sets the proglet to use in this interface.
    * @param proglet The proglet class name.
    */
-  void setProglet(String proglet) { getJProgletButton(); jProgletBox.setSelectedItem(this.proglet = proglet); }  private String proglet = "Konsol";
+  public void setProglet(String proglet) { getJProgletButton(); jProgletBox.setSelectedItem(this.proglet = proglet); }  private String proglet = "Konsol";
 	
   /** Sets the mode to use in this interface.
    * @param edit If true in edit mode, else in run mode.

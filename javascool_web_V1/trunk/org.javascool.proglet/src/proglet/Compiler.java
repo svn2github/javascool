@@ -20,6 +20,7 @@ public class Compiler { private Compiler() { }
     StringWriter out = new StringWriter();
     // Implements com.sun.tools.javac.Main.compile(args, new PrintWriter(out)); in reflexive form to avoid external compilation problems
     try { 
+    
       Class.forName("com.sun.tools.javac.Main").getDeclaredMethod("compile", Class.forName("[Ljava.lang.String;"), Class.forName("java.io.PrintWriter")).
 	invoke(null, args, new PrintWriter(out)); 
     } catch(Exception e) { 
