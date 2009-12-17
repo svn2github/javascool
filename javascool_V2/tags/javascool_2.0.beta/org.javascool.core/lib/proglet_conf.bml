@@ -1,0 +1,289 @@
+outils {
+	fonctions {
+	
+		convaCompare {
+			desc="Compare la tension appliquée en sortie à la tension inconnue.";
+			import="proglet.Conva.convaCompare";
+			signature="int convaCompare()";
+			type="proglet Conva";
+		}
+		convaOut {
+			desc="Applique une tension en sortie.";
+			import="proglet.Conva.convaOut";
+			signature="void convaOut(int value)";
+			type="proglet Conva";
+		}
+		
+		show {
+			desc="permet d'afficher la proglet Conva";
+			import="proglet.Proglets.show";
+			signature="show(\"Conva\");";
+			type="proglet Conva";
+		}
+	
+		
+		
+		
+		compare {
+			desc="Ouvre le libre à une page et compare un nom au nom affiché sur cette page.";
+			import="proglet.Dicho.compare";
+			signature="int compare(String name, int page)";
+			type="proglet Dicho";
+		}
+		length {
+			desc="Renvoie le nombre de page";
+			import="proglet.Dicho.length";
+			signature="int length()";
+			type="proglet Dicho";
+		}
+		
+		show {
+			desc="permet d'afficher la proglet Dicho";
+			import="proglet.Proglets.show";
+			signature="show(\"Dicho\");";
+			type="proglet Dicho";
+		}
+		
+		
+		
+		
+		smileyGet {
+			desc="Lit la valeur d'un pixel de l'image.";
+			import="proglet.Smiley.smileyGet";
+			signature="int smileyGet(int x, int y)";
+			type="proglet Smiley";
+		}
+		smileyHeight {
+			desc="Gets the height.";
+			import="proglet.Smiley.smileyHeight";
+			signature="int smileyHeight()";
+			type="proglet Smiley";
+		}
+		smileyWidth {
+			desc="Gets the Width.";
+			import="proglet.Smiley.smileyWidth";
+			signature="int smileyWidth()";
+			type="proglet Smiley";
+		}
+		
+		smileyLoad{
+			desc="Charge l'image.";
+			import="proglet.Smiley.smileyLoad";
+			signature="smileyLoad(String image)";
+			type="proglet Smiley";
+		}
+		smileyReset {
+			desc="Initialise l'image.";
+			import="proglet.Smiley.smileyReset";
+			signature="void smileyReset(int width, int height)";
+			type="proglet Smiley";
+		}
+		smileySet {
+			desc="Change la valeur d'un pixel de l'image.";
+			import="proglet.Smiley.smileySet";
+			signature="boolean smileySet(int x, int y, String color)";
+			type="proglet Smiley";
+		}
+		smileySet {
+			desc="Change la valeur d'un pixel de l'image.";
+			import="proglet.Smiley.smileySet";
+			signature="boolean smileySet(int x, int y, int valeur)";
+			type="proglet Smiley";
+		}
+		show {
+			desc="permet d'afficher la proglet Smiley";
+			import="proglet.Proglets.show";
+			signature="show(\"Smiley\");";
+			type="proglet Smiley";
+		}
+		
+		
+		
+		
+		scopeAdd {
+			desc="Ajoute un chaîne de caratère au trace.";
+			signature="scopeAdd(double x, double y, String s, int c)";
+			import="proglet.Scope.scopeAdd";
+			type="proglet Scope";
+		}
+			
+		scopeAddLine {
+			desc="Trace une ligne.";
+			import="proglet.Scope.scopeAddLine";
+			signature="scopeAddLine(double x1, double y1, double x2, double y2, int c)";
+			type="proglet Scope";
+		}
+		
+		scopeReset {
+			desc="Initialise le tracé.";
+			import="proglet.Scope.scopeReset";
+			signature="scopeReset()";
+			type="proglet Scope";
+		}
+		
+		scopeSet {
+			desc="Change la valeur d'un point du tracé.";
+			import="proglet.Scope.scopeSet";
+			signature="scopeSet(double x, double y, int c);";
+			type="proglet Scope";
+		}
+		scopeX {
+			desc="Renvoie la position horizontale du réticule.";
+			import="proglet.Scope.scopeX";
+			signature="scopeX();";
+			type="proglet Scope";
+		}
+		scopeY {
+			desc="Renvoie la position verticale du réticule.";
+			import="proglet.Scope.scopeY";
+			signature="scopeY();";
+			type="proglet Scope";
+		}
+		
+		show {
+			desc="permet d'afficher la proglet Scope";
+			import="proglet.Proglets.show";
+			signature="show(\"Scope\");";
+			type="proglet Scope";
+		}
+		
+		
+		
+		
+		noi {
+			desc="Retourne la valeur d'un souffle (bruit blanc).";
+			import="proglet.Synthe.noi";
+			signature="double noi(double t)";
+			type="proglet Synthe";
+		}
+		
+		cos {
+			desc="Retourne la valeur d'une cosinusoïde de période une seconde et d'amplitude unité.";
+			import="proglet.Synthe.cos";
+			signature="double dcos(double t)";
+			type="proglet Synthe";
+		}
+		
+		synthePlay {
+			desc="Fait entendre le son sur le système audio.";
+			import="proglet.Synthe.synthePlay";
+			signature="void synthePlay()";
+			type="proglet Synthe";
+		}
+		syntheSet {
+			desc="Définit les notes à jouer dans cet interface.";
+			import="proglet.Synthe.syntheSet";
+			signature="void syntheSet(String notes)";
+			type="proglet Synthe";
+		}
+		sns {
+			desc="Retourne la valeur d'une sinusoïde de période une seconde et d'amplitude unité.";
+			import="proglet.Synthe.sns";
+			signature="double sns(double t)";
+			type="proglet Synthe";
+		}
+		sqr {
+			desc="Retourne la valeur d'un signal carré de période une seconde et d'amplitude unité.";
+			import="proglet.Synthe.sqr";
+			signature="double sqr(double t)";
+			type="proglet Synthe";
+		}
+		tri {
+			desc="Retourne la valeur d'un signal triangulaire de période une seconde et d'amplitude unité.";
+			import="proglet.Synthe.tri";
+			signature="double tri(double t)";
+			type="proglet Synthe";
+		}
+		
+		show {
+			desc="permet d'afficher la proglet Synthe";
+			import="proglet.Proglets.show";
+			signature="show(\"Synthe\");";
+			type="proglet Synthe";
+		}
+		
+		
+		
+		
+			
+		home {
+			desc=" Retour au milieu du carré de salade, au point (256, 256)";
+			import="proglet.Tortue.home";
+			signature="void home()";
+			type="proglet Tortue";
+		}
+		clear_all {
+			desc="Efface toutes traces du carré de salade de taille (512, 512)";
+			import="proglet.Tortue.clear_all";
+			signature="void clear_all()";
+			type="proglet Tortue";
+		}
+		forward {
+			desc="La tortue avance de n pas";
+			import="proglet.Tortue.forward";
+			signature="void forward(double n)";
+			type="proglet Tortue";
+		}
+		backward {
+			desc="La tortue recule de n pas";
+			import="proglet.Tortue.backward";
+			signature="void backward(double n)";
+			type="proglet Tortue";
+		}
+		leftward {
+			desc="La tortue tourne de n degrés d'angle vers la gauche";
+			import="proglet.Tortue.leftward";
+			signature="void leftward(double n)";
+			type="proglet Tortue";
+		}
+		rightward {
+			desc="La tortue tourne de n degrés d'angle vers la droite";
+			import="proglet.Tortue.rightward";
+			signature="void rightward(double n)";
+			type="proglet Tortue";
+		}
+		pen_down {
+			desc="La tortue laisse sa trace (par défaut)";
+			import="proglet.Tortue.pen_down";
+			signature="void pen_down()";
+			type="proglet Tortue";
+		}
+		pen_up {
+			desc=" La tortue ne laisse pas de trace";
+			import="proglet.Tortue.pen_up";
+			signature="void pen_up()";
+			type="proglet Tortue";
+		}
+		set_background {
+			desc="Change la couleur du fond, n est un entier positif entre 0 et 9";
+			import="proglet.Tortue.set_background";
+			signature="void set_background(int n)";
+			type="proglet Tortue";
+		}
+		set_color {
+			desc="Change la couleur du crayon, n est un entier positif entre 0 et 9";
+			import="proglet.Tortue.set_color";
+			signature="void set_color(int n)";
+			type="proglet Tortue";
+		}
+		set_heading {
+			desc="Fixe le cap de la tortue de maniere absolue, selon l'angle de a degrés";
+			import="proglet.Tortue.set_heading";
+			signature="void set_heading(double a)";
+			type="proglet Tortue";
+		}
+		set_position {
+			desc=" Fixe la position absolue de la tortue dans le carré de salade";
+			import="proglet.Tortue.set_position";
+			signature="void set_position(double x, double y)";
+			type="proglet Tortue";
+		}
+		
+		show {
+			desc="permet d'afficher la proglet Tortue";
+			import="proglet.Proglets.show";
+			signature="show(\"Tortue\");";
+			type="proglet Tortue";
+		}
+	}
+}

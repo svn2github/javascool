@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!Element sujet>
+
+<!Element titre>
+<!Element objectif>
+<!Element notes>
+<!Element note>
+<!Element work>

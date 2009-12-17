@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet href="../../doc/style_correction.xsl" type="text/xsl"?>
+
+<correction>
+	<titre>Correction du tutoriel 3</titre>
+	<answers>
+		<answer href="../../correction/Tuto3.jvs" name="Tuto3.jvs"/>
+	</answers>
+</correction>

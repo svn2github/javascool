@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/sujet_schema" xmlns:tns="http://www.example.org/sujet_schema" elementFormDefault="qualified">
+
+    <element name="sujet" type="string"></element>
+
+    <element name="objectif" type="string"></element>
+
+    <element name="notes" type="string"></element>
+
+    <element name="note" type="string"></element>
+
+    <element name="work" type="string"></element>
+    
+     <element name="footnote" type="string"></element>
+    
+</schema>

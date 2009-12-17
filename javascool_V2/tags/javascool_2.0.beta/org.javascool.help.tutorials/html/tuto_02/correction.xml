@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet href="../../doc/style_correction.xsl" type="text/xsl"?>
+
+<correction>
+	<titre>Correction du tutoriel 2</titre>
+	<info>
+		La phrase sur-ligné
+		en bleu correspond à un appel de fonction, en l'occurrence on
+		fait appel ici à la fonction "afficher"
+		qui écrit sur la sortie standard la phrase "HelloWorld"
+	</info>
+	<answers>
+		<answer href="../../correction/Tuto2.jvs" name="Tuto2.jvs"/>
+	</answers>
+		
+</correction>

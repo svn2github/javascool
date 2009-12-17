@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet href="../../doc/style_correction.xsl" type="text/xsl"?>
+
+<correction>
+	<titre>Correction du tutoriel 5</titre>
+	<info>
+	La variable  " tmp "
+		déclarée dans l'exemple précédent est une
+		variable  " temporaire ", c'est une variable qui
+		sert à conserver temporairement la valeur de la variable  " a "
+		pour qu'on puisse retrouver ultérieurement la valeur qu'avait
+		la variable " a  " en cas de réaffectation
+		de celle-ci.
+	</info>
+	<info>
+		Oui cette variable est nécessaire.
+	</info>
+		<info>
+		Nous n'aurions pas put écrire la fonction " echanger " 
+		de la manière
+		suivante, car lorsque l'on écrit " a=b "
+		la variable " a " prend la valeur de la
+		variable " b " et donc on perd l'information
+		sur l'ancienne valeur de la variable " a ". 
+		</info>
+		<info>
+			En écrivant La fonction
+			" echanger " comme ceci on aurait comme
+			résultat que les  variables " a " et
+			" b " auraient comme valeur, la valeur de la
+			variable  " b ".
+	</info>
+	
+	<answers>
+		<answer href="../../correction/Tuto5.jvs" name="Tuto5.jvs"/>
+	</answers>
+</correction>

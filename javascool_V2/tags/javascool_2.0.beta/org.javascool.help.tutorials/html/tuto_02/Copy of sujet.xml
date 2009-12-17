@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet href="../../doc/style_sujet.xsl" type="text/xsl"?>
+
+<sujet>
+
+
+	<titre>Tutoriel 2 : "HelloWorld"</titre>
+
+	<objectif>
+		Le but de ce tutoriel est de vous
+		apprendre à écrire des programmes qui
+		écrivent
+		des chaînes de caractères, des nombres, .... sur la
+		<FONT COLOR="#0000ff">
+			<A NAME="sdfootnote1anc" HREF="#sdfootnote1sym">
+				sortie standard
+				<SUP>1</SUP>
+			</A>
+		</FONT>
+		.
+	</objectif>
+
+	<notes>
+
+		<note>
+
+			Pour réaliser ce tutoriel vous
+			pouvez utiliser les fonctions
+			présentes dans la boîte à
+			outils dont le fonctionnement est rappelé
+			dans le manuel d'utilisation.
+		</note>
+
+		<note>
+			Voici un exemple de programme qui
+			affiche sur la
+			<FONT COLOR="#0000ff">
+				<A NAME="sdfootnote1anc" HREF="#sdfootnote1sym">
+					sortie standard
+					<SUP>1</SUP>
+				</A>
+			</FONT>
+			la
+			phrase "HelloWorld".
+		</note>
+	</notes>
+
+	<!--l'exemple de code source-->
+	<table border="1" align="center">
+		<tr>
+			<th>
+
+				<P ALIGN="LEFT">HelloWordl{</P>
+				<P ALIGN="LEFT">
+					<FONT COLOR="#990000">
+						<B>void</B>
+					</FONT>
+					afficher(){
+				</P>
+				<P ALIGN="LEFT">
+					<FONT COLOR="#990000">
+						<B>println</B>
+					</FONT>
+					(
+					<FONT COLOR="#008000">&quot;HelloWorld&quot;</FONT>);</P>
+			<P ALIGN="LEFT">   }</P>
+			<P ALIGN="LEFT">   <FONT COLOR="#990000"><B>void </B></FONT>main(){</P>
+			<P ALIGN="LEFT">      <SPAN STYLE="background: #00dcff">afficher();</SPAN></P>
+			<P ALIGN="LEFT">   }<br/>}</P>
+		
+		</th></tr>		
+	</table>
+	<center>
+	Le fichier correspondant : <a href="HelloWorld.jvs">HelloWorld.jvs</a>
+	</center>
+
+
+	<br/>
+	
+	<work>
+	
+	
+	<P>	
+		Dans le programme qui vous est donné
+		en exemple essayez; de comprendre le rôle de la phrase
+		sur-ligné en bleue.
+	</P>
+	<br/>
+	<P>
+		Créez un nouveau fichier de
+		type " jvs " que vous pouvez nommer par
+		exemple : " Tuto2.jvs ".
+	</P>
+	<P>
+		Dans ce nouveau fichier créez
+		une fonction " afficherPrenom " qui prend en paramètre une chaine de caractère (le prénom;)  
+		et qui affiche sur la <FONT COLOR="#0000ff"><A  NAME="sdfootnote1anc" HREF="#sdfootnote1sym">sortie standard
+		<SUP>1</SUP></A></FONT>  le prénom en paramètre.
+		
+	</P>
+	<P>
+		Créez
+		une seconde fonction " afficherNom " qui prend en paramètres une chaine de caractère (le nom)  
+		et qui affiche sur la <FONT COLOR="#0000ff"><A  NAME="sdfootnote1anc" HREF="#sdfootnote1sym">sortie standard
+		<SUP>1</SUP></A></FONT>  le nom en paramètre.
+	</P>
+	<p>
+		Créez une fonction main 
+	</p>
+	<br/>
+	<P>
+		Ensuite créez la fonction
+		"<FONT COLOR="#0000ff"><A  NAME="sdfootnote2anc" HREF="#sdfootnote2sym">
+		 main "<SUP>2</SUP></A></FONT>
+		qui appelle les deux fonctions définis précédemment
+		 pour afficher le prénom et le nom.
+	</P>
+</work>
+
+	<!--espace entre texte et bas de page-->
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	
+	<!--notes de bas de pages-->	
+	
+	<footnote>
+	<hr/>	
+	<div id="sdfootnote1">
+		<p class="sdfootnote"><A class="sdfootnotesym" name="sdfootnote1sym" href="#sdfootnote1anc">1</A>
+		<FONT COLOR="#0000ff">La
+			sortie standard </FONT>est le flux de sortie dans lequel les données
+			sont écrites par le programme. Une manière simple,
+			bien que techniquement inexacte, de concevoir le principe de la
+			sortie standard est de le considérer comme " le
+			périphérique vers lequel le programme envoie les
+			données ". Ainsi, si le périphérique
+			en question est l'écran, " écrire dans la
+			sortie standard " revient à " écrire
+			sur l'écran " ou " afficher à
+			l'écran ".</p>
+			<br/>
+		
+	</div>
+	<div id="sdfootnote2">
+		<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote2sym" HREF="#sdfootnote2anc">2</A>Pour
+		rappelle la Signature de la fonction <FONT COLOR="#0000ff">main </FONT>est
+		: " void main(){...} "</P>
+	</div>
+	
+	</footnote>
+</sujet>
