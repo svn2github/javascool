@@ -20,9 +20,6 @@
       <toc
             file="toc/tocconfFile.xml">
       </toc>
-      <toc
-            file="toc/toctasks.xml">
-      </toc>
    </extension>
 
 </plugin>
