@@ -3,6 +3,7 @@
 #####################################################################################################################################
 
 # Petits bugs a corriger:
+# - Ajouter un encart sur le calcul sur les images dans sujet-appli-images.xml
 # - Il ne faut pas autoriser de noms de fichier qui soient des mots cles: ajouter un _ ? 
 # - Changer Scope avec image bien calibrée et échelle ajustable en X et Y
 # - Voir algo des cercles à entrer: demander autour de nous
