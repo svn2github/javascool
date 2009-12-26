@@ -6,7 +6,8 @@
   <objectif>
     Le but de ce tutoriel est de programmer quelques calculs géométriques.
     Il faut déja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,
-    se servir de <a href="sujet-about-variables.htm">variables</a> et avoir découvert l'<a href="sujet-about-if.htm">instruction conditionnelle</a>.
+    se servir de <a href="sujet-about-variables.htm">variables</a> et avoir découvert l'<a href="sujet-about-if.htm">instruction conditionnelle</a>
+    et définir une <a href="sujet-about-functions.htm">fonction</a>.
   </objectif>
   
   <notes>
@@ -59,7 +60,7 @@
       Modifier le programme précédent pour calculer non plus milieu de (<s>A</s>, <s>B</s>), mais le point <s>S</s> symétrique de <s>A</s> par rapport à <s>B</s> 
       et afficher le résultat avec le code modifié.
     </work>
-    <work title="A vous de jouer: jouons avec un parallélogramme.">
+    <work title="A vous de jouer: jouons avec un parallélogramme">
       En utilisant le code qui commence ainsi: <code>
         <p><r>void main</r>() {</p>
         <m>Lecture des valeurs du réticule</m>
@@ -68,10 +69,39 @@
         <m>Définition de deux autres points, avec des valeurs dans [-1, 1]</m>
         <p><t/><r>double</r> x_B = 0.2;</p>
         <p><t/><r>double</r> y_B = 0.4;</p>
-        <p><t/><r>double</r> x_C = 0.2;</p>
-        <p><t/><r>double</r> y_C = 0.4;</p>
+        <p><t/><r>double</r> x_C = 0.4;</p>
+        <p><t/><r>double</r> y_C = -0.6;</p>
         <p>../..</p>
-      </code>
+      </code> compléter le en: <ul>
+        <li>Calculant le milieu <s>M</s> de (<s>A</s>, <s>C</s>).</li>
+        <li>Calculant le point <s>D</s> qui permette à <s>A</s>, <s>B</s>, <s>C</s>, <s>D</s> d'être un parallélogramme.</li>
+        <li>Traçant les résultats obtenus.</li>
+      </ul>
+    </work>
+    <work title="A vous de jouer: le triangle isocèle amovible">
+      En utilisant le code qui commence ainsi: <code>
+        <p><r>void main</r>() {</p>
+        <m>Lecture des valeurs du réticule</m>
+        <p><t/><r>double</r> x_A = scopeX();</p>
+        <p><t/><r>double</r> y_A = scopeY();</p>
+        <m>Définition de deux autres points, avec des valeurs dans [-1, 1]</m>
+        <p><t/><r>double</r> x_B = 0.2;</p>
+        <p><t/><r>double</r> y_B = 0;</p>
+       <p>../..</p>
+      </code> compléter le en: <ul>
+        <li>Calculant la projection <s>P</s> de <s>A</s> sur l'axe des abscisse.</li>
+        <li>Calculant le point <s>C</s> qui permette à <s>A</s>, <s>B</s> d'être un triangle isocèle en <s>A</s>.</li>
+        <li>Traçant les résultats obtenus.</li>
+      </ul>
+    </work>
+    <work title="A vous de jouer: tracé d'un cercle de diamètre AB">
+      En reprenant le code initial donné comme premier exemple, en plus du milieu <s>I</s> de (<s>A</s>, <s>B</s>): <ul>
+       <li>Calculer la distance <b>l</b> entre <s>A</s> et <s>B</s> en utilisant, pas exemple, les lignes de code suivantes: <code>
+        <p><t/><r>double</r> d_x = x_B - x_A;</p>
+        <p><t/><r>double</r> d_y = y_B - y_A;</p>
+      </code> et en utilisant la fonction <b><r>sqrt</r>(x)</b> qui renvoie la racine carrée de <b>x</b>.</li>
+      <li>Tracer alors le cercle de centre <s>I</s> et de diamètre <b>AB</b>.</li>
+    </ul>
     </work>
   </works>
   

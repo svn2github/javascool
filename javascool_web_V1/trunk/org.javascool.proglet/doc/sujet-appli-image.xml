@@ -13,6 +13,11 @@
   <notes>
     <note><img src="img/execute.png"/> Choisir la proglet <c>Smiley</c> et non <c>Konsol</c> dans le bouton lié à l'exécution.</note>
     <note>Lire en détail la description de la <proglet name="Smiley"/>.</note>
+    <note p="Comment est codée une image ?">
+      Une image est un tableau à deux dimensions de points lumineux, c'est à dire de «pixels». 
+      Chaque pixel a une valeur entre <c>0</c> (pour le "noir") et <c>255</c> (pour le "blanc").
+      Bien lire le document sur l'<a href="about-information.htm">information</a> en particulier la section "Décrire tous les dessins du monde".
+    </note>
   </notes>
   <works>
     <work title="Découvrir un code qui modifie chaque pixel de l'image">
@@ -49,6 +54,30 @@
         essayer en modifiant la fonction <b>f()</b>.</li>
         <li>Que se passe t'il si on choisit <b><r>return</r> 0 * x;</b> et pourquoi ?.</li>
         <li>Que se passe t'il si on choisit <b><r>return</r> 100 * x - 128;</b> et pourquoi ?.</li>
+      </ul>
+    </work>
+    <work title="Ajouter deux images l'effet de calque"> 
+      Cette partie se fera sans rien programmer. 
+      Considérons les deux images issues d'une célèbre <a href="http://www.ri.cmu.edu/publication_view.html?pub_id=3904">base de donnée</a>
+      mise à disposition de la communauté scientifique internationale pour étudier les logiciels de traitement des séquences d'images avec des mouvements humains.<ul>
+        <li>Si l'on considère les deux images suivantes:
+        <p align="center"><table><tr><td><img src="img/cmu-jump1.jpg"/></td><td><img src="img/cmu-jump3.jpg"/></td></tr></table></p>
+        que se passera t'il si on ``additionne´´ ces deux images ? 
+        C'est à dire si l'on construit une nouvelle image dont la valeur de chaque pixel est la somme des valeurs des pixels de chaque image ? Expliquer en une phrase.</li>
+        <li>Si chaque image était dessinée sur une feuille de papier calque, à quoi correspondrait la valeur ``transparente´´ par rapport à la couleur de ces images ?</li>
+        <li>Quelle est la différence entre poser une image dessinée sur un calque et ajouter la valeur des pixels comme proposé ici ?</li>
+        <li>Ecrire en langage naturel (avec vos mots à vous, sans vous soucier de le programmer) un algorithme qui simule le fait de poser une image dessinée sur un calque sur une autre.</li>
+      </ul>
+    </work>
+    <work title="Soustraire deux images: détecter des changements">
+      Cette partie se fera sans rien programmer, comme la précédente. <ul>
+        <li>Si l'on considère les deux images suivantes:
+        <p align="center"><table><tr><td><img src="img/cmu-jump1.jpg"/></td><td><img src="img/cmu-jump2.jpg"/></td></tr></table></p>
+        que s'est il passé entre les deux images ? Si l'on ``soustrait´´ les deux images de manière similaire à ce qui a été fait pour les ``additionner´´ que va t'il se passer,
+        pour les pixels correspondants à des points immobiles entre les deux images ? Et les pixels correspondants à des points en mouvement ? 
+        Expliquer en deux/trois phrases.</li>
+        <li>A quoi correspondent les valeurs positives si l'on soustrait les pixels de l'image de gauche à ceux de l'image de droite ? Et les valeurs négatives ?</li>
+        <li>Utiliser l'idée de soustraire deux images pour décrire en quelques lignes un système qui permette de détecter les mouvements d'un objet avec une caméra.</li>
       </ul>
     </work>
     <work title="Découvrir un code qui filtre les pixels de l'image">

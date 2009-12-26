@@ -129,6 +129,16 @@ public class Scope implements Proglet { private Scope() { }
     panel.scope.add(x1, y1, x2, y2, c);
   }
 
+  /** Trace un  cercle. 
+   * @param x Abcisse du centre, dans [-X, X], par défaut [-1, 1].
+   * @param y Ordonnée du centre, dans [-Y, Y], par défaut [-1, 1].
+   * @param r Rayon du cercle.
+   * @param c Numéro de la courbe: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
+   */
+  static public void scopeAddCircle(double x, double y, double r, int c) {
+    panel.scope.add(x, y, r, c);
+  }
+
   /** Renvoie la valeur horizontale du réticule. */
   static public double scopeX() { return panel.inputX.getValue(); }
 

@@ -1,6 +1,6 @@
 
 void main() {
-  scopeReset(20, 10);
+  scopeReset();
   // Lecture des valeurs du réticule
   double x_A = scopeX();
   double y_A = scopeY();
@@ -15,4 +15,6 @@ void main() {
   scopeAdd(x_I, y_I, "I", 2);
   scopeAdd(x_B, y_B, "B", 4);
   scopeAddLine(x_A, y_A, x_B, y_B, 6);
+  double l = Math.sqrt(pow(x_A - x_B, 2)+ pow(y_A - y_B, 2));
+  scopeAddCircle(x_I, y_I, l/2, 7);
 }

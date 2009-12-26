@@ -22,6 +22,9 @@
    <p>Pour ajouter une ligne de couleur <c>c</c> du point <b>x1, y1</b> au point <b>x2, y2</b> :<code>
    <p><r>scopeAddLine</r>(x1, y1, x2, y2, c);</p>
    </code></p>
+   <p>Pour ajouter un cercle de couleur <c>c</c> de centre <b>x, y</b> et de rayon <b>r</b> :<code>
+   <p><r>scopeAddCircle</r>(x, y, r, c);</p>
+   </code></p>
    <p>Par ailleurs les valeurs du réticule peuvent être relues avec les fonctions: <code>
       <p><r>double</r> x = <r>scopeX()</r>;</p>
       <p><r>double</r> y = <r>scopeY()</r>;</p>

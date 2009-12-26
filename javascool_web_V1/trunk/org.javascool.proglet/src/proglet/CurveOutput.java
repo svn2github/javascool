@@ -29,6 +29,7 @@ public class CurveOutput extends JPanel {
 
   private static class point { int i; int j; }; private Vector<Vector<point>> curves = new Vector<Vector<point>>();
   private static class line { int i1; int j1; int i2; int j2; Color c; } private Vector<line> lines = new Vector<line>();
+  private static class oval { int i; int j; int w; int h; Color c; } private Vector<oval> ovals = new Vector<oval>();
   private static class label { int i; int j; String s; Color c; } private Vector<label> labels = new Vector<label>();
   {
     setBackground(Color.WHITE); setPreferredSize(new Dimension(522, 430));
@@ -69,6 +70,10 @@ public class CurveOutput extends JPanel {
       g.setColor(l.c);
       g.drawLine(l.i1, l.j1, l.i2, l.j2);
     }
+    for(oval l : ovals) {
+      g.setColor(l.c);
+      g.drawOval(l.i, l.j, l.w, l.h);
+    }
     for(label l : labels) {
       g.setColor(l.c);
       g.drawString(l.s, l.i, l.j);
@@ -79,6 +84,8 @@ public class CurveOutput extends JPanel {
   }
   private int x2i(double x) { return  x < -Xscale ? 0 : x > Xscale ? 511 : (int) Math.rint(260 + x / Xscale * 240); }
   private int y2j(double y) { return  y < -Yscale ? 511 : y > Yscale ? 0 : (int) Math.rint(210 - y / Yscale * 200); }
+  private int x2w(double x) { return  (int) Math.rint(x / Xscale * 240); }
+  private int y2h(double y) { return  (int) Math.rint(y / Yscale * 200); }
   private double i2x(int i) { return  Xscale * (i - 260.0) / 240.0; }
   private double j2y(int j) { return  Yscale * (210.0 - j) / 200.0; }
   private double Xscale = 1, Yscale = 1;
@@ -110,13 +117,14 @@ public class CurveOutput extends JPanel {
     this.Xscale = Xscale; this.Yscale = Yscale;
     curves = new Vector<Vector<point>>(); for(int c = 0; c < 10; c++) curves.add(new Vector<point>());
     lines = new Vector<line>();
+    ovals = new Vector<oval>();
     labels = new Vector<label>();
     repaint(0, 0, getWidth(), getHeight());
   }
   
   /** Adds a curve value.
-   * @param x Pixel abscissa, in [-1..1].
-   * @param y Pixel Ordinate, in [-1..1].
+   * @param x Point abscissa, in [-Xscale..Xscale].
+   * @param y Point Ordinate, in [-Yscale..Yscale].
    * @param c Channel, in {0, 9}.
    */
   public void add(double x, double y, int c) {
@@ -127,10 +135,10 @@ public class CurveOutput extends JPanel {
   }
 
   /** Adds a line.
-   * @param x1 Pixel abscissa, in [-1..1].
-   * @param y1 Pixel Ordinate, in [-1..1].
-   * @param x2 Pixel abscissa, in [-1..1].
-   * @param y2 Pixel Ordinate, in [-1..1].
+   * @param x1 Point abscissa, in [-Xscale..Xscale].
+   * @param y1 Point Ordinate, in [-Yscale..Yscale].
+   * @param x2 Point abscissa, in [-Xscale..Xscale].
+   * @param y2 Point Ordinate, in [-Yscale..Yscale].
    * @param c Channel, in {0, 9}.
    */
   public void add(double x1, double y1, double x2, double y2, int c) {
@@ -138,9 +146,20 @@ public class CurveOutput extends JPanel {
     lines.add(l);
   }
 
+  /** Adds a circle.
+   * @param x Center abscissa, in [-Xscale..Xscale].
+   * @param y Center Ordinate, in [-Yscale..Yscale].
+   * @param r Center radius.
+   * @param c Channel, in {0, 9}.
+   */
+  public void add(double x, double y, double r, int c) {
+    oval l = new oval(); l.i = x2i(x - r); l.j = y2j(y + r); l.w = x2w(2 * r); l.h = y2h(2 * r); l.c = 0 <= c && c < 10 ? colors[c] : Color.BLACK;
+    ovals.add(l);
+  }
+
   /** Adds a label.
-   * @param x Label left-bottom abscissa, in [-1..1].
-   * @param y Pixel left-bottom ordinate, in [-1..1].
+   * @param x Label left-bottom abscissa, in [-Xscale..Xscale].
+   * @param y Label left-bottom ordinate, in [-Yscale..Yscale].
    * @param s Label value.
    * @param c Channel, in {0, 9}.
    */
@@ -150,8 +169,8 @@ public class CurveOutput extends JPanel {
   }
 
   /** Sets the reticule position.
-   * @param x Reticule abscissa, in [-1..1].
-   * @param y Reticule  Ordinate, in [-1..1].
+   * @param x Reticule abscissa, in [-Xscale..Xscale].
+   * @param y Reticule ordinate, in [-Yscale..Yscale].
    */
   public void setReticule(double x, double y) {
     reticuleX = -1 < x && x < 1 ? x2i(x) : -1;

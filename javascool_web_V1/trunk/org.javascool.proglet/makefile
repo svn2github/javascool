@@ -2,15 +2,13 @@
 ##  Hamdi.Ben_Abdallah@inria.fr et Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved.                     ##
 #####################################################################################################################################
 
-# Petits bugs a corriger:
-# MAJ page dce garde avec autres ``news´´
+# Travail de Thierry en cours:
+#  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.
+#  - Voir à permettre d'agrandir la fenêtre d'édition en largeur si besoin.
+# - MAJ page dce garde avec autres ``news´´
 # - Voir pb d'accents affiches dans la console
-# - Ajouter un encart sur le calcul sur les images dans sujet-appli-images.xml
-# - Ajouter sujet parallelogramm ete cie Et y expliqauer pq pas double proglet mais dire pq pas
 # - Voir algo des cercles à entrer: demander autour de nous
 # - Virer l'applet web ou la redefinir
-
-# Travail de Thierry en cours:
 # - Ajout qq sujets au fil de l'eau . . 
 # - La version web avait encore quelques soucis, certains exécutaient encore le programme d'un autre. Sous IE, la zone d'input ne marche pas bien, elle s'active mais impossible de taper dedans. Je ne sais pas d'ou ça vient. 
 
@@ -31,17 +29,12 @@
 #		param { name = , type = , value = , mode = const ; read ; write ; read-write ; init (reset generique avec bml en argument) ; set = { } ; get = { } }
 #		function { output = input = { } }
 
-
-# Pour Hamdi ou Thierry: Détails d'implémentation à revoir:
-#  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.
-#  - Voir le pb du setLocation() en mode standalone qui affiche mal les deux fenetres edit et run
-#  - Utiliser la methode POST dans InterfacePrincipale pour appeler http://facets.inria.fr/javascool et non GET
-#  - Voir à permettre d'agrandir la fenêtre d'édition en largeur si besoin.
-
 # Détails d'implémentation non critique, mais qui gagneraient à être revus sur le principe:
 #  - Voir pb des droits qd on rsync sur javascool
 #  - Voir le pb du JSlider qui affiche sa valeur entière et perturbe la lecture.
 #  - Voir comment remplacer l'usage de saxon:line-number() dans style_about2.xsl pour mise en ligne directe du xml/xsl
+#  - Voir le pb du setLocation() en mode standalone qui affiche mal les deux fenetres edit et run
+#  - Utiliser la methode POST dans InterfacePrincipale pour appeler http://facets.inria.fr/javascool et non GET
 
 #####################################################################################################################################
 

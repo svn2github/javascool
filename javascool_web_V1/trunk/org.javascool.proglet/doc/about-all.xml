@@ -1,5 +1,5 @@
 <p fuscia="1" title="L'informatique s'ouvre vers les lycées avec Javascool, à l'initiative de l'INRIA"><table>
-<tr><td><table width="100%" border="1" bgcolor="#DDD"><tr>
+<tr><td><table width="100%" border="1" bgcolor="#DDDDDD"><tr>
   <td align="center" width="10%"><b><a style="text-decoration:none;" href="#quoi">Qu'est ce ?</a></b></td>
   <td align="center" width="10%"><b><a style="text-decoration:none;" href="#qui">Pour qui ?</a></b></td>
   <td align="center" width="10%"><b><a style="text-decoration:none;" href="#dwnl">Téléchargement <br/> du logiciel</a></b></td>
@@ -13,7 +13,7 @@
 </tr></table></td></tr>
 <tr><td><img align="left" width="60" src="img/new-icon.jpg"/> <br/> Plus d'une 20taine d'<a style="text-decoration:none;" href="#exos">exercices et applications</a> rendus disponibles avec <javascool/>, en cette rentrée de toussaint.</td></tr>
 <tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDD"><b><a name="quoi">Qu'est ce que c'est ?</a></b>
+<tr><td style="background-color:#DDDDDD"><b><a name="quoi">Qu'est ce que c'est ?</a></b>
 <p>Un recueil de ressources pour <i>aider les professeur(e)s des lycées au niveau de l'enseignement de l'algorithmique</i>, donc de <i>l'informatique</i> en seconde.<ol>
   <li>La démarche est expliquée dans  ce <a href="about-manifeste.htm">manifeste</a>.</li>
   <li>Une <a href="about-prg2nd.htm">analyse</a> de l'enseignement actuel de l'algorithmique au lycée en seconde sert de cadrage à ce travail.</li>
@@ -27,7 +27,7 @@
 </p></p>
 </td></tr>
 <tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDD"><b><a name="qui">Pour qui est-ce ?</a></b> <ol>
+<tr><td style="background-color:#DDDDDD"><b><a name="qui">Pour qui est-ce ?</a></b> <ol>
   <li>Pour les enseignants, puisque l'enseignement actuel inclut l'apprentissage de l'algorithmique au lycée en seconde 
   <a href="about-prg2nd.htm">(Option MPI et programme de Mathématiques)</a>.</li>
   <li>Pour les clubs de maths ou les autres initiatives périscolaires de découverte scientifique, 
@@ -36,7 +36,7 @@
 <p><i>Remarque:</i> Ces documents ne sont pas vraiment conçus pour apprendre la programmation en ``autodidacte´´<footnote id="2"/>.</p>
 </td></tr>
 <tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDD"><b><a name="polys">Polys de cours et documents de référence</a></b>: 
+<tr><td style="background-color:#DDDDDD"><b><a name="polys">Polys de cours et documents de référence</a></b>: 
 <p>Deux textes sur les fondements de l'informatique, accessibles à un public lycéen sont disponibles ici:<ol>
   <li>Qu'est ce que l'<a href="about-information.htm">information</a> ?</li>
   <li>Les ingrédients des <a href="about-algorithm.htm">algorithmes</a> !</li>
@@ -48,7 +48,7 @@
 </ul></p>
 </td></tr>
 <tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDD"><b><a name="parcours">Un parcours pour s'initier à la programmation</a></b>:
+<tr><td style="background-color:#DDDDDD"><b><a name="parcours">Un parcours pour s'initier à la programmation</a></b>:
 <p>Ce parcours permet de s'approprier les cinq ingrédients des algorithmes (en utilisant<footnote id="1"/> la <proglet name="Konsol"/>)<ul>
   <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a>, utiliser les séquences d'instructions.</li>
   <li>Apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
@@ -58,9 +58,11 @@
 </ul>avec un <a href="about-memo.htm">mémorandum des constructions et instructions</a>.</p>
 </td></tr>
 <tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDD"><b><a name="exos">Exercices et applications</a></b><img align="right" width="60" src="img/new-icon.jpg"/>
+<tr><td style="background-color:#DDDDDD"><b><a name="exos">Exercices et applications</a></b><img align="right" width="60" src="img/new-icon.jpg"/>
 
- <p><a name="eduscol"></a>La 20taine d'excercices activités du document de <a href="more/Algo_Doc_Ress.pdf">ressources</a> publié par <a href="http://eduscol.education.fr">ÉduSCOL</a> a été instanciées en <javascool/>: les ``<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a>´´ (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet: accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux soluces des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature: ??">contacter</a> pour l'accès). Avec le <a href="#parcours">parcours</a>  pour s'initier à la programmation, elles permettent de couvrir le programme de 2nd en algorithmique.</p>
+ <p><a name="eduscol"></a>La 20taine d'excercices activités du document de <a href="more/Algo_Doc_Ress.pdf">ressources</a> publié par <a href="http://eduscol.education.fr">ÉduSCOL</a> a été instanciées en <javascool/>: les ``<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a>´´ (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet: accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux soluces des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature: ??">contacter</a> pour l'accès). Avec le <a href="#parcours">parcours</a>  pour s'initier à la programmation, elles permettent de couvrir le programme de 2nd en algorithmique. 
+ <p>Les sujets proposés ci-après donnent des exemples d'activité liés à ces sujets.</p>
+</p>
 
 <br/>
 <p>Quelques autres applications, exercices et activités:<ul>
@@ -77,7 +79,7 @@
 </ul></p>
 </td></tr>
 <tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDD"><b><a name="more">Créer de nouvelles activités</a></b><ol>
+<tr><td style="background-color:#DDDDDD"><b><a name="more">Créer de nouvelles activités</a></b><ol>
   <li>Plusieurs proglets<footnote id="1"/> sont disponibles ici, pour s'initier à la programmation et créer des exercices animés et interactifs<ul>
     <li>La <proglet name="Konsol"/>, <ul>
       <li>utilisées pour les apprentissages initiaux des ingrédients des algorithmes et</li>
@@ -105,7 +107,7 @@ de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
 </ol>
 </td></tr>
 <tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDD"><b><a name="dwnl">Téléchargement du logiciel</a></b>
+<tr><td style="background-color:#DDDDDD"><b><a name="dwnl">Téléchargement du logiciel</a></b>
 <table width="100%"><tr><td><b><br/>
 <i>JAVASCOOL EN UN CLICK</i>: CLIQUER [<a href="../wproglet.jar">ICI</a>] 
 <ul>
@@ -151,7 +153,7 @@ Bien entendu, la forme dite <c>[luxe]</c> est plus intéressante, mais il faudra
   Documents are distributed under the Creative-Commons standard license.</i>)</p>
 </td></tr>
 <tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDD"><b><a name="contact">Nous contacter:</a></b><ul>
+<tr><td style="background-color:#DDDDDD"><b><a name="contact">Nous contacter:</a></b><ul>
 <li>A votre écoute: <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de qq proglet" method="post" enctype="text/plain"><table align="center">
     <tr><td><select name="Le-sujet">
      <option>Commentaire général, avis, etc..</option>
