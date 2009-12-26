@@ -85,14 +85,23 @@ public class InterfacePrincipale extends JApplet {
   
   // Sets the class name and file
   private void setMainFile(String pFile) {
-    String s = File.separatorChar == '\\' ? "\\\\" : File.separator;
-    main = pFile.replaceAll(".*"+s+"([^"+s+"]+)\\.[A-Za-z]+$", "$1");
-    path = pFile.replaceAll("\\.[A-Za-z]+$", "");
+    File file = new File(pFile);
+    String folder = file.getParent();
+    String name = file.getName().replaceAll("\\.[A-Za-z]+$", "");
+    if (Translator.isForbidden(name)) {
+      main = "my_"+name;
+      System.out.println("Attention: le nom \""+name+"\" est interdit par Java,\n renommons le \""+main+"\"");
+    } else if (!name.matches("[A-Za-z_][A-Za-z0-9_]*")) {
+      main = name.replaceAll("[^A-Za-z0-9_]", "_");
+      System.out.println("Attention: le nom \""+name+"\" contient quelque caractère interdit par Java,\n renommons le \""+main+"\"");
+    } else
+      main = name;
+    path = folder + File.separatorChar + main;
   }  
   private String main = null, path = null;
 
-  // This is the entry point to run the proglet pupil's program.
-  protected Runnable runnable = null;
+  /**This is the entry point to run the proglet pupil's program: do not modify manually !!. */
+  public static Runnable runnable = null;
   
   // Flag whether we are in standalone mode or web-browser mode
   boolean standalone = true; 
@@ -182,8 +191,7 @@ public class InterfacePrincipale extends JApplet {
       JLabel jProgletLabel = new JLabel();
       jProgletLabel.setIcon(Proglets.getIcon("execute.png"));
       jProgletButton.add(jProgletLabel);
-      String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Synthe", "Tortue" };
-      jProgletBox = new JComboBox(proglets);
+      jProgletBox = new JComboBox(Proglets.proglets);
       jProgletBox.setEditable(false);
       jProgletBox.addActionListener(new ActionListener(){
 	  public void actionPerformed(ActionEvent e){
@@ -364,7 +372,7 @@ public class InterfacePrincipale extends JApplet {
       jResultPanel = new JPanel();
       jResultPanel.setLayout(new GridBagLayout());
       jResultPanel.setBounds(new Rectangle(8, 92, 540, 580));
-      jResultPanel.setBorder(BorderFactory.createTitledBorder(null, "«"+proglet+"»", 
+      jResultPanel.setBorder(BorderFactory.createTitledBorder(null, "\""+proglet+"\"", 
         TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
       jResultPanel.add(Proglets.getPanel(proglet), gridBagConstraints);
     }
@@ -512,6 +520,8 @@ public class InterfacePrincipale extends JApplet {
   //
 
   private void doLire(String pFile) throws IOException {
+    setMainFile(pFile);
+    // Read from file
     BufferedReader in = new BufferedReader(new FileReader(pFile));
     StringBuffer text = new StringBuffer();
     for(String line; (line = in.readLine()) != null; ) {
@@ -519,26 +529,22 @@ public class InterfacePrincipale extends JApplet {
     }
     getJProgramEditorPane().setText(text.toString());
     in.close(); 
-    setMainFile(pFile);
     printConsole("Le fichier "+(new File(pFile).getName())+" est chargé", 'i');
   }
 
   private void doSave(String pFile) throws IOException {
-    pFile = pFile.replaceFirst("\\.[A-Za-z]+$", "");
-    String pName = new File(pFile).getName();
-    pFile += ".jvs";
-    if (pName.matches("([A-Za-z0-9_])+")) {
-      // Adds a newline at line 1 if not yet done to avoid compilation errors mixed with header 
-      String text = "\n"+getJProgramEditorPane().getText().trim()+"\n";
-      getJProgramEditorPane().setText(text);
-      // Saves in file
-      BufferedWriter out = new BufferedWriter(new FileWriter(pFile));
-      out.write(text); 
-      out.close(); 
-      setMainFile(pFile);
-      printConsole("Le fichier "+(new File(pFile).getName())+" est sauvegardé", 'i');
-    } else
-      printConsole("Impossible de sauver dans un fichier de nom ``"+pName+"´´ !<br>(n'utiliser que des lettres et des chiffres)", 'b');
+    setMainFile(pFile);
+    doSave();
+  }
+  private void doSave() throws IOException  {
+    // Adds a newline at line 1 if not yet done to avoid compilation errors mixed with header 
+    String text = "\n"+getJProgramEditorPane().getText().trim()+"\n";
+    getJProgramEditorPane().setText(text);
+    // Saves in file
+    BufferedWriter out = new BufferedWriter(new FileWriter(path+".jvs"));
+    out.write(text); 
+    out.close(); 
+    printConsole("Le fichier "+(new File(path+".jvs").getName())+" est sauvegardé", 'i');
   }
 
   private void doCompile() throws Exception {
@@ -565,11 +571,6 @@ public class InterfacePrincipale extends JApplet {
       printConsole("Impossible de compiler avant de définir/sauvegarder une programme !", 'b');
   }
 
-  private void doSave() throws IOException  {
-    if (main != null) 
-      doSave(path+".jvs");
-  }
-
   // Compiles and load in standalone mode
   private void doStandAloneCompile() throws Exception {
     if (runWindow != null) { runWindow.dispose(); runWindow = null; }
@@ -586,7 +587,7 @@ public class InterfacePrincipale extends JApplet {
       final Class<?> s = new URLClassLoader(urls).loadClass(main);
       InterfacePrincipale r = (InterfacePrincipale) s.newInstance(); r.setProglet(proglet);
       Point where = getLocationOnScreen(); where.x -= 570;
-      runWindow = Proglets.show(r, "javascool «"+proglet+"» proglet's runner", null, 560, 720);
+      runWindow = Proglets.show(r, "javascool \""+proglet+"\" proglet's runner", null, 560, 720);
     }
   }
   private JFrame runWindow = null;

@@ -1,0 +1,53 @@
+<sujet>
+  <titre>Programmer quelques calculs géométriques</titre>
+
+  <proglet name="Scope"/>
+  
+  <objectif>
+    Le but de ce tutoriel est de programmer quelques calculs géométriques.
+    Il faut déja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,
+    se servir de <a href="sujet-about-variables.htm">variables</a> et avoir découvert l'<a href="sujet-about-if.htm">instruction conditionnelle</a>.
+  </objectif>
+  
+  <notes>
+    <note><img src="img/execute.png"/> Choisir la proglet <c>Scope</c> et non <c>Konsol</c> dans le bouton lié à l'exécution.</note>
+    <note>Lire en détail la description de la <proglet name="Scope"/>.</note>
+  </notes>
+  <works>
+    <work title="Calculer le centre de de deux points">
+      Considérons le code suivant: <code>
+      <p><r>void main</r>() {</p>
+      <m>Lecture des valeurs du réticule</m>
+      <p><t/><r>double</r> x_A = scopeX();</p>
+      <p><t/><r>double</r> y_A = scopeY();</p>
+      <m>Définition d'un autre point, fixe</m>
+      <p><t/><r>double</r> x_B = 0.2;</p>
+      <p><t/><r>double</r> y_B = 0.4;</p>
+      <m>Calcul du milieu du segment</m>
+      <p><t/><r>double</r> x_I = (x_A + x_B) / 2;</p>
+      <p><t/><r>double</r> y_I = (y_A + y_B) / 2;</p>
+      <m>Tracé des points et des lignes correspondants</m>
+      <p><t/><r>scopeReset</r>();</p>
+      <p><t/><r>scopeAdd</r>(x_A, y_A, <s>A</s>, 4);</p>
+      <p><t/><r>scopeAdd</r>(x_I, y_I, <s>I</s>, 2);</p>
+      <p><t/><r>scopeAdd</r>(x_B, y_B, <s>B</s>, 4);</p>
+      <p><t/><r>scopeAddLine</r>(x_A, y_A, x_B, y_B, 6);</p>
+      <p>}</p>
+    </code><ul>
+      <li>.</li>
+      </ul>
+    </work>
+   </works>
+  
+  <footnotes>
+    <p title="Utiliser conjointement la proglet Scope et Konsol"> On peut souhaiter utiliser conjointement les proglets <proglet name="Scope"/> et <proglet name="Konsol"/> pour 
+    combiner des tracés et des entrées-sorties au clavier. En fait ce n'est pas très recommander, car celà risque de sur-compliquer les interfaces alors que le but ici est
+    de se concentrer sur l'algorithmique. <p>Mais c'est chose aisée: il suffit de choisir, par exemple la proglet <proglet name="Scope"/>, 
+    mais d'ouvrir en plus la proglet <proglet name="Konsol"/> en utilisant la fonction:
+    <code>
+      <r>Proglets.show</r>(<s>Konsol</s>);
+    </code>
+    qui va ouvrir la 2ème proglet.
+  </p></p>
+  </footnotes>
+</sujet>

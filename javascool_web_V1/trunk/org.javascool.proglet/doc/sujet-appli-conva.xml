@@ -1,7 +1,7 @@
 <sujet>
   <titre>Un tutoriel sur la conversion analogique-numérique</titre>
   
-  <proglet name="Conva" mode="edit"/>
+  <proglet name="Conva"/>
   
   <objectif>
     Le but de ce tutoriel est de comprendre comment deviner une valeur  analogique à partir de comparaisons et de découvrir la recherche dichotomique.

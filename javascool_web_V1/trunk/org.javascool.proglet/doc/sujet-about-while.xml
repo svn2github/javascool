@@ -1,7 +1,7 @@
 <sujet>
   <titre>Un tutoriel utiliser des boucles.</titre>
   
-  <proglet name="Konsol" mode="edit"/>
+  <proglet name="Konsol"/>
 
   <objectif>
     Le but de ce tutoriel d'apprendre à  utiliser des boucles. Il faut déja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,

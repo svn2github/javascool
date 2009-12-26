@@ -1,14 +1,18 @@
 
 void main() {
-  println("Entrer une valeur de départ : ");
-  double n = readDouble();
-  while (n != 1) {
-    // Si n / 2 est un entier pair . . 
-    if (Math.round(n / 2) == n / 2 ){
-      n = n / 2;
-    } else {
-      n = 3 * n + 1;
-    }
-    println("n = " + n);
-  }
+  scopeReset(20, 10);
+  // Lecture des valeurs du réticule
+  double x_A = scopeX();
+  double y_A = scopeY();
+  // Définition d'un autre point, fixe
+  double x_B = 0.2;
+  double y_B = -0.4;
+  // Calcul du milieu du segment
+  double x_I = (x_A + x_B) / 2;
+  double y_I = (y_A + y_B) / 2;
+  // Tracé des points et des lignes correspondants
+  scopeAdd(x_A, y_A, "A", 4);
+  scopeAdd(x_I, y_I, "I", 2);
+  scopeAdd(x_B, y_B, "B", 4);
+  scopeAddLine(x_A, y_A, x_B, y_B, 6);
 }

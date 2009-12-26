@@ -1,7 +1,7 @@
 <sujet>
   <titre>Le tutoriel "Hello World"</titre>
 
-  <proglet name="Konsol" mode="edit"/>
+  <proglet name="Konsol"/>
   
   <objectif>
     Le but de ce tutoriel est de se familiariser avec l'outil de programmation <javascool/>, pour pouvoir réaliser les autres <a href="../index.html">tutoriels</a>

@@ -32,9 +32,6 @@ import java.lang.reflect.InvocationTargetException;
 public class Proglets { private Proglets() { }
   private static final long serialVersionUID = 1L;
 
-  /** Defined all declared proglets. */
-  static final String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Synthe", "Tortue" };
-
   /** Constructs a proglet attached to the related applet.
    * @param proglet The proglet class name.
    * @return The static instanciation of the proglet.
@@ -91,19 +88,19 @@ public class Proglets { private Proglets() { }
    * @param proglet  Proglets name.
    */
   public static void show(String proglet) {
-	/*
-	  InterfacePrincipale applet = new InterfacePrincipale(); 
-		applet.setProglet(proglet);
-	    
-		Proglets.show(applet, proglet, null, 560, 720);
-		*/
-	  
-	  proglet = toUcfirst(proglet);
-	  InterfacePrincipale applet = new InterfacePrincipale(); 
-	  applet.setProglet(proglet); applet.init();
-	  JFrame f = new JFrame(); f.getContentPane().add(applet); f.setTitle(proglet); f.pack(); f.setSize(560, 695); f.setVisible(true); 
-  	
+    int i = getProgletIndex(proglet);
+    if (i >= 0) {
+      proglet = toUcfirst(proglet);
+      InterfacePrincipale applet = new InterfacePrincipale(); 
+      applet.setProglet(proglet); applet.init();
+      JFrame f = new JFrame(); f.getContentPane().add(applet); f.setTitle(proglet); f.pack(); f.setSize(560, 695); f.setVisible(true); 
+    } else {
+      System.out.println("Erreur: la proglet «"+proglet+"» n'existe pas, rien ne vas s'afficher !");
+    }
   }
+  /** Defines all declared proglets. */
+  static final String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Synthe", "Tortue" };
+  private static int getProgletIndex(String proglet) { for(int i = 0; i < proglets.length; i++) if (proglets[i].equals(proglet)) return i; return -1; }
 
   /** Opens an applet in a standalone frame.
    * @param applet The applet to display.

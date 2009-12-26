@@ -9,9 +9,12 @@
     <li>où <b>c</b> est un <r>int</r> qui est le numéro de la courbe: 
       <c>0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</c></li>
     </ul>tandis que la fonction: <code>
-      <p><r>scopeReset()</r></p>
+      <p><r>scopeReset</r>()</p>
     </code> permet d'effacer la courbe. Le système de coordonnée est donc de la forme:
      <p align="center"><img src="img/scope.png"/></p>
+     <p>Il est aussi possible de changer l'échelle horizontale et verticale en utilisant la fonction: <code>
+      <p><r>scopeReset</r>(largeur, hauteur)</p>
+    </code> où le tracé se fait alors avec les abcisses entre <b>[-largeur, largeur]</b> et les ordonnées entre les valeurs <b>[-hauteur, hauteur]</b>.</p>
    </p>
    <p>Pour ajouter une étiquette <s>s</s> de couleur <c>c</c> au point <b>x, y</b>:<code>
    <p><r>scopeAdd</r>(x, y, <s>s</s>, c);</p>

@@ -42,7 +42,7 @@ public class Translator { private Translator() { }
       // Declares the proglet's core as a Runnable in the Applet
       out.print("public class "+main+ " extends proglet.InterfacePrincipale {");
       out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
-      out.print("  { runnable = new ProgletRunnableInterfacePrincipale(); }");
+      out.print("  static { runnable = new ProgletRunnableInterfacePrincipale(); }");
       out.print("}");
       out.print("class ProgletRunnableInterfacePrincipale implements Runnable {");
       out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
@@ -65,6 +65,19 @@ public class Translator { private Translator() { }
     line = line.replaceFirst("@tone:(.*)", "proglet.Synthe.tone = new proglet.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.Synthe.syntheSet(\"16 a\");");
     return "    "+line;
   }
+
+  /** Test if a word is forbidden to use because it is a Java reserved word. 
+   * @param word The word to test.
+   * @return true if it forbidden, else false.
+   */
+  public static boolean isForbidden(String word) {
+    for(int i = 0; i < forbidden.length; i++) if (word.equals(forbidden[i])) return true; return false;
+  }
+  private static final String forbidden[] = { 
+    "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue", "default", "double", "do", 
+    "else", "enum", "extends", "false", "final", "finally", "float", "for", "goto", "if", "implements", "import", "instanceof", "int", "interface", 
+    "long", "native", "new", "null", "package", "private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch", "synchronized", 
+    "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while"};
 }
 
 

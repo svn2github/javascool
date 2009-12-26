@@ -1,7 +1,7 @@
 <sujet>
   <titre>Un tutoriel pour se familiariser avec les fonctions</titre>
   
-  <proglet name="Konsol" mode="edit"/>
+  <proglet name="Konsol"/>
   
   <objectif>
     Le but de ce tutoriel est de se familiariser avec les fonctions. Il faut déja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,

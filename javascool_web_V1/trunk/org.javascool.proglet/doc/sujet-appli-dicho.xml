@@ -1,7 +1,7 @@
 <sujet>
   <titre>Un tutoriel sur la recherche dichotomique</titre>
   
-  <proglet name="Dicho" mode="edit"/>
+  <proglet name="Dicho"/>
   
   <objectif>
     Le but de ce tutoriel est de comprendre la recherche dichotomique. 

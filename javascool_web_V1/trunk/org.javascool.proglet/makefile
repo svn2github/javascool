@@ -3,12 +3,10 @@
 #####################################################################################################################################
 
 # Petits bugs a corriger:
+# MAJ page dce garde avec autres ``news´´
 # - Ajouter un encart sur le calcul sur les images dans sujet-appli-images.xml
-# - Il ne faut pas autoriser de noms de fichier qui soient des mots cles: ajouter un _ ? 
-# - Changer Scope avec image bien calibrée et échelle ajustable en X et Y
+# - Ajouter sujet parallelogramm ete cie Et y expliqauer pq pas double proglet mais dire pq pas
 # - Voir algo des cercles à entrer: demander autour de nous
-# - Quid d'ajouter une entrée au scope et de rendre unifié println et echo.
-# - Pb du scope qui clignote mal sous windows
 # - Virer l'applet web ou la redefinir
 
 # Travail de Thierry en cours:
@@ -39,7 +37,7 @@
 #  - Utiliser la methode POST dans InterfacePrincipale pour appeler http://facets.inria.fr/javascool et non GET
 #  - Voir à permettre d'agrandir la fenêtre d'édition en largeur si besoin.
 
-# Pour Thierry: Détails d'implémentation à revoir:
+# Détails d'implémentation non critique, mais qui gagneraient à être revus sur le principe:
 #  - Voir pb des droits qd on rsync sur javascool
 #  - Voir le pb du JSlider qui affiche sa valeur entière et perturbe la lecture.
 #  - Voir comment remplacer l'usage de saxon:line-number() dans style_about2.xsl pour mise en ligne directe du xml/xsl
@@ -67,7 +65,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar
-	cd tst ; /usr/bin/java -jar ../$^ edit Konsol
+	cd tst ; /usr/bin/java -jar ../$^ edit Scope
 
 # Test du service web (pour vérifier l'intégration)
 

@@ -29,12 +29,8 @@ public class NumberInput extends JPanel {
 
   /** Construct the field.
    * @param name Field name.
-   * @param min Minimal input value.
-   * @param max Maximal input value.
-   * @param step Precision of the input value.
-   * @param value Initial input value.
    */
-  public NumberInput(String name, double min, double max, double step, double value) {
+  public NumberInput(String name) {
     setBorder(BorderFactory.createTitledBorder(name)); setPreferredSize(new Dimension(400, 62));
     field = new JTextField(12);
     field.addActionListener(new ActionListener() {
@@ -55,19 +51,27 @@ public class NumberInput extends JPanel {
 	}
       });
     add(slider);
-    this.min = min; this.max = max; this.step = step; set(value, ' ');
+    setScale(0, 100, 1);
+    setValue(0);
   }
   private JTextField field; private JSlider slider;
   // Display the value
   private void set(double value, char from) {
     // Retrain value to be step by step and in the min-max interval
-    value = step <= 0 ? value : min + step * Math.rint((value-min)/step); value = value < min ? min : value > max ? max : value;
-    // Patches the .0* outputs
-    String input = new Double(value).toString().replaceFirst("(99999|00000).*$", "").replaceFirst(".0$", "");
-    field.setText(input);
-    if (from != 'S') slider.setValue((int) ((max > min) ? 100.0 * (value - min) / (max - min) : value));
+    value = step <= 0 ? value : min + step * Math.rint((value - min) / step); value = value < min ? min : value > max ? max : value;
     this.value = value;
-    if (run != null) run.run();
+    field.setText(new Double(value).toString().replaceFirst("(99999|00000).*$", "").replaceFirst(".0$", ""));
+    if (from != 'S') slider.setValue((int) ((max > min) ? 100.0 * (value - min) / (max - min) : value));
+    if (from != ' ' && run != null) run.run();
+  }
+
+  /** Sets the scales.
+   * @param min Minimal input value.
+   * @param max Maximal input value.
+   * @param step Precision of the input value.
+   */
+  public void setScale(double min, double max, double step) {
+    this.min = min; this.max = max; this.step = step; 
   }
 
   /** Gets the input value. */

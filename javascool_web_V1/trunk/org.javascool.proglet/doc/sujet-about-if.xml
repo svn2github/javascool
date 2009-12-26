@@ -1,7 +1,7 @@
 <sujet>
   <titre>Un tutoriel pour découvrir l'instruction conditionnelle.</titre>
   
-  <proglet name="Konsol" mode="edit"/>
+  <proglet name="Konsol"/>
   
   <objectif>
     Le but de ce tutoriel de découvrir l'instruction conditionnelle. Il faut déja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,

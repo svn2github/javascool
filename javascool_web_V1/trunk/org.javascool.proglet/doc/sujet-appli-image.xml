@@ -1,7 +1,7 @@
 <sujet>
   <titre>Comprendre quelques opérations de manipulation d'images</titre>
 
-  <proglet name="Smiley" mode="edit"/>
+  <proglet name="Smiley"/>
   
   <objectif>
     Le but de ce tutoriel est de comprendre comment se code est manipule une image pixelique. 
