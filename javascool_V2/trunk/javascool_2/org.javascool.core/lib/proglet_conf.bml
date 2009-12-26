@@ -120,6 +120,13 @@ outils {
 			signature="scopeReset()";
 			type="proglet Scope";
 		}
+
+		scopeReset {
+			desc="Initialise le tracé et définit des échelles.";
+			import="proglet.Scope.scopeReset";
+			signature="scopeReset(double X, double Y)";
+			type="proglet Scope";
+		}
 		
 		scopeSet {
 			desc="Change la valeur d'un point du tracé.";
