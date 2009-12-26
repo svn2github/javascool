@@ -4,6 +4,7 @@
 
 # Petits bugs a corriger:
 # MAJ page dce garde avec autres ``news´´
+# - Voir pb d'accents affiches dans la console
 # - Ajouter un encart sur le calcul sur les images dans sujet-appli-images.xml
 # - Ajouter sujet parallelogramm ete cie Et y expliqauer pq pas double proglet mais dire pq pas
 # - Voir algo des cercles à entrer: demander autour de nous

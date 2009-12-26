@@ -12,32 +12,68 @@
   <notes>
     <note><img src="img/execute.png"/> Choisir la proglet <c>Scope</c> et non <c>Konsol</c> dans le bouton lié à l'exécution.</note>
     <note>Lire en détail la description de la <proglet name="Scope"/>.</note>
-  </notes>
-  <works>
-    <work title="Calculer le centre de de deux points">
+    <note title="Un exemple: le calcul du centre de de deux points">
       Considérons le code suivant: <code>
-      <p><r>void main</r>() {</p>
-      <m>Lecture des valeurs du réticule</m>
-      <p><t/><r>double</r> x_A = scopeX();</p>
-      <p><t/><r>double</r> y_A = scopeY();</p>
-      <m>Définition d'un autre point, fixe</m>
-      <p><t/><r>double</r> x_B = 0.2;</p>
-      <p><t/><r>double</r> y_B = 0.4;</p>
-      <m>Calcul du milieu du segment</m>
-      <p><t/><r>double</r> x_I = (x_A + x_B) / 2;</p>
-      <p><t/><r>double</r> y_I = (y_A + y_B) / 2;</p>
-      <m>Tracé des points et des lignes correspondants</m>
-      <p><t/><r>scopeReset</r>();</p>
-      <p><t/><r>scopeAdd</r>(x_A, y_A, <s>A</s>, 4);</p>
-      <p><t/><r>scopeAdd</r>(x_I, y_I, <s>I</s>, 2);</p>
-      <p><t/><r>scopeAdd</r>(x_B, y_B, <s>B</s>, 4);</p>
-      <p><t/><r>scopeAddLine</r>(x_A, y_A, x_B, y_B, 6);</p>
-      <p>}</p>
-    </code><ul>
-      <li>.</li>
-      </ul>
+        <p><r>void main</r>() {</p>
+        <m>Lecture des valeurs du réticule</m>
+        <p><t/><r>double</r> x_A = scopeX();</p>
+        <p><t/><r>double</r> y_A = scopeY();</p>
+        <m>Définition d'un autre point, avec des valeurs dans [-1, 1]</m>
+        <p><t/><r>double</r> x_B = 0.2;</p>
+        <p><t/><r>double</r> y_B = 0.4;</p>
+        <m>Calcul du milieu du segment</m>
+        <p><t/><r>double</r> x_I = (x_A + x_B) / 2;</p>
+        <p><t/><r>double</r> y_I = (y_A + y_B) / 2;</p>
+        <m>Tracé des points et des lignes correspondants</m>
+        <p><t/><r>scopeReset</r>();</p>
+        <p><t/><r>scopeAdd</r>(x_A, y_A, <s>A</s>, 4);</p>
+        <p><t/><r>scopeAdd</r>(x_I, y_I, <s>I</s>, 2);</p>
+        <p><t/><r>scopeAdd</r>(x_B, y_B, <s>B</s>, 4);</p>
+        <p><t/><r>scopeAddLine</r>(x_A, y_A, x_B, y_B, 6);</p>
+        <p>}</p>
+    </code>Le programme principal <r>main</r>:<ul>
+      <li>lit dans <b>x_A</b> et <b>y_A</b> les valeurs horizontales et verticales du réticule du scope.</li>
+      <li>fixe les valeurs <b>x_B</b> et <b>y_B</b> à des valeurs constantes.</li>
+      <li>calcule le milieu de ces deux points, puis</li>
+      <li>utilise les fonctions de la <proglet name="Scope"/> pour: <ul>
+        <li>Effacer le tracé</li>
+        <li>Tracer les trois points <s>A</s>, <s>I</s> et <s>B</s>.</li>
+        <li>Tracer le segment (<s>A</s>, <s>B</s>).</li>
+      </ul></li>
+    </ul></note>
+  </notes>
+
+  <works>
+    <work title="Bien comprendre le code proposé"> Pour être sûr que le code proposé est clair, répondre aux questions suivantes: <ul>
+      <li>Comment faudrait il modifier le code pour utiliser le point <s>B</s> = <b>(0.5, -0.5)</b> ?</li>
+      <li>Expliquer en une phrase comment se modifient les coordonnées de <b>X</b> et <b>Y</b> du point <s>A</s> quand on: <ul>
+        <li>Clique sur la fenêtre de tracé de la <proglet name="Scope"/>.</li>
+        <li>Manipule les glissoirs en bas de la <proglet name="Scope"/>.</li>
+        <li>Entre une valeur numérique au clavier en bas de la <proglet name="Scope"/>.</li>
+      </ul></li>
+      <li>Pourquoi les points sont ils tracés en jaune et rouge et le segment en bleu ?</li>
+      <li>Le programme principal <r>main</r> est, certes, exécuté quand on clique sur le bouton <b>Executer</b> mais . . 
+      comment se fait-il que le calcul se mette à jour quand on clique sur la fenêtre de tracé ou manipule les glissoirs ? Expliquer en une ligne.</li>
+    </ul></work>
+    <work title="A vous de jouer: calculons le symétrique du point A par rapport au point B">
+      Modifier le programme précédent pour calculer non plus milieu de (<s>A</s>, <s>B</s>), mais le point <s>S</s> symétrique de <s>A</s> par rapport à <s>B</s> 
+      et afficher le résultat avec le code modifié.
     </work>
-   </works>
+    <work title="A vous de jouer: jouons avec un parallélogramme.">
+      En utilisant le code qui commence ainsi: <code>
+        <p><r>void main</r>() {</p>
+        <m>Lecture des valeurs du réticule</m>
+        <p><t/><r>double</r> x_A = scopeX();</p>
+        <p><t/><r>double</r> y_A = scopeY();</p>
+        <m>Définition de deux autres points, avec des valeurs dans [-1, 1]</m>
+        <p><t/><r>double</r> x_B = 0.2;</p>
+        <p><t/><r>double</r> y_B = 0.4;</p>
+        <p><t/><r>double</r> x_C = 0.2;</p>
+        <p><t/><r>double</r> y_C = 0.4;</p>
+        <p>../..</p>
+      </code>
+    </work>
+  </works>
   
   <footnotes>
     <p title="Utiliser conjointement la proglet Scope et Konsol"> On peut souhaiter utiliser conjointement les proglets <proglet name="Scope"/> et <proglet name="Konsol"/> pour 
