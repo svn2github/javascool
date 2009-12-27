@@ -3,15 +3,8 @@
 #####################################################################################################################################
 
 # Travail de Thierry en cours:
-# - Ajouter sequence avi images
-#  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.
-#  - Voir à permettre d'agrandir la fenêtre d'édition en largeur si besoin.
-# - MAJ page dce garde avec autres ``news´´
-# - Voir pb d'accents affiches dans la console
-# - Voir algo des cercles à entrer: demander autour de nous
-# - Virer l'applet web ou la redefinir
 # - Ajout qq sujets au fil de l'eau . . 
-# - La version web avait encore quelques soucis, certains exécutaient encore le programme d'un autre. Sous IE, la zone d'input ne marche pas bien, elle s'active mais impossible de taper dedans. Je ne sais pas d'ou ça vient. 
+# - Voir algo des cercles à entrer: demander autour de nous
 
 # Pour Hamdi: Nouvelles fonctionnalités à développer:
 #  - Ajouter un éditeur couleur dans l'applet, 
@@ -23,7 +16,10 @@
 #  - Voir le pb du JSlider qui affiche sa valeur entière et perturbe la lecture.
 #  - Voir comment remplacer l'usage de saxon:line-number() dans style_about2.xsl pour mise en ligne directe du xml/xsl
 #  - Voir le pb du setLocation() en mode standalone qui affiche mal les deux fenetres edit et run
+#  - Voir à permettre d'agrandir la fenêtre d'édition en standalone en largeur qd on passe en mode maximal size.
 #  - Utiliser la methode POST dans InterfacePrincipale pour appeler http://facets.inria.fr/javascool et non GET
+#  - Voir si on peut alleger la copie des img sur le site si Proglets.getIcon devient inutile http://javascool.gforge.inria.fr/proglet/img
+#  - La version web a qq soucis, certains exécutaient encore le programme d'un autre. Sous IE, la zone d'input ne marche pas bien, elle s'active mais impossible de taper dedans.
 
 #####################################################################################################################################
 
@@ -47,10 +43,10 @@ tst0 : doc
 
 # Test en standalone (pour débugger une proglet)
 
-tst1 : wproglet.jar
-	cd tst ; /usr/bin/java -jar ../$^ edit Scope
+tst1 : wproglet.jar 
+	cd tst ; /usr/bin/java -jar ../$^ edit Konsol
 
-# Test du service web (pour vérifier l'intégration)
+# Test du service web (pour vérifier la demo web)
 
 tst2 : scp
 	cd tst ; firefox http://facets.inria.fr/javascool

@@ -7,11 +7,13 @@ package proglet;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JApplet;
+import java.applet.AppletContext;
 
 import javax.swing.JFrame;
 import java.awt.Point;
 
 import java.awt.Rectangle;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -43,7 +45,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
@@ -90,10 +92,10 @@ public class InterfacePrincipale extends JApplet {
     String name = file.getName().replaceAll("\\.[A-Za-z]+$", "");
     if (Translator.isForbidden(name)) {
       main = "my_"+name;
-      System.out.println("Attention: le nom \""+name+"\" est interdit par Java,\n renommons le \""+main+"\"");
+      printConsole("Attention: le nom \""+name+"\" est interdit par Java,\n renommons le \""+main+"\"", 'b');
     } else if (!name.matches("[A-Za-z_][A-Za-z0-9_]*")) {
       main = name.replaceAll("[^A-Za-z0-9_]", "_");
-      System.out.println("Attention: le nom \""+name+"\" contient quelque caractère interdit par Java,\n renommons le \""+main+"\"");
+      printConsole("Attention: le nom \""+name+"\" contient quelque caractère interdit par Java,\n renommons le \""+main+"\"", 'b');
     } else
       main = name;
     path = folder + File.separatorChar + main;
@@ -199,7 +201,7 @@ public class InterfacePrincipale extends JApplet {
 	    getJProgramEditorPane().setProglet(proglet); 
 	  }
 	});
-      jProgletButton.add(jProgletBox);
+      jProgletButton.add(jProgletBox, null);
     }
     return jProgletButton;
   }
@@ -347,7 +349,7 @@ public class InterfacePrincipale extends JApplet {
       jProgramPanel.setBounds(new Rectangle(11, 92, 540, 398));
       jProgramPanel.setBorder(BorderFactory.createTitledBorder(null, "Programme", 
         TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-      jProgramPanel.add(getJProgramEditorPane(), null);
+      jProgramPanel.add(getJProgramEditorPane());
     }
     return jProgramPanel;
   }
@@ -421,13 +423,15 @@ public class InterfacePrincipale extends JApplet {
       jConsoleTextPane = new JEditorPane();
       jConsoleTextPane.setContentType("text/html; charset=UTF-8");
       jConsoleTextPane.setEditable(false);
-      PrintStream ps = new PrintStream(console = new ConsoleOutputStream());
-      System.setOut(ps);
-      //-virer car messages de tests encore en place-// if (!standalone) System.setErr(ps);
+      try {
+	PrintStream ps = new PrintStream(console = new ConsoleOutput(), true, "UTF-8");;
+	System.setOut(ps);
+	if (!standalone) System.setErr(ps);
+      } catch(IOException e) { Proglets.report(e); }
     }
     return jConsoleTextPane;
   }
-  private ConsoleOutputStream console = null;
+  private ConsoleOutput console = null;
 
   // Echos a message in the console. Style: 'b' for bold, 'i' for italic, 'c' for code.
   private void printConsole(String string, char style) { 
@@ -441,27 +445,13 @@ public class InterfacePrincipale extends JApplet {
     console.writeln(string);
   }
 
-  // Defines a writer able to append chars as a stream and strings
-  private class ConsoleOutputStream extends OutputStream {
-    private StringBuffer text = new StringBuffer();
-    public synchronized void write(int b) throws IOException {
-      if (b == '\n') {
-	text.append("<br>\n"); 
-	show();
-      } else {
-	text.append((char) b); 
-      }
-    }
-    public synchronized void writeln(String s) {
-      text.append(s+"<br>\n");
-      show();
-    }    
-    public void clear() {
-      text = new StringBuffer();
-      show();
-    }
+  // Defines a writer able to append chars as a stream in UTF-8 and strings
+  private class ConsoleOutput extends ByteArrayOutputStream {
+    public void write(byte[] b, int off, int len) { super.write(b, off, len); show(); }
+    public void writeln(String s) { byte[] b = (s+"\n").getBytes(); write(b, 0, b.length); }
+    public void clear() { reset(); show(); }
     private void show() {
-      jConsoleTextPane.setText("<html><body>"+text+"\n</body></html>");
+      jConsoleTextPane.setText("<html><body>"+toString().replaceAll(" ", "&nbsp;").replaceAll("\n", "<br>\n")+"\n</body></html>");
       jConsoleScrollPane.getVerticalScrollBar().setValue(jConsoleScrollPane.getVerticalScrollBar().getMaximum());
     }
   }
@@ -475,14 +465,11 @@ public class InterfacePrincipale extends JApplet {
 	    this.setCurrentDirectory(new File(System.getProperty("user.dir")));
 	    this.setFileSelectionMode(JFileChooser.FILES_ONLY);
 	    this.setMultiSelectionEnabled(false);
-	    // Définition des extensions
+	    // Définition de l'extension
 	    JFileFilter filtre = new JFileFilter();
-	    filtre.addType("txt");
-	    filtre.addType("java");
 	    filtre.addType("jvs");
-	    filtre.setDescription("Fichiers Java: .txt, .java, .jvs");
+	    filtre.setDescription("Fichiers JavaScool: .jvs");
 	    this.addChoosableFileFilter(filtre);
-	    // - Canceled // this.setAccessory(new FilePreviewer(this));
 	  }
 	};
     }

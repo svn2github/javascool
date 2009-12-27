@@ -1,3 +1,3 @@
 
 all :
-	$(MAKE) -C ../.. tst1
+	$(MAKE) -C ../.. dft

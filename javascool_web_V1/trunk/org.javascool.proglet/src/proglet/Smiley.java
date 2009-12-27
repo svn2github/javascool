@@ -31,14 +31,10 @@ public class Smiley implements Proglet { private Smiley() { }
 
   /** Test du panel. */
   static void test() { 
-    try {
-      for(int size = 256; size > 0; size /= 2) {
-	smileyReset(size, size);
-	peace();
-	Macros.sleep(1000 - size);
-      }
-    } catch(Exception e) {
-      System.err.println(e);
+    for(int size = 256; size > 0; size /= 2) {
+      smileyReset(size, size);
+      peace();
+      Macros.sleep(1000 - size);
     }
   }
 

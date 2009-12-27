@@ -16,6 +16,7 @@ import java.net.URL;
 // Used to test as standalone
 import javax.swing.JFrame;
 import java.awt.Point;
+import java.awt.Dimension;
 
 // Used to test as applet
 import javax.swing.JApplet;
@@ -46,13 +47,16 @@ public class Proglets { private Proglets() { }
    * @return The related image icon or an empty icon if not loaded.
    */
   static ImageIcon getIcon(String file) {
-    try { return newImageIcon(file, Thread.currentThread().getContextClassLoader().getResource("img/"+file)); } catch(Exception e1) {
-      try { return newImageIcon(file, new URL("http://javascool.gforge.inria.fr/proglet/img/"+file)); } catch(Exception e2) {
-	System.err.println("Unable to load the '"+file+"' icon, check your configuration or your img/ files ("+e1+";"+e2+")"); return new ImageIcon(); 
+    try { return new ImageIcon(InterfacePrincipale.class.getClassLoader().getResource("img/"+file)); } catch(Exception e1) {
+      // .. to be preferred to Thread.currentThread().getContextClassLoader().getResource( because it is ok in both standalone and applet modes
+      try { System.out.println("Warning: loading "+file+" via gforge");
+	return new ImageIcon(new URL("http://javascool.gforge.inria.fr/proglet/img/"+file)); } catch(Exception e2) {
+	// . . lighter than jar:http://javascool.gforge.inria.fr/proglet/wproglet.jar!/img/"+file 
+	System.err.println("Unable to load the '"+file+"' icon, check your configuration or your img/ files ("+e1+";"+e2+")"); 
+	return new ImageIcon(); 
       }
     }
   }
-  private static ImageIcon newImageIcon(String file, URL url) throws Exception { /*System.err.println("Notice: loading " + file + " @ " + url);*/ return new ImageIcon(url); }
 
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
@@ -95,7 +99,7 @@ public class Proglets { private Proglets() { }
       applet.setProglet(proglet); applet.init();
       JFrame f = new JFrame(); f.getContentPane().add(applet); f.setTitle(proglet); f.pack(); f.setSize(560, 695); f.setVisible(true); 
     } else {
-      System.out.println("Erreur: la proglet «"+proglet+"» n'existe pas, rien ne vas s'afficher !");
+      System.out.println("Erreur: la proglet «"+proglet+"» n'existe pas, rien ne va s'afficher !");
     }
   }
   /** Defines all declared proglets. */
@@ -112,7 +116,8 @@ public class Proglets { private Proglets() { }
    */
   public static JFrame show(JApplet applet, String title, Point where, int width, int height) {
     JFrame f = new JFrame(); f.getContentPane().add(applet); applet.init(); f.pack(); 
-    if (title != null) f.setTitle(title); f.setSize(width, height); if (where != null) { f.setLocationByPlatform(false); f.setLocation(where); } f.setVisible(true); 
+    if (title != null) f.setTitle(title); f.setMinimumSize(new Dimension(width, height)); 
+    if (where != null) { f.setLocationByPlatform(false); f.setLocation(where); } f.setVisible(true); 
     return f;
   }
 }

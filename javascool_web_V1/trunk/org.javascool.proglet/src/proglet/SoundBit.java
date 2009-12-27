@@ -79,8 +79,8 @@ public class SoundBit {
 	System.out.print("showing."); s.show('l');
 	System.out.print("playing .."); System.out.flush(); s.play(); System.out.println(" done."); 
       } else
-	System.err.println("Unable to define the sound: "+sound);
-    } catch(Exception e) { System.err.println(e); e.printStackTrace(); }
+	System.out.println("Unable to define the sound: "+sound);
+    } catch(Exception e) { Proglets.report(e); }
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

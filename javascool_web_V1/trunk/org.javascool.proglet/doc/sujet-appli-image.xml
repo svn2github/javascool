@@ -71,8 +71,8 @@
     </work>
     <work title="Soustraire deux images: détecter des changements">
       Cette partie se fera sans rien programmer, comme la précédente. <ul>
-        <li>Si l'on considère les deux images suivantes:
-        <p align="center"><table><tr><td><img src="img/cmu-jump1.jpg"/></td><td><img src="img/cmu-jump2.jpg"/></td></tr></table></p>
+        <li>Si l'on considère les deux images suivantes (cliquer sur l'image de gauche pour visualiser la séquence):
+        <p align="center"><table><tr><td><a href="img/13_11.avi"><img src="img/cmu-jump1.jpg"/></a></td><td><img src="img/cmu-jump2.jpg"/></td></tr></table></p>
         que s'est il passé entre les deux images ? Si l'on ``soustrait´´ les deux images de manière similaire à ce qui a été fait pour les ``additionner´´ que va t'il se passer,
         pour les pixels correspondants à des points immobiles entre les deux images ? Et les pixels correspondants à des points en mouvement ? 
         Expliquer en deux/trois phrases.</li>

@@ -100,7 +100,8 @@
         <p><t/><r>double</r> d_x = x_B - x_A;</p>
         <p><t/><r>double</r> d_y = y_B - y_A;</p>
       </code> et en utilisant la fonction <b><r>sqrt</r>(x)</b> qui renvoie la racine carrée de <b>x</b>.</li>
-      <li>Tracer alors le cercle de centre <s>I</s> et de diamètre <b>AB</b>.</li>
+      <li>Tracer alors le ``cercle´´ de centre <s>I</s> et de diamètre <b>AB</b>.</li>
+      <li>Ce n'est pas une erreur ! Ce cercle apparait comme un ovale (plus précisément une ellipse) sur le tracé: savez-vous pourquoi ?</li>
     </ul>
     </work>
   </works>
