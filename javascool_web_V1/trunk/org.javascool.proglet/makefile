@@ -3,6 +3,7 @@
 #####################################################################################################################################
 
 # Travail de Thierry en cours:
+# - Ajouter sequence avi images
 #  - Voir le pb de l'acces aux icones à partir du jar qui nécessite une copie sur le site.
 #  - Voir à permettre d'agrandir la fenêtre d'édition en largeur si besoin.
 # - MAJ page dce garde avec autres ``news´´
@@ -16,18 +17,6 @@
 #  - Ajouter un éditeur couleur dans l'applet, 
 #       donc reprendre SourceEditor avec un javax.swing.JTexEditorPane de type text/rtf; au lieu d'un TextArea,
 #       avec le pb de gérer les numéros de ligne avec un texte de structure de telle structure
-
-# Pour Thierry: Nouvelles fonctionnalités à développer:
-# - Implementer style_bms.xsl
-# - Spécifications et Implémentations BML.
-#	bml-path.xsl file:///home/vthierry/doc/soft/saxon/doc/expressions.html#NodeSetExpressions
-#	bml2xml.xsl pour conversion entrante
-#	bml-string, bml-enum { values = "  ", more = true|false }, bml-number { name = , lower =, upper = , step =, value = , punit =  }
-#	bml-expression : term f(x, y) -> {o=f, x, y } ; infix x + y -> {o=+, x, y } ; prefix etc..
-#	bml-parameter de bean
-#		factory { name = ; bean { name = ; 
-#		param { name = , type = , value = , mode = const ; read ; write ; read-write ; init (reset generique avec bml en argument) ; set = { } ; get = { } }
-#		function { output = input = { } }
 
 # Détails d'implémentation non critique, mais qui gagneraient à être revus sur le principe:
 #  - Voir pb des droits qd on rsync sur javascool

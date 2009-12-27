@@ -1,0 +1,21 @@
+
+# Pour Thierry: Nouvelles fonctionnalités à développer:
+# - Implementer style_bms.xsl
+# - Spécifications et Implémentations BML.
+#	bml-path.xsl file:///home/vthierry/doc/soft/saxon/doc/expressions.html#NodeSetExpressions
+#	bml2xml.xsl pour conversion entrante
+#	bml-string, bml-enum { values = "  ", more = true|false }, bml-number { name = , lower =, upper = , step =, value = , punit =  }
+#	bml-expression : term f(x, y) -> {o=f, x, y } ; infix x + y -> {o=+, x, y } ; prefix etc..
+#	bml-parameter de bean
+#		factory { name = ; bean { name = ; 
+#		param { name = , type = , value = , mode = const ; read ; write ; read-write ; init (reset generique avec bml en argument) ; set = { } ; get = { } }
+#		function { output = input = { } }
+
+tst :
+	javac proglet/BML.java
+	java proglet.BML
+
+txt :
+	rm -f doc/about-bml-text.htm
+	$(MAKE) doc
+	firefox doc/about-bml-text.htm
