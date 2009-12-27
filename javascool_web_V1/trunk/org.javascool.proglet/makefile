@@ -6,9 +6,9 @@
 # - Ajout qq sujets au fil de l'eau . . 
 # - Voir algo des cercles à entrer: demander autour de nous
 
-# Pour Hamdi: Nouvelles fonctionnalités à développer:
+# Pour Hamdi: nouvelle fonctionnalité à développer:
 #  - Ajouter un éditeur couleur dans l'applet, 
-#       donc reprendre SourceEditor avec un javax.swing.JTexEditorPane de type text/rtf; au lieu d'un TextArea,
+#       donc reprendre proglet.SourceEditor avec un javax.swing.JTexEditorPane de type text/rtf ou text/html; au lieu d'un TextArea,
 #       avec le pb de gérer les numéros de ligne avec un texte de structure de telle structure
 
 # Détails d'implémentation non critique, mais qui gagneraient à être revus sur le principe:
