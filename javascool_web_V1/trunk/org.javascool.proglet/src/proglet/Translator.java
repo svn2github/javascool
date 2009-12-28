@@ -66,7 +66,57 @@ public class Translator { private Translator() { }
     return "    "+line;
   }
 
-  /** Test if a word is forbidden to use because it is a Java reserved word. 
+  /** Reformats a piece of Java source code. 
+   * - This is a restrictive mechanism dedicated to the JavaScool sub-language of Java.
+   * @param text The text to reformat.
+   * @return The reformated text.
+   */
+  public static String reformat(String text) {    
+    int TAB = 3;
+    // Gets the text and reduce all spaces
+    String text0 = text.trim(), text1 = "";
+    for(int i = 0, tab = 0, par = 0, esc = 0, ln = -1; i < text0.length(); i++) {
+      char c0 = text0.charAt(i), c1 = i == 0 ? ' ' : text0.charAt(i - 1);
+      // Writeln if required
+      if (ln >= 0) { if (c0  == '}') ln -= TAB; text1 += "\n"; for(int n = 0; n < ln; n++) text1 += " "; ln = -1; }
+      // Escapes /* comments 
+      if (c1 == '/' && c0 == '*' && esc == 0) esc = 3;
+      if (c1 == '*' && c0 == '/' && esc == 3) esc = -3;
+      // Escapes // comments
+      if (c1 == '/' && c0 == '/' && esc == 0) esc = 2;
+      if (c0 == '\n' && esc == 2) esc = -2;
+      // Escapes "strings" until end-of-line
+      if (c0 == '"' && c1 != '\\' && esc == 0) esc = 1;
+      else if (((c0 == '"' && c1 != '\\') || c0 == '\n') && esc == 1) esc = -1;
+      // Mirrors char if escaping
+      if (esc != 0) {
+	if (esc != -2) text1 += c0;
+	if (esc < -1) ln = tab;
+	if (esc < 0) esc = 0;
+      // Normalizes spaces
+      } else if (!(Character.isWhitespace(c0) && Character.isWhitespace(c1))) {
+	if (Character.isWhitespace(c0)) c0 = ' ';
+	text1 += c0;
+	// Counts (parenthesies)
+	if (c0 == '(') par++;
+	if (c0 == ')') par--;
+	// Reformats {blocks}
+	if (c0 == '{' || c0 == '}' || (c0 == ';' && par == 0)) {
+	  if (c0 == '{') { tab += TAB; }
+	  if (c0 == '}') { tab -= TAB; }
+	  // Cleans spaces after symbol
+	  for(;i < text0.length() - 1 && Character.isWhitespace(text0.charAt(i + 1)); i++);
+	  // Decides ln
+	  boolean esl = text0.substring(i).startsWith("} else");
+	  if (!esl) 
+	    ln = tab;
+	}
+      }
+    }
+    return "\n"+text1;
+  }
+
+  /** Tests if a word is forbidden to use because it is a Java reserved word. 
    * @param word The word to test.
    * @return true if it forbidden, else false.
    */
@@ -78,6 +128,25 @@ public class Translator { private Translator() { }
     "else", "enum", "extends", "false", "final", "finally", "float", "for", "goto", "if", "implements", "import", "instanceof", "int", "interface", 
     "long", "native", "new", "null", "package", "private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch", "synchronized", 
     "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while"};
+
+  /** Tests if a word is declared as a known JavaScool function.
+   * - Returns true for the declared <a href="Macros.html">Macros</a> and the registered <a href="Proglet.html">Proglet</a> functions.
+   * @param word The word to test.
+   * @return true if it declared, else false.
+   */
+  public static boolean isDeclared(String word) {
+    for(int i = 0; i < declared.length; i++) if (word.equals(declared[i])) return true; return false;
+  }
+  private static final String declared[] = { 
+    "echo", "equal", "sqrt", "pow", "random", "now", "sleep", "show",
+    "clear", "println", "readString", "readInt", "readInteger", "readDouble", "readFloat", "readBoolean", 
+    "dichoLength","dichoCompare",
+    "smileyReset", "smileyLoad", "smileySet", "smileyGet",  
+    "scopeReset", "scopeSet", "scopeAdd",  "scopeAddLine", "scopeAddRectangle", "scopeAddCircle", "scopeX", "scopeY",
+    "convaOut",  "convaCompare", 
+    "synthePlay", "syntheSet", "@tone",
+    ""
+  };
 }
 
 

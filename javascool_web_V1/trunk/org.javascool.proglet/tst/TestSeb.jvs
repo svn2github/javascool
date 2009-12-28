@@ -1,9 +1,9 @@
 
-void main(){
+void main() {
   try{
-    proglet.Proglets.show("Smiley");
+    show("Smiley");
   }
-  catch(Exception e){
+  catch(Exception e) {
     e.printStackTrace();
   }
 }

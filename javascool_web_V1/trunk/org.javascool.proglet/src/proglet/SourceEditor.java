@@ -154,7 +154,7 @@ public class SourceEditor extends JPanel {
       menu.add(new JMenuItem(new AbstractAction("Reformate le code") {
 	  private static final long serialVersionUID = 1L;
 	  public void actionPerformed(ActionEvent evt) { 
-	    doRedraw();
+	    doReformat();
 	  }}));
       menu.addSeparator();
       menu.add(new JMenuItem(new AbstractAction("Zoom -") {
@@ -215,6 +215,7 @@ public class SourceEditor extends JPanel {
       menu.add(new JMenuItem(new InsertAction("scopeSet",             "  scopeSet( , , );", 12)));
       menu.add(new JMenuItem(new InsertAction("scopeAdd",             "  scopeAdd( , , , );", 12)));
       menu.add(new JMenuItem(new InsertAction("scopeAddLine",         "  scopeAddLine( , , , );", 16)));
+      menu.add(new JMenuItem(new InsertAction("scopeAddCircle",       "  scopeAddCircle( , , );", 18)));
       menu.add(new JMenuItem(new InsertAction("scopeAddRectangle",    "  scopeAddRectangle( , , , );", 21)));
       menu.add(new JMenuItem(new InsertAction("scopeX",               "  scopeX();", 0)));
       menu.add(new JMenuItem(new InsertAction("scopeY",               "  scopeY();", 0)));
@@ -241,27 +242,9 @@ public class SourceEditor extends JPanel {
     bar.validate();
   }
 
-  // Defines the text redraw
-  private void doRedraw() {
-    // Gets the text and reduce all spaces
-    String text0 = pane.getText().replaceAll("((//|@)[^\n]*)", "$1/--/--/;").replaceAll("[ \t\n]+", " ").trim(), text1 = "";
-    for(int i = 0, tab = 0, par = 0; i < text0.length(); i++) {
-      char c = text0.charAt(i);
-      text1 += c;
-      if (c == '(') par++;
-      if (c == ')') par--;
-      if (c == '{' || c == '}' || (c == ';' && par == 0)) {
-	if (c == '{') { tab += 2; }
-	if (c == '}' && tab == 0) text1 += "\n";
-	if (i < text0.length() - 2 && text0.charAt(i + 2) == '}') { tab -= 2; }
-	boolean esc = text0.substring(i).startsWith("} else");
-	if (!esc) {
-	  text1 += "\n"; for(int j = 0; j < tab; j++) text1 += " "; 
-	  if (i < text0.length() - 1 && text0.charAt(i + 1) == ' ') i++;
-	}
-      }
-    }
-    setText("\n"+text1.replaceAll("/--/--/;", ""));
+  // Defines the text reformat
+  private void doReformat() {
+    setText(Translator.reformat(pane.getText()));
   }
 
   // Defines a  text insertion

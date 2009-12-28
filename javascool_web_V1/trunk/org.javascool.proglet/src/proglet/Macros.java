@@ -26,6 +26,11 @@ public class Macros { private Macros() { }
    */
   public static double pow(double x, double y) { return Math.pow(x, y); }
 
+  /** Renvoie la racine carrée de x.
+   * @param x argument.
+   */
+  public static double sqrt(double x) { return Math.sqrt(x); }
+
   /** Renvoie un nombre aléatoire uniformément distribué entre 0 et 1.
    */
   public static double random() { return Math.random(); }
@@ -57,5 +62,12 @@ public class Macros { private Macros() { }
    */
   public static void sleep(int delay) { try { if (delay > 0) Thread.sleep(delay); else Thread.yield(); } 
     catch(Exception e) { throw new RuntimeException("Program stopped !"); } 
+  }
+
+  /** Ouvre une proglet secondaire pour utiliser deux proglets simultanément.
+   * @param proglet Le nom de la proglet : "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Synthe", "Tortue", ..
+   */
+  public static void show(String proglet) {
+    Proglets.show(proglet);
   }
 }

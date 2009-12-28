@@ -29,6 +29,8 @@
       <p><r>double</r> x = <r>scopeX()</r>;</p>
       <p><r>double</r> y = <r>scopeY()</r>;</p>
     </code> qui renvoie les valeurs horizontale et verticale du réticule. Le réticule est défini par les boutons en bas de l'écran ou en cliquant.
+    <p><b>Note</b> : quand on clique sur la fenêtre de tracé, manipule les glissoirs de <b>X</b> et <b>Y</b>, ou entre une valeur numérique au clavier, 
+    la fonction <r>main</r> est relancée pour mettre à jour le calcul avec ces nouvelles valeurs.</p>
    </p>
    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] se tracent une sinusoïde bleue et une exponentielle violette.</p>
   </proglet>

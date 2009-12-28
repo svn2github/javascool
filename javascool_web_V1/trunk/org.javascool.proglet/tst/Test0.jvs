@@ -1,4 +1,10 @@
 
+// Voici { un "test // oui oui void 
 void main() {
-    echo("C'est l'été \n                                       \n                                                                            à «moi»");
+   String s = " kk( { ";
+   int n = 3;
+   while(n > 0) {
+      println("2 = " + "     ppypyp " + sqrt(2));
+      n--;
+   }
 }

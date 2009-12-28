@@ -88,7 +88,7 @@ public class InterfacePrincipale extends JApplet {
   // Sets the class name and file
   private void setMainFile(String pFile) {
     File file = new File(pFile);
-    String folder = file.getParent();
+    String folder = file.getParent() == null ? System.getProperty("user.dir") : file.getParent();
     String name = file.getName().replaceAll("\\.[A-Za-z]+$", "");
     if (Translator.isForbidden(name)) {
       main = "my_"+name;
@@ -435,8 +435,7 @@ public class InterfacePrincipale extends JApplet {
 
   // Echos a message in the console. Style: 'b' for bold, 'i' for italic, 'c' for code.
   private void printConsole(String string, char style) { 
-    if (console == null)
-      getJConsoleTextPane();
+    if (console == null) { getJConsoleTextPane(); getJConsoleScrollPane(); }
     switch(style) {
     case 'b': string = "<b>" + string + "</b>"; break;
     case 'c': string = "<b><tt>" + string + "</tt></b>"; break;
@@ -506,7 +505,7 @@ public class InterfacePrincipale extends JApplet {
   // Cette section définie les actions de l'applet
   //
 
-  private void doLire(String pFile) throws IOException {
+  void doLire(String pFile) throws IOException {
     setMainFile(pFile);
     // Read from file
     BufferedReader in = new BufferedReader(new FileReader(pFile));

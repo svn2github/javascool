@@ -11,7 +11,9 @@
 #       donc reprendre proglet.SourceEditor avec un javax.swing.JTexEditorPane de type text/rtf ou text/html; au lieu d'un TextArea,
 #       avec le pb de gérer les numéros de ligne avec un texte de structure de telle structure
 
+#
 # Détails d'implémentation non critique, mais qui gagneraient à être revus sur le principe:
+#
 #  - Voir pb des droits qd on rsync sur javascool
 #  - Voir le pb du JSlider qui affiche sa valeur entière et perturbe la lecture.
 #  - Voir comment remplacer l'usage de saxon:line-number() dans style_about2.xsl pour mise en ligne directe du xml/xsl
@@ -19,6 +21,7 @@
 #  - Voir à permettre d'agrandir la fenêtre d'édition en standalone en largeur qd on passe en mode maximal size.
 #  - Utiliser la methode POST dans InterfacePrincipale pour appeler http://facets.inria.fr/javascool et non GET
 #  - Voir si on peut alleger la copie des img sur le site si Proglets.getIcon devient inutile http://javascool.gforge.inria.fr/proglet/img
+#  - Voir à utiliser un algorithme public pour proglet.Translator.reformat plutôt que ce bricolage local
 #  - La version web a qq soucis, certains exécutaient encore le programme d'un autre. Sous IE, la zone d'input ne marche pas bien, elle s'active mais impossible de taper dedans.
 
 #####################################################################################################################################
@@ -44,7 +47,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar 
-	cd tst ; /usr/bin/java -jar ../$^ edit Konsol
+	cd tst ; /usr/bin/java -jar ../$^ edit Konsol Test0.jvs
 
 # Test du service web (pour vérifier la demo web)
 
