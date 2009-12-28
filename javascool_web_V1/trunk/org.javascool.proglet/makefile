@@ -2,14 +2,20 @@
 ##  Hamdi.Ben_Abdallah@inria.fr et Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved.                     ##
 #####################################################################################################################################
 
+#
 # Travail de Thierry en cours:
+#
 # - Ajout qq sujets au fil de l'eau . . 
-# - Voir algo des cercles à entrer: demander autour de nous
+# - Travailler sur les tutoriaux BML (voir makefile.bml)
+#
 
+#
 # Pour Hamdi: nouvelle fonctionnalité à développer:
+#
 #  - Ajouter un éditeur couleur dans l'applet, 
 #       donc reprendre proglet.SourceEditor avec un javax.swing.JTexEditorPane de type text/rtf ou text/html; au lieu d'un TextArea,
 #       avec le pb de gérer les numéros de ligne avec un texte de structure de telle structure
+#
 
 #
 # Détails d'implémentation non critique, mais qui gagneraient à être revus sur le principe:
@@ -23,6 +29,7 @@
 #  - Voir si on peut alleger la copie des img sur le site si Proglets.getIcon devient inutile http://javascool.gforge.inria.fr/proglet/img
 #  - Voir à utiliser un algorithme public pour proglet.Translator.reformat plutôt que ce bricolage local
 #  - La version web a qq soucis, certains exécutaient encore le programme d'un autre. Sous IE, la zone d'input ne marche pas bien, elle s'active mais impossible de taper dedans.
+#
 
 #####################################################################################################################################
 
