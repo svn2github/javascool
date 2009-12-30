@@ -261,7 +261,7 @@ public class SourceEditor extends JPanel {
 	int offset = pane.getCaretPosition();
 	pane.getDocument().insertString(offset, string, null);
 	pane.setCaretPosition(offset + this.offset);
-      } catch(Exception e) { Proglets.report(e); }
+      } catch(Exception e) { System.err.println(e); }
     }
   }
 
