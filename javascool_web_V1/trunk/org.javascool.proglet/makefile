@@ -54,7 +54,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar 
-	cd tst ; /usr/bin/java -jar ../$^ edit Konsol Test0.jvs
+	cd tst ; /usr/bin/java -jar ../$^ run Synthe # Test0.jvs
 
 # Test du service web (pour vérifier la demo web)
 
