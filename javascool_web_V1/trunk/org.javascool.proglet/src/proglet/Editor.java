@@ -1,3 +1,5 @@
+package proglet;
+
 
 
 import java.awt.Color;

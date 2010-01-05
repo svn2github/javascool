@@ -1,3 +1,5 @@
+package proglet;
+
 
 // Used to define the widget
 import javax.swing.JPanel;
