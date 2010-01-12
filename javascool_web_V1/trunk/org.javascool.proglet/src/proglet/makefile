@@ -1,7 +1,7 @@
 
 tst :
-	javac SourceEditorC.java Editor.java
-	java SourceEditorC
+	javac *.java
+	cd .. ; java proglet/SourceEditor
 
 
 all :

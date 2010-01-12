@@ -7,7 +7,6 @@ package proglet;
 // Used to define the widget
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import javax.swing.JTextArea;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.JScrollPane;
@@ -74,13 +73,13 @@ public class SourceEditor extends JPanel {
   public String getText() { return pane.getText(); }
 
   // Widget construction
-  private JTextArea pane; private JLabel line; private int iline = 0; private JMenuBar bar;
+  private ColorTextPane pane; private JLabel line; private int iline = 0; private JMenuBar bar;
   {
     // Builds the widget
     setLayout(new BorderLayout());
     bar = new JMenuBar();
     add(bar, BorderLayout.NORTH);
-    pane = new JTextArea();
+    pane = new ColorTextPane();
     pane.setEditable(true);
     pane.setFont(new Font("Dialog", Font.PLAIN, 16));
     JScrollPane scroll = new JScrollPane(pane);
@@ -92,7 +91,7 @@ public class SourceEditor extends JPanel {
       pane.addCaretListener(new CaretListener() {
 	  public void caretUpdate(CaretEvent e) {
 	    try { 
-	      int l = 1 + pane.getLineOfOffset(e.getDot());
+	      int l = pane.getDocument().getRootElements()[0].getElementIndex(pane.getCaretPosition()) + 1;
 	      if (l != iline) {
 		line.setText("ligne : " + (l < 10 ? "  " : l < 100 ? " " : "") + l + " | ");
 		iline = l;
@@ -236,8 +235,8 @@ public class SourceEditor extends JPanel {
       menu.add(new JMenuItem(new InsertAction("pow  (x^y)",           "Math.pow( , );", 9)));
       menu.add(new JMenuItem(new InsertAction("sqrt (racine)",        "Math.sqrt( );", 10)));
       menu.add(new JMenuItem(new InsertAction("aleat entre 0 et 1",   "  double   = random();", 10)));
-      menu.add(new JMenuItem(new InsertAction("echo",                   "  echo(\" \")", 8)));
-      menu.add(new JMenuItem(new InsertAction("sleep",                  "  sleep()", 8)));
+      menu.add(new JMenuItem(new InsertAction("echo",                   "  echo(\" \");", 8)));
+      menu.add(new JMenuItem(new InsertAction("sleep",                  "  sleep();", 8)));
     }
     bar.validate();
   }

@@ -5,16 +5,14 @@
 #
 # Travail de Thierry en cours:
 #
+# - Finir integration editeur Hamdi:
+# 	Pb du " \" "
+#	Integration de colorize dans toutes les routines de modifs (insert etc...)
+#	Parametrization par les trucs de Translator
+#	Voir si les try sont indispensables
+#	
 # - Ajout qq sujets au fil de l'eau . . 
 # - Travailler sur les tutoriaux BML (voir makefile.bml)
-#
-
-#
-# Pour Hamdi: nouvelle fonctionnalité à développer:
-#
-#  - Ajouter un éditeur couleur dans l'applet, 
-#       donc reprendre proglet.SourceEditor avec un javax.swing.JTexEditorPane de type text/rtf ou text/html; au lieu d'un TextArea,
-#       avec le pb de gérer les numéros de ligne avec un texte de structure de telle structure
 #
 
 #
