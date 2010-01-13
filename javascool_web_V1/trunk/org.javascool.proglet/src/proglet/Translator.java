@@ -138,7 +138,7 @@ public class Translator { private Translator() { }
     "scopeReset", "scopeSet", "scopeAdd",  "scopeAddLine", "scopeAddRectangle", "scopeAddCircle", "scopeX", "scopeY",
     "convaOut",  "convaCompare", 
     "synthePlay", "syntheSet", "@tone",
-    "main"
+    "String", "main"
   };
 }
 

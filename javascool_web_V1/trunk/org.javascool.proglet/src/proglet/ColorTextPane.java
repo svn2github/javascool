@@ -55,10 +55,15 @@ public class ColorTextPane extends JTextPane {
       StyleConstants.setForeground(OperatorStyle, Color.BLACK);
       StyleConstants.setBold(OperatorStyle, true);
       
-      // Style Names: for identificator of declared variables (used in BML)
-      NamesStyle = doc.addStyle("Names", null);
-      StyleConstants.setForeground(NamesStyle, Color.GRAY);
-      StyleConstants.setBold(NamesStyle, false);
+      // Style Name: for identificator of declared variables (used in BML)
+      NameStyle = doc.addStyle("Name", null);
+      StyleConstants.setForeground(NameStyle, Color.GRAY);
+      StyleConstants.setBold(NameStyle, false);
+
+      // Style Comment: for comments added to the text
+      CommentStyle = doc.addStyle("Comment", null);
+      StyleConstants.setForeground(CommentStyle, new Color(20, 100, 20));
+      StyleConstants.setBold(CommentStyle, true);
     }
 
     // Adds the listener which is going to colorize after a key is entered
@@ -71,7 +76,7 @@ public class ColorTextPane extends JTextPane {
     // Adds the listener which is going to colorize after the document is modified
     doc.addDocumentListener(new DocumentListener() {
 	public void changedUpdate(DocumentEvent e) { }
-	// Colorization must be postponed and globalized to avoid write lock and offset/length incoherence
+	// Here colorization must be postponed and globalized to avoid write lock and offset/length incoherence
 	public void insertUpdate(DocumentEvent e) { recolorize = true ; }
 	public void removeUpdate(DocumentEvent e) { recolorize = true ; }
       }); 
@@ -79,7 +84,7 @@ public class ColorTextPane extends JTextPane {
   // Reference to this document
   private StyledDocument doc;
   // Defined styles
-  private Style NormalStyle, CodeStyle, OperatorStyle, NamesStyle, StringStyle;
+  private Style NormalStyle, CodeStyle, OperatorStyle, NameStyle, StringStyle, CommentStyle;
 
   // Interface with the text modification routines    
   public void setText(String text) { super.setText(text); colorize(0, 0); }
@@ -103,7 +108,7 @@ public class ColorTextPane extends JTextPane {
 
   // Colorizes a text's segment
   private void colorize(Segment text) {
-    StringBuffer string = new StringBuffer(text);
+    String string = new String(text.array, text.offset, text.count);
     // Resets the colorization
     doc.setCharacterAttributes(text.offset, text.count, NormalStyle, true);
     // Colorizes names : put 1st to make reserved/declared words overwrite it
@@ -117,14 +122,16 @@ public class ColorTextPane extends JTextPane {
     colorizeOperators(text);
     // Colorizes strings : put at last, to cover other colorization
     colorizeStrings(text);
+    // Colorizes comments : put at last of the last, to cover other colorization
+    colorizeComments(text);
   }
 
   // Colorizes reserved/declared words
-  private void colorizeWord(String word, Segment text, StringBuffer string) {
+  private void colorizeWord(String word, Segment text, String string) {
     // Searhs all words occurences in the text
     for(int i = 0, j; (j = string.indexOf(word, i)) != -1;) { i = j + word.length();
       // Checks the word bound, avoiding to consider a charsequence within a word
-      if ((j == 0 || (!Character.isLetterOrDigit(text.charAt(j-1)))) && (i == text.length() || (!Character.isLetterOrDigit(text.charAt(i))))) {
+      if ((j == 0 || (!Character.isLetterOrDigit(string.charAt(j-1)))) && (i == string.length() || (!Character.isLetterOrDigit(string.charAt(i))))) {
 	doc.setCharacterAttributes(j + text.offset, word.length(), CodeStyle, true);
       }
     }
@@ -146,7 +153,7 @@ public class ColorTextPane extends JTextPane {
   private void colorizeStrings(Segment text) {
     boolean quoted = false; int j = 0;
     for(int i = text.offset, n = 0; n < text.count; i++, n++) {
-      if (text.array[i] == '"' && (i == 0 || text.array[i - 1] != '\\')) {
+      if ((text.array[i] == '"' && (i == 0 || text.array[i - 1] != '\\')) || (quoted && text.array[i] == '\n')) {
 	if (quoted) {
 	  doc.setCharacterAttributes(j, i - j + 1, StringStyle, true);
 	  quoted = false;
@@ -154,6 +161,26 @@ public class ColorTextPane extends JTextPane {
 	  j = i;
 	  quoted = true;
 	}
+      } 
+    }
+  }
+
+  // Colorizes comments of the form (//.*\n|/\*.*\*/)
+  private void colorizeComments(Segment text) {
+    int comment = 0; int j = 0;
+    for(int i = text.offset, n = 0; n < text.count; i++, n++)  {
+      if (comment == 0) {
+	if (i > 0 && text.array[i - 1] == '/' && text.array[i] == '/') {
+	  j = i - 1;
+	  comment = 1;
+	} else if (i > 0 && text.array[i - 1] == '/' && text.array[i] == '*') {
+	  j = i - 1;
+	  comment = -1;
+	}
+      } else if ((comment == 1 && text.array[i] == '\n') ||
+		 (comment == -1 && i > 0 && text.array[i - 1] == '*' && text.array[i] == '/')) {
+	comment = 0;
+	doc.setCharacterAttributes(j, i - j + 1, CommentStyle, true);
       }
     }
   }
@@ -167,7 +194,7 @@ public class ColorTextPane extends JTextPane {
 	int i1 = i - 1; while(i1 > 0 && Character.isWhitespace(text.array[i1])) i1--;
 	if (i1 > 0 && Character.isLetterOrDigit(text.array[i1])) {
 	  int i0 = i1 - 1; while(i0 > 0 && Character.isLetterOrDigit(text.array[i0])) i0--;
-	  doc.setCharacterAttributes(i0, i1 - i0 + 1, NamesStyle, true);
+	  doc.setCharacterAttributes(i0, i1 - i0 + 1, NameStyle, true);
 	}
       }
     }
