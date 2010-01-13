@@ -8,3 +8,87 @@ void main() {
       n--;
    }
 }
+// Calcule et affiche le quatrième somme d'un parallélogramme.
+void exo2(double x_B, double y_B, double x_C, double y_C) {
+   // On lit les valeurs du réticule
+   double x_A = scopeX();
+   double y_A = scopeY();
+   // On calcule les points I et D
+   double x_I = (x_A + x_C) / 2;
+   double y_I = (y_A + y_C) / 2;
+   double x_D = 2 * x_I - x_B;
+   double y_D = 2 * y_I - y_B;
+   // Les lignes suivantes permettent de tracer les points et les lignes
+   scopeReset();
+   scopeAdd(x_A, y_A, "A", 4);
+   scopeAdd(x_B, y_B, "B", 4);
+   scopeAdd(x_C, y_C, "C", 4);
+   scopeAdd(x_D, y_D, "D", 4);
+   scopeAdd(x_I, y_I, "I", 2);
+   scopeAddLine(x_A, y_A, x_B, y_B, 6);
+   scopeAddLine(x_B, y_B, x_C, y_C, 6);
+   scopeAddLine(x_C, y_C, x_D, y_D, 6);
+   scopeAddLine(x_D, y_D, x_A, y_A, 6);
+}
+void main() {
+   exo2(0.2, 0.4, 0.4, -0.6);
+}
+void main() {
+   scopeReset();
+   double delta = 0.01;
+   double x = -0.5;
+   double y = -0.5;
+   // Tracé du segment horizontal
+   while(x <= 0.5) {
+      scopeSet(x, y, 4);
+      x = x + delta;
+   }
+   // Tracé des trois autres côtés
+   while(y <= 0.5) {
+      scopeSet(x, y, 5);
+      y = y + delta;
+   }
+   while(x >= -0.5) {
+      scopeSet(x, y, 5);
+      x = x - delta;
+   }
+   while(y >= -0.5) {
+      scopeSet(x, y, 5);
+      y = y - delta;
+   }
+}
+
+// Fonction à échantilloner
+double f(double x) {
+  return 1 / (pow(x, 2) + 0.5) - 1;
+}
+// Implémentation de la recherche
+void main() {
+  // Segment de recherche du minimum et maximum
+  double x_min = -0.99;
+  double x_max =  0.99;
+  // Pas de recherche 
+  double x_pas = 0.01;
+  // Recherche du min et max
+  double f_min = f(x_min);
+  double f_max = f(x_min);
+  double x = x_min;
+  while(x <= x_max) {
+    if (f_min < f(x)) {
+      f_min = f(x);
+    }
+    if (f_max > f(x)) {
+      f_max = f(x);
+    }
+    x = x + x_pas;
+  }
+  echo("Pour x  in ["+x_min+", "+x_max+"]");
+  echo("      f(x) in ["+f_min+", "+f_max+"]");
+  // Tracé de la fonction
+  scopeReset();
+  x = x_min;
+  while(x <= x_max) {
+    scopeSet(x, f(x), 4);
+    x = x + x_pas;
+  }
+}

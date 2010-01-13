@@ -131,7 +131,7 @@ public class ColorTextPane extends JTextPane {
     // Searhs all words occurences in the text
     for(int i = 0, j; (j = string.indexOf(word, i)) != -1;) { i = j + word.length();
       // Checks the word bound, avoiding to consider a charsequence within a word
-      if ((j == 0 || (!Character.isLetterOrDigit(string.charAt(j-1)))) && (i == string.length() || (!Character.isLetterOrDigit(string.charAt(i))))) {
+      if ((j == 0 || (!isWordChar(string.charAt(j-1)))) && (i == string.length() || (!isWordChar(string.charAt(i))))) {
 	doc.setCharacterAttributes(j + text.offset, word.length(), CodeStyle, true);
       }
     }
@@ -192,12 +192,15 @@ public class ColorTextPane extends JTextPane {
       case '=': case '{': 
 	// Looks for the previous word and colorizes it if any
 	int i1 = i - 1; while(i1 > 0 && Character.isWhitespace(text.array[i1])) i1--;
-	if (i1 > 0 && Character.isLetterOrDigit(text.array[i1])) {
-	  int i0 = i1 - 1; while(i0 > 0 && Character.isLetterOrDigit(text.array[i0])) i0--;
+	if (i1 > 0 && isWordChar(text.array[i1])) {
+	  int i0 = i1 - 1; while(i0 > 0 && isWordChar(text.array[i0])) i0--;
 	  doc.setCharacterAttributes(i0, i1 - i0 + 1, NameStyle, true);
 	}
       }
     }
   }
+
+  // Tests if the char belongs to a word
+  private static boolean isWordChar(char c) { return  Character.isLetterOrDigit(c) || c == '_'; }
 }
 
