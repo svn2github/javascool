@@ -14,6 +14,8 @@
 <tr><td><img align="left" width="60" src="img/new-icon.jpg"/> <br/> 
 Une nouvelle activité pour faire programmer quelques <a href="sujet-appli-geometry.htm">calculs géométriques</a> avec la nouvelle <proglet name="Scope"/>, 
 en cette rentrée.</td></tr>
+<tr><td><img align="left" width="60" src="img/new-icon.jpg"/> <br/> 
+L'éditeur JavaScool colorise automatiquement le texte de l'algorithme pour mieux distinguer les différents mots du langage.</td></tr>
 <tr><td><hr/></td></tr>
 <tr><td style="background-color:#DDDDDD"><b><a name="quoi">Qu'est ce que c'est ?</a></b>
 <p>Un recueil de ressources pour <i>aider les professeur(e)s des lycées au niveau de l'enseignement de l'algorithmique</i>, donc de <i>l'informatique</i> en seconde.<ol>

@@ -5,8 +5,8 @@
 #
 # Travail de Thierry en cours:
 #
-# - Finir integration editeur Hamdi : qq test en plus avant propagation
-# - Ajout qq sujets au fil de l'eau . . 
+# - Voir à distinguer les types de données, structures de contrôle des autres mots du langage dans la documentation et la colorisation, avec des oranges différents <r mode=''>
+# - Ajout qq sujets au fil de l'eau, selon les retours
 # - Travailler sur les tutoriaux BML (voir makefile.bml)
 #
 
