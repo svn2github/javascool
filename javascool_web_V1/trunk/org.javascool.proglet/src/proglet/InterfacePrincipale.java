@@ -90,7 +90,7 @@ public class InterfacePrincipale extends JApplet {
     File file = new File(pFile);
     String folder = file.getParent() == null ? System.getProperty("user.dir") : file.getParent();
     String name = file.getName().replaceAll("\\.[A-Za-z]+$", "");
-    if (Translator.isForbidden(name)) {
+    if (Translator.isReserved(name)) {
       main = "my_"+name;
       printConsole("Attention: le nom \""+name+"\" est interdit par Java,\n renommons le \""+main+"\"", 'b');
     } else if (!name.matches("[A-Za-z_][A-Za-z0-9_]*")) {

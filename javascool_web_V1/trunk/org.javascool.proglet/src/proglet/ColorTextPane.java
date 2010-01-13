@@ -8,242 +8,169 @@ package proglet;
 import javax.swing.JTextPane;
 
 // Used to define the styles
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.text.BadLocationException;
+import javax.swing.text.StyledDocument;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
+import java.awt.Color;
+import java.awt.Font;
 
 // Used to manage the colorization
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import javax.swing.text.Segment;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.DocumentEvent;
 
 /** This widget defines a colored editor for the proglet source editor.
  * @see <a href="ColorTextPane.java">source code</a>
  */
-public class ColorTextPane extends JTextPane implements KeyListener {
+public class ColorTextPane extends JTextPane {
   private static final long serialVersionUID = 1L;
 
   public ColorTextPane() {
-    this.setFont(new Font("Courier", this.getFont().getStyle(), this.getFont().getSize()));
-    this.setCaretColor(Color.BLUE);
+    doc = getStyledDocument();
+
+    // Defines the colorization styles
+    {
+      setFont(new Font("Courier", getFont().getStyle(), getFont().getSize()));
+      setCaretColor(Color.BLUE);
         
-    doc = this.getStyledDocument();
-        
-    //Style Normal
-    NormalStyle = doc.addStyle("Normal", null);
-    StyleConstants.setForeground(NormalStyle, Color.BLACK);
-    StyleConstants.setBold(NormalStyle, false);
-    
-    //Style Code:
-    CodeStyle = doc.addStyle("Code", null);
-    StyleConstants.setForeground(CodeStyle, Color.ORANGE);
-    StyleConstants.setBold(CodeStyle, true);
-    
-    //Style String:
-    StringStyle = doc.addStyle("String", null);
-    StyleConstants.setForeground(StringStyle, Color.BLUE);
-    StyleConstants.setBold(StringStyle, false);
-    
-    //Style operateur:
-    OperatorStyle = doc.addStyle("Operateur", null);
-    StyleConstants.setForeground(OperatorStyle, Color.BLACK);
-    StyleConstants.setBold(OperatorStyle, true);
-    
-    //Style Boucles:
-    BouclesStyle = doc.addStyle("Boucles", null);
-    StyleConstants.setForeground(BouclesStyle, new Color(0, 120, 80));
-    StyleConstants.setBold(BouclesStyle, true);
-    
-    try {
-      colorise(0, doc.getLength(), doc.getText(0, doc.getLength()));
+      // Style Normal: it must ``cancel´´ all other style effects
+      NormalStyle = doc.addStyle("Normal", null);
+      StyleConstants.setForeground(NormalStyle, Color.BLACK);
+      StyleConstants.setBold(NormalStyle, false);
       
-      courant = doc.getText(0, doc.getLength());
+      // Style Code: for reserved words
+      CodeStyle = doc.addStyle("Code", null);
+      StyleConstants.setForeground(CodeStyle, Color.ORANGE);
+      StyleConstants.setBold(CodeStyle, true);
       
-    } catch (BadLocationException ble) {
-      ble.printStackTrace();
+      // Style String: for quoted strings
+      StringStyle = doc.addStyle("String", null);
+      StyleConstants.setForeground(StringStyle, Color.GREEN);
+      StyleConstants.setBold(StringStyle, false);
+      
+      // Style Operator: for operators chars
+      OperatorStyle = doc.addStyle("Operateur", null);
+      StyleConstants.setForeground(OperatorStyle, Color.BLACK);
+      StyleConstants.setBold(OperatorStyle, true);
+      
+      // Style Names: for identificator of declared variables (used in BML)
+      NamesStyle = doc.addStyle("Names", null);
+      StyleConstants.setForeground(NamesStyle, Color.GRAY);
+      StyleConstants.setBold(NamesStyle, false);
     }
-    
-    addKeyListener(this); 
-  }
 
-  public void setText(String text) {
-    super.setText(text);
-    colorise(true);
+    // Adds the listener which is going to colorize after a key is entered
+    addKeyListener(new KeyListener() {
+	public void keyPressed(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {}
+	// Here colorization is required in a window {-50 .. 50} around the caret position
+	public void keyReleased(KeyEvent e) { colorize(getCaretPosition() - 50, 100); }
+      }); 
+    // Adds the listener which is going to colorize after the document is modified
+    doc.addDocumentListener(new DocumentListener() {
+	public void changedUpdate(DocumentEvent e) { }
+	// Colorization must be postponed and globalized to avoid write lock and offset/length incoherence
+	public void insertUpdate(DocumentEvent e) { recolorize = true ; }
+	public void removeUpdate(DocumentEvent e) { recolorize = true ; }
+      }); 
   }
-
-  public void setCaretPosition(int position) {
-    super.setCaretPosition(position);
-    colorise(false);
-  }
-    
-  private void colorise(int length) {
-    try {
-      String text = doc.getText(0, doc.getLength());
-      int curs, i, j, k;
-            
-      if(!courant.equals(text)) {
-                
-	curs = this.getCaretPosition();
-	k = length;
-	if((i = curs-50) < 0) i=0;
-	if((j = curs+50) > text.length()) j=text.length();
-                    
-	if(k > 0) if((i -= k) < 0) i=0;
-
-	for(; i > 0 ;i--) {
-	  if(text.charAt(i) == '\n') break;
-	  else if(text.charAt(i) == '\r') break;
-	}
-	k = text.indexOf("\n", j);
-	if(k==-1) k=text.indexOf("\r", j);
-	if(k==-1) k=text.length();
-	j = k;
-                    
-	this.colorise(i, j, text.substring(i, j));
-                    
-	this.setStyledDocument(doc);
-	this.setCaretPosition(curs);
-      }
-                
-      courant = doc.getText(0, doc.getLength());
-    } catch (BadLocationException ble) {
-      ble.printStackTrace();
-    }
-  }
-    
-  private void colorise(boolean all) {
-    try {
-      String text = doc.getText(0, doc.getLength());
-      int curs, i, j, k;
-      String tmp = courant;
-      courant = text;
-            
-      if(!tmp.equals(text) && !all) {
-                
-	curs = this.getCaretPosition();
-	k = text.length()-tmp.length();
-	if((i = curs - 50) < 0)  i = 0;
-	if((j = curs + 50)>text.length()) j = text.length();
-                    
-	if(k>0) if((i-=k)<0) i=0;
-
-	for(;i>0;i--) {
-	  if(text.charAt(i) == '\n') break;
-	  else if(text.charAt(i) == '\r') break;
-	}
-	k = text.indexOf("\n", j);
-	if(k==-1) k=text.indexOf("\r", j);
-	if(k==-1) k=text.length();
-	j = k;
-                    
-                    
-	this.colorise(i, j, text.substring(i, j));
-                    
-	this.setStyledDocument(doc);
-	this.setCaretPosition(curs);
-      } else if(all)
-	this.colorise(0, doc.getLength(), text);
-                
-    } catch (BadLocationException ble) {
-      ble.printStackTrace();
-    }
-  }
-    
-  private void colorise(int start, int end, String text) {
-    int i=0, j;
-    Matcher matcher;
-    doc.setCharacterAttributes (start, end-start, NormalStyle, true);
-        
-    colorise(Operator, OperatorStyle, text, start);
-       
-    colorise(Boucles, BouclesStyle, text, start);
-        
-    colorise(Code, CodeStyle, text, start);
-    matcher = Pattern.compile("(\"([^\"]|\\\")*\")", Pattern.MULTILINE).matcher(text);
-    i=j=0;
-    while(matcher.find(i)) {
-      i = matcher.end();
-      j = matcher.start();
-      doc.setCharacterAttributes (j+start, i-j, StringStyle, true);
-    }
-   
-  }
-    
-  private void colorise(String[] tab, Style style, String text, int start) {
-    String mot;
-    int k,i,j,l;
-    char c1;
-    char c='A';
-    if(tab == null) return;
-    for(k=0; k < tab.length; k++) {
-      mot = tab[k];
-      i=j=0;
-      while ((j = text.indexOf(mot, i))!=-1) {
-	if(tab.length!=10){
-	  if(j != 0) {
-	    c = text.charAt(j - 1);
-	  }
-	  c1 = j + mot.length() < text.length() ? text.charAt(j + mot.length()) : '\0';
-	  
-	  //System.out.println(c1);
-	  if (((c1=='.')||(c1=='(')||(c1==')')||(c1=='{')||(c1=='{')||(c1=='}')||(c1=='\n')||(c1=='\r')||(c1=='\b')||(c1=='\f')||(c1=='\t')||(c1==' '))&&((c==')')||(c=='{')||(c=='{')||(c=='}')||(c=='\n')||(c=='\r')||(c=='\b')||(c=='\f')||(c=='\t')||(c==' ')||(c=='.'))) 
-	    { 
-	      i = j;
-	      doc.setCharacterAttributes (i+start, mot.length(), style, true);
-	      //System.out.println(c1);
-	      i += mot.length();
-               
-	    }
-	  else{
-	    i = j;
-	    i += mot.length();
-            	
-	  }
-	}
-	else {
-	  i = j;
-                    
-	  doc.setCharacterAttributes (i+start, mot.length(), style, true);
-	  //System.out.println(c1);
-	  i += mot.length();
-                   
-	}
-      }
-    }
-  }
-    
-  public void keyPressed(KeyEvent e) {}
-  
-  public void keyTyped(KeyEvent e) {}
-
-  public void keyReleased(KeyEvent e) {
-    colorise(false);
-  }
-    
-    
-  private Style NormalStyle, CodeStyle, OperatorStyle, BouclesStyle, ConditionsStyle, StringStyle;
-    
+  // Reference to this document
   private StyledDocument doc;
-  private String courant;
-  
-  private static final String[] Code = {  
-    "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", " const", " continue", "default", "double", "do", 
-    "else", "enum", "extends", "false", "final", "finally", "float", "for", "goto", "if", "implements", "import", "instanceof", "int", "interface", 
-    "long", "native", "new ", " null ","main", " package ", "private", "protected", " public ","print", "return", 
-    "short", "static", "strictfp", "super", "switch", "synchronized", 
-    "this", " throw", "throws", "transient", "true", "try", "void", "volatile", "while",  "echo", "equal", "sqrt", "pow", "random", "now", "sleep", "show",
-    "clear", "println", "readString", "readInt", "readInteger", "readDouble", "readFloat", "readBoolean", 
-    "dichoLength","dichoCompare",
-    "smileyReset", "smileyLoad", "smileySet", "smileyGet",  
-    "scopeReset ", "scopeSet", "scopeAdd",  "scopeAddLine", "scopeAddRectangle", "scopeAddCircle", "scopeX", "scopeY",
-    "convaOut",  "convaCompare","Math",
-    "synthePlay", "syntheSet", "@tone"};
-  
-  private static final String[] Operator = {"^", "(", ")", "+", "-", "*", "/", "|","{","}"};
-  private static final String[] Boucles = { "for" ,"while" };
-  private static final String[] Separateur={"\n","\r","\b","\f","\t"};
+  // Defined styles
+  private Style NormalStyle, CodeStyle, OperatorStyle, NamesStyle, StringStyle;
+
+  // Interface with the text modification routines    
+  public void setText(String text) { super.setText(text); colorize(0, 0); }
+
+  // Colorizes a part of the text
+  private void colorize(int offset, int length) {
+    // Manages a global recolorization
+    if (recolorize) { offset = length = 0; recolorize = false; }
+    // Gets the text to colorize and adjust the bounds to the closest beginning/end of lines
+    Segment text = new Segment(); try { doc.getText(0, doc.getLength(), text); } catch(Exception e) { }
+    if (offset < 0) offset = 0; 
+    while(offset > 0 && text.array[offset] != '\n') offset--;
+    if (length == 0) length = text.count; 
+    if (offset + length > text.count) length = text.count - offset; 
+    while(offset + length < text.count && text.array[offset + length - 1] != '\n') length++;
+    text.offset = offset; text.count = length;
+    colorize(text);
+  }
+  // Global recolorization flag
+  private boolean recolorize = false;
+
+  // Colorizes a text's segment
+  private void colorize(Segment text) {
+    StringBuffer string = new StringBuffer(text);
+    // Resets the colorization
+    doc.setCharacterAttributes(text.offset, text.count, NormalStyle, true);
+    // Colorizes names : put 1st to make reserved/declared words overwrite it
+    colorizeNames(text);
+    // Colorizes all reserved and declared words
+    for(String word : Translator.Reserved) 
+      colorizeWord(word, text, string);
+    for(String word : Translator.Declared)
+      colorizeWord(word, text, string);
+    // Colorizes operators
+    colorizeOperators(text);
+    // Colorizes strings : put at last, to cover other colorization
+    colorizeStrings(text);
+  }
+
+  // Colorizes reserved/declared words
+  private void colorizeWord(String word, Segment text, StringBuffer string) {
+    // Searhs all words occurences in the text
+    for(int i = 0, j; (j = string.indexOf(word, i)) != -1;) { i = j + word.length();
+      // Checks the word bound, avoiding to consider a charsequence within a word
+      if ((j == 0 || (!Character.isLetterOrDigit(text.charAt(j-1)))) && (i == text.length() || (!Character.isLetterOrDigit(text.charAt(i))))) {
+	doc.setCharacterAttributes(j + text.offset, word.length(), CodeStyle, true);
+      }
+    }
+  }
+
+  // Colorizes operators
+  private void colorizeOperators(Segment text) {
+    for(int i = text.offset, n = 0; n < text.count; i++, n++) {
+      switch(text.array[i]) {
+      case '+': case '-': case '*': case '/': case '%': 
+      case '|': case '&': case '!': 
+      case '=': case '(': case ')': case'{': case'}': case '[': case ']': 
+	doc.setCharacterAttributes(i, 1, OperatorStyle, true);
+      }
+    }
+  }
+
+  // Colorizes the quoted strings of the "([^"]|\")*"
+  private void colorizeStrings(Segment text) {
+    boolean quoted = false; int j = 0;
+    for(int i = text.offset, n = 0; n < text.count; i++, n++) {
+      if (text.array[i] == '"' && (i == 0 || text.array[i - 1] != '\\')) {
+	if (quoted) {
+	  doc.setCharacterAttributes(j, i - j + 1, StringStyle, true);
+	  quoted = false;
+	} else {
+	  j = i;
+	  quoted = true;
+	}
+      }
+    }
+  }
+
+  // Colorizes the variables names before [={] operators
+  private void colorizeNames(Segment text) {
+    for(int i = text.offset, n = 0; n < text.count; i++, n++) {  
+      switch(text.array[i]) { 
+      case '=': case '{': 
+	// Looks for the previous word and colorizes it if any
+	int i1 = i - 1; while(i1 > 0 && Character.isWhitespace(text.array[i1])) i1--;
+	if (i1 > 0 && Character.isLetterOrDigit(text.array[i1])) {
+	  int i0 = i1 - 1; while(i0 > 0 && Character.isLetterOrDigit(text.array[i0])) i0--;
+	  doc.setCharacterAttributes(i0, i1 - i0 + 1, NamesStyle, true);
+	}
+      }
+    }
+  }
 }
+

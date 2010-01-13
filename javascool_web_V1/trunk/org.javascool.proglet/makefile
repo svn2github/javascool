@@ -5,18 +5,13 @@
 #
 # Travail de Thierry en cours:
 #
-# - Finir integration editeur Hamdi:
-# 	Pb du " \" "
-#	Integration de colorize dans toutes les routines de modifs (insert etc...)
-#	Parametrization par les trucs de Translator
-#	Voir si les try sont indispensables
-#	
+# - Finir integration editeur Hamdi : qq test en plus avant propagation
 # - Ajout qq sujets au fil de l'eau . . 
 # - Travailler sur les tutoriaux BML (voir makefile.bml)
 #
 
 #
-# Détails d'implémentation non critique, mais qui gagneraient à être revus sur le principe:
+# Détails d'implémentation non critiques, mais qui gagneraient à être revus sur le principe:
 #
 #  - Voir pb des droits qd on rsync sur javascool
 #  - Voir le pb du JSlider qui affiche sa valeur entière et perturbe la lecture.

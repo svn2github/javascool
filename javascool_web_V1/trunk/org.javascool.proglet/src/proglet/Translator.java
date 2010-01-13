@@ -116,28 +116,21 @@ public class Translator { private Translator() { }
     return "\n"+text1;
   }
 
-  /** Tests if a word is forbidden to use because it is a Java reserved word. 
+  /** Tests if a word is reserved to use because it is a Java reserved word. 
    * @param word The word to test.
-   * @return true if it forbidden, else false.
+   * @return true if it reserved, else false.
    */
-  public static boolean isForbidden(String word) {
-    for(int i = 0; i < forbidden.length; i++) if (word.equals(forbidden[i])) return true; return false;
+  public static boolean isReserved(String word) {
+    for(int i = 0; i < Reserved.length; i++) if (word.equals(Reserved[i])) return true; return false;
   }
-  private static final String forbidden[] = { 
+  /** The list of all Java reserved words. */
+  public static final String Reserved[] = { 
     "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue", "default", "double", "do", 
     "else", "enum", "extends", "false", "final", "finally", "float", "for", "goto", "if", "implements", "import", "instanceof", "int", "interface", 
     "long", "native", "new", "null", "package", "private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch", "synchronized", 
     "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while"};
-
-  /** Tests if a word is declared as a known JavaScool function.
-   * - Returns true for the declared <a href="Macros.html">Macros</a> and the registered <a href="Proglet.html">Proglet</a> functions.
-   * @param word The word to test.
-   * @return true if it declared, else false.
-   */
-  public static boolean isDeclared(String word) {
-    for(int i = 0; i < declared.length; i++) if (word.equals(declared[i])) return true; return false;
-  }
-  private static final String declared[] = { 
+  /** The list of all JavaScool declared words. */
+  public static final String Declared[] = { 
     "echo", "equal", "sqrt", "pow", "random", "now", "sleep", "show",
     "clear", "println", "readString", "readInt", "readInteger", "readDouble", "readFloat", "readBoolean", 
     "dichoLength","dichoCompare",
@@ -145,7 +138,7 @@ public class Translator { private Translator() { }
     "scopeReset", "scopeSet", "scopeAdd",  "scopeAddLine", "scopeAddRectangle", "scopeAddCircle", "scopeX", "scopeY",
     "convaOut",  "convaCompare", 
     "synthePlay", "syntheSet", "@tone",
-    ""
+    "main"
   };
 }
 
