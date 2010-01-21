@@ -13,6 +13,9 @@
   </tr></table>
 </xsl:template>
 
+<xsl:template match="goto">
+  <script language="javascript">location.replace("<xsl:value-of select="@href"/>");</script>
+</xsl:template>
 
 <xsl:template match="javascool">
   <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt>
