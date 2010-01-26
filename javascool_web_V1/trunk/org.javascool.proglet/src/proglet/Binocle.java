@@ -103,14 +103,13 @@ public class Binocle implements Proglet { private Binocle() { }
       double v = Math.sin(a_l) * Math.sin(a_r) * (u_r - u_l) + Math.cos(a_l) * Math.sin(a_r) * v_l - Math.sin(a_l) * Math.cos(a_r) * v_r;
       this.u = (int) (u / d); this.v = (int) (v / d);
       // Generates the vertical drawing points
-      double dn = elevation * Math.sin(tilt), de = elevation * Math.sin(pitch + tilt);
-
+      double dl = EM/2 * (1 + Math.sin(pitch+tilt)); a_l -= Math.PI/2; a_r -= Math.PI/2;
       for(int n = 0; n < N; n++) {
-	double a = 2 * n * Math.PI / (N - 1), dl = EM/2;
-	ue_l[n] = (int) (u_l + EM * Math.cos(a));
-	ve_l[n] = (int) (v_l + dl * Math.sin(a));
-	ue_r[n] = (int) (u_r + EM * Math.cos(a));
-	ve_r[n] = (int) (v_r + dl * Math.sin(a));
+	double a = 2 * n * Math.PI / (N - 1);
+	ue_l[n] = (int) (u_l + EM * Math.cos(a) * Math.cos(a_l) - dl * Math.sin(a) * Math.sin(a_l));
+	ve_l[n] = (int) (v_l + dl * Math.sin(a) * Math.cos(a_l) + EM * Math.cos(a) * Math.sin(a_l));
+	ue_r[n] = (int) (u_r + EM * Math.cos(a) * Math.cos(a_r) - dl * Math.sin(a) * Math.sin(a_r));
+	ve_r[n] = (int) (v_r + dl * Math.sin(a) * Math.cos(a_r) + EM * Math.cos(a) * Math.sin(a_r));
       }
     }
     private int u_l, v_l, u_r, v_r, u, v, N = 256, ue_l[] = new int[N], ve_l[] = new int[N], ue_r[] = new int[N], ve_r[] = new int[N];
@@ -120,7 +119,7 @@ public class Binocle implements Proglet { private Binocle() { }
     private target targets[] = new target[ntargets]; { for(int i = 0; i < ntargets; i++) targets[i] = new target(); }
     
 
-    { set(-30, 45, 0, 30, 0); }
+    { set(0, 45, 0, 0, 0); }
   }
 
   //
