@@ -27,7 +27,7 @@ public class Binocle implements Proglet { private Binocle() { }
   // Distance between both eyes
   private static final int base = WIDTH0 / 2, base2 = base / 2;
   // Elevation of the eyes w.r.t neck
-  private static final int elevation = base / 4;
+  private static final int elevation = 0;
   // Field of view in degree 
   private static final double field = 45;
   // Eye time constant
@@ -50,7 +50,7 @@ public class Binocle implements Proglet { private Binocle() { }
 	  public void mouseEntered(MouseEvent e) {  }
 	  public void mouseExited(MouseEvent e) {  }
 	});
-      set(0, 0, 0, 0, 0); 
+      set(0, 30, 0, 0, 0); 
     }
 
     // Constants for drawing
@@ -152,18 +152,18 @@ public class Binocle implements Proglet { private Binocle() { }
 	target t = targets[i]; t.n[0] = '+'; t.c = i == 0 ? Color.RED : i == 1 ? Color.GREEN : i == 2 ? Color.MAGENTA : Color.BLACK;
 	// Projection in the top-view
 	t.u = (int) (MX + X); t.v = (int) (MY - Y); 
+	System.out.println("P = (" + X + ", " + Y + ", " + Z+ ")");
 	// Projection on each retina
-
-
-double Pl0 = (Math.cos(gaze - vergence) * Math.cos(pan) - Math.sin(gaze - vergence) * Math.cos(pitch) * Math.sin(pan)) * X + (Math.cos(gaze - vergence) * Math.sin(pan) + Math.sin(gaze - vergence) * Math.cos(pitch) * Math.cos(pan)) * Y + Math.sin(gaze - vergence) * Math.sin(pitch) * Z - Math.cos(gaze - vergence) * base / 0.2e1 - Math.sin(gaze - vergence) * elevation;
-double Pl1 = (-Math.cos(tilt) * Math.sin(gaze - vergence) * Math.cos(pan) - (Math.cos(tilt) * Math.cos(gaze - vergence) * Math.cos(pitch) - Math.sin(tilt) * Math.sin(pitch)) * Math.sin(pan)) * X + (-Math.cos(tilt) * Math.sin(gaze - vergence) * Math.sin(pan) + (Math.cos(tilt) * Math.cos(gaze - vergence) * Math.cos(pitch) - Math.sin(tilt) * Math.sin(pitch)) * Math.cos(pan)) * Y + (Math.cos(tilt) * Math.cos(gaze - vergence) * Math.sin(pitch) + Math.sin(tilt) * Math.cos(pitch)) * Z + Math.cos(tilt) * Math.sin(gaze - vergence) * base / 0.2e1 - Math.cos(tilt) * Math.cos(gaze - vergence) * elevation;
-double Pl2 = (Math.sin(tilt) * Math.sin(gaze - vergence) * Math.cos(pan) - (-Math.sin(tilt) * Math.cos(gaze - vergence) * Math.cos(pitch) - Math.cos(tilt) * Math.sin(pitch)) * Math.sin(pan)) * X + (Math.sin(tilt) * Math.sin(gaze - vergence) * Math.sin(pan) + (-Math.sin(tilt) * Math.cos(gaze - vergence) * Math.cos(pitch) - Math.cos(tilt) * Math.sin(pitch)) * Math.cos(pan)) * Y + (-Math.sin(tilt) * Math.cos(gaze - vergence) * Math.sin(pitch) + Math.cos(tilt) * Math.cos(pitch)) * Z - Math.sin(tilt) * Math.sin(gaze - vergence) * base / 0.2e1 + Math.sin(tilt) * Math.cos(gaze - vergence) * elevation;
-double Pr0 = (Math.cos(gaze + vergence) * Math.cos(pan) - Math.sin(gaze + vergence) * Math.cos(pitch) * Math.sin(pan)) * X + (Math.cos(gaze + vergence) * Math.sin(pan) + Math.sin(gaze + vergence) * Math.cos(pitch) * Math.cos(pan)) * Y + Math.sin(gaze + vergence) * Math.sin(pitch) * Z + Math.cos(gaze + vergence) * base / 0.2e1 - Math.sin(gaze + vergence) * elevation;
-double Pr1 = (-Math.cos(tilt) * Math.sin(gaze + vergence) * Math.cos(pan) - (Math.cos(tilt) * Math.cos(gaze + vergence) * Math.cos(pitch) - Math.sin(tilt) * Math.sin(pitch)) * Math.sin(pan)) * X + (-Math.cos(tilt) * Math.sin(gaze + vergence) * Math.sin(pan) + (Math.cos(tilt) * Math.cos(gaze + vergence) * Math.cos(pitch) - Math.sin(tilt) * Math.sin(pitch)) * Math.cos(pan)) * Y + (Math.cos(tilt) * Math.cos(gaze + vergence) * Math.sin(pitch) + Math.sin(tilt) * Math.cos(pitch)) * Z - Math.cos(tilt) * Math.sin(gaze + vergence) * base / 0.2e1 - Math.cos(tilt) * Math.cos(gaze + vergence) * elevation;
-double Pr2 = (Math.sin(tilt) * Math.sin(gaze + vergence) * Math.cos(pan) - (-Math.sin(tilt) * Math.cos(gaze + vergence) * Math.cos(pitch) - Math.cos(tilt) * Math.sin(pitch)) * Math.sin(pan)) * X + (Math.sin(tilt) * Math.sin(gaze + vergence) * Math.sin(pan) + (-Math.sin(tilt) * Math.cos(gaze + vergence) * Math.cos(pitch) - Math.cos(tilt) * Math.sin(pitch)) * Math.cos(pan)) * Y + (-Math.sin(tilt) * Math.cos(gaze + vergence) * Math.sin(pitch) + Math.cos(tilt) * Math.cos(pitch)) * Z + Math.sin(tilt) * Math.sin(gaze + vergence) * base / 0.2e1 + Math.sin(tilt) * Math.cos(gaze + vergence) * elevation;
-
-
-	System.out.println("(" + Pl0 + ", " + Pl1 + ", " + Pl2 + ") (" + Pr0 + ", " + Pr1 + ", " + Pr2 + ")");
+	double Pl0, Pl1, Pl2, Pr0, Pr1, Pr2;
+	{
+	  Pl0 = Math.cos(gaze - vergence + pan) * X - Math.sin(gaze - vergence + pan) * Y + Math.cos(gaze - vergence) * base / 0.2e1;
+	  Pl1 = Math.sin(gaze - vergence + pan) * X + Math.cos(gaze - vergence + pan) * Y + Math.sin(gaze - vergence) * base / 0.2e1;
+	  Pl2 = Z + elevation;
+	  Pr0 = Math.cos(gaze + vergence + pan) * X - Math.sin(gaze + vergence + pan) * Y - Math.cos(gaze + vergence) * base / 0.2e1;
+	  Pr1 = Math.sin(gaze + vergence + pan) * X + Math.cos(gaze + vergence + pan) * Y - Math.sin(gaze + vergence) * base / 0.2e1;
+	  Pr2 = Z + elevation;
+	}
+	System.out.println("pl = (" + Pl0 + ", " + Pl1 + ", " + Pl2 + ") pr = (" + Pr0 + ", " + Pr1 + ", " + Pr2 + ")");
 	if (Math.abs(Pl0) < Pl1) {
 	  t.u_l = EM + EW/2 + (int) (EW/2.1 * (Pl0 / Pl1)); 
 	  t.v_l = EY + EH/2 + (int) (EH/2 * (Pl2 / Pl1));
