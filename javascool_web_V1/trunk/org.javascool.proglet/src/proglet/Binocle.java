@@ -25,11 +25,15 @@ public class Binocle implements Proglet { private Binocle() { }
   private static final int WIDTH0  = 540;
   private static final int HEIGHT0 = 580;
   // Distance between both eyes
-  private static final int base = WIDTH0 / 2;
+  private static final int base = WIDTH0 / 2, base2 = base / 2;
   // Elevation of the eyes w.r.t neck
   private static final int elevation = base / 4;
   // Field of view in degree 
   private static final double field = 45;
+  // Eye time constant
+  private static final double tau_eye = 0;
+  // Neck time constant
+  private static final double tau_neck = 0;
 
   // This defines the panel to display
   private static class Panel extends JPanel {
@@ -39,34 +43,26 @@ public class Binocle implements Proglet { private Binocle() { }
       addMouseListener(new MouseListener() {
 	  private static final long serialVersionUID = 1L;
 	  public void mouseReleased(MouseEvent e) { 
-	    //- set(e.getX(), e.getY());
+	    set(0, e.getX() - MX, MY - e.getY(), elevation);
 	  }
 	  public void mousePressed(MouseEvent e) { }
 	  public void mouseClicked(MouseEvent e) {  }	  
 	  public void mouseEntered(MouseEvent e) {  }
 	  public void mouseExited(MouseEvent e) {  }
 	});
+      set(0, 0, 0, 0, 0); 
     }
 
     // Constants for drawing
-    private static final int EM = 20, EW = WIDTH0/2 - EM, EY = 2*HEIGHT0/3 - EM, EH = HEIGHT0/3 - EM, MX = WIDTH0/2, MY = 2*HEIGHT0/3 - base/2 + EM;
+    private static final int EM = 20, EM2 = EM/2, EW = WIDTH0/2 - EM, EY = 2*HEIGHT0/3 - EM, EH = HEIGHT0/3 - EM, MX = WIDTH0/2, MY = 2*HEIGHT0/3 - base/2 + EM;
 
     public void paint(Graphics g) {
       super.paint(g);
       g.setPaintMode(); 
-      // Draws the retina's borders and targets
+      // Draws the retina's borders
       g.setColor(Color.BLUE);
       g.drawRect(EM, EY, EW, EH);
       g.drawRect(EM + EW, EY, EW, EH);
-      for(int i = 0; i < ntargets; i++) {
-	target t = targets[i];
-	if (t.n[0] != ' ') {
-	  g.setColor(t.c);
-	  g.drawChars(t.n, 0, 1, t.u_l, t.v_l);
-	  g.drawChars(t.n, 0, 1, t.u_r, t.v_r);
-	  g.drawChars(t.n, 0, 1, t.u, t.v);
-	}
-      }
       // Draws the binocular mount
       g.drawLine(u_l, v_l, u_r, v_r);
       g.drawOval(MX - 10, MY - 10, 20, 20);
@@ -75,6 +71,18 @@ public class Binocle implements Proglet { private Binocle() { }
       g.setColor(Color.YELLOW);
       g.drawLine(u_l, v_l, u, v);
       g.drawLine(u_r, v_r, u, v);
+      // Draws the retina's targets
+      for(int i = 0; i < ntargets; i++) {
+	target t = targets[i];
+	if (t.n[0] != ' ') {
+	  g.setColor(t.c);
+	  if (t.u_l >= 0 )
+	    g.drawChars(t.n, 0, 1, t.u_l, t.v_l);
+	  if (t.u_r >= 0 )
+	    g.drawChars(t.n, 0, 1, t.u_r, t.v_r);
+	  g.drawChars(t.n, 0, 1, t.u, t.v);
+	}
+      }
     }
 
     /** Sets the mount coordinates.
@@ -85,41 +93,93 @@ public class Binocle implements Proglet { private Binocle() { }
      * @param tilt Neck vertical upper angle in degree.
      */
     public void set(double gaze, double vergence, double pitch, double pan, double tilt) {
+      // Time filtering
+      this.gaze = gaze = this.gaze + (1 - tau_eye) * (gaze - this.gaze);
+      this.vergence = vergence = this.vergence + (1 - tau_eye) * (vergence - this.vergence);
+      this.pitch = pitch = this.pitch + (1 - tau_eye) * (pitch - this.pitch);
+      this.pan = pan = this.pan + (1 - tau_neck) * (pan - this.pan);
+      this.tilt = tilt = this.tilt + (1 - tau_neck) * (tilt - this.tilt);
       // Bounds and converts angles
       double K = Math.PI/180; 
+      if (gaze < -45) gaze = -45; if (gaze > 45) gaze = 45; gaze *= K;
       if (vergence < 0.01) vergence = 0.01; if (vergence > 60) vergence = 60; vergence *= K;
-      if (gaze < -45) gaze = -45; if (gaze > 45) gaze = 45; gaze *= K; gaze += Math.PI/2;
       if (pitch < -30) pitch = -30; if (pitch > 30) pitch = 30; pitch *= K;
       if (pan < -30) pan = -30; if (pan > 30) pan = 30; pan *= K;
       if (tilt < -30) tilt = -30; if (tilt > 30) tilt = 30; tilt *= K;
       // Generates the horizontal drawing points
-      u_l = (int) (MX - base/2 * Math.cos(pan)); u_r = (int) (MX + base/2 * Math.cos(pan));
-      v_l = (int) (MY - base/2 * Math.sin(pan)); v_r = (int) (MY + base/2 * Math.sin(pan));
-      double a_l = pan + gaze + vergence, a_r =  pan + gaze - vergence;
+      double c_pan = Math.cos(pan), s_pan = Math.sin(pan);
+      u_l = (int) (MX - base2 * c_pan); u_r = (int) (MX + base2 * c_pan);
+      v_l = (int) (MY - base2 * s_pan); v_r = (int) (MY + base2 * s_pan);
+      double a_lr = pan + gaze + Math.PI/2, a_l = a_lr + vergence, a_r =  a_lr - vergence;
       // eq := {u = u_l + k_l * cos(a_l), u = u_r + k_r * cos(a_r), v = v_l + k_l * sin(a_l), v = v_r + k_r * sin(a_r)}:
       // collect(solve(eq, {u, v, k_l, k_r}), {u_l, v_l, u_r, v_r}, factor);
-      double d = Math.sin(a_r - a_l);
-      double u = Math.cos(a_l) * Math.cos(a_r) * (v_l - v_r) + Math.cos(a_l) * Math.sin(a_r) * u_l - Math.sin(a_l) * Math.cos(a_r) * u_r;
-      double v = Math.sin(a_l) * Math.sin(a_r) * (u_r - u_l) + Math.cos(a_l) * Math.sin(a_r) * v_l - Math.sin(a_l) * Math.cos(a_r) * v_r;
+      double d = Math.sin(a_r - a_l), c_a_l = Math.cos(a_l), s_a_l = Math.sin(a_l), c_a_r = Math.cos(a_r), s_a_r = Math.sin(a_r);
+      double u = c_a_l * c_a_r * (v_l - v_r) + c_a_l * s_a_r * u_l - s_a_l * c_a_r * u_r;
+      double v = s_a_l * s_a_r * (u_r - u_l) + c_a_l * s_a_r * v_l - s_a_l * c_a_r * v_r;
       this.u = (int) (u / d); this.v = (int) (v / d);
       // Generates the vertical drawing points
-      double dl = EM/2 * (1 + Math.sin(pitch+tilt)); a_l -= Math.PI/2; a_r -= Math.PI/2;
+      double dl = EM2 * (1 + Math.sin(pitch + tilt));
+      drawOval(ue_l, ve_l, u_l, v_l, a_l, EM, dl);
+      drawOval(ue_r, ve_r, u_r, v_r, a_r, EM, dl);
+      // Repaints
+      repaint(); 
+    }
+    private double gaze, vergence, pitch, pan, tilt;
+    private int u_l, v_l, u_r, v_r, u, v, N = 256, ue_l[] = new int[N], ve_l[] = new int[N], ue_r[] = new int[N], ve_r[] = new int[N];
+
+    // Generates the polygon of an oval of center (u0, v0), angle a and axes (L, l)
+    private static void drawOval(int u[], int v[], int u0, int v0, double a, double L, double l) {
+      int N = u.length; if (v.length < N) N = v.length;
       for(int n = 0; n < N; n++) {
-	double a = 2 * n * Math.PI / (N - 1);
-	ue_l[n] = (int) (u_l + EM * Math.cos(a) * Math.cos(a_l) - dl * Math.sin(a) * Math.sin(a_l));
-	ve_l[n] = (int) (v_l + dl * Math.sin(a) * Math.cos(a_l) + EM * Math.cos(a) * Math.sin(a_l));
-	ue_r[n] = (int) (u_r + EM * Math.cos(a) * Math.cos(a_r) - dl * Math.sin(a) * Math.sin(a_r));
-	ve_r[n] = (int) (v_r + dl * Math.sin(a) * Math.cos(a_r) + EM * Math.cos(a) * Math.sin(a_r));
+	double t = 2 * n * Math.PI / (N - 1);
+	u[n] = (int) (u0 + L * Math.cos(t) * Math.sin(a) + l * Math.sin(t) * Math.cos(a));
+	v[n] = (int) (v0 + l * Math.sin(t) * Math.sin(a) - L * Math.cos(t) * Math.cos(a));
       }
     }
-    private int u_l, v_l, u_r, v_r, u, v, N = 256, ue_l[] = new int[N], ve_l[] = new int[N], ue_r[] = new int[N], ve_r[] = new int[N];
 
     // Defines a punctual target
     private static class target { char n[] = {' '}; Color c; int u_l, v_l, u_r, v_r, u, v; }; private static final int ntargets = 4; 
     private target targets[] = new target[ntargets]; { for(int i = 0; i < ntargets; i++) targets[i] = new target(); }
-    
 
-    { set(0, 45, 0, 0, 0); }
+    /** Sets the location of a target.
+     * @param i Target's index, between {0, 4{.
+     * @param X Horizontal 3D location.
+     * @param Y Depth 3D location.
+     * @param Z Vertical 3D location.
+     */
+    public void set(int i, double X, double Y, double Z) {
+      if(0 <= i && i < 4) {
+	target t = targets[i]; t.n[0] = '+'; t.c = i == 0 ? Color.RED : i == 1 ? Color.GREEN : i == 2 ? Color.MAGENTA : Color.BLACK;
+	// Projection in the top-view
+	t.u = (int) (MX + X); t.v = (int) (MY - Y); 
+	// Projection on each retina
+
+
+double Pl0 = (Math.cos(gaze - vergence) * Math.cos(pan) - Math.sin(gaze - vergence) * Math.cos(pitch) * Math.sin(pan)) * X + (Math.cos(gaze - vergence) * Math.sin(pan) + Math.sin(gaze - vergence) * Math.cos(pitch) * Math.cos(pan)) * Y + Math.sin(gaze - vergence) * Math.sin(pitch) * Z - Math.cos(gaze - vergence) * base / 0.2e1 - Math.sin(gaze - vergence) * elevation;
+double Pl1 = (-Math.cos(tilt) * Math.sin(gaze - vergence) * Math.cos(pan) - (Math.cos(tilt) * Math.cos(gaze - vergence) * Math.cos(pitch) - Math.sin(tilt) * Math.sin(pitch)) * Math.sin(pan)) * X + (-Math.cos(tilt) * Math.sin(gaze - vergence) * Math.sin(pan) + (Math.cos(tilt) * Math.cos(gaze - vergence) * Math.cos(pitch) - Math.sin(tilt) * Math.sin(pitch)) * Math.cos(pan)) * Y + (Math.cos(tilt) * Math.cos(gaze - vergence) * Math.sin(pitch) + Math.sin(tilt) * Math.cos(pitch)) * Z + Math.cos(tilt) * Math.sin(gaze - vergence) * base / 0.2e1 - Math.cos(tilt) * Math.cos(gaze - vergence) * elevation;
+double Pl2 = (Math.sin(tilt) * Math.sin(gaze - vergence) * Math.cos(pan) - (-Math.sin(tilt) * Math.cos(gaze - vergence) * Math.cos(pitch) - Math.cos(tilt) * Math.sin(pitch)) * Math.sin(pan)) * X + (Math.sin(tilt) * Math.sin(gaze - vergence) * Math.sin(pan) + (-Math.sin(tilt) * Math.cos(gaze - vergence) * Math.cos(pitch) - Math.cos(tilt) * Math.sin(pitch)) * Math.cos(pan)) * Y + (-Math.sin(tilt) * Math.cos(gaze - vergence) * Math.sin(pitch) + Math.cos(tilt) * Math.cos(pitch)) * Z - Math.sin(tilt) * Math.sin(gaze - vergence) * base / 0.2e1 + Math.sin(tilt) * Math.cos(gaze - vergence) * elevation;
+double Pr0 = (Math.cos(gaze + vergence) * Math.cos(pan) - Math.sin(gaze + vergence) * Math.cos(pitch) * Math.sin(pan)) * X + (Math.cos(gaze + vergence) * Math.sin(pan) + Math.sin(gaze + vergence) * Math.cos(pitch) * Math.cos(pan)) * Y + Math.sin(gaze + vergence) * Math.sin(pitch) * Z + Math.cos(gaze + vergence) * base / 0.2e1 - Math.sin(gaze + vergence) * elevation;
+double Pr1 = (-Math.cos(tilt) * Math.sin(gaze + vergence) * Math.cos(pan) - (Math.cos(tilt) * Math.cos(gaze + vergence) * Math.cos(pitch) - Math.sin(tilt) * Math.sin(pitch)) * Math.sin(pan)) * X + (-Math.cos(tilt) * Math.sin(gaze + vergence) * Math.sin(pan) + (Math.cos(tilt) * Math.cos(gaze + vergence) * Math.cos(pitch) - Math.sin(tilt) * Math.sin(pitch)) * Math.cos(pan)) * Y + (Math.cos(tilt) * Math.cos(gaze + vergence) * Math.sin(pitch) + Math.sin(tilt) * Math.cos(pitch)) * Z - Math.cos(tilt) * Math.sin(gaze + vergence) * base / 0.2e1 - Math.cos(tilt) * Math.cos(gaze + vergence) * elevation;
+double Pr2 = (Math.sin(tilt) * Math.sin(gaze + vergence) * Math.cos(pan) - (-Math.sin(tilt) * Math.cos(gaze + vergence) * Math.cos(pitch) - Math.cos(tilt) * Math.sin(pitch)) * Math.sin(pan)) * X + (Math.sin(tilt) * Math.sin(gaze + vergence) * Math.sin(pan) + (-Math.sin(tilt) * Math.cos(gaze + vergence) * Math.cos(pitch) - Math.cos(tilt) * Math.sin(pitch)) * Math.cos(pan)) * Y + (-Math.sin(tilt) * Math.cos(gaze + vergence) * Math.sin(pitch) + Math.cos(tilt) * Math.cos(pitch)) * Z + Math.sin(tilt) * Math.sin(gaze + vergence) * base / 0.2e1 + Math.sin(tilt) * Math.cos(gaze + vergence) * elevation;
+
+
+	System.out.println("(" + Pl0 + ", " + Pl1 + ", " + Pl2 + ") (" + Pr0 + ", " + Pr1 + ", " + Pr2 + ")");
+	if (Math.abs(Pl0) < Pl1) {
+	  t.u_l = EM + EW/2 + (int) (EW/2.1 * (Pl0 / Pl1)); 
+	  t.v_l = EY + EH/2 + (int) (EH/2 * (Pl2 / Pl1));
+	} else {
+	  t.u_l = t.v_l = - 1;
+	}
+	if (Math.abs(Pr0) < Pr1) {
+	  t.u_r = EM + 3*EW/2 + (int) (EW/2.1 * (Pr0 / Pr1)); 
+	  t.v_r = EY + EH/2   + (int) (EH/2.1 * (Pr2 / Pr1));
+	} else {
+	  t.u_r = t.v_r = - 1;
+	}
+	// Repaints
+	repaint(); 
+      }
+    }
   }
 
   //
