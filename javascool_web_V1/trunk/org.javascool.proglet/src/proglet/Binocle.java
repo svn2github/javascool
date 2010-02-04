@@ -50,7 +50,7 @@ public class Binocle implements Proglet { private Binocle() { }
 	  public void mouseEntered(MouseEvent e) {  }
 	  public void mouseExited(MouseEvent e) {  }
 	});
-      set(0, 30, 0, 0, 0); 
+      set(0, 0, 0, 0, 0); 
     }
 
     // Constants for drawing
@@ -68,7 +68,7 @@ public class Binocle implements Proglet { private Binocle() { }
       g.drawOval(MX - 10, MY - 10, 20, 20);
       g.drawPolygon(ue_l, ve_l, N);
       g.drawPolygon(ue_r, ve_r, N);
-      g.setColor(Color.YELLOW);
+      g.setColor(Color.MAGENTA);
       g.drawLine(u_l, v_l, u, v);
       g.drawLine(u_r, v_r, u, v);
       // Draws the retina's targets
@@ -121,8 +121,12 @@ public class Binocle implements Proglet { private Binocle() { }
       double dl = EM2 * (1 + Math.sin(pitch + tilt));
       drawOval(ue_l, ve_l, u_l, v_l, a_l, EM, dl);
       drawOval(ue_r, ve_r, u_r, v_r, a_r, EM, dl);
+      for(int i = 0; i < ntargets; i++)
+	if (targets[i].n[0] != ' ')
+	  set(i, targets[i].X, targets[i].Y, targets[i].Z);
       // Repaints
       repaint(); 
+      Thread.yield();
     }
     private double gaze, vergence, pitch, pan, tilt;
     private int u_l, v_l, u_r, v_r, u, v, N = 256, ue_l[] = new int[N], ve_l[] = new int[N], ue_r[] = new int[N], ve_r[] = new int[N];
@@ -138,7 +142,7 @@ public class Binocle implements Proglet { private Binocle() { }
     }
 
     // Defines a punctual target
-    private static class target { char n[] = {' '}; Color c; int u_l, v_l, u_r, v_r, u, v; }; private static final int ntargets = 4; 
+    private static class target { char n[] = {' '}; Color c; double X, Y, Z; int u_l, v_l, u_r, v_r, u, v; }; private static final int ntargets = 4; 
     private target targets[] = new target[ntargets]; { for(int i = 0; i < ntargets; i++) targets[i] = new target(); }
 
     /** Sets the location of a target.
@@ -149,10 +153,10 @@ public class Binocle implements Proglet { private Binocle() { }
      */
     public void set(int i, double X, double Y, double Z) {
       if(0 <= i && i < 4) {
-	target t = targets[i]; t.n[0] = '+'; t.c = i == 0 ? Color.RED : i == 1 ? Color.GREEN : i == 2 ? Color.MAGENTA : Color.BLACK;
+	target t = targets[i];	t.X = X; t.Y = Y; t.Z = Z; t.n[0] = '+'; t.c = i == 0 ? Color.RED : i == 1 ? Color.GREEN : i == 2 ? Color.MAGENTA : Color.BLACK;
 	// Projection in the top-view
 	t.u = (int) (MX + X); t.v = (int) (MY - Y); 
-	System.out.println("P = (" + X + ", " + Y + ", " + Z+ ")");
+	//- System.out.println("P = (" + X + ", " + Y + ", " + Z+ ")");
 	// Projection on each retina
 	double Pl0, Pl1, Pl2, Pr0, Pr1, Pr2;
 	{
@@ -163,7 +167,7 @@ public class Binocle implements Proglet { private Binocle() { }
 	  Pr1 = Math.sin(gaze + vergence + pan) * X + Math.cos(gaze + vergence + pan) * Y - Math.sin(gaze + vergence) * base / 0.2e1;
 	  Pr2 = Z + elevation;
 	}
-	System.out.println("pl = (" + Pl0 + ", " + Pl1 + ", " + Pl2 + ") pr = (" + Pr0 + ", " + Pr1 + ", " + Pr2 + ")");
+	//- System.out.println("pl = (" + Pl0 + ", " + Pl1 + ", " + Pl2 + ") pr = (" + Pr0 + ", " + Pr1 + ", " + Pr2 + ")");
 	if (Math.abs(Pl0) < Pl1) {
 	  t.u_l = EM + EW/2 + (int) (EW/2.1 * (Pl0 / Pl1)); 
 	  t.v_l = EY + EH/2 + (int) (EH/2 * (Pl2 / Pl1));
@@ -178,6 +182,7 @@ public class Binocle implements Proglet { private Binocle() { }
 	}
 	// Repaints
 	repaint(); 
+	Thread.yield();
       }
     }
   }
@@ -188,6 +193,16 @@ public class Binocle implements Proglet { private Binocle() { }
 
   /** Test du panel. */
   static void test() {
+    panel.set(0, 0, 200, 0);
+    panel.set(1, 100, 100, 0);
+    for(int n = 0; n < 10; n++) {
+      panel.set(0, 0, 0, 0, 0);
+      for(int a = -30; a <= 30; a++) {
+	Macros.sleep(300);
+	panel.set(a, a < 0 ? 0 : a / 2, 0, a / 4, 0); 
+      }
+    }
+    panel.set(0, 0, 0, 0, 0); 
   }
 
   /** Définition de l'interface graphique de la proglet. */
