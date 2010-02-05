@@ -9,7 +9,7 @@
   <td align="center" width="15%"><b><a style="text-decoration:none;" href="#more">Créer de nouvelles <br/> activités</a></b></td>
   <td align="center" width="10%"><b><a style="text-decoration:none;" href="#contact">Contacts</a></b></td>
   <td align="center" width="10%"><b><a style="text-decoration:none;" href="about-faq.htm"> Vos <br/> questions!</a></b></td>
-  <td align="center" width="10%"><b><a style="text-decoration:none;" href="about-autres.htm"> Ailleurs <br/> .. aussi!</a></b></td>
+  <td align="center" width="10%"><b><a style="text-decoration:none;" href="about-autres.htm"> Ailleurs <br/> ... aussi!</a></b></td>
 </tr></table></td></tr>
 <tr><td><img align="left" width="60" src="img/new-icon.jpg"/> <br/> 
 Une nouvelle activité pour faire programmer quelques <a href="sujet-appli-geometry.htm">calculs géométriques</a> avec la nouvelle <proglet name="Scope"/>, 
@@ -22,12 +22,12 @@ L'éditeur JavaScool colorise automatiquement le texte de l'algorithme pour mieu
   <li>La démarche est expliquée dans  ce <a href="about-manifeste.htm">manifeste</a>.</li>
   <li>Une <a href="about-prg2nd.htm">analyse</a> de l'enseignement actuel de l'algorithmique au lycée en seconde sert de cadrage à ce travail.</li>
 </ol></p>
-<p><i>Remarques:</i><p>
-  <p>Site web ``provisoire´´<footnote id="3"/>: Cette mise en ligne permet d'avoir ces documents disponibles dès cette rentrée scolaire 2009.</p>
-  <p>N'hésitez pas à nous soumettre vos <a href="#contact">avis et critiques</a>, nous en profiterons tous:!.</p>
+<p><i>Remarques :</i><p>
+  <p>Site web "provisoire"<footnote id="3"/> : Cette mise en ligne permet d'avoir ces documents disponibles dès cette rentrée scolaire 2009.</p>
+  <p>N'hésitez pas à nous soumettre vos <a href="#contact">avis et critiques</a>, nous en profiterons tous.</p>
   <p>Ces éléments, encore préliminaires, ont été conçus par des chercheurs<footnote id="4"/> et des enseignants du supérieur et des lycées<footnote id="4"/>,
-  et sont utilisés "pour de vrai" en classe: c'est ce qui fait leur valeur.</p>
-  <p>Logiciels et document sont soumis à une couple de licence qui les rend <a href="#licence">utilisables par tous</a>.</p>
+  et sont utilisés "pour de vrai" en classe : c'est ce qui fait leur valeur.</p>
+  <p>Logiciels et document sont soumis à un couple de licence qui les rend <a href="#licence">utilisables par tous</a>.</p>
 </p></p>
 </td></tr>
 <tr><td><hr/></td></tr>
@@ -37,22 +37,22 @@ L'éditeur JavaScool colorise automatiquement le texte de l'algorithme pour mieu
   <li>Pour les clubs de maths ou les autres initiatives périscolaires de découverte scientifique, 
   ainsi que pour faire des <a href="http://www-sop.inria.fr/science-participative/index.php?page=quelques-t-p-e">TPE</a>.</li>
 </ol>
-<p><i>Remarque:</i> Ces documents ne sont pas vraiment conçus pour apprendre la programmation en ``autodidacte´´<footnote id="2"/>.</p>
+<p><i>Remarque :</i> Ces documents ne sont pas vraiment conçus pour apprendre la programmation en "autodidacte"<footnote id="2"/>.</p>
 </td></tr>
 <tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDDDDD"><b><a name="polys">Polys de cours et documents de référence</a></b>: 
-<p>Deux textes sur les fondements de l'informatique, accessibles à un public lycéen sont disponibles ici:<ol>
+<tr><td style="background-color:#DDDDDD"><b><a name="polys">Polys de cours et documents de référence</a></b> : 
+<p>Deux textes sur les fondements de l'informatique, accessibles à un public lycéen sont disponibles ici :<ol>
   <li>Qu'est ce que l'<a href="about-information.htm">information</a> ?</li>
   <li>Les ingrédients des <a href="about-algorithm.htm">algorithmes</a> !</li>
 </ol>tandis qu'<a href="http://interstices.fr">)i(nterstices</a> propose de nombreux documents de référence sur ces sujets : <ul>
   <li>Sur les <a href="http://interstices.info/jcms/c_5389/algorithmes">algorithmes</a>.</li>
   <li>Sur <a href="http://interstices.info/turing">Alan Turing</a>, pionnier de l'informatique et 
   sur la différence entre <a href="http://interstices.info/calculer-penser">calculer (avec un ordinateur) et penser (avec un cerveau)</a>.</li>
-  <li>Mais aussi . . sur la <a href="http://interstices.info/crypto-chiffre-lettres">cryptographie</a>, etc..</li>
+  <li>Mais aussi ... sur la <a href="http://interstices.info/crypto-chiffre-lettres">cryptographie</a>, etc.</li>
 </ul></p>
 </td></tr>
 <tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDDDDD"><b><a name="parcours">Un parcours pour s'initier à la programmation</a></b>:
+<tr><td style="background-color:#DDDDDD"><b><a name="parcours">Un parcours pour s'initier à la programmation</a></b> :
 <p>Ce parcours permet de s'approprier les cinq ingrédients des algorithmes (en utilisant<footnote id="1"/> la <proglet name="Konsol"/>)<ul>
   <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a>, utiliser les séquences d'instructions.</li>
   <li>Apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
@@ -64,20 +64,20 @@ L'éditeur JavaScool colorise automatiquement le texte de l'algorithme pour mieu
 <tr><td><hr/></td></tr>
 <tr><td style="background-color:#DDDDDD"><b><a name="exos">Exercices et applications</a></b><img align="right" width="60" src="img/new-icon.jpg"/>
 
- <p><a name="eduscol"></a>La 20taine d'excercices activités du document de <a href="more/Algo_Doc_Ress.pdf">ressources</a> publié par <a href="http://eduscol.education.fr">ÉduSCOL</a> a été instanciées en <javascool/>: les ``<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a>´´ (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet: accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux soluces des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature: ??">contacter</a> pour l'accès). Avec le <a href="#parcours">parcours</a>  pour s'initier à la programmation, elles permettent de couvrir le programme de 2nd en algorithmique. 
+ <p><a name="eduscol"></a>La 20taine d'exercices activités du document de <a href="more/Algo_Doc_Ress.pdf">ressources</a> publié par <a href="http://eduscol.education.fr">ÉduSCOL</a> a été instanciées en <javascool/> : les "<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a>" (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet : accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux soluces des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature : ??">contacter</a> pour l'accès). Avec le <a href="#parcours">parcours</a>  pour s'initier à la programmation, elles permettent de couvrir le programme de 2nd en algorithmique. 
  <p>Les sujets proposés ci-après donnent des exemples d'activité liés à ces sujets.</p>
 </p>
 
 <br/>
-<p>Quelques autres applications, exercices et activités:<ul>
+<p>Quelques autres applications, exercices et activités :<ul>
   <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
   <li>Comprendre le principe de la <a href="sujet-appli-dicho.htm">recherche dichotomique</a>.</li>
   <li>Programmer quelques <a href="sujet-appli-geometry.htm">calculs géométriques</a>.</li>
   <li>Découvrir comment marche un <a href="sujet-appli-conva.htm">convertisseur analogique-numérique</a>.</li>
   <li>Comprendre quelques opérations de <a href="sujet-appli-image.htm">manipulation d'images</a>.</li>
-</ul> Note: Aide pour l'enseignant, des <a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a> (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de quelques proglets : accès aux solutions sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux solutions des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature: ??">contacter</a> pour l'accès).</p>
+</ul> Note : Aide pour l'enseignant, des <a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a> (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de quelques proglets : accès aux solutions sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux solutions des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature : ??">contacter</a> pour l'accès).</p>
 <br/>
-<p>Cette liste a vocation à s'étoffer au cours de l'année scolaire 2009-2010: <ul>
+<p>Cette liste a vocation à s'étoffer au cours de l'année scolaire 2009-2010 : <ul>
   <li>en produisant de nouveaux exercices selon les demandes des enseignants ou des groupes de TPEs,</li>
   <li>non sans vous inviter à nous demander de nouveaux sujets, à nous faire partager les vôtres.</li>
 </ul></p>
@@ -86,14 +86,14 @@ L'éditeur JavaScool colorise automatiquement le texte de l'algorithme pour mieu
 <tr><td style="background-color:#DDDDDD"><b><a name="more">Créer de nouvelles activités</a></b><ol>
   <li>Plusieurs proglets<footnote id="1"/> sont disponibles ici, pour s'initier à la programmation et créer des exercices animés et interactifs<ul>
     <li>La <proglet name="Konsol"/>, <ul>
-      <li>utilisées pour les apprentissages initiaux des ingrédients des algorithmes et</li>
+      <li>utilisée pour les apprentissages initiaux des ingrédients des algorithmes et</li>
       <li>tous les exercices qui nécessitent des lectures aux clavier comme dans une «console».</li>
     </ul></li>
     <li>La <proglet name="Scope"/>, <ul>
-      <li>utilisées pour les exercices qui nécessitent un tracé de courbes où un petit affichage graphique.</li>
+      <li>utilisée pour les exercices qui nécessitent un tracé de courbes où un petit affichage graphique.</li>
     </ul></li>
     <li>La <proglet name="Smiley"/>, <ul>
-      <li>utilisées pour les exercices qui nécessitent de manipuler des images ou des graphismes 2D et une <a href="sujet-appli-image.htm">activité</a> spécifique.</li>
+      <li>utilisée pour les exercices qui nécessitent de manipuler des images ou des graphismes 2D et une <a href="sujet-appli-image.htm">activité</a> spécifique.</li>
     </ul></li>
     <li>La <proglet name="Dicho"/>, utilisée pour une <a href="sujet-appli-dicho.htm">activité</a> spécifique (recherche dichotomique).</li>
     <li>La <proglet name="Conva"/>, utilisée pour une <a href="sujet-appli-conva.htm">activité</a> spécifique (conversion analogique-numérique).</li>
@@ -107,46 +107,46 @@ programmée en Java et <a href=" ../api/index.html">documenté</a> pour sa libre
 et permettre des développements dérivés.
 <p>Un enseignant qui connait un peu de programmation peut facilement développer ces <a href="../api/index.html">propre proglet's</a>,
 non sans vous inviter à nous demander (dans la mesure de notre disponibilité) de le faire à partir de votre idée, 
-de vous y aider, et nous de faire partager les vôtres, etc..</p></li>
+de vous y aider, et nous de faire partager les vôtres, etc.</p></li>
 </ol>
 </td></tr>
 <tr><td><hr/></td></tr>
 <tr><td style="background-color:#DDDDDD"><b><a name="dwnl">Téléchargement du logiciel</a></b>
 <table width="100%"><tr><td><b><br/>
-<i>JAVASCOOL EN UN CLICK</i>: CLIQUER [<a href="../wproglet.jar">ICI</a>] 
+<i>JAVASCOOL EN UN CLICK</i> : CLIQUER [<a href="../wproglet.jar">ICI</a>] 
 <ul>
      <li>Attention à bien utiliser un <b>répertoire avec des droits en écriture</b> (par exemple <c>C:\Windows\Temp</c>).</li>
 </ul>
 </b></td></tr></table>
 <hr/>
-<p>Plusieurs instanciations du logiciel javascool sont proposées pour travailler en classe selon la configuration informatique: <ol>
+<p>Plusieurs instanciations du logiciel javascool sont proposées pour travailler en classe selon la configuration informatique : <ol>
   <li>[luxe] <a href="http://javascool.gforge.inria.fr">Le logiciel Java'sCool dans sa forme complète</a>
-    avec un éditeur coloré, des menus adaptés, un interface <a href="http://christian.rellier.free.fr/orphy/ORPHYGTS.htm">Orphy</a>, etc...
+    avec un éditeur coloré, des menus adaptés, un interface <a href="http://christian.rellier.free.fr/orphy/ORPHYGTS.htm">Orphy</a>, etc.
     (nécessite une <a href="http://javascool.gforge.inria.fr/html/javascool/install/Installation.html">installation spécifique</a> sur chaque machine utilisée).</li>
   <li>[facile] <a href="../wproglet.jar">L'environnement de programmation simplifié pour utiliser les proglet's d'un simple clic</a> 
       (nécessite une simple installation standard de Java).</li>
    <li>[sans réseau] L'environnement de programmation simplifié et sa documentation se télécharge 
-   sous forme d'un <a href="http://javascool.gforge.inria.fr/proglet/proglet.zip">fichier [ZIP]</a>: <ul>
+   sous forme d'un <a href="http://javascool.gforge.inria.fr/proglet/proglet.zip">fichier [ZIP]</a> : <ul>
      <li>Il suffit en suite de le copier sur une clé USB puis d'extraire le dossier <c>org.javascool.proglet</c> sur chaque machine,</li>
-     <li>Et de d'ouvrir <c>org.javascool.proglet/index.html</c> avec un navigateur.</li>
+     <li>Et d'ouvrir <c>org.javascool.proglet/index.html</c> avec un navigateur.</li>
    </ul> (nécessite une installation standard de Java sans accès au réseau pendant le travail en classe).</li>
   <li>[luxe] <a href="http://javascool.gforge.inria.fr">Le logiciel Java'sCool dans sa forme complète</a>
-    avec un éditeur coloré, des menus adaptés, un interface <a href="http://christian.rellier.free.fr/orphy/ORPHYGTS.htm">Orphy</a>, etc...
+    avec un éditeur coloré, des menus adaptés, un interface <a href="http://christian.rellier.free.fr/orphy/ORPHYGTS.htm">Orphy</a>, etc.
     (nécessite une <a href="http://javascool.gforge.inria.fr/html/javascool/install/Installation.html">installation spécifique</a> sur chaque machine utilisée).</li>
    <li>[web] <a href="http://facets.inria.fr/javascool">L'environnement de programmation simplifié pour utiliser les proglet's en web service</a>
    (nécessite une installation standard de Java et un accès au réseau pendant le travail en classe). A n'utiliser que pour des essais.</li>
 </ol> et de pouvoir nous contacter (voir <a href="#contact">ci-dessous</a>) si il y a le moindre problème.</p>
-<p><b>Quelle forme du logiciel utiliser ?</b> Probablement la forme dite <c>[facile]</c>, pour commencer: c'est un simple fichier ``<c>jar</c>´´, 
+<p><b>Quelle forme du logiciel utiliser ?</b> Probablement la forme dite <c>[facile]</c>, pour commencer : c'est un simple fichier "<c>jar</c>", 
 qui se lance en cliquant [<b><a href="../wproglet.jar">ICI</a> </b>]
 qui peut se copier sur une clé USB pour le dupliquer sur tous les ordinateurs de la classe si ils ne sont pas en réseau,
 qui ne nécessite que les installations de Java usuelles et permet de faire tout ce qui est proposé ici.
 Bien entendu, la forme dite <c>[luxe]</c> est plus intéressante, mais il faudra attendre la version 2, pour que les <a href="#more">proglets</a> y soient intégrés).
 </p>
 <hr/>
-<p><b><a name="licence">Licence</a></b>: tout le code source de <javascool/> et de ses variantes logicielles est distribué sous la licence 
+<p><b><a name="licence">Licence</a></b> : tout le code source de <javascool/> et de ses variantes logicielles est distribué sous la licence 
   <a href="http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html">CeCILL</a>, et les documents attenants sont sous licence 
   <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/legalcode">CreativeCommons</a>. 
-  La licence CeCILL est une licence de logiciel libre,  conformes au droit français et à la législation européenne, élaborée par le CEA, le CNRS et l'INRIA, 
+  La licence CeCILL est une licence de logiciel libre, conforme au droit français et à la législation européenne, élaborée par le CEA, le CNRS et l'INRIA, 
   qui affirme ici une vision pragmatique du logiciel libre et ouvert.
   Cette licence définit les principes d'utilisation et de diffusion de logiciels libres comme <javascool/>, 
   elle est proche de la <a href="http://fr.wikipedia.org/wiki/Licence_publique_générale_GNU">GNU-GPL</a>. 
@@ -157,19 +157,19 @@ Bien entendu, la forme dite <c>[luxe]</c> est plus intéressante, mais il faudra
   Documents are distributed under the Creative-Commons standard license.</i>)</p>
 </td></tr>
 <tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDDDDD"><b><a name="contact">Nous contacter:</a></b><ul>
-<li>A votre écoute: <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de qq proglet" method="post" enctype="text/plain"><table align="center">
+<tr><td style="background-color:#DDDDDD"><b><a name="contact">Nous contacter :</a></b><ul>
+<li>A votre écoute : <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de qq proglet" method="post" enctype="text/plain"><table align="center">
     <tr><td><select name="Le-sujet">
-     <option>Commentaire général, avis, etc..</option>
-     <option>Demande d'aide ou de support, etc..</option>
+     <option>Commentaire général, avis, etc.</option>
+     <option>Demande d'aide ou de support, etc.</option>
      <option>Signaler un problème ou rapporter une erreur</option>
      <option>Demander ou proposer une nouvelle fonctionnalité</option>
    </select><input type="submit" value="[Créer le message]" /><input type="hidden" name="Mon-message"/></td></tr>
  </table></form><hr/></li>
- <li><b> Voici nos réponses à vos premières <a style="text-decoration:none;" href="about-faq.htm">questions!</a> !</b><hr/></li>
- <li>Si le logiciel ne marche pas chez vous, pour mieux vous aider, il est utile de nous préciser: 
+ <li><b> Voici nos réponses à vos premières <a style="text-decoration:none;" href="about-faq.htm">questions</a> !</b><hr/></li>
+ <li>Si le logiciel ne marche pas chez vous, pour mieux vous aider, il est utile de nous préciser : 
   <form action="mailto:Hamdi.Ben_Abdallah@inria.fr,Thierry.Vieville@sophia.inria.fr,Chalmets@hotmail.fr?subject=[javascool] A propos de proglet: pb logiciel !" method="post" enctype="text/plain"><table align="center">
-  <tr><td>La forme du logiciel utilisée:</td><td><select name="logiciel">
+  <tr><td>La forme du logiciel utilisée :</td><td><select name="logiciel">
       <option>------------------------------------------------------</option>
       <option>Java'sCool dans sa forme complète</option>
       <option>Le web-service http://facets.inria.fr/javascool avec firefox</option>
@@ -177,7 +177,7 @@ Bien entendu, la forme dite <c>[luxe]</c> est plus intéressante, mais il faudra
       <option>Le web-service http://facets.inria.fr/javascool avec  . . (préciser dans le mail)</option>
       <option>Le programme java wproglet.jar en local sur la machine</option>
     </select></td></tr>
-    <tr><td>Le système utilisé:</td><td><select name="systeme">
+    <tr><td>Le système utilisé :</td><td><select name="systeme">
       <option>------------------------------------------------------</option>
       <option>Linux</option>
       <option>Mac Os X</option>
@@ -185,10 +185,10 @@ Bien entendu, la forme dite <c>[luxe]</c> est plus intéressante, mais il faudra
       <option>Windows Vista</option>
       <option>autres . . (préciser dans le mail)</option>
     </select></td></tr>
-    <tr><td>Votre version de java:</td><td><select name="systeme">
+    <tr><td>Votre version de java :</td><td><select name="systeme">
       <option>------------------------------------------------------</option>
-      <option>Java 1.5 (préciser si possible la version: ex 1.5.13)</option>
-      <option>Java 1.6 (préciser si possible la version: ex 1.6.0)</option>
+      <option>Java 1.5 (préciser si possible la version : ex 1.5.13)</option>
+      <option>Java 1.6 (préciser si possible la version : ex 1.6.0)</option>
       <option>Je ne sais pas</option>
     </select></td></tr>
     <tr><td></td><td> <input type="submit" value="[Créer le message]" /><input type="hidden" name="Mon-message"/></td></tr>
@@ -202,17 +202,17 @@ Bien entendu, la forme dite <c>[luxe]</c> est plus intéressante, mais il faudra
   expérimentale concrète, vers la compréhension des notions abstraites qui forment le fondement des sciences de l'information. 
   Ces <c>proglets</c> sont des exemples de «<c>gamelet</c>» (c'est à dire de grains pédagogiques interactifs pour un apprentissage ludique d'une notion), 
   telle que définie par <a href="http://fuscia.info">fuscia</a>.</p>
-  <p>Ces documents ne sont pas conçus pour apprendre la programmation en ``autodidacte´´ . .  
+  <p>Ces documents ne sont pas conçus pour apprendre la programmation en "autodidacte" ...
   mais si vous le souhaitez et si vous pouvez dialoguer avec quelqu'un de votre entourage qui sait programmer 
   (afin de ne pas être bloqué sur des détails de syntaxe ou d'implémentation) 
-  alors oui : n'hésitez pas à suivre le <a href="#parcours">parcours</a> pour s'initier à la programmation: 
+  alors oui : n'hésitez pas à suivre le <a href="#parcours">parcours</a> pour s'initier à la programmation : 
   vous allez vite épater ceux qui pensent être les seuls à savoir programmer !</p>
-  <p>Ces ressources ont vocation à être publiées de manière définitive sur les sites de ressources en ligne aux quels participent l'<a href="http://www-inria.fr">INRIA</a>,
+  <p>Ces ressources ont vocation à être publiées de manière définitive sur les sites de ressources en ligne auxquels participent l'<a href="http://www-inria.fr">INRIA</a>,
   tel que le site <a href="http://interstices.fr">)i(nterstices</a> ou <a href="http://fuscia.info">fuscia</a>, 
   créés à l'initiative de l'<a href="http://www-inria.fr">INRIA</a>. 
   Elles resteront évidemment accessibles à partir de cette page.
-  Et . . soyons indulgents avec cette 1ère mise en forme ! Le fond a été privilégié à la forme ici, pour aller à l'essentiel.</p>
-  <p>Ont contribué à <c>http://javascool.gforge.inria.fr/proglet</c>: <table align="center" width="90%">
+  Et ... soyons indulgents avec cette 1ère mise en forme ! Le fond a été privilégié à la forme ici, pour aller à l'essentiel.</p>
+  <p>Ont contribué à <c>http://javascool.gforge.inria.fr/proglet</c> : <table align="center" width="90%">
   <tr><td>
   <!-- <i>Frédérique Ancel</i> (Professeure de Physique, lycée Léonard de Vinci, Antibes), -->
   <i>Jean-Pierre Archambault</i> (Professeur de mathématiques et Chargé de Mission «veille technologique»),
