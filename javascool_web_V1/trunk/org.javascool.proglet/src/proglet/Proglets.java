@@ -86,7 +86,7 @@ public class Proglets { private Proglets() { }
     String proglet = usage.length == 2 ? usage[1] : usage.length == 1 ? usage[0] : "Konsol"; applet.setProglet(proglet); 
     boolean edit = usage.length == 2 ? "edit".equals(usage[0]) : true; applet.setEdit(edit); 
     try { if (edit && usage.length == 3) applet.doLire(usage[2]); } catch(Exception e) { System.err.println(e); }
-    show(applet, "javascool proglet editor", new Point(570, 0), 560, 720);
+    show(applet, "javascool proglet editor v10-02", new Point(570, 0), 560, 720);
   }
 
   /** Opens an proglet pannel in a standalone frame.

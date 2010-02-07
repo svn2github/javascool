@@ -5,8 +5,8 @@
 #
 # Travail de Thierry en cours:
 
-# rendre visible le numero de version
-# permettre l acces au sources de la demo
+# finir et plier binocle
+# permettre l acces au sources de la demo, apres corrections acb
 
 #
 # - Distinguer les types de données, structures de contrôle des autres mots du langage dans la documentation et la colorisation, avec des oranges différents <r mode=''>
@@ -51,7 +51,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar 
-	cd tst ; /usr/bin/java -jar ../$^ run Binocle # Test0.jvs
+	cd tst ; /usr/bin/java -jar ../$^ run Konsol # Test0.jvs
 
 # Test du service web (pour vérifier la demo web)
 

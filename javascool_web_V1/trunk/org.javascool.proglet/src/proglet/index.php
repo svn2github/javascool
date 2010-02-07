@@ -16,10 +16,11 @@ echo '<html><head>
 </head><body>';
 //in case of debug// print_r($_REQUEST);
 echo '<table><tr><td valign="top"><a href="http://javascool.gforge.inria.fr/proglet"><img src="home.png"/></a></td>
-  <td width="570" height="730" valign="top" align="center"><applet code="proglet.InterfacePrincipale.class" archive="proglet.jar" width="560" height="720">
-  <param name="proglet" value="'.$prog.'"/>
-  <param name="edit" value="true"/>'.
-  (strlen($path) > 0 ? '  <param name="path" value="'.$path.'"/>' : '').
+  <td width="570" height="730" valign="top" align="center">
+  <tt>Javascool proglet editor v10-2</tt>
+  <applet code="proglet.InterfacePrincipale.class" archive="proglet.jar" width="560" height="720">
+    <param name="proglet" value="'.$prog.'"/>
+    <param name="edit" value="true"/>'.(strlen($path) > 0 ? '  <param name="path" value="'.$path.'"/>' : '').
 '</applet></td><td width="570" height="730" valign="top" align="center">
 ';
 
