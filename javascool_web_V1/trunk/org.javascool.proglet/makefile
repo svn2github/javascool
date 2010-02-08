@@ -5,7 +5,6 @@
 #
 # Travail de Thierry en cours:
 
-# finir et plier binocle
 # permettre l acces au sources de la demo, apres corrections acb
 
 #
