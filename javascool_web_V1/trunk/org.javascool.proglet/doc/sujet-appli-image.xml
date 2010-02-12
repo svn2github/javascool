@@ -4,7 +4,7 @@
   <proglet name="Smiley"/>
   
   <objectif>
-    Le but de ce tutoriel est de comprendre comment se code est manipule une image pixelique. 
+    Le but de ce tutoriel est de comprendre comment ce code manipule une image pixellique. 
     Il faut déja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,
     se servir de <a href="sujet-about-variables.htm">variables</a> et avoir découvert l'<a href="sujet-about-if.htm">instruction conditionnelle</a> et 
     utiliser des <a href="sujet-about-while.htm">boucles</a> et définir une <a href="sujet-about-functions.htm">fonction</a>.
@@ -12,16 +12,16 @@
   
   <notes>
     <note><img src="img/execute.png"/> Choisir la proglet <c>Smiley</c> et non <c>Konsol</c> dans le bouton lié à l'exécution.</note>
-    <note>Lire en détail la description de la <proglet name="Smiley"/>.</note>
-    <note p="Comment est codée une image ?">
-      Une image est un tableau à deux dimensions de points lumineux, c'est à dire de «pixels». 
-      Chaque pixel a une valeur entre <c>0</c> (pour le "noir") et <c>255</c> (pour le "blanc").
-      Bien lire le document sur l'<a href="about-information.htm">information</a> en particulier la section "Décrire tous les dessins du monde".
-    </note>
+     <note>Lire en détail la description de la <proglet name="Smiley"/>.</note>
+     <note p="Comment est codée une image ?">
+       Une image est un tableau à deux dimensions de points lumineux, c'est à dire de «pixels». 
+       Chaque pixel a une valeur entre <c>0</c> (pour le "noir") et <c>255</c> (pour le "blanc").
+       Bien lire le document sur l'<a href="about-information.htm">information</a> en particulier la section "Décrire tous les dessins du monde".
+     </note>
   </notes>
   <works>
     <work title="Découvrir un code qui modifie chaque pixel de l'image">
-      Considérons le code suivant: <code>
+      Considérons le code suivant : <code>
         <m>Fonction appliquée à chaque pixel</m>
         <p><r>int</r> f(<r>int</r> x) {</p>
         <p><t/><r>return</r> 255 - x;</p>
@@ -41,25 +41,25 @@
       </code><ul>
         <li>Le programme principal <r>main</r> charge une belle photo noir et blanc de <a href="http://fr.wikipedia.org/wiki/Doisneau">Doisneau</a>.</li>
         <li>Les deux premières lignes de la fonction <b>filtre</b> bouclent sur tous les pixels en vertical et en horizontal.</li>
-        <li>Expliquer en quelques mots le rôle des variables <b>i</b> et <b>j</b>.</li>
+        <li>Expliquez en quelques mots le rôle des variables <b>i</b> et <b>j</b>.</li>
         <li>Que fait la construction <b><r>smileySet</r>(i, j, f(<r>smileyGet</r>(i, j)));</b> pour un pixel de coordonnée (<b>i, j</b>) ?.</li>
-        <li>Essayer ce code, puis le code en ajoutant la fonction <b>filtre();</b> après <b><r>smileyLoad</r>()</b> dans le programme principal: que se passe t'il ?</li>
-        <li>Expliquer en quelques mots ce phénomène d'«inversion vidéo».</li>
+        <li>Essayez ce code, puis le code en ajoutant la fonction <b>filtre();</b> après <b><r>smileyLoad</r>()</b> dans le programme principal : que se passe t'il ?</li>
+        <li>Expliquez en quelques mots ce phénomène d'«inversion vidéo».</li>
         <li>A la place de la construction <b><r>return</r> 255 - x;</b>, mettre la construction <b><r>return</r>x;</b>: que se passe t'il et pourquoi ?</li>
-        <li>Augmenter ou baisser la <i>luminosité</i> d'une image revient à ajouter ou soustraire une valeur constante à la valeur de chaque pixel: 
-        essayer en modifiant la fonction <b>f()</b>.</li>
+        <li>Augmenter ou baisser la <i>luminosité</i> d'une image revient à ajouter ou soustraire une valeur constante à la valeur de chaque pixel : 
+        essayez en modifiant la fonction <b>f()</b>.</li>
         <li>Que se passe t'il si on choisit <b><r>return</r> x + 255;</b> et pourquoi ?.</li>
         <li>Que se passe t'il si on choisit <b><r>return</r> x - 255;</b> et pourquoi ?.</li>
-        <li>Augmenter ou baisser le <i>contraste</i> d'une image revient à multiplier ou diviser par un gain constant la valeur de chaque pixel: 
-        essayer en modifiant la fonction <b>f()</b>.</li>
+        <li>Augmenter ou baisser le <i>contraste</i> d'une image revient à multiplier ou diviser par un gain constant la valeur de chaque pixel : 
+        essayez en modifiant la fonction <b>f()</b>.</li>
         <li>Que se passe t'il si on choisit <b><r>return</r> 0 * x;</b> et pourquoi ?.</li>
         <li>Que se passe t'il si on choisit <b><r>return</r> 100 * x - 128;</b> et pourquoi ?.</li>
       </ul>
     </work>
-    <work title="Ajouter deux images l'effet de calque"> 
+    <work title="Ajouter deux images : l'effet de calque"> 
       Cette partie se fera sans rien programmer. 
-      Considérons les deux images issues d'une célèbre <a href="http://www.ri.cmu.edu/publication_view.html?pub_id=3904">base de donnée</a>
-      mise à disposition de la communauté scientifique internationale pour étudier les logiciels de traitement des séquences d'images avec des mouvements humains.<ul>
+      Considérons les deux images issues d'une célèbre <a href="http://www.ri.cmu.edu/publication_view.html?pub_id=3904">base de donnée</a>,
+      mise à disposition de la communauté scientifique internationale pour étudier les logiciels de traitement des séquences d'images contenant des mouvements humains.<ul>
         <li>Si l'on considère les deux images suivantes:
         <p align="center"><table><tr><td><img src="img/cmu-jump1.jpg"/></td><td><img src="img/cmu-jump3.jpg"/></td></tr></table></p>
         que se passera t'il si on ``additionne´´ ces deux images ? 
@@ -69,7 +69,7 @@
         <li>Ecrire en langage naturel (avec vos mots à vous, sans vous soucier de le programmer) un algorithme qui simule le fait de poser une image dessinée sur un calque sur une autre.</li>
       </ul>
     </work>
-    <work title="Soustraire deux images: détecter des changements">
+    <work title="Soustraire deux images : détecter des changements">
       Cette partie se fera sans rien programmer, comme la précédente. <ul>
         <li>Si l'on considère les deux images suivantes (cliquer sur l'image de gauche pour visualiser la séquence):
         <p align="center"><table><tr><td><a href="img/13_11.avi"><img src="img/cmu-jump1.jpg"/></a></td><td><img src="img/cmu-jump2.jpg"/></td></tr></table></p>
@@ -81,7 +81,7 @@
       </ul>
     </work>
     <work title="Découvrir un code qui filtre les pixels de l'image">
-      Considérons le code suivant: <code>
+      Considérons le code suivant : <code>
         <m>Fonction appliquée à chaque pixel</m>
         <p><r>void</r> filtrePixel(<r>int</r> i, <r>int</r> j) {</p>
         <p><t/><r>int</r> valeur = (<r>smileyGet</r>(i, j) + <r>smileyGet</r>(i + 1, j)+ <r>smileyGet</r>(i, j + 1)+ <r>smileyGet</r>(i - 1, j)+ <r>smileyGet</r>(i, j - 1)) / 5;</p>
@@ -103,16 +103,16 @@
         <p><t/>}</p>
         <p>}</p>
       </code><ul>
-        <li>Le programme principal <r>main</r> charge la photo est appelle la nouvelle fonction <b>filtre</b> deux fois de suite (pour <b>n = 0</b> et <b>n = 1</b>).</li>
+        <li>Le programme principal <r>main</r> charge la photo et appelle la nouvelle fonction <b>filtre</b> deux fois de suite (pour <b>n = 0</b> et <b>n = 1</b>).</li>
         <li>La nouvelle fonction <b>filtre</b> appelle la fonction <b>filtrePixel</b> sur chaque pixel.</li>
-        <li>Expliquer ce que fait cette fonction <b>filtrePixel</b>: entre quelles 5 valeurs calcule t'elle la moyenne (faire un dessin) ?</li>
-        <li>Essayer le code: que se passe t'il visuellement ? Pourquoi ce filtre a t'il un tel effet ?</li>
-        <li>Essayer le code en appliquant non pas le filtre <c>2</c> mais <c>10</c> fois, puis  <c>10</c> fois, dans le programme principal: que se passe t'il ?</li>
-        <li>Essayer aussi avec d'autres images de votre choix lues sur internet.</li>
+        <li>Expliquez ce que fait cette fonction <b>filtrePixel</b> : entre quelles 5 valeurs calcule t'elle la moyenne (faire un dessin) ?</li>
+        <li>Essayez le code : que se passe t'il visuellement ? Pourquoi ce filtre a t'il un tel effet ?</li>
+        <li>Essayez le code en appliquant non pas le filtre <c>2</c> mais <c>10</c> fois, puis  <c>10</c> fois, dans le programme principal : que se passe t'il ?</li>
+        <li>Essayez aussi avec d'autres images de votre choix vues sur internet.</li>
       </ul>
     </work>
     <work title="D'autres filtres d'images">
-      Considérons le code suivant, avec une autre fonction de filtre: <code>
+      Considérons le code suivant, avec une autre fonction de filtre : <code>
         <m>Fonction appliquée à chaque pixel</m>
         <p><r>void</r> filtrePixel(<r>int</r> i, <r>int</r> j) {</p>
         <p><t/><r>int</r> valeur = 128 + (<r>smileyGet</r>(i, j) - <r>smileyGet</r>(i + 1, j));</p>
@@ -133,14 +133,14 @@
         <p>}</p>
       </code><ul>
        <li>Que se passe t'il dans ce cas ? Décrivez ce que vous observez.</li>
-       <li>Pourquoi avoir ajouté <c>128</c> ? Essayer avec les expressions <b>valeur = (<r>smileyGet</r>(i, j) - <r>smileyGet</r>(i + 1, j));</b> 
-       puis <b>valeur = -(<r>smileyGet</r>(i, j) - <r>smileyGet</r>(i + 1, j));</b> pour bien comprendre ce qui se passe ?</li>
-       <li>Comment observer la même chose avec les contours horizontaux ? Proposer une nouvelle fonction pour se faire.</li>
-       <li>Essayer la construction <b>valeur = (<r>smileyGet</r>(i, j) - <r>smileyGet</r>(i + 1, j) - <r>smileyGet</r>(i, j + 1));</b> et commenter le résultat.</li>
-       <li>Deux questions très subtiles, pour les «cracks»: <ul>
+       <li>Pourquoi avoir ajouté <c>128</c> ? Essayez avec les expressions <b>valeur = (<r>smileyGet</r>(i, j) - <r>smileyGet</r>(i + 1, j));</b> 
+       puis <b>valeur = -(<r>smileyGet</r>(i, j) - <r>smileyGet</r>(i + 1, j));</b> pour bien comprendre ce qui se passe.</li>
+       <li>Comment observer la même chose avec les contours horizontaux ? Proposez une nouvelle fonction pour ce faire.</li>
+       <li>Essayez la construction <b>valeur = (<r>smileyGet</r>(i, j) - <r>smileyGet</r>(i + 1, j) - <r>smileyGet</r>(i, j + 1));</b> et commentez le résultat.</li>
+       <li>Deux questions très subtiles, pour les «cracks» : <ul>
          <li>Avez vous remarqué que la boucle de la fonction <b>filtre()</b> n'a pas les mêmes bornes d'itération pour ces filtres 
-         que lors du 1er cas où on tranformait juste l'intensité d'un pixel: sauriez-vous dire pourqoi ?</li>
-         <li>Que se passerait-il si on utilisait <b>valeur = 128 + (<r>smileyGet</r>(i, j) - <r>smileyGet</r>(i - 1, j));</b> : essayer et tenter d'expliquer pourquoi.</li>
+         que lors du 1er cas où on tranformait juste l'intensité d'un pixel ? Sauriez-vous dire pourqoi ?</li>
+         <li>Que se passerait-il si on utilisait <b>valeur = 128 + (<r>smileyGet</r>(i, j) - <r>smileyGet</r>(i - 1, j));</b> : essayez et tentez d'expliquer pourquoi.</li>
        </ul></li>
       </ul>
     </work>

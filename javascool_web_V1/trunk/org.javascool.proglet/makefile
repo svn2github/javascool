@@ -5,8 +5,6 @@
 #
 # Travail de Thierry en cours:
 
-# permettre l acces au sources de la demo, apres corrections acb
-
 #
 # - Distinguer les types de données, structures de contrôle des autres mots du langage dans la documentation et la colorisation, avec des oranges différents <r mode=''>
 # - Ajout qq sujets au fil de l'eau, selon les retours

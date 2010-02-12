@@ -13,17 +13,17 @@
   
   <notes>
     <note><img src="img/execute.png"/> Choisir la proglet <c>Conva</c> et non <c>Konsol</c> dans le bouton lié à l'exécution.</note>
-    <note>L'ordinateur peut grâce à un convertisseur numérique analogique générer une tension en volt, grâce à la fonction:
+    <note>L'ordinateur peut grâce à un convertisseur numérique analogique générer une tension en volt, grâce à la fonction :
     <code>
       <p><r>convaOut</r>(tension);</p>
     </code>
-    cette <b>tension</b> est un <r>int</r> varie en 0 et 1.023 volts et est donnée en milli-volts et il peut aussi comparer cette tension à la tension inconnue avec la fonction:
+    cette <b>tension</b> est un <r>int</r> varie en 0 et 1.023 volts et est donnée en milli-volts et il peut aussi comparer cette tension à la tension inconnue avec la fonction :
     <code>
       <p><r>convaCompare</r>();</p>
     </code>
      qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
     </note>
-    <note>Le schéma est illustré ici:
+    <note>Le schéma est illustré ici :
      <p align="center"><img src="img/conv.png"/></p>
      Bien entendu, ici, nous simulons ce mécanisme par une petite proglet.
     </note>
@@ -32,7 +32,7 @@
    </note>
   </notes>
   <works>
-    <work title="Tester toutes les valeurs">Essayer le programme suivant:
+    <work title="Tester toutes les valeurs">Essayer le programme suivant :
     <code>
       <p><r>int</r> v = 1023;</p>
       <p><r>while</r>(v >= 0) {</p>
@@ -44,11 +44,11 @@
       <p>}</p>
     </code><ul>
       <li>Que se passe t'il ? Que manque t'il pour qu'il fonctionne comme nous l'espérions ? </li>
-      <li>Ajoutons alors l'instruction <r>break;</r> (que nous découvrons ici) et qui permet de sortir de la boucle <r>while</r>: 
+      <li>Ajoutons alors l'instruction <r>break;</r> (que nous découvrons ici) et qui permet de sortir de la boucle <r>while</r> : 
       si le programme rencontre <r>break;</r>, il sort de la boucle. A quel endroit l'insérer pour que cela marche ?</li>
     </ul>Noter que cet algorithme est bien long car il faut essayer toutes les valeurs.</work>
     <work title="Couper le problème en deux">
-      Voici une idée: On va couper l'espace de recherche en deux, puis en deux, puis en deux, etc.. Dans le programme suivant on a déjà divisé l'espace de recherche en 2 !
+      Voici une idée : On va couper l'espace de recherche en deux, puis en deux, puis en deux, etc. Dans le programme suivant on a déjà divisé l'espace de recherche en 2 !
       <code>
         <m>La valeur est donc comprise entre 0 et 1023</m>
         <p><r>convaOut</r>(512); <r>if</r> (<r>convaCompare</r>() == 1) {</p>
@@ -61,18 +61,18 @@
         <m>A vous de compléter en comparant à 768</m>
         <p>}</p>
       </code><ul>
-        <li>Compléter ce code en comparant à 256 et 768, puis utilisant le tableau ci dessous à 128, etc... Et essayer le résultat ..
+        <li>Compléter ce code en comparant à 256 et 768, puis utilisant le tableau ci dessous à 128, etc. Et essayer le résultat ...
           <p align="center"><img src="img/dicho.png"/></p>
           On remarque qu'en 3 étapes nous avons déjà une idée de la valeur à 12.5% près, mais c'est bien long à écrire !</li>
-        <li>Notez que les intervalles sont de:
+        <li>Notez que les intervalles sont de :
           <p>512 milli-volts à la 1ère étape</p>
           <p>256 milli-volts à la 2ème étape</p>
           <p>128 milli-volts à la 3ème étape</p>
-        et si nous avions continuer les intervalles suivants auraient quelles valeurs ? Continuer jusqu'à trouver un intervalle plus petit que 1.
+        et si nous avions continué les intervalles suivantes auraient quelles valeurs ? Continuer jusqu'à trouver une intervalle plus petite que 1.
         <br/>
-        Ce calcul se fait en combien d'étape finalement ? Et ceci au lieu de . . tester les 1024 valeurs !</li>
+        Ce calcul se fait en combien d'étapes finalement ? Et ceci au lieu de ... tester les 1024 valeurs !</li>
      </ul></work>
-     <work title="L'algorithme dichotomique">Essayons maintenant avec une boucle:
+     <work title="L'algorithme dichotomique">Essayons maintenant avec une boucle :
      <code>
        <m> ? à vous de commenter les lignes qui suivent</m>
        <p><r>int</r> min = 0, max = 1024;</p>
@@ -88,16 +88,16 @@
        <p>}</p>
      </code><ul>
        <li>Compléter ce programme et ajouter au texte de programme des commentaires à chaque ligne pour expliquer comment il fonctionne.</li>
-       <li>Essayer le et concluez sur l'intérêt d'utiliser une telle méthode qui divise l'espace de recherche par 2 puis 2 etc...</li>
+       <li>Essayez-le et concluez sur l'intérêt d'utiliser une telle méthode qui divise l'espace de recherche par 2 puis 2 etc.</li>
        <li>A l'aide de <a href="http://fr.wikipedia.org">wikipedia</a> expliquer en deux lignes pourquoi cette méthode s'appelle dichotomique.</li>
      </ul></work>
-     <work title="Aller plus loin">Supposez que nous regardions l'annuaire téléphonique des 1048576 habitant des Alpes-Maritimes, trié par ordre alphabétique:<ul>
-       <li>Expliquer en 2/3 lignes comment utiliser une méthode dichotomique pour chercher une personne parmi plus d'un million de personnes !</li>
-       <li>A l'aide de la suite des chiffres suivants, devinez en combien d'étapes la recherche dichotomique permet de trouver une personne parmi ce gros million:
+     <work title="Aller plus loin">Supposez que nous regardions l'annuaire téléphonique des 1048576 habitants des Alpes-Maritimes, triés par ordre alphabétique :<ul>
+       <li>Expliquez en 2/3 lignes comment utiliser une méthode dichotomique pour chercher une personne parmi plus d'un million de personnes !</li>
+       <li>A l'aide de la suite des chiffres suivants, devinez en combien d'étapes la recherche dichotomique permet de trouver une personne parmi ce gros million :
          <p><c>0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576</c></p>
-         Note: cette liste de chiffres sont les puissances de 2: 2^0, 2^1, 2^2, etc...
+         Note : cette liste de chiffres sont les puissances de 2: 2^0, 2^1, 2^2, etc...
        </li>
-       <li>A partir de la ligne de code<footnote id="1"/>:
+       <li>A partir de la ligne de code<footnote id="1"/> :
        <code>
          <p>n = n + 1; u  = u * 2;  <r>echo</r>("2^" + n + "=" + u);</p>
        </code>écrire une boucle qui calcule les puissances de 2 de 0 à 20.</li>

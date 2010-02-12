@@ -37,8 +37,16 @@
     </p>
     <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] le signe de la paix va s'afficher:
       <p align="center"><img src="img/smiley2.jpg"/></p>
-      ceci, à différentes résolutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne résolution il sera très lisible, puis petit à petit il se réduira à quelques pixels.
-   </p>
+      ceci, à différentes résolutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne résolution il sera très lisible, puis petit à petit il se réduira à quelques pixels,
+      selon le programme suivant:
+      <code>
+        <p><r>for</r>(<r>int</r> size = 256; size > 0; size /= 2) {</p>
+        <p><t/><r>smileyReset</r>(size, size);</p>
+        <p><t/><r>peace</r>();</p>
+        <p><t/><r>sleep</r>(1000 - size);</p>
+        <p>}</p>
+      </code> où la routine <r>peace</r> trace le signe de la paix et correspond à une fonction à définir.
+    </p>
   </proglet>
 
   <footnotes>

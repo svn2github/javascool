@@ -18,7 +18,14 @@
       <p><r>int</r> length = <r>dichoLength</r>();</p>
     </code> renvoie le nombre de pages.</p>
     <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
-    secondes à une dizaine de pages au hasard.</p>
+    secondes à une dizaine de pages au hasard, selon le programme suivant:
+    <code>
+      <p><r>for</r>(<r>int</r> i = 0; i &lt; 10; i++) {</p>
+      <p><r>int</r> page = <r>random</r>(0, <r>dichoLength</r>());</p>
+      <p><t/><r>dichoCompare</r>(<s>rien</s>, page);</p>
+      <p><t/><r>sleep</r>(500);</p>
+      <p>}</p>
+    </code></p>
     <p>En appuyant sur les touches <c>&lt;-</c> et <c>-></c> nous pouvons tourner manuellement les pages à gauche ou à droite.</p>
   </proglet>
 
