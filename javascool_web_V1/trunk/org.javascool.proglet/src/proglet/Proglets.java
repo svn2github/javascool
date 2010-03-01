@@ -104,7 +104,7 @@ public class Proglets { private Proglets() { }
     }
   }
   /** Defines all declared proglets. */
-  static final String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Synthe", "Binocle", "Tortue" };
+  static final String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Synthe", "Tortue" };
   private static int getProgletIndex(String proglet) { for(int i = 0; i < proglets.length; i++) if (proglets[i].equals(proglet)) return i; return -1; }
 
   /** Opens an applet in a standalone frame.
