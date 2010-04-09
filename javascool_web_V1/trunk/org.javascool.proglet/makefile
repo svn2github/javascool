@@ -102,9 +102,12 @@ proglet.jar : makefile $(wildcard proglet/*.java) $(wildcard img/*.*)
 
 # Creation d'une jar en standalone avec les classes du compilateur jdk5 intégrées
 
-wproglet.jar : proglet.jar $(CP)
+lib/tools.jar : $(CP)
+	cp $^ $@
+
+wproglet.jar : proglet.jar lib/tools.jar
 	@rm -rf tmp ; mkdir tmp
-	@unzip -qod tmp $(CP)
+	@unzip -qod tmp lib/tools.jar
 	@unzip -qod tmp proglet.jar
 	@cd tmp ; $(JAVA)/bin/jar cfm ../$@ META-INF/MANIFEST.MF proglet img com/sun/tools/javac sun/tools/javac
 	@rm -rf tmp
