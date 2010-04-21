@@ -1,3 +1,5 @@
+<goto href="http://interstices.info/ingredients-algorithmes">
+
 <p title="Les ingrédients des algorithmes">
   Texte collectif<footnote id="1"/>.
   <p title="La différence entre une machine à café et un ordinateur">
@@ -278,3 +280,5 @@ des nombres, des lettres, des images, des sons, des textes, des vidéos, …
     il faut utiliser un paradigme de programmation dit <i>réactif</i>, comme pour le <a href="http://fr.wikipedia.org/wiki/Esterel_(langage)">langage Esterel</a>.</p>
  </footnotes>
 </p>
+
+</goto>
