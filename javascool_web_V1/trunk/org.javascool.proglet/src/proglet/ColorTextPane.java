@@ -42,12 +42,12 @@ public class ColorTextPane extends JTextPane {
       
       // Style Code: for reserved words
       CodeStyle = doc.addStyle("Code", null);
-      StyleConstants.setForeground(CodeStyle, Color.ORANGE);
+      StyleConstants.setForeground(CodeStyle, new Color(0xaa4444)); // Orange
       StyleConstants.setBold(CodeStyle, true);
       
       // Style String: for quoted strings
       StringStyle = doc.addStyle("String", null);
-      StyleConstants.setForeground(StringStyle, Color.GREEN);
+      StyleConstants.setForeground(StringStyle, new Color(0x008800)); // Green
       StyleConstants.setBold(StringStyle, false);
       
       // Style Operator: for operators chars
@@ -58,11 +58,11 @@ public class ColorTextPane extends JTextPane {
       // Style Name: for identificator of declared variables (used in BML)
       NameStyle = doc.addStyle("Name", null);
       StyleConstants.setForeground(NameStyle, Color.GRAY);
-      StyleConstants.setBold(NameStyle, false);
+      StyleConstants.setBold(NameStyle, true);
 
       // Style Comment: for comments added to the text
       CommentStyle = doc.addStyle("Comment", null);
-      StyleConstants.setForeground(CommentStyle, new Color(20, 100, 20));
+      StyleConstants.setForeground(CommentStyle, new Color(0x0000ee)); // Blue
       StyleConstants.setBold(CommentStyle, true);
     }
 

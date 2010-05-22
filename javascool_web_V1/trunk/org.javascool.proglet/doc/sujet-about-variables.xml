@@ -81,8 +81,8 @@
     <work title="Utilisons une variable numérique"> Modifions un peu le programme en utilisant au bon endroit les trois lignes supplémentaires suivantes :
       <code>
         <p><t/><r>println</r>(<s>Enchanté </s> + texte + <s>, quel est ton âge ?</s>);</p>
-        <p><t/><r>int</r> âge = <r>readInteger();</r></p>
-        <p><t/><r>println</r>(<s>Oh,</s> + âge + <s>, est un bel âge !</s>);</p>
+        <p><t/><r>int</r> age = <r>readInteger();</r></p>
+        <p><t/><r>println</r>(<s>Oh,</s> + age + <s>, est un bel âge !</s>);</p>
       </code>
       <ul>
         <li>Essayer le code modifié et vérifier qu'il fonctionne de manière satisfaisante.</li>
