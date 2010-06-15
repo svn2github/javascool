@@ -1,0 +1,9 @@
+
+void main() {
+   JPanel panel = getSwingPane();
+   panel.setBackground(new Color(10, 10, 100));
+   JLabel turtle = new JLabel();
+   turtle.setIcon(proglet.Proglets.getIcon("turtle.gif"));
+   turtle.setBounds(100, 100, 142, 135);
+   panel.add(turtle);
+}
