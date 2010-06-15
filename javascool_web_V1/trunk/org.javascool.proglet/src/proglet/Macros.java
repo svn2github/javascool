@@ -65,7 +65,7 @@ public class Macros { private Macros() { }
   }
 
   /** Ouvre une proglet secondaire pour utiliser deux proglets simultanément.
-   * @param proglet Le nom de la proglet : "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Synthe", "Tortue", ..
+   * @param proglet Le nom de la proglet : "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Swing", "Synthe", "Tortue", ..
    */
   public static void show(String proglet) {
     Proglets.show(proglet);

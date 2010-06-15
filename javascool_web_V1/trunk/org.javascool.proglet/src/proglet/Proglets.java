@@ -46,7 +46,7 @@ public class Proglets { private Proglets() { }
    * @param file The icon file name. The icon must be located in the <tt>img/</tt> directory (directory on the server or on the client side or in the jar).
    * @return The related image icon or an empty icon if not loaded.
    */
-  static ImageIcon getIcon(String file) {
+  static public ImageIcon getIcon(String file) {
     try { return new ImageIcon(InterfacePrincipale.class.getClassLoader().getResource("img/"+file)); } catch(Exception e1) {
       // .. to be preferred to Thread.currentThread().getContextClassLoader().getResource( because it is ok in both standalone and applet modes
       try { System.out.println("Warning: loading "+file+" via gforge");
@@ -104,7 +104,7 @@ public class Proglets { private Proglets() { }
     }
   }
   /** Defines all declared proglets. */
-  static final String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Synthe", "Tortue" };
+  static final String proglets[] = new String[] { "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Swing", "Synthe", "Tortue" };
   private static int getProgletIndex(String proglet) { for(int i = 0; i < proglets.length; i++) if (proglets[i].equals(proglet)) return i; return -1; }
 
   /** Opens an applet in a standalone frame.

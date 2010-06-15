@@ -35,6 +35,9 @@ public class Translator { private Translator() { }
     PrintWriter out = new PrintWriter(new FileWriter(file+".java"));
     // Here is the translation loop
     {
+      // Imports for general swing programming
+      out.print("import java.awt.*;");
+      out.print("import javax.swing.*;");
       // Imports proglet's static methods
       out.print("import static proglet.Macros.*;");
       for(String proglet : Proglets.proglets) 
