@@ -212,9 +212,9 @@ public class SoundBit {
   }
 
   /** Plays the sound on the standard audio system line. 
-   * @throws IOException If the audio system is unavailable or does not support the current: 16 bit, stereo, standard PCM, 44.1 KHz, signed, little-endian audio format.
+   * @throws RuntimeException If the audio system is unavailable or does not support the current: 16 bit, stereo, standard PCM, 44.1 KHz, signed, little-endian audio format.
    */
-  public void play() throws IOException { 
+  public void play() {
     AudioInputStream stream = getStream();
     // Plays a stream on the standard audio system line. 
     try {
@@ -230,7 +230,7 @@ public class SoundBit {
 	}
       }
       line.close();
-    } catch(LineUnavailableException e) { throw new IOException(e.toString()); }
+    } catch(IOException e) { throw new RuntimeException(e.toString()); } catch(LineUnavailableException e) { throw new RuntimeException(e.toString()); }
   }
 
   /** Creates a sound-bit from an audio file.
@@ -258,7 +258,7 @@ public class SoundBit {
 	buffer = new byte[(int) stream.getFrameLength() * stream.getFormat().getFrameSize()]; stream.read(buffer); stream.close();
 	name = location;
 	length = stream.getFrameLength() / SAMPLING;
-      } catch(UnsupportedAudioFileException e) { buffer = null; return false; } catch(IOException e) { buffer = null; return false; }
+      } catch(UnsupportedAudioFileException e) { throw new RuntimeException(e); } catch(IOException e) { throw new RuntimeException(e); }
       return true;
     } 
     public double get(char channel, long index) { 

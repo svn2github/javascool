@@ -38,6 +38,7 @@ public class Translator { private Translator() { }
       // Imports for general swing programming
       out.print("import java.awt.*;");
       out.print("import javax.swing.*;");
+      out.print("import proglet.*;");
       // Imports proglet's static methods
       out.print("import static proglet.Macros.*;");
       for(String proglet : Proglets.proglets) 
