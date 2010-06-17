@@ -6,6 +6,7 @@ package proglet;
 
 // Used to define the gui
 import javax.swing.JPanel;
+import javax.swing.JLayeredPane;
 import java.awt.Dimension;
 
 /** Définit une proglet javascool qui permet d'utiliser toute les classes des swings.
@@ -21,9 +22,9 @@ public class Swing implements Proglet { private Swing() { }
     private static final long serialVersionUID = 1L;
 
     public Panel() {
-      setPreferredSize(new Dimension(width, height));
+       pane = new JLayeredPane(); pane.setPreferredSize(new Dimension(width, height)); add(pane);
     }
-
+    JLayeredPane pane;
     static final int width = 512, height = 512; 
   }
 
@@ -40,8 +41,8 @@ public class Swing implements Proglet { private Swing() { }
   //
 
   /** Renvoie le panneau. */
-  public static JPanel getSwingPane() {
-    return panel;
+  public static JLayeredPane getSwingPane() {
+    return panel.pane;
   }
 
   /** Définition de l'interface graphique de la proglet. */

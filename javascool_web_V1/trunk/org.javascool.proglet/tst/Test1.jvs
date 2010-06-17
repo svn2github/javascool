@@ -1,9 +1,26 @@
 
 void main() {
-   JPanel panel = getSwingPane();
-   panel.setBackground(new Color(10, 10, 100));
-   JLabel turtle = new JLabel();
-   turtle.setIcon(proglet.Proglets.getIcon("turtle.gif"));
-   turtle.setBounds(100, 100, 142, 135);
-   panel.add(turtle);
+   // Voici le panel pour dessier
+   JLayeredPane pane = getSwingPane();
+   // Et on efface tout
+   pane.removeAll();
+   // On affiche une image de fond
+   JLabel fond = new JLabel();
+   fond.setText("fond");
+   fond.setIcon(new ImageIcon("fleur-fond.jpg"));
+   fond.setBounds(0, 0, pane.getWidth(), pane.getHeight());
+   pane.add(fond, new Integer(1), 0);
+   // On affiche une fleur	
+   JLabel fleur = new JLabel();
+   fleur.setText("fleur");
+   fleur.setIcon(new ImageIcon("fleur-move.png"));
+   fleur.setBounds(100, 100, 100, 100);
+   pane.add(fleur, new Integer(2), 0);
+   // Dix fois on trace une fleur n'importe ou
+   for(int i = 0; i < 10; i++) {
+      fleur.setBounds(random(0, 200), random(0, 200), 100, 100);
+      pane.revalidate();
+      sleep(1000);
+      echo(i);
+   }
 }
