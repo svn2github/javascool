@@ -79,13 +79,13 @@ public class Proglets { private Proglets() { }
   }
 
   /** Used to run a proglet as a standalone program. 
-   * @param usage <tt>java proglet.Proglets (edit [proglet-name [file-name]] | run [proglet-name])</tt>
+   * @param usage <tt>java proglet.Proglets (edit|run) [proglet-name [file-name]]</tt>
    */
   public static void main(String usage[]) { 
     InterfacePrincipale applet = new InterfacePrincipale(); 
     String proglet = usage.length >= 2 ? usage[1] : usage.length == 1 ? usage[0] : "Konsol"; applet.setProglet(proglet); 
-    boolean edit = usage.length == 2 ? "edit".equals(usage[0]) : true; applet.setEdit(edit); 
-    try { if (edit && usage.length == 3) applet.doLire(usage[2]); } catch(Exception e) { System.err.println(e); }
+    boolean edit = usage.length >= 2 ? "edit".equals(usage[0]) : true; applet.setEdit(edit); 
+    try { if (usage.length == 3) applet.doLire(usage[2]); } catch(Exception e) { System.err.println(e); }
     show(applet, "javascool proglet editor v10-02", new Point(570, 0), 560, 720);
   }
 

@@ -211,10 +211,20 @@ public class SoundBit {
     AudioSystem.write(getStream(), AudioFileFormat.Type.WAVE, new File(path.replaceFirst("\\.wav$", "")+".wav")); 
   }
 
+  /** Called during play to generate audio driven events. */
+  public interface Playing {
+    /** Called at each sample during a play. 
+     * @param n Sampling index. This method is called at each period of time, with <tt>n = 0, 1, ..</tt>.
+     */
+    public void sample(int n);
+  }
+
   /** Plays the sound on the standard audio system line. 
+   * @param playing Called at each sampling in order to generate audio driven events. Default is null
+   * @param period Period at which a playing event is sent.
    * @throws RuntimeException If the audio system is unavailable or does not support the current: 16 bit, stereo, standard PCM, 44.1 KHz, signed, little-endian audio format.
    */
-  public void play() {
+  public void play(Playing playing, double period) {
     AudioInputStream stream = getStream();
     // Plays a stream on the standard audio system line. 
     try {
@@ -224,15 +234,18 @@ public class SoundBit {
       line.start();
       // In/out the sound via a buffer
       {
-	final int size = (int) (FRAME_SIZE * SAMPLING); byte data[] = new byte[size];
-	for(long t = 0; t < FRAME_SIZE * stream.getFrameLength(); t += size) {
+	final int size = (int) (FRAME_SIZE * period * SAMPLING); int n = 0; byte data[] = new byte[size];
+	for(long t = 0; t < FRAME_SIZE * stream.getFrameLength(); t += size, n++) {
+	  if (playing != null) playing.sample(n);
 	  int s = stream.read(data, 0, size); if (s > 0) line.write(data, 0, s);
 	}
       }
       line.close();
     } catch(IOException e) { throw new RuntimeException(e.toString()); } catch(LineUnavailableException e) { throw new RuntimeException(e.toString()); }
   }
-
+  public void play() {
+    play(null, 1);
+  }
   /** Creates a sound-bit from an audio file.
    * <div>The sound-bit audio-file can be changed using the <tt><a href="#reset">reset</a>(location)</tt> method.</div>
    * @param location Audio file path: either a file-name or a URL-name. 
@@ -266,6 +279,9 @@ public class SoundBit {
       if(buffer == null || i < 0 || i >= buffer.length) return 0;
       int h = buffer[i+1], l = buffer[i], v = ((128 + h) << 8) | (128 + l); return 1 * (v / 32767.0 - 1);
     }
+    public double get(char channel, double time) { 
+      return get(channel, (long) (SAMPLING * time));
+    } 
     private int c, s; private byte[] buffer;
   }
 

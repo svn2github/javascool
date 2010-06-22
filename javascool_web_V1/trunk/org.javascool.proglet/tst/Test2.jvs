@@ -1,5 +1,36 @@
 
+// Extrait un canal de son 
+double[] notes(SoundBit sound, double frequence, double delay) {
+  int size = (int) (sound.SAMPLING * sound.getLength()); 
+  double notes[] = new double[size], c = 0, s = 0, g = 1.0 / (sound.SAMPLING * delay);
+  // Calcule les correlations par rapport a une frequence
+  for(int i = 0; i < size; i++) {
+    double t = ((double) i) / sound.SAMPLING;
+    double v = sound.get('l', t) + sound.get('r', t);
+    c += g * (Math.cos(2 * Math.PI * frequence * t) * v - c);
+    s += g * (Math.sin(2 * Math.PI * frequence * t) * v - s);
+    notes[i] = c * c + s * s;
+  }
+  // Affiche le resultat
+  {
+    double min = 1e100, max = -min, moy = 0, var = 0; 
+    for(int i = 0; i < notes.length; i++) { 
+      double v = notes[i]; if (v < min) min = v; if (v > max) max = v; moy += v; var += v * v; 
+    }	
+    if (notes.length > 0) { moy /= notes.length; var /= notes.length; var -= moy * moy; }
+    echo("notes(sound, "+frequence+", "+delay+") = "+moy+" +- "+var+" in ["+min+", "+max+"] #"+notes.length);
+  }
+  return notes;
+}
+
 void main() {
-   SoundBit sound = SoundBit.   newFileSound("black-dog.wav");
-   sound.play();
+   SoundBit sound = SoundBit.newFileSound("black-dog.wav");
+   // Calcule les évènements qui déclenchent des fleurs
+   double frequence = 400, delay = 1, notes[] = notes(sound, frequence, delay);
+   SoundBit.Playing playing = new SoundBit.Playing()  {
+      public void sample(int n) {  
+       echo(n);
+      }
+  };
+  sound.play(playing, 1);
 }
