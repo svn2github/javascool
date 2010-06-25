@@ -82,11 +82,18 @@ public class Proglets { private Proglets() { }
    * @param usage <tt>java proglet.Proglets (edit|run) [proglet-name [file-name]]</tt>
    */
   public static void main(String usage[]) { 
-    InterfacePrincipale applet = new InterfacePrincipale(); 
-    String proglet = usage.length >= 2 ? usage[1] : usage.length == 1 ? usage[0] : "Konsol"; applet.setProglet(proglet); 
-    boolean edit = usage.length >= 2 ? "edit".equals(usage[0]) : true; applet.setEdit(edit); 
-    try { if (usage.length == 3) applet.doLire(usage[2]); } catch(Exception e) { System.err.println(e); }
-    show(applet, "javascool proglet editor v10-02", new Point(570, 0), 560, 720);
+    try { 
+      InterfacePrincipale applet = new InterfacePrincipale(); 
+      String proglet = usage.length >= 2 ? usage[1] : usage.length == 1 ? usage[0] : "Konsol"; applet.setProglet(proglet); 
+      boolean edit = usage.length >= 2 ? "edit".equals(usage[0]) : true; applet.setEdit(edit); 
+      applet.application = usage.length == 3;
+      if (applet.application) applet.doLire(usage[2]);  
+      if (usage.length == 3 && !edit) {
+	applet.doCompile(); 
+      } else {
+	show(applet, "javascool proglet editor v10-02", new Point(570, 0), 560, 720);
+      }
+    } catch(Exception e) { throw new RuntimeException(e); }
   }
 
   /** Opens an proglet pannel in a standalone frame.

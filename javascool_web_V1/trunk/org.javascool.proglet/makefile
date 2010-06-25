@@ -6,6 +6,11 @@
 # Travail de Thierry en cours:
 
 #
+# - retester mode applet
+# - Swing, ss demo, avec doc et avec import filtres par translator
+# - Ajouter algobox fct
+
+#
 # - Distinguer les types de données, structures de contrôle des autres mots du langage dans la documentation et la colorisation, avec des oranges différents <r mode=''>
 # - Ajout qq sujets au fil de l'eau, selon les retours
 # - Travailler sur les tutoriaux BML (voir makefile.bml)
@@ -48,7 +53,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar 
-	cd tst ; /usr/bin/java -jar ../$^ run Swing Test2.jvs
+	cd tst ; /usr/bin/java -jar ../$^ run Swing TestMeVe.jvs
 
 # Test du service web (pour vérifier la demo web)
 

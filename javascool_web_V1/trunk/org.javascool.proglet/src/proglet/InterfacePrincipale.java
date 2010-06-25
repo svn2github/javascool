@@ -109,14 +109,13 @@ public class InterfacePrincipale extends JApplet {
   boolean standalone = true; 
 
   // Flags whether we have derived an application derivating this class or if this class hase been constructed.
-  boolean application = false; 
+  boolean application = true; 
 
   private void initParameters() {
     { try { if (getParameter("proglet") != null) setProglet(getParameter("proglet")); } catch(Exception e) { } }
     { try { if (getParameter("edit") != null) setEdit(true); } catch(Exception e) { } }
     { try { if (getParameter("path") != null) doLire(getParameter("path")+".jvs");  } catch(Exception e) { } }
     { try { standalone = getAppletContext() == null; } catch(Exception e) { } }
-    { try { application = !getClass().getName().equals("proglet.InterfacePrincipale"); } catch(Exception e) { } }
   }
 
   //
@@ -269,6 +268,7 @@ public class InterfacePrincipale extends JApplet {
       jCompileButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
 	    try {
+	      doSave();
 	      doCompile();
 	    } catch (Exception e1) {
 	      Proglets.report(e1);
@@ -423,11 +423,13 @@ public class InterfacePrincipale extends JApplet {
       jConsoleTextPane = new JEditorPane();
       jConsoleTextPane.setContentType("text/html; charset=UTF-8");
       jConsoleTextPane.setEditable(false);
-      try {
-	PrintStream ps = new PrintStream(console = new ConsoleOutput(), true, "UTF-8");;
-	System.setOut(ps);
-	if (!standalone) System.setErr(ps);
-      } catch(IOException e) { Proglets.report(e); }
+      if (edit) {
+	try {
+	  PrintStream ps = new PrintStream(console = new ConsoleOutput(), true, "UTF-8");;
+	  System.setOut(ps);
+	  if (!standalone) System.setErr(ps);
+	} catch(IOException e) { Proglets.report(e); }
+      }
     }
     return jConsoleTextPane;
   }
@@ -436,12 +438,16 @@ public class InterfacePrincipale extends JApplet {
   // Echos a message in the console. Style: 'b' for bold, 'i' for italic, 'c' for code.
   private void printConsole(String string, char style) { 
     if (console == null) { getJConsoleTextPane(); getJConsoleScrollPane(); }
-    switch(style) {
-    case 'b': string = "<b>" + string + "</b>"; break;
-    case 'c': string = "<b><tt>" + string + "</tt></b>"; break;
-    case 'i': string = "<i>" + string + "</i>"; break;
+    if (console == null) { 
+      System.err.println(string);
+    } else {
+      switch(style) {
+      case 'b': string = "<b>" + string + "</b>"; break;
+      case 'c': string = "<b><tt>" + string + "</tt></b>"; break;
+      case 'i': string = "<i>" + string + "</i>"; break;
+      }
+      console.writeln(string);
     }
-    console.writeln(string);
   }
 
   // Defines a writer able to append chars as a stream in UTF-8 and strings
@@ -533,13 +539,12 @@ public class InterfacePrincipale extends JApplet {
     printConsole("Le fichier "+(new File(path+".jvs").getName())+" est sauvegardé", 'i');
   }
 
-  private void doCompile() throws Exception {
+  void doCompile() throws Exception {
     if (standalone) {
-      getJConsoleTextPane(); console.clear();
+      getJConsoleTextPane(); if (console != null) console.clear();
     }
     if (main != null) {
       // Save and manage the temporary java file if any
-      doSave();
       if (new File(path+".java").exists())
 	new File(path+".java").renameTo(new File(path+".java~"));
       if (new File(path+".class").exists())
@@ -572,7 +577,7 @@ public class InterfacePrincipale extends JApplet {
       URL[] urls = new URL[] { new URL("file:"+new File(path+".class").getParent()+File.separator) };
       final Class<?> s = new URLClassLoader(urls).loadClass(main);
       InterfacePrincipale r = (InterfacePrincipale) s.newInstance(); r.setProglet(proglet);
-      Point where = getLocationOnScreen(); where.x -= 570;
+      // Point where = getLocationOnScreen(); where.x -= 570;
       runWindow = Proglets.show(r, "javascool \""+proglet+"\" proglet's runner", null, 560, 720);
     }
   }

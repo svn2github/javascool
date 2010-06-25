@@ -1,9 +1,0 @@
-
-void main() {
-  try{
-    show("Smiley");
-  }
-  catch(Exception e) {
-    e.printStackTrace();
-  }
-}

@@ -446,6 +446,35 @@ public class SoundBit {
     return s;    
   }
 
+  /** Detects sound events.
+   * @param frequence Sound event frequence in Hz.
+   * @param period    Sound event detection period in second.
+   * @param cut       Sound event related threshold (typically 0 to 2).
+   * @return An array of values sampled at the given period with 0 if no event, else with the event amplitude.
+   */
+  public double[] events(double frequence, double period, double cut) {
+    // Calculates the correlations at the given frequency
+    int size =  2 + (int) (getLength() / period); double events[] = new double[size], c = 0, s = 0, a = 0, g = 1.0 - 1.0 / (SAMPLING * period), max = 0, moy = 0, var = 0;
+    int n = 0; for(double t = 0, l = period, dt = 1.0/SAMPLING, T = getLength(); t < T; t += dt) {
+      double v = get('l', t) + get('r', t);
+      c += g * (Math.cos(2 * Math.PI * frequence * t) * v - c);
+      s += g * (Math.sin(2 * Math.PI * frequence * t) * v - s);
+      a += g * (c * c + s * s - a);
+      if (l <= t && n < size) { events[n++] = a; l += period; if (a > max) max = a; moy += a; var += a * a; }
+    }
+    if (n > 0) { moy /= n; var = Math.sqrt(var / n - moy * moy); }
+    // Thresholds events
+    double thres = moy + cut * var, nthres = 0;
+    for(int k = 0; k < size; k++)
+      if (events[k] < thres) 
+        events[k] = 0;
+      else
+        nthres++;
+    // Verboses results
+    System.err.println("events("+frequence+", "+period+", "+cut+") = "+moy+" +- "+var+" < "+max+", "+nthres+"/"+size+" = "+(100.0*nthres/size)+"% < "+thres);
+    return events;
+  }
+
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //                                                                                                                                                //
   //                                 Defines a monophonic sound based on textual notes string definition                                            //
