@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<LINK rel="stylesheet" type="text/css" href="../../doc/style.css">	
+	
+	<title>Tutoriel 4</title>
+</head>
+
+<body>
+<div id="banner">
+	<img src="../../doc/help_banner.jpg" alt="Help banner">
+</div>
+
+	<h1><center>Tutoriel 4 : Les boucles<center></h1><br><br><br>
+
+	<!--sous-titre-->
+	<div class=soustitre><p>Objectif : </p></div>	
+	<br>
+
+	<div id="content">
+		<p>
+		Le but de ce tutoriel est de vous familiariser avec la récupération de données sur Orphy GTS 2 par l'intermédaire du code Java's Cool. <br/>
+        
+	</div>
+
+	<br>
+	<!--sous-titre-->
+	<div class=soustitre><p>Notes : </p></div>	
+	<br>
+
+<div id="content">
+	<p>
+		Voici un exemple de programme qui affiche
+la valeure d'un thermomètre branché sur l'entrée analogique G d'ORPHY.<br/>
+        On voit bien l'initialisation et la fermeture d'orphy avec les methode demarrer() et arreter(), indispensables.
+
+	</P>
+	<!--un premier exemple-->
+	<table border="1" align=center>
+	<tr><th>
+	<P ALIGN=LEFT>Exemple1{</P>
+	<P ALIGN=LEFT>&nbsp;&nbsp;&nbsp;<FONT COLOR="#990000"><B>void</B></FONT> main(){</P>
+    <P ALIGN=LEFT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Orphy.demarrer()</B>;</P>
+    <P ALIGN=LEFT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#990000">double</FONT> temperature = Orphy.acquisitionEntree(<FONT COLOR="#008000">"G"</FONT>, <FONT COLOR="#008000">"Thermomètre"</FONT>);</P>
+	
+	<P ALIGN=LEFT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT COLOR="#990000"><B>println</B></FONT>(<FONT COLOR="#008000">&quot;la température est : &quot; </FONT> + temperature);</P>
+	<P ALIGN=LEFT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Orphy.arreter()</B>;</P>
+	<P ALIGN=LEFT>&nbsp;&nbsp;&nbsp;}</P>
+	<P ALIGN=LEFT>}</P>
+	</th></tr>
+	</table>
+	<center>
+	Le fichier correspondant : <a href="Exemple1.jvs">Exemple1.jvs</a>
+	</center>
+	
+	<br>
+	
+	<!--un deuxieme exemple-->
+</div>
+<br>
+	<!--sous-tite-->
+	<div class=soustitre><p>Travaille demand&eacute; :</p></div>
+	<br>
+
+<div id="content">
+	<P>
+		Faire un programme qui affiche la valeur de l'entrée G comme dans l'Exemple1, mais cette fois-ci 20 fois, avec un interval de 1 sec(soit 1000 milli-secondes) entre chaque mesure. <br/>
+        Astuces :
+        <ul>
+        <li>Il est conseillé d'utiliser une boucle for pour faire le programme.</li>
+        <li>Pour faire un intervalle de 1 sec entre chaque acquisition, utiliser la maccro dort(int millisecondes) accessible par la boîte à outils.</li>
+		</ul>
+    </P>
+    
+    
+</div>
+
+<div id="content">
+	<P>
+		Plus difficile : <br/>
+    	Meme exercice qu'avant, mais cette fois, faire que le relevé ne s'arrête que si la température est supérieure à 30°. 	<br/>
+        Possibilités pour stopper une boucle : <br/>
+        <ul>
+        <li> faire appel à l'instruction "break;" si la condition est respéctée</li>
+        <li> utiliser une variable booléenne comme condition d'arret que l'on mettra à false si la condition est remplie à un moment donné </li>
+        </ul>
+        
+    </P>
+    
+    
+</div>
+
+</body>
+</html>

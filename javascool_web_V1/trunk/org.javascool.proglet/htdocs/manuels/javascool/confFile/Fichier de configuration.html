@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK rel="stylesheet" type="text/css" href="../../doc/style.css">	
+  <title>
+   Java's Cool Guide Utilisateur : Fichier de configuration
+  </title>
+ </head>
+ <body>
+
+  <div id="banner">
+	  <center><img src="../../doc/banner_guide.jpg" alt="Guide banner" width=60%></center>
+  </div>
+  <h1><center>Java's Cool Guide Utilisateur : Fichier de configuration</center></h1>
+  <br/>
+  <br/>
+   <p>
+Il y a trois fichiers de configuration situ&eacute;s dans un dossier JavaScoolConf (pour le trouver faites une recherche avec l'explorateur de fichier, pour windows D&eacute;marrer->Rechercher) qui comporte &agrave; l'intérieur un ensemble de fichier dont trois qui se nomme respectivement :<br/>
+   - repertoire_conf.bml <br/>
+   - erreur_conf.bml <br/>
+   - fonctions_conf.bml <br/>
+Pour ajouter un r&eacute;pertoire,une erreur ou une fonction(macro), &eacute;ditez le fichier correspondant avec XXX en vous reportant &agrave; la partie concern&eacute; dans ce chapitre pour plus d'information.<br/>
+<br/> 
+<br/>
+
+<b><u>Important :</u></b> Pour effectuer une modification, il suffit d’&eacute;diter le fichier de configuration, de le sauvegarder mais en <b>aucun cas</b> il n’est besoin de le compiler ni de l’executer. Si jamais le fichier est syntaxiquement mal &eacute;crit par exemple l'oublie d'une accolade, des messages d'erreurs appara&icirc;tront dans la console lors du d&eacute;marrage l'application.</br> 
+<b>Pensez &agrave; le sauvegarder en cas de fausses manipulations.</b><br/> 
+Les modifications seront prises en charge au prochain d&eacute;marrage de l’application.<br/>
+</P>
+<br/>
+<h3>R&eacute;pertoire</h3>
+Permet de sp&eacute;cifier les zones de d&eacute;pôt des fichiers de sauvegardes. Par exemple, si les &eacute;l&egrave;ves ont un dossier personnel dans "D:\Valbonne\MPI\Eleve" vous pouvez pr&eacute;-enregistr&eacute; ce chemin afin que les utilisateurs n’est pas &agrave; chaque ‘sauvegarde sous’ &agrave;  naviguer depuis la racine du disque dur jusqu’&agrave; ce dossier.<br/><br/>
+L'op&eacute;ration d'ajout de repertoire favoris peut-&ecirc;tre directement fait via l'interface graphique avec le bouton 'Ouvrir' (voir <a href="../userInterface/Interface utilisateur.html">Chapitre Interface utilisateur </a>). N&eacute;anmoins si vous souhaitez le faire manuellement voici la proc&eacute;dure : <br/>
+Dans le fichier "repertoire_conf.bml" dans la partie ’r&eacute;pertoires’, ajoutez un identifiant sous la forme 'idX{}' où X est un nombre non utilis&eacute; par les pr&eacute;c&eacute;dents identifiants. Puis entre les deux accolades donnez un nom &agrave; la configuration sous la forme 'name="..."'. C’est celui qui s’affichera dans l’interface utilisateur, il est donc important de choisir un nom explicite.  
+Une fois choisi, en dessous mettez le mot "path=" et indiquez le chemin de mani&egrave;re absolu entre guillemet.<br/>
+</br>
+<u>Exemple </u>: Si mon chemin absolu est "D:\Valbonne\MPI\Eleve" et que je souhaite rajouter ce r&eacute;pertoire, cela donne :<br/>
+<br/>
+<br/>
+Outils {<br/>
+<dd>R&eacute;pertoires {<br/>
+<dd>	…<br/>
+<dd>	idX{<br/>	
+<dd>	    nom="&eacute;l&egrave;ve";<br/>
+<dd>		path="D:\Valbonne\MPI\Eleve";<br/>
+<dd>	}<br/>
+<dd>	…<br/>
+<dd>}<br/>
+}<br/>
+<br/>
+<br/>
+<br/>
+<h3>Configurer les erreurs</h3>
+Afin d’avoir une traduction et une compr&eacute;hension des erreurs qui soit simple pour les &eacute;l&egrave;ves, il est laiss&eacute; aux encadrants la possibilit&eacute; d’ajouter des erreurs qui pourraient survenir lors de la compilation ou de l’ex&eacute;cution du programme.
+Pour cela, il faut ajouter l’erreur ainsi que sa traduction dans la partie ‘Erreurs’.
+Si l’erreur d’ex&eacute;cution n’a pas &eacute;t&eacute; ajout&eacute;e et qu’elle survient, le message d’erreur sera en anglais dans la console.<br/>
+<br/>
+<u>Manipulation pour ajouter une erreur :</u>
+Dans le fichier "erreur_conf.bml" dans la partie 'Erreurs', ajoutez un identifiant sous la forme 'idX{}' où X est un nombre non utilis&eacute; par les pr&eacute;c&eacute;dents identifiants. Puis entre les deux accolades donnez le nom de l'erreur kava sous la forme 'java="..."'. C’est celui qui s’affichera dans l’interface utilisateur, il est donc important de choisir un nom explicite.  
+Une fois inscrit, mettez la traduction ('traduction=') que vous souhaitez attribuer &agrave; l'erreur.<br/>
+<br/>
+<br/>
+<u>Exemple </u>: Si mon erreur est "IndexOutOfBoundsException" et que je souhaite rajouter cette erreur, cela donne :<br/>
+<br/>
+<br/>
+Outils {<br/>
+<dd>Erreurs {<br/>
+<dd>	…<br/>
+<dd>	idX{<br/>	
+<dd>	    java="IndexOutOfBoundsException";<br/>
+<dd>		traduction="Vous essayez d'atteindre une case de tableau qui n'existe pas.";<br/>
+<dd>	}<br/>
+<dd>	…<br/>
+<dd>}<br/>
+}<br/>
+<br/>
+<u>Où puis-je trouver de nouvelles erreurs &agrave; traduire ? :</u><br/>
+Deux solutions, attendre qu'elles se pr&eacute;sentent &agrave; vous ou allez sur <a href="http://java.sun.com/javase/6/docs/api/">la documentation officiel Sun pour JAVA 1.6</a> et arpentez les divers package des fonctions que vous avez dans la partie 'Fonctions' via la fen&ecirc;tre en haut &agrave; gauche. Dans la fen&ecirc;tre en dessous fa&icirc;tes d&eacute;filer le nom des classes pour arriver &agrave; la rubrique 'errors', vous aurez alors la descriptions des erreurs que peut renovyer la classe.<br/> 
+<br/>
+<u>Comment trouver la signification d'une erreur ? :</u><br/>
+Rendez-vous sur <a href="http://java.sun.com/javase/6/docs/api/">la documentation officiel Sun pour JAVA 1.6</a>. Dans la f&ecirc;netre principal cliquez sur index. Il vous est propos&eacute; par ordre alphab&eacute;tique tous les noms apparaissant dans la documentation dont les classes d'erreur. Une fois trouv&eacute;, cliquez dessus pour obtenir la cause qui peut d&eacute;clencher l'erreur.
+Avec de l'exp&eacute;rince vous sernerez vite la raison d'une erreur.</br>
+<br/>
+<br/>
+<h3>Configurer les macros</h3>
+Permet de rajouter de nouvelles fonctions dans la bo&icirc;te &agrave; Outils. Les fonctions d&eacute;finient dans cette partie sont les macros qui seront traduites lors de la phase de compilation.<br/>
+<br/>
+<u>Manipulation pour ajouter une maccro :</u>
+Dans le fichier "fonctions_conf.bml" dans la partie 'Fonctions', ajoutez un identifiant sous la forme d'un nom de fonction unique, c'est celui qui appara&icirc;tra dans la bo&icirc;te &agrave; outils. Ouvrez les accolades et renseignez tous les champs &agrave; savoir :<br/><br/>
+<u>'desc='</u> qui est la description qui s'affiche quand le curseur reste sur la fonction.</br><br/>
+<u>'import='</u> le package java d'où provient la fonction.</br><br/>
+<u>'signature='</u> la signature de la fonction qui est compos&eacute; du type de retour, du nom original de la fonction et de ses param&egrave;tres (exemple : double max(double a,double b) ici le type de retour est un double, le nom de la fonction est max et elle prend deux doubles en param&egrave;tres. La fonction renvoyant le plus grand des deux dans son type retour).</br><br/>
+<u>'type='</u> la cat&eacute;gorie &agrave; laquelle appartient la fonction. C'est celle qui s'affichera dans la bo&icirc;te &agrave; outils. Vous pouez en cr&eacute;er autant qu'il vous en plaira.<br/><br/>
+<br/>
+<u>Exemple </u>: Si ma fonction est dans la classe "math" du package "java.lang" et si je souhaite la rajouter, cela donne :<br/>
+<br/>
+<br/>
+Outils {<br/>
+<dd>Fonctions {<br/>
+<dd>	…<br/>
+<dd>	maFonction{<br/>	
+<dd>	    desc="ma fonction";
+<dd>		import="java.math";
+<dd>		signature="void maFonction(int a)";
+<dd>		type="math";
+<dd>	}<br/>
+<dd>	…<br/>
+<dd>}<br/>
+}<br/>
+<br/>
+<br/>
+<u>Où puis-je trouver de nouvelles fonctions ? :</u><br/><br/>
+Rendez-vous dans <a href="http://java.sun.com/javase/6/docs/api/">la documentation officiel Sun pour JAVA 1.6</a>. <br/>
+La fen&ecirc;tre du navigateur se s&eacute;pare en trois frames, la premi&egrave;re situ&eacute;e dans le coin haut-gauche permet de naviguer via l'ascensceur au sein de tous les packages java. Les packages sont pour simplifi&eacute;r un ensemble de classes r&eacute;unies dans un m&ecirc;me groupe. Dans la frame, le long du bord gauche se trouve l'ensemble des classes contenues. Pour chacune d'entre elle vous pouvez avoir une description au sein page central, avec en haut des informations g&eacute;n&eacute;rales et plus bas dans la page, l'ensemble des fonctions disponibles.</br>
+</br>
+Les informations qui vous int&ecirc;resse sont l'import &agrave; effectuer qui correspond au "nom du package'.'le nom de la classe" (exemple la classe math se situe dans le package java.lang, l'import &agrave; effectuer est : java.lang.math). Il peut aussi &ecirc;tre trouv&eacute; en haut de la page central quand on visualise une classe (java.lang.Object |-> <u>java.lang.Math</u>). </br>Il vous faut aussi le nom de la fonction/method avec son type de retour (exemple : double abs(double a)). <b>Vous n'avez pas besoin de mettre les mots static ni public avant le type de retour parcontre <u>une m&eacute;thode dite private et protected ne peuvt pas &ecirc;tre mis en maccro</u> car elles ne sont pas senc&eacute; &ecirc;tre utilis&eacute; en dehors de leur impl&eacute;mentation au sein de classe où elles ont &eacute;t&eacute; cr&eacute;e.</b>   
+
+
+   </p> 
+ <br/>
+ <br/>
+ <div id="prev">
+ <a href="../userInterface/Interface Utilisateur.html"> < Interface utilisateur</a>
+ </div>
+
+ </body>
+</html>

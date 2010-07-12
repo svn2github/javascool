@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+    <channel>
+   
+        <title>Java'S Cool</title>
+        <link>http://javascool.gforge.inria.fr/</link>
+        <description>Ce flux voux permet d'être tenu au courant des nouveautés sur Java'S Cool (nouvelles versions, mise à jour, nouveaux articles, ...)</description>
+       
+        <item>
+            <title>Une nouvelle version de java's Cool est disponible</title>
+            <link>http://javascool.gforge.inria.fr/download.php</link>
+            <guid isPermaLink="false">javascoolnews1</guid>
+            <description>une nouvelle version de l'installeur de java's Cool pour windows est diponible</description>
+            <pubDate>Tue, 17 Mar 2009 13:00:00 GMT</pubDate>
+        </item>
+
+		<item>
+            <title>Un nouveau installeur pour windows est disponible</title>
+            <link>http://javascool.gforge.inria.fr/download.php</link>
+            <guid isPermaLink="false">javascoolnews2</guid>
+            <description>Dans cette nouvelle version deux nouvelles fonctions font leurs apparitions dans la boîte à outils ( les fontion : out(double value) et compare() )</description>
+            <pubDate>Tue, 25 Mar 2009 13:00:00 GMT</pubDate>
+        </item>
+		
+		<item>
+            <title>Un nouveau site Javascool</title>
+            <link>http://javascool.gforge.inria.fr/index.html</link>
+            <guid isPermaLink="false">javascoolnews3</guid>
+            <description>Le site web "java's Cool" à changer de look de manière à ce qu'il soit plus facile d'utilisation</description>
+            <pubDate>Tue, 29 Apr 2009 22:00:00 GMT</pubDate>
+        </item>
+		
+		<item>
+            <title>Une nouvelle version de javascool (version 1.0.2) est disponible en téléchargement</title>
+            <link>http://javascool.gforge.inria.fr/download.php</link>
+            <guid isPermaLink="false">javascoolnews4</guid>
+            <description>cette nouvelle version corrige de nombreux bugs nottament dans le traducteur du code JVS vers le code JAVA</description>
+            <pubDate>Tue, 29 Apr 2009 22:00:00 GMT</pubDate>
+        </item>
+
+	<item>
+            <title>Une nouvelle version de javascool pour linux (version 1.0.2) est disponible en téléchargement</title>
+            <link>http://javascool.gforge.inria.fr/download.php</link>
+            <guid isPermaLink="false">javascoolnews5</guid>
+            <description>il s'agit de l'installeur de la version 1.0.2 pour les plateforme Linux</description>
+            <pubDate>Tue, 12 May 2009 14:00:00 GMT</pubDate>
+        </item>
+<item>
+            <title>Une nouvelle version de javascool pour windows (version 1.0.3) est disponible en téléchargement</title>
+            <link>http://javascool.gforge.inria.fr/download.php</link>
+            <guid isPermaLink="false">javascoolnews6</guid>
+            <description>il s'agit de l'installeur de la version 1.0.3 pour les plateforme windows, cette version comporte une nouveau systeme
+d'ouverture de fichier, plus simple</description>
+            <pubDate>Tue, 22 Jun 2009 14:00:00 GMT</pubDate>
+        </item>
+<item>
+            <title>Une nouvelle version de javascool pour windows (version 2.0 Beta) est disponible en téléchargement</title>
+            <link>http://javascool.gforge.inria.fr/download.php</link>
+            <guid isPermaLink="false">javascoolnews7</guid>
+            <description>il s'agit de l'installeur de la version 2.0 Beta pour les plateformes windows, cette version integre les Proglets et est une evolution complete de la version 1 de Java's Cool (temps de chargement de l'interface plus rapide, optimisations, ...)</description>
+            <pubDate>Wen, 06 Jan 2010 23:00:00 GMT</pubDate>
+        </item>
+		<item>
+            <title>Le site de Javas'S Cool (javascool) fait peau neuve</title>
+            <link>http://javascool.gforge.inria.fr</link>
+            <guid isPermaLink="false">javascoolnews8</guid>
+            <description>Le site de Java's Cool (javascool) fait peau neuve, venez le visiter</description>
+            <pubDate>Wen, 31 Jan 2010 20:00:00 GMT</pubDate>
+        </item>
+		         
+    </channel>
+</rss>

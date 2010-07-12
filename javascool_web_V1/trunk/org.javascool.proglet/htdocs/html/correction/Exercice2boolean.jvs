@@ -1,0 +1,19 @@
+Exercice2boolean{
+	
+	void main(){
+		Orphy.demarrer();
+		double temperature;
+		boolean boucle = true;
+		
+		while(boucle == true){
+			temperature = Orphy.acquisitionEntree("G", "Thermomètre");
+			println("Température : " + temperature);
+			if(temperature >30){
+				println("Température trop élevée...");
+				boucle = false;	
+			}
+		}
+		Orphy.arreter();
+	}
+	
+}

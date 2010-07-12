@@ -1,0 +1,13 @@
+Exemple1{
+
+	void main(){
+		
+		Orphy.demarrer();
+
+		double temperature = Orphy.acquisitionEntree("G", "Thermomètre");
+		println("température : " + temperature);
+		
+		Orphy.arreter();
+	}
+		
+}

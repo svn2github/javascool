@@ -1,0 +1,18 @@
+Exercice2break{
+	
+	void main(){
+		Orphy.demarrer();
+		double temperature;
+		
+		while(true){
+			temperature = Orphy.acquisitionEntree("G", "Thermomètre");
+			println("Température : " + temperature);
+			if(temperature >30){
+				println("Température trop élevée...");
+				break;	
+			}
+		}
+		Orphy.arreter();
+	}
+	
+}

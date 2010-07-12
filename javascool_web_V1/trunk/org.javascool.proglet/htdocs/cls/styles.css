@@ -1,0 +1,32 @@
+/* ŽlŽments gŽnŽriques */
+body, p, td, span, div, a, h1, h2, h3, h4 {
+  font-family: Arial, Verdana, Helvetica;
+  font-size: 13px;
+  font-weight:normal;
+  font-style:normal;
+  color:black;
+  padding:0px;
+  margin:0px;
+}
+
+body{background:#DEDEDE;}
+
+/* structure de la page */
+#pageMain{width:900px; margin:0 auto; background:white;}
+#pageObject{}
+#pageHeader{height:181px; background:white}
+#pageContent{width:600px; float:left; padding:10px;}
+#pageRight{width:240px; margin:0 0 0 20px; float:left; background: white; padding:60px 10px 10px; height:100%;}
+#pageFooter{ background:#FFB904; clear:both; padding:8px;}
+
+/* styles de contenu */
+.title1 { font-size: 16px; font-weight:bold; color:#0E46AE; padding: 4px 0 2px; }
+.title2 { font-size: 14px; font-style:italic; color:#0E46AE; padding: 8px 0 2px; }
+.content { text-align:justify; }
+
+/* colonne de droite */
+div.box { border:solid 1px #0E46AE; margin-bottom:10px; }
+div.boxTitle { background: #0E46AE; padding:4px; color:white; }
+div.boxContent { padding: 10px; }@charset "UTF-8";
+/* CSS Document */
+

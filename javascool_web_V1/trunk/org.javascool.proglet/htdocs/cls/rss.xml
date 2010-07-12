@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+    <channel>
+   
+        <title>Java'S Cool</title>
+        <link>http://javascool.gforge.inria.fr/</link>
+        <description>Ce flux voux permet d'être tenu au courant dela sortie d'une nouvelle version de java's Cool</description>
+       
+        <item>
+            <title>Une nouvelle version de java's Cool est disponible</title>
+            <link>http://javascool.gforge.inria.fr/download.html</link>
+            <guid isPermaLink="false">javascoolnews1</guid>
+            <description>une nouvelle version de l'installeur de java's Cool pour windows est diponible</description>
+            <pubDate>Tue, 17 Mar 2009 13:00:00 GMT</pubDate>
+        </item>
+		         
+    </channel>
+</rss>
