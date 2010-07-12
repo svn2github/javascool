@@ -1,0 +1,14 @@
+Exercice1{
+	
+	void main(){
+		Orphy.demarrer();
+		double temperature;
+		int i = 0;
+		while(i < 20){
+			temperature = Orphy.acquisitionEntree("G", "Thermomètre");
+			i++;
+		}
+		Orphy.arreter();
+	}
+	
+}
