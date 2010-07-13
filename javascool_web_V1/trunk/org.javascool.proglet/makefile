@@ -2,36 +2,6 @@
 ##  Hamdi.Ben_Abdallah@inria.fr et Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved.                     ##
 #####################################################################################################################################
 
-#
-# Travail de Thierry en cours:
-
-#
-# - retester mode applet
-# - Swing, ss demo, avec doc et avec import filtres par translator
-# - Ajouter algobox fct
-
-#
-# - Distinguer les types de données, structures de contrôle des autres mots du langage dans la documentation et la colorisation, avec des oranges différents <r mode=''>
-# - Ajout qq sujets au fil de l'eau, selon les retours
-# - Travailler sur les tutoriaux BML (voir makefile.bml)
-#
-
-#
-# Détails d'implémentation non critiques, mais qui gagneraient à être revus sur le principe:
-#
-#  - Voir pb des droits qd on rsync sur javascool
-#  - Voir le pb du JSlider qui affiche sa valeur entière et perturbe la lecture.
-#  - Voir comment remplacer l'usage de saxon:line-number() dans style_about2.xsl pour mise en ligne directe du xml/xsl
-#  - Voir le pb du setLocation() en mode standalone qui affiche mal les deux fenetres edit et run
-#  - Voir à permettre d'agrandir la fenêtre d'édition en standalone en largeur qd on passe en mode maximal size.
-#  - Utiliser la methode POST dans InterfacePrincipale pour appeler http://facets.inria.fr/javascool et non GET
-#  - Voir si on peut alleger la copie des img sur le site si Proglets.getIcon devient inutile http://javascool.gforge.inria.fr/proglet/img
-#  - Voir à utiliser un algorithme public pour proglet.Translator.reformat plutôt que ce bricolage local
-#  - La version web a qq soucis, certains exécutaient encore le programme d'un autre. Sous IE, la zone d'input ne marche pas bien, elle s'active mais impossible de taper dedans.
-#
-
-#####################################################################################################################################
-
 # Environnement utilisé:
 
 JAVA=/usr/java/jdk1.5.0_13
@@ -137,7 +107,7 @@ pub : doc
 	@-rsync index.html scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglets 
 
 ftp :
-	sftp scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet
+	gnome-terminal -e 'sftp scm.gforge.inria.fr:/home/groups/javascool/htdocs'
 
 # - génération des fichiers de documentation
 
@@ -166,5 +136,36 @@ proglet.zip :
 	@rm -f $@
 	@cd .. ; zip -9qr org.javascool.proglet/$@ org.javascool.proglet/index.html org.javascool.proglet/doc org.javascool.proglet/api org.javascool.proglet/wproglet.jar \
 	 -x \*/.svn/\* \*/\*/.svn/\*\*/.svn/\*/\* \*/\*/.svn/\*/\* 
+
+#####################################################################################################################################
+
+#
+# Ancienne to-do-liste:
+#
+
+#
+# - retester mode applet
+# - Swing, ss demo, avec doc et avec import filtres par translator
+# - Ajouter algobox fct
+
+#
+# - Distinguer les types de données, structures de contrôle des autres mots du langage dans la documentation et la colorisation, avec des oranges différents <r mode=''>
+# - Ajout qq sujets au fil de l'eau, selon les retours
+# - Travailler sur les tutoriaux BML (voir makefile.bml)
+#
+
+#
+# Détails d'implémentation non critiques, mais qui gagneraient à être revus sur le principe:
+#
+#  - Voir pb des droits qd on rsync sur javascool
+#  - Voir le pb du JSlider qui affiche sa valeur entière et perturbe la lecture.
+#  - Voir comment remplacer l'usage de saxon:line-number() dans style_about2.xsl pour mise en ligne directe du xml/xsl
+#  - Voir le pb du setLocation() en mode standalone qui affiche mal les deux fenetres edit et run
+#  - Voir à permettre d'agrandir la fenêtre d'édition en standalone en largeur qd on passe en mode maximal size.
+#  - Utiliser la methode POST dans InterfacePrincipale pour appeler http://facets.inria.fr/javascool et non GET
+#  - Voir si on peut alleger la copie des img sur le site si Proglets.getIcon devient inutile http://javascool.gforge.inria.fr/proglet/img
+#  - Voir à utiliser un algorithme public pour proglet.Translator.reformat plutôt que ce bricolage local
+#  - La version web a qq soucis, certains exécutaient encore le programme d'un autre. Sous IE, la zone d'input ne marche pas bien, elle s'active mais impossible de taper dedans.
+#
 
 #####################################################################################################################################
