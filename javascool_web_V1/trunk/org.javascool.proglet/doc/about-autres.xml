@@ -37,6 +37,8 @@ Par ailleurs, un excellent livre est présenté ici :
 http://www.swisseduc.ch/informatik-didaktik/informatikunterricht-planen-durchfuehren/
 Je l'ai acheté et lu, c'est à mon sens la seule base sérieuse (actuelle) en didactique de l'informatique. -->
 
+  <li><p title="LARP: un langage à la fois graphique et de pseudo-code"> Ce Logiciel d'Algorithmes et de Résolution de Problème est un <a href="http://larp.marcolavoie.ca/fr/default.htm">logiciel éducatif d'enseignement de l'algorithmique</a> en programmation structurée en exploitant le pseudo-code et les organigrammes.</p></li>
+
   <li><p title="Algobox: une alternative conviviale à la Konsol/Scope de JavaScool"> A l’aide d'un mini-langage algorithmique en français et d'une interface simple et ergonomique, le logiciel <a href="http://www.xm1math.net/algobox">algobox</a> permet de concevoir et de tester facilement les algorithmes que l'on peut rencontrer dans l’enseignement des mathématiques au secondaire (voir une discussion dans la <a href="about-faq.html#algobox">faq</a>).</p></li>
 
   <li><p  title="Simulation et objets animés"> Découvrir l'ingénerie numérique: <a href="http://mobinet.imag.fr">MobiNet</a>,
