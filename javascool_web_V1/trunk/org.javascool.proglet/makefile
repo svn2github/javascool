@@ -53,7 +53,7 @@ tst0 : doc
 # Test en standalone (pour débugger une proglet)
 
 tst1 : wproglet.jar 
-	cd tst ; /usr/bin/java -jar ../$^ run Swing TestMeVe.jvs
+	cd tst ; /usr/bin/java -jar ../$^ edit Swing TestMeVe.jvs
 
 # Test du service web (pour vérifier la demo web)
 
