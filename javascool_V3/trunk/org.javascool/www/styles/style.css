@@ -28,7 +28,7 @@ div.menu{
 }
 
 div.menu a{
-	background:transparent url(../images/nav_divider.gif) no-repeat scroll left center;
+	background:transparent url("../images/nav_divider.gif") no-repeat scroll left center;
 	border-color:#FFFFFF;
 	border-width:0px;
 	color:#2E2C51;
