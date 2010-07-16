@@ -89,7 +89,7 @@ if (ereg("<title>Erreur</title>", $page))
 				<div class="menuright_top">
 				<div class="menuright_right">
 				<div class="menuright_bottom">
-					<!-- RSS Link -->
+					<!-- RSS Link
 					<ul class="rss">
 						<li><img src="images/rss.gif" height="16" width="16" border="0" class="rss_icon" /><a href="rss.xml" title="Index">&nbsp;&nbsp;&nbsp;&nbsp;s'abonner</a></li>
 					</ul>
@@ -155,8 +155,10 @@ if (ereg("<title>Erreur</title>", $page))
 			<div class="greybox_bottom_r">
 					<div class="content">
 					<?php
-							echo $page;
-							echo("<br/><hr/>Source : <a href=\"http://wiki.inria.fr/sciencinfolycee/".$page."\">http://wiki.inria.fr/sciencinfolycee/".$page."</a>");
+					// On affiche la page au bonne endroit
+					echo $page;
+					// On affiiche la source
+					echo("<br/><hr/>Source : <a href=\"http://wiki.inria.fr/sciencinfolycee/".$page."\">http://wiki.inria.fr/sciencinfolycee/".$page."</a>");
 					?>
 					<br/><br/>
 					</div>			
@@ -180,7 +182,7 @@ if (ereg("<title>Erreur</title>", $page))
 			<div class="blackbox_bottom_l">
 			<div class="blackbox_bottom_r">
 				<div class="footer">
-					&nbsp;&copy;&nbsp; Java's Cool 2008 - 2010.
+					&nbsp;&copy;&nbsp; Java's Cool 2008 - 2010. <!-- All rights reserved -->
 				</div>
 			</div>
 			</div>
