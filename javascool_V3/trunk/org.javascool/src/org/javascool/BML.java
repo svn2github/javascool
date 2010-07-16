@@ -7,7 +7,7 @@
   Parse/Print complet d'une expression/term/bracket
 */
 
-package proglet;
+package org.javascool;
 
 import java.util.HashMap;
 import java.util.Iterator;

@@ -2,7 +2,7 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package proglet;
+package org.javascool;
 
 // Used to define the gui
 import java.applet.Applet;
@@ -38,7 +38,7 @@ public class Proglets { private Proglets() { }
    * @return The static instanciation of the proglet.
    */
   static public JPanel getPanel(String proglet) {
-    try { return (JPanel) Class.forName("proglet."+proglet).getField("panel").get(null); } 
+    try { return (JPanel) Class.forName("org.javascool."+proglet).getField("panel").get(null); } 
     catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
 

@@ -2,7 +2,7 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package proglet;
+package org.javascool;
 
 import java.util.Calendar;
 

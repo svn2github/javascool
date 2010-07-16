@@ -2,7 +2,7 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package proglet;
+package org.javascool;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,13 +38,13 @@ public class Translator { private Translator() { }
       // Imports for general swing programming
       out.print("import java.awt.*;");
       out.print("import javax.swing.*;");
-      out.print("import proglet.*;");
+      out.print("import org.javascool.*;");
       // Imports proglet's static methods
-      out.print("import static proglet.Macros.*;");
+      out.print("import static org.javascool.Macros.*;");
       for(String proglet : Proglets.proglets) 
-	out.print("import static proglet."+proglet+".*;");
+	out.print("import static org.javascool."+proglet+".*;");
       // Declares the proglet's core as a Runnable in the Applet
-      out.print("public class "+main+ " extends proglet.InterfacePrincipale {");
+      out.print("public class "+main+ " extends org.javascool.InterfacePrincipale {");
       out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
       out.print("  static { runnable = new ProgletRunnableInterfacePrincipale(); }");
       out.print("}");
@@ -66,7 +66,7 @@ public class Translator { private Translator() { }
     // Translates the while statement with sleep
     line = line.replaceFirst("(while.*\\{)", "$1 sleep(10);");
     // Translates the Synthe proglet @tone macro
-    line = line.replaceFirst("@tone:(.*)", "proglet.Synthe.tone = new proglet.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.Synthe.syntheSet(\"16 a\");");
+    line = line.replaceFirst("@tone:(.*)", "org.javascool.Synthe.tone = new org.javascool.SoundBit() { public double get(char c, double t) { return $1; } }; org.javascool.Synthe.syntheSet(\"16 a\");");
     return "    "+line;
   }
 

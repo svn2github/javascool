@@ -2,7 +2,7 @@
  * Hamdi.Ben_Abdallah@inria.fr, Copyright (C) 2009.  All rights reserved.      *
  *******************************************************************************/
 
-package proglet;
+package org.javascool;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;

@@ -2,11 +2,11 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package proglet;
+package org.javascool;
 
 /** Indique que la classe est une proglet.
  *  <p>Par contrat, une proglet doit: <ul>
- *    <li>Appartenir au <tt>package proglet</tt>.</li>
+ *    <li>Appartenir au <tt>package org.javascool</tt>.</li>
  *    <li>Définir un <tt>public static final JPanel panel;</tt> de taille maximale <tt>[540 x 580]</tt> qui est l'instanciation graphique de la proglet.</li>
  *    <li>Définir une méthode <tt>static void test()</tt> pour fournir un test/démonstration de la proglet.</li>
  *    <li>Définir toutes les méthodes accessibles à l'utilisateur sous la forme de méthode <tt>public static</tt> préfixées par le nom de la proglet.</li>
