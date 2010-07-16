@@ -22,6 +22,9 @@ cmp:
 clean:
 	rm -rf `find . -name '*.class'` tmp javascool.jar lib/manifest.mf lib/tools.jar
 
+pub:
+	@rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3
+
 # Creation d'un jar en standalone avec les classes du compilateur jdk5 intégrées
 
 javascool.jar : lib/tools.jar lib/manifest.mf $(wildcard src/org/javascool/*.java)
