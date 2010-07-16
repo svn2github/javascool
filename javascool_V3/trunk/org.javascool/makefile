@@ -9,9 +9,11 @@ usage :
 	@echo ' make doc          : crée la doc des classes java'
 	@echo ' make pub          : publie les fichiers du site web'
 
-
 clean:
 	@rm -rf `find . -name '*.class'` tmp lib/manifest.mf lib/tools.jar
+
+test: www/javascool.jar
+	cd tst ; java -jar ../www/javascool.jar
 
 pub:
 	@rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3
@@ -22,16 +24,11 @@ doc: www/api/index.html
 
 #####################################################################################################################################
 
-# Commande de test par défaut pour monter la v3
-
-test: www/javascool.jar
-	cd tst ; java -jar ../www/javascool.jar
-
 # Creation d'un jar en standalone avec les classes du compilateur jdk5 intégrées
 
 J5=/usr/java/jdk1.5.0_13
 CP=/usr/java/jdk1.5.0_13/lib/tools.jar
-# .. cette référence est nécessaire au mode standalone pour la classe Compiler
+# .. cette référence est nécessaire à la classe Compiler
 
 www/javascool.jar : makefile lib/tools.jar lib/manifest.mf $(wildcard src/org/javascool/*.java)
 	@$(J5)/bin/javac -Xlint -cp $(CP) src/org/javascool/*.java
@@ -53,6 +50,8 @@ lib/tools.jar : $(CP)
 	@cp $^ $@
 
 #####################################################################################################################################
+
+# Commande pour générer la doc java
 
 www/api/index.html : src/org/javascool/package.html $(wildcard src/org/javascool/*.java)
 	@mkdir -p $(@D)
