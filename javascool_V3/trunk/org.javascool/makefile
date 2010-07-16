@@ -6,7 +6,7 @@ usage :
 	@echo 'Usage:'
 	@echo ' make clean        : nettoie les fichiers intermédiares'
 	@echo ' make test         : lance la vieille version des proglets'
-	@echo ' make doc          : crée la doc des classes java'
+	@echo ' make doc          : cree la doc des classes java'
 	@echo ' make pub          : publie les fichiers du site web'
 
 clean:
@@ -16,7 +16,7 @@ test: www/javascool.jar
 	cd tst ; java -jar ../www/javascool.jar
 
 pub:
-	@rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3
+	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3
 	@firefox http://javascool.gforge.inria.fr/v3
 
 doc: www/api/index.html

@@ -1,21 +1,23 @@
 <?php
-if(isset($_GET['dest'])){
-	$dest = $_GET['dest'];
-}
-else{
-	$dest = "Accueil";
-}
-$page=file_get_contents('http://wiki.inria.fr/sciencinfolycee/'.$dest.'?printable=yes&action=render') ;
-$page=ereg_replace('src="/wikis/sciencinfolycee', 'src="http://wiki.inria.fr/wikis/sciencinfolycee', $page); 
-$page=ereg_replace('href="http://wiki.inria.fr/sciencinfolycee/', 'href="?dest=', $page);
-if(ereg("<title>Erreur</title>",$page)){
-	$page="<h1>Erreur 403 - Accès interdit</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>";
-}
+//
+// Mécanisme de syndication des pages web à partir de http://wiki.inria.fr/sciencinfolycee
+//
+// Usage: http://javascool.gforge.inria.fr?page=<page>
+$page = isset($_GET['page'])) ? $_GET['page'] : "Accueil";
+// Recuperation de la page sur le wiki
+$page = file_get_contents('http://wiki.inria.fr/sciencinfolycee/'.$page.'?printable=yes&action=render');
+// Remplace tous les liens entre page wiki par des pages vues du site
+$page = ereg_replace('href="http://wiki.inria.fr/sciencinfolycee/', 'href="?page=', $page);
+// Remplace tous le sliens locaux pas des liens distants
+$page = ereg_replace('src="/wikis/sciencinfolycee', 'src="http://wiki.inria.fr/wikis/sciencinfolycee', $page); 
+// Affiche proprement une page en erreur
+if (ereg("<title>Erreur</title>", $page))
+  $page="<h1>Erreur 403 - Accès interdit</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>";
 ?>
 <!DOCTYPE html PUBliC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/Dtd/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr"> 
 <head> 
-	<title>Java's Cool - <? echo $dest; ?></title> 
+	<title>Java's Cool - <? echo $page; ?></title> 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 	<meta http-equiv="Pragma" content="no-cache" /> 
 	<meta http-equiv="Content-Style-Type" content="text/css" /> 
@@ -64,11 +66,11 @@ if(ereg("<title>Erreur</title>",$page)){
 			<div class="greybox_bottom_r">
 				<div class="menu">
 					<ul> 
-						<li><a href="?dest=Accueil">Accueil</a></li>
-						<li><a href="?dest=download">T&eacute;l&eacute;chargement</a></li> 
-						<li><a href="?dest=manuels">Ressources</a></li> 
-						<li><a href="?dest=dev">D&eacute;veloppement</a></li> 
-						<li><a href="?dest=contacts">Contacts</a></li> 
+						<li><a href="?page=Accueil">Accueil</a></li>
+						<li><a href="?page=download">T&eacute;l&eacute;chargement</a></li> 
+						<li><a href="?page=manuels">Ressources</a></li> 
+						<li><a href="?page=dev">D&eacute;veloppement</a></li> 
+						<li><a href="?page=contacts">Contacts</a></li> 
 					</ul>
 				</div>
 			</div>
@@ -95,10 +97,10 @@ if(ereg("<title>Erreur</title>",$page)){
 					<!-- Menu Start -->
 					<h3>General</h3>
 					<ul>
-						<li><a href="?dest=accueil" title="Index">Accueil</a></li>
-						<li><a href="?dest=news" title="Nouveauté">News</a></li>
+						<li><a href="?page=accueil" title="Index">Accueil</a></li>
+						<li><a href="?page=news" title="Nouveauté">News</a></li>
 						<li><a href="./proglet/doc/about-faq.htm" title="FAQ">FAQ</a></li>
-						<li><a href="?dest=download" title="T&eacute;l&eacute;chargement">T&eacute;l&eacute;chargement</a></li>
+						<li><a href="?page=download" title="T&eacute;l&eacute;chargement">T&eacute;l&eacute;chargement</a></li>
 						<li><a href="./proglet/doc/about-autres.htm" title="Ailleurs aussi">Ailleurs aussi ...</a></li>
 					</ul>
 					<h3>Recherche</h3>
@@ -114,26 +116,26 @@ if(ereg("<title>Erreur</title>",$page)){
 					</div>
 					<h3>T&eacute;l&eacute;chargement</h3>
 					<ul>
-						<li><a href="?dest=download" title="Toutes les versions">Toutes les versions </a></li>
+						<li><a href="?page=download" title="Toutes les versions">Toutes les versions </a></li>
 					</ul>
 					<h3>Ressource</h3>
 					<ul>
-						<li><a href="?dest=manuels" title="Manuels d'utilisation">Manuels d'utilisation</a></li>
-						<li><a href="?dest=manuels" title="Tutoriels">Tutoriels</a></li>
-						<li><a href="?dest=screenshot" title="">Screenshots</a></li>
+						<li><a href="?page=manuels" title="Manuels d'utilisation">Manuels d'utilisation</a></li>
+						<li><a href="?page=manuels" title="Tutoriels">Tutoriels</a></li>
+						<li><a href="?page=screenshot" title="">Screenshots</a></li>
 						
 					</ul>
 					<h3>D&eacute;veloppement</h3>
 					<ul>
-						<li><a href="?dest=licence" title="">Licence</a></li>
-						<li><a href="?dest=forge" title="">Sourceforge de L'INRIA</a></li>
-						<li><a href="?dest=rapport" title="">Rapport de TER</a></li>
+						<li><a href="?page=licence" title="">Licence</a></li>
+						<li><a href="?page=forge" title="">Sourceforge de L'INRIA</a></li>
+						<li><a href="?page=rapport" title="">Rapport de TER</a></li>
 						
 					</ul>
 					<h3>Contacts</h3>
 					<ul>
-						<li><a href="?dest=contacts" title="">Support</a></li>
-						<li><a href="?dest=contacts" title="">Auteurs</a></li>
+						<li><a href="?page=contacts" title="">Support</a></li>
+						<li><a href="?page=contacts" title="">Auteurs</a></li>
 					</ul>
  					<!-- Menu Stop -->
 				</div>
@@ -154,7 +156,7 @@ if(ereg("<title>Erreur</title>",$page)){
 					<div class="content">
 					<?php
 							echo $page;
-							echo("<br/><hr/>Source : <a href=\"http://wiki.inria.fr/sciencinfolycee/".$dest."\">http://wiki.inria.fr/sciencinfolycee/".$dest."</a>");
+							echo("<br/><hr/>Source : <a href=\"http://wiki.inria.fr/sciencinfolycee/".$page."\">http://wiki.inria.fr/sciencinfolycee/".$page."</a>");
 					?>
 					<br/><br/>
 					</div>			
