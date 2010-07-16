@@ -1,0 +1,23 @@
+
+
+table.table_download{
+    margin: 5px;
+    border-collapse: collapse;
+	text-align: center;
+	font-size:12px;
+}	
+
+table.table_download td{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc;
+    padding: 3px 4px 3px 4px;
+}
+
+table.table_download th{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc;
+    padding: 3px 4px 3px 4px;
+    background-color: #f0f0f0;
+}
