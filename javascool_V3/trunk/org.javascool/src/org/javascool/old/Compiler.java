@@ -1,4 +1,4 @@
-package org.javascool;
+package org.javascool.old;
 
 import java.io.IOException;
 import java.io.File;

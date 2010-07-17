@@ -2,7 +2,7 @@
  * Hamdi.Ben_Abdallah@inria.fr, Copyright (C) 2009.  All rights reserved.      *
  *******************************************************************************/
 
-package org.javascool;
+package org.javascool.old;
 
 // Used to define the widget
 import javax.swing.JTextPane;

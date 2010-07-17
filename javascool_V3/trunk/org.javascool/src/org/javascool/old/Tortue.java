@@ -2,7 +2,7 @@
  * Thievery.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascool;
+package org.javascool.old;
 
 // Used to define the gui
 import javax.swing.JPanel;

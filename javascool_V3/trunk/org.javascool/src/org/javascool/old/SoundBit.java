@@ -7,7 +7,7 @@
 // Gets a stream from a sound file are recover the get(channel, index)
 // Defines note's periodic and amplitude shapes
 
-package org.javascool;
+package org.javascool.old;
 
 // Used to define an audio stream
 import javax.sound.sampled.AudioInputStream;
