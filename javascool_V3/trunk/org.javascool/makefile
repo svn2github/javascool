@@ -21,7 +21,7 @@ svn: clean
 	svn up ; svn ci -m '' ; svn status
 
 doc: www/api/index.html
-	@firefox $^
+	@firefox www/api/org/javascool/package-summary.html
 
 pub: www/api/index.html www/javascool.jar
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3

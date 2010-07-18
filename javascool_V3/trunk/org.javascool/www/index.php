@@ -110,6 +110,7 @@
             <ul>
               <li><a href="?page=Licence" title="Licence">Licence</a></li>
               <li><a href="?page=Crédits" title="Crédits">Crédits</a></li>
+  	      <li><a href="api/org/javascool/package-summary.html" title="Doc Java">Doc Java</a></li>
               <li><a href="https://gforge.inria.fr/projects/javascool" title="Forge">Forge logicielle</a></li>
             </ul>
             <h3>Contacts</h3>
