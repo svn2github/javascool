@@ -25,6 +25,8 @@ doc: www/api/index.html
 
 pub: www/api/index.html www/javascool.jar
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3
+
+web:
 	@firefox http://javascool.gforge.inria.fr/v3
 
 #####################################################################################################################################

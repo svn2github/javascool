@@ -9,9 +9,9 @@
 // Usage: http://javascool.gforge.inria.fr/?page=<page>
   $page = isset($_GET['page']) ? $_GET['page'] : "Accueil";
   // Recuperation de la page sur le wiki
-  $page = file_get_contents('http://wiki.inria.fr/sciencinfolycee/'.$page.'?printable=yes&action=render');
+  $page = file_get_contents('http://wiki.inria.fr/sciencinfolycee/JavaScool:'.$page.'?printable=yes&action=render');
   // Remplace tous les liens entre page wiki par des pages vues du site
-  $page = ereg_replace('href="http://wiki.inria.fr/sciencinfolycee/', 'href="?page=', $page);
+  $page = ereg_replace('href="http://wiki.inria.fr/sciencinfolycee/JavaScool:', 'href="?page=', $page);
   // Remplace tous les liens wikis locaux pas des liens distants
   $page = ereg_replace('src="/wikis/sciencinfolycee', 'src="http://wiki.inria.fr/wikis/sciencinfolycee', $page); 
   // Si le wiki signale une erreur alors on affiche proprement une page en erreur
