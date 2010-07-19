@@ -11,19 +11,19 @@ usage :
 	@echo ' make pub          : publie les fichiers du site web'
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp lib/manifest.mf lib/tools.jar
+	@rm -rf `find . -name '*.class'` tmp lib/manifest.mf lib/tools.jar www/api www/javascool.jar
 
 test: www/javascool.jar
 	cd tst ; java -jar ../www/javascool.jar
 
 svn: clean
-	rm -rf www/api www/avascool.jar
 	svn up ; svn ci -m '' ; svn status
 
 doc: www/api/index.html
 	@firefox www/api/org/javascool/package-summary.html
 
 pub: www/api/index.html www/javascool.jar
+	@php -l www/index.php
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3
 
 web:
