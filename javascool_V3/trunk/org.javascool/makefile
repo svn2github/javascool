@@ -80,6 +80,6 @@ lib/tools.jar : $(CP)
 www/api/index.html : src/org/javascool/package.html $(wildcard src/org/javascool/*.java)
 	@mkdir -p $(@D)
 	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d $(@D) src/org/javascool/*.java
-	@cp src/org/javascool/*.java $(@D)
+	@cp src/org/javascool/*.java $(@D)/org/javascool
 
 #####################################################################################################################################

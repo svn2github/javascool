@@ -25,6 +25,8 @@ import java.util.regex.Pattern;
  * </ul>This syntax is minimal, close to any bracket (<tt>C/C++, PHP, Java</tt>) language syntax, easy to read and write and completely standard.
  * <p>The parameter logical-structure parsing from a string is <i>weak</i> in the sense that a value is always derived without generating syntax errors.</p>
  * </p>
+ *
+ * @see <a href="Pml.java">source code</a>
  */
 public class Pml {
   private static final long serialVersionUID = 1L;

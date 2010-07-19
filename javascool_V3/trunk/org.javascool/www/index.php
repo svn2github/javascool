@@ -7,21 +7,30 @@
 // Mécanisme de syndication des pages web à partir de http://wiki.inria.fr/sciencinfolycee
 //
 // Usage: http://javascool.gforge.inria.fr/?page=<page>
-  $page = isset($_GET['page']) ? $_GET['page'] : "Accueil";
-  // Recuperation de la page sur le wiki
-  $page = file_get_contents('http://wiki.inria.fr/sciencinfolycee/JavaScool:'.$page.'?printable=yes&action=render');
-  // Remplace tous les liens entre page wiki par des pages vues du site
-  $page = ereg_replace('href="http://wiki.inria.fr/sciencinfolycee/JavaScool:', 'href="?page=', $page);
-  // Remplace tous les liens wikis locaux pas des liens distants
-  $page = ereg_replace('src="/wikis/sciencinfolycee', 'src="http://wiki.inria.fr/wikis/sciencinfolycee', $page); 
-  // Si le wiki signale une erreur alors on affiche proprement une page en erreur
-  if (ereg("<title>Erreur</title>", $page))
-    $page="<h1>Erreur 403 - Accès interdit</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>";
+  $name = isset($_GET['page']) ? $_GET['page'] : "Accueil";
+  if(ereg('^api:.*', $name)) {
+    // Traitement d'une demande de page de doc java
+    $name = ereg_replace('^api:', '', $name);
+    // Recuperation de la page javadoc
+    $page = file_get_contents('http://javascool.gforge.inria.fr/v3/api/org/javascool/'.$name);
+    // Remplace tous les liens entre pages par des pages vues du site
+    $page = ereg_replace('(http://javascool.gforge.inria.fr/v3/api|\.\./\.\.)/org/javascool/', '?page=api:', $page);
+  } else {
+    // Recuperation de la page sur le wiki
+    $page = file_get_contents('http://wiki.inria.fr/sciencinfolycee/JavaScool:'.$name.'?printable=yes&action=render');
+    // Remplace tous les liens entre pages par des pages vues du site
+    $page = ereg_replace('href="http://wiki.inria.fr/sciencinfolycee/JavaScool:', 'href="?page=', $page);
+    // Remplace tous les liens wikis locaux pas des liens distants
+    $page = ereg_replace('src="/wikis/sciencinfolycee', 'src="http://wiki.inria.fr/wikis/sciencinfolycee', $page); 
+    // Si le wiki signale une erreur alors on affiche proprement une page en erreur
+    if (ereg("<title>Erreur</title>", $page))
+      $page="<h1>Désolé ! Cette page est en construction où inacessible ..</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>";
+  }
 ?>
 <!DOCTYPE html PUBliC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/Dtd/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr"> 
 <head> 
-<title>Java's Cool - <? echo $page; ?></title> 
+<title>Java's Cool - <? echo $name; ?></title> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 <meta http-equiv="Pragma" content="no-cache" /> 
 <meta http-equiv="Content-Style-Type" content="text/css" /> 
@@ -110,7 +119,8 @@
             <ul>
               <li><a href="?page=Licence" title="Licence">Licence</a></li>
               <li><a href="?page=Crédits" title="Crédits">Crédits</a></li>
-  	      <li><a href="api/org/javascool/package-summary.html" title="Doc Java">Doc Java</a></li>
+  	      <li><a href="?page=api:package-summary.html" title="Doc Java">Doc Java</a></li>
+              <li><a href="http://wiki.inria.fr/sciencinfolycee" title="Forge">Wiki de travail</a></li>
               <li><a href="https://gforge.inria.fr/projects/javascool" title="Forge">Forge logicielle</a></li>
             </ul>
             <h3>Contacts</h3>
@@ -131,12 +141,7 @@
               <div class="greybox_bottom_l">
                 <div class="greybox_bottom_r">
                   <div class="content">
-                    <?php
-                      // On affiche la page au bon endroit
-                      echo $page;
-                      // On affiche la source
-                      echo("<br/><hr/>Source : <a href=\"http://wiki.inria.fr/sciencinfolycee/".$page."\">http://wiki.inria.fr/sciencinfolycee/".$page."</a>");
-                     ?>
+                    <?php echo $page; ?>
                     <br/><br/>
                   </div>			
                 </div> 

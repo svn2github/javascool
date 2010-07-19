@@ -9,6 +9,7 @@ import javax.swing.JApplet;
 /** This is the javascool v3 interface starter.
  * - It can be used either as standalone application or a certified applet.
  * @author Philippe Vienne
+ * @see <a href="Main.java">source code</a>
  */
 public class Main extends JApplet {
   private static final long serialVersionUID = 1L;
