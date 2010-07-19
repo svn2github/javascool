@@ -35,12 +35,14 @@ public class Pml {
 
   /** Resets the logical-structure, parsing the given string. 
    * @param value The value following the <tt>"{tag name = value .. element .. }"</tt> syntax.
+   * @return This; allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
-  public void reset(String value) { 
+  public Pml reset(String value) { 
     // Initializes the Pml
     data = new  HashMap<String, Pml>(); tag = ""; parent = null; count = -1;
     // Parses the string
     new PmlReader().reset(value, this);
+    return this;
   }
   /** Loads this logical-structure structure from a location.    *
    * @param location A Universal Resource Location of the form: <table align="center"> 
@@ -51,9 +53,10 @@ public class Pml {
    * <tr><td><tt>jar:/<i>jar-path-name</i>!/<i>jar-entry</i></tt></td><td>to load from a JAR archive
    *  <div>(e.g.:<tt>jar:http://javascool.gforge.inria.fr/javascool.jar!/META-INF/MANIFEST.MF</tt>)</div></td></tr>
    * </table>
+   * @return This; allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
-  public final void load(String location) {
-    reset(Utils.loadString(location));
+  public final Pml load(String location) {
+    return reset(Utils.loadString(location));
   }
   // Pml Reader
   private static class PmlReader {
@@ -144,11 +147,13 @@ public class Pml {
    * <li>"txt" To write in a normalized 2D plain text format.</li>
    * <li>"xml" To write in XML format, reducing tag and attribute names to valid XML names, and considering Bml without any attribute or elements as string.</li>
    * </ul>
+   * @return This; allowing to use the <tt>Pml pml = new Pml().reset(..)</tt> construct.
    */
-  public final void save(String location, String format) {
+  public final Pml save(String location, String format) {
     Utils.saveString(location, 
 		     "xml".equals(format) ? new XmlWriter().toString(this) :
 		     new PlainWriter().toString(this, 180));
+    return this;
   }
   // Pml Writer
   private static class PlainWriter {
