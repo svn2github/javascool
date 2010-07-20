@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  *   <li>Indexed <i>Elements</i> values implicitly indexed by an integer <tt>>= 0</tt></li>
  * </ul>values being either a Pml or a String. And not more.</p>
  *
- * <p>It is used to manage non-trivial routine parameters (including <a href="Text.html">text</a>) or to interface with other applications.</p>
+ * <p>It is used to manage non-trivial routine parameters (including <a href="../../org/javascool/Text.html">text</a>) or to interface with other applications.</p>
  * 
  * <p>The textual syntax is of the form:
  * <div style="margin-left: 40px"><tt>"{tag name = value .. element .. }"</tt></div>where <ul>
@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  * <p>The parameter logical-structure parsing from a string is <i>weak</i> in the sense that a value is always derived without generating syntax errors.</p>
  * </p>
  *
- * @see <a href="Pml.java">source code</a>
+ * @see <a href="../../org/javascool/Pml.java">source code</a>
  */
 public class Pml {
   private static final long serialVersionUID = 1L;

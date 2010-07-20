@@ -15,7 +15,8 @@ package org.javascool;
  *       réservé pour les objets <tt>Runnable</tt> de <tt>Java</tt> utilisés ici pour l'encapsulation.</li>
  *    <li>Avoir un constructeur <tt>private</tt> puisque c'est une factory avec uniquement des méthodes statiques qui ne peut être construit.</li>
  *  </ul>
- *  Une bonne méthode pour écrire une proglet est de partir d'un <a href="Smiley.java">exemple</a> et de l'adapter aux nouvelles fonctionnalités souhaitées.</p>
+ *  Une bonne méthode pour écrire une proglet est de partir d'un <a href="../../org/javascool/Smiley.java">exemple</a>
+ *  et de l'adapter aux nouvelles fonctionnalités souhaitées.</p>
  *   Ces classes sont écrites pour permettre facilement à un enseignant ou un partenaire, qui programme en Java au niveau élémentaire d'adapter, enrichir ces éléments.
  *   Non sans les <a href="http://javascool.gforge.inria.fr/?page=contactcontact">partager</a> avec nous tout(te)s en nous contactant.
  */

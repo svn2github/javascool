@@ -35,7 +35,7 @@ import java.util.HashMap;
 import java.io.File;
 
 /** This factory contains useful methods to interface javascool with the environment. 
- * @see <a href="Utils.java">source code</a>
+ * @see <a href="../../org/javascool/Utils.java">source code</a>
  */
 public class Utils { private Utils() { }
   private static final long serialVersionUID = 1L;
