@@ -40,6 +40,33 @@ import java.io.File;
 public class Utils { private Utils() { }
   private static final long serialVersionUID = 1L;
 
+  /** Runs an operating-system command, waits until completion and returns the output.
+   * @param command The operating systems command with its arguments separated by either tabulation ("\t" char) if any else space (" " char).
+   * @param timeout @optional<10s> Timeout in second or 0 if no timeout.
+   * @return The command output (standard output and error output) including '\n'.
+   * @throws IOException If an exception occurs during command execution.
+   * @throws IllegalStateException If the command returned status is non zero or if a time-out occurs.
+   */
+  public static String exec(String command, int timeout) throws IOException {
+    StringBuffer output = new StringBuffer();
+    long time = timeout > 0 ? System.currentTimeMillis() + 1000 * timeout : 0;
+    Process process = Runtime.getRuntime().exec(command.trim().split((command.indexOf('\t') == -1) ? " " : "\t"));
+    InputStreamReader stdout = new InputStreamReader(process.getInputStream());
+    InputStreamReader stderr = new InputStreamReader(process.getErrorStream());
+    for(boolean waitfor = true; waitfor;) { waitfor = false; Thread.yield();
+      while (stdout.ready()) { waitfor = true; output.append((char) stdout.read()); }
+      while (stderr.ready()) { waitfor = true; output.append((char) stderr.read()); }
+      if (!waitfor) { try { process.exitValue(); } catch(IllegalThreadStateException e1) { try { Thread.sleep(100); } catch(Exception e2) { } waitfor = true; } }
+      if ((time > 0) && (System.currentTimeMillis() > time)) throw new IllegalStateException("Command {"+command+"} timeout (>"+timeout+"s) output=["+output+"]\n");
+    }
+    stdout.close();
+    stderr.close();
+    // Terminates the process
+    process.destroy(); try { process.waitFor(); } catch(Exception e) { } Thread.yield();
+    if (process.exitValue() != 0) throw new IllegalStateException("Command {"+command+"} error #"+process.exitValue()+" output=[\n"+output+"\n]\n");
+    return output.toString(); 
+  }  
+
   /** Loads an URL textual contents and returns it as a string.
    *
    * @param location A Universal Resource Location of the form: <table align="center"> 
@@ -215,7 +242,7 @@ public class Utils { private Utils() { }
     if (name.equals(file.getName())) extension = false;
     String ext = file.getName().replaceAll("^.*\\.([A-Za-z]+)$", "$1");
     String main;
-    if (Translator.isReserved(name)) {
+    if (Jvs2Java.isReserved(name)) {
       main = "my_"+name;
       System.out.println("Attention: le nom \""+name+"\" est interdit par Java,\n renommons le \""+main+"\"");
     } else {
