@@ -11,10 +11,10 @@ usage :
 	@echo ' make pub          : publie les fichiers du site web'
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp lib/manifest.mf lib/tools.jar www/api www/javascool.jar
+	@rm -rf `find . -name '*.class'` tmp lib/manifest.mf www/api www/javascool.jar
 
 test: www/javascool.jar
-	cd tst ; java -jar ../www/javascool.jar
+	cd tst ; java -cp lib/saxon.jar -jar ../www/javascool.jar
 
 svn: clean
 	svn up ; svn ci -m '' ; svn status
@@ -37,6 +37,7 @@ web:
 
 J5=/usr/java/jdk1.5.0_13
 CP=/usr/java/jdk1.5.0_13/lib/tools.jar
+SX=/home/vthierry/bin/saxon.jar
 
 # Jar meta-data
 
@@ -45,19 +46,21 @@ version=3.0
 public-key=hello-world
 private-key=mer,d,azof
 
-www/javascool.jar : makefile lib/tools.jar lib/manifest.mf $(wildcard src/org/javascool/old/*.java)
+www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(wildcard src/org/javascool/old/*.java)
 	@#Compile the java classes
 	@$(J5)/bin/javac -Xlint -cp $(CP) src/org/javascool/old/*.java
 	@#Collects the files in a tmp directiry
 	@rm -rf tmp ; mkdir tmp
 	@# -1/3 All javascool classes
 	@mkdir -p tmp/org/javascool/old ; cp src/org/javascool/old/*.class tmp/org/javascool/old
-	@# -2/3 The jdk5 compiler classes
-	@unzip -qod tmp lib/tools.jar
+	@# -2.1/3 The jdk5 compiler classes
+	@unzip -qod tmp lib/tools.jar 
+	@# -2.2/3 The saxon transformer classes
+	@unzip -qod tmp lib/saxon.jar
 	@# -3/3 Images and icons
 	@svn export old/img tmp/img
 	@#Build the raw jar
-	@cd tmp ; jar cfm ../tmp.jar ../lib/manifest.mf org/javascool com/sun/tools/javac sun/tools/javac img
+	@cd tmp ; jar cfm ../tmp.jar ../lib/manifest.mf org/javascool com/sun/tools/javac sun/tools/javac com/icl/saxon org/w3c/xsl META-INF/services img
 	@#Sign the jar file
 	@keytool -genkey -alias javascool -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key
 	@jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key -signedjar $@ tmp.jar javascool
@@ -71,6 +74,9 @@ lib/manifest.mf : makefile
 	@(echo 'Summary: javascool v3'; echo 'Created-By: $(version) (javascool.gforge.inria.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'`") > $@
 	@(echo 'Main-Class: org.javascool.old.Proglets') >> $@
 	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
+
+lib/saxon.jar : $(SX)
+	@cp $^ $@
 
 lib/tools.jar : $(CP)
 	@cp $^ $@

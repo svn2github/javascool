@@ -34,6 +34,17 @@ import java.io.File;
 import java.util.HashMap;
 import java.io.File;
 
+// Used for the sax interface
+import java.io.StringReader;
+import java.io.StringWriter;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.Templates;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.transform.stream.StreamResult;
+
 /** This factory contains useful methods to interface javascool with the environment. 
  * @see <a href="../../org/javascool/Utils.java">source code</a>
  */
@@ -182,8 +193,8 @@ public class Utils { private Utils() { }
   }
 
   /** Converts a string to proper name.
-   * - A proper name is an identifier of lexical syntax: <tt>"[a-zA-Z_][a-zA-Z0-9_]*"</tt>.
-   * - The construct <tt>toName(string) == string</tt> allows to check that the string is a proper name.
+   * <p>- A proper name is an identifier of lexical syntax: <tt>"[a-zA-Z_][a-zA-Z0-9_]*"</tt>.</p>
+   * <p>- The construct <tt>toName(string) == string</tt> allows to check that the string is a proper name.</p>
    * @return The string itself if it is a proper name, else a new string: <ul>
    * <li>With punctuation replaced by <tt>'_'</tt></li>
    * <li>With some symbols replaced by their Latin name</li>
@@ -217,6 +228,7 @@ public class Utils { private Utils() { }
     string2name.put("é", "e");
     string2name.put("ê", "e");
     string2name.put("è", "e");
+    string2name.put("ë", "e");
     string2name.put("î", "i");
     string2name.put("ï", "i");
     string2name.put("ô", "o");
@@ -233,7 +245,7 @@ public class Utils { private Utils() { }
    * @param fileName The local fileName (not an URL) to be converted.
    * @param extension In false the extension is cancelled.
    * @return A <tt>file:</tt> location with a proper name and separator-char. 
-   * - <tt>System.out.println</tt> messages in French to the user if the file-name has to be changed.
+   * <p>- <tt>System.out.println</tt> messages in French to the user if the file-name has to be changed.</p>
    */
   public static String toFileName(String fileName, boolean extension) { 
     File file = new File(fileName);
@@ -251,5 +263,74 @@ public class Utils { private Utils() { }
 	System.out.println("Attention: le nom \""+name+"\" contient quelque caractère interdit par Java,\n renommons le \""+main+"\"");
     }
     return "file:" + folder + File.separatorChar + main + (extension ? "."+ext : "");
+  }
+
+  /** Converts a XML string to another XML string using a XSL string. 
+   * <div>The <tt>saxon.jar</tt> must be in the path.</div>
+   * @param xml The XML input string.
+   * @param xsl The XSL transformation string.
+   * @return The tranformed string.
+   *
+   * @throws RuntimeException if an I/O exception has occurred.
+   * @throws IllegalArgumentException if a syntax error has occurred.
+   * 
+   */
+  public static String xml2xml(String xml, String xsl) {
+    // Compile the XSL tranformation 
+    try {
+      if (!templates.containsKey(xsl)) {
+	StreamSource source = new StreamSource(new StringReader(xsl));
+	templates.put(xsl, tfactory.newTemplates(source));
+      }
+    } catch(TransformerConfigurationException e) {
+      throw new RuntimeException(e+" when compiling: "+xsl); 
+    }
+    // Apply the transformation
+    try {
+      Transformer transformer = templates.get(xsl).newTransformer();
+      StreamSource source = new StreamSource(new StringReader(xml));
+      StringWriter writer = new StringWriter();
+      StreamResult result = new StreamResult(writer);
+      transformer.transform(source, result);
+      return writer.toString();
+    } catch(TransformerException e) {
+      throw new IllegalArgumentException(e.toString());
+    }
+  }
+  // Cash mechanism      
+  private static TransformerFactory tfactory = TransformerFactory.newInstance();
+  private static HashMap<String,Templates> templates = new HashMap<String,Templates>();
+  static {
+    System.setProperty("javax.xml.parsers.SAXParserFactory", "com.icl.saxon.aelfred.SAXParserFactoryImpl");
+    System.setProperty("javax.xml.transform.TransformerFactory", "com.icl.saxon.TransformerFactoryImpl");  
+    System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.icl.saxon.om.DocumentBuilderFactoryImpl");
+  }
+
+  /** Converts a HTML string to a XHTML string.
+   * <p>- Accentuation is re-encoded in UTF-*, spurious constructs (comments, instructions, ..) are deleted and empty tags are terminated by '/>'.</p>
+   * <p>- This is a fragible command in the sense that unexpected spurious or non-well formed HTML syntax may defeat it.</p>
+   * @param htm The HTML string.
+   * @return The XHTML converted string.
+   */
+  public static String htm2xml(String htm) {
+    return htm.
+      // Eliminate html accentuation
+      replaceAll("&agrave;", "à").
+      replaceAll("&acirc;", "â").
+      replaceAll("&eacute;", "é").
+      replaceAll("&egrave;", "è").
+      replaceAll("&euml;", "ë").
+      replaceAll("&ecirc;", "ê").
+      replaceAll("&iuml;", "ï").
+      replaceAll("&icirc;", "î").
+      replaceAll("&ouml;", "ö").
+      replaceAll("&ocirc;", "ô").
+      replaceAll("&ugrave;", "ù").
+      replaceAll("&ccedil;", "ç").
+      // Eliminate spurious constructs
+      replaceAll("<[!?][^>]*>","").
+      replaceAll("&nbsp;"," ").
+      // Encapsulate non XML constructs
+      replaceAll("(<(meta|img|hr|br|link)[^>/]*)/?>","$1/>");
   }
 }

@@ -53,10 +53,25 @@ public class Pml {
    * <tr><td><tt>jar:/<i>jar-path-name</i>!/<i>jar-entry</i></tt></td><td>to load from a JAR archive
    *  <div>(e.g.:<tt>jar:http://javascool.gforge.inria.fr/javascool.jar!/META-INF/MANIFEST.MF</tt>)</div></td></tr>
    * </table>
+   * @param format <ul>
+   * <li>"pml" Reads a file in pml format (default value).</li>
+   * <li>"xml" Reads a file in XML format.</li>
+   * <li>"htm" or "html" Reads a file in HTML format.</li>
+   * </ul> 
+   * When not specified, detect the format extension from the file extension or used "pml" by default.
    * @return This; allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
+  public final Pml load(String location, String format) {
+    if ("xml".equals(format)) {
+      return reset(Utils.xml2xml(Utils.loadString(location), xml2pml));
+    } else if ("htm".equals(format) || "html".equals(format)) {
+      return reset(Utils.xml2xml(Utils.htm2xml(Utils.loadString(location)), xml2pml));
+    } else {
+      return reset(Utils.loadString(location));
+    }
+  }
   public final Pml load(String location) {
-    return reset(Utils.loadString(location));
+    return load(location, location.replaceAll("^.*\\.([A-Za-z]+)$", "$1"));
   }
   // Pml Reader
   private static class PmlReader {
@@ -131,6 +146,22 @@ public class Pml {
       ichar = ichar0;
     }
   }
+  private static String xml2pml = 
+    "<?xml version='1.0' encoding='utf-8'?>"+
+    "<sx:function name='sx:replace' xmlns:string='java:java.lang.String'>"+
+    "  <xsl:param name='string'/>"+
+    "  <xsl:param name='pattern'/>"+
+    "  <xsl:param name='target'/>"+
+    "  <sx:return select='string:replaceAll($string, $pattern, $target)'/>"+
+    "</sx:function>"+
+    "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' xmlns:sx='http://icl.com/saxon' extension-element-prefixes='sx' version='1.0'>"+
+    "  <xsl:output method='html'/>"+
+    "  <xsl:template match='*'>{"+
+    "  <xsl:value-of select='name(.)'/>"+
+    "    <xsl:for-each select='@*'><xsl:value-of select='name(.)'>=\"<xsl:value-of select='sx:replace(., \"\\\"\", \"\\\\\\\"\")'/>\" "+
+    "    <xsl:apply-templates/>"+
+    "  }</xsl:template>"+
+    "</xsl:stylesheet>";
 
   /** Returns this logical-structure structure as a one-line string. */
   public String toString() { 
@@ -145,7 +176,7 @@ public class Pml {
    * </table>
    * @param format <ul>
    * <li>"txt" To write in a normalized 2D plain text format.</li>
-   * <li>"xml" To write in XML format, reducing tag and attribute names to valid XML names, and considering Bml without any attribute or elements as string.</li>
+   * <li>"xml" To write in XML format, reducing tag and attribute names to valid XML names, and considering Pml without any attribute or elements as string.</li>
    * </ul>
    * @return This; allowing to use the <tt>Pml pml = new Pml().reset(..)</tt> construct.
    */
@@ -338,8 +369,8 @@ public class Pml {
   public int getSize() { return data.size(); }
 
   /** Returns an attribute's names iterator. 
-   * - Attributes are enumerated using the construct <tt>for(String name : pml.attributes()) { Pml value = pml.getChild(name); .. }</tt>.
-   * - Elements are enumerated using the construct <tt>for(int n = 0; n &lt; pml.getCount(); n++) { Pml value = pml.getChild(n); .. }</tt>.
+   * <p>- Attributes are enumerated using the construct <tt>for(String name : pml.attributes()) { Pml value = pml.getChild(name); .. }</tt>.</p>
+   * <p>- Elements are enumerated using the construct <tt>for(int n = 0; n &lt; pml.getCount(); n++) { Pml value = pml.getChild(n); .. }</tt>.</p>
    */
   public final Iterable<String> attributes() { return new Iterable<String>() {
       public Iterator<String> iterator() {
