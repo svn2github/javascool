@@ -35,14 +35,28 @@ public class Pml { /**/public Pml() { }
 
   /** Resets the logical-structure, parsing the given string. 
    * @param value The value following the <tt>"{tag name = value .. element .. }"</tt> syntax.
+   * @param format <ul>
+   * <li>"pml" Reads in pml format (default value).</li>
+   * <li>"xml" Reads in XML format.</li>
+   * <li>"htm" or "html" Reads in HTML format.</li>
+   * </ul> 
    * @return This; allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
-  public Pml reset(String value) { 
-    // Initializes the Pml
-    data = new  HashMap<String, Pml>(); tag = ""; parent = null; count = -1;
-    // Parses the string
-    new PmlReader().reset(value, this);
-    return this;
+  public Pml reset(String value, String format) { 
+   if ("xml".equals(format)) {
+      return reset(Utils.xml2xml(value, xml2pml), "pml");
+    } else if ("htm".equals(format) || "html".equals(format)) {
+     return reset(Utils.xml2xml(Utils.htm2xml(value), xml2pml), "pml");
+    } else {
+     // Initializes the Pml
+     data = new  HashMap<String, Pml>(); tag = ""; parent = null; count = -1;
+     // Parses the string
+     new PmlReader().reset(value, this);
+     return this;
+   }
+  }  
+  /**/public final Pml reset(String value) { 
+    return reset(value, "pml");
   }
   /** Loads this logical-structure structure from a location.    *
    * @param location A Universal Resource Location of the form: <table align="center"> 
@@ -54,21 +68,15 @@ public class Pml { /**/public Pml() { }
    *  <div>(e.g.:<tt>jar:http://javascool.gforge.inria.fr/javascool.jar!/META-INF/MANIFEST.MF</tt>)</div></td></tr>
    * </table>
    * @param format <ul>
-   * <li>"pml" Reads a file in pml format (default value).</li>
-   * <li>"xml" Reads a file in XML format.</li>
-   * <li>"htm" or "html" Reads a file in HTML format.</li>
+   * <li>"pml" Reads in pml format (default value).</li>
+   * <li>"xml" Readsin XML format.</li>
+   * <li>"htm" or "html" Reads in HTML format.</li>
    * </ul> 
    * When not specified, detect the format extension from the file extension or used "pml" by default.
    * @return This; allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
-  public Pml load(String location, String format) {
-    if ("xml".equals(format)) {
-      return reset(Utils.xml2xml(Utils.loadString(location), xml2pml));
-    } else if ("htm".equals(format) || "html".equals(format)) {
-      return reset(Utils.xml2xml(Utils.htm2xml(Utils.loadString(location)), xml2pml));
-    } else {
-      return reset(Utils.loadString(location));
-    }
+  public final Pml load(String location, String format) {
+    return reset(Utils.loadString(location), format);
   }
   /**/public final Pml load(String location) {
     return load(location, location.replaceAll("^.*\\.([A-Za-z]+)$", "$1"));
@@ -163,10 +171,22 @@ public class Pml { /**/public Pml() { }
     "  }</xsl:template>"+
     "</xsl:stylesheet>";
 
-  /** Returns this logical-structure structure as a one-line string. */
-  public String toString() { 
-    return new PlainWriter().toString(this, 0);
+  /** Returns this logical-structure structure as a one-line string.
+   * @param format <ul>
+   * <li>"raw" To write in a normalized 1D plain text format (default).</li>
+   * <li>"txt" To write in a normalized 2D plain text format.</li>
+   * <li>"xml" To write in XML format, reducing tag and attribute names to valid XML names, and considering Pml without any attribute or elements as string.</li>
+   * </ul>
+   */
+  public String toString(String format) { 
+    return 
+      "xml".equals(format) ? new XmlWriter().toString(this) :
+      "txt".equals(format) ? new PlainWriter().toString(this, 180) :
+      new PlainWriter().toString(this, 0);
   } 
+  /**/public final String toString() { 
+    return toString("raw");
+  }
   /** Saves this logical-structure structure into a location. 
    * @param location @optional<"stdout:"> A Universal Resource Location of the form: <table>
    * <tr><td><tt>ftp:/<i>path-name</i></tt></td><td>to save onto a FTP site.</td></tr>
@@ -180,10 +200,8 @@ public class Pml { /**/public Pml() { }
    * </ul>
    * @return This; allowing to use the <tt>Pml pml = new Pml().reset(..)</tt> construct.
    */
-  public Pml save(String location, String format) {
-    Utils.saveString(location, 
-		     "xml".equals(format) ? new XmlWriter().toString(this) :
-		     new PlainWriter().toString(this, 180));
+  public final Pml save(String location, String format) {
+    Utils.saveString(location, toString(format));
     return this;
   }
   /**/public final Pml save(String location) {
@@ -291,10 +309,12 @@ public class Pml { /**/public Pml() { }
     }
   }
 
-  /** Gets this logical-structure tag. */
+  /** Gets this logical-structure tag. 
+   * @return The tag name if defined when reseting the data structure, otherwise the Java class name.
+   */
   public final String getTag() { return tag; }
   private final void setTag(String value) { tag = value; }
-  private String tag = "";
+  private String tag = getClass().getName();
 
   /** Gets this logical-structure parent's reference if any. */
   public final Pml getParent() { return parent; }
@@ -398,7 +418,7 @@ public class Pml { /**/public Pml() { }
    */
   public static void main(String[] args) {
     if (args.length == 1) {
-      Pml pml = new Pml(); pml.load(args[0]); pml.save("stdout:", "plain");
+      Pml pml = new Pml(); pml.load(args[0]); pml.save("stdout:", "txt");
     } else {
       System.out.println("Usage: java org.javascool.Pml file-name");
     }

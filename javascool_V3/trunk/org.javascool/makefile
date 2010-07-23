@@ -23,10 +23,9 @@ doc: www/api/index.html
 	@firefox www/api/org/javascool/package-summary.html
 
 pub: www/api/index.html www/javascool.jar
-	@php -l www/index.php
-	@rm -f www/index.php~
-	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3
-	@echo 'La page http://javascool.gforge.inria.fr/v3 sera accessible dans environ une heure'
+	@php -l www/index.php ; rm -f www/index.php~
+	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 2>&1 | grep -v '^rsync: failed to set'
+	@echo 'Si www/index.php a change la page http://javascool.gforge.inria.fr/v3 sera accessible dans environ une heure'
 
 web:
 	@firefox http://javascool.gforge.inria.fr/v3
@@ -36,8 +35,6 @@ web:
 # Creation of a signed jar for standalone applications integrating the jdk5 classes
 
 J5=/usr/java/jdk1.5.0_13
-CP=/usr/java/jdk1.5.0_13/lib/tools.jar
-SX=/home/vthierry/bin/saxon.jar
 
 # Jar meta-data
 
@@ -47,8 +44,9 @@ public-key=hello-world
 private-key=mer,d,azof
 
 www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(wildcard src/org/javascool/old/*.java)
+	@echo "make $@"
 	@#Compile the java classes
-	@$(J5)/bin/javac -Xlint -cp $(CP) src/org/javascool/old/*.java
+	@$(J5)/bin/javac -Xlint -cp lib/tools.jar src/org/javascool/old/*.java
 	@#Collects the files in a tmp directiry
 	@rm -rf tmp ; mkdir tmp
 	@# -1/3 All javascool classes
@@ -58,7 +56,7 @@ www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(wildc
 	@# -2.2/3 The saxon transformer classes
 	@unzip -qod tmp lib/saxon.jar
 	@# -3/3 Images and icons
-	@svn export old/img tmp/img
+	@svn -q export old/img tmp/img
 	@#Build the raw jar
 	@cd tmp ; jar cfm ../tmp.jar ../lib/manifest.mf org/javascool com/sun/tools/javac sun/tools/javac com/icl/saxon org/w3c/xsl META-INF/services img
 	@#Sign the jar file
@@ -75,10 +73,14 @@ lib/manifest.mf : makefile
 	@(echo 'Main-Class: org.javascool.old.Proglets') >> $@
 	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
 
-lib/saxon.jar : $(SX)
-	@cp $^ $@
+CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 lib/tools.jar : $(CP)
+	@cp $^ $@
+
+SX=/home/vthierry/bin/saxon.jar
+
+lib/saxon.jar : $(SX)
 	@cp $^ $@
 
 #####################################################################################################################################
@@ -86,6 +88,7 @@ lib/tools.jar : $(CP)
 # Java doc generation
 
 www/api/index.html : src/org/javascool/package.html $(wildcard src/org/javascool/*.java)
+	@echo "make $(@D)"
 	@mkdir -p $(@D)
 	@for f in src/org/javascool/*.java ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
 	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -link http://java.sun.com/javase/6/docs/api -d $(@D) src/org/javascool/*.java

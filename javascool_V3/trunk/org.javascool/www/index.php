@@ -6,8 +6,8 @@
 //
 // Mécanisme de syndication des pages web à partir de http://wiki.inria.fr/sciencinfolycee
 //
-// Usage: http://javascool.gforge.inria.fr/?page=<page>
-  $name = isset($_GET['page']) ? $_GET['page'] : "Accueil";
+
+function get_page_contents($name) {
   if(ereg('^api:.*', $name)) {
     // Traitement d'une demande de page de doc java
     $name = ereg_replace('^api:', '', $name);
@@ -26,6 +26,13 @@
     if (ereg("<title>Erreur</title>", $page))
       $page="<h1>Désolé ! Cette page est en construction où inacessible ..</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>";
   }
+  return $page;
+}
+
+// Usage: http://javascool.gforge.inria.fr/?page=<page>
+  $name = isset($_GET['page']) ? $_GET['page'] : "Accueil";
+  $page = get_page_contents($name);
+  $menu = get_page_contents("Menu");
 ?>
 <!DOCTYPE html PUBliC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/Dtd/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr"> 
@@ -90,43 +97,7 @@
       <div class="menuright_top">
         <div class="menuright_right">
           <div class="menuright_bottom">
-            <h3>General</h3>
-            <ul>
-              <li><a href="?page=Accueil" title="Index">Accueil</a></li>
-              <li><a href="?page=Faq" title="FAQ">FAQ</a></li>
-              <li><a href="?page=Ailleurs" title="Ailleurs aussi">Ailleurs aussi ...</a></li>
-            </ul>
-            <h3>Recherche</h3>
-            <div>
-              <form action="http://www.google.com/search" method="get" style="font-size:10px;">
-                <input name="ie" type="hidden" value="UTF-8"></input>
-                <input name="oe" type="hidden" value="UTF-8"></input>
-                <input maxlength="255" name="q" size="10" type="text" value=""></input>
-                <input class="buttonSearch" name="btnG" type="submit" value="Rechercher" ></input>
-                <input name="domains" type="hidden" value="http://javascool.gforge.inria.fr"></input>
-                <input name="sitesearch" type="hidden" value="http://javascool.gforge.inria.fr"></input>
-              </form>
-            </div>
-            <h3>Activit&eacute;s</h3>
-            <ul>
-              <li><a href="?page=Activite" title="Toutes les activités">Toutes les activités </a></li>
-            </ul>
-            <h3>Ressources</h3>
-            <ul>
-              <li><a href="?page=Activite" title="Toutes les ressources">Toutes les ressources </a></li>
-            </ul>
-            <h3>D&eacute;veloppement</h3>
-            <ul>
-              <li><a href="?page=Licence" title="Licence">Licence</a></li>
-              <li><a href="?page=Crédits" title="Crédits">Crédits</a></li>
-  	      <li><a href="?page=api:package-summary.html" title="Doc Java">Doc Java</a></li>
-              <li><a href="http://wiki.inria.fr/sciencinfolycee" title="Forge">Wiki de travail</a></li>
-              <li><a href="https://gforge.inria.fr/projects/javascool" title="Forge">Forge logicielle</a></li>
-            </ul>
-            <h3>Contacts</h3>
-            <ul>
-              <li><a href="?page=Contacts" title="Contacts">Aide et Support</a></li>
-            </ul>
+            <?php echo $menu; ?>
           </div>
         </div>
       </div>
