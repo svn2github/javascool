@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  *
  * @see <a href="../../org/javascool/Pml.java">source code</a>
  */
-public class Pml {
+public class Pml { /**/public Pml() { }
   private static final long serialVersionUID = 1L;
 
   private HashMap<String, Pml> data = new  HashMap<String, Pml>();
@@ -148,20 +148,22 @@ public class Pml {
   }
   private static String xml2pml = 
     "<?xml version='1.0' encoding='utf-8'?>"+
-    "<sx:function name='sx:replace' xmlns:string='java:java.lang.String'>"+
-    "  <xsl:param name='string'/>"+
-    "  <xsl:param name='pattern'/>"+
-    "  <xsl:param name='target'/>"+
-    "  <sx:return select='string:replaceAll($string, $pattern, $target)'/>"+
-    "</sx:function>"+
     "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' xmlns:sx='http://icl.com/saxon' extension-element-prefixes='sx' version='1.0'>"+
-    "  <xsl:output method='html'/>"+
-    "  <xsl:template match='*'>{"+
-    "  <xsl:value-of select='name(.)'/>"+
-    "    <xsl:for-each select='@*'><xsl:value-of select='name(.)'>=\"<xsl:value-of select='sx:replace(., \"\\\"\", \"\\\\\\\"\")'/>\" "+
+    "  <xsl:output method='xml' encoding='utf-8' omit-xml-declaration='yes'/>"+
+    "  <sx:function name='sx:replace' xmlns:string='java:java.lang.String'>"+
+    "    <xsl:param name='string'/>"+
+    "    <xsl:param name='pattern'/>"+
+    "    <xsl:param name='target'/>"+
+    "    <sx:return select='string:replaceAll($string, $pattern, $target)'/>"+
+    "  </sx:function>"+
+    "  <xsl:template match='*'>"+
+    "  {<xsl:value-of select='name(.)'/><xsl:text> </xsl:text>"+
+    "    <xsl:for-each select='@*'><xsl:value-of select='name(.)'/>=\"<xsl:value-of select='.'/>\"<xsl:text> </xsl:text></xsl:for-each>"+
     "    <xsl:apply-templates/>"+
     "  }</xsl:template>"+
     "</xsl:stylesheet>";
+
+  // sx:replace(., )
 
   /** Returns this logical-structure structure as a one-line string. */
   public String toString() { 
@@ -237,7 +239,7 @@ public class Pml {
       if (ln) {
 	string.append("\n"); for(int t = 0; t < tab; t++) string.append(" "); l = tab;
       } else {
-	write(" ", tab);
+	string.append(" ");
       }
     }
     // Writes a word
@@ -390,7 +392,8 @@ public class Pml {
   static Pattern index = Pattern.compile("[0-9]+");
 
   /** Used to check the syntax the well-formedness by mirroring the structure in a normalized format.
-   * @param args Usage <tt>java org.javascool.Pml pml-file-name</tt>
+   * @param args Usage <tt>java org.javascool.Pml file-name</tt>
+   * <p>- The file name can be a PML, XML or HTML file name, with the corresponding extensions</p>.
    */
   public static void main(String[] args) {
     if (args.length == 1) {

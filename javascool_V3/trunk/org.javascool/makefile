@@ -87,7 +87,9 @@ lib/tools.jar : $(CP)
 
 www/api/index.html : src/org/javascool/package.html $(wildcard src/org/javascool/*.java)
 	@mkdir -p $(@D)
-	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -d $(@D) src/org/javascool/*.java
+	@for f in src/org/javascool/*.java ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
+	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -link http://java.sun.com/javase/6/docs/api -d $(@D) src/org/javascool/*.java
+	@for f in src/org/javascool/*.java ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
 	@cp src/org/javascool/*.java $(@D)/org/javascool
 
 #####################################################################################################################################
