@@ -61,7 +61,7 @@ public class Pml { /**/public Pml() { }
    * When not specified, detect the format extension from the file extension or used "pml" by default.
    * @return This; allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
-  public final Pml load(String location, String format) {
+  public Pml load(String location, String format) {
     if ("xml".equals(format)) {
       return reset(Utils.xml2xml(Utils.loadString(location), xml2pml));
     } else if ("htm".equals(format) || "html".equals(format)) {
@@ -70,7 +70,7 @@ public class Pml { /**/public Pml() { }
       return reset(Utils.loadString(location));
     }
   }
-  public final Pml load(String location) {
+  /**/public final Pml load(String location) {
     return load(location, location.replaceAll("^.*\\.([A-Za-z]+)$", "$1"));
   }
   // Pml Reader
@@ -146,7 +146,7 @@ public class Pml { /**/public Pml() { }
       ichar = ichar0;
     }
   }
-  private static String xml2pml = 
+  protected static String xml2pml = 
     "<?xml version='1.0' encoding='utf-8'?>"+
     "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' xmlns:sx='http://icl.com/saxon' extension-element-prefixes='sx' version='1.0'>"+
     "  <xsl:output method='xml' encoding='utf-8' omit-xml-declaration='yes'/>"+
@@ -158,12 +158,10 @@ public class Pml { /**/public Pml() { }
     "  </sx:function>"+
     "  <xsl:template match='*'>"+
     "  {<xsl:value-of select='name(.)'/><xsl:text> </xsl:text>"+
-    "    <xsl:for-each select='@*'><xsl:value-of select='name(.)'/>=\"<xsl:value-of select='.'/>\"<xsl:text> </xsl:text></xsl:for-each>"+
+    "    <xsl:for-each select='@*'><xsl:value-of select='name(.)'/>=\"<xsl:value-of select=\"translate(., '&quot;','¨')\"/>\"<xsl:text> </xsl:text></xsl:for-each>"+
     "    <xsl:apply-templates/>"+
     "  }</xsl:template>"+
     "</xsl:stylesheet>";
-
-  // sx:replace(., )
 
   /** Returns this logical-structure structure as a one-line string. */
   public String toString() { 
@@ -177,16 +175,19 @@ public class Pml { /**/public Pml() { }
    * <tr><td><tt>stdout:/</tt></td><td>to print to the terminal standard output.</td></tr>
    * </table>
    * @param format <ul>
-   * <li>"txt" To write in a normalized 2D plain text format.</li>
+   * <li>"txt" To write in a normalized 2D plain text format (default).</li>
    * <li>"xml" To write in XML format, reducing tag and attribute names to valid XML names, and considering Pml without any attribute or elements as string.</li>
    * </ul>
    * @return This; allowing to use the <tt>Pml pml = new Pml().reset(..)</tt> construct.
    */
-  public final Pml save(String location, String format) {
+  public Pml save(String location, String format) {
     Utils.saveString(location, 
 		     "xml".equals(format) ? new XmlWriter().toString(this) :
 		     new PlainWriter().toString(this, 180));
     return this;
+  }
+  /**/public final Pml save(String location) {
+    return save(location, "txt");
   }
   // Pml Writer
   private static class PlainWriter {
@@ -399,7 +400,7 @@ public class Pml { /**/public Pml() { }
     if (args.length == 1) {
       Pml pml = new Pml(); pml.load(args[0]); pml.save("stdout:", "plain");
     } else {
-      System.out.println("Usage: java org.javascool.Pml pml-file-name");
+      System.out.println("Usage: java org.javascool.Pml file-name");
     }
   }
 }
