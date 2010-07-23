@@ -24,7 +24,7 @@ doc: www/api/index.html
 
 pub: www/api/index.html www/javascool.jar
 	@php -l www/index.php
-	@rm www/index.php~
+	@rm -f www/index.php~
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3
 	@echo 'La page http://javascool.gforge.inria.fr/v3 sera accessible dans environ une heure'
 
