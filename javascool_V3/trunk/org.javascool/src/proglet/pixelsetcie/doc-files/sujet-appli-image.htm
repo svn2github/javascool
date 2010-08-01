@@ -1,0 +1,635 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:saxon="http://icl.com/saxon">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <link rel="stylesheet" type="text/css" href="img/style.css">
+      <title>JavaScool . . and Java is so cool.</title>
+      <link rel="shortcut icon" href="img/icon.jpg">
+   </head>
+   <body>
+      <table width="100%" style="border:0;margin:0;padding:0;background-image:url('img/bg-banner.jpg');">
+         <tr style="border:0;margin:0;padding:0">
+            <td width="33%" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr"><img height="36" width="150" src="img/logo-javascool.jpg"></a></td>
+            <td width="33%" align="center" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm#4"><img height="36" src="img/logo-lycees.jpg"></a></td>
+            <td width="33%" align="right" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://www.inria.fr"><img height="36" src="img/logo-inria.jpg"></a></td>
+         </tr>
+      </table>
+      
+      <h1><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"></a>
+         Comprendre quelques op&eacute;rations de manipulation d'images
+      </h1>
+      <div align="right">[<a href="#notes">introduction</a>] [<a href="#works">travail propos&Atilde;&copy;</a>] [<a href="#footnotes">remarques</a>] [<a href="about-memo.htm">m&Atilde;&copy;mo des fonctions</a>]
+      </div><br><br>
+      
+        <i>&Acirc;&laquo;proglet&Acirc;&raquo; </i><tt><a href="about-proglet-Smiley.htm">Smiley</a></tt>
+        
+        
+      <div class="soustitre">
+         <p>Objectif : </p>
+      </div><br><div id="objectif">
+         <table align="center" width="80%">
+            <tr>
+               <td align="left">
+                  Le but de ce tutoriel est de comprendre comment ce code manipule une image pixellique. 
+                      Il faut d&eacute;ja savoir 
+                  <a href="sujet-hello-world.htm">utiliser l'interface</a>,
+                      se servir de 
+                  <a href="sujet-about-variables.htm">variables</a> et avoir d&eacute;couvert l'
+                  <a href="sujet-about-if.htm">instruction conditionnelle</a> et 
+                      utiliser des 
+                  <a href="sujet-about-while.htm">boucles</a> et d&eacute;finir une 
+                  <a href="sujet-about-functions.htm">fonction</a>.
+                    
+               </td>
+            </tr>
+         </table>
+      </div><br>
+        
+        
+      <div class="soustitre">
+         <p>Introduction : </p>
+      </div><br><ul id="notes">
+         <li>
+            <div><b></b>: 
+               <img src="img/execute.png"> Choisir la proglet <tt>Smiley</tt> et non <tt>Konsol</tt> dans le bouton li&eacute; &agrave; l'ex&eacute;cution.
+            </div><br></li>
+         <li>
+            <div><b></b>: Lire en d&eacute;tail la description de la <i>&Acirc;&laquo;proglet&Acirc;&raquo; </i><tt><a href="about-proglet-Smiley.htm">Smiley</a></tt>.
+            </div><br></li>
+         <li>
+            <div><b></b>: 
+                      Une image est un tableau &agrave; deux dimensions de points lumineux, c'est &agrave; dire de &laquo;pixels&raquo;. 
+                      Chaque pixel a une valeur entre <tt>0</tt> (pour le "noir") et <tt>255</tt> (pour le "blanc").
+                      Bien lire le document sur l'
+               <a href="about-information.htm">information</a> en particulier la section "D&eacute;crire tous les dessins du monde".
+                    
+            </div><br></li>
+      </ul><br>
+        
+      <div class="soustitre">
+         <p>Travail propos&Atilde;&copy; :</p>
+      </div><br><ul id="works">
+         <li><b>D&eacute;couvrir un code qui modifie chaque pixel de l'image</b>: 
+                  Consid&eacute;rons le code suivant : 
+            <table border="1" align="center" width="80%">
+               <tr>
+                  <th align="left">
+                             
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel
+                     </p>
+                             
+                     <div class="text" id="-1"><font color="#990000"><b>int</b></font> f(<font color="#990000"><b>int</b></font> x) {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>return</b></font> 255 - x;
+                     </div>
+                             
+                     <div class="text" id="-1">}</div>
+                             
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Boucle sur tous les pixels
+                     </p>
+                             
+                     <div class="text" id="-1"><font color="#990000"><b>void</b></font> filtre() {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>(); j &lt;= <font color="#990000"><b>smileyHeight</b></font>(); j = j + 1) {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>(); i &lt;= <font color="#990000"><b>smileyHeight</b></font>(); i = i + 1) {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>smileySet</b></font>(i, j, f(<font color="#990000"><b>smileyGet</b></font>(i, j)));
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                             
+                     <div class="text" id="-1">}</div>
+                             
+                     <div class="text" id="-1"></div>
+                             
+                     <div class="text" id="-1"><font color="#990000"><b>void main</b></font>() {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
+                     </div>
+                             
+                     <div class="text" id="-1">}</div>
+                           
+                  </th>
+               </tr>
+            </table>
+            
+            <ul>
+                       
+               
+               <li>Le programme principal <font color="#990000"><b>main</b></font> charge une belle photo noir et blanc de 
+                  <a href="http://fr.wikipedia.org/wiki/Doisneau">Doisneau</a>.
+               </li>
+                       
+               
+               <li>Les deux premi&egrave;res lignes de la fonction 
+                  <b>filtre</b> bouclent sur tous les pixels en vertical et en horizontal.
+               </li>
+                       
+               
+               <li>Expliquez en quelques mots le r&ocirc;le des variables 
+                  <b>i</b> et 
+                  <b>j</b>.
+               </li>
+                       
+               
+               <li>Que fait la construction 
+                  <b><font color="#990000"><b>smileySet</b></font>(i, j, f(<font color="#990000"><b>smileyGet</b></font>(i, j)));</b> pour un pixel de coordonn&eacute;e (
+                  <b>i, j</b>) ?.
+               </li>
+                       
+               
+               <li>Essayez ce code, puis le code en ajoutant la fonction 
+                  <b>filtre();</b> apr&egrave;s 
+                  <b><font color="#990000"><b>smileyLoad</b></font>()</b> dans le programme principal : que se passe t'il ?
+               </li>
+                       
+               
+               <li>Expliquez en quelques mots ce ph&eacute;nom&egrave;ne d'&laquo;inversion vid&eacute;o&raquo;.</li>
+                       
+               
+               <li>A la place de la construction 
+                  <b><font color="#990000"><b>return</b></font> 255 - x;</b>, mettre la construction 
+                  <b><font color="#990000"><b>return</b></font>x;</b>: que se passe t'il et pourquoi ?
+               </li>
+                       
+               
+               <li>Augmenter ou baisser la 
+                  <i>luminosit&eacute;</i> d'une image revient &agrave; ajouter ou soustraire une valeur constante &agrave; la valeur de chaque pixel : 
+                          essayez en modifiant la fonction 
+                  <b>f()</b>.
+               </li>
+                       
+               
+               <li>Que se passe t'il si on choisit 
+                  <b><font color="#990000"><b>return</b></font> x + 255;</b> et pourquoi ?.
+               </li>
+                       
+               
+               <li>Que se passe t'il si on choisit 
+                  <b><font color="#990000"><b>return</b></font> x - 255;</b> et pourquoi ?.
+               </li>
+                       
+               
+               <li>Augmenter ou baisser le 
+                  <i>contraste</i> d'une image revient &agrave; multiplier ou diviser par un gain constant la valeur de chaque pixel : 
+                          essayez en modifiant la fonction 
+                  <b>f()</b>.
+               </li>
+                       
+               
+               <li>Que se passe t'il si on choisit 
+                  <b><font color="#990000"><b>return</b></font> 0 * x;</b> et pourquoi ?.
+               </li>
+                       
+               
+               <li>Que se passe t'il si on choisit 
+                  <b><font color="#990000"><b>return</b></font> 100 * x - 128;</b> et pourquoi ?.
+               </li>
+                     
+            </ul>
+                <br></li>
+         <li><b>Ajouter deux images : l'effet de calque</b>:  
+                  Cette partie se fera sans rien programmer. 
+                  Consid&eacute;rons les deux images issues d'une c&eacute;l&egrave;bre 
+            <a href="http://www.ri.cmu.edu/publication_view.html?pub_id=3904">base de donn&eacute;e</a>,
+                  mise &agrave; disposition de la communaut&eacute; scientifique internationale pour &eacute;tudier les logiciels de traitement des s&eacute;quences
+            d'images contenant des mouvements humains.
+            
+            <ul>
+                       
+               
+               <li>Si l'on consid&egrave;re les deux images suivantes:
+                          
+                  <div class="text" id="-1" align="center">
+                     
+                     <table>
+                        
+                        <tr>
+                           
+                           <td>
+                              <img src="img/cmu-jump1.jpg"></td>
+                           
+                           <td>
+                              <img src="img/cmu-jump3.jpg"></td>
+                        </tr>
+                     </table>
+                  </div>
+                          que se passera t'il si on ``additionne&acute;&acute; ces deux images ? 
+                          C'est &agrave; dire si l'on construit une nouvelle image dont la valeur de chaque pixel est la somme des valeurs des pixels
+                  de chaque image ? Expliquer en une phrase.
+               </li>
+                       
+               
+               <li>Si chaque image &eacute;tait dessin&eacute;e sur une feuille de papier calque, &agrave; quoi correspondrait la valeur ``transparente&acute;&acute; par rapport
+                  &agrave; la couleur de ces images ?
+               </li>
+                       
+               
+               <li>Quelle est la diff&eacute;rence entre poser une image dessin&eacute;e sur un calque et ajouter la valeur des pixels comme propos&eacute; ici ?</li>
+                       
+               
+               <li>Ecrire en langage naturel (avec vos mots &agrave; vous, sans vous soucier de le programmer) un algorithme qui simule le fait de poser
+                  une image dessin&eacute;e sur un calque sur une autre.
+               </li>
+                     
+            </ul>
+                <br></li>
+         <li><b>Soustraire deux images : d&eacute;tecter des changements</b>: 
+                  Cette partie se fera sans rien programmer, comme la pr&eacute;c&eacute;dente. 
+            
+            <ul>
+                       
+               
+               <li>Si l'on consid&egrave;re les deux images suivantes (cliquer sur l'image de gauche pour visualiser la s&eacute;quence):
+                          
+                  <div class="text" id="-1" align="center">
+                     
+                     <table>
+                        
+                        <tr>
+                           
+                           <td>
+                              <a href="img/13_11.avi">
+                                 <img src="img/cmu-jump1.jpg"></a></td>
+                           
+                           <td>
+                              <img src="img/cmu-jump2.jpg"></td>
+                        </tr>
+                     </table>
+                  </div>
+                          que s'est il pass&eacute; entre les deux images ? Si l'on ``soustrait&acute;&acute; les deux images de mani&egrave;re similaire &agrave; ce qui a &eacute;t&eacute;
+                  fait pour les ``additionner&acute;&acute; que va t'il se passer,
+                          pour les pixels correspondants &agrave; des points immobiles entre les deux images ? Et les pixels correspondants &agrave; des points
+                  en mouvement ? 
+                          Expliquer en deux/trois phrases.
+               </li>
+                       
+               
+               <li>A quoi correspondent les valeurs positives si l'on soustrait les pixels de l'image de gauche &agrave; ceux de l'image de droite ?
+                  Et les valeurs n&eacute;gatives ?
+               </li>
+                       
+               
+               <li>Utiliser l'id&eacute;e de soustraire deux images pour d&eacute;crire en quelques lignes un syst&egrave;me qui permette de d&eacute;tecter les mouvements
+                  d'un objet avec une cam&eacute;ra.
+               </li>
+                     
+            </ul>
+                <br></li>
+         <li><b>D&eacute;couvrir un code qui filtre les pixels de l'image</b>: 
+                  Consid&eacute;rons le code suivant : 
+            <table border="1" align="center" width="80%">
+               <tr>
+                  <th align="left">
+                             
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel
+                     </p>
+                             
+                     <div class="text" id="-1"><font color="#990000"><b>void</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>int</b></font> valeur = (<font color="#990000"><b>smileyGet</b></font>(i, j) + <font color="#990000"><b>smileyGet</b></font>(i + 1, j)+ <font color="#990000"><b>smileyGet</b></font>(i, j + 1)+ <font color="#990000"><b>smileyGet</b></font>(i - 1, j)+ <font color="#990000"><b>smileyGet</b></font>(i, j - 1)) / 5;
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>smileySet</b></font>(i, j, valeur);
+                     </div>
+                             
+                     <div class="text" id="-1">}</div>
+                             
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Boucle sur tous les pixels
+                     </p>
+                             
+                     <div class="text" id="-1"><font color="#990000"><b>void</b></font> filtre() {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>() + 1; j &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; j = j + 1) {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>() + 1; i &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; i = i + 1) {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        filtrePixel(i, j);
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                             
+                     <div class="text" id="-1">}</div>
+                             
+                     <div class="text" id="-1"></div>
+                             
+                     <div class="text" id="-1"><font color="#990000"><b>void main</b></font>() {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> n = 0; n &lt; 2; n = n + 1) {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        filtre();
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                             
+                     <div class="text" id="-1">}</div>
+                           
+                  </th>
+               </tr>
+            </table>
+            
+            <ul>
+                       
+               
+               <li>Le programme principal <font color="#990000"><b>main</b></font> charge la photo et appelle la nouvelle fonction 
+                  <b>filtre</b> deux fois de suite (pour 
+                  <b>n = 0</b> et 
+                  <b>n = 1</b>).
+               </li>
+                       
+               
+               <li>La nouvelle fonction 
+                  <b>filtre</b> appelle la fonction 
+                  <b>filtrePixel</b> sur chaque pixel.
+               </li>
+                       
+               
+               <li>Expliquez ce que fait cette fonction 
+                  <b>filtrePixel</b> : entre quelles 5 valeurs calcule t'elle la moyenne (faire un dessin) ?
+               </li>
+                       
+               
+               <li>Essayez le code : que se passe t'il visuellement ? Pourquoi ce filtre a t'il un tel effet ?</li>
+                       
+               
+               <li>Essayez le code en appliquant non pas le filtre <tt>2</tt> mais <tt>10</tt> fois, puis  <tt>10</tt> fois, dans le programme principal : que se passe t'il ?
+               </li>
+                       
+               
+               <li>Essayez aussi avec d'autres images de votre choix vues sur internet.</li>
+                     
+            </ul>
+                <br></li>
+         <li><b>D'autres filtres d'images</b>: 
+                  Consid&eacute;rons le code suivant, avec une autre fonction de filtre : 
+            <table border="1" align="center" width="80%">
+               <tr>
+                  <th align="left">
+                             
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel
+                     </p>
+                             
+                     <div class="text" id="-1"><font color="#990000"><b>void</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>int</b></font> valeur = 128 + (<font color="#990000"><b>smileyGet</b></font>(i, j) - <font color="#990000"><b>smileyGet</b></font>(i + 1, j));
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>smileySet</b></font>(i, j, valeur);
+                     </div>
+                             
+                     <div class="text" id="-1">}</div>
+                             
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Boucle sur tous les pixels
+                     </p>
+                             
+                     <div class="text" id="-1"><font color="#990000"><b>void</b></font> filtre() {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>() + 1; j &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; j = j + 1) {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>() + 1; i &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; i = i + 1) {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        filtrePixel(i, j);
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                             
+                     <div class="text" id="-1">}</div>
+                             
+                     <div class="text" id="-1"></div>
+                             
+                     <div class="text" id="-1"><font color="#990000"><b>void main</b></font>() {
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
+                     </div>
+                             
+                     <div class="text" id="-1">
+                        &nbsp;&nbsp;&nbsp;
+                        filtre();
+                     </div>
+                             
+                     <div class="text" id="-1">}</div>
+                           
+                  </th>
+               </tr>
+            </table>
+            
+            <ul>
+                      
+               
+               <li>Que se passe t'il dans ce cas ? D&eacute;crivez ce que vous observez.</li>
+                      
+               
+               <li>Pourquoi avoir ajout&eacute; <tt>128</tt> ? Essayez avec les expressions 
+                  <b>valeur = (<font color="#990000"><b>smileyGet</b></font>(i, j) - <font color="#990000"><b>smileyGet</b></font>(i + 1, j));</b> 
+                         puis 
+                  <b>valeur = -(<font color="#990000"><b>smileyGet</b></font>(i, j) - <font color="#990000"><b>smileyGet</b></font>(i + 1, j));</b> pour bien comprendre ce qui se passe.
+               </li>
+                      
+               
+               <li>Comment observer la m&ecirc;me chose avec les contours horizontaux ? Proposez une nouvelle fonction pour ce faire.</li>
+                      
+               
+               <li>Essayez la construction 
+                  <b>valeur = (<font color="#990000"><b>smileyGet</b></font>(i, j) - <font color="#990000"><b>smileyGet</b></font>(i + 1, j) - <font color="#990000"><b>smileyGet</b></font>(i, j + 1));</b> et commentez le r&eacute;sultat.
+               </li>
+                      
+               
+               <li>Deux questions tr&egrave;s subtiles, pour les &laquo;cracks&raquo; : 
+                  
+                  <ul>
+                              
+                     
+                     <li>Avez vous remarqu&eacute; que la boucle de la fonction 
+                        <b>filtre()</b> n'a pas les m&ecirc;mes bornes d'it&eacute;ration pour ces filtres 
+                                 que lors du 1er cas o&ugrave; on tranformait juste l'intensit&eacute; d'un pixel ? Sauriez-vous dire pourqoi ?
+                     </li>
+                              
+                     
+                     <li>Que se passerait-il si on utilisait 
+                        <b>valeur = 128 + (<font color="#990000"><b>smileyGet</b></font>(i, j) - <font color="#990000"><b>smileyGet</b></font>(i - 1, j));</b> : essayez et tentez d'expliquer pourquoi.
+                     </li>
+                            
+                  </ul>
+               </li>
+                     
+            </ul>
+                <br></li>
+      </ul>
+      
+        
+      <div class="soustitre">
+         <p>Remarques :</p>
+      </div>
+      <div id="footnotes">
+         <p id="1"><sup>1</sup><b><i>Manipuler des objets num&eacute;riques: l'exemple des images.</i></b> Le but de cette activit&eacute; est, maintenant que nous 
+            <a href="http://interstices.info/reflet-numerique">savons comment sont cod&eacute;es des images</a>, de regarder quelques op&eacute;rations que nous pouvons effectuer sur ces objets num&eacute;riques. Nous consid&eacute;rons ici des images o&ugrave;
+            chaque pixel est  un nombre entre 0% pour le noir (consid&eacute;r&eacute; ici comme une absence de couleur) et 100% pour le blanc, donc
+            des images monochromes qui vont de transparent &agrave; blanc. Nous allons essayer d'illustrer dans quelle mesure des op&eacute;rations
+            entre ces images peuvent prendre avoir un sens concret pour nous.
+         </p>
+         <p id="2"><sup>2</sup><b><i>Ajouter deux images: l'effet de calque</i></b>. Que peux signifier "ajouter" deux images ? Tout simplement produire un effet de calque comme on le voit avec l'exemple ci-dessus.
+            En ajoutant les deux images, c'est &agrave; dire en ajoutant les valeurs de chaque pixel de la premi&egrave;re image &agrave; la valeur du pixel
+            correspondant dans la seconde image, on obtient une image qui amalgame les valeurs des deux, un peu comme un effet de calque.
+            Si nous avions consid&eacute;r&eacute; des pixels de couleurs alors en les ajoutant nous aurions m&eacute;lang&eacute; les couleurs et obtenues des combinaisons
+            diverses. De plus, la notion de calque est li&eacute; au fait que nous avons consid&eacute;r&eacute; la notion de transparence: il s'agit juste
+            ici d'illustrer un principe.
+         </p>
+         <p id="3"><sup>3</sup><b><i>Soustraire deux images: un d&eacute;tecteur de mouvement.</i></b> A quoi peut correspondre maintenant la "soustraction" de deux images, c'est &agrave; dire soustraire &agrave; chaque pixel de la premi&egrave;re
+            image, la valeur du pixel correspondant de la seconde ? Il est facile de voir que si les pixels ont une m&ecirc;me valeur, alors
+            la diff&eacute;rence sera nulle: ainsi si rien n'a chang&eacute; d'une image &agrave; l'autre, il n'y aura pas de diff&eacute;rence. Si au contraire,
+            quelque chose a chang&eacute;, alors la diff&eacute;rence sera ou positive (disons plut&ocirc;t noire) ou n&eacute;gative (disons plut&ocirc;t blanche) et
+            nous d&eacute;tectons ainsi les changements, comme nous le voyons ci dessus pour deux images entre lesquelles la figurine a quelque
+            peu boug&eacute;.
+                Dans le cas d'un film, nous obtenons une "image de mouvement": la d&eacute;tection de ce qui bouge d'une image &agrave; l'autre. Ce
+            qui est tr&egrave;s int&eacute;ressant c'est que dans les r&eacute;tines biologiques ou dans les syst&egrave;mes de vision artificiels qui analysent les
+            mouvements, c'est un calcul tout &agrave; fait similaire qui est mis en oeuvre.
+         </p>
+         <p id="4"><sup>4</sup><b><i>Manipuler les valeurs des pixels: r&eacute;glage de contraste et de luminosit&eacute;, etc..</i></b>  Regardons maintenant quelques op&eacute;rations effectu&eacute;es sur chaque valeur des pixels d'une image.
+            
+            <ul>
+                   
+               
+               <li>Par exemple, prenons chaque pixel de l'image et d&eacute;calons chaque valeur d'une quantit&eacute; constante, par exemple en ajoutant un
+                  nombre donn&eacute;. Que se passe t'il ? Les valeurs sombres deviennent plus claires, nous avons augment&eacute; la luminosit&eacute; de notre
+                  image. C'est exactement ce qui se passe sur le r&eacute;glage de luminosit&eacute; d'un &eacute;cran: il s'agit d'ajouter ou retirer une valeur
+                  constante pour donner plus ou moins de lumi&egrave;re.
+               </li>
+                   
+               
+               <li>Prenons maintenant chaque pixel et multiplions sa valeur par une quantit&eacute; donn&eacute;e, disons plus grande que un. Que se passe
+                  t'il ? Nous augmentons les amplitudes entre valeurs sombres et claires, nous avons augment&eacute; le contraste de notre image. C'est
+                  exactement ce qui se passe sur le r&eacute;glage de contraste d'un &eacute;cran: il s'agit soit d'amplifier les &eacute;carts entre les valeurs
+                  donc favoriser les noirs et les blancs au d&eacute;triment des gris, soit de diminuer ces &eacute;carts (en multipliant toutes les valeurs
+                  par un nombre plus petit que un) donc de rapprocher toutes les couleurs du gris.
+               </li>
+                 
+            </ul>Beaucoup d'autres op&eacute;rations sur la valeur des pixels peuvent facilement se pr&eacute;dire: par exemple que se passe t'il si nous
+            prenons l'oppos&eacute; de chaque valeur de pixel ? Les noirs deviennent blancs et les blancs deviennent noir et nous avons une op&eacute;ration
+            dites d'``inverse vid&eacute;o&acute;&acute;.
+         </p>
+         <p id="5"><sup>5</sup><b><i>Les images comme des objets alg&eacute;briques:</i></b> Les math&eacute;maticiens voient donc s&ucirc;rement ces tableaux bi-dimensionnels que sont les images comme des objets alg&eacute;briques que
+            l'on peut ajouter (effet de calque), multiplier par un scalaire, translater etc... Ce sont effectivement des vecteurs d'un
+            espace vectoriel dont les composantes sont rang&eacute;es en tableau. Ce ne sont pas des matrices car multiplier deux images (au
+            sens de la multiplication des matrices des valeurs de pixels) correspond &agrave; une op&eacute;ration qui n'a pas de sens (hormis pour
+            un artiste surr&eacute;aliste !) en ce qui concerne les images. Nous sommes donc face &agrave; des objets alg&eacute;briques dot&eacute;es d'op&eacute;rations
+            riches de propri&eacute;t&eacute;s, mais diff&eacute;rents des objets usuels de l'alg&egrave;bre lin&eacute;aire. Les th&eacute;oriciens de la vision par ordinateur
+            ont largement explor&eacute;s ces aspects formels.
+         </p>
+      </div>
+      
+   </body>
+</html>

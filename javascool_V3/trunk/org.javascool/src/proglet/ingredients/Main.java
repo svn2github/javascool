@@ -2,7 +2,7 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package ingredients;
+package proglet.ingredients;
 
 // Used to define the gui
 import javax.swing.JPanel;

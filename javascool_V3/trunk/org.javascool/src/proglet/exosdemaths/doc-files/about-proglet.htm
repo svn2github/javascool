@@ -1,0 +1,219 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:saxon="http://icl.com/saxon">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <link rel="stylesheet" type="text/css" href="img/style.css">
+      <title>JavaScool . . and Java is so cool.</title>
+      <link rel="shortcut icon" href="img/icon.jpg">
+   </head>
+   <body>
+      <table width="100%" style="border:0;margin:0;padding:0;background-image:url('img/bg-banner.jpg');">
+         <tr style="border:0;margin:0;padding:0">
+            <td width="33%" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr"><img height="36" width="150" src="img/logo-javascool.jpg"></a></td>
+            <td width="33%" align="center" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm#4"><img height="36" src="img/logo-lycees.jpg"></a></td>
+            <td width="33%" align="right" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://www.inria.fr"><img height="36" src="img/logo-inria.jpg"></a></td>
+         </tr>
+      </table>
+      <table width="100%">
+         <tr>
+            <td><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"></a></td>
+            <td>
+               <h1>La &laquo;proglet&raquo; Scope</h1>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      
+      <table>
+         <tr>
+            <td valign="top" width="560">
+               Cette proglet<sup><a href="#1">1</a></sup> permet d'afficher des trac&eacute;s de couleurs diff&eacute;rentes.
+                   
+               <div class="text" id="-1">Pour tracer un point de la courbe: 
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                                 
+                           <div class="text" id="-1"><font color="#990000"><b>scopeSet</b></font>(x, y, c);
+                           </div>
+                               
+                        </th>
+                     </tr>
+                  </table>
+                  
+                  <ul>
+                         
+                     
+                     <li>o&ugrave; 
+                        <b>x</b> est un <font color="#990000"><b>double</b></font>, entre 
+                        <b>[-1, +1]</b>, abscisse du point de la courbe;
+                     </li>
+                         
+                     
+                     <li>o&ugrave; 
+                        <b>y</b> est un <font color="#990000"><b>double</b></font>, entre 
+                        <b>[-1, +1]</b>, ordonn&eacute;e du point de la courbe;
+                     </li>
+                         
+                     
+                     <li>o&ugrave; 
+                        <b>c</b> est un <font color="#990000"><b>int</b></font> qui est le num&eacute;ro de la courbe: 
+                              <tt>0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</tt></li>
+                         
+                  </ul>tandis que la fonction: 
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                                 
+                           <div class="text" id="-1"><font color="#990000"><b>scopeReset</b></font>()
+                           </div>
+                               
+                        </th>
+                     </tr>
+                  </table> permet d'effacer la courbe. Le syst&egrave;me de coordonn&eacute;e est donc de la forme:
+                       
+                  <div class="text" id="-1" align="center">
+                     <img src="img/scope.png"></div>
+                       
+                  <div class="text" id="-1">Il est aussi possible de changer l'&eacute;chelle horizontale et verticale en utilisant la fonction: 
+                     <table border="1" align="center" width="80%">
+                        <tr>
+                           <th align="left">
+                                    
+                              <div class="text" id="-1"><font color="#990000"><b>scopeReset</b></font>(largeur, hauteur)
+                              </div>
+                                  
+                           </th>
+                        </tr>
+                     </table> o&ugrave; le trac&eacute; se fait alors avec les abcisses entre 
+                     <b>[-largeur, largeur]</b> et les ordonn&eacute;es entre les valeurs 
+                     <b>[-hauteur, hauteur]</b>.
+                  </div>
+                     
+               </div>
+                  
+               <div class="text" id="-1">Pour ajouter une &eacute;tiquette <font color="#008000">"s"</font> de couleur <tt>c</tt> au point 
+                  <b>x, y</b>:
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                              
+                           <div class="text" id="-1"><font color="#990000"><b>scopeAdd</b></font>(x, y, <font color="#008000">"s"</font>, c);
+                           </div>
+                              
+                        </th>
+                     </tr>
+                  </table>
+               </div>
+                  
+               <div class="text" id="-1">Pour ajouter une ligne de couleur <tt>c</tt> du point 
+                  <b>x1, y1</b> au point 
+                  <b>x2, y2</b> :
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                              
+                           <div class="text" id="-1"><font color="#990000"><b>scopeAddLine</b></font>(x1, y1, x2, y2, c);
+                           </div>
+                              
+                        </th>
+                     </tr>
+                  </table>
+               </div>
+                  
+               <div class="text" id="-1">Pour ajouter un cercle de couleur <tt>c</tt> de centre 
+                  <b>x, y</b> et de rayon 
+                  <b>r</b> :
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                              
+                           <div class="text" id="-1"><font color="#990000"><b>scopeAddCircle</b></font>(x, y, r, c);
+                           </div>
+                              
+                        </th>
+                     </tr>
+                  </table>
+               </div>
+                  
+               <div class="text" id="-1">Par ailleurs les valeurs du r&eacute;ticule peuvent &ecirc;tre relues avec les fonctions: 
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                                 
+                           <div class="text" id="-1"><font color="#990000"><b>double</b></font> x = <font color="#990000"><b>scopeX()</b></font>;
+                           </div>
+                                 
+                           <div class="text" id="-1"><font color="#990000"><b>double</b></font> y = <font color="#990000"><b>scopeY()</b></font>;
+                           </div>
+                               
+                        </th>
+                     </tr>
+                  </table> qui renvoie les valeurs horizontale et verticale du r&eacute;ticule. Le r&eacute;ticule est d&eacute;fini par les boutons en bas de l'&eacute;cran ou
+                  en cliquant.
+                      
+                  <div class="text" id="-1">
+                     <b>Note</b> : quand on clique sur la fen&ecirc;tre de trac&eacute;, manipule les glissoirs de 
+                     <b>X</b> et 
+                     <b>Y</b>, ou entre une valeur num&eacute;rique au clavier, 
+                         la fonction <font color="#990000"><b>main</b></font> est relanc&eacute;e pour mettre &agrave; jour le calcul avec ces nouvelles valeurs.
+                  </div>
+                     
+               </div>
+                  
+               <div class="text" id="-1">Un exemple d'utilisation: en appuyant sur la touche [
+                  <img src="img/demo.png"> 
+                  <b>Demo</b>] se tracent une sinuso&iuml;de bleue et une exponentielle violette,
+                     selon le programme suivant:
+                     
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                                
+                           <div class="text" id="-1"><font color="#990000"><b>scopeReset</b></font>();
+                           </div>
+                                
+                           <div class="text" id="-1"><font color="#990000"><b>for</b></font>(<font color="#990000"><b>double</b></font> x = -1; x &lt;= 1; x += 0.001) {
+                           </div>
+                                
+                           <div class="text" id="-1">
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>scopeSet</b></font>(x, 0.5 * <font color="#990000"><b>Math.sin</b></font>(10 * x) + 0.5, 6);
+                           </div>
+                                
+                           <div class="text" id="-1">
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>scopeSet</b></font>(x, -<font color="#990000"><b>Math.exp</b></font>(-(x + 1)), 7);
+                           </div>
+                                
+                           <div class="text" id="-1">}</div>
+                              
+                        </th>
+                     </tr>
+                  </table>
+               </div>
+                 
+            </td>
+            <td valign="top"><applet code="proglet.InterfacePrincipale.class" archive="../wproglet.jar" width="560" height="720">
+                  <param name="proglet" value="Scope"></applet></td>
+         </tr>
+      </table>
+      
+        
+      <div class="soustitre">
+         <p>Remarques :</p>
+      </div>
+      <div id="footnotes">
+         <p id="1"><sup>1</sup><b><i></i></b>Cette proglet un 
+            <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programm&eacute;e en Java et 
+            <a href=" ../api/proglet/Scope.html">document&eacute;</a> 
+                pour sa libre redistribution, l'acc&egrave;s 
+            <a href=" ../api/proglet/Scope.java">au code source</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
+         </p>
+      </div>
+      
+   </body>
+</html>

@@ -2,7 +2,10 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package convanalogique;
+package proglet.convanalogique;
+
+import org.javascool.Utils;
+import org.javascool.Macros;
 
 // Used to define the gui
 import javax.swing.JPanel;
@@ -10,6 +13,7 @@ import javax.swing.JLabel;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import javax.swing.JLayeredPane;
+import org.javascool.NumberInput;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
  * Fichiers utilisés: <pre>
@@ -30,7 +34,7 @@ public class Main implements org.javascool.Proglet { private Main() { }
       JLayeredPane pane = new JLayeredPane();
       pane.setPreferredSize(new Dimension(540, 300));
       JLabel fig = new JLabel();
-      fig.setIcon(Proglets.getIcon("convanalogique/doc-files/conv.png"));
+      fig.setIcon(Utils.getIcon("convanalogique/doc-files/conv.png"));
       fig.setBounds(2, 0, 540, 300);
       pane.add(fig, new Integer(1), 0);
       out = new JLabel("????");

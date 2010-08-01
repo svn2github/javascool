@@ -163,7 +163,7 @@ public class Utils { private Utils() { }
    * @param file The icon file name The icon must be located in the context directory (directory on the server or on the client side or in the jar).
    * @return The related image icon or an empty icon if not loaded.
    */
-  static ImageIcon getIcon(String file) {
+  public static ImageIcon getIcon(String file) {
     try { return new ImageIcon(Object.class.getClassLoader().getResource(file)); } catch(Exception e1) {
       try { System.out.println("Warning: loading "+file+" via gforge");
 	return new ImageIcon(new URL("http://javascool.gforge.inria.fr/v3/api/"+file)); } catch(Exception e2) {

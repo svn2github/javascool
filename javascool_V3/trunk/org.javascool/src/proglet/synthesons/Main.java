@@ -2,7 +2,10 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package synthesons;
+package proglet.synthesons;
+
+import org.javascool.SoundBit;
+import org.javascool.Macros;
 
 // Used to define the gui
 import javax.swing.JPanel;

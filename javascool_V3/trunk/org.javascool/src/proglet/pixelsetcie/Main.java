@@ -2,12 +2,15 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package pixelsetcie;
+package proglet.pixelsetcie;
+
+import org.javascool.Macros;
 
 // Used to define the gui
 import java.applet.Applet;
 import javax.swing.JPanel;
 import java.awt.Dimension;
+import org.javascool.IconOutput;
 
 /** Définit une proglet javascool qui permet de manipuler les pixels d'une image.
  * @see <a href="../pixelsetcie/Main.java">code source</a>

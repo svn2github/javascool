@@ -359,10 +359,11 @@ public class SoundBit implements Widget {
     { JFrame f = new JFrame(); f.getContentPane().add(p); f.pack(); f.setTitle(getName()); f.setSize(540, 600); f.setVisible(true); }
   }
 
-  // Defines a drawing of the FTT and of the signal
-  static class Panel extends JPanel {
+  /** Defines a drawing of the FTT and of the signal. */
+  public static class Panel extends JPanel {
     private static final long serialVersionUID = 1L;
     /** Defines the spectrum and trace's start of the sound.
+     * @param sound The sound to visualize.
      * @param channel Left 'l' or right 'r' channel.
      */
     public void reset(SoundBit sound, char channel) { 
@@ -503,11 +504,10 @@ public class SoundBit implements Widget {
    */
   public static SoundBit newNotesSound(String notes) { SoundBit s = new NotesSoundBit(); s.reset(notes); return s; }
 
-  // Defines a notes sound-bit wrapper.
-  static class NotesSoundBit extends BufferedSoundBit {
+  /** Defines a notes sound-bit wrapper. */
+  public static class NotesSoundBit extends BufferedSoundBit {
     /** Constructs a sound defined from a note sequence.
      * @param notes The note sequence.
-     * @param tempo The sequence tempo.
      */
     public boolean reset(String notes) { 
       freqs = getNotes(notes); tempo = getTempo(notes); name = "notes:.."; sound.setLength(length = freqs.length * tempo); return true;

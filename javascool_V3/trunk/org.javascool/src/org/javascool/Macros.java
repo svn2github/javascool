@@ -63,11 +63,4 @@ public class Macros { private Macros() { }
   public static void sleep(int delay) { try { if (delay > 0) Thread.sleep(delay); else Thread.yield(); } 
     catch(Exception e) { throw new RuntimeException("Program stopped !"); } 
   }
-
-  /** Ouvre une proglet secondaire pour utiliser deux proglets simultanément.
-   * @param proglet Le nom de la proglet : "Konsol", "Dicho", "Smiley", "Scope", "Conva", "Swing", "Synthe", "Tortue", ..
-   */
-  public static void show(String proglet) {
-    Proglets.show(proglet);
-  }
 }

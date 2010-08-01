@@ -5,7 +5,8 @@
 usage :
 	@echo 'Usage:'
 	@echo ' make clean        : nettoie les fichiers intermédiares'
-	@echo ' make test         : lance la vieille version des proglets'
+	@echo ' make v2           : lance la v2 des proglets'
+	@echo ' make v3           : lance la v3 des proglets'
 	@echo ' make svn          : synchronize avec le svn'
 	@echo ' make doc          : cree la doc des classes java'
 	@echo ' make pub          : publie les fichiers du site web'
@@ -13,8 +14,11 @@ usage :
 clean:
 	@rm -rf `find . -name '*.class'` tmp lib/manifest.mf www/api www/javascool.jar
 
-test: www/javascool.jar
-	cd tst ; java -cp lib/saxon.jar -jar ../www/javascool.jar
+v2: www/javascool.jar
+	cd tst ; java -jar ../www/javascool.jar
+
+v3: src/org/javascool/Main.class
+	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Main
 
 svn: clean
 	svn up ; svn ci -m '' ; svn status
@@ -26,9 +30,6 @@ pub: www/api/index.html www/javascool.jar
 	@php -l www/index.php ; rm -f www/index.php~
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 2>&1 | grep -v '^rsync: failed to set'
 	@echo 'Si www/index.php a change la page http://javascool.gforge.inria.fr/v3 sera accessible dans environ une heure'
-
-web:
-	@firefox http://javascool.gforge.inria.fr/v3
 
 #####################################################################################################################################
 
@@ -47,20 +48,16 @@ SRC=$(shell find src -name '*.java')
 
 www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC)
 	@echo "make $@"
-	@#Compile the java classes
+	@#[1] Compile the java classes
 	@$(J5)/bin/javac -Xlint -cp lib/tools.jar $(SRC)
-	@#Collects the files in a tmp directiry
-	@rm -rf tmp ; mkdir tmp
-	@# -1/3 All javascool classes
-	@mkdir -p tmp/org/javascool/old ; cp src/org/javascool/old/*.class tmp/org/javascool/old
-	@# -2.1/3 The jdk5 compiler classes
+	@#[2] Collects the files in a tmp directory
+	@rm -rf tmp ; svn -q export src tmp
+	@# + The jdk5 compiler classes
 	@unzip -qod tmp lib/tools.jar 
-	@# -2.2/3 The saxon transformer classes
+	@# + The saxon transformer classes
 	@unzip -qod tmp lib/saxon.jar
-	@# -3/3 Images and icons
-	@svn -q export old/img tmp/img
 	@#Build the raw jar
-	@cd tmp ; jar cfm ../tmp.jar ../lib/manifest.mf org/javascool com/sun/tools/javac sun/tools/javac com/icl/saxon org/w3c/xsl META-INF/services img
+	@cd tmp ; jar cfm ../tmp.jar ../lib/manifest.mf org proglet com/sun/tools/javac sun/tools/javac com/icl/saxon org/w3c/xsl META-INF/services
 	@#Sign the jar file
 	@keytool -genkey -alias javascool -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key
 	@jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key -signedjar $@ tmp.jar javascool
@@ -72,8 +69,11 @@ www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC)
 
 lib/manifest.mf : makefile
 	@(echo 'Summary: javascool v3'; echo 'Created-By: $(version) (javascool.gforge.inria.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'`") > $@
-	@(echo 'Main-Class: org.javascool.old.Proglets') >> $@
+	@(echo 'Main-Class: org.javascool.MainV2') >> $@
 	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
+
+src/org/javascool/Main.class : $(SRC)
+	@javac -Xlint -cp src:lib/tools.jar:lib/saxon.jar $(SRC)
 
 CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
@@ -89,15 +89,30 @@ lib/saxon.jar : $(SX)
 
 # Java doc generation
 
-SRC2=$(wildcard src/org/javascool/*.java)
-
-www/api/index.html : src/org/javascool/package.html $(SRC2)
+www/api/index.html : $(patsubst %.xml,%.htm,$(shell find src -name '*.xml')) $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(shell find src -name package.html) $(SRC)
 	@echo "make $(@D)"
 	@mkdir -p $(@D)
-	@for f in $(SRC2) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
+	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
 	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -link http://download.oracle.com/javase/6/docs/api \
 	  -windowtitle "Java's Cool v3" -d $(@D) $(SRC2)
-	@for f in $(SRC2) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
-	@for f in $(SRC2) ; do cp $$f `echo $$f | sed 's/^src/$(subst /,\\/,$(@D))/'` ; done
+	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
+	@for f in $(SRC) ; do cp $$f `echo $$f | sed 's/^src/$(subst /,\\/,$(@D))/'` ; done
+
+%.htm : %.xml lib/xml2htm.xsl
+	@java -jar lib/saxon.jar -o $@ $^
+
+%.png : %.fig
+	@fig2dev -L png $^ > $@
 
 #####################################################################################################################################
+
+# System operation commands
+
+ftp :
+	gnome-terminal -e 'sftp scm.gforge.inria.fr:/home/groups/javascool/htdocs'
+
+web:
+	@firefox http://javascool.gforge.inria.fr/v3
+
+#####################################################################################################################################
+

@@ -2,12 +2,14 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package exosdemaths;
+package proglet.exosdemaths;
 
 // Used to define the gui
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
+import org.javascool.CurveOutput;
+import org.javascool.NumberInput;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
  * @see <a href="../exosdemaths/Main.java">code source</a>
@@ -28,11 +30,11 @@ public class Main implements org.javascool.Proglet { private Main() { }
       input.add(inputY = new NumberInput("Y"), BorderLayout.SOUTH);
       Runnable run1 = new Runnable() { public void run() {
 	inputX.setValue(scope.getReticuleX()); inputY.setValue(scope.getReticuleY());
-	if (InterfacePrincipale.runnable != null) InterfacePrincipale.runnable.run(); 
+	//-if (InterfacePrincipale.runnable != null) InterfacePrincipale.runnable.run(); 
       }};
       Runnable run2 = new Runnable() { public void run() {
 	scope.setReticule(inputX.getValue(), inputY.getValue());
-	if (InterfacePrincipale.runnable != null) InterfacePrincipale.runnable.run(); 
+	//-if (InterfacePrincipale.runnable != null) InterfacePrincipale.runnable.run(); 
       }};
       scope.setRunnable(run1);
       inputX.setRunnable(run2);

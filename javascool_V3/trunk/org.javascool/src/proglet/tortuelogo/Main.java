@@ -2,7 +2,10 @@
  * Thievery.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package tortuelogo;
+package proglet.tortuelogo;
+
+import org.javascool.Utils;
+import org.javascool.Macros;
 
 // Used to define the gui
 import javax.swing.JPanel;
@@ -29,7 +32,7 @@ public class Main implements org.javascool.Proglet { private Main() { }
       clear();
       // Adds the turtle
       turtle = new JLabel();
-      turtle.setIcon(Proglets.getIcon("turtle.gif"));
+      turtle.setIcon(Utils.getIcon("turtle.gif"));
       turtle.setBounds(width/2, height/2, 42, 35);
       add(turtle);
     }
