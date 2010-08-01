@@ -1,0 +1,85 @@
+<p title="A propos de logiciels libres pour aider les enseignants au lycée">
+  Bien entendu, <a href="about-resume.htm"><c>JavaScool</c></a> n'est pas 
+  le seul outil proposé pour les professeur(e)s des lycées au niveau de l'enseignement de l'algorithmique, 
+  donc de <i>l'informatique</i> au lycée. Voici quelques autres très beaux exemples que nous vous recommendons tout autant, selon les besoins et les aspirations:<ul>
+
+  <li><p title="Document de référence"> Le document de <a href="more/Algo_Doc_Ress.pdf">ressources pour la classe de seconde au niveau de l'algorithmique</a> 
+  publié par <a href="http://eduscol.education.fr">ÉduSCOL</a>.<ul>
+   <li>Toutes les activités de ce document ont été instanciées en <javascool/>: les ``<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a>´´ (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet: accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux soluces des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature: ??">contacter</a> pour l'accès).</li></ul><br/></p></li>
+
+  <li><p title="Cours d'algorithmique"> Un cours d'<a href="http://www.pise.info/algo/codage.htm">``informatique non matheux´´</a> 
+  du niveau correspondant aux présents objectifs.</p></li>
+
+  <li><p title="Dossier sur l'algorithmique">La revue en ligne <a href="http://revue.sesamath.net">MathemaTICE</a> de <a href="http://sesamath.net">Sesamath</a> 
+  a publié en septembre un <a href="http://revue.sesamath.net/spip.php?rubrique60">dossier sur l'algorithmique</a>.</p></li>
+
+  <li><p title="Contenus culturels"> Le site <a href="http://interstices.info">)i(nterstices</a> offre de nombreux contenus culturels sur ces sujets.<br/></p></li>
+
+  <li><p title="Enseigner et apprendre les sciences informatiques à l'école"> Un <a href="http://interstices.info/upload/csunplugged/CSUnplugged_fr.pdf">document de référence</a>
+  présenté par un <a href="http://interstices.info/informatique-ecole">collègue informaticien</a>.<br/></p></li>
+
+  <li><p title="Sciences au lycée"> Le site du <a href="http://www2.cnrs.fr/multimedia/44.html">Sciences au lycée</a> 
+  ou le site <a href="http://www.cnrs.fr/cw/dossiers/saga.htm">Saga Science</a> du CNRS présentent des contenus qui utlisent beaucoup d'informatique.</p></li>
+
+  <!--li><p title="En matière de didactique"> En matière de didactique de l'informatique, Robert Cabane, a la gentillesse de nous proposer les liens suivants 
+  (im Deutsch, sorry): <ul>
+  
+ ce sont les Suisses qui tiennent le haut du pavé :
+http://www.inf-edu.ch/de/index
+En particulier, l'argumentaire est très riche d'idées :
+http://www.inf-edu.ch/de/quovadis
+On peut aussi jeter un coup d'oeil sur les compétences, notamment
+http://www.inf-edu.ch/de/curriculum/a0_algorithms ,
+http://www.inf-edu.ch/de/curriculum/a1_iteration,
+http://www.inf-edu.ch/de/curriculum/h1_usability ,
+http://www.inf-edu.ch/de/curriculum/h4_ethics .
+Par ailleurs, un excellent livre est présenté ici :
+http://www.swisseduc.ch/informatik-didaktik/informatikunterricht-planen-durchfuehren/
+Je l'ai acheté et lu, c'est à mon sens la seule base sérieuse (actuelle) en didactique de l'informatique. -->
+
+  <li><p title="LARP: un langage à la fois graphique et de pseudo-code"> Ce Logiciel d'Algorithmes et de Résolution de Problème est un <a href="http://larp.marcolavoie.ca/fr/default.htm">logiciel éducatif d'enseignement de l'algorithmique</a> en programmation structurée en exploitant le pseudo-code et les organigrammes.</p></li>
+
+  <li><p title="Algobox: une alternative conviviale à la Konsol/Scope de JavaScool"> A l’aide d'un mini-langage algorithmique en français et d'une interface simple et ergonomique, le logiciel <a href="http://www.xm1math.net/algobox">algobox</a> permet de concevoir et de tester facilement les algorithmes que l'on peut rencontrer dans l’enseignement des mathématiques au secondaire (voir une discussion dans la <a href="about-faq.html#algobox">faq</a>).</p></li>
+
+  <li><p title="Autres ressources">Voir <a href="http://docs.google.com/Doc?docid=0AcLWwvTf2MtJZGY4NDVubXBfMzNndHAydGtjbQ">Documents "algorithmique"
+  Programme de seconde 2009-2010</a>.</p></li>
+
+  <li><p  title="Simulation et objets animés"> Découvrir l'ingénerie numérique: <a href="http://mobinet.imag.fr">MobiNet</a>,
+  est un logiciel et un ensemble de ressources permettant de programmer le comportement d'objets mobiles animés à l'aide d'une interface et d'un langage
+  intuitifs. Totalement interactif, facilitant apprentissage et mise au point des mobiles, il est conçu pour fonctionner aussi en réseau.
+  C'est un outil idéal pour permettre à un chercheur de venir montrer en lasse quels mécanismes permettent de simuler les phénomènes
+  physiques qui gouvernent les objets que développe les ingénieurs. Un moyen de faire des maquettes numériques des ces objets avant de construire les
+  objets réels.<br/></p></li>
+
+  <li><p  title="Calcul numérique"> Si Scilab est un logiciel de calcul scientifique qui peut aussi bien être utilisé comme une super calculatrice graphique ou 
+  comme un outil complet pour résoudre des problèmes mathématiques, avec sa version ``<a href="http://www.scilab.org/lycee">Scilab pour les lycéen(ne)s</a>´´ 
+  une ressource libre et gratuite est offerte à la fois au professeur pour illustrer son cours et à l'élève en travaux dirigés comme en travail personnel, 
+  un grand nombre de contenus étant proposés sur le site. 
+  Par exemple, en lycée technique, il est utilisé pour la <a href="http://www-sop.inria.fr/culture_scient/poster-rdmschool.pdf">simulation
+  et optimisation d'un pont en fil de fer et en nylon</a>, (simulation de calculs mécaniques, logiciels numériques intégrés, ..) avec <a
+  href="http://rdmschool.gforge.inria.fr">RdmSchool</a>.<br/></p></li>
+
+  <li><p title="Programmation graphique"> Le logiciel <a href="http://scratch.mit.edu">Scratch</a> est une alternative qui permet de programmer 
+  à-la <a href="http://fr.wikipedia.org/wiki/Logo_(langage)">LOGO</a> et dont plusieurs exercices 
+  liés au programme de seconde sont <a href="http://wiki.inria.fr/sciencinfolycee/Scratch">proposés ici</a>.
+  La programmation se fait en assemblant graphiquement des blocs de commandes, dont les primitives permettent de créer des histoires, des jeux et des animations
+  qui sont ensuite publiés sur le Web.<br/></p></li>
+
+  <li><p title="Calcul symbolique"> Le logiciel <a href="http://www-fourier.ujf-grenoble.fr/%7Eparisse/giac_fr.html">Giac/Xcas</a> est un couteau suisse pour les mathématiques
+  en lycée qui permet de faire du calcul formel (c'est à dire avec des symboles, et on pas simplement des nombres), des représentations
+  graphiques dans le plan ou l'espace, de la géométrie dynamique (dans le plan ou dans l'espace), du tableur, des statistiques et de la programmation. 
+  Très utilisé, il est donc accompagné d'un grand nombre d'<a href="http://www-fourier.ujf-grenoble.fr/%7Eparisse/giac/doc/fr/casexo/casexo.html">activités
+  pédagogiques</a> prêtes à être utilisées.<br/></p></li>
+
+  <li><p title="Programmation formelle"> Le logiciel <a href="http://coq.inria.fr">Coq</a> qui fournit un langage formel pour rédiger des définitions mathématiques, 
+  des algorithmes et des théorèmes exécutable avec un environnement de développement semi-interactif est utilisé par quelque professeur de mathématiques 
+  (pas directement par les élèves) pour formaliser les contenus mathématiques du programme en géométrie. Ce travail est proposé par une 
+  <a href="http://www-sop.inria.fr/lemme/Frederique.Guilhot">Professeure de Mathématiques</a> et 
+  rendu <a href="http://coq.inria.fr/distrib/current/contribs/HighSchoolGeometry.html">disponible</a> avec le logiciel.</p></li>
+
+</ul> 
+
+  Voir aussi : <a href="http://linuxfr.org/2009/06/26/25652.html">A propos des logiciels libres dans les programmes de mathématiques du lycée.</a>
+
+</p>
+

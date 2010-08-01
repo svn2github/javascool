@@ -1,0 +1,58 @@
+﻿<p title="La «proglet» Synthe">
+  <proglet name="Synthe" mode="demo">
+    Cette proglet<footnote id="1"/> permet de générer une séquence de notes et d'en regarder le spectre de fréquence.
+
+   <p>Pour définir son propre son il faut utiliser la construction <javascool/>, par exemple:<code>
+     <p><r>@tone:</r> sqr(t) + noi(t)</p>
+   </code>où <r>@tone:</r> est une « macro-instruction », suivie, sur la même ligne d'une expression de la variable <c>t</c> qui définit la forme du son, 
+   tandis que les fonctions suivantes sont prédéfinies:<code>
+     <m>Sinusoide</m>
+     <p><r>double</r> <r>sns</r>(t)</p>
+     <m>Signal carré</m>
+     <p><r>double</r> <r>sqr</r>(t)</p>
+     <m>Signal triangulaire</m>
+     <p><r>double</r> <r>tri</r>(t)</p>
+     <m>Souffle aléatoire</m>
+     <p><r>double</r> <r>noi</r>(t)</p>
+   </code></p>
+
+   <p>Pour écouter le son ou la séquence de notes il faut utiliser la fonction:<code>
+     <p><r>synthePlay</r>();</p>
+   </code></p>
+
+   <p>La visualisation du son s'effectue en montrant: <ul>
+     <li>Les amplitudes des fréquences du son (tracé en rouge, l'unité est de <a href="http://fr.wikipedia.org/wiki/Décibel">décibel</a>, 
+     renormalisé pour offrir le meilleur tracé).
+     <br/>Les fréquences sont tracées entre le <i>La</i> sous-grave (octave 0 à <c>27.5<a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></c>, à peine audible) et 
+     le <i>La</i> sur-aigu (octave 9 à <c>6400<a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></c>), 
+     tandis que le milieu de l'échelle est le <i>La</i> du diapason (octave 3 à <c>440<a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></c>).</li>
+     <li>Le début du signal (tracé en jaune), permet de voir sa forme et son aspect temporel. Les premières <c>11</c>ms (<c>0.011</c> secondes) sont tracées.</li>
+   </ul></p>
+ 
+   <p>Pour définir une séquence de notes il faut utiliser la fonction:<code>
+     <p><r>syntheSet</r>(<s>séquence-de-note</s>);</p>
+   </code> où la syntaxe de <s>séquence-de-note</s> est définie dans la <a href=" ../api/proglet/SoundBit.html#notes">documentation</a> de la proglet.</p>
+
+  <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>], 
+  les différents sons:<code>
+     <p><r>@tone:</r> cos(t)</p>
+     <p><r>synthePlay</r>();</p>
+   </code>puis<code>
+     <p><r>synthePlay</r>();</p>
+     <p><r>@tone:</r> 0.5 * sqr(t)</p>
+   </code>puis<code>
+     <p><r>synthePlay</r>();</p>
+     <p><r>@tone:</r> 0.8 * tri(t) + 0.2 * noi(t)</p>
+   </code>puis<code>
+     <p><r>synthePlay</r>();</p>
+     <p><r>@tone:</r> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t)</p>
+   </code>sont présentés, puis les 1ères notes de quelque chose qui ressemble à la «Lettre à Elise» de L.v.Beethoven est jouée et son spectre affiché et ensuite 
+   <br/> . . à vous de jouer !</p>
+
+  </proglet>
+
+  <footnotes>
+    <p>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Synthe.html">documentée</a> 
+    pour sa libre redistribution, l'accès <a href=" ../api/proglet/Synthe.java">au code source</a>, et permettre des développements dérivés.</p>
+  </footnotes>
+</p>

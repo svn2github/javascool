@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <title>a-propos-de-dichotomie.html</title>
+</head>
+<body>
+<big><b>Un exemple de principe algorithmique: la dichotomie.</b></big><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Si l'est un m&eacute;canisme
+algorithmique g&eacute;n&eacute;ral accessible aux
+lyc&eacute;ens et qui illustre parfaitement ce que peut &ecirc;tre une
+notion
+abstraite
+d'informatique, c'est bien le principe de recherche dichotomie.
+D&eacute;couvrons le sur trois exemples.<br>
+<br>
+<i><b>Rechercher un mot dans un dictionnaire.</b></i> Prenons par
+exemple ce dictionnaire des drapeaux des environ 200
+(pr&eacute;cis&eacute;ment 195)
+&eacute;tats du
+monde [<tt><big>image dicho1.png</big></tt>] et
+faisons rechercher &agrave; un algorithme le drapeau de l'Albanie ou de
+la
+Zambie. Attention : impossible d'invoquer l'intelligence humaine ici,
+il s'agit uniquement d'intelligence m&eacute;canique. Pas facile donc
+de&nbsp;
+profiter par exemple de notre connaissance naturelle du fait que les
+mots commen&ccedil;ant par "A" sont plut&ocirc;t au d&eacute;but, et
+"Z" &agrave; la fin. Ce
+serait int&eacute;ressant de prendre en compte de tels
+&eacute;l&eacute;ments, mais nous
+pr&eacute;sentons que c'est une m&eacute;thode ad-hoc
+qui risque donc de manquer de g&eacute;n&eacute;ralit&eacute; pour
+&ecirc;tre r&eacute;utilis&eacute;e dans un
+autre
+contexte que celui d'un dictionnaire. Cherchons plut&ocirc;t des
+m&eacute;thodes
+``brutes&acute;&acute;, par exemple . . <br>
+<br>
+&nbsp;&nbsp;&nbsp; <i>Tourner les pages une &agrave; une
+jusqu'&agrave; trouver le pays si il existe</i>,
+ce qui pourrait s'&eacute;crire facilement comme ceci:<br>
+<tt>trouver(pays) {<br>
+&nbsp; page = debut;<br>
+&nbsp; tantque page &lt;= fin <br>
+&nbsp;&nbsp;&nbsp; si dictionnaire(page) =
+pays alors renvoyer page<br>
+&nbsp;&nbsp;&nbsp; page = page +1<br>
+&nbsp; renvoyer "pas trouv&eacute;"<br>
+}</tt>
+<br>
+[ATTENTION
+A BIEN UNIFORMISER LES NOTATIONS DES ALGOS DANS TOUT TDC]<br>
+c'est &agrave; dire &eacute;num&eacute;rer les pages du d&eacute;but
+&agrave; la fin du dictionnaire, ce
+qui est impl&eacute;ment&eacute; &agrave; travers la boucle:<br>
+<tt>&nbsp; page = debut;<br>
+&nbsp; tantque page &lt;= fin <br>
+&nbsp;&nbsp;&nbsp; ../..<br>
+&nbsp;&nbsp;&nbsp; page = page +1<br>
+</tt>dont on sort en renvoyant la page du dictionnaire correspondant au
+pays si elle est trouv&eacute;e, comme le sp&eacute;cifie ce test de
+comparaison:<br>
+<tt>&nbsp;&nbsp;&nbsp; si <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dictionnaire(page) =
+pays <br>
+&nbsp;&nbsp;&nbsp; alors<br>
+&nbsp; &nbsp; &nbsp; renvoyer page</tt><br>
+et dont on sort, sinon, &agrave; la fin en signalant ne pas avoir
+trouv&eacute; la
+page.<br>
+<br>
+Voil&agrave; un algorithme qui marche &agrave; coup s&ucirc;r. Il
+co&ucirc;tera une &eacute;tape de
+calcul (ici: un test de comparaison) si le pays est au tout
+d&eacute;but du
+dictionnaire. Il co&ucirc;ter 195 &eacute;tapes de calcul si il est
+&agrave; la fin. Si le
+dictionnaire contient <tt>N</tt> items (ici N = 195), et si tout est
+r&eacute;parti de mani&egrave;re uniforme, il est facile de se
+convaincre, que de <tt>1</tt>
+&agrave;<tt> N</tt> &eacute;tapes de calcul, en moyenne, il y en aura
+environ <tt>C
+= N/2</tt> &eacute;tapes &agrave; pr&eacute;voir.<br>
+Nous aurions bien s&ucirc;r pu &eacute;num&eacute;rer les pages dans un
+autre ordre, par
+exemple de
+la fin au d&eacute;but, ou de mani&egrave;re plus loufoque (par exemple
+toutes les
+pages paires puis les impaires, ..) mais cela n'aurait rien
+chang&eacute;:
+pourvu que nous &eacute;num&eacute;rions toutes les pages nous sommes
+certain de
+trouver le pays recherch&eacute;, et ce sera alors toujours avec un
+co&ucirc;t de
+l'ordre <tt>N</tt>
+&eacute;tapes de calcul. <br>
+Si vous aimez les probabilit&eacute;s, vous serez amus&eacute; de
+calculer que si <i>vous
+ouvrez le livre au hasard</i> jusqu'&agrave; trouver la page
+recherch&eacute;e, il
+vous en co&ucirc;tera . . et bien environ <tt>N</tt> &eacute;tapes de
+calcul aussi
+!!
+C'est &agrave; dire le m&ecirc;me ordre de grandeur que si vous les
+ouvrez de
+mani&egrave;re d&eacute;termin&eacute;e, ce qui n'est pas
+forc&eacute;ment un r&eacute;sultat intuitif.<br>
+Posons nous maintenant une autre question: <i><br>
+<br>
+<b>Peut on &ecirc;tre plus efficace ?</b></i><br>
+<br>
+Si le dictionnaire n'&eacute;tait pas tri&eacute; par ordre
+alphab&eacute;tique, c'est &agrave;
+dire tous les pays stock&eacute;s en d&eacute;sordre, la r&eacute;pons
+est non: nous serions
+de fait oblig&eacute; de tourner toutes les pages pour &ecirc;tre
+certain de trouver
+le pays recherch&eacute;. Mais voil&agrave; que le dictionnaire est
+totalement
+ordonn&eacute;e de "A jusqu'&agrave; Z" et c'est une
+propri&eacute;t&eacute; de cette structure de
+donn&eacute;e que nous pourrions exploiter.<br>
+En effet: si j'ouvre le dictionnaire, disons, au milieu, sur la page de
+la France, par exemple , tandis que je cherche l'Albanie, je vois que
+ce n'est pas la bonne page mais j'apprends quelque chose de plus:
+puisque l'Albanie est <i>avant</i> la France sa page est donc
+forc&eacute;ment situ&eacute;e dans la moiti&eacute; gauche du
+dictionnaire, je n'ai donc
+plus &agrave; chercher dans toutes les pages de droite, mais uniquement
+dans
+la moiti&eacute; des pages de gauche. J'ai en <i>une op&eacute;ration
+r&eacute;duit mon
+espace de recherche de moiti&eacute;</i>. D'environ 200 pages, il ne me
+restera plus que 100 pages &agrave; explorer. Puis, en reprenant le
+m&ecirc;me
+proc&eacute;d&eacute; ,50 pages,
+25 pages, 12 ou 13 pages, 6 ou 7 pages, 3 ou 4 pages, 1ou 2 pages et le
+pays sera trouv&eacute;. Si nous recomptons nous voyons qu'il y a
+uniquement
+eu C = 7 ou 8 &eacute;tapes de calcul&nbsp; !! <br>
+On parle de&nbsp; <b>dichotomie</b> (&laquo;&nbsp;couper en
+deux&nbsp;&raquo; en grec) ce
+processus
+de recherche o&ugrave; &agrave; chaque &eacute;tape, on coupe en deux
+parties l'espace de
+recherche. Intuitivement, on se rend compte que c'est bien en coupant
+en deux parties &eacute;gales que nous sommes s&ucirc;r d'avoir des
+deux c&ocirc;t&eacute;s un
+espace de recherche minimal &agrave; l'&eacute;tape suivante (en part
+in&eacute;gales, la
+malchance pourrait nous conduire &agrave; rechercher dans un espace
+plus
+grand). <br>
+Il faut comprendre que le gain est immense: nous donnons dans le
+tableau ci dessous le nombre <tt>C</tt> d'&eacute;tapes de calcul en
+fonction
+de quelques nombres <tt>N</tt> d'items:<br>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;" width="10%"><tt>N
+= 2<sup>C</sup><br>
+      </tt> </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">1<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">2<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">4<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">8<br>
+      </td>
+      <td witdh="7%" style="vertical-align: top; text-align: center;"
+ width="7%">16<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">..<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">256<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">..<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">1024<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">..<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">un
+      <br>
+million<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">..<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;" width="7%">un<br>
+&nbsp;milliard<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;"><tt>C = log<sub>2</sub>(N)<br>
+      </tt> </td>
+      <td style="vertical-align: top; text-align: center;">0<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">1<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">2<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">3<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">4<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">..</td>
+      <td style="vertical-align: top; text-align: center;">8<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">..</td>
+      <td style="vertical-align: top; text-align: center;">10<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">..</td>
+      <td style="vertical-align: top; text-align: center;">20<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">..</td>
+      <td style="vertical-align: top; text-align: center;">30<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+le fait de diviser en deux de mani&egrave;re it&eacute;rative, permet
+par exemple de
+rechercher en un maximum de 26 &eacute;tapes, le nom de quelqu'un dans
+l'annuaire des 60 millions de fran&ccedil;ais. Pour les
+math&eacute;maticiens en
+herbe, voil&agrave; un tr&egrave;s bel exemple des
+relations entre un nombre et son logarithme (ici en base 2), mais
+surtout un moyen concret, <i>incarn&eacute;</i>, de montrer l'usage de
+cette
+fonction math&eacute;matique abstraite.<br>
+Il y a plusieurs mani&egrave;res de programmer ce m&eacute;canisme, en
+voici une o&ugrave;
+nous restreignons l'espace de recherche entre deux valeurs <tt>min</tt>
+et <tt>max</tt><br>
+<br>
+<tt>trouver(pays) {<br>
+&nbsp; min = debut; max = fin;<br>
+&nbsp; repeter<br>
+&nbsp;&nbsp;&nbsp; milieu = (min + max) / 2;<br>
+&nbsp;&nbsp;&nbsp; si dictionnaire(milieu) =
+pays alors renvoyer milieu<br>
+&nbsp;&nbsp;&nbsp; si min = max alors renvoyer "pas trouv&eacute;"<br>
+&nbsp;&nbsp;&nbsp; si </tt><tt>dictionnaire(milieu) &lt;
+pays alors min = milieu<br>
+</tt><tt>&nbsp;&nbsp;&nbsp; si </tt><tt>dictionnaire(milieu) &gt;
+pays alors max = milieu<br>
+</tt><tt>
+}<br>
+<br>
+</tt>o&ugrave; on remarque que la quantit&eacute; <tt>max - min</tt>
+vaut <tt>fin -
+debut</tt> au d&eacute;marrage puis se divise par 2 &agrave; chaque
+&eacute;tape donc va
+forc&eacute;ment devenir plus petit que <tt>1</tt>, donc &eacute;gale
+&agrave; <tt>0</tt>
+puisque ce sont des nombres entiers. Par cons&eacute;quent,
+l'algorithme va
+s'arr&ecirc;ter forc&eacute;ment au bout d'un nombre fini,
+logarithmique, d'&eacute;tapes.
+Finir en retournant la page si elle est trouv&eacute;e, ou "pas
+trouv&eacute;" si
+l'intervalle de recherche est de longueur nulle sans avoir
+trouv&eacute; la
+page recherch&eacute;e. Bref, fonctionner comme nous l'avions
+esp&eacute;r&eacute;.<br>
+<br>
+Posons nous maintenant une autre question:&nbsp; <i>dans quelle mesure
+ce
+m&eacute;canisme algorithmique est il g&eacute;n&eacute;rique ?</i>
+Regardons un tout
+``autre&acute;&acute; exemple pour s'en convaincre.<br>
+<br>
+<i><b>Un tout ``autre&acute;&acute; probl&egrave;me: convertir une
+tension &eacute;lectrique en
+valeur num&eacute;rique.</b></i><br>
+<br>
+&nbsp;
+Pour ``deviner&acute;&acute; la valeur d'une tension &eacute;lectrique
+continue, un
+ordinateur num&eacute;rique doit en g&eacute;n&eacute;ral comparer
+cette valeur &agrave; une valeur
+de r&eacute;f&eacute;rence qu'il va produire en sortie, pour de proche
+en proche
+cerner cette valeur, comme le montre le diagramme ci-contre. [<tt><big>image
+dicho2.png</big></tt>] <br>
+L&agrave; encore, la fa&ccedil;on de fonctionner de ces convertisseurs
+&agrave;
+approximations successives est de proc&eacute;der de mani&egrave;re
+dichotomique en
+divisant l'espace de
+recherche de 2 en 2. Cela permet d'atteindre tr&egrave;s rapidement les
+pr&eacute;cisions
+requises, le mill&egrave;me en 10 &eacute;tapes, le millioni&egrave;me
+en 20, comme vu
+pr&eacute;c&eacute;demment.<br>
+<br>
+<i><b>Le probl&egrave;me math&eacute;matique sous-jacent: trouver le
+z&eacute;ro d'une
+fonction monotone dans un intervalle.</b></i><br>
+<br>
+&nbsp;&nbsp;&nbsp; Tous ces probl&egrave;mes sont reli&eacute;s au
+probl&egrave;me math&eacute;matique suivant:
+r&eacute;soudre une &eacute;quation de la forme <tt>f(x) = 0, min &lt;
+x &lt;xmax</tt>
+o&ugrave; <tt>f()</tt>est une fonction continue monotone dans
+l'intervalle <tt>[min,
+max]</tt> donc a au plus une solution, puisque bijection vers un
+intervalle r&eacute;el. Si elle change de signe dans cet intervalle <tt>f(min)
+f(max)&lt; 0</tt> elle a une solution unique. C'est le cas par exemple
+de la fonction <tt>sin(x)</tt>dans l'intervalle <tt>[2, 4]</tt>
+o&ugrave;
+elle s'annule en <tt>Pi</tt>, comme le montre la figure ci-contre. [<tt><big>image
+dicho3.gif</big></tt>] <br>
+&nbsp;&nbsp;&nbsp; L&agrave; encore le m&ecirc;me m&eacute;canisme de
+dichotomie permet de r&eacute;soudre le
+probl&egrave;me comme incarn&eacute; dans l'algorithme suivant:<br>
+<br>
+<tt>zero(f) {<br>
+&nbsp; min = debut; max = fin;<br>
+</tt><tt>&nbsp; si f(min) f(max) &gt;= 0 alors renvoyer "pas de
+solution"<br>
+</tt><tt>
+&nbsp; repeter<br>
+</tt><tt>&nbsp;&nbsp;&nbsp; milieu = (min + max) / 2;<br>
+&nbsp;&nbsp;&nbsp; si </tt><tt>|max - min| &lt; epsilon </tt><tt>alors
+renvoyer
+milieu<br>
+</tt><tt>&nbsp;&nbsp;&nbsp; si </tt><tt>f(max) f(milieu) &lt; 0 alors
+min = milieu<br>
+</tt><tt>&nbsp;&nbsp;&nbsp; sinon si </tt><tt>f(min) f(milieu) &lt; 0 </tt><tt>alors
+max =
+milieu<br>
+&nbsp;&nbsp;&nbsp; sinon </tt><tt>renvoyer "pas de solution"</tt><br>
+<tt>}<br>
+</tt><br>
+qui ne diff&egrave;re du pr&eacute;c&eacute;dent que par la
+fa&ccedil;on de d&eacute;tecter le fait qu'il
+n'y ait
+pas de solution et par la fa&ccedil;on de faire les tests.<br>
+<br>
+C'est donc bien un principe algorithmique qui fonctionne &agrave; la
+fois pour
+&laquo;des op&eacute;rations num&eacute;riques et aussi
+symboliques&raquo; (de recherche de mots)
+selon un principe d&eacute;j&agrave; remarqu&eacute; Ada Lovelace un
+si&egrave;cle avant que ne
+fonctionne le 1er ordinateur. Et c'est un des m&eacute;canismes
+algorithmiques
+les plus utilis&eacute;s.<br>
+<br>
+Pour aller plus loin : <a class="moz-txt-link-freetext"
+ href="http://javascool.gforge.inria.fr/proglet">http://javascool.gforge.inria.fr/proglet</a>
+offre
+des activit&eacute;s scolaires qui mettent en application ces
+&eacute;l&eacute;ments.<br>
+<br>
+<hr size="2" width="100%">Mes sources (pour aider l'&eacute;dition,
+mais
+inutiles dans le document final):<br>
+<br>
+<a class="moz-txt-link-freetext"
+ href="http://fr.wikipedia.org/wiki/Dichotomie">http://fr.wikipedia.org/wiki/Dichotomie</a><br>
+<a class="moz-txt-link-freetext"
+ href="http://javascool.gforge.inria.fr/proglet/doc/sujet-appli-dicho.htm">http://javascool.gforge.inria.fr/proglet/doc/sujet-appli-dicho.htm</a><br>
+&nbsp;&nbsp;&nbsp;
+<a class="moz-txt-link-freetext"
+ href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce#Recherche_dichotomique_dans_un_dictionnaire_tri.C3.A9">http://wiki.inria.fr/sciencinfolycee/ProgletSoluce#Recherche_dichotomique_dans_un_dictionnaire_tri.C3.A9</a><br>
+<a class="moz-txt-link-freetext"
+ href="http://javascool.gforge.inria.fr/proglet/doc/sujet-appli-conva.htm">http://javascool.gforge.inria.fr/proglet/doc/sujet-appli-conva.htm</a><br>
+&nbsp;&nbsp;&nbsp;
+<a class="moz-txt-link-freetext"
+ href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce#Recherche_dichotomique_d.27une_valeur_d.27un_convertisseur_analogique-num.C3.A9rique">http://wiki.inria.fr/sciencinfolycee/ProgletSoluce#Recherche_dichotomique_d.27une_valeur_d.27un_convertisseur_analogique-num.C3.A9rique</a><br>
+<a class="moz-txt-link-freetext"
+ href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce#Recherche_d.E2.80.99un_z.C3.A9ro_par_dichotomie">http://wiki.inria.fr/sciencinfolycee/ProgletSoluce#Recherche_d.E2.80.99un_z.C3.A9ro_par_dichotomie</a><br>
+<br>
+<br>
+<hr size="4" width="90%"><br>
+<center><img
+ src="mailbox:///user/vthierry/home/.thunderbird/niubz023.default/Mail/local/CultSci.sbd/asuivre.sbd/azieuter?number=1400287&amp;part=1.2&amp;type=image/png&amp;filename=dicho1.png"></center>
+<p><br>
+</p>
+<hr size="4" width="90%"><br>
+<center><img
+ src="mailbox:///user/vthierry/home/.thunderbird/niubz023.default/Mail/local/CultSci.sbd/asuivre.sbd/azieuter?number=1400287&amp;part=1.3&amp;type=image/png&amp;filename=dicho2.png"></center>
+<p><br>
+</p>
+<hr size="4" width="90%"><br>
+<center><img
+ src="mailbox:///user/vthierry/home/.thunderbird/niubz023.default/Mail/local/CultSci.sbd/asuivre.sbd/azieuter?number=1400287&amp;part=1.4&amp;type=image/gif&amp;filename=dicho3.gif"></center>
+</body>
+</html>

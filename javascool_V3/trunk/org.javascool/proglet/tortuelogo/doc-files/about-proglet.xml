@@ -1,0 +1,39 @@
+<p title="La «proglet» Tortue">
+  <proglet name="Tortue" mode="demo">
+    Cette proglet<footnote id="1"/> permet de simuler la célèbre <a href="http://fr.wikipedia.org/wiki/Logo_(langage)">tortue logo</a>.
+
+  <p>Dans ce contexte les instructions à utiliser sont celles de <javascool/>, la tortue évolue dans un carré de salade de taille <c>[512 x 512]</c>
+  tandis que les <a href="http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_Logo">primitives graphiques usuelles</a> de la tortue logo sont disponibles:
+  <code><p><t/><t/><t/><t/><a href=" ../api/proglet/Tortue.html">Primitives de la tortue logo disponibles</a></p></code>
+  La tortue est toujours visible et ne peut sortir du jardin et disparaître de l'écran graphique.
+  </p>
+
+  <p>Que les nostalgiques de cette ancienne façon d'apprendre à programmer en profite, la tortue est de retour:
+    <p align="center"><img src="img/turtle.gif"/></p>
+  </p>
+
+  <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>],
+  la tortue trace de belles <a href="http://fr.wikipedia.org/wiki/Courbe_de_Lissajous">courbes de Lissajous</a> en changeant la couleur:<code>
+    <m>Initialisation du tracé</m>
+    <p><r>clear_all</r>();</p>
+    <p><r>pen_up</r>();</p>
+    <m>Boucle de tracé</m>
+    <p><r>int</r> t = 0; <r>while</r>(t &lt; 9000) {</p>
+    <p><t/><r>set_color</r>((t / 1000) % 10);</p>
+    <p><t/><r>set_position</r>(</p>
+    <p><t/><t/>256 + 250 * <r>Math.cos</r>(0.0015 * t),</p>
+    <p><t/><t/>256 + 250 * <r>Math.sin</r>(0.0045 * t)</p>
+    <p><t/>);</p>
+    <p><t/><r>pen_down</r>();</p>
+    <p><t/>t = t + 1;</p>
+    <p>}</p>
+    </code>
+  </p>
+
+  </proglet>
+
+  <footnotes>
+    <p>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Tortue.html">documentée</a> 
+    pour sa libre redistribution, l'accès <a href=" ../api/proglet/Tortue.java">au code source</a>, et permettre des développements dérivés.</p>
+  </footnotes>
+</p>

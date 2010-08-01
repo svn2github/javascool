@@ -1,0 +1,72 @@
+<sujet>
+  <titre>Un tutoriel sur la recherche dichotomique</titre>
+  
+  <proglet name="Dicho"/>
+  
+  <objectif>
+    Le but de ce tutoriel est de comprendre la recherche dichotomique. 
+    Une autre activité, plus guidée sur le sujet, est proposée autour de la <a href="sujet-appli-conva.htm">conversion analogique-numérique</a>
+    Il faut déjà savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,
+    se servir de <a href="sujet-about-variables.htm">variables</a> et avoir découvert l'<a href="sujet-about-if.htm">instruction conditionnelle</a> et 
+    utiliser des <a href="sujet-about-while.htm">boucles</a> et définir une <a href="sujet-about-functions.htm">fonction</a>.
+  </objectif>
+  
+  <notes>
+    <note><img src="img/execute.png"/> Choisir la proglet <c>Dicho</c> et non <c>Konsol</c> dans le bouton lié à l'exécution.</note>
+    <note>Lire en détail la description de la <proglet name="Dicho"/> et essayons de programmer la fonction : <code>
+      <p><r>int</r> getPage(<r>String</r> pays) {</p>
+      <p>.. / ..</p>
+      <p>}</p>
+    </code>
+    qui <i>renvoie le numéro de la page correspondant à un nom de pays donné, ou -1 si la page n'existe pas.</i>
+    </note>
+  </notes>
+  <works>
+    <work title="Tester toutes les valeurs">Essayer le programme suivant :
+    <code>
+      <p><r>int</r> getPage(<r>String</r> pays) {</p>
+      <p><t/>int debut = 0, fin = <r>dichoLength</r>();</p>
+      <p><t/><r>while</r>(<r>true</r>) {</p>
+      <p><t/><t/><r>int</r> c = <r>dichoCompare</r>(pays, debut);</p>
+      <p><t/><t/><r>if</r> (c == 0) {</p>
+      <p><t/><t/><t/><r>return</r> debut;</p>
+      <p><t/><t/>}</p>
+      <p><t/>}</p>
+      <p>}</p>
+    </code>
+    avec un "<r>main</r>" en appelant <r>getPage</r> avec un nom de pays <i>qui existe</i>.
+    <p>Noter que l'on utilise ici la construction <r>return</r> pour sortir de la boucle, tandis que <r>while(true)</r> est toujours vrai, donc boucle indéfiniment.</p>
+    <ul>
+      <li>Quelle variable est utilisée et (provisoirement) inutile ici ?</li>
+      <li>Que se passe t'il si le pays existe ? Utiliser la fonction<footnote id="1"/> <b><r>echo</r>()</b> pour visualiser ce qui se passe à l'intérieur de la boucle.</li>
+      <li>Que se passe t'il si le pays n'existe pas ? Que manque t'il pour qu'il fonctionne comme nous l'espérions ? </li>
+    </ul>Notez que cet algorithme est bien long car il faut essayer toutes les valeurs.</work>
+    <work title="Couper le problème en deux : l'algorithme dichotomique">
+      Voici une idée : On va couper l'espace de recherche en deux, puis en deux, puis en deux, etc. pour arriver à «cerner» la recherche, cela se formalise ainsi :
+      <ul>
+        <li>définir une intervalle <c>{début, fin{</c> (la fin non incluse) où est la page recherchée<ul>
+        <li>de valeur initiale <c>{0, dichoLength(){</c> où <c>dichoLength()</c> est la taille du livre</li></ul></li>
+        <li>puis de comparer la page recherchée avec la page du milieu de cette intervalle<ul>
+        <li>et de réduire alors l'intervalle de moitié en remplaçant, selon, la borne de début ou de fin par le milieu</li></ul></li>
+        <li>jusqu'à ce que l'intervalle :<ul>
+        <li>soit de taille 1 : la page est alors trouvée</li>
+        <li>ou de taille 0 : la page n'existe pas </li></ul></li>
+      </ul>
+      A vous de traduire cet algorithme du langage courant en langage informatique, en partant du code précédent !
+    </work>
+    <work title="Aller plus loin">Supposez que nous regardions l'annuaire téléphonique des 1048576 habitants des Alpes-Maritimes, triés par ordre alphabétique :<ul>
+       <li>Expliquez en 2/3 lignes comment utiliser une méthode dichotomique pour chercher une personne parmi plus d'un million de personnes !</li>
+       <li>A l'aide de la suite des chiffres suivants, devinez en combien d'étapes la recherche dichotomique permet de trouver une personne parmi ce gros million :
+         <p><c>0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576</c></p>
+         Note : cette liste de chiffres sont les puissances de 2: 2^0, 2^1, 2^2, etc...
+       </li>
+       <li>A partir de la ligne de code :
+       <code>
+         <p>n = n + 1; u = u * 2;  <r>echo</r>("2^" + n + "=" + u);</p>
+       </code>écrire une boucle qui calcule les puissances de 2 de 0 à 20.</li>
+     </ul></work>
+   </works>
+   <footnotes>
+     <p>La fonction <b><r>void</r> <c>echo</c>(<r>String</r> string)</b> affiche une chaîne de caractères sur la console.</p>
+   </footnotes>
+</sujet>
