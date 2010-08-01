@@ -16,6 +16,8 @@ import java.io.FileWriter;
 
 import java.util.regex.Pattern;
 
+import java.util.HashMap;
+
 /** This factory defines how a Jvs code is translated into a Java code and compiled. 
  * The goal of the Jvs syntax is to ease the syntax when starting to program in an imperative language, like Java. 
  * <p>- This factory calls the java compiler in the jdk5 (and earlier) case. It is designed to be used in standalone mode.</p>
@@ -42,16 +44,14 @@ public class Jvs2Java { private Jvs2Java() { }
       out.print("import org.javascool.*;");
       // Imports proglet's static methods
       out.print("import static org.javascool.Macros.*;");
-      /***************************************
-      for(String proglet : Proglets.proglets) 
-	out.print("import static org.javascool."+proglet+".*;");
-      ****************************************/
+      for(String proglet : proglets) 
+	out.print("import static proglet."+proglet+".Main.*;");
       // Declares the proglet's core as a Runnable in the Applet
-      out.print("public class "+main+ " extends org.javascool.InterfacePrincipale {");
+      out.print("public class "+main+ " extends org.javascool.MainV2 {");
       out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
-      out.print("  static { runnable = new ProgletRunnableInterfacePrincipale(); }");
+      out.print("  static { runnable = new ProgletRunnableMain(); }");
       out.print("}");
-      out.print("class ProgletRunnableInterfacePrincipale implements Runnable {");
+      out.print("class ProgletRunnableMain implements Runnable {");
       out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
       out.print("  public void run() { main(); }");
       // Copies the user's code
@@ -69,7 +69,8 @@ public class Jvs2Java { private Jvs2Java() { }
     // Translates the while statement with sleep
     line = line.replaceFirst("(while.*\\{)", "$1 sleep(10);");
     // Translates the Synthe proglet @tone macro
-    line = line.replaceFirst("@tone:(.*)", "org.javascool.Synthe.tone = new org.javascool.SoundBit() { public double get(char c, double t) { return $1; } }; org.javascool.Synthe.syntheSet(\"16 a\");");
+    line = line.replaceFirst("@tone:(.*)", 
+      "proglet.synthesons.Main.tone = new org.javascool.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.synthesons.Main.syntheSet(\"16 a\");");
     return "    "+line;
   }
 
@@ -165,5 +166,8 @@ public class Jvs2Java { private Jvs2Java() { }
     }
     return out.toString().trim().replaceAll(filename.replaceAll("\\\\", "\\\\\\\\"), new File(filename).getName());
   }
+
+  /** Registered proglets. */
+  static final String proglets[] = new String[] { "ingredients", "dichotomie", "pixelsetcie", "exosdemaths", "convanalogique", "javaprog", "synthesons", "tortuelogo" };
 }
 

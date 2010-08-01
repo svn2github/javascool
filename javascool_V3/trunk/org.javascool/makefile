@@ -67,7 +67,7 @@ www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC)
 	@#-jarsigner -verify -verbose -certs $@
 	@#Cleanup
 	@rm -rf tmp tmp.key tmp.jar javascool.crt 
-	@echo ".. done `du -s -B 1024 $@ | awk '{print $1}'`Kbyres"
+	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
 lib/manifest.mf : makefile
 	@(echo 'Summary: javascool v3'; echo 'Created-By: $(version) (javascool.gforge.inria.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'`") > $@
@@ -96,7 +96,7 @@ www/api/index.html : $(patsubst %.xml,%.htm,$(shell find src -name '*.xml')) $(p
 	@mkdir -p $(@D)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
 	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -link http://download.oracle.com/javase/6/docs/api \
-	  -windowtitle "Java's Cool v3" -d $(@D) $(SRC2)
+	 -windowtitle "Java's Cool v3" -d $(@D) $(SRC)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
 	@for f in $(SRC) ; do cp $$f `echo $$f | sed 's/^src/$(subst /,\\/,$(@D))/'` ; done
 

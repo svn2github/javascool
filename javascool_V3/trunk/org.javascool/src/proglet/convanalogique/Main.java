@@ -19,7 +19,7 @@ import org.javascool.NumberInput;
  * Fichiers utilisés: <pre>
  * convanalogique/doc-files/conv.png
  * </pre>
- * @see <a href="../convanalogique/Main.java">code source</a>
+ * @see <a href="../../proglet/convanalogique/Main.java">code source</a>
  */
 public class Main implements org.javascool.Proglet { private Main() { }
   private static final long serialVersionUID = 1L;

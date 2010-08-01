@@ -29,7 +29,7 @@ import java.awt.event.ActionListener;
  * dichotomie/doc-files/dicho_background.png
  * dichotomie/doc-files/100px-Flag_of_*.svg.png
  * </pre>
- * @see <a href="../dichotomie/Main.java">code source</a>
+ * @see <a href="../../proglet/dichotomie/Main.java">code source</a>
  */
 public class Main implements org.javascool.Proglet { private Main() { }
   private static final long serialVersionUID = 1L;

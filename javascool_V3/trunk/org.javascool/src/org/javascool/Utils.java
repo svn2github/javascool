@@ -164,7 +164,7 @@ public class Utils { private Utils() { }
    * @return The related image icon or an empty icon if not loaded.
    */
   public static ImageIcon getIcon(String file) {
-    try { return new ImageIcon(Object.class.getClassLoader().getResource(file)); } catch(Exception e1) {
+    try { return new ImageIcon(MainV2.class.getClassLoader().getResource(file)); } catch(Exception e1) {
       try { System.out.println("Warning: loading "+file+" via gforge");
 	return new ImageIcon(new URL("http://javascool.gforge.inria.fr/v3/api/"+file)); } catch(Exception e2) {
 	System.err.println("Unable to load the '"+file+"' icon, check your configuration or your imgage files ("+e1+";"+e2+")"); 
@@ -399,7 +399,9 @@ public class Utils { private Utils() { }
     private JApplet applet = null;
     // Opens an applet in a standalone frame.
     public void open(JApplet applet, String title, int width, int height) {
-      frames++; if (title != null) setTitle(title); applet.setSize(width, height); applet.init(); getContentPane().add(this.applet = applet); applet.start(); pack(); setVisible(true);
+      this.applet = applet; getContentPane().add(applet); applet.init(); pack(); frames++; 
+      if (title != null) setTitle(title); setMinimumSize(new Dimension(width, height)); 
+      setVisible(true); applet.start(); 
     }
     // Closes the frame and dispose, force exit if all frames are closed.
     public void dispose() {

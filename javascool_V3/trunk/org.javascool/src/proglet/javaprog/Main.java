@@ -12,7 +12,7 @@ import java.awt.Dimension;
 /** Définit une proglet javascool qui permet d'utiliser toute les classes des swings.
  * @see <a href="http://java.sun.com/docs/books/tutorial/uiswing">Java Swing tutorial</a>
  * @see <a href="http://java.sun.com/javase/6/docs/api/javax/swing/package-summary.html">Java Swing API</a>
- * @see <a href="../javaprog/Main.java">code source</a>
+ * @see <a href="../../proglet/javaprog/Main.java">code source</a>
  */
 public class Main implements org.javascool.Proglet { private Main() { }
   private static final long serialVersionUID = 1L;
