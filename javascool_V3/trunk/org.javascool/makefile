@@ -5,8 +5,8 @@
 usage :
 	@echo 'Usage:'
 	@echo ' make clean        : nettoie les fichiers intermédiares'
-	@echo ' make v2           : lance la v2 des proglets'
-	@echo ' make v3           : lance la v3 des proglets'
+	@echo ' make v2           : lance la v2 de javascool/proglets'
+	@echo ' make v3           : lance la v3 de javascool'
 	@echo ' make svn          : synchronize avec le svn'
 	@echo ' make doc          : cree la doc des classes java'
 	@echo ' make pub          : publie les fichiers du site web'
@@ -51,7 +51,8 @@ www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC)
 	@#[1] Compile the java classes
 	@$(J5)/bin/javac -Xlint -cp lib/tools.jar $(SRC)
 	@#[2] Collects the files in a tmp directory
-	@rm -rf tmp ; svn -q export src tmp
+	@rm -rf tmp ; svn -q export src tmp ; 
+	@for f in `find src -name '*.class'` ; do cp $$f `echo $$f | sed 's/^src/tmp/'` ; done
 	@# + The jdk5 compiler classes
 	@unzip -qod tmp lib/tools.jar 
 	@# + The saxon transformer classes
@@ -65,7 +66,8 @@ www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC)
 	@#-keytool -export -alias proglet -storepass '$(public-key)' -keystore tmp.key -file javascool.crt
 	@#-jarsigner -verify -verbose -certs $@
 	@#Cleanup
-	rm -rf tmp tmp.key tmp.jar javascool.crt 
+	@rm -rf tmp tmp.key tmp.jar javascool.crt 
+	@echo ".. done `du -s -B 1024 $@ | awk '{print $1}'`Kbyres"
 
 lib/manifest.mf : makefile
 	@(echo 'Summary: javascool v3'; echo 'Created-By: $(version) (javascool.gforge.inria.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'`") > $@
@@ -113,6 +115,14 @@ ftp :
 
 web:
 	@firefox http://javascool.gforge.inria.fr/v3
+
+wiki:
+	@firefox http://wiki.inria.fr/sciencinfolycee
+
+# Useful commands:
+#
+# - svn up ; svn resolve --accept working . 
+#
 
 #####################################################################################################################################
 
