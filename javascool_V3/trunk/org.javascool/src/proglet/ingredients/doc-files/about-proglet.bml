@@ -1,0 +1,169 @@
+stdout: 
+{p title = "La «proglet» Konsol"
+  {proglet mode = demo name = Konsol
+    Cette proglet
+    {footnote id = "1" }
+    permet de "définir" des "entrées/sorties" textuelles au clavier comme pour une console
+    {footnote id = "2" }
+    "."
+    {ul
+      {li
+        On peut donc dans la "fenêtre" {c
+          input
+        }
+        ":"
+        {code {m
+            Lire une chaine de "caractère" avec la "fonction:"
+          }
+          {p
+            t {r
+              String
+            }
+            chaine "=" {r
+              readString
+            }
+            "();"
+          } {m
+            Lire un nombre entier avec la "fonction:"
+          }
+          {p
+            t {r
+              int
+            }
+            entier "=" {r
+              readInteger
+            }
+            "();"
+          } {m
+            Lire un nombre "décimal" avec la "fonction:"
+          }
+          {p
+            t {r
+              double
+            }
+            decimal "=" {r
+              readDouble
+            }
+            "();"
+          }
+        }
+        "où" les constructions "proposées" ici utilisent des {a href = "sujet-about-variables.htm"
+          variables
+        }
+        "."
+      }
+      {li
+        On peut aussi "écrire" dans la "fenêtre" {c
+          output
+        }
+        ":"
+        {code {m
+            Ecrire une chaine de "caractère" avec la "fonction:"
+          }
+          {p
+            t {r
+              println
+            }
+            "(chaine);"
+          }
+        }
+        cette chaine pouvant "être" une "constante," ou se voir ajouter des variables "numériques" comme dans les exemples ci "dessous:"
+        {code
+          {p
+            t {r
+              println
+            }
+            "(" {s
+              Hello world
+            }
+            ");"
+          }
+          {p
+            t {r
+              println
+            }
+            "(" {s Valeur = "}"
+              "+" "valeur);"
+            }
+          }
+          "où" ici {b
+            valeur
+          }
+          est une variable "numérique" "entière" ou "décimale."
+        }
+      }
+      {p
+        Un exemple "d'utilisation:" en appuyant sur la touche "["
+        {img src = "img/demo.png" } {b
+          Demo
+        }
+        "]" le programme "suivant:"
+        {code {m
+            Efface le contenu de la "fenêtre" de sortie
+          }
+          {p {r
+              clear
+            }
+            "();"
+          } {m
+            Salue "l'utilisateur" et lit son nom
+          }
+          {p {r
+              println
+            }
+            "(" {s
+              "Bonjour," qui "es-tu" "?"
+            }
+            ");"
+          }
+          {p {r
+              String
+            }
+            nom "=" {r
+              readString
+            }
+            "();"
+          } {m
+            Lui demande alors son "âge"
+          }
+          {p {r
+              println
+            }
+            "(" {s
+              "Echanté" "+nom+" "!" Quel "âge" "as-tu" "?"
+            }
+            ");"
+          }
+          {p {r
+              int
+            }
+            age "=" {r
+              readInteger
+            }
+            "();"
+          } {m
+            "../.."
+          }
+        }
+        "s'exécute" pour permettre "d'expérimenter" le fonctionnement de cette "proglet."
+      }
+    }
+    {footnotes
+      {p
+        Cette proglet est un {a href = "http://fr.wikipedia.org/wiki/Open_source"
+          code source libre
+        }
+        "," "programmée" en Java et {a href = " ../api/proglet/Konsol.html"
+          "documentée"
+        }
+        pour sa libre "redistribution," "l'accès" {a href = " ../api/proglet/Konsol.java"
+          au code source
+        }
+        "," et permettre des "développements" "dérivés."
+      }
+      {p
+        Une console ou "« terminal" "alphanumérique »" correspond "à" une "fenêtre" "où" "l'utilisateur" peut dialoguer avec un programme en entrant des "données" au clavier et en lisant les chaines de  "caractères"  "imprimées"  par  le  "programme."
+      }
+    }
+  }
+}

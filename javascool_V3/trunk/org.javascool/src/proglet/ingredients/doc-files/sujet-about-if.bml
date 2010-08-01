@@ -1,0 +1,1352 @@
+stdout: 
+{sujet
+  {titre
+    Un tutoriel pour "découvrir" "l'instruction" "conditionnelle."
+  }
+  {proglet name = Konsol }
+  {objectif
+    Le but de ce tutoriel est de "découvrir" "l'instruction" "conditionnelle." Il faut "déjà" savoir {a href = "sujet-hello-world.htm"
+      utiliser "l'interface"
+    }
+    "," et savoir se servir de {a href = "sujet-about-variables.htm"
+      variables
+    }
+    "."
+  }
+  {notes
+    {note title = "Comment programmer le fait de faire des choix"
+      A ce "stade," nous savons programmer une liste "d'instruction," qui "..." font {i
+        toujours
+      }
+      la "même" chose "!" "Voilà" qui est bien "limité." Un vrai programme doit pouvoir "exécuter" des instructions "différentes" selon certaines conditions et il existe une structure universelle pour  "implémenter"  ce  "mécanisme."  Par  exemple  ":"
+      {code
+        {p {r
+            if
+          }
+          "(température" {r
+            "&lt;"
+          }
+          "15)" "org.javascool.Pml"
+          {p
+            t {r
+              println
+            }
+            "(" {s
+              allumer chauffage
+            }
+            ");"
+          }
+          p
+        }
+      }
+      "où" la construction permet de "n'allumer" le chauffage "qu'en" cas de "besoin." Tandis que ":"
+      {code
+        {p {r
+            if
+          }
+          "(température" {r
+            "&lt;"
+          }
+          "15)" "org.javascool.Pml"
+          {p
+            t {r
+              println
+            }
+            "(" {s
+              allumer chauffage
+            }
+            ");"
+          }
+          p {r
+            else
+          }
+          "org.javascool.Pml"
+          {p
+            t {r
+              println
+            }
+            "(" {s
+              ne rien faire
+            }
+            ");"
+          }
+          p
+        }
+      }
+      montre comment se traduit la construction {i {b
+          si
+        }
+        la "température" est en dessous de "15" "degrés" alors allumer le chauffage {b
+          sinon
+        }
+        ne rien "faire."
+      }
+      Ou encore ":"
+      {code
+        {p {r
+            if
+          }
+          "(température" {r
+            "&lt;"
+          }
+          "15)" "org.javascool.Pml"
+          {p
+            t {r
+              println
+            }
+            "(" {s
+              allumer chauffage
+            }
+            ");"
+          }
+          p {r
+            else if
+          }
+          "(température" {r
+            "&gt;"
+          }
+          "100)" "org.javascool.Pml"
+          {p
+            t {r
+              println
+            }
+            "(" {s
+              appeler les pompiers
+            }
+            ");"
+          }
+          p {r
+            else
+          }
+          "org.javascool.Pml"
+          {p
+            t {r
+              println
+            }
+            "(" {s
+              ne rien faire
+            }
+            ");"
+          }
+          p
+        }
+      }
+      montre comment emboiter les instructions "conditionnelles."
+    }
+    {note title = "Définir des conditions à tester"
+      Pour "définir" le test "à" effectuer nous avons vu que nous pouvions comparer deux valeurs "numériques," voici une liste de tests possibles pour des nombres {b
+        a
+      }
+      et {b
+        b
+      }
+      et des "chaînes" de "caratères" {b
+        s
+      }
+      et {b
+        c
+      }
+      ":"
+      {code {m
+          Vrai si et seulement si le nombre a est strictement plus petit que le nombre "b:"
+        }
+        {p
+          t t t a {r
+            "&lt;"
+          }
+          b
+        } {m
+          Vrai si et seulement si le nombre a est strictement plus petit ou "égal" au nombre "b:"
+        }
+        {p
+          t t t a {r "&lt;" = "}"
+            b
+          } {m
+            Vrai si et seulement si le nombre a est "égal" au nombre b
+            {footnote id = "1" }
+            ":"
+          }
+          {p
+            t t t a
+            {"org.javascool.Pml" r = "=" }
+            b
+          } {m
+            avec bien "sûr" les symboles similares pour {r
+              "&gt;"
+            }
+            et {r "&gt;" = "}"
+              "(strictement" plus grand et plus grand ou "égal)" et {r "!" = "}"
+                "(pas" "égal)."
+              } {m
+                Vrai si et seulement si la "chaîne" s est "égale" "à" la "chaîne" c
+                {footnote id = "1" }
+              }
+              {p
+                t t t {r
+                  equal
+                }
+                "(s," "c)"
+              }
+            }
+            Nous pouvons ensuite {i
+              combiner
+            }
+            ces conditions ":"
+            {code {m
+                Vrai si et seulement si une_condition ET autre_condition sont vraies ":"
+              }
+              {p
+                t t t une_condition {r
+                  "&amp;&amp;"
+                }
+                autre_condition
+              } {m
+                Vrai si et seulement si une_condition OU "autre_condition," ou les "deux," sont vraies ":"
+              }
+              {p
+                t t t une_condition {r
+                  "||"
+                }
+                autre_condition
+              } {m
+                Vrai si et seulement si une_condition "n'est" PAS vraie ":"
+              }
+              {p
+                t t t "(" {r
+                  "!"
+                }
+                "une_condition)"
+              }
+            }
+            ce qui nous permet de "définir" des expressions aussi complexes que nous avons "besoin," par exemple ":"
+            {code {m
+                Vrai si et seulement si x est plus grand que a et plus petit que b donc dans "l'intervale" "]a," "b[:"
+              }
+              {p
+                t t t a {r
+                  "&lt;"
+                }
+                x {r
+                  "&amp;&amp;"
+                }
+                x {r
+                  "&lt;"
+                }
+                b
+              } {m
+                Vrai si et seulement si la reponse "égale" oui en minuscule ou majuscule ":"
+              }
+              {p
+                t t t {r
+                  equal
+                }
+                "(reponse," {s
+                  oui
+                }
+                ")" {r
+                  "||"
+                } {r
+                  equal
+                }
+                "(reponse," {s
+                  OUI
+                }
+                ")"
+              } {m
+                Vrai si et seulement si "l'age" est plus que "10" et le nom "n'est" pas "Jean:"
+              }
+              {p
+                t t t age "&gt;" "10" {r
+                  "&amp;&amp;"
+                }
+                "(" {r
+                  "!"
+                } {r
+                  equal
+                }
+                "(nom," {s
+                  Jean
+                }
+                "))"
+              }
+            }
+            en utilisant des "parenthèses" pour ne pas "mélanger" les termes de ces "expressions."
+          }
+          {note title = "Un nouveau type de variable"
+            Les variables qui ne prennent que les valeurs {r
+              true
+            }
+            et {r
+              false
+            }
+            "." Ce sont des variables "booléennes." La valeur {r
+              true
+            }
+            veut dire vrai et la valeur {r
+              false
+            }
+            veut dire "faux," par exemple {r
+              true "&amp;&amp;" true
+            }
+            donne {r
+              true
+            }
+            puisque si deux choses sont vraies alors on peut dire que "l'une" ET "l'autre" sont "vraies." De "même" {r
+              true "&amp;&amp;" false
+            }
+            donne {r
+              false
+            }
+            puisque si une chose est vraie et "l'autre" fausse on ne peut dire que "l'une" ET "l'autre" sont "vraies." Le code ":"
+            {code
+              {p {r
+                  boolean
+                }
+                x "=" {r
+                  readBoolean
+                }
+                "();"
+              }
+              {p
+                if "(x)"
+                {"org.javascool.Pml" {r
+                    println
+                  }
+                  "(" {s
+                    OK
+                  }
+                  ");"
+                } {r
+                  else
+                }
+                {"org.javascool.Pml" {r
+                    println
+                  }
+                  "(" {s
+                    KO
+                  }
+                  ");"
+                }
+              }
+            }
+            nous permet de lire la variable "boolénne" x et va imprimer "OK/KO" selon que sa valeur est "Vraie/Fausse." Nous allons "l'utiliser."
+          }
+        }
+        {works
+          {work title = "Ajouter des tests à un code"
+            Reprendre le code "proposé" pour apprendre "à" se servir de {a href = "sujet-about-variables.htm"
+              variables
+            }
+            qui demandent le {i
+              nom
+            }
+            et "l'" {i
+              "âge"
+            }
+            de "l'utilisateur" et ajouter au bon endroit ":"
+            {code
+              {p {r
+                  if
+                }
+                "(" {r
+                  equal
+                }
+                "(whoisit," {s
+                  Toto
+                }
+                "))" "org.javascool.Pml"
+                {p
+                  t "println(" {s
+                    Eh ":" Toto est pas un vrai "nom," dis donc "!"
+                  }
+                  ");"
+                }
+                p
+              }
+            }
+            puis tester ce code pour "vérifier" le "mécanisme" "conditionnel." Ajouter ensuite des conditions pour signaler que ":"
+            {ul
+              {li
+                Si "l'âge" est "inférieur" "à" "3" ans ou "supérieur" "à" "120" "ans," ce "n'est" pas "sérieux"
+              }
+              {li
+                Si le nom est Dieu ou "Toto," ce "n'est" pas "crédible"
+              }
+              {li
+                Si le nom "est," par "exemple," "Nadia," alors "c'est" "super," imprimons un message sympa "!"
+              }
+            }
+          }
+          {work title = "Deviner des conditions"
+            Essayez de deviner ce qui va "être" "imprimé," puis testez dans un petit code et expliquez le "résultat" en {i
+              traduisant en mot "(par" une "phrase)" ce qui a "été" "calculé"
+            }
+            "."
+            {ol
+              {li
+                Vrai pour {b
+                  x
+                }
+                "?"
+                {code
+                  {p {r
+                      int
+                    }
+                    x "=" "12;"
+                  }
+                  {p
+                    if "(x" {r "&gt;" = "}"
+                      "12" {r
+                        "&amp;&amp;"
+                      }
+                      "(x" {r
+                        "&lt;"
+                      }
+                      "0" {r
+                        "||"
+                      }
+                      x {r
+                        "&gt;"
+                      }
+                      "10))"
+                      {"org.javascool.Pml" {r
+                          println
+                        }
+                        "(" {s
+                          OK
+                        }
+                        ");"
+                      } {r
+                        else
+                      }
+                      {"org.javascool.Pml" {r
+                          println
+                        }
+                        "(" {s
+                          KO
+                        }
+                        ");"
+                      }
+                    }
+                  }
+                  Votre commentaire commencera par ":" {i
+                    Comme x vaut "12" alors {b
+                      x {r
+                        "&lt;"
+                      }
+                      "0"
+                    }
+                    est "[vrai?faux?]," et {b
+                      x {r
+                        "&gt;"
+                      }
+                      "10"
+                    }
+                    est "[vrai?faux?]," donc "(x" {r
+                      "&lt;"
+                    }
+                    "0" {r
+                      "||"
+                    }
+                    x {r
+                      "&gt;"
+                    }
+                    "10)" "etc.."
+                  }
+                }
+                {li
+                  Que va donner le code suivant "?"
+                  {code
+                    {p {r
+                        String
+                      }
+                      nom "=" {r
+                        readString
+                      }
+                      "();"
+                    }
+                    {p
+                      if "(" {r
+                        equal
+                      }
+                      "(nom," {s
+                        John
+                      }
+                      ")" {r
+                        "&amp;&amp;"
+                      } {r
+                        equal
+                      }
+                      "(nom," {s
+                        Joan
+                      }
+                      "))"
+                      {"org.javascool.Pml" {r
+                          println
+                        }
+                        "(" {s
+                          OK
+                        }
+                        ");"
+                      } {r
+                        else
+                      }
+                      {"org.javascool.Pml" {r
+                          println
+                        }
+                        "(" {s
+                          KO
+                        }
+                        ");"
+                      }
+                    }
+                  }
+                }
+                {li
+                  Deviner {i
+                    puis
+                  }
+                  "vérifier" ces "8" "réponses:"
+                  {code
+                    {p {r
+                        println
+                      }
+                      "(" {s
+                        "Réponse" "1" "="
+                      }
+                      "+" "(" {r
+                        false
+                      } {r
+                        "||"
+                      } {r
+                        false
+                      }
+                      "));"
+                    }
+                    {p {r
+                        println
+                      }
+                      "(" {s
+                        "Réponse" "2" "="
+                      }
+                      "+" "(" {r
+                        true
+                      } {r
+                        "||"
+                      } {r
+                        false
+                      }
+                      "));"
+                    }
+                    {p {r
+                        println
+                      }
+                      "(" {s
+                        "Réponse" "3" "="
+                      }
+                      "+" "(" {r
+                        false
+                      } {r
+                        "||"
+                      } {r
+                        true
+                      }
+                      "));"
+                    }
+                    {p {r
+                        println
+                      }
+                      "(" {s
+                        "Réponse" "4" "="
+                      }
+                      "+" "(" {r
+                        true
+                      } {r
+                        "||"
+                      } {r
+                        true
+                      }
+                      "));"
+                    }
+                    {p {r
+                        println
+                      }
+                      "(" {s
+                        "Réponse" "5" "="
+                      }
+                      "+" "(" {r
+                        true
+                      } {r
+                        "&amp;&amp;"
+                      }
+                      "(" {r
+                        "!"
+                      } {r
+                        false
+                      }
+                      ")));"
+                    }
+                    {p {r
+                        println
+                      }
+                      "(" {s
+                        "Réponse" "6" "="
+                      }
+                      "+" "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      } {r
+                        false
+                      }
+                      ")));"
+                    }
+                    {p {r
+                        println
+                      }
+                      "(" {s
+                        "Réponse" "6" "="
+                      }
+                      "+" "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        true
+                      } {r
+                        "&amp;&amp;"
+                      } {r
+                        false
+                      }
+                      ")));"
+                    }
+                    {p {r
+                        println
+                      }
+                      "(" {s
+                        "Réponse" "7" "="
+                      }
+                      "+" "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      }
+                      "(" {r
+                        "!"
+                      } {r
+                        false
+                      }
+                      ")))))))))))))))))))));"
+                    }
+                    {p {r
+                        println
+                      }
+                      "(" {s
+                        "Réponse" "8" "="
+                      }
+                      "+" "(equal(" {s
+                        toto
+                      }
+                      "," {s
+                        titi
+                      }
+                      ")" {r
+                        "||"
+                      }
+                      "14" {r
+                        "&gt;"
+                      }
+                      "13));"
+                    }
+                  }
+                  et donner une phrase explicative pour chaque "réponse."
+                }
+              }
+              {p align = center {b
+                  "(la" suite du travail "proposé" "n'est" pas indispensable pour notre apprentissage de la "programmation," mais permet "d'approfondir" le "sujet)"
+                }
+              }
+            }
+            {work title = "Calculer les tables de vérité"
+              De "même" que nous connaissons les tables de "multiplication," il y des tables pour les "opérateurs" logiques "ET," OU et "PAS." "Compléter" les tableaux "suivants:"
+              {table align = center
+                {tr
+                  {td valign = top
+                    {table border = "1"
+                      {tr
+                        {td {b
+                            x
+                          }
+                        }
+                        {td {b {r
+                              "!"
+                            }
+                            x
+                          }
+                        }
+                      }
+                      {tr
+                        {td {r
+                            false
+                          }
+                        }
+                        {td {r
+                            "?"
+                          }
+                        }
+                      }
+                      {tr
+                        {td {r
+                            true
+                          }
+                        }
+                        {td {r
+                            "?"
+                          }
+                        }
+                      }
+                    }
+                  }
+                  {td
+                    {table border = "1"
+                      {tr
+                        {td {b
+                            x
+                          }
+                        }
+                        {td {b
+                            y
+                          }
+                        }
+                        {td {b
+                            x {r
+                              "||"
+                            }
+                            y
+                          }
+                        }
+                      }
+                      {tr
+                        {td {r
+                            false
+                          }
+                        }
+                        {td {r
+                            false
+                          }
+                        }
+                        {td {r
+                            "?"
+                          }
+                        }
+                      }
+                      {tr
+                        {td {r
+                            false
+                          }
+                        }
+                        {td {r
+                            true
+                          }
+                        }
+                        {td {r
+                            "?"
+                          }
+                        }
+                      }
+                      {tr
+                        {td {r
+                            true
+                          }
+                        }
+                        {td {r
+                            false
+                          }
+                        }
+                        {td {r
+                            "?"
+                          }
+                        }
+                      }
+                      {tr
+                        {td {r
+                            true
+                          }
+                        }
+                        {td {r
+                            true
+                          }
+                        }
+                        {td {r
+                            "?"
+                          }
+                        }
+                      }
+                    }
+                  }
+                  {td
+                    {table border = "1"
+                      {tr
+                        {td {b
+                            x
+                          }
+                        }
+                        {td {b
+                            y
+                          }
+                        }
+                        {td {b
+                            x {r
+                              "&amp;&amp;"
+                            }
+                            y
+                          }
+                        }
+                      }
+                      {tr
+                        {td {r
+                            false
+                          }
+                        }
+                        {td {r
+                            false
+                          }
+                        }
+                        {td {r
+                            "?"
+                          }
+                        }
+                      }
+                      {tr
+                        {td {r
+                            false
+                          }
+                        }
+                        {td {r
+                            true
+                          }
+                        }
+                        {td {r
+                            "?"
+                          }
+                        }
+                      }
+                      {tr
+                        {td {r
+                            true
+                          }
+                        }
+                        {td {r
+                            false
+                          }
+                        }
+                        {td {r
+                            "?"
+                          }
+                        }
+                      }
+                      {tr
+                        {td {r
+                            true
+                          }
+                        }
+                        {td {r
+                            true
+                          }
+                        }
+                        {td {r
+                            "?"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            {work title = "Programmer le ou exclusif"
+              Il y a le ou {i
+                inclusif
+              }
+              comme par exemple "grand ou gentil" "(on" peut "être" les deux "!)" "c'est" le cas de {r
+                "||"
+              }
+              "," et le ou "`exclusif" comme par exemple "grand ou petit3 (mais pas les deux !). 
+    Nous voulons étudier ici comment : 
+  {ul 
+      
+  {li non pas écrire " {b
+                x
+              }
+              OU {b
+                y
+              }
+              " (
+  {b x
+  } 
+  {r ||
+  } 
+  {b y
+  }) c'est à dire soit 
+  {b x
+  } est vrai, soit 
+  {b y
+  } est vrai, soit les deux le sont
+  }
+      
+  {li mais écrire " SOIT {b
+                x
+              }
+              SOIT {b
+                y
+              }
+               " c'est à dire soit 
+  {b x
+  } est vrai et 
+  {b y
+  } est faux, soit 
+  {b x
+  } est faux et 
+  {b y
+  } est vrai.
+  }
+    
+  }Prenons deux variables booléennes 
+  {b x
+  } et 
+  {b y
+  }.
+  {ul 
+    
+  {li Compléter le tableau suivant:
+  {table align="  "center\""  border  "="  "1"
+              {tr
+                {td {b
+                    x
+                  }
+                }
+                {td {b
+                    y
+                  }
+                }
+                {td {b {r
+                      SOIT
+                    }
+                    x {r
+                      ",SOIT"
+                    }
+                    y
+                  }
+                }
+              }
+              {tr
+                {td {r
+                    false
+                  }
+                }
+                {td {r
+                    false
+                  }
+                }
+                {td {r
+                    "?"
+                  }
+                }
+              }
+              {tr
+                {td {r
+                    false
+                  }
+                }
+                {td {r
+                    true
+                  }
+                }
+                {td {r
+                    "?"
+                  }
+                }
+              }
+              {tr
+                {td {r
+                    true
+                  }
+                }
+                {td {r
+                    false
+                  }
+                }
+                {td {r
+                    "?"
+                  }
+                }
+              }
+              {tr
+                {td {r
+                    true
+                  }
+                }
+                {td {r
+                    true
+                  }
+                }
+                {td {r
+                    "?"
+                  }
+                }
+              }
+            }
+          }
+          {li
+            "Vérifier" "à" la main ou en utilisant le bout de code "suivant," que "l'expression" {b
+              "(((" {r
+                "!"
+              }
+              "x)" {r
+                "&amp;&amp;"
+              }
+              "y)" {r
+                "||"
+              }
+              "(x" {r
+                "&amp;&amp;"
+              }
+              "(" {r
+                "!"
+              }
+              "y)))"
+            }
+            "convient."
+            {code
+              {p {r
+                  println
+                }
+                "(" {s
+                  x "?"
+                }
+                ");" {r
+                  boolean
+                }
+                x "=" {r
+                  readBoolean
+                }
+                "();"
+              }
+              {p {r
+                  println
+                }
+                "(" {s
+                  y "?"
+                }
+                ");" {r
+                  boolean
+                }
+                y "=" {r
+                  readBoolean
+                }
+                "();"
+              }
+              {p {r
+                  println
+                }
+                "(" {s
+                  "Réponse:"
+                }
+                "+" "(((" {r
+                  "!"
+                }
+                "x)" {r
+                  "&amp;&amp;"
+                }
+                "y)" {r
+                  "||"
+                }
+                "(x" {r
+                  "&amp;&amp;"
+                }
+                "(" {r
+                  "!"
+                }
+                "y))));"
+              }
+            }
+          }
+          {li
+            Coder "l'expression" "autrement," sous la forme "x ou y et pas x et y" "."
+          }
+        }
+      }
+      {work title = "Comprendre l'implication logique"
+        Prenons un exemple ":" {i
+          voler un oeuf implique toujours de voler un boeuf
+        }
+        {ul
+          {li {c
+              Certes
+            }
+            "," si nous trouvons "quelqu'un" qui a "volé" un oeuf mais "n'a" pas "volé" de "boeuf," la phrase est "assurément" "fausse."
+          }
+          {li {c
+              De plus
+            }
+            "," si nous trouvons "quelqu'un" qui a "volé" un oeuf et un "boeuf," la phrase est "assurément" "vraie."
+          }
+          {li {c
+              Par ailleurs
+            }
+            ".." Et si personne "n'a" "volé" "d'oeuf" "?" Ou si "quelqu'un" a "volé" "(directement)" un boeuf sans voler "d'oeuf" "?" La "phrase," {i
+              en tant que telle
+            }
+            "," "n'est" PAS "fausse." Donc elle est vraie
+            {footnote id = "2" }
+            "."
+          }
+        }
+        "Bref," nous pouvons dire que la phrase est ":"
+        {ul
+          {li {c
+              Vraie
+            }
+            "," si et seulement si on "n'a" pas "volé" "d'oeuf" ou si on a "volé" un oeuf et un "boeuf." Ou "encore."
+          }
+          {li {c
+              Ou encore
+            }
+            "," si et seulement si "quelqu'un" qui "n'a" pas "volé" de boeuf ne peut pas avoir "volé" "d'oeuf."
+          }
+        }
+        Pour formaliser les choses ":"
+        {ul
+          {li
+            "Compléter" le tableau suivant ":"
+            {table align = center border = "1"
+              {tr
+                {td {b
+                    x
+                  }
+                }
+                {td {b
+                    y
+                  }
+                }
+                {td {b
+                    x {r
+                      IMPLIQUE
+                    }
+                    y
+                  }
+                }
+              }
+              {tr
+                {td {r
+                    false
+                  }
+                }
+                {td {r
+                    false
+                  }
+                }
+                {td {r
+                    "?"
+                  }
+                }
+              }
+              {tr
+                {td {r
+                    false
+                  }
+                }
+                {td {r
+                    true
+                  }
+                }
+                {td {r
+                    "?"
+                  }
+                }
+              }
+              {tr
+                {td {r
+                    true
+                  }
+                }
+                {td {r
+                    false
+                  }
+                }
+                {td {r
+                    "?"
+                  }
+                }
+              }
+              {tr
+                {td {r
+                    true
+                  }
+                }
+                {td {r
+                    true
+                  }
+                }
+                {td {r
+                    "?"
+                  }
+                }
+              }
+            }
+          }
+          {li
+            En prenant "l'exemple" ":" {i
+              Savoir "écrire" implique toujours de savoir lire
+            }
+            "," "ré-écrire" avec des mots "l'explication" "ci-dessus" qui commence par {c
+              Vraie
+            }
+            et {c
+              Ou encore
+            }
+            et celle qui commence par {c
+              Certes
+            }
+            "," {c
+              De plus
+            }
+            "," {c
+              Par ailleurs
+            }
+            "."
+          }
+          {li
+            Prenons deux variables "booléennes" {b
+              x
+            }
+            et {b
+              y
+            }
+            "," "écrire" "(à" partir de la phrase qui commence par {c
+              Vraie
+            }
+            ou bien celle qui commence par {c
+              Ou encore
+            }
+            ")" une formule avec des {r
+              "&amp;&amp;"
+            }
+            "," {r
+              "||"
+            }
+            et {r
+              "!"
+            }
+            et qui corresponde "à" {b
+              x {r
+                IMPLIQUE
+              }
+              y
+            }
+            "."
+          }
+        }
+      }
+    }
+    {footnotes
+      {p title = "A propos de l'égalité"
+        Notez que le signe
+        {"org.javascool.Pml" r = "}"
+          veut dire "
+  {a href=" "sujet-about-variables.htm\"" affecter une valeur
+        }
+         "
+    tandis que être égal s'écrit 
+  {r ==
+  } pour les nombres et 
+  {b 
+  {r equal
+  }(s, c)
+  } pour les chaines de caractères : voici quelque chose d'un peu compliqué.
+  }
+    
+  {p title="  A  propos  de  "l'implication\""  Dire  {b
+          A implique B
+        }
+        consiste "à" dire que si {b
+          A
+        }
+        est vrai alors "forcément" {b
+          B
+        }
+        est "vrai," tandis que si {b
+          A
+        }
+        est faux et bien tout peut arriver "à" {b
+          B
+        }
+        vrai ou "faux," "c'est" "ok."
+        {p
+          Noter aussi que "l'implication" ne signifie pas "qu'il" y a une relation de {i
+            de cause "à" effet
+          }
+          ";" par "exemple," "qu'il" pleuve {i
+            implique
+          }
+          que je prenne mon "parapluie," mais ce "n'est" {i
+            pas
+          }
+          la pluie qui est la cause que je prenne mon "parapluie," "c'est" moi "!"
+        }
+      }
+    }
+  }
+}

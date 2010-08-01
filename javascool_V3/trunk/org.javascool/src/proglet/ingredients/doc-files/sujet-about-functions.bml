@@ -1,0 +1,1055 @@
+stdout: 
+{sujet
+  {titre
+    Un tutoriel pour se familiariser avec les fonctions
+  }
+  {proglet name = Konsol }
+  {objectif
+    Le but de ce tutoriel est de se familiariser avec les "fonctions." Il faut "déja" savoir {a href = "sujet-hello-world.htm"
+      utiliser "l'interface"
+    }
+    "," se servir de {a href = "sujet-about-variables.htm"
+      variables
+    }
+    et avoir "découvert" "l'instruction" {a href = "sujet-about-if.htm"
+      conditionnelle
+    }
+    "."
+  }
+  {notes
+    {note title = "Décortiquer un exemple de fonction"
+      Voici un exemple de fonction qui se nomme "«valeur" absolue
+      {footnote id = "1" }
+      "»" et qui se "définit" "ainsi:"
+      {ul
+        {li
+          Si la variable {c
+            x
+          }
+          a une valeur est positive alors on retourne cette valeur "positive."
+        }
+        {li
+          Si la variable {c
+            x
+          }
+          a une valeur est "négative" alors on retourne "l'opposé" de cette valeur "(noté" {c
+            "-x"
+          }
+          ")," donc une valeur encore "positive."
+        }
+      }
+      {code {m
+          "Définition" de la fonction valeur absolue
+          {footnote id = "1" }
+        }
+        {p {r
+            int
+          }
+          "abs(" {r
+            int
+          }
+          "x)" "org.javascool.Pml"
+          {p
+            t {r
+              if
+            }
+            "(x" {r
+              "&gt;"
+            }
+            "0)" "org.javascool.Pml"
+            {p
+              t t {r
+                return
+              }
+              "x;"
+            }
+            {p
+              t
+            } {r
+              else
+            }
+            "org.javascool.Pml"
+            {p
+              t t {r
+                return
+              }
+              "-x;"
+            }
+            {p
+              t
+            }
+          }
+          p
+        }
+      }
+      Regardons plus en "détail" cette fonction ":"
+      {ul
+        {li
+          La ligne de commentaire "Définition de la fonction valeur absolue" explique "à" tous ceux qui vont utiliser le "code," ce que fait cette fonction ":" "c'est" bien utile "!"
+        }
+        {li
+          La ligne {b {r
+              int
+            }
+            "abs(" {r
+              int
+            }
+            "x)"
+          }
+          nous "dit," de gauche "à" "droite," que ":"
+          {ul
+            {li
+              la fonction "renvoie," en "sortie," un "résultat" qui est un "entier," donc un {r
+                int
+              }
+              ";"
+            }
+            {li
+              le nom de la fonction est {r
+                abs
+              }
+              ";"
+            }
+            {li
+              la fonction "reçoit," en "entrée," un argument {b
+                x
+              }
+              qui est un entier ";"
+            }
+          }
+          Cette ligne {i
+            "définit" donc la fonction
+          }
+          "," "c'est" son {i
+            interface
+          }
+          ou sa {i
+            signature
+          }
+          "." Nous avons besoin de "connaître" cette ligne pour savoir comment appeler cette "fonction."
+        }
+        {li
+          Les "4" lignes suivantes forment le {i
+            corps
+          }
+          de la fonction ":" on y lit que si {b
+            x
+          }
+          est plus grand que {b
+            "0"
+          }
+          "," le "résultat" est {b
+            x
+          }
+          "," sinon le "résultat" est {b
+            "-x"
+          }
+          "." En effet ":"
+          {ul
+            {li
+              "l'instruction" {b {r
+                  return
+                }
+                "x;"
+              }
+              signifie {i
+                renvoyer le "résulat"
+              }
+              ":" le calcul est fini et la fonction retourne la valeur "calculée."
+            }
+            {li
+              On note aussi les accolades "org.javascool.Pml" qui permettent de "délimiter" le corps de la fonction ":" ce sont comme des "parenthèses" qui encapsulent les "instructions."
+            }
+          }
+        }
+      }
+    }
+    {note title = "Faire en sorte de réutiliser des portions de code"
+      Prenons un "exemple." Voici un bout de "code," "sûrement" fort "utile," qui calcule {i
+        la plus grande des valeurs absolues
+        {footnote id = "1" }
+      }
+      de deux variables {b
+        x
+      }
+      et {b
+        y
+      }
+      "." Si nous notons {b {r
+          abs
+        }
+        "(x)"
+      }
+      la valeur absolue
+      {footnote id = "1" }
+      de {b
+        x
+      }
+      "," et {b {r
+          max
+        }
+        "(x," "y)"
+      }
+      la plus grande valeur entre {b
+        x
+      }
+      et {b
+        y
+      }
+      "." Eh bien nous cherchons "à" calculer {b {r
+          max
+        }
+        "(" {r
+          abs
+        }
+        "(x)," {r
+          abs
+        }
+        "(y))"
+      }
+      "," "c'est" "à" dire le maximum des deux valeurs "absolues." Voici "..." le code "(jeter" un coup "d'oeil" et passer "à" la suite "!):"
+      {code
+        {p {r
+            void main
+          }
+          "()" "org.javascool.Pml"
+          {p
+            t {r
+              int
+            }
+            x "=" "12;"
+          }
+          {p
+            t {r
+              int
+            }
+            y "=" "-14;"
+          }
+          {p
+            t {r
+              int
+            }
+            "z;"
+          } {m
+            Calcul selon que x ou y soit positif ou "négatif," de la plus grande valeur positive entre x et "-x," y et "-y"
+          }
+          {p
+            t {r
+              if
+            }
+            "(x" {r
+              "&gt;"
+            }
+            "0)" "org.javascool.Pml"
+            {p
+              t t {r
+                if
+              }
+              "(y" {r
+                "&gt;"
+              }
+              "0)" "org.javascool.Pml"
+              {p
+                t t t {r
+                  if
+                }
+                "(x" {r
+                  "&gt;"
+                }
+                "y)" "org.javascool.Pml"
+                {p
+                  t t t t z "=" "x;"
+                }
+                {p
+                  t t t
+                } {r
+                  else
+                }
+                "org.javascool.Pml"
+                {p
+                  t t t t z "=" "y;"
+                }
+                {p
+                  t t t
+                }
+              }
+              {p
+                t t
+              } {r
+                else
+              }
+              "org.javascool.Pml"
+              {p
+                t t t {r
+                  if
+                }
+                "(x" {r
+                  "&gt;"
+                }
+                "-y)" "org.javascool.Pml"
+                {p
+                  t t t t z "=" "x;"
+                }
+                {p
+                  t t t
+                } {r
+                  else
+                }
+                "org.javascool.Pml"
+                {p
+                  t t t t z "=" "-y;"
+                }
+                {p
+                  t t t
+                }
+              }
+              {p
+                t t
+              }
+            }
+            {p
+              t
+            } {r
+              else
+            }
+            "org.javascool.Pml"
+            {p
+              t t {r
+                if
+              }
+              "(y" {r
+                "&gt;"
+              }
+              "0)" "org.javascool.Pml"
+              {p
+                t t t {r
+                  if
+                }
+                "(-x" {r
+                  "&gt;"
+                }
+                "y)" "org.javascool.Pml"
+                {p
+                  t t t t z "=" "-x;"
+                }
+                {p
+                  t t t
+                } {r
+                  else
+                }
+                "org.javascool.Pml"
+                {p
+                  t t t t z "=" "y;"
+                }
+                {p
+                  t t t
+                }
+              }
+              {p
+                t t
+              } {r
+                else
+              }
+              "org.javascool.Pml"
+              {p
+                t t t {r
+                  if
+                }
+                "(-x" {r
+                  "&gt;"
+                }
+                "-y)" "org.javascool.Pml"
+                {p
+                  t t t t z "=" "-x;"
+                }
+                {p
+                  t t t
+                } {r
+                  else
+                }
+                "org.javascool.Pml"
+                {p
+                  t t t t z "=" "-y;"
+                }
+                {p
+                  t t t
+                }
+              }
+              {p
+                t t
+              }
+            }
+            {p
+              t
+            }
+          }
+          {p
+            t {r
+              println
+            }
+            "(" {s z = "}"
+              "+" "z);"
+            }
+            p
+          }
+        }
+        Mmmm "..." et bien "oui," il est un peu "long," un peu lourd et "s'il" faut le recopier chaque fois que nous avons besoin de calculer la plus petite des valeurs "absolues," "celà" va vite devenir "ingérable"  de  "fait."  En  "plus,"  on  "mélange"  calcul  de  la  valeur  absolue  et  calcul  du  maximum  et  tout  cela  semble  redondant  et  bien  inutilement  "complexe."  Nous  avons  une  "façon"  bien  plus  "élégante"  de  "définir"  le  "même"  calcul  en  utilisant  des  "fonctions:"
+        {code {m
+            "Définition" de la fonction maximum de deux valeurs
+          }
+          {p {r
+              int
+            }
+            "max(" {r
+              int
+            }
+            "x," {r
+              int
+            }
+            "y)" "org.javascool.Pml"
+            {p
+              t {r
+                if
+              }
+              "(x" {r
+                "&gt;"
+              }
+              "y)" "org.javascool.Pml"
+              {p
+                t t {r
+                  return
+                }
+                "x;"
+              }
+              {p
+                t
+              } {r
+                else
+              }
+              "org.javascool.Pml"
+              {p
+                t t {r
+                  return
+                }
+                "y;"
+              }
+              {p
+                t
+              }
+            }
+            p
+          } {m
+            "Définition" de la fonction valeur absolue
+            {footnote id = "1" }
+          }
+          {p {r
+              int
+            }
+            "abs(" {r
+              int
+            }
+            "x)" "org.javascool.Pml"
+            {p
+              t {r
+                if
+              }
+              "(x" {r
+                "&gt;"
+              }
+              "0)" "org.javascool.Pml"
+              {p
+                t t {r
+                  return
+                }
+                "x;"
+              }
+              {p
+                t
+              } {r
+                else
+              }
+              "org.javascool.Pml"
+              {p
+                t t {r
+                  return
+                }
+                "-x;"
+              }
+              {p
+                t
+              }
+            }
+            p
+          }
+          {p {r
+              void main
+            }
+            "()" "org.javascool.Pml"
+            {p
+              t {r
+                int
+              }
+              x "=" "12;"
+            }
+            {p
+              t {r
+                int
+              }
+              y "=" "-14;"
+            }
+            {p
+              t {r
+                int
+              }
+              z "=" {r
+                max
+              }
+              "(" {r
+                abs
+              }
+              "(x)," {r
+                abs
+              }
+              "(y));"
+            }
+            {p
+              t {r
+                println
+              }
+              "(" {s z = "}"
+                "+" "z);"
+              }
+              p
+            }
+          }
+          Ouf "!" Ici tout a "changé" ":"
+          {ul
+            {li
+              Le code est beaucoup plus court et plus "lisible," beaucoup plus facile "à" "vérifier" "aussi."
+            }
+            {li
+              Le programme principal {r
+                void main
+              }
+              ne contient que ce que nous voulons "faire," et la "façon" de le faire est "déléguée" aux "fonctions."
+            }
+            {li
+              Chaque fonction est "définie" de "manière" modulaire et pourra "être" facilement "réutilisée" ":" nous "créons" ici {i
+                nos propres instructions
+              }
+              "," en plus de celles disponibles dans le langage
+              {footnote id = "2" }
+              "."
+            }
+          }
+          Regardons plus en "détail" la fonction {r
+            max
+          }
+          ":"
+          {ul
+            {li
+              La ligne de commentaire "Définition de la fonction maximum de deux valeurs" explique "à" tous ceux qui vont utiliser le "code," ce que fait cette fonction ":" "c'est" indispensable "!"
+            }
+            {li
+              La ligne {b {r
+                  int
+                }
+                "max(" {r
+                  int
+                }
+                "x," {r
+                  int
+                }
+                "y)"
+              }
+              nous "dit," de gauche "à" "droite," que ":"
+              {ul
+                {li
+                  la fonction "renvoie," en "sortie," un "résultat" qui est un "entier," donc un {r
+                    int
+                  }
+                  ";"
+                }
+                {li
+                  le nom de la fonction est {r
+                    max
+                  }
+                  ";"
+                }
+                {li
+                  la fonction "reçoit," en "entrée," deux arguments qui sont les entiers {b
+                    x
+                  }
+                  et {b
+                    y
+                  }
+                  ";"
+                }
+              }
+              Cette ligne {i
+                "définit" donc la fonction
+              }
+              "," "c'est" son {i
+                interface
+              }
+              ou sa {i
+                signature
+              }
+              "." Nous avons besoin de "connaître" cette ligne pour savoir comment appeler cette "fonction."
+            }
+            {li
+              Les "4" lignes suivantes forment le {i
+                corps
+              }
+              de la fonction ":" on y lit que si {b
+                x
+              }
+              est plus grand que {b
+                y
+              }
+              "," le "résultat" est {b
+                x
+              }
+              "," sinon le "résultat" est {b
+                y
+              }
+              "." En effet ":"
+              {ul
+                {li
+                  "l'instruction" {b {r
+                      return
+                    }
+                    "x;"
+                  }
+                  ou {b {r
+                      return
+                    }
+                    "y;"
+                  }
+                  signifie {i
+                    renvoyer le "résulat"
+                  }
+                  ":" le calcul est fini et la fonction retourne la valeur "calculée."
+                }
+                {li
+                  On note aussi les accolades "org.javascool.Pml" qui permettent de "délimiter" le corps de la fonction ":" ce sont comme des "parenthèses" qui encapsulent les "instructions."
+                }
+              }
+            }
+            {li
+              Dans la partie principale du programme "à" la ligne {b {r
+                  int
+                }
+                z "=" {r
+                  max
+                }
+                "(" {r
+                  abs
+                }
+                "(x)," {r
+                  abs
+                }
+                "(y));"
+              }
+              on utilise la "fonction," de la "manière" "suivante:"
+              {ul
+                {li
+                  Les valeurs "d'entrée" sont {b {r
+                      abs
+                    }
+                    "(x)"
+                  }
+                  "(la" valeur absolue de {b
+                    x
+                  }
+                  elle "même" "calculée" en appelant la fonction {r
+                    abs
+                  }
+                  ")" et {b {r
+                      abs
+                    }
+                    "(y)"
+                  }
+                  "."
+                }
+                {li
+                  Le calcul du maximum "s'effectue" "à" "l'intérieur" de la fonction {r
+                    max
+                  }
+                  et le "résultat" est "renvoyé" dans {b
+                    z
+                  }
+                  "," puisque le
+                  {"org.javascool.Pml" r = "}"
+                    affecte la valeur "à" {b
+                      z
+                    }
+                    "."
+                  }
+                }
+              }
+            }
+            Nous avons ainsi {i
+              "structuré"
+            }
+            notre "code."
+          }
+          {note title = "A propos des fonctions que nous connaissons déja"
+            Nous connaissons "déjà" ":"
+            {ul
+              {li
+                La fonction {b {r
+                    String
+                  } {r
+                    readString
+                  }
+                  "()" ";"
+                }
+                qui renvoie une chaine de "caractère" "entrée" au clavier par "l'utilisateur" ":"
+                {ul
+                  {li
+                    Cette fonction "n'a" pas "d'argument" en "entrée" "(donc" il "n'y" a rien entre les "parenthèses)," puisque nous "n'avons" besoin de lui passer aucun "paramètre," tandis que "l'entrée"  "(par"  "l'utilisateur)"  est  {i
+                      externe
+                    }
+                    au "programme."
+                  }
+                  {li
+                    Cette fonction renvoie une valeur ":" la chaine lue sur le "clavier."
+                  }
+                }
+              }
+              {li
+                La fonction {b {r
+                    void
+                  } {r
+                    println
+                  }
+                  "(" {r
+                    String
+                  }
+                  "s);"
+                }
+                qui imprime une chaine de "caractère" en sortie pour "l'utilisateur" ":"
+                {ul
+                  {li
+                    Cette fonction a un argument en "entrée," la chaine de "caratères," "notée" ici {b
+                      s
+                    }
+                    "," qui doit "être" "imprimée."
+                  }
+                  {li
+                    Cette fonction ne renvoie aucun "résultat" en "sortie," puisque la sortie est {i
+                      externe
+                    }
+                    au programme "(en" affichant "à" "l'écran)." "C'est" le mot {r
+                      void
+                    }
+                    "," "vide," qui signifie rien pas de "résultat." "Voilà" le sens de ce mot du langage ":" "l'instruction" est "imprime et c'est tout" "."
+                  }
+                }
+              }
+              {li
+                La fonction {b {r
+                    void
+                  } {r
+                    main
+                  }
+                  "();"
+                }
+                "..." "c'est" nous qui la "définissons" "à" chaque "fois." Elle "n'a" "(dans" notre "contexte)" ni "entrée" ni sortie "(donc" rien entre les "parenthèses," et le mot {r
+                  void
+                }
+                pour signifier "l'absence" de "résultat)." Elle correspond juste au lancement du "programme," "à" la fonction par laquelle le programme doit "commencer."
+              }
+            }
+          }
+          {note title = "Les fonctions peuvent elle s'appeler elle-même ?"
+            Imaginons une fonction {r
+              A
+            }
+            qui "appelle," selon ses "entrées," une fonction {r
+              B
+            }
+            qui appelle "elle-même" la fonction {r
+              A
+            }
+            ou tout autre combinaison telle "que," finalement et selon ses "entrées," la fonction {r
+              A
+            }
+            se rappelle "elle-même." On dit "qu'elle" est {i {a href = "http://fr.wikipedia.org/wiki/Algorithme_récursif"
+                "récursive"
+              }
+            }
+            ":" cela peut donner des boucles infinies "(donc" des bugs "!)," ou des calculs "très" complexes et "très" "intéressants" "..." et "c'est" plus "compliqué" que ce que nous pouvons "découvrir" "ici,"  alors  retenons  juste  deux  choses  ":"
+            {ul
+              {li
+                Il faut "éviter" de "définir" des fonctions "récursives," sauf dans les cas "indispensables."
+              }
+              {li
+                Il faut "être" prudent si "c'est" le "cas," et bien comprendre la notion de {a href = "sujet-about-while.htm"
+                  boucle
+                }
+                "avant."
+              }
+            }
+          }
+        }
+        {works
+          {work title = "A nous de jouer"
+            {ul
+              {li
+                Recopier les deux portions de code dans deux fichiers "différents" et "vérifier" si les deux donnent le bon "résulat."
+              }
+              {li
+                A partir du "2ème" exemple de "code," ajouter la fonction min "(qui" renvoie la plus petite des valeurs x ou "y)," pour calculer {i
+                  la plus {b
+                    petite
+                  }
+                  des valeurs absolues
+                }
+                "," et non la plus "grande." "Vérifier" le "résultat."
+              }
+              {li
+                A partir du "2ème" exemple de "code," puisque la valeur absolue
+                {footnote id = "1" }
+                de x est aussi la plus grande entre x et "-x," reprogrammer la fonction valeur absolue en une "ligne," sans utiliser de {r
+                  if
+                }
+                "," mais en utilisant la fonction {r
+                  max
+                }
+                "."
+              }
+            }
+          }
+          {work title = "Programmer d'autres fonctions"
+            Programmer les fonctions suivantes et faire un petit {r
+              main
+            }
+            pour un programme de test ":"
+            {ul
+              {li
+                Programmer la fonction "division sans bêtise" {b {r
+                    double
+                  }
+                  "div(" {r
+                    double
+                  }
+                  "x," {r
+                    double
+                  }
+                  "y)"
+                }
+                "," qui renvoie
+                {ul
+                  {li {b
+                      x
+                    }
+                    "divisé" par {b
+                      y
+                    }
+                    "(cela" se note comme sur les calculettes {b
+                      x "/" y
+                    }
+                    ")," si {b
+                      y
+                    }
+                    "n'est" pas "zéro,"
+                  }
+                  {li
+                    imprime un message "d'erreur," puis renvoie la valeur {b
+                      "Double.NaN"
+                    }
+                    "," si {b
+                      y
+                    }
+                    est nul "(" {b y = "="
+                      "0"
+                    }
+                    ")" "."
+                  }
+                }
+                "(la" valeur {b
+                  "Double.NaN"
+                }
+                qui se lie "Not-a-Number" signifie que le "résulat" "n'est" pas un "nombre," mais est "indéfini."
+              }
+              {li
+                Programmer la fonction "ou exclusif" {b {r
+                    boolean
+                  }
+                  "xor(" {r
+                    boolean
+                  }
+                  "x," {r
+                    boolean
+                  }
+                  "y)"
+                }
+                "," "découverte" avec "l'" {a href = "doc/sujet-about-if.htm"
+                  instruction conditionnelle
+                }
+                "," qui renvoie {r
+                  true
+                }
+                "(vrai)" si soit {b
+                  x
+                }
+                "," soit {b
+                  y
+                }
+                est {r
+                  true
+                }
+                mais pas les deux "à" la "fois."
+              }
+              {li
+                Programmer la fonction "maximum de trois entiers" {b {r
+                    int
+                  }
+                  "max(" {r
+                    int
+                  }
+                  "x," {r
+                    int
+                  }
+                  "y," {r
+                    int
+                  }
+                  "z)"
+                }
+                "," soit en utilisant la fonction {b {r
+                    int
+                  }
+                  "max(" {r
+                    int
+                  }
+                  "x," {r
+                    int
+                  }
+                  "y)"
+                }
+                "," soit des {r
+                  if
+                }
+                "," comme vous "voulez."
+              }
+              {li
+                Programmer une fonction "info ou intox" {b {r
+                    void
+                  } {r
+                    infox
+                  }
+                  "(" {r
+                    String
+                  }
+                  "question," {r
+                    boolean
+                  }
+                  "reponse);"
+                }
+                qui ":"
+                {ul
+                  {li
+                    pose une question "Vrai/Faux" "à" "l'utilisateur" "(voir" des exemples ci "dessous),"
+                  }
+                  {li
+                    lit sa "réponse" avec un {b {r
+                        readBoolean
+                      }
+                      "();"
+                    }
+                    ","
+                  }
+                  {li
+                    le "félicite" "s'il" a raison et lui dit gentiment "s'il" "s'est" "trompé."
+                  }
+                }
+                "L'utiliser" par exemple avec le {r
+                  main
+                }
+                "suivant."
+                {code
+                  {p {r
+                      void main
+                    }
+                    "()" "org.javascool.Pml"
+                    {p
+                      t {r
+                        infox
+                      }
+                      "(" {s
+                        Il y a environ "100" millions "d'ordinateurs" dans le monde
+                      }
+                      "," {r
+                        false
+                      }
+                      ");"
+                    } {m
+                      "..." il y en plus de "1" "milliard!"
+                    }
+                    {p
+                      t {r
+                        infox
+                      }
+                      "(" {s
+                        Ada "Byron-Lovelace" "était," "dès" le "XIXème" "siècle," la "1ère" femme informaticienne
+                      }
+                      "," {r
+                        true
+                      }
+                      ");"
+                    } {m
+                      "..." oui elle fut la "première" "à" formaliser la notion de programme que nous apprenons "ici."
+                    }
+                    {p
+                      t {r
+                        infox
+                      }
+                      "(" {s
+                        Toutes les fonctions "mathématiques" peuvent "être" "calculées" par un ordinateur
+                      }
+                      "," {r
+                        false
+                      }
+                      ");"
+                    } {m
+                      "..." il y a beaucoup de fonctions dont le temps de calcul est "..." infini "!" "(donc" impossible "à" "calculer)"
+                    }
+                    {p
+                      t {r
+                        infox
+                      }
+                      "(" {s
+                        Le cours de la "2nd" guerre mondiale a "changé" plus vite "grâce" "à" "..." un calcul informatique
+                      }
+                      "," {r
+                        true
+                      }
+                      ");"
+                    } {m
+                      "..." "Alan-Turing" a pu craquer le code de la machine Enigma qui codait les messages nazis grace "à" un calcul "mécanique."
+                    }
+                    p
+                  }
+                }
+                "..." non sans vous amuser "à" ajouter vos propres questions "!"
+              }
+            }
+          }
+        }
+        {footnotes
+          {p title = "A propos la valeur absolue"
+            Si x est "négatif" sa "valeur," par exemple "-12" ou "-14," la valeur absolue est le nombre positif correspondant sans le signe "-" "," autrement dit "l'opposé" de "x," donc "12" ou "14" pour nos  "exemples."  Si  x  est  positif  sa  valeur  absolue  est  le  nombre  lui  "même,"  autrement  dit  "x."  On  note  "|x|"  la  valeur  absolue  de  "x."  Comme  un  nombre  positif  est  toujours  plus  grand  "qu'un"  nombre  "négatif,"  "c'est"  aussi  la  valeur  la  plus  grande  entre  x  et  "-x."
+          }
+          {p title = "Les fonctions «abs» et «max» en Java"
+            Bien entendu les fonctions "valeur-absolue," "maximum-de-deux-valeurs" existent {i
+              "déja"
+            }
+            dans tous les langages usuels dont Java "!" Nous les avons "caché" en Javascool pour vous apprendre comment les "programmer."
+          }
+        }
+      }
+    }
+  }
+}

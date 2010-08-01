@@ -1,0 +1,209 @@
+stdout: 
+{sujet
+  {titre
+    Un tutoriel sur les valeurs "numériques"
+  }
+  {proglet name = Konsol }
+  {objectif
+    Le but de ce tutoriel est "d'appliquer" quelques unes des notions "fondamentales." Il faut "déjà" savoir {a href = "sujet-hello-world.htm"
+      utiliser "l'interface"
+    }
+    "," se servir de {a href = "sujet-about-variables.htm"
+      variables
+    }
+    et avoir "découvert" "l'" {a href = "sujet-about-if.htm"
+      instruction conditionnelle
+    }
+    "."
+  }
+  {notes
+    {note title = "Calculer son indice de masse corporelle"
+      Voici
+      {footnote id = "1" }
+      un exemple concret ":" calculer son {a href = "http://fr.wikipedia.org/wiki/Indice_de_masse_corporelle"
+        indice de masse corporelle
+      }
+      "." Voici un code "(volontairement)" "erroné" ":"
+      {code
+        {p {r
+            void main
+          }
+          "()" "org.javascool.Pml"
+          {p
+            t {r
+              println
+            }
+            "(" {s
+              Quel est ton poids "?"
+            }
+            ")" ";"
+          }
+          {p
+            t {r
+              int
+            }
+            poids "=" {r
+              "readInteger()"
+            }
+            ";"
+          }
+          {p
+            t {r
+              println
+            }
+            "(" {s
+              Quel est ta taille "?"
+            }
+            ")" ";"
+          }
+          {p
+            t {r
+              double
+            }
+            taille "=" {r
+              "readFloat()"
+            }
+            ";"
+          }
+          {p
+            t {r
+              "???"
+            }
+            imc "=" poids "+" taille "/" "(poids" "*" "taille)" ";"
+          }
+          {p
+            t {r
+              println
+            }
+            "(" {s
+              Ton indice de masse corporelle est donc ":"
+            }
+            "+" "imc)" ";"
+          }
+          p
+        }
+      }
+      Le "début" du code ressemble "à" celui "utilisé" pour apprendre "à" se servir de {a href = "sujet-about-variables.htm"
+        variables
+      }
+      ":" on demande "à" "l'utilisateur" son poids et sa "taille." Ensuite on calcule "l'indice" de masse corporelle "..." mais "..." attention ":"
+      {ul
+        {li
+          La formule est fausse "!!!" Ce sera "à" vous de la "corriger."
+        }
+        {li
+          Il faut remplacer {r
+            "???"
+          }
+          par le bon "'adjectif'" "(" {r
+            int
+          }
+          "?" {r
+            double
+          }
+          "?)"
+        }
+      }
+    }
+  }
+  {works
+    {work title = "Spécifier le code avec une formule juste"
+      Reprendre le code "précédent" et en utilisant la "définition" de "l'" {a href = "http://fr.wikipedia.org/wiki/Indice_de_masse_corporelle"
+        indice de masse corporelle
+      }
+      "."
+      {ul
+        {li
+          Pourquoi choisir le poids "(" {r
+            int
+          }
+          ")" en entier et la taille en "décimal" "(" {r
+            double
+          }
+          ")" "?"
+        }
+        {li
+          "L'indice" de masse corporelle "doit-il" "être" un entier ou un "décimal" "?"
+        }
+        {li
+          Entrez la formule juste et essayez "(c'est" "à" dire ":" "sauver," compiler et "..." "exécuter)"
+        }
+        {li
+          "Vérifiez" le code "à" la main sur "l'exemple" "d'une" personne pesant "95" kg et mesurant "1,81" "m."
+        }
+        {li
+          "Vérifiez" le code "à" la main sur "l'exemple" "d'une" personne pesant "48" kg et mesurant "1,69" "m."
+        }
+      }
+    }
+    {work title = "Ajouter un message personnalisé"
+      Ajoutons au code "précédent" un message "personnalisé" ":"
+      {code
+        {p
+          t {r
+            if
+          }
+          "(imc" "&lt;" "=" "25)" "org.javascool.Pml"
+          {p
+            t t "println(" {s
+              "Plutôt" mince
+            }
+            ");"
+          }
+          {p
+            t
+          } {r
+            else if
+          }
+          "(imc" "&lt;" "=" "50)" "org.javascool.Pml"
+          {p
+            t t "println(" {s
+              "Plutôt" gros
+            }
+            ");"
+          }
+          {p
+            t
+          } {r
+            else
+          }
+          "org.javascool.Pml"
+          {p
+            t t "println(" {s
+              "Sacré" menteur "!"
+            }
+            ");"
+          }
+          {p
+            t
+          }
+        }
+      }
+      {ul
+        {li
+          Ajoutez ce code au bon endroit et constatez "qu'il" permet de donner une information plus parlante "à" "l'utilisateur."
+        }
+        {li
+          Utiliser le tableau "donné" sur le {a href = "http://fr.wikipedia.org/wiki/Indice_de_masse_corporelle#Interpr.C3.A9tation_de_l.27IMC"
+            site de wikipedia
+          }
+          pour indiquer la "dénutrition," "maigreur," corpulence "normale," "surpoids," "etc..." en combinant les constructions {r
+            if
+          }
+          "/" {r
+            else
+          }
+          "."
+        }
+      }
+    }
+  }
+  {footnotes
+    {p title = "A propos de ce tutoriel"
+      Ce tutoriel est une "idée" originale de "Aurélien" "Astroux," Professeur de Physique en "2nd" Mesures Physiques et Informatique au "Lycée" {a href = "http://leonarddevinci.net"
+        "Léonard" de Vinci
+      }
+      "d'Antibes."
+    }
+  }
+}

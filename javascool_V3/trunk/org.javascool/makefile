@@ -75,7 +75,7 @@ lib/manifest.mf : makefile
 	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
 
 src/org/javascool/Main.class : $(SRC)
-	@javac -Xlint -cp src:lib/tools.jar:lib/saxon.jar $(SRC)
+	@rm -f $@; javac -Xlint -cp src:lib/tools.jar:lib/saxon.jar $(SRC)
 
 CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
@@ -91,7 +91,7 @@ lib/saxon.jar : $(SX)
 
 # Java doc generation
 
-www/api/index.html : $(patsubst %.xml,%.htm,$(shell find src -name '*.xml')) $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(shell find src -name package.html) $(SRC)
+www/api/index.html : htms bmls pngs $(shell find src -name package.html) $(SRC)
 	@echo "make $(@D)"
 	@mkdir -p $(@D)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
@@ -100,8 +100,17 @@ www/api/index.html : $(patsubst %.xml,%.htm,$(shell find src -name '*.xml')) $(p
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
 	@for f in $(SRC) ; do cp $$f `echo $$f | sed 's/^src/$(subst /,\\/,$(@D))/'` ; done
 
+htms : $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
+
 %.htm : %.xml lib/xml2htm.xsl
 	@java -jar lib/saxon.jar -o $@ $^
+
+bmls : $(patsubst %.xml,%.bml,$(shell find src -name '*.xml'))
+
+%.bml : %.xml src/org/javascool/Main.class
+	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Pml $*.xml > $@
+
+pngs :  $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) 
 
 %.png : %.fig
 	@fig2dev -L png $^ > $@

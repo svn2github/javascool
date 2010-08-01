@@ -66,7 +66,7 @@ import java.net.URLClassLoader;
  * org/javascool/doc-files/stop.png
  * org/javascool/doc-files/demo.png
  * </pre>
- * @see <a href="../org/javascool/MainV2.java">source code</a>
+ * @see <a href="../../org/javascool/MainV2.java">source code</a>
  */
 public class MainV2 extends JApplet {
   private static final long serialVersionUID = 1L;
