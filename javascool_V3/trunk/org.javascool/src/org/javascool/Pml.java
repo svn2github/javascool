@@ -155,20 +155,20 @@ public class Pml { /**/public Pml() { }
     }
   }
   protected static String xml2pml = 
-    "<?xml version='1.0' encoding='utf-8'?>"+
-    "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' xmlns:sx='http://icl.com/saxon' extension-element-prefixes='sx' version='1.0'>"+
-    "  <xsl:output method='xml' encoding='utf-8' omit-xml-declaration='yes'/>"+
-    "  <sx:function name='sx:replace' xmlns:string='java:java.lang.String'>"+
-    "    <xsl:param name='string'/>"+
-    "    <xsl:param name='pattern'/>"+
-    "    <xsl:param name='target'/>"+
-    "    <sx:return select='string:replaceAll($string, $pattern, $target)'/>"+
-    "  </sx:function>"+
-    "  <xsl:template match='*'>"+
-    "  {<xsl:value-of select='name(.)'/><xsl:text> </xsl:text>"+
-    "    <xsl:for-each select='@*'><xsl:value-of select='name(.)'/>=\"<xsl:value-of select=\"translate(., '&quot;','¨')\"/>\"<xsl:text> </xsl:text></xsl:for-each>"+
-    "    <xsl:apply-templates/>"+
-    "  }</xsl:template>"+
+    "<?xml version='1.0' encoding='utf-8'?>\n"+
+    "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' xmlns:sx='http://icl.com/saxon' extension-element-prefixes='sx' version='1.0'>\n"+
+    "  <xsl:output method='xml' encoding='utf-8' omit-xml-declaration='yes'/>\n"+
+    "  <sx:function name='sx:replace' xmlns:string='java:java.lang.String'>\n"+
+    "    <xsl:param name='string'/>\n"+
+    "    <xsl:param name='pattern'/>\n"+
+    "    <xsl:param name='target'/>\n"+
+    "    <sx:return select='string:replaceAll($string, $pattern, $target)'/>\n"+
+    "  </sx:function>\n"+
+    "  <xsl:template match='*'>\n"+
+    "  {<xsl:value-of select='name(.)'/><xsl:text> </xsl:text>\n"+
+    "    <xsl:for-each select='@*'><xsl:value-of select='name(.)'/>=\"<xsl:value-of select=\"translate(., '&quot;','¨')\"/>\"<xsl:text> </xsl:text></xsl:for-each>\n"+
+    "    <xsl:apply-templates/>\n"+
+    "  }</xsl:template>\n"+
     "</xsl:stylesheet>";
 
   /** Returns this logical-structure structure as a one-line string.
@@ -284,13 +284,14 @@ public class Pml { /**/public Pml() { }
     // Writes the data
     private void write(Pml pml) {
       if (pml.getSize() == 0) {
-	string.append(" "+pml.getTag().replaceFirst("^\"([{}])\"$", "$1").replaceAll("&", "&amp").replaceAll("<", "&lt;"));
+	string.append(" "+pml.getTag().replaceFirst("^\"([{}])\"$", "$1").replaceAll("&", "&amp;").replaceAll("<", "&lt;"));
       } else {
 	string.append(" <"+toName(pml.getTag()));
 	for(String name : pml.attributes())
-	  string.append(" "+toName(name)+"=\""+pml.getChild(name).toString().replaceFirst("^\\{(.*)\\}$", "$1").
-			replaceAll("&", "&amp").replaceAll("<", "&lt;").replaceAll("\"", "&aquot;")+"\"");
+	  string.append(" "+toName(name)+"=\""+pml.getChild(name).toString().replaceFirst("^\\{(.*)\\}$", "$1").replaceFirst("^\"(.*)\"$", "$1").
+			replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll("\"", "&quot;")+"\"");
 	if (pml.getCount() > 0) {
+	  string.append(">");
 	  for(int n = 0; n < pml.getCount(); n++)
 	    write(pml.getChild(n));
 	  string.append("</"+toName(pml.getTag())+">");

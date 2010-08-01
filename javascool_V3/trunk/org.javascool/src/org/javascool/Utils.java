@@ -53,30 +53,38 @@ public class Utils { private Utils() { }
 
   /** Runs an operating-system command, waits until completion and returns the output.
    * @param command The operating systems command with its arguments separated by either tabulation ("\t" char) if any else space (" " char).
-   * @param timeout @optional<10s> Timeout in second or 0 if no timeout.
+   * @param timeout Timeout in second or 0 if no timeout. Default is 10.
    * @return The command output (standard output and error output) including '\n'.
-   * @throws IOException If an exception occurs during command execution.
+   *
+   * @throws RuntimeException if an I/O exception occurs during command execution.
    * @throws IllegalStateException If the command returned status is non zero or if a time-out occurs.
    */
-  public static String exec(String command, int timeout) throws IOException {
-    StringBuffer output = new StringBuffer();
-    long time = timeout > 0 ? System.currentTimeMillis() + 1000 * timeout : 0;
-    Process process = Runtime.getRuntime().exec(command.trim().split((command.indexOf('\t') == -1) ? " " : "\t"));
-    InputStreamReader stdout = new InputStreamReader(process.getInputStream());
-    InputStreamReader stderr = new InputStreamReader(process.getErrorStream());
-    for(boolean waitfor = true; waitfor;) { waitfor = false; Thread.yield();
-      while (stdout.ready()) { waitfor = true; output.append((char) stdout.read()); }
-      while (stderr.ready()) { waitfor = true; output.append((char) stderr.read()); }
-      if (!waitfor) { try { process.exitValue(); } catch(IllegalThreadStateException e1) { try { Thread.sleep(100); } catch(Exception e2) { } waitfor = true; } }
-      if ((time > 0) && (System.currentTimeMillis() > time)) throw new IllegalStateException("Command {"+command+"} timeout (>"+timeout+"s) output=["+output+"]\n");
+  public static String exec(String command, int timeout) {
+    try {
+      StringBuffer output = new StringBuffer();
+      long time = timeout > 0 ? System.currentTimeMillis() + 1000 * timeout : 0;
+      Process process = Runtime.getRuntime().exec(command.trim().split((command.indexOf('\t') == -1) ? " " : "\t"));
+      InputStreamReader stdout = new InputStreamReader(process.getInputStream());
+      InputStreamReader stderr = new InputStreamReader(process.getErrorStream());
+      for(boolean waitfor = true; waitfor;) { waitfor = false; Thread.yield();
+	while (stdout.ready()) { waitfor = true; output.append((char) stdout.read()); }
+	while (stderr.ready()) { waitfor = true; output.append((char) stderr.read()); }
+	if (!waitfor) { try { process.exitValue(); } catch(IllegalThreadStateException e1) { try { Thread.sleep(100); } catch(Exception e2) { } waitfor = true; } }
+	if ((time > 0) && (System.currentTimeMillis() > time)) throw new IllegalStateException("Command {"+command+"} timeout (>"+timeout+"s) output=["+output+"]\n");
+      }
+      stdout.close();
+      stderr.close();
+      // Terminates the process
+      process.destroy(); try { process.waitFor(); } catch(Exception e) { } Thread.yield();
+      if (process.exitValue() != 0) throw new IllegalStateException("Command {"+command+"} error #"+process.exitValue()+" output=[\n"+output+"\n]\n");
+      return output.toString(); 
+    } catch(IOException e) {
+      throw new RuntimeException(e+" when executing: "+command); 
     }
-    stdout.close();
-    stderr.close();
-    // Terminates the process
-    process.destroy(); try { process.waitFor(); } catch(Exception e) { } Thread.yield();
-    if (process.exitValue() != 0) throw new IllegalStateException("Command {"+command+"} error #"+process.exitValue()+" output=[\n"+output+"\n]\n");
-    return output.toString(); 
   }  
+  public static String exec(String command) {
+    return exec(command , 10);
+  }
 
   /** Loads an URL textual contents and returns it as a string.
    *
@@ -267,7 +275,7 @@ public class Utils { private Utils() { }
 
   /** Converts a XML string to another XML string using a XSL string. 
    * <div>The <tt>saxon.jar</tt> must be in the path.</div>
-   * @param xml The XML input string.
+   * @param xml The XML input string. If null simply cash the XSL.
    * @param xsl The XSL transformation string.
    * @return The tranformed string.
    *
@@ -278,28 +286,31 @@ public class Utils { private Utils() { }
   public static String xml2xml(String xml, String xsl) {
     // Compile the XSL tranformation 
     try {
-      if (!templates.containsKey(xsl)) {
-	StreamSource source = new StreamSource(new StringReader(xsl));
-	templates.put(xsl, tfactory.newTemplates(source));
+      if (!tranformers.containsKey(xsl)) {
+	tranformers.put(xsl, tfactory.newTemplates(new StreamSource(new StringReader(xsl))).newTransformer());
       }
     } catch(TransformerConfigurationException e) {
       throw new RuntimeException(e+" when compiling: "+xsl); 
     }
     // Apply the transformation
     try {
-      Transformer transformer = templates.get(xsl).newTransformer();
-      StreamSource source = new StreamSource(new StringReader(xml));
+      if (xml == null) xml = "<null/>";
       StringWriter writer = new StringWriter();
-      StreamResult result = new StreamResult(writer);
-      transformer.transform(source, result);
+      tranformers.get(xsl).transform(new StreamSource(new StringReader(xml)), new StreamResult(writer));
       return writer.toString();
     } catch(TransformerException e) {
-      throw new IllegalArgumentException(e.toString());
+      // FOR DEBUG ONLY: Uses an external transformer to get a better error report
+      try {
+	saveString("/tmp/xml2xml.xml", xml);
+	saveString("/tmp/xml2xml.xsl", xsl);
+	System.out.println(exec("java -jar /home/vthierry/bin/saxon.jar -o /tmp/xml2xml.out /tmp/xml2xml.xml /tmp/xml2xml.xsl"));
+      } catch(Exception e2) { }
+      throw new IllegalArgumentException(e.getMessageAndLocation());
     }
   }
   // Cash mechanism      
   private static TransformerFactory tfactory = TransformerFactory.newInstance();
-  private static HashMap<String,Templates> templates = new HashMap<String,Templates>();
+  private static HashMap<String,Transformer> tranformers = new HashMap<String,Transformer>();
   static {
     System.setProperty("javax.xml.parsers.SAXParserFactory", "com.icl.saxon.aelfred.SAXParserFactoryImpl");
     System.setProperty("javax.xml.transform.TransformerFactory", "com.icl.saxon.TransformerFactoryImpl");  
