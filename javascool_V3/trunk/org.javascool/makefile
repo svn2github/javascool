@@ -43,10 +43,12 @@ version=3.0
 public-key=hello-world
 private-key=mer,d,azof
 
-www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(wildcard src/org/javascool/old/*.java)
+SRC=$(shell find . -name '*.java')
+
+www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC)
 	@echo "make $@"
 	@#Compile the java classes
-	@$(J5)/bin/javac -Xlint -cp lib/tools.jar src/org/javascool/old/*.java
+	@$(J5)/bin/javac -Xlint -cp lib/tools.jar $(SRC)
 	@#Collects the files in a tmp directiry
 	@rm -rf tmp ; mkdir tmp
 	@# -1/3 All javascool classes
@@ -87,12 +89,15 @@ lib/saxon.jar : $(SX)
 
 # Java doc generation
 
-www/api/index.html : src/org/javascool/package.html $(wildcard src/org/javascool/*.java)
+SRC2=$(wildcard src/org/javascool/*.java)
+
+www/api/index.html : src/org/javascool/package.html $(SRC2)
 	@echo "make $(@D)"
 	@mkdir -p $(@D)
-	@for f in src/org/javascool/*.java ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
-	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -link http://java.sun.com/javase/6/docs/api -d $(@D) src/org/javascool/*.java
-	@for f in src/org/javascool/*.java ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
-	@cp src/org/javascool/*.java $(@D)/org/javascool
+	@for f in $(SRC2) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
+	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -link http://download.oracle.com/javase/6/docs/api \
+	  -windowtitle "Java's Cool v3" -d $(@D) $(SRC2)
+	@for f in $(SRC2) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
+	@for f in $(SRC2) ; do cp $$f `echo $$f | sed 's/^src/$(subst /,\\/,$(@D))/'` ; done
 
 #####################################################################################################################################
