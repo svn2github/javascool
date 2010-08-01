@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 /** This factory defines how a Jvs code is translated into a Java code and compiled. 
  * The goal of the Jvs syntax is to ease the syntax when starting to program in an imperative language, like Java. 
  * <p>- This factory calls the java compiler in the jdk5 (and earlier) case. It is designed to be used in standalone mode.</p>
- * @see <a href="Jvs2Java.java">source code</a>
+ * @see <a href="../../org/javascool/Jvs2Java.java">source code</a>
  */
 public class Jvs2Java { private Jvs2Java() { }
 

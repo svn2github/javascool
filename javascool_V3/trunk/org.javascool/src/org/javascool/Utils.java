@@ -45,6 +45,19 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.transform.stream.StreamResult;
 
+// Used to report a throwable
+import java.lang.reflect.InvocationTargetException;
+
+// Used to frame an applet as standalone application
+import javax.swing.JFrame;
+import java.awt.Dimension;
+import javax.swing.JApplet;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.awt.KeyboardFocusManager;
+import java.awt.KeyEventDispatcher;
+import java.awt.event.KeyEvent;
+
 /** This factory contains useful methods to interface javascool with the environment. 
  * @see <a href="../../org/javascool/Utils.java">source code</a>
  */
@@ -82,7 +95,7 @@ public class Utils { private Utils() { }
       throw new RuntimeException(e+" when executing: "+command); 
     }
   }  
-  public static String exec(String command) {
+  /**/public static String exec(String command) {
     return exec(command , 10);
   }
 
@@ -344,4 +357,57 @@ public class Utils { private Utils() { }
       // Encapsulate non XML constructs
       replaceAll("(<(meta|img|hr|br|link)[^>/]*)/?>","$1/>");
   }
+
+  /** Reports a throwable with the related context.
+   * @param error The error or exception to report.
+   */
+  static void report(Throwable error) {
+    if (error instanceof InvocationTargetException) report(error.getCause());
+    System.out.println(error.toString());
+    System.err.println(error.toString());
+    for(int i = 0; i < 4 && i < error.getStackTrace().length; i++)
+      System.err.println(error.getStackTrace()[i]);
+  }
+
+  /** Opens an applet in a standalone frame.
+   * @param applet The applet to display.
+   * @param title  Frame title. If null no title.
+   * @param width  Applet width.
+   * @param height Applet height.
+   * @return The opened frame.  Use <tt>frame.dispose()</tt> to close the frame.
+   */
+  public static JFrame show(JApplet applet, String title, int width, int height) {
+    AppletFrame f = new AppletFrame(); f.open(applet, title, width, height); return f;
+  }
+  private static class AppletFrame extends JFrame {
+    private static final long serialVersionUID = 1L;
+    private JApplet applet = null;
+    // Opens an applet in a standalone frame.
+    public void open(JApplet applet, String title, int width, int height) {
+      frames++; if (title != null) setTitle(title); applet.setSize(width, height); applet.init(); getContentPane().add(this.applet = applet); applet.start(); pack(); setVisible(true);
+    }
+    // Closes the frame and dispose, force exit if all frames are closed.
+    public void dispose() {
+      applet.stop(); applet.destroy(); getContentPane().remove(applet); super.dispose(); System.gc(); frames--; if (frames == 0) System.exit(0);
+    } 
+    // Defines a listener for focus, iconification and dispose.
+    {
+      addWindowListener(new WindowListener() {
+	  public void windowOpened(WindowEvent e) { e.getWindow().requestFocus();  }
+	  public void windowClosing(WindowEvent e) { dispose(); }
+	  public void windowClosed(WindowEvent e) { }
+	  public void windowIconified(WindowEvent e) { if (applet != null) applet.stop(); }
+	  public void windowDeiconified(WindowEvent e) { if (applet != null) applet.start(); }
+	  public void windowActivated(WindowEvent e) { e.getWindow().requestFocus(); }
+	  public void windowDeactivated(WindowEvent e) { }
+	});
+    }
+    // Defines an exit on CTRL+Q input code.
+    { 
+      KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
+	  public boolean dispatchKeyEvent(KeyEvent e) { if (e.getKeyChar() == '') { dispose(); }  return false; }
+	});
+    }
+  }
+  private static int frames = 0;
 }
