@@ -2,7 +2,7 @@
  * Thievery.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascool.old;
+package tortuelogo;
 
 // Used to define the gui
 import javax.swing.JPanel;
@@ -11,12 +11,11 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 
-
 /** Définit une proglet javascool qui permet de simuler la tortue ``logo´´.
  * @see <a href="http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_Logo">La référence du langage logo</a>
- * @see <a href="Tortue.java">code source</a>
+ * @see <a href="../tortuelogo/Main.java">code source</a>
  */
-public class Tortue implements Proglet { private Tortue() { }
+public class Main implements org.javascool.Proglet { private Main() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -97,8 +96,8 @@ public class Tortue implements Proglet { private Tortue() { }
     if (x < 0) x = 0; if(x > 511) x = 511;
     if (y < 0) y = 0; if(y > 511) y = 511;
     if (pen)
-      draw(Tortue.x, x, Tortue.y, y);
-    Tortue.x = x; Tortue.y = y;
+      draw(Main.x, x, Main.y, y);
+    Main.x = x; Main.y = y;
     panel.show(x, y);
     Macros.sleep(3);
   }
@@ -150,7 +149,7 @@ public class Tortue implements Proglet { private Tortue() { }
   public static void set_position(double x, double y) { update((int) x, (int) y); }
 
   /** Fixe le cap de la tortue de maniere absolue, selon l'angle de a degrés. */
-  public static void set_heading(double a) { Tortue.a = Math.PI / 180.0 * a; }
+  public static void set_heading(double a) { Main.a = Math.PI / 180.0 * a; }
 
   /** La tortue ne laisse pas de trace. */
   public static void pen_up() { pen = false; }

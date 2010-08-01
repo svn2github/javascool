@@ -12,9 +12,9 @@ function get_page_contents($name) {
     // Traitement d'une demande de page de doc java
     $name = ereg_replace('^api:', '', $name);
     // Recuperation de la page javadoc
-    $page = file_get_contents('http://javascool.gforge.inria.fr/v3/api/org/javascool/'.$name);
+    $page = file_get_contents('http://javascool.gforge.inria.fr/v3/api//'.$name);
     // Remplace tous les liens entre pages par des pages vues du site
-    $page = ereg_replace('(http://javascool.gforge.inria.fr/v3/api|\.\./\.\.)/org/javascool/', '?page=api:', $page);
+    $page = ereg_replace('\.\./', '?page=api:../', $page);
   } else {
     // Recuperation de la page sur le wiki
     $page = file_get_contents('http://wiki.inria.fr/sciencinfolycee/JavaScool:'.$name.'?printable=yes&action=render');

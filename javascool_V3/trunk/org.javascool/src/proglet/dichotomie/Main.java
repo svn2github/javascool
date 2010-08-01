@@ -2,7 +2,7 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascool.old;
+package dichotomie;
 
 // Used to define the gui
 import javax.swing.JPanel;
@@ -23,12 +23,12 @@ import java.awt.event.ActionListener;
 
 /** Définit une proglet javascool qui permet d'expérimenter la recherche dichotomique.
  * Fichiers utilisés: <pre>
- * img/dicho_background.png
- * img/100px-Flag_of_*.svg.png
+ * dichotomie/doc-files/dicho_background.png
+ * dichotomie/doc-files/100px-Flag_of_*.svg.png
  * </pre>
- * @see <a href="Dicho.java">code source</a>
+ * @see <a href="../dichotomie/Main.java">code source</a>
  */
-public class Dicho implements Proglet { private Dicho() { }
+public class Main implements org.javascool.Proglet { private Main() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -39,7 +39,7 @@ public class Dicho implements Proglet { private Dicho() { }
       super(new BorderLayout()); setBackground(Color.WHITE);
       // Adds the background icon
       JLayeredPane book = new JLayeredPane(); book.setPreferredSize(new Dimension(540, 350)); add(book);
-      JLabel icon = new JLabel(); icon.setBounds(10, 0, 540, 350); icon.setIcon(Proglets.getIcon("dicho_background.png")); book.add(icon, new Integer(1), 0);
+      JLabel icon = new JLabel(); icon.setBounds(10, 0, 540, 350); icon.setIcon(Proglets.getIcon("dichotomie/doc-files/dicho_background.png")); book.add(icon, new Integer(1), 0);
       // Adds the label and flag
       name = new JLabel(); name.setBounds(90, 50, 150, 100); book.add(name, new Integer(2), 0);
       flag = new JLabel(); flag.setBounds(340, 100, 200, 100); book.add(flag, new Integer(2), 1);
@@ -65,7 +65,7 @@ public class Dicho implements Proglet { private Dicho() { }
       if (page < 0) page = 0; if (page >= length()) page = length() - 1; current = page;
       num.setText(""+page);
       name.setText("<html><h2>"+dicho[page][0]+"</h2></html>"); 
-      flag.setIcon(Proglets.getIcon(dicho[page][1]));
+      flag.setIcon(Proglets.getIcon("dichotomie/doc-files/"+dicho[page][1]));
     } 
     private JLabel name, flag, num; private int current;
   }

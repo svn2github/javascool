@@ -43,7 +43,7 @@ version=3.0
 public-key=hello-world
 private-key=mer,d,azof
 
-SRC=$(shell find . -name '*.java')
+SRC=$(shell find src -name '*.java')
 
 www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC)
 	@echo "make $@"

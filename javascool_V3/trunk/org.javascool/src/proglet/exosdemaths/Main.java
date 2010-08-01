@@ -2,7 +2,7 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascool.old;
+package exosdemaths;
 
 // Used to define the gui
 import javax.swing.JPanel;
@@ -10,12 +10,9 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
- * Fichiers utilisés: <pre>
- * img/scope_screen.png
- * </pre>
- * @see <a href="Scope.java">code source</a>
+ * @see <a href="../exosdemaths/Main.java">code source</a>
  */
-public class Scope implements Proglet { private Scope() { }
+public class Main implements org.javascool.Proglet { private Main() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display

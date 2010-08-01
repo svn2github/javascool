@@ -23,6 +23,7 @@ import java.io.FileWriter;
 
 // Used to load/save images
 import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.net.URL;
@@ -156,6 +157,20 @@ public class Utils { private Utils() { }
   private static OutputStreamWriter getFileWriter(String location) throws IOException {
     File file = new File(location), parent = file.getParentFile(); if ((parent != null) && (!parent.isDirectory())) parent.mkdirs();
     return new FileWriter(location);
+  }
+
+  /** Returns an icon loaded from the applet context.
+   * @param file The icon file name The icon must be located in the context directory (directory on the server or on the client side or in the jar).
+   * @return The related image icon or an empty icon if not loaded.
+   */
+  static ImageIcon getIcon(String file) {
+    try { return new ImageIcon(Object.class.getClassLoader().getResource(file)); } catch(Exception e1) {
+      try { System.out.println("Warning: loading "+file+" via gforge");
+	return new ImageIcon(new URL("http://javascool.gforge.inria.fr/v3/api/"+file)); } catch(Exception e2) {
+	System.err.println("Unable to load the '"+file+"' icon, check your configuration or your imgage files ("+e1+";"+e2+")"); 
+	return new ImageIcon(); 
+      }
+    }
   }
 
   /** Loads an image from the given location.

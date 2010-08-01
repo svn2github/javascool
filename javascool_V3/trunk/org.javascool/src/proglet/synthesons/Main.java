@@ -2,7 +2,7 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascool.old;
+package synthesons;
 
 // Used to define the gui
 import javax.swing.JPanel;
@@ -15,16 +15,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des signaux sonores.
- * @see <a href="Synthe.java">code source</a>
+ * @see <a href="../synthesons/Main.java">code source</a>
  */
-public class Synthe implements Proglet { private Synthe() { }
+public class Main implements org.javascool.Proglet { private Main() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
   private static class Panel extends SoundBit.Panel {
     private static final long serialVersionUID = 1L;
     public SoundBit sound = new SoundBit.NotesSoundBit() {
-	public double get(char channel, double time) { return Synthe.tone == null ? Math.sin(2 * Math.PI * time) : Synthe.tone.get(channel, time); }
+	public double get(char channel, double time) { return Main.tone == null ? Math.sin(2 * Math.PI * time) : Main.tone.get(channel, time); }
       };
     public Panel() { reset(sound, 'l'); sound.reset("16 A"); }
   }
@@ -50,7 +50,7 @@ public class Synthe implements Proglet { private Synthe() { }
   //
 
   /** Definit le son à utiliser pour jouer les notes du synthétiseur. 
-   * <div>Utilisé à travers la <a href="../../doc/about-proglet-Synthe.htm">construction</a> <tt>Javascool</tt> de la forme <tt>TONE: <i>expression de la variable t</i></tt></div>
+   * <div>Utilisé à travers la <a href="../synthesons/doc-files/about-proglet.htm">construction</a> <tt>Javascool</tt> de la forme <tt>TONE: <i>expression de la variable t</i></tt></div>
    */
   static public SoundBit tone = null;
 

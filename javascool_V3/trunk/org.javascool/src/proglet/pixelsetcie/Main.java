@@ -2,7 +2,7 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascool.old;
+package pixelsetcie;
 
 // Used to define the gui
 import java.applet.Applet;
@@ -10,9 +10,9 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 
 /** Définit une proglet javascool qui permet de manipuler les pixels d'une image.
- * @see <a href="Smiley.java">code source</a>
+ * @see <a href="../pixelsetcie/Main.java">code source</a>
  */
-public class Smiley implements Proglet { private Smiley() { }
+public class Main implements org.javascool.Proglet { private Main() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -75,7 +75,7 @@ public class Smiley implements Proglet { private Smiley() { }
    * @param height Demi hauteur de l'image de taille {-height, height}.
    */
   static public void smileyReset(int width, int height) {
-    panel.icon.reset(2 * (Smiley.width = width) + 1, 2 * (Smiley.height = height) + 1);
+    panel.icon.reset(2 * (Main.width = width) + 1, 2 * (Main.height = height) + 1);
   }
   static private int width, height;
 

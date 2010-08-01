@@ -2,7 +2,7 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascool.old;
+package convanalogique;
 
 // Used to define the gui
 import javax.swing.JPanel;
@@ -13,11 +13,11 @@ import javax.swing.JLayeredPane;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
  * Fichiers utilisés: <pre>
- * img/conv.png
+ * convanalogique/doc-files/conv.png
  * </pre>
- * @see <a href="Conva.java">code source</a>
+ * @see <a href="../convanalogique/Main.java">code source</a>
  */
-public class Conva implements Proglet { private Conva() { }
+public class Main implements org.javascool.Proglet { private Main() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -30,7 +30,7 @@ public class Conva implements Proglet { private Conva() { }
       JLayeredPane pane = new JLayeredPane();
       pane.setPreferredSize(new Dimension(540, 300));
       JLabel fig = new JLabel();
-      fig.setIcon(Proglets.getIcon("conv.png"));
+      fig.setIcon(Proglets.getIcon("convanalogique/doc-files/conv.png"));
       fig.setBounds(2, 0, 540, 300);
       pane.add(fig, new Integer(1), 0);
       out = new JLabel("????");
@@ -94,7 +94,7 @@ public class Conva implements Proglet { private Conva() { }
   /** Applique une tension en sortie.
    * @param value La tension en milli-volts entre 0 et 1023.
    */
-  static public void convaOut(int value) { Conva.value = value;  panel.out.setText(value+" mV"); } private static int value = 0;
+  static public void convaOut(int value) { Main.value = value;  panel.out.setText(value+" mV"); } private static int value = 0;
 
   /** Compare la tension appliquée en sortie à la tension inconnue.
    * @return -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.

@@ -2,7 +2,7 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascool.old;
+package ingredients;
 
 // Used to define the gui
 import javax.swing.JPanel;
@@ -21,9 +21,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Définit une proglet javascool qui permet de faire des entrées/sorties au clavier.
- * @see <a href="Konsol.java">code source</a>
+ * @see <a href="../ingredients/Main.java">code source</a>
  */
-public class Konsol implements Proglet { private Konsol() { }
+public class Main implements org.javascool.Proglet { private Main() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
