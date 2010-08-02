@@ -1,4 +1,10 @@
 
 void main() {
-    println("Okkkkk !");
+
+    println("Bonjour, quel est ton nom ?");
+
+    String texte = readString();
+
+    println("Enchanté " + texte + ", et ... à bientôt !");
+
 }
