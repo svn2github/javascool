@@ -18,16 +18,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des signaux sonores.
- * @see <a href="../../proglet/synthesons/Main.java">code source</a>
+ * @see <a href="../../proglet/synthesons/SoundDisplay.java">code source</a>
  */
-public class Main implements org.javascool.Proglet { private Main() { }
+public class SoundDisplay implements org.javascool.Proglet { private SoundDisplay() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
   private static class Panel extends SoundBit.Panel {
     private static final long serialVersionUID = 1L;
     public SoundBit sound = new SoundBit.NotesSoundBit() {
-	public double get(char channel, double time) { return Main.tone == null ? Math.sin(2 * Math.PI * time) : Main.tone.get(channel, time); }
+	public double get(char channel, double time) { return SoundDisplay.tone == null ? Math.sin(2 * Math.PI * time) : SoundDisplay.tone.get(channel, time); }
       };
     public Panel() { reset(sound, 'l'); sound.reset("16 A"); }
   }

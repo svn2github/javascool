@@ -19,9 +19,9 @@ import org.javascool.NumberInput;
  * Fichiers utilisés: <pre>
  * convanalogique/doc-files/conv.png
  * </pre>
- * @see <a href="../../proglet/convanalogique/Main.java">code source</a>
+ * @see <a href="../../proglet/convanalogique/ConvAnalogique.java">code source</a>
  */
-public class Main implements org.javascool.Proglet { private Main() { }
+public class ConvAnalogique implements org.javascool.Proglet { private ConvAnalogique() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -98,7 +98,7 @@ public class Main implements org.javascool.Proglet { private Main() { }
   /** Applique une tension en sortie.
    * @param value La tension en milli-volts entre 0 et 1023.
    */
-  static public void convaOut(int value) { Main.value = value;  panel.out.setText(value+" mV"); } private static int value = 0;
+  static public void convaOut(int value) { ConvAnalogique.value = value;  panel.out.setText(value+" mV"); } private static int value = 0;
 
   /** Compare la tension appliquée en sortie à la tension inconnue.
    * @return -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.

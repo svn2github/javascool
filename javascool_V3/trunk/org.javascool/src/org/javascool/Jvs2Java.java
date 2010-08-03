@@ -44,8 +44,8 @@ public class Jvs2Java { private Jvs2Java() { }
       out.print("import org.javascool.*;");
       // Imports proglet's static methods
       out.print("import static org.javascool.Macros.*;");
-      for(String proglet : proglets) 
-	out.print("import static proglet."+proglet+".Main.*;");
+      for(String proglet : proglets.keySet()) 
+	out.print("import static "+proglets.get(proglet)+".*;");
       // Declares the proglet's core as a Runnable in the Applet
       out.print("public class "+main+ " extends org.javascool.MainV2 {");
       out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
@@ -168,6 +168,8 @@ public class Jvs2Java { private Jvs2Java() { }
   }
 
   /** Registered proglets. */
-  static final String proglets[] = new String[] { "ingredients", "dichotomie", "pixelsetcie", "exosdemaths", "convanalogique", "javaprog", "synthesons", "tortuelogo" };
+  static final HashMap<String,String> proglets = new HashMap<String, String>();
+  static {
+    for (String proglet : Proglets.proglets) if (proglet.length() > 0) proglets.put(proglet.replaceFirst("^proglet\\.([^\\.]+)\\..*$", "$1"), proglet);
+  }
 }
-

@@ -12,9 +12,9 @@ import org.javascool.CurveOutput;
 import org.javascool.NumberInput;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
- * @see <a href="../../proglet/exosdemaths/Main.java">code source</a>
+ * @see <a href="../../proglet/exosdemaths/DisplayCurve.java">code source</a>
  */
-public class Main implements org.javascool.Proglet { private Main() { }
+public class DisplayCurve implements org.javascool.Proglet { private DisplayCurve() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display

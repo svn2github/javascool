@@ -78,7 +78,7 @@ public class MainV2 extends JApplet {
   /** Sets the proglet to use in this interface.
    * @param proglet The proglet class name.
    */
-  public void setProglet(String proglet) { getJProgletButton(); jProgletBox.setSelectedItem(this.proglet = proglet); }  private String proglet = Jvs2Java.proglets[0];
+  public void setProglet(String proglet) { getJProgletButton(); jProgletBox.setSelectedItem(this.proglet = proglet); }  private String proglet = "ingredients";
 	
   /** Sets the mode to use in this interface.
    * @param edit If true in edit mode, else in run mode.
@@ -192,7 +192,7 @@ public class MainV2 extends JApplet {
       JLabel jProgletLabel = new JLabel();
       jProgletLabel.setIcon(Utils.getIcon("org/javascool/doc-files/execute.png"));
       jProgletButton.add(jProgletLabel);
-      jProgletBox = new JComboBox(Jvs2Java.proglets);
+      jProgletBox = new JComboBox(Jvs2Java.proglets.keySet().toArray());
       jProgletBox.setEditable(false);
       jProgletBox.addActionListener(new ActionListener(){
 	  public void actionPerformed(ActionEvent e){
@@ -608,7 +608,7 @@ public class MainV2 extends JApplet {
    * @return The static instanciation of the proglet.
    */
   static private JPanel getPanel(String proglet) {
-    try { return (JPanel) Class.forName("proglet."+proglet+".Main").getField("panel").get(null); } 
+    try { return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null); } 
     catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
   }
 
@@ -617,7 +617,7 @@ public class MainV2 extends JApplet {
    */
   static private void test(String proglet) {
     proglet = toUcfirst(proglet);
-    try { Class.forName("proglet."+proglet+".Main").getDeclaredMethod("test").invoke(null); } catch(Exception error) { }
+    try { Class.forName(Jvs2Java.proglets.get(proglet)).getDeclaredMethod("test").invoke(null); } catch(Exception error) { }
   }
   private static String toUcfirst(String string) { return Character.toUpperCase(string.charAt(0)) + string.substring(1).toLowerCase(); }
 
@@ -627,7 +627,7 @@ public class MainV2 extends JApplet {
   public static void main(String usage[]) { 
     try { 
       MainV2 applet = new MainV2(); 
-      String proglet = usage.length >= 2 ? usage[1] : usage.length == 1 ? usage[0] : Jvs2Java.proglets[0]; applet.setProglet(proglet); 
+      String proglet = usage.length >= 2 ? usage[1] : usage.length == 1 ? usage[0] : "ingredients"; applet.setProglet(proglet); 
       boolean edit = usage.length >= 2 ? "edit".equals(usage[0]) : true; applet.setEdit(edit); 
       applet.application = usage.length == 3;
       if (applet.application) applet.doLire(usage[2]);  

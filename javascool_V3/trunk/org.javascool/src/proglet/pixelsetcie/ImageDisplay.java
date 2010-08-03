@@ -13,9 +13,9 @@ import java.awt.Dimension;
 import org.javascool.IconOutput;
 
 /** Définit une proglet javascool qui permet de manipuler les pixels d'une image.
- * @see <a href="../../proglet/pixelsetcie/Main.java">code source</a>
+ * @see <a href="../../proglet/pixelsetcie/ImageDisplay.java">code source</a>
  */
-public class Main implements org.javascool.Proglet { private Main() { }
+public class ImageDisplay implements org.javascool.Proglet { private ImageDisplay() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -78,7 +78,7 @@ public class Main implements org.javascool.Proglet { private Main() { }
    * @param height Demi hauteur de l'image de taille {-height, height}.
    */
   static public void smileyReset(int width, int height) {
-    panel.icon.reset(2 * (Main.width = width) + 1, 2 * (Main.height = height) + 1);
+    panel.icon.reset(2 * (ImageDisplay.width = width) + 1, 2 * (ImageDisplay.height = height) + 1);
   }
   static private int width, height;
 
