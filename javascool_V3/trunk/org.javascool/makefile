@@ -96,7 +96,7 @@ lib/saxon.jar : $(SX)
 
 # Java doc generation
 
-www/api/index.html : htms bmls pngs $(shell find src -name package.html) $(SRC)
+www/api/index.html : htms pngs $(shell find src -name package.html) $(SRC)
 	@echo "make $(@D)"
 	@mkdir -p $(@D)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
