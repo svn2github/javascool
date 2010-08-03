@@ -15,6 +15,8 @@ function get_page_contents($name) {
     $page = file_get_contents('http://javascool.gforge.inria.fr/v3/api//'.$name);
     // Remplace tous les liens entre pages par des pages vues du site
     $page = ereg_replace('\.\./\.\./', '?page=api:', $page);
+    // Passe en <pre></pre> les pages de source
+    if (ereg("\.java$", $name)) $page = "<pre>".$page."</pre>";
   } else {
     // Recuperation de la page sur le wiki
     $page = file_get_contents('http://wiki.inria.fr/sciencinfolycee/JavaScool:'.$name.'?printable=yes&action=render');
@@ -24,7 +26,7 @@ function get_page_contents($name) {
     $page = ereg_replace('src="/wikis/sciencinfolycee', 'src="http://wiki.inria.fr/wikis/sciencinfolycee', $page); 
     // Si le wiki signale une erreur alors on affiche proprement une page en erreur
     if (ereg("<title>Erreur</title>", $page))
-      $page="<h1>Désolé ! Cette page est en construction où inacessible ..</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>";
+      $page="<h1>Désolé ! Cette page est en construction ou inacessible ..</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>";
   }
   return $page;
 }
