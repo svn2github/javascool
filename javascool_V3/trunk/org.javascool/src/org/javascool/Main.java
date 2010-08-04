@@ -5,7 +5,9 @@
 package org.javascool;
 
 import javax.swing.JApplet;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 /** This is the javascool v3 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
@@ -18,7 +20,18 @@ public class Main extends JApplet {
   // This is the way to build the applet
   public void init() {
     JLabel l = new JLabel(); l.setText("           Hi ! V3 is comming :-)");
+    l.setBounds(20,10,100,100);
     setContentPane(l);
+    JButton jDemoButton = null;
+    jDemoButton = new JButton();
+    jDemoButton.setIcon(Utils.getIcon("org/javascool/doc-files/Play_32x32.png"));
+    jDemoButton.setText("Demo");
+    setContentPane(jDemoButton);
+    JButton jStopButton = null;
+    jStopButton = new JButton();
+    jStopButton.setIcon(Utils.getIcon("org/javascool/doc-files/Stop_32x32.png"));
+    jStopButton.setText("Stop");
+    setContentPane(jStopButton);
   }
 
   /** Used to run a javasccol v3 as a standalone program. 
