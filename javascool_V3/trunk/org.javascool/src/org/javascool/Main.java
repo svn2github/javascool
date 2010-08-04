@@ -23,29 +23,24 @@ public class Main extends JApplet {
 
   // This is the way to build the applet
   public void init() {
-    JLabel l = new JLabel(); l.setText("           Hi ! V3 is comming :-)");
-    l.setBounds(20,10,100,100);
-    setContentPane(l);
+  // Butons declarations
     JButton jDemoButton = null;
     jDemoButton = new JButton();
     jDemoButton.setIcon(Utils.getIcon("org/javascool/doc-files/Play_32x32.png"));
-    jDemoButton.setText("Demo");
-    setContentPane(jDemoButton);
     JButton jStopButton = null;
     jStopButton = new JButton();
     jStopButton.setIcon(Utils.getIcon("org/javascool/doc-files/Stop_32x32.png"));
-    jStopButton.setText("Stop");
-    setContentPane(jStopButton);
-    JPanel p = new JPanel();
-    p.add(jDemoButton);
-    p.add(jStopButton);
-    setContentPane(p);
+  // Creation of Panel
     JPanel pane = new JPanel();
+  // Setting of layouts
     pane.setLayout(new BorderLayout());
+  // Creation of toolbar
     JToolBar bar = new JToolBar();
-    pane.add(bar, BorderLayout.EAST);
-    bar.add(jDemoButton);
+  // Adding of all to the toolbar
+    pane.add(bar, BorderLayout.NORTH);
+    bar.add(jDemoButton, BorderLayout.EAST);
     bar.add(jStopButton);
+  // Show Panel
     setContentPane(pane);
   }
 
