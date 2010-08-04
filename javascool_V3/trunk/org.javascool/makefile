@@ -17,7 +17,7 @@ clean:
 v2: www/javascool.jar
 	cd tst ; java -jar ../www/javascool.jar
 
-v3: src/org/javascool/Main.class
+v3: cmp
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Main
 
 Pml: src/org/javascool/Main.class
@@ -82,7 +82,7 @@ src/org/javascool/Proglets.java : $(shell find src/proglet -name '*.java')
 	@for f in `egrep -l 'implements[ \t]+(org.javascool.)?Proglet' $^` ; do echo $$f | sed 's/^src\/\(.*\)\.java$$/"\1",/' | sed 's/\//./g' ; done >> $@
 	@echo '""}; }' >>$@
 
-src/org/javascool/Main.class : src/org/javascool/Proglets.java $(SRC)
+cmp : src/org/javascool/Proglets.java $(SRC)
 	@rm -f $@; javac -Xlint -cp src:lib/tools.jar:lib/saxon.jar $(SRC)
 
 CP=/usr/java/jdk1.5.0_13/lib/tools.jar
@@ -115,7 +115,7 @@ htms : $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
 
 pmls : $(patsubst %.xml,%.pml,$(shell find src -name '*.xml'))
 
-%.pml : %.xml src/org/javascool/Main.class
+%.pml : %.xml cmp
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Pml $*.xml > $@
 
 pmls-clean :
