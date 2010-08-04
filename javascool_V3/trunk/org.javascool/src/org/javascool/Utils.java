@@ -331,8 +331,8 @@ public class Utils { private Utils() { }
       try {
 	saveString("/tmp/xml2xml.xml", xml);
 	saveString("/tmp/xml2xml.xsl", xsl);
-	System.out.println(exec("java -jar /home/vthierry/bin/saxon.jar -o /tmp/xml2xml.out /tmp/xml2xml.xml /tmp/xml2xml.xsl"));
-      } catch(Exception e2) { }
+	System.err.println(exec("java -jar /home/vthierry/bin/saxon.jar -o /tmp/xml2xml.out /tmp/xml2xml.xml /tmp/xml2xml.xsl")); 
+      } catch(Exception e2) { System.err.println("Double error in xml2xml"+e+" + "+e2+": this a BUG, please report !!"); }
       throw new IllegalArgumentException(e.getMessageAndLocation());
     }
   }
