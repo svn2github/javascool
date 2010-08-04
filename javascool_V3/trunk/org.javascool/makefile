@@ -20,7 +20,7 @@ v2: www/javascool.jar
 v3: cmp
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Main
 
-Pml: src/org/javascool/Main.class
+Pml: cmp
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Pml $(file)
 
 svn: clean
