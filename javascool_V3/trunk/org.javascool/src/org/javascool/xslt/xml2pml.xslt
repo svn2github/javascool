@@ -26,9 +26,7 @@
 <xsl:template match="l">{l text="<xsl:value-of select="@text"/>" img="<xsl:value-of select="@img"/>" link="<xsl:value-of select="@link"/>" class="<xsl:value-of select="@class"/>"}</xsl:template>
 <!-- S Balise-->
 <xsl:template match="s">{s class="<xsl:value-of select="@class"/>"<xsl:apply-templates/>}</xsl:template>
-<!-- Style (i,b,s) Balises -->
-<xsl:template match="i">{i <xsl:value-of select="."/>}</xsl:template>
-<xsl:template match="b">{b <xsl:value-of select="."/>}</xsl:template>
-<xsl:template match="s">{s <xsl:value-of select="."/>}</xsl:template>
+<!-- Style (i,b,u) Balises -->
+<xsl:template match="i|b|u">{<xsl:value-of select="name(.)"/> <xsl:value-of select="."/>}</xsl:template>
 <!-- END -->
 </xsl:stylesheet>
