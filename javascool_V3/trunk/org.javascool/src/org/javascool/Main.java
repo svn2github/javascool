@@ -18,7 +18,7 @@ public class Main extends JApplet {
   // This is the way to build the applet
   public void init() {
     JLabel l = new JLabel(); l.setText("           Hi ! V3 is comming :-)");
-    this.setContentPane(l);
+    setContentPane(l);
   }
 
   /** Used to run a javasccol v3 as a standalone program. 
