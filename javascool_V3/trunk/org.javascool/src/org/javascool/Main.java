@@ -5,6 +5,7 @@
 package org.javascool;
 
 import javax.swing.JApplet;
+import javax.swing.JLabel;
 
 /** This is the javascool v3 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
@@ -13,6 +14,12 @@ import javax.swing.JApplet;
  */
 public class Main extends JApplet {
   private static final long serialVersionUID = 1L;
+
+  // This is the way to build the applet
+  public void init() {
+    JLabel l = new JLabel(); l.setText("           Hi ! V3 is comming :-)");
+    this.setContentPane(l);
+  }
 
   /** Used to run a javasccol v3 as a standalone program. 
    * <p>- Using javascool means: doing an "activity" which result is to be stored in a "file-name".</p>
@@ -23,5 +30,6 @@ public class Main extends JApplet {
    */
   public static void main(String[] args) {
     System.out.println("Hi ! V3 is comming :-)");
+    Main m = new Main(); Utils.show(m, "Java'Scool v3.0", 600, 400);
   }
 }
