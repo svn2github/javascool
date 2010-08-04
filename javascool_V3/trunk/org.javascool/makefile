@@ -20,6 +20,9 @@ v2: www/javascool.jar
 v3: src/org/javascool/Main.class
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Main
 
+Pml: src/org/javascool/Main.class
+	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Pml $(file)
+
 svn: clean
 	svn up ; svn ci -m '' ; svn status
 
