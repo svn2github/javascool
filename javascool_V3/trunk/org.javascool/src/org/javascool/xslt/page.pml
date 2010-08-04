@@ -1,8 +1,1 @@
-{page title="Ma page en XML" author="Philippe Vienne" email-author="philoumailabo@gmail.com" tags="premiere;modial" desc="La première conversion XML to PML" css="style.css" javascript="js.js"
-{div id="Test" title="" class=""
-test de xslt
-{p
-Test p{l text="google" img="" link="http://www.google.fr" class=""}
-}
-}
-}
+stdout: {page tags={"premiere;modial"} javascript={"js.js"} author={"Philippe Vienne"} title={"Ma page en XML"} desc={"La première conversion XML to PML"} "email-author"={"philoumailabo@gmail.com"} css={"style.css"} {div id={Test} classe={Abe} {test} {de} {xslt} {p {Test} {p} {l text={google} link={"http://www.google.fr"}}}}}
