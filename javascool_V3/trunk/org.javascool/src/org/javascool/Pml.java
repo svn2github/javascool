@@ -160,12 +160,6 @@ public class Pml {
     "<?xml version='1.0' encoding='utf-8'?>\n"+
     "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' xmlns:sx='http://icl.com/saxon' extension-element-prefixes='sx' version='1.0'>\n"+
     "  <xsl:output method='xml' encoding='utf-8' omit-xml-declaration='yes'/>\n"+
-    "  <sx:function name='sx:replace' xmlns:string='java:java.lang.String'>\n"+
-    "    <xsl:param name='string'/>\n"+
-    "    <xsl:param name='pattern'/>\n"+
-    "    <xsl:param name='target'/>\n"+
-    "    <sx:return select='string:replaceAll($string, $pattern, $target)'/>\n"+
-    "  </sx:function>\n"+
     "  <xsl:template match='*'>\n"+
     "  {<xsl:value-of select='name(.)'/><xsl:text> </xsl:text>\n"+
     "    <xsl:for-each select='@*'><xsl:value-of select='name(.)'/>=\"<xsl:value-of select=\"translate(., '&quot;','¨')\"/>\"<xsl:text> </xsl:text></xsl:for-each>\n"+

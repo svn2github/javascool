@@ -272,7 +272,7 @@ public class Utils { private Utils() { }
     string2name.put("ù", "u");
     string2name.put("ç", "c");
     string2name.put("+", "plus");
-    string2name.put("-", "minus");
+    string2name.put("-", "moins");
     string2name.put("&", "et");
     string2name.put("|", "ou");
   }
