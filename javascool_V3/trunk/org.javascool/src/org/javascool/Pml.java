@@ -28,7 +28,9 @@ import java.util.regex.Pattern;
  *
  * @see <a href="../../org/javascool/Pml.java">source code</a>
  */
-public class Pml { /**/public Pml() { }
+public class Pml { 
+  /**/
+  public Pml() { }
   private static final long serialVersionUID = 1L;
 
   private HashMap<String, Pml> data = new  HashMap<String, Pml>();
