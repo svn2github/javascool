@@ -28,9 +28,7 @@ import java.util.regex.Pattern;
  *
  * @see <a href="../../org/javascool/Pml.java">source code</a>
  */
-public class Pml { 
-  /**/
-  public Pml() { }
+public class Pml { /**/public Pml() { }
   private static final long serialVersionUID = 1L;
 
   private HashMap<String, Pml> data = new  HashMap<String, Pml>();
@@ -158,7 +156,7 @@ public class Pml {
   }
   protected static String xml2pml = 
     "<?xml version='1.0' encoding='utf-8'?>\n"+
-    "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' xmlns:sx='http://icl.com/saxon' extension-element-prefixes='sx' version='1.0'>\n"+
+    "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version='1.0'>\n"+
     "  <xsl:output method='xml' encoding='utf-8' omit-xml-declaration='yes'/>\n"+
     "  <xsl:template match='*'>\n"+
     "  {<xsl:value-of select='name(.)'/><xsl:text> </xsl:text>\n"+
@@ -167,6 +165,16 @@ public class Pml {
     "  }</xsl:template>\n"+
     "</xsl:stylesheet>";
 
+  /* Just in case we need it . . 
+    ../.. xmlns:sx='http://icl.com/saxon' extension-element-prefixes='sx' 
+    "  <sx:function name='sx:replace' xmlns:string='java:java.lang.String'>\n"+
+    "    <xsl:param name='string'/>\n"+
+    "    <xsl:param name='pattern'/>\n"+
+    "    <xsl:param name='target'/>\n"+
+    "    <sx:return select='string:replaceAll($string, $pattern, $target)'/>\n"+
+    "  </sx:function>\n"+
+  */
+    
   /** Returns this logical-structure structure as a one-line string.
    * @param format <ul>
    * <li>"raw" To write in a normalized 1D plain text format (default).</li>
@@ -415,7 +423,7 @@ public class Pml {
    */
   public static void main(String[] args) {
     if (args.length == 1) {
-      Pml pml = new Pml(); pml.load(args[0]); pml.save("stdout:", "txt");
+      Pml pml = new Pml(); pml.load(args[0]); pml.save("stdout:", "bml");
     } else {
       System.out.println("Usage: java org.javascool.Pml file-name");
     }

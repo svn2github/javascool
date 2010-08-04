@@ -96,7 +96,7 @@ lib/saxon.jar : $(SX)
 
 # Java doc generation
 
-www/api/index.html : htms bmls pngs $(shell find src -name package.html) $(SRC)
+www/api/index.html : htms pmls pngs $(shell find src -name package.html) $(SRC)
 	@echo "make $(@D)"
 	@mkdir -p $(@D)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
@@ -110,10 +110,13 @@ htms : $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
 %.htm : %.xml lib/xml2htm.xsl
 	@java -jar lib/saxon.jar -o $@ $^
 
-bmls : $(patsubst %.xml,%.bml,$(shell find src -name '*.xml'))
+pmls : $(patsubst %.xml,%.pml,$(shell find src -name '*.xml'))
 
-%.bml : %.xml src/org/javascool/Main.class
+%.pml : %.xml src/org/javascool/Main.class
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Pml $*.xml > $@
+
+pmls-clean :
+	rm -f $(patsubst %.xml,%.pml,$(shell find src -name '*.xml'))
 
 pngs :  $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) 
 
