@@ -8,6 +8,6 @@
 {p
 <xsl:apply-templates/>
 }</xsl:template>
-<xsl:template match="l">{l text="<xsl:value-of select="."/>" img="<xsl:value-of select="img"/>" link="<xsl:value-of select="link"/>" class="<xsl:value-of select="class"/>"}</xsl:template>
+<xsl:template match="l">{l text="<xsl:value-of select="@text"/>" img="<xsl:value-of select="@img"/>" link="<xsl:value-of select="@link"/>" class="<xsl:value-of select="@class"/>"}</xsl:template>
 <xsl:template match="page">{page title="<xsl:value-of select="@title"/>" author="<xsl:value-of select="@author"/>" email-author="<xsl:value-of select="@email-author"/>" tags="<xsl:value-of select="@tags"/>" desc="<xsl:value-of select="@desc"/>" css="<xsl:value-of select="@css"/>" javascript="<xsl:value-of select="@javascript"/>"<xsl:apply-templates/>}</xsl:template>
 </xsl:stylesheet>

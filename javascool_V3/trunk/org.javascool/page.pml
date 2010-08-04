@@ -2,7 +2,7 @@
 {div id="Test" title="" class=""
 test de xslt
 {p
-Test p{l text=" à Google ?" img="" link="" class=""}
+Test p{l text="google" img="" link="http://www.google.fr" class=""}
 }
 }
 }
