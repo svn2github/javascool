@@ -1,5 +1,12 @@
 /********************************************************************************
- * Philippe.Vienne@linux-azur.org, Copyright (C) 2010. All gnu rights reserved. *
+      ______________________________________________
+     | By Philippe Vienne <philoumailabo@gmail.com> |
+     | Distrubuted on GNU General Public Licence    |
+     | Revision 535                                   |
+     | © 2010 INRIA, All rights reserved            |
+     |______________________________________________|
+
+
  ********************************************************************************/
 
 package org.javascool;
@@ -71,9 +78,9 @@ public class Main extends JApplet implements ActionListener{
     if(e.getSource()==jOpenButton){
     fc.showOpenDialog(Main.this);
     File file = fc.getSelectedFile();
-    editorPane.setText("Vous avez selectionnez : "+file.getName()+"\nQui est dans : "+file.getPath());
+    editorPane.setText("Vous avez selectionnez : "+file.getName()+"\nQui est dans : "+file.getPath()+"\n"+Utils.loadString("file:"+file.getPath()));
     }
-    else if(e.getSource()==jNewButton){System.out.println("Hi ! V4 is comming :-)");}
+    else if(e.getSource()==jNewButton){}
     else{System.out.println("ERROR");}
   }
 
