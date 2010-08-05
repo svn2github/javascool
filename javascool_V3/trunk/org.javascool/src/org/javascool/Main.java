@@ -2,7 +2,7 @@
       ______________________________________________
      | By Philippe Vienne <philoumailabo@gmail.com> |
      | Distrubuted on GNU General Public Licence    |
-     | Revision 538 du SVN                          |
+     | Revision 539 du SVN                          |
      | © 2010 INRIA, All rights reserved            |
      |______________________________________________|
 
@@ -45,16 +45,15 @@ public class Main extends JApplet implements ActionListener{
     JButton jOpenButton = new JButton();
     JButton jNewButton = new JButton();
     JTextPane editorPane=new JTextPane();
+    JPanel panetop=new JPanel();
+    JPanel pane=new JPanel();
+    JToolBar tools=new JToolBar();
     JFileChooser fc;
   // This is the way to build the applet
   public void init() {
   // Panes
-    JPanel pane=new JPanel();
     pane.setLayout(new BorderLayout());
-    JPanel panetop=new JPanel();
     panetop.setLayout(new BorderLayout());
-    JToolBar tools=new JToolBar();
-    
   // Panes positions
     pane.add(panetop,BorderLayout.NORTH);
     panetop.add(tools,BorderLayout.WEST);
@@ -64,7 +63,7 @@ public class Main extends JApplet implements ActionListener{
     jNewButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/New_16x16.png"));
     tools.add(jNewButton);
     jNewButton.addActionListener(this);
-    jOpenButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/Open_16x16.png"));
+    jOpenButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/Play_16x16.png"));
     jOpenButton.addActionListener(this);
     tools.add(jOpenButton);
     JButton jStopButton = new JButton();
@@ -78,7 +77,7 @@ public class Main extends JApplet implements ActionListener{
     if(e.getSource()==jOpenButton){
     fc.showOpenDialog(Main.this);
     File file = fc.getSelectedFile();
-    editorPane.setText("Vous avez selectionnez : "+file.getName()+"\nQui est dans : "+file.getPath()+"\n"+Utils.loadString("file:"+file.getPath()));
+    editorPane.setText(Utils.loadString("file:"+file.getPath()));
     }
     else if(e.getSource()==jNewButton){}
     else{System.out.println("ERROR");}
