@@ -400,9 +400,14 @@ public class Utils { private Utils() { }
     private JApplet applet = null;
     // Opens an applet in a standalone frame.
     public void open(JApplet applet, String title, int width, int height) {
-      this.applet = applet; getContentPane().add(applet); applet.init(); pack(); frames++; 
-      if (title != null) setTitle(title); setSize(new Dimension(width, height));
-      setVisible(true); applet.start(); 
+      this.applet = applet; 
+      getContentPane().add(applet); 
+      applet.init(); pack(); 
+      frames++; 
+      if (title != null) setTitle(title); 
+      setSize(new Dimension(width, height));
+      setVisible(true); 
+      applet.start(); 
     }
     // Closes the frame and dispose, force exit if all frames are closed.
     public void dispose() {
