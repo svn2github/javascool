@@ -2,7 +2,7 @@
       ______________________________________________
      | By Philippe Vienne <philoumailabo@gmail.com> |
      | Distrubuted on GNU General Public Licence    |
-     | Revision 539 du SVN                          |
+     | Revision 540 du SVN                          |
      | © 2010 INRIA, All rights reserved            |
      |______________________________________________|
 
@@ -37,13 +37,14 @@ import javax.swing.filechooser.*;
 
 /** This is the javascool v3 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
- * @author Philippe Vienne
+ * @author Philippe Vienne <philoumailabo@gmail.com>
  * @see <a href="../../org/javascool/Main.java">source code</a>
  */
 public class Main extends JApplet implements ActionListener{
   private static final long serialVersionUID = 1L;
     JButton jOpenButton = new JButton();
     JButton jNewButton = new JButton();
+    JButton jSaveButton = new JButton();
     JTextPane editorPane=new JTextPane();
     JPanel panetop=new JPanel();
     JPanel pane=new JPanel();
@@ -63,9 +64,13 @@ public class Main extends JApplet implements ActionListener{
     jNewButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/New_16x16.png"));
     tools.add(jNewButton);
     jNewButton.addActionListener(this);
-    jOpenButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/Play_16x16.png"));
+    jOpenButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/Open_16x16.png"));
     jOpenButton.addActionListener(this);
     tools.add(jOpenButton);
+    jSaveButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/save.png"));
+    jSaveButton.addActionListener(this);
+    tools.add(jSaveButton);
+    tools.addSeparator();
     JButton jStopButton = new JButton();
     jStopButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/Stop_16x16.png"));
     tools.add(jStopButton);
@@ -79,7 +84,14 @@ public class Main extends JApplet implements ActionListener{
     File file = fc.getSelectedFile();
     editorPane.setText(Utils.loadString("file:"+file.getPath()));
     }
-    else if(e.getSource()==jNewButton){}
+    else if(e.getSource()==jNewButton){
+    editorPane.setText("");
+    }
+    else if(e.getSource()==jSaveButton){
+    String save=editorPane.getText();
+    System.out.println(save);
+    editorPane.setText(save+"La fonction de save n'est pas stable");
+    }
     else{System.out.println("ERROR");}
   }
 
