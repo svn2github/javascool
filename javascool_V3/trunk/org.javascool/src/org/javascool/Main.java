@@ -118,7 +118,7 @@ public class Main extends JApplet implements ActionListener {
   // Set Visible
     setContentPane(pane);
   }
-  
+
   public void actionPerformed(ActionEvent e){
     if(e.getSource()==jOpenButton){
     se.setText(openFile());

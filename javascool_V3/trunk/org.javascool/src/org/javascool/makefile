@@ -1,8 +1,16 @@
+
+ifeq ($(USER), vthierry)
+
+all : 
+	@$(MAKE) -C ../../.. v2
+
+else
+
 all : 
 	@$(MAKE) -C ../../.. v3
 
-v2 :
-	@$(MAKE) -C ../../.. v2
+endif
+
 
 clean :
 	@$(MAKE) -C ../../.. clean

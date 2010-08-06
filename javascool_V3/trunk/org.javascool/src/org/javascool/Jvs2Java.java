@@ -4,19 +4,15 @@
 
 package org.javascool;
 
-// Used to read/write jvs2java files
+// used for the translation
 import java.io.File;
-import java.io.IOException;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.FileWriter;
 
-import java.util.regex.Pattern;
-
+// Used to register the proglets
 import java.util.HashMap;
+
+// Used to interface with the j5 compiler
+import java.io.StringWriter;
+import java.io.PrintWriter;
 
 /** This factory defines how a Jvs code is translated into a Java code and compiled. 
  * The goal of the Jvs syntax is to ease the syntax when starting to program in an imperative language, like Java. 
@@ -29,39 +25,49 @@ public class Jvs2Java { private Jvs2Java() { }
   static int uid = 1;
 
   /** Translates a Jvs code source.
-   * @param filename The file path to translate.
+   * @param filename The file path to translate: A <tt>.jvs</tt> file is read and the corresponding <tt>.java</tt> file is written.
+   * @param proglet The proglet to use. Default is to make all proglets usable.
+   *
+   * @throws RuntimeException if an I/O exception occurs during file translation.
    */
-  static void translate(String filename) throws IOException {
-    String s = File.separatorChar == '\\' ? "\\\\" : File.separator, 
-      main = filename.replaceAll(".*"+s+"([^"+s+"]+)\\.[a-z]+$", "$1"), file = filename.replaceAll("\\.[a-z]+$", "");
-    File jvs = new File(file+".jvs"), jav = new File(file+".java");
-    if (!jvs.exists()) throw new IOException("File not found: "+jvs);
-    BufferedReader in = new BufferedReader(new FileReader(file+".jvs"));
-    PrintWriter out = new PrintWriter(new FileWriter(file+".java"));
+  static void translate(String filename, String proglet) {
+    String file = filename.replaceAll("\\.[a-z]+$", "");
+    String s = File.separatorChar == '\\' ? "\\\\" : File.separator, main = filename.replaceAll(".*"+s+"([^"+s+"]+)\\.[a-z]+$", "$1");
+    String[] lines = Utils.loadString(file+".jvs").split("\n");
+    StringBuffer head = new StringBuffer(), body = new StringBuffer();
     // Here is the translation loop
     {
-      // Imports for general swing programming
-      out.print("import org.javascool.*;");
-      // Imports proglet's static methods
-      out.print("import static org.javascool.Macros.*;");
-      for(String proglet : proglets.keySet()) 
-	out.print("import static "+proglets.get(proglet)+".*;");
-      // Declares the proglet's core as a Runnable in the Applet
-      out.print("public class "+main+ " extends org.javascool.MainV2 {");
-      out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
-      out.print("  static { runnable = new ProgletRunnableMain(); }");
-      out.print("}");
-      out.print("class ProgletRunnableMain implements Runnable {");
-      out.print("  private static final long serialVersionUID = "+ (uid++) + "L;");
-      out.print("  public void run() { main(); }");
       // Copies the user's code
-      for(String line; (line = in.readLine()) != null; ) {
-	out.println(translateOnce(line));
+      for(String line : lines) {
+	if(line.matches("^\\s*import[^;]*;\\s*$")) {
+	  head.append(line);
+	  body.append("//"+line+"\n");
+	} else {
+	  body.append(translateOnce(line)+"\n");
+	}
       }
-      out.println("}");
+      // Imports proglet's static methods
+      head.append("import static org.javascool.Macros.*;");
+      if (proglet.length() == 0) {	
+	for(String p : proglets.keySet()) 
+	head.append("import static "+proglets.get(p)+".*;");
+      } else {
+	head.append("import static "+proglets.get(proglet)+".*;");
+      }
+      // Declares the proglet's core as a Runnable in the Applet
+      head.append("public class "+main+ " extends org.javascool.MainV2 {");
+      head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");
+      head.append("  static { runnable = new ProgletRunnableMain(); }");
+      head.append("}");
+      head.append("class ProgletRunnableMain implements Runnable {");
+      head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");
+      head.append("  public void run() { main(); }");
+      body.append("}\n");
     }
-    in.close();
-    out.close();
+    Utils.saveString(file+".java", head.toString()+body.toString());
+  }
+  static void translate(String filename) {
+    translate(filename, "");
   }
 
   // Translates one line of the source file
@@ -153,16 +159,17 @@ public class Jvs2Java { private Jvs2Java() { }
    * <div>The jdk5 <tt>tool.jar</tt> must be in the path.</div>
    * @param filename The file path to compile
    * @return An empty string if the compilation succeeds, else the error message's text.
+   *
+   * @throws RuntimeException if an I/O exception occurs during command execution.
    */
-  static String compile(String filename) throws IOException {
+  static String compile(String filename) {
     String args[] = { filename };
     StringWriter out = new StringWriter();
-    // Implements com.sun.tools.javac.Main.compile(args, new PrintWriter(out)); in reflexive form to avoid external compilation problems
     try { 
       Class.forName("com.sun.tools.javac.Main").getDeclaredMethod("compile", Class.forName("[Ljava.lang.String;"), Class.forName("java.io.PrintWriter")).
 	invoke(null, args, new PrintWriter(out)); 
     } catch(Exception e) { 
-      System.out.println("Error: impossible de compiler, il y a une erreur d'installation ("+e+"), contacter http://javascool.gforge.inria.fr/proglet");
+      throw new RuntimeException("Erreur: impossible de compiler, il y a une erreur d'installation ("+e+"), contacter http://javascool.gforge.inria.fr/proglet");
     }
     return out.toString().trim().replaceAll(filename.replaceAll("\\\\", "\\\\\\\\"), new File(filename).getName());
   }
