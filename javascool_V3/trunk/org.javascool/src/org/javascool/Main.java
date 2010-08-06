@@ -2,7 +2,7 @@
       ______________________________________________
      | By Philippe Vienne <philoumailabo@gmail.com> |
      | Distrubuted on GNU General Public Licence    |
-     | Revision 539 du SVN                          |
+     | Revision 550 du SVN                          |
      | © 2010 INRIA, All rights reserved            |
      |______________________________________________|
 
