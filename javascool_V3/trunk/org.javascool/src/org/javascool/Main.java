@@ -45,12 +45,14 @@ public class Main extends JApplet implements ActionListener{
     JButton jOpenButton = new JButton();
     JButton jNewButton = new JButton();
     JButton jSaveButton = new JButton();
+    JButton jPlayButton = new JButton();
     JTextPane editorPane=new JTextPane();
     JPanel panetop=new JPanel();
     JPanel pane=new JPanel();
     JToolBar tools=new JToolBar();
     JFileChooser fc;
     SourceEditor se=new SourceEditor();
+    File file;
   // This is the way to build the applet
   public void init() {
   // Panes
@@ -58,40 +60,36 @@ public class Main extends JApplet implements ActionListener{
     panetop.setLayout(new BorderLayout());
   // Panes positions
     pane.add(panetop,BorderLayout.NORTH);
-    panetop.add(tools,BorderLayout.WEST);
+    panetop.add(tools,BorderLayout.CENTER);
     pane.add(se,BorderLayout.CENTER);
   // Butons
     fc = new JFileChooser();
-    jNewButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/New_16x16.png"));
+    jNewButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/new.png"));
     tools.add(jNewButton);
     jNewButton.addActionListener(this);
-    jOpenButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/Open_16x16.png"));
+    jOpenButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/open.png"));
     jOpenButton.addActionListener(this);
     tools.add(jOpenButton);
     jSaveButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/save.png"));
     jSaveButton.addActionListener(this);
     tools.add(jSaveButton);
     tools.addSeparator();
-    JButton jStopButton = new JButton();
-    jStopButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/Stop_16x16.png"));
-    tools.add(jStopButton);
+    jPlayButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/play.png"));
+    jPlayButton.addActionListener(this);
+    tools.add(jPlayButton);
   // Set Visible
     setContentPane(pane);
   }
   
   public void actionPerformed(ActionEvent e){
     if(e.getSource()==jOpenButton){
-    fc.showOpenDialog(Main.this);
-    File file = fc.getSelectedFile();
-    se.setText(Utils.loadString("file:"+file.getPath()));
+    se.setText(openFile());
     }
     else if(e.getSource()==jNewButton){
-    editorPane.setText("");
+    newFile();
     }
     else if(e.getSource()==jSaveButton){
-    String save=editorPane.getText();
-    System.out.println(save);
-    se.setText(save+"La fonction de save n'est pas stable");
+    saveFile();
     }
     else{System.out.println("ERROR");}
   }
@@ -106,5 +104,30 @@ public class Main extends JApplet implements ActionListener{
   public static void main(String[] args) {
     System.out.println("Hi ! V3 is comming :-)");
     Main m = new Main(); Utils.show(m, "Java'Scool v3.0", 600, 400);
+  }
+  private String openFile(){
+    fc.showOpenDialog(Main.this);
+    file = fc.getSelectedFile();
+    String r= Utils.loadString("file:"+file.getPath());
+    return r;
+  }
+  private void saveFile(){
+    if(file==null){
+    fc.showSaveDialog(Main.this);
+    file = fc.getSelectedFile();
+    String path=file.getPath();
+    String text=se.getText();
+    Utils.saveString(path,text);
+    }
+    else{
+    String path=file.getPath();
+    String text=se.getText();
+    Utils.saveString(path,text);
+    }
+    
+  }
+  private void newFile(){
+    file=null;
+    se.setText("");
   }
 }
