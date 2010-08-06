@@ -48,11 +48,14 @@ public class Main extends JApplet implements ActionListener {
     JButton jPlayButton = new JButton();
     JButton jCompilButton = new JButton();
     JButton jHelpButton = new JButton();
+    JButton jJvsButton = new JButton();
+    JButton jPmlButton = new JButton();
     JTextPane editorPane=new JTextPane();
     JPanel panetop=new JPanel();
     JPanel helpane=new JPanel();
     JPanel pane=new JPanel();
     JToolBar tools=new JToolBar();
+    JToolBar mods=new JToolBar();
     JTabbedPane tabbedPane = new JTabbedPane();
     JFileChooser fc;
     SourceEditor se=new SourceEditor();
@@ -66,7 +69,8 @@ public class Main extends JApplet implements ActionListener {
   // Panes positions
     pane.add(panetop,BorderLayout.NORTH);
     panetop.add(tools);
-    tabbedPane.addTab("Test",se);
+    panetop.add(mods,BorderLayout.EAST);
+    tabbedPane.addTab("Nouveau.jvs - JVS Editor",se);
     help.setText(Utils.loadString("http://www.google.fr"));
     help.setContentType("text/html");
     helpane.add(help);
@@ -93,6 +97,12 @@ public class Main extends JApplet implements ActionListener {
     jHelpButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/help.png"));
     jHelpButton.addActionListener(this);
     tools.add(jHelpButton);
+    jJvsButton.setText("Java's cool");
+    jJvsButton.addActionListener(this);
+    mods.add(jJvsButton);
+    jPmlButton.setText("    PML    ");
+    jPmlButton.addActionListener(this);
+    mods.add(jPmlButton);
   // Set Visible
     setContentPane(pane);
   }
@@ -110,7 +120,10 @@ public class Main extends JApplet implements ActionListener {
     else if(e.getSource()==jHelpButton){
     showHelp();
     }
-    else{System.out.println("ERROR");}
+    else if(e.getSource()==jPmlButton){
+    startPml();
+    }
+    else{System.out.println("Button hasn't got action !!!");}
   }
 
   /** Used to run a javasccol v3 as a standalone program. 
@@ -123,7 +136,7 @@ public class Main extends JApplet implements ActionListener {
   public static void main(String[] args) {
     System.out.println("Hi ! V3 is comming :-)");
     Main m = new Main();
-    Utils.show(m, "Java'Scool v3.0", 800, 600);
+    Utils.show(m, "Java'Scool v3.0");
   }
   private String openFile(){
     fc.showOpenDialog(Main.this);
@@ -146,12 +159,39 @@ public class Main extends JApplet implements ActionListener {
     }
     
   }
+    private void saveFile(String title){
+    if(file==null){
+        fc.showDialog(Main.this, title);
+        file = fc.getSelectedFile();
+        String path=file.getPath();
+        String text=se.getText();
+        Utils.saveString(path,text);
+    }
+    else{
+        String path=file.getPath();
+        String text=se.getText();
+        Utils.saveString(path,text);
+    }
+    
+  }
   private void newFile(){
     file=null;
     se.setText("");
   }
   private void showHelp(){
     tabbedPane.addTab("Aide",helpane);
+  }
+  private void startPml(){
+    tabbedPane.removeAll();
+    tabbedPane.addTab("Nouveau.pml - PML Editor",se);
+    if(se.getText().length()>0){
+    this.saveFile("Enregistrer votre fichier en JVS avant de passer à Pml");
+    file=null;
+    newFile();}
+  }
+  private void startJvs(){
+    tabbedPane.remove(1);
+    tabbedPane.addTab("Nouveau.jsc - JVS Editor",se);
   }
   
 }

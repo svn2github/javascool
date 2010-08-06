@@ -408,9 +408,10 @@ public class Utils { private Utils() { }
       this.applet = applet; 
       getContentPane().add(applet); 
       applet.init(); pack(); 
-      frames++; 
+      frames++;
       if (title != null) setTitle(title);
-      setSize(width, height);
+      this.setSize(width, height);
+      this.setResizable(false);
       setVisible(true); 
       applet.start(); 
     }
