@@ -71,6 +71,13 @@ import java.awt.event.KeyEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.DocumentEvent;
 
+//Adding to resize
+import javax.swing.*;
+import javax.swing.event.MouseInputAdapter;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+
 /** This widget defines a general proglet source editor.
  * @see <a href="../../org/javasccol/SourceEditor.java">source code</a>
  */
@@ -100,6 +107,7 @@ public class SourceEditor extends JPanel implements Widget {
     pane.setFont(new Font("Dialog", Font.PLAIN, 16));
     doc = pane.getStyledDocument();
     JScrollPane scroll = new JScrollPane(pane);
+    scroll.setPreferredSize(new Dimension(200,200));
     add(scroll, BorderLayout.CENTER);
 
     // Defines the line number tracker

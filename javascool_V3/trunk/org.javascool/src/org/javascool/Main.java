@@ -52,6 +52,7 @@ public class Main extends JApplet implements ActionListener{
     JPanel panetop=new JPanel();
     JPanel pane=new JPanel();
     JToolBar tools=new JToolBar();
+    JTabbedPane tabbedPane = new JTabbedPane();
     JFileChooser fc;
     SourceEditor se=new SourceEditor();
     File file;
@@ -63,7 +64,8 @@ public class Main extends JApplet implements ActionListener{
   // Panes positions
     pane.add(panetop,BorderLayout.NORTH);
     panetop.add(tools);
-    pane.add(se);
+    tabbedPane.addTab("Test",se);
+    pane.add(tabbedPane);
   // Butons
     fc = new JFileChooser();
     jNewButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/new.png"));
