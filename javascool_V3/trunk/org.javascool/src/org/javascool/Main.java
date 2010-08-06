@@ -40,7 +40,7 @@ import javax.swing.filechooser.*;
  * @author Philippe Vienne <philoumailabo@gmail.com>
  * @see <a href="../../org/javascool/Main.java">source code</a>
  */
-public class Main extends JApplet implements ActionListener{
+public class Main extends JApplet implements ActionListener {
   private static final long serialVersionUID = 1L;
     JButton jOpenButton = new JButton();
     JButton jNewButton = new JButton();
@@ -67,7 +67,8 @@ public class Main extends JApplet implements ActionListener{
     pane.add(panetop,BorderLayout.NORTH);
     panetop.add(tools);
     tabbedPane.addTab("Test",se);
-    
+    help.setText(Utils.loadString("http://www.google.fr"));
+    help.setContentType("text/html");
     helpane.add(help);
     pane.add(tabbedPane);
   // Butons
