@@ -113,16 +113,16 @@ public class Main extends JApplet implements ActionListener{
   }
   private void saveFile(){
     if(file==null){
-    fc.showSaveDialog(Main.this);
-    file = fc.getSelectedFile();
-    String path=file.getPath();
-    String text=se.getText();
-    Utils.saveString(path,text);
+        fc.showSaveDialog(Main.this);
+        file = fc.getSelectedFile();
+        String path=file.getPath();
+        String text=se.getText();
+        Utils.saveString(path,text);
     }
     else{
-    String path=file.getPath();
-    String text=se.getText();
-    Utils.saveString(path,text);
+        String path=file.getPath();
+        String text=se.getText();
+        Utils.saveString(path,text);
     }
     
   }
