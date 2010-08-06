@@ -2,7 +2,7 @@
       ______________________________________________
      | By Philippe Vienne <philoumailabo@gmail.com> |
      | Distrubuted on GNU General Public Licence    |
-     | Revision 540 du SVN                          |
+     | Revision 539 du SVN                          |
      | © 2010 INRIA, All rights reserved            |
      |______________________________________________|
 
@@ -50,6 +50,7 @@ public class Main extends JApplet implements ActionListener{
     JPanel pane=new JPanel();
     JToolBar tools=new JToolBar();
     JFileChooser fc;
+    SourceEditor se=new SourceEditor();
   // This is the way to build the applet
   public void init() {
   // Panes
@@ -58,7 +59,7 @@ public class Main extends JApplet implements ActionListener{
   // Panes positions
     pane.add(panetop,BorderLayout.NORTH);
     panetop.add(tools,BorderLayout.WEST);
-    pane.add(editorPane,BorderLayout.CENTER);
+    pane.add(se,BorderLayout.CENTER);
   // Butons
     fc = new JFileChooser();
     jNewButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/New_16x16.png"));
@@ -82,7 +83,7 @@ public class Main extends JApplet implements ActionListener{
     if(e.getSource()==jOpenButton){
     fc.showOpenDialog(Main.this);
     File file = fc.getSelectedFile();
-    editorPane.setText(Utils.loadString("file:"+file.getPath()));
+    se.setText(Utils.loadString("file:"+file.getPath()));
     }
     else if(e.getSource()==jNewButton){
     editorPane.setText("");
@@ -90,7 +91,7 @@ public class Main extends JApplet implements ActionListener{
     else if(e.getSource()==jSaveButton){
     String save=editorPane.getText();
     System.out.println(save);
-    editorPane.setText(save+"La fonction de save n'est pas stable");
+    se.setText(save+"La fonction de save n'est pas stable");
     }
     else{System.out.println("ERROR");}
   }
