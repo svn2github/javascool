@@ -63,7 +63,7 @@ public class Main extends JApplet implements ActionListener{
   // Panes positions
     pane.add(panetop,BorderLayout.NORTH);
     panetop.add(tools,BorderLayout.CENTER);
-    pane.add(se,BorderLayout.CENTER);
+    pane.add(se);
   // Butons
     fc = new JFileChooser();
     jNewButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/new.png"));
