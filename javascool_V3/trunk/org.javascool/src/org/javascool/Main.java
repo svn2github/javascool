@@ -46,6 +46,8 @@ public class Main extends JApplet implements ActionListener{
     JButton jNewButton = new JButton();
     JButton jSaveButton = new JButton();
     JButton jPlayButton = new JButton();
+    JButton jCompilButton = new JButton();
+    JButton jHelpButton = new JButton();
     JTextPane editorPane=new JTextPane();
     JPanel panetop=new JPanel();
     JPanel pane=new JPanel();
@@ -77,6 +79,13 @@ public class Main extends JApplet implements ActionListener{
     jPlayButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/play.png"));
     jPlayButton.addActionListener(this);
     tools.add(jPlayButton);
+    jCompilButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/compil.png"));
+    jCompilButton.addActionListener(this);
+    tools.add(jCompilButton);
+    tools.addSeparator();
+    jHelpButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/help.png"));
+    jHelpButton.addActionListener(this);
+    tools.add(jHelpButton);
   // Set Visible
     setContentPane(pane);
   }
@@ -103,7 +112,8 @@ public class Main extends JApplet implements ActionListener{
    */
   public static void main(String[] args) {
     System.out.println("Hi ! V3 is comming :-)");
-    Main m = new Main(); Utils.show(m, "Java'Scool v3.0", 600, 400);
+    Main m = new Main();
+    Utils.show(m, "Java'Scool v3.0", 600, 400);
   }
   private String openFile(){
     fc.showOpenDialog(Main.this);
