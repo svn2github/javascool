@@ -133,7 +133,7 @@ public class MainV2 extends JApplet {
   private JButton jStopButton = null;
   private JButton jDemoButton = null;
   private JPanel jProgramPanel = null;
-  private SourceEditor jProgramEditorPane = null;
+  private JvsSourceEditor jProgramEditorPane = null;
   private JPanel jResultPanel = null;
   private JPanel  jConsolePanel = null;
   private JScrollPane jScrollPane = null;
@@ -354,9 +354,9 @@ public class MainV2 extends JApplet {
     return jProgramPanel;
   }
 
-  private SourceEditor getJProgramEditorPane() {
+  private JvsSourceEditor getJProgramEditorPane() {
     if (jProgramEditorPane == null) {
-      jProgramEditorPane = new SourceEditor();
+      jProgramEditorPane = new JvsSourceEditor();
       jProgramEditorPane.setBounds(new Rectangle(8, 18, 520, 364));
       jProgramEditorPane.setProglet(proglet);
     }

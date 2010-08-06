@@ -53,16 +53,28 @@ import java.awt.print.PageFormat;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
 
-/** This widget defines the proglet source editor.
+// Used to define the widget
+import javax.swing.JTextPane;
+
+// Used to define the styles
+import javax.swing.text.StyledDocument;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import java.awt.Color;
+import java.awt.Font;
+
+// Used to manage the colorization
+import javax.swing.text.Segment;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.DocumentEvent;
+
+/** This widget defines a general proglet source editor.
  * @see <a href="../../org/javasccol/SourceEditor.java">source code</a>
  */
 public class SourceEditor extends JPanel implements Widget {
   private static final long serialVersionUID = 1L;
-
-  // Just used for development
-  public static void main(String usage[]) { 
-    javax.swing.JFrame f = new javax.swing.JFrame(); f.getContentPane().add(new SourceEditor()); f.pack(); f.setSize(600, 700); f.setVisible(true); 
-  }
 
   /** Sets the editing text. 
    * @param text The text to edit.
@@ -145,7 +157,7 @@ public class SourceEditor extends JPanel implements Widget {
 
     }
 
-    // Ajoute le formatage du code
+    // Defines the view menu
     {
       JMenu menu = new JMenu();
       menu.setText("Reformate/Zoom");
@@ -172,79 +184,37 @@ public class SourceEditor extends JPanel implements Widget {
 	    pane.setFont(new Font("Dialog", Font.PLAIN, 22));
 	  }}));
     }
-
-    // Defines the tool-box menu
-    setProglet("");
   }
 
-  /** Sets the insertion menu for a given proglet.
-   * @param proglet The proglet currently used.
+  /** Defines the text reformat mechanism.
+   * To be overloaded to define the proper reformat mechanism
    */
-  void setProglet(String proglet) {
-    JMenu menu = new JMenu();
-    menu.setText("Insertions");
-    if (bar.getComponentCount() == 4)
-      bar.remove(2); 
-    bar.add(menu, 2);  
-    menu.add(new JMenuItem(new InsertAction("void main",   "void main() {\n  \n}\n", 16)));
-    menu.add(new JMenuItem(new InsertAction("if",          "  if() {\n  \n  } else {\n  \n  }", 5)));
-    menu.add(new JMenuItem(new InsertAction("while",       "  while() {\n  \n  }", 8)));
-    if (proglet == "Konsol") {
-      menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("println",              "  println(\"\");", 11)));
-      menu.add(new JMenuItem(new InsertAction("readString",           "  String   = readString();", 10)));
-      menu.add(new JMenuItem(new InsertAction("readInteger",          "  int   = readInteger();", 7)));
-      menu.add(new JMenuItem(new InsertAction("readDouble",           "  double   = readDouble();", 10)));
+  public void doReformat() { }
+
+  /** Adds an predefined insertion in the insertion menu. 
+   * @param label The insertion label.
+   * @param text The insertion text.
+   * @param offset The carret offset in the inserted text.
+   */
+  public void addInsertion(String label, String text, int offset) {
+    // Adds the menu if not yet done
+    if (imenu == null) { 
+      imenu = new JMenu();
+      imenu.setText("Insertions");
+      if (bar.getComponentCount() == 4)
+	bar.remove(2); 
+      bar.add(imenu, 2);  
     }
-    if (proglet == "Dicho") {
-      menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("dichoLength",          " dichoLength()", 0)));
-      menu.add(new JMenuItem(new InsertAction("dichoCompare",         " dichoCompare( , )", 0)));
-    }
-    if (proglet == "Smiley") {
-      menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("smileyReset",           "  smileyReset( , );", 14)));
-      menu.add(new JMenuItem(new InsertAction("smileyLoad",            "  smileyLoad( , );", 13)));
-      menu.add(new JMenuItem(new InsertAction("smileySet",             "  smileySet( , , );", 12)));
-      menu.add(new JMenuItem(new InsertAction("smileyGet",             " smileyGet( , )", 11)));
-    }
-    if (proglet == "Scope") {
-      menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("scopeReset",           "  scopeReset();", 0)));
-      menu.add(new JMenuItem(new InsertAction("scopeSet",             "  scopeSet( , , );", 12)));
-      menu.add(new JMenuItem(new InsertAction("scopeAdd",             "  scopeAdd( , , , );", 12)));
-      menu.add(new JMenuItem(new InsertAction("scopeAddLine",         "  scopeAddLine( , , , );", 16)));
-      menu.add(new JMenuItem(new InsertAction("scopeAddCircle",       "  scopeAddCircle( , , );", 18)));
-      menu.add(new JMenuItem(new InsertAction("scopeAddRectangle",    "  scopeAddRectangle( , , , );", 21)));
-      menu.add(new JMenuItem(new InsertAction("scopeX",               "  scopeX();", 0)));
-      menu.add(new JMenuItem(new InsertAction("scopeY",               "  scopeY();", 0)));
-     }
-    if (proglet == "Conva") {
-      menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("convaOut",             " convaOut()", 0)));
-      menu.add(new JMenuItem(new InsertAction("convaCompare",         " convaCompare( )", 0)));
-    }
-    if (proglet == "Synthe") {
-      menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("synthePlay",           " synthePlay();", 0)));
-      menu.add(new JMenuItem(new InsertAction("syntheSet",            " syntheSet(\" \");", 12)));
-    }
-    {
-      menu.addSeparator();
-      menu.add(new JMenuItem(new InsertAction("equal (entre String)", " equal( , );", 6)));
-      menu.add(new JMenuItem(new InsertAction("pow  (x^y)",           "Math.pow( , );", 9)));
-      menu.add(new JMenuItem(new InsertAction("sqrt (racine)",        "Math.sqrt( );", 10)));
-      menu.add(new JMenuItem(new InsertAction("aleat entre 0 et 1",   "  double   = random();", 10)));
-      menu.add(new JMenuItem(new InsertAction("echo",                   "  echo(\" \");", 8)));
-      menu.add(new JMenuItem(new InsertAction("sleep",                  "  sleep();", 8)));
-    }
+    imenu.add(new JMenuItem(new InsertAction(label, text, offset)));
     bar.validate();
   }
 
-  // Defines the text reformat
-  private void doReformat() {
-    setText(Jvs2Java.reformat(pane.getText()));
+  /** Adds a separator in the insertion menu.  */
+  public void addInsertionSeparator() {
+    if (imenu != null) imenu.addSeparator();
   }
+
+  private JMenu imenu = null;
 
   // Defines a  text insertion
   private class InsertAction extends AbstractAction {
@@ -443,4 +413,184 @@ public class SourceEditor extends JPanel implements Widget {
   private static Action getAction(JTextComponent pane, String action) {
     Action[] a = pane.getActions(); for (int i = 0; i < a.length; i++) if (a[i].getValue(Action.NAME).equals(action))  return a[i]; return null;
   }
+
+  // This widget defines a colored editor for the source editor. 
+  public class ColorTextPane extends JTextPane {
+    private static final long serialVersionUID = 1L;
+    
+    public ColorTextPane() {
+      doc = getStyledDocument();
+
+      // Defines the colorization styles
+      {
+	setFont(new Font("Courier", getFont().getStyle(), getFont().getSize()));
+	setCaretColor(Color.BLUE);
+        
+	// Style Normal: it must ``cancel´´ all other style effects
+	NormalStyle = doc.addStyle("Normal", null);
+	StyleConstants.setForeground(NormalStyle, Color.BLACK);
+	StyleConstants.setBold(NormalStyle, false);
+      
+	// Style Code: for reserved words
+	CodeStyle = doc.addStyle("Code", null);
+	StyleConstants.setForeground(CodeStyle, new Color(0xaa4444)); // Orange
+	StyleConstants.setBold(CodeStyle, true);
+      
+	// Style String: for quoted strings
+	StringStyle = doc.addStyle("String", null);
+	StyleConstants.setForeground(StringStyle, new Color(0x008800)); // Green
+	StyleConstants.setBold(StringStyle, false);
+      
+	// Style Operator: for operators chars
+	OperatorStyle = doc.addStyle("Operateur", null);
+	StyleConstants.setForeground(OperatorStyle, Color.BLACK);
+	StyleConstants.setBold(OperatorStyle, true);
+      
+	// Style Name: for identificator of declared variables (used in BML)
+	NameStyle = doc.addStyle("Name", null);
+	StyleConstants.setForeground(NameStyle, Color.GRAY);
+	StyleConstants.setBold(NameStyle, true);
+
+	// Style Comment: for comments added to the text
+	CommentStyle = doc.addStyle("Comment", null);
+	StyleConstants.setForeground(CommentStyle, new Color(0x0000ee)); // Blue
+	StyleConstants.setBold(CommentStyle, true);
+      }
+
+      // Adds the listener which is going to colorize after a key is entered
+      addKeyListener(new KeyListener() {
+	  public void keyPressed(KeyEvent e) {}
+	  public void keyTyped(KeyEvent e) {}
+	  // Here colorization is required in a window {-50 .. 50} around the caret position
+	  public void keyReleased(KeyEvent e) { colorize(getCaretPosition() - 50, 100); }
+	}); 
+      // Adds the listener which is going to colorize after the document is modified
+      doc.addDocumentListener(new DocumentListener() {
+	  public void changedUpdate(DocumentEvent e) { }
+	  // Here colorization must be postponed and globalized to avoid write lock and offset/length incoherence
+	  public void insertUpdate(DocumentEvent e) { recolorize = true ; }
+	  public void removeUpdate(DocumentEvent e) { recolorize = true ; }
+	}); 
+    }
+    // Reference to this document
+    private StyledDocument doc;
+    // Defined styles
+    private Style NormalStyle, CodeStyle, OperatorStyle, NameStyle, StringStyle, CommentStyle;
+
+    // Interface with the text modification routines    
+    public void setText(String text) { super.setText(text); colorize(0, 0); }
+
+    // Colorizes a part of the text
+    private void colorize(int offset, int length) {
+      // Manages a global recolorization
+      if (recolorize) { offset = length = 0; recolorize = false; }
+      // Gets the text to colorize and adjust the bounds to the closest beginning/end of lines
+      Segment text = new Segment(); try { doc.getText(0, doc.getLength(), text); } catch(Exception e) { }
+      if (offset < 0) offset = 0; 
+      while(offset > 0 && text.array[offset] != '\n') offset--;
+      if (length == 0) length = text.count; 
+      if (offset + length > text.count) length = text.count - offset; 
+      while(offset + length < text.count && text.array[offset + length - 1] != '\n') length++;
+      text.offset = offset; text.count = length;
+      colorize(text);
+    }
+    // Global recolorization flag
+    private boolean recolorize = false;
+
+    // Colorizes a text's segment
+    private void colorize(Segment text) {
+      String string = new String(text.array, text.offset, text.count);
+      // Resets the colorization
+      doc.setCharacterAttributes(text.offset, text.count, NormalStyle, true);
+      // Colorizes names : put 1st to make reserved/declared words overwrite it
+      colorizeNames(text);
+      // Colorizes all reserved and declared words
+      for(String word : Jvs2Java.Reserved) 
+	colorizeWord(word, text, string);
+      for(String word : Jvs2Java.Declared)
+	colorizeWord(word, text, string);
+      // Colorizes operators
+      colorizeOperators(text);
+      // Colorizes strings : put at last, to cover other colorization
+      colorizeStrings(text);
+      // Colorizes comments : put at last of the last, to cover other colorization
+      colorizeComments(text);
+    }
+
+    // Colorizes reserved/declared words
+    private void colorizeWord(String word, Segment text, String string) {
+      // Search all words occurences in the text
+      for(int i = 0, j; (j = string.indexOf(word, i)) != -1;) { i = j + word.length();
+	// Checks the word bound, avoiding to consider a charsequence within a word
+	if ((j == 0 || (!isWordChar(string.charAt(j-1)))) && (i == string.length() || (!isWordChar(string.charAt(i))))) {
+	  doc.setCharacterAttributes(j + text.offset, word.length(), CodeStyle, true);
+	}
+      }
+    }
+
+    // Colorizes operators
+    private void colorizeOperators(Segment text) {
+      for(int i = text.offset, n = 0; n < text.count; i++, n++) {
+	switch(text.array[i]) {
+	case '+': case '-': case '*': case '/': case '%': 
+	case '|': case '&': case '!': 
+	case '=': case '(': case ')': case'{': case'}': case '[': case ']': 
+	  doc.setCharacterAttributes(i, 1, OperatorStyle, true);
+	}
+      }
+    }
+
+    // Colorizes the quoted strings of the "([^"]|\")*"
+    private void colorizeStrings(Segment text) {
+      boolean quoted = false; int j = 0;
+      for(int i = text.offset, n = 0; n < text.count; i++, n++) {
+	if ((text.array[i] == '"' && (i == 0 || text.array[i - 1] != '\\')) || (quoted && text.array[i] == '\n')) {
+	  if (quoted) {
+	    doc.setCharacterAttributes(j, i - j + 1, StringStyle, true);
+	    quoted = false;
+	  } else {
+	    j = i;
+	    quoted = true;
+	  }
+	} 
+      }
+    }
+
+    // Colorizes comments of the form (//.*\n|/\*.*\*/)
+    private void colorizeComments(Segment text) {
+      int comment = 0; int j = 0;
+      for(int i = text.offset, n = 0; n < text.count; i++, n++)  {
+	if (comment == 0) {
+	  if (i > 0 && text.array[i - 1] == '/' && text.array[i] == '/') {
+	    j = i - 1;
+	    comment = 1;
+	  } else if (i > 0 && text.array[i - 1] == '/' && text.array[i] == '*') {
+	    j = i - 1;
+	    comment = -1;
+	  }
+	} else if ((comment == 1 && text.array[i] == '\n') ||
+		   (comment == -1 && i > 0 && text.array[i - 1] == '*' && text.array[i] == '/')) {
+	  comment = 0;
+	  doc.setCharacterAttributes(j, i - j + 1, CommentStyle, true);
+	}
+      }
+    }
+
+    // Colorizes the variables names before [={] operators
+    private void colorizeNames(Segment text) {
+      for(int i = text.offset, n = 0; n < text.count; i++, n++) {  
+	switch(text.array[i]) { 
+	case '=': case '{': 
+	  // Looks for the previous word and colorizes it if any
+	  int i1 = i - 1; while(i1 > 0 && Character.isWhitespace(text.array[i1])) i1--;
+	  if (i1 > 0 && isWordChar(text.array[i1])) {
+	    int i0 = i1 - 1; while(i0 > 0 && isWordChar(text.array[i0])) i0--;
+	    doc.setCharacterAttributes(i0, i1 - i0 + 1, NameStyle, true);
+	  }
+	}
+      }
+    }
+  }
+  // Tests if the char belongs to a word
+  private static boolean isWordChar(char c) { return  Character.isLetterOrDigit(c) || c == '_'; }
 }
