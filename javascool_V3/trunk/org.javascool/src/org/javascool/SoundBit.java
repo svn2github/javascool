@@ -238,7 +238,7 @@ public class SoundBit implements Widget {
       line.close();
     } catch(IOException e) { throw new RuntimeException(e.toString()); } catch(LineUnavailableException e) { throw new RuntimeException(e.toString()); }
   }
-  public void play() {
+  /**/public void play() {
     play(null, 1);
   }
   /** Creates a sound-bit from an audio file.

@@ -32,7 +32,7 @@ public class TortueLogo implements org.javascool.Proglet { private TortueLogo() 
       clear();
       // Adds the turtle
       turtle = new JLabel();
-      turtle.setIcon(Utils.getIcon("turtle.gif"));
+      turtle.setIcon(Utils.getIcon("proglet/tortuelogo/doc-files/turtle.gif"));
       turtle.setBounds(width/2, height/2, 42, 35);
       add(turtle);
     }
@@ -81,7 +81,7 @@ public class TortueLogo implements org.javascool.Proglet { private TortueLogo() 
   //
 
   /** Test du panel. */
-  static void test() {
+  public static void test() {
     clear_all(); pen_up();
     int t = 0; while(t < 9000) { 
       set_color((t / 1000) % 10);

@@ -60,7 +60,7 @@ public class DisplayCurve implements org.javascool.Proglet { private DisplayCurv
   //
 
   /** Test du panel. */
-  static void test() {
+  public static void test() {
     scopeReset();
     for(double x = -1; x <= 1; x += 0.001) {
       scopeSet(x, 0.5 * Math.sin(10 * x) + 0.5, 6);

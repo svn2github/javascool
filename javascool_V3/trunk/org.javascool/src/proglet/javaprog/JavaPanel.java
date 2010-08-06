@@ -33,7 +33,7 @@ public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { 
   //
 
   /** Test du panel. */
-  static void test() {
+  public static void test() {
   }
 
   //

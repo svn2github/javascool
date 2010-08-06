@@ -609,15 +609,15 @@ public class MainV2 extends JApplet {
    */
   static private JPanel getPanel(String proglet) {
     try { return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null); } 
-    catch(Exception e) { System.err.println(e+" (unkown proglet "+proglet+")"); return new JPanel(); }
+    catch(Exception e) { Utils.report(e); return new JPanel(); }
   }
 
   /** Runs one proglet's test.
    * @param proglet The proglet class name.
    */
   static private void test(String proglet) {
-    proglet = toUcfirst(proglet);
-    try { Class.forName(Jvs2Java.proglets.get(proglet)).getDeclaredMethod("test").invoke(null); } catch(Exception error) { }
+    try { Class.forName(Jvs2Java.proglets.get(proglet)).getDeclaredMethod("test").invoke(null); } 
+    catch(Exception e) { Utils.report(e); } 
   }
   private static String toUcfirst(String string) { return Character.toUpperCase(string.charAt(0)) + string.substring(1).toLowerCase(); }
 

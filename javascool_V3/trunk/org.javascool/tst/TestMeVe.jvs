@@ -1,6 +1,6 @@
 
 import org.javascool.*;
-import javax.Swing.*;
+import javax.swing.*;
 
 
 JLayeredPane pane = getSwingPane();

@@ -2,6 +2,8 @@
 ##  Philoumailabo@gmail.com and Thierry.Vieville@sophia.inria.fr, Copyright (C) 2010.  All rights reserved.                        ##
 #####################################################################################################################################
 
+dft: v2
+
 usage :
 	@echo 'Usage:'
 	@echo ' make clean        : nettoie les fichiers intermédiares'
@@ -18,7 +20,7 @@ j3: www/javascool.jar
 	cd tst ; java -jar ../www/javascool.jar
 
 v2: www/javascool.jar
-	@cd tst ; java -cp ../www/javascool.jar org.javascool.MainV2 edit javaprog TestMeVe.jvs
+	@cd tst ; java -cp ../www/javascool.jar org.javascool.MainV2 run synthesons #TestMeVe.jvs
 
 v3: cmp
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Main

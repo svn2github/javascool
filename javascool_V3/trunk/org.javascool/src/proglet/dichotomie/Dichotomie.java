@@ -42,7 +42,9 @@ public class Dichotomie implements org.javascool.Proglet { private Dichotomie() 
       super(new BorderLayout()); setBackground(Color.WHITE);
       // Adds the background icon
       JLayeredPane book = new JLayeredPane(); book.setPreferredSize(new Dimension(540, 350)); add(book);
-      JLabel icon = new JLabel(); icon.setBounds(10, 0, 540, 350); icon.setIcon(Utils.getIcon("dichotomie/doc-files/dicho_background.png")); book.add(icon, new Integer(1), 0);
+      JLabel icon = new JLabel(); icon.setBounds(10, 0, 540, 350); 
+      icon.setIcon(Utils.getIcon("proglet/dichotomie/doc-files/dicho_background.png")); 
+      book.add(icon, new Integer(1), 0);
       // Adds the label and flag
       name = new JLabel(); name.setBounds(90, 50, 150, 100); book.add(name, new Integer(2), 0);
       flag = new JLabel(); flag.setBounds(340, 100, 200, 100); book.add(flag, new Integer(2), 1);
@@ -68,7 +70,7 @@ public class Dichotomie implements org.javascool.Proglet { private Dichotomie() 
       if (page < 0) page = 0; if (page >= length()) page = length() - 1; current = page;
       num.setText(""+page);
       name.setText("<html><h2>"+dicho[page][0]+"</h2></html>"); 
-      flag.setIcon(Utils.getIcon("dichotomie/doc-files/"+dicho[page][1]));
+      flag.setIcon(Utils.getIcon("proglet/dichotomie/doc-files/"+dicho[page][1]));
     } 
     private JLabel name, flag, num; private int current;
   }
@@ -78,7 +80,7 @@ public class Dichotomie implements org.javascool.Proglet { private Dichotomie() 
   //
 
   /** Test du panel. */
-  static void test() {
+  public static void test() {
     // Tests if the dico is sorted
     for(int i = 1; i < dicho.length; i++)
       if (compare(dicho[i][0], i - 1) <= 0)

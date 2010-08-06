@@ -33,7 +33,7 @@ public class ImageDisplay implements org.javascool.Proglet { private ImageDispla
   //
 
   /** Test du panel. */
-  static void test() { 
+  public static void test() { 
     for(int size = 256; size > 0; size /= 2) {
       smileyReset(size, size);
       peace();

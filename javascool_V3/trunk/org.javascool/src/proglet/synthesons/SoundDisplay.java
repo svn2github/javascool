@@ -37,7 +37,7 @@ public class SoundDisplay implements org.javascool.Proglet { private SoundDispla
   //
 
   /** Test du panel. */
-  static void test() {
+  public static void test() {
     test(new SoundBit() { public double get(char c, double t) { return sns(t); } });
     test(new SoundBit() { public double get(char c, double t) { return 0.5 * sqr(t); } });
     test(new SoundBit() { public double get(char c, double t) { return 0.8 * tri(t) + 0.2 * noi(t); } });

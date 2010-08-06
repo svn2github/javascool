@@ -98,7 +98,7 @@ public class Console implements org.javascool.Proglet { private Console() { }
   //
 
   /** Test du panel. */
-  static void test() {
+  public static void test() {
     clear();
     println("Bonjour, qui es tu ?");
     String nom = readString();
