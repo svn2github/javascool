@@ -1,3 +1,4 @@
+
 <?php
 ///////////////////////////////////////////////////////////////////
 // Script sous licence CeCILL                                    //
@@ -59,8 +60,8 @@ function get_page_contents($name) {
             <div class="greybox_bottom">
               <div class="greybox_bottom_l">
                 <div class="greybox_bottom_r"><div align="center">
-                  <a href="index.php"><img src="images/logo.gif" align="center" alt="logo java's Cool" border="0"></a>
-                   <img src="images/logo_lycees.jpg" width="350" align="right" alt="Avec les lycées de PACA" border="0"></a>
+                  <a href="index.php"><img src="images/logo.gif" width="50%" align="center" alt="logo java's Cool" border="0"></a>
+                   <img src="images/logo_lycees.jpg" width="30%" align="right" alt="Avec les lycées de PACA" border="0"></a>
                 </div></div> 
               </div>
             </div>
@@ -139,15 +140,15 @@ function get_page_contents($name) {
               <div class="blackbox_bottom_r">
                   <table class="blackbox_bottom_r" width="100%"><tr>
                     <td width="20%" align="center" valign="middle">
-                      <a href="http://www.unisciel.fr"><img width="200" src="images/logo_unisciel.png" alt="logo UNISCIEL" border="0"></a></td>
+                      <a href="http://www.unisciel.fr"><img width="90%" src="images/logo_unisciel.png" alt="logo UNISCIEL" border="0"></a></td>
                     <td width="20%" align="center" valign="middle">
-                      <a href="http://www.fuscia.info"><img width="200" src="images/logo_fuscia.gif" alt="logo FUSCIA" border="0"></a></td>
+                      <a href="http://www.fuscia.info"><img width="90%" src="images/logo_fuscia.gif" alt="logo FUSCIA" border="0"></a></td>
                     <td width="20%" align="center" valign="middle">
-                      <a href="http://www.linux-azur.org"><img width="200" src="images/logo_linuxazur.png" alt="logo LINUXAZUR" border="0"></a></td>
+                      <a href="http://www.linux-azur.org"><img width="90%" src="images/logo_linuxazur.png" alt="logo LINUXAZUR" border="0"></a></td>
                     <td width="20%" align="center" valign="middle">
-                      <a href="http://unice.fr"><img width="200" src="images/logo_unice.gif" alt="logo UNS" border="0"></a></td>
+                      <a href="http://unice.fr"><img width="90%" src="images/logo_unice.gif" alt="logo UNS" border="0"></a></td>
                     <td width="20%" align="center" valign="middle">
-                      <a href="http://www.inria.fr/sophia"><img width="300" src="images/logo_inria.gif" alt="logo INRIA" border="0"></a></td>
+                      <a href="http://www.inria.fr/sophia"><img width="90%" src="images/logo_inria.gif" alt="logo INRIA" border="0"></a></td>
 		    <td></td><td></td>
                   </tr></table>
                   &nbsp;&copy;&nbsp; Java's Cool 2008 - 2010.
