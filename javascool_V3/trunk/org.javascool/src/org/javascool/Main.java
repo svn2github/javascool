@@ -26,14 +26,26 @@ import javax.swing.*;
 import java.lang.String;
 import java.awt.BorderLayout;
 import java.awt.event.*;
-//Java
-import java.io.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.*;
 
+// Used for URL read
+import java.net.URL;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.lang.StringBuilder;
+import java.net.URLEncoder;
+
+// Used for URL write
+import java.net.URL;
+import java.io.IOException;
+import java.lang.System; // .out.println
+import java.net.URLConnection;
+import java.io.OutputStreamWriter;
+import java.io.File;
+import java.io.FileWriter;
 
 /** This is the javascool v3 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
