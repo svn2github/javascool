@@ -113,7 +113,7 @@ public class Main extends JApplet implements ActionListener{
   public static void main(String[] args) {
     System.out.println("Hi ! V3 is comming :-)");
     Main m = new Main();
-    Utils.show(m, "Java'Scool v3.0", 600, 400);
+    Utils.show(m, "Java'Scool v3.0", 800, 600);
   }
   private String openFile(){
     fc.showOpenDialog(Main.this);
