@@ -62,7 +62,7 @@ public class Main extends JApplet implements ActionListener{
     panetop.setLayout(new BorderLayout());
   // Panes positions
     pane.add(panetop,BorderLayout.NORTH);
-    panetop.add(tools,BorderLayout.CENTER);
+    panetop.add(tools);
     pane.add(se);
   // Butons
     fc = new JFileChooser();
