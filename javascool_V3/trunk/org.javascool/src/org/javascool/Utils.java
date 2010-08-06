@@ -51,6 +51,7 @@ import java.lang.reflect.InvocationTargetException;
 
 // Used to frame an applet as standalone application
 import javax.swing.JFrame;
+import java.awt.Toolkit;
 import java.awt.Dimension;
 import javax.swing.JApplet;
 import java.awt.event.WindowEvent;
@@ -388,12 +389,16 @@ public class Utils { private Utils() { }
   /** Opens an applet in a standalone frame.
    * @param applet The applet to display.
    * @param title  Frame title. If null no title.
-   * @param width  Applet width.
-   * @param height Applet height.
+   * @param width  Applet width. Default is 80% of the screen size.
+   * @param height Applet height. Default is 80% of the screen size.
    * @return The opened frame.  Use <tt>frame.dispose()</tt> to close the frame.
    */
   public static JFrame show(JApplet applet, String title, int width, int height) {
     AppletFrame f = new AppletFrame(); f.open(applet, title, width, height); return f;
+  }
+  /**/public static JFrame show(JApplet applet, String title) {
+    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();  
+    return show(applet, title, (int) (0.8 * dim.getWidth()), (int) (0.8 * dim.getHeight()));
   }
   private static class AppletFrame extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -404,8 +409,8 @@ public class Utils { private Utils() { }
       getContentPane().add(applet); 
       applet.init(); pack(); 
       frames++; 
-      if (title != null) setTitle(title); 
-      setSize(new Dimension(width, height));
+      if (title != null) setTitle(title);
+      setSize(width, height);
       setVisible(true); 
       applet.start(); 
     }
@@ -433,4 +438,10 @@ public class Utils { private Utils() { }
     }
   }
   private static int frames = 0;
+
+
+  /** Dumps the system properties. */
+  public static void whereAreWe() {
+    System.err.println("System properties:"); for(Object p : System.getProperties().keySet()) System.out.println(" - "+p+" = "+System.getProperty((String) p));
+  }
 }
