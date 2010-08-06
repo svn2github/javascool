@@ -107,7 +107,6 @@ public class SourceEditor extends JPanel implements Widget {
     pane.setFont(new Font("Dialog", Font.PLAIN, 16));
     doc = pane.getStyledDocument();
     JScrollPane scroll = new JScrollPane(pane);
-    scroll.setPreferredSize(new Dimension(800,600));
     add(scroll, BorderLayout.CENTER);
 
     // Defines the line number tracker

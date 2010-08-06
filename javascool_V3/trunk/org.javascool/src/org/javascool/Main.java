@@ -2,7 +2,7 @@
       ______________________________________________
      | By Philippe Vienne <philoumailabo@gmail.com> |
      | Distrubuted on GNU General Public Licence    |
-     | Revision 550 du SVN                          |
+     | Revision 558 du SVN                          |
      | © 2010 INRIA, All rights reserved            |
      |______________________________________________|
 
@@ -50,11 +50,13 @@ public class Main extends JApplet implements ActionListener{
     JButton jHelpButton = new JButton();
     JTextPane editorPane=new JTextPane();
     JPanel panetop=new JPanel();
+    JPanel helpane=new JPanel();
     JPanel pane=new JPanel();
     JToolBar tools=new JToolBar();
     JTabbedPane tabbedPane = new JTabbedPane();
     JFileChooser fc;
     SourceEditor se=new SourceEditor();
+    JEditorPane help=new JEditorPane();
     File file;
   // This is the way to build the applet
   public void init() {
@@ -65,6 +67,8 @@ public class Main extends JApplet implements ActionListener{
     pane.add(panetop,BorderLayout.NORTH);
     panetop.add(tools);
     tabbedPane.addTab("Test",se);
+    
+    helpane.add(help);
     pane.add(tabbedPane);
   // Butons
     fc = new JFileChooser();
@@ -101,6 +105,9 @@ public class Main extends JApplet implements ActionListener{
     }
     else if(e.getSource()==jSaveButton){
     saveFile();
+    }
+    else if(e.getSource()==jHelpButton){
+    showHelp();
     }
     else{System.out.println("ERROR");}
   }
@@ -143,4 +150,8 @@ public class Main extends JApplet implements ActionListener{
     file=null;
     se.setText("");
   }
+  private void showHelp(){
+    tabbedPane.addTab("Aide",helpane);
+  }
+  
 }
