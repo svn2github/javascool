@@ -10,6 +10,8 @@ import java.awt.BorderLayout;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import java.awt.Dimension;
 import javax.swing.JLabel;
 
 // Used to define menu and menu's action
@@ -71,13 +73,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.DocumentEvent;
 
-//Adding to resize
-import javax.swing.*;
-import javax.swing.event.MouseInputAdapter;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-
 /** This widget defines a general proglet source editor.
  * @see <a href="../../org/javasccol/SourceEditor.java">source code</a>
  */
@@ -93,7 +88,7 @@ public class SourceEditor extends JPanel implements Widget {
   public String getText() { return pane.getText(); }
 
   // Reference to this document with its menu-bar and contained
-  private JMenuBar bar; private JTextPane pane; private StyledDocument doc;
+  private JMenuBar bar; private JTextPane pane; private JScrollPane scroll; private StyledDocument doc;
   // Line counting management
   private JLabel line; private int iline = 0; 
   // Widget construction
@@ -106,9 +101,8 @@ public class SourceEditor extends JPanel implements Widget {
     pane.setEditable(true);
     pane.setFont(new Font("Dialog", Font.PLAIN, 16));
     doc = pane.getStyledDocument();
-    JScrollPane scroll = new JScrollPane(pane);
+    scroll = new JScrollPane(pane, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
     add(scroll, BorderLayout.CENTER);
-
     // Defines the line number tracker
     {
       bar.add(line = new JLabel("ligne :   0 | "));

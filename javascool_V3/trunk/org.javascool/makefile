@@ -5,8 +5,8 @@
 usage :
 	@echo 'Usage:'
 	@echo ' make clean        : nettoie les fichiers intermédiares'
-	@echo ' make v2           : lance la v2 de javascool/proglets'
-	@echo ' make v3           : lance la v3 de javascool'
+	@echo ' make j3           : lance la v3 de javascool à partir du jar'
+	@echo ' make v3           : lance la v3 de javascool à partir des classes compilées'
 	@echo ' make svn          : synchronize avec le svn'
 	@echo ' make doc          : cree la doc des classes java'
 	@echo ' make pub          : publie les fichiers du site web'
@@ -14,7 +14,7 @@ usage :
 clean:
 	@rm -rf `find . -name '*.class'` tmp lib/manifest.mf www/api www/javascool.jar
 
-v2: www/javascool.jar
+j3: www/javascool.jar
 	cd tst ; java -jar ../www/javascool.jar
 
 v3: cmp
@@ -74,7 +74,7 @@ www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf src/org
 
 lib/manifest.mf : makefile
 	@(echo 'Summary: javascool v3'; echo 'Created-By: $(version) (javascool.gforge.inria.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'`") > $@
-	@(echo 'Main-Class: org.javascool.MainV2') >> $@
+	@(echo 'Main-Class: org.javascool.Main') >> $@
 	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
 
 src/org/javascool/Proglets.java : $(shell find src/proglet -name '*.java')
