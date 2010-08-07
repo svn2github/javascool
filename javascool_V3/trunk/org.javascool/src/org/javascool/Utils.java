@@ -51,6 +51,7 @@ import java.lang.reflect.InvocationTargetException;
 
 // Used to frame an applet as standalone application
 import javax.swing.JFrame;
+import javax.swing.JComponent;
 import java.awt.Toolkit;
 import java.awt.Dimension;
 import javax.swing.JApplet;
@@ -387,7 +388,7 @@ public class Utils { private Utils() { }
   }
 
   /** Opens an applet in a standalone frame.
-   * @param applet The applet to display.
+   * @param applet The applet or panel to display.
    * @param title  Frame title. If null no title.
    * @param width  Applet width. Default is 80% of the screen size.
    * @param height Applet height. Default is 80% of the screen size.
@@ -400,6 +401,19 @@ public class Utils { private Utils() { }
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();  
     return show(applet, title, (int) (0.8 * dim.getWidth()), (int) (0.8 * dim.getHeight()));
   }
+  /**/public static JFrame show(JComponent panel, String title, int width, int height) {
+    return show(new AppletPanel(panel), title, width, height);
+  }
+  /**/public static JFrame show(JComponent panel, String title) {
+    return show(new AppletPanel(panel), title);
+  }
+  // Encapsulates a panel in an applet
+  private static class AppletPanel extends JApplet {
+    private static final long serialVersionUID = 1L;
+    AppletPanel(JComponent panel) { this.panel = panel; } private JComponent panel;
+    public void init() { setContentPane(panel); }
+  }
+  // Encapsulates an applet in a frame
   private static class AppletFrame extends JFrame {
     private static final long serialVersionUID = 1L;
     private JApplet applet = null;
