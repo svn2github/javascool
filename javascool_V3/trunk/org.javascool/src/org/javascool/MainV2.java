@@ -66,7 +66,7 @@ import java.net.URLClassLoader;
  * org/javascool/doc-files/stop.png
  * org/javascool/doc-files/demo.png
  * </pre>
- * @see <a href="../../org/javascool/MainV2.java">source code</a>
+ * @see <a href="MainV2.java">source code</a>
  */
 public class MainV2 extends JApplet {
   private static final long serialVersionUID = 1L;
@@ -101,9 +101,6 @@ public class MainV2 extends JApplet {
     path = folder + File.separatorChar + main;
   }  
   private String main = null, path = null;
-
-  /**This is the entry point to run the proglet pupil's program: do not modify manually !!. */
-  public static Runnable runnable = null;
   
   // Flag whether we are in standalone mode or web-browser mode
   boolean standalone = true; 
@@ -286,10 +283,10 @@ public class MainV2 extends JApplet {
       jRunButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
 	    try {
-	      if (runnable != null) 
+	      if (Jvs2Java.runnable != null) 
 		doRun(new Runnable() { public void run() {
 		  try {
-		    runnable.run();
+		    Jvs2Java.runnable.run();
 		  }  catch (Exception e) {
 		    Utils.report(e);
 		  }

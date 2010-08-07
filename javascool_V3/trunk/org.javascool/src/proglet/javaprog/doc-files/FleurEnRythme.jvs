@@ -1,7 +1,6 @@
 
-import org.javascool.*;
 import javax.swing.*;
-
+import proglet.synthesons.FileSoundBit;
 
 JLayeredPane pane = getSwingPane();
 
@@ -15,7 +14,7 @@ JLabel icon(String image, int x, int y, int w, int h, int p) {
 }
 
 // Defini un distributeur d'evenements
-class FlowerSoundBit implements SoundBit.Playing {
+class FlowerSoundBit extends FileSoundBit {
   double events[];
   public void sample(int n) {  
     if (events[n] > 0) {
@@ -32,11 +31,11 @@ void main() {
    // On affiche une image de fond
    icon("fleur-fond.jpg", 0, 0, pane.getWidth(), pane.getHeight(), 1);
    // On  charge le son
-   SoundBit sound = SoundBit.newFileSound("black-dog.wav");
+   FlowerSoundBit sound = new FlowerSoundBit();
+   sound.reset("black-dog.wav");
    // On calcule les évènements qui déclenchent des fleurs
    double frequence = 100, period = 0.2, cut = 0;
-   FlowerSoundBit playing = new FlowerSoundBit();
-   playing.events = sound.events(frequence, period, cut);
+   sound.events = sound.events(frequence, period, cut);
    // Envoyez la musique !!
-   sound.play(playing, period);
+   sound.play(period);
 }

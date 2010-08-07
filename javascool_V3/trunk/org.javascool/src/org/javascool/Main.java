@@ -50,7 +50,7 @@ import java.io.FileWriter;
 /** This is the javascool v3 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
  * @author Philippe Vienne <philoumailabo@gmail.com>
- * @see <a href="../../org/javascool/Main.java">source code</a>
+ * @see <a href="Main.java">source code</a>
  */
 public class Main extends JApplet implements ActionListener {
   private static final long serialVersionUID = 1L;

@@ -2,7 +2,7 @@
 ##  Philoumailabo@gmail.com and Thierry.Vieville@sophia.inria.fr, Copyright (C) 2010.  All rights reserved.                        ##
 #####################################################################################################################################
 
-dft: v2
+dft : php
 
 usage :
 	@echo 'Usage:'
@@ -14,13 +14,13 @@ usage :
 	@echo ' make pub          : publie les fichiers du site web'
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp lib/manifest.mf www/api www/javascool.jar
+	@rm -rf `find . -name '*.class'` tmp lib/manifest.mf www/api www/javascool.jar .http.root
 
 j3: www/javascool.jar
 	cd tst ; java -jar ../www/javascool.jar
 
 v2: www/javascool.jar
-	@cd tst ; java -cp ../www/javascool.jar org.javascool.MainV2 run synthesons #TestMeVe.jvs
+	@cd tst ; java -cp ../www/javascool.jar org.javascool.MainV2 # edit javaprog TestMeVe.jvs
 
 v3: cmp
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Main
@@ -106,12 +106,12 @@ lib/saxon.jar : $(SX)
 
 www/api/index.html : htms pmls pngs $(shell find src -name package.html) $(SRC)
 	@echo "make $(@D)"
-	@mkdir -p $(@D)
+	@rm -rf  $(@D) ; mkdir -p $(@D)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
 	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -link http://download.oracle.com/javase/6/docs/api \
 	 -windowtitle "Java's Cool v3" -d $(@D) $(SRC)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
-	@for f in $(SRC) ; do cp $$f `echo $$f | sed 's/^src/$(subst /,\\/,$(@D))/'` ; done
+	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$(@D))/'` ; done
 
 htms : $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
 
@@ -144,10 +144,13 @@ web:
 wiki:
 	@firefox http://wiki.inria.fr/sciencinfolycee
 
+php:
+	@php -l www/index.php
+	@make -f /home/vthierry/Work/enas/src/yava/makefile.http ROOT=`pwd`/www PAGE=index.php?page=api:org/javascool/package-summary.html show
+
 # Useful commands:
 #
 # - svn up ; svn resolve --accept working . 
 #
 
 #####################################################################################################################################
-

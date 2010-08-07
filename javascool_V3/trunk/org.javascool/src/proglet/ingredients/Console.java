@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Définit une proglet javascool qui permet de faire des entrées/sorties au clavier.
- * @see <a href="../../proglet/ingredients/Console.java">code source</a>
+ * @see <a href="Console.java">code source</a>
  */
 public class Console implements org.javascool.Proglet { private Console() { }
   private static final long serialVersionUID = 1L;

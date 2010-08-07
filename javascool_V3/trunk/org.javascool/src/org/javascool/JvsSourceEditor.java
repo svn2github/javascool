@@ -8,7 +8,7 @@ package org.javascool;
 import javax.swing.text.Segment;
 
 /** This widget defines the proglet source editor.
- * @see <a href="../../org/javasccol/SourceEditor.java">source code</a>
+ * @see <a href="JvsSourceEditor.java">source code</a>
  */
 public class JvsSourceEditor extends SourceEditor implements Widget {
   private static final long serialVersionUID = 1L;

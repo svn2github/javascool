@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  * <p>The parameter logical-structure parsing from a string is <i>weak</i> in the sense that a value is always derived without generating syntax errors.</p>
  * </p>
  *
- * @see <a href="../../org/javascool/Pml.java">source code</a>
+ * @see <a href="Pml.java">source code</a>
  */
 public class Pml { /**/public Pml() { }
   private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class Pml { /**/public Pml() { }
    * <li>"xml" Reads in XML format.</li>
    * <li>"htm" or "html" Reads in HTML format.</li>
    * </ul> 
-   * @return This; allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
+   * @return This, allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
   public Pml reset(String value, String format) { 
    if ("xml".equals(format)) {
@@ -73,7 +73,7 @@ public class Pml { /**/public Pml() { }
    * <li>"htm" or "html" Reads in HTML format.</li>
    * </ul> 
    * When not specified, detect the format extension from the file extension or used "pml" by default.
-   * @return This; allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
+   * @return This, allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
   public final Pml load(String location, String format) {
     return reset(Utils.loadString(location), format);
@@ -202,7 +202,7 @@ public class Pml { /**/public Pml() { }
    * <li>"txt" To write in a normalized 2D plain text format (default).</li>
    * <li>"xml" To write in XML format, reducing tag and attribute names to valid XML names, and considering Pml without any attribute or elements as string.</li>
    * </ul>
-   * @return This; allowing to use the <tt>Pml pml = new Pml().reset(..)</tt> construct.
+   * @return This, allowing to use the <tt>Pml pml = new Pml().reset(..)</tt> construct.
    */
   public final Pml save(String location, String format) {
     Utils.saveString(location, toString(format));
@@ -367,7 +367,7 @@ public class Pml { /**/public Pml() { }
   /** Sets a parameter value.
    * @param name The attribute's name or element's index.
    * @param value The parameter value, or <tt>null</tt> to cancel the value.
-   * @return This; allowing to use the <tt>pml.set(..,..).set(..,..)</tt> construct.
+   * @return This, allowing to use the <tt>pml.set(..,..).set(..,..)</tt> construct.
    */
   public Pml set(String name, Pml value) { 
     if (value == null) { data.remove(name); } else { data.put(name, value); value.setParent(this); } count = -1; return this; 
@@ -382,7 +382,7 @@ public class Pml { /**/public Pml() { }
 
   /** Adds an element's value. 
    * @param value The element value.
-   * @return This; allowing to use the <tt>pml.add(..).set(..,..)</tt> construct.
+   * @return This, allowing to use the <tt>pml.add(..).set(..,..)</tt> construct.
    */
   public final Pml add(Pml value) { int c = getCount(); set(c, value); count = ++c; return this; }
   /**/public final Pml add(String value) { Pml v = new Pml(); v.reset(value); return add(v); }

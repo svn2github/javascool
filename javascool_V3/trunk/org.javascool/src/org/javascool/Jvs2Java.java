@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 /** This factory defines how a Jvs code is translated into a Java code and compiled. 
  * The goal of the Jvs syntax is to ease the syntax when starting to program in an imperative language, like Java. 
  * <p>- This factory calls the java compiler in the jdk5 (and earlier) case. It is designed to be used in standalone mode.</p>
- * @see <a href="../../org/javascool/Jvs2Java.java">source code</a>
+ * @see <a href="Jvs2Java.java">source code</a>
  */
 public class Jvs2Java { private Jvs2Java() { }
 
@@ -48,6 +48,7 @@ public class Jvs2Java { private Jvs2Java() { }
       }
       // Imports proglet's static methods
       head.append("import static org.javascool.Macros.*;");
+      head.append("import org.javascool.Jvs2Java;");
       if (proglet.length() == 0) {	
 	for(String p : proglets.keySet()) 
 	head.append("import static "+proglets.get(p)+".*;");
@@ -57,7 +58,7 @@ public class Jvs2Java { private Jvs2Java() { }
       // Declares the proglet's core as a Runnable in the Applet
       head.append("public class "+main+ " extends org.javascool.MainV2 {");
       head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");
-      head.append("  static { runnable = new ProgletRunnableMain(); }");
+      head.append("  static { Jvs2Java.runnable = new ProgletRunnableMain(); }");
       head.append("}");
       head.append("class ProgletRunnableMain implements Runnable {");
       head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");
@@ -179,4 +180,7 @@ public class Jvs2Java { private Jvs2Java() { }
   static {
     for (String proglet : Proglets.proglets) if (proglet.length() > 0) proglets.put(proglet.replaceFirst("^proglet\\.([^\\.]+)\\..*$", "$1"), proglet);
   }
+
+  /** This is the entry point to run the proglet pupil's program: do not modify manually !!. */
+  public static Runnable runnable = null;
 }

@@ -18,15 +18,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des signaux sonores.
- * @see <a href="../../proglet/synthesons/SoundDisplay.java">code source</a>
+ * @see <a href="SoundDisplay.java">code source</a>
  */
 public class SoundDisplay implements org.javascool.Proglet { private SoundDisplay() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
-  private static class Panel extends SoundBit.Panel {
+  private static class Panel extends SoundBitPanel {
     private static final long serialVersionUID = 1L;
-    public SoundBit sound = new SoundBit.NotesSoundBit() {
+    public SoundBit sound = new NotesSoundBit() {
 	public double get(char channel, double time) { return SoundDisplay.tone == null ? Math.sin(2 * Math.PI * time) : SoundDisplay.tone.get(channel, time); }
       };
     public Panel() { reset(sound, 'l'); sound.reset("16 A"); }
@@ -38,6 +38,7 @@ public class SoundDisplay implements org.javascool.Proglet { private SoundDispla
 
   /** Test du panel. */
   public static void test() {
+    //- for(String name : FileSoundBit.getMidiNames()) { SoundBit s = new FileSoundBit().reset("midi:"+name); System.out.println(s); s.play(); }
     test(new SoundBit() { public double get(char c, double t) { return sns(t); } });
     test(new SoundBit() { public double get(char c, double t) { return 0.5 * sqr(t); } });
     test(new SoundBit() { public double get(char c, double t) { return 0.8 * tri(t) + 0.2 * noi(t); } });
@@ -53,7 +54,7 @@ public class SoundDisplay implements org.javascool.Proglet { private SoundDispla
   //
 
   /** Definit le son à utiliser pour jouer les notes du synthétiseur. 
-   * <div>Utilisé à travers la <a href="../synthesons/doc-files/about-proglet.htm">construction</a> <tt>Javascool</tt> de la forme <tt>TONE: <i>expression de la variable t</i></tt></div>
+   * <div>Utilisé à travers la <a href="doc-files/about-proglet.htm">construction</a> <tt>Javascool</tt> de la forme <tt>TONE: <i>expression de la variable t</i></tt></div>
    */
   static public SoundBit tone = null;
 
@@ -70,7 +71,7 @@ public class SoundDisplay implements org.javascool.Proglet { private SoundDispla
   static public double noi(double t) { return 2 * Math.random() - 1; }
 
   /** Définit les notes à jouer dans cet interface. 
-   * @param notes Définition des <a href="SoundBit.html#notes">notes</a> selon une syntaxe simplifiée.
+   * @param notes Définition des <a href="NotesSoundBit.html#notes">notes</a> selon une syntaxe simplifiée.
    */
   static public void syntheSet(String notes) { panel.sound.reset(notes); panel.reset(panel.sound, 'l'); }
 

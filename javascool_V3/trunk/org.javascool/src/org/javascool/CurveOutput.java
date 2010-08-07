@@ -24,7 +24,7 @@ import java.net.URL;
 import java.util.Vector;
 
 /** This widget defines a multi-curve output.
- * @see <a href="../../org/javascool/CurveOutput.java">source code</a>
+ * @see <a href="CurveOutput.java">source code</a>
  */
 public class CurveOutput extends JPanel implements Widget {
   private static final long serialVersionUID = 1L;

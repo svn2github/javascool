@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 /** Defines a Test as a PML data structure.
  *
- * @see <a href="../../org/javascool/Text.java">source code</a>
+ * @see <a href="Text.java">source code</a>
  */
 public class Text extends Pml { /**/public Text() { }
   private static final long serialVersionUID = 1L;

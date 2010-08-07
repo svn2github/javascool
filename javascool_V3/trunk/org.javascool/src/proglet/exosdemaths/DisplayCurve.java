@@ -11,8 +11,11 @@ import java.awt.BorderLayout;
 import org.javascool.CurveOutput;
 import org.javascool.NumberInput;
 
+// Used to recall the runnable
+import org.javascool.Jvs2Java;
+
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
- * @see <a href="../../proglet/exosdemaths/DisplayCurve.java">code source</a>
+ * @see <a href="DisplayCurve.java">code source</a>
  */
 public class DisplayCurve implements org.javascool.Proglet { private DisplayCurve() { }
   private static final long serialVersionUID = 1L;
@@ -30,11 +33,11 @@ public class DisplayCurve implements org.javascool.Proglet { private DisplayCurv
       input.add(inputY = new NumberInput("Y"), BorderLayout.SOUTH);
       Runnable run1 = new Runnable() { public void run() {
 	inputX.setValue(scope.getReticuleX()); inputY.setValue(scope.getReticuleY());
-	//-if (InterfacePrincipale.runnable != null) InterfacePrincipale.runnable.run(); 
+	if (Jvs2Java.runnable != null) Jvs2Java.runnable.run(); 
       }};
       Runnable run2 = new Runnable() { public void run() {
 	scope.setReticule(inputX.getValue(), inputY.getValue());
-	//-if (InterfacePrincipale.runnable != null) InterfacePrincipale.runnable.run(); 
+	if (Jvs2Java.runnable != null) Jvs2Java.runnable.run(); 
       }};
       scope.setRunnable(run1);
       inputX.setRunnable(run2);
