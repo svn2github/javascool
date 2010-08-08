@@ -2,10 +2,6 @@
 ##  Philoumailabo@gmail.com and Thierry.Vieville@sophia.inria.fr, Copyright (C) 2010.  All rights reserved.                        ##
 #####################################################################################################################################
 
-dft: 
-	rm -f src/org/javascool/xslt/xml2pml.java
-	$(MAKE) v2
-
 usage :
 	@echo 'Usage:'
 	@echo ' make clean        : nettoie les fichiers intermédiares'
@@ -22,7 +18,6 @@ j3: www/javascool.jar
 	cd tst ; java -jar ../www/javascool.jar
 
 v2: www/javascool.jar
-	@java -jar lib/saxon.jar 
 	@cd tst ; java -cp ../www/javascool.jar org.javascool.AlgoTree
 #	@cd tst ; java -cp ../www/javascool.jar org.javascool.MainV2 # edit javaprog TestMeVe.jvs
 
@@ -90,10 +85,6 @@ cmp : srcs $(SRC)
 	@rm -f $@; javac -Xlint -cp src:lib/tools.jar:lib/saxon.jar $(SRC)
 
 srcs : src/org/javascool/Proglets.java # $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt')) 
-
-d : 
-	rm -f $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt')) 
-	$(MAKE) $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt')) 
 
 %.java : %.xslt
 	@echo "<null/>" > /tmp/null.xml ; java -jar lib/saxon.jar /tmp/null.xml $^ ; rm /tmp/null.xml
