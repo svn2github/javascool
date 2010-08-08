@@ -32,8 +32,7 @@ public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { 
   // This defines the tests on the panel
   //
 
-  /** Test du panel. */
-  public static void test() {
+  /**/public static void test() {
   }
 
   //

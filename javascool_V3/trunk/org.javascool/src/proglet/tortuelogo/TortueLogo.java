@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Thievery.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
+ * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
  *******************************************************************************/
 
 package proglet.tortuelogo;
@@ -80,8 +80,7 @@ public class TortueLogo implements org.javascool.Proglet { private TortueLogo() 
   // This defines the tests on the panel
   //
 
-  /** Test du panel. */
-  public static void test() {
+  /**/public static void test() {
     clear_all(); pen_up();
     int t = 0; while(t < 9000) { 
       set_color((t / 1000) % 10);

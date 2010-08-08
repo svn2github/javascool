@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Rachid.Benarab@unice.fr, Copyright (C) 20109.  All rights reserved.         *
+ * Rachid.Benarab@unice.fr, Copyright (C) 2010.  All rights reserved.          *
  *******************************************************************************/
 
 package org.javascool;
@@ -10,8 +10,9 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.event.TreeModelListener;
-import javax.swing.event.TreeModelEvent;
+//-import javax.swing.event.TreeModelListener;
+//-import javax.swing.event.TreeModelEvent;
+import java.util.Enumeration;
 
 // Used to build the panel
 import javax.swing.JPanel;
@@ -27,16 +28,28 @@ import javax.swing.JComboBox;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
 
+// Used for key binding
+import java.awt.Event;
+import java.awt.event.KeyEvent;
+import javax.swing.KeyStroke;
+
+/** This widget defines a re-oriented graohic algorithm editor. */
 public class AlgoTree extends JPanel {
   private static final long serialVersionUID = 1L;
   
   //
   // [1] Builds the button bar
   //
-  JComboBox edit;
+  private JComboBox edit;
   {
     setLayout(new BorderLayout());
     JPanel bar = new JPanel();
+    edit = new JComboBox(new String[] {"Edit", "^C Copier", "^X Couper", "^V Coller", "^L Check"});
+    edit.addActionListener(new ActionListener() {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) {
+	  doEdit((String) edit.getSelectedItem());
+	}});
     bar.add(new JButton(new AbstractAction("Declarer-Variable") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
@@ -52,12 +65,6 @@ public class AlgoTree extends JPanel {
 	public void actionPerformed(ActionEvent e) {
 	  doFunctioncall();
 	}}));
-    edit = new JComboBox(new String[] {"Edit", "- Copier", "- Couper", "- Coller"});
-    edit.addActionListener(new ActionListener() {
-	private static final long serialVersionUID = 1L;
-	public void actionPerformed(ActionEvent e) {
-	  doEdit();
-	}});
     bar.add(edit);
     add(bar, BorderLayout.NORTH);
   }
@@ -70,16 +77,18 @@ public class AlgoTree extends JPanel {
   private DefaultMutableTreeNode root;
   {
     root = new DefaultMutableTreeNode();
-    root.add(new DefaultMutableTreeNode("DEBUT DU PROGRAMME"));
+    model = new DefaultTreeModel(root);
+    root.add(new DefaultMutableTreeNode("DEBUT_PROGRAMME"));
+    addTrailer((DefaultMutableTreeNode) root.getChildAt(0), "FIN_PROGRAMME");
     tree = new JTree();
     DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
     renderer.setLeafIcon(null);
     renderer.setOpenIcon(null);
     renderer.setClosedIcon(null);
     tree.setCellRenderer(renderer);
-    model = new DefaultTreeModel(root);
     tree.setModel(model);
     tree.setEditable(true);
+    /* Used for debug only
     tree.getModel().addTreeModelListener(new TreeModelListener() {
 	public void treeNodesChanged(TreeModelEvent e) {
 	  System.out.println("Un noeud a été changé !" + getJavaTree());				
@@ -94,14 +103,33 @@ public class AlgoTree extends JPanel {
 	  System.out.println("La structure d'un noeud a changé !" + getJavaTree());
 	}
       });
+    */
     add(new JScrollPane(tree), BorderLayout.CENTER);
   }
   // Gets the current node or the current "unleaf" node on which childreb can be added
   private DefaultMutableTreeNode getCurrentNode(boolean unleaf) {
+    node_index = -1;
     DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-    if (unleaf) while(node != null && (!node.getAllowsChildren() || node.toString().matches(insertionPattern))) node = (DefaultMutableTreeNode) node.getParent();
+    if (unleaf) while(node != null && !node.toString().matches(blockPattern)) {
+      node_index = node.getParent() != null ? node.getParent().getIndex(node) + 1 : -1;
+      node = (DefaultMutableTreeNode) node.getParent();
+    }
     if (node == null) node = (DefaultMutableTreeNode) root.getChildAt(0);
     return node;
+  }
+  private static final String blockPattern = "^(DEBUT_PROGRAMME|ALORS|SINON|FAIRE).*$";
+  // Gets the current node insertion index of the last getCurrentNode call
+  private int getCurrentNodeIndex(DefaultMutableTreeNode where) { 
+    if (0 <= node_index && node_index < where.getChildCount() - 1) return node_index;
+    return 1 < where.getChildCount() ? where.getChildCount() - 2 : 0;
+  }
+  private int node_index = -1;
+  // Adds a trailer tag
+  private void addTrailer(DefaultMutableTreeNode where, String label) {
+    DefaultMutableTreeNode node = new DefaultMutableTreeNode(label);
+    node.setAllowsChildren(false);
+    where.add(node);											
+    model.insertNodeInto(node, where, where.getChildCount() - 1);
   }
 
   /** Returns the tree as a String using the Pml syntax. */
@@ -110,10 +138,11 @@ public class AlgoTree extends JPanel {
   }
   private static StringBuffer getTree(DefaultMutableTreeNode node, int depth) {
     StringBuffer s = new StringBuffer(); 
+    String what = node.toString().replaceAll("\"", "\\\\\"");
     if (node.isLeaf()) {
-      append(s, depth, "{ \""+node+"\" }");
+      append(s, depth, "{ \""+what+"\" }");
     } else {
-      append(s, depth, "{ \""+node+"\"");
+      append(s, depth, "{ \""+what+"\"");
       for(int c = 0; c < node.getChildCount(); c++) s.append(getTree((DefaultMutableTreeNode) node.getChildAt(c), depth+1));
       append(s, depth, "}");
     }
@@ -123,59 +152,56 @@ public class AlgoTree extends JPanel {
     for(int d = 0; d < tab; d++) s.append(" "); s.append(string); s.append("\n");
   }
 
-  /** Returns the tree as a String using the Java syntax. */
-  public String getJavaTree() {
-    return getJavaTree((DefaultMutableTreeNode) root.getChildAt(0), 0).toString();
-  }
-  private static StringBuffer getJavaTree(DefaultMutableTreeNode node, int depth) {
-    StringBuffer s = new StringBuffer(); String what = node.toString();
-    if ("DEBUT DU PROGRAMME".equals(what)) {
-      append(s, depth, "void main() {");
-      appendChilds(s, node, depth);
-      append(s, depth, "}");
-    } else if (what.matches(declarationPattern)) {
-      append(s, depth, what.
-	     replaceFirst("CHAINE_DE_CARACTERE", "String").
-	     replaceFirst("ENTIER_NATUREL", "int").
-	     replaceFirst("NOMBRE_DECIMAL", "double").
-	     replaceFirst("BOOLEEN", "boolean").
-	     replaceFirst("DEJA_DECLAREE", "").
-	     replaceFirst("<-", "=")+"\n");
-    } else if (what.matches(insertionPattern)) {
-      String construct =  what.replaceFirst(insertionPattern, "$1");
-      String expression = what.replaceFirst(insertionPattern, "$2");
-      if ("SI_ALORS".equals(construct)) {
-	append(s, depth, "if ("+expression+") {");
-	appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(0), depth);
-	append(s, depth, "}");
-      } else if ("SI_ALORS_SINON".equals(construct)) {
-	append(s, depth, "if ("+expression+") {");
-	appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(0), depth);
-	append(s, depth, "} else {");
-	appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(1), depth);
-	append(s, depth, "}");
-      } else if ("TANT_QUE".equals(construct)) {
-	append(s, depth, "while ("+expression+") {");
-	appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(0), depth);
-	append(s, depth, "}");
-      }
-    } else if (what.matches(functioncallPattern)) {
-      append(s, depth, what);
-    } else {
-      append(s, depth, "/*");
-      s.append(getTree(node, depth+1));
-      append(s, depth, "*/");
-    }
-    return s;
-  }
-  private static void appendChilds(StringBuffer s, DefaultMutableTreeNode node, int depth) {
-    for(int c = 0; c < node.getChildCount(); c++) s.append(getJavaTree((DefaultMutableTreeNode) node.getChildAt(c), depth+1));
-  }
-
-  /** Sets the tree from a String using the Pml syntax. */
+  /** Sets the tree from a String using the Pml syntax. 
+   * @param string A string with the following the French algorithm syntax: <ul>
+   * <li>Constructs: <ul>
+   * <li><tt>{ DEBUT_PROGRAMME <i>instructions ..</i> FIN_PROGRAMME }</tt> 
+   * defines the <tt>void main() { ..}</tt> root construct.</li>
+   * <li><tt>{ "SI_ALORS (<i>expression booléenne</i>)" {ALORS <i>instructions ..</i> FIN_ALORS }}</tt> 
+   * defines the <tt>if(expression) { .. }</tt> conditional construct.</li>
+   * <li><tt>{ "SI_ALORS_SINON (<i>expression booléenne</i>)" {ALORS <i>instructions ..</i> FIN_ALORS } {SINON <i>instructions ..</i> FIN_SINON }}</tt> 
+   * defines the <tt>if(expression) { .. } else { .. }</tt> conditional construct.</li>
+   * <li><tt>{ "TANT_QUE (<i>expression booléenne</i>)" {FAIRE <i>instructions ..</i> FIN_FAIRE }}</tt> 
+   * defines the <tt>while(expression) { .. }</tt> loop construct.</li>
+   * </ul><li>Variable affectations: <ul>
+   * <li><tt>{ "CHAINE_CARACTERE <i>name</i> &lt;- <i>\"value\"_or_expression</i>;" }</tt> 
+   * defines a textual <tt>String <i>name</i> = "<i>value</i>"; variable.<li>
+   * <li><tt>{ "ENTIER_NATUREL <i>name</i> &lt;- <i>value_or_expression</i>;" }</tt> 
+   * defines a numerical <tt>int <i>name</i> = <i>value</i>; variable.<li>
+   * <li><tt>{ "NOMBRE_DECIMAL <i>name</i> &lt;- <i>value_or_expression</i>;" }</tt> 
+   * defines a floating-point <tt>double <i>name</i> = <i>value</i>; variable.<li>
+   * <li><tt>{ "BOOLEEN <i>name</i> &lt;- <i>value_or_expression</i>;" }</tt> 
+   * defines a logical value <tt>boolean <i>name</i> = <i>value</i>; variable.<li>
+   * <li><tt>{ "DEJA_DECLAREE <i>name</i> &lt;- <i>value_or_expression</i>"; }</tt> 
+   * redefines the variable value.</li>
+   * <li><tt>{ "(CHAINE_DE_CARACTERE|ENTIER_NATUREL|NOMBRE_DECIMAL|BOOLEEN|DEJA_DECLAREE) <i>name</i> &lt;- LIRE_AU_CLAVIER();" }</tt> 
+   * reads the variable value from the user keyboard.</li>
+   * </ul><li>Function call affectations: <ul>
+   * <li><tt>{ "AFFICHER (<i>expression</i>);" }</tt> 
+   * prints the expression value on the user display.</li>
+   * <li><tt>{ "NOUVEAU_TRACE (<i>largeur</i>, <i>hauteur</i>);" }</tt> 
+   * initializes a new drawing of sizes <tt>[0, largeur] x [0, hauteur]</tt>.</li>
+   * <li><tt>{ "TRACE_LIGNE (<i>x1</i>, <i>y1</i>, <i>x1</i>, <i>y1</i>);" }</tt> 
+   * draws a segment line from the point (<tt>x1, y1</tt>) to  the point (<tt>x2, y2</tt>).</li>
+   * <li><tt>{ "TRACE_MOT (<i>x</i>, <i>y</i>, "<i>mot</i>");" }</tt> 
+   * draws a the string <tt>mot</tt> at the point (<tt>x, y</tt>).</li>
+   * </ul></ul>   
+   */
   public void setTree(String string) {
-    Pml pml = new Pml().reset(string); root.removeAllChildren(); root.add(setTree(pml));
-    
+    Pml pml = new Pml().reset(string); 
+    DefaultMutableTreeNode node = setTree(pml);
+    System.out.println("setTree = "+getTree(node, 0));
+    removeAlgo();
+    for(int c = 0; node.getChildCount() > 0 ; c++) {
+      DefaultMutableTreeNode n = (DefaultMutableTreeNode) node.getChildAt(0);
+      if ("FIN_PROGRAMME".equals(n.toString())) {
+	node.remove(0);
+      } else {
+	model.insertNodeInto(n, (DefaultMutableTreeNode) root.getChildAt(0), c);
+      }
+    }
+    model.nodeChanged((DefaultMutableTreeNode) root.getChildAt(0));		
+    tree.scrollPathToVisible(new TreePath(root.getChildAt(0)));
   }
   private static DefaultMutableTreeNode setTree(Pml pml) {
     DefaultMutableTreeNode node = new DefaultMutableTreeNode(pml.getTag());
@@ -183,16 +209,95 @@ public class AlgoTree extends JPanel {
     return node;
   }
   
+  /** Returns the tree as a String using the Java syntax. */
+  public String getJavaTree() {
+    return getJavaTree(root.getChildCount() > 0 ? (DefaultMutableTreeNode) root.getChildAt(0) : null, 0).toString();
+  }
+  private StringBuffer getJavaTree(DefaultMutableTreeNode node, int depth) {
+    StringBuffer s = new StringBuffer(); 
+    if (node != null) {
+      String what = node.toString();
+      if ("DEBUT_PROGRAMME".equals(what)) {
+	append(s, depth, "void main() {");
+	appendChilds(s, node, depth);
+	append(s, depth, "}");
+      } else if (what.matches(declarationPattern)) {
+	append(s, depth, what.
+	       replaceFirst("LIRE_AU_CLAVIER", "read"+getType(node, what)).
+	       replaceFirst("(DEJA_DECLAREE.*)(LIRE_AU_CLAVIER)", "$1IMPOSSIBLE_DE_LIRE_AU_CLAVIER_UNE_CHAINE_DEJA_DECLAREE").
+	       replaceFirst("CHAINE_DE_CARACTERE", "String").
+	       replaceFirst("ENTIER_NATUREL", "int").
+	       replaceFirst("NOMBRE_DECIMAL", "double").
+	       replaceFirst("BOOLEEN", "boolean").
+	       replaceFirst("DEJA_DECLAREE", "").
+	       replaceFirst("<-", "=")
+	       +"\n");
+      } else if (what.matches(insertionPattern)) {
+	String construct =  what.replaceFirst(insertionPattern, "$1");
+	String expression = what.replaceFirst(insertionPattern, "$2");
+	if ("SI_ALORS".equals(construct)) {
+	  append(s, depth, "if ("+expression+") {");
+	  appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(0), depth);
+	  append(s, depth, "}");
+	} else if ("SI_ALORS_SINON".equals(construct)) {
+	  append(s, depth, "if ("+expression+") {");
+	  appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(0), depth);
+	  append(s, depth, "} else {");
+	  appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(1), depth);
+	  append(s, depth, "}");
+	} else if ("TANT_QUE".equals(construct)) {
+	  append(s, depth, "while ("+expression+") {");
+	  appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(0), depth);
+	  append(s, depth, "}");
+	}
+      } else if (what.matches(functioncallPattern)) {
+	append(s, depth, what.
+	       replaceFirst("AFFICHER", "println").
+	       replaceFirst("NOUVEAU_TRACE", "scopeReset").
+	       replaceFirst("TRACE_LIGNE", "scopeAddLine").
+	       replaceFirst("TRACE_MOT", "scopeAdd")
+	       +"\n");
+      } else {
+	append(s, depth, "//"+getTree(node, depth+1).toString().replaceAll("\\s+", " "));
+      }
+    }
+    return s;
+  }
+  private void appendChilds(StringBuffer s, DefaultMutableTreeNode node, int depth) {
+    for(int c = 0; c < node.getChildCount(); c++) s.append(getJavaTree((DefaultMutableTreeNode) node.getChildAt(c), depth+1));
+  }
+  private String getType(DefaultMutableTreeNode node, String what) {
+    String name = what.replaceFirst(declarationPattern, "$2"); int l = node.getLevel();
+    for(Enumeration e = root.depthFirstEnumeration(); e.hasMoreElements();) {
+      DefaultMutableTreeNode n = (DefaultMutableTreeNode) e.nextElement();
+      if (n.getLevel() >= l) {
+	String s = n.toString();
+	if (s.matches(declarationPattern) && name.equals(s.replaceFirst(declarationPattern, "$2"))) {
+	  String type = s.replaceFirst(declarationPattern, "$1");
+	  if (!"DEJA_DECLAREE".equals(type))
+	    return type.
+	      replaceFirst("CHAINE_DE_CARACTERE", "String").
+	      replaceFirst("ENTIER_NATUREL", "Int").
+	      replaceFirst("NOMBRE_DECIMAL", "Double").
+	      replaceFirst("BOOLEEN", "Boolean");
+	}
+      }
+      if (n == node) 
+	break;
+    }
+    return "UnknownType";
+  }
+
   //
   // [3] Builds the input dialogs
   //
-  CardLayout dialog = new CardLayout(); JPanel Jdialog = new JPanel(); 
+  private CardLayout dialog = new CardLayout(); private JPanel Jdialog = new JPanel(); 
   { 
     Jdialog.setLayout(dialog);
   }
 
   // [3.1] Message implementation
-  JLabel message = new JLabel();
+  private JLabel message = new JLabel();
   {
     Jdialog.add(message); dialog.addLayoutComponent(message, "message"); showMessage();
   }
@@ -204,9 +309,9 @@ public class AlgoTree extends JPanel {
   }
 
   // [3.2] Variable declaration implementation
-  String[] types = {"CHAINE_DE_CARACTERE", "ENTIER_NATUREL", "NOMBRE_DECIMAL", "BOOLEEN", "DEJA_DECLAREE"}; JComboBox type = new JComboBox(types); 
-  String[] names = {"", "x", "y", "z", "a", "b"}; JComboBox name = new JComboBox(names); 
-  String[] values = {"", "LIRE_AU_CLAVIER()"}; JComboBox value = new JComboBox(values); 
+  private String[] types = {"CHAINE_DE_CARACTERE", "ENTIER_NATUREL", "NOMBRE_DECIMAL", "BOOLEEN", "DEJA_DECLAREE"}; private JComboBox type = new JComboBox(types); 
+  private String[] names = {"", "x", "y", "z", "a", "b"}; private JComboBox name = new JComboBox(names); 
+  private String[] values = {"", "LIRE_AU_CLAVIER()"}; private JComboBox value = new JComboBox(values); 
   {
     name.setEditable(true);
     value.setEditable(true);
@@ -230,11 +335,11 @@ public class AlgoTree extends JPanel {
 	  if (node.toString().matches(declarationPattern)) {
 	    node.setUserObject(label);
 	  } else {
-	    node = new DefaultMutableTreeNode(label);
+	    node = new DefaultMutableTreeNode(label); 
 	    node.setAllowsChildren(false);
 	    DefaultMutableTreeNode where = getCurrentNode(true);
-	    where.add(node);														
-	    model.insertNodeInto(node, where, where.getChildCount() - 1);
+	    where.add(node);											
+	    model.insertNodeInto(node, where, getCurrentNodeIndex(where));
 	    model.nodeChanged(where);			
 	  }
 	  tree.scrollPathToVisible(new TreePath(node.getPath()));
@@ -273,8 +378,8 @@ public class AlgoTree extends JPanel {
   private static final String declarationPattern = "^(CHAINE_DE_CARACTERE|ENTIER_NATUREL|NOMBRE_DECIMAL|BOOLEEN|DEJA_DECLAREE) ([^ ]+) <- ([^;]+); *$";
 
   // [3.3] Instruction insertion implementation
-  String[] constructs = {"SI_ALORS", "SI_ALORS_SINON", "TANT_QUE"}; JComboBox construct = new JComboBox(constructs); 
-  String[] expressions = {"", "VRAI"}; JComboBox expression = new JComboBox(expressions); 
+  private String[] constructs = {"SI_ALORS", "SI_ALORS_SINON", "TANT_QUE"}; private JComboBox construct = new JComboBox(constructs); 
+  private String[] expressions = {"", "VRAI"}; private JComboBox expression = new JComboBox(expressions); 
   {
     expression.setEditable(true);
     JPanel pane = new JPanel(); pane.setLayout(new GridLayout(2, 3));
@@ -305,15 +410,19 @@ public class AlgoTree extends JPanel {
 	    node = new DefaultMutableTreeNode(label);
 	    if ("SI_ALORS".equals(construct.getSelectedItem())) {
 	      node.add(new DefaultMutableTreeNode("ALORS"));
+	      addTrailer((DefaultMutableTreeNode) node.getChildAt(0), "FIN_ALORS");
 	    } else if ("SI_ALORS_SINON".equals(construct.getSelectedItem())) {
 	      node.add(new DefaultMutableTreeNode("ALORS"));
+	      addTrailer((DefaultMutableTreeNode) node.getChildAt(0), "FIN_ALORS");
 	      node.add(new DefaultMutableTreeNode("SINON"));
+	      addTrailer((DefaultMutableTreeNode) node.getChildAt(1), "FIN_SINON");
 	    } else if ("TANT_QUE".equals(construct.getSelectedItem())) {
 	      node.add(new DefaultMutableTreeNode("FAIRE"));
+	      addTrailer((DefaultMutableTreeNode) node.getChildAt(0), "FIN_FAIRE");
 	    } 
 	    DefaultMutableTreeNode where = getCurrentNode(true);
 	    where.add(node);														
-	    model.insertNodeInto(node, where, where.getChildCount() - 1);
+	    model.insertNodeInto(node, where, getCurrentNodeIndex(where));
 	    model.nodeChanged(where);			
 	  }
 	  tree.scrollPathToVisible(new TreePath(((DefaultMutableTreeNode) node.getChildAt(0)).getPath()));
@@ -342,8 +451,8 @@ public class AlgoTree extends JPanel {
 
 
   // [3.4] Function call insertion implementation
-  String[] functions = {"AFFICHER", "NOUVEAU_TRACE", "TRACE_LIGNE", "TRACE_MOT"}; JComboBox function = new JComboBox(functions); 
-  String[] arguments = {"", "\"??\""}; JComboBox argument = new JComboBox(arguments); 
+  private String[] functions = {"AFFICHER", "NOUVEAU_TRACE", "TRACE_LIGNE", "TRACE_MOT"}; private JComboBox function = new JComboBox(functions); 
+  private String[] arguments = {"", "\"??\""}; private JComboBox argument = new JComboBox(arguments); 
   {
     argument.setEditable(true);
     JPanel pane = new JPanel(); pane.setLayout(new GridLayout(2, 3));
@@ -363,7 +472,7 @@ public class AlgoTree extends JPanel {
 	    node.setAllowsChildren(false);
 	    DefaultMutableTreeNode where = getCurrentNode(true);
 	    where.add(node);														
-	    model.insertNodeInto(node, where, where.getChildCount() - 1);
+	    model.insertNodeInto(node, where, getCurrentNodeIndex(where));
 	    model.nodeChanged(where);			
 	  }
 	  tree.scrollPathToVisible(new TreePath(node.getPath()));
@@ -388,7 +497,7 @@ public class AlgoTree extends JPanel {
     }
     dialog.show(Jdialog, "functioncall");
   }
-  private static final String functioncallPattern = "^(AFFICHER|NOUVEAU_TRACE|TRACE_LIGNE|TRACE_MOT) \\(([^ ]+)\\); *$";
+  private static final String functioncallPattern = "^(AFFICHER|NOUVEAU_TRACE|TRACE_LIGNE|TRACE_MOT) \\(([^;]+)\\); *$";
 
   // [3.5] Node edition implementation
   {
@@ -396,8 +505,7 @@ public class AlgoTree extends JPanel {
     pane.add(new JButton(new AbstractAction("Confirmer la supression de TOUT l'algo.") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  while(root.getChildAt(0).getChildCount() > 0)
-	    model.removeNodeFromParent((DefaultMutableTreeNode) root.getChildAt(0).getChildAt(0));
+	  removeAlgo();
 	  showMessage();
 	}
       }));
@@ -410,29 +518,41 @@ public class AlgoTree extends JPanel {
     Jdialog.add(pane); dialog.addLayoutComponent(pane, "supprimer");
     add(Jdialog, BorderLayout.SOUTH);
   }
-  private void doEdit() {
-    String action = (String) edit.getSelectedItem();
-    System.out.println(action);
-    if ("Coller".equals(action)) {
+  private void removeAlgo() {
+    while(root.getChildAt(0).getChildCount() > 0)
+      model.removeNodeFromParent((DefaultMutableTreeNode) root.getChildAt(0).getChildAt(0));  
+    addTrailer((DefaultMutableTreeNode) root.getChildAt(0), "FIN_PROGRAMME");
+  }
+  private void doEdit(String action) {
+    if ("^C Copier".equals(action)) {
       DefaultMutableTreeNode node = getCurrentNode(false);
       clipboard = copy(node);
-    } else if ("Couper".equals(action)) {
+      System.out.println(action + " : " + getTree(clipboard, 0) + " == " + getTree(node, 0));
+    } else if ("^X Couper".equals(action)) {
       DefaultMutableTreeNode node = getCurrentNode(false);
       if (node == root.getChildAt(0)) {
 	dialog.show(Jdialog, "supprimer");
       } else {
 	clipboard = node;
 	model.removeNodeFromParent(node);
+	System.out.println(action + " : " + getTree(clipboard, 0));
       }
-    } else if ("Coller".equals(action)) {
-      DefaultMutableTreeNode node = getCurrentNode(false);
+    } else if ("^V Coller".equals(action)) {
+      DefaultMutableTreeNode node = getCurrentNode(true);
       if (node == null) {
 	showMessage("Selectionner un position avant de coller");
       } else {
 	DefaultMutableTreeNode n = copy(clipboard);
 	node.add(n);									
-	model.insertNodeInto(n, node, node.getChildCount() - 1);
+	model.insertNodeInto(n, node, getCurrentNodeIndex(node));
+	System.out.println(action + " : " + getTree(clipboard, 0));
       }
+    } else if ("^L Check".equals(action)) {
+      System.out.println(action + " : " + getTree() + " == \n" + getJavaTree());
+      Utils.saveString("/tmp/tmp.jvs", getJavaTree());
+      Jvs2Java.translate("/tmp/tmp.jvs");
+      System.out.println(Jvs2Java.compile("/tmp/tmp.java"));
+      Utils.exec("java -cp /tmp tmp");
     }
     edit.setSelectedItem("Edit");
   }
@@ -443,11 +563,36 @@ public class AlgoTree extends JPanel {
       copy.add(copy((DefaultMutableTreeNode) node.getChildAt(c)));
     return copy;
   }
+  {
+    /* http://java.sun.com/products/jfc/tsc/special_report/kestrel/keybindings.html
+    getKeymap().addActionForKeyStroke(KeyStroke.getKeyStroke(KeyEvent.VK_C, Event.CTRL_MASK), new AbstractAction() {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  doEdit("^C Copier");
+	}});
+    getKeymap().addActionForKeyStroke(KeyStroke.getKeyStroke(KeyEvent.VK_X, Event.CTRL_MASK), new AbstractAction() {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  doEdit("^X Couper");
+	}});
+    getKeymap().addActionForKeyStroke(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), new AbstractAction() {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  doEdit("^V Coller");
+	}});
+    */
+  }
   private DefaultMutableTreeNode clipboard = null;
 
   /** Used to test the interface. */
   public static void main(String[] args){
-    AlgoTree fen = new AlgoTree(); Utils.show(fen, "AlgoTree", 800, 600);
+    String algo = 
+      "{ DEBUT_PROGRAMME"+
+      "  { \"AFFICHER (\\\"Hello World!\\\");\" }"+
+      "  { \"AFFICHER (\\\"How do you do ?\\\");\" }"+
+      "  { FIN_PROGRAMME }"+
+      "}";
+    AlgoTree fen = new AlgoTree(); fen.setTree(algo); Utils.show(fen, "AlgoTree", 800, 600);
   }
 }
 

@@ -62,8 +62,7 @@ public class DisplayCurve implements org.javascool.Proglet { private DisplayCurv
   // This defines the tests on the panel
   //
 
-  /** Test du panel. */
-  public static void test() {
+  /**/public static void test() {
     scopeReset();
     for(double x = -1; x <= 1; x += 0.001) {
       scopeSet(x, 0.5 * Math.sin(10 * x) + 0.5, 6);
@@ -76,14 +75,13 @@ public class DisplayCurve implements org.javascool.Proglet { private DisplayCurv
   //
 
   /** Initialise le tracé. 
-   * @param X Echelle maximale horizontale, l'abscisse sera tracée dans [-X, X], par défaut [-1, 1].
+   * @param X Echelle maximale horizontale, l'abscisse sera tracée dans [-X, X], par défaut [-1, 1]. 
    * @param Y Echelle maximale verticale, l'ordonnée sera tracée dans [-Y, Y], par défaut [-1, 1].
    */
-  static public void scopeReset(double X, double Y) {
+  public static void scopeReset(double X, double Y) {
     panel.reset(X, Y);
   }
-  /** Initialise le tracé pour un tracé. */
-  static public void scopeReset() {
+  /**/public static void scopeReset() {
     panel.reset(1, 1);
   }
 
@@ -92,7 +90,7 @@ public class DisplayCurve implements org.javascool.Proglet { private DisplayCurv
    * @param y Ordonnée de la courbe, dans [-Y, Y], par défaut [-1, 1].
    * @param c Numéro de la courbe: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
    */
-  static public void scopeSet(double x, double y, int c) {
+  public static void scopeSet(double x, double y, int c) {
     panel.scope.add(x, y, c);
   }
 
@@ -102,8 +100,14 @@ public class DisplayCurve implements org.javascool.Proglet { private DisplayCurv
    * @param s Valeur de la chaîne de caratère.
    * @param c Couleur de la chaîne de caratère: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
    */
-  static public void scopeAdd(double x, double y, String s, int c) {
+  public static void scopeAddString(double x, double y, String s, int c) {
     panel.scope.add(x, y, s, c);
+  }
+  /**/public static void scopeAddString(double x, double y, String s) {
+    scopeAddString(x, y, s, 0);
+  }
+  /**/public static void scopeAdd(double x, double y, String s, int c) {
+    scopeAddString(x, y, s, c);
   }
 
   /** Trace un rectangle. 
@@ -113,11 +117,14 @@ public class DisplayCurve implements org.javascool.Proglet { private DisplayCurv
    * @param ymax Ordonnée supérieure droite, dans [-Y, Y], par défaut [-1, 1].
    * @param c Numéro de la courbe: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
    */
-  static public void scopeAddRectangle(double xmin, double ymin, double xmax, double ymax, int c) {
+  public static void scopeAddRectangle(double xmin, double ymin, double xmax, double ymax, int c) {
     scopeAddLine(xmin, ymin, xmax, ymin, c);
     scopeAddLine(xmax, ymin, xmax, ymax, c);
     scopeAddLine(xmax, ymax, xmin, ymax, c);
     scopeAddLine(xmin, ymax, xmin, ymin, c);
+  }
+  /**/public static void scopeAddRectangle(double xmin, double ymin, double xmax, double ymax) {
+    scopeAddRectangle(xmin, ymin, xmax, ymax, 0);
   }
 
   /** Trace une ligne. 
@@ -127,8 +134,11 @@ public class DisplayCurve implements org.javascool.Proglet { private DisplayCurv
    * @param y2 Ordonnée du 2eme point, dans [-Y, Y], par défaut [-1, 1].
    * @param c Numéro de la courbe: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
    */
-  static public void scopeAddLine(double x1, double y1, double x2, double y2, int c) {
+  public static void scopeAddLine(double x1, double y1, double x2, double y2, int c) {
     panel.scope.add(x1, y1, x2, y2, c);
+  }
+  /**/public static void scopeAddLine(double x1, double y1, double x2, double y2) {
+    scopeAddLine(x1, y1, x2, y2, 0);
   }
 
   /** Trace un  cercle. 
@@ -137,15 +147,18 @@ public class DisplayCurve implements org.javascool.Proglet { private DisplayCurv
    * @param r Rayon du cercle.
    * @param c Numéro de la courbe: 0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).
    */
-  static public void scopeAddCircle(double x, double y, double r, int c) {
+  public static void scopeAddCircle(double x, double y, double r, int c) {
     panel.scope.add(x, y, r, c);
+  }
+  /**/public static void scopeAddCircle(double x, double y, double r) {
+    scopeAddCircle(x, y, r, 0);
   }
 
   /** Renvoie la valeur horizontale du réticule. */
-  static public double scopeX() { return panel.inputX.getValue(); }
+  public static double scopeX() { return panel.inputX.getValue(); }
 
   /** Renvoie la valeur verticale du réticule. */
-  static public double scopeY() { return panel.inputY.getValue(); }
+  public static double scopeY() { return panel.inputY.getValue(); }
 
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();

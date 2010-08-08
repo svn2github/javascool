@@ -97,8 +97,7 @@ public class Console implements org.javascool.Proglet { private Console() { }
   // This defines the tests on the panel
   //
 
-  /** Test du panel. */
-  public static void test() {
+  /**/public static void test() {
     clear();
     println("Bonjour, qui es tu ?");
     String nom = readString();
@@ -116,17 +115,19 @@ public class Console implements org.javascool.Proglet { private Console() { }
    * @param string La chaine à écrire.
    */
   public static void println(String string) { panel.writeString(string, false);  panel.writeString("<br/>\n", true); }
-  public static void println(long string) { println(""+string); }
-  public static void println(double string) { println(""+string); }
-  public static void println(boolean string) { println(""+string); }
+  /**/public static void println(long string) { println(""+string); }
+  /**/public static void println(double string) { println(""+string); }
+  /**/public static void println(boolean string) { println(""+string); }
+  /**/public static void println(Object string) { println(""+string); }
 
   /** Ecrit une chaine de caractères dans la fenêtre de sortie (output) et sans passer à la ligne.
    * @param string La chaine à écrire.
    */
   public static void print(String string) { panel.writeString(string, false); }
-  public static void print(long string) { print(""+string); }
-  public static void print(double string) { print(""+string); }
-  public static void print(boolean string) { print(""+string); }
+  /**/public static void print(long string) { print(""+string); }
+  /**/public static void print(double string) { print(""+string); }
+  /**/public static void print(boolean string) { print(""+string); }
+  /**/public static void print(Object string) { print(""+string); }
 
   /** Ecrit une chaine de caractères colorée dans la fenêtre de sortie (output) et passe à la ligne.
    * @param string La chaine à écrire.

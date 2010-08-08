@@ -32,8 +32,7 @@ public class ImageDisplay implements org.javascool.Proglet { private ImageDispla
   // This defines the tests on the panel
   //
 
-  /** Test du panel. */
-  public static void test() { 
+  /**/public static void test() { 
     for(int size = 256; size > 0; size /= 2) {
       smileyReset(size, size);
       peace();
