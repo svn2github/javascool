@@ -549,10 +549,10 @@ public class AlgoTree extends JPanel {
       }
     } else if ("^L Check".equals(action)) {
       System.out.println(action + " : " + getTree() + " == \n" + getJavaTree());
-      Utils.saveString("/tmp/tmp.jvs", getJavaTree());
-      Jvs2Java.translate("/tmp/tmp.jvs");
-      System.out.println(Jvs2Java.compile("/tmp/tmp.java"));
-      Utils.exec("java -cp /tmp tmp");
+      Utils.saveString("tmp-algotree.jvs", getJavaTree());
+      Jvs2Java.translate("tmp-algotree.jvs");
+      System.out.println(Jvs2Java.compile("tmp-algotree.java"));
+
     }
     edit.setSelectedItem("Edit");
   }
