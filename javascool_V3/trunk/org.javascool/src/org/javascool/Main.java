@@ -62,6 +62,8 @@ public class Main extends JApplet implements ActionListener {
     JButton jHelpButton = new JButton();
     JButton jJvsButton = new JButton();
     JButton jPmlButton = new JButton();
+    String[] activities = {"PML","JavaScool","AlgoTree"};
+    JComboBox actlist = new JComboBox(activities);
     JTextPane editorPane=new JTextPane();
     JPanel panetop=new JPanel();
     JPanel helpane=new JPanel();
@@ -72,6 +74,7 @@ public class Main extends JApplet implements ActionListener {
     JFileChooser fc;
     SourceEditor se=new SourceEditor();
     JEditorPane help=new JEditorPane();
+    AlgoTree at=new AlgoTree();
     File file;
   // This is the way to build the applet
   public void init() {
@@ -81,8 +84,9 @@ public class Main extends JApplet implements ActionListener {
   // Panes positions
     pane.add(panetop,BorderLayout.NORTH);
     panetop.add(tools);
-    panetop.add(mods,BorderLayout.EAST);
-    tabbedPane.addTab("Nouveau.jvs - JVS Editor",se);
+    panetop.add(actlist,BorderLayout.EAST);
+    actlist.addActionListener(this);
+    tabbedPane.addTab("Nouveau.jvs - JVS Editor",at);
     help.setText(Utils.loadString("http://www.google.fr"));
     help.setContentType("text/html");
     helpane.add(help);
@@ -134,6 +138,14 @@ public class Main extends JApplet implements ActionListener {
     }
     else if(e.getSource()==jPmlButton){
     startPml();
+    }
+    else if(e.getSource()==actlist){
+        JComboBox cb = (JComboBox)e.getSource();
+        String actName = (String)cb.getSelectedItem();
+        System.out.println(actName);
+        if(actName.equals("JavaScool")){startJvs();}
+        else if(actName.equals("Pml")){startPml();}
+        else{System.out.println("No activities which is named "+actName);}
     }
     else{System.out.println("Button hasn't got action !!!");}
   }
