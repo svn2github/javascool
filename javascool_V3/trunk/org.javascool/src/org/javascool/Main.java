@@ -62,7 +62,7 @@ public class Main extends JApplet implements ActionListener {
     JButton jHelpButton = new JButton();
     JButton jJvsButton = new JButton();
     JButton jPmlButton = new JButton();
-    String[] activities = {"PML","JavaScool","AlgoTree"};
+    String[] activities = {"Pml","Jvs","Algo"};
     JComboBox actlist = new JComboBox(activities);
     JTextPane editorPane=new JTextPane();
     JPanel panetop=new JPanel();
@@ -73,8 +73,9 @@ public class Main extends JApplet implements ActionListener {
     JTabbedPane tabbedPane = new JTabbedPane();
     JFileChooser fc;
     SourceEditor se=new SourceEditor();
-    JEditorPane help=new JEditorPane();
     AlgoTree at=new AlgoTree();
+    JEditorPane help=new JEditorPane();
+    AlgoTree ae=new AlgoTree();
     File file;
   // This is the way to build the applet
   public void init() {
@@ -116,7 +117,7 @@ public class Main extends JApplet implements ActionListener {
     jJvsButton.setText("Java's cool");
     jJvsButton.addActionListener(this);
     mods.add(jJvsButton);
-    jPmlButton.setText("    PML    ");
+    jPmlButton.setText("    Pml    ");
     jPmlButton.addActionListener(this);
     mods.add(jPmlButton);
   // Set Visible
@@ -143,8 +144,9 @@ public class Main extends JApplet implements ActionListener {
         JComboBox cb = (JComboBox)e.getSource();
         String actName = (String)cb.getSelectedItem();
         System.out.println(actName);
-        if(actName.equals("JavaScool")){startJvs();}
+        if(actName.equals("Jvs")){startJvs();}
         else if(actName.equals("Pml")){startPml();}
+        else if(actName.equals("Algo")){startAlgo();}
         else{System.out.println("No activities which is named "+actName);}
     }
     else{System.out.println("Button hasn't got action !!!");}
@@ -203,19 +205,27 @@ public class Main extends JApplet implements ActionListener {
     se.setText("");
   }
   private void showHelp(){
-    tabbedPane.addTab("Aide",helpane);
+    tabbedPane.addTab("Aide",helpane); 
+    tabbedPane.revalidate();
   }
   private void startPml(){
     tabbedPane.removeAll();
-    tabbedPane.addTab("Nouveau.pml - PML Editor",se);
+    tabbedPane.addTab("Nouveau.pml - Pml Editor",se);
     if(se.getText().length()>0){
     this.saveFile("Enregistrer votre fichier en JVS avant de passer à Pml");
     file=null;
     newFile();}
+    tabbedPane.revalidate();
   }
   private void startJvs(){
-    tabbedPane.remove(1);
+    tabbedPane.removeAll();
     tabbedPane.addTab("Nouveau.jsc - JVS Editor",se);
+    tabbedPane.revalidate();
   }
-  
+   private void startAlgo(){
+    tabbedPane.removeAll();
+    tabbedPane.addTab("Nouveau.jsc - Algo Editor",ae);
+    tabbedPane.revalidate();
+  }
+
 }

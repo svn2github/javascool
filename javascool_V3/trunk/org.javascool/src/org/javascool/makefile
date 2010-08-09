@@ -2,7 +2,7 @@
 ifeq ($(USER), vthierry)
 
 all : 
-	@$(MAKE) -C ../../.. v2
+	@$(MAKE) -C ../../.. v3
 
 else
 
