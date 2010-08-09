@@ -19,7 +19,7 @@ j3: www/javascool.jar
 
 v2: www/javascool.jar
 #	@cd tst ; java -cp ../www/javascool.jar org.javascool.AlgoTree
-	@cd tst ; java -cp ../www/javascool.jar org.javascool.MainV2 edit javaprog Test0.jvs
+	@cd tst ; java -cp ../www/javascool.jar org.javascool.MainV2 edit ingredients Test0.jvs
 
 v3: cmp
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Main
@@ -42,7 +42,7 @@ pub: www/api/index.html www/javascool.jar
 
 # Creation of a signed jar for standalone applications integrating the jdk5 classes
 
-J5=/usr/java/jdk1.5.0_13
+J5=/usr/java/jdk1.5.0_22
 
 # Jar meta-data
 
@@ -97,7 +97,9 @@ src/org/javascool/Proglets.java : $(shell find src/proglet -name '*.java')
 	@for f in `egrep -l 'implements[ \t]+(org.javascool.)?Proglet' $^` ; do echo $$f | sed 's/^src\/\(.*\)\.java$$/"\1",/' | sed 's/\//./g' ; done >> $@
 	@echo '""}; }' >> $@
 
-CP=/usr/java/jdk1.5.0_13/lib/tools.jar
+ifeq ($(USER), vthierry)
+
+CP=/usr/java/jdk1.5.0_22/lib/tools.jar
 
 lib/tools.jar : $(CP)
 	@cp $^ $@
@@ -106,6 +108,8 @@ SX=/home/vthierry/bin/saxon.jar
 
 lib/saxon.jar : $(SX)
 	@cp $^ $@
+
+endif
 
 #####################################################################################################################################
 
