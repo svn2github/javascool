@@ -33,8 +33,11 @@ import java.awt.Event;
 import java.awt.event.KeyEvent;
 import javax.swing.KeyStroke;
 
-/** This widget defines a re-oriented graohic algorithm editor. */
-public class AlgoTree extends JPanel {
+/** This widget defines a re-oriented graohic algorithm editor. 
+ * @see <a href="AlgoTree.java">source code</a>
+ * @see Jvs2Java
+*/
+public class AlgoTree extends JPanel implements Widget {
   private static final long serialVersionUID = 1L;
   
   //
@@ -50,22 +53,22 @@ public class AlgoTree extends JPanel {
 	public void actionPerformed(ActionEvent e) {
 	  doEdit((String) edit.getSelectedItem());
 	}});
-    bar.add(new JButton(new AbstractAction("Declarer-Variable") {
+    bar.add(edit);
+    bar.add(new JButton(new AbstractAction("Déclarer Variable") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  doDeclaration();
 	}}));
-    bar.add(new JButton(new AbstractAction("Ajouter-Instruction") {
+    bar.add(new JButton(new AbstractAction("Ajouter Instruction") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) {
 	  doInsertion();
 	}}));
-    bar.add(new JButton(new AbstractAction("Utiliser-Fonction") {
+    bar.add(new JButton(new AbstractAction("Utiliser Fonction") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) {
 	  doFunctioncall();
 	}}));
-    bar.add(edit);
     add(bar, BorderLayout.NORTH);
   }
 
@@ -106,6 +109,7 @@ public class AlgoTree extends JPanel {
     */
     add(new JScrollPane(tree), BorderLayout.CENTER);
   }
+  // [2.1] Interface between algo edition and Jtree
   // Gets the current node or the current "unleaf" node on which childreb can be added
   private DefaultMutableTreeNode getCurrentNode(boolean unleaf) {
     node_index = -1;
@@ -230,6 +234,8 @@ public class AlgoTree extends JPanel {
 	       replaceFirst("NOMBRE_DECIMAL", "double").
 	       replaceFirst("BOOLEEN", "boolean").
 	       replaceFirst("DEJA_DECLAREE", "").
+	       replaceAll("VRAI", "true").
+	       replaceAll("FAUX", "false").
 	       replaceFirst("<-", "=")
 	       +"\n");
       } else if (what.matches(insertionPattern)) {
@@ -255,7 +261,9 @@ public class AlgoTree extends JPanel {
 	       replaceFirst("AFFICHER", "println").
 	       replaceFirst("NOUVEAU_TRACE", "scopeReset").
 	       replaceFirst("TRACE_LIGNE", "scopeAddLine").
-	       replaceFirst("TRACE_MOT", "scopeAdd")
+	       replaceFirst("TRACE_MOT", "scopeAdd").
+	       replaceAll("VRAI", "true").
+	       replaceAll("FAUX", "false")
 	       +"\n");
       } else {
 	append(s, depth, "//"+getTree(node, depth+1).toString().replaceAll("\\s+", " "));
@@ -384,7 +392,7 @@ public class AlgoTree extends JPanel {
     expression.setEditable(true);
     JPanel pane = new JPanel(); pane.setLayout(new GridLayout(2, 3));
     pane.add(new JLabel(" Choix de l'instruction:"));
-    pane.add(new JLabel(" Valeur de la variable:"));
+    pane.add(new JLabel(" Valeur de l'expression:"));
     pane.add(new JButton(new AbstractAction("Valider") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
@@ -549,11 +557,12 @@ public class AlgoTree extends JPanel {
       }
     } else if ("^L Check".equals(action)) {
       System.out.println(action + " : " + getTree() + " == \n" + getJavaTree());
-      Utils.saveString("tmp-algotree.jvs", getJavaTree());
-      Jvs2Java.translate("tmp-algotree.jvs");
-      System.out.println(Jvs2Java.compile("tmp-algotree.java"));
-
-    }
+      Utils.saveString("tmp.jvs", getJavaTree());
+      Jvs2Java.translate("tmp.jvs");
+      System.out.println(Jvs2Java.compile("tmp.java"));
+      Jvs2Java.load("tmp.class"); 
+      MainV2 r = new MainV2(); r.setProglet("ingredients"); Utils.show(r, "javascool proglet's runner", 560, 720);
+     }
     edit.setSelectedItem("Edit");
   }
   private DefaultMutableTreeNode copy(DefaultMutableTreeNode node) {

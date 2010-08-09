@@ -55,8 +55,6 @@ import java.net.URI;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import java.net.URLClassLoader;
-
 /** Defines the main javascool proglet interface of the javasccol/proglet v2 interface.
  * File used: <pre>
  * org/javascool/doc-files/load.png
@@ -570,11 +568,8 @@ public class MainV2 extends JApplet {
     } else {
       new File(path+".java").delete();
       // Loads the compiled proglet for execution
-      URL[] urls = new URL[] { new URL("file:"+new File(path+".class").getParent()+File.separator) };
-      final Class<?> s = new URLClassLoader(urls).loadClass(main);
-      MainV2 r = (MainV2) s.newInstance(); r.setProglet(proglet);
-      // Point where = getLocationOnScreen(); where.x -= 570;
-      runWindow = Utils.show(r, "javascool \""+proglet+"\" proglet's runner", 560, 720);
+      Jvs2Java.load(path); 
+      MainV2 r = new MainV2(); r.setProglet(proglet); runWindow = Utils.show(r, "javascool \""+proglet+"\" proglet's runner", 560, 720);
     }
   }
   private JFrame runWindow = null;

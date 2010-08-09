@@ -399,7 +399,9 @@ public class Utils { private Utils() { }
   }
   /**/public static JFrame show(JApplet applet, String title) {
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();  
-    return show(applet, title, (int) (0.8 * dim.getWidth()), (int) (0.8 * dim.getHeight()));
+    int width = (int) (0.8 * dim.getWidth()), height = (int) (0.8 * dim.getHeight());
+    if (width > 1800) width = 1800; if(height > 1000) height = 1000;
+    return show(applet, title, width, height);
   }
   /**/public static JFrame show(JComponent panel, String title, int width, int height) {
     return show(new AppletPanel(panel), title, width, height);

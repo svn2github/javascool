@@ -12,14 +12,14 @@ usage :
 	@echo ' make pub          : publie les fichiers du site web'
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp lib/manifest.mf www/api www/javascool.jar .http.root src/org/javascool/xslt/page.htm
+	@rm -rf `find . -name '*.class'` tmp tst/tmp.* lib/manifest.mf www/api www/javascool.jar .http.root src/org/javascool/xslt/page.htm
 
 j3: www/javascool.jar
 	cd tst ; java -jar ../www/javascool.jar
 
 v2: www/javascool.jar
-#	@cd tst ; java -cp ../www/javascool.jar org.javascool.AlgoTree
-	@cd tst ; java -cp ../www/javascool.jar org.javascool.MainV2 edit ingredients Test0.jvs
+	@cd tst ; java -cp ../www/javascool.jar org.javascool.AlgoTree
+#	@cd tst ; java -cp ../www/javascool.jar org.javascool.MainV2 edit ingredients Test0.jvs
 
 v3: cmp
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Main
@@ -42,7 +42,7 @@ pub: www/api/index.html www/javascool.jar
 
 # Creation of a signed jar for standalone applications integrating the jdk5 classes
 
-J5=/usr/java/jdk1.5.0_22
+J5=/usr/java/jdk1.5.0_13
 
 # Jar meta-data
 
@@ -99,7 +99,7 @@ src/org/javascool/Proglets.java : $(shell find src/proglet -name '*.java')
 
 ifeq ($(USER), vthierry)
 
-CP=/usr/java/jdk1.5.0_22/lib/tools.jar
+CP=/usr/java/jdk1.5.0_13/lib/tools.jar
 
 lib/tools.jar : $(CP)
 	@cp $^ $@

@@ -14,6 +14,10 @@ import java.util.HashMap;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 
+// Used to load class
+import java.net.URL;
+import java.net.URLClassLoader;
+
 /** This factory defines how a Jvs code is translated into a Java code and compiled. 
  * The goal of the Jvs syntax is to ease the syntax when starting to program in an imperative language, like Java. 
  * <p>- This factory calls the java compiler in the jdk5 (and earlier) case. It is designed to be used in standalone mode.</p>
@@ -103,15 +107,15 @@ public class Jvs2Java { private Jvs2Java() { }
   }
 
   /** Translates a Jvs code source.
-   * @param filename The file path to translate: A <tt>.jvs</tt> file is read and the corresponding <tt>.java</tt> file is written.
+   * @param path The file path to translate: A <tt>.jvs</tt> file is read and the corresponding <tt>.java</tt> file is written.
    * @param proglet The proglet to use. Default is to make all proglets usable.
    *
    * @throws RuntimeException if an I/O exception occurs during file translation.
+   * @throws IllegalArgumentException If the Java class name is not valid.
    */
-  public static void translate(String filename, String proglet) {
-    String file = filename.replaceAll("\\.[a-z]+$", "");
-    String s = File.separatorChar == '\\' ? "\\\\" : File.separator, main = filename.replaceAll(".*"+s+"([^"+s+"]+)\\.[a-z]+$", "$1");
-    String[] lines = Utils.loadString(file+".jvs").split("\n");
+  public static void translate(String path, String proglet) {
+    setJpathclass(path);
+    String[] lines = Utils.loadString(jpath+".jvs").split("\n");
     StringBuffer head = new StringBuffer(), body = new StringBuffer();
     // Here is the translation loop
     {
@@ -134,7 +138,8 @@ public class Jvs2Java { private Jvs2Java() { }
 	head.append("import static "+proglets.get(proglet)+".*;");
       }
       // Declares the proglet's core as a Runnable in the Applet
-      head.append("public class "+main+ " extends org.javascool.MainV2 {");
+      // - defined as a MainV2 in order to be loaded in a java page as an executable applet.
+      head.append("public class "+jclass+ " extends org.javascool.MainV2 {");
       head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");
       head.append("  static { Jvs2Java.runnable = new ProgletRunnableMain(); }");
       head.append("}");
@@ -143,10 +148,10 @@ public class Jvs2Java { private Jvs2Java() { }
       head.append("  public void run() { main(); }");
       body.append("}\n");
     }
-    Utils.saveString(file+".java", head.toString()+body.toString());
+    Utils.saveString(jpath+".java", head.toString()+body.toString());
   }
-  static void translate(String filename) {
-    translate(filename, "");
+  static void translate(String path) {
+    translate(path, "");
   }
   // Translates one line of the source file
   private static String translateOnce(String line) {
@@ -160,32 +165,51 @@ public class Jvs2Java { private Jvs2Java() { }
   // Counter used to increment the serialVersionUID in order to reload the different versions of the class
   private static int uid = 1;
 
+  // Properly defines the java path and java class from a file name
+  private static void setJpathclass(String path) {
+    jpath = path.replaceAll("\\.[a-z]+$", "");
+    if (!jpath.matches(".*"+File.separator+".*")) jpath = System.getProperty("user.dir")+File.separator+jpath;
+    String s = File.separatorChar == '\\' ? "\\\\" : File.separator;
+    jclass = jpath.replaceAll(".*"+s+"([^"+s+"]+)$", "$1");
+    if (isReserved(jclass) || Utils.toName(jclass) != jclass) throw new IllegalArgumentException("Bad Java class name \""+jclass+"\"");
+  }
+  private static String jpath, jclass;
 
-  /** Compiles a Java code source
+  /** Compiles a Java code source.
    * <div>The jdk5 <tt>tool.jar</tt> must be in the path.</div>
-   * @param filename The file path to compile
+   * @param path The file path to compile.
    * @return An empty string if the compilation succeeds, else the error message's text.
    *
    * @throws RuntimeException if an I/O exception occurs during command execution.
    */
-  public static String compile(String filename) {
-    String args[] = { filename };
+  public static String compile(String path) {
+    String args[] = { path };
     StringWriter out = new StringWriter();
     try { 
       Class.forName("com.sun.tools.javac.Main").getDeclaredMethod("compile", Class.forName("[Ljava.lang.String;"), Class.forName("java.io.PrintWriter")).
 	invoke(null, args, new PrintWriter(out)); 
     } catch(Exception e) { 
-      throw new RuntimeException("Erreur: impossible de compiler, il y a une erreur d'installation ("+e+"), contacter http://javascool.gforge.inria.fr/proglet");
+      throw new RuntimeException("Erreur: impossible de compiler, il y a une erreur d'installation ("+e+"), contacter http://javascool.gforge.inria.fr");
     }
-    return out.toString().trim().replaceAll(filename.replaceAll("\\\\", "\\\\\\\\"), new File(filename).getName());
+    return out.toString().trim().replaceAll(path.replaceAll("\\\\", "\\\\\\\\"), new File(path).getName());
   }
 
-  /** Executes a Java source code proglet.
-   * @param jclass The Java class to compile.
+  /** Dynamically loads a Java class to be used during this session.
+   * @param path The path to the java class to load. The java class is supposed to belong to the "default" package, i.e. not to belong to a package.
+   * @return An instantiation of this Java class.
    *
    * @throws RuntimeException if an I/O exception occurs during command execution.
+   * @throws IllegalArgumentException If the Java class name is not valid.
    */
-  public static void execute(String jclass) {
+  public static Object load(String path) {  
+    setJpathclass(path);
+    try {
+      URL[] urls = new URL[] { new URL("file:"+new File(jpath).getParent()+File.separator) };
+      Class<?> j_class = new URLClassLoader(urls).loadClass(jclass);
+      return j_class.newInstance(); 
+    } catch(Exception e) { 
+      throw new RuntimeException("Erreur: impossible de charger "+jpath+" / "+jclass+", il y a une erreur d'installation ("+e+"), contacter http://javascool.gforge.inria.fr");
+    }
   }
 
   /** This is the entry point to run the proglet pupil's program: do not modify manually !!. */
