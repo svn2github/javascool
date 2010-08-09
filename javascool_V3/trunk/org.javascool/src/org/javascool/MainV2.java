@@ -57,12 +57,12 @@ import java.net.URLEncoder;
 
 /** Defines the main javascool proglet interface of the javasccol/proglet v2 interface.
  * File used: <pre>
- * org/javascool/doc-files/load.png
- * org/javascool/doc-files/save.png
- * org/javascool/doc-files/compile.png
- * org/javascool/doc-files/execute.png
- * org/javascool/doc-files/stop.png
- * org/javascool/doc-files/demo.png
+ * org/javascool/doc-files/iconesv2/load.png
+ * org/javascool/doc-files/iconesv2/save.png
+ * org/javascool/doc-files/iconesv2/compile.png
+ * org/javascool/doc-files/iconesv2/execute.png
+ * org/javascool/doc-files/iconesv2/stop.png
+ * org/javascool/doc-files/iconesv2/demo.png
  * </pre>
  * @see <a href="MainV2.java">source code</a>
  */
@@ -185,7 +185,7 @@ public class MainV2 extends JApplet {
       jProgletButton = new JPanel();
       jProgletButton.setBorder(BorderFactory.createLineBorder(Color.BLUE));
       JLabel jProgletLabel = new JLabel();
-      jProgletLabel.setIcon(Utils.getIcon("org/javascool/doc-files/execute.png"));
+      jProgletLabel.setIcon(Utils.getIcon("org/javascool/doc-files/iconesv2/execute.png"));
       jProgletButton.add(jProgletLabel);
       jProgletBox = new JComboBox(Jvs2Java.proglets.keySet().toArray());
       jProgletBox.setEditable(false);
@@ -203,7 +203,7 @@ public class MainV2 extends JApplet {
   private JButton getJOpenButton() {
     if (jOpenButton == null) {
       jOpenButton = new JButton();
-      jOpenButton.setIcon(Utils.getIcon("org/javascool/doc-files/load.png"));
+      jOpenButton.setIcon(Utils.getIcon("org/javascool/doc-files/iconesv2/load.png"));
       jOpenButton.setText("Ouvrir");
       jOpenButton.addActionListener(new ActionListener(){
 	  public void actionPerformed(ActionEvent e){
@@ -228,7 +228,7 @@ public class MainV2 extends JApplet {
   private JButton getJSaveButton() {
     if (jSaveButton == null) {
       jSaveButton = new JButton();
-      jSaveButton.setIcon(Utils.getIcon("org/javascool/doc-files/save.png"));
+      jSaveButton.setIcon(Utils.getIcon("org/javascool/doc-files/iconesv2/save.png"));
       jSaveButton.setText("Enregister");
       jSaveButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
@@ -259,7 +259,7 @@ public class MainV2 extends JApplet {
       jCompileButton = new JButton();
       jCompileButton.setMnemonic(KeyEvent.VK_UNDEFINED);
       jCompileButton.setText("Compiler");
-      jCompileButton.setIcon(Utils.getIcon("org/javascool/doc-files/compile.png"));
+      jCompileButton.setIcon(Utils.getIcon("org/javascool/doc-files/iconesv2/compile.png"));
       jCompileButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
 	    try {
@@ -276,22 +276,11 @@ public class MainV2 extends JApplet {
   private JButton getJRunButton() {
     if (jRunButton == null) {
       jRunButton = new JButton();
-      jRunButton.setIcon(Utils.getIcon("org/javascool/doc-files/execute.png"));
+      jRunButton.setIcon(Utils.getIcon("org/javascool/doc-files/iconesv2/execute.png"));
       jRunButton.setText("Executer");
       jRunButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
-	    try {
-	      if (Jvs2Java.runnable != null) 
-		doRun(new Runnable() { public void run() {
-		  try {
-		    Jvs2Java.runnable.run();
-		  }  catch (Exception e) {
-		    Utils.report(e);
-		  }
-		}});
-	    } catch (Exception e1) {
-	      Utils.report(e1);
-	    }
+	    Jvs2Java.run(true);
 	  }});
     }
     return jRunButton;
@@ -300,15 +289,11 @@ public class MainV2 extends JApplet {
   private JButton getJStopButton() {
     if (jStopButton == null) {
       jStopButton = new JButton();
-      jStopButton.setIcon(Utils.getIcon("org/javascool/doc-files/stop.png"));
+      jStopButton.setIcon(Utils.getIcon("org/javascool/doc-files/iconesv2/stop.png"));
       jStopButton.setText("Arrêter");
       jStopButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
-	    try {
-	      doStop();
-	    } catch (Exception e1) {
-	      Utils.report(e1);
-	    }
+	    Jvs2Java.run(false);
 	  }});
     }
     return jStopButton;
@@ -317,21 +302,11 @@ public class MainV2 extends JApplet {
   private JButton getJDemoButton() {
     if (jDemoButton == null) {
       jDemoButton = new JButton();
-      jDemoButton.setIcon(Utils.getIcon("org/javascool/doc-files/demo.png"));
+      jDemoButton.setIcon(Utils.getIcon("org/javascool/doc-files/iconesv2/demo.png"));
       jDemoButton.setText("Demo");
       jDemoButton.addActionListener(new ActionListener() {
 	  public void actionPerformed(ActionEvent e) {
-	    try {
-	      doRun(new Runnable() { public void run() {
-		try {
-		  test(proglet);
-		}  catch (Exception e) {
-		  Utils.report(e);
-		}
-	      }});
-	    } catch (Exception e1) {
-	      Utils.report(e1);
-	    }
+	    Jvs2Java.run(proglet);
 	  }});
     }
     return jDemoButton;
@@ -371,7 +346,7 @@ public class MainV2 extends JApplet {
       jResultPanel.setBounds(new Rectangle(8, 92, 540, 580));
       jResultPanel.setBorder(BorderFactory.createTitledBorder(null, "\""+proglet+"\"", 
         TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-      jResultPanel.add(getPanel(proglet), gridBagConstraints);
+      jResultPanel.add(Jvs2Java.getPanel(proglet), gridBagConstraints);
     }
     return jResultPanel;
   }
@@ -582,36 +557,7 @@ public class MainV2 extends JApplet {
     return buffer.toString();
   }
 
-  private void doRun(Runnable runnable) throws Exception {
-    doStop();
-    tache = new Thread(runnable);
-    tache.start();
-  }
-
-  private void doStop() throws Exception {
-    if (tache != null) { tache.interrupt(); tache = null; }
-  }
-  private static Thread tache = null;
-
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  /** Constructs a proglet attached to the related applet.
-   * @param proglet The proglet class name.
-   * @return The static instanciation of the proglet.
-   */
-  static private JPanel getPanel(String proglet) {
-    try { return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null); } 
-    catch(Exception e) { Utils.report(e); return new JPanel(); }
-  }
-
-  /** Runs one proglet's test.
-   * @param proglet The proglet class name.
-   */
-  static private void test(String proglet) {
-    try { Class.forName(Jvs2Java.proglets.get(proglet)).getDeclaredMethod("test").invoke(null); } 
-    catch(Exception e) { Utils.report(e); } 
-  }
-  private static String toUcfirst(String string) { return Character.toUpperCase(string.charAt(0)) + string.substring(1).toLowerCase(); }
 
   /** Used to run a proglet as a standalone program. 
    * @param usage <tt>java proglet.Proglets (edit|run) [proglet-name [file-name]]</tt>

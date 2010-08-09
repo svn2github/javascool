@@ -27,11 +27,9 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
-
-// Used for key binding
+import javax.swing.KeyStroke;
 import java.awt.Event;
 import java.awt.event.KeyEvent;
-import javax.swing.KeyStroke;
 
 /** This widget defines a re-oriented graohic algorithm editor. 
  * @see <a href="AlgoTree.java">source code</a>
@@ -47,7 +45,7 @@ public class AlgoTree extends JPanel implements Widget {
   {
     setLayout(new BorderLayout());
     JPanel bar = new JPanel();
-    edit = new JComboBox(new String[] {"Edit", "^C Copier", "^X Couper", "^V Coller", "^L Check"});
+    edit = new JComboBox(new String[] {"Edit", "^C Copier", "^X Couper/Supprimer", "^V Coller", "^L Check"});
     edit.addActionListener(new ActionListener() {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) {
@@ -94,16 +92,16 @@ public class AlgoTree extends JPanel implements Widget {
     /* Used for debug only
     tree.getModel().addTreeModelListener(new TreeModelListener() {
 	public void treeNodesChanged(TreeModelEvent e) {
-	  System.out.println("Un noeud a été changé !" + getJavaTree());				
+	  System.out.println("Un noeud a été changé !" + getJavaSource());				
 	}	
 	public void treeNodesInserted(TreeModelEvent event) {
-	  System.out.println("Un noeud a été inséré !" + getJavaTree());				
+	  System.out.println("Un noeud a été inséré !" + getJavaSource());				
 	}
 	public void treeNodesRemoved(TreeModelEvent event) {
-	  System.out.println("Un noeud a été retiré !" + getJavaTree());
+	  System.out.println("Un noeud a été retiré !" + getJavaSource());
 	}
 	public void treeStructureChanged(TreeModelEvent event) {
-	  System.out.println("La structure d'un noeud a changé !" + getJavaTree());
+	  System.out.println("La structure d'un noeud a changé !" + getJavaSource());
 	}
       });
     */
@@ -214,10 +212,10 @@ public class AlgoTree extends JPanel implements Widget {
   }
   
   /** Returns the tree as a String using the Java syntax. */
-  public String getJavaTree() {
-    return getJavaTree(root.getChildCount() > 0 ? (DefaultMutableTreeNode) root.getChildAt(0) : null, 0).toString();
+  public String getJavaSource() {
+    return getJavaSource(root.getChildCount() > 0 ? (DefaultMutableTreeNode) root.getChildAt(0) : null, 0).toString();
   }
-  private StringBuffer getJavaTree(DefaultMutableTreeNode node, int depth) {
+  private StringBuffer getJavaSource(DefaultMutableTreeNode node, int depth) {
     StringBuffer s = new StringBuffer(); 
     if (node != null) {
       String what = node.toString();
@@ -272,7 +270,7 @@ public class AlgoTree extends JPanel implements Widget {
     return s;
   }
   private void appendChilds(StringBuffer s, DefaultMutableTreeNode node, int depth) {
-    for(int c = 0; c < node.getChildCount(); c++) s.append(getJavaTree((DefaultMutableTreeNode) node.getChildAt(c), depth+1));
+    for(int c = 0; c < node.getChildCount(); c++) s.append(getJavaSource((DefaultMutableTreeNode) node.getChildAt(c), depth+1));
   }
   private String getType(DefaultMutableTreeNode node, String what) {
     String name = what.replaceFirst(declarationPattern, "$2"); int l = node.getLevel();
@@ -536,7 +534,7 @@ public class AlgoTree extends JPanel implements Widget {
       DefaultMutableTreeNode node = getCurrentNode(false);
       clipboard = copy(node);
       System.out.println(action + " : " + getTree(clipboard, 0) + " == " + getTree(node, 0));
-    } else if ("^X Couper".equals(action)) {
+    } else if ("^X Couper/Supprimer".equals(action)) {
       DefaultMutableTreeNode node = getCurrentNode(false);
       if (node == root.getChildAt(0)) {
 	dialog.show(Jdialog, "supprimer");
@@ -556,13 +554,14 @@ public class AlgoTree extends JPanel implements Widget {
 	System.out.println(action + " : " + getTree(clipboard, 0));
       }
     } else if ("^L Check".equals(action)) {
-      System.out.println(action + " : " + getTree() + " == \n" + getJavaTree());
-      Utils.saveString("tmp.jvs", getJavaTree());
+      System.out.println(action + " : " + getTree() + " == \n" + getJavaSource());
+      Utils.saveString("tmp.jvs", getJavaSource());
       Jvs2Java.translate("tmp.jvs");
       System.out.println(Jvs2Java.compile("tmp.java"));
       Jvs2Java.load("tmp.class"); 
-      MainV2 r = new MainV2(); r.setProglet("ingredients"); Utils.show(r, "javascool proglet's runner", 560, 720);
-     }
+      Utils.show(new Jvs2Java.ProgletApplet().reset("ingredients", false), "javascool proglet", 650, 720);
+    } else
+      throw new IllegalStateException("Unknown doEdit("+action+") action, this is bug: please contact http://javascool.gforge.inria.fr");
     edit.setSelectedItem("Edit");
   }
   private DefaultMutableTreeNode copy(DefaultMutableTreeNode node) {
@@ -572,24 +571,32 @@ public class AlgoTree extends JPanel implements Widget {
       copy.add(copy((DefaultMutableTreeNode) node.getChildAt(c)));
     return copy;
   }
+  // Defines the key bidding
   {
-    /* http://java.sun.com/products/jfc/tsc/special_report/kestrel/keybindings.html
-    getKeymap().addActionForKeyStroke(KeyStroke.getKeyStroke(KeyEvent.VK_C, Event.CTRL_MASK), new AbstractAction() {
+    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_C, Event.CTRL_MASK), "copier");
+    tree.getActionMap().put("copier",  new AbstractAction("copier") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  doEdit("^C Copier");
 	}});
-    getKeymap().addActionForKeyStroke(KeyStroke.getKeyStroke(KeyEvent.VK_X, Event.CTRL_MASK), new AbstractAction() {
+    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_X, Event.CTRL_MASK), "couper");
+    tree.getActionMap().put("couper",  new AbstractAction("couper") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  doEdit("^X Couper");
+	  doEdit("^X Couper/Supprimer");
 	}});
-    getKeymap().addActionForKeyStroke(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), new AbstractAction() {
+    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "coller");
+    tree.getActionMap().put("coller",  new AbstractAction("coller") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  doEdit("^V Coller");
 	}});
-    */
+    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_L, Event.CTRL_MASK), "check");
+    tree.getActionMap().put("check",  new AbstractAction("check") {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  doEdit("^L Check");
+	}});
   }
   private DefaultMutableTreeNode clipboard = null;
 

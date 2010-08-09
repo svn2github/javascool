@@ -42,9 +42,10 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
   }
 
   /** Called when a link is clicked in the page.
-   * <div>The default behavior is to attempt to load the location in the in the panel.</div>
+   * <div>To be overloaded in order to manage the way link are displayed.</div>
+   * <div>The default behavior is to attempt to load the location in the panel.</div>
    */
-  private void show(String location) { 
+  public void show(String location) { 
     try { pane.setPage(location); } catch(Exception e) { pane.setText(e.toString()); } 
   }
 }

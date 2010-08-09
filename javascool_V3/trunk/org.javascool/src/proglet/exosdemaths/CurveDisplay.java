@@ -15,9 +15,9 @@ import org.javascool.NumberInput;
 import org.javascool.Jvs2Java;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
- * @see <a href="DisplayCurve.java">code source</a>
+ * @see <a href="CurveDisplay.java">code source</a>
  */
-public class DisplayCurve implements org.javascool.Proglet { private DisplayCurve() { }
+public class CurveDisplay implements org.javascool.Proglet { private CurveDisplay() { }
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -33,11 +33,11 @@ public class DisplayCurve implements org.javascool.Proglet { private DisplayCurv
       input.add(inputY = new NumberInput("Y"), BorderLayout.SOUTH);
       Runnable run1 = new Runnable() { public void run() {
 	inputX.setValue(scope.getReticuleX()); inputY.setValue(scope.getReticuleY());
-	if (Jvs2Java.runnable != null) Jvs2Java.runnable.run(); 
+	Jvs2Java.run(true); 
       }};
       Runnable run2 = new Runnable() { public void run() {
 	scope.setReticule(inputX.getValue(), inputY.getValue());
-	if (Jvs2Java.runnable != null) Jvs2Java.runnable.run(); 
+	Jvs2Java.run(true);
       }};
       scope.setRunnable(run1);
       inputX.setRunnable(run2);

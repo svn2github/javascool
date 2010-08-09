@@ -18,18 +18,22 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLClassLoader;
 
+// Used to encapsulate a proglet
+import javax.swing.JPanel;
+import javax.swing.JApplet;
+import java.awt.BorderLayout;
+import javax.swing.JToolBar;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.AbstractAction;
+import java.awt.event.ActionEvent;
+
 /** This factory defines how a Jvs code is translated into a Java code and compiled. 
  * The goal of the Jvs syntax is to ease the syntax when starting to program in an imperative language, like Java. 
  * <p>- This factory calls the java compiler in the jdk5 (and earlier) case. It is designed to be used in standalone mode.</p>
  * @see <a href="Jvs2Java.java">source code</a>
  */
 public class Jvs2Java { private Jvs2Java() { }
-
-  /** Registered proglets. */
-  static final HashMap<String,String> proglets = new HashMap<String, String>();
-  static {
-    for (String proglet : Proglets.proglets) if (proglet.length() > 0) proglets.put(proglet.replaceFirst("^proglet\\.([^\\.]+)\\..*$", "$1"), proglet);
-  }
 
   /** Tests if a word is reserved to use because it is a Java reserved word. 
    * @param word The word to test.
@@ -212,6 +216,88 @@ public class Jvs2Java { private Jvs2Java() { }
     }
   }
 
-  /** This is the entry point to run the proglet pupil's program: do not modify manually !!. */
-  public static Runnable runnable = null;
+  /** Registered proglets. */
+  static final HashMap<String,String> proglets = new HashMap<String, String>();
+  static {
+    for (String proglet : org.javascool.proglets.proglets) if (proglet.length() > 0) proglets.put(proglet.replaceFirst("^proglet\\.([^\\.]+)\\..*$", "$1"), proglet);
+  }
+
+  /** Returns the proglet panel.
+   * @param proglet The proglet class name.
+   * @return The panel corresponding to the proglet.
+   */
+  public static JPanel getPanel(String proglet) {
+    try { return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null); } 
+    catch(Exception e) { Utils.report(e); return new JPanel(); }
+  }
+
+  /** Runs/Stops the proglet pupil's program. 
+   * @param start If true starts the proglet pupil's program. If false stops the proglet pupil's program. If given as a <tt>String</tt> runs the corresponding proglet demo.
+   */
+  public static void run(boolean start) {
+    if (thread != null) { thread.interrupt(); thread = null; }
+    if (start) (thread = new Thread(new Runnable() { public void run() {
+      try {
+	runnable.run();
+      } catch(Exception e) { Utils.report(e); } 
+    }})).start(); 
+  }
+  /**/public static void run(String proglet) {
+    if (thread != null) { thread.interrupt(); thread = null; }
+    Jvs2Java.proglet = proglet;
+    (thread = new Thread(new Runnable() { public void run() {
+      try { 
+	Class.forName(Jvs2Java.proglets.get(Jvs2Java.proglet)).getDeclaredMethod("test").invoke(null); 
+      } catch(Exception e) { Utils.report(e); } 
+    }})).start();
+  }
+  // This is the entry point to run  the proglet pupil's program: do not change directly !
+  /**/public static Runnable runnable = null; private static String proglet = "ingredients"; private static Thread thread = null;
+
+  /** Defines a proglet applet. */
+  static public class ProgletApplet extends JApplet { 
+    private static final long serialVersionUID = 1L;
+    /** Programmatic reset of the proglet parameters. 
+     * <ul><li>Usually defined in the HTML tag: 
+     * <div><tt>&lt;applet code="org.javascool.Jvs2Java.ProgletApplet.class" archive="javascool.jar" width="560" height="720"></tt></div>
+     * <div><tt>&lt;param name="proglet" value="ingredients"/></tt></div>
+     * <div><tt>&lt;param name="demo" value="true"/></tt></div>
+     * <div><tt>&lt;/applet></tt></div>
+     * </li><li>Or used in a standalone program:
+     * <div><tt>Utils.show(new Jvs2Java.ProgletApplet().reset("ingredients", true), "javascool proglet", 650, 720);</tt></div>
+     * </li></ul>
+     * @param proglet The corresponding proglet name. Default is "ingredients".
+     * @param demo If true runs the demo program. If false runs the proglet pupil's program. Default is "true".
+     * @return This, allowing to use the <tt>new ProgletApplet().reset(..)</tt> construct.
+     */
+    public ProgletApplet reset(String proglet, boolean demo) { this.proglet = proglet; this.demo = demo; return this; } 
+    private String proglet = "ingredients"; private boolean demo = true;
+    /**/public void init() {
+      // Init the parameters from the HTML tags
+      try {
+	reset(getParameter("proglet"), getParameter("demo").toLowerCase().equals("true"));
+      } catch(Exception e) { }
+      // Builds the GUI
+      JToolBar bar = new JToolBar();
+      bar.setRollover(false);
+      bar.setFloatable(false);
+      bar.add(new JLabel("Proglet \""+proglet+"\" : "));
+      bar.add(new JButton(new AbstractAction(demo ? "Démonstration" : "Executer", Utils.getIcon("org/javascool/doc-files/icones16/play.png")) {
+	  private static final long serialVersionUID = 1L;
+	  public void actionPerformed(ActionEvent e) {
+	    if (demo) {
+	      run(proglet);
+	    } else {
+	      run(true);
+	    }
+	  }}));
+      bar.add(new JButton(new AbstractAction("Arrêter", Utils.getIcon("org/javascool/doc-files/icones16/Stop_16x16.png")) {
+	  private static final long serialVersionUID = 1L;
+	  public void actionPerformed(ActionEvent e) {
+	    run(false);
+	  }}));
+      getContentPane().add(bar, BorderLayout.NORTH);
+      getContentPane().add(getPanel(proglet), BorderLayout.CENTER);
+    }
+  }
 }
