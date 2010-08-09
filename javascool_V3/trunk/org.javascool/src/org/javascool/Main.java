@@ -67,14 +67,12 @@ public class Main extends JApplet implements ActionListener {
     JComboBox actlist = new JComboBox(activities);
     JTextPane editorPane=new JTextPane();
     JPanel panetop=new JPanel();
-    JPanel helpane=new JPanel();
     JPanel pane=new JPanel();
     JToolBar tools=new JToolBar();
-    JToolBar mods=new JToolBar();
     JTabbedPane tabbedPane = new JTabbedPane();
     JFileChooser fc;
     SourceEditor se=new SourceEditor();
-    AlgoTree at=new AlgoTree();
+    JvsSourceEditor jvsse=new JvsSourceEditor();
     JEditorPane help=new JEditorPane();
     AlgoTree ae=new AlgoTree();
     JavaPanel jpc=new JavaPanel();
@@ -89,10 +87,7 @@ public class Main extends JApplet implements ActionListener {
     panetop.add(tools);
     panetop.add(actlist,BorderLayout.EAST);
     actlist.addActionListener(this);
-    tabbedPane.addTab("Nouveau.jvs - JVS Editor",at);
-    help.setText(Utils.loadString("http://www.google.fr"));
-    help.setContentType("text/html");
-    helpane.add(help);
+	startPml();
     pane.add(tabbedPane);
   // Butons
     fc = new JFileChooser();
@@ -116,14 +111,8 @@ public class Main extends JApplet implements ActionListener {
     jHelpButton.setIcon(Utils.getIcon("org/javascool/doc-files/icones16/help.png"));
     jHelpButton.addActionListener(this);
     tools.add(jHelpButton);
-    jJvsButton.setText("Java's cool");
-    jJvsButton.addActionListener(this);
-    mods.add(jJvsButton);
-    jPmlButton.setText("    Pml    ");
-    jPmlButton.addActionListener(this);
-    mods.add(jPmlButton);
   // Set Visible
-    setContentPane(pane);
+    getContentPane().add(pane);
   }
 
   public void actionPerformed(ActionEvent e){
