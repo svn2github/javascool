@@ -32,7 +32,7 @@ import java.util.HashMap;
  * @author Philippe Vienne <philoumailabo@gmail.com>
  * @see <a href="Main.java">source code</a>
  */
-public class Main extends JApplet {
+public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;
 
   // [1] Defines the main panel and defines how to edit the toolbar, actList and tabbedpane
@@ -52,7 +52,8 @@ public class Main extends JApplet {
     addActivity(pmlActivity);
     addActivity(jvsActivity);
     addActivity(algActivity);
-    setActivity(pmlActivity);
+    // Initializes the activity from the HTML tag or proposes a default activity
+    try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity(""); }
   }
   /** Adds a button to the toolbar.
    * @param label Button label.
@@ -69,7 +70,7 @@ public class Main extends JApplet {
   /** Adds a tab to the tabbed panel.
    * @param label Tab label.
    * @param icon Tab icon.
-   * @param panel Tab panel or Html text.
+   * @param pane Tab panel or Html text.
    */
   public void addTab(String label, String icon, JPanel pane) {
     tabbedPane.addTab(label, Utils.getIcon(icon), pane, label);
@@ -79,14 +80,11 @@ public class Main extends JApplet {
     addTab(label, icon, new HtmlDisplay().reset(text));
   }
   /** Defines an interactive activity. */
-  public static interface Activity {
+  public static class Activity {
     /** Returns the activity title. */
-    public String getTitle();
-    /** Initializes the activity, adding buttons and pannels. 
-     * @see addTab
-     * @see addTool
-     */
-    public void init(Main main);
+    public String getTitle() { return ""; }
+    /** Initializes the activity, adding buttons and pannels. */
+    public void init(Main main) { }
   }
   /** Adds an activity tab to the tabbed panel. 
    * @param activity Adds a predefined activity.
@@ -96,7 +94,9 @@ public class Main extends JApplet {
     actList.addItem(activity.getTitle());
   }
   // Install the activity
-  private void setActivity(Activity activity) {
+  private void setActivity(String name) {
+    Activity activity = activities.get(name);
+    if (activity == null) activity = activities.get("Démonstration de l'éditeur Pml");
     tools.removeAll();
     tabbedPane.removeAll();
     basicTools();
@@ -109,17 +109,9 @@ public class Main extends JApplet {
   private ActionListener alistener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == actList) {
-	  String name = (String) ((JComboBox) e.getSource()).getSelectedItem();
-	  Activity activity = activities.get(name);
-	  if (activity == null) 
-	    throw new IllegalStateException("Spurious activity '"+name+"' required, this is bug: please contact http://javascool.gforge.inria.fr");
-	  setActivity(activity);
+	  setActivity((String) ((JComboBox) e.getSource()).getSelectedItem());
 	} else {
-	  String name = ((JButton) e.getSource()).getText();
-	  Runnable runnable = actions.get(name);
-	  if (runnable == null) 
-	    throw new IllegalStateException("Spurious action '"+name+"' required, this is bug: please contact http://javascool.gforge.inria.fr");
-	  runnable.run();
+	  actions.get(((JButton) e.getSource()).getText()).run();
 	}
       }
     };
@@ -129,28 +121,41 @@ public class Main extends JApplet {
   private JFileChooser fc = new JFileChooser();
   private String fcTitle = null;
   private File file = null;
+  public void setFile(String filename) {
+    try { se.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
+  }
   private Runnable newFile = new Runnable() { public void run() {
     file = null;
     se.setText("");
   }};
   private Runnable openFile = new Runnable() { public void run() {
-    fc.showOpenDialog(Main.this);
-    file = fc.getSelectedFile();
-    String s = Utils.loadString("file:"+file.getPath());
-    se.setText(s);
+    fc.setDialogTitle("Ouvrir un programme");
+    fc.setDialogType(JFileChooser.OPEN_DIALOG);
+    fc.setApproveButtonText("Ouvrir");
+    if (fc.showOpenDialog(Main.this) == 0) {
+      file = fc.getSelectedFile();
+      se.setText(Utils.loadString(file.getPath()));
+    }
   }};
   private Runnable saveFile = new Runnable() { public void run() {
     if(file == null) {
-      if (fcTitle == null)
-	fc.showSaveDialog(Main.this);
-      else
-	fc.showDialog(Main.this, fcTitle);
-      file = fc.getSelectedFile();
+      fc.setDialogTitle(fcTitle == null ? "Enregister un programme" : fcTitle);
+      fc.setDialogType(JFileChooser.SAVE_DIALOG);
+      fc.setApproveButtonText("Enregister");
+      if (fc.showSaveDialog(Main.this) == 0) {
+	file = fc.getSelectedFile();
+	Utils.saveString(file.getPath(), se.getText());
+      } 
+    } else {
+      Utils.saveString(file.getPath(), se.getText());
     }
-    String path = file.getPath();
-    String text = se.getText();
-    Utils.saveString(path, text);
   }};
+  private void pleaseSaveFile() {
+    if(se.getText().length() > 0)
+      fcTitle = "Enregistrer votre fichier avant de passer à la suite";
+    saveFile.run();
+    fcTitle = null;
+  }
   private Runnable showHelp = new Runnable() { public void run() {
     addTab("Aide", "", new HtmlDisplay().
 	   reset("<html><head><title>Ma page</title></head><body><h1>Titre</h1>Bienvenu dans l'aide de Java's cool :-)</body></html>")); 
@@ -190,14 +195,16 @@ public class Main extends JApplet {
 
   /** Used to run a javasccol v3 as a standalone program. 
    * <p>- Using javascool means: doing an "activity" which result is to be stored in a "file-name".</p>
-   * @param args usage <tt>java org.javascool.Main [activity [file-name]]</tt><ul>
+   * @param usage <tt>java org.javascool.Main [activity [file-name]]</tt><ul>
    * <li><tt>activity</tt> specifies the activity to be done.</li>
    * <li><tt>file-name</tt> specifies the file used for the activity.</li>
    * </ul>
    */
-  public static void main(String[] args) {
+  public static void main(String[] usage) {
     System.out.println("Hi ! V3 is comming :-)");
-    Main m = new Main();
-    Utils.show(m, "Java'Scool v3.0");
+    Main main = new Main();
+    if (usage.length >= 1) main.setActivity(usage[0]);
+    if (usage.length >= 2) main.setFile(usage[1]);
+    Utils.show(main, "Java'Scool v3.0");
   }
 }
