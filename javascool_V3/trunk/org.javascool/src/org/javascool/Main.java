@@ -63,6 +63,7 @@ public class Main extends JApplet implements ActionListener {
     JButton jJvsButton = new JButton();
     JButton jPmlButton = new JButton();
     String[] activities = {"Pml","Jvs","Algo"};
+    String help2 = Utils.loadString("http://www.google.fr");
     JComboBox actlist = new JComboBox(activities);
     JTextPane editorPane=new JTextPane();
     JPanel panetop=new JPanel();
@@ -76,8 +77,9 @@ public class Main extends JApplet implements ActionListener {
     AlgoTree at=new AlgoTree();
     JEditorPane help=new JEditorPane();
     AlgoTree ae=new AlgoTree();
+    JavaPanel jpc=new JavaPanel();
     File file;
-  // This is the way to build the applet
+  /* This is the way to build the applet.*/
   public void init() {
   // Panes
     pane.setLayout(new BorderLayout());
@@ -164,13 +166,17 @@ public class Main extends JApplet implements ActionListener {
     Main m = new Main();
     Utils.show(m, "Java'Scool v3.0");
   }
-  private String openFile(){
+  /**Open a file.
+  */
+  public String openFile(){
     fc.showOpenDialog(Main.this);
     file = fc.getSelectedFile();
     String r= Utils.loadString("file:"+file.getPath());
     return r;
   }
-  private void saveFile(){
+  /**Save a file with a basic dialog.
+  */
+  public void saveFile(){
     if(file==null){
         fc.showSaveDialog(Main.this);
         file = fc.getSelectedFile();
@@ -185,7 +191,10 @@ public class Main extends JApplet implements ActionListener {
     }
     
   }
-    private void saveFile(String title){
+  /**Save a file.
+  * @param title Title of the save dialog
+  */
+    public void saveFile(String title){
     if(file==null){
         fc.showDialog(Main.this, title);
         file = fc.getSelectedFile();
@@ -200,15 +209,24 @@ public class Main extends JApplet implements ActionListener {
     }
     
   }
-  private void newFile(){
+  /**Create a new file.
+  */
+  public void newFile(){
     file=null;
     se.setText("");
   }
-  private void showHelp(){
-    tabbedPane.addTab("Aide",helpane); 
+  /**Method deseignd to show wiki help.
+  *It's create a new tab with a web navigator which go to http://wiki.inria.fr/sciencinfolycee/
+  */
+  public void showHelp(){
+    tabbedPane.addTab("Aide",new HtmlDisplay().reset("<html><head><title>Ma page</title></head><body><h1>Titre</h1>Bienvenu dans l'aide de Java's cool :-)</body></html>")); 
     tabbedPane.revalidate();
   }
-  private void startPml(){
+  /** This method start the PML Editor.
+  *When PML is selected, it's close all tabs and create a new tab with the PML editor.
+  *Actually it's the same that the JVS Editor 
+  */
+  public void startPml(){
     tabbedPane.removeAll();
     tabbedPane.addTab("Nouveau.pml - Pml Editor",se);
     if(se.getText().length()>0){
@@ -217,12 +235,19 @@ public class Main extends JApplet implements ActionListener {
     newFile();}
     tabbedPane.revalidate();
   }
-  private void startJvs(){
+  /** This method start the JVS Editor.
+  *When JavaScool is selected, it's close all tabs and create a new tab with the java editor.  
+  */
+  public void startJvs(){
     tabbedPane.removeAll();
     tabbedPane.addTab("Nouveau.jsc - JVS Editor",se);
+    tabbedPane.addTab("Console",jpc.panel);
     tabbedPane.revalidate();
   }
-   private void startAlgo(){
+  /** This method start the Algo Editor.
+  *When Algo is selected, it's close all tabs and create a new tab with the algo editor.  
+  */
+   public void startAlgo(){
     tabbedPane.removeAll();
     tabbedPane.addTab("Nouveau.jsc - Algo Editor",ae);
     tabbedPane.revalidate();

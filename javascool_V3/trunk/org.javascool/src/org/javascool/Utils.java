@@ -399,7 +399,7 @@ public class Utils { private Utils() { }
   }
   /**/public static JFrame show(JApplet applet, String title) {
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();  
-    int width = (int) (0.8 * dim.getWidth()), height = (int) (0.8 * dim.getHeight());
+    int width = (int) (1 * dim.getWidth()), height = (int) (1 * dim.getHeight());
     if (width > 1800) width = 1800; if(height > 1000) height = 1000;
     return show(applet, title, width, height);
   }
@@ -427,7 +427,7 @@ public class Utils { private Utils() { }
       frames++;
       if (title != null) setTitle(title);
       this.setSize(width, height);
-      this.setResizable(false);
+      //this.setResizable(false);
       setVisible(true); 
       applet.start(); 
     }
