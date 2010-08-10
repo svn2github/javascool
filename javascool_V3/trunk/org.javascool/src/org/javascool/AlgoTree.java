@@ -559,9 +559,8 @@ public class AlgoTree extends JPanel implements Widget {
       Jvs2Java.translate("tmp.jvs");
       System.out.println(Jvs2Java.compile("tmp.java"));
       Jvs2Java.load("tmp.class"); 
-      Utils.show(new Jvs2Java.ProgletApplet().reset("ingredients", false), "javascool proglet", 650, 720);
-    } else
-      throw new IllegalStateException("Unknown doEdit("+action+") action, this is bug: please contact http://javascool.gforge.inria.fr");
+      Utils.show(new ProgletApplet().reset("ingredients", false), "javascool proglet", 650, 720);
+    } 
     edit.setSelectedItem("Edit");
   }
   private DefaultMutableTreeNode copy(DefaultMutableTreeNode node) {

@@ -99,7 +99,7 @@ public class Utils { private Utils() { }
   }
 
   /** Converts a location to a well-formed URL. 
-   * @param The location: either an URL or a local file-name or a ressource accessed by class code.
+   * @param location The location: either an URL or a local file-name or a ressource accessed by class code.
    *
    * @throws IllegalArgumentException If the URL is malformed.
    */
@@ -122,6 +122,7 @@ public class Utils { private Utils() { }
    *  <div>(e.g.:<tt>jar:http://javascool.gforge.inria.fr/javascool.jar!/META-INF/MANIFEST.MF</tt>)</div></td></tr>
    * </table>
    *
+   * @throws IllegalArgumentException If the URL is malformed.
    * @throws RuntimeException if an I/O exception has occurred.
    */
   public static String loadString(String location) {
@@ -146,6 +147,7 @@ public class Utils { private Utils() { }
    * 
    * @param string The string to save.
    *
+   * @throws IllegalArgumentException If the URL is malformed.
    * @throws RuntimeException if an I/O exception has occurred.
    */
   public static void saveString(String location, String string) {
@@ -172,9 +174,11 @@ public class Utils { private Utils() { }
   /** Returns an icon loaded from the applet context.
    * @param location The icon file name, in the context directory (directory on the server or on the client side or in the jar) or as a URL.
    * @return The related image icon or an empty icon if not loaded.
+   * 
+   * @throws IllegalArgumentException If the URL is malformed.
    */
-  public static ImageIcon getIcon(String file) {
-    return new ImageIcon(toUrl(file));
+  public static ImageIcon getIcon(String location) {
+    return new ImageIcon(toUrl(location));
   }
 
   /** Converts a string to proper name.

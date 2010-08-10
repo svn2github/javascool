@@ -8,6 +8,7 @@ package org.javascool;
 import java.io.File;
 
 // Used to register the proglets
+import javax.swing.JPanel;
 import java.util.HashMap;
 
 // Used to interface with the j5 compiler
@@ -17,16 +18,6 @@ import java.io.PrintWriter;
 // Used to load class
 import java.net.URL;
 import java.net.URLClassLoader;
-
-// Used to encapsulate a proglet
-import javax.swing.JPanel;
-import javax.swing.JApplet;
-import java.awt.BorderLayout;
-import javax.swing.JToolBar;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.AbstractAction;
-import java.awt.event.ActionEvent;
 
 /** This factory defines how a Jvs code is translated into a Java code and compiled. 
  * The goal of the Jvs syntax is to ease the syntax when starting to program in an imperative language, like Java. 
@@ -253,51 +244,4 @@ public class Jvs2Java { private Jvs2Java() { }
   }
   // This is the entry point to run  the proglet pupil's program: do not change directly !
   /**/public static Runnable runnable = null; private static String proglet = "ingredients"; private static Thread thread = null;
-
-  /** Defines a proglet applet. */
-  static public class ProgletApplet extends JApplet { 
-    private static final long serialVersionUID = 1L;
-    /** Programmatic reset of the proglet parameters. 
-     * <ul><li>Usually defined in the HTML tag: 
-     * <div><tt>&lt;applet code="org.javascool.Jvs2Java.ProgletApplet.class" archive="javascool.jar" width="560" height="720"></tt></div>
-     * <div><tt>&lt;param name="proglet" value="ingredients"/></tt></div>
-     * <div><tt>&lt;param name="demo" value="true"/></tt></div>
-     * <div><tt>&lt;/applet></tt></div>
-     * </li><li>Or used in a standalone program:
-     * <div><tt>Utils.show(new Jvs2Java.ProgletApplet().reset("ingredients", true), "javascool proglet", 650, 720);</tt></div>
-     * </li></ul>
-     * @param proglet The corresponding proglet name. Default is "ingredients".
-     * @param demo If true runs the demo program. If false runs the proglet pupil's program. Default is "true".
-     * @return This, allowing to use the <tt>new ProgletApplet().reset(..)</tt> construct.
-     */
-    public ProgletApplet reset(String proglet, boolean demo) { this.proglet = proglet; this.demo = demo; return this; } 
-    private String proglet = "ingredients"; private boolean demo = true;
-    /**/public void init() {
-      // Init the parameters from the HTML tags
-      try {
-	reset(getParameter("proglet"), getParameter("demo").toLowerCase().equals("true"));
-      } catch(Exception e) { }
-      // Builds the GUI
-      JToolBar bar = new JToolBar();
-      bar.setRollover(false);
-      bar.setFloatable(false);
-      bar.add(new JLabel("Proglet \""+proglet+"\" : "));
-      bar.add(new JButton(new AbstractAction(demo ? "Démonstration" : "Executer", Utils.getIcon("org/javascool/doc-files/icones16/play.png")) {
-	  private static final long serialVersionUID = 1L;
-	  public void actionPerformed(ActionEvent e) {
-	    if (demo) {
-	      run(proglet);
-	    } else {
-	      run(true);
-	    }
-	  }}));
-      bar.add(new JButton(new AbstractAction("Arrêter", Utils.getIcon("org/javascool/doc-files/icones16/Stop_16x16.png")) {
-	  private static final long serialVersionUID = 1L;
-	  public void actionPerformed(ActionEvent e) {
-	    run(false);
-	  }}));
-      getContentPane().add(bar, BorderLayout.NORTH);
-      getContentPane().add(getPanel(proglet), BorderLayout.CENTER);
-    }
-  }
 }

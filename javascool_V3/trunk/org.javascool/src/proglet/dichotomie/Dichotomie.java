@@ -25,10 +25,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** Définit une proglet javascool qui permet d'expérimenter la recherche dichotomique.
- * Fichiers utilisés: <pre>
- * dichotomie/doc-files/dicho_background.png
- * dichotomie/doc-files/100px-Flag_of_*.svg.png
- * </pre>
+ * <p><applet code="org.javascool.ProgletApplet" archive="../../../javascool.jar" width="560" height="720"><param name="proglet" value="dichotomie"/></applet></p>
  * @see <a href="Dichotomie.java">code source</a>
  */
 public class Dichotomie implements org.javascool.Proglet { private Dichotomie() { }

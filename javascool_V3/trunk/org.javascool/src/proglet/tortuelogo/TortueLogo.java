@@ -15,6 +15,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /** Définit une proglet javascool qui permet de simuler la tortue ``logo´´.
+ * <p><applet code="org.javascool.ProgletApplet" archive="../../../javascool.jar" width="560" height="720"><param name="proglet" value="tortuelogo"/></applet></p>
  * @see <a href="http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_Logo">La référence du langage logo</a>
  * @see <a href="TortueLogo.java">code source</a>
  */

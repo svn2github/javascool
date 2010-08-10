@@ -15,6 +15,7 @@ import org.javascool.NumberInput;
 import org.javascool.Jvs2Java;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
+ * <p><applet code="org.javascool.ProgletApplet" archive="../../../javascool.jar" width="560" height="720"><param name="proglet" value="exosdemaths"/></applet></p>
  * @see <a href="CurveDisplay.java">code source</a>
  */
 public class CurveDisplay implements org.javascool.Proglet { private CurveDisplay() { }

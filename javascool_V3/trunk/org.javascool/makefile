@@ -12,9 +12,9 @@ usage :
 	@echo ' make pub          : publie les fichiers du site web'
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* lib/manifest.mf www/api www/javascool.jar .http.root src/org/javascool/xslt/page.htm
+	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* .http.root lib/manifest.mf www/api www/javascool.jar 
 
-j3: www/javascool.jar
+j3: jar
 	@cd tst ; java -jar ../www/javascool.jar
 
 v3: cmp
@@ -23,7 +23,7 @@ v3: cmp
 svn: clean
 	svn up ; svn ci -m '' ; svn status
 
-doc: www/api/index.html
+doc: jar www/api/index.html
 	@firefox www/api/org/javascool/package-summary.html
 
 pub: www/api/index.html www/javascool.jar
@@ -39,14 +39,16 @@ J5=/usr/java/jdk1.5.0_22
 
 # Jar meta-data
 
+jar : www/javascool.jar
+
 vendor=thierry.vieville@sophia.inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
 version=3.0
 public-key=hello-world
 private-key=mer,d,azof
 
-SRC=$(shell find src -name '*.java')
+SRC=$(shell find src -name '*.java') src/org/javascool/proglets.java $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt')) 
 
-www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf srcs $(SRC)
+www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC)
 	@echo "make $@"
 	@#[1] Compile the java classes
 	@$(J5)/bin/javac -Xlint -cp lib/tools.jar $(SRC)
@@ -74,10 +76,8 @@ lib/manifest.mf : makefile
 	@(echo 'Main-Class: org.javascool.Main') >> $@
 	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
 
-cmp : srcs $(SRC)
+cmp : $(SRC)
 	@rm -f $@; javac -Xlint -cp src:lib/tools.jar:lib/saxon.jar $(SRC)
-
-srcs : src/org/javascool/proglets.java $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt')) 
 
 %.java : %.xslt
 	@echo "<null/>" > /tmp/null.xml ; java -jar lib/saxon.jar /tmp/null.xml $^ ; rm /tmp/null.xml
@@ -108,24 +108,22 @@ endif
 
 # Java doc generation
 
-www/api/index.html : htms pmls pngs $(shell find src -name package.html) $(SRC)
+doc : jar www/api/index.html $(patsubst src/%.xml,www/api/%.htm,$(shell find src -name '*.xml')) 
+
+www/api/index.html : $(SRC) $(shell find src -name package.html) $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) 
 	@echo "make $(@D)"
-	@rm -rf  $(@D) ; mkdir -p $(@D)
+	@rm -rf $(@D) ; mkdir -p $(@D)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
 	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -link http://download.oracle.com/javase/6/docs/api \
 	 -windowtitle "Java's Cool v3" -d $(@D) $(SRC)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
 	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$(@D))/'` ; done
 
-htms : $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
-
-%.htm : %.xml lib/xml2htm.xsl
+www/api/%.htm : src/%.xml lib/xml2htm.xsl
 	@java -jar lib/saxon.jar -o $@ $^
 
-%.pml : %.xml cmp
+www/api/%.pml : src/%.xml cmp
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Pml $*.xml > $@
-
-pngs :  $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) 
 
 %.png : %.fig
 	@fig2dev -L png $^ > $@

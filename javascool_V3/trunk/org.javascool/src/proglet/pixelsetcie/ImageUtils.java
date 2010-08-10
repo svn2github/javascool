@@ -29,6 +29,8 @@ public class ImageUtils { private ImageUtils() { }
    * <tr><td><tt>jar:/<i>jar-path-name</i>!/<i>jar-entry</i></tt></td><td>to load from a JAR archive</td></tr>
    * </table>
    *
+   * 
+   * @throws IllegalArgumentException If the URL is malformed.
    * @throws RuntimeException if an I/O exception has occurred.
    */
   public static BufferedImage loadImage(String location) {
@@ -52,6 +54,7 @@ public class ImageUtils { private ImageUtils() { }
    * 
    * @param image The image to save.
    *
+   * @throws IllegalArgumentException If the URL is malformed.
    * @throws RuntimeException if an I/O exception has occurred.
    */
   public static void saveImage(String location, BufferedImage image) {
