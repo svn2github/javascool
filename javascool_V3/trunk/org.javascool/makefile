@@ -15,17 +15,10 @@ clean:
 	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* lib/manifest.mf www/api www/javascool.jar .http.root src/org/javascool/xslt/page.htm
 
 j3: www/javascool.jar
-	cd tst ; java -jar ../www/javascool.jar
-
-v2: www/javascool.jar
-	@cd tst ; java -cp ../www/javascool.jar org.javascool.AlgoTree
-#	@cd tst ; java -cp ../www/javascool.jar org.javascool.MainV2 edit ingredients Test0.jvs
+	@cd tst ; java -jar ../www/javascool.jar
 
 v3: cmp
-	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Main
-
-Pml: cmp
-	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Pml $(file)
+	@lib/run.sh Main
 
 svn: clean
 	svn up ; svn ci -m '' ; svn status
@@ -42,7 +35,7 @@ pub: www/api/index.html www/javascool.jar
 
 # Creation of a signed jar for standalone applications integrating the jdk5 classes
 
-J5=/usr/java/jdk1.5.0_13
+J5=/usr/java/jdk1.5.0_22
 
 # Jar meta-data
 
@@ -84,7 +77,7 @@ lib/manifest.mf : makefile
 cmp : srcs $(SRC)
 	@rm -f $@; javac -Xlint -cp src:lib/tools.jar:lib/saxon.jar $(SRC)
 
-srcs : src/org/javascool/proglets.java # $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt')) 
+srcs : src/org/javascool/proglets.java $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt')) 
 
 %.java : %.xslt
 	@echo "<null/>" > /tmp/null.xml ; java -jar lib/saxon.jar /tmp/null.xml $^ ; rm /tmp/null.xml
@@ -99,7 +92,7 @@ src/org/javascool/proglets.java : $(shell find src/proglet -name '*.java')
 
 ifeq ($(USER), vthierry)
 
-CP=/usr/java/jdk1.5.0_13/lib/tools.jar
+CP=/usr/java/jdk1.5.0_22/lib/tools.jar
 
 lib/tools.jar : $(CP)
 	@cp $^ $@
@@ -129,13 +122,8 @@ htms : $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
 %.htm : %.xml lib/xml2htm.xsl
 	@java -jar lib/saxon.jar -o $@ $^
 
-pmls : $(patsubst %.xml,%.pml,$(shell find src -name '*.xml'))
-
 %.pml : %.xml cmp
 	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Pml $*.xml > $@
-
-pmls-clean :
-	rm -f $(patsubst %.xml,%.pml,$(shell find src -name '*.xml'))
 
 pngs :  $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) 
 

@@ -4,8 +4,12 @@
 
 package org.javascool;
 
-// Used for URL read
+
+// Used for URL formation
 import java.net.URL;
+import java.net.MalformedURLException;
+
+// Used for URL read
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
@@ -13,7 +17,6 @@ import java.lang.StringBuilder;
 import java.net.URLEncoder;
 
 // Used for URL write
-import java.net.URL;
 import java.io.IOException;
 import java.lang.System; // .out.println
 import java.net.URLConnection;
@@ -21,15 +24,8 @@ import java.io.OutputStreamWriter;
 import java.io.File;
 import java.io.FileWriter;
 
-// Used to load/save images
-import java.awt.image.BufferedImage;
+// Used to load icon
 import javax.swing.ImageIcon;
-import javax.imageio.ImageIO;
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.io.OutputStream;
-import java.io.File;
 
 // Used for string to name and file-name conversion
 import java.util.HashMap;
@@ -102,6 +98,19 @@ public class Utils { private Utils() { }
     return exec(command , 10);
   }
 
+  /** Converts a location to a well-formed URL. 
+   * @param The location: either an URL or a local file-name or a ressource accessed by class code.
+   *
+   * @throws IllegalArgumentException If the URL is malformed.
+   */
+  public static URL toUrl(String location) {
+    try {
+      if (location.matches("(file|ftp|http|https|jar|mailto|stdout):.*")) return new URL(location);
+      URL url = Main.class.getClassLoader().getResource(location); if (url != null) return url;
+      return new URL("file:"+location);
+    } catch(MalformedURLException e) { throw new IllegalArgumentException(e+" : "+location+" is a malformed URL"); }
+  }
+
   /** Loads an URL textual contents and returns it as a string.
    *
    * @param location A Universal Resource Location of the form: <table align="center"> 
@@ -116,9 +125,8 @@ public class Utils { private Utils() { }
    * @throws RuntimeException if an I/O exception has occurred.
    */
   public static String loadString(String location) {
-    location = toUrl(location);
     try {
-      BufferedReader reader = new BufferedReader(new InputStreamReader(new URL(location).openStream()), 10240);
+      BufferedReader reader = new BufferedReader(new InputStreamReader(toUrl(location).openStream()), 10240);
       StringBuilder buffer = new StringBuilder(); char chars[] = new char[10240];
       while(true) { int l = reader.read(chars); if (l == -1) break; buffer.append(chars, 0, l); }
       return buffer.toString();
@@ -141,7 +149,7 @@ public class Utils { private Utils() { }
    * @throws RuntimeException if an I/O exception has occurred.
    */
   public static void saveString(String location, String string) {
-    location = toUrl(location);
+    location = toUrl(location).toString();
     try {
       if (location.startsWith("stdout:")) { System.out.println(location+" "+string); return; }
       OutputStreamWriter writer = location.startsWith("file:") ? getFileWriter(location.substring(5)) : getUrlWriter(location);
@@ -162,72 +170,11 @@ public class Utils { private Utils() { }
   }
 
   /** Returns an icon loaded from the applet context.
-   * @param file The icon file name The icon must be located in the context directory (directory on the server or on the client side or in the jar).
+   * @param location The icon file name, in the context directory (directory on the server or on the client side or in the jar) or as a URL.
    * @return The related image icon or an empty icon if not loaded.
    */
   public static ImageIcon getIcon(String file) {
-    try { return new ImageIcon(MainV2.class.getClassLoader().getResource(file)); } catch(Exception e1) {
-      try { System.out.println("Warning: loading "+file+" via gforge");
-	return new ImageIcon(new URL("http://javascool.gforge.inria.fr/v3/api/"+file)); } catch(Exception e2) {
-	System.err.println("Unable to load the '"+file+"' icon, check your configuration or your imgage files ("+e1+";"+e2+")"); 
-	return new ImageIcon(); 
-      }
-    }
-  }
-
-  /** Loads an image from the given location.
-   *
-   * @param location A Universal Resource Location of the form: <table> 
-   * <tr><td><tt>http:/<i>path-name</i></tt></td><td>to load from a HTTP location</td></tr>
-   * <tr><td><tt>ftp:/<i>path-name</i></tt></td><td>to load from a FTP site</td></tr>
-   * <tr><td><tt>file:/<i>path-name</i></tt></td><td>to load from a file</td></tr>
-   * <tr><td><tt>jar:/<i>jar-path-name</i>!/<i>jar-entry</i></tt></td><td>to load from a JAR archive</td></tr>
-   * </table>
-   *
-   * @throws RuntimeException if an I/O exception has occurred.
-   */
-  public static BufferedImage loadImage(String location) {
-    location = toUrl(location);
-    BufferedImage image = null; 
-    try { 
-      image = ImageIO.read(new URL(location)); 
-    } catch(IOException e) { 
-      throw new RuntimeException(e+" when loading: "+location); 
-    } 
-    if (image == null)
-      throw new RuntimeException("Unable to load: "+location); 
-    return image;
-  }
-
-  /** Saves an image at the given location in <tt>png</tt> format.
-   *
-   * @param location A Universal Resource Location of the form: <table>
-   * <tr><td><tt>ftp:/<i>path-name</i></tt></td><td>to save onto a FTP site.</td></tr>
-   * <tr><td><tt>file:/<i>path-name</i></tt></td><td>to save into a file.</td></tr>
-   * </table>
-   * 
-   * @param image The image to save.
-   *
-   * @throws RuntimeException if an I/O exception has occurred.
-   */
-  public static void saveImage(String location, BufferedImage image) {
-    location = toUrl(location);
-    try {
-      if (location.startsWith("file:")) {
-	ImageIO.write(image, "png", new File(location.substring(5)));
-      } else {
-	URLConnection connection = new URL(location).openConnection(); connection.setDoOutput(true); OutputStream writer = connection.getOutputStream();
-	ImageIO.write(image, "png", writer);
-	writer.close();
-      }
-    } catch(IOException e) {
-      throw new RuntimeException(e+" when saving: "+location); 
-    }
-  }
-
-  /** Converts a location to a weel-formed URL. */
-  private static String toUrl(String location) {
-    return location.matches("(file|ftp|http|https|jar|mailto|stdout):.*") ? location : "file:"+location;
+    return new ImageIcon(toUrl(file));
   }
 
   /** Converts a string to proper name.

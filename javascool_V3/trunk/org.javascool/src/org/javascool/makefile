@@ -2,7 +2,9 @@
 ifeq ($(USER), vthierry)
 
 all : 
-	@$(MAKE) -C ../../.. v3
+	@$(MAKE) -C ../../.. cmp
+	@cd ../tst ; ../lib/run.sh Main
+#	@cd ../tst ; ../lib/run.sh MainV2 edit ingredients Test0.jvs
 
 else
 

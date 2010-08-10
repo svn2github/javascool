@@ -19,7 +19,6 @@ main=`echo $1 | sed 's/^org\.javascool\.//'` ; shift
 if [ "$main" = sax ] ; then java -jar $root/lib/saxon.jar $* ; exit $? ; fi
 
 # Running the class
-echo "Compiling and running the org.javascool class $main from $root"
 make -s -C $root cmp ; java -cp $root/src:$root/lib/tools.jar:$root/lib/saxon.jar org.javascool.$main $*
 
 
