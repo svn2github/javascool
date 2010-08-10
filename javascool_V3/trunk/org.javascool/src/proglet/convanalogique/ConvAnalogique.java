@@ -16,7 +16,7 @@ import javax.swing.JLayeredPane;
 import org.javascool.NumberInput;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
- * <p><applet code="org.javascool.ProgletApplet" archive="../../../javascool.jar" width="560" height="720"><param name="proglet" value="convanalogique"/></applet></p>
+ * <p><applet code="org.javascool.ProgletApplet" archive="../../../javascool.jar" width="560" height="580"><param name="proglet" value="convanalogique"/></applet></p>
  * @see <a href="ConvAnalogique.java">code source</a>
  */
 public class ConvAnalogique implements org.javascool.Proglet { private ConvAnalogique() { }
@@ -74,7 +74,7 @@ public class ConvAnalogique implements org.javascool.Proglet { private ConvAnalo
     {
       int min = 0, max = 1024;
       while(min < max - 1) {
-	Macros.echo("La valeur est comprise entre " + (min) + " et " + (max - 1));
+	//Macros.echo("La valeur est comprise entre " + (min) + " et " + (max - 1));
 	int milieu = (min + max) / 2;
 	convaOut(milieu); if (convaCompare() == 1) {
 	  min = milieu;
