@@ -166,7 +166,8 @@ public class Main extends JApplet { /**/public Main() { }
     addTool("", "org/javascool/doc-files/icones16/new.png", newFile);
     addTool("Ouvrir", "org/javascool/doc-files/icones16/open.png", openFile);
     addTool("Sauver", "org/javascool/doc-files/icones16/save.png", saveFile);
-    addTool("Compiler", "org/javascool/doc-files/icones16/compile.png", nothing);
+    tools.addSeparator();
+    addTool("Compiler", "org/javascool/doc-files/icones16/compil.png", nothing);
     addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", nothing);
     addTool("Aide", "org/javascool/doc-files/icones16/help.png", showHelp);
   }

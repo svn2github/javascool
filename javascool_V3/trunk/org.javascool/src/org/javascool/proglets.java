@@ -3,8 +3,8 @@
 "proglet.convanalogique.ConvAnalogique",
 "proglet.tortuelogo.TortueLogo",
 "proglet.ingredients.Console",
-"proglet.pixelsetcie.ImageDisplay",
-"proglet.javaprog.JavaPanel",
 "proglet.dichotomie.Dichotomie",
 "proglet.exosdemaths.CurveDisplay",
+"proglet.javaprog.JavaPanel",
+"proglet.pixelsetcie.ImageDisplay",
 ""}; }
