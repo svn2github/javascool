@@ -1,4 +1,4 @@
-#<a href="#readme">readme</a><pre>
+# <a href="#readme">readme</a><pre>
 
 #####################################################################################################################################
 ##  Philoumailabo@gmail.com and Thierry.Vieville@sophia.inria.fr, Copyright (C) 2010.  All rights reserved.                        ##
@@ -270,7 +270,7 @@ endif
 #: or (to be validated):
 #: > yum install java-1.5.0-gcj-devel
 #:
-
+#####################################################################################################################################
 
 
 
