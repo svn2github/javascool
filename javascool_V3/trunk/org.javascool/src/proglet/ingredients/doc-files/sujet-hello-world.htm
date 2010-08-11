@@ -1,0 +1,239 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:saxon="http://icl.com/saxon">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <link rel="stylesheet" type="text/css" href="img/style.css">
+      <title>JavaScool . . and Java is so cool.</title>
+      <link rel="shortcut icon" href="img/icon.jpg">
+   </head>
+   <body>
+      <table width="100%" style="border:0;margin:0;padding:0;background-image:url('img/bg-banner.jpg');">
+         <tr style="border:0;margin:0;padding:0">
+            <td width="33%" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr"><img height="36" width="150" src="img/logo-javascool.jpg"></a></td>
+            <td width="33%" align="center" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm#4"><img height="36" src="img/logo-lycees.jpg"></a></td>
+            <td width="33%" align="right" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://www.inria.fr"><img height="36" src="img/logo-inria.jpg"></a></td>
+         </tr>
+      </table>
+      
+      <h1><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"></a>
+         Le tutoriel "Hello World"
+      </h1>
+      <div align="right">[<a href="#notes">introduction</a>] [<a href="#works">travail propos&Atilde;&copy;</a>] [<a href="#footnotes">remarques</a>] [<a href="about-memo.htm">m&Atilde;&copy;mo des fonctions</a>]
+      </div><br><br>
+      
+        <i>&Acirc;&laquo;proglet&Acirc;&raquo; </i><tt><a href="about-proglet-Konsol.htm">Konsol</a></tt>
+        
+        
+      <div class="soustitre">
+         <p>Objectif : </p>
+      </div><br><div id="objectif">
+         <table align="center" width="80%">
+            <tr>
+               <td align="left">
+                  Le but de ce tutoriel est de se familiariser avec l'outil de programmation <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt>, pour pouvoir r&eacute;aliser les autres 
+                  <a href="../index.html">tutoriels</a>
+                    et de d&eacute;couvrir comment programmer une s&eacute;quence d'instruction.
+                    
+               </td>
+            </tr>
+         </table>
+      </div><br>
+        
+        
+      <div class="soustitre">
+         <p>Introduction : </p>
+      </div><br><ul id="notes">
+         <li>
+            <div><b>Ecrire notre premier programme</b>: Voici un exemple de programme minimal qui affiche la chaine de caract&egrave;re <font color="#008000">"HelloWorld"</font>:
+                     
+               <table border="1" align="center" width="80%">
+                  <tr>
+                     <th align="left">
+                                
+                        <div class="text" id="-1"><font color="#990000"><b>void main</b></font>() {
+                        </div>
+                                
+                        <div class="text" id="-1">
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                        </div>
+                                
+                        <div class="text" id="-1">}</div>
+                              
+                     </th>
+                  </tr>
+               </table>
+                     
+               <div class="text" id="-1">Nous y lisons les mots <font color="#990000"><b>void main</b></font> et <font color="#990000"><b>println</b></font> qui sont des mots de <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt>, le langage informatique, 
+                        et la chaine de caract&egrave;res <font color="#008000">"HelloWorld"</font> qui est un mot "&agrave;  nous".
+               </div>
+                     Regardons &agrave; quoi correspondent ces trois lignes d'instructions: 
+               
+               <ol>
+                        
+                  
+                  <li>Ce que nous demandons, notre "instruction", est juste d'imprimer <font color="#008000">"HelloWorld"</font>; 
+                           
+                     <br> o&ugrave;, par convention, nous pla&ccedil;ons la chaine de caract&egrave;res entre guillemets <font color="#008000">""</font> pour signifier que c'est juste une chaine de caract&egrave;res.
+                  </li>
+                        
+                  
+                  <li>Nous sp&eacute;cifions donc l'instruction <font color="#990000"><b>println</b></font>(<font color="#008000">"HelloWorld"</font>), o&ugrave; <font color="#990000"><b>println</b></font> signifie "imprime 
+                     <i>(print)</i> sur une ligne" et
+                           
+                     <br> o&ugrave;, par convention, ce qui doit &ecirc;tre imprim&eacute; est plac&eacute; entre parenth&egrave;se apr&egrave;s le mot <font color="#990000"><b>println</b></font> et l'instruction se finit par 
+                     <b>;</b>.
+                  </li>
+                        
+                  
+                  <li>Et c'est dans le bloc 
+                     <b><font color="#990000"><b>void main</b></font>() { ../.. }</b> que se placent, entre les accolades, les instructions qui doivent &ecirc;tre ex&eacute;cut&eacute;es par le programme,
+                           
+                     <br><font color="#990000"><b>void main</b></font> signifie "voici la t&acirc;che principale &agrave; ex&eacute;cuter" (cette fa&ccedil;on de proc&eacute;der sera &eacute;videmment mieux expliqu&eacute;e par la suite).
+                  </li>
+                        
+               </ol>
+                     Et voil&agrave; ! Il suffit de bien noter l'utilisation du bloc d'instruction (mise en &eacute;vidence au point 3.) 
+                     et la fa&ccedil;on de donner une instruction (donn&eacute;e en exemple au point 2.).
+                   
+            </div><br></li>
+         <li>
+            <div><b>Compiler et ex&eacute;cuter notre premier programme</b>: Comment faire ex&eacute;cuter ce programme minimal par l'ordinateur ? Il y a trois &eacute;tapes.
+                   
+               
+               <ol>
+                        
+                  
+                  <li>
+                     <img src="img/save.png"> D'abord toujours ... sauver le texte source du programme dans un fichier d'extension <tt>.jvs</tt>, 
+                           par exemple <tt>Hi1.jvs</tt>, puis <tt>Hi2.jvs</tt> pour la version suivante, etc.. 
+                           Il faut 
+                     <i>r&eacute;guli&egrave;rement</i> penser &agrave; sauvegarder ce qui a &eacute;t&eacute; entr&eacute; au clavier !
+                  </li>
+                        
+                  
+                  <li>
+                     <img src="img/compile.png"> Puis . . compiler le programme: cel&agrave; veut dire le traduire dans le langage de l'ordinateur.
+                     
+                     <ul>
+                                
+                        
+                        <li>En effet, l'ordinateur est une machine &eacute;lectronique et le "langage qu'il comprend" est extr&ecirc;ment basique (ouvrir tel interrupteur,
+                           
+                                   connecter telle partie du circuit &agrave; une autre, etc..) et tout ceci est bien trop fastidieux &agrave; d&eacute;crire directement
+                           
+                                   (l'action <font color="#990000"><b>println</b></font>, par exemple, comporte elle-m&ecirc;me des milliers d'op&eacute;rations &eacute;l&eacute;mentaires !).
+                        </li>
+                                
+                        
+                        <li>Alors, nous disposons d'un langage 
+                           <i>formel de haut niveau</i> celui que nous d&eacute;couvrons ici et que nous appelons <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt> et
+                                   qui permet de sp&eacute;cifier des instructions de la mani&egrave;re la plus efficace possible.
+                        </li>
+                              
+                     </ul> Compiler signifie alors 
+                     <i>traduire le langage <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt> en langage machine</i>.
+                  </li>
+                        
+                  
+                  <li>
+                     <img src="img/execute.png"> Enfin ... ex&eacute;cuter le programme : 
+                           cel&agrave; veut dire demander &agrave; l'ordinateur de partir de 
+                     <b><font color="#990000"><b>void main</b></font></b> et d'ex&eacute;cuter toutes les instructions donn&eacute;es. 
+                           Dans notre cas, nous obtiendrons l'&eacute;criture de 
+                     <b>Hello World !</b>... et 
+                           nous aurons en main la base pour faire des choses bien plus int&eacute;ressantes et plus sophistiqu&eacute;es !
+                  </li>
+                      
+               </ol>
+                   
+            </div><br></li>
+      </ul><br>
+        
+        
+      <div class="soustitre">
+         <p>Travail propos&Atilde;&copy; :</p>
+      </div><br><ul id="works">
+         <li><b>A nous de jouer</b>:  Taper sans se tromper les trois lignes dans la fen&ecirc;tre de gauche (attention la moindre faute de frappe et il y aura une erreur,
+            
+                n'oublions qu'un ordinateur n'a aucune intelligence pour "intuiter" ce que nous voulons sp&eacute;cifier) puis sauver, compiler
+            et ex&eacute;cuter. 
+            
+            <ul>
+                   
+               
+               <li>Sauf &eacute;tourderie ... &ccedil;a y est ... nous avons donn&eacute; notre premi&egrave;re instruction &agrave; l'ordinateur !</li>
+                     
+               
+               <li>Au lieu de faire &eacute;crire <font color="#008000">"HelloWorld"</font> programmons une salutation en fran&ccedil;ais : remplacer la chaine de caract&egrave;res par une autre phrase de salutation dans le programme
+                  source, puis essayer (c'est &agrave; dire : sauver, compiler et ... ex&eacute;cuter).
+               </li>
+                     
+               
+               <li>Au lieu de ne faire &eacute;crire qu'une ligne, programmons l'&eacute;criture de deux lignes par exemple <font color="#008000">"Bonjour tr&egrave;s cher:"</font> et <font color="#008000">"Quel bon vent vous am&egrave;ne"</font>: pour cel&agrave; mettre deux instructions <font color="#990000"><b>println</b></font> l'une en dessous de l'autre dans le bloc <font color="#990000"><b>void main</b></font> (donc bien 
+                  <i>entre</i> les accolades et sans oublier le 
+                  <b>;</b> !),  puis essayer.
+               </li>
+                   
+            </ul><br></li>
+         <li><b>Que se passe t'il en cas d'erreur</b>:  Peut-&ecirc;tre involontairement d&eacute;j&agrave;, maintenant volontairement, faisons des "erreurs de syntaxe" c'est &agrave; dire &eacute;crivons de mani&egrave;re
+            erronn&eacute;e une petite partie du programme, Par exemple, oublier le 
+            <b>;</b> ou un 
+            <b>"</b>, ou mettre un 
+            <b>}</b> de trop, ou encore taper <font color="#990000"><b>printl</b></font> (sans le <font color="#990000"><b>n</b></font> !), etc.. 
+            
+            <ul>
+                     
+               
+               <li>Que se passe t'il alors lors de la compilation ? Noter que le compilateur (le traducteur de <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt> en langage machine) est pr&eacute;vu pour renseigner au maximum sur l'erreur rencontr&eacute;e, le num&eacute;ro de ligne est fourni, le message
+                  d'erreur essaye de d&eacute;crire le probl&egrave;me, etc.
+               </li>
+                     
+               
+               <li>Travailler maintenant en bin&ocirc;me : l'un de vous introduit volontairement une erreur dans le code &agrave; l'insu de l'autre, puis
+                  laisse la place &agrave; l'autre qui doit retrouver et corriger l'erreur. Faites le au moins cinq fois. Essayer avec des variantes
+                  du code (plusieurs <font color="#990000"><b>println</b></font>, des chaines de caract&egrave;res compliqu&eacute;es)
+               </li>
+                   
+            </ul> C'est tr&egrave;s important de prendre l'habitude de trouver o&ugrave; il y a des erreurs de syntaxe pour facilement les corriger.<br></li>
+      </ul>
+        
+        
+      <div class="soustitre">
+         <p>Remarques :</p>
+      </div>
+      <div id="footnotes">
+         <p id="1"><sup>1</sup><b><i>Mais dans quel langage programmons nous ?</i></b> Nous sommes en train d'apprendre &agrave; programmer dans un langage commun aux langages <tt>
+               <a href="http://fr.wikipedia.org/wiki/Java_(langage)">Java</a></tt>, <tt>
+               <a href="http://fr.wikipedia.org/wiki/C_(langage)">C</a></tt> ou <tt>
+               <a href="http://fr.wikipedia.org/wiki/C%2B%2B">C++</a></tt>, et m&ecirc;me 
+                <tt>
+               <a href="http://fr.wikipedia.org/wiki/Javascript">Javascript</a></tt> ou <tt>
+               <a href="http://fr.wikipedia.org/wiki/PHP">PHP</a></tt> qui est un langage 
+            <a href="http://fr.wikipedia.org/wiki/Programmation_imp%C3%A9rative">imp&eacute;ratif</a>" qui d&eacute;crit les op&eacute;rations en termes de s&eacute;quences d'instructions ex&eacute;cut&eacute;es par l'ordinateur pour modifier l'&eacute;tat du programme.
+            La bonne nouvelle est que ce que nous apprenons ici, servira donc ensuite 
+            <i>quel que soit</i> le langage de programmation : ce seront les m&ecirc;mes m&eacute;canismes, juste exprim&eacute;s parfois un peu diff&eacute;rement.
+         </p>
+         <p id="2"><sup>2</sup><b><i>Pourquoi appeler ce langage commun 'Java'sCool' ?</i></b> Parce que le langage "cach&eacute;" derri&egrave;re notre outil est le <tt>
+               <a href="http://fr.wikipedia.org/wiki/Java_(langage)">Java</a></tt> qui a &eacute;t&eacute; un peu simplifi&eacute; ici pour le rendre "cool". D'ailleurs il est possible (&agrave; vos riques et b&eacute;n&eacute;fices..) d'utiliser
+            
+            <i>tout</i> le langage 
+            <tt>
+               <a href="http://fr.wikipedia.org/wiki/Java_(langage)">Java</a></tt> ici. Simplement, un certain nombre de sp&eacute;cifications sont devenues optionelles en <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt> pour faciliter les choses aux d&eacute;butants. C'est donc une &eacute;cole de <tt>
+               <a href="http://fr.wikipedia.org/wiki/Java_(langage)">Java</a></tt> 
+            <i>(a Java school)</i> avec laquelle <tt>
+               <a href="http://fr.wikipedia.org/wiki/Java_(langage)">Java</a></tt> 
+            <i>is cool</i>. Cette id&eacute;e a &eacute;t&eacute; mise au point par des &eacute;tudiants en informatique de l'
+            <a href="http://deptinfo.unice.fr">Universit&eacute; de Nice Sophia-Antipolis</a> auteurs de 
+            <a href="http://javascool.gforge.inria.fr"><tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt></a>.
+         </p>
+         <p id="3"><sup>3</sup><b><i>Que veux dire &laquo;void main&raquo; en fait ?</i></b> Patience nous le comprendrons avec le tutoriel sur les 
+            <a href="sujet-about-functions.htm">fonctions</a>.
+         </p>
+      </div>
+      
+   </body>
+</html>

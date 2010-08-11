@@ -7,6 +7,7 @@ Usage: $0 <main> [arguments]
  Runs one of the org.javascool main 
 Usage: $0 sax -o <out-file> <xml-file> <xsl-file>
  Runs a XML to XML translation usng a XSL
+- This scripts simplifies the local use of saxon and javascool
 EOD
 exit 0
 fi

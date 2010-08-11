@@ -1,54 +1,57 @@
+#<a href="#readme">readme</a><pre>
+
 #####################################################################################################################################
 ##  Philoumailabo@gmail.com and Thierry.Vieville@sophia.inria.fr, Copyright (C) 2010.  All rights reserved.                        ##
 #####################################################################################################################################
 
-usage :
-	@echo 'Usage:'
-	@echo ' make clean        : nettoie les fichiers intermédiares'
-	@echo ' make j3           : lance la v3 de javascool à partir du jar'
-	@echo ' make v3           : lance la v3 de javascool à partir des classes compilées'
-	@echo ' make svn          : synchronize avec le svn'
-	@echo ' make doc          : cree la doc des classes java'
-	@echo ' make pub          : publie les fichiers du site web'
+# General commands
 
-clean:
-	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* .http.root lib/manifest.mf www/api www/javascool.jar 
+usage :
+	@grep '^#::' makefile | sed 's/^#:://'
+
+what :
+	@grep '^#:' makefile | sed 's/^#://'
+
+v3: cmp
+	@cd tst ; ../lib/run.sh Main
 
 j3: jar
 	@cd tst ; java -jar ../www/javascool.jar
 
-v3: cmp
-	@lib/run.sh Main
+doc: api
+	firefox file:www/api/org/javascool/package-summary.html
 
 svn: clean
 	svn up ; svn ci -m '' ; svn status
 
-doc: jar www/api/index.html
-	@firefox www/api/org/javascool/package-summary.html
-
-pub: www/api/index.html www/javascool.jar
-	@php -l www/index.php ; rm -f www/index.php~
-	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 2>&1 | grep -v '^rsync: failed to set'
-	@echo 'Si www/index.php a change la page http://javascool.gforge.inria.fr/v3 sera accessible dans environ une heure'
+clean:
+	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* .http.root lib/manifest.mf www/api www/javascool.jar 
 
 #####################################################################################################################################
 
 # Creation of a signed jar for standalone applications integrating the jdk5 classes
 
-J5=/usr/java/jdk1.5.0_22
-
-# Jar meta-data
-
 jar : www/javascool.jar
+
+# Jar parameters, files and meta-data
+
+J5=/usr/java/jdk1.5.0_22
 
 vendor=thierry.vieville@sophia.inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
 version=3.0
 public-key=hello-world
 private-key=mer,d,azof
 
-SRC=$(shell find src -name '*.java') src/org/javascool/proglets.java $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt')) 
+SRC = \
+ $(shell find src -name '*.java') \
+ src/org/javascool/proglets.java $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt'))
 
-www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC)
+DOC = \
+ $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
+
+# Compiles the java classes using the default jdk5 and builds the certified jar
+
+www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC) $(DOC)
 	@echo "make $@"
 	@#[1] Compile the java classes
 	@$(J5)/bin/javac -Xlint -cp lib/tools.jar $(SRC)
@@ -76,8 +79,18 @@ lib/manifest.mf : makefile
 	@(echo 'Main-Class: org.javascool.Main') >> $@
 	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
 
+%.htm : %.xml lib/xml2htm.xsl
+	@java -jar lib/saxon.jar -o $@ $^
+
+%.png : %.fig
+	@fig2dev -L png $^ > $@
+
+# Compiles the java classes using the default jdk 
+
 cmp : $(SRC)
 	@rm -f $@; javac -Xlint -cp src:lib/tools.jar:lib/saxon.jar $(SRC)
+
+# Automatically generated java files
 
 %.java : %.xslt
 	@echo "<null/>" > /tmp/null.xml ; java -jar lib/saxon.jar /tmp/null.xml $^ ; rm /tmp/null.xml
@@ -90,9 +103,11 @@ src/org/javascool/proglets.java : $(shell find src/proglet -name '*.java')
 	@for f in `egrep -l 'implements[ \t]+(org.javascool.)?Proglet' $^` ; do echo $$f | sed 's/^src\/\(.*\)\.java$$/"\1",/' | sed 's/\//./g' ; done >> $@
 	@echo '""}; }' >> $@
 
+# Installation of used jars
+
 ifeq ($(USER), vthierry)
 
-CP=/usr/java/jdk1.5.0_22/lib/tools.jar
+CP=$(J5)/lib/tools.jar
 
 lib/tools.jar : $(CP)
 	@cp $^ $@
@@ -108,46 +123,177 @@ endif
 
 # Java doc generation
 
-doc : jar www/api/index.html $(patsubst src/%.xml,www/api/%.htm,$(shell find src -name '*.xml')) 
+api: jar www/api 
 
-www/api/index.html : $(SRC) $(shell find src -name package.html) $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) 
-	@echo "make $(@D)"
-	@rm -rf $(@D) ; mkdir -p $(@D)
+www/api : $(SRC) makefile $(shell find src -name package.html) 
+	@echo "make $@"
+	@rm -rf $@ ; mkdir -p $@
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
 	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -link http://download.oracle.com/javase/6/docs/api \
-	 -windowtitle "Java's Cool v3" -d $(@D) $(SRC)
+	 -windowtitle "Java's Cool v3" -d $@ $(SRC)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
-	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$(@D))/'` ; done
-
-www/api/%.htm : src/%.xml lib/xml2htm.xsl
-	@java -jar lib/saxon.jar -o $@ $^
-
-www/api/%.pml : src/%.xml cmp
-	@java -cp src:lib/tools.jar:lib/saxon.jar org.javascool.Pml $*.xml > $@
-
-%.png : %.fig
-	@fig2dev -L png $^ > $@
+	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; done
+	@cp makefile www/api/makefile.htm
+	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
 #####################################################################################################################################
 
-# System operation commands
+# Web site files publication
 
-ftp :
-	gnome-terminal -e 'sftp scm.gforge.inria.fr:/home/groups/javascool/htdocs'
+pub: api
+	@php -l www/index.php ; rm -f www/index.php~
+	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 2>&1 | grep -v '^rsync: failed to set'
+	@echo 'Si www/index.php a change la page http://javascool.gforge.inria.fr/v3 sera accessible dans environ une heure'
+
+#####################################################################################################################################
+
+# Useful links
 
 web:
 	@firefox http://javascool.gforge.inria.fr/v3
 
 wiki:
-	@firefox http://wiki.inria.fr/sciencinfolycee
+	@firefox http://wiki.inria.fr/sciencinfolycee/JavaScool:TableauDeBord
+
+#####################################################################################################################################
+
+#                                       System operation commands: TO BE USED WITH CARE !!!!                                        #
+
+# This is used to access to web-site files
+
+ftp :
+	gnome-terminal -e 'sftp scm.gforge.inria.fr:/home/groups/javascool/htdocs'
+
+ifeq ($(USER), vthierry)
+
+# This is used to set the web site on v3 and cancel the v2 (i.e. instead of location.replace("./accueil.php");)
+
+wv3 :
+	@(echo '<script>' ; echo 'location.replace("./v3/index.php");' ; echo '</script>') > tmp.htm
+	@rsync --rsh='ssh -C' tmp.htm scm.gforge.inria.fr:/home/groups/javascool/htdocs/index.html ; rm tmp.htm
+	@firefox http:javascool.gforge.inria.fr
+
+# This is used to test www/index.php in local mode
 
 php:
 	@php -l www/index.php
 	@make -f /home/vthierry/Work/enas/src/yava/makefile.http ROOT=`pwd`/www PAGE=index.php?page=api:org/javascool/package-summary.html show
 
-# Useful commands:
+# This cancels http://facets.inria.fr/javascool for the v3 and cancle the v2
+
+fst :
+	@ssh facets.inria.fr '/bin/rm -rf /home/vthierry/javascool/* /home/vthierry/javascool/.[a-zA-Z0-1]*'
+	@echo '<?php /* No web service in V3 ! */ header("Location:http://javascool.gforge.inria.fr"); ?>' > tmp.php	
+	@rsync --rsh='ssh -C' tmp.php facets.inria.fr:javascool/index.php ; rm tmp.php
+	@firefox http://facets.inria.fr/javascool
+
+endif
+
+# Useful insuperable commands (to be used with MUCH care):
 #
+# [1] resolve conflicts in favor of MY working version
 # - svn up ; svn resolve --accept working . 
+# [2] remove files marked as deleted
+# - svn rm `svn status | grep '^!' | awk '{print $2}'` 
 #
 
 #####################################################################################################################################
+#</pre><a name="readme"/><pre>
+
+#: ********************************************************************************
+#: *****                 JavaScool developer's readme                         *****
+#: ********************************************************************************
+#:
+#: Welcome to the JavaScool V3 development bundle :
+#:  please contact: philoumailabo@gmail.com,thierry.vieville@inria.fr for any info/request/..
+#:
+#:
+#: [1] The javascool/javascool_V3/trunk/org.javascool file bundle description.
+#: 
+#: [1.1] Source files:
+#: ./makefile                 : contains all compilation/publication/test commands
+#: ./src/org/javascool/*.java : contains the javascool core and widget classes and doc-files
+#: ./src/proglet/*/*.java     : contains the proglets classes and doc-files
+#:
+#: [1.2] Web site files
+#: src/.../doc-files          : contains all javascool and proglets corresponding resources (documentation, icons, ..)
+#: www/index.php              : is the web site wrapper (unique http://javascool.gforge.inria.fr entry point)
+#: www/documents              : contains extra documents for the web site
+#: www/images                 : contains the web site icons
+#: www/styles/*.css           : contains the web site CSS styles
+#: www/documents              : contains extra documents for the web site and/or not included in the JAR file
+#: www/api                    : is the makefile generated javadoc files, deleted on clean: do NOT edit
+#: www/javascool.jar          : is the makefile generated javascool JAR, deleted on clean: do NOT edit
+#:
+#: [1.3] Lib files:
+#: ./lib/run.sh               : simplifies the local use of saxon and javascool (starts org.javasccoo.* mains + performs xml2xml translation)
+#: ./lib/*.jar                : are used jar for the present development
+#: ./lib/xml2htm.xsl          : defines how to translate doc-files/*.xml files to XHTML 
+#: ./lib/manifest.mf          : is a makefile generated file: do NOT edit
+#: 
+#: [1.4] Other files
+#: ./tst/*                    : contains local test files
+#: ./org.javascool            : convenient link to ./src/org/javascool
+#:  ./proglets                : convenient link to ./src/proglet.
+#:
+#: [2] Makefile usage.
+#:
+#::Usage:'
+#:: make v3           : run javascool'v3 from locally compiled clases'
+#:: make j3           : run javascool'v3 from the constructed jar'
+#:: make doc          : show the javadoc locally'
+#:: make svn          : synchronize with the svn repository (update + commit)'
+#::Other commands:'
+#:: make clean        : clean all intermediate files'
+#:: make usage        : show the makefile usage'
+#:: make what         : show the README information contains in this makefile'
+#::Internal commands:'
+#:: make cmp          : build the java classes'
+#:: make jar          : build the java jar'
+#:: make api          : build the java doc'
+#:: make pub          : publish the present release on the web site'
+#:
+#: [3] Development tools used.
+#:
+#: [3.1] Usual linux commands:  cp du echo cat fig2dev firefox grep make php rm rsync sed ssh svn touch unzip
+#:  while fig2dev (from transfig)is only used to generate .fig images, firefox
+#:  while php     (from php-cli) is only used to check the php syntax
+#:  while firefox                can be replaced by any other open-source convenient browser
+#: Installing these commands run; e.g., yum or apt-get:
+#: > yum install bash coreutils firefox grep make openssh php-cli rsync sed transfig subversion unzip 
+#:
+#: [3.2] Java development tools: java javac jarsigner javadoc keytool
+#: Installing these commands run; e.g., yum or apt-get:
+#: > yum java-1.6.0-openjdk-devel
+#: while we still need the JDK5, i.e.:
+#: > cd /usr/java ; ./jdk-1_5_0_22-linux-i586.bin
+#: or (to be validated):
+#: > yum install java-1.5.0-gcj-devel
+#:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#</pre>
