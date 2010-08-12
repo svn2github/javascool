@@ -1,220 +1,200 @@
 
 <!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div>
+   <h2>La &laquo;proglet&raquo; Synthe.</h2>
    
-      <link rel="stylesheet" type="text/css" href="img/style.css">
-      <title>JavaScool . . and Java is so cool.</title>
-      <link rel="shortcut icon" href="img/icon.jpg">
-   </head>
-   <body>
-      <table width="100%" style="border:0;margin:0;padding:0;background-image:url('img/bg-banner.jpg');">
-         <tr style="border:0;margin:0;padding:0">
-            <td width="33%" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr"><img height="36" width="150" src="img/logo-javascool.jpg"></a></td>
-            <td width="33%" align="center" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm#4"><img height="36" src="img/logo-lycees.jpg"></a></td>
-            <td width="33%" align="right" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://www.inria.fr"><img height="36" src="img/logo-inria.jpg"></a></td>
-         </tr>
-      </table>
-      <table width="100%">
-         <tr>
-            <td><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"></a></td>
-            <td>
-               <h1>La &laquo;proglet&raquo; Synthe</h1>
-            </td>
-         </tr>
-      </table>
-      
-      <table>
-         <tr>
-            <td valign="top" width="560">
-               Cette proglet<sup><a href="#1">1</a></sup> permet de g&eacute;n&eacute;rer une s&eacute;quence de notes et d'en regarder le spectre de fr&eacute;quence.
+   <table class="table">
+      <tr>
+         <td>
+            Cette proglet<a href="#1" class="note">[.]</a> permet de g&eacute;n&eacute;rer une s&eacute;quence de notes et d'en regarder le spectre de fr&eacute;quence.
+            
                
-                  
-               <div class="text">Pour d&eacute;finir son propre son il faut utiliser la construction <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt>, par exemple:
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
+            <div>Pour d&eacute;finir son propre son il faut utiliser la construction <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt>, par exemple:
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
                                 
-                           <div class="text"><font color="#990000"><b>@tone:</b></font> sqr(t) + noi(t)
+                           <div><font color="#990000"><b>@tone:</b></font> sqr(t) + noi(t)
                            </div>
                               
-                        </th>
-                     </tr>
-                  </table>o&ugrave; <font color="#990000"><b>@tone:</b></font> est une &laquo;&nbsp;macro-instruction&nbsp;&raquo;, suivie, sur la m&ecirc;me ligne d'une expression de la variable <tt>t</tt> qui d&eacute;finit la forme du son, 
-                     tandis que les fonctions suivantes sont pr&eacute;d&eacute;finies:
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
+                        </div>
+                     </td>
+                  </tr>
+               </table>o&ugrave; <font color="#990000"><b>@tone:</b></font> est une &laquo;&nbsp;macro-instruction&nbsp;&raquo;, suivie, sur la m&ecirc;me ligne d'une expression de la variable <tt>t</tt> qui d&eacute;finit la forme du son, 
+                  tandis que les fonctions suivantes sont pr&eacute;d&eacute;finies:
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
                                 
                            <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Sinusoide
                            </p>
                                 
-                           <div class="text"><font color="#990000"><b>double</b></font> <font color="#990000"><b>sns</b></font>(t)
+                           <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>sns</b></font>(t)
                            </div>
                                 
                            <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Signal carr&eacute;
                            </p>
                                 
-                           <div class="text"><font color="#990000"><b>double</b></font> <font color="#990000"><b>sqr</b></font>(t)
+                           <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>sqr</b></font>(t)
                            </div>
                                 
                            <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Signal triangulaire
                            </p>
                                 
-                           <div class="text"><font color="#990000"><b>double</b></font> <font color="#990000"><b>tri</b></font>(t)
+                           <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>tri</b></font>(t)
                            </div>
                                 
                            <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Souffle al&eacute;atoire
                            </p>
                                 
-                           <div class="text"><font color="#990000"><b>double</b></font> <font color="#990000"><b>noi</b></font>(t)
+                           <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>noi</b></font>(t)
                            </div>
                               
-                        </th>
-                     </tr>
-                  </table>
-               </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
                
-                  
-               <div class="text">Pour &eacute;couter le son ou la s&eacute;quence de notes il faut utiliser la fonction:
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
+            <div>Pour &eacute;couter le son ou la s&eacute;quence de notes il faut utiliser la fonction:
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
                                 
-                           <div class="text"><font color="#990000"><b>synthePlay</b></font>();
+                           <div><font color="#990000"><b>synthePlay</b></font>();
                            </div>
                               
-                        </th>
-                     </tr>
-                  </table>
-               </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
                
-                  
-               <div class="text">La visualisation du son s'effectue en montrant: 
-                  
-                  <ul>
+            <div>La visualisation du son s'effectue en montrant: 
+               <ul class="ul">
+                       
+                  <li>Les amplitudes des fr&eacute;quences du son (trac&eacute; en rouge, l'unit&eacute; est de <a href="http://fr.wikipedia.org/wiki/D%C3%A9cibel">[.]</a>, 
+                          renormalis&eacute; pour offrir le meilleur trac&eacute;).
                           
+                     <div>Les fr&eacute;quences sont trac&eacute;es entre le <i>La</i> sous-grave (octave 0 &agrave; <tt>27.5Hz</tt>, &agrave; peine audible) et 
+                             le <i>La</i> sur-aigu (octave 9 &agrave; <tt>6400Hz</tt>), 
+                             tandis que le milieu de l'&eacute;chelle est le <i>La</i> du diapason (octave 3 &agrave; <tt>440Hz</tt>).
+                     </div>
+                  </li>
+                       
+                  <li>Le d&eacute;but du signal (trac&eacute; en jaune), permet de voir sa forme et son aspect temporel. Les premi&egrave;res <tt>11</tt>ms (<tt>0.011</tt> secondes) sont trac&eacute;es.
+                  </li>
                      
-                     <li>Les amplitudes des fr&eacute;quences du son (trac&eacute; en rouge, l'unit&eacute; est de 
-                        <a href="http://fr.wikipedia.org/wiki/D%C3%A9cibel">d&eacute;cibel</a>, 
-                             renormalis&eacute; pour offrir le meilleur trac&eacute;).
-                             
-                        <br>Les fr&eacute;quences sont trac&eacute;es entre le 
-                        <i>La</i> sous-grave (octave 0 &agrave; <tt>27.5
-                           <a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></tt>, &agrave; peine audible) et 
-                             le 
-                        <i>La</i> sur-aigu (octave 9 &agrave; <tt>6400
-                           <a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></tt>), 
-                             tandis que le milieu de l'&eacute;chelle est le 
-                        <i>La</i> du diapason (octave 3 &agrave; <tt>440
-                           <a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></tt>).
-                     </li>
-                          
-                     
-                     <li>Le d&eacute;but du signal (trac&eacute; en jaune), permet de voir sa forme et son aspect temporel. Les premi&egrave;res <tt>11</tt>ms (<tt>0.011</tt> secondes) sont trac&eacute;es.
-                     </li>
-                        
-                  </ul>
-               </div>
-                
+               </ul>
+            </div>
+             
+               
+            <div>Pour d&eacute;finir une s&eacute;quence de notes il faut utiliser la fonction:
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                
+                           <div><font color="#990000"><b>syntheSet</b></font>(<font color="#008000">"s&eacute;quence-de-note"</font>);
+                           </div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table> o&ugrave; la syntaxe de <font color="#008000">"s&eacute;quence-de-note"</font> est d&eacute;finie dans la <a href=" ../api/proglet/SoundBit.html#notes">[.]</a> de la proglet.
+            </div>
+            
+              
+            <div>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png" alt="" class="icon"> <b>Demo</b>], 
+                 les diff&eacute;rents sons:
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                
+                           <div><font color="#990000"><b>@tone:</b></font> cos(t)
+                           </div>
+                                
+                           <div><font color="#990000"><b>synthePlay</b></font>();
+                           </div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table>puis
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                
+                           <div><font color="#990000"><b>synthePlay</b></font>();
+                           </div>
+                                
+                           <div><font color="#990000"><b>@tone:</b></font> 0.5 * sqr(t)
+                           </div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table>puis
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                
+                           <div><font color="#990000"><b>synthePlay</b></font>();
+                           </div>
+                                
+                           <div><font color="#990000"><b>@tone:</b></font> 0.8 * tri(t) + 0.2 * noi(t)
+                           </div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table>puis
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                
+                           <div><font color="#990000"><b>synthePlay</b></font>();
+                           </div>
+                                
+                           <div><font color="#990000"><b>@tone:</b></font> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t)
+                           </div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table>sont pr&eacute;sent&eacute;s, puis les 1&egrave;res notes de quelque chose qui ressemble &agrave; la &laquo;Lettre &agrave; Elise&raquo; de L.v.Beethoven est jou&eacute;e et son
+               spectre affich&eacute; et ensuite 
                   
-               <div class="text">Pour d&eacute;finir une s&eacute;quence de notes il faut utiliser la fonction:
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
-                                
-                           <div class="text"><font color="#990000"><b>syntheSet</b></font>(<font color="#008000">"s&eacute;quence-de-note"</font>);
-                           </div>
-                              
-                        </th>
-                     </tr>
-                  </table> o&ugrave; la syntaxe de <font color="#008000">"s&eacute;quence-de-note"</font> est d&eacute;finie dans la 
-                  <a href=" ../api/proglet/SoundBit.html#notes">documentation</a> de la proglet.
-               </div>
-               
-                 
-               <div class="text">Un exemple d'utilisation: en appuyant sur la touche [
-                  <img src="img/demo.png"> 
-                  <b>Demo</b>], 
-                    les diff&eacute;rents sons:
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
-                                
-                           <div class="text"><font color="#990000"><b>@tone:</b></font> cos(t)
-                           </div>
-                                
-                           <div class="text"><font color="#990000"><b>synthePlay</b></font>();
-                           </div>
-                              
-                        </th>
-                     </tr>
-                  </table>puis
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
-                                
-                           <div class="text"><font color="#990000"><b>synthePlay</b></font>();
-                           </div>
-                                
-                           <div class="text"><font color="#990000"><b>@tone:</b></font> 0.5 * sqr(t)
-                           </div>
-                              
-                        </th>
-                     </tr>
-                  </table>puis
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
-                                
-                           <div class="text"><font color="#990000"><b>synthePlay</b></font>();
-                           </div>
-                                
-                           <div class="text"><font color="#990000"><b>@tone:</b></font> 0.8 * tri(t) + 0.2 * noi(t)
-                           </div>
-                              
-                        </th>
-                     </tr>
-                  </table>puis
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
-                                
-                           <div class="text"><font color="#990000"><b>synthePlay</b></font>();
-                           </div>
-                                
-                           <div class="text"><font color="#990000"><b>@tone:</b></font> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t)
-                           </div>
-                              
-                        </th>
-                     </tr>
-                  </table>sont pr&eacute;sent&eacute;s, puis les 1&egrave;res notes de quelque chose qui ressemble &agrave; la &laquo;Lettre &agrave; Elise&raquo; de L.v.Beethoven est jou&eacute;e et son
-                  spectre affich&eacute; et ensuite 
-                     
-                  <br> . . &agrave; vous de jouer !
-               </div>
-               
-                 
-            </td>
-            <td valign="top"><applet code="proglet.InterfacePrincipale.class" archive="../wproglet.jar" width="560" height="720">
-                  <param name="proglet" value="Synthe"></applet></td>
-         </tr>
-      </table>
-      
-        
-      <div class="soustitre">
-         <p>Remarques :</p>
-      </div>
-      <div id="footnotes">
-         <p id="1"><sup>1</sup><b><i></i></b>Cette proglet est un 
-            <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programm&eacute;e en Java et 
-            <a href=" ../api/proglet/Synthe.html">document&eacute;e</a> 
-                pour sa libre redistribution, l'acc&egrave;s 
-            <a href=" ../api/proglet/Synthe.java">au code source</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
-         </p>
-      </div>
-      
-   </body>
-</html>
+               <div> . . &agrave; vous de jouer !</div>
+            </div>
+            
+              
+         </td>
+         <td><applet code="org.javascool.ProgletApplet" archive="http://javascool.gforge.inria.fr/v3/javascool.jar" width="560" height="720">
+               <param name="proglet" value=""></applet></td>
+      </tr>
+   </table>
+   
+     
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">[.]</a>, programm&eacute;e en Java et <a href=" ../api/proglet/Synthe.html">[.]</a> 
+                   pour sa libre redistribution, l'acc&egrave;s <a href=" ../api/proglet/Synthe.java">[.]</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+</div>

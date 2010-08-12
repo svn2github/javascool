@@ -1,0 +1,71 @@
+<div class="sujet" title="Le tutoriel &#34;Hello World&#34;">
+  
+
+  
+  
+  <div class="objectif">
+    Le but de ce tutoriel est de se familiariser avec l'outil de programmation <l class="javascool"/>, pour pouvoir réaliser les autres <l link="../index.html"/>
+  et de découvrir comment programmer une séquence d'instruction.
+  </div>
+  
+  <div class="intros">
+    <div title="Ecrire notre premier programme">Voici un exemple de programme minimal qui affiche la chaine de caractère <v>HelloWorld</v>:
+      <div class="code">
+        <p><r>void main</r>() {</p>
+        <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+        <p>}</p>
+      </div>
+      <div>Nous y lisons les mots <r>void main</r> et <r>println</r> qui sont des mots de <l class="javascool"/>, le langage informatique, 
+      et la chaine de caractères <v>HelloWorld</v> qui est un mot "à  nous".</div>
+      Regardons à quoi correspondent ces trois lignes d'instructions: <div class="ol">
+      <div>Ce que nous demandons, notre "instruction", est juste d'imprimer <v>HelloWorld</v>; 
+      où, par convention, nous plaçons la chaine de caractères entre guillemets <v/> pour signifier que c'est juste une chaine de caractères.</div>
+      <div>Nous spécifions donc l'instruction <r>println</r>(<v>HelloWorld</v>), où <r>println</r> signifie "imprime <i>(print)</i> sur une ligne" et
+      où, par convention, ce qui doit être imprimé est placé entre parenthèse après le mot <r>println</r> et l'instruction se finit par <b>;</b>.</div>
+      <div>Et c'est dans le bloc <b><r>void main</r>() { ../.. }</b> que se placent, entre les accolades, les instructions qui doivent être exécutées par le programme,
+      <r>void main</r> signifie "voici la tâche principale à exécuter" (cette façon de procéder sera évidemment mieux expliquée par la suite).</div>
+      </div>
+      Et voilà ! Il suffit de bien noter l'utilisation du bloc d'instruction (mise en évidence au point 3.) 
+      et la façon de donner une instruction (donnée en exemple au point 2.).
+    </div>
+    <div title="Compiler et exécuter notre premier programme">Comment faire exécuter ce programme minimal par l'ordinateur ? Il y a trois étapes.
+    <div class="ol">
+      <div><l class="icon" icon="img/save.png"/> D'abord toujours ... sauver le texte source du programme dans un fichier d'extension <c>.jvs</c>, 
+      par exemple <c>Hi1.jvs</c>, puis <c>Hi2.jvs</c> pour la version suivante, etc.. 
+      Il faut <i>régulièrement</i> penser à sauvegarder ce qui a été entré au clavier !</div>
+      <div><l class="icon" icon="img/compile.png"/> Puis . . compiler le programme: celà veut dire le traduire dans le langage de l'ordinateur.<div class="ul">
+        <div>En effet, l'ordinateur est une machine électronique et le "langage qu'il comprend" est extrêment basique (ouvrir tel interrupteur, 
+        connecter telle partie du circuit à une autre, etc..) et tout ceci est bien trop fastidieux à décrire directement 
+        (l'action <r>println</r>, par exemple, comporte elle-même des milliers d'opérations élémentaires !).</div>
+        <div>Alors, nous disposons d'un langage <i>formel de haut niveau</i> celui que nous découvrons ici et que nous appelons <l class="javascool"/> et
+        qui permet de spécifier des instructions de la manière la plus efficace possible.</div>
+      </div> Compiler signifie alors <i>traduire le langage <l class="javascool"/> en langage machine</i>.</div>
+      <div><l class="icon" icon="img/execute.png"/> Enfin ... exécuter le programme : 
+      celà veut dire demander à l'ordinateur de partir de <b><r>void main</r></b> et d'exécuter toutes les instructions données. 
+      Dans notre cas, nous obtiendrons l'écriture de <b>Hello World !</b>... et 
+      nous aurons en main la base pour faire des choses bien plus intéressantes et plus sophistiquées !</div>
+    </div>
+    </div>
+  </div>
+  
+  <div class="works">
+    <div title="A nous de jouer"> Taper sans se tromper les trois lignes dans la fenêtre de gauche (attention la moindre faute de frappe et il y aura une erreur, 
+    n'oublions qu'un ordinateur n'a aucune intelligence pour "intuiter" ce que nous voulons spécifier) puis sauver, compiler et exécuter. <div class="ul">
+    <div>Sauf étourderie ... ça y est ... nous avons donné notre première instruction à l'ordinateur !</div>
+      <div>Au lieu de faire écrire <v>HelloWorld</v> programmons une salutation en français : remplacer la chaine de caractères par une autre phrase de salutation dans le programme source, puis essayer (c'est à dire : sauver, compiler et ... exécuter).</div>
+      <div>Au lieu de ne faire écrire qu'une ligne, programmons l'écriture de deux lignes par exemple <v>Bonjour très cher:</v> et <v>Quel bon vent vous amène</v>: pour celà mettre deux instructions <r>println</r> l'une en dessous de l'autre dans le bloc <r>void main</r> (donc bien <i>entre</i> les accolades et sans oublier le <b>;</b> !),  puis essayer.</div>
+    </div></div>
+    <div title="Que se passe t'il en cas d'erreur"> Peut-être involontairement déjà, maintenant volontairement, faisons des "erreurs de syntaxe" c'est à dire écrivons de manière erronnée une petite partie du programme, Par exemple, oublier le <b>;</b> ou un <b>"</b>, ou mettre un <b>}</b> de trop, ou encore taper <r>printl</r> (sans le <r>n</r> !), etc.. <div class="ul">
+      <div>Que se passe t'il alors lors de la compilation ? Noter que le compilateur (le traducteur de <l class="javascool"/> en langage machine) est prévu pour renseigner au maximum sur l'erreur rencontrée, le numéro de ligne est fourni, le message d'erreur essaye de décrire le problème, etc.</div>
+      <div>Travailler maintenant en binôme : l'un de vous introduit volontairement une erreur dans le code à l'insu de l'autre, puis laisse la place à l'autre qui doit retrouver et corriger l'erreur. Faites le au moins cinq fois. Essayer avec des variantes du code (plusieurs <r>println</r>, des chaines de caractères compliquées)</div>
+    </div> C'est très important de prendre l'habitude de trouver où il y a des erreurs de syntaxe pour facilement les corriger.</div>
+  </div>
+  
+  <div class="notes">
+    <div title="Mais dans quel langage programmons nous ?"> Nous sommes en train d'apprendre à programmer dans un langage commun aux langages <c>Java</c>, <c>C</c> ou <c>C++</c>, et même 
+    <c>Javascript</c> ou <c>PHP</c> qui est un langage <l link="http://fr.wikipedia.org/wiki/Programmation_impérative"/>" qui décrit les opérations en termes de séquences d'instructions exécutées par l'ordinateur pour modifier l'état du programme. La bonne nouvelle est que ce que nous apprenons ici, servira donc ensuite <i>quel que soit</i> le langage de programmation : ce seront les mêmes mécanismes, juste exprimés parfois un peu différement.</div>
+    <div title="Pourquoi appeler ce langage commun 'Java'sCool' ?"> Parce que le langage "caché" derrière notre outil est le <c>Java</c> qui a été un peu simplifié ici pour le rendre "cool". D'ailleurs il est possible (à vos riques et bénéfices..) d'utiliser <i>tout</i> le langage 
+<c>Java</c> ici. Simplement, un certain nombre de spécifications sont devenues optionelles en <l class="javascool"/> pour faciliter les choses aux débutants. C'est donc une école de <c>Java</c> <i>(a Java school)</i> avec laquelle <c>Java</c> <i>is cool</i>. Cette idée a été mise au point par des étudiants en informatique de l'<l link="http://deptinfo.unice.fr"/> auteurs de <l link="http://javascool.gforge.inria.fr"/>.</div>
+<div title="Que veux dire «void main» en fait ?"> Patience nous le comprendrons avec le tutoriel sur les <l link="sujet-about-functions.htm"/>.</div>
+  </div>
+</div>

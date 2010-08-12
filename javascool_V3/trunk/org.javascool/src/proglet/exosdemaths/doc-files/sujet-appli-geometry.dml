@@ -1,0 +1,123 @@
+<div class="sujet" title="Programmer quelques calculs géométriques">
+  
+
+  
+  
+  <div class="objectif">
+    Le but de ce tutoriel est de programmer quelques calculs géométriques.
+    Il faut déja savoir <l link="sujet-hello-world.htm"/>,
+    se servir de <l link="sujet-about-variables.htm"/> et avoir découvert l'<l link="sujet-about-if.htm"/>
+    et définir une <l link="sujet-about-functions.htm"/>.
+  </div>
+  
+  <div class="intros">
+    <div><l class="icon" icon="img/execute.png"/> Choisir la proglet <c>Scope</c> et non <c>Konsol</c> dans le bouton lié à l'exécution.</div>
+    <div>Lire en détail la description de la .</div>
+    <div title="Un exemple: le calcul du centre de de deux points">
+      Considérons le code suivant: <div class="code">
+        <p><r>void main</r>() {</p>
+        <m>Lecture des valeurs du réticule</m>
+        <p><T/><r>double</r> x_A = scopeX();</p>
+        <p><T/><r>double</r> y_A = scopeY();</p>
+        <m>Définition d'un autre point, avec des valeurs dans [-1, 1]</m>
+        <p><T/><r>double</r> x_B = 0.2;</p>
+        <p><T/><r>double</r> y_B = 0.4;</p>
+        <m>Calcul du milieu du segment</m>
+        <p><T/><r>double</r> x_I = (x_A + x_B) / 2;</p>
+        <p><T/><r>double</r> y_I = (y_A + y_B) / 2;</p>
+        <m>Tracé des points et des lignes correspondants</m>
+        <p><T/><r>scopeReset</r>();</p>
+        <p><T/><r>scopeAdd</r>(x_A, y_A, <v>A</v>, 4);</p>
+        <p><T/><r>scopeAdd</r>(x_I, y_I, <v>I</v>, 2);</p>
+        <p><T/><r>scopeAdd</r>(x_B, y_B, <v>B</v>, 4);</p>
+        <p><T/><r>scopeAddLine</r>(x_A, y_A, x_B, y_B, 6);</p>
+        <p>}</p>
+    </div>Le programme principal <r>main</r>:<div class="ul">
+      <div>lit dans <b>x_A</b> et <b>y_A</b> les valeurs horizontales et verticales du réticule du scope.</div>
+      <div>fixe les valeurs <b>x_B</b> et <b>y_B</b> à des valeurs constantes.</div>
+      <div>calcule le milieu de ces deux points, puis</div>
+      <div>utilise les fonctions de la  pour: <div class="ul">
+        <div>Effacer le tracé</div>
+        <div>Tracer les trois points <v>A</v>, <v>I</v> et <v>B</v>.</div>
+        <div>Tracer le segment (<v>A</v>, <v>B</v>).</div>
+      </div></div>
+    </div></div>
+  </div>
+
+  <div class="works">
+    <div title="Bien comprendre le code proposé"> Pour être sûr que le code proposé est clair, répondre aux questions suivantes: <div class="ul">
+      <div>Comment faudrait il modifier le code pour utiliser le point <v>B</v> = <b>(0.5, -0.5)</b> ?</div>
+      <div>Expliquer en une phrase comment se modifient les coordonnées de <b>X</b> et <b>Y</b> du point <v>A</v> quand on: <div class="ul">
+        <div>Clique sur la fenêtre de tracé de la .</div>
+        <div>Manipule les glissoirs en bas de la .</div>
+        <div>Entre une valeur numérique au clavier en bas de la .</div>
+      </div></div>
+      <div>Quel paramètre a permis de tracer les points en jaune et rouge et le segment en bleu ?</div>
+      <div>Le programme principal <r>main</r> est, certes, exécuté quand on clique sur le bouton <b>Executer</b> mais . . 
+      comment se fait-il que le calcul se mette à jour quand on clique sur la fenêtre de tracé ou manipule les glissoirs ? 
+      Expliquer en une ligne ce qui se passe dans la .</div>
+    </div></div>
+    <div title="A vous de jouer: calculons le symétrique du point A par rapport au point B">
+      Modifier le programme précédent pour calculer non plus milieu de (<v>A</v>, <v>B</v>), mais le point <v>S</v> symétrique de <v>A</v> par rapport à <v>B</v> 
+      et afficher le résultat avec le code modifié.
+    </div>
+    <div title="A vous de jouer: jouons avec un parallélogramme">
+      En utilisant le code qui commence ainsi: <div class="code">
+        <p><r>void main</r>() {</p>
+        <m>Lecture des valeurs du réticule</m>
+        <p><T/><r>double</r> x_A = scopeX();</p>
+        <p><T/><r>double</r> y_A = scopeY();</p>
+        <m>Définition de deux autres points, avec des valeurs dans [-1, 1]</m>
+        <p><T/><r>double</r> x_B = 0.2;</p>
+        <p><T/><r>double</r> y_B = 0.4;</p>
+        <p><T/><r>double</r> x_C = 0.4;</p>
+        <p><T/><r>double</r> y_C = -0.6;</p>
+        <p>../..</p>
+      </div> compléter le en: <div class="ul">
+        <div>Calculant le milieu <v>M</v> de (<v>A</v>, <v>C</v>).</div>
+        <div>Calculant le point <v>D</v> qui permette à <v>A</v>, <v>B</v>, <v>C</v>, <v>D</v> d'être un parallélogramme.</div>
+        <div>Traçant les résultats obtenus.</div>
+      </div>
+    </div>
+    <div title="A vous de jouer: le triangle isocèle amovible">
+      En utilisant le code qui commence ainsi: <div class="code">
+        <p><r>void main</r>() {</p>
+        <m>Lecture des valeurs du réticule</m>
+        <p><T/><r>double</r> x_A = scopeX();</p>
+        <p><T/><r>double</r> y_A = scopeY();</p>
+        <m>Définition de deux autres points, avec des valeurs dans [-1, 1]</m>
+        <p><T/><r>double</r> x_B = 0.2;</p>
+        <p><T/><r>double</r> y_B = 0;</p>
+       <p>../..</p>
+      </div> compléter le en: <div class="ul">
+        <div>Calculant la projection <v>P</v> de <v>A</v> sur l'axe des abscisses.</div>
+        <div>Calculant le point <v>C</v> qui permette à <v>A</v>, <v>B</v> d'être un triangle isocèle en <v>A</v>.</div>
+        <div>Traçant les résultats obtenus.</div>
+        <div>Le calcul aurait il été aussi simple si <v>B</v> n'était pas sur l'axe des abscisses ? Commenter en une ligne.</div>
+      </div>
+    </div>
+    <div title="A vous de jouer: tracé d'un cercle de diamètre AB">
+      En reprenant le code initial donné comme premier exemple, en plus du milieu <v>I</v> de (<v>A</v>, <v>B</v>): <div class="ul">
+       <div>Calculer la distance <b>d</b> entre <v>A</v> et <v>B</v> en utilisant, pas exemple, les lignes de code suivantes: <div class="code">
+        <p><T/><r>double</r> d_x = x_B - x_A;</p>
+        <p><T/><r>double</r> d_y = y_B - y_A;</p>
+      </div> et en utilisant la fonction <b><r>sqrt</r>(x)</b> qui renvoie la racine carrée de <b>x</b> 
+      (par exemple <b><r>double</r> r = <r>sqrt</r>(9);</b> donne la valeur <b>3</b> à <b>r</b>).</div>
+      <div>Tracer alors le ``cercle´´ de centre <v>I</v> et de diamètre <b>AB</b>.</div>
+      <div>Ce n'est pas une erreur ! Ce cercle apparait comme un ovale (plus précisément une ellipse) sur le tracé: savez-vous pourquoi ?</div>
+    </div>
+    </div>
+  </div>
+  
+  <div class="notes">
+    <div title="Utiliser conjointement la proglet Scope et Konsol"> On peut souhaiter utiliser conjointement les proglets  et  pour 
+    combiner des tracés et des entrées-sorties au clavier. En fait ce n'est pas très recommandé, car celà risque de sur-compliquer les interfaces alors que le but ici est
+    de se concentrer sur l'algorithmique. <div>Mais c'est chose aisée: il suffit de choisir, par exemple la proglet , 
+    mais d'ouvrir en plus la proglet  en utilisant la fonction:
+    <div class="code">
+      <r>show</r>(<v>Konsol</v>);
+    </div>
+    qui va ouvrir la 2ème proglet.
+  </div></div>
+  </div>
+</div>

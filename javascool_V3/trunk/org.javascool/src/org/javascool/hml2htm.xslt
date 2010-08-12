@@ -40,6 +40,7 @@
     <xsl:when test="../@class = 'ul' or ../@class = 'ol'"><li><xsl:call-template name="div-2"/></li></xsl:when>
     <xsl:when test="../@class = 'table'"><tr><xsl:call-template name="div-2"/></tr></xsl:when>
     <xsl:when test="../../@class = 'table'"><td><xsl:call-template name="div-2"/></td></xsl:when>
+    <xsl:when test="@class = 'tag'"><xsl:call-template name="tag"/></xsl:when>
     <xsl:otherwise><div><xsl:call-template name="div-2"/></div></xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -54,6 +55,29 @@
   </xsl:choose></xsl:if>
   <xsl:apply-templates/>
 </xsl:template>
+
+<!-- 1.1 : Pml construct description production -->
+<xsl:template name="tag"><table bgcolor="#eeeeee" width="90%">
+  <tr><td colspan="4"><b>{</b><xsl:text> </xsl:text><xsl:value-of select="@title"/></td></tr>
+  <tr><td align="center"><b>name</b></td><td align="center"><b>type</b></td><td align="center"><b>default value</b></td><td></td></tr>
+  <xsl:for-each select="param"><tr>
+     <td><font color="#505000"><xsl:value-of select="@name"/></font></td>
+     <td><font color="#990000"><xsl:value-of select="@type"/></font></td>
+     <td><xsl:choose>
+        <xsl:when test="count(@value)=1"><font color="#008000">"<xsl:value-of select="@value"/>"</font></xsl:when>
+        <xsl:otherwise><i>mandatory</i></xsl:otherwise>
+     </xsl:choose></td>
+     <td><xsl:apply-templates/></td>
+  </tr></xsl:for-each>
+  <tr><td colspan="4"><xsl:choose>
+    <xsl:when test="count(elements/@type) > 0">Structure: <font color="#202020"><xsl:value-of select="elements/@type"/>"</font></xsl:when>
+    <xsl:otherwise><i>no element</i></xsl:otherwise>
+  </xsl:choose></td></tr>
+  <tr><td colspan="4"><hr/></td></tr>
+  <tr><td colspan="4">
+    <xsl:for-each select="*[name(.) != 'param' and name(.) != 'elements']"><xsl:apply-templates/></xsl:for-each>
+  </td></tr>
+</table></xsl:template>
 
 <!-- 2 : Span production -->
 <xsl:template match="s">
@@ -75,7 +99,8 @@
     <xsl:when test='count(@link) = 1'><a href="{@link}"> 
       <xsl:if test="count(@class)=1"><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:if>
       <xsl:if test='count(@icon) = 1'><img src="{@icon}" alt="{@text}"/></xsl:if>
-      <xsl:value-of select='@text'/>
+      <xsl:if test="count(@text)=1"><xsl:value-of select='@text'/></xsl:if>
+      <xsl:if test="count(@text)=0">[.]</xsl:if>
     </a></xsl:when>
     <xsl:when test='count(@icon) = 1'><img src="{@icon}" alt="{@text}">
       <xsl:if test="count(@class)=1"><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:if>

@@ -69,8 +69,7 @@
           <p>256 milli-volts à la 2ème étape</p>
           <p>128 milli-volts à la 3ème étape</p>
         et si nous avions continué les intervalles suivantes auraient quelles valeurs ? Continuer jusqu'à trouver une intervalle plus petite que 1.
-        <br/>
-        Ce calcul se fait en combien d'étapes finalement ? Et ceci au lieu de ... tester les 1024 valeurs !</li>
+          <p>Ce calcul se fait en combien d'étapes finalement ? Et ceci au lieu de ... tester les 1024 valeurs !</p></li>
      </ul></work>
      <work title="L'algorithme dichotomique">Essayons maintenant avec une boucle :
      <code>

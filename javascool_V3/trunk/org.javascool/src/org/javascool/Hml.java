@@ -8,16 +8,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.regex.Pattern;
 
-/** Defines a Test as a PML data structure.
+/** Defines a text as a PML data structure.
  *
- * @see <a href="Text.java">source code</a>
+ * @see <a href="Hml.java">source code</a>
  */
-public class Text extends Pml { /**/public Text() { }
+public class Hml extends Pml { /**/public Hml() { }
   private static final long serialVersionUID = 1L;
 
   public Pml reset(String value, String format) {
     if ("xml".equals(format) || "htm".equals(format) || "html".equals(format)) {
-      return reset(Utils.xml2xml(Utils.xml2xml(Utils.htm2xml(value), htm2pml.xsl), xml2pml));
+      return reset(Utils.xml2xml(Utils.xml2xml(Utils.htm2xml(value), htm2hml.xsl), xml2pml));
     } else {     
       return super.reset(value, format);
     }
@@ -33,7 +33,7 @@ public class Text extends Pml { /**/public Text() { }
    */
   public String toString(String format) { 
     if ("htm".equals(format) || "html".equals(format)) {
-      return Utils.xml2xml(toString("xml"), pml2htm.xsl);
+      return Utils.xml2xml(toString("xml"), hml2htm.xsl);
     } else {     
       return super.toString(format);
     }
@@ -45,9 +45,9 @@ public class Text extends Pml { /**/public Text() { }
    */
   public static void main(String[] args) {
     if (args.length == 1) {
-      Text pml = new Text(); pml.load(args[0]); pml.save("stdout:", "htm");
+      Hml pml = new Hml(); pml.load(args[0]); pml.save("stdout:", "htm");
     } else {
-      System.out.println("Usage: java org.javascool.Text file-name");
+      System.out.println("Usage: java org.javascool.Hml file-name");
     }
   }
 }

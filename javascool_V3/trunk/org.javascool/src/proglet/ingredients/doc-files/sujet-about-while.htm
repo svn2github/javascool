@@ -1,502 +1,461 @@
 
 <!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div align="right">[<a href="#intros">introduction</a>] [<a href="#works">travail propos&eacute;</a>] [<a href="#notes">remarques</a>]
+</div>
+<div class="sujet">
+   <h2>Un tutoriel pour utiliser des boucles..</h2>
    
-      <link rel="stylesheet" type="text/css" href="img/style.css">
-      <title>JavaScool . . and Java is so cool.</title>
-      <link rel="shortcut icon" href="img/icon.jpg">
-   </head>
-   <body>
-      <table width="100%" style="border:0;margin:0;padding:0;background-image:url('img/bg-banner.jpg');">
-         <tr style="border:0;margin:0;padding:0">
-            <td width="33%" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr"><img height="36" width="150" src="img/logo-javascool.jpg"></a></td>
-            <td width="33%" align="center" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm#4"><img height="36" src="img/logo-lycees.jpg"></a></td>
-            <td width="33%" align="right" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://www.inria.fr"><img height="36" src="img/logo-inria.jpg"></a></td>
-         </tr>
-      </table>
-      
-      <h1><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"></a>
-         Un tutoriel pour utiliser des boucles.
-      </h1>
-      <div align="right">[<a href="#notes">introduction</a>] [<a href="#works">travail propos&Atilde;&copy;</a>] [<a href="#footnotes">remarques</a>] [<a href="about-memo.htm">m&Atilde;&copy;mo des fonctions</a>]
-      </div><br><br>
+   
+   
+   
+   
+   <h2>Objectif.</h2>
+   <div class="objectif">
+      Le but de ce tutoriel d'apprendre &agrave;  utiliser des boucles. Il faut d&eacute;j&agrave; savoir <a href="sujet-hello-world.htm">[.]</a>,
+        se servir de <a href="sujet-about-variables.htm">[.]</a>, avoir d&eacute;couvert l'instruction <a href="sujet-about-if.htm">[.]</a>, 
+        et s'&ecirc;tre familiaris&eacute; avec les <a href="sujet-about-functions.htm">[.]</a>.
         
-        <i>&Acirc;&laquo;proglet&Acirc;&raquo; </i><tt><a href="about-proglet-Konsol.htm">Konsol</a></tt>
-      
-        
-      <div class="soustitre">
-         <p>Objectif : </p>
-      </div><br><div id="objectif">
-         <table align="center" width="80%">
-            <tr>
-               <td align="left">
-                  Le but de ce tutoriel d'apprendre &agrave;  utiliser des boucles. Il faut d&eacute;j&agrave; savoir 
-                  <a href="sujet-hello-world.htm">utiliser l'interface</a>,
-                    se servir de 
-                  <a href="sujet-about-variables.htm">variables</a>, avoir d&eacute;couvert l'instruction 
-                  <a href="sujet-about-if.htm">conditionnelle</a>, 
-                    et s'&ecirc;tre familiaris&eacute; avec les 
-                  <a href="sujet-about-functions.htm">fonctions</a>.
-                    
-               </td>
-            </tr>
-         </table>
-      </div><br>
-        
-        
-      <div class="soustitre">
-         <p>Introduction : </p>
-      </div><br><ul id="notes">
+   </div>
+     
+     
+   <h2>Introduction.</h2>
+   <div id="intros">
+      <ol>
          <li>
-            <div><b>Imprimer 10 fois la m&ecirc;me chose</b>:  Supposons vouloir imprimer <font color="#008000">"Hello world"</font> 10 fois, bien s&ucirc;r, nous pouvons &eacute;crire :
+            <div>
+               <h3>Imprimer 10 fois la m&ecirc;me chose.</h3> Supposons vouloir imprimer <font color="#008000">"Hello world"</font> 10 fois, bien s&ucirc;r, nous pouvons &eacute;crire :
                    
-               <table border="1" align="center" width="80%">
+               <table witdh="90%" border="1" align="center">
                   <tr>
-                     <th align="left">
-                              
-                        <div class="text"><font color="#990000"><b>void main</b></font>() {
+                     <td>
+                        <div class="code">
+                                 
+                           <div><font color="#990000"><b>void main</b></font>() {
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                           </div>
+                                 
+                           <div>}</div>
+                                
                         </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                        </div>
-                              
-                        <div class="text">}</div>
-                             
-                     </th>
+                     </td>
                   </tr>
                </table> mais si nous devons &eacute;crire un code qui doit r&eacute;p&eacute;ter un million de fois une action, nous ne sommes pas rendus ! Regardons
                alors cette autre solution :
                    
-               <table border="1" align="center" width="80%">
+               <table witdh="90%" border="1" align="center">
                   <tr>
-                     <th align="left">
-                              
-                        <div class="text"><font color="#990000"><b>void main</b></font>() {
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>int</b></font> n = 0;
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>while</b></font>( n &lt; 10) {
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           
-                           &nbsp;&nbsp;&nbsp;
-                           n = n + 1;
-                        </div>
-                              
-                        <div class="text">
-                           &nbsp;&nbsp;&nbsp;
-                           }
-                        </div>
-                              
-                        <div class="text">}</div>
-                            
-                     </th>
-                  </tr>
-               </table> o&ugrave; 
-               
-               <ul>
-                        
-                  
-                  <li>nous avons d&eacute;fini un compteur 
-                     <b>n</b> qui initialis&eacute; &agrave; la valeur z&eacute;ro (
-                     <b><font color="#990000"><b>int</b></font> n = 0;</b>),
-                  </li>
-                        
-                  
-                  <li>puis, tant qu'il est plus petit que 10 (
-                     <b><font color="#990000"><b>while</b></font>( n &lt;  10)</b>),
-                  </li>
-                        
-                  
-                  <li>nous imprimons <font color="#008000">"Hello world"</font>,
-                  </li>
-                        
-                  
-                  <li>et incr&eacute;mentons (c'est &agrave; dire lui ajoutons 1) sa valeur (
-                     <b>n = n + 1;</b>).
-                  </li>
-                      
-               </ul>Non sans bien noter le jeu d'accolades { } pour ouvrir est fermer 
-               <b><font color="#990000"><b>void main</b></font>()</b> et 
-               <b><font color="#990000"><b>while</b></font>( n &lt; 10)</b>.
-                   Nous voil&agrave; avec un m&eacute;canisme qui va nous permettre de r&eacute;p&eacute;ter autant de fois que n&eacute;cessaire une action.
-                  
-            </div><br></li>
-         <li>
-            <div><b>Tous les ingr&eacute;dients des algorithmes</b>:  Il y a quelque chose de formidable ici : 
-                  avec des 
-               <a href="sujet-about-variables.htm">variables</a> et des 
-               <a href="sujet-about-functions.htm">fonctions</a>, 
-                  une 
-               <a href="sujet-hello-world.htm">s&eacute;quence</a> d'instruction, 
-                  l'instruction 
-               <a href="sujet-about-if.htm">conditionnelle</a>, 
-                  et une instruction<sup><a href="#1">1</a></sup> pour faire des 
-               <a href="sujet-about-while.htm">boucles</a>, 
-                  nous avons 
-               <i>tous les ingr&eacute;dients</i> pour programmer efficacement 
-               <i>tous les algorithmes possibles</i>! 
-                  Il y a bien entendu une subtilit&eacute; ici : les fonctions doivent pouvoir s'appeler elles-m&ecirc;me, c'est &agrave; dire &ecirc;tre recursives<sup><a href="#2">2</a></sup>.
-                  Mais la 
-               <i>plupart</i> des programmes que nous avons besoin de faire n'ont pas besoin de fonctions r&eacute;cursives et se programment tr&egrave;s bien avec les
-               ingr&eacute;dients
-                  propos&eacute;s ici, gr&acirc;ce aux boucles.
-                  
-            </div><br></li>
-      </ul><br>
-      
-        
-      <div class="soustitre">
-         <p>Travail propos&Atilde;&copy; :</p>
-      </div><br><ul id="works">
-         <li><b>A nous de jouer</b>: Recopier le 2&egrave;me programme propos&eacute; ci-dessus et :
-            
-            <ul>
-                     
-               
-               <li>Le modifier pour imprimer 11 fois le <font color="#008000">"Hello World !"</font>.
-               </li>
-                     
-               
-               <li>Puis partir de n = 1 (donc &eacute;crire 
-                  <b><font color="#990000"><b>int</b></font> n = 1;</b>) et le modifier pour &eacute;crire 8 fois <font color="#008000">"Hello World !"</font>.
-               </li>
-                     
-               
-               <li>Retirer la ligne 
-                  <b>n = n + 1;</b>: que se passe t'il<sup><a href="#3">3</a></sup>?
-               </li>
-                     
-               
-               <li>Remplacer la ligne 
-                  <b>n = n + 1;</b> par 
-                  <b>n = n - 1;</b> et expliquer ce qui se passe.
-               </li>
-                   
-            </ul><br></li>
-         <li><b>Comprendre quelques exemples de boucles</b>: Pour chacun des bouts de codes suivants, expliquer ce qui est calcul&eacute; (vous pouvez essayer les codes si besoin) : 
-            
-            <ul>
-                     
-               
-               <li>Combien de fois s'ex&eacute;cute cette boucle ?
-                        
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left"> 
-                                   
-                           <div class="text"><font color="#990000"><b>int</b></font> n = 5;
+                     <td>
+                        <div class="code">
+                                 
+                           <div><font color="#990000"><b>void main</b></font>() {
                            </div>
-                                   
-                           <div class="text"><font color="#990000"><b>while</b></font>( n &gt;= 0) {
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>int</b></font> n = 0;
                            </div>
-                                   
-                           <div class="text">
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>while</b></font>( n &lt; 10) {
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              
                               &nbsp;&nbsp;&nbsp;
                               <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
                            </div>
-                                   
-                           <div class="text">
-                              &nbsp;&nbsp;&nbsp;
-                              n = n - 1;
-                           </div>
-                                   
-                           <div class="text">}</div>
                                  
-                        </th>
-                     </tr>
-                  </table>
-               </li>
-                     
-               
-               <li>Combien de fois s'ex&eacute;cute cette boucle ?
-                        
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left"> 
-                                   
-                           <div class="text"><font color="#990000"><b>int</b></font> n = 0;
-                           </div>
-                                   
-                           <div class="text"><font color="#990000"><b>while</b></font>( n == 5) {
-                           </div>
-                                   
-                           <div class="text">
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                           </div>
-                                   
-                           <div class="text">
-                              &nbsp;&nbsp;&nbsp;
-                              n = n + 2;
-                           </div>
-                                   
-                           <div class="text">}</div>
-                                 
-                        </th>
-                     </tr>
-                  </table>
-               </li>
-                     
-               
-               <li>Que calcule cette fonction ?
-                        
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
-                                   
-                           <div class="text"><font color="#990000"><b>int</b></font> mul(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y) {
-                           </div>
-                                   
-                           <div class="text">
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>int</b></font> r = 0;
-                           </div>
-                                   
-                           <div class="text">
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>while</b></font>( x &gt; 0) {
-                           </div>
-                                   
-                           <div class="text">
+                           <div>
                               &nbsp;&nbsp;&nbsp;
                               
                               &nbsp;&nbsp;&nbsp;
-                              r = r + y;
+                              n = n + 1;
                            </div>
-                                   
-                           <div class="text">
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              x = x - 1;
-                           </div>
-                                   
-                           <div class="text">
+                                 
+                           <div>
                               &nbsp;&nbsp;&nbsp;
                               }
                            </div>
-                                   
-                           <div class="text">
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>return</b></font> r;
-                           </div>
-                                   
-                           <div class="text">}</div>
                                  
-                        </th>
-                     </tr>
-                  </table>
-               </li>
-                   
-            </ul><br></li>
-         <li><b>Programmer quelques boucles</b>:  : 
-            
-            <ul>
-                     
-               
-               <li>Programmer une boucle qui imprime tous les nombres impairs de 1 &agrave; 39 inclus, avec l'instruction 
-                  <b><font color="#990000"><b>println</b></font>(<font color="#008000">"n = "</font> + n);</b></li>
-                     
-               
-               <li>Le 
-                  <a href="http://fr.wikipedia.org/wiki/Nombre_d'or">nombre d'or</a> est d&eacute;fini par une suite 
-                        (qui n'est pas celle de 
-                  <a href="http://fr.wikipedia.org/wiki/Nombre_d'or#Suite_de_Fibonacci">Fibonacci</a>) de la forme :
+                           <div>}</div>
+                               
+                        </div>
+                     </td>
+                  </tr>
+               </table> o&ugrave; 
+               <ul class="ul">
                         
-                  <b>r = 1 + 1 / r</b> initialis&eacute;e avec 
-                  <b>r = 1</b>. Ecrire une boucle qui calcule part de 
-                  <b>r = 1</b> et calcule 30 fois 
-                  <b>r = 1 + 1 / r</b> en imprimant
-                        &agrave; chaque fois 
-                  <b>r</b> (par exemple avec l'instruction 
-                  <b><font color="#990000"><b>println</b></font>(<font color="#008000">"r = "</font> + r);</b> et commenter le r&eacute;sultat. 
-                        Comparer avec les valeurs du nombre d'or connues par ailleurs.
-               </li>
-                     
-               
-               <li>Avec votre professeur (ou quelqu'un pour vous aider si besoin) calculer les 100 premi&egrave;res d&eacute;cimales de 
-                  <a href="http://fr.wikipedia.org/wiki/Pi#M.C3.A9thode_d.E2.80.99Archim.C3.A8de">PI</a> par la m&eacute;thode d'Archim&egrave;de.
-               </li>
-                   
-            </ul><br></li>
-         <li><b>D'autres formes de boucles</b>:  Les langages informatiques proposent d'autres formes de boucles<sup><a href="#1">1</a></sup>, 
-                qui sont &eacute;quivalentes &agrave; la construction <font color="#990000"><b>while</b></font> apprise ici, mais peuvent &ecirc;tre plus pratiques &agrave; utiliser. En voici un exemple 
-            
-            <ul>
-                     
-               
-               <li>La boucle <font color="#990000"><b>for</b></font> permet de rassembler en une ligne la boucle avec un compteur que nous avons d&eacute;couvert ici. Le m&ecirc;me programme peut s'&eacute;crire
-                  :
+                  <li>nous avons d&eacute;fini un compteur <b>n</b> qui initialis&eacute; &agrave; la valeur z&eacute;ro (<b><font color="#990000"><b>int</b></font> n = 0;</b>),
+                  </li>
                         
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
-                                   
-                           <div class="text"><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> n = 0; n &lt; 10; n = n + 1) {
-                           </div>
-                                   
-                           <div class="text">
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
-                           </div>
-                                   
-                           <div class="text">}</div>
-                                 
-                        </th>
-                     </tr>
-                  </table> ce qui est plus concis ... mais ne change rien sur le fond.
-               </li>
-                   
-            </ul> A partir du travail pr&eacute;c&eacute;dent expliquer quelle est la boucle <font color="#990000"><b>while</b></font> &eacute;quivalente.
-              <br></li>
-      </ul>
-        
-        
-      <div class="soustitre">
-         <p>Remarques :</p>
-      </div>
-      <div id="footnotes">
-         <p id="1"><sup>1</sup><b><i>D'autres formes de boucles</i></b> Les langages informatiques proposent d'autres formes de boucles, qui sont &eacute;quivalentes &agrave; la construction <font color="#990000"><b>while</b></font> apprise ici, 
-                mais peuvent &ecirc;tre plus pratiques &agrave; utiliser. En voici deux exemples : 
-            
-            <ul>
-                     
-               
-               <li>La boucle <font color="#990000"><b>for</b></font> permet de rassembler en une ligne des boucles complexes. La construction :
+                  <li>puis, tant qu'il est plus petit que 10 (<b><font color="#990000"><b>while</b></font>( n &lt;  10)</b>),
+                  </li>
                         
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
-                                   
-                           <div class="text"><font color="#990000"><b>for</b></font>(initiatisation_de_la_boucle; test_de_fin_de_boucle; increment_avant_de_recommencer_la_boucle) {
-                           </div>
-                                   
-                           <div class="text">
-                              &nbsp;&nbsp;&nbsp;
-                              corps_de_la_boucle
-                           </div>
-                                   
-                           <div class="text">}</div>
-                                 
-                        </th>
-                     </tr>
-                  </table> est en fait tr&egrave;s g&eacute;n&eacute;rale.
-               </li>
-                     
-               
-               <li>L'it&eacute;rateur <font color="#990000"><b>foreach</b></font> permet d'&eacute;num&eacute;rer tous les &eacute;l&eacute;ments d'une liste sans ce soucier d'utiliser un <font color="#990000"><b>while</b></font>, 
-                        par exemple (attention ce n'est PAS du <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt> !) 
+                  <li>nous imprimons <font color="#008000">"Hello world"</font>,
+                  </li>
                         
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
-                                   
-                           <div class="text"><tt>foreach(nom, liste_de_noms) {</tt></div>
-                                   
-                           <div class="text">
-                              &nbsp;&nbsp;&nbsp;
-                              <tt>envoyer_un_mail(nom);</tt></div>
-                                   
-                           <div class="text"><tt>}</tt></div>
-                                 
-                        </th>
-                     </tr>
-                  </table>permet dans d'autres langages comme le PHP de, par exemple ici, poster un mail &agrave; toute une liste de noms.
-               </li>
-                   
-            </ul>En bref, nous avons d'autres fa&ccedil;ons de faire mais nous connaissons d&eacute;j&agrave; les 
-            <i>fondements</i> dont nous avons besoin.
-         </p>
-         <p id="2"><sup>2</sup><b><i>A propos de fonctions r&eacute;cursives</i></b> Imaginons une fonction <font color="#990000"><b>A</b></font> qui appelle, selon ses entr&eacute;es, une fonction <font color="#990000"><b>B</b></font> 
-              qui appelle elle-m&ecirc;me la fonction <font color="#990000"><b>A</b></font> ou tout autre combinaison telle que, finalement et selon ses entr&eacute;es, la fonction <font color="#990000"><b>A</b></font> se rappelle elle-m&ecirc;me. 
-              On dit qu'elle est 
-            <i>
-               <a href="http://fr.wikipedia.org/wiki/Algorithme_r%C3%A9cursif">r&eacute;cursive</a></i>: 
-              cela peut donner des boucles infinies (donc des bugs !), ou des calculs tr&egrave;s complexes et tr&egrave;s int&eacute;ressants ... et 
-              c'est plus compliqu&eacute; que ce que nous pouvons d&eacute;couvrir ici, alors retenons juste deux choses: 
-            
-            <ul>
-                   
-               
-               <li>Il faut &eacute;viter de d&eacute;finir des fonctions r&eacute;cursives, sauf dans les cas indispensables.</li>
-                   
-               
-               <li>Il faut &ecirc;tre prudent si c'est le cas, et bien comprendre la notion de 
-                  <a href="sujet-about-while.htm">boucle</a> avant.
-               </li>
+                  <li>et incr&eacute;mentons (c'est &agrave; dire lui ajoutons 1) sa valeur (<b>n = n + 1;</b>).
+                  </li>
+                      
+               </ul>Non sans bien noter le jeu d'accolades { } pour ouvrir est fermer <b><font color="#990000"><b>void main</b></font>()</b> et <b><font color="#990000"><b>while</b></font>( n &lt; 10)</b>.
+                   Nous voil&agrave; avec un m&eacute;canisme qui va nous permettre de r&eacute;p&eacute;ter autant de fois que n&eacute;cessaire une action.
+                  
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Tous les ingr&eacute;dients des algorithmes.</h3> Il y a quelque chose de formidable ici : 
+                  avec des <a href="sujet-about-variables.htm">[.]</a> et des <a href="sujet-about-functions.htm">[.]</a>, 
+                  une <a href="sujet-hello-world.htm">[.]</a> d'instruction, 
+                  l'instruction <a href="sujet-about-if.htm">[.]</a>, 
+                  et une instruction<a href="#1" class="note">[.]</a> pour faire des <a href="sujet-about-while.htm">[.]</a>, 
+                  nous avons <i>tous les ingr&eacute;dients</i> pour programmer efficacement <i>tous les algorithmes possibles</i>! 
+                  Il y a bien entendu une subtilit&eacute; ici : les fonctions doivent pouvoir s'appeler elles-m&ecirc;me, c'est &agrave; dire &ecirc;tre recursives<a href="#2" class="note">[.]</a>.
+                  Mais la <i>plupart</i> des programmes que nous avons besoin de faire n'ont pas besoin de fonctions r&eacute;cursives et se programment tr&egrave;s bien avec les
+               ingr&eacute;dients
+                  propos&eacute;s ici, gr&acirc;ce aux boucles.
+                  
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+     
+   <h2>Travail propos&eacute;.</h2>
+   <div id="works">
+      <ol>
+         <li>
+            <div>
+               <h3>A nous de jouer.</h3>Recopier le 2&egrave;me programme propos&eacute; ci-dessus et :
+               <ul class="ul">
+                        
+                  <li>Le modifier pour imprimer 11 fois le <font color="#008000">"Hello World !"</font>.
+                  </li>
+                        
+                  <li>Puis partir de n = 1 (donc &eacute;crire <b><font color="#990000"><b>int</b></font> n = 1;</b>) et le modifier pour &eacute;crire 8 fois <font color="#008000">"Hello World !"</font>.
+                  </li>
+                        
+                  <li>Retirer la ligne <b>n = n + 1;</b>: que se passe t'il<a href="#3" class="note">[.]</a>?
+                  </li>
+                        
+                  <li>Remplacer la ligne <b>n = n + 1;</b> par <b>n = n - 1;</b> et expliquer ce qui se passe.
+                  </li>
+                      
+               </ul>
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Comprendre quelques exemples de boucles.</h3>Pour chacun des bouts de codes suivants, expliquer ce qui est calcul&eacute; (vous pouvez essayer les codes si besoin) : 
+               <ul class="ul">
+                        
+                  <li>Combien de fois s'ex&eacute;cute cette boucle ?
+                           
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code"> 
+                                         
+                                 <div><font color="#990000"><b>int</b></font> n = 5;
+                                 </div>
+                                         
+                                 <div><font color="#990000"><b>while</b></font>( n &gt;= 0) {
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    n = n - 1;
+                                 </div>
+                                         
+                                 <div>}</div>
+                                       
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </li>
+                        
+                  <li>Combien de fois s'ex&eacute;cute cette boucle ?
+                           
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code"> 
+                                         
+                                 <div><font color="#990000"><b>int</b></font> n = 0;
+                                 </div>
+                                         
+                                 <div><font color="#990000"><b>while</b></font>( n == 5) {
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    n = n + 2;
+                                 </div>
+                                         
+                                 <div>}</div>
+                                       
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </li>
+                        
+                  <li>Que calcule cette fonction ?
+                           
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code">
+                                         
+                                 <div><font color="#990000"><b>int</b></font> mul(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y) {
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <font color="#990000"><b>int</b></font> r = 0;
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <font color="#990000"><b>while</b></font>( x &gt; 0) {
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    
+                                    &nbsp;&nbsp;&nbsp;
+                                    r = r + y;
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    
+                                    &nbsp;&nbsp;&nbsp;
+                                    x = x - 1;
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    }
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <font color="#990000"><b>return</b></font> r;
+                                 </div>
+                                         
+                                 <div>}</div>
+                                       
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </li>
+                      
+               </ul>
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Programmer quelques boucles.</h3> : 
+               <ul class="ul">
+                        
+                  <li>Programmer une boucle qui imprime tous les nombres impairs de 1 &agrave; 39 inclus, avec l'instruction <b><font color="#990000"><b>println</b></font>(<font color="#008000">"n = "</font> + n);</b></li>
+                        
+                  <li>Le <a href="http://fr.wikipedia.org/wiki/Nombre_d'or">[.]</a> est d&eacute;fini par une suite 
+                           (qui n'est pas celle de <a href="http://fr.wikipedia.org/wiki/Nombre_d'or#Suite_de_Fibonacci">[.]</a>) de la forme :
+                           <b>r = 1 + 1 / r</b> initialis&eacute;e avec <b>r = 1</b>. Ecrire une boucle qui calcule part de <b>r = 1</b> et calcule 30 fois <b>r = 1 + 1 / r</b> en imprimant
+                           &agrave; chaque fois <b>r</b> (par exemple avec l'instruction <b><font color="#990000"><b>println</b></font>(<font color="#008000">"r = "</font> + r);</b> et commenter le r&eacute;sultat. 
+                           Comparer avec les valeurs du nombre d'or connues par ailleurs.
+                  </li>
+                        
+                  <li>Avec votre professeur (ou quelqu'un pour vous aider si besoin) calculer les 100 premi&egrave;res d&eacute;cimales de <a href="http://fr.wikipedia.org/wiki/Pi#M.C3.A9thode_d.E2.80.99Archim.C3.A8de">[.]</a> par la m&eacute;thode d'Archim&egrave;de.
+                  </li>
+                      
+               </ul>
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>D'autres formes de boucles.</h3> Les langages informatiques proposent d'autres formes de boucles<a href="#1" class="note">[.]</a>, 
+                   qui sont &eacute;quivalentes &agrave; la construction <font color="#990000"><b>while</b></font> apprise ici, mais peuvent &ecirc;tre plus pratiques &agrave; utiliser. En voici un exemple 
+               <ul class="ul">
+                        
+                  <li>La boucle <font color="#990000"><b>for</b></font> permet de rassembler en une ligne la boucle avec un compteur que nous avons d&eacute;couvert ici. Le m&ecirc;me programme peut s'&eacute;crire
+                     :
+                           
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code">
+                                         
+                                 <div><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> n = 0; n &lt; 10; n = n + 1) {
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                                 </div>
+                                         
+                                 <div>}</div>
+                                       
+                              </div>
+                           </td>
+                        </tr>
+                     </table> ce qui est plus concis ... mais ne change rien sur le fond.
+                  </li>
+                      
+               </ul> A partir du travail pr&eacute;c&eacute;dent expliquer quelle est la boucle <font color="#990000"><b>while</b></font> &eacute;quivalente.
                  
-            </ul>.
-         </p>
-         <p id="3"><sup>3</sup><b><i>Arr&ecirc;ter un programme</i></b> C'est le bouton 
-            <img src="img/stop.png"> qui permet d'arr&ecirc;ter un programme qui boucle ind&eacute;finiment.
-         </p>
-      </div>
-      
-   </body>
-</html>
+            </div>
+         </li>
+      </ol>
+   </div>
+     
+     
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div>
+               <h3>D'autres formes de boucles.</h3> Les langages informatiques proposent d'autres formes de boucles, qui sont &eacute;quivalentes &agrave; la construction <font color="#990000"><b>while</b></font> apprise ici, 
+                   mais peuvent &ecirc;tre plus pratiques &agrave; utiliser. En voici deux exemples : 
+               <ul class="ul">
+                        
+                  <li>La boucle <font color="#990000"><b>for</b></font> permet de rassembler en une ligne des boucles complexes. La construction :
+                           
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code">
+                                         
+                                 <div><font color="#990000"><b>for</b></font>(initiatisation_de_la_boucle; test_de_fin_de_boucle; increment_avant_de_recommencer_la_boucle) {
+                                 </div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    corps_de_la_boucle
+                                 </div>
+                                         
+                                 <div>}</div>
+                                       
+                              </div>
+                           </td>
+                        </tr>
+                     </table> est en fait tr&egrave;s g&eacute;n&eacute;rale.
+                  </li>
+                        
+                  <li>L'it&eacute;rateur <font color="#990000"><b>foreach</b></font> permet d'&eacute;num&eacute;rer tous les &eacute;l&eacute;ments d'une liste sans ce soucier d'utiliser un <font color="#990000"><b>while</b></font>, 
+                           par exemple (attention ce n'est PAS du <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt> !) 
+                           
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code">
+                                         
+                                 <div><tt>foreach(nom, liste_de_noms) {</tt></div>
+                                         
+                                 <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <tt>envoyer_un_mail(nom);</tt></div>
+                                         
+                                 <div><tt>}</tt></div>
+                                       
+                              </div>
+                           </td>
+                        </tr>
+                     </table>permet dans d'autres langages comme le PHP de, par exemple ici, poster un mail &agrave; toute une liste de noms.
+                  </li>
+                      
+               </ul>En bref, nous avons d'autres fa&ccedil;ons de faire mais nous connaissons d&eacute;j&agrave; les <i>fondements</i> dont nous avons besoin.
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>A propos de fonctions r&eacute;cursives.</h3> Imaginons une fonction <font color="#990000"><b>A</b></font> qui appelle, selon ses entr&eacute;es, une fonction <font color="#990000"><b>B</b></font> 
+                 qui appelle elle-m&ecirc;me la fonction <font color="#990000"><b>A</b></font> ou tout autre combinaison telle que, finalement et selon ses entr&eacute;es, la fonction <font color="#990000"><b>A</b></font> se rappelle elle-m&ecirc;me. 
+                 On dit qu'elle est <i><a href="http://fr.wikipedia.org/wiki/Algorithme_r%C3%A9cursif">[.]</a></i>: 
+                 cela peut donner des boucles infinies (donc des bugs !), ou des calculs tr&egrave;s complexes et tr&egrave;s int&eacute;ressants ... et 
+                 c'est plus compliqu&eacute; que ce que nous pouvons d&eacute;couvrir ici, alors retenons juste deux choses: 
+               <ul class="ul">
+                      
+                  <li>Il faut &eacute;viter de d&eacute;finir des fonctions r&eacute;cursives, sauf dans les cas indispensables.</li>
+                      
+                  <li>Il faut &ecirc;tre prudent si c'est le cas, et bien comprendre la notion de <a href="sujet-about-while.htm">[.]</a> avant.
+                  </li>
+                    
+               </ul>.
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Arr&ecirc;ter un programme.</h3> C'est le bouton <img src="img/stop.png" alt="" class="icon"> qui permet d'arr&ecirc;ter un programme qui boucle ind&eacute;finiment.
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+</div>

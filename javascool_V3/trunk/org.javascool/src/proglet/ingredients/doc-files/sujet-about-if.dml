@@ -1,0 +1,197 @@
+<div class="sujet" title="Un tutoriel pour découvrir l'instruction conditionnelle.">
+  
+  
+  
+  
+  <div class="objectif">
+    Le but de ce tutoriel est de découvrir l'instruction conditionnelle. Il faut déjà savoir <l link="sujet-hello-world.htm"/>,
+    et savoir se servir de <l link="sujet-about-variables.htm"/>.
+  </div>
+  
+  <div class="intros">
+    <div title="Comment programmer le fait de faire des choix"> A ce stade, nous savons programmer une liste d'instruction, qui ...  font <i>toujours</i> la même chose !
+     Voilà qui est bien limité. Un vrai programme doit pouvoir exécuter des instructions différentes selon certaines conditions et il existe une structure universelle
+     pour implémenter ce mécanisme. Par exemple :
+    <div class="code">
+      <p><r>if</r>(température <r>&lt;</r> 15) {</p>
+      <p><T/><r>println</r>(<v>allumer chauffage</v>);</p>
+      <p>}</p>
+    </div>
+    où la construction permet de n'allumer le chauffage qu'en cas de besoin. Tandis que :
+    <div class="code">
+      <p><r>if</r>(température <r>&lt;</r> 15) {</p>
+      <p><T/><r>println</r>(<v>allumer chauffage</v>);</p>
+      <p>} <r>else</r> {</p>
+      <p><T/><r>println</r>(<v>ne rien faire</v>);</p>
+      <p>}</p>
+    </div>
+    montre comment se traduit la construction <i><b>si</b> la température est en dessous de 15 degrés alors allumer le chauffage <b>sinon</b> ne rien faire.</i> Ou encore :
+    <div class="code">
+      <p><r>if</r>(température <r>&lt;</r> 15) {</p>
+      <p><T/><r>println</r>(<v>allumer chauffage</v>);</p>
+      <p>} <r>else if</r>(température <r>&gt;</r> 100) {</p>
+      <p><T/><r>println</r>(<v>appeler les pompiers</v>);</p>
+      <p>} <r>else</r> {</p>
+      <p><T/><r>println</r>(<v>ne rien faire</v>);</p>
+      <p>}</p>
+    </div>
+    montre comment emboiter les instructions conditionnelles.
+   </div>
+   <div title="Définir des conditions à tester"> Pour définir le test à effectuer nous avons vu que nous pouvions comparer deux valeurs numériques, 
+   voici une liste de tests possibles pour des nombres <b>a</b> et <b>b</b> et des chaînes de caratères <b>s</b> et <b>c</b>:
+     <div class="code">
+       <m>Vrai si et seulement si le nombre a est strictement plus petit que le nombre b:</m>
+       <p><T/><T/><T/>a <r>&lt;</r> b</p>
+       <m>Vrai si et seulement si le nombre a est strictement plus petit ou égal au nombre b:</m>
+       <p><T/><T/><T/>a <r>&lt;=</r> b</p>
+       <m>Vrai si et seulement si le nombre a est égal au nombre b:</m>
+       <p><T/><T/><T/>a <r>==</r> b</p>
+       <m>avec bien sûr les symboles similares pour <r>&gt;</r> et <r>&gt;=</r> (strictement plus grand et plus grand ou égal) et <r>!=</r> (pas égal).</m>
+       <m>Vrai si et seulement si la chaîne s est égale à la chaîne c</m>
+       <p><T/><T/><T/><r>equal</r>(s, c)</p>
+     </div>
+     Nous pouvons ensuite <i>combiner</i> ces conditions :
+     <div class="code">
+       <m>Vrai si et seulement si une_condition ET autre_condition sont vraies :</m>
+       <p><T/><T/><T/>une_condition <r>&amp;&amp;</r> autre_condition</p>
+       <m>Vrai si et seulement si une_condition OU autre_condition, ou les deux, sont vraies :</m>
+       <p><T/><T/><T/>une_condition <r>||</r> autre_condition</p>
+       <m>Vrai si et seulement si une_condition n'est PAS vraie :</m>
+       <p><T/><T/><T/>(<r>!</r>une_condition)</p>
+     </div>
+     ce qui nous permet de définir des expressions aussi complexes que nous avons besoin, par exemple :
+     <div class="code">
+       <m>Vrai si et seulement si x est plus grand que a et plus petit que b donc dans l'intervale ]a, b[:</m>
+       <p><T/><T/><T/>a <r>&lt;</r> x <r>&amp;&amp;</r> x <r>&lt;</r> b</p> 
+       <m>Vrai si et seulement si la reponse égale oui en minuscule ou majuscule :</m>
+       <p><T/><T/><T/><r>equal</r>(reponse, <v>oui</v>) <r>||</r> <r>equal</r>(reponse, <v>OUI</v>)</p>
+       <m>Vrai si et seulement si l'age est plus que 10 et le nom n'est pas Jean:</m>
+       <p><T/><T/><T/>age &gt; 10 <r>&amp;&amp;</r> (<r>!</r> <r>equal</r>(nom, <v>Jean</v>))</p>
+     </div>
+     en utilisant des parenthèses pour ne pas mélanger les termes de ces expressions.
+   </div>
+   <div title="Un nouveau type de variable"> Les variables qui ne prennent que les valeurs <r>true</r> et <r>false</r>. Ce sont des variables booléennes.
+      La valeur <r>true</r> veut dire vrai et la valeur <r>false</r> veut dire faux, par exemple <r>true &amp;&amp; true</r> donne <r>true</r> puisque 
+      si deux choses sont vraies alors on peut dire que l'une ET l'autre sont vraies. De même <r>true &amp;&amp; false</r> donne <r>false</r> puisque 
+      si une chose est vraie et l'autre fausse on ne peut dire que l'une ET l'autre sont vraies. Le code :
+      <div class="code">
+        <p><r>boolean</r> x = <r>readBoolean</r>();</p> 
+        <p>if (x) { <r>println</r>(<v>OK</v>); } <r>else</r> { <r>println</r>(<v>KO</v>); }</p>
+       </div>
+       nous permet de lire la variable boolénne x et va imprimer OK/KO selon que sa valeur est Vraie/Fausse. Nous allons l'utiliser.
+     </div>
+   </div>
+   
+   <div class="works">
+    <div title="Ajouter des tests à un code"> Reprendre le code proposé pour apprendre à se servir de <l link="sujet-about-variables.htm"/> 
+      qui demandent le <i>nom</i> et l'<i>âge</i> de l'utilisateur et ajouter
+      au bon endroit :
+      <div class="code">
+        <p><r>if</r>(<r>equal</r>(whoisit, <v>Toto</v>)) {</p>
+        <p><T/>println(<v>Eh : Toto est pas un vrai nom, dis donc !</v>);</p>
+        <p>}</p>
+      </div>
+      puis tester ce code pour vérifier le mécanisme conditionnel. Ajouter ensuite des conditions pour signaler que : <div class="ul">
+        <div>Si l'âge est inférieur à 3 ans ou supérieur à 120 ans, ce n'est pas sérieux</div>
+        <div>Si le nom est Dieu ou Toto, ce n'est pas crédible</div>
+        <div>Si le nom est, par exemple, Nadia, alors c'est super, imprimons un message sympa !</div>
+      </div>
+    </div>
+    <div title="Deviner des conditions"> Essayez de deviner ce qui va être imprimé, puis testez dans un petit code et expliquez le résultat
+      en <i>traduisant en mot (par une phrase) ce qui a été calculé</i>.<div class="ol">
+      <div>Vrai pour <b>x</b> ?<div class="code">
+        <p><r>int</r> x = 12;</p>
+        <p>if (x <r>&gt;=</r> 12 <r>&amp;&amp;</r> (x <r>&lt;</r> 0 <r>||</r> x <r>&gt;</r> 10)) { <r>println</r>(<v>OK</v>); } <r>else</r> { <r>println</r>(<v>KO</v>); }</p>
+      </div>Votre commentaire commencera par : <i>Comme x vaut 12 alors <b>x <r>&lt;</r> 0</b> est [vrai?faux?], et <b> x <r>&gt;</r> 10</b> est [vrai?faux?],
+      donc (x <r>&lt;</r> 0 <r>||</r> x <r>&gt;</r> 10) etc..</i></div>
+      <div>Que va donner le code suivant ?<div class="code">
+        <p><r>String</r> nom = <r>readString</r>();</p>
+        <p>if (<r>equal</r>(nom, <v>John</v>) <r>&amp;&amp;</r> <r>equal</r>(nom, <v>Joan</v>)) { <r>println</r>(<v>OK</v>); } <r>else</r> { <r>println</r>(<v>KO</v>); }</p>
+      </div></div>
+      <div>Deviner <i>puis</i> vérifier ces 8 réponses:<div class="code">
+        <p><r>println</r>(<v>Réponse 1 = </v> + (<r>false</r> <r>||</r> <r>false</r>));</p>
+        <p><r>println</r>(<v>Réponse 2 = </v> + (<r>true</r> <r>||</r> <r>false</r>));</p>
+        <p><r>println</r>(<v>Réponse 3 = </v> + (<r>false</r> <r>||</r> <r>true</r>));</p>
+        <p><r>println</r>(<v>Réponse 4 = </v> + (<r>true</r> <r>||</r> <r>true</r>));</p>
+        <p><r>println</r>(<v>Réponse 5 = </v> + (<r>true</r> <r>&amp;&amp;</r> (<r>!</r><r>false</r>)));</p>
+        <p><r>println</r>(<v>Réponse 6 = </v> + (<r>!</r>(<r>!</r><r>false</r>)));</p>
+        <p><r>println</r>(<v>Réponse 6 = </v> + (<r>!</r>(<r>true</r> <r>&amp;&amp;</r> <r>false</r>)));</p>
+        <p><r>println</r>(<v>Réponse 7 = </v> + (<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r>(<r>!</r><r>false</r>)))))))))))))))))))));</p>
+        <p><r>println</r>(<v>Réponse 8 = </v> + (equal(<v>toto</v>, <v>titi</v>) <r>||</r> 14 <r>&gt;</r> 13));</p>
+      </div> et donner une phrase explicative pour chaque réponse.</div>
+    </div>
+    <div class="center"><b>(la suite du travail proposé n'est pas indispensable pour notre apprentissage de la programmation, mais permet d'approfondir le sujet)</b></div>
+    </div>
+    <div title="Calculer les tables de vérité">De même que nous connaissons les tables de multiplication, il y des tables pour les "opérateurs" logiques ET, OU et PAS.
+      Compléter les tableaux suivants: <div class="table"><div>
+      <div class="top"><div class="table"><div><div><b>x</b></div><div><b><r>!</r>x</b></div></div>
+        <div><div><r>false</r></div><div><r>?</r></div></div>
+        <div><div><r>true</r></div><div><r>?</r></div></div>
+      </div></div>
+      <div><div class="table"><div><div><b>x</b></div><div><b>y</b></div><div><b>x <r>||</r> y</b></div></div>
+        <div><div><r>false</r></div><div><r>false</r></div><div><r>?</r></div></div>
+        <div><div><r>false</r></div><div><r>true</r></div><div><r>?</r></div></div>
+        <div><div><r>true</r></div><div><r>false</r></div><div><r>?</r></div></div>
+        <div><div><r>true</r></div><div><r>true</r></div><div><r>?</r></div></div>
+      </div></div>
+      <div><div class="table"><div><div><b>x</b></div><div><b>y</b></div><div><b>x <r>&amp;&amp;</r> y</b></div></div>
+        <div><div><r>false</r></div><div><r>false</r></div><div><r>?</r></div></div>
+        <div><div><r>false</r></div><div><r>true</r></div><div><r>?</r></div></div>
+        <div><div><r>true</r></div><div><r>false</r></div><div><r>?</r></div></div>
+        <div><div><r>true</r></div><div><r>true</r></div><div><r>?</r></div></div>
+      </div></div>
+    </div></div></div>
+    <div title="Programmer le ou exclusif">Il y a le ou <i>inclusif</i> comme par exemple "grand ou gentil" (on peut être les deux !) c'est le cas de <r>||</r>,
+     et le ou "`exclusif" comme par exemple "grand ou petit3 (mais pas les deux !). 
+    Nous voulons étudier ici comment : <div class="ul">
+      <div>non pas écrire "<b>x</b> OU <b>y</b>" (<b>x</b> <r>||</r> <b>y</b>) c'est à dire soit <b>x</b> est vrai, soit <b>y</b> est vrai, soit les deux le sont</div>
+      <div>mais écrire "SOIT <b>x</b> SOIT <b>y</b>" c'est à dire soit <b>x</b> est vrai et <b>y</b> est faux, soit <b>x</b> est faux et <b>y</b> est vrai.</div>
+    </div>Prenons deux variables booléennes <b>x</b> et <b>y</b>.<div class="ul">
+    <div>Compléter le tableau suivant:<div class="table"><div><div><b>x</b></div><div><b>y</b></div><div><b><r>SOIT</r> x <r>,SOIT</r> y</b></div></div>
+        <div><div><r>false</r></div><div><r>false</r></div><div><r>?</r></div></div>
+        <div><div><r>false</r></div><div><r>true</r></div><div><r>?</r></div></div>
+        <div><div><r>true</r></div><div><r>false</r></div><div><r>?</r></div></div>
+        <div><div><r>true</r></div><div><r>true</r></div><div><r>?</r></div></div>
+      </div></div>
+      <div>Vérifier à la main ou en utilisant le bout de code suivant, que l'expression <b>(((<r>!</r>x) <r>&amp;&amp;</r> y) <r>||</r> (x <r>&amp;&amp;</r> (<r>!</r>y)))</b>
+        convient.<div class="code">
+          <p><r>println</r>(<v>x ?</v>); <r>boolean</r> x = <r>readBoolean</r>();</p>
+          <p><r>println</r>(<v>y ?</v>); <r>boolean</r> y = <r>readBoolean</r>();</p>
+          <p><r>println</r>(<v>Réponse: </v> + (((<r>!</r>x) <r>&amp;&amp;</r> y) <r>||</r> (x <r>&amp;&amp;</r> (<r>!</r>y))));</p>
+        </div>
+      </div>
+      <div>Coder l'expression autrement, sous la forme "x ou y et pas x et y".</div>
+    </div></div>
+    <div title="Comprendre l'implication logique"> Prenons un exemple : <i>voler un oeuf implique toujours de voler un boeuf</i><div class="ul">
+      <div><c>Certes</c>, si nous trouvons quelqu'un qui a volé un oeuf mais n'a pas volé de boeuf, la phrase est assurément fausse.</div>
+      <div><c>De plus</c>, si nous trouvons quelqu'un qui a volé un oeuf et un boeuf, la phrase est assurément vraie.</div>
+      <div><c>Par ailleurs</c>.. Et si personne n'a volé d'oeuf ? Ou si quelqu'un a volé (directement) un boeuf sans voler d'oeuf ? 
+      La phrase, <i>en tant que telle</i>, n'est PAS fausse.
+      Donc elle est vraie<l class="note" link="#2"/>.</div>
+    </div> Bref, nous pouvons dire que la phrase est : <div class="ul">
+      <div><c>Vraie</c>, si et seulement si on n'a pas volé d'oeuf ou si on a volé un oeuf et un boeuf. Ou encore.</div>
+      <div><c>Ou encore</c>, si et seulement si quelqu'un qui n'a pas volé de boeuf ne peut pas avoir volé d'oeuf.</div>
+    </div>Pour formaliser les choses : <div class="ul">
+      <div>Compléter le tableau suivant :<div class="table"><div><div><b>x</b></div><div><b>y</b></div><div><b>x <r>IMPLIQUE</r> y</b></div></div>
+        <div><div><r>false</r></div><div><r>false</r></div><div><r>?</r></div></div>
+        <div><div><r>false</r></div><div><r>true</r></div><div><r>?</r></div></div>
+        <div><div><r>true</r></div><div><r>false</r></div><div><r>?</r></div></div>
+        <div><div><r>true</r></div><div><r>true</r></div><div><r>?</r></div></div>
+      </div></div>
+      <div>En prenant l'exemple : <i>Savoir écrire implique toujours de savoir lire</i>, ré-écrire avec des mots l'explication ci-dessus qui commence par 
+        <c>Vraie</c> et <c>Ou encore</c> et celle qui commence par <c>Certes</c>, <c>De plus</c>, <c>Par ailleurs</c>.</div>
+      <div>Prenons deux variables booléennes <b>x</b> et <b>y</b>, écrire (à partir de la phrase qui commence par <c>Vraie</c> ou bien celle
+      qui commence par <c>Ou encore</c>) une formule avec des <r>&amp;&amp;</r>,  <r>||</r> et <r>!</r> et qui corresponde à <b>x <r>IMPLIQUE</r> y</b>.</div>
+    </div></div>
+  </div>
+  
+  <div class="notes">
+    <div title="A propos de l'égalité"> Notez que le signe <r>=</r> veut dire "<l link="sujet-about-variables.htm"/>"
+    tandis que être égal s'écrit <r>==</r> pour les nombres et <b><r>equal</r>(s, c)</b> pour les chaines de caractères : voici quelque chose d'un peu compliqué.</div>
+    <div title="A propos de l'implication"> Dire <b>A implique B</b> consiste à dire que si <b>A</b> est vrai alors forcément <b>B</b> est vrai, 
+    tandis que si <b>A</b> est faux et bien tout peut arriver à <b>B</b> vrai ou faux, c'est ok.
+    <div>Noter aussi que l'implication ne signifie pas qu'il y a une relation de <i>de cause à effet</i> ; par exemple, qu'il pleuve <i>implique</i> que je prenne mon parapluie,
+    mais ce n'est <i>pas</i> la pluie qui est la cause que je prenne mon parapluie, c'est moi !</div>
+    </div>
+  </div>
+</div>

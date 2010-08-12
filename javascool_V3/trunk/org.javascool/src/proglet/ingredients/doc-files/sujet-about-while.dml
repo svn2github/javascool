@@ -1,0 +1,140 @@
+<div class="sujet" title="Un tutoriel pour utiliser des boucles.">
+  
+  
+  
+
+  <div class="objectif">
+    Le but de ce tutoriel d'apprendre à  utiliser des boucles. Il faut déjà savoir <l link="sujet-hello-world.htm"/>,
+  se servir de <l link="sujet-about-variables.htm"/>, avoir découvert l'instruction <l link="sujet-about-if.htm"/>, 
+  et s'être familiarisé avec les <l link="sujet-about-functions.htm"/>.
+  </div>
+  
+  <div class="intros">
+    <div title="Imprimer 10 fois la même chose"> Supposons vouloir imprimer <v>Hello world</v> 10 fois, bien sûr, nous pouvons écrire :
+    <div class="code">
+      <p><r>void main</r>() {</p>
+      <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+      <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+      <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+      <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+      <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+      <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+      <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+      <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+      <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+      <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+      <p>}</p>
+     </div> mais si nous devons écrire un code qui doit répéter un million de fois une action, nous ne sommes pas rendus ! Regardons alors cette autre solution :
+    <div class="code">
+      <p><r>void main</r>() {</p>
+      <p><T/><r>int</r> n = 0;</p>
+      <p><T/><r>while</r>( n &lt; 10) {</p>
+      <p><T/><T/><r>println</r>(<v>Hello World !</v>);</p>
+      <p><T/><T/>n = n + 1;</p>
+      <p><T/>}</p>
+      <p>}</p>
+    </div> où <div class="ul">
+      <div>nous avons défini un compteur <b>n</b> qui initialisé à la valeur zéro (<b><r>int</r> n = 0;</b>),</div>
+      <div>puis, tant qu'il est plus petit que 10 (<b><r>while</r>( n &lt;  10)</b>),</div>
+      <div>nous imprimons <v>Hello world</v>,</div>
+      <div>et incrémentons (c'est à dire lui ajoutons 1) sa valeur (<b>n = n + 1;</b>).</div>
+    </div>Non sans bien noter le jeu d'accolades { } pour ouvrir est fermer <b><r>void main</r>()</b> et <b><r>while</r>( n &lt; 10)</b>.
+    Nous voilà avec un mécanisme qui va nous permettre de répéter autant de fois que nécessaire une action.
+   </div>
+   <div title="Tous les ingrédients des algorithmes"> Il y a quelque chose de formidable ici : 
+   avec des <l link="sujet-about-variables.htm"/> et des <l link="sujet-about-functions.htm"/>, 
+   une <l link="sujet-hello-world.htm"/> d'instruction, 
+   l'instruction <l link="sujet-about-if.htm"/>, 
+   et une instruction<l class="note" link="#1"/> pour faire des <l link="sujet-about-while.htm"/>, 
+   nous avons <i>tous les ingrédients</i> pour programmer efficacement <i>tous les algorithmes possibles</i>! 
+   Il y a bien entendu une subtilité ici : les fonctions doivent pouvoir s'appeler elles-même, c'est à dire être recursives<l class="note" link="#2"/>.
+   Mais la <i>plupart</i> des programmes que nous avons besoin de faire n'ont pas besoin de fonctions récursives et se programment très bien avec les ingrédients
+   proposés ici, grâce aux boucles.
+   </div>
+ </div>
+
+  <div class="works">
+    <div title="A nous de jouer">Recopier le 2ème programme proposé ci-dessus et :<div class="ul">
+      <div>Le modifier pour imprimer 11 fois le <v>Hello World !</v>.</div>
+      <div>Puis partir de n = 1 (donc écrire <b><r>int</r> n = 1;</b>) et le modifier pour écrire 8 fois <v>Hello World !</v>.</div>
+      <div>Retirer la ligne <b>n = n + 1;</b>: que se passe t'il<l class="note" link="#3"/>?</div>
+      <div>Remplacer la ligne <b>n = n + 1;</b> par <b>n = n - 1;</b> et expliquer ce qui se passe.</div>
+    </div></div>
+    <div title="Comprendre quelques exemples de boucles">Pour chacun des bouts de codes suivants, expliquer ce qui est calculé (vous pouvez essayer les codes si besoin) : <div class="ul">
+      <div>Combien de fois s'exécute cette boucle ?
+      <div class="code"> 
+        <p><r>int</r> n = 5;</p>
+        <p><r>while</r>( n &gt;= 0) {</p>
+        <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+        <p><T/>n = n - 1;</p>
+        <p>}</p>
+      </div></div>
+      <div>Combien de fois s'exécute cette boucle ?
+      <div class="code"> 
+        <p><r>int</r> n = 0;</p>
+        <p><r>while</r>( n == 5) {</p>
+        <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+        <p><T/>n = n + 2;</p>
+        <p>}</p>
+      </div></div>
+      <div>Que calcule cette fonction ?
+      <div class="code">
+        <p><r>int</r> mul(<r>int</r> x, <r>int</r> y) {</p>
+        <p><T/><r>int</r> r = 0;</p>
+        <p><T/><r>while</r>( x &gt; 0) {</p>
+        <p><T/><T/>r = r + y;</p>
+        <p><T/><T/>x = x - 1;</p>
+        <p><T/>}</p>
+        <p><T/><r>return</r> r;</p>
+        <p>}</p>
+      </div></div>
+    </div></div>
+    <div title="Programmer quelques boucles"> : <div class="ul">
+      <div>Programmer une boucle qui imprime tous les nombres impairs de 1 à 39 inclus, avec l'instruction <b><r>println</r>(<v>n = </v> + n);</b></div>
+      <div>Le <l link="http://fr.wikipedia.org/wiki/Nombre_d'or"/> est défini par une suite 
+      (qui n'est pas celle de <l link="http://fr.wikipedia.org/wiki/Nombre_d'or#Suite_de_Fibonacci"/>) de la forme :
+      <b>r = 1 + 1 / r</b> initialisée avec <b>r = 1</b>. Ecrire une boucle qui calcule part de <b>r = 1</b> et calcule 30 fois <b>r = 1 + 1 / r</b> en imprimant
+      à chaque fois <b>r</b> (par exemple avec l'instruction <b><r>println</r>(<v>r = </v> + r);</b> et commenter le résultat. 
+      Comparer avec les valeurs du nombre d'or connues par ailleurs.</div>
+      <div>Avec votre professeur (ou quelqu'un pour vous aider si besoin) calculer les 100 premières décimales de <l link="http://fr.wikipedia.org/wiki/Pi#M.C3.A9thode_d.E2.80.99Archim.C3.A8de"/> par la méthode d'Archimède.</div>
+    </div></div>
+    <div title="D'autres formes de boucles"> Les langages informatiques proposent d'autres formes de boucles<l class="note" link="#1"/>, 
+    qui sont équivalentes à la construction <r>while</r> apprise ici, mais peuvent être plus pratiques à utiliser. En voici un exemple <div class="ul">
+      <div>La boucle <r>for</r> permet de rassembler en une ligne la boucle avec un compteur que nous avons découvert ici. Le même programme peut s'écrire :
+      <div class="code">
+        <p><r>for</r>(<r>int</r> n = 0; n &lt; 10; n = n + 1) {</p>
+        <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+        <p>}</p>
+      </div> ce qui est plus concis ... mais ne change rien sur le fond.</div>
+    </div> A partir du travail précédent expliquer quelle est la boucle <r>while</r> équivalente.
+  </div>
+  </div>
+  
+  <div class="notes">
+    <div title="D'autres formes de boucles"> Les langages informatiques proposent d'autres formes de boucles, qui sont équivalentes à la construction <r>while</r> apprise ici, 
+    mais peuvent être plus pratiques à utiliser. En voici deux exemples : <div class="ul">
+      <div>La boucle <r>for</r> permet de rassembler en une ligne des boucles complexes. La construction :
+      <div class="code">
+        <p><r>for</r>(initiatisation_de_la_boucle; test_de_fin_de_boucle; increment_avant_de_recommencer_la_boucle) {</p>
+        <p><T/>corps_de_la_boucle</p>
+        <p>}</p>
+      </div> est en fait très générale.</div>
+      <div>L'itérateur <r>foreach</r> permet d'énumérer tous les éléments d'une liste sans ce soucier d'utiliser un <r>while</r>, 
+      par exemple (attention ce n'est PAS du <l class="javascool"/> !) 
+      <div class="code">
+        <p><c>foreach(nom, liste_de_noms) {</c></p>
+        <p><T/><c>envoyer_un_mail(nom);</c></p>
+        <p><c>}</c></p>
+      </div>permet dans d'autres langages comme le PHP de, par exemple ici, poster un mail à toute une liste de noms.</div>
+    </div>En bref, nous avons d'autres façons de faire mais nous connaissons déjà les <i>fondements</i> dont nous avons besoin.</div>
+    <div title="A propos de fonctions récursives"> Imaginons une fonction <r>A</r> qui appelle, selon ses entrées, une fonction <r>B</r> 
+  qui appelle elle-même la fonction <r>A</r> ou tout autre combinaison telle que, finalement et selon ses entrées, la fonction <r>A</r> se rappelle elle-même. 
+  On dit qu'elle est <i><l link="http://fr.wikipedia.org/wiki/Algorithme_récursif"/></i>: 
+  cela peut donner des boucles infinies (donc des bugs !), ou des calculs très complexes et très intéressants ... et 
+  c'est plus compliqué que ce que nous pouvons découvrir ici, alors retenons juste deux choses: <div class="ul">
+    <div>Il faut éviter de définir des fonctions récursives, sauf dans les cas indispensables.</div>
+    <div>Il faut être prudent si c'est le cas, et bien comprendre la notion de <l link="sujet-about-while.htm"/> avant.</div>
+  </div>.</div>
+  <div title="Arrêter un programme"> C'est le bouton <l class="icon" icon="img/stop.png"/> qui permet d'arrêter un programme qui boucle indéfiniment.</div>
+  </div>
+</div>

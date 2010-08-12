@@ -23,9 +23,9 @@
    <p>La visualisation du son s'effectue en montrant: <ul>
      <li>Les amplitudes des fréquences du son (tracé en rouge, l'unité est de <a href="http://fr.wikipedia.org/wiki/Décibel">décibel</a>, 
      renormalisé pour offrir le meilleur tracé).
-     <br/>Les fréquences sont tracées entre le <i>La</i> sous-grave (octave 0 à <c>27.5<a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></c>, à peine audible) et 
+     <p>Les fréquences sont tracées entre le <i>La</i> sous-grave (octave 0 à <c>27.5<a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></c>, à peine audible) et 
      le <i>La</i> sur-aigu (octave 9 à <c>6400<a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></c>), 
-     tandis que le milieu de l'échelle est le <i>La</i> du diapason (octave 3 à <c>440<a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></c>).</li>
+     tandis que le milieu de l'échelle est le <i>La</i> du diapason (octave 3 à <c>440<a href="http://fr.wikipedia.org/wiki/Hertz">Hz</a></c>).</p></li>
      <li>Le début du signal (tracé en jaune), permet de voir sa forme et son aspect temporel. Les premières <c>11</c>ms (<c>0.011</c> secondes) sont tracées.</li>
    </ul></p>
  
@@ -47,7 +47,7 @@
      <p><r>synthePlay</r>();</p>
      <p><r>@tone:</r> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t)</p>
    </code>sont présentés, puis les 1ères notes de quelque chose qui ressemble à la «Lettre à Elise» de L.v.Beethoven est jouée et son spectre affiché et ensuite 
-   <br/> . . à vous de jouer !</p>
+   <p> . . à vous de jouer !</p></p>
 
   </proglet>
 

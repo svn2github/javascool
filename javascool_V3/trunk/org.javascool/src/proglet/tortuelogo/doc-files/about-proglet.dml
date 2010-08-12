@@ -1,0 +1,39 @@
+<div title="La «proglet» Tortue">
+  <div class="table"><p><p>
+    Cette proglet<l class="note" link="#1"/> permet de simuler la célèbre <l link="http://fr.wikipedia.org/wiki/Logo_(langage)"/>.
+
+  <div>Dans ce contexte les instructions à utiliser sont celles de <l class="javascool"/>, la tortue évolue dans un carré de salade de taille <c>[512 x 512]</c>
+  tandis que les <l link="http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_Logo"/> de la tortue logo sont disponibles:
+  <div class="code"><p><T/><T/><T/><T/>Primitives de la tortue logo disponibles</p></div>
+  La tortue est toujours visible et ne peut sortir du jardin et disparaître de l'écran graphique.
+  </div>
+
+  <div>Que les nostalgiques de cette ancienne façon d'apprendre à programmer en profite, la tortue est de retour:
+    <div class="center"><l class="icon" icon="img/turtle.gif"/></div>
+  </div>
+
+  <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="img/demo.png"/> <b>Demo</b>],
+  la tortue trace de belles <l link="http://fr.wikipedia.org/wiki/Courbe_de_Lissajous"/> en changeant la couleur:<div class="code">
+    <m>Initialisation du tracé</m>
+    <p><r>clear_all</r>();</p>
+    <p><r>pen_up</r>();</p>
+    <m>Boucle de tracé</m>
+    <p><r>int</r> t = 0; <r>while</r>(t &lt; 9000) {</p>
+    <p><T/><r>set_color</r>((t / 1000) % 10);</p>
+    <p><T/><r>set_position</r>(</p>
+    <p><T/><T/>256 + 250 * <r>Math.cos</r>(0.0015 * t),</p>
+    <p><T/><T/>256 + 250 * <r>Math.sin</r>(0.0045 * t)</p>
+    <p><T/>);</p>
+    <p><T/><r>pen_down</r>();</p>
+    <p><T/>t = t + 1;</p>
+    <p>}</p>
+    </div>
+  </div>
+
+  </p><p><l class="proglet" l="Tortue"/></p></p></div>
+
+  <div class="notes">
+    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source"/>, programmée en Java et <l link=" ../api/proglet/Tortue.html"/> 
+    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Tortue.java"/>, et permettre des développements dérivés.</div>
+  </div>
+</div>

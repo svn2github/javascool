@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:import href="htm2hml.xslt"/>
+<xsl:import href="../src/org/javascool/htm2hml.xslt"/>
 
 <xsl:output method="xml" encoding="utf-8" omit-xml-declaration="yes"/>
 
@@ -19,7 +19,7 @@
 <xsl:template match="notes"><div class="intros"><xsl:apply-templates/></div></xsl:template>
 <xsl:template match="footnotes"><div class="notes"><xsl:apply-templates/></div></xsl:template>
 
-<xsl:template match="note|work|footnote">
+<xsl:template match="note|work">
   <div>
     <xsl:if test="count(@title)=1"><xsl:attribute name="title"><xsl:value-of select="@title"/></xsl:attribute></xsl:if>
     <xsl:if test="count(@id)=1"><xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute></xsl:if>
@@ -58,6 +58,10 @@
   <xsl:if test="@mode = 'demo'">
     <div class="table"><p><p><xsl:apply-templates/></p><p><l class="proglet" l="{@name}"/></p></p></div>
   </xsl:if>
+</xsl:template>
+
+<xsl:template match="footnote">
+  <l class="note" link="{concat('#', @id)}"/>
 </xsl:template>
 
 <xsl:template match="javascool">

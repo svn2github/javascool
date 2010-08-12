@@ -1,0 +1,50 @@
+<div title="La «proglet» Scope">
+  <div class="table"><p><p>
+    Cette proglet<l class="note" link="#1"/> permet d'afficher des tracés de couleurs différentes.
+    <div>Pour tracer un point de la courbe: <div class="code">
+      <p><r>scopeSet</r>(x, y, c);</p>
+    </div><div class="ul">
+    <div>où <b>x</b> est un <r>double</r>, entre <b>[-1, +1]</b>, abscisse du point de la courbe;</div>
+    <div>où <b>y</b> est un <r>double</r>, entre <b>[-1, +1]</b>, ordonnée du point de la courbe;</div>
+    <div>où <b>c</b> est un <r>int</r> qui est le numéro de la courbe: 
+      <c>0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</c></div>
+    </div>tandis que la fonction: <div class="code">
+      <p><r>scopeReset</r>()</p>
+    </div> permet d'effacer la courbe. Le système de coordonnée est donc de la forme:
+     <div class="center"><l class="icon" icon="img/scope.png"/></div>
+     <div>Il est aussi possible de changer l'échelle horizontale et verticale en utilisant la fonction: <div class="code">
+      <p><r>scopeReset</r>(largeur, hauteur)</p>
+    </div> où le tracé se fait alors avec les abcisses entre <b>[-largeur, largeur]</b> et les ordonnées entre les valeurs <b>[-hauteur, hauteur]</b>.</div>
+   </div>
+   <div>Pour ajouter une étiquette <v>s</v> de couleur <c>c</c> au point <b>x, y</b>:<div class="code">
+   <p><r>scopeAdd</r>(x, y, <v>s</v>, c);</p>
+   </div></div>
+   <div>Pour ajouter une ligne de couleur <c>c</c> du point <b>x1, y1</b> au point <b>x2, y2</b> :<div class="code">
+   <p><r>scopeAddLine</r>(x1, y1, x2, y2, c);</p>
+   </div></div>
+   <div>Pour ajouter un cercle de couleur <c>c</c> de centre <b>x, y</b> et de rayon <b>r</b> :<div class="code">
+   <p><r>scopeAddCircle</r>(x, y, r, c);</p>
+   </div></div>
+   <div>Par ailleurs les valeurs du réticule peuvent être relues avec les fonctions: <div class="code">
+      <p><r>double</r> x = <r>scopeX()</r>;</p>
+      <p><r>double</r> y = <r>scopeY()</r>;</p>
+    </div> qui renvoie les valeurs horizontale et verticale du réticule. Le réticule est défini par les boutons en bas de l'écran ou en cliquant.
+    <div><b>Note</b> : quand on clique sur la fenêtre de tracé, manipule les glissoirs de <b>X</b> et <b>Y</b>, ou entre une valeur numérique au clavier, 
+    la fonction <r>main</r> est relancée pour mettre à jour le calcul avec ces nouvelles valeurs.</div>
+   </div>
+   <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="img/demo.png"/> <b>Demo</b>] se tracent une sinusoïde bleue et une exponentielle violette,
+   selon le programme suivant:
+   <div class="code">
+     <p><r>scopeReset</r>();</p>
+     <p><r>for</r>(<r>double</r> x = -1; x &lt;= 1; x += 0.001) {</p>
+     <p><T/><r>scopeSet</r>(x, 0.5 * <r>Math.sin</r>(10 * x) + 0.5, 6);</p>
+     <p><T/><r>scopeSet</r>(x, -<r>Math.exp</r>(-(x + 1)), 7);</p>
+     <p>}</p>
+   </div></div>
+  </p><p><l class="proglet" l="Scope"/></p></p></div>
+
+  <div class="notes">
+    <div>Cette proglet un <l link="http://fr.wikipedia.org/wiki/Open_source"/>, programmée en Java et <l link=" ../api/proglet/Scope.html"/> 
+    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Scope.java"/>, et permettre des développements dérivés.</div>
+  </div>
+</div>

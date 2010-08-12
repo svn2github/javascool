@@ -1,0 +1,25 @@
+<div title="La «proglet» Conva">
+  <div class="table"><p><p>
+    Cette proglet<l class="note" link="#1"/> permet de programmer un <l link="http://fr.wikipedia.org/wiki/Convertisseur_analogique-numérique"/>, pour comprendre le mécanisme de recherche dichotomique.
+
+    <div>Plus précisément la fonction <r>convaOut</r> simule la sortie d'une valeur pour la comparaison
+    <div class="code">
+      <p><r>convaOut</r>(tension);</p>
+    </div>
+    cette <b>tension</b> est un <r>int</r> varie entre 0 et 1.023 volts et est donnée en milli-volts,
+    et la fonction <r>convaCompare</r> compare cette tension à la tension inconnue avec la fonction:
+    <div class="code">
+      <p><r>convaCompare</r>();</p>
+    </div>
+     qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
+    </div>
+
+    <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="img/demo.png"/> <b>Demo</b>],
+    les résultats de la conversion analogique-numérique s'affichent avec un algorithme dichotomique . . qui doit être trouvé en exercice !</div>
+  </p><p><l class="proglet" l="Conva"/></p></p></div>
+
+  <div class="notes">
+    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source"/>, programmée en Java et <l link=" ../api/proglet/Conva.html"/> 
+    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Conva.java"/>, et permettre des développements dérivés.</div>
+  </div>
+</div>

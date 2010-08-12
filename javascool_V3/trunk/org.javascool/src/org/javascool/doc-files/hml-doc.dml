@@ -11,7 +11,7 @@
     <p>La construction est de la forme:
     <div class="code">
       <p><r>{ page</r></p>
-      <p><T/><h>name</h> <r>=</r> <s>value</s> .. (pour spécifier une méta-donnée) ..</p>
+      <p><T/><n>name</n> <r>=</r> <v>value</v> .. (pour spécifier une méta-donnée) ..</p>
       <p><T/>.. (autres méta-donnée) ..</p>
       <p><T/><T/>.. (contenu de la page) ..</p>
       <p><r>}</r></p>
@@ -21,8 +21,8 @@
     <div class="tag" title="page">
       <param name="title"    type="string"               >Titre de la page</param>
       <param name="icon"     type="location" value="null">Icone permettant de reconnaitre la page</param>
-      <param name="author"   type="identity"             >Nom et email de l'auteur sous la forme <t>Prenom Nom &lt;email></t></param>
-      <param name="tags"     type="name*"                >Liste de mots-clé de la page, séparés par des espaces, un mot composé étant construit avec le titre <t>-</t></param>
+      <param name="author"   type="identity"             >Nom et email de l'auteur sous la forme <c>Prenom Nom &lt;email></c></param>
+      <param name="tags"     type="name*"                >Liste de mots-clé de la page, séparés par des espaces, un mot composé étant construit avec le titre <c>-</c></param>
       <param name="style"    type="location" value="null">Ficher de style CSS de la page</param>
       <param name="script"   type="location" value="null">Fichier des fonctions JavaScript de la page</param>
       <param name="abstract" type="string"   value="null">Description en quelques lignes du contenu de la page (utilisé par les moteurs d'indexation du web)</param>
@@ -31,12 +31,12 @@
     </div>
     et cette construction contient une suite de division <r>{ div</r>.</p>
     <div title="Discussion">
-      Cette construction correspond à l'entête d'une page HTML (la construction <t>&lt;html>&lt;head>..&lt;/head>..&lt;/html></t>).
+      Cette construction correspond à l'entête d'une page HTML (la construction <c>&lt;html>&lt;head>..&lt;/head>..&lt;/html></c>).
       Elle force l'utilisateur à définir son identité (pas de page anonyme), un titre à la la page, et des mots-clé ou tag, 
       de façon à ne pas générer de page sans aucun contexte permettant d'en comprendre la pertinence.
       Elle contraint les éléments de style et de script à être définis dans un unique fichier associé à la page (ce fichier pouvant lui-même en include d'autres), 
       de façon à avoir une organisation de fichier bien organisée.
-      L'encodage est forcément du <t>UTF-8</t>, le langage n'est pas spécifié en méta-donnée car le texte lui-même est potentiellement multilingue.
+      L'encodage est forcément du <c>UTF-8</c>, le langage n'est pas spécifié en méta-donnée car le texte lui-même est potentiellement multilingue.
     </div>
   </div>
   
@@ -44,7 +44,7 @@
     <p>Un texte est structuré de manière récursive en, par exemple, chapitre qui contiennent des sections, qui contiennent des paragraphes, etc.</p>
     <p>La construction est de la forme:
     <div class="code">
-      <p><r>{ div</r> <h>title</h> <r>=</r> <s>titre</s> .. (division) ..</p>
+      <p><r>{ div</r> <n>title</n> <r>=</r> <v>titre</v> .. (division) ..</p>
       <p><T/><r>{ div</r> .. (sous-division) ..</p>
       <p><T/><T/>.. (etc.) ..</p>
       <p><T/><r>}</r></p>
@@ -60,7 +60,7 @@
       <elements type="(div|s|l|text())*"/>
     </div>
     et cette construction contient du texte avec des sous-division, des blocks de texte et des liens, comme définit ci-dessous.</p>
-    <p>Le paramètre <t>class</t> prend, par exemple, une valeur correspondant:
+    <p>Le paramètre <c>class</c> prend, par exemple, une valeur correspondant:
     <div class="table">
       <p><p><r>ul</r></p><p>Liste d'items non-numérotés</p></p>
       <p><p><r>ol</r></p><p>Liste d'items numérotés</p></p>
@@ -89,13 +89,13 @@
     Cela permet de montrer que l'importance ou le sens de ce morceau de texte est différent du reste.</p>
     <p>Une telle construction est de la forme:
     <div class="code">
-      <p>.. (texte ordinaire) ..<r>{ s</r> <h>class</h><r>=</r><s>type-de-texte</s> .. (texte enrichi) .. <r>}</r> .. (suite du texte) ..</p>
+      <p>.. (texte ordinaire) ..<r>{ s</r> <n>class</n><r>=</r><v>type-de-texte</v> .. (texte enrichi) .. <r>}</r> .. (suite du texte) ..</p>
     </div>
     où le texte enrichi est mis entre accolade en précisant la classe de texte en question.</p>
     <p>La syntaxe est:
     <div class="tag" title="s">
       <param name="class" type="name">Définit de quelle type de division il s'agit</param>
-      <elements type=(l|text())*"/>
+      <elements type="(l|text())*"/>
     </div>
     et cette construction contient du texte avec des blocks de texte et des liens, comme définit ici et ci-dessous.</p>
     <p>Le paramètre <r>class</r> prend comme précédemment une valeur sémantique (qui décrit le sens que donne à cet enrichissement),
@@ -109,7 +109,7 @@
       <p><p><r>{ I</r></p><p><r>{ s class=sub   </r></p><p>Mot ou texte en indexe (inverse de l'exposant) pour décrire des objets paramétrés</p></p>
     </div> cette liste n'étant pas limitative.</p>
     <div title="Discussion">
-      Cette construction correspond à l'élément HTML <t>&lt;span>..&lt;/span></t> et à tous les éléments dérivés.
+      Cette construction correspond à l'élément HTML <c>&lt;span>..&lt;/span></c> et à tous les éléments dérivés.
       L'introduction de raccourci allège la lecture et l'édition du texte source, que l'on veut rester lisible ici 
      (contrairement au XML ou HTML qui sont supposés cachés à l'utilisateur).
     </div>
@@ -138,7 +138,7 @@
     c'est à dire un mot du texte qui sera rendu de manière particulière.</p>
     </p>
     <div title="Discussion">
-      Cette construction correspond aux éléments HTML <t>&lt;a href="..">.</t> et <t>&lt;img src="..">.</t> et à tous les éléments (tel que <t>&lt;object ...</t>), 
+      Cette construction correspond aux éléments HTML <c>&lt;a href="..">.</c> et <c>&lt;img src="..">.</c> et à tous les éléments (tel que <c>&lt;object ...</c>), 
       qui incluent des contenus dans le texte.
       L'intégration des ces éléments étant considéré comme au-delà de la compétence d'un rédacteur de texte, la présente spécification se propose de les encapsuler, 
       pour être utilisés sans ce donner la peine de les programmer.

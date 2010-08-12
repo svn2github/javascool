@@ -1,0 +1,518 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div>
+   <h2>Documentation HML.</h2>
+   
+   <div>
+      <h2>Introduction.</h2>
+      Pour bien comprendre la structure logique et les principes fondamentaux des langages HTML, 
+      le &laquo;sous-langage&raquo; HML propos&eacute; ici permet de sp&eacute;cifier de mani&egrave;re minimale une page HTML compl&egrave;te.
+      Il est en fait tr&egrave;s proche des derniers langages (<tt>XHTML</tt> ou <tt>HTML5</tt>).
+        
+   </div>
+   
+     
+   <div>
+      <h2>D&eacute;crire une page HML.</h2>
+          
+      <div>Un fichier HML contient une page qui va s'afficher dans un navigateur.</div>
+          
+      <div>Cette page doit contenir des m&eacute;ta-donn&eacute;es permettant de prendre connaissance imm&eacute;diatement de son contexte, et de la r&eacute;f&eacute;rencer
+         ensuite.
+      </div>
+          
+      <div>La construction est de la forme:
+             
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                           
+                     <div><font color="#990000"><b>{ page</b></font></div>
+                           
+                     <div>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#505000">name</font> <font color="#990000"><b>=</b></font> <font color="#008000">"value"</font> .. (pour sp&eacute;cifier une m&eacute;ta-donn&eacute;e) ..
+                     </div>
+                           
+                     <div>
+                        &nbsp;&nbsp;&nbsp;
+                        .. (autres m&eacute;ta-donn&eacute;e) ..
+                     </div>
+                           
+                     <div>
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        .. (contenu de la page) ..
+                     </div>
+                           
+                     <div><font color="#990000"><b>}</b></font></div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+             les espaces et retour &agrave; la ligne n'&eacute;tant pas significatifs.
+      </div>
+          
+      <div>La syntaxe est:
+             
+         <table bgcolor="#eeeeee" width="90%">
+            <tr>
+               <td colspan="4"><b>{</b> page
+               </td>
+            </tr>
+            <tr>
+               <td align="center"><b>name</b></td>
+               <td align="center"><b>type</b></td>
+               <td align="center"><b>default value</b></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td><font color="#505000">title</font></td>
+               <td><font color="#990000">string</font></td>
+               <td><i>mandatory</i></td>
+               <td>Titre de la page</td>
+            </tr>
+            <tr>
+               <td><font color="#505000">icon</font></td>
+               <td><font color="#990000">location</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>Icone permettant de reconnaitre la page</td>
+            </tr>
+            <tr>
+               <td><font color="#505000">author</font></td>
+               <td><font color="#990000">identity</font></td>
+               <td><i>mandatory</i></td>
+               <td>Nom et email de l'auteur sous la forme <tt>Prenom Nom &lt;email&gt;</tt></td>
+            </tr>
+            <tr>
+               <td><font color="#505000">tags</font></td>
+               <td><font color="#990000">name*</font></td>
+               <td><i>mandatory</i></td>
+               <td>Liste de mots-cl&eacute; de la page, s&eacute;par&eacute;s par des espaces, un mot compos&eacute; &eacute;tant construit avec le titre <tt>-</tt></td>
+            </tr>
+            <tr>
+               <td><font color="#505000">style</font></td>
+               <td><font color="#990000">location</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>Ficher de style CSS de la page</td>
+            </tr>
+            <tr>
+               <td><font color="#505000">script</font></td>
+               <td><font color="#990000">location</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>Fichier des fonctions JavaScript de la page</td>
+            </tr>
+            <tr>
+               <td><font color="#505000">abstract</font></td>
+               <td><font color="#990000">string</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>Description en quelques lignes du contenu de la page (utilis&eacute; par les moteurs d'indexation du web)</td>
+            </tr>
+            <tr>
+               <td><font color="#505000">*</font></td>
+               <td><font color="#990000">string</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>Autre(s) m&eacute;ta-donn&eacute;e(s) &eacute;ventuelle(s), &agrave; la discr&eacute;tion de l'utilisateur</td>
+            </tr>
+            <tr>
+               <td colspan="4">Structure: <font color="#202020">div*"</font></td>
+            </tr>
+            <tr>
+               <td colspan="4">
+                  <hr>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4"></td>
+            </tr>
+         </table>
+             et cette construction contient une suite de division <font color="#990000"><b>{ div</b></font>.
+      </div>
+          
+      <div>
+         <h3>Discussion.</h3>
+               Cette construction correspond &agrave; l'ent&ecirc;te d'une page HTML (la construction <tt>&lt;html&gt;&lt;head&gt;..&lt;/head&gt;..&lt;/html&gt;</tt>).
+               Elle force l'utilisateur &agrave; d&eacute;finir son identit&eacute; (pas de page anonyme), un titre &agrave; la la page, et des mots-cl&eacute; ou tag,
+         
+               de fa&ccedil;on &agrave; ne pas g&eacute;n&eacute;rer de page sans aucun contexte permettant d'en comprendre la pertinence.
+               Elle contraint les &eacute;l&eacute;ments de style et de script &agrave; &ecirc;tre d&eacute;finis dans un unique fichier associ&eacute; &agrave; la page (ce fichier
+         pouvant lui-m&ecirc;me en include d'autres), 
+               de fa&ccedil;on &agrave; avoir une organisation de fichier bien organis&eacute;e.
+               L'encodage est forc&eacute;ment du <tt>UTF-8</tt>, le langage n'est pas sp&eacute;cifi&eacute; en m&eacute;ta-donn&eacute;e car le texte lui-m&ecirc;me est potentiellement multilingue.
+             
+      </div>
+        
+   </div>
+     
+     
+   <div>
+      <h2>Structurer le texte en divisions.</h2>
+          
+      <div>Un texte est structur&eacute; de mani&egrave;re r&eacute;cursive en, par exemple, chapitre qui contiennent des sections, qui contiennent des paragraphes,
+         etc.
+      </div>
+          
+      <div>La construction est de la forme:
+             
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                           
+                     <div><font color="#990000"><b>{ div</b></font> <font color="#505000">title</font> <font color="#990000"><b>=</b></font> <font color="#008000">"titre"</font> .. (division) ..
+                     </div>
+                           
+                     <div>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>{ div</b></font> .. (sous-division) ..
+                     </div>
+                           
+                     <div>
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        .. (etc.) ..
+                     </div>
+                           
+                     <div>
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>}</b></font></div>
+                           
+                     <div><font color="#990000"><b>}</b></font></div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+             comme un arbre dont la racine et la section globale du texte et les branches ses divisions et sous divisions jusqu'au
+         feuilles qui sont des paragraphes du texte.
+      </div>
+          
+      <div>La syntaxe est:
+             
+         <table bgcolor="#eeeeee" width="90%">
+            <tr>
+               <td colspan="4"><b>{</b> div
+               </td>
+            </tr>
+            <tr>
+               <td align="center"><b>name</b></td>
+               <td align="center"><b>type</b></td>
+               <td align="center"><b>default value</b></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td><font color="#505000">title</font></td>
+               <td><font color="#990000">string</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>Titre de la division</td>
+            </tr>
+            <tr>
+               <td><font color="#505000">id</font></td>
+               <td><font color="#990000">name</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>Unique identificateur (&eacute;tiquette) qui permet de r&eacute;f&eacute;rencer la division, 
+                        chaque division doit avoir un identifiant diff&eacute;rent
+               </td>
+            </tr>
+            <tr>
+               <td><font color="#505000">class</font></td>
+               <td><font color="#990000">name</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>D&eacute;finit de quelle type de division il s'agit</td>
+            </tr>
+            <tr>
+               <td colspan="4">Structure: <font color="#202020">(div|s|l|text())*"</font></td>
+            </tr>
+            <tr>
+               <td colspan="4">
+                  <hr>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4"></td>
+            </tr>
+         </table>
+             et cette construction contient du texte avec des sous-division, des blocks de texte et des liens, comme d&eacute;finit ci-dessous.
+      </div>
+          
+      <div>Le param&egrave;tre <tt>class</tt> prend, par exemple, une valeur correspondant:
+             
+         <table class="table">
+                  
+            <tr>
+               <td><font color="#990000"><b>ul</b></font></td>
+               <td>Liste d'items non-num&eacute;rot&eacute;s</td>
+            </tr>
+                  
+            <tr>
+               <td><font color="#990000"><b>ol</b></font></td>
+               <td>Liste d'items num&eacute;rot&eacute;s</td>
+            </tr>
+                  
+            <tr>
+               <td><font color="#990000"><b>table</b></font></td>
+               <td>Table avec des lignes et des collones</td>
+            </tr>
+                  
+            <tr>
+               <td><font color="#990000"><b>*</b></font></td>
+               <td>Autre type de structure, &agrave; la discr&eacute;tion de l'utilisateur</td>
+            </tr>
+                
+         </table>
+             qui correspondent &agrave; la fa&ccedil;on dont le texte est structur&eacute; et &agrave; la fa&ccedil;on dont le texte sera rendu sur la page. 
+             
+         <div>A titre de raccourci les paragraphes peuvent s'appeler <font color="#990000"><b>{ p</b></font> au lieu de <font color="#990000"><b>{ div</b></font>.
+         </div>
+             
+         <ul class="ul">
+                  
+            <li>Dans le cas d'une liste, les sous-divisions seront les <i>items</i> de la liste.
+            </li>
+                  
+            <li>Dans le cas d'une table, les sous-divisions seront les <i>lignes</i> de la table et leurs sous-divisions les <i>cellules</i> de la table 
+                     (on les d&eacute;finit de gauche &agrave; droite puis de haut en bas).
+            </li>
+                
+         </ul>
+             
+         <div>La fa&ccedil;on dont le texte sera rendu, le <i>style</i> est compl&egrave;tement s&eacute;par&eacute; du contenu: 
+                on distingue compl&egrave;tement le fait d'&eacute;crire le texte de la fa&ccedil;on de le mettre en page. Cette mise en page sera d&eacute;finie
+            dans les fichier de style.
+         </div>
+             
+      </div>
+          
+      <div>
+         <h3>Discussion.</h3>
+               Cette construction correspond &agrave; tous les &eacute;l&eacute;ments HTML qui d&eacute;finissent des containers de texte. 
+               Elle force l'utilisateur &agrave; se concentrer sur le fond du contenu, pas sur sa forme.
+               Le rendu peut en effet d&eacute;pendre du support (grand &eacute;cran, &eacute;cran de balladeur, papier, ..).
+             
+      </div>
+        
+   </div>
+   
+     
+   <div>
+      <h2>Enrichir le texte en modifiant son aspect.</h2>
+          
+      <div>Dans un &eacute;diteur on peut modifier l'aspect d'un morceau de texte en changeant sa couleur ou son style, etc. 
+             Cela permet de montrer que l'importance ou le sens de ce morceau de texte est diff&eacute;rent du reste.
+      </div>
+          
+      <div>Une telle construction est de la forme:
+             
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                           
+                     <div>.. (texte ordinaire) ..<font color="#990000"><b>{ s</b></font> <font color="#505000">class</font><font color="#990000"><b>=</b></font><font color="#008000">"type-de-texte"</font> .. (texte enrichi) .. <font color="#990000"><b>}</b></font> .. (suite du texte) ..
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+             o&ugrave; le texte enrichi est mis entre accolade en pr&eacute;cisant la classe de texte en question.
+      </div>
+          
+      <div>La syntaxe est:
+             
+         <table bgcolor="#eeeeee" width="90%">
+            <tr>
+               <td colspan="4"><b>{</b> s
+               </td>
+            </tr>
+            <tr>
+               <td align="center"><b>name</b></td>
+               <td align="center"><b>type</b></td>
+               <td align="center"><b>default value</b></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td><font color="#505000">class</font></td>
+               <td><font color="#990000">name</font></td>
+               <td><i>mandatory</i></td>
+               <td>D&eacute;finit de quelle type de division il s'agit</td>
+            </tr>
+            <tr>
+               <td colspan="4">Structure: <font color="#202020">(l|text())*"</font></td>
+            </tr>
+            <tr>
+               <td colspan="4">
+                  <hr>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4"></td>
+            </tr>
+         </table>
+             et cette construction contient du texte avec des blocks de texte et des liens, comme d&eacute;finit ici et ci-dessous.
+      </div>
+          
+      <div>Le param&egrave;tre <font color="#990000"><b>class</b></font> prend comme pr&eacute;c&eacute;demment une valeur s&eacute;mantique (qui d&eacute;crit le sens que donne &agrave; cet enrichissement),
+             ind&eacute;pendemment de la forme avec laquelle il sera redu.
+      </div>
+          
+      <div>A titre de raccourci, les constructions suivantes sont d&eacute;finies:
+             
+         <table class="table">
+                  
+            <tr>
+               <td><font color="#990000"><b>{ b</b></font></td>
+               <td><font color="#990000"><b>{ s class=bold  </b></font></td>
+               <td>Texte ou texte important &agrave; ne pas manquer lors de lecture rapide</td>
+            </tr>
+                  
+            <tr>
+               <td><font color="#990000"><b>{ i</b></font></td>
+               <td><font color="#990000"><b>{ s class=idiom </b></font></td>
+               <td>Mot ou texte utilis&eacute; dans un sens particulier ou d'une autre langue, dont le sens est &agrave; bien calculer</td>
+            </tr>
+                  
+            <tr>
+               <td><font color="#990000"><b>{ c</b></font></td>
+               <td><font color="#990000"><b>{ s class=code  </b></font></td>
+               <td>Mot ou texte appartenant &agrave; un langage informatique ou formel</td>
+            </tr>
+                  
+            <tr>
+               <td><font color="#990000"><b>{ S</b></font></td>
+               <td><font color="#990000"><b>{ s class=sup   </b></font></td>
+               <td>Mot ou texte en exposant (comme dans &laquo;x au carr&eacute;&raquo; <tt>x{S 2}</tt> 
+               </td>
+            </tr>
+                  
+            <tr>
+               <td><font color="#990000"><b>{ I</b></font></td>
+               <td><font color="#990000"><b>{ s class=sub   </b></font></td>
+               <td>Mot ou texte en indexe (inverse de l'exposant) pour d&eacute;crire des objets param&eacute;tr&eacute;s</td>
+            </tr>
+                
+         </table> cette liste n'&eacute;tant pas limitative.
+      </div>
+          
+      <div>
+         <h3>Discussion.</h3>
+               Cette construction correspond &agrave; l'&eacute;l&eacute;ment HTML <tt>&lt;span&gt;..&lt;/span&gt;</tt> et &agrave; tous les &eacute;l&eacute;ments d&eacute;riv&eacute;s.
+               L'introduction de raccourci all&egrave;ge la lecture et l'&eacute;dition du texte source, que l'on veut rester lisible ici 
+              (contrairement au XML ou HTML qui sont suppos&eacute;s cach&eacute;s &agrave; l'utilisateur).
+             
+      </div>
+        
+   </div>
+   
+     
+   <div>
+      <h2>Cr&eacute;er de l'&laquo;hyper-texte&raquo; en ajoutant des objets et des liens.</h2>
+          
+      <div>Dans un texte il est possible de r&eacute;f&eacute;rencer d'autres textes, images ou animations.</div>
+          
+      <div>Soit on acc&egrave;de ces &eacute;l&eacute;ments soit en cliquant, soit ces &eacute;l&eacute;ments sont ins&eacute;r&eacute;s dans le texte.</div>
+          
+      <div>La syntaxe de cette construction est:
+             
+         <table bgcolor="#eeeeee" width="90%">
+            <tr>
+               <td colspan="4"><b>{</b> l
+               </td>
+            </tr>
+            <tr>
+               <td align="center"><b>name</b></td>
+               <td align="center"><b>type</b></td>
+               <td align="center"><b>default value</b></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td><font color="#505000">text</font></td>
+               <td><font color="#990000">string</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>Texte d&eacute;crivant le lien</td>
+            </tr>
+            <tr>
+               <td><font color="#505000">icon</font></td>
+               <td><font color="#990000">location</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>Image d&eacute;crivant ce lien</td>
+            </tr>
+            <tr>
+               <td><font color="#505000">link</font></td>
+               <td><font color="#990000">location</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>Ressource d&eacute;crite par ce lien</td>
+            </tr>
+            <tr>
+               <td><font color="#505000">class</font></td>
+               <td><font color="#990000">name</font></td>
+               <td><font color="#008000">"null"</font></td>
+               <td>D&eacute;finit de quelle type de lien il s'agit</td>
+            </tr>
+            <tr>
+               <td colspan="4"><i>no element</i></td>
+            </tr>
+            <tr>
+               <td colspan="4">
+                  <hr>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4"></td>
+            </tr>
+         </table>
+             et cette construction ne contient rien.
+      </div>
+          
+      <div>Le param&egrave;tre <font color="#990000"><b>class</b></font> prend comme pr&eacute;c&eacute;demment une valeur s&eacute;mantique, qui d&eacute;crit en partculier si l'&eacute;l&eacute;ment est ins&eacute;r&eacute; dans la page ou accessible
+         par un clic.
+             Il prend, par exemple, une valeur correspondant:
+             
+         <table class="table">
+                  
+            <tr>
+               <td><font color="#990000"><b>here</b></font></td>
+               <td>Pour s'ouvrir dans la fen&ecirc;tre, &agrave; la place de la page actuelle</td>
+            </tr>
+                  
+            <tr>
+               <td><font color="#990000"><b>new</b></font></td>
+               <td>Pour s'ouvrir dans une autre fen&ecirc;tre</td>
+            </tr>
+                  
+            <tr>
+               <td><font color="#990000"><b>inside</b></font></td>
+               <td>Pour &ecirc;tre inclus dans la pr&eacute;sente page</td>
+            </tr>
+                  
+            <tr>
+               <td><font color="#990000"><b>*</b></font></td>
+               <td>Pour un autre rendu, &agrave; d&eacute;finir par ailleurs</td>
+            </tr>
+                
+         </table>.
+             
+         <div>Une construction de la forme <tt><font color="#990000"><b>{l class="<i>name</i>}</b></font></tt> d&eacute;signe une entit&eacute; de nom <i>name</i>, 
+                c'est &agrave; dire un mot du texte qui sera rendu de mani&egrave;re particuli&egrave;re.
+         </div>
+             
+      </div>
+          
+      <div>
+         <h3>Discussion.</h3>
+               Cette construction correspond aux &eacute;l&eacute;ments HTML <tt>&lt;a href=".."&gt;.</tt> et <tt>&lt;img src=".."&gt;.</tt> et &agrave; tous les &eacute;l&eacute;ments (tel que <tt>&lt;object ...</tt>), 
+               qui incluent des contenus dans le texte.
+               L'int&eacute;gration des ces &eacute;l&eacute;ments &eacute;tant consid&eacute;r&eacute; comme au-del&agrave; de la comp&eacute;tence d'un r&eacute;dacteur de texte, la pr&eacute;sente sp&eacute;cification
+         se propose de les encapsuler, 
+               pour &ecirc;tre utilis&eacute;s sans ce donner la peine de les programmer.
+             
+      </div>
+        
+   </div>
+   
+</div>

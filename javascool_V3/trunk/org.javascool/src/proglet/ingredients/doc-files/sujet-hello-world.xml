@@ -19,11 +19,11 @@
       et la chaine de caractères <s>HelloWorld</s> qui est un mot "à  nous".</p>
       Regardons à quoi correspondent ces trois lignes d'instructions: <ol>
       <li>Ce que nous demandons, notre "instruction", est juste d'imprimer <s>HelloWorld</s>; 
-      <br/> où, par convention, nous plaçons la chaine de caractères entre guillemets <s></s> pour signifier que c'est juste une chaine de caractères.</li>
+      où, par convention, nous plaçons la chaine de caractères entre guillemets <s></s> pour signifier que c'est juste une chaine de caractères.</li>
       <li>Nous spécifions donc l'instruction <r>println</r>(<s>HelloWorld</s>), où <r>println</r> signifie "imprime <i>(print)</i> sur une ligne" et
-      <br/> où, par convention, ce qui doit être imprimé est placé entre parenthèse après le mot <r>println</r> et l'instruction se finit par <b>;</b>.</li>
+      où, par convention, ce qui doit être imprimé est placé entre parenthèse après le mot <r>println</r> et l'instruction se finit par <b>;</b>.</li>
       <li>Et c'est dans le bloc <b><r>void main</r>() { ../.. }</b> que se placent, entre les accolades, les instructions qui doivent être exécutées par le programme,
-      <br/><r>void main</r> signifie "voici la tâche principale à exécuter" (cette façon de procéder sera évidemment mieux expliquée par la suite).</li>
+      <r>void main</r> signifie "voici la tâche principale à exécuter" (cette façon de procéder sera évidemment mieux expliquée par la suite).</li>
       </ol>
       Et voilà ! Il suffit de bien noter l'utilisation du bloc d'instruction (mise en évidence au point 3.) 
       et la façon de donner une instruction (donnée en exemple au point 2.).

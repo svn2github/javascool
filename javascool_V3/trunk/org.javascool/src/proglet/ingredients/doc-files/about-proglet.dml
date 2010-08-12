@@ -1,0 +1,40 @@
+<div title="La «proglet» Konsol">
+  <div class="table"><p><p>
+    Cette proglet<l class="note" link="#1"/> permet de définir des entrées/sorties textuelles au clavier comme pour une console<l class="note" link="#2"/>. <div class="ul">
+  <div>On peut donc dans la fenêtre <c>input</c>: <div class="code">
+       <m>Lire une chaine de caractère avec la fonction:</m>
+       <p><T/><r>String</r> chaine = <r>readString</r>();</p>
+       <m>Lire un nombre entier avec la fonction:</m>
+       <p><T/><r>int</r> entier = <r>readInteger</r>();</p>
+       <m>Lire un nombre décimal avec la fonction:</m>
+       <p><T/><r>double</r> decimal = <r>readDouble</r>();</p>
+     </div>où les constructions proposées ici utilisent des <l link="sujet-about-variables.htm"/>.</div>
+     <div>On peut aussi écrire dans la fenêtre <c>output</c>: <div class="code">
+       <m>Ecrire une chaine de caractère avec la fonction:</m>
+       <p><T/><r>println</r>(chaine);</p>
+     </div>cette chaine pouvant être une constante, ou se voir ajouter des variables numériques comme dans les exemples ci dessous: <div class="code">
+       <p><T/><r>println</r>(<v>Hello world</v>);</p>
+       <p><T/><r>println</r>(<v>Valeur = </v> + valeur);</p>
+     </div>où ici <b>valeur</b> est une variable numérique entière ou décimale.</div>
+   </div>
+   <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="img/demo.png"/> <b>Demo</b>] le programme suivant:
+   <div class="code">
+     <m>Efface le contenu de la fenêtre de sortie</m>
+     <p><r>clear</r>();</p>
+     <m>Salue l'utilisateur et lit son nom</m>
+     <p><r>println</r>(<v>Bonjour, qui es-tu ?</v>);</p>
+     <p><r>String</r> nom = <r>readString</r>();</p>
+     <m>Lui demande alors son âge</m>
+     <p><r>println</r>(<v>Echanté "+nom+" ! Quel âge as-tu ?</v>);</p>
+     <p><r>int</r> age = <r>readInteger</r>();</p>
+     <m>../..</m>
+   </div> s'exécute pour permettre d'expérimenter le fonctionnement de cette proglet.</div>
+  </p><p><l class="proglet" l="Konsol"/></p></p></div>
+
+  <div class="notes">
+    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source"/>, programmée en Java et <l link=" ../api/proglet/Konsol.html"/> 
+    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Konsol.java"/>, et permettre des développements dérivés.</div>
+    <div>Une console ou « terminal alphanumérique » correspond à une fenêtre où l'utilisateur peut dialoguer avec un programme en entrant des données au clavier et 
+    en lisant les chaines de caractères imprimées par le programme.</div>
+  </div>
+</div>

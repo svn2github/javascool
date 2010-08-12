@@ -29,7 +29,6 @@
     </ul> (note: <r>readInt</r> est synonyme de <r>readInteger</r>, <r>readFloat</r> est synonyme de <r>readDouble</r>).</p>
     <p title="Fonctions des autres proglets"> Voir la description dans la documentation de chaque <a href="about-all.htm#more">proglet</a>.</p>
   </p>
-  <hr/>
   <p title="Grammaire: constructions utilisées ici">
     <p title="Bloc de séquences d'instructions"> Un bloc se note entre <b>{ }</b> et englobe un ensemble de déclarations et d'instructions séparées par un <b>;</b>.</p>
     <p title="Opérateurs"><table border="1">
