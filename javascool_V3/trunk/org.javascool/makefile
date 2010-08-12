@@ -233,8 +233,8 @@ endif
 #: 
 #: [1.4] Other files
 #: ./tst/*                    : contains local test files
-#: ./org.javascool            : convenient link to ./src/org/javascool
-#:  ./proglets                : convenient link to ./src/proglet.
+#: ./javascool                : convenient link to ./src/org/javascool
+#: ./proglets                 : convenient link to ./src/proglet.
 #:
 #: [2] Makefile usage.
 #:
