@@ -32,16 +32,15 @@
 <!-- 1 : Section production -->
 
 <xsl:template match="div|p">
-  <xsl:if test="count(@class)=1"><xsl:choose>
-    <!-- table/ul/ol production -->
+  <xsl:choose>
     <xsl:when test="@class = 'table' or @class = 'ul' or @class = 'ol'">
       <xsl:element name="{@class}"><xsl:call-template name="div"/></xsl:element>
     </xsl:when>
-    <xsl:when test="name(..) = 'ul' or name(..) = 'li'"><li><xsl:call-template name="div"/></li></xsl:when>
+    <xsl:when test="name(..) = 'ul' or name(..) = 'ol'"><li><xsl:call-template name="div"/></li></xsl:when>
     <xsl:when test="name(..) = 'table'"><tr><xsl:call-template name="div"/></tr></xsl:when>
     <xsl:when test="name(../..) = 'table'"><td><xsl:call-template name="div"/></td></xsl:when>
     <xsl:otherwise><div><xsl:call-template name="div"/></div></xsl:otherwise>
-  </xsl:choose></xsl:if>
+  </xsl:choose>
 </xsl:template>
 <xsl:template name="div">
   <xsl:if test="count(@id)=1"><xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute></xsl:if>

@@ -2,10 +2,9 @@
 f=sujet-hello-world.new
 
 one : $(f).xml $(f).htm
-	ls ../src/proglet/ingredients/doc-files/sujet-hello-world.*
-	firefox $(f).xml
-	firefox http://javascool.gforge.inria.fr/proglet/doc/sujet-hello-world.htm
 	firefox $(f).htm
+#	firefox $(f).xml
+	firefox http://javascool.gforge.inria.fr/proglet/doc/sujet-hello-world.htm
 
 all : $(patsubst %.xml,%.new.htm,$(shell find ../src -name '*.xml.org'))
 
