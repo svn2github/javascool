@@ -1,7 +1,7 @@
 
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns:saxon="http://icl.com/saxon">
+<html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
    
@@ -81,35 +81,35 @@
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel
                      </p>
                              
-                     <div class="text" id="-1"><font color="#990000"><b>int</b></font> f(<font color="#990000"><b>int</b></font> x) {
+                     <div class="text"><font color="#990000"><b>int</b></font> f(<font color="#990000"><b>int</b></font> x) {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>return</b></font> 255 - x;
                      </div>
                              
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                              
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Boucle sur tous les pixels
                      </p>
                              
-                     <div class="text" id="-1"><font color="#990000"><b>void</b></font> filtre() {
+                     <div class="text"><font color="#990000"><b>void</b></font> filtre() {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>(); j &lt;= <font color="#990000"><b>smileyHeight</b></font>(); j = j + 1) {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>(); i &lt;= <font color="#990000"><b>smileyHeight</b></font>(); i = i + 1) {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
@@ -118,31 +118,31 @@
                         <font color="#990000"><b>smileySet</b></font>(i, j, f(<font color="#990000"><b>smileyGet</b></font>(i, j)));
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
                         }
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         }
                      </div>
                              
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                              
-                     <div class="text" id="-1"></div>
+                     <div class="text"></div>
                              
-                     <div class="text" id="-1"><font color="#990000"><b>void main</b></font>() {
+                     <div class="text"><font color="#990000"><b>void main</b></font>() {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
                      </div>
                              
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                            
                   </th>
                </tr>
@@ -235,7 +235,7 @@
                
                <li>Si l'on consid&egrave;re les deux images suivantes:
                           
-                  <div class="text" id="-1" align="center">
+                  <div class="text" align="center">
                      
                      <table>
                         
@@ -277,7 +277,7 @@
                
                <li>Si l'on consid&egrave;re les deux images suivantes (cliquer sur l'image de gauche pour visualiser la s&eacute;quence):
                           
-                  <div class="text" id="-1" align="center">
+                  <div class="text" align="center">
                      
                      <table>
                         
@@ -320,40 +320,40 @@
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel
                      </p>
                              
-                     <div class="text" id="-1"><font color="#990000"><b>void</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
+                     <div class="text"><font color="#990000"><b>void</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>int</b></font> valeur = (<font color="#990000"><b>smileyGet</b></font>(i, j) + <font color="#990000"><b>smileyGet</b></font>(i + 1, j)+ <font color="#990000"><b>smileyGet</b></font>(i, j + 1)+ <font color="#990000"><b>smileyGet</b></font>(i - 1, j)+ <font color="#990000"><b>smileyGet</b></font>(i, j - 1)) / 5;
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>smileySet</b></font>(i, j, valeur);
                      </div>
                              
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                              
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Boucle sur tous les pixels
                      </p>
                              
-                     <div class="text" id="-1"><font color="#990000"><b>void</b></font> filtre() {
+                     <div class="text"><font color="#990000"><b>void</b></font> filtre() {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>() + 1; j &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; j = j + 1) {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>() + 1; i &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; i = i + 1) {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
@@ -362,48 +362,48 @@
                         filtrePixel(i, j);
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
                         }
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         }
                      </div>
                              
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                              
-                     <div class="text" id="-1"></div>
+                     <div class="text"></div>
                              
-                     <div class="text" id="-1"><font color="#990000"><b>void main</b></font>() {
+                     <div class="text"><font color="#990000"><b>void main</b></font>() {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> n = 0; n &lt; 2; n = n + 1) {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
                         filtre();
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         }
                      </div>
                              
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                            
                   </th>
                </tr>
@@ -450,40 +450,40 @@
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel
                      </p>
                              
-                     <div class="text" id="-1"><font color="#990000"><b>void</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
+                     <div class="text"><font color="#990000"><b>void</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>int</b></font> valeur = 128 + (<font color="#990000"><b>smileyGet</b></font>(i, j) - <font color="#990000"><b>smileyGet</b></font>(i + 1, j));
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>smileySet</b></font>(i, j, valeur);
                      </div>
                              
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                              
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Boucle sur tous les pixels
                      </p>
                              
-                     <div class="text" id="-1"><font color="#990000"><b>void</b></font> filtre() {
+                     <div class="text"><font color="#990000"><b>void</b></font> filtre() {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>() + 1; j &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; j = j + 1) {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>() + 1; i &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; i = i + 1) {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
@@ -492,36 +492,36 @@
                         filtrePixel(i, j);
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
                         }
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         }
                      </div>
                              
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                              
-                     <div class="text" id="-1"></div>
+                     <div class="text"></div>
                              
-                     <div class="text" id="-1"><font color="#990000"><b>void main</b></font>() {
+                     <div class="text"><font color="#990000"><b>void main</b></font>() {
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
                      </div>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         filtre();
                      </div>
                              
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                            
                   </th>
                </tr>

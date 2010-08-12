@@ -1,7 +1,7 @@
 
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns:saxon="http://icl.com/saxon">
+<html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
    
@@ -25,7 +25,6 @@
             </td>
          </tr>
       </table>
-      <hr>
       
       <table>
          <tr>
@@ -36,12 +35,12 @@
                <a href="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde">wikipedia</a>)
                    et permet d'ouvrir le livre &agrave; une page donn&eacute;e pour comparer le nom de pays avec le nom du pays recherch&eacute;. 
                    
-               <div class="text" id="-1">Plus pr&eacute;cis&eacute;ment la fonction <font color="#990000"><b>dichoCompare</b></font> ouvre le livre &agrave; une page et compare un nom au nom affich&eacute; sur cette page: 
+               <div class="text">Plus pr&eacute;cis&eacute;ment la fonction <font color="#990000"><b>dichoCompare</b></font> ouvre le livre &agrave; une page et compare un nom au nom affich&eacute; sur cette page: 
                   <table border="1" align="center" width="80%">
                      <tr>
                         <th align="left">
                                  
-                           <div class="text" id="-1"><font color="#990000"><b>int</b></font> r&eacute;sultat = <font color="#990000"><b>dichoCompare</b></font>(nom, page);
+                           <div class="text"><font color="#990000"><b>int</b></font> r&eacute;sultat = <font color="#990000"><b>dichoCompare</b></font>(nom, page);
                            </div>
                                
                         </th>
@@ -86,7 +85,7 @@
                      <tr>
                         <th align="left">
                                  
-                           <div class="text" id="-1"><font color="#990000"><b>int</b></font> length = <font color="#990000"><b>dichoLength</b></font>();
+                           <div class="text"><font color="#990000"><b>int</b></font> length = <font color="#990000"><b>dichoLength</b></font>();
                            </div>
                                
                         </th>
@@ -94,7 +93,7 @@
                   </table> renvoie le nombre de pages.
                </div>
                    
-               <div class="text" id="-1">Un exemple d'utilisation: en appuyant sur la touche [
+               <div class="text">Un exemple d'utilisation: en appuyant sur la touche [
                   <img src="img/demo.png"> 
                   <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
                       secondes &agrave; une dizaine de pages au hasard, selon le programme suivant:
@@ -103,30 +102,30 @@
                      <tr>
                         <th align="left">
                                  
-                           <div class="text" id="-1"><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = 0; i &lt; 10; i++) {
+                           <div class="text"><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = 0; i &lt; 10; i++) {
                            </div>
                                  
-                           <div class="text" id="-1"><font color="#990000"><b>int</b></font> page = <font color="#990000"><b>random</b></font>(0, <font color="#990000"><b>dichoLength</b></font>());
+                           <div class="text"><font color="#990000"><b>int</b></font> page = <font color="#990000"><b>random</b></font>(0, <font color="#990000"><b>dichoLength</b></font>());
                            </div>
                                  
-                           <div class="text" id="-1">
+                           <div class="text">
                               &nbsp;&nbsp;&nbsp;
                               <font color="#990000"><b>dichoCompare</b></font>(<font color="#008000">"rien"</font>, page);
                            </div>
                                  
-                           <div class="text" id="-1">
+                           <div class="text">
                               &nbsp;&nbsp;&nbsp;
                               <font color="#990000"><b>sleep</b></font>(500);
                            </div>
                                  
-                           <div class="text" id="-1">}</div>
+                           <div class="text">}</div>
                                
                         </th>
                      </tr>
                   </table>
                </div>
                    
-               <div class="text" id="-1">En appuyant sur les touches <tt>&lt;-</tt> et <tt>-&gt;</tt> nous pouvons tourner manuellement les pages &agrave; gauche ou &agrave; droite.
+               <div class="text">En appuyant sur les touches <tt>&lt;-</tt> et <tt>-&gt;</tt> nous pouvons tourner manuellement les pages &agrave; gauche ou &agrave; droite.
                </div>
                  
             </td>

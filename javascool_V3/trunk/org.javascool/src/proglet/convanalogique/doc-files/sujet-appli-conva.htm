@@ -1,7 +1,7 @@
 
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns:saxon="http://icl.com/saxon">
+<html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
    
@@ -65,7 +65,7 @@
                   <tr>
                      <th align="left">
                               
-                        <div class="text" id="-1"><font color="#990000"><b>convaOut</b></font>(tension);
+                        <div class="text"><font color="#990000"><b>convaOut</b></font>(tension);
                         </div>
                             
                      </th>
@@ -79,7 +79,7 @@
                   <tr>
                      <th align="left">
                               
-                        <div class="text" id="-1"><font color="#990000"><b>convaCompare</b></font>();
+                        <div class="text"><font color="#990000"><b>convaCompare</b></font>();
                         </div>
                             
                      </th>
@@ -91,7 +91,7 @@
          <li>
             <div><b></b>: Le sch&eacute;ma est illustr&eacute; ici :
                     
-               <div class="text" id="-1" align="center">
+               <div class="text" align="center">
                   <img src="img/conv.png"></div>
                     Bien entendu, ici, nous simulons ce m&eacute;canisme par une petite proglet.
                    
@@ -112,40 +112,40 @@
                <tr>
                   <th align="left">
                            
-                     <div class="text" id="-1"><font color="#990000"><b>int</b></font> v = 1023;
+                     <div class="text"><font color="#990000"><b>int</b></font> v = 1023;
                      </div>
                            
-                     <div class="text" id="-1"><font color="#990000"><b>while</b></font>(v &gt;= 0) {
+                     <div class="text"><font color="#990000"><b>while</b></font>(v &gt;= 0) {
                      </div>
                            
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>convaOut</b></font>(v);
                      </div>
                            
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>if</b></font> (<font color="#990000"><b>convaCompare</b></font>() == 1) {
                      </div>
                            
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>echo</b></font>("valeur = "+v);
                      </div>
                            
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         }
                      </div>
                            
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         v = v - 1;
                      </div>
                            
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                          
                   </th>
                </tr>
@@ -173,13 +173,13 @@
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;La valeur est donc comprise entre 0 et 1023
                      </p>
                              
-                     <div class="text" id="-1"><font color="#990000"><b>convaOut</b></font>(512); <font color="#990000"><b>if</b></font> (<font color="#990000"><b>convaCompare</b></font>() == 1) {
+                     <div class="text"><font color="#990000"><b>convaOut</b></font>(512); <font color="#990000"><b>if</b></font> (<font color="#990000"><b>convaCompare</b></font>() == 1) {
                      </div>
                              
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Si le test est vrai, nous savons que la valeur est plus petite que 512
                      </p>
                              
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>echo</b></font>(<font color="#008000">"La valeur est comprise entre 0 et 511"</font>);
                      </div>
@@ -187,19 +187,19 @@
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;A vous de compl&eacute;ter en comparant &agrave; 256
                      </p>
                              
-                     <div class="text" id="-1">} <font color="#990000"><b>else</b></font> {
+                     <div class="text">} <font color="#990000"><b>else</b></font> {
                      </div>
                              
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Si le test est faux, nous savons que la valeur est plus grande ou &eacute;gale &agrave; 512
                      </p>
                              
-                     <div class="text" id="-1"><font color="#990000"><b>echo</b></font>(<font color="#008000">"La valeur est comprise entre 512 et 1023"</font>);
+                     <div class="text"><font color="#990000"><b>echo</b></font>(<font color="#008000">"La valeur est comprise entre 512 et 1023"</font>);
                      </div>
                              
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;A vous de compl&eacute;ter en comparant &agrave; 768
                      </p>
                              
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                            
                   </th>
                </tr>
@@ -210,7 +210,7 @@
                
                <li>Compl&eacute;ter ce code en comparant &agrave; 256 et 768, puis utilisant le tableau ci dessous &agrave; 128, etc. Et essayer le r&eacute;sultat ...
                             
-                  <div class="text" id="-1" align="center">
+                  <div class="text" align="center">
                      <img src="img/dicho.png"></div>
                             On remarque qu'en 3 &eacute;tapes nous avons d&eacute;j&agrave; une id&eacute;e de la valeur &agrave; 12.5% pr&egrave;s, mais c'est bien long &agrave; &eacute;crire !
                </li>
@@ -218,11 +218,11 @@
                
                <li>Notez que les intervalles sont de :
                             
-                  <div class="text" id="-1">512 milli-volts &agrave; la 1&egrave;re &eacute;tape</div>
+                  <div class="text">512 milli-volts &agrave; la 1&egrave;re &eacute;tape</div>
                             
-                  <div class="text" id="-1">256 milli-volts &agrave; la 2&egrave;me &eacute;tape</div>
+                  <div class="text">256 milli-volts &agrave; la 2&egrave;me &eacute;tape</div>
                             
-                  <div class="text" id="-1">128 milli-volts &agrave; la 3&egrave;me &eacute;tape</div>
+                  <div class="text">128 milli-volts &agrave; la 3&egrave;me &eacute;tape</div>
                           et si nous avions continu&eacute; les intervalles suivantes auraient quelles valeurs ? Continuer jusqu'&agrave; trouver une intervalle
                   plus petite que 1.
                           
@@ -240,13 +240,13 @@
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp; ? &agrave; vous de commenter les lignes qui suivent
                      </p>
                             
-                     <div class="text" id="-1"><font color="#990000"><b>int</b></font> min = 0, max = 1024;
+                     <div class="text"><font color="#990000"><b>int</b></font> min = 0, max = 1024;
                      </div>
                             
-                     <div class="text" id="-1"><font color="#990000"><b>while</b></font>(max - min &gt; 1) {
+                     <div class="text"><font color="#990000"><b>while</b></font>(max - min &gt; 1) {
                      </div>
                             
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>echo</b></font>(<font color="#008000">"La valeur est comprise entre "</font> + (min) + <font color="#008000">" et "</font> + (max - 1));
                      </div>
@@ -254,41 +254,41 @@
                      <p><tt><big><font color="#808080">//</font></big></tt>&nbsp; ? &agrave; vous de COMPLETER et commenter les lignes qui suivent
                      </p>
                             
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>int</b></font> milieu = (min + max) / 2;
                      </div>
                             
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         <font color="#990000"><b>convaOut</b></font>(milieu); <font color="#990000"><b>if</b></font> (<font color="#990000"><b>convaCompare</b></font>() == 1) {
                      </div>
                             
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
                         ??? = ???;
                      </div>
                             
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         } <font color="#990000"><b>else</b></font> {
                      </div>
                             
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         
                         &nbsp;&nbsp;&nbsp;
                         ??? = ???;
                      </div>
                             
-                     <div class="text" id="-1">
+                     <div class="text">
                         &nbsp;&nbsp;&nbsp;
                         }
                      </div>
                             
-                     <div class="text" id="-1">}</div>
+                     <div class="text">}</div>
                           
                   </th>
                </tr>
@@ -322,7 +322,7 @@
                <li>A l'aide de la suite des chiffres suivants, devinez en combien d'&eacute;tapes la recherche dichotomique permet de trouver une personne
                   parmi ce gros million :
                            
-                  <div class="text" id="-1"><tt>0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576</tt></div>
+                  <div class="text"><tt>0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576</tt></div>
                            Note : cette liste de chiffres sont les puissances de 2: 2^0, 2^1, 2^2, etc...
                          
                </li>
@@ -334,7 +334,7 @@
                      <tr>
                         <th align="left">
                                     
-                           <div class="text" id="-1">n = n + 1; u  = u * 2;  <font color="#990000"><b>echo</b></font>("2^" + n + "=" + u);
+                           <div class="text">n = n + 1; u  = u * 2;  <font color="#990000"><b>echo</b></font>("2^" + n + "=" + u);
                            </div>
                                   
                         </th>

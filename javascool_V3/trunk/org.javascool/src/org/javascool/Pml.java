@@ -165,16 +165,6 @@ public class Pml { /**/public Pml() { }
     "  }</xsl:template>\n"+
     "</xsl:stylesheet>";
 
-  /* Just in case we need it . . 
-    ../.. xmlns:sx='http://icl.com/saxon' extension-element-prefixes='sx' 
-    "  <sx:function name='sx:replace' xmlns:string='java:java.lang.String'>\n"+
-    "    <xsl:param name='string'/>\n"+
-    "    <xsl:param name='pattern'/>\n"+
-    "    <xsl:param name='target'/>\n"+
-    "    <sx:return select='string:replaceAll($string, $pattern, $target)'/>\n"+
-    "  </sx:function>\n"+
-  */
-    
   /** Returns this logical-structure structure as a one-line string.
    * @param format <ul>
    * <li>"raw" To write in a normalized 1D plain text format (default).</li>

@@ -1,7 +1,7 @@
 
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns:saxon="http://icl.com/saxon">
+<html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
    
@@ -25,7 +25,6 @@
             </td>
          </tr>
       </table>
-      <hr>
       
       <table>
          <tr>
@@ -33,12 +32,12 @@
                Cette proglet<sup><a href="#1">1</a></sup> permet de g&eacute;n&eacute;rer une s&eacute;quence de notes et d'en regarder le spectre de fr&eacute;quence.
                
                   
-               <div class="text" id="-1">Pour d&eacute;finir son propre son il faut utiliser la construction <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt>, par exemple:
+               <div class="text">Pour d&eacute;finir son propre son il faut utiliser la construction <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt>, par exemple:
                   <table border="1" align="center" width="80%">
                      <tr>
                         <th align="left">
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>@tone:</b></font> sqr(t) + noi(t)
+                           <div class="text"><font color="#990000"><b>@tone:</b></font> sqr(t) + noi(t)
                            </div>
                               
                         </th>
@@ -52,25 +51,25 @@
                            <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Sinusoide
                            </p>
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>double</b></font> <font color="#990000"><b>sns</b></font>(t)
+                           <div class="text"><font color="#990000"><b>double</b></font> <font color="#990000"><b>sns</b></font>(t)
                            </div>
                                 
                            <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Signal carr&eacute;
                            </p>
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>double</b></font> <font color="#990000"><b>sqr</b></font>(t)
+                           <div class="text"><font color="#990000"><b>double</b></font> <font color="#990000"><b>sqr</b></font>(t)
                            </div>
                                 
                            <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Signal triangulaire
                            </p>
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>double</b></font> <font color="#990000"><b>tri</b></font>(t)
+                           <div class="text"><font color="#990000"><b>double</b></font> <font color="#990000"><b>tri</b></font>(t)
                            </div>
                                 
                            <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Souffle al&eacute;atoire
                            </p>
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>double</b></font> <font color="#990000"><b>noi</b></font>(t)
+                           <div class="text"><font color="#990000"><b>double</b></font> <font color="#990000"><b>noi</b></font>(t)
                            </div>
                               
                         </th>
@@ -79,12 +78,12 @@
                </div>
                
                   
-               <div class="text" id="-1">Pour &eacute;couter le son ou la s&eacute;quence de notes il faut utiliser la fonction:
+               <div class="text">Pour &eacute;couter le son ou la s&eacute;quence de notes il faut utiliser la fonction:
                   <table border="1" align="center" width="80%">
                      <tr>
                         <th align="left">
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>synthePlay</b></font>();
+                           <div class="text"><font color="#990000"><b>synthePlay</b></font>();
                            </div>
                               
                         </th>
@@ -93,7 +92,7 @@
                </div>
                
                   
-               <div class="text" id="-1">La visualisation du son s'effectue en montrant: 
+               <div class="text">La visualisation du son s'effectue en montrant: 
                   
                   <ul>
                           
@@ -121,12 +120,12 @@
                </div>
                 
                   
-               <div class="text" id="-1">Pour d&eacute;finir une s&eacute;quence de notes il faut utiliser la fonction:
+               <div class="text">Pour d&eacute;finir une s&eacute;quence de notes il faut utiliser la fonction:
                   <table border="1" align="center" width="80%">
                      <tr>
                         <th align="left">
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>syntheSet</b></font>(<font color="#008000">"s&eacute;quence-de-note"</font>);
+                           <div class="text"><font color="#990000"><b>syntheSet</b></font>(<font color="#008000">"s&eacute;quence-de-note"</font>);
                            </div>
                               
                         </th>
@@ -136,7 +135,7 @@
                </div>
                
                  
-               <div class="text" id="-1">Un exemple d'utilisation: en appuyant sur la touche [
+               <div class="text">Un exemple d'utilisation: en appuyant sur la touche [
                   <img src="img/demo.png"> 
                   <b>Demo</b>], 
                     les diff&eacute;rents sons:
@@ -144,23 +143,10 @@
                      <tr>
                         <th align="left">
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>@tone:</b></font> cos(t)
+                           <div class="text"><font color="#990000"><b>@tone:</b></font> cos(t)
                            </div>
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>synthePlay</b></font>();
-                           </div>
-                              
-                        </th>
-                     </tr>
-                  </table>puis
-                  <table border="1" align="center" width="80%">
-                     <tr>
-                        <th align="left">
-                                
-                           <div class="text" id="-1"><font color="#990000"><b>synthePlay</b></font>();
-                           </div>
-                                
-                           <div class="text" id="-1"><font color="#990000"><b>@tone:</b></font> 0.5 * sqr(t)
+                           <div class="text"><font color="#990000"><b>synthePlay</b></font>();
                            </div>
                               
                         </th>
@@ -170,10 +156,10 @@
                      <tr>
                         <th align="left">
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>synthePlay</b></font>();
+                           <div class="text"><font color="#990000"><b>synthePlay</b></font>();
                            </div>
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>@tone:</b></font> 0.8 * tri(t) + 0.2 * noi(t)
+                           <div class="text"><font color="#990000"><b>@tone:</b></font> 0.5 * sqr(t)
                            </div>
                               
                         </th>
@@ -183,10 +169,23 @@
                      <tr>
                         <th align="left">
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>synthePlay</b></font>();
+                           <div class="text"><font color="#990000"><b>synthePlay</b></font>();
                            </div>
                                 
-                           <div class="text" id="-1"><font color="#990000"><b>@tone:</b></font> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t)
+                           <div class="text"><font color="#990000"><b>@tone:</b></font> 0.8 * tri(t) + 0.2 * noi(t)
+                           </div>
+                              
+                        </th>
+                     </tr>
+                  </table>puis
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                                
+                           <div class="text"><font color="#990000"><b>synthePlay</b></font>();
+                           </div>
+                                
+                           <div class="text"><font color="#990000"><b>@tone:</b></font> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t)
                            </div>
                               
                         </th>

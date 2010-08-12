@@ -57,28 +57,52 @@ public class Main extends JApplet { /**/public Main() { }
   }
   /** Adds a button to the toolbar.
    * @param label Button label.
-   * @param icon Button icon.
+   * @param icon Button icon. If null do not show icon.
    * @param action Button action.
    */
   public void addTool(String label, String icon, Runnable action) {
-    JButton button = new JButton(label, Utils.getIcon(icon));
+    JButton button = icon == null ? new JButton(label) : new JButton(label, Utils.getIcon(icon));
     button.addActionListener(alistener);
     tools.add(button);
+    buttons.put(label, button);
     actions.put(label, action);
   }
+  /** Removes a button from the tool bar. */
+  public void delTool(String label) {
+    if (buttons.containsKey(label)) {
+      tools.remove(buttons.get(label));
+      buttons.remove(label);
+      actions.remove(label);
+    }
+  }
+  /** Adds a separator on the toolbar. */
+  public void addToolSeparator() {
+    tools.addSeparator();
+  }
   private HashMap<String,Runnable> actions = new HashMap<String,Runnable>();
+  private HashMap<String,JButton> buttons = new HashMap<String,JButton>();
   /** Adds a tab to the tabbed panel.
    * @param label Tab label.
    * @param icon Tab icon.
    * @param pane Tab panel or Html text.
    */
   public void addTab(String label, String icon, JPanel pane) {
-    tabbedPane.addTab(label, Utils.getIcon(icon), pane, label);
-    // Ici ajouter des raccourcis clavier pour passer d'un tab a l autre avec des numeros 1 a n ?
+    tabbedPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
   }
   /**/public void addTab(String label, String icon, String text) {
     addTab(label, icon, new HtmlDisplay().reset(text));
   }
+  /** Removes a tab from the tabbed panel.
+   * @param label Tab label.
+   * @param pane Tab panel or Html text.
+   */
+  public void delTab(String label) {
+    if (tabs.containsKey(label)) {
+      tabbedPane.remove(tabs.get(label));
+      tabs.remove(label);
+    }
+  }
+  private HashMap<String,JPanel> tabs = new HashMap<String,JPanel>();
   /** Defines an interactive activity. */
   public static class Activity {
     /** Returns the activity title. */
@@ -117,6 +141,7 @@ public class Main extends JApplet { /**/public Main() { }
     };
 
   // [2] File new/open/save management
+  // - gerer les multi fichiers et le filtre des extensions
   private SourceEditor se = new SourceEditor();
   private JFileChooser fc = new JFileChooser();
   private String fcTitle = null;
@@ -166,7 +191,7 @@ public class Main extends JApplet { /**/public Main() { }
     addTool("", "org/javascool/doc-files/icones16/new.png", newFile);
     addTool("Ouvrir", "org/javascool/doc-files/icones16/open.png", openFile);
     addTool("Sauver", "org/javascool/doc-files/icones16/save.png", saveFile);
-    tools.addSeparator();
+    addToolSeparator();
     addTool("Compiler", "org/javascool/doc-files/icones16/compil.png", nothing);
     addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", nothing);
     addTool("Aide", "org/javascool/doc-files/icones16/help.png", showHelp);
