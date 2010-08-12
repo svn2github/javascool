@@ -27,14 +27,17 @@ import java.io.File;
 // Used to register elements
 import java.util.HashMap;
 
-public class FileManger extends Main {
+public class FileManager extends Main {
+
+	private static final long serialVersionUID = 1L;
 
 	private String file=new String("");
 	private String filepath=new String("");
 	private File tmpfile = null;
-	private JFileChooser fc = new JFileChooser();
 	
 	public void FileManager(){}
+	
+	public void init() {}
 	
 	public String getFile(){return this.file;}
 	public void setFile(String textoffile){this.file=textoffile;}
@@ -46,10 +49,10 @@ public class FileManger extends Main {
 		fc.setDialogTitle("Ouvrir un programme");
     	fc.setDialogType(JFileChooser.OPEN_DIALOG);
     	fc.setApproveButtonText("Ouvrir");
-    	if (fc.showOpenDialog(Main.this) == 0) {
+    	if (fc.showOpenDialog(FileManager.this) == 0) {
     		tmpfile=fc.getSelectedFile();
-    		file=Utils.loadString(file.getPath());
-    		filepath=file.getPath();
+    		file=Utils.loadString(tmpfile.getPath());
+    		filepath=tmpfile.getPath();
     		tmpfile=null;
     	}
 	}
@@ -59,12 +62,12 @@ public class FileManger extends Main {
     		fc.setDialogTitle(fcTitle == null ? "Enregister un programme" : fcTitle);
     		fc.setDialogType(JFileChooser.SAVE_DIALOG);
     		fc.setApproveButtonText("Enregister");
-    		if (fc.showSaveDialog(Main.this) == 0) {
+    		if (fc.showSaveDialog(FileManager.this) == 0) {
 				tmpfile = fc.getSelectedFile();
-				Utils.saveString(file.getPath(), se.getText());
+				Utils.saveString(tmpfile.getPath(), se.getText());
     		} 
     	} else {
-      		Utils.saveString(file.getPath(), se.getText());
+      		Utils.saveString(tmpfile.getPath(), se.getText());
     	}
     }
 }

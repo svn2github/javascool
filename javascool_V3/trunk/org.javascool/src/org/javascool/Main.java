@@ -37,6 +37,7 @@ public class Main extends JApplet { /**/public Main() { }
 
   // [1] Defines the main panel and defines how to edit the toolbar, actList and tabbedpane
   JToolBar tools = new JToolBar();
+  FileManager FM=new FileManager();
   JTabbedPane tabbedPane = new JTabbedPane();
   JComboBox actList = new JComboBox();
   /**/public void init() {
@@ -52,6 +53,7 @@ public class Main extends JApplet { /**/public Main() { }
     addActivity(pmlActivity);
     addActivity(jvsActivity);
     addActivity(algActivity);
+    
     // Initializes the activity from the HTML tag or proposes a default activity
     try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity(""); }
   }
@@ -142,9 +144,9 @@ public class Main extends JApplet { /**/public Main() { }
 
   // [2] File new/open/save management
   // - gerer les multi fichiers et le filtre des extensions
-  private SourceEditor se = new SourceEditor();
-  private JFileChooser fc = new JFileChooser();
-  private String fcTitle = null;
+  protected SourceEditor se = new SourceEditor();
+  protected JFileChooser fc = new JFileChooser();
+  protected String fcTitle = null;
   private File file = null;
   public void setFile(String filename) {
     try { se.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
@@ -154,13 +156,13 @@ public class Main extends JApplet { /**/public Main() { }
     se.setText("");
   }};
   private Runnable openFile = new Runnable() { public void run() {
-    fc.setDialogTitle("Ouvrir un programme");
+    /*fc.setDialogTitle("Ouvrir un programme");
     fc.setDialogType(JFileChooser.OPEN_DIALOG);
     fc.setApproveButtonText("Ouvrir");
     if (fc.showOpenDialog(Main.this) == 0) {
       file = fc.getSelectedFile();
       se.setText(Utils.loadString(file.getPath()));
-    }
+    }*/FM.openFile();
   }};
   private Runnable saveFile = new Runnable() { public void run() {
     if(file == null) {
