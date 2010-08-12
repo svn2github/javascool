@@ -148,6 +148,8 @@ public class Main extends JApplet { /**/public Main() { }
   protected JFileChooser fc = new JFileChooser();
   protected String fcTitle = null;
   private File file = null;
+  private boolean checksave=true;
+  private boolean verisave=true;
   public void setFile(String filename) {
     try { se.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
   }
@@ -157,13 +159,19 @@ public class Main extends JApplet { /**/public Main() { }
   }};
   private Runnable openFile = new Runnable() { public void run() {
   int result=1000;
-  if(se.getText().length()==0){result=0;}
+  if(se.getText().length()==0){result=1;}
   else{
     JOptionPane d = new JOptionPane();
     result=d.showConfirmDialog(Main.this, "Voulez-vous enregistrer avant d'ouvrir un nouveau fichier ?", "Sauvgarder avant d'ouvrir", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
     }
     if(result==0){
+    checksave=false;
     saveFile.run();
+    checksave=true;
+    if(verisave==false)
+    {
+    return;
+    }
     fc.setDialogTitle("Ouvrir un programme");
     fc.setDialogType(JFileChooser.OPEN_DIALOG);
     fc.setApproveButtonText("Ouvrir");
@@ -183,20 +191,32 @@ public class Main extends JApplet { /**/public Main() { }
     }
   }};
   private Runnable saveFile = new Runnable() { public void run() {
+    int result=5000;
+    if(checksave){
     JOptionPane d = new JOptionPane();
-    int result=d.showConfirmDialog(Main.this, "Voulez-vous enregistrer ?", "Sauvgarder", JOptionPane.YES_NO_OPTION);
+    result=d.showConfirmDialog(Main.this, "Voulez-vous enregistrer ?", "Sauvgarder", JOptionPane.YES_NO_OPTION);
+    }
+    else{
+    result=0;
+    }
     if(result==0)
     {
     if(file == null) {
       fc.setDialogTitle(fcTitle == null ? "Enregister un programme" : fcTitle);
       fc.setDialogType(JFileChooser.SAVE_DIALOG);
       fc.setApproveButtonText("Enregister");
-      if (fc.showSaveDialog(Main.this) == 0) {
-	file = fc.getSelectedFile();
-	Utils.saveString(file.getPath(), se.getText());
+      int out=fc.showSaveDialog(Main.this);
+      if (out==0) {
+		file = fc.getSelectedFile();
+		Utils.saveString(file.getPath(), se.getText());
+		verisave=true;
       } 
+      else {
+        verisave=false;
+      }
     } else {
       Utils.saveString(file.getPath(), se.getText());
+      verisave=true;
     }
     }
   }};
