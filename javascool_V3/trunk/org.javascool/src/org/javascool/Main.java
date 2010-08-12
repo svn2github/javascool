@@ -51,6 +51,7 @@ public class Main extends JApplet { /**/public Main() { }
     actList.addActionListener(alistener);
     getContentPane().add(toppane, BorderLayout.NORTH);
     getContentPane().add(tabbedPane, BorderLayout.CENTER);
+
     // Adds buttons and activities using generic routines
     basicTools();
     addActivity(pmlActivity);
@@ -71,6 +72,7 @@ public class Main extends JApplet { /**/public Main() { }
     tools.add(button);
     buttons.put(label, button);
     actions.put(label, action);
+    tools.revalidate();
   }
   /** Removes a button from the tool bar. */
   public void delTool(String label) {
@@ -78,6 +80,7 @@ public class Main extends JApplet { /**/public Main() { }
       tools.remove(buttons.get(label));
       buttons.remove(label);
       actions.remove(label);
+      tools.revalidate();
     }
   }
   /** Adds a separator on the toolbar. */
@@ -93,6 +96,7 @@ public class Main extends JApplet { /**/public Main() { }
    */
   public void addTab(String label, String icon, JPanel pane) {
     tabbedPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
+    tabbedPane.revalidate();
   }
   /**/public void addTab(String label, String icon, String text) {
     addTab(label, icon, new HtmlDisplay().reset(text));
@@ -105,6 +109,7 @@ public class Main extends JApplet { /**/public Main() { }
     if (tabs.containsKey(label)) {
       tabbedPane.remove(tabs.get(label));
       tabs.remove(label);
+      tabbedPane.revalidate();
     }
   }
   private HashMap<String,JPanel> tabs = new HashMap<String,JPanel>();
@@ -121,6 +126,7 @@ public class Main extends JApplet { /**/public Main() { }
   public void addActivity(Activity activity) {
     activities.put(activity.getTitle(), activity);
     actList.addItem(activity.getTitle());
+    actList.revalidate();
   }
   // Install the activity
   private void setActivity(String name) {

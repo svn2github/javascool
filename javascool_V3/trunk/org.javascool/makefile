@@ -133,7 +133,6 @@ www/api : $(SRC) makefile $(shell find src -name package.html)
 	 -windowtitle "Java's Cool v3" -d $@ $(SRC)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
 	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; done
-	@cp makefile www/api/makefile.htm
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
 #####################################################################################################################################
@@ -153,7 +152,7 @@ web:
 	@firefox http://javascool.gforge.inria.fr/v3
 
 wiki:
-	@firefox http://wiki.inria.fr/sciencinfolycee/JavaScool:TableauDeBord
+	@firefox http://wiki.inria.fr/sciencinfolycee/JavaScool:ToDoList
 
 #####################################################################################################################################
 
@@ -179,7 +178,7 @@ php:
 	@php -l www/index.php
 	@make -f /home/vthierry/Work/enas/src/yava/makefile.http ROOT=`pwd`/www PAGE=index.php?page=api:org/javascool/package-summary.html show
 
-# This cancels http://facets.inria.fr/javascool for the v3 and cancle the v2
+# This cancels http://facets.inria.fr/javascool for the v3 and cancel the v2
 
 fst :
 	@ssh facets.inria.fr '/bin/rm -rf /home/vthierry/javascool/* /home/vthierry/javascool/.[a-zA-Z0-1]*'
@@ -259,8 +258,8 @@ endif
 #:  while fig2dev (from transfig)is only used to generate .fig images, firefox
 #:  while php     (from php-cli) is only used to check the php syntax
 #:  while firefox                can be replaced by any other open-source convenient browser
-#: Installing these commands run; e.g., yum or apt-get:
-#: > yum install bash coreutils firefox grep make openssh php-cli rsync sed transfig subversion unzip 
+#: Installing these commands run:
+#: > (apt-get|yum) install bash coreutils firefox grep make openssh php-cli rsync sed transfig subversion unzip 
 #:
 #: [3.2] Java development tools: java javac jarsigner javadoc keytool
 #: Installing these commands run; e.g., yum or apt-get:
