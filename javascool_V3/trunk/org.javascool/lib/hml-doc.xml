@@ -1,0 +1,144 @@
+<div title="Documentation HML">
+  <div title="Introduction">
+    Pour bien comprendre la structure logique et les principes fondamentaux des langages HTML, 
+    le «sous-langage» HML proposé ici permet de spécifier de manière minimale une page HTML complète.
+    Il est en fait très proche des derniers langages (<c>XHTML</c> ou <c>HTML5</c>).
+  </div>
+
+  <div title="Décrire une page HML">
+    <p>Un fichier HML contient une page qui va s'afficher dans un navigateur.</p>
+    <p>Cette page doit contenir des méta-données permettant de prendre connaissance immédiatement de son contexte, et de la référencer ensuite.</p>
+    <p>La construction est de la forme:
+    <div class="code">
+      <p><r>{ page</r></p>
+      <p><T/><h>name</h> <r>=</r> <s>value</s> .. (pour spécifier une méta-donnée) ..</p>
+      <p><T/>.. (autres méta-donnée) ..</p>
+      <p><T/><T/>.. (contenu de la page) ..</p>
+      <p><r>}</r></p>
+    </div>
+    les espaces et retour à la ligne n'étant pas significatifs.</p>
+    <p>La syntaxe est:
+    <div class="tag" title="page">
+      <param name="title"    type="string">Titre de la page</param>
+      <param name="icon"     type="location" value="null">Icone permettant de reconnaitre la page</param>
+      <param name="author"   type="identity">Nom et email de l'auteur sous la forme <t>Prenom Nom &lt;email></t></param>
+      <param name="tags"     type="name*">Liste de mots-clé de la page, séparés par des espaces, un mot composé étant construit avec le titre <t>-</t></param>
+      <param name="style"    type="location" value="null">Ficher de style CSS de la page</param>
+      <param name="script"   type="location" value="null">Fichier des fonctions JavaScript de la page</param>
+      <param name="abstract" type="string"   value="null">Description en quelques lignes du contenu de la page (utilisé par les moteurs d'indexation du web)</param>
+      <param name="*"        type="string"   value="null">Autre(s) méta-donnée(s) éventuelle(s), à la discrétion de l'utilisateur</param>
+      <elements type="div*"/>
+    </div>
+    et cette construction contient une suite de division <r>{ div</r>.</p>
+    <div title="Discussion">
+      Cette construction correspond à l'entête d'une page HTML (la construction <t>&lt;html>&lt;head>..&lt;/head>..&lt;/html></t>).
+      Elle force l'utilisateur à définir son identité (pas de page anonyme), un titre à la la page, et des mots-clé ou tag, 
+      de façon à ne pas générer de page sans aucun contexte permettant d'en comprendre la pertinence.
+      Elle contraint les éléments de style et de script à être définis dans un unique fichier associé à la page (ce fichier pouvant lui-même en include d'autres), 
+      de façon à avoir une organisation de fichier bien organisée.
+      L'encodage est forcément du <t>UTF-8</t>, le langage n'est pas spécifié en méta-donnée car le texte lui-même est potentiellement multilingue.
+    </div>
+  </div>
+  
+  <div title="Structurer le texte en divisions">
+    <p>Un texte est structuré de manière récursive en, par exemple, chapitre qui contiennent des sections, qui contiennent des paragraphes, etc.</p>
+    <p>La construction est de la forme:
+    <div class="code">
+      <p><r>{ div</r> <h>title</h> <r>=</r> <s>titre</s> .. (division) ..</p>
+      <p><T/><r>{ div</r> .. (sous-division) ..</p>
+      <p><T/><T/>.. (etc.) ..</p>
+      <p><T/><r>}</r></p>
+      <p><r>}</r></p>
+    </div>
+    comme un arbre dont la racine et la section globale du texte et les branches ses divisions et sous divisions jusqu'au feuilles qui sont des paragraphes du texte.</p>
+    <p>La syntaxe est:
+    <div class="tag" title="div">
+      <param name="title"    type="string" value="null">Titre de la division</param>
+      <param name="id"       type="name"   value="null">Unique identificateur (étiquette) qui permet de référencer la division, 
+      chaque division doit avoir un identifiant différent</param>
+      <param name="class"    type="name"   value="null">Définit de quelle type de division il s'agit</param>
+      <elements type="(div|s|l|text())*"/>
+    </div>
+    et cette construction contient du texte avec des sous-division, des blocks de texte et des liens, comme définit ci-dessous.</p>
+    <p>Le paramètre <t>class</t> prend, par exemple, une valeur correspondant:
+    <div class="table">
+      <p><p><r>ul</r></p><p>Liste d'items non-numérotés</p></p>
+      <p><p><r>ol</r></p><p>Liste d'items numérotés</p></p>
+      <p><p><r>table</r></p><p>Table avec des lignes et des collones</p></p>
+      <p><p><r>*</r></p><p>Autre type de structure, à la discrétion de l'utilisateur</p></p>
+    </div>
+    qui correspondent à la façon dont le texte est structuré et à la façon dont le texte sera rendu sur la page. 
+    <p>A titre de raccourci les paragraphes peuvent s'appeler <r>{ p</r> au lieu de <r>{ div</r>.</p>
+    <div class="ul">
+      <p>Dans le cas d'une liste, les sous-divisions seront les <i>items</i> de la liste.</p>
+      <p>Dans le cas d'une table, les sous-divisions seront les <i>lignes</i> de la table et leurs sous-divisions les <i>cellules</i> de la table 
+      (on les définit de gauche à droite puis de haut en bas).</p>
+    </div>
+    <p>La façon dont le texte sera rendu, le <i>style</i> est complètement séparé du contenu: 
+    on distingue complètement le fait d'écrire le texte de la façon de le mettre en page. Cette mise en page sera définie dans les fichier de style.</p>
+    </p>
+    <div title="Discussion">
+      Cette construction correspond à tous les éléments HTML qui définissent des containers de texte. 
+      Elle force l'utilisateur à se concentrer sur le fond du contenu, pas sur sa forme.
+      Le rendu peut en effet dépendre du support (grand écran, écran de balladeur, papier, ..).
+    </div>
+  </div>
+
+  <div title="Enrichir le texte en modifiant son aspect">
+    <p>Dans un éditeur on peut modifier l'aspect d'un morceau de texte en changeant sa couleur ou son style, etc. 
+    Cela permet de montrer que l'importance ou le sens de ce morceau de texte est différent du reste.</p>
+    <p>Une telle construction est de la forme:
+    <div class="code">
+      <p>.. (texte ordinaire) ..<r>{ s</r> <h>class</h><r>=</r><s>type-de-texte</s> .. (texte enrichi) .. <r>}</r> .. (suite du texte) ..</p>
+    </div>
+    où le texte enrichi est mis entre accolade en précisant la classe de texte en question.</p>
+    <p>La syntaxe est:
+    <div class="tag" title="s">
+      <param name="class"    type="name"   value="null">Définit de quelle type de division il s'agit</param>
+      <elements type=(l|text())*"/>
+    </div>
+    et cette construction contient du texte avec des blocks de texte et des liens, comme définit ici et ci-dessous.</p>
+    <p>Le paramètre <r>class</r> prend comme précédemment une valeur sémantique (qui décrit le sens que donne à cet enrichissement),
+    indépendemment de la forme avec laquelle il sera redu.</p>
+    <p>A titre de raccourci, les constructions suivantes sont définies:
+    <div class="table">
+      <p><p><r>{ b</r></p><p><r>{ s class=bold  </r></p><p>Texte ou texte important à ne pas manquer lors de lecture rapide</p></p>
+      <p><p><r>{ i</r></p><p><r>{ s class=idiom </r></p><p>Mot ou texte utilisé dans un sens particulier ou d'une autre langue, dont le sens est à bien calculer</p></p>
+      <p><p><r>{ c</r></p><p><r>{ s class=code  </r></p><p>Mot ou texte appartenant à un langage informatique ou formel</p></p>
+      <p><p><r>{ S</r></p><p><r>{ s class=sup   </r></p><p>Mot ou texte en exposant (comme dans «x au carré» <c>x{S 2}</c> </p></p>
+      <p><p><r>{ I</r></p><p><r>{ s class=sub   </r></p><p>Mot ou texte en indexe (inverse de l'exposant) pour décrire des objets paramétrés</p></p>
+    </div> cette liste n'étant pas limitative.</p>
+    <div title="Discussion">
+      Cette construction correspond à l'élément HTML <t>&lt;span>..&lt;/span></t> et à tous les éléments dérivés.
+      L'introduction de raccourci allège la lecture et l'édition du texte source, que l'on veut rester lisible ici 
+     (contrairement au XML ou HTML qui sont supposés cachés à l'utilisateur).
+    </div>
+  </div>
+
+  <div title="Créer de l'«hyper-texte» en ajoutant des objets et des liens">
+    <p>Dans un texte il est possible de référencer d'autres textes, images ou animations.</p>
+    <p>Soit on accède ces éléments soit en cliquant, soit ces éléments sont insérés dans le texte.</p>
+    <p>La syntaxe de cette construction est:
+    <div class="tag" title="l">
+      <param name="text"    type="string" value="null">Texte décrivant le lien</param>
+      <param name="icon"    type="location">Image décrivant ce lien</param>
+      <param name="link"    type="location">Ressource décrite par ce lien</param>
+      <param name="class"   type="name" value="null">Définit de quelle type de lien il s'agit</param>
+    </div>
+    et cette construction ne contient rien.</p>
+    <p>Le paramètre <r>class</r> prend comme précédemment une valeur sémantique, qui décrit en partculier si l'élément est inséré dans la page ou accessible par un clic.
+    Il prend, par exemple, une valeur correspondant:
+    <div class="table">
+      <p><p><r>here</r></p><p>Pour s'ouvrir dans la fenêtre, à la place de la page actuelle</p></p>
+      <p><p><r>new</r></p><p>Pour s'ouvrir dans une autre fenêtre</p></p>
+      <p><p><r>inside</r></p><p>Pour être inclut dans la présente page</p></p>
+      <p><p><r>*</r></p><p>Pour un autre rendu, à définir par ailleurs</p></p>
+    </div></p>
+    <div title="Discussion">
+      Cette construction correspond aux éléments HTML <t>&lt;a href="..">.</t> et <t>&lt;img src="..">.</t> et à tous les éléments (tel que <t>&lt;object ...</t>), 
+      qui incluent des contenus dans le texte.
+      L'intégration des ces éléments étant considéré comme au-delà de la compétence d'un rédacteur de texte, la présente spécification se propose de les encapsuler, 
+      pour être utilisés sans ce donner la peine de les programmer.
+    </div>
+  </div>
+</div>

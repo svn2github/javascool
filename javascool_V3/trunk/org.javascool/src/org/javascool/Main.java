@@ -280,7 +280,7 @@ public class Main extends JApplet { /**/public Main() { }
   private Activity algActivity = new Activity() {
       public String getTitle() { return "Démonstration de l'éditeur d'Algo"; }
       public void init(Main main) {
-	main.addTab("Jvs Editor", "", new AlgoTree());
+	main.addTab("Algo Editor", "", new AlgoTree());
 	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
       }
     };
