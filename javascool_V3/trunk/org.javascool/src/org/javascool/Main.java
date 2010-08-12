@@ -60,6 +60,7 @@ public class Main extends JApplet { /**/public Main() { }
     
     // Initializes the activity from the HTML tag or proposes a default activity
     try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity(""); }
+
   }
   /** Adds a button to the toolbar.
    * @param label Button label.
@@ -70,6 +71,8 @@ public class Main extends JApplet { /**/public Main() { }
     JButton button = icon == null ? new JButton(label) : new JButton(label, Utils.getIcon(icon));
     button.addActionListener(alistener);
     tools.add(button);
+    //if(mnemonic)
+    //.setMnemonic(KeyEvent.VK_A);
     buttons.put(label, button);
     actions.put(label, action);
     tools.revalidate();
@@ -163,8 +166,8 @@ public class Main extends JApplet { /**/public Main() { }
     JFileFilter filtre = new JFileFilter();
 	filtre.addType("jvs");
 	filtre.addType("pml");
-	filtre.setDescription("Fichiers JavaScool et Pml");
-	fc.addChoosableFileFilter(filtre);
+	filtre.setDescription("Fichiers JVS et PML");
+	fc.setFileFilter(filtre);
   }
   public void setFile(String filename) {
     try { se.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
@@ -247,7 +250,7 @@ public class Main extends JApplet { /**/public Main() { }
     addTab("Aide", "", new HtmlDisplay().
 	   reset("<html><head><title>Ma page</title></head><body><h1>Titre</h1>Bienvenu dans l'aide de Java's cool :-)</body></html>")); 
   }};
-  private Runnable nothing = new Runnable() { public void run() {
+  private Runnable nothing = new Runnable() { public void run() {    getParent().setSize(800,600);
   }};
   private void basicTools() {
     //Delete by Philippe Vienne
@@ -318,5 +321,6 @@ public class Main extends JApplet { /**/public Main() { }
     if (usage.length >= 1) main.setActivity(usage[0]);
     if (usage.length >= 2) main.setFile(usage[1]);
     Utils.show(main, "Java'Scool v3.0");
+
   }
 }
