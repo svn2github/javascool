@@ -24,6 +24,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 // Used to register elements
 import java.util.HashMap;
@@ -150,6 +153,13 @@ public class Main extends JApplet { /**/public Main() { }
   private File file = null;
   private boolean checksave=true;
   private boolean verisave=true;
+  {
+    JFileFilter filtre = new JFileFilter();
+	filtre.addType("jvs");
+	filtre.addType("pml");
+	filtre.setDescription("Fichiers JavaScool et Pml");
+	fc.addChoosableFileFilter(filtre);
+  }
   public void setFile(String filename) {
     try { se.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
   }
@@ -191,20 +201,13 @@ public class Main extends JApplet { /**/public Main() { }
     }
   }};
   private Runnable saveFile = new Runnable() { public void run() {
-    int result=5000;
-    if(checksave){
-    JOptionPane d = new JOptionPane();
-    result=d.showConfirmDialog(Main.this, "Voulez-vous enregistrer ?", "Sauvgarder", JOptionPane.YES_NO_OPTION);
-    }
-    else{
-    result=0;
-    }
-    if(result==0)
-    {
+    fc.setDialogTitle(fcTitle == null ? "Enregister un programme" : fcTitle);
+    fc.setDialogType(JFileChooser.SAVE_DIALOG);
+    fc.setApproveButtonText("Enregister");
+
     if(file == null) {
-      fc.setDialogTitle(fcTitle == null ? "Enregister un programme" : fcTitle);
-      fc.setDialogType(JFileChooser.SAVE_DIALOG);
-      fc.setApproveButtonText("Enregister");
+
+      fc.setCurrentDirectory(new File(System.getProperty("user.dir")));
       int out=fc.showSaveDialog(Main.this);
       if (out==0) {
 		file = fc.getSelectedFile();
@@ -215,11 +218,19 @@ public class Main extends JApplet { /**/public Main() { }
         verisave=false;
       }
     } else {
+      fc.setDialogTitle(fcTitle == null ? "Enregister un programme" : fcTitle);
+      fc.setDialogType(JFileChooser.SAVE_DIALOG);
+      fc.setApproveButtonText("Enregister");
+      int out=fc.showSaveDialog(Main.this);
+      if (out==0) {
+		file = fc.getSelectedFile();
+		Utils.saveString(file.getPath(), se.getText());
+		verisave=true;
+      } 
       Utils.saveString(file.getPath(), se.getText());
       verisave=true;
     }
-    }
-  }};
+    }};
   private void pleaseSaveFile() {
     if(se.getText().length() > 0)
       fcTitle = "Enregistrer votre fichier avant de passer à la suite";
@@ -264,7 +275,30 @@ public class Main extends JApplet { /**/public Main() { }
 	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
       }
     };
-
+  private static class JFileFilter extends FileFilter {
+    private ArrayList<String> exts = new ArrayList<String>();
+    private String description;
+    public void addType(String s) {
+      exts.add(s);
+    }
+    public boolean accept(File f) {
+      if(f.isDirectory()) {
+	return true;
+      } else if(f.isFile()){
+	Iterator it = exts.iterator();
+	while(it.hasNext()) 
+	  if(f.getName().endsWith((String)it.next()))
+	    return true;
+      }
+      return false;
+    }
+    public String getDescription() {
+      return description;
+    }
+    public void setDescription(String s) {
+      description = s;
+    }
+  }
   /** Used to run a javasccol v3 as a standalone program. 
    * <p>- Using javascool means: doing an "activity" which result is to be stored in a "file-name".</p>
    * @param usage <tt>java org.javascool.Main [activity [file-name]]</tt><ul>
