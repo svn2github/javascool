@@ -19,10 +19,10 @@
     les espaces et retour à la ligne n'étant pas significatifs.</p>
     <p>La syntaxe est:
     <div class="tag" title="page">
-      <param name="title"    type="string">Titre de la page</param>
+      <param name="title"    type="string"               >Titre de la page</param>
       <param name="icon"     type="location" value="null">Icone permettant de reconnaitre la page</param>
-      <param name="author"   type="identity">Nom et email de l'auteur sous la forme <t>Prenom Nom &lt;email></t></param>
-      <param name="tags"     type="name*">Liste de mots-clé de la page, séparés par des espaces, un mot composé étant construit avec le titre <t>-</t></param>
+      <param name="author"   type="identity"             >Nom et email de l'auteur sous la forme <t>Prenom Nom &lt;email></t></param>
+      <param name="tags"     type="name*"                >Liste de mots-clé de la page, séparés par des espaces, un mot composé étant construit avec le titre <t>-</t></param>
       <param name="style"    type="location" value="null">Ficher de style CSS de la page</param>
       <param name="script"   type="location" value="null">Fichier des fonctions JavaScript de la page</param>
       <param name="abstract" type="string"   value="null">Description en quelques lignes du contenu de la page (utilisé par les moteurs d'indexation du web)</param>
@@ -94,7 +94,7 @@
     où le texte enrichi est mis entre accolade en précisant la classe de texte en question.</p>
     <p>La syntaxe est:
     <div class="tag" title="s">
-      <param name="class"    type="name"   value="null">Définit de quelle type de division il s'agit</param>
+      <param name="class" type="name">Définit de quelle type de division il s'agit</param>
       <elements type=(l|text())*"/>
     </div>
     et cette construction contient du texte avec des blocks de texte et des liens, comme définit ici et ci-dessous.</p>
@@ -120,10 +120,10 @@
     <p>Soit on accède ces éléments soit en cliquant, soit ces éléments sont insérés dans le texte.</p>
     <p>La syntaxe de cette construction est:
     <div class="tag" title="l">
-      <param name="text"    type="string" value="null">Texte décrivant le lien</param>
-      <param name="icon"    type="location">Image décrivant ce lien</param>
-      <param name="link"    type="location">Ressource décrite par ce lien</param>
-      <param name="class"   type="name" value="null">Définit de quelle type de lien il s'agit</param>
+      <param name="text"    type="string"   value="null">Texte décrivant le lien</param>
+      <param name="icon"    type="location" value="null">Image décrivant ce lien</param>
+      <param name="link"    type="location" value="null">Ressource décrite par ce lien</param>
+      <param name="class"   type="name"     value="null">Définit de quelle type de lien il s'agit</param>
     </div>
     et cette construction ne contient rien.</p>
     <p>Le paramètre <r>class</r> prend comme précédemment une valeur sémantique, qui décrit en partculier si l'élément est inséré dans la page ou accessible par un clic.
@@ -131,9 +131,12 @@
     <div class="table">
       <p><p><r>here</r></p><p>Pour s'ouvrir dans la fenêtre, à la place de la page actuelle</p></p>
       <p><p><r>new</r></p><p>Pour s'ouvrir dans une autre fenêtre</p></p>
-      <p><p><r>inside</r></p><p>Pour être inclut dans la présente page</p></p>
+      <p><p><r>inside</r></p><p>Pour être inclus dans la présente page</p></p>
       <p><p><r>*</r></p><p>Pour un autre rendu, à définir par ailleurs</p></p>
-    </div></p>
+    </div>.
+    <p>Une construction de la forme <c><r>{l class="<i>name</i>}</r></c> désigne une entité de nom <i>name</i>, 
+    c'est à dire un mot du texte qui sera rendu de manière particulière.</p>
+    </p>
     <div title="Discussion">
       Cette construction correspond aux éléments HTML <t>&lt;a href="..">.</t> et <t>&lt;img src="..">.</t> et à tous les éléments (tel que <t>&lt;object ...</t>), 
       qui incluent des contenus dans le texte.
