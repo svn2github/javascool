@@ -17,6 +17,7 @@ import java.awt.BorderLayout;
 import javax.swing.JToolBar;
 import javax.swing.JTabbedPane;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener; 
 import java.awt.event.ActionEvent; 
@@ -155,6 +156,14 @@ public class Main extends JApplet { /**/public Main() { }
     se.setText("");
   }};
   private Runnable openFile = new Runnable() { public void run() {
+  int result=1000;
+  if(se.getText().length()==0){result=0;}
+  else{
+    JOptionPane d = new JOptionPane();
+    result=d.showConfirmDialog(Main.this, "Voulez-vous enregistrer avant d'ouvrir un nouveau fichier ?", "Sauvgarder avant d'ouvrir", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+    }
+    if(result==0){
+    saveFile.run();
     fc.setDialogTitle("Ouvrir un programme");
     fc.setDialogType(JFileChooser.OPEN_DIALOG);
     fc.setApproveButtonText("Ouvrir");
@@ -162,8 +171,22 @@ public class Main extends JApplet { /**/public Main() { }
       file = fc.getSelectedFile();
       se.setText(Utils.loadString(file.getPath()));
     }
+    }
+    else if(result==1){
+    fc.setDialogTitle("Ouvrir un programme");
+    fc.setDialogType(JFileChooser.OPEN_DIALOG);
+    fc.setApproveButtonText("Ouvrir");
+    if (fc.showOpenDialog(Main.this) == 0) {
+      file = fc.getSelectedFile();
+      se.setText(Utils.loadString(file.getPath()));
+    }
+    }
   }};
   private Runnable saveFile = new Runnable() { public void run() {
+    JOptionPane d = new JOptionPane();
+    int result=d.showConfirmDialog(Main.this, "Voulez-vous enregistrer ?", "Sauvgarder", JOptionPane.YES_NO_OPTION);
+    if(result==0)
+    {
     if(file == null) {
       fc.setDialogTitle(fcTitle == null ? "Enregister un programme" : fcTitle);
       fc.setDialogType(JFileChooser.SAVE_DIALOG);
@@ -174,6 +197,7 @@ public class Main extends JApplet { /**/public Main() { }
       } 
     } else {
       Utils.saveString(file.getPath(), se.getText());
+    }
     }
   }};
   private void pleaseSaveFile() {
@@ -189,7 +213,8 @@ public class Main extends JApplet { /**/public Main() { }
   private Runnable nothing = new Runnable() { public void run() {
   }};
   private void basicTools() {
-    addTool("", "org/javascool/doc-files/icones16/new.png", newFile);
+    //Delete by Philippe Vienne
+    //addTool("", "org/javascool/doc-files/icones16/new.png", newFile);
     addTool("Ouvrir", "org/javascool/doc-files/icones16/open.png", openFile);
     addTool("Sauver", "org/javascool/doc-files/icones16/save.png", saveFile);
     addToolSeparator();
