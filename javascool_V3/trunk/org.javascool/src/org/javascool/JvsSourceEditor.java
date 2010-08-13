@@ -9,6 +9,7 @@ import javax.swing.text.Segment;
 
 /** This widget defines the proglet source editor.
  * @see <a href="JvsSourceEditor.java.html">source code</a>
+ * @serial exclude
  */
 public class JvsSourceEditor extends SourceEditor implements Widget {
   private static final long serialVersionUID = 1L;

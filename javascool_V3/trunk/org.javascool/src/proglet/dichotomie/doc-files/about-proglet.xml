@@ -1,5 +1,5 @@
-<p title="La «proglet» Dicho">
-  <proglet name="Dicho" mode="demo">
+<p title="La «proglet» dichotomie">
+  <proglet name="dichotomie" mode="demo">
     Cette proglet<footnote id="1"/> permet d'apprendre la notion algorithmique de « recherche dichotomie ». 
     La proglet affiche un livre avec tous les drapeaux du monde 
     (répertoriés grâce à <a href="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde">wikipedia</a>)
@@ -17,7 +17,7 @@
     </ul> tandis que la fonction: <code>
       <p><r>int</r> length = <r>dichoLength</r>();</p>
     </code> renvoie le nombre de pages.</p>
-    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
+    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
     secondes à une dizaine de pages au hasard, selon le programme suivant:
     <code>
       <p><r>for</r>(<r>int</r> i = 0; i &lt; 10; i++) {</p>
@@ -30,7 +30,7 @@
   </proglet>
 
   <footnotes>
-    <p>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Dicho.html">documentée</a> 
-    pour sa libre redistribution, l'accès <a href=" ../api/proglet/Dicho.java">au code source</a>, et permettre des développements dérivés.</p>
+    <p id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../Dichotomie.html">documentée</a> 
+    pour sa libre redistribution, l'accès <a href=" ../Dichotomie.java.html">au code source</a>, et permettre des développements dérivés.</p>
   </footnotes>
 </p>

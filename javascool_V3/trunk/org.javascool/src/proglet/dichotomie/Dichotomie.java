@@ -27,6 +27,7 @@ import java.awt.event.ActionListener;
 /** Définit une proglet javascool qui permet d'expérimenter la recherche dichotomique.
  * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
  * @see <a href="Dichotomie.java.html">code source</a>
+ * @serial exclude
  */
 public class Dichotomie implements org.javascool.Proglet { private Dichotomie() { }
   private static final long serialVersionUID = 1L;

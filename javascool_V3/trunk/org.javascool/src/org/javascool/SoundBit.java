@@ -23,6 +23,7 @@ import javax.sound.sampled.AudioFileFormat;
 
 /** This widget defines a sound bit and allows to use sampled sound resources.
  * @see <a href="SoundBit.java.html">source code</a>
+ * @serial exclude
  */
 public class SoundBit implements Widget {
   private static final long serialVersionUID = 1L;

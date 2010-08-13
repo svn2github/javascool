@@ -35,7 +35,8 @@ function get_page_contents($name) {
       $page = file_get_contents($file);
       // Remplace tous les liens entre pages par des pages vues du site
       $base = substr(realpath(dirname($file)), strlen($pwd)+4);
-      $page = ereg_replace('(href|HREF)="([^/#][^:"]*)"', 'href="?page=api:'.$base.'/\\2"', $page);
+      $page = ereg_replace('(href|HREF)="([^/#][^:"]*)"', '\\1="?page=api:'.$base.'/\\2"', $page);
+      $page = ereg_replace('(src|SRC)="([^/#][^:"]*)"', '\\1="api/'.$base.'/\\2"', $page);
       // Passe en <pre></pre> les pages de source
       if (ereg("\.java$", $name)) $page = "<pre>".$page."</pre>";
     } else {

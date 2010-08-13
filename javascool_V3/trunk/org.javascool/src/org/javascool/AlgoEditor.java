@@ -34,7 +34,8 @@ import java.awt.event.KeyEvent;
 /** This widget defines a re-oriented graohic algorithm editor. 
  * @see <a href="AlgoEditor.java.html">source code</a>
  * @see Jvs2Java
-*/
+ * @serial exclude
+ */
 public class AlgoEditor extends JPanel implements Widget,Editor {
   private static final long serialVersionUID = 1L;
   

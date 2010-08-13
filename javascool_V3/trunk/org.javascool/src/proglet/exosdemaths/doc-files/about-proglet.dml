@@ -1,4 +1,4 @@
-<div title="La «proglet» Scope">
+<div title="La «proglet» exosdemaths">
   <div class="table"><p><p>
     Cette proglet<l class="note" link="#1"/> permet d'afficher des tracés de couleurs différentes.
     <div>Pour tracer un point de la courbe: <div class="code">
@@ -41,10 +41,10 @@
      <p><T/><r>scopeSet</r>(x, -<r>Math.exp</r>(-(x + 1)), 7);</p>
      <p>}</p>
    </div></div>
-  </p><p><l class="proglet" l="Scope"/></p></p></div>
+  </p><p><l class="proglet" l="exosdemaths"/></p></p></div>
 
   <div class="notes">
-    <div>Cette proglet un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../api/proglet/Scope.html" text="documenté"/> 
-    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Scope.java" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../CurveDisplay.html" text="documenté"/> 
+    pour sa libre redistribution, l'accès <l link=" ../CurveDisplay.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 /** Définit une proglet javascool qui permet d'expérimenter avec des signaux sonores.
  * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
  * @see <a href="SoundDisplay.java.html">code source</a>
+ * @serial exclude
  */
 public class SoundDisplay implements org.javascool.Proglet { private SoundDisplay() { }
   private static final long serialVersionUID = 1L;
@@ -71,7 +72,7 @@ public class SoundDisplay implements org.javascool.Proglet { private SoundDispla
   static public double noi(double t) { return 2 * Math.random() - 1; }
 
   /** Définit les notes à jouer dans cet interface. 
-   * @param notes Définition des <a href="NotesSoundBit.html#notes">notes</a> selon une syntaxe simplifiée.
+   * @param notes Définition des <a href="NotesSoundBit.html#reset(java.lang.String)">notes</a> selon une syntaxe simplifiée.
    */
   static public void syntheSet(String notes) { panel.sound.reset(notes); panel.reset(panel.sound, 'l'); }
 

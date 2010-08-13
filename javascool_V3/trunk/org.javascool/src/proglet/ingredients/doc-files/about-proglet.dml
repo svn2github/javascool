@@ -17,7 +17,7 @@
        <p><T/><r>println</r>(<v>Valeur = </v> + valeur);</p>
      </div>où ici <b>valeur</b> est une variable numérique entière ou décimale.</div>
    </div>
-   <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="img/demo.png"/> <b>Demo</b>] le programme suivant:
+   <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le programme suivant:
    <div class="code">
      <m>Efface le contenu de la fenêtre de sortie</m>
      <p><r>clear</r>();</p>
@@ -29,12 +29,12 @@
      <p><r>int</r> age = <r>readInteger</r>();</p>
      <m>../..</m>
    </div> s'exécute pour permettre d'expérimenter le fonctionnement de cette proglet.</div>
-  </p><p><l class="proglet" l="Console"/></p></p></div>
+  </p><p><l class="proglet" l="ingredients"/></p></p></div>
 
   <div class="notes">
-    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../Console.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link=" ../Console.java" text="au code source"/>, et permettre des développements dérivés.</div>
-    <div>Une console ou « terminal alphanumérique » correspond à une fenêtre où l'utilisateur peut dialoguer avec un programme en entrant des données au clavier et 
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../Console.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link=" ../Console.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="2">Une console ou « terminal alphanumérique » correspond à une fenêtre où l'utilisateur peut dialoguer avec un programme en entrant des données au clavier et 
     en lisant les chaines de caractères imprimées par le programme.</div>
   </div>
 </div>

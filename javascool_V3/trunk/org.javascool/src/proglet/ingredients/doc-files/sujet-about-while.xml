@@ -111,7 +111,8 @@
   </works>
   
   <footnotes>
-    <p title="D'autres formes de boucles"> Les langages informatiques proposent d'autres formes de boucles, qui sont équivalentes à la construction <r>while</r> apprise ici, 
+    <p id="1" title="D'autres formes de boucles"> 
+    Les langages informatiques proposent d'autres formes de boucles, qui sont équivalentes à la construction <r>while</r> apprise ici, 
     mais peuvent être plus pratiques à utiliser. En voici deux exemples : <ul>
       <li>La boucle <r>for</r> permet de rassembler en une ligne des boucles complexes. La construction :
       <code>
@@ -127,7 +128,7 @@
         <p><c>}</c></p>
       </code>permet dans d'autres langages comme le PHP de, par exemple ici, poster un mail à toute une liste de noms.</li>
     </ul>En bref, nous avons d'autres façons de faire mais nous connaissons déjà les <i>fondements</i> dont nous avons besoin.</p>
-    <p title="A propos de fonctions récursives"> Imaginons une fonction <r>A</r> qui appelle, selon ses entrées, une fonction <r>B</r> 
+    <p id="2" title="A propos de fonctions récursives"> Imaginons une fonction <r>A</r> qui appelle, selon ses entrées, une fonction <r>B</r> 
   qui appelle elle-même la fonction <r>A</r> ou tout autre combinaison telle que, finalement et selon ses entrées, la fonction <r>A</r> se rappelle elle-même. 
   On dit qu'elle est <i><a href="http://fr.wikipedia.org/wiki/Algorithme_récursif">récursive</a></i>: 
   cela peut donner des boucles infinies (donc des bugs !), ou des calculs très complexes et très intéressants ... et 
@@ -135,6 +136,6 @@
     <li>Il faut éviter de définir des fonctions récursives, sauf dans les cas indispensables.</li>
     <li>Il faut être prudent si c'est le cas, et bien comprendre la notion de <a href="sujet-about-while.htm">boucle</a> avant.</li>
   </ul>.</p>
-  <p title="Arrêter un programme"> C'est le bouton <img src="img/stop.png"/> qui permet d'arrêter un programme qui boucle indéfiniment.</p>
+  <p id="3" title="Arrêter un programme"> C'est le bouton <img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/icones16/Stop_16x16.png"/> qui permet d'arrêter un programme qui boucle indéfiniment.</p>
   </footnotes>
 </sujet>

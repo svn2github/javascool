@@ -18,6 +18,7 @@ import org.javascool.NumberInput;
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
  * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
  * @see <a href="ConvAnalogique.java.html">code source</a>
+ * @serial exclude
  */
 public class ConvAnalogique implements org.javascool.Proglet { private ConvAnalogique() { }
   private static final long serialVersionUID = 1L;

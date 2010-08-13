@@ -1,5 +1,5 @@
 <p title="La «proglet» Console">
-  <proglet name="Console" mode="demo">
+  <proglet name="ingredients" mode="demo">
     Cette proglet<footnote id="1"/> permet de définir des entrées/sorties textuelles au clavier comme pour une console<footnote id="2"/>. <ul>
   <li>On peut donc dans la fenêtre <c>input</c>: <code>
        <m>Lire une chaine de caractère avec la fonction:</m>
@@ -17,7 +17,7 @@
        <p><t/><r>println</r>(<s>Valeur = </s> + valeur);</p>
      </code>où ici <b>valeur</b> est une variable numérique entière ou décimale.</li>
    </ul>
-   <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] le programme suivant:
+   <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le programme suivant:
    <code>
      <m>Efface le contenu de la fenêtre de sortie</m>
      <p><r>clear</r>();</p>
@@ -32,9 +32,9 @@
   </proglet>
 
   <footnotes>
-    <p>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../Console.html">documentée</a> 
-    pour sa libre redistribution, l'accès <a href=" ../Console.java">au code source</a>, et permettre des développements dérivés.</p>
-    <p>Une console ou « terminal alphanumérique » correspond à une fenêtre où l'utilisateur peut dialoguer avec un programme en entrant des données au clavier et 
+    <p id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../Console.html">documentée</a> 
+    pour sa libre redistribution, l'accès <a href=" ../Console.java.html">au code source</a>, et permettre des développements dérivés.</p>
+    <p id="2">Une console ou « terminal alphanumérique » correspond à une fenêtre où l'utilisateur peut dialoguer avec un programme en entrant des données au clavier et 
     en lisant les chaines de caractères imprimées par le programme.</p>
   </footnotes>
 </p>

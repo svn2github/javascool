@@ -1,5 +1,5 @@
-<p title="La «proglet» Scope">
-  <proglet name="Scope" mode="demo">
+<p title="La «proglet» exosdemaths">
+  <proglet name="exosdemaths" mode="demo">
     Cette proglet<footnote id="1"/> permet d'afficher des tracés de couleurs différentes.
     <p>Pour tracer un point de la courbe: <code>
       <p><r>scopeSet</r>(x, y, c);</p>
@@ -44,7 +44,7 @@
   </proglet>
 
   <footnotes>
-    <p>Cette proglet un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Scope.html">documenté</a> 
-    pour sa libre redistribution, l'accès <a href=" ../api/proglet/Scope.java">au code source</a>, et permettre des développements dérivés.</p>
+    <p id="1">Cette proglet un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../CurveDisplay.html">documenté</a> 
+    pour sa libre redistribution, l'accès <a href=" ../CurveDisplay.java.html">au code source</a>, et permettre des développements dérivés.</p>
   </footnotes>
 </p>

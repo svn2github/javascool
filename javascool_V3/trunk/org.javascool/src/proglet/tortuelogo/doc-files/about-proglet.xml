@@ -1,5 +1,5 @@
-<p title="La «proglet» Tortue">
-  <proglet name="Tortue" mode="demo">
+<p title="La «proglet» tortuelogo">
+  <proglet name="tortuelogo" mode="demo">
     Cette proglet<footnote id="1"/> permet de simuler la célèbre <a href="http://fr.wikipedia.org/wiki/Logo_(langage)">tortue logo</a>.
 
   <p>Dans ce contexte les instructions à utiliser sont celles de <javascool/>, la tortue évolue dans un carré de salade de taille <c>[512 x 512]</c>
@@ -12,7 +12,7 @@
     <p align="center"><img src="img/turtle.gif"/></p>
   </p>
 
-  <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>],
+  <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>],
   la tortue trace de belles <a href="http://fr.wikipedia.org/wiki/Courbe_de_Lissajous">courbes de Lissajous</a> en changeant la couleur:<code>
     <m>Initialisation du tracé</m>
     <p><r>clear_all</r>();</p>
@@ -33,7 +33,7 @@
   </proglet>
 
   <footnotes>
-    <p>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Tortue.html">documentée</a> 
-    pour sa libre redistribution, l'accès <a href=" ../api/proglet/Tortue.java">au code source</a>, et permettre des développements dérivés.</p>
+    <p id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../TortueLogo.html">documentée</a> 
+    pour sa libre redistribution, l'accès <a href=" ../TortueLogo.java.html">au code source</a>, et permettre des développements dérivés.</p>
   </footnotes>
 </p>

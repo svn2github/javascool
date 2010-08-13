@@ -1,5 +1,5 @@
-<p title="La «proglet» Smiley">
-  <proglet name="Smiley" mode="demo">
+<p title="La «proglet» pixelsetcie">
+  <proglet name="pixelsetcie" mode="demo">
     Cette proglet<footnote id="1"/> permet de manipuler une petite image de résolution variable, dont les coordonnées se définissent ainsi:
      <p align="center"><img src="img/smiley.png"/></p>
      c'est à dire que l'abscisse (la position horizontale ou largeur, width en anglais) va de <c>-width</c> à <c>+width</c> 
@@ -35,7 +35,7 @@
        toutes les valeurs entre <c>0</c> et <c>255</c> définissant les valeurs de gris,</li>
      </ul>permettre de lire/écrire un pixel monochrome dans cette image.
     </p>
-    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] le signe de la paix va s'afficher:
+    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le signe de la paix va s'afficher:
       <p align="center"><img src="img/smiley2.jpg"/></p>
       ceci, à différentes résolutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne résolution il sera très lisible, puis petit à petit il se réduira à quelques pixels,
       selon le programme suivant:
@@ -50,7 +50,7 @@
   </proglet>
 
   <footnotes>
-    <p>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Smiley.html">documentée</a> 
-    pour sa libre redistribution, l'accès <a href=" ../api/proglet/Smiley.java">au code source</a>, et permettre des développements dérivés.</p>
+    <p id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../ImageDisplay.html">documentée</a> 
+    pour sa libre redistribution, l'accès <a href=" ../ImageDisplay.java.html">au code source</a>, et permettre des développements dérivés.</p>
   </footnotes>
 </p>

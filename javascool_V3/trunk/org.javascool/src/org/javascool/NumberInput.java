@@ -23,6 +23,7 @@ import java.awt.event.MouseListener;
 
 /** This widget defines a numeric input.
  * @see <a href="NumberInput.java.html">source code</a>
+ * @serial exclude
  */
 public class NumberInput extends JPanel implements Widget {
   private static final long serialVersionUID = 1L;

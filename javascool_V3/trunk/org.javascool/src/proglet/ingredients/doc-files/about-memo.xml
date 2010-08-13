@@ -27,7 +27,9 @@
       <li><b><r>double</r> <c>readDouble</c>()</b> Lit un nombre décimal dans la fenêtre d'entrée (ex: <b><r>double</r> x = <r>readDouble</r>();</b>).</li>
       <li><b><r>boolean</r> <c>readBoolean</c>()</b> Lit une valeur vraie (<c>true, vrai, oui, 1</c>) ou fausse (<c>false, faux, non, 0</c>) dans la fenêtre d'entrée.</li>
     </ul> (note: <r>readInt</r> est synonyme de <r>readInteger</r>, <r>readFloat</r> est synonyme de <r>readDouble</r>).</p>
-    <p title="Fonctions des autres proglets"> Voir la description dans la documentation de chaque <a href="about-all.htm#more">proglet</a>.</p>
+    <p title="Fonctions des autres proglets"> 
+      Voir la description dans la documentation de chaque <a href="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/Proglet.html">proglet</a>.
+    </p>
   </p>
   <p title="Grammaire: constructions utilisées ici">
     <p title="Bloc de séquences d'instructions"> Un bloc se note entre <b>{ }</b> et englobe un ensemble de déclarations et d'instructions séparées par un <b>;</b>.</p>
@@ -48,8 +50,8 @@
     tandis que le langage Java a beaucoup d'autres <a href="http://www.eteks.com/coursjava/instructions.html">instructions et opérateurs</a>.</p>
 
 <footnotes>
-  <p>La différence entre <c>echo</c> et <c>println</c> est <c>echo</c> affiche la chaîne de caractères dans la console, donc marche avec toutes les proglets, 
-  tandis que <c>println</c> est dédiée à la fenêtre de sortie de la <proglet name="Konseol"/>.</p>
+  <p id ="1">La différence entre <c>echo</c> et <c>println</c> est <c>echo</c> affiche la chaîne de caractères dans la console, donc marche avec toutes les proglets, 
+  tandis que <c>println</c> est dédiée à la fenêtre de sortie de la proglet Console..</p>
 </footnotes>
 </p>
 

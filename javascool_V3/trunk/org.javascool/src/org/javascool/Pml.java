@@ -27,6 +27,7 @@ import java.util.regex.Pattern;
  * </p>
  *
  * @see <a href="Pml.java.html">source code</a>
+ * @serial exclude
  */
 public class Pml { /**/public Pml() { }
   private static final long serialVersionUID = 1L;

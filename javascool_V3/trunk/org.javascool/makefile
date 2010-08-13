@@ -170,29 +170,29 @@ jdoc/base.tar.gz:
 
 # Web site files publication
 
-pub: api
+pub: api wraz
 	@php -l www/index.php ; rm -f www/index.php~
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
 	 2>&1 | grep -v '^rsync: failed to set'
 	@-rsync --rsh='ssh -C' www/index.php scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/.htindex.php
 	@ssh scm.gforge.inria.fr 'sh -c "cd /home/groups/javascool/htdocs/v3 ; cat .htindex.php > index.php ; rm .htindex.php"'
 
-# Cleans the web cache
+# Clean the web cache
 
 wraz: 
 	@wget -q -O - http://javascool.gforge.inria.fr/v3?kezako=niquelekacheux
 
 # Check the web site links 
 
-wref: 
-	@lib/linkcheck -verbosity 1 --noparent -recurse http://javascool.gforge.inria.fr/v3 
-	@firefox https://www.google.com/webmasters/tools/dashboard
+wref: pub
+	@lib/run.sh LinkCheck -recursive http://javascool.gforge.inria.fr/v3/ | tee lib/brokenlinks.txt
+#	@firefox https://www.google.com/webmasters/tools/dashboard
 
 # Check the site log
 
 wlog:
 	@firefox http://javascool.gforge.inria.fr/log
-	@firefox https://www.google.com/analytics
+#	@firefox https://www.google.com/analytics
 
 #####################################################################################################################################
 
@@ -204,8 +204,13 @@ web:
 wiki:
 	@firefox http://wiki.inria.fr/sciencinfolycee/JavaScool:ToDoList
 
-viewjdoc:jdoc
+viewjdoc: jdoc
 	@firefox $(PWD)/jdoc/index.html 
+#ifeq ($(USER), pvienne)
+#	@firefox /usr/share/doc/openjdk-6-jre-headless/api/index.html
+#else
+#	@firefox /usr/share/javadoc/java-1.6.0-openjdk/api/overview-summary.html 
+#endif
 
 #####################################################################################################################################
 

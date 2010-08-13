@@ -25,7 +25,8 @@ import java.util.HashMap;
 
 /** Defines a data-file sound-bit wrapper.
  * @see <a href="FileSoundBit.java.html">code source</a>
-*/
+ * @serial exclude
+ */
 public class FileSoundBit extends SoundBit {
   /** Constructs a sound defined from two buffer files.
    * @param location Audio file path: either a file-name or an URL-name or an URI of the form <tt>midi:<i>name</i></tt> allowing to load a midi sound.

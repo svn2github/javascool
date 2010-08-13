@@ -13,7 +13,7 @@ import javax.sound.sampled.AudioInputStream;
 import java.util.Vector;
 
 /** Creates a monophonic ``piccolo´´ sound-bit from a note sequence (still in development).
- * <div>The sound-bit can be changed using the <tt><a href="#reset">reset</a>(notes)</tt> method.</div>
+ * <div>The sound-bit can be changed using the <tt><a href="#reset(java.lang.String)">reset</a>(notes)</tt> method.</div>
  * @param notes <a name="notes"></a> Definition of note's sequence and note:<ul>
  * <li>The notes sequences is written as:<ul>
  *   <li> a sequence of notes, separated with spaces;</li>
@@ -37,11 +37,12 @@ import java.util.Vector;
  *   Default is <tt>0.25</tt>s, while this declarations is to be done once.</li>
  * </ul>
  * @see <a href="NotesSoundBit.java.html">code source</a>
+ * @serial exclude
  */
 public class NotesSoundBit extends SoundBit {
   /** Constructs a sound defined from a note sequence.
    * @param notes The note sequence.
-  * @return This, allowing to use the <tt>SoundBit pml= new SoundBit().reset(..)</tt> construct.
+   * @return This, allowing to use the <tt>SoundBit pml= new SoundBit().reset(..)</tt> construct.
    */
   public SoundBit reset(String notes) { 
     freqs = getNotes(notes); tempo = getTempo(notes); name = "notes:.."; sound.setLength(length = freqs.length * tempo); return this;

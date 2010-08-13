@@ -23,6 +23,7 @@ import java.awt.Font;
  *  <li>drawing the 1st samples of the signal (in yellow, the 1st <tt>11</tt>ms).</li>
  * </ul> while the sound name main frequency and spectral magnitude is printed.
  * @see <a href="SoundBitPanel.java.html">code source</a>
+ * @serial exclude
  */
 public class SoundBitPanel extends JPanel {
   private static final long serialVersionUID = 1L;

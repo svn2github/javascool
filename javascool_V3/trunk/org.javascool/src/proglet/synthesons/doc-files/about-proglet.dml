@@ -1,4 +1,4 @@
-<div title="La «proglet» Synthe">
+<div title="La «proglet» synthesons">
   <div class="table"><p><p>
     Cette proglet<l class="note" link="#1"/> permet de générer une séquence de notes et d'en regarder le spectre de fréquence.
 
@@ -31,9 +31,9 @@
  
    <div>Pour définir une séquence de notes il faut utiliser la fonction:<div class="code">
      <p><r>syntheSet</r>(<v>séquence-de-note</v>);</p>
-   </div> où la syntaxe de <v>séquence-de-note</v> est définie dans la <l link=" ../api/proglet/SoundBit.html#notes" text="documentation"/> de la proglet.</div>
+   </div> où la syntaxe de <v>séquence-de-note</v> est définie dans la <l link="../NotesSoundBit.html#reset(java.lang.String)" text="documentation"/> de la classe.</div>
 
-  <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="img/demo.png"/> <b>Demo</b>], 
+  <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>], 
   les différents sons:<div class="code">
      <p><r>@tone:</r> cos(t)</p>
      <p><r>synthePlay</r>();</p>
@@ -49,10 +49,10 @@
    </div>sont présentés, puis les 1ères notes de quelque chose qui ressemble à la «Lettre à Elise» de L.v.Beethoven est jouée et son spectre affiché et ensuite 
    <div> . . à vous de jouer !</div></div>
 
-  </p><p><l class="proglet" l="Synthe"/></p></p></div>
+  </p><p><l class="proglet" l="synthesons"/></p></p></div>
 
   <div class="notes">
-    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../api/proglet/Synthe.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Synthe.java" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../SoundDisplay.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link=" ../SoundDisplay.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

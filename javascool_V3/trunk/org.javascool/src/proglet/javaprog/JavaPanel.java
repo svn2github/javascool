@@ -14,6 +14,7 @@ import java.awt.Dimension;
  * @see <a href="http://java.sun.com/docs/books/tutorial/uiswing">Java Swing tutorial</a>
  * @see <a href="http://java.sun.com/javase/6/docs/api/javax/swing/package-summary.html">Java Swing API</a>
  * @see <a href="JavaPanel.java.html">code source</a>
+ * @serial exclude
  */
 public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { }
   private static final long serialVersionUID = 1L;

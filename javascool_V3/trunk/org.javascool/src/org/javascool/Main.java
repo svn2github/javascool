@@ -36,6 +36,7 @@ import java.util.HashMap;
  * <p>- It can be used either as standalone application or a certified applet.</p>
  * @author Philippe Vienne <philoumailabo@gmail.com>
  * @see <a href="Main.java.html">source code</a>
+ * @serial exclude
  */
 public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;

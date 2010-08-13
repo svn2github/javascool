@@ -94,11 +94,11 @@
    </works>
   
   <footnotes>
-    <p title="A propos des identificateurs"> Selon les langages informatiques et les règles de codage les identificateurs peuvent être composés avec <i>autre chose</i>
+    <p id ="1" title="A propos des identificateurs"> Selon les langages informatiques et les règles de codage les identificateurs peuvent être composés avec <i>autre chose</i>
     que des lettres minuscules sans accent et du signe "_" (par exemple on peut glisser des chiffres après l'identificateur, mettre des majuscules, etc..) mais ce n'est
     PAS une bonne habitude de le faire, car cela a tendance à embrouiller les choses, cela dépend des langages, etc... En programmation il faut non seulement respecter la syntaxe
     mais aussi choisir de bonnes habitudes pour spécifier ses programmes.</p>
-    <p title="Comment garder une trace du travail réalisé"> Sauver le texte source du programme dans un fichier d'extension <c>.jvs</c>, 
+    <p id ="2" title="Comment garder une trace du travail réalisé"> Sauver le texte source du programme dans un fichier d'extension <c>.jvs</c>, 
     par exemple <c>Var1.jvs</c>, puis <c>Var2.jvs</c> pour la version suivante, etc.. De cette façon chaque version du travail peut-être gardée, corrigée, etc..
     De plus, on peut facilement ajouter des <i>lignes de commentaires</i> qui permettent de sauvegarder les réponses aux questions posées. 
     Ce sont des lignes qui commencent par <c>//</c> et sont donc de la forme

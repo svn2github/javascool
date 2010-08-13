@@ -1,5 +1,5 @@
-<p title="La «proglet» Synthe">
-  <proglet name="Synthe" mode="demo">
+<p title="La «proglet» synthesons">
+  <proglet name="synthesons" mode="demo">
     Cette proglet<footnote id="1"/> permet de générer une séquence de notes et d'en regarder le spectre de fréquence.
 
    <p>Pour définir son propre son il faut utiliser la construction <javascool/>, par exemple:<code>
@@ -31,9 +31,9 @@
  
    <p>Pour définir une séquence de notes il faut utiliser la fonction:<code>
      <p><r>syntheSet</r>(<s>séquence-de-note</s>);</p>
-   </code> où la syntaxe de <s>séquence-de-note</s> est définie dans la <a href=" ../api/proglet/SoundBit.html#notes">documentation</a> de la proglet.</p>
+   </code> où la syntaxe de <s>séquence-de-note</s> est définie dans la <a href="../NotesSoundBit.html#reset(java.lang.String)">documentation</a> de la classe.</p>
 
-  <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>], 
+  <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>], 
   les différents sons:<code>
      <p><r>@tone:</r> cos(t)</p>
      <p><r>synthePlay</r>();</p>
@@ -52,7 +52,7 @@
   </proglet>
 
   <footnotes>
-    <p>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../api/proglet/Synthe.html">documentée</a> 
-    pour sa libre redistribution, l'accès <a href=" ../api/proglet/Synthe.java">au code source</a>, et permettre des développements dérivés.</p>
+    <p id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../SoundDisplay.html">documentée</a> 
+    pour sa libre redistribution, l'accès <a href=" ../SoundDisplay.java.html">au code source</a>, et permettre des développements dérivés.</p>
   </footnotes>
 </p>

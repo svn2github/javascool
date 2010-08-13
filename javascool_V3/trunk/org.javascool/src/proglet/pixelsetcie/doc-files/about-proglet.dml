@@ -1,4 +1,4 @@
-<div title="La «proglet» Smiley">
+<div title="La «proglet» pixelsetcie">
   <div class="table"><p><p>
     Cette proglet<l class="note" link="#1"/> permet de manipuler une petite image de résolution variable, dont les coordonnées se définissent ainsi:
      <div class="center"><l class="icon" icon="img/smiley.png"/></div>
@@ -35,7 +35,7 @@
        toutes les valeurs entre <c>0</c> et <c>255</c> définissant les valeurs de gris,</div>
      </div>permettre de lire/écrire un pixel monochrome dans cette image.
     </div>
-    <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="img/demo.png"/> <b>Demo</b>] le signe de la paix va s'afficher:
+    <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le signe de la paix va s'afficher:
       <div class="center"><l class="icon" icon="img/smiley2.jpg"/></div>
       ceci, à différentes résolutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne résolution il sera très lisible, puis petit à petit il se réduira à quelques pixels,
       selon le programme suivant:
@@ -47,10 +47,10 @@
         <p>}</p>
       </div> où la routine <r>peace</r> trace le signe de la paix et correspond à une fonction à définir.
     </div>
-  </p><p><l class="proglet" l="Smiley"/></p></p></div>
+  </p><p><l class="proglet" l="pixelsetcie"/></p></p></div>
 
   <div class="notes">
-    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../api/proglet/Smiley.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Smiley.java" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../ImageDisplay.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link=" ../ImageDisplay.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

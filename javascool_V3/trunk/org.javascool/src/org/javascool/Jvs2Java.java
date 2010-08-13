@@ -23,6 +23,7 @@ import java.net.URLClassLoader;
  * The goal of the Jvs syntax is to ease the syntax when starting to program in an imperative language, like Java. 
  * <p>- This factory calls the java compiler in the jdk5 (and earlier) case. It is designed to be used in standalone mode.</p>
  * @see <a href="Jvs2Java.java.html">source code</a>
+ * @serial exclude
  */
 public class Jvs2Java { private Jvs2Java() { }
 

@@ -1,4 +1,4 @@
-<div title="La «proglet» Dicho">
+<div title="La «proglet» dichotomie">
   <div class="table"><p><p>
     Cette proglet<l class="note" link="#1"/> permet d'apprendre la notion algorithmique de « recherche dichotomie ». 
     La proglet affiche un livre avec tous les drapeaux du monde 
@@ -17,7 +17,7 @@
     </div> tandis que la fonction: <div class="code">
       <p><r>int</r> length = <r>dichoLength</r>();</p>
     </div> renvoie le nombre de pages.</div>
-    <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="img/demo.png"/> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
+    <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
     secondes à une dizaine de pages au hasard, selon le programme suivant:
     <div class="code">
       <p><r>for</r>(<r>int</r> i = 0; i &lt; 10; i++) {</p>
@@ -27,10 +27,10 @@
       <p>}</p>
     </div></div>
     <div>En appuyant sur les touches <c>&lt;-</c> et <c>-&gt;</c> nous pouvons tourner manuellement les pages à gauche ou à droite.</div>
-  </p><p><l class="proglet" l="Dicho"/></p></p></div>
+  </p><p><l class="proglet" l="dichotomie"/></p></p></div>
 
   <div class="notes">
-    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../api/proglet/Dicho.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Dicho.java" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../Dichotomie.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link=" ../Dichotomie.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

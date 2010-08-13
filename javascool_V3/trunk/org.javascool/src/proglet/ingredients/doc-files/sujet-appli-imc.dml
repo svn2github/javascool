@@ -55,6 +55,6 @@
   </div>
   
   <div class="notes">
-    <div title="A propos de ce tutoriel"> Ce tutoriel est une idée originale de Aurélien Astroux, Professeur de Physique en 2nd Mesures Physiques et Informatique au Lycée <l link="http://leonarddevinci.net" text="Léonard de Vinci"/> d'Antibes.</div>
+    <div title="A propos de ce tutoriel" id="1"> Ce tutoriel est une idée originale de Aurélien Astroux, Professeur de Physique en 2nd Mesures Physiques et Informatique au Lycée <l link="http://leonarddevinci.net" text="Léonard de Vinci"/> d'Antibes.</div>
   </div>
 </div>

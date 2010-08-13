@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 /** Defines a text as a PML data structure.
  *
  * @see <a href="Hml.java.html">source code</a>
+ * @serial exclude
  */
 public class Hml extends Pml { /**/public Hml() { }
   private static final long serialVersionUID = 1L;

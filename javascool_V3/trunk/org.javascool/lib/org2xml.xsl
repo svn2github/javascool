@@ -58,6 +58,9 @@
   <xsl:if test="@mode = 'demo'">
     <div class="table"><p><p><xsl:apply-templates/></p><p><l class="proglet" l="{@name}"/></p></p></div>
   </xsl:if>
+  <xsl:if test="@mode != 'demo'">
+    «proglet» "<xsl:value-of select="@name"/>"
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="footnote">
