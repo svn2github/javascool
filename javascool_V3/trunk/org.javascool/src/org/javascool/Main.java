@@ -56,12 +56,12 @@ public class Main extends JApplet { /**/public Main() { }
 
     // Adds buttons and activities using generic routines
     basicTools();
-    addActivity(pmlActivity);
+    //addActivity(pmlActivity);
     addActivity(jvsActivity);
     //addActivity(algActivity);
     
     // Initializes the activity from the HTML tag or proposes a default activity
-    try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity(""); }
+    try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity("Démonstration de l'éditeur Jvs"); }
 
   }
   /** Adds a button to the toolbar.
@@ -179,11 +179,11 @@ public class Main extends JApplet { /**/public Main() { }
   }
   public String returnastring(String toreturn){return toreturn;};
   public void setFile(String filename) {
-    try { se.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
+    try { activity.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
   }
   private Runnable openFile = new Runnable() { public void run() {
   int result=1000;
-  if(se.getText().length()==0){result=1;}
+  if(activity.getText().length()==0){result=1;}
   else{
     JOptionPane d = new JOptionPane();
     result=d.showConfirmDialog(Main.this, "Voulez-vous enregistrer avant d'ouvrir un nouveau fichier ?", "Sauvgarder avant d'ouvrir", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
@@ -225,7 +225,7 @@ public class Main extends JApplet { /**/public Main() { }
       int out=fc.showSaveDialog(Main.this);
       if (out==0) {
 		file = fc.getSelectedFile();
-		Utils.saveString(file.getPath(), se.getText());
+		Utils.saveString(file.getPath(), activity.getText());
 		verisave=true;
       } 
       else {
@@ -238,16 +238,24 @@ public class Main extends JApplet { /**/public Main() { }
       int out=fc.showSaveDialog(Main.this);
       if (out==0) {
 		file = fc.getSelectedFile();
-		Utils.saveString(file.getPath(), se.getText());
+		Utils.saveString(file.getPath(), activity.getText());
 		verisave=true;
       } 
-      Utils.saveString(file.getPath(), se.getText());
+      Utils.saveString(file.getPath(), activity.getText());
       verisave=true;
     }
     }};
+  private Runnable runPrg = new Runnable() { public void run(){
+		if(file==null)
+			pleaseSaveFile();
+		if(verisave==true)
+			Utils.saveString(file.getPath(), activity.getText());
+		Jvs2Java.compile(file.getPath());
+  	}
+  };
   private void pleaseSaveFile() {
-    if(se.getText().length() > 0)
-      fcTitle = "Enregistrer votre fichier avant de passer à la suite";
+    fcTitle = "Enregistrer votre fichier avant de passer à la suite";
+    
     saveFile.run();
     fcTitle = null;
   }
@@ -262,9 +270,10 @@ public class Main extends JApplet { /**/public Main() { }
     //addTool("", "org/javascool/doc-files/icones16/new.png", newFile);
     addTool("Ouvrir", "org/javascool/doc-files/icones16/open.png", openFile);
     addTool("Sauver", "org/javascool/doc-files/icones16/save.png", saveFile);
+    addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", runPrg);
     addToolSeparator();
     addTool("Compiler", "org/javascool/doc-files/icones16/compil.png", nothing);
-    addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", nothing);
+    addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", runPrg);
     addTool("Aide", "org/javascool/doc-files/icones16/help.png", showHelp);
   }
 
