@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  * <p>The parameter logical-structure parsing from a string is <i>weak</i> in the sense that a value is always derived without generating syntax errors.</p>
  * </p>
  *
- * @see <a href="Pml.java">source code</a>
+ * @see <a href="Pml.java.html">source code</a>
  */
 public class Pml { /**/public Pml() { }
   private static final long serialVersionUID = 1L;

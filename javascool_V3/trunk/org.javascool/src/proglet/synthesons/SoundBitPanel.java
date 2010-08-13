@@ -22,7 +22,7 @@ import java.awt.Font;
  *  <li>drawing the frequencies amplitudes (in red, in normalized dB (log coordinates)), frequencies being drawn between A0 (27.5Hz) and A9 (6400Hz) around A3 (440Hz);</li>
  *  <li>drawing the 1st samples of the signal (in yellow, the 1st <tt>11</tt>ms).</li>
  * </ul> while the sound name main frequency and spectral magnitude is printed.
- * @see <a href="SoundBitPanel.java">code source</a>
+ * @see <a href="SoundBitPanel.java.html">code source</a>
  */
 public class SoundBitPanel extends JPanel {
   private static final long serialVersionUID = 1L;

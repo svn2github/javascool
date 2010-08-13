@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 /** Defines a text as a PML data structure.
  *
- * @see <a href="Hml.java">source code</a>
+ * @see <a href="Hml.java.html">source code</a>
  */
 public class Hml extends Pml { /**/public Hml() { }
   private static final long serialVersionUID = 1L;

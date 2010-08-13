@@ -7,32 +7,54 @@
 // Mécanisme de syndication des pages web à partir de http://wiki.inria.fr/sciencinfolycee
 //
 
+/* Fonction utilisée pour cracher les erreurs
+ function debug_error_handler($errno, $errstr, $errfile, $errline, $errcontext) { if ($errno != 8192) {
+   echo "<br/>\n".str_repeat("-", 120)."<br/>\nError #$errno: '$errstr' [in $errfile line $errline]<br/>\n"; echo str_repeat("-", 120)."<br/>\n<br/>\n";
+ } }
+ set_error_handler('debug_error_handler');
+*/
+
+/* Utilisé pour tester en local
+echo '<hr>';
+*/
+
+// Récupère la page par syndication de la javadoc ou du wiki et gere les liens avec un mécanisme de cache
 function get_page_contents($name) {
-  $notfound = "<h1>Désolé ! Cette page est en construction ou inacessible ..</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>"; 
-  if(ereg('^api:.*', $name)) {
-    // Traitement d'une demande de page de doc java
-    $name = ereg_replace('^api:', '', $name);
-    // Recuperation de la page javadoc
-    $pwd = getcwd(); $file = $pwd.'/api/'.$name; 
-    if (!file_exists($file)) return $notfound;
-    $page = file_get_contents($file);
-    // Remplace tous les liens entre pages par des pages vues du site
-    $base = substr(realpath(dirname($file)), strlen($pwd)+4);
-    $page = ereg_replace('(href|HREF)="([^/][^:"]*)"', 'href="?page=api:'.$base.'/\\2"', $page);
-    // Passe en <pre></pre> les pages de source
-    if (ereg("\.java$", $name)) $page = "<pre>".$page."</pre>";
-  } else {
-    // Recuperation de la page sur le wiki
-    $page = file_get_contents('http://wiki.inria.fr/sciencinfolycee/JavaScool:'.$name.'?printable=yes&action=render');
-    // Remplace tous les liens entre pages par des pages vues du site
-    $page = ereg_replace('href="http://wiki.inria.fr/sciencinfolycee/JavaScool:', 'href="?page=', $page);
-    // Remplace tous les liens wikis locaux pas des liens distants
-    $page = ereg_replace('src="/wikis/sciencinfolycee', 'src="http://wiki.inria.fr/wikis/sciencinfolycee', $page); 
-    // Si le wiki signale une erreur alors on affiche proprement une page en erreur
-    if (ereg("<title>Erreur</title>", $page)) return $notfound;
+  // Manage cache mechanism
+  $cname = rawurlencode($name);
+  if (!file_exists('.htcache')) mkdir('.htcache');
+  if (file_exists('.htcache/'.$cname)) return file_get_contents('.htcache/'.$cname);
+  {
+    $notfound = "<h1>Désolé ! Cette page est en construction ou inacessible ..</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>"; 
+    if(ereg('^api:.*', $name)) {
+      // Traitement d'une demande de page de doc java
+      $name = ereg_replace('^api:', '', $name);
+      // Recuperation de la page javadoc
+      $pwd = getcwd(); $file = $pwd.'/api/'.$name; 
+      if (!file_exists($file)) return $notfound;
+      $page = file_get_contents($file);
+      // Remplace tous les liens entre pages par des pages vues du site
+      $base = substr(realpath(dirname($file)), strlen($pwd)+4);
+      $page = ereg_replace('(href|HREF)="([^/#][^:"]*)"', 'href="?page=api:'.$base.'/\\2"', $page);
+      // Passe en <pre></pre> les pages de source
+      if (ereg("\.java$", $name)) $page = "<pre>".$page."</pre>";
+    } else {
+      // Recuperation de la page sur le wiki
+      $page = file_get_contents('http://wiki.inria.fr/sciencinfolycee/JavaScool:'.$name.'?printable=yes&action=render');
+      // Remplace tous les liens entre pages par des pages vues du site
+      $page = ereg_replace('href="http://wiki.inria.fr/sciencinfolycee/JavaScool:', 'href="?page=', $page);
+      // Remplace tous les liens wikis locaux pas des liens distants
+      $page = ereg_replace('src="/wikis/sciencinfolycee', 'src="http://wiki.inria.fr/wikis/sciencinfolycee', $page); 
+      // Si le wiki signale une erreur alors on affiche proprement une page en erreur
+      if (ereg("<title>Erreur</title>", $page)) return $notfound;
+    }
   }
+  file_put_contents('.htcache/'.$cname, $page);
   return $page;
 }
+// Usage: http://javascool.gforge.inria.fr/?kezako=niquelekacheux
+if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { exec("rm -rf .htcache"); exit; }
+
 // Usage: http://javascool.gforge.inria.fr/?page=<page>
   $name = isset($_GET['page']) ? $_GET['page'] : "Accueil";
   $page = get_page_contents($name);
@@ -51,6 +73,19 @@ function get_page_contents($name) {
 
 <link href="styles/style.css" type="text/css" rel="stylesheet" /> 
 <link href="styles/style_menu_right.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17973020-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head> 
 <body>
   <div class="greybox_right">

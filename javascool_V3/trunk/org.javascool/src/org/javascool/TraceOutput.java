@@ -21,7 +21,7 @@ import java.util.Enumeration;
 
 /** This widget defines a trace output.
  * It used to draw parametric curves of different colors.
- * @see <a href="TraceOutput.java">source code</a>
+ * @see <a href="TraceOutput.java.html">source code</a>
  */
 public class TraceOutput extends JPanel implements Widget {
   private static final long serialVersionUID = 1L;

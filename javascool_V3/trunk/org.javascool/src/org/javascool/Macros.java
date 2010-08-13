@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 /** Cette factory contient des functions générales rendues visibles à l'utilisateur de proglets.  
  * Elle permet de définir des fonctions statiques qui seront utilisées pour faire des programmes élèves.
- * @see <a href="Macros.java">code source</a>
+ * @see <a href="Macros.java.html">code source</a>
  */
 public class Macros { private Macros() { }
 

@@ -29,6 +29,8 @@ public class ProgletApplet extends JApplet {
    * @param proglet The corresponding proglet name. Default is "ingredients".
    * @param demo If true runs the demo program. If false runs the proglet pupil's program. Default is "true".
    * @return This, allowing to use the <tt>new ProgletApplet().reset(..)</tt> construct.
+   *
+   * @see <a href="ProgletApplet.java.html">source code</a>
    */
   public ProgletApplet reset(String proglet, boolean demo) { this.proglet = proglet; this.demo = demo; return this; } 
   private String proglet = "ingredients"; private boolean demo = true;

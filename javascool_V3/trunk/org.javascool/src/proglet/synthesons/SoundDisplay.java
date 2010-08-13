@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des signaux sonores.
  * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
- * @see <a href="SoundDisplay.java">code source</a>
+ * @see <a href="SoundDisplay.java.html">code source</a>
  */
 public class SoundDisplay implements org.javascool.Proglet { private SoundDisplay() { }
   private static final long serialVersionUID = 1L;

@@ -16,7 +16,7 @@ import java.io.OutputStream;
 import java.io.File;
 
 /** Définit comment lire/ecire une imaage.
- * @see <a href="ImageUtils.java">code source</a>
+ * @see <a href="ImageUtils.java.html">code source</a>
  */
 public class ImageUtils { private ImageUtils() { }
 

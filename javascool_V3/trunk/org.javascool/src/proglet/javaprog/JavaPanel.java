@@ -13,7 +13,7 @@ import java.awt.Dimension;
  * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
  * @see <a href="http://java.sun.com/docs/books/tutorial/uiswing">Java Swing tutorial</a>
  * @see <a href="http://java.sun.com/javase/6/docs/api/javax/swing/package-summary.html">Java Swing API</a>
- * @see <a href="JavaPanel.java">code source</a>
+ * @see <a href="JavaPanel.java.html">code source</a>
  */
 public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { }
   private static final long serialVersionUID = 1L;

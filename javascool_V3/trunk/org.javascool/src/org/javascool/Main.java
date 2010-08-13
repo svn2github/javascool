@@ -35,7 +35,7 @@ import java.util.HashMap;
 /** This is the javascool v3 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
  * @author Philippe Vienne <philoumailabo@gmail.com>
- * @see <a href="Main.java">source code</a>
+ * @see <a href="Main.java.html">source code</a>
  */
 public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;

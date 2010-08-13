@@ -19,7 +19,7 @@ import java.net.URL;
 import java.io.IOException;
 
 /** This widget defines a pixelic color icon panel. 
- * @see <a href="IconOutput.java">source code</a>
+ * @see <a href="IconOutput.java.html">source code</a>
  */
 public class IconOutput extends JPanel implements Widget {
   private static final long serialVersionUID = 1L;

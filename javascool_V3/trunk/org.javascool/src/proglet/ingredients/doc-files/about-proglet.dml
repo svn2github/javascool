@@ -1,4 +1,4 @@
-<div title="La «proglet» Konsol">
+<div title="La «proglet» Console">
   <div class="table"><p><p>
     Cette proglet<l class="note" link="#1"/> permet de définir des entrées/sorties textuelles au clavier comme pour une console<l class="note" link="#2"/>. <div class="ul">
   <div>On peut donc dans la fenêtre <c>input</c>: <div class="code">
@@ -29,11 +29,11 @@
      <p><r>int</r> age = <r>readInteger</r>();</p>
      <m>../..</m>
    </div> s'exécute pour permettre d'expérimenter le fonctionnement de cette proglet.</div>
-  </p><p><l class="proglet" l="Konsol"/></p></p></div>
+  </p><p><l class="proglet" l="Console"/></p></p></div>
 
   <div class="notes">
-    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../api/proglet/Konsol.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Konsol.java" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../Console.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link=" ../Console.java" text="au code source"/>, et permettre des développements dérivés.</div>
     <div>Une console ou « terminal alphanumérique » correspond à une fenêtre où l'utilisateur peut dialoguer avec un programme en entrant des données au clavier et 
     en lisant les chaines de caractères imprimées par le programme.</div>
   </div>

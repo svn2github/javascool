@@ -58,7 +58,7 @@ import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
 
 /** This factory contains useful methods to interface javascool with the environment. 
- * @see <a href="Utils.java">source code</a>
+ * @see <a href="Utils.java.html">source code</a>
  */
 public class Utils { private Utils() { }
   private static final long serialVersionUID = 1L;

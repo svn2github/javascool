@@ -36,7 +36,7 @@ import java.util.Vector;
  * <li>The <i>tempo</i>, i.e. the minimal note duration in second, is declared a the beginning of the note sequence using the <tt>T<i>value</i></tt> construct.
  *   Default is <tt>0.25</tt>s, while this declarations is to be done once.</li>
  * </ul>
- * @see <a href="NotesSoundBit.java">code source</a>
+ * @see <a href="NotesSoundBit.java.html">code source</a>
  */
 public class NotesSoundBit extends SoundBit {
   /** Constructs a sound defined from a note sequence.

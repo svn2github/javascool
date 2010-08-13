@@ -14,7 +14,7 @@ import org.javascool.IconOutput;
 
 /** Définit une proglet javascool qui permet de manipuler les pixels d'une image.
  * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
- * @see <a href="ImageDisplay.java">code source</a>
+ * @see <a href="ImageDisplay.java.html">code source</a>
  */
 public class ImageDisplay implements org.javascool.Proglet { private ImageDisplay() { }
   private static final long serialVersionUID = 1L;

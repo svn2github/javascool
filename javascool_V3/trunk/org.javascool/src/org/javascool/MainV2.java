@@ -64,7 +64,7 @@ import java.net.URLEncoder;
  * org/javascool/doc-files/iconesv2/stop.png
  * org/javascool/doc-files/iconesv2/demo.png
  * </pre>
- * @see <a href="MainV2.java">source code</a>
+ * @see <a href="MainV2.java.html">source code</a>
  */
 public class MainV2 extends JApplet {
   private static final long serialVersionUID = 1L;

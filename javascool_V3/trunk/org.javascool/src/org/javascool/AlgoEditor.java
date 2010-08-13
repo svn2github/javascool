@@ -32,7 +32,7 @@ import java.awt.Event;
 import java.awt.event.KeyEvent;
 
 /** This widget defines a re-oriented graohic algorithm editor. 
- * @see <a href="AlgoEditor.java">source code</a>
+ * @see <a href="AlgoEditor.java.html">source code</a>
  * @see Jvs2Java
 */
 public class AlgoEditor extends JPanel implements Widget,Editor {

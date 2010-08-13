@@ -74,7 +74,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.DocumentEvent;
 
 /** This widget defines a general proglet source editor.
- * @see <a href="SourceEditor.java">source code</a>
+ * @see <a href="SourceEditor.java.html">source code</a>
  */
 public class SourceEditor extends JPanel implements Widget,Editor {
   private static final long serialVersionUID = 1L;

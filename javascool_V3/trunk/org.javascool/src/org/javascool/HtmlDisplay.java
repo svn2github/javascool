@@ -15,7 +15,7 @@ import javax.swing.event.HyperlinkListener;
 
 /** Defines a panel in which a HTML text is shown.
  *
- * @see <a href="HtmlDisplay.java">source code</a>
+ * @see <a href="HtmlDisplay.java.html">source code</a>
  */
 public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDisplay() { }
   private static final long serialVersionUID = 1L;

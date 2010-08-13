@@ -25,7 +25,7 @@ svn: clean
 	svn up ; svn ci -m '' ; svn status
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* .http.root lib/manifest.mf www/api www/javascool.jar 
+	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* .http.root www/.htcache lib/manifest.mf www/api www/javascool.jar 
 
 #####################################################################################################################################
 
@@ -142,6 +142,7 @@ www/api : $(SRC) makefile $(shell find src -name package.html)
 	 -windowtitle "Java's Cool v3" -d $@ $(SRC)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
 	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; done
+	@for f in `find $@ -name '*.java'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
 www/api/philien : $(SRC) makefile $(shell find src -name package.html) 
@@ -164,6 +165,22 @@ pub: api
 	@php -l www/index.php ; rm -f www/index.php~
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 2>&1 | grep -v '^rsync: failed to set'
 	@echo 'Si www/index.php a change la page http://javascool.gforge.inria.fr/v3 sera accessible dans environ une heure'
+
+# Check the web site links 
+
+wref: 
+	@lib/linkcheck -verbosity 1 --noparent -recurse http://javascool.gforge.inria.fr/v3
+
+# Cleans the web cache
+
+wraz: 
+	@wget http://javascool.gforge.inria.fr/v3?kezako=niquelekacheux
+
+# Check the site log
+
+wlog:
+	@firefox http://javascool.gforge.inria.fr/log
+	@firefox https://www.google.com/analytics
 
 #####################################################################################################################################
 
@@ -259,15 +276,15 @@ endif
 #: [2] Makefile usage.
 #:
 #::Usage:'
+#::Development commands:'
 #:: make v3           : run javascool'v3 from locally compiled clases'
 #:: make j3           : run javascool'v3 from the constructed jar'
 #:: make doc          : show the javadoc locally'
 #:: make svn          : synchronize with the svn repository (update + commit)'
-#::Other commands:'
 #:: make clean        : clean all intermediate files'
 #:: make usage        : show the makefile usage'
 #:: make what         : show the README information contains in this makefile'
-#::Internal commands:'
+#::System commands:'
 #:: make cmp          : build the java classes'
 #:: make jar          : build the java jar'
 #:: make api          : build the java doc'
@@ -276,11 +293,12 @@ endif
 #: [3] Development tools used.
 #:
 #: [3.1] Usual linux commands:  cp du echo cat fig2dev firefox grep make php rm rsync sed ssh svn touch unzip
+#: Installing these commands:
+#: > (apt-get|yum) install bash coreutils firefox grep make openssh perl php-cli rsync sed transfig subversion unzip 
 #:  while fig2dev (from transfig)is only used to generate .fig images, firefox
+#:  while perl    (from perl)    is only used for lib/linkcheck
 #:  while php     (from php-cli) is only used to check the php syntax
 #:  while firefox                can be replaced by any other open-source convenient browser
-#: Installing these commands run:
-#: > (apt-get|yum) install bash coreutils firefox grep make openssh php-cli rsync sed transfig subversion unzip 
 #:
 #: [3.2] Java development tools: java javac jarsigner javadoc keytool
 #: Installing these commands run; e.g., yum or apt-get:

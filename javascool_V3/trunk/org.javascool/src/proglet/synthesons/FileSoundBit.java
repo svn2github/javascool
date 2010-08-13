@@ -24,7 +24,7 @@ import javax.sound.midi.SoundbankResource;
 import java.util.HashMap;
 
 /** Defines a data-file sound-bit wrapper.
- * @see <a href="FileSoundBit.java">code source</a>
+ * @see <a href="FileSoundBit.java.html">code source</a>
 */
 public class FileSoundBit extends SoundBit {
   /** Constructs a sound defined from two buffer files.

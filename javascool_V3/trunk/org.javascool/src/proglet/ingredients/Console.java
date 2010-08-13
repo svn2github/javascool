@@ -25,8 +25,8 @@ import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
 
 /** Définit une proglet javascool qui permet de faire des entrées/sorties au clavier.
- * <p><applet code="org.javascool.ProgletApplet" archive="../../../javascool.jar" width="560" height="520"><param name="proglet" value="ingredients"/></applet></p>
- * @see <a href="Console.java">code source</a>
+ * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
+ * @see <a href="Console.java.html">code source</a>
  */
 public class Console implements org.javascool.Proglet { private Console() { }
   private static final long serialVersionUID = 1L;
