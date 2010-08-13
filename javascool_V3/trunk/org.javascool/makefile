@@ -166,7 +166,7 @@ pub: api
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
 	 2>&1 | grep -v '^rsync: failed to set'
 	@-rsync --rsh='ssh -C' www/index.php scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/.htindex.php
-	@ssh scm.gforge.inria.fr 'cat /home/groups/javascool/htdocs/v3/.htindex.php > /home/groups/javascool/htdocs/v3/index.php'
+	@ssh scm.gforge.inria.fr 'sh -c "cd /home/groups/javascool/htdocs/v3 ; cat .htindex.php > index.php ; rm .htindex.php"'
 
 # Cleans the web cache
 
