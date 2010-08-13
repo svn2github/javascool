@@ -160,11 +160,11 @@ jdocfolders:
 
 jdoc/api/doc.tar.gz:
 	@wget http://www.philien.fr/jdoc/java_api_doc.tar.gz -O $@
-	@cd jdoc/api/;tar xzvf ./doc.tar.gz
+	@cd jdoc/api/;tar xzvf ./doc.tar.gz;rm ./doc.tar.gz
 
 jdoc/base.tar.gz:
 	@wget http://www.philien.fr/jdoc/usefull.tar.gz -O $@
-	@cd jdoc/;tar xzvf ./base.tar.gz
+	@cd jdoc/;tar xzvf ./base.tar.gz;rm ./base.tar.gz
 
 #####################################################################################################################################
 
