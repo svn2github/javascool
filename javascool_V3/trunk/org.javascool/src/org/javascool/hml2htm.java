@@ -41,6 +41,7 @@
 "    <xsl:when test=\"../@class = 'ul' or ../@class = 'ol'\"><li><xsl:call-template name=\"div-2\"/></li></xsl:when>\n"+
 "    <xsl:when test=\"../@class = 'table'\"><tr><xsl:call-template name=\"div-2\"/></tr></xsl:when>\n"+
 "    <xsl:when test=\"../../@class = 'table'\"><td><xsl:call-template name=\"div-2\"/></td></xsl:when>\n"+
+"    <xsl:when test=\"@class = 'tag'\"><xsl:call-template name=\"tag\"/></xsl:when>\n"+
 "    <xsl:otherwise><div><xsl:call-template name=\"div-2\"/></div></xsl:otherwise>\n"+
 "  </xsl:choose>\n"+
 "</xsl:template>\n"+
@@ -55,6 +56,29 @@
 "  </xsl:choose></xsl:if>\n"+
 "  <xsl:apply-templates/>\n"+
 "</xsl:template>\n"+
+"\n"+
+"<!-- 1.1 : Pml construct description production -->\n"+
+"<xsl:template name=\"tag\"><table bgcolor=\"#eeeeee\" width=\"90%\">\n"+
+"  <tr><td colspan=\"4\"><b>{</b><xsl:text> </xsl:text><xsl:value-of select=\"@title\"/></td></tr>\n"+
+"  <tr><td align=\"center\"><b>name</b></td><td align=\"center\"><b>type</b></td><td align=\"center\"><b>default value</b></td><td></td></tr>\n"+
+"  <xsl:for-each select=\"param\"><tr>\n"+
+"     <td><font color=\"#505000\"><xsl:value-of select=\"@name\"/></font></td>\n"+
+"     <td><font color=\"#990000\"><xsl:value-of select=\"@type\"/></font></td>\n"+
+"     <td><xsl:choose>\n"+
+"        <xsl:when test=\"count(@value)=1\"><font color=\"#008000\">\"<xsl:value-of select=\"@value\"/>\"</font></xsl:when>\n"+
+"        <xsl:otherwise><i>mandatory</i></xsl:otherwise>\n"+
+"     </xsl:choose></td>\n"+
+"     <td><xsl:apply-templates/></td>\n"+
+"  </tr></xsl:for-each>\n"+
+"  <tr><td colspan=\"4\"><xsl:choose>\n"+
+"    <xsl:when test=\"count(elements/@type) > 0\">Structure: <font color=\"#202020\"><xsl:value-of select=\"elements/@type\"/>\"</font></xsl:when>\n"+
+"    <xsl:otherwise><i>no element</i></xsl:otherwise>\n"+
+"  </xsl:choose></td></tr>\n"+
+"  <tr><td colspan=\"4\"><hr/></td></tr>\n"+
+"  <tr><td colspan=\"4\">\n"+
+"    <xsl:for-each select=\"*[name(.) != 'param' and name(.) != 'elements']\"><xsl:apply-templates/></xsl:for-each>\n"+
+"  </td></tr>\n"+
+"</table></xsl:template>\n"+
 "\n"+
 "<!-- 2 : Span production -->\n"+
 "<xsl:template match=\"s\">\n"+
@@ -76,7 +100,8 @@
 "    <xsl:when test='count(@link) = 1'><a href=\"{@link}\"> \n"+
 "      <xsl:if test=\"count(@class)=1\"><xsl:attribute name=\"class\"><xsl:value-of select=\"@class\"/></xsl:attribute></xsl:if>\n"+
 "      <xsl:if test='count(@icon) = 1'><img src=\"{@icon}\" alt=\"{@text}\"/></xsl:if>\n"+
-"      <xsl:value-of select='@text'/>\n"+
+"      <xsl:if test=\"count(@text)=1\"><xsl:value-of select='@text'/></xsl:if>\n"+
+"      <xsl:if test=\"count(@text)=0\">[.]</xsl:if>\n"+
 "    </a></xsl:when>\n"+
 "    <xsl:when test='count(@icon) = 1'><img src=\"{@icon}\" alt=\"{@text}\">\n"+
 "      <xsl:if test=\"count(@class)=1\"><xsl:attribute name=\"class\"><xsl:value-of select=\"@class\"/></xsl:attribute></xsl:if>\n"+

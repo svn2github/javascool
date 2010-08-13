@@ -47,7 +47,6 @@
 "    <xsl:if test=\"count(@class)=1\"><xsl:attribute name=\"class\"><xsl:value-of select=\"class\"/></xsl:attribute></xsl:if>\n"+
 "    <xsl:if test=\"count(@href)=1\"><xsl:attribute name=\"link\"><xsl:value-of select=\"@href\"/></xsl:attribute></xsl:if>\n"+
 "    <xsl:if test=\"count(img/@src)=1\"><xsl:attribute name=\"icon\"><xsl:value-of select=\"img/@src\"/></xsl:attribute></xsl:if>\n"+
-"    <xsl:attribute name=\"text\"><xsl:value-of select=\".\"/></xsl:attribute>\n"+
 "  </l>\n"+
 "</xsl:template>\n"+
 "\n"+
