@@ -26,6 +26,7 @@ import javax.swing.filechooser.FileFilter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.lang.Object;
 
 
 // Used to register elements
@@ -43,6 +44,7 @@ public class Main extends JApplet { /**/public Main() { }
   JToolBar tools = new JToolBar();
   JTabbedPane tabbedPane = new JTabbedPane();
   JComboBox actList = new JComboBox();
+  private Boolean notfirstrun=false;
   /**/public void init() {
     JPanel toppane = new JPanel();
     toppane.setLayout(new BorderLayout());
@@ -121,6 +123,9 @@ public class Main extends JApplet { /**/public Main() { }
     public String getTitle() { return ""; }
     /** Initializes the activity, adding buttons and pannels. */
     public void init(Main main) { }
+    public SourceEditor editor;
+    public void setText(String text){editor.setText(text);}
+    public String getText(){return editor.getText();}
   }
   /** Adds an activity tab to the tabbed panel. 
    * @param activity Adds a predefined activity.
@@ -132,6 +137,7 @@ public class Main extends JApplet { /**/public Main() { }
   }
   // Install the activity
   private void setActivity(String name) {
+
     activity = activities.get(name);
     if (activity == null) activity = activities.get("Démonstration de l'éditeur Pml");
     tools.removeAll();
@@ -147,6 +153,8 @@ public class Main extends JApplet { /**/public Main() { }
   private ActionListener alistener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == actList) {
+	  if(notfirstrun){pleaseSaveFile();}
+	  else{notfirstrun=true;}
 	  setActivity((String) ((JComboBox) e.getSource()).getSelectedItem());
 	} else {
 	  actions.get(((JButton) e.getSource()).getText()).run();
@@ -197,7 +205,7 @@ public class Main extends JApplet { /**/public Main() { }
     fc.setApproveButtonText("Ouvrir");
     if (fc.showOpenDialog(Main.this) == 0) {
       file = fc.getSelectedFile();
-      se.setText(Utils.loadString(file.getPath()));
+      activity.setText(Utils.loadString(file.getPath()));
     }
     }
     else if(result==1){
@@ -206,7 +214,7 @@ public class Main extends JApplet { /**/public Main() { }
     fc.setApproveButtonText("Ouvrir");
     if (fc.showOpenDialog(Main.this) == 0) {
       file = fc.getSelectedFile();
-      se.setText(Utils.loadString(file.getPath()));
+      activity.setText(Utils.loadString(file.getPath()));
     }
     }
   }};
@@ -267,15 +275,16 @@ public class Main extends JApplet { /**/public Main() { }
   // [3] Basic activities.
   private Activity pmlActivity = new Activity() {
       public String getTitle() { return "Démonstration de l'éditeur Pml"; }
-      public SourceEditor pmledit=new SourceEditor();
       public void init(Main main) {
-	main.addTab("Pml Editor", "", pmledit);
+      editor = new SourceEditor();
+	  main.addTab("Pml Editor", "", editor);
       }
     };
   private Activity jvsActivity = new Activity() {
       public String getTitle() { return "Démonstration de l'éditeur Jvs"; }
       public void init(Main main) {
-	main.addTab("Jvs Editor", "", se);
+      editor = new JvsSourceEditor();
+	main.addTab("Jvs Editor", "", editor);
 	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
       }
     };
