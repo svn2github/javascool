@@ -1,176 +1,264 @@
 
 <!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<div>
-   <h2>Memorandum des constructions et instructions.</h2>
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    
-   <div>
+      <link rel="stylesheet" type="text/css" href="img/style.css">
+      <title>JavaScool . . and Java is so cool.</title>
+      <link rel="shortcut icon" href="img/icon.jpg">
+   </head>
+   <body>
+      <table width="100%" style="border:0;margin:0;padding:0;background-image:url('img/bg-banner.jpg');">
+         <tr style="border:0;margin:0;padding:0">
+            <td width="33%" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr"><img height="36" width="150" src="img/logo-javascool.jpg"></a></td>
+            <td width="33%" align="center" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm#4"><img height="36" src="img/logo-lycees.jpg"></a></td>
+            <td width="33%" align="right" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://www.inria.fr"><img height="36" src="img/logo-inria.jpg"></a></td>
+         </tr>
+      </table>
+      <table width="100%">
+         <tr>
+            <td><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"></a></td>
+            <td>
+               <h1>Memorandum des constructions et instructions</h1>
+            </td>
+         </tr>
+      </table>
+      
       <h2>Adjectifs : type de donn&eacute;es utilis&eacute;es.</h2>
-      <ul class="ul">
+      <div class="text">
+         
+         <ul>
+               
             
-         <li><font color="#990000"><b>String</b></font> Cha&icirc;ne de caract&egrave;res (ex: <b><font color="#990000"><b>String</b></font> nom = <font color="#008000">"Bod"</font>;</b>).
-         </li>
-             
-         <li><font color="#990000"><b>int</b></font> Entier positif ou n&eacute;gatif, de environ -2 &agrave; +2 milliards.
-         </li>
-             
-         <li><font color="#990000"><b>double</b></font> Nombre d&eacute;cimal, comme sur une calculette (ex:<b><font color="#990000"><b>double</b></font> pi = 3.1416;</b>).
-            <table witdh="90%" border="1" align="center">
-               <tr>
-                  <td>
-                     <div class="code">
+            <li><font color="#990000"><b>String</b></font> Cha&icirc;ne de caract&egrave;res (ex: 
+               <b><font color="#990000"><b>String</b></font> nom = <font color="#008000">"Bod"</font>;</b>).
+            </li>
+                
+            
+            <li><font color="#990000"><b>int</b></font> Entier positif ou n&eacute;gatif, de environ -2 &agrave; +2 milliards.
+            </li>
+                
+            
+            <li><font color="#990000"><b>double</b></font> Nombre d&eacute;cimal, comme sur une calculette (ex:
+               <b><font color="#990000"><b>double</b></font> pi = 3.1416;</b>).
+               <table border="1" align="center" width="80%">
+                  <tr>
+                     <th align="left">
                             
                         <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Les nombres d&eacute;cimaux se notent avec un "." point et non une virgule !
                         </p>
                             
-                        <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Les nombres en notation scientifique (par exemple 6.023 1023) se note avec un "e" (pour exposant) : ici <tt>6.023e23</tt></p>
+                        <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Les nombres en notation scientifique (par exemple 6.023 10
+                           <sup>23</sup>) se note avec un "e" (pour exposant) : ici <tt>6.023e23</tt></p>
                             
-                     </div>
-                  </td>
-               </tr>
-            </table>
-         </li>
-             
-         <li><font color="#990000"><b>boolean</b></font> Valeur vraie ou fausse, utilis&eacute;e dans les tests.
-         </li>
-           
-      </ul>
-   </div>
-     
-   <div>
-      <h2>Verbes: fonctions utilis&eacute;es.</h2>
-          
-      <div>
-         <h3>Macros g&eacute;n&eacute;rales.</h3>
-         <ul class="ul">
-                  
-            <li><b><font color="#990000"><b>void</b></font> <tt>echo</tt>(<font color="#990000"><b>String</b></font> string)</b> Affiche une cha&icirc;ne de caract&egrave;res sur la console<a href="#1" class="note">[.]</a>.
-            </li>
-                  
-            <li><b><font color="#990000"><b>boolean</b></font> <tt>equal</tt>(<font color="#990000"><b>String</b></font> string1, <font color="#990000"><b>String</b></font> string2)</b> Compare deux cha&icirc;nes de carat&egrave;res et renvoie <tt>true</tt> si elles sont &eacute;gales.
-            </li>
-                  
-            <li><b><font color="#990000"><b>double</b></font> <tt>pow</tt>(<font color="#990000"><b>double</b></font> x, <font color="#990000"><b>double</b></font> y)</b> Calcul <b>x</b> &agrave; la puissance <b>y</b> (soit <b>x<sup>y</sup></b>). 
-                     Note : <font color="#990000"><b>Math.pow</b></font> est synonyme de <font color="#990000"><b>pow</b></font>.
-            </li>
-                  
-            <li><b><font color="#990000"><b>double</b></font> <tt>random</tt>()</b> Renvoie un nombre al&eacute;atoire uniform&eacute;ment distribu&eacute; entre 0 et 1.
-                     Note : <font color="#990000"><b>Math.random</b></font> est synonyme de <font color="#990000"><b>random</b></font>.
-            </li>
-                  
-            <li><b><font color="#990000"><b>int</b></font> <tt>random</tt>(<font color="#990000"><b>int</b></font> min, <font color="#990000"><b>int</b></font> max)</b> Renvoie un nombre al&eacute;atoire entier uniform&eacute;ment distribu&eacute; entre le min et le max (cette valeur incluse).
-            </li>
-                  
-            <li><b><font color="#990000"><b>void</b></font> <tt>sleep</tt>(<font color="#990000"><b>int</b></font> duree)</b> Arr&ecirc;te l'ex&eacute;cution du programme pendant une dur&eacute;e fix&eacute;e donn&eacute;e en milli-secondes.
+                     </th>
+                  </tr>
+               </table>
             </li>
                 
+            
+            <li><font color="#990000"><b>boolean</b></font> Valeur vraie ou fausse, utilis&eacute;e dans les tests.
+            </li>
+              
          </ul>
       </div>
-          
-      <div>
+        
+      <h2>Verbes: fonctions utilis&eacute;es.</h2>
+      <div class="text">
+             
+         <h3>Macros g&eacute;n&eacute;rales.</h3>
+         <div class="text">
+            
+            <ul>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>void</b></font> <tt>echo</tt>(<font color="#990000"><b>String</b></font> string)</b> Affiche une cha&icirc;ne de caract&egrave;res sur la console<sup><a href="#1">1</a></sup>.
+               </li>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>boolean</b></font> <tt>equal</tt>(<font color="#990000"><b>String</b></font> string1, <font color="#990000"><b>String</b></font> string2)</b> Compare deux cha&icirc;nes de carat&egrave;res et renvoie <tt>true</tt> si elles sont &eacute;gales.
+               </li>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>double</b></font> <tt>pow</tt>(<font color="#990000"><b>double</b></font> x, <font color="#990000"><b>double</b></font> y)</b> Calcul 
+                  <b>x</b> &agrave; la puissance 
+                  <b>y</b> (soit 
+                  <b>x
+                     <sup>y</sup></b>). 
+                        Note : <font color="#990000"><b>Math.pow</b></font> est synonyme de <font color="#990000"><b>pow</b></font>.
+               </li>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>double</b></font> <tt>random</tt>()</b> Renvoie un nombre al&eacute;atoire uniform&eacute;ment distribu&eacute; entre 0 et 1.
+                        Note : <font color="#990000"><b>Math.random</b></font> est synonyme de <font color="#990000"><b>random</b></font>.
+               </li>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>int</b></font> <tt>random</tt>(<font color="#990000"><b>int</b></font> min, <font color="#990000"><b>int</b></font> max)</b> Renvoie un nombre al&eacute;atoire entier uniform&eacute;ment distribu&eacute; entre le min et le max (cette valeur incluse).
+               </li>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>void</b></font> <tt>sleep</tt>(<font color="#990000"><b>int</b></font> duree)</b> Arr&ecirc;te l'ex&eacute;cution du programme pendant une dur&eacute;e fix&eacute;e donn&eacute;e en milli-secondes.
+               </li>
+                   
+            </ul>
+         </div>
+             
          <h3>Fonctions de la proglet Konsol.</h3>
-         <ul class="ul">
-                  
-            <li><b><font color="#990000"><b>void</b></font> <tt>clear</tt>()</b> Efface tout le contenu la fen&ecirc;tre de sortie.
-            </li>
-                  
-            <li><b><font color="#990000"><b>void</b></font> <tt>println</tt>(<font color="#990000"><b>String</b></font> string)</b> Ecrit une cha&icirc;nes de carat&egrave;res dans la fen&ecirc;tre de sortie.
-            </li>
-                  
-            <li><b><font color="#990000"><b>String</b></font> <tt>readString</tt>()</b> Lit une cha&icirc;ne de carat&egrave;res dans la fen&ecirc;tre d'entr&eacute;e (ex: <b><font color="#990000"><b>String</b></font> nom = <font color="#990000"><b>readString</b></font>();</b>).
-            </li>
-                  
-            <li><b><font color="#990000"><b>int</b></font> <tt>readInteger</tt>()</b> Lit un nombre entier dans la fen&ecirc;tre d'entr&eacute;e (ex: <b><font color="#990000"><b>int</b></font> x = <font color="#990000"><b>readInteger</b></font>();</b>). 
-            </li>
-                  
-            <li><b><font color="#990000"><b>double</b></font> <tt>readDouble</tt>()</b> Lit un nombre d&eacute;cimal dans la fen&ecirc;tre d'entr&eacute;e (ex: <b><font color="#990000"><b>double</b></font> x = <font color="#990000"><b>readDouble</b></font>();</b>).
-            </li>
-                  
-            <li><b><font color="#990000"><b>boolean</b></font> <tt>readBoolean</tt>()</b> Lit une valeur vraie (<tt>true, vrai, oui, 1</tt>) ou fausse (<tt>false, faux, non, 0</tt>) dans la fen&ecirc;tre d'entr&eacute;e.
-            </li>
-                
-         </ul> (note: <font color="#990000"><b>readInt</b></font> est synonyme de <font color="#990000"><b>readInteger</b></font>, <font color="#990000"><b>readFloat</b></font> est synonyme de <font color="#990000"><b>readDouble</b></font>).
-      </div>
-          
-      <div>
-         <h3>Fonctions des autres proglets.</h3> Voir la description dans la documentation de chaque <a href="about-all.htm#more">[.]</a>.
+         <div class="text">
+            
+            <ul>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>void</b></font> <tt>clear</tt>()</b> Efface tout le contenu la fen&ecirc;tre de sortie.
+               </li>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>void</b></font> <tt>println</tt>(<font color="#990000"><b>String</b></font> string)</b> Ecrit une cha&icirc;nes de carat&egrave;res dans la fen&ecirc;tre de sortie.
+               </li>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>String</b></font> <tt>readString</tt>()</b> Lit une cha&icirc;ne de carat&egrave;res dans la fen&ecirc;tre d'entr&eacute;e (ex: 
+                  <b><font color="#990000"><b>String</b></font> nom = <font color="#990000"><b>readString</b></font>();</b>).
+               </li>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>int</b></font> <tt>readInteger</tt>()</b> Lit un nombre entier dans la fen&ecirc;tre d'entr&eacute;e (ex: 
+                  <b><font color="#990000"><b>int</b></font> x = <font color="#990000"><b>readInteger</b></font>();</b>). 
+               </li>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>double</b></font> <tt>readDouble</tt>()</b> Lit un nombre d&eacute;cimal dans la fen&ecirc;tre d'entr&eacute;e (ex: 
+                  <b><font color="#990000"><b>double</b></font> x = <font color="#990000"><b>readDouble</b></font>();</b>).
+               </li>
+                     
+               
+               <li>
+                  <b><font color="#990000"><b>boolean</b></font> <tt>readBoolean</tt>()</b> Lit une valeur vraie (<tt>true, vrai, oui, 1</tt>) ou fausse (<tt>false, faux, non, 0</tt>) dans la fen&ecirc;tre d'entr&eacute;e.
+               </li>
+                   
+            </ul> (note: <font color="#990000"><b>readInt</b></font> est synonyme de <font color="#990000"><b>readInteger</b></font>, <font color="#990000"><b>readFloat</b></font> est synonyme de <font color="#990000"><b>readDouble</b></font>).
+         </div>
+             
+         <h3>Fonctions des autres proglets.</h3>
+         <div class="text"> Voir la description dans la documentation de chaque 
+            <a href="about-all.htm#more">proglet</a>.
+         </div>
+           
       </div>
         
-   </div>
-     
-   <div>
       <h2>Grammaire: constructions utilis&eacute;es ici.</h2>
-          
-      <div>
-         <h3>Bloc de s&eacute;quences d'instructions.</h3> Un bloc se note entre <b>{ }</b> et englobe un ensemble de d&eacute;clarations et d'instructions s&eacute;par&eacute;es par un <b>;</b>.
-      </div>
-          
-      <div>
-         <h3>Op&eacute;rateurs.</h3>
-         <table class="table">
-                  
-            <tr>
-               <td><tt>=</tt></td>
-               <td>Affectation d'une valeur &agrave; une variable (ex: <b>x = 0;</b>)
-               </td>
-            </tr>
-                  
-            <tr>
-               <td><tt>||</tt> <tt>&amp;&amp;</tt> <tt>!</tt></td>
-               <td>Op&eacute;rateur logique OU, ET et NON</td>
-            </tr>
-                  
-            <tr>
-               <td><tt>==</tt> <tt>!=</tt> <tt>&lt;=</tt> <tt>&lt;</tt> <tt>&gt;=</tt> <tt>&gt;</tt> 
-               </td>
-               <td>Op&eacute;rateur &eacute;galit&eacute;, diff&eacute;rence et comparaison num&eacute;rique</td>
-            </tr>
-                  
-            <tr>
-               <td><tt>+</tt> <tt>-</tt> <tt>*</tt> <tt>/</tt> <tt>%</tt> 
-               </td>
-               <td>Addition, soustraction, multiplication, division, reste (appel&eacute; aussi modulo).</td>
-            </tr>
-                
-         </table>
-      </div>
-          
-      <div>
-         <h3>Instruction conditionnelle.</h3> Elle se note 
-         <div><b><font color="#990000"><b>if</b></font> (expressionBooleenne) { BlocD'InstructionsSiVrai } <font color="#990000"><b>else</b></font> { BlocD'InstructionsSiFaux }</b></div>
-             le <font color="#990000"><b>else</b></font> et le bloc qui suit peut &ecirc;tre omis (voir l'activit&eacute; sur les <a href="sujet-about-if.htm">[.]</a> pour plus de d&eacute;tail).
-      </div>
-          
-      <div>
-         <h3>Boucle.</h3> Elle se note 
-         <div><b><font color="#990000"><b>while</b></font> (expressionBooleenne) { BlocD'Instructions }</b></div>
-             (voir l'activit&eacute; sur les <a href="sujet-about-while.htm">[.]</a> pour plus de d&eacute;tail).
-      </div>
-          
-      <div>
-         <h3>D&eacute;claration de fonction.</h3> Elle se note 
-         <div><font color="#990000"><b>TypeDuResultat</b></font> <b>NomDeLaFonction</b> 
-                (<font color="#990000"><b>TypeParametre1</b></font> <b>NomParametre1</b>, ..., <font color="#990000"><b>TypeParametreN</b></font> <b>NomParametreN</b>) { BlocD'Instructions }
+      <div class="text">
+             
+         <h3>Bloc de s&eacute;quences d'instructions.</h3>
+         <div class="text"> Un bloc se note entre 
+            <b>{ }</b> et englobe un ensemble de d&eacute;clarations et d'instructions s&eacute;par&eacute;es par un 
+            <b>;</b>.
          </div>
-             (voir l'activit&eacute; sur les <a href="sujet-about-functions.htm">[.]</a> pour plus de d&eacute;tail).
-      </div>
-          
-      <div>
-         <h3>Programme principal.</h3> Il se note <b><font color="#990000"><b>void main</b></font>{ }</b> avec les instructions d&eacute;finies entre <b>{ }</b>.
-      </div>
-          tandis que le langage Java a beaucoup d'autres <a href="http://www.eteks.com/coursjava/instructions.html">[.]</a>.
-   </div>
-   
-   
-   <h2>Remarques.</h2>
-   <div id="notes">
-      <ol>
-         <li>
-            <div>La diff&eacute;rence entre <tt>echo</tt> et <tt>println</tt> est <tt>echo</tt> affiche la cha&icirc;ne de caract&egrave;res dans la console, donc marche avec toutes les proglets, 
-                 tandis que <tt>println</tt> est d&eacute;di&eacute;e &agrave; la fen&ecirc;tre de sortie de la .
+             
+         <h3>Op&eacute;rateurs.</h3>
+         <div class="text">
+            
+            <table border="1">
+                     
+               
+               <tr>
+                  
+                  <td><tt>=</tt></td>
+                  
+                  <td>Affectation d'une valeur &agrave; une variable (ex: 
+                     <b>x = 0;</b>)
+                  </td>
+               </tr>
+                     
+               
+               <tr>
+                  
+                  <td><tt>||</tt> <tt>&amp;&amp;</tt> <tt>!</tt></td>
+                  
+                  <td>Op&eacute;rateur logique OU, ET et NON</td>
+               </tr>
+                     
+               
+               <tr>
+                  
+                  <td><tt>==</tt> <tt>!=</tt> <tt>&lt;=</tt> <tt>&lt;</tt> <tt>&gt;=</tt> <tt>&gt;</tt> 
+                  </td>
+                  
+                  <td>Op&eacute;rateur &eacute;galit&eacute;, diff&eacute;rence et comparaison num&eacute;rique</td>
+               </tr>
+                     
+               
+               <tr>
+                  
+                  <td><tt>+</tt> <tt>-</tt> <tt>*</tt> <tt>/</tt> <tt>%</tt> 
+                  </td>
+                  
+                  <td>Addition, soustraction, multiplication, division, reste (appel&eacute; aussi modulo).</td>
+               </tr>
+                   
+            </table>
+         </div>
+             
+         <h3>Instruction conditionnelle.</h3>
+         <div class="text"> Elle se note 
+            <div class="text">
+               <b><font color="#990000"><b>if</b></font> (expressionBooleenne) { BlocD'InstructionsSiVrai } <font color="#990000"><b>else</b></font> { BlocD'InstructionsSiFaux }</b></div>
+                le <font color="#990000"><b>else</b></font> et le bloc qui suit peut &ecirc;tre omis (voir l'activit&eacute; sur les 
+            <a href="sujet-about-if.htm">instruction conditionnelle</a> pour plus de d&eacute;tail).
+         </div>
+             
+         <h3>Boucle.</h3>
+         <div class="text"> Elle se note 
+            <div class="text">
+               <b><font color="#990000"><b>while</b></font> (expressionBooleenne) { BlocD'Instructions }</b></div>
+                (voir l'activit&eacute; sur les 
+            <a href="sujet-about-while.htm">boucles</a> pour plus de d&eacute;tail).
+         </div>
+             
+         <h3>D&eacute;claration de fonction.</h3>
+         <div class="text"> Elle se note 
+            <div class="text"><font color="#990000"><b>TypeDuResultat</b></font> 
+               <b>NomDeLaFonction</b> 
+                   (<font color="#990000"><b>TypeParametre1</b></font> 
+               <b>NomParametre1</b>, ..., <font color="#990000"><b>TypeParametreN</b></font> 
+               <b>NomParametreN</b>) { BlocD'Instructions }
             </div>
-         </li>
-      </ol>
-   </div>
-   
-</div>
+                (voir l'activit&eacute; sur les 
+            <a href="sujet-about-functions.htm">fonctions</a> pour plus de d&eacute;tail).
+         </div>
+             
+         <h3>Programme principal.</h3>
+         <div class="text"> Il se note 
+            <b><font color="#990000"><b>void main</b></font>{ }</b> avec les instructions d&eacute;finies entre 
+            <b>{ }</b>.
+         </div>
+             tandis que le langage Java a beaucoup d'autres 
+         <a href="http://www.eteks.com/coursjava/instructions.html">instructions et op&eacute;rateurs</a>.
+      </div>
+      
+      
+      <div class="soustitre">
+         <p>Remarques :</p>
+      </div>
+      <div id="footnotes">
+         <p id="1"><sup>1</sup><b><i></i></b>La diff&eacute;rence entre <tt>echo</tt> et <tt>println</tt> est <tt>echo</tt> affiche la cha&icirc;ne de caract&egrave;res dans la console, donc marche avec toutes les proglets, 
+              tandis que <tt>println</tt> est d&eacute;di&eacute;e &agrave; la fen&ecirc;tre de sortie de la <i>&laquo;proglet&raquo; </i><tt><a href="about-proglet-Konseol.htm">Konseol</a></tt>.
+         </p>
+      </div>
+      
+   </body>
+</html>

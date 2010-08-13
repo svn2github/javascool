@@ -106,7 +106,6 @@ public class Main extends JApplet { /**/public Main() { }
   }
   /** Removes a tab from the tabbed panel.
    * @param label Tab label.
-   * @param pane Tab panel or Html text.
    */
   public void delTab(String label) {
     if (tabs.containsKey(label)) {
@@ -133,7 +132,7 @@ public class Main extends JApplet { /**/public Main() { }
   }
   // Install the activity
   private void setActivity(String name) {
-    Activity activity = activities.get(name);
+    activity = activities.get(name);
     if (activity == null) activity = activities.get("Démonstration de l'éditeur Pml");
     tools.removeAll();
     tabbedPane.removeAll();
@@ -142,6 +141,7 @@ public class Main extends JApplet { /**/public Main() { }
     tools.revalidate();
     tabbedPane.revalidate();
   }
+  private Activity activity = null;
   private HashMap<String,Activity> activities = new HashMap<String,Activity>();
   // Generic action listener for all actions
   private ActionListener alistener = new ActionListener() {

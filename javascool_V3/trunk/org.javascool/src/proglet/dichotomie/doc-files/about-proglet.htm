@@ -1,119 +1,151 @@
 
 <!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<div>
-   <h2>La &laquo;proglet&raquo; Dicho.</h2>
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    
-   <table class="table">
-      <tr>
-         <td>
-            Cette proglet<a href="#1" class="note">[.]</a> permet d'apprendre la notion algorithmique de &laquo;&nbsp;recherche dichotomie&nbsp;&raquo;. 
-            La proglet affiche un livre avec tous les drapeaux du monde 
-            (r&eacute;pertori&eacute;s gr&acirc;ce &agrave; <a href="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde">[.]</a>)
-                et permet d'ouvrir le livre &agrave; une page donn&eacute;e pour comparer le nom de pays avec le nom du pays recherch&eacute;. 
-                
-            <div>Plus pr&eacute;cis&eacute;ment la fonction <font color="#990000"><b>dichoCompare</b></font> ouvre le livre &agrave; une page et compare un nom au nom affich&eacute; sur cette page: 
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>int</b></font> r&eacute;sultat = <font color="#990000"><b>dichoCompare</b></font>(nom, page);
-                           </div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
-               <ul class="ul">
-                      
-                  <li>o&ugrave; <b>nom</b> est un <font color="#990000"><b>String</b></font> dont la valeur est le nom du pays recherch&eacute;;
-                  </li>
-                      
-                  <li>o&ugrave; <b>page</b> est un <font color="#990000"><b>int</b></font>, le num&eacute;ro de la page de 0 &agrave; 192 (il y a 193 pays);
-                  </li>
-                      
-                  <li>le <b>r&eacute;sultat</b> &eacute;tant:
-                     <ul class="ul">
-                                
-                        <li><tt>-1</tt> si le nom se situe avant celui de la page,
-                        </li>
-                                
-                        <li><tt>+1</tt> si le nom se situe apr&egrave;s celui de la page,
-                        </li>
-                                
-                        <li><tt>0</tt> si il correspond &agrave; celui de la page.
-                        </li>
-                              
-                     </ul>
-                  </li>
-                      
-               </ul> tandis que la fonction: 
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>int</b></font> length = <font color="#990000"><b>dichoLength</b></font>();
-                           </div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table> renvoie le nombre de pages.
-            </div>
-                
-            <div>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png" alt="" class="icon"> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
-                   secondes &agrave; une dizaine de pages au hasard, selon le programme suivant:
+      <link rel="stylesheet" type="text/css" href="img/style.css">
+      <title>JavaScool . . and Java is so cool.</title>
+      <link rel="shortcut icon" href="img/icon.jpg">
+   </head>
+   <body>
+      <table width="100%" style="border:0;margin:0;padding:0;background-image:url('img/bg-banner.jpg');">
+         <tr style="border:0;margin:0;padding:0">
+            <td width="33%" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr"><img height="36" width="150" src="img/logo-javascool.jpg"></a></td>
+            <td width="33%" align="center" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm#4"><img height="36" src="img/logo-lycees.jpg"></a></td>
+            <td width="33%" align="right" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://www.inria.fr"><img height="36" src="img/logo-inria.jpg"></a></td>
+         </tr>
+      </table>
+      <table width="100%">
+         <tr>
+            <td><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"></a></td>
+            <td>
+               <h1>La &laquo;proglet&raquo; Dicho</h1>
+            </td>
+         </tr>
+      </table>
+      
+      <table>
+         <tr>
+            <td valign="top" width="560">
+               Cette proglet<sup><a href="#1">1</a></sup> permet d'apprendre la notion algorithmique de &laquo;&nbsp;recherche dichotomie&nbsp;&raquo;. 
+               La proglet affiche un livre avec tous les drapeaux du monde 
+               (r&eacute;pertori&eacute;s gr&acirc;ce &agrave; 
+               <a href="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde">wikipedia</a>)
+                   et permet d'ouvrir le livre &agrave; une page donn&eacute;e pour comparer le nom de pays avec le nom du pays recherch&eacute;. 
                    
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
+               <div class="text">Plus pr&eacute;cis&eacute;ment la fonction <font color="#990000"><b>dichoCompare</b></font> ouvre le livre &agrave; une page et compare un nom au nom affich&eacute; sur cette page: 
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
                                  
-                           <div><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = 0; i &lt; 10; i++) {
+                           <div class="text"><font color="#990000"><b>int</b></font> r&eacute;sultat = <font color="#990000"><b>dichoCompare</b></font>(nom, page);
+                           </div>
+                               
+                        </th>
+                     </tr>
+                  </table>
+                  
+                  <ul>
+                         
+                     
+                     <li>o&ugrave; 
+                        <b>nom</b> est un <font color="#990000"><b>String</b></font> dont la valeur est le nom du pays recherch&eacute;;
+                     </li>
+                         
+                     
+                     <li>o&ugrave; 
+                        <b>page</b> est un <font color="#990000"><b>int</b></font>, le num&eacute;ro de la page de 0 &agrave; 192 (il y a 193 pays);
+                     </li>
+                         
+                     
+                     <li>le 
+                        <b>r&eacute;sultat</b> &eacute;tant:
+                        
+                        <ul>
+                                   
+                           
+                           <li><tt>-1</tt> si le nom se situe avant celui de la page,
+                           </li>
+                                   
+                           
+                           <li><tt>+1</tt> si le nom se situe apr&egrave;s celui de la page,
+                           </li>
+                                   
+                           
+                           <li><tt>0</tt> si il correspond &agrave; celui de la page.
+                           </li>
+                                 
+                        </ul>
+                     </li>
+                         
+                  </ul> tandis que la fonction: 
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                                 
+                           <div class="text"><font color="#990000"><b>int</b></font> length = <font color="#990000"><b>dichoLength</b></font>();
+                           </div>
+                               
+                        </th>
+                     </tr>
+                  </table> renvoie le nombre de pages.
+               </div>
+                   
+               <div class="text">Un exemple d'utilisation: en appuyant sur la touche [
+                  <img src="img/demo.png"> 
+                  <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
+                      secondes &agrave; une dizaine de pages au hasard, selon le programme suivant:
+                      
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                                 
+                           <div class="text"><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = 0; i &lt; 10; i++) {
                            </div>
                                  
-                           <div><font color="#990000"><b>int</b></font> page = <font color="#990000"><b>random</b></font>(0, <font color="#990000"><b>dichoLength</b></font>());
+                           <div class="text"><font color="#990000"><b>int</b></font> page = <font color="#990000"><b>random</b></font>(0, <font color="#990000"><b>dichoLength</b></font>());
                            </div>
                                  
-                           <div>
+                           <div class="text">
                               &nbsp;&nbsp;&nbsp;
                               <font color="#990000"><b>dichoCompare</b></font>(<font color="#008000">"rien"</font>, page);
                            </div>
                                  
-                           <div>
+                           <div class="text">
                               &nbsp;&nbsp;&nbsp;
                               <font color="#990000"><b>sleep</b></font>(500);
                            </div>
                                  
-                           <div>}</div>
+                           <div class="text">}</div>
                                
-                        </div>
-                     </td>
-                  </tr>
-               </table>
-            </div>
-                
-            <div>En appuyant sur les touches <tt>&lt;-</tt> et <tt>-&gt;</tt> nous pouvons tourner manuellement les pages &agrave; gauche ou &agrave; droite.
-            </div>
-              
-         </td>
-         <td><applet code="org.javascool.ProgletApplet" archive="http://javascool.gforge.inria.fr/v3/javascool.jar" width="560" height="720">
-               <param name="proglet" value=""></applet></td>
-      </tr>
-   </table>
-   
-     
-   <h2>Remarques.</h2>
-   <div id="notes">
-      <ol>
-         <li>
-            <div>Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">[.]</a>, programm&eacute;e en Java et <a href=" ../api/proglet/Dicho.html">[.]</a> 
-                   pour sa libre redistribution, l'acc&egrave;s <a href=" ../api/proglet/Dicho.java">[.]</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
-            </div>
-         </li>
-      </ol>
-   </div>
-   
-</div>
+                        </th>
+                     </tr>
+                  </table>
+               </div>
+                   
+               <div class="text">En appuyant sur les touches <tt>&lt;-</tt> et <tt>-&gt;</tt> nous pouvons tourner manuellement les pages &agrave; gauche ou &agrave; droite.
+               </div>
+                 
+            </td>
+            <td valign="top"><applet code="proglet.InterfacePrincipale.class" archive="../wproglet.jar" width="560" height="720">
+                  <param name="proglet" value="Dicho"></applet></td>
+         </tr>
+      </table>
+      
+        
+      <div class="soustitre">
+         <p>Remarques :</p>
+      </div>
+      <div id="footnotes">
+         <p id="1"><sup>1</sup><b><i></i></b>Cette proglet est un 
+            <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programm&eacute;e en Java et 
+            <a href=" ../api/proglet/Dicho.html">document&eacute;e</a> 
+                pour sa libre redistribution, l'acc&egrave;s 
+            <a href=" ../api/proglet/Dicho.java">au code source</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
+         </p>
+      </div>
+      
+   </body>
+</html>

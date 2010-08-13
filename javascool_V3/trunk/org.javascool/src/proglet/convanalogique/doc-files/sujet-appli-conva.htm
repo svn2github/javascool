@@ -1,343 +1,357 @@
 
 <!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<div align="right">[<a href="#intros">introduction</a>] [<a href="#works">travail propos&eacute;</a>] [<a href="#notes">remarques</a>]
-</div>
-<div class="sujet">
-   <h2>Un tutoriel sur la conversion analogique-num&eacute;rique.</h2>
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    
-   
-   
-   
-   
-   <h2>Objectif.</h2>
-   <div class="objectif">
-      Le but de ce tutoriel est de comprendre comment deviner une valeur  analogique &agrave; partir de comparaisons et de d&eacute;couvrir la
-      recherche dichotomique.
-      Une autre activit&eacute;, plus autonome, sur la recherche dichotomique est propos&eacute;e <a href="sujet-appli-dicho.htm">[.]</a>.
-          Il faut d&eacute;ja savoir <a href="sujet-hello-world.htm">[.]</a>,
-          se servir de <a href="sujet-about-variables.htm">[.]</a> et avoir d&eacute;couvert l'<a href="sujet-about-if.htm">[.]</a> et 
-          utiliser des <a href="sujet-about-while.htm">[.]</a>.
+      <link rel="stylesheet" type="text/css" href="img/style.css">
+      <title>JavaScool . . and Java is so cool.</title>
+      <link rel="shortcut icon" href="img/icon.jpg">
+   </head>
+   <body>
+      <table width="100%" style="border:0;margin:0;padding:0;background-image:url('img/bg-banner.jpg');">
+         <tr style="border:0;margin:0;padding:0">
+            <td width="33%" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr"><img height="36" width="150" src="img/logo-javascool.jpg"></a></td>
+            <td width="33%" align="center" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm#4"><img height="36" src="img/logo-lycees.jpg"></a></td>
+            <td width="33%" align="right" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://www.inria.fr"><img height="36" src="img/logo-inria.jpg"></a></td>
+         </tr>
+      </table>
+      
+      <h1><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"></a>
+         Un tutoriel sur la conversion analogique-num&eacute;rique
+      </h1>
+      <div align="right">[<a href="#notes">introduction</a>] [<a href="#works">travail propos&eacute;</a>] [<a href="#footnotes">remarques</a>] [<a href="about-memo.htm">m&eacute;mo des fonctions</a>]
+      </div><br><br>
         
-   </div>
-     
-     
-   <h2>Introduction.</h2>
-   <div id="intros">
-      <ol>
+        <i>&laquo;proglet&raquo; </i><tt><a href="about-proglet-Conva.htm">Conva</a></tt>
+        
+        
+      <div class="soustitre">
+         <p>Objectif : </p>
+      </div><br><div id="objectif">
+         <table align="center" width="80%">
+            <tr>
+               <td align="left">
+                  Le but de ce tutoriel est de comprendre comment deviner une valeur  analogique &agrave; partir de comparaisons et de d&eacute;couvrir la
+                  recherche dichotomique.
+                  Une autre activit&eacute;, plus autonome, sur la recherche dichotomique est propos&eacute;e 
+                  <a href="sujet-appli-dicho.htm">ici</a>.
+                      Il faut d&eacute;ja savoir 
+                  <a href="sujet-hello-world.htm">utiliser l'interface</a>,
+                      se servir de 
+                  <a href="sujet-about-variables.htm">variables</a> et avoir d&eacute;couvert l'
+                  <a href="sujet-about-if.htm">instruction conditionnelle</a> et 
+                      utiliser des 
+                  <a href="sujet-about-while.htm">boucles</a>.
+                    
+               </td>
+            </tr>
+         </table>
+      </div><br>
+        
+        
+      <div class="soustitre">
+         <p>Introduction : </p>
+      </div><br><ul id="notes">
          <li>
-            <div><img src="img/execute.png" alt="" class="icon"> Choisir la proglet <tt>Conva</tt> et non <tt>Konsol</tt> dans le bouton li&eacute; &agrave; l'ex&eacute;cution.
-            </div>
-         </li>
+            <div><b></b>: 
+               <img src="img/execute.png"> Choisir la proglet <tt>Conva</tt> et non <tt>Konsol</tt> dans le bouton li&eacute; &agrave; l'ex&eacute;cution.
+            </div><br></li>
          <li>
-            <div>L'ordinateur peut gr&acirc;ce &agrave; un convertisseur num&eacute;rique analogique g&eacute;n&eacute;rer une tension en volt, gr&acirc;ce &agrave; la fonction :
+            <div><b></b>: L'ordinateur peut gr&acirc;ce &agrave; un convertisseur num&eacute;rique analogique g&eacute;n&eacute;rer une tension en volt, gr&acirc;ce &agrave; la fonction :
                    
-               <table witdh="90%" border="1" align="center">
+               <table border="1" align="center" width="80%">
                   <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>convaOut</b></font>(tension);
-                           </div>
-                               
+                     <th align="left">
+                              
+                        <div class="text"><font color="#990000"><b>convaOut</b></font>(tension);
                         </div>
-                     </td>
+                            
+                     </th>
                   </tr>
                </table>
-                   cette <b>tension</b> est un <font color="#990000"><b>int</b></font> varie en 0 et 1.023 volts et est donn&eacute;e en milli-volts et il peut aussi comparer cette tension &agrave; la tension inconnue avec
+                   cette 
+               <b>tension</b> est un <font color="#990000"><b>int</b></font> varie en 0 et 1.023 volts et est donn&eacute;e en milli-volts et il peut aussi comparer cette tension &agrave; la tension inconnue avec
                la fonction :
                    
-               <table witdh="90%" border="1" align="center">
+               <table border="1" align="center" width="80%">
                   <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>convaCompare</b></font>();
-                           </div>
-                               
+                     <th align="left">
+                              
+                        <div class="text"><font color="#990000"><b>convaCompare</b></font>();
                         </div>
-                     </td>
+                            
+                     </th>
                   </tr>
                </table>
                     qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou &eacute;gale.
                    
-            </div>
-         </li>
+            </div><br></li>
          <li>
-            <div>Le sch&eacute;ma est illustr&eacute; ici :
+            <div><b></b>: Le sch&eacute;ma est illustr&eacute; ici :
                     
-               <div class="center"><img src="img/conv.png" alt="" class="icon"></div>
+               <div class="text" align="center">
+                  <img src="img/conv.png"></div>
                     Bien entendu, ici, nous simulons ce m&eacute;canisme par une petite proglet.
                    
-            </div>
-         </li>
+            </div><br></li>
          <li>
-            <div>
+            <div><b></b>: 
                      Comment deviner la tension inconnue qui varie entre 0 est 1023 millivolts ?
                   
-            </div>
-         </li>
-      </ol>
-   </div>
-     
-   <h2>Travail propos&eacute;.</h2>
-   <div id="works">
-      <ol>
-         <li>
-            <div>
-               <h3>Tester toutes les valeurs.</h3>Essayer le programme suivant :
-                   
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>int</b></font> v = 1023;
-                           </div>
-                                 
-                           <div><font color="#990000"><b>while</b></font>(v &gt;= 0) {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>convaOut</b></font>(v);
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>if</b></font> (<font color="#990000"><b>convaCompare</b></font>() == 1) {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>echo</b></font>("valeur = "+v);
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              v = v - 1;
-                           </div>
-                                 
-                           <div>}</div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
-               <ul class="ul">
+            </div><br></li>
+      </ul><br>
+        
+      <div class="soustitre">
+         <p>Travail propos&eacute; :</p>
+      </div><br><ul id="works">
+         <li><b>Tester toutes les valeurs</b>: Essayer le programme suivant :
+                
+            <table border="1" align="center" width="80%">
+               <tr>
+                  <th align="left">
+                           
+                     <div class="text"><font color="#990000"><b>int</b></font> v = 1023;
+                     </div>
+                           
+                     <div class="text"><font color="#990000"><b>while</b></font>(v &gt;= 0) {
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>convaOut</b></font>(v);
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>if</b></font> (<font color="#990000"><b>convaCompare</b></font>() == 1) {
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
                         
-                  <li>Que se passe t'il ? Que manque t'il pour qu'il fonctionne comme nous l'esp&eacute;rions ? </li>
-                        
-                  <li>Ajoutons alors l'instruction <font color="#990000"><b>break;</b></font> (que nous d&eacute;couvrons ici) et qui permet de sortir de la boucle <font color="#990000"><b>while</b></font> : 
-                           si le programme rencontre <font color="#990000"><b>break;</b></font>, il sort de la boucle. A quel endroit l'ins&eacute;rer pour que cela marche ?
-                  </li>
-                      
-               </ul>Noter que cet algorithme est bien long car il faut essayer toutes les valeurs.
-            </div>
-         </li>
-         <li>
-            <div>
-               <h3>Couper le probl&egrave;me en deux.</h3>
-                     Voici une id&eacute;e : On va couper l'espace de recherche en deux, puis en deux, puis en deux, etc. Dans le programme suivant
-               on a d&eacute;j&agrave; divis&eacute; l'espace de recherche en 2 !
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>echo</b></font>("valeur = "+v);
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        v = v - 1;
+                     </div>
+                           
+                     <div class="text">}</div>
+                         
+                  </th>
+               </tr>
+            </table>
+            
+            <ul>
                      
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                   
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;La valeur est donc comprise entre 0 et 1023
-                           </p>
-                                   
-                           <div><font color="#990000"><b>convaOut</b></font>(512); <font color="#990000"><b>if</b></font> (<font color="#990000"><b>convaCompare</b></font>() == 1) {
-                           </div>
-                                   
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Si le test est vrai, nous savons que la valeur est plus petite que 512
-                           </p>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>echo</b></font>(<font color="#008000">"La valeur est comprise entre 0 et 511"</font>);
-                           </div>
-                                   
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;A vous de compl&eacute;ter en comparant &agrave; 256
-                           </p>
-                                   
-                           <div>} <font color="#990000"><b>else</b></font> {
-                           </div>
-                                   
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Si le test est faux, nous savons que la valeur est plus grande ou &eacute;gale &agrave; 512
-                           </p>
-                                   
-                           <div><font color="#990000"><b>echo</b></font>(<font color="#008000">"La valeur est comprise entre 512 et 1023"</font>);
-                           </div>
-                                   
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;A vous de compl&eacute;ter en comparant &agrave; 768
-                           </p>
-                                   
-                           <div>}</div>
-                                 
-                        </div>
-                     </td>
-                  </tr>
-               </table>
-               <ul class="ul">
-                          
-                  <li>Compl&eacute;ter ce code en comparant &agrave; 256 et 768, puis utilisant le tableau ci dessous &agrave; 128, etc. Et essayer le r&eacute;sultat ...
-                               
-                     <div class="center"><img src="img/dicho.png" alt="" class="icon"></div>
-                               On remarque qu'en 3 &eacute;tapes nous avons d&eacute;j&agrave; une id&eacute;e de la valeur &agrave; 12.5% pr&egrave;s, mais c'est bien long &agrave; &eacute;crire !
-                  </li>
-                          
-                  <li>Notez que les intervalles sont de :
-                               
-                     <div>512 milli-volts &agrave; la 1&egrave;re &eacute;tape</div>
-                               
-                     <div>256 milli-volts &agrave; la 2&egrave;me &eacute;tape</div>
-                               
-                     <div>128 milli-volts &agrave; la 3&egrave;me &eacute;tape</div>
-                             et si nous avions continu&eacute; les intervalles suivantes auraient quelles valeurs ? Continuer jusqu'&agrave; trouver une intervalle
-                     plus petite que 1.
-                               
-                     <div>Ce calcul se fait en combien d'&eacute;tapes finalement ? Et ceci au lieu de ... tester les 1024 valeurs !</div>
-                  </li>
+               
+               <li>Que se passe t'il ? Que manque t'il pour qu'il fonctionne comme nous l'esp&eacute;rions ? </li>
+                     
+               
+               <li>Ajoutons alors l'instruction <font color="#990000"><b>break;</b></font> (que nous d&eacute;couvrons ici) et qui permet de sortir de la boucle <font color="#990000"><b>while</b></font> : 
+                        si le programme rencontre <font color="#990000"><b>break;</b></font>, il sort de la boucle. A quel endroit l'ins&eacute;rer pour que cela marche ?
+               </li>
+                   
+            </ul>Noter que cet algorithme est bien long car il faut essayer toutes les valeurs.<br></li>
+         <li><b>Couper le probl&egrave;me en deux</b>: 
+                  Voici une id&eacute;e : On va couper l'espace de recherche en deux, puis en deux, puis en deux, etc. Dans le programme suivant
+            on a d&eacute;j&agrave; divis&eacute; l'espace de recherche en 2 !
+                  
+            <table border="1" align="center" width="80%">
+               <tr>
+                  <th align="left">
+                             
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;La valeur est donc comprise entre 0 et 1023
+                     </p>
+                             
+                     <div class="text"><font color="#990000"><b>convaOut</b></font>(512); <font color="#990000"><b>if</b></font> (<font color="#990000"><b>convaCompare</b></font>() == 1) {
+                     </div>
+                             
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Si le test est vrai, nous savons que la valeur est plus petite que 512
+                     </p>
+                             
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>echo</b></font>(<font color="#008000">"La valeur est comprise entre 0 et 511"</font>);
+                     </div>
+                             
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;A vous de compl&eacute;ter en comparant &agrave; 256
+                     </p>
+                             
+                     <div class="text">} <font color="#990000"><b>else</b></font> {
+                     </div>
+                             
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Si le test est faux, nous savons que la valeur est plus grande ou &eacute;gale &agrave; 512
+                     </p>
+                             
+                     <div class="text"><font color="#990000"><b>echo</b></font>(<font color="#008000">"La valeur est comprise entre 512 et 1023"</font>);
+                     </div>
+                             
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;A vous de compl&eacute;ter en comparant &agrave; 768
+                     </p>
+                             
+                     <div class="text">}</div>
+                           
+                  </th>
+               </tr>
+            </table>
+            
+            <ul>
                        
-               </ul>
-            </div>
-         </li>
-         <li>
-            <div>
-               <h3>L'algorithme dichotomique.</h3>Essayons maintenant avec une boucle :
+               
+               <li>Compl&eacute;ter ce code en comparant &agrave; 256 et 768, puis utilisant le tableau ci dessous &agrave; 128, etc. Et essayer le r&eacute;sultat ...
+                            
+                  <div class="text" align="center">
+                     <img src="img/dicho.png"></div>
+                            On remarque qu'en 3 &eacute;tapes nous avons d&eacute;j&agrave; une id&eacute;e de la valeur &agrave; 12.5% pr&egrave;s, mais c'est bien long &agrave; &eacute;crire !
+               </li>
+                       
+               
+               <li>Notez que les intervalles sont de :
+                            
+                  <div class="text">512 milli-volts &agrave; la 1&egrave;re &eacute;tape</div>
+                            
+                  <div class="text">256 milli-volts &agrave; la 2&egrave;me &eacute;tape</div>
+                            
+                  <div class="text">128 milli-volts &agrave; la 3&egrave;me &eacute;tape</div>
+                          et si nous avions continu&eacute; les intervalles suivantes auraient quelles valeurs ? Continuer jusqu'&agrave; trouver une intervalle
+                  plus petite que 1.
+                            
+                  <div class="text">Ce calcul se fait en combien d'&eacute;tapes finalement ? Et ceci au lieu de ... tester les 1024 valeurs !</div>
+               </li>
                     
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                  
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp; ? &agrave; vous de commenter les lignes qui suivent
-                           </p>
-                                  
-                           <div><font color="#990000"><b>int</b></font> min = 0, max = 1024;
-                           </div>
-                                  
-                           <div><font color="#990000"><b>while</b></font>(max - min &gt; 1) {
-                           </div>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>echo</b></font>(<font color="#008000">"La valeur est comprise entre "</font> + (min) + <font color="#008000">" et "</font> + (max - 1));
-                           </div>
-                                  
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp; ? &agrave; vous de COMPLETER et commenter les lignes qui suivent
-                           </p>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>int</b></font> milieu = (min + max) / 2;
-                           </div>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>convaOut</b></font>(milieu); <font color="#990000"><b>if</b></font> (<font color="#990000"><b>convaCompare</b></font>() == 1) {
-                           </div>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              ??? = ???;
-                           </div>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              } <font color="#990000"><b>else</b></font> {
-                           </div>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              ??? = ???;
-                           </div>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                  
-                           <div>}</div>
-                                
-                        </div>
-                     </td>
-                  </tr>
-               </table>
-               <ul class="ul">
-                         
-                  <li>Compl&eacute;ter ce programme et ajouter au texte de programme des commentaires &agrave; chaque ligne pour expliquer comment il fonctionne.</li>
-                         
-                  <li>Essayez-le et concluez sur l'int&eacute;r&ecirc;t d'utiliser une telle m&eacute;thode qui divise l'espace de recherche par 2 puis 2 etc.</li>
-                         
-                  <li>A l'aide de <a href="http://fr.wikipedia.org">[.]</a> expliquer en deux lignes pourquoi cette m&eacute;thode s'appelle dichotomique.
-                  </li>
-                       
-               </ul>
-            </div>
-         </li>
-         <li>
-            <div>
-               <h3>Aller plus loin.</h3>Supposez que nous regardions l'annuaire t&eacute;l&eacute;phonique des 1048576 habitants des Alpes-Maritimes, tri&eacute;s par ordre alphab&eacute;tique
-               :
-               <ul class="ul">
-                         
-                  <li>Expliquez en 2/3 lignes comment utiliser une m&eacute;thode dichotomique pour chercher une personne parmi plus d'un million de personnes
-                     !
-                  </li>
-                         
-                  <li>A l'aide de la suite des chiffres suivants, devinez en combien d'&eacute;tapes la recherche dichotomique permet de trouver une personne
-                     parmi ce gros million :
-                              
-                     <div><tt>0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576</tt></div>
-                              Note : cette liste de chiffres sont les puissances de 2: 2^0, 2^1, 2^2, etc...
+            </ul><br></li>
+         <li><b>L'algorithme dichotomique</b>: Essayons maintenant avec une boucle :
+                 
+            <table border="1" align="center" width="80%">
+               <tr>
+                  <th align="left">
                             
-                  </li>
-                         
-                  <li>A partir de la ligne de code<a href="#1" class="note">[.]</a> :
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp; ? &agrave; vous de commenter les lignes qui suivent
+                     </p>
                             
-                     <table witdh="90%" border="1" align="center">
-                        <tr>
-                           <td>
-                              <div class="code">
-                                          
-                                 <div>n = n + 1; u  = u * 2;  <font color="#990000"><b>echo</b></font>("2^" + n + "=" + u);
-                                 </div>
-                                        
-                              </div>
-                           </td>
-                        </tr>
-                     </table>&eacute;crire une boucle qui calcule les puissances de 2 de 0 &agrave; 20.
-                  </li>
-                       
-               </ul>
-            </div>
-         </li>
-      </ol>
-   </div>
+                     <div class="text"><font color="#990000"><b>int</b></font> min = 0, max = 1024;
+                     </div>
+                            
+                     <div class="text"><font color="#990000"><b>while</b></font>(max - min &gt; 1) {
+                     </div>
+                            
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>echo</b></font>(<font color="#008000">"La valeur est comprise entre "</font> + (min) + <font color="#008000">" et "</font> + (max - 1));
+                     </div>
+                            
+                     <p><tt><big><font color="#808080">//</font></big></tt>&nbsp; ? &agrave; vous de COMPLETER et commenter les lignes qui suivent
+                     </p>
+                            
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>int</b></font> milieu = (min + max) / 2;
+                     </div>
+                            
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>convaOut</b></font>(milieu); <font color="#990000"><b>if</b></font> (<font color="#990000"><b>convaCompare</b></font>() == 1) {
+                     </div>
+                            
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        ??? = ???;
+                     </div>
+                            
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        } <font color="#990000"><b>else</b></font> {
+                     </div>
+                            
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        ??? = ???;
+                     </div>
+                            
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                            
+                     <div class="text">}</div>
+                          
+                  </th>
+               </tr>
+            </table>
+            
+            <ul>
+                      
+               
+               <li>Compl&eacute;ter ce programme et ajouter au texte de programme des commentaires &agrave; chaque ligne pour expliquer comment il fonctionne.</li>
+                      
+               
+               <li>Essayez-le et concluez sur l'int&eacute;r&ecirc;t d'utiliser une telle m&eacute;thode qui divise l'espace de recherche par 2 puis 2 etc.</li>
+                      
+               
+               <li>A l'aide de 
+                  <a href="http://fr.wikipedia.org">wikipedia</a> expliquer en deux lignes pourquoi cette m&eacute;thode s'appelle dichotomique.
+               </li>
+                    
+            </ul><br></li>
+         <li><b>Aller plus loin</b>: Supposez que nous regardions l'annuaire t&eacute;l&eacute;phonique des 1048576 habitants des Alpes-Maritimes, tri&eacute;s par ordre alphab&eacute;tique
+            :
+            
+            <ul>
+                      
+               
+               <li>Expliquez en 2/3 lignes comment utiliser une m&eacute;thode dichotomique pour chercher une personne parmi plus d'un million de personnes
+                  !
+               </li>
+                      
+               
+               <li>A l'aide de la suite des chiffres suivants, devinez en combien d'&eacute;tapes la recherche dichotomique permet de trouver une personne
+                  parmi ce gros million :
+                           
+                  <div class="text"><tt>0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576</tt></div>
+                           Note : cette liste de chiffres sont les puissances de 2: 2^0, 2^1, 2^2, etc...
+                         
+               </li>
+                      
+               
+               <li>A partir de la ligne de code<sup><a href="#1">1</a></sup> :
+                         
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                                    
+                           <div class="text">n = n + 1; u  = u * 2;  <font color="#990000"><b>echo</b></font>("2^" + n + "=" + u);
+                           </div>
+                                  
+                        </th>
+                     </tr>
+                  </table>&eacute;crire une boucle qui calcule les puissances de 2 de 0 &agrave; 20.
+               </li>
+                    
+            </ul><br></li>
+      </ul>
+         
+      <div class="soustitre">
+         <p>Remarques :</p>
+      </div>
+      <div id="footnotes">
+         <p id="1"><sup>1</sup><b><i></i></b>La fonction 
+            <b><font color="#990000"><b>void</b></font> <tt>echo</tt>(<font color="#990000"><b>String</b></font> string)</b> affiche une cha&icirc;ne de caract&egrave;res sur la console.
+         </p>
+      </div>
       
-   <h2>Remarques.</h2>
-   <div id="notes">
-      <ol>
-         <li>
-            <div>La fonction <b><font color="#990000"><b>void</b></font> <tt>echo</tt>(<font color="#990000"><b>String</b></font> string)</b> affiche une cha&icirc;ne de caract&egrave;res sur la console.
-            </div>
-         </li>
-      </ol>
-   </div>
-   
-</div>
+   </body>
+</html>

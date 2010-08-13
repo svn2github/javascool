@@ -1,195 +1,221 @@
 
 <!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<div align="right">[<a href="#intros">introduction</a>] [<a href="#works">travail propos&eacute;</a>] [<a href="#notes">remarques</a>]
-</div>
-<div class="sujet">
-   <h2>Un tutoriel sur les valeurs num&eacute;riques.</h2>
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    
-   
-   
-   
-   
-   <h2>Objectif.</h2>
-   <div class="objectif">
-      Le but de ce tutoriel est d'appliquer quelques unes des notions fondamentales. Il faut d&eacute;j&agrave; savoir <a href="sujet-hello-world.htm">[.]</a>,
-        se servir de <a href="sujet-about-variables.htm">[.]</a> et avoir d&eacute;couvert l'<a href="sujet-about-if.htm">[.]</a>.
+      <link rel="stylesheet" type="text/css" href="img/style.css">
+      <title>JavaScool . . and Java is so cool.</title>
+      <link rel="shortcut icon" href="img/icon.jpg">
+   </head>
+   <body>
+      <table width="100%" style="border:0;margin:0;padding:0;background-image:url('img/bg-banner.jpg');">
+         <tr style="border:0;margin:0;padding:0">
+            <td width="33%" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr"><img height="36" width="150" src="img/logo-javascool.jpg"></a></td>
+            <td width="33%" align="center" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm#4"><img height="36" src="img/logo-lycees.jpg"></a></td>
+            <td width="33%" align="right" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://www.inria.fr"><img height="36" src="img/logo-inria.jpg"></a></td>
+         </tr>
+      </table>
+      
+      <h1><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"></a>
+         Un tutoriel sur les valeurs num&eacute;riques
+      </h1>
+      <div align="right">[<a href="#notes">introduction</a>] [<a href="#works">travail propos&eacute;</a>] [<a href="#footnotes">remarques</a>] [<a href="about-memo.htm">m&eacute;mo des fonctions</a>]
+      </div><br><br>
         
-   </div>
-     
-     
-   <h2>Introduction.</h2>
-   <div id="intros">
-      <ol>
+        <i>&laquo;proglet&raquo; </i><tt><a href="about-proglet-Konsol.htm">Konsol</a></tt>
+        
+        
+      <div class="soustitre">
+         <p>Objectif : </p>
+      </div><br><div id="objectif">
+         <table align="center" width="80%">
+            <tr>
+               <td align="left">
+                  Le but de ce tutoriel est d'appliquer quelques unes des notions fondamentales. Il faut d&eacute;j&agrave; savoir 
+                  <a href="sujet-hello-world.htm">utiliser l'interface</a>,
+                    se servir de 
+                  <a href="sujet-about-variables.htm">variables</a> et avoir d&eacute;couvert l'
+                  <a href="sujet-about-if.htm">instruction conditionnelle</a>.
+                    
+               </td>
+            </tr>
+         </table>
+      </div><br>
+        
+        
+      <div class="soustitre">
+         <p>Introduction : </p>
+      </div><br><ul id="notes">
          <li>
-            <div>
-               <h3>Calculer son indice de masse corporelle.</h3> Voici<a href="#1" class="note">[.]</a> un exemple concret : 
-                   calculer son <a href="http://fr.wikipedia.org/wiki/Indice_de_masse_corporelle">[.]</a>. Voici un code (volontairement) erron&eacute; :
+            <div><b>Calculer son indice de masse corporelle</b>:  Voici<sup><a href="#1">1</a></sup> un exemple concret : 
+                   calculer son 
+               <a href="http://fr.wikipedia.org/wiki/Indice_de_masse_corporelle">indice de masse corporelle</a>. Voici un code (volontairement) erron&eacute; :
                    
-               <table witdh="90%" border="1" align="center">
+               <table border="1" align="center" width="80%">
                   <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>void main</b></font>() {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Quel est ton poids ?"</font>) ;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>int</b></font> poids = <font color="#990000"><b>readInteger()</b></font> ;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Quel est ta taille ?"</font>) ;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> taille = <font color="#990000"><b>readFloat()</b></font> ;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>???</b></font> imc = poids + taille / (poids * taille) ;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Ton indice de masse corporelle est donc : "</font> + imc) ;
-                           </div>
-                                 
-                           <div>}</div>
-                                
+                     <th align="left">
+                              
+                        <div class="text"><font color="#990000"><b>void main</b></font>() {
                         </div>
-                     </td>
+                              
+                        <div class="text">
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Quel est ton poids ?"</font>) ;
+                        </div>
+                              
+                        <div class="text">
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>int</b></font> poids = <font color="#990000"><b>readInteger()</b></font> ;
+                        </div>
+                              
+                        <div class="text">
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Quel est ta taille ?"</font>) ;
+                        </div>
+                              
+                        <div class="text">
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>double</b></font> taille = <font color="#990000"><b>readFloat()</b></font> ;
+                        </div>
+                              
+                        <div class="text">
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>???</b></font> imc = poids + taille / (poids * taille) ;
+                        </div>
+                              
+                        <div class="text">
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Ton indice de masse corporelle est donc : "</font> + imc) ;
+                        </div>
+                              
+                        <div class="text">}</div>
+                             
+                     </th>
                   </tr>
                </table>
-                    Le d&eacute;but du code ressemble &agrave; celui utilis&eacute; pour apprendre &agrave; se servir de <a href="sujet-about-variables.htm">[.]</a> : 
+                    Le d&eacute;but du code ressemble &agrave; celui utilis&eacute; pour apprendre &agrave; se servir de 
+               <a href="sujet-about-variables.htm">variables</a> : 
                     on demande &agrave; l'utilisateur son poids et sa taille. Ensuite on calcule l'indice de masse corporelle ...  mais ... attention
                :
-               <ul class="ul">
+               
+               <ul>
                          
+                  
                   <li>La formule est fausse !!! Ce sera &agrave; vous de la corriger.</li>
                          
+                  
                   <li>Il faut remplacer <font color="#990000"><b>???</b></font> par le bon 'adjectif' (<font color="#990000"><b>int</b></font> ? <font color="#990000"><b>double</b></font> ?)
                   </li>
                        
                </ul>
                   
-            </div>
-         </li>
-      </ol>
-   </div>
-   
-     
-   <h2>Travail propos&eacute;.</h2>
-   <div id="works">
-      <ol>
-         <li>
-            <div>
-               <h3>Sp&eacute;cifier le code avec une formule juste.</h3> Reprendre le code pr&eacute;c&eacute;dent et en utilisant la d&eacute;finition de  
-                   l'<a href="http://fr.wikipedia.org/wiki/Indice_de_masse_corporelle">[.]</a>. 
-               <ul class="ul">
-                        
-                  <li>Pourquoi choisir le poids (<font color="#990000"><b>int</b></font>) en entier et la taille en d&eacute;cimal (<font color="#990000"><b>double</b></font>) ?
-                  </li>
-                        
-                  <li>L'indice de masse corporelle doit-il &ecirc;tre un entier ou un d&eacute;cimal ?</li>
-                        
-                  <li>Entrez la formule juste et essayez (c'est &agrave; dire : sauver, compiler et ... ex&eacute;cuter)</li>
-                        
-                  <li>V&eacute;rifiez le code &agrave; la main sur l'exemple d'une personne pesant 95 kg et mesurant 1,81 m.</li>
-                        
-                  <li>V&eacute;rifiez le code &agrave; la main sur l'exemple d'une personne pesant 48 kg et mesurant 1,69 m.</li>
-                      
-               </ul>
-            </div>
-         </li>
-         <li>
-            <div>
-               <h3>Ajouter un message personnalis&eacute;.</h3> Ajoutons au code pr&eacute;c&eacute;dent un message "personnalis&eacute;" :
+            </div><br></li>
+      </ul><br>
+      
+        
+      <div class="soustitre">
+         <p>Travail propos&eacute; :</p>
+      </div><br><ul id="works">
+         <li><b>Sp&eacute;cifier le code avec une formule juste</b>:  Reprendre le code pr&eacute;c&eacute;dent et en utilisant la d&eacute;finition de  
+                l'
+            <a href="http://fr.wikipedia.org/wiki/Indice_de_masse_corporelle">indice de masse corporelle</a>. 
+            
+            <ul>
+                     
+               
+               <li>Pourquoi choisir le poids (<font color="#990000"><b>int</b></font>) en entier et la taille en d&eacute;cimal (<font color="#990000"><b>double</b></font>) ?
+               </li>
+                     
+               
+               <li>L'indice de masse corporelle doit-il &ecirc;tre un entier ou un d&eacute;cimal ?</li>
+                     
+               
+               <li>Entrez la formule juste et essayez (c'est &agrave; dire : sauver, compiler et ... ex&eacute;cuter)</li>
+                     
+               
+               <li>V&eacute;rifiez le code &agrave; la main sur l'exemple d'une personne pesant 95 kg et mesurant 1,81 m.</li>
+                     
+               
+               <li>V&eacute;rifiez le code &agrave; la main sur l'exemple d'une personne pesant 48 kg et mesurant 1,69 m.</li>
                    
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>if</b></font>(imc &lt;= 25) {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              println(<font color="#008000">"Plut&ocirc;t mince"</font>);
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              } <font color="#990000"><b>else if</b></font>(imc &lt;= 50) {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              println(<font color="#008000">"Plut&ocirc;t gros"</font>);
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              } <font color="#990000"><b>else</b></font> {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              println(<font color="#008000">"Sacr&eacute; menteur !"</font>);
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
-               <ul class="ul">
+            </ul><br></li>
+         <li><b>Ajouter un message personnalis&eacute;</b>:  Ajoutons au code pr&eacute;c&eacute;dent un message "personnalis&eacute;" :
+                
+            <table border="1" align="center" width="80%">
+               <tr>
+                  <th align="left">
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>if</b></font>(imc &lt;= 25) {
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
                         
-                  <li>Ajoutez ce code au bon endroit et constatez qu'il permet de donner une information plus parlante &agrave; l'utilisateur.</li>
+                        &nbsp;&nbsp;&nbsp;
+                        println(<font color="#008000">"Plut&ocirc;t mince"</font>);
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        } <font color="#990000"><b>else if</b></font>(imc &lt;= 50) {
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
                         
-                  <li>Utiliser le tableau donn&eacute; sur le <a href="http://fr.wikipedia.org/wiki/Indice_de_masse_corporelle#Interpr.C3.A9tation_de_l.27IMC">[.]</a> pour 
-                           indiquer la d&eacute;nutrition, maigreur, corpulence normale, surpoids, etc... en combinant les constructions <font color="#990000"><b>if</b></font> / <font color="#990000"><b>else</b></font>.
-                  </li>
-                      
-               </ul>
-            </div>
-         </li>
-      </ol>
-   </div>
-     
-     
-   <h2>Remarques.</h2>
-   <div id="notes">
-      <ol>
-         <li>
-            <div>
-               <h3>A propos de ce tutoriel.</h3> Ce tutoriel est une id&eacute;e originale de Aur&eacute;lien Astroux, Professeur de Physique en 2nd Mesures Physiques et Informatique au
-               Lyc&eacute;e <a href="http://leonarddevinci.net">[.]</a> d'Antibes.
-            </div>
-         </li>
-      </ol>
-   </div>
-   
-</div>
+                        &nbsp;&nbsp;&nbsp;
+                        println(<font color="#008000">"Plut&ocirc;t gros"</font>);
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        } <font color="#990000"><b>else</b></font> {
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        println(<font color="#008000">"Sacr&eacute; menteur !"</font>);
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                         
+                  </th>
+               </tr>
+            </table>
+            
+            <ul>
+                     
+               
+               <li>Ajoutez ce code au bon endroit et constatez qu'il permet de donner une information plus parlante &agrave; l'utilisateur.</li>
+                     
+               
+               <li>Utiliser le tableau donn&eacute; sur le 
+                  <a href="http://fr.wikipedia.org/wiki/Indice_de_masse_corporelle#Interpr.C3.A9tation_de_l.27IMC">site de wikipedia</a> pour 
+                        indiquer la d&eacute;nutrition, maigreur, corpulence normale, surpoids, etc... en combinant les constructions <font color="#990000"><b>if</b></font> / <font color="#990000"><b>else</b></font>.
+               </li>
+                   
+            </ul><br></li>
+      </ul>
+        
+        
+      <div class="soustitre">
+         <p>Remarques :</p>
+      </div>
+      <div id="footnotes">
+         <p id="1"><sup>1</sup><b><i>A propos de ce tutoriel</i></b> Ce tutoriel est une id&eacute;e originale de Aur&eacute;lien Astroux, Professeur de Physique en 2nd Mesures Physiques et Informatique au
+            Lyc&eacute;e 
+            <a href="http://leonarddevinci.net">L&eacute;onard de Vinci</a> d'Antibes.
+         </p>
+      </div>
+      
+   </body>
+</html>

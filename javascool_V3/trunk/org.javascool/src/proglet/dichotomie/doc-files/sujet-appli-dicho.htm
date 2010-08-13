@@ -1,226 +1,257 @@
 
 <!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<div align="right">[<a href="#intros">introduction</a>] [<a href="#works">travail propos&eacute;</a>] [<a href="#notes">remarques</a>]
-</div>
-<div class="sujet">
-   <h2>Un tutoriel sur la recherche dichotomique.</h2>
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    
-   
-   
-   
-   
-   <h2>Objectif.</h2>
-   <div class="objectif">
-      Le but de ce tutoriel est de comprendre la recherche dichotomique. 
-      Une autre activit&eacute;, plus guid&eacute;e sur le sujet, est propos&eacute;e autour de la <a href="sujet-appli-conva.htm">[.]</a>
-          Il faut d&eacute;j&agrave; savoir <a href="sujet-hello-world.htm">[.]</a>,
-          se servir de <a href="sujet-about-variables.htm">[.]</a> et avoir d&eacute;couvert l'<a href="sujet-about-if.htm">[.]</a> et 
-          utiliser des <a href="sujet-about-while.htm">[.]</a> et d&eacute;finir une <a href="sujet-about-functions.htm">[.]</a>.
-        
-   </div>
-     
-     
-   <h2>Introduction.</h2>
-   <div id="intros">
-      <ol>
-         <li>
-            <div><img src="img/execute.png" alt="" class="icon"> Choisir la proglet <tt>Dicho</tt> et non <tt>Konsol</tt> dans le bouton li&eacute; &agrave; l'ex&eacute;cution.
-            </div>
-         </li>
-         <li>
-            <div>Lire en d&eacute;tail la description de la  et essayons de programmer la fonction : 
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>int</b></font> getPage(<font color="#990000"><b>String</b></font> pays) {
-                           </div>
-                                 
-                           <div>.. / ..</div>
-                                 
-                           <div>}</div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
-                   qui <i>renvoie le num&eacute;ro de la page correspondant &agrave; un nom de pays donn&eacute;, ou -1 si la page n'existe pas.</i>
-                   
-            </div>
-         </li>
-      </ol>
-   </div>
-     
-   <h2>Travail propos&eacute;.</h2>
-   <div id="works">
-      <ol>
-         <li>
-            <div>
-               <h3>Tester toutes les valeurs.</h3>Essayer le programme suivant :
-                   
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>int</b></font> getPage(<font color="#990000"><b>String</b></font> pays) {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              int debut = 0, fin = <font color="#990000"><b>dichoLength</b></font>();
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>while</b></font>(<font color="#990000"><b>true</b></font>) {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>int</b></font> c = <font color="#990000"><b>dichoCompare</b></font>(pays, debut);
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>if</b></font> (c == 0) {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>return</b></font> debut;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                 
-                           <div>}</div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
-                   avec un "<font color="#990000"><b>main</b></font>" en appelant <font color="#990000"><b>getPage</b></font> avec un nom de pays <i>qui existe</i>.
-                   
-               <div>Noter que l'on utilise ici la construction <font color="#990000"><b>return</b></font> pour sortir de la boucle, tandis que <font color="#990000"><b>while(true)</b></font> est toujours vrai, donc boucle ind&eacute;finiment.
-               </div>
-                   
-               <ul class="ul">
-                        
-                  <li>Quelle variable est utilis&eacute;e et (provisoirement) inutile ici ?</li>
-                        
-                  <li>Que se passe t'il si le pays existe ? Utiliser la fonction<a href="#1" class="note">[.]</a> <b><font color="#990000"><b>echo</b></font>()</b> pour visualiser ce qui se passe &agrave; l'int&eacute;rieur de la boucle.
-                  </li>
-                        
-                  <li>Que se passe t'il si le pays n'existe pas ? Que manque t'il pour qu'il fonctionne comme nous l'esp&eacute;rions ? </li>
-                      
-               </ul>Notez que cet algorithme est bien long car il faut essayer toutes les valeurs.
-            </div>
-         </li>
-         <li>
-            <div>
-               <h3>Couper le probl&egrave;me en deux : l'algorithme dichotomique.</h3>
-                     Voici une id&eacute;e : On va couper l'espace de recherche en deux, puis en deux, puis en deux, etc. pour arriver &agrave; &laquo;cerner&raquo;
-               la recherche, cela se formalise ainsi :
-                     
-               <ul class="ul">
-                          
-                  <li>d&eacute;finir une intervalle <tt>{d&eacute;but, fin{</tt> (la fin non incluse) o&ugrave; est la page recherch&eacute;e
-                     <ul class="ul">
-                                
-                        <li>de valeur initiale <tt>{0, dichoLength(){</tt> o&ugrave; <tt>dichoLength()</tt> est la taille du livre
-                        </li>
-                     </ul>
-                  </li>
-                          
-                  <li>puis de comparer la page recherch&eacute;e avec la page du milieu de cette intervalle
-                     <ul class="ul">
-                                
-                        <li>et de r&eacute;duire alors l'intervalle de moiti&eacute; en rempla&ccedil;ant, selon, la borne de d&eacute;but ou de fin par le milieu</li>
-                     </ul>
-                  </li>
-                          
-                  <li>jusqu'&agrave; ce que l'intervalle :
-                     <ul class="ul">
-                                
-                        <li>soit de taille 1 : la page est alors trouv&eacute;e</li>
-                                
-                        <li>ou de taille 0 : la page n'existe pas </li>
-                     </ul>
-                  </li>
-                        
-               </ul>
-                     A vous de traduire cet algorithme du langage courant en langage informatique, en partant du code pr&eacute;c&eacute;dent !
-                   
-            </div>
-         </li>
-         <li>
-            <div>
-               <h3>Aller plus loin.</h3>Supposez que nous regardions l'annuaire t&eacute;l&eacute;phonique des 1048576 habitants des Alpes-Maritimes, tri&eacute;s par ordre alphab&eacute;tique
-               :
-               <ul class="ul">
-                         
-                  <li>Expliquez en 2/3 lignes comment utiliser une m&eacute;thode dichotomique pour chercher une personne parmi plus d'un million de personnes
-                     !
-                  </li>
-                         
-                  <li>A l'aide de la suite des chiffres suivants, devinez en combien d'&eacute;tapes la recherche dichotomique permet de trouver une personne
-                     parmi ce gros million :
-                              
-                     <div><tt>0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576</tt></div>
-                              Note : cette liste de chiffres sont les puissances de 2: 2^0, 2^1, 2^2, etc...
-                            
-                  </li>
-                         
-                  <li>A partir de la ligne de code :
-                            
-                     <table witdh="90%" border="1" align="center">
-                        <tr>
-                           <td>
-                              <div class="code">
-                                          
-                                 <div>n = n + 1; u = u * 2;  <font color="#990000"><b>echo</b></font>("2^" + n + "=" + u);
-                                 </div>
-                                        
-                              </div>
-                           </td>
-                        </tr>
-                     </table>&eacute;crire une boucle qui calcule les puissances de 2 de 0 &agrave; 20.
-                  </li>
-                       
-               </ul>
-            </div>
-         </li>
-      </ol>
-   </div>
+      <link rel="stylesheet" type="text/css" href="img/style.css">
+      <title>JavaScool . . and Java is so cool.</title>
+      <link rel="shortcut icon" href="img/icon.jpg">
+   </head>
+   <body>
+      <table width="100%" style="border:0;margin:0;padding:0;background-image:url('img/bg-banner.jpg');">
+         <tr style="border:0;margin:0;padding:0">
+            <td width="33%" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr"><img height="36" width="150" src="img/logo-javascool.jpg"></a></td>
+            <td width="33%" align="center" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm#4"><img height="36" src="img/logo-lycees.jpg"></a></td>
+            <td width="33%" align="right" style="border:0;padding:0;margin:0"><a style="padding:0;margin:0;text-decoration:none" href="http://www.inria.fr"><img height="36" src="img/logo-inria.jpg"></a></td>
+         </tr>
+      </table>
       
-   <h2>Remarques.</h2>
-   <div id="notes">
-      <ol>
+      <h1><a style="padding:0;margin:0;text-decoration:none" href="about-all.htm"><img src="img/home.png"></a>
+         Un tutoriel sur la recherche dichotomique
+      </h1>
+      <div align="right">[<a href="#notes">introduction</a>] [<a href="#works">travail propos&eacute;</a>] [<a href="#footnotes">remarques</a>] [<a href="about-memo.htm">m&eacute;mo des fonctions</a>]
+      </div><br><br>
+        
+        <i>&laquo;proglet&raquo; </i><tt><a href="about-proglet-Dicho.htm">Dicho</a></tt>
+        
+        
+      <div class="soustitre">
+         <p>Objectif : </p>
+      </div><br><div id="objectif">
+         <table align="center" width="80%">
+            <tr>
+               <td align="left">
+                  Le but de ce tutoriel est de comprendre la recherche dichotomique. 
+                  Une autre activit&eacute;, plus guid&eacute;e sur le sujet, est propos&eacute;e autour de la 
+                  <a href="sujet-appli-conva.htm">conversion analogique-num&eacute;rique</a>
+                      Il faut d&eacute;j&agrave; savoir 
+                  <a href="sujet-hello-world.htm">utiliser l'interface</a>,
+                      se servir de 
+                  <a href="sujet-about-variables.htm">variables</a> et avoir d&eacute;couvert l'
+                  <a href="sujet-about-if.htm">instruction conditionnelle</a> et 
+                      utiliser des 
+                  <a href="sujet-about-while.htm">boucles</a> et d&eacute;finir une 
+                  <a href="sujet-about-functions.htm">fonction</a>.
+                    
+               </td>
+            </tr>
+         </table>
+      </div><br>
+        
+        
+      <div class="soustitre">
+         <p>Introduction : </p>
+      </div><br><ul id="notes">
          <li>
-            <div>La fonction <b><font color="#990000"><b>void</b></font> <tt>echo</tt>(<font color="#990000"><b>String</b></font> string)</b> affiche une cha&icirc;ne de caract&egrave;res sur la console.
+            <div><b></b>: 
+               <img src="img/execute.png"> Choisir la proglet <tt>Dicho</tt> et non <tt>Konsol</tt> dans le bouton li&eacute; &agrave; l'ex&eacute;cution.
+            </div><br></li>
+         <li>
+            <div><b></b>: Lire en d&eacute;tail la description de la <i>&laquo;proglet&raquo; </i><tt><a href="about-proglet-Dicho.htm">Dicho</a></tt> et essayons de programmer la fonction : 
+               <table border="1" align="center" width="80%">
+                  <tr>
+                     <th align="left">
+                              
+                        <div class="text"><font color="#990000"><b>int</b></font> getPage(<font color="#990000"><b>String</b></font> pays) {
+                        </div>
+                              
+                        <div class="text">.. / ..</div>
+                              
+                        <div class="text">}</div>
+                            
+                     </th>
+                  </tr>
+               </table>
+                   qui 
+               <i>renvoie le num&eacute;ro de la page correspondant &agrave; un nom de pays donn&eacute;, ou -1 si la page n'existe pas.</i>
+                   
+            </div><br></li>
+      </ul><br>
+        
+      <div class="soustitre">
+         <p>Travail propos&eacute; :</p>
+      </div><br><ul id="works">
+         <li><b>Tester toutes les valeurs</b>: Essayer le programme suivant :
+                
+            <table border="1" align="center" width="80%">
+               <tr>
+                  <th align="left">
+                           
+                     <div class="text"><font color="#990000"><b>int</b></font> getPage(<font color="#990000"><b>String</b></font> pays) {
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        int debut = 0, fin = <font color="#990000"><b>dichoLength</b></font>();
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>while</b></font>(<font color="#990000"><b>true</b></font>) {
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>int</b></font> c = <font color="#990000"><b>dichoCompare</b></font>(pays, debut);
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>if</b></font> (c == 0) {
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        <font color="#990000"><b>return</b></font> debut;
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                           
+                     <div class="text">
+                        &nbsp;&nbsp;&nbsp;
+                        }
+                     </div>
+                           
+                     <div class="text">}</div>
+                         
+                  </th>
+               </tr>
+            </table>
+                avec un "<font color="#990000"><b>main</b></font>" en appelant <font color="#990000"><b>getPage</b></font> avec un nom de pays 
+            <i>qui existe</i>.
+                
+            <div class="text">Noter que l'on utilise ici la construction <font color="#990000"><b>return</b></font> pour sortir de la boucle, tandis que <font color="#990000"><b>while(true)</b></font> est toujours vrai, donc boucle ind&eacute;finiment.
             </div>
-         </li>
-      </ol>
-   </div>
-   
-</div>
+                
+            
+            <ul>
+                     
+               
+               <li>Quelle variable est utilis&eacute;e et (provisoirement) inutile ici ?</li>
+                     
+               
+               <li>Que se passe t'il si le pays existe ? Utiliser la fonction<sup><a href="#1">1</a></sup> 
+                  <b><font color="#990000"><b>echo</b></font>()</b> pour visualiser ce qui se passe &agrave; l'int&eacute;rieur de la boucle.
+               </li>
+                     
+               
+               <li>Que se passe t'il si le pays n'existe pas ? Que manque t'il pour qu'il fonctionne comme nous l'esp&eacute;rions ? </li>
+                   
+            </ul>Notez que cet algorithme est bien long car il faut essayer toutes les valeurs.<br></li>
+         <li><b>Couper le probl&egrave;me en deux : l'algorithme dichotomique</b>: 
+                  Voici une id&eacute;e : On va couper l'espace de recherche en deux, puis en deux, puis en deux, etc. pour arriver &agrave; &laquo;cerner&raquo;
+            la recherche, cela se formalise ainsi :
+                  
+            
+            <ul>
+                       
+               
+               <li>d&eacute;finir une intervalle <tt>{d&eacute;but, fin{</tt> (la fin non incluse) o&ugrave; est la page recherch&eacute;e
+                  
+                  <ul>
+                             
+                     
+                     <li>de valeur initiale <tt>{0, dichoLength(){</tt> o&ugrave; <tt>dichoLength()</tt> est la taille du livre
+                     </li>
+                  </ul>
+               </li>
+                       
+               
+               <li>puis de comparer la page recherch&eacute;e avec la page du milieu de cette intervalle
+                  
+                  <ul>
+                             
+                     
+                     <li>et de r&eacute;duire alors l'intervalle de moiti&eacute; en rempla&ccedil;ant, selon, la borne de d&eacute;but ou de fin par le milieu</li>
+                  </ul>
+               </li>
+                       
+               
+               <li>jusqu'&agrave; ce que l'intervalle :
+                  
+                  <ul>
+                             
+                     
+                     <li>soit de taille 1 : la page est alors trouv&eacute;e</li>
+                             
+                     
+                     <li>ou de taille 0 : la page n'existe pas </li>
+                  </ul>
+               </li>
+                     
+            </ul>
+                  A vous de traduire cet algorithme du langage courant en langage informatique, en partant du code pr&eacute;c&eacute;dent !
+                <br></li>
+         <li><b>Aller plus loin</b>: Supposez que nous regardions l'annuaire t&eacute;l&eacute;phonique des 1048576 habitants des Alpes-Maritimes, tri&eacute;s par ordre alphab&eacute;tique
+            :
+            
+            <ul>
+                      
+               
+               <li>Expliquez en 2/3 lignes comment utiliser une m&eacute;thode dichotomique pour chercher une personne parmi plus d'un million de personnes
+                  !
+               </li>
+                      
+               
+               <li>A l'aide de la suite des chiffres suivants, devinez en combien d'&eacute;tapes la recherche dichotomique permet de trouver une personne
+                  parmi ce gros million :
+                           
+                  <div class="text"><tt>0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576</tt></div>
+                           Note : cette liste de chiffres sont les puissances de 2: 2^0, 2^1, 2^2, etc...
+                         
+               </li>
+                      
+               
+               <li>A partir de la ligne de code :
+                         
+                  <table border="1" align="center" width="80%">
+                     <tr>
+                        <th align="left">
+                                    
+                           <div class="text">n = n + 1; u = u * 2;  <font color="#990000"><b>echo</b></font>("2^" + n + "=" + u);
+                           </div>
+                                  
+                        </th>
+                     </tr>
+                  </table>&eacute;crire une boucle qui calcule les puissances de 2 de 0 &agrave; 20.
+               </li>
+                    
+            </ul><br></li>
+      </ul>
+         
+      <div class="soustitre">
+         <p>Remarques :</p>
+      </div>
+      <div id="footnotes">
+         <p id="1"><sup>1</sup><b><i></i></b>La fonction 
+            <b><font color="#990000"><b>void</b></font> <tt>echo</tt>(<font color="#990000"><b>String</b></font> string)</b> affiche une cha&icirc;ne de caract&egrave;res sur la console.
+         </p>
+      </div>
+      
+   </body>
+</html>

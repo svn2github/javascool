@@ -83,7 +83,7 @@ list-style-type:none;
 }
 
 
-div.menuright sup img { height: 0px; width: 0px; }
+div.menuright sup { height: 0px; width: 0px; }
 
 /*pour le bouton de recherche*/
 .buttonSearch {
