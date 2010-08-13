@@ -204,8 +204,8 @@ web:
 wiki:
 	@firefox http://wiki.inria.fr/sciencinfolycee/JavaScool:ToDoList
 
-jdoc :
-	@firefox /usr/share/javadoc/java-1.6.0-openjdk/api/overview-summary.html 
+viewjdoc:jdoc
+	@firefox $(PWD)/jdoc/index.html 
 
 #####################################################################################################################################
 
