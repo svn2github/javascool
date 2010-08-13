@@ -169,6 +169,7 @@ public class Main extends JApplet { /**/public Main() { }
 	filtre.setDescription("Fichiers JVS et PML");
 	fc.setFileFilter(filtre);
   }
+  public String returnastring(String toreturn){return toreturn;};
   public void setFile(String filename) {
     try { se.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
   }
@@ -266,8 +267,9 @@ public class Main extends JApplet { /**/public Main() { }
   // [3] Basic activities.
   private Activity pmlActivity = new Activity() {
       public String getTitle() { return "Démonstration de l'éditeur Pml"; }
+      public SourceEditor pmledit=new SourceEditor();
       public void init(Main main) {
-	main.addTab("Pml Editor", "", se);
+	main.addTab("Pml Editor", "", pmledit);
       }
     };
   private Activity jvsActivity = new Activity() {
