@@ -79,10 +79,10 @@ lib/manifest.mf : makefile
 	@(echo 'Main-Class: org.javascool.Main') >> $@
 	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
 
-%.htm : %.xml lib/dml2htm.xsl
+%.htm : %.xml lib/xml2htm.xsl
 	@java -jar lib/saxon.jar -o $@ $^
 
-lib/dml2htm.xsl : src/org/javascool/hml2htm.xslt
+lib/xml2htm.xsl : src/org/javascool/hml2htm.xslt
 	@touch $@
 
 %.png : %.fig
@@ -279,9 +279,8 @@ endif
 #: [1.3] Lib files:
 #: ./lib/run.sh               : simplifies the local use of saxon and javascool (starts org.javasccoo.* mains + performs xml2xml translation)
 #: ./lib/*.jar                : are used jar for the present development
-#: ./lib/dml2htm.xsl          : defines how to translate doc-files/*.xml files to XHTML 
+#: ./lib/xml2htm.xsl          : defines how to translate doc-files/*.xml files to HTML3.2
 #: ./lib/manifest.mf          : is a makefile generated file: do NOT edit
-#: ./lib/linkcheck            : is the perl script to check broken links: do NOT touch
 #: 
 #: [1.4] Other files
 #: ./tst/*                    : contains local test files
