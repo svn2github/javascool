@@ -1,62 +1,56 @@
-<p title = "Memorandum des constructions et instructions">
-  <p title="Adjectifs : type de données utilisées"><ul>
-    <li><r>String</r> Chaîne de caractères (ex: <b><r>String</r> nom = <s>Bod</s>;</b>).</li>
-    <li><r>int</r> Entier positif ou négatif, de environ -2 à +2 milliards.</li>
-    <li><r>double</r> Nombre décimal, comme sur une calculette (ex:<b><r>double</r> pi = 3.1416;</b>).<code>
+<div title="Memorandum des constructions et instructions">
+  <div title="Adjectifs : type de données utilisées"><div class="ul">
+    <div><r>String</r> Chaîne de caractères (ex: <b><r>String</r> nom = <v>Bod</v>;</b>).</div>
+    <div><r>int</r> Entier positif ou négatif, de environ -2 à +2 milliards.</div>
+    <div><r>double</r> Nombre décimal, comme sur une calculette (ex:<b><r>double</r> pi = 3.1416;</b>).<div class="code">
     <m>Les nombres décimaux se notent avec un "." point et non une virgule !</m>
-    <m>Les nombres en notation scientifique (par exemple 6.023 10<sup>23</sup>) se note avec un "e" (pour exposant) : ici <c>6.023e23</c></m>
-    </code></li>
-    <li><r>boolean</r> Valeur vraie ou fausse, utilisée dans les tests.</li>
-  </ul></p>
-  <p title="Verbes: fonctions utilisées">
-    <p title="Macros générales"><ul>
-      <li><b><r>void</r> <c>echo</c>(<r>String</r> string)</b> Affiche une chaîne de caractères sur la console<footnote id="1"/>.</li>
-      <li><b><r>boolean</r> <c>equal</c>(<r>String</r> string1, <r>String</r> string2)</b> Compare deux chaînes de caratères et renvoie <c>true</c> si elles sont égales.</li>
-      <li><b><r>double</r> <c>pow</c>(<r>double</r> x, <r>double</r> y)</b> Calcul <b>x</b> à la puissance <b>y</b> (soit <b>x<sup>y</sup></b>). 
-      Note : <r>Math.pow</r> est synonyme de <r>pow</r>.</li>
-      <li><b><r>double</r> <c>random</c>()</b> Renvoie un nombre aléatoire uniformément distribué entre 0 et 1.
-      Note : <r>Math.random</r> est synonyme de <r>random</r>.</li>
-      <li><b><r>int</r> <c>random</c>(<r>int</r> min, <r>int</r> max)</b> Renvoie un nombre aléatoire entier uniformément distribué entre le min et le max (cette valeur incluse).</li>
-      <li><b><r>void</r> <c>sleep</c>(<r>int</r> duree)</b> Arrête l'exécution du programme pendant une durée fixée donnée en milli-secondes.</li>
-    </ul></p>
-    <p title="Fonctions de la proglet Konsol"><ul>
-      <li><b><r>void</r> <c>clear</c>()</b> Efface tout le contenu la fenêtre de sortie.</li>
-      <li><b><r>void</r> <c>println</c>(<r>String</r> string)</b> Ecrit une chaînes de caratères dans la fenêtre de sortie.</li>
-      <li><b><r>String</r> <c>readString</c>()</b> Lit une chaîne de caratères dans la fenêtre d'entrée (ex: <b><r>String</r> nom = <r>readString</r>();</b>).</li>
-      <li><b><r>int</r> <c>readInteger</c>()</b> Lit un nombre entier dans la fenêtre d'entrée (ex: <b><r>int</r> x = <r>readInteger</r>();</b>). </li>
-      <li><b><r>double</r> <c>readDouble</c>()</b> Lit un nombre décimal dans la fenêtre d'entrée (ex: <b><r>double</r> x = <r>readDouble</r>();</b>).</li>
-      <li><b><r>boolean</r> <c>readBoolean</c>()</b> Lit une valeur vraie (<c>true, vrai, oui, 1</c>) ou fausse (<c>false, faux, non, 0</c>) dans la fenêtre d'entrée.</li>
-    </ul> (note: <r>readInt</r> est synonyme de <r>readInteger</r>, <r>readFloat</r> est synonyme de <r>readDouble</r>).</p>
-    <p title="Fonctions des autres proglets"> 
-      Voir la description dans la documentation de chaque <a href="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/Proglet.html">proglet</a>.
-    </p>
-  </p>
-  <p title="Grammaire: constructions utilisées ici">
-    <p title="Bloc de séquences d'instructions"> Un bloc se note entre <b>{ }</b> et englobe un ensemble de déclarations et d'instructions séparées par un <b>;</b>.</p>
-    <p title="Opérateurs"><table border="1">
-      <tr><td><c>=</c></td><td>Affectation d'une valeur à une variable (ex: <b>x = 0;</b>)</td></tr>
-      <tr><td><c>||</c> <c>&amp;&amp;</c> <c>!</c></td><td>Opérateur logique OU, ET et NON</td></tr>
-      <tr><td><c>==</c> <c>!=</c> <c>&lt;=</c> <c>&lt;</c> <c>>=</c> <c>></c> </td><td>Opérateur égalité, différence et comparaison numérique</td></tr>
-      <tr><td><c>+</c> <c>-</c> <c>*</c> <c>/</c> <c>%</c> </td><td>Addition, soustraction, multiplication, division, reste (appelé aussi modulo).</td></tr>
-    </table></p>
-    <p title="Instruction conditionnelle"> Elle se note <p><b><r>if</r> (expressionBooleenne) { BlocD'InstructionsSiVrai } <r>else</r> { BlocD'InstructionsSiFaux }</b></p>
-    le <r>else</r> et le bloc qui suit peut être omis (voir l'activité sur les <a href="sujet-about-if.htm">instruction conditionnelle</a> pour plus de détail).</p>
-    <p title="Boucle"> Elle se note <p><b><r>while</r> (expressionBooleenne) { BlocD'Instructions }</b></p>
-    (voir l'activité sur les <a href="sujet-about-while.htm">boucles</a> pour plus de détail).</p>
-    <p title="Déclaration de fonction"> Elle se note <p><r>TypeDuResultat</r> <b>NomDeLaFonction</b> 
-    (<r>TypeParametre1</r> <b>NomParametre1</b>, ..., <r>TypeParametreN</r> <b>NomParametreN</b>) { BlocD'Instructions }</p>
-    (voir l'activité sur les <a href="sujet-about-functions.htm">fonctions</a> pour plus de détail).</p>
-    <p title="Programme principal"> Il se note <b><r>void main</r>{ }</b> avec les instructions définies entre <b>{ }</b>.</p>
-    tandis que le langage Java a beaucoup d'autres <a href="http://www.eteks.com/coursjava/instructions.html">instructions et opérateurs</a>.</p>
+    <m>Les nombres en notation scientifique (par exemple 6.023 1023) se note avec un "e" (pour exposant) : ici <c>6.023e23</c></m>
+    </div></div>
+    <div><r>boolean</r> Valeur vraie ou fausse, utilisée dans les tests.</div>
+  </div></div>
+  <div title="Verbes: fonctions utilisées">
+    <div title="Macros générales"><div class="ul">
+      <div><b><r>void</r> <c>echo</c>(<r>String</r> string)</b> Affiche une chaîne de caractères sur la console<l class="note" link="#1"/>.</div>
+      <div><b><r>boolean</r> <c>equal</c>(<r>String</r> string1, <r>String</r> string2)</b> Compare deux chaînes de caratères et renvoie <c>true</c> si elles sont égales.</div>
+      <div><b><r>double</r> <c>pow</c>(<r>double</r> x, <r>double</r> y)</b> Calcul <b>x</b> à la puissance <b>y</b> (soit <b>x<S>y</S></b>). 
+      Note : <r>Math.pow</r> est synonyme de <r>pow</r>.</div>
+      <div><b><r>double</r> <c>random</c>()</b> Renvoie un nombre aléatoire uniformément distribué entre 0 et 1.
+      Note : <r>Math.random</r> est synonyme de <r>random</r>.</div>
+      <div><b><r>int</r> <c>random</c>(<r>int</r> min, <r>int</r> max)</b> Renvoie un nombre aléatoire entier uniformément distribué entre le min et le max (cette valeur incluse).</div>
+      <div><b><r>void</r> <c>sleep</c>(<r>int</r> duree)</b> Arrête l'exécution du programme pendant une durée fixée donnée en milli-secondes.</div>
+    </div></div>
+    <div title="Fonctions de la proglet Konsol"><div class="ul">
+      <div><b><r>void</r> <c>clear</c>()</b> Efface tout le contenu la fenêtre de sortie.</div>
+      <div><b><r>void</r> <c>println</c>(<r>String</r> string)</b> Ecrit une chaînes de caratères dans la fenêtre de sortie.</div>
+      <div><b><r>String</r> <c>readString</c>()</b> Lit une chaîne de caratères dans la fenêtre d'entrée (ex: <b><r>String</r> nom = <r>readString</r>();</b>).</div>
+      <div><b><r>int</r> <c>readInteger</c>()</b> Lit un nombre entier dans la fenêtre d'entrée (ex: <b><r>int</r> x = <r>readInteger</r>();</b>). </div>
+      <div><b><r>double</r> <c>readDouble</c>()</b> Lit un nombre décimal dans la fenêtre d'entrée (ex: <b><r>double</r> x = <r>readDouble</r>();</b>).</div>
+      <div><b><r>boolean</r> <c>readBoolean</c>()</b> Lit une valeur vraie (<c>true, vrai, oui, 1</c>) ou fausse (<c>false, faux, non, 0</c>) dans la fenêtre d'entrée.</div>
+    </div> (note: <r>readInt</r> est synonyme de <r>readInteger</r>, <r>readFloat</r> est synonyme de <r>readDouble</r>).</div>
+    <div title="Fonctions des autres proglets"> 
+      Voir la description dans la documentation de chaque <l link="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/Proglet.html" text="proglet"/>.
+    </div>
+  </div>
+  <div title="Grammaire: constructions utilisées ici">
+    <div title="Bloc de séquences d'instructions"> Un bloc se note entre <b>{ }</b> et englobe un ensemble de déclarations et d'instructions séparées par un <b>;</b>.</div>
+    <div title="Opérateurs"><div class="table">
+      <div><div><c>=</c></div><div>Affectation d'une valeur à une variable (ex: <b>x = 0;</b>)</div></div>
+      <div><div><c>||</c> <c>&amp;&amp;</c> <c>!</c></div><div>Opérateur logique OU, ET et NON</div></div>
+      <div><div><c>==</c> <c>!=</c> <c>&lt;=</c> <c>&lt;</c> <c>&gt;=</c> <c>&gt;</c> </div><div>Opérateur égalité, différence et comparaison numérique</div></div>
+      <div><div><c>+</c> <c>-</c> <c>*</c> <c>/</c> <c>%</c> </div><div>Addition, soustraction, multiplication, division, reste (appelé aussi modulo).</div></div>
+    </div></div>
+    <div title="Instruction conditionnelle"> Elle se note <div><b><r>if</r> (expressionBooleenne) { BlocD'InstructionsSiVrai } <r>else</r> { BlocD'InstructionsSiFaux }</b></div>
+    le <r>else</r> et le bloc qui suit peut être omis (voir l'activité sur les <l link="sujet-about-if.htm" text="instruction conditionnelle"/> pour plus de détail).</div>
+    <div title="Boucle"> Elle se note <div><b><r>while</r> (expressionBooleenne) { BlocD'Instructions }</b></div>
+    (voir l'activité sur les <l link="sujet-about-while.htm" text="boucles"/> pour plus de détail).</div>
+    <div title="Déclaration de fonction"> Elle se note <div><r>TypeDuResultat</r> <b>NomDeLaFonction</b> 
+    (<r>TypeParametre1</r> <b>NomParametre1</b>, ..., <r>TypeParametreN</r> <b>NomParametreN</b>) { BlocD'Instructions }</div>
+    (voir l'activité sur les <l link="sujet-about-functions.htm" text="fonctions"/> pour plus de détail).</div>
+    <div title="Programme principal"> Il se note <b><r>void main</r>{ }</b> avec les instructions définies entre <b>{ }</b>.</div>
+    tandis que le langage Java a beaucoup d'autres <l link="http://www.eteks.com/coursjava/instructions.html" text="instructions et opérateurs"/>.</div>
 
-<footnotes>
-  <p id ="1">La différence entre <c>echo</c> et <c>println</c> est <c>echo</c> affiche la chaîne de caractères dans la console, donc marche avec toutes les proglets, 
-  tandis que <c>println</c> est dédiée à la fenêtre de sortie de la proglet Console..</p>
-</footnotes>
-</p>
-
-
-
-
-
-  
+<div class="notes">
+  <div id="1">La différence entre <c>echo</c> et <c>println</c> est <c>echo</c> affiche la chaîne de caractères dans la console, donc marche avec toutes les proglets, 
+  tandis que <c>println</c> est dédiée à la fenêtre de sortie de la proglet Console..</div>
+</div>
+</div>

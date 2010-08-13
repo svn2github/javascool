@@ -1,210 +1,210 @@
-<sujet>
-  <titre>Un tutoriel pour se familiariser avec les fonctions</titre>
+<div class="sujet" title="Un tutoriel pour se familiariser avec les fonctions">
   
-  <proglet name="Konsol"/>
   
-  <objectif>
-    Le but de ce tutoriel est de se familiariser avec les fonctions. Il faut déja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,
-  se servir de <a href="sujet-about-variables.htm">variables</a> et avoir découvert l'instruction <a href="sujet-about-if.htm">conditionnelle</a>.
-  </objectif>
   
-  <notes>
-    <note title="Décortiquer un exemple de fonction"> Voici un exemple de fonction qui se nomme «valeur absolue<footnote id="1"/>» et qui se définit ainsi: <ul>
-      <li>Si la variable <c>x</c> a une valeur est positive alors on retourne cette valeur positive.</li>
-      <li>Si la variable <c>x</c> a une valeur est négative alors on retourne l'opposé de cette valeur (noté <c>-x</c>), donc une valeur encore positive.</li>
-    </ul>
-    <code>
-      <m>Définition de la fonction valeur absolue<footnote id="1"/></m>
+  
+  <div class="objectif">
+    Le but de ce tutoriel est de se familiariser avec les fonctions. Il faut déja savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>,
+  se servir de <l link="sujet-about-variables.htm" text="variables"/> et avoir découvert l'instruction <l link="sujet-about-if.htm" text="conditionnelle"/>.
+  </div>
+  
+  <div class="intros">
+    <div title="Décortiquer un exemple de fonction"> Voici un exemple de fonction qui se nomme «valeur absolue<l class="note" link="#1"/>» et qui se définit ainsi: <div class="ul">
+      <div>Si la variable <c>x</c> a une valeur est positive alors on retourne cette valeur positive.</div>
+      <div>Si la variable <c>x</c> a une valeur est négative alors on retourne l'opposé de cette valeur (noté <c>-x</c>), donc une valeur encore positive.</div>
+    </div>
+    <div class="code">
+      <m>Définition de la fonction valeur absolue</m>
       <p><r>int</r> abs(<r>int</r> x) {</p>
-      <p><t/><r>if</r> (x <r>></r> 0) {</p>
-      <p><t/><t/><r>return</r> x;</p>
-      <p><t/>} <r>else</r> {</p>
-      <p><t/><t/><r>return</r> -x;</p>
-      <p><t/>}</p>
+      <p><T/><r>if</r> (x <r>&gt;</r> 0) {</p>
+      <p><T/><T/><r>return</r> x;</p>
+      <p><T/>} <r>else</r> {</p>
+      <p><T/><T/><r>return</r> -x;</p>
+      <p><T/>}</p>
       <p>}</p>
-    </code>
-     Regardons plus en détail cette fonction : <ul>
-      <li>La ligne de commentaire "Définition de la fonction valeur absolue" explique à tous ceux qui vont utiliser le code, ce que fait cette fonction :
-      c'est bien utile !</li>
-      <li>La ligne <b><r>int</r> abs(<r>int</r> x)</b> nous dit, de gauche à droite, que : <ul>
-        <li>la fonction renvoie, en sortie, un résultat qui est un entier, donc un <r>int</r> ;</li>
-        <li>le nom de la fonction est <r>abs</r> ;</li>
-        <li>la fonction reçoit, en entrée, un argument <b>x</b> qui est un entier ;</li>
-      </ul>Cette ligne <i>définit donc la fonction</i>, c'est son <i>interface</i> ou sa <i>signature</i>. 
-      Nous avons besoin de connaître cette ligne pour savoir comment appeler cette fonction.</li>
-      <li>Les 4 lignes suivantes forment le <i>corps</i> de la fonction : 
+    </div>
+     Regardons plus en détail cette fonction : <div class="ul">
+      <div>La ligne de commentaire "Définition de la fonction valeur absolue" explique à tous ceux qui vont utiliser le code, ce que fait cette fonction :
+      c'est bien utile !</div>
+      <div>La ligne <b><r>int</r> abs(<r>int</r> x)</b> nous dit, de gauche à droite, que : <div class="ul">
+        <div>la fonction renvoie, en sortie, un résultat qui est un entier, donc un <r>int</r> ;</div>
+        <div>le nom de la fonction est <r>abs</r> ;</div>
+        <div>la fonction reçoit, en entrée, un argument <b>x</b> qui est un entier ;</div>
+      </div>Cette ligne <i>définit donc la fonction</i>, c'est son <i>interface</i> ou sa <i>signature</i>. 
+      Nous avons besoin de connaître cette ligne pour savoir comment appeler cette fonction.</div>
+      <div>Les 4 lignes suivantes forment le <i>corps</i> de la fonction : 
       on y lit que si <b>x</b> est plus grand que <b>0</b>, le résultat est <b>x</b>, sinon le résultat est  <b>-x</b>. 
-      En effet :<ul>
-        <li>l'instruction <b><r>return</r> x;</b> signifie <i>renvoyer le résulat</i> : le calcul est fini et la fonction retourne la valeur calculée.</li>
-        <li>On note aussi les accolades { } qui permettent de délimiter le corps de la fonction : ce sont comme des parenthèses qui encapsulent les instructions.</li>
-      </ul>
-    </li></ul></note>
+      En effet :<div class="ul">
+        <div>l'instruction <b><r>return</r> x;</b> signifie <i>renvoyer le résulat</i> : le calcul est fini et la fonction retourne la valeur calculée.</div>
+        <div>On note aussi les accolades { } qui permettent de délimiter le corps de la fonction : ce sont comme des parenthèses qui encapsulent les instructions.</div>
+      </div>
+    </div></div></div>
 
-    <note title="Faire en sorte de réutiliser des portions de code"> Prenons un exemple.
-    Voici un bout de code, sûrement fort utile, qui calcule <i>la plus grande des valeurs absolues<footnote id="1"/></i> de deux variables <b>x</b> et <b>y</b>.
-    Si nous notons <b><r>abs</r>(x)</b> la valeur absolue<footnote id="1"/> de <b>x</b>, et <b><r>max</r>(x, y)</b> la plus grande valeur entre <b>x</b> et <b>y</b>.
+    <div title="Faire en sorte de réutiliser des portions de code"> Prenons un exemple.
+    Voici un bout de code, sûrement fort utile, qui calcule <i>la plus grande des valeurs absolues<l class="note" link="#1"/></i> de deux variables <b>x</b> et <b>y</b>.
+    Si nous notons <b><r>abs</r>(x)</b> la valeur absolue<l class="note" link="#1"/> de <b>x</b>, et <b><r>max</r>(x, y)</b> la plus grande valeur entre <b>x</b> et <b>y</b>.
     Eh bien nous cherchons à calculer <b><r>max</r>(<r>abs</r>(x), <r>abs</r>(y))</b>, c'est à dire le maximum des deux valeurs absolues. Voici ... le code
     (jeter un coup d'oeil et passer à la suite !):
-    <code>
+    <div class="code">
       <p><r>void main</r>() {</p>
-      <p><t/><r>int</r> x = 12;</p>
-      <p><t/><r>int</r> y = -14;</p>
-      <p><t/><r>int</r> z;</p>
+      <p><T/><r>int</r> x = 12;</p>
+      <p><T/><r>int</r> y = -14;</p>
+      <p><T/><r>int</r> z;</p>
       <m>Calcul selon que x ou y soit positif ou négatif, de la plus grande valeur positive entre x et -x, y et -y</m>
-      <p><t/><r>if</r> (x <r>></r> 0) {</p>
-      <p><t/><t/><r>if</r> (y <r>></r> 0) {</p>
-      <p><t/><t/><t/><r>if</r> (x <r>></r> y) { </p>
-      <p><t/><t/><t/><t/>z = x;</p>
-      <p><t/><t/><t/>} <r>else</r> {</p>
-      <p><t/><t/><t/><t/>z = y;</p>
-      <p><t/><t/><t/>}</p>
-      <p><t/><t/>} <r>else</r> {</p>
-      <p><t/><t/><t/><r>if</r> (x <r>></r> -y) {</p>
-      <p><t/><t/><t/><t/>z = x;</p>
-      <p><t/><t/><t/>} <r>else</r> {</p>
-      <p><t/><t/><t/><t/>z = -y;</p>
-      <p><t/><t/><t/>}</p>
-      <p><t/><t/>}</p>
-      <p><t/>} <r>else</r> {</p>
-      <p><t/><t/><r>if</r> (y <r>></r> 0) {</p>
-      <p><t/><t/><t/><r>if</r> (-x <r>></r> y) { </p>
-      <p><t/><t/><t/><t/>z = -x;</p>
-      <p><t/><t/><t/>} <r>else</r> {</p>
-      <p><t/><t/><t/><t/>z = y;</p>
-      <p><t/><t/><t/>}</p>
-      <p><t/><t/>} <r>else</r> {</p>
-      <p><t/><t/><t/><r>if</r> (-x <r>></r> -y) {</p>
-      <p><t/><t/><t/><t/>z = -x;</p>
-      <p><t/><t/><t/>} <r>else</r> {</p>
-      <p><t/><t/><t/><t/>z = -y;</p>
-      <p><t/><t/><t/>}</p>
-      <p><t/><t/>}</p>
-      <p><t/>}</p>
-      <p><t/><r>println</r>(<s>z = </s> + z);</p>
+      <p><T/><r>if</r> (x <r>&gt;</r> 0) {</p>
+      <p><T/><T/><r>if</r> (y <r>&gt;</r> 0) {</p>
+      <p><T/><T/><T/><r>if</r> (x <r>&gt;</r> y) { </p>
+      <p><T/><T/><T/><T/>z = x;</p>
+      <p><T/><T/><T/>} <r>else</r> {</p>
+      <p><T/><T/><T/><T/>z = y;</p>
+      <p><T/><T/><T/>}</p>
+      <p><T/><T/>} <r>else</r> {</p>
+      <p><T/><T/><T/><r>if</r> (x <r>&gt;</r> -y) {</p>
+      <p><T/><T/><T/><T/>z = x;</p>
+      <p><T/><T/><T/>} <r>else</r> {</p>
+      <p><T/><T/><T/><T/>z = -y;</p>
+      <p><T/><T/><T/>}</p>
+      <p><T/><T/>}</p>
+      <p><T/>} <r>else</r> {</p>
+      <p><T/><T/><r>if</r> (y <r>&gt;</r> 0) {</p>
+      <p><T/><T/><T/><r>if</r> (-x <r>&gt;</r> y) { </p>
+      <p><T/><T/><T/><T/>z = -x;</p>
+      <p><T/><T/><T/>} <r>else</r> {</p>
+      <p><T/><T/><T/><T/>z = y;</p>
+      <p><T/><T/><T/>}</p>
+      <p><T/><T/>} <r>else</r> {</p>
+      <p><T/><T/><T/><r>if</r> (-x <r>&gt;</r> -y) {</p>
+      <p><T/><T/><T/><T/>z = -x;</p>
+      <p><T/><T/><T/>} <r>else</r> {</p>
+      <p><T/><T/><T/><T/>z = -y;</p>
+      <p><T/><T/><T/>}</p>
+      <p><T/><T/>}</p>
+      <p><T/>}</p>
+      <p><T/><r>println</r>(<v>z = </v> + z);</p>
       <p>}</p>
-    </code>
+    </div>
     Mmmm ... et bien oui, il est un peu long, un peu lourd et s'il faut le recopier chaque fois que nous avons besoin de calculer la plus petite des valeurs absolues,
     celà va vite devenir ingérable de fait. En plus, on mélange calcul de la valeur absolue et calcul du maximum et tout cela semble redondant et bien inutilement complexe.
     Nous avons une façon bien plus élégante de définir le même calcul en utilisant des fonctions:
-    <code>
+    <div class="code">
       <m>Définition de la fonction maximum de deux valeurs</m>
       <p><r>int</r> max(<r>int</r> x, <r>int</r> y) {</p>
-      <p><t/><r>if</r> (x <r>></r> y) {</p>
-      <p><t/><t/><r>return</r> x;</p>
-      <p><t/>} <r>else</r> {</p>
-      <p><t/><t/><r>return</r> y;</p>
-      <p><t/>}</p>
+      <p><T/><r>if</r> (x <r>&gt;</r> y) {</p>
+      <p><T/><T/><r>return</r> x;</p>
+      <p><T/>} <r>else</r> {</p>
+      <p><T/><T/><r>return</r> y;</p>
+      <p><T/>}</p>
       <p>}</p>
-      <m>Définition de la fonction valeur absolue<footnote id="1"/></m>
+      <m>Définition de la fonction valeur absolue</m>
       <p><r>int</r> abs(<r>int</r> x) {</p>
-      <p><t/><r>if</r> (x <r>></r> 0) {</p>
-      <p><t/><t/><r>return</r> x;</p>
-      <p><t/>} <r>else</r> {</p>
-      <p><t/><t/><r>return</r> -x;</p>
-      <p><t/>}</p>
+      <p><T/><r>if</r> (x <r>&gt;</r> 0) {</p>
+      <p><T/><T/><r>return</r> x;</p>
+      <p><T/>} <r>else</r> {</p>
+      <p><T/><T/><r>return</r> -x;</p>
+      <p><T/>}</p>
       <p>}</p>
       <p><r>void main</r>() {</p>
-      <p><t/><r>int</r> x = 12;</p>
-      <p><t/><r>int</r> y = -14;</p>
-      <p><t/><r>int</r> z = <r>max</r>(<r>abs</r>(x), <r>abs</r>(y));</p>
-      <p><t/><r>println</r>(<s>z = </s> + z);</p>
+      <p><T/><r>int</r> x = 12;</p>
+      <p><T/><r>int</r> y = -14;</p>
+      <p><T/><r>int</r> z = <r>max</r>(<r>abs</r>(x), <r>abs</r>(y));</p>
+      <p><T/><r>println</r>(<v>z = </v> + z);</p>
       <p>}</p>
-    </code>
-    Ouf ! Ici tout a changé :<ul>
-      <li>Le code est beaucoup plus court et plus lisible, beaucoup plus facile à vérifier aussi.</li>
-      <li>Le programme principal <r>void main</r> ne contient que ce que nous voulons faire, et la façon de le faire est déléguée aux fonctions.</li>
-      <li>Chaque fonction est définie de manière modulaire et pourra être facilement réutilisée : nous créons ici <i>nos propres instructions</i>,
-      en plus de celles disponibles dans le langage<footnote id="2"/>.</li>
-    </ul>
-    Regardons plus en détail la fonction <r>max</r> : <ul>
-      <li>La ligne de commentaire "Définition de la fonction maximum de deux valeurs" explique à tous ceux qui vont utiliser le code, ce que fait cette fonction :
-      c'est indispensable !</li>
-      <li>La ligne <b><r>int</r> max(<r>int</r> x, <r>int</r> y)</b> nous dit, de gauche à droite, que : <ul>
-        <li>la fonction renvoie, en sortie, un résultat qui est un entier, donc un <r>int</r> ;</li>
-        <li>le nom de la fonction est <r>max</r> ;</li>
-        <li>la fonction reçoit, en entrée, deux arguments qui sont les entiers <b>x</b> et <b>y</b>;</li>
-      </ul>Cette ligne <i>définit donc la fonction</i>, c'est son <i>interface</i> ou sa <i>signature</i>. 
-      Nous avons besoin de connaître cette ligne pour savoir comment appeler cette fonction.</li>
-      <li>Les 4 lignes suivantes forment le <i>corps</i> de la fonction : 
+    </div>
+    Ouf ! Ici tout a changé :<div class="ul">
+      <div>Le code est beaucoup plus court et plus lisible, beaucoup plus facile à vérifier aussi.</div>
+      <div>Le programme principal <r>void main</r> ne contient que ce que nous voulons faire, et la façon de le faire est déléguée aux fonctions.</div>
+      <div>Chaque fonction est définie de manière modulaire et pourra être facilement réutilisée : nous créons ici <i>nos propres instructions</i>,
+      en plus de celles disponibles dans le langage<l class="note" link="#2"/>.</div>
+    </div>
+    Regardons plus en détail la fonction <r>max</r> : <div class="ul">
+      <div>La ligne de commentaire "Définition de la fonction maximum de deux valeurs" explique à tous ceux qui vont utiliser le code, ce que fait cette fonction :
+      c'est indispensable !</div>
+      <div>La ligne <b><r>int</r> max(<r>int</r> x, <r>int</r> y)</b> nous dit, de gauche à droite, que : <div class="ul">
+        <div>la fonction renvoie, en sortie, un résultat qui est un entier, donc un <r>int</r> ;</div>
+        <div>le nom de la fonction est <r>max</r> ;</div>
+        <div>la fonction reçoit, en entrée, deux arguments qui sont les entiers <b>x</b> et <b>y</b>;</div>
+      </div>Cette ligne <i>définit donc la fonction</i>, c'est son <i>interface</i> ou sa <i>signature</i>. 
+      Nous avons besoin de connaître cette ligne pour savoir comment appeler cette fonction.</div>
+      <div>Les 4 lignes suivantes forment le <i>corps</i> de la fonction : 
       on y lit que si <b>x</b> est plus grand que <b>y</b>, le résultat est <b>x</b>, sinon le résultat est  <b>y</b>. 
-      En effet :<ul>
-        <li>l'instruction <b><r>return</r> x;</b> ou <b><r>return</r> y;</b> signifie <i>renvoyer le résulat</i> : 
-        le calcul est fini et la fonction retourne la valeur calculée.</li>
-        <li>On note aussi les accolades { } qui permettent de délimiter le corps de la fonction : ce sont comme des parenthèses qui encapsulent les instructions.</li>
-      </ul></li>
-      <li>Dans la partie principale du programme à la ligne <b><r>int</r> z = <r>max</r>(<r>abs</r>(x), <r>abs</r>(y));</b> on utilise la fonction, de la manière suivante:<ul>
-        <li>Les valeurs d'entrée sont <b><r>abs</r>(x)</b> (la valeur absolue de <b>x</b> elle même calculée en appelant la fonction <r>abs</r>) et <b><r>abs</r>(y)</b>.</li>
-        <li>Le calcul du maximum s'effectue à l'intérieur de la fonction <r>max</r> et le résultat est renvoyé dans <b>z</b>,
-        puisque le <r>=</r> affecte la valeur à <b>z</b>.</li>
-      </ul></li>
-    </ul>Nous avons ainsi <i>structuré</i> notre code.    
-  </note>
-  <note title="A propos des fonctions que nous connaissons déja"> Nous connaissons déjà : <ul>
-    <li>La fonction <b><r>String</r> <r>readString</r>() ;</b> qui renvoie une chaine de caractère entrée au clavier par l'utilisateur : <ul>
-      <li>Cette fonction n'a pas d'argument en entrée (donc il n'y a rien entre les parenthèses), puisque nous n'avons besoin de lui passer aucun paramètre,
-      tandis que l'entrée (par l'utilisateur) est <i>externe</i> au programme.</li>
-      <li>Cette fonction renvoie une valeur : la chaine lue sur le clavier.</li>
-    </ul></li>
-    <li>La fonction <b><r>void</r> <r>println</r>(<r>String</r> s);</b> 
-      qui imprime une chaine de caractère en sortie pour l'utilisateur : <ul> 
-      <li>Cette fonction a un argument en entrée, la chaine de caratères, notée ici <b>s</b>, qui doit être imprimée.</li>
-      <li>Cette fonction ne renvoie aucun résultat en sortie, puisque la sortie est <i>externe</i> au programme (en affichant à l'écran). C'est le mot <r>void</r>, 
-      vide, qui signifie "rien" pas de résultat. Voilà le sens de ce mot du langage : l'instruction est "imprime et c'est tout".</li>
-    </ul></li>
-    <li>La fonction <b><r>void</r> <r>main</r>();</b> ... c'est nous qui la définissons à chaque fois. 
+      En effet :<div class="ul">
+        <div>l'instruction <b><r>return</r> x;</b> ou <b><r>return</r> y;</b> signifie <i>renvoyer le résulat</i> : 
+        le calcul est fini et la fonction retourne la valeur calculée.</div>
+        <div>On note aussi les accolades { } qui permettent de délimiter le corps de la fonction : ce sont comme des parenthèses qui encapsulent les instructions.</div>
+      </div></div>
+      <div>Dans la partie principale du programme à la ligne <b><r>int</r> z = <r>max</r>(<r>abs</r>(x), <r>abs</r>(y));</b> on utilise la fonction, de la manière suivante:<div class="ul">
+        <div>Les valeurs d'entrée sont <b><r>abs</r>(x)</b> (la valeur absolue de <b>x</b> elle même calculée en appelant la fonction <r>abs</r>) et <b><r>abs</r>(y)</b>.</div>
+        <div>Le calcul du maximum s'effectue à l'intérieur de la fonction <r>max</r> et le résultat est renvoyé dans <b>z</b>,
+        puisque le <r>=</r> affecte la valeur à <b>z</b>.</div>
+      </div></div>
+    </div>Nous avons ainsi <i>structuré</i> notre code.    
+  </div>
+  <div title="A propos des fonctions que nous connaissons déja"> Nous connaissons déjà : <div class="ul">
+    <div>La fonction <b><r>String</r> <r>readString</r>() ;</b> qui renvoie une chaine de caractère entrée au clavier par l'utilisateur : <div class="ul">
+      <div>Cette fonction n'a pas d'argument en entrée (donc il n'y a rien entre les parenthèses), puisque nous n'avons besoin de lui passer aucun paramètre,
+      tandis que l'entrée (par l'utilisateur) est <i>externe</i> au programme.</div>
+      <div>Cette fonction renvoie une valeur : la chaine lue sur le clavier.</div>
+    </div></div>
+    <div>La fonction <b><r>void</r> <r>println</r>(<r>String</r> s);</b> 
+      qui imprime une chaine de caractère en sortie pour l'utilisateur : <div class="ul"> 
+      <div>Cette fonction a un argument en entrée, la chaine de caratères, notée ici <b>s</b>, qui doit être imprimée.</div>
+      <div>Cette fonction ne renvoie aucun résultat en sortie, puisque la sortie est <i>externe</i> au programme (en affichant à l'écran). C'est le mot <r>void</r>, 
+      vide, qui signifie "rien" pas de résultat. Voilà le sens de ce mot du langage : l'instruction est "imprime et c'est tout".</div>
+    </div></div>
+    <div>La fonction <b><r>void</r> <r>main</r>();</b> ... c'est nous qui la définissons à chaque fois. 
     Elle n'a (dans notre contexte) ni entrée ni sortie (donc rien entre les parenthèses, et le mot <r>void</r> pour signifier l'absence de résultat).
-    Elle correspond juste au lancement du programme, à la fonction par laquelle le programme doit commencer.</li>
-  </ul></note> 
-  <note title="Les fonctions peuvent elle s'appeler elle-même ?"> Imaginons une fonction <r>A</r> qui appelle, selon ses entrées, une fonction <r>B</r> 
+    Elle correspond juste au lancement du programme, à la fonction par laquelle le programme doit commencer.</div>
+  </div></div> 
+  <div title="Les fonctions peuvent elle s'appeler elle-même ?"> Imaginons une fonction <r>A</r> qui appelle, selon ses entrées, une fonction <r>B</r> 
   qui appelle elle-même la fonction <r>A</r> ou tout autre combinaison telle que, finalement et selon ses entrées, la fonction <r>A</r> se rappelle elle-même. 
-  On dit qu'elle est <i><a href="http://fr.wikipedia.org/wiki/Algorithme_récursif">récursive</a></i> : 
+  On dit qu'elle est <i><l link="http://fr.wikipedia.org/wiki/Algorithme_récursif" text="récursive"/></i> : 
   cela peut donner des boucles infinies (donc des bugs !), ou des calculs très complexes et très intéressants ... et 
-  c'est plus compliqué que ce que nous pouvons découvrir ici, alors retenons juste deux choses : <ul>
-    <li>Il faut éviter de définir des fonctions récursives, sauf dans les cas indispensables.</li>
-    <li>Il faut être prudent si c'est le cas, et bien comprendre la notion de <a href="sujet-about-while.htm">boucle</a> avant.</li>
-  </ul></note>
- </notes>
+  c'est plus compliqué que ce que nous pouvons découvrir ici, alors retenons juste deux choses : <div class="ul">
+    <div>Il faut éviter de définir des fonctions récursives, sauf dans les cas indispensables.</div>
+    <div>Il faut être prudent si c'est le cas, et bien comprendre la notion de <l link="sujet-about-while.htm" text="boucle"/> avant.</div>
+  </div></div>
+ </div>
 
-  <works>
-    <work title="A nous de jouer"><ul>
-      <li>Recopier les deux portions de code dans deux fichiers différents et vérifier si les deux donnent le bon résulat.</li>
-      <li>A partir du 2ème exemple de code, ajouter la fonction "min" (qui renvoie la plus petite des valeurs x ou y),
-      pour calculer <i>la plus <b>petite</b> des valeurs absolues</i>, et non la plus grande. Vérifier le résultat.</li>
-      <li>A partir du 2ème exemple de code, puisque la valeur absolue<footnote id="1"/> de x est aussi la plus grande entre x et -x, reprogrammer la fonction valeur absolue en une ligne, sans utiliser de <r>if</r>, mais en utilisant la fonction <r>max</r>.</li>
-    </ul></work> 
-    <work title="Programmer d'autres fonctions">Programmer les fonctions suivantes et faire un petit <r>main</r> pour un programme de test :<ul>
-      <li>Programmer la fonction "division sans bêtise" <b><r>double</r> div(<r>double</r> x, <r>double</r> y)</b>, 
-      qui renvoie <ul>
-        <li><b>x</b> divisé par <b>y</b> (cela se note comme sur les calculettes <b>x / y</b>), si <b>y</b> n'est pas zéro,</li>
-        <li>imprime un message d'erreur, puis renvoie la valeur <b>Double.NaN</b>, si <b>y</b> est nul (<b>y == 0</b>) .</li>
-      </ul>(la valeur <b>Double.NaN</b> qui se lie "Not-a-Number" signifie que le résulat n'est pas un nombre, mais est indéfini.</li>
-      <li>Programmer la fonction "ou exclusif" <b><r>boolean</r> xor(<r>boolean</r> x, <r>boolean</r> y)</b>,
-      découverte avec l'<a href="doc/sujet-about-if.htm">instruction conditionnelle</a>, 
-      qui renvoie <r>true</r> (vrai) si soit <b>x</b>, soit <b>y</b> est <r>true</r> mais pas les deux à la fois.</li> 
-      <li>Programmer la fonction "maximum de trois entiers" <b><r>int</r> max(<r>int</r> x, <r>int</r> y, <r>int</r> z)</b>, 
-      soit en utilisant la fonction <b><r>int</r> max(<r>int</r> x, <r>int</r> y)</b>, soit des <r>if</r>, comme vous voulez.</li>
-      <li>Programmer une fonction "info ou intox" <b><r>void</r> <r>infox</r>(<r>String</r> question, <r>boolean</r> reponse);</b> qui :<ul>
-        <li>pose une question Vrai/Faux à l'utilisateur (voir des exemples ci dessous),</li>
-        <li>lit sa réponse avec un <b><r>readBoolean</r>();</b>,</li>
-        <li>le félicite s'il a raison et lui dit gentiment s'il s'est trompé.</li>
-      </ul>L'utiliser par exemple avec le <r>main</r> suivant.
-      <code>
+  <div class="works">
+    <div title="A nous de jouer"><div class="ul">
+      <div>Recopier les deux portions de code dans deux fichiers différents et vérifier si les deux donnent le bon résulat.</div>
+      <div>A partir du 2ème exemple de code, ajouter la fonction "min" (qui renvoie la plus petite des valeurs x ou y),
+      pour calculer <i>la plus <b>petite</b> des valeurs absolues</i>, et non la plus grande. Vérifier le résultat.</div>
+      <div>A partir du 2ème exemple de code, puisque la valeur absolue<l class="note" link="#1"/> de x est aussi la plus grande entre x et -x, reprogrammer la fonction valeur absolue en une ligne, sans utiliser de <r>if</r>, mais en utilisant la fonction <r>max</r>.</div>
+    </div></div> 
+    <div title="Programmer d'autres fonctions">Programmer les fonctions suivantes et faire un petit <r>main</r> pour un programme de test :<div class="ul">
+      <div>Programmer la fonction "division sans bêtise" <b><r>double</r> div(<r>double</r> x, <r>double</r> y)</b>, 
+      qui renvoie <div class="ul">
+        <div><b>x</b> divisé par <b>y</b> (cela se note comme sur les calculettes <b>x / y</b>), si <b>y</b> n'est pas zéro,</div>
+        <div>imprime un message d'erreur, puis renvoie la valeur <b>Double.NaN</b>, si <b>y</b> est nul (<b>y == 0</b>) .</div>
+      </div>(la valeur <b>Double.NaN</b> qui se lie "Not-a-Number" signifie que le résulat n'est pas un nombre, mais est indéfini.</div>
+      <div>Programmer la fonction "ou exclusif" <b><r>boolean</r> xor(<r>boolean</r> x, <r>boolean</r> y)</b>,
+      découverte avec l'<l link="doc/sujet-about-if.htm" text="instruction conditionnelle"/>, 
+      qui renvoie <r>true</r> (vrai) si soit <b>x</b>, soit <b>y</b> est <r>true</r> mais pas les deux à la fois.</div> 
+      <div>Programmer la fonction "maximum de trois entiers" <b><r>int</r> max(<r>int</r> x, <r>int</r> y, <r>int</r> z)</b>, 
+      soit en utilisant la fonction <b><r>int</r> max(<r>int</r> x, <r>int</r> y)</b>, soit des <r>if</r>, comme vous voulez.</div>
+      <div>Programmer une fonction "info ou intox" <b><r>void</r> <r>infox</r>(<r>String</r> question, <r>boolean</r> reponse);</b> qui :<div class="ul">
+        <div>pose une question Vrai/Faux à l'utilisateur (voir des exemples ci dessous),</div>
+        <div>lit sa réponse avec un <b><r>readBoolean</r>();</b>,</div>
+        <div>le félicite s'il a raison et lui dit gentiment s'il s'est trompé.</div>
+      </div>L'utiliser par exemple avec le <r>main</r> suivant.
+      <div class="code">
         <p><r>void main</r>() {</p>
-        <p><t/><r>infox</r>(<s>Il y a environ 100 millions d'ordinateurs dans le monde</s>, <r>false</r>);</p><m> ... il y en plus de 1 milliard!</m>
-        <p><t/><r>infox</r>(<s>Ada Byron-Lovelace était, dès le XIXème siècle, la 1ère femme informaticienne</s>, <r>true</r>);</p><m> ... oui elle fut la première à formaliser la notion de programme que nous apprenons ici.</m>
-        <p><t/><r>infox</r>(<s>Toutes les fonctions mathématiques peuvent être calculées par un ordinateur</s>, <r>false</r>);</p><m> ... il y a beaucoup de fonctions dont le temps de calcul est ... infini ! (donc impossible à calculer)</m>
-        <p><t/><r>infox</r>(<s>Le cours de la 2nd guerre mondiale a changé plus vite grâce à ... un calcul informatique</s>, <r>true</r>);</p><m> ... Alan-Turing a pu "craquer" le code de la machine Enigma qui codait les messages nazis grace à un calcul mécanique.</m>
+        <p><T/><r>infox</r>(<v>Il y a environ 100 millions d'ordinateurs dans le monde</v>, <r>false</r>);</p><m> ... il y en plus de 1 milliard!</m>
+        <p><T/><r>infox</r>(<v>Ada Byron-Lovelace était, dès le XIXème siècle, la 1ère femme informaticienne</v>, <r>true</r>);</p><m> ... oui elle fut la première à formaliser la notion de programme que nous apprenons ici.</m>
+        <p><T/><r>infox</r>(<v>Toutes les fonctions mathématiques peuvent être calculées par un ordinateur</v>, <r>false</r>);</p><m> ... il y a beaucoup de fonctions dont le temps de calcul est ... infini ! (donc impossible à calculer)</m>
+        <p><T/><r>infox</r>(<v>Le cours de la 2nd guerre mondiale a changé plus vite grâce à ... un calcul informatique</v>, <r>true</r>);</p><m> ... Alan-Turing a pu "craquer" le code de la machine Enigma qui codait les messages nazis grace à un calcul mécanique.</m>
       <p>}</p>
-    </code> ... non sans vous amuser à ajouter vos propres questions !</li>
-    </ul></work>
-  </works>
+    </div> ... non sans vous amuser à ajouter vos propres questions !</div>
+    </div></div>
+  </div>
   
-  <footnotes>
-    <p id="1" title="A propos la valeur absolue"> Si x est négatif sa valeur, par exemple -12 ou -14, la valeur absolue est le nombre positif correspondant sans le signe "-",
+  <div class="notes">
+    <div title="A propos la valeur absolue" id="1"> Si x est négatif sa valeur, par exemple -12 ou -14, la valeur absolue est le nombre positif correspondant sans le signe "-",
     autrement dit l'opposé de x, donc 12 ou 14 pour nos exemples. 
     Si x est positif sa valeur absolue est le nombre lui même, autrement dit x. On note |x| la valeur absolue de x. 
-    Comme un nombre positif est toujours plus grand qu'un nombre négatif, c'est aussi la valeur la plus grande entre x et -x.</p> 
-    <p id="2" title="Les fonctions «abs» et «max» en Java"> Bien entendu les fonctions valeur-absolue, maximum-de-deux-valeurs existent <i>déja</i> dans tous les langages
-    usuels dont Java ! Nous les avons "caché" en Javascool pour vous apprendre comment les programmer.</p>
-  </footnotes>
-</sujet>
+    Comme un nombre positif est toujours plus grand qu'un nombre négatif, c'est aussi la valeur la plus grande entre x et -x.</div> 
+    <div title="Les fonctions «abs» et «max» en Java" id="2"> Bien entendu les fonctions valeur-absolue, maximum-de-deux-valeurs existent <i>déja</i> dans tous les langages
+    usuels dont Java ! Nous les avons "caché" en Javascool pour vous apprendre comment les programmer.</div>
+  </div>
+</div>

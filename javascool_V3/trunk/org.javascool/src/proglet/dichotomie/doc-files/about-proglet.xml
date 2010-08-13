@@ -1,36 +1,36 @@
-<p title="La «proglet» dichotomie">
-  <proglet name="dichotomie" mode="demo">
-    Cette proglet<footnote id="1"/> permet d'apprendre la notion algorithmique de « recherche dichotomie ». 
+<div title="La «proglet» dichotomie">
+  <div class="table"><p><p>
+    Cette proglet<l class="note" link="#1"/> permet d'apprendre la notion algorithmique de « recherche dichotomie ». 
     La proglet affiche un livre avec tous les drapeaux du monde 
-    (répertoriés grâce à <a href="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde">wikipedia</a>)
+    (répertoriés grâce à <l link="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde" text="wikipedia"/>)
     et permet d'ouvrir le livre à une page donnée pour comparer le nom de pays avec le nom du pays recherché. 
-    <p>Plus précisément la fonction <r>dichoCompare</r> ouvre le livre à une page et compare un nom au nom affiché sur cette page: <code>
+    <div>Plus précisément la fonction <r>dichoCompare</r> ouvre le livre à une page et compare un nom au nom affiché sur cette page: <div class="code">
       <p><r>int</r> résultat = <r>dichoCompare</r>(nom, page);</p>
-    </code><ul>
-    <li>où <b>nom</b> est un <r>String</r> dont la valeur est le nom du pays recherché;</li>
-    <li>où <b>page</b> est un <r>int</r>, le numéro de la page de 0 à 192 (il y a 193 pays);</li>
-    <li>le <b>résultat</b> étant:<ul>
-        <li><c>-1</c> si le nom se situe avant celui de la page,</li>
-        <li><c>+1</c> si le nom se situe après celui de la page,</li>
-        <li><c>0</c> si il correspond à celui de la page.</li>
-      </ul></li>
-    </ul> tandis que la fonction: <code>
+    </div><div class="ul">
+    <div>où <b>nom</b> est un <r>String</r> dont la valeur est le nom du pays recherché;</div>
+    <div>où <b>page</b> est un <r>int</r>, le numéro de la page de 0 à 192 (il y a 193 pays);</div>
+    <div>le <b>résultat</b> étant:<div class="ul">
+        <div><c>-1</c> si le nom se situe avant celui de la page,</div>
+        <div><c>+1</c> si le nom se situe après celui de la page,</div>
+        <div><c>0</c> si il correspond à celui de la page.</div>
+      </div></div>
+    </div> tandis que la fonction: <div class="code">
       <p><r>int</r> length = <r>dichoLength</r>();</p>
-    </code> renvoie le nombre de pages.</p>
-    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
+    </div> renvoie le nombre de pages.</div>
+    <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
     secondes à une dizaine de pages au hasard, selon le programme suivant:
-    <code>
+    <div class="code">
       <p><r>for</r>(<r>int</r> i = 0; i &lt; 10; i++) {</p>
       <p><r>int</r> page = <r>random</r>(0, <r>dichoLength</r>());</p>
-      <p><t/><r>dichoCompare</r>(<s>rien</s>, page);</p>
-      <p><t/><r>sleep</r>(500);</p>
+      <p><T/><r>dichoCompare</r>(<v>rien</v>, page);</p>
+      <p><T/><r>sleep</r>(500);</p>
       <p>}</p>
-    </code></p>
-    <p>En appuyant sur les touches <c>&lt;-</c> et <c>-></c> nous pouvons tourner manuellement les pages à gauche ou à droite.</p>
-  </proglet>
+    </div></div>
+    <div>En appuyant sur les touches <c>&lt;-</c> et <c>-&gt;</c> nous pouvons tourner manuellement les pages à gauche ou à droite.</div>
+  </p><p><l class="proglet" l="dichotomie"/></p></p></div>
 
-  <footnotes>
-    <p id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../Dichotomie.html">documentée</a> 
-    pour sa libre redistribution, l'accès <a href=" ../Dichotomie.java.html">au code source</a>, et permettre des développements dérivés.</p>
-  </footnotes>
-</p>
+  <div class="notes">
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../Dichotomie.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link=" ../Dichotomie.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+  </div>
+</div>

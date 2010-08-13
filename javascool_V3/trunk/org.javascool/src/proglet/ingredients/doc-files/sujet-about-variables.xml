@@ -1,110 +1,110 @@
-<sujet>
-  <titre>Un tutoriel sur les variables</titre>
+<div class="sujet" title="Un tutoriel sur les variables">
   
-  <proglet name="Konsol"/>
   
-  <objectif>
-    Le but de ce tutoriel est de comprendre comment utiliser des variables. Il faut déjà savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>.
-  </objectif>
   
-  <notes>
-    <note title="Dialoguer avec un utilisateur"> Voici un exemple de programme qui "dialogue" avec un utilisateur :
-      <code>
+  
+  <div class="objectif">
+    Le but de ce tutoriel est de comprendre comment utiliser des variables. Il faut déjà savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>.
+  </div>
+  
+  <div class="intros">
+    <div title="Dialoguer avec un utilisateur"> Voici un exemple de programme qui "dialogue" avec un utilisateur :
+      <div class="code">
         <p><r>void main</r>() {</p>
-        <p><t/><r>println</r>(<s>Bonjour, quel est ton nom ?</s>);</p>
-        <p><t/><r>String</r> texte = <r>readString</r>();</p>
-        <p><t/><r>println</r>(<s>Enchanté </s> + texte + <s>, et ... à bientôt !</s>);</p>
+        <p><T/><r>println</r>(<v>Bonjour, quel est ton nom ?</v>);</p>
+        <p><T/><r>String</r> texte = <r>readString</r>();</p>
+        <p><T/><r>println</r>(<v>Enchanté </v> + texte + <v>, et ... à bientôt !</v>);</p>
         <p>}</p>
-      </code>
-      Analysons ces quelques lignes :<ul>
-        <li>Nous retrouvons le bloc <b><r>void main</r>() { .. }</b> qui permet de spécifier un bloc d'instructions à faire exécuter, 
-        comme lors du <a href="sujet-about-hello-world.htm">1er tutoriel</a>.</li>
-        <li>Nous retrouvons un <r>println</r> qui permet d'imprimer une ligne pour saluer l'utilisateur.</li>
-        <li>Mais voici quelque chose de nouveau : il va entrer son <i>nom</i>. Or chaque utilisateur a un nom probablement différent, il faut donc prévoir une "boite", 
-        une <i>variable</i> où mémoriser le nom que l'utilisateur va entrer au clavier. <ul>
-          <li>Cette boite est une <i>variable</i>, nous lui avons donné le nom "texte" <i>(who_is_it, c'est à dire "qui est-ce")</i>, 
-          mais nous aurions pu choisir un autre nom simple.</li>
-          <li>La <i>valeur</i> de cette variable est une chaîne de caractères, on parle de <r>String</r> en anglais et ... en <javascool/>.</li>
-          <li>La fonction <r>readString()</r> lit un <r>String</r>.</li>
-        </ul> La ligne <b><r>String</r> texte = <r>readString</r>();</b> signifie donc, de droite à gauche, <ol>
-          <li><b><r>readString()</r>;</b> Lire une chaine de caratère ... </li>
-          <li><b>texte = <r>readString()</r>;</b> Et mettre le résultat dans la variable de nom <b>texte</b> ... </li>
-          <li><b><r>String</r> texte = <r>readString()</r>;</b> Cette variable étant de type <r>String</r>, une chaine de caratères donc.</li>
-        </ol>On voit donc ici que le symbole <b>=</b> signifie <i>affecter une valeur à une variable</i> 
-        (ici affecter la valeur lue grâce à <r>readString</r> à la variable <b>texte</b>.</li>
-        <li>La dernière ligne met bout à bout <s>Enchanté </s>, <b>texte</b> (dont la valeur est le nom entré par l'utilisateur) et <s>, et ... à bientôt !</s> pour imprimer un message de salutation où le nom de l'utilisateur est employé.</li>
-      </ul>
-    </note>
-    <note title="Trois couleurs pour trois sortes de mots"> Regardons ces lignes, il y a des mots en ocre, en vert et en noir : <ul>
-      <li>Les mots en ocre (<r>String</r>, <r>println</r>, ..) sont les mots de base du langage et ceux des fonctions prédéfinies. Ils sont fixés à l'avance 
-      (ce sont les mots du langage <javascool/>), et doivent être utilisés tels quels.  Chaque mot a un sens précis que nous découvrons au fur et à mesure.</li>
-      <li>Les mots en noir (ici <b>texte</b>) sont les identificateurs de nos variables, <i>nous</i> les choisissons et nous donnons à ces variables des <i>valeurs</i>, 
-      un peu comme les "x" et les "y" en mathématiques.<ul>
-      <li><i>Attention<footnote id="1"/>:</i> Les identificateurs en <javascool/> sont uniquement composés de lettres minuscules sans accent 
+      </div>
+      Analysons ces quelques lignes :<div class="ul">
+        <div>Nous retrouvons le bloc <b><r>void main</r>() { .. }</b> qui permet de spécifier un bloc d'instructions à faire exécuter, 
+        comme lors du <l link="sujet-about-hello-world.htm" text="1er tutoriel"/>.</div>
+        <div>Nous retrouvons un <r>println</r> qui permet d'imprimer une ligne pour saluer l'utilisateur.</div>
+        <div>Mais voici quelque chose de nouveau : il va entrer son <i>nom</i>. Or chaque utilisateur a un nom probablement différent, il faut donc prévoir une "boite", 
+        une <i>variable</i> où mémoriser le nom que l'utilisateur va entrer au clavier. <div class="ul">
+          <div>Cette boite est une <i>variable</i>, nous lui avons donné le nom "texte" <i>(who_is_it, c'est à dire "qui est-ce")</i>, 
+          mais nous aurions pu choisir un autre nom simple.</div>
+          <div>La <i>valeur</i> de cette variable est une chaîne de caractères, on parle de <r>String</r> en anglais et ... en <l class="javascool"/>.</div>
+          <div>La fonction <r>readString()</r> lit un <r>String</r>.</div>
+        </div> La ligne <b><r>String</r> texte = <r>readString</r>();</b> signifie donc, de droite à gauche, <div class="ol">
+          <div><b><r>readString()</r>;</b> Lire une chaine de caratère ... </div>
+          <div><b>texte = <r>readString()</r>;</b> Et mettre le résultat dans la variable de nom <b>texte</b> ... </div>
+          <div><b><r>String</r> texte = <r>readString()</r>;</b> Cette variable étant de type <r>String</r>, une chaine de caratères donc.</div>
+        </div>On voit donc ici que le symbole <b>=</b> signifie <i>affecter une valeur à une variable</i> 
+        (ici affecter la valeur lue grâce à <r>readString</r> à la variable <b>texte</b>.</div>
+        <div>La dernière ligne met bout à bout <v>Enchanté </v>, <b>texte</b> (dont la valeur est le nom entré par l'utilisateur) et <v>, et ... à bientôt !</v> pour imprimer un message de salutation où le nom de l'utilisateur est employé.</div>
+      </div>
+    </div>
+    <div title="Trois couleurs pour trois sortes de mots"> Regardons ces lignes, il y a des mots en ocre, en vert et en noir : <div class="ul">
+      <div>Les mots en ocre (<r>String</r>, <r>println</r>, ..) sont les mots de base du langage et ceux des fonctions prédéfinies. Ils sont fixés à l'avance 
+      (ce sont les mots du langage <l class="javascool"/>), et doivent être utilisés tels quels.  Chaque mot a un sens précis que nous découvrons au fur et à mesure.</div>
+      <div>Les mots en noir (ici <b>texte</b>) sont les identificateurs de nos variables, <i>nous</i> les choisissons et nous donnons à ces variables des <i>valeurs</i>, 
+      un peu comme les "x" et les "y" en mathématiques.<div class="ul">
+      <div><i>Attention<l class="note" link="#1"/>:</i> Les identificateurs en <l class="javascool"/> sont uniquement composés de lettres minuscules sans accent 
         et du signe "_", par exemple vous pouvez écrire <c>leprenom</c> ou <c>le_prenom</c> mais PAS 
-        <c>le-prenom</c> (on ne peut utiliser le tiret "-") ou <c>leprénom</c> (on ne peut utiliser d'accent).</li>
-      </ul></li>
-      <li>Les mots en vert sont des chaines de caractères, constantes, que nous utilisons "telles quelles".</li>
-    </ul>Apprenons à bien distinguer ces trois sortes de mots.
-  </note>
-  <note title="Les verbes et les adjectifs du langage">Parmi les mots en ocre qui forment la base du langage, nous découvrons qu'ils sont de deux sortes :<ol>
-    <li>Les <b>verbes</b> comme <r>println</r> (imprimer) ou <r>readString()</r> (lire un ``<r>String</r>´´ c'est à dire une chaine de caractères) 
+        <c>le-prenom</c> (on ne peut utiliser le tiret "-") ou <c>leprénom</c> (on ne peut utiliser d'accent).</div>
+      </div></div>
+      <div>Les mots en vert sont des chaines de caractères, constantes, que nous utilisons "telles quelles".</div>
+    </div>Apprenons à bien distinguer ces trois sortes de mots.
+  </div>
+  <div title="Les verbes et les adjectifs du langage">Parmi les mots en ocre qui forment la base du langage, nous découvrons qu'ils sont de deux sortes :<div class="ol">
+    <div>Les <b>verbes</b> comme <r>println</r> (imprimer) ou <r>readString()</r> (lire un ``<r>String</r>´´ c'est à dire une chaine de caractères) 
     désignent des fonctions à réaliser, 
     certaines de ces actions retournent le résultat de leurs opérations (par exemple <r>readString()</r> renvoie la chaine de caractères lue au clavier), 
     d'autres font une action sans retourner de résultat (par exemple <r>println</r> imprime une chaine de caractères et voilà).
-    Nous découvrirons plus en détail ces <a href="sujet-about-functions.htm">fonctions</a>: nous pourrons même définir <i>nous même</i> de nouvelles fonctions.</li>
-    <li>Les <b>adjectifs</b> comme <r>String</r> qui permet de spécifier que la variable <b>texte</b> est une chaine de caractères 
+    Nous découvrirons plus en détail ces <l link="sujet-about-functions.htm" text="fonctions"/>: nous pourrons même définir <i>nous même</i> de nouvelles fonctions.</div>
+    <div>Les <b>adjectifs</b> comme <r>String</r> qui permet de spécifier que la variable <b>texte</b> est une chaine de caractères 
     (et pas un nombre ou un autre objet numérique). Il est bien sûr essentiel de bien préciser quel est le <i>type</i> de chaque variable grâce à ces adjectifs. 
-    Voici les premiers adjectifs que nous devons connaître : <ul>
-      <li><r>String</r> qui désigne les chaines de caractères, nous les utilisons déja !</li>
-      <li><r>int</r> qui désigne les nombres entiers (<c>int</c> est l'abréviation de "integer number"´, nombre entier) positifs ou négatifs 
-      (entre environ -2 millards et 2 milliards, cela permet de manipuler de très grands nombres entiers ... mais pas jusqu'à l'infini !).</li>
-      <li><r>double</r> qui désigne les nombres décimaux (<c>double</c> est l'abréviation de "double precision floating point number", 
+    Voici les premiers adjectifs que nous devons connaître : <div class="ul">
+      <div><r>String</r> qui désigne les chaines de caractères, nous les utilisons déja !</div>
+      <div><r>int</r> qui désigne les nombres entiers (<c>int</c> est l'abréviation de "integer number"´, nombre entier) positifs ou négatifs 
+      (entre environ -2 millards et 2 milliards, cela permet de manipuler de très grands nombres entiers ... mais pas jusqu'à l'infini !).</div>
+      <div><r>double</r> qui désigne les nombres décimaux (<c>double</c> est l'abréviation de "double precision floating point number", 
       nombres décimaux à double précision) comme sur une calculette.
       Bien entendu ces nombres sont <i>approximatifs</i> : il y a forcément des erreurs d'arrondis lorsque l'on calcule avec.
-      A l'inverse les <r>int</r> permettent de faire des calculs exacts (sauf erreur de programmation !).</li>
-      <li>... ensuite chaque <i>objet numérique</i> (texte, image, liste de valeurs, tableau de chiffres, ..) aura un <i>type</i>, que nous découvrirons au fur et à mesure, 
+      A l'inverse les <r>int</r> permettent de faire des calculs exacts (sauf erreur de programmation !).</div>
+      <div>... ensuite chaque <i>objet numérique</i> (texte, image, liste de valeurs, tableau de chiffres, ..) aura un <i>type</i>, que nous découvrirons au fur et à mesure, 
       et nous désignerons tous les objets qui seront dans la même classe, autrement dit qui auront le même type, 
-      avec des adjectifs comme <r>String</r>, <r>int</r> ou <r>double</r>.</li>
-    </ul></li></ol></note>
-  </notes>
+      avec des adjectifs comme <r>String</r>, <r>int</r> ou <r>double</r>.</div>
+    </div></div></div></div>
+  </div>
 
-  <works>
-    <work title="A nous de jouer"> Taper sans se tromper les cinq lignes du programme, puis  essayer (c'est à dire: sauver<footnote id="2"/>, compiler et ... exécuter).<ul>
-      <li>Vérifier que si l'utilisateur entre des noms différents, alors le programme va bien stocker le nom dans la variable, le réutiliser pour dire <s>Enchanté ..</s>.</li>
-      <li>Vérifier que si nous changeons l'identificateur de la variable (par exemple remplacer <b>texte</b> par <b>son_nom</b>),
-      cela ne change pas le fonctionnement du programme.</li>
-      <li>Constatez bien que l'<i>identificateur</i> (le nom de la variable ici, <b>texte</b>)  n'a rien à voir avec la <i>valeur</i> de la variable (ici le nom entré par
-      l'utilisateur).</li>
-      <li>Modifier maintenant le programme (la forme de la question, l'utilisation de la réponse) pour le rendre un peu original, à vous de jouer.</li>
-    </ul></work>
-    <work title="Utilisons une variable numérique"> Modifions un peu le programme en utilisant au bon endroit les trois lignes supplémentaires suivantes :
-      <code>
-        <p><t/><r>println</r>(<s>Enchanté </s> + texte + <s>, quel est ton âge ?</s>);</p>
-        <p><t/><r>int</r> age = <r>readInteger();</r></p>
-        <p><t/><r>println</r>(<s>Oh,</s> + age + <s>, est un bel âge !</s>);</p>
-      </code>
-      <ul>
-        <li>Essayer le code modifié et vérifier qu'il fonctionne de manière satisfaisante.</li>
-        <li>Noter que maintenant nous avons une autre variable, qui n'est plus de type <r>String</r> mais de type numérique.</li>
-        <li>Remplacer le <r>int</r> par un <r>double</r> (c'est à dire avec la ligne <b><r>double</r> age = <r>readFloat()</r>;</b>, que constatons nous ?</li>
-        <li>L'âge de quelqu'un (son nombre d'années de vie) est il plutôt un nombre entier (un <r>int</r>) ou un nombre décimal (un <r>double</r>) ? Ou, mais, .. sa taille en mètre ? Et le numéro de sa classe au collège ? Et sa note scolaire moyenne ? Voyez comment selon la valeur numérique que l'on cherche à représenter numériquement il faut utiliser soit un <r>int</r> soit un <r>double</r>.</li>
-      </ul>
-    </work>
-   </works>
+  <div class="works">
+    <div title="A nous de jouer"> Taper sans se tromper les cinq lignes du programme, puis  essayer (c'est à dire: sauver<l class="note" link="#2"/>, compiler et ... exécuter).<div class="ul">
+      <div>Vérifier que si l'utilisateur entre des noms différents, alors le programme va bien stocker le nom dans la variable, le réutiliser pour dire <v>Enchanté ..</v>.</div>
+      <div>Vérifier que si nous changeons l'identificateur de la variable (par exemple remplacer <b>texte</b> par <b>son_nom</b>),
+      cela ne change pas le fonctionnement du programme.</div>
+      <div>Constatez bien que l'<i>identificateur</i> (le nom de la variable ici, <b>texte</b>)  n'a rien à voir avec la <i>valeur</i> de la variable (ici le nom entré par
+      l'utilisateur).</div>
+      <div>Modifier maintenant le programme (la forme de la question, l'utilisation de la réponse) pour le rendre un peu original, à vous de jouer.</div>
+    </div></div>
+    <div title="Utilisons une variable numérique"> Modifions un peu le programme en utilisant au bon endroit les trois lignes supplémentaires suivantes :
+      <div class="code">
+        <p><T/><r>println</r>(<v>Enchanté </v> + texte + <v>, quel est ton âge ?</v>);</p>
+        <p><T/><r>int</r> age = <r>readInteger();</r></p>
+        <p><T/><r>println</r>(<v>Oh,</v> + age + <v>, est un bel âge !</v>);</p>
+      </div>
+      <div class="ul">
+        <div>Essayer le code modifié et vérifier qu'il fonctionne de manière satisfaisante.</div>
+        <div>Noter que maintenant nous avons une autre variable, qui n'est plus de type <r>String</r> mais de type numérique.</div>
+        <div>Remplacer le <r>int</r> par un <r>double</r> (c'est à dire avec la ligne <b><r>double</r> age = <r>readFloat()</r>;</b>, que constatons nous ?</div>
+        <div>L'âge de quelqu'un (son nombre d'années de vie) est il plutôt un nombre entier (un <r>int</r>) ou un nombre décimal (un <r>double</r>) ? Ou, mais, .. sa taille en mètre ? Et le numéro de sa classe au collège ? Et sa note scolaire moyenne ? Voyez comment selon la valeur numérique que l'on cherche à représenter numériquement il faut utiliser soit un <r>int</r> soit un <r>double</r>.</div>
+      </div>
+    </div>
+   </div>
   
-  <footnotes>
-    <p id ="1" title="A propos des identificateurs"> Selon les langages informatiques et les règles de codage les identificateurs peuvent être composés avec <i>autre chose</i>
+  <div class="notes">
+    <div title="A propos des identificateurs" id="1"> Selon les langages informatiques et les règles de codage les identificateurs peuvent être composés avec <i>autre chose</i>
     que des lettres minuscules sans accent et du signe "_" (par exemple on peut glisser des chiffres après l'identificateur, mettre des majuscules, etc..) mais ce n'est
     PAS une bonne habitude de le faire, car cela a tendance à embrouiller les choses, cela dépend des langages, etc... En programmation il faut non seulement respecter la syntaxe
-    mais aussi choisir de bonnes habitudes pour spécifier ses programmes.</p>
-    <p id ="2" title="Comment garder une trace du travail réalisé"> Sauver le texte source du programme dans un fichier d'extension <c>.jvs</c>, 
+    mais aussi choisir de bonnes habitudes pour spécifier ses programmes.</div>
+    <div title="Comment garder une trace du travail réalisé" id="2"> Sauver le texte source du programme dans un fichier d'extension <c>.jvs</c>, 
     par exemple <c>Var1.jvs</c>, puis <c>Var2.jvs</c> pour la version suivante, etc.. De cette façon chaque version du travail peut-être gardée, corrigée, etc..
     De plus, on peut facilement ajouter des <i>lignes de commentaires</i> qui permettent de sauvegarder les réponses aux questions posées. 
     Ce sont des lignes qui commencent par <c>//</c> et sont donc de la forme
-    <code>
+    <div class="code">
       <m>Voici deux lignes de commentaire ignorée par l'ordinateur ...</m>
       <m> ... et qui permettent de donner des informations aux humains qui lisent ce code !</m>
-    </code></p>
-  </footnotes>
-</sujet>
+    </div></div>
+  </div>
+</div>

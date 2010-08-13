@@ -47,7 +47,7 @@ SRC = \
  src/org/javascool/proglets.java $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt'))
 
 DOC = \
- $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(patsubst %.xml,%.dml,$(shell find src -name '*.xml')) $(patsubst %.dml,%.htm,$(shell find src -name '*.dml'))
+ $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
 
 # Compiles the java classes using the default jdk5 and builds the certified jar
 
@@ -79,14 +79,8 @@ lib/manifest.mf : makefile
 	@(echo 'Main-Class: org.javascool.Main') >> $@
 	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
 
-%.dml : %.xml lib/org2xml.xsl
+%.htm : %.xml lib/dml2htm.xsl
 	@java -jar lib/saxon.jar -o $@ $^
-
-%.htm : %.dml lib/dml2htm.xsl
-	@java -jar lib/saxon.jar -o $@ $^
-
-lib/org2xml.xsl : src/org/javascool/htm2hml.xslt
-	@touch $@
 
 lib/dml2htm.xsl : src/org/javascool/hml2htm.xslt
 	@touch $@

@@ -1,50 +1,50 @@
-<p title="La «proglet» exosdemaths">
-  <proglet name="exosdemaths" mode="demo">
-    Cette proglet<footnote id="1"/> permet d'afficher des tracés de couleurs différentes.
-    <p>Pour tracer un point de la courbe: <code>
+<div title="La «proglet» exosdemaths">
+  <div class="table"><p><p>
+    Cette proglet<l class="note" link="#1"/> permet d'afficher des tracés de couleurs différentes.
+    <div>Pour tracer un point de la courbe: <div class="code">
       <p><r>scopeSet</r>(x, y, c);</p>
-    </code><ul>
-    <li>où <b>x</b> est un <r>double</r>, entre <b>[-1, +1]</b>, abscisse du point de la courbe;</li>
-    <li>où <b>y</b> est un <r>double</r>, entre <b>[-1, +1]</b>, ordonnée du point de la courbe;</li>
-    <li>où <b>c</b> est un <r>int</r> qui est le numéro de la courbe: 
-      <c>0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</c></li>
-    </ul>tandis que la fonction: <code>
+    </div><div class="ul">
+    <div>où <b>x</b> est un <r>double</r>, entre <b>[-1, +1]</b>, abscisse du point de la courbe;</div>
+    <div>où <b>y</b> est un <r>double</r>, entre <b>[-1, +1]</b>, ordonnée du point de la courbe;</div>
+    <div>où <b>c</b> est un <r>int</r> qui est le numéro de la courbe: 
+      <c>0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</c></div>
+    </div>tandis que la fonction: <div class="code">
       <p><r>scopeReset</r>()</p>
-    </code> permet d'effacer la courbe. Le système de coordonnée est donc de la forme:
-     <p align="center"><img src="img/scope.png"/></p>
-     <p>Il est aussi possible de changer l'échelle horizontale et verticale en utilisant la fonction: <code>
+    </div> permet d'effacer la courbe. Le système de coordonnée est donc de la forme:
+     <div class="center"><l class="icon" icon="img/scope.png"/></div>
+     <div>Il est aussi possible de changer l'échelle horizontale et verticale en utilisant la fonction: <div class="code">
       <p><r>scopeReset</r>(largeur, hauteur)</p>
-    </code> où le tracé se fait alors avec les abcisses entre <b>[-largeur, largeur]</b> et les ordonnées entre les valeurs <b>[-hauteur, hauteur]</b>.</p>
-   </p>
-   <p>Pour ajouter une étiquette <s>s</s> de couleur <c>c</c> au point <b>x, y</b>:<code>
-   <p><r>scopeAdd</r>(x, y, <s>s</s>, c);</p>
-   </code></p>
-   <p>Pour ajouter une ligne de couleur <c>c</c> du point <b>x1, y1</b> au point <b>x2, y2</b> :<code>
+    </div> où le tracé se fait alors avec les abcisses entre <b>[-largeur, largeur]</b> et les ordonnées entre les valeurs <b>[-hauteur, hauteur]</b>.</div>
+   </div>
+   <div>Pour ajouter une étiquette <v>s</v> de couleur <c>c</c> au point <b>x, y</b>:<div class="code">
+   <p><r>scopeAdd</r>(x, y, <v>s</v>, c);</p>
+   </div></div>
+   <div>Pour ajouter une ligne de couleur <c>c</c> du point <b>x1, y1</b> au point <b>x2, y2</b> :<div class="code">
    <p><r>scopeAddLine</r>(x1, y1, x2, y2, c);</p>
-   </code></p>
-   <p>Pour ajouter un cercle de couleur <c>c</c> de centre <b>x, y</b> et de rayon <b>r</b> :<code>
+   </div></div>
+   <div>Pour ajouter un cercle de couleur <c>c</c> de centre <b>x, y</b> et de rayon <b>r</b> :<div class="code">
    <p><r>scopeAddCircle</r>(x, y, r, c);</p>
-   </code></p>
-   <p>Par ailleurs les valeurs du réticule peuvent être relues avec les fonctions: <code>
+   </div></div>
+   <div>Par ailleurs les valeurs du réticule peuvent être relues avec les fonctions: <div class="code">
       <p><r>double</r> x = <r>scopeX()</r>;</p>
       <p><r>double</r> y = <r>scopeY()</r>;</p>
-    </code> qui renvoie les valeurs horizontale et verticale du réticule. Le réticule est défini par les boutons en bas de l'écran ou en cliquant.
-    <p><b>Note</b> : quand on clique sur la fenêtre de tracé, manipule les glissoirs de <b>X</b> et <b>Y</b>, ou entre une valeur numérique au clavier, 
-    la fonction <r>main</r> est relancée pour mettre à jour le calcul avec ces nouvelles valeurs.</p>
-   </p>
-   <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="img/demo.png"/> <b>Demo</b>] se tracent une sinusoïde bleue et une exponentielle violette,
+    </div> qui renvoie les valeurs horizontale et verticale du réticule. Le réticule est défini par les boutons en bas de l'écran ou en cliquant.
+    <div><b>Note</b> : quand on clique sur la fenêtre de tracé, manipule les glissoirs de <b>X</b> et <b>Y</b>, ou entre une valeur numérique au clavier, 
+    la fonction <r>main</r> est relancée pour mettre à jour le calcul avec ces nouvelles valeurs.</div>
+   </div>
+   <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="img/demo.png"/> <b>Demo</b>] se tracent une sinusoïde bleue et une exponentielle violette,
    selon le programme suivant:
-   <code>
+   <div class="code">
      <p><r>scopeReset</r>();</p>
      <p><r>for</r>(<r>double</r> x = -1; x &lt;= 1; x += 0.001) {</p>
-     <p><t/><r>scopeSet</r>(x, 0.5 * <r>Math.sin</r>(10 * x) + 0.5, 6);</p>
-     <p><t/><r>scopeSet</r>(x, -<r>Math.exp</r>(-(x + 1)), 7);</p>
+     <p><T/><r>scopeSet</r>(x, 0.5 * <r>Math.sin</r>(10 * x) + 0.5, 6);</p>
+     <p><T/><r>scopeSet</r>(x, -<r>Math.exp</r>(-(x + 1)), 7);</p>
      <p>}</p>
-   </code></p>
-  </proglet>
+   </div></div>
+  </p><p><l class="proglet" l="exosdemaths"/></p></p></div>
 
-  <footnotes>
-    <p id="1">Cette proglet un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../CurveDisplay.html">documenté</a> 
-    pour sa libre redistribution, l'accès <a href=" ../CurveDisplay.java.html">au code source</a>, et permettre des développements dérivés.</p>
-  </footnotes>
-</p>
+  <div class="notes">
+    <div id="1">Cette proglet un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../CurveDisplay.html" text="documenté"/> 
+    pour sa libre redistribution, l'accès <l link=" ../CurveDisplay.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+  </div>
+</div>

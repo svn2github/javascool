@@ -1,56 +1,56 @@
-<p title="La «proglet» pixelsetcie">
-  <proglet name="pixelsetcie" mode="demo">
-    Cette proglet<footnote id="1"/> permet de manipuler une petite image de résolution variable, dont les coordonnées se définissent ainsi:
-     <p align="center"><img src="img/smiley.png"/></p>
+<div title="La «proglet» pixelsetcie">
+  <div class="table"><p><p>
+    Cette proglet<l class="note" link="#1"/> permet de manipuler une petite image de résolution variable, dont les coordonnées se définissent ainsi:
+     <div class="center"><l class="icon" icon="img/smiley.png"/></div>
      c'est à dire que l'abscisse (la position horizontale ou largeur, width en anglais) va de <c>-width</c> à <c>+width</c> 
      et l'ordonnée (la position verticale ou hauteur, height en anglais) va de <c>-height</c> à <c>+height</c>.
-     <p>La fonction:<code>
+     <div>La fonction:<div class="code">
        <p><r>smileyReset</r>(width, height);</p>
-     </code>où <b>width</b> et <b>height</b> sont des <r>int</r> permet d'afficher une nouvelle image de largeur et hauteur données tandis que la fonction
-      <code>
+     </div>où <b>width</b> et <b>height</b> sont des <r>int</r> permet d'afficher une nouvelle image de largeur et hauteur données tandis que la fonction
+      <div class="code">
        <p><r>smileyLoad</r>(image);</p>
-     </code>où <b>image</b> est le lien «url» de l'image, permet d'afficher image disponible sur internet (attention sa taille doit rester modeste inférieur à 500<sup>2</sup>)
+     </div>où <b>image</b> est le lien «url» de l'image, permet d'afficher image disponible sur internet (attention sa taille doit rester modeste inférieur à 500<S>2</S>)
      tandis que
-      <code>
+      <div class="code">
         <p><r>int</r> width = <r>smileyWidth</r>();</p>
         <p><r>int</r> height = <r>smileyHeight</r>();</p>
-     </code> renvoient la largeur (width) et hauteur (height) de l'image qui a été chargée.
-     </p>
-     <p>Pour définir un point de couleur dans cette image la fonction <r>smileySet</r>: <code>
+     </div> renvoient la largeur (width) et hauteur (height) de l'image qui a été chargée.
+     </div>
+     <div>Pour définir un point de couleur dans cette image la fonction <r>smileySet</r>: <div class="code">
        <p><r>smileySet</r>(x, y, color);</p>
-      </code><ul>
-        <li>où <b>x</b> est un <r>int</r>, entre <b>[-width, +width]</b>, abscisse du point;</li>
-        <li>où <b>y</b> est un <r>int</r>, entre <b>[-height, +height]</b>, ordonnée du point;</li>
-        <li>où <b>color</b> est un <r>String</r> qui donne la couleur du point, ses valeurs étant
-        <s>black</s>, <s>blue</s>, <s>cyan</s>, <s>gray</s>, <s>green</s>, <s>magenta</s>, <s>orange</s>, <s>pink</s>, <s>red</s>, <s>white</s>, <s>yellow</s>.</li>
-      </ul>permettre d'écrire un pixel couleur dans cette image.
-    </p>
-    <p>Pour définir lire/écrire un point monochrome les fonctions <r>smileySet/smileyGet</r>: <code>
+      </div><div class="ul">
+        <div>où <b>x</b> est un <r>int</r>, entre <b>[-width, +width]</b>, abscisse du point;</div>
+        <div>où <b>y</b> est un <r>int</r>, entre <b>[-height, +height]</b>, ordonnée du point;</div>
+        <div>où <b>color</b> est un <r>String</r> qui donne la couleur du point, ses valeurs étant
+        <v>black</v>, <v>blue</v>, <v>cyan</v>, <v>gray</v>, <v>green</v>, <v>magenta</v>, <v>orange</v>, <v>pink</v>, <v>red</v>, <v>white</v>, <v>yellow</v>.</div>
+      </div>permettre d'écrire un pixel couleur dans cette image.
+    </div>
+    <div>Pour définir lire/écrire un point monochrome les fonctions <r>smileySet/smileyGet</r>: <div class="code">
       <p><r>int</r> valeur = <r>smileyGet</r>(x, y);</p>
       <p><r>smileySet</r>(x, y, valeur);</p>
-     </code><ul>
-       <li>où <b>x</b> est un <r>int</r>, entre <b>[-width, +width]</b>, abscisse du point;</li>
-       <li>où <b>y</b> est un <r>int</r>, entre <b>[-height, +height]</b>, ordonnée du point;</li>
-       <li>où <b>valeur</b> est un entier entre <c>0</c> (pour le "noir") et <c>255</c> (pour le "blanc"),
-       toutes les valeurs entre <c>0</c> et <c>255</c> définissant les valeurs de gris,</li>
-     </ul>permettre de lire/écrire un pixel monochrome dans cette image.
-    </p>
-    <p>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le signe de la paix va s'afficher:
-      <p align="center"><img src="img/smiley2.jpg"/></p>
+     </div><div class="ul">
+       <div>où <b>x</b> est un <r>int</r>, entre <b>[-width, +width]</b>, abscisse du point;</div>
+       <div>où <b>y</b> est un <r>int</r>, entre <b>[-height, +height]</b>, ordonnée du point;</div>
+       <div>où <b>valeur</b> est un entier entre <c>0</c> (pour le "noir") et <c>255</c> (pour le "blanc"),
+       toutes les valeurs entre <c>0</c> et <c>255</c> définissant les valeurs de gris,</div>
+     </div>permettre de lire/écrire un pixel monochrome dans cette image.
+    </div>
+    <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le signe de la paix va s'afficher:
+      <div class="center"><l class="icon" icon="img/smiley2.jpg"/></div>
       ceci, à différentes résolutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne résolution il sera très lisible, puis petit à petit il se réduira à quelques pixels,
       selon le programme suivant:
-      <code>
-        <p><r>for</r>(<r>int</r> size = 256; size > 0; size /= 2) {</p>
-        <p><t/><r>smileyReset</r>(size, size);</p>
-        <p><t/><r>peace</r>();</p>
-        <p><t/><r>sleep</r>(1000 - size);</p>
+      <div class="code">
+        <p><r>for</r>(<r>int</r> size = 256; size &gt; 0; size /= 2) {</p>
+        <p><T/><r>smileyReset</r>(size, size);</p>
+        <p><T/><r>peace</r>();</p>
+        <p><T/><r>sleep</r>(1000 - size);</p>
         <p>}</p>
-      </code> où la routine <r>peace</r> trace le signe de la paix et correspond à une fonction à définir.
-    </p>
-  </proglet>
+      </div> où la routine <r>peace</r> trace le signe de la paix et correspond à une fonction à définir.
+    </div>
+  </p><p><l class="proglet" l="pixelsetcie"/></p></p></div>
 
-  <footnotes>
-    <p id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programmée en Java et <a href=" ../ImageDisplay.html">documentée</a> 
-    pour sa libre redistribution, l'accès <a href=" ../ImageDisplay.java.html">au code source</a>, et permettre des développements dérivés.</p>
-  </footnotes>
-</p>
+  <div class="notes">
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../ImageDisplay.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link=" ../ImageDisplay.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+  </div>
+</div>
