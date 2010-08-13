@@ -195,6 +195,9 @@ web:
 wiki:
 	@firefox http://wiki.inria.fr/sciencinfolycee/JavaScool:ToDoList
 
+jdoc :
+	@firefox /usr/share/javadoc/java-1.6.0-openjdk/api/overview-summary.html 
+
 #####################################################################################################################################
 
 #                                       System operation commands: TO BE USED WITH CARE !!!!                                        #
@@ -268,8 +271,10 @@ endif
 #: [1.3] Lib files:
 #: ./lib/run.sh               : simplifies the local use of saxon and javascool (starts org.javasccoo.* mains + performs xml2xml translation)
 #: ./lib/*.jar                : are used jar for the present development
-#: ./lib/xml2htm.xsl          : defines how to translate doc-files/*.xml files to XHTML 
+#: ./lib/dml2htm.xsl          : defines how to translate doc-files/*.xml files to XHTML 
 #: ./lib/manifest.mf          : is a makefile generated file: do NOT edit
+#: ./lib/linkcheck            : is the perl script to check broken links: do NOT touch
+#: ./lib(about-all.xml|org2xml.xsl|xml2htm.xsl) : temporary files to be deleted soon
 #: 
 #: [1.4] Other files
 #: ./tst/*                    : contains local test files
@@ -305,7 +310,7 @@ endif
 #:
 #: [3.2] Java development tools: java javac jarsigner javadoc keytool
 #: Installing these commands run; e.g., yum or apt-get:
-#: > yum java-1.6.0-openjdk-devel
+#: > yum java-1.6.0-openjdk-devel java-1.6.0-openjdk-javadoc
 #: while we still need the JDK5, i.e.:
 #: > cd /usr/java ; ./jdk-1_5_0_22-linux-i586.bin
 #: or (to be validated):
