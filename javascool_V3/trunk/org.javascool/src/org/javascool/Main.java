@@ -58,7 +58,7 @@ public class Main extends JApplet { /**/public Main() { }
     basicTools();
     addActivity(pmlActivity);
     addActivity(jvsActivity);
-    addActivity(algActivity);
+    //addActivity(algActivity);
     
     // Initializes the activity from the HTML tag or proposes a default activity
     try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity(""); }
