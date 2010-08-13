@@ -32,10 +32,10 @@ import java.awt.Event;
 import java.awt.event.KeyEvent;
 
 /** This widget defines a re-oriented graohic algorithm editor. 
- * @see <a href="AlgoTree.java">source code</a>
+ * @see <a href="AlgoEditor.java">source code</a>
  * @see Jvs2Java
 */
-public class AlgoTree extends JPanel implements Widget {
+public class AlgoEditor extends JPanel implements Widget,Editor {
   private static final long serialVersionUID = 1L;
   
   //
@@ -135,17 +135,17 @@ public class AlgoTree extends JPanel implements Widget {
   }
 
   /** Returns the tree as a String using the Pml syntax. */
-  public String getTree() {
-    return getTree((DefaultMutableTreeNode) root.getChildAt(0), 0).toString();
+  public String getText() {
+    return getText((DefaultMutableTreeNode) root.getChildAt(0), 0).toString();
   }
-  private static StringBuffer getTree(DefaultMutableTreeNode node, int depth) {
+  private static StringBuffer getText(DefaultMutableTreeNode node, int depth) {
     StringBuffer s = new StringBuffer(); 
     String what = node.toString().replaceAll("\"", "\\\\\"");
     if (node.isLeaf()) {
       append(s, depth, "{ \""+what+"\" }");
     } else {
       append(s, depth, "{ \""+what+"\"");
-      for(int c = 0; c < node.getChildCount(); c++) s.append(getTree((DefaultMutableTreeNode) node.getChildAt(c), depth+1));
+      for(int c = 0; c < node.getChildCount(); c++) s.append(getText((DefaultMutableTreeNode) node.getChildAt(c), depth+1));
       append(s, depth, "}");
     }
     return s;
@@ -189,10 +189,10 @@ public class AlgoTree extends JPanel implements Widget {
    * draws a the string <tt>mot</tt> at the point (<tt>x, y</tt>).</li>
    * </ul></ul>   
    */
-  public void setTree(String string) {
+  public void setText(String string) {
     Pml pml = new Pml().reset(string); 
-    DefaultMutableTreeNode node = setTree(pml);
-    System.out.println("setTree = "+getTree(node, 0));
+    DefaultMutableTreeNode node = setText(pml);
+    System.out.println("setText = "+getText(node, 0));
     removeAlgo();
     for(int c = 0; node.getChildCount() > 0 ; c++) {
       DefaultMutableTreeNode n = (DefaultMutableTreeNode) node.getChildAt(0);
@@ -205,9 +205,9 @@ public class AlgoTree extends JPanel implements Widget {
     model.nodeChanged((DefaultMutableTreeNode) root.getChildAt(0));		
     tree.scrollPathToVisible(new TreePath(root.getChildAt(0)));
   }
-  private static DefaultMutableTreeNode setTree(Pml pml) {
+  private static DefaultMutableTreeNode setText(Pml pml) {
     DefaultMutableTreeNode node = new DefaultMutableTreeNode(pml.getTag());
-    for(int c = 0; c < pml.getCount(); c++) node.add(setTree(pml.getChild(c)));
+    for(int c = 0; c < pml.getCount(); c++) node.add(setText(pml.getChild(c)));
     return node;
   }
   
@@ -264,7 +264,7 @@ public class AlgoTree extends JPanel implements Widget {
 	       replaceAll("FAUX", "false")
 	       +"\n");
       } else {
-	append(s, depth, "//"+getTree(node, depth+1).toString().replaceAll("\\s+", " "));
+	append(s, depth, "//"+getText(node, depth+1).toString().replaceAll("\\s+", " "));
       }
     }
     return s;
@@ -533,7 +533,7 @@ public class AlgoTree extends JPanel implements Widget {
     if ("^C Copier".equals(action)) {
       DefaultMutableTreeNode node = getCurrentNode(false);
       clipboard = copy(node);
-      System.out.println(action + " : " + getTree(clipboard, 0) + " == " + getTree(node, 0));
+      System.out.println(action + " : " + getText(clipboard, 0) + " == " + getText(node, 0));
     } else if ("^X Couper/Supprimer".equals(action)) {
       DefaultMutableTreeNode node = getCurrentNode(false);
       if (node == root.getChildAt(0)) {
@@ -541,7 +541,7 @@ public class AlgoTree extends JPanel implements Widget {
       } else {
 	clipboard = node;
 	model.removeNodeFromParent(node);
-	System.out.println(action + " : " + getTree(clipboard, 0));
+	System.out.println(action + " : " + getText(clipboard, 0));
       }
     } else if ("^V Coller".equals(action)) {
       DefaultMutableTreeNode node = getCurrentNode(true);
@@ -551,10 +551,10 @@ public class AlgoTree extends JPanel implements Widget {
 	DefaultMutableTreeNode n = copy(clipboard);
 	node.add(n);									
 	model.insertNodeInto(n, node, getCurrentNodeIndex(node));
-	System.out.println(action + " : " + getTree(clipboard, 0));
+	System.out.println(action + " : " + getText(clipboard, 0));
       }
     } else if ("^L Check".equals(action)) {
-      System.out.println(action + " : " + getTree() + " == \n" + getJavaSource());
+      System.out.println(action + " : " + getText() + " == \n" + getJavaSource());
       Utils.saveString("tmp.jvs", getJavaSource());
       Jvs2Java.translate("tmp.jvs");
       System.out.println(Jvs2Java.compile("tmp.java"));
@@ -607,7 +607,7 @@ public class AlgoTree extends JPanel implements Widget {
       "  { \"AFFICHER (\\\"How do you do ?\\\");\" }"+
       "  { FIN_PROGRAMME }"+
       "}";
-    AlgoTree fen = new AlgoTree(); fen.setTree(algo); Utils.show(fen, "AlgoTree", 800, 600);
+    AlgoEditor fen = new AlgoEditor(); fen.setText(algo); Utils.show(fen, "AlgoEditor", 800, 600);
   }
 }
 

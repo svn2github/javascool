@@ -20,6 +20,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Used to redirect System.out
+import java.io.PrintStream;
+import java.io.ByteArrayOutputStream;
+
 /** Définit une proglet javascool qui permet de faire des entrées/sorties au clavier.
  * <p><applet code="org.javascool.ProgletApplet" archive="../../../javascool.jar" width="560" height="520"><param name="proglet" value="ingredients"/></applet></p>
  * @see <a href="Console.java">code source</a>
@@ -89,6 +93,17 @@ public class Console implements org.javascool.Proglet { private Console() { }
       return input == null ? "" : input;
     }
     private JLabel prompt; private JTextField in; private String input, output = "";
+  }
+
+  // Redirect the System.out to the console
+  static {
+    System.setOut(new PrintStream(new ByteArrayOutputStream() {
+	public void write(byte[] b, int off, int len) {
+	  super.write(b, off, len); String string = toString(); reset();
+	  panel.writeString(string, false);
+	  //- System.err.println(string);
+	}
+      }));
   }
 
   // Quotes a string for HTML

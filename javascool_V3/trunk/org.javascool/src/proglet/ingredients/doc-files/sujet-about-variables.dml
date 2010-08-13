@@ -4,7 +4,7 @@
   
   
   <div class="objectif">
-    Le but de ce tutoriel est de comprendre comment utiliser des variables. Il faut déjà savoir <l link="sujet-hello-world.htm"/>.
+    Le but de ce tutoriel est de comprendre comment utiliser des variables. Il faut déjà savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>.
   </div>
   
   <div class="intros">
@@ -18,7 +18,7 @@
       </div>
       Analysons ces quelques lignes :<div class="ul">
         <div>Nous retrouvons le bloc <b><r>void main</r>() { .. }</b> qui permet de spécifier un bloc d'instructions à faire exécuter, 
-        comme lors du <l link="sujet-about-hello-world.htm"/>.</div>
+        comme lors du <l link="sujet-about-hello-world.htm" text="1er tutoriel"/>.</div>
         <div>Nous retrouvons un <r>println</r> qui permet d'imprimer une ligne pour saluer l'utilisateur.</div>
         <div>Mais voici quelque chose de nouveau : il va entrer son <i>nom</i>. Or chaque utilisateur a un nom probablement différent, il faut donc prévoir une "boite", 
         une <i>variable</i> où mémoriser le nom que l'utilisateur va entrer au clavier. <div class="ul">
@@ -52,7 +52,7 @@
     désignent des fonctions à réaliser, 
     certaines de ces actions retournent le résultat de leurs opérations (par exemple <r>readString()</r> renvoie la chaine de caractères lue au clavier), 
     d'autres font une action sans retourner de résultat (par exemple <r>println</r> imprime une chaine de caractères et voilà).
-    Nous découvrirons plus en détail ces <l link="sujet-about-functions.htm"/>: nous pourrons même définir <i>nous même</i> de nouvelles fonctions.</div>
+    Nous découvrirons plus en détail ces <l link="sujet-about-functions.htm" text="fonctions"/>: nous pourrons même définir <i>nous même</i> de nouvelles fonctions.</div>
     <div>Les <b>adjectifs</b> comme <r>String</r> qui permet de spécifier que la variable <b>texte</b> est une chaine de caractères 
     (et pas un nombre ou un autre objet numérique). Il est bien sûr essentiel de bien préciser quel est le <i>type</i> de chaque variable grâce à ces adjectifs. 
     Voici les premiers adjectifs que nous devons connaître : <div class="ul">

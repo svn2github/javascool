@@ -13,7 +13,7 @@ import java.awt.Dimension;
 import org.javascool.IconOutput;
 
 /** Définit une proglet javascool qui permet de manipuler les pixels d'une image.
- * <p><applet code="org.javascool.ProgletApplet" archive="../../../javascool.jar" width="560" height="580"><param name="proglet" value="pixelsetcie"/></applet></p>
+ * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
  * @see <a href="ImageDisplay.java">code source</a>
  */
 public class ImageDisplay implements org.javascool.Proglet { private ImageDisplay() { }

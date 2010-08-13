@@ -44,7 +44,7 @@
   </p><p><l class="proglet" l="Scope"/></p></p></div>
 
   <div class="notes">
-    <div>Cette proglet un <l link="http://fr.wikipedia.org/wiki/Open_source"/>, programmée en Java et <l link=" ../api/proglet/Scope.html"/> 
-    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Scope.java"/>, et permettre des développements dérivés.</div>
+    <div>Cette proglet un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../api/proglet/Scope.html" text="documenté"/> 
+    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Scope.java" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

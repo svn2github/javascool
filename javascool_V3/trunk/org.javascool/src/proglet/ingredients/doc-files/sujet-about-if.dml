@@ -4,8 +4,8 @@
   
   
   <div class="objectif">
-    Le but de ce tutoriel est de découvrir l'instruction conditionnelle. Il faut déjà savoir <l link="sujet-hello-world.htm"/>,
-    et savoir se servir de <l link="sujet-about-variables.htm"/>.
+    Le but de ce tutoriel est de découvrir l'instruction conditionnelle. Il faut déjà savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>,
+    et savoir se servir de <l link="sujet-about-variables.htm" text="variables"/>.
   </div>
   
   <div class="intros">
@@ -83,7 +83,7 @@
    </div>
    
    <div class="works">
-    <div title="Ajouter des tests à un code"> Reprendre le code proposé pour apprendre à se servir de <l link="sujet-about-variables.htm"/> 
+    <div title="Ajouter des tests à un code"> Reprendre le code proposé pour apprendre à se servir de <l link="sujet-about-variables.htm" text="variables"/> 
       qui demandent le <i>nom</i> et l'<i>âge</i> de l'utilisateur et ajouter
       au bon endroit :
       <div class="code">
@@ -186,7 +186,7 @@
   </div>
   
   <div class="notes">
-    <div title="A propos de l'égalité"> Notez que le signe <r>=</r> veut dire "<l link="sujet-about-variables.htm"/>"
+    <div title="A propos de l'égalité"> Notez que le signe <r>=</r> veut dire "<l link="sujet-about-variables.htm" text="affecter une valeur"/>"
     tandis que être égal s'écrit <r>==</r> pour les nombres et <b><r>equal</r>(s, c)</b> pour les chaines de caractères : voici quelque chose d'un peu compliqué.</div>
     <div title="A propos de l'implication"> Dire <b>A implique B</b> consiste à dire que si <b>A</b> est vrai alors forcément <b>B</b> est vrai, 
     tandis que si <b>A</b> est faux et bien tout peut arriver à <b>B</b> vrai ou faux, c'est ok.

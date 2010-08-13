@@ -5,9 +5,9 @@
   
   <div class="objectif">
     Le but de ce tutoriel est de comprendre comment ce code manipule une image pixellique. 
-    Il faut déja savoir <l link="sujet-hello-world.htm"/>,
-    se servir de <l link="sujet-about-variables.htm"/> et avoir découvert l'<l link="sujet-about-if.htm"/> et 
-    utiliser des <l link="sujet-about-while.htm"/> et définir une <l link="sujet-about-functions.htm"/>.
+    Il faut déja savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>,
+    se servir de <l link="sujet-about-variables.htm" text="variables"/> et avoir découvert l'<l link="sujet-about-if.htm" text="instruction conditionnelle"/> et 
+    utiliser des <l link="sujet-about-while.htm" text="boucles"/> et définir une <l link="sujet-about-functions.htm" text="fonction"/>.
   </div>
   
   <div class="intros">
@@ -16,7 +16,7 @@
      <div>
        Une image est un tableau à deux dimensions de points lumineux, c'est à dire de «pixels». 
        Chaque pixel a une valeur entre <c>0</c> (pour le "noir") et <c>255</c> (pour le "blanc").
-       Bien lire le document sur l'<l link="about-information.htm"/> en particulier la section "Décrire tous les dessins du monde".
+       Bien lire le document sur l'<l link="about-information.htm" text="information"/> en particulier la section "Décrire tous les dessins du monde".
      </div>
   </div>
   <div class="works">
@@ -39,7 +39,7 @@
         <p><T/><r>smileyLoad</r>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");</p>
         <p>}</p>
       </div><div class="ul">
-        <div>Le programme principal <r>main</r> charge une belle photo noir et blanc de <l link="http://fr.wikipedia.org/wiki/Doisneau"/>.</div>
+        <div>Le programme principal <r>main</r> charge une belle photo noir et blanc de <l link="http://fr.wikipedia.org/wiki/Doisneau" text="Doisneau"/>.</div>
         <div>Les deux premières lignes de la fonction <b>filtre</b> bouclent sur tous les pixels en vertical et en horizontal.</div>
         <div>Expliquez en quelques mots le rôle des variables <b>i</b> et <b>j</b>.</div>
         <div>Que fait la construction <b><r>smileySet</r>(i, j, f(<r>smileyGet</r>(i, j)));</b> pour un pixel de coordonnée (<b>i, j</b>) ?.</div>
@@ -58,7 +58,7 @@
     </div>
     <div title="Ajouter deux images : l'effet de calque"> 
       Cette partie se fera sans rien programmer. 
-      Considérons les deux images issues d'une célèbre <l link="http://www.ri.cmu.edu/publication_view.html?pub_id=3904"/>,
+      Considérons les deux images issues d'une célèbre <l link="http://www.ri.cmu.edu/publication_view.html?pub_id=3904" text="base de donnée"/>,
       mise à disposition de la communauté scientifique internationale pour étudier les logiciels de traitement des séquences d'images contenant des mouvements humains.<div class="ul">
         <div>Si l'on considère les deux images suivantes:
         <div class="center"><div class="table"><div><div><l class="icon" icon="img/cmu-jump1.jpg"/></div><div><l class="icon" icon="img/cmu-jump3.jpg"/></div></div></div></div>
@@ -72,7 +72,7 @@
     <div title="Soustraire deux images : détecter des changements">
       Cette partie se fera sans rien programmer, comme la précédente. <div class="ul">
         <div>Si l'on considère les deux images suivantes (cliquer sur l'image de gauche pour visualiser la séquence):
-        <div class="center"><div class="table"><div><div><l link="img/13_11.avi" icon="img/cmu-jump1.jpg"/></div><div><l class="icon" icon="img/cmu-jump2.jpg"/></div></div></div></div>
+        <div class="center"><div class="table"><div><div><l link="img/13_11.avi" icon="img/cmu-jump1.jpg" text=""/></div><div><l class="icon" icon="img/cmu-jump2.jpg"/></div></div></div></div>
         que s'est il passé entre les deux images ? Si l'on ``soustrait´´ les deux images de manière similaire à ce qui a été fait pour les ``additionner´´ que va t'il se passer,
         pour les pixels correspondants à des points immobiles entre les deux images ? Et les pixels correspondants à des points en mouvement ? 
         Expliquer en deux/trois phrases.</div>
@@ -147,7 +147,7 @@
    </div>
 
   <div class="notes">
-    <div title="Manipuler des objets numériques: l'exemple des images."> Le but de cette activité est, maintenant que nous <l link="http://interstices.info/reflet-numerique"/>, de regarder quelques opérations que nous pouvons effectuer sur ces objets numériques. Nous considérons ici des images où chaque pixel est  un nombre entre 0% pour le noir (considéré ici comme une absence de couleur) et 100% pour le blanc, donc des images monochromes qui vont de transparent à blanc. Nous allons essayer d'illustrer dans quelle mesure des opérations entre ces images peuvent prendre avoir un sens concret pour nous.</div>
+    <div title="Manipuler des objets numériques: l'exemple des images."> Le but de cette activité est, maintenant que nous <l link="http://interstices.info/reflet-numerique" text="savons comment sont codées des images"/>, de regarder quelques opérations que nous pouvons effectuer sur ces objets numériques. Nous considérons ici des images où chaque pixel est  un nombre entre 0% pour le noir (considéré ici comme une absence de couleur) et 100% pour le blanc, donc des images monochromes qui vont de transparent à blanc. Nous allons essayer d'illustrer dans quelle mesure des opérations entre ces images peuvent prendre avoir un sens concret pour nous.</div>
     <div title="Ajouter deux images: l'effet de calque">. Que peux signifier "ajouter" deux images ? Tout simplement produire un effet de calque comme on le voit avec l'exemple ci-dessus. En ajoutant les deux images, c'est à dire en ajoutant les valeurs de chaque pixel de la première image à la valeur du pixel correspondant dans la seconde image, on obtient une image qui amalgame les valeurs des deux, un peu comme un effet de calque. Si nous avions considéré des pixels de couleurs alors en les ajoutant nous aurions mélangé les couleurs et obtenues des combinaisons diverses. De plus, la notion de calque est lié au fait que nous avons considéré la notion de transparence: il s'agit juste ici d'illustrer un principe.</div>
     <div title="Soustraire deux images: un détecteur de mouvement."> A quoi peut correspondre maintenant la "soustraction" de deux images, c'est à dire soustraire à chaque pixel de la première image, la valeur du pixel correspondant de la seconde ? Il est facile de voir que si les pixels ont une même valeur, alors la différence sera nulle: ainsi si rien n'a changé d'une image à l'autre, il n'y aura pas de différence. Si au contraire, quelque chose a changé, alors la différence sera ou positive (disons plutôt noire) ou négative (disons plutôt blanche) et nous détectons ainsi les changements, comme nous le voyons ci dessus pour deux images entre lesquelles la figurine a quelque peu bougé.
     Dans le cas d'un film, nous obtenons une "image de mouvement": la détection de ce qui bouge d'une image à l'autre. Ce qui est très intéressant c'est que dans les rétines biologiques ou dans les systèmes de vision artificiels qui analysent les mouvements, c'est un calcul tout à fait similaire qui est mis en oeuvre.</div>

@@ -27,7 +27,7 @@
       <div><b><r>double</r> <c>readDouble</c>()</b> Lit un nombre décimal dans la fenêtre d'entrée (ex: <b><r>double</r> x = <r>readDouble</r>();</b>).</div>
       <div><b><r>boolean</r> <c>readBoolean</c>()</b> Lit une valeur vraie (<c>true, vrai, oui, 1</c>) ou fausse (<c>false, faux, non, 0</c>) dans la fenêtre d'entrée.</div>
     </div> (note: <r>readInt</r> est synonyme de <r>readInteger</r>, <r>readFloat</r> est synonyme de <r>readDouble</r>).</div>
-    <div title="Fonctions des autres proglets"> Voir la description dans la documentation de chaque <l link="about-all.htm#more"/>.</div>
+    <div title="Fonctions des autres proglets"> Voir la description dans la documentation de chaque <l link="about-all.htm#more" text="proglet"/>.</div>
   </div>
   <div title="Grammaire: constructions utilisées ici">
     <div title="Bloc de séquences d'instructions"> Un bloc se note entre <b>{ }</b> et englobe un ensemble de déclarations et d'instructions séparées par un <b>;</b>.</div>
@@ -38,14 +38,14 @@
       <div><div><c>+</c> <c>-</c> <c>*</c> <c>/</c> <c>%</c> </div><div>Addition, soustraction, multiplication, division, reste (appelé aussi modulo).</div></div>
     </div></div>
     <div title="Instruction conditionnelle"> Elle se note <div><b><r>if</r> (expressionBooleenne) { BlocD'InstructionsSiVrai } <r>else</r> { BlocD'InstructionsSiFaux }</b></div>
-    le <r>else</r> et le bloc qui suit peut être omis (voir l'activité sur les <l link="sujet-about-if.htm"/> pour plus de détail).</div>
+    le <r>else</r> et le bloc qui suit peut être omis (voir l'activité sur les <l link="sujet-about-if.htm" text="instruction conditionnelle"/> pour plus de détail).</div>
     <div title="Boucle"> Elle se note <div><b><r>while</r> (expressionBooleenne) { BlocD'Instructions }</b></div>
-    (voir l'activité sur les <l link="sujet-about-while.htm"/> pour plus de détail).</div>
+    (voir l'activité sur les <l link="sujet-about-while.htm" text="boucles"/> pour plus de détail).</div>
     <div title="Déclaration de fonction"> Elle se note <div><r>TypeDuResultat</r> <b>NomDeLaFonction</b> 
     (<r>TypeParametre1</r> <b>NomParametre1</b>, ..., <r>TypeParametreN</r> <b>NomParametreN</b>) { BlocD'Instructions }</div>
-    (voir l'activité sur les <l link="sujet-about-functions.htm"/> pour plus de détail).</div>
+    (voir l'activité sur les <l link="sujet-about-functions.htm" text="fonctions"/> pour plus de détail).</div>
     <div title="Programme principal"> Il se note <b><r>void main</r>{ }</b> avec les instructions définies entre <b>{ }</b>.</div>
-    tandis que le langage Java a beaucoup d'autres <l link="http://www.eteks.com/coursjava/instructions.html"/>.</div>
+    tandis que le langage Java a beaucoup d'autres <l link="http://www.eteks.com/coursjava/instructions.html" text="instructions et opérateurs"/>.</div>
 
 <div class="notes">
   <div>La différence entre <c>echo</c> et <c>println</c> est <c>echo</c> affiche la chaîne de caractères dans la console, donc marche avec toutes les proglets, 

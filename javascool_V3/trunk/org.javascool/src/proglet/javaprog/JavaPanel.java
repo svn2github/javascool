@@ -10,7 +10,7 @@ import javax.swing.JLayeredPane;
 import java.awt.Dimension;
 
 /** Définit une proglet javascool qui permet d'utiliser toute les classes des swings.
- * <p><applet code="org.javascool.ProgletApplet" archive="../../../javascool.jar" width="560" height="520"><param name="proglet" value="javaprog"/></applet></p>
+ * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
  * @see <a href="http://java.sun.com/docs/books/tutorial/uiswing">Java Swing tutorial</a>
  * @see <a href="http://java.sun.com/javase/6/docs/api/javax/swing/package-summary.html">Java Swing API</a>
  * @see <a href="JavaPanel.java">code source</a>

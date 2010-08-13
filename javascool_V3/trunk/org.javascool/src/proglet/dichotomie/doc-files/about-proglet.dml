@@ -2,7 +2,7 @@
   <div class="table"><p><p>
     Cette proglet<l class="note" link="#1"/> permet d'apprendre la notion algorithmique de « recherche dichotomie ». 
     La proglet affiche un livre avec tous les drapeaux du monde 
-    (répertoriés grâce à <l link="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde"/>)
+    (répertoriés grâce à <l link="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde" text="wikipedia"/>)
     et permet d'ouvrir le livre à une page donnée pour comparer le nom de pays avec le nom du pays recherché. 
     <div>Plus précisément la fonction <r>dichoCompare</r> ouvre le livre à une page et compare un nom au nom affiché sur cette page: <div class="code">
       <p><r>int</r> résultat = <r>dichoCompare</r>(nom, page);</p>
@@ -30,7 +30,7 @@
   </p><p><l class="proglet" l="Dicho"/></p></p></div>
 
   <div class="notes">
-    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source"/>, programmée en Java et <l link=" ../api/proglet/Dicho.html"/> 
-    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Dicho.java"/>, et permettre des développements dérivés.</div>
+    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../api/proglet/Dicho.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Dicho.java" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

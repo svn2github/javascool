@@ -8,7 +8,7 @@
        <p><T/><r>int</r> entier = <r>readInteger</r>();</p>
        <m>Lire un nombre décimal avec la fonction:</m>
        <p><T/><r>double</r> decimal = <r>readDouble</r>();</p>
-     </div>où les constructions proposées ici utilisent des <l link="sujet-about-variables.htm"/>.</div>
+     </div>où les constructions proposées ici utilisent des <l link="sujet-about-variables.htm" text="variables"/>.</div>
      <div>On peut aussi écrire dans la fenêtre <c>output</c>: <div class="code">
        <m>Ecrire une chaine de caractère avec la fonction:</m>
        <p><T/><r>println</r>(chaine);</p>
@@ -32,8 +32,8 @@
   </p><p><l class="proglet" l="Konsol"/></p></p></div>
 
   <div class="notes">
-    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source"/>, programmée en Java et <l link=" ../api/proglet/Konsol.html"/> 
-    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Konsol.java"/>, et permettre des développements dérivés.</div>
+    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../api/proglet/Konsol.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Konsol.java" text="au code source"/>, et permettre des développements dérivés.</div>
     <div>Une console ou « terminal alphanumérique » correspond à une fenêtre où l'utilisateur peut dialoguer avec un programme en entrant des données au clavier et 
     en lisant les chaines de caractères imprimées par le programme.</div>
   </div>

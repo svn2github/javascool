@@ -12,17 +12,6 @@
 </td></tr>
 
 
-
-<tr><td style="background-color:#DDDDDD"><b><a name="parcours">Un parcours pour s'initier à la programmation</a></b> :
-<p>Ce parcours permet de s'approprier les cinq ingrédients des algorithmes (en utilisant<footnote id="1"/> la <proglet name="Konsol"/>)<ul>
-  <li>S'initier à l'outil et son <a href="sujet-hello-world.htm">interface</a>, utiliser les séquences d'instructions.</li>
-  <li>Apprendre à se servir de <a href="sujet-about-variables.htm">variables</a>.</li>
-  <li>Découvrir l'instruction <a href="sujet-about-if.htm">conditionnelle</a>.</li>
-  <li>Se familiariser avec les <a href="sujet-about-functions.htm">fonctions</a>.</li>
-  <li>Utiliser des <a href="sujet-about-while.htm">boucles</a>.</li>
-</ul>avec un <a href="about-memo.htm">mémorandum des constructions et instructions</a>.</p>
-</td></tr>
-
 <tr><td style="background-color:#DDDDDD"><b><a name="exos">Exercices et applications</a></b><img align="right" width="60" src="img/new-icon.jpg"/>
  <p><a name="eduscol"></a>La 20taine d'exercices activités du document de <a href="more/Algo_Doc_Ress.pdf">ressources</a> publié par <a href="http://eduscol.education.fr">ÉduSCOL</a> a été instanciées en <javascool/> : les "<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a>" (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet : accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,%20%20Je%20suis%20un%20enseignant%20du%20lycée%20de%20??%20à%20??%20et%20souhaite%20accéder%20aux%20soluces%20des%20proglets.%0a,%20%20%20Voici%20un%20élément%20qui%20prouve%20que%20je%20ne%20suis%20pas%20élève%20!%20:%20??%0a,%20%20Signature%20:%20??">contacter</a> pour l'accès). Avec le <a href="#parcours">parcours</a>  pour s'initier à la programmation, elles permettent de couvrir le programme de 2nd en algorithmique. 
  <p>Les sujets proposés ci-après donnent des exemples d'activité liés à ces sujets.</p>
@@ -30,7 +19,6 @@
 
 <br/>
 <p>Quelques autres applications, exercices et activités :<ul>
-  <li>Une <a href="sujet-appli-imc.htm">calculette d'indice de masse corporelle</a></li>
   <li>Comprendre le principe de la <a href="sujet-appli-dicho.htm">recherche dichotomique</a>.</li>
   <li>Programmer quelques <a href="sujet-appli-geometry.htm">calculs géométriques</a>.</li>
   <li>Découvrir comment marche un <a href="sujet-appli-conva.htm">convertisseur analogique-numérique</a>.</li>

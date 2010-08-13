@@ -50,7 +50,7 @@
   </p><p><l class="proglet" l="Smiley"/></p></p></div>
 
   <div class="notes">
-    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source"/>, programmée en Java et <l link=" ../api/proglet/Smiley.html"/> 
-    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Smiley.java"/>, et permettre des développements dérivés.</div>
+    <div>Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../api/proglet/Smiley.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link=" ../api/proglet/Smiley.java" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

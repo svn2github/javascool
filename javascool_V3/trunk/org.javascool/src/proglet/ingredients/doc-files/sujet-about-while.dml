@@ -4,9 +4,9 @@
   
 
   <div class="objectif">
-    Le but de ce tutoriel d'apprendre à  utiliser des boucles. Il faut déjà savoir <l link="sujet-hello-world.htm"/>,
-  se servir de <l link="sujet-about-variables.htm"/>, avoir découvert l'instruction <l link="sujet-about-if.htm"/>, 
-  et s'être familiarisé avec les <l link="sujet-about-functions.htm"/>.
+    Le but de ce tutoriel d'apprendre à  utiliser des boucles. Il faut déjà savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>,
+  se servir de <l link="sujet-about-variables.htm" text="variables"/>, avoir découvert l'instruction <l link="sujet-about-if.htm" text="conditionnelle"/>, 
+  et s'être familiarisé avec les <l link="sujet-about-functions.htm" text="fonctions"/>.
   </div>
   
   <div class="intros">
@@ -42,10 +42,10 @@
     Nous voilà avec un mécanisme qui va nous permettre de répéter autant de fois que nécessaire une action.
    </div>
    <div title="Tous les ingrédients des algorithmes"> Il y a quelque chose de formidable ici : 
-   avec des <l link="sujet-about-variables.htm"/> et des <l link="sujet-about-functions.htm"/>, 
-   une <l link="sujet-hello-world.htm"/> d'instruction, 
-   l'instruction <l link="sujet-about-if.htm"/>, 
-   et une instruction<l class="note" link="#1"/> pour faire des <l link="sujet-about-while.htm"/>, 
+   avec des <l link="sujet-about-variables.htm" text="variables"/> et des <l link="sujet-about-functions.htm" text="fonctions"/>, 
+   une <l link="sujet-hello-world.htm" text="séquence"/> d'instruction, 
+   l'instruction <l link="sujet-about-if.htm" text="conditionnelle"/>, 
+   et une instruction<l class="note" link="#1"/> pour faire des <l link="sujet-about-while.htm" text="boucles"/>, 
    nous avons <i>tous les ingrédients</i> pour programmer efficacement <i>tous les algorithmes possibles</i>! 
    Il y a bien entendu une subtilité ici : les fonctions doivent pouvoir s'appeler elles-même, c'est à dire être recursives<l class="note" link="#2"/>.
    Mais la <i>plupart</i> des programmes que nous avons besoin de faire n'ont pas besoin de fonctions récursives et se programment très bien avec les ingrédients
@@ -91,12 +91,12 @@
     </div></div>
     <div title="Programmer quelques boucles"> : <div class="ul">
       <div>Programmer une boucle qui imprime tous les nombres impairs de 1 à 39 inclus, avec l'instruction <b><r>println</r>(<v>n = </v> + n);</b></div>
-      <div>Le <l link="http://fr.wikipedia.org/wiki/Nombre_d'or"/> est défini par une suite 
-      (qui n'est pas celle de <l link="http://fr.wikipedia.org/wiki/Nombre_d'or#Suite_de_Fibonacci"/>) de la forme :
+      <div>Le <l link="http://fr.wikipedia.org/wiki/Nombre_d'or" text="nombre d'or"/> est défini par une suite 
+      (qui n'est pas celle de <l link="http://fr.wikipedia.org/wiki/Nombre_d'or#Suite_de_Fibonacci" text="Fibonacci"/>) de la forme :
       <b>r = 1 + 1 / r</b> initialisée avec <b>r = 1</b>. Ecrire une boucle qui calcule part de <b>r = 1</b> et calcule 30 fois <b>r = 1 + 1 / r</b> en imprimant
       à chaque fois <b>r</b> (par exemple avec l'instruction <b><r>println</r>(<v>r = </v> + r);</b> et commenter le résultat. 
       Comparer avec les valeurs du nombre d'or connues par ailleurs.</div>
-      <div>Avec votre professeur (ou quelqu'un pour vous aider si besoin) calculer les 100 premières décimales de <l link="http://fr.wikipedia.org/wiki/Pi#M.C3.A9thode_d.E2.80.99Archim.C3.A8de"/> par la méthode d'Archimède.</div>
+      <div>Avec votre professeur (ou quelqu'un pour vous aider si besoin) calculer les 100 premières décimales de <l link="http://fr.wikipedia.org/wiki/Pi#M.C3.A9thode_d.E2.80.99Archim.C3.A8de" text="PI"/> par la méthode d'Archimède.</div>
     </div></div>
     <div title="D'autres formes de boucles"> Les langages informatiques proposent d'autres formes de boucles<l class="note" link="#1"/>, 
     qui sont équivalentes à la construction <r>while</r> apprise ici, mais peuvent être plus pratiques à utiliser. En voici un exemple <div class="ul">
@@ -129,11 +129,11 @@
     </div>En bref, nous avons d'autres façons de faire mais nous connaissons déjà les <i>fondements</i> dont nous avons besoin.</div>
     <div title="A propos de fonctions récursives"> Imaginons une fonction <r>A</r> qui appelle, selon ses entrées, une fonction <r>B</r> 
   qui appelle elle-même la fonction <r>A</r> ou tout autre combinaison telle que, finalement et selon ses entrées, la fonction <r>A</r> se rappelle elle-même. 
-  On dit qu'elle est <i><l link="http://fr.wikipedia.org/wiki/Algorithme_récursif"/></i>: 
+  On dit qu'elle est <i><l link="http://fr.wikipedia.org/wiki/Algorithme_récursif" text="récursive"/></i>: 
   cela peut donner des boucles infinies (donc des bugs !), ou des calculs très complexes et très intéressants ... et 
   c'est plus compliqué que ce que nous pouvons découvrir ici, alors retenons juste deux choses: <div class="ul">
     <div>Il faut éviter de définir des fonctions récursives, sauf dans les cas indispensables.</div>
-    <div>Il faut être prudent si c'est le cas, et bien comprendre la notion de <l link="sujet-about-while.htm"/> avant.</div>
+    <div>Il faut être prudent si c'est le cas, et bien comprendre la notion de <l link="sujet-about-while.htm" text="boucle"/> avant.</div>
   </div>.</div>
   <div title="Arrêter un programme"> C'est le bouton <l class="icon" icon="img/stop.png"/> qui permet d'arrêter un programme qui boucle indéfiniment.</div>
   </div>

@@ -76,16 +76,12 @@ import javax.swing.event.DocumentEvent;
 /** This widget defines a general proglet source editor.
  * @see <a href="SourceEditor.java">source code</a>
  */
-public class SourceEditor extends JPanel implements Widget {
+public class SourceEditor extends JPanel implements Widget,Editor {
   private static final long serialVersionUID = 1L;
 
-  /** Sets the editing text. 
-   * @param text The text to edit.
-   */
-  public void setText(String text) { pane.setText(text); pane.setCaretPosition(0); doColorize(0, 0); }
-
-  /** Gets the edited text. */
+  // Implements the org.javascool interface
   public String getText() { return pane.getText(); }
+  public void setText(String text) { pane.setText(text); pane.setCaretPosition(0); doColorize(0, 0); }
 
   // Reference to this document with its menu-bar and contained
   private JMenuBar bar; private JTextPane pane; private JScrollPane scroll; private StyledDocument doc;

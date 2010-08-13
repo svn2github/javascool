@@ -16,7 +16,7 @@ import javax.swing.JLayeredPane;
 import org.javascool.NumberInput;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
- * <p><applet code="org.javascool.ProgletApplet" archive="../../../javascool.jar" width="560" height="600"><param name="proglet" value="convanalogique"/></applet></p>
+ * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
  * @see <a href="ConvAnalogique.java">code source</a>
  */
 public class ConvAnalogique implements org.javascool.Proglet { private ConvAnalogique() { }

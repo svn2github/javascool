@@ -5,10 +5,10 @@
   
   <div class="objectif">
     Le but de ce tutoriel est de comprendre comment deviner une valeur  analogique à partir de comparaisons et de découvrir la recherche dichotomique.
-    Une autre activité, plus autonome, sur la recherche dichotomique est proposée <l link="sujet-appli-dicho.htm"/>.
-    Il faut déja savoir <l link="sujet-hello-world.htm"/>,
-    se servir de <l link="sujet-about-variables.htm"/> et avoir découvert l'<l link="sujet-about-if.htm"/> et 
-    utiliser des <l link="sujet-about-while.htm"/>.
+    Une autre activité, plus autonome, sur la recherche dichotomique est proposée <l link="sujet-appli-dicho.htm" text="ici"/>.
+    Il faut déja savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>,
+    se servir de <l link="sujet-about-variables.htm" text="variables"/> et avoir découvert l'<l link="sujet-about-if.htm" text="instruction conditionnelle"/> et 
+    utiliser des <l link="sujet-about-while.htm" text="boucles"/>.
   </div>
   
   <div class="intros">
@@ -88,7 +88,7 @@
      </div><div class="ul">
        <div>Compléter ce programme et ajouter au texte de programme des commentaires à chaque ligne pour expliquer comment il fonctionne.</div>
        <div>Essayez-le et concluez sur l'intérêt d'utiliser une telle méthode qui divise l'espace de recherche par 2 puis 2 etc.</div>
-       <div>A l'aide de <l link="http://fr.wikipedia.org"/> expliquer en deux lignes pourquoi cette méthode s'appelle dichotomique.</div>
+       <div>A l'aide de <l link="http://fr.wikipedia.org" text="wikipedia"/> expliquer en deux lignes pourquoi cette méthode s'appelle dichotomique.</div>
      </div></div>
      <div title="Aller plus loin">Supposez que nous regardions l'annuaire téléphonique des 1048576 habitants des Alpes-Maritimes, triés par ordre alphabétique :<div class="ul">
        <div>Expliquez en 2/3 lignes comment utiliser une méthode dichotomique pour chercher une personne parmi plus d'un million de personnes !</div>
