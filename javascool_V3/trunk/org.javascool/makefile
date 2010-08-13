@@ -145,17 +145,26 @@ www/api : $(SRC) makefile $(shell find src -name package.html)
 	@for f in `find $@ -name '*.java'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
-www/api/philien : $(SRC) makefile $(shell find src -name package.html) 
+jdoc : jdocfolders jdoc/api/doc.tar.gz jdoc/base.tar.gz $(SRC) makefile $(shell find src -name package.html) 
 	@echo "make $@"
-	@rm -rf $@ ; mkdir -p $@
+	@mkdir -p $@/APIJVS
 	@javadoc -private -nohelp -nodeprecated -notree -noindex -author -use -link file:///home/philien/Documents/docs/api \
-	 -windowtitle "Java's Cool v3" -d $@ $(SRC)
-	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; done
+	 -windowtitle "Java's Cool v3" -d $@/APIJVS $(SRC)
+	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@/APIJVS)/'` ; done
 	@for f in `find $@ -name '*.java'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@rm -rf `find $@ -name .svn` 
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
-	@gksudo "cp /home/philien/Documents/org.javascool/www/api/philien/ /home/philien/Documents/docs/APIJVS/ -r"
-	@gksudo "rm $@ -r"
+
+jdocfolders:
+	@mkdir -p jdoc/api
+
+jdoc/api/doc.tar.gz:
+	@wget http://www.philien.fr/jdoc/java_api_doc.tar.gz -O $@
+	@cd jdoc/api/;tar xzvf ./doc.tar.gz
+
+jdoc/base.tar.gz:
+	@wget http://www.philien.fr/jdoc/usefull.tar.gz -O $@
+	@cd jdoc/;tar xzvf ./base.tar.gz
 
 #####################################################################################################################################
 
