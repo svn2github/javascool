@@ -22,7 +22,7 @@ echo '<hr>';
 function get_page_contents($name) {
   // Manage cache mechanism
   $cname = rawurlencode($name);
-  if (!file_exists('.htcache')) mkdir('.htcache');
+  if (!file_exists('.htcache')) mkdir('.htcache', 0777);
   if (file_exists('.htcache/'.$cname)) return file_get_contents('.htcache/'.$cname);
   {
     $notfound = "<h1>Désolé ! Cette page est en construction ou inacessible ..</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>"; 
@@ -49,7 +49,7 @@ function get_page_contents($name) {
       if (ereg("<title>Erreur</title>", $page)) return $notfound;
     }
   }
-  file_put_contents('.htcache/'.$cname, $page);
+  file_put_contents('.htcache/'.$cname, $page); chmod('.htcache/'.$cname, 0666);
   return $page;
 }
 // Usage: http://javascool.gforge.inria.fr/?kezako=niquelekacheux

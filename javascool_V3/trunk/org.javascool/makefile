@@ -163,18 +163,21 @@ www/api/philien : $(SRC) makefile $(shell find src -name package.html)
 
 pub: api
 	@php -l www/index.php ; rm -f www/index.php~
-	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 2>&1 | grep -v '^rsync: failed to set'
-	@echo 'Si www/index.php a change la page http://javascool.gforge.inria.fr/v3 sera accessible dans environ une heure'
-
-# Check the web site links 
-
-wref: 
-	@lib/linkcheck -verbosity 1 --noparent -recurse http://javascool.gforge.inria.fr/v3
+	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
+	 2>&1 | grep -v '^rsync: failed to set'
+	@-rsync --rsh='ssh -C' www/index.php scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/.htindex.php
+	@ssh scm.gforge.inria.fr 'cat /home/groups/javascool/htdocs/v3/.htindex.php > /home/groups/javascool/htdocs/v3/index.php'
 
 # Cleans the web cache
 
 wraz: 
-	@wget http://javascool.gforge.inria.fr/v3?kezako=niquelekacheux
+	@wget -q -O - http://javascool.gforge.inria.fr/v3?kezako=niquelekacheux
+
+# Check the web site links 
+
+wref: 
+	@lib/linkcheck -verbosity 1 --noparent -recurse http://javascool.gforge.inria.fr/v3 
+	@firefox https://www.google.com/webmasters/tools/dashboard
 
 # Check the site log
 
@@ -198,8 +201,8 @@ wiki:
 
 # This is used to access to web-site files
 
-ftp :
-	gnome-terminal -e 'sftp scm.gforge.inria.fr:/home/groups/javascool/htdocs'
+ssh :
+	gnome-terminal -e "ssh scm.gforge.inria.fr 'cd /home/groups/javascool/htdocs ; bash -i'" 
 
 ifeq ($(USER), vthierry)
 
