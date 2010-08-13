@@ -181,10 +181,6 @@ public class Main extends JApplet { /**/public Main() { }
   public void setFile(String filename) {
     try { se.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
   }
-  private Runnable newFile = new Runnable() { public void run() {
-    file = null;
-    se.setText("");
-  }};
   private Runnable openFile = new Runnable() { public void run() {
   int result=1000;
   if(se.getText().length()==0){result=1;}

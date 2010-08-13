@@ -153,7 +153,7 @@ www/api/philien : $(SRC) makefile $(shell find src -name package.html)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
 	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; done
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
-	@gksudo "cp ~/Documents/org.javascool/$@/* ~/Documents/docs/APIJVS/ -r"
+	@gksudo "cp /home/philien/Documents/org.javascool/www/api/philien/ /home/philien/Documents/docs/APIJVS/ -r"
 	@gksudo "rm $@ -r"
 
 #####################################################################################################################################
