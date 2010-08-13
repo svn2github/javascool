@@ -1,23 +1,9 @@
+<div>
 
-<tr><td style="background-color:#DDDDDD"><b><a name="polys">Polys de cours et documents de référence</a></b> : 
-<p>Deux textes sur les fondements de l'informatique, accessibles à un public lycéen sont disponibles ici :<ol>
-  <li>Qu'est ce que l'<a href="about-information.htm">information</a> ?</li>
-  <li>Les ingrédients des <a href="about-algorithm.htm">algorithmes</a> !</li>
-</ol>tandis qu'<a href="http://interstices.fr">)i(nterstices</a> propose de nombreux documents de référence sur ces sujets : <ul>
-  <li>Sur les <a href="http://interstices.info/jcms/c_5389/algorithmes">algorithmes</a>.</li>
-  <li>Sur <a href="http://interstices.info/turing">Alan Turing</a>, pionnier de l'informatique et 
-  sur la différence entre <a href="http://interstices.info/calculer-penser">calculer (avec un ordinateur) et penser (avec un cerveau)</a>.</li>
-  <li>Mais aussi ... sur la <a href="http://interstices.info/crypto-chiffre-lettres">cryptographie</a>, etc.</li>
-</ul></p>
-</td></tr>
+  <p>Exercices et applications<p><a name="eduscol"></a>La 20taine d'exercices activités du document de <a href="more/Algo_Doc_Ress.pdf">ressources</a> publié par <a href="http://eduscol.education.fr">ÉduSCOL</a> a été instanciées en <javascool/> : les "<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a>" (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet : accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,%20%20Je%20suis%20un%20enseignant%20du%20lycée%20de%20??%20à%20??%20et%20souhaite%20accéder%20aux%20soluces%20des%20proglets.%0a,%20%20%20Voici%20un%20élément%20qui%20prouve%20que%20je%20ne%20suis%20pas%20élève%20!%20:%20??%0a,%20%20Signature%20:%20??">contacter</a> pour l'accès). Avec le <a href="#parcours">parcours</a>  pour s'initier à la programmation, elles permettent de couvrir le programme de 2nd en algorithmique.</p></p>
 
 
-<tr><td style="background-color:#DDDDDD"><b><a name="exos">Exercices et applications</a></b><img align="right" width="60" src="img/new-icon.jpg"/>
- <p><a name="eduscol"></a>La 20taine d'exercices activités du document de <a href="more/Algo_Doc_Ress.pdf">ressources</a> publié par <a href="http://eduscol.education.fr">ÉduSCOL</a> a été instanciées en <javascool/> : les "<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a>" (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet : accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,%20%20Je%20suis%20un%20enseignant%20du%20lycée%20de%20??%20à%20??%20et%20souhaite%20accéder%20aux%20soluces%20des%20proglets.%0a,%20%20%20Voici%20un%20élément%20qui%20prouve%20que%20je%20ne%20suis%20pas%20élève%20!%20:%20??%0a,%20%20Signature%20:%20??">contacter</a> pour l'accès). Avec le <a href="#parcours">parcours</a>  pour s'initier à la programmation, elles permettent de couvrir le programme de 2nd en algorithmique. 
- <p>Les sujets proposés ci-après donnent des exemples d'activité liés à ces sujets.</p>
-</p>
 
-<br/>
 <p>Quelques autres applications, exercices et activités :<ul>
   <li>Comprendre le principe de la <a href="sujet-appli-dicho.htm">recherche dichotomique</a>.</li>
   <li>Programmer quelques <a href="sujet-appli-geometry.htm">calculs géométriques</a>.</li>
@@ -25,14 +11,8 @@
   <li>Comprendre quelques opérations de <a href="sujet-appli-image.htm">manipulation d'images</a>.</li>
 </ul> Note : Aide pour l'enseignant, des <a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce">soluces</a> (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de quelques proglets : accès aux solutions sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux solutions des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature : ??">contacter</a> pour l'accès).</p>
 
-<br/>
-<p>Cette liste a vocation à s'étoffer au cours de l'année scolaire 2009-2010 : <ul>
-  <li>en produisant de nouveaux exercices selon les demandes des enseignants ou des groupes de TPEs,</li>
-  <li>non sans vous inviter à nous demander de nouveaux sujets, à nous faire partager les vôtres.</li>
-</ul></p>
-</td></tr>
-<tr><td><hr/></td></tr>
-<tr><td style="background-color:#DDDDDD"><b><a name="more">Créer de nouvelles activités</a></b><ol>
+
+<p>Créer de nouvelles activités<ol>
   <li>Plusieurs proglets<footnote id="1"/> sont disponibles ici, pour s'initier à la programmation et créer des exercices animés et interactifs<ul>
     <li>La <proglet name="Konsol"/>, <ul>
       <li>utilisée pour les apprentissages initiaux des ingrédients des algorithmes et</li>
@@ -57,12 +37,9 @@ et permettre des développements dérivés.
 <p>Un enseignant qui connait un peu de programmation peut facilement développer ces <a href="../api/index.html">propre proglet's</a>,
 non sans vous inviter à nous demander (dans la mesure de notre disponibilité) de le faire à partir de votre idée, 
 de vous y aider, et nous de faire partager les vôtres, etc.</p></li>
-</ol>
-</td></tr>
+</ol></p>
 
-
-</table>
-<footnotes>
+<p>
   <p>Une <c>proglet</c> est une petite <a href="http://fr.wikipedia.org/wiki/Applet">applette</a> qui permet de s'initier à la programmation de manière ludique,
   puisque les petits programmes créés animent un élément visuel ou sonore, à la fois pour mieux comprendre ces objets numériques et pour offrir une démarche
   expérimentale concrète, vers la compréhension des notions abstraites qui forment le fondement des sciences de l'information. 
@@ -78,6 +55,5 @@ de vous y aider, et nous de faire partager les vôtres, etc.</p></li>
   créés à l'initiative de l'<a href="http://www-inria.fr">INRIA</a>. 
   Elles resteront évidemment accessibles à partir de cette page.
   Et ... soyons indulgents avec cette 1ère mise en forme ! Le fond a été privilégié à la forme ici, pour aller à l'essentiel.</p>
-
-</footnotes>
 </p>
+</div>

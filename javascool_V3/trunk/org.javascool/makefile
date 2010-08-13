@@ -47,7 +47,7 @@ SRC = \
  src/org/javascool/proglets.java $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt'))
 
 DOC = \
- $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
+ $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(patsubst %.xml,%.dml,$(shell find src -name '*.xml')) $(patsubst %.dml,%.htm,$(shell find src -name '*.dml'))
 
 # Compiles the java classes using the default jdk5 and builds the certified jar
 
@@ -288,7 +288,6 @@ endif
 #: ./lib/dml2htm.xsl          : defines how to translate doc-files/*.xml files to XHTML 
 #: ./lib/manifest.mf          : is a makefile generated file: do NOT edit
 #: ./lib/linkcheck            : is the perl script to check broken links: do NOT touch
-#: ./lib(about-all.xml|org2xml.xsl|xml2htm.xsl) : temporary files to be deleted soon
 #: 
 #: [1.4] Other files
 #: ./tst/*                    : contains local test files

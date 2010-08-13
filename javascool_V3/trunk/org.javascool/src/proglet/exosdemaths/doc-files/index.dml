@@ -1,0 +1,59 @@
+<div>
+
+  <div>Exercices et applications<div><l text=""/>La 20taine d'exercices activités du document de <l link="more/Algo_Doc_Ress.pdf" text="ressources"/> publié par <l link="http://eduscol.education.fr" text="ÉduSCOL"/> a été instanciées en <l class="javascool"/> : les "<l link="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce" text="soluces"/>" (aide syntaxique) sont proposées ici (nous <l link="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet : accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,%20%20Je%20suis%20un%20enseignant%20du%20lycée%20de%20??%20à%20??%20et%20souhaite%20accéder%20aux%20soluces%20des%20proglets.%0a,%20%20%20Voici%20un%20élément%20qui%20prouve%20que%20je%20ne%20suis%20pas%20élève%20!%20:%20??%0a,%20%20Signature%20:%20??" text="contacter"/> pour l'accès). Avec le <l link="#parcours" text="parcours"/>  pour s'initier à la programmation, elles permettent de couvrir le programme de 2nd en algorithmique.</div></div>
+
+
+
+<div>Quelques autres applications, exercices et activités :<div class="ul">
+  <div>Comprendre le principe de la <l link="sujet-appli-dicho.htm" text="recherche dichotomique"/>.</div>
+  <div>Programmer quelques <l link="sujet-appli-geometry.htm" text="calculs géométriques"/>.</div>
+  <div>Découvrir comment marche un <l link="sujet-appli-conva.htm" text="convertisseur analogique-numérique"/>.</div>
+  <div>Comprendre quelques opérations de <l link="sujet-appli-image.htm" text="manipulation d'images"/>.</div>
+</div> Note : Aide pour l'enseignant, des <l link="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce" text="soluces"/> (aide syntaxique) sont proposées ici (nous <l link="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de quelques proglets : accès aux solutions sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux solutions des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature : ??" text="contacter"/> pour l'accès).</div>
+
+
+<div>Créer de nouvelles activités<div class="ol">
+  <div>Plusieurs proglets<l class="note" link="#1"/> sont disponibles ici, pour s'initier à la programmation et créer des exercices animés et interactifs<div class="ul">
+    <div>La , <div class="ul">
+      <div>utilisée pour les apprentissages initiaux des ingrédients des algorithmes et</div>
+      <div>tous les exercices qui nécessitent des lectures aux clavier comme dans une «console».</div>
+    </div></div>
+    <div>La , <div class="ul">
+      <div>utilisée pour les exercices qui nécessitent un tracé de courbes où un petit affichage graphique.</div>
+    </div></div>
+    <div>La , <div class="ul">
+      <div>utilisée pour les exercices qui nécessitent de manipuler des images ou des graphismes 2D et une <l link="sujet-appli-image.htm" text="activité"/> spécifique.</div>
+    </div></div>
+    <div>La , utilisée pour une <l link="sujet-appli-dicho.htm" text="activité"/> spécifique (recherche dichotomique).</div>
+    <div>La , utilisée pour une <l link="sujet-appli-conva.htm" text="activité"/> spécifique (conversion analogique-numérique).</div>
+    <div>La , simule la «bonne vieille» <l link="http://fr.wikipedia.org/wiki/Logo_(langage)" text="tortue logo"/>, 
+    donc permet de faire beaucoup d'autres activités.</div>
+    <div>La , est utilisée pour des activités (plutôt d'un club de maths ou de science, ou lors d'un TPE) de découverte du signal sonore.
+    Nous <l link="#contact" text="contacter"/> dans ce cas.</div>
+  </div></div>
+<div>Chaque proglet<l class="note" link="#1"/> est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, 
+programmée en Java et <l link=" ../api/index.html" text="documenté"/> pour sa libre redistribution, avec un accès au code source, 
+et permettre des développements dérivés.
+<div>Un enseignant qui connait un peu de programmation peut facilement développer ces <l link="../api/index.html" text="propre proglet's"/>,
+non sans vous inviter à nous demander (dans la mesure de notre disponibilité) de le faire à partir de votre idée, 
+de vous y aider, et nous de faire partager les vôtres, etc.</div></div>
+</div></div>
+
+<div>
+  <div>Une <c>proglet</c> est une petite <l link="http://fr.wikipedia.org/wiki/Applet" text="applette"/> qui permet de s'initier à la programmation de manière ludique,
+  puisque les petits programmes créés animent un élément visuel ou sonore, à la fois pour mieux comprendre ces objets numériques et pour offrir une démarche
+  expérimentale concrète, vers la compréhension des notions abstraites qui forment le fondement des sciences de l'information. 
+  Ces <c>proglets</c> sont des exemples de «<c>gamelet</c>» (c'est à dire de grains pédagogiques interactifs pour un apprentissage ludique d'une notion), 
+  telle que définie par <l link="http://fuscia.info" text="fuscia"/>.</div>
+  <div>Ces documents ne sont pas conçus pour apprendre la programmation en "autodidacte" ...
+  mais si vous le souhaitez et si vous pouvez dialoguer avec quelqu'un de votre entourage qui sait programmer 
+  (afin de ne pas être bloqué sur des détails de syntaxe ou d'implémentation) 
+  alors oui : n'hésitez pas à suivre le <l link="#parcours" text="parcours"/> pour s'initier à la programmation : 
+  vous allez vite épater ceux qui pensent être les seuls à savoir programmer !</div>
+  <div>Ces ressources ont vocation à être publiées de manière définitive sur les sites de ressources en ligne auxquels participent l'<l link="http://www-inria.fr" text="INRIA"/>,
+  tel que le site <l link="http://interstices.fr" text=")i(nterstices"/> ou <l link="http://fuscia.info" text="fuscia"/>, 
+  créés à l'initiative de l'<l link="http://www-inria.fr" text="INRIA"/>. 
+  Elles resteront évidemment accessibles à partir de cette page.
+  Et ... soyons indulgents avec cette 1ère mise en forme ! Le fond a été privilégié à la forme ici, pour aller à l'essentiel.</div>
+</div>
+</div>

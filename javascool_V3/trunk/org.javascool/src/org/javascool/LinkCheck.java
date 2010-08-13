@@ -48,7 +48,7 @@ public class LinkCheck { private LinkCheck() { }
     echoBroken("LINKCHECK: "+getRoot(location));
    links = new HashSet<String>(); anchors = new HashMap<String,HashSet<String>>(); root = getRoot(location); loop = recursive; npages = nlinks = nbrokens = 0; 
    check(location);
-   echoBroken("  PAGES: "+npages+" LINKS: "+nlinks+" BROKENS: "+nbrokens);
+   echoBroken("  SCANNED PAGES: "+npages+" SCANNED LINKS: "+nlinks+" BROKENS LINKS: "+nbrokens);
    links = null; anchors = null;
   }
   private static HashSet<String> links; private static HashMap<String,HashSet<String>> anchors; 
