@@ -123,7 +123,7 @@ public class Main extends JApplet { /**/public Main() { }
     public String getTitle() { return ""; }
     /** Initializes the activity, adding buttons and pannels. */
     public void init(Main main) { }
-    public SourceEditor editor;
+    public Editor editor;
     public void setText(String text){editor.setText(text);}
     public String getText(){return editor.getText();}
   }
@@ -277,21 +277,22 @@ public class Main extends JApplet { /**/public Main() { }
       public String getTitle() { return "Démonstration de l'éditeur Pml"; }
       public void init(Main main) {
       editor = new SourceEditor();
-	  main.addTab("Pml Editor", "", editor);
+	  main.addTab("Pml Editor", "",(JPanel) editor);
       }
     };
   private Activity jvsActivity = new Activity() {
       public String getTitle() { return "Démonstration de l'éditeur Jvs"; }
       public void init(Main main) {
       editor = new JvsSourceEditor();
-	main.addTab("Jvs Editor", "", editor);
+	main.addTab("Jvs Editor", "",(JPanel) editor);
 	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
       }
     };
   private Activity algActivity = new Activity() {
       public String getTitle() { return "Démonstration de l'éditeur d'Algo"; }
       public void init(Main main) {
-	main.addTab("Algo Editor", "", new AlgoTree());
+      editor=new AlgoEditor();
+	main.addTab("Algo Editor", "",(JPanel) editor);
 	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
       }
     };
