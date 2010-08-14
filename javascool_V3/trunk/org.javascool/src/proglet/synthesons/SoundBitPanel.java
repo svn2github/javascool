@@ -75,7 +75,7 @@ public class SoundBitPanel extends JPanel {
   private double data[], mag[], mag_max, smag[]; private String label;
 
   /** Converts a mono/stereo 16bit stream to a data buffer.
-   * @param stream The audio stream to convert.
+   * @param sound The audio stream to convert.
    * @param channel Left 'l' or right 'r' channel.
    */
   private static double[] getData(SoundBit sound, char channel) {

@@ -140,26 +140,53 @@ www/api : $(SRC) makefile $(shell find src -name package.html)
 	@for f in `find $@ -name '*.java'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
-jdoc : jdocfolders jdoc/api/doc.tar.gz jdoc/base.tar.gz $(SRC) makefile $(shell find src -name package.html) 
-	@echo "make $@"
+jdoc : jdochi jdocfolders jdoc/api/doc.tar.gz jdoc/base.tar.gz $(SRC) makefile $(shell find src -name package.html) 
+	@echo "Good, dependances are ok and we now build the Javascool API Private Doc"
 	@mkdir -p $@/APIJVS
-	@javadoc -private -nohelp -nodeprecated -notree -noindex -author -use -link file:///home/philien/Documents/docs/api \
-	 -windowtitle "Java's Cool v3" -d $@/APIJVS $(SRC)
+	@echo "> Generating the JavaScool API Private Doc ..."
+	@javadoc -quiet -private -nohelp -nodeprecated -notree -noindex -author -charset "UTF-8" -use -link file:///home/philien/Documents/docs/api -windowtitle "Java's Cool v3" -d $@/APIJVS $(SRC)
+	@echo "> Coping doc-file to the JavaScool API Doc ..."
 	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@/APIJVS)/'` ; done
+	@echo "> Generating colored source code ..."
 	@for f in `find $@ -name '*.java'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
+	@echo "> Delete tmp files ..."
 	@rm -rf `find $@ -name .svn` 
-	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
+	@echo "Fine, JDoc is now generated. Its size is `du -s -B 1048576 $@ | awk '{print $$1}'`Mbytes"
+	@echo "To open JDoc, open in your browser jdoc/index.html and Read The Fine Manuel (RTMF)"
+
+jdochi:
+	@echo "                    JDoc Generator                      "
+	@echo "  Welcome to the generator of the bigest Java Doc"
+	@echo ""
+	@echo " --------------------------------------------------------"
+	@echo " | Copyright 2010 INRIA for JavaScool Doc               |"
+	@echo " | Copyright 1993-2010 Oracle for Java API Doc          |"
+	@echo " --------------------------------------------------------"
+	@echo " "
+	@echo " Distributed on GNU GPL V3                      "
+	@echo " For more information : http://javascool.gforge.inria.fr"
+	@echo " ________________________________________________________"
+	@echo " "
+	@echo "> Evaluate and build dependances ..."
 
 jdocfolders:
 	@mkdir -p jdoc/api
 
 jdoc/api/doc.tar.gz:
-	@wget http://www.philien.fr/jdoc/java_api_doc.tar.gz -O $@
-	@cd jdoc/api/;tar xzvf ./doc.tar.gz;rm ./doc.tar.gz
+	@echo "You need to build the Java Api Doc :  (This can make some time)"
+	@echo "> Dowloading of the Java api doc ..."
+	@wget http://www.philien.fr/jdoc/java_api_doc.tar.gz -O $@ -q
+	@echo "> Uncompressing the Java api doc ..."
+	@cd jdoc/api/;tar xzf ./doc.tar.gz;
+	@echo "The Java api doc is build"
 
 jdoc/base.tar.gz:
-	@wget http://www.philien.fr/jdoc/usefull.tar.gz -O $@
-	@cd jdoc/;tar xzvf ./base.tar.gz;rm ./base.tar.gz
+	@echo "You need to build the Doc Base : (This can make some time)"
+	@echo "> Dowloading of the doc base ..."
+	@wget http://www.philien.fr/jdoc/usefull.tar.gz -O $@ -q
+	@echo "> Uncompressing the doc base ..."
+	@cd jdoc/;tar xzf ./base.tar.gz;
+	@echo "The doc base is build"
 
 #####################################################################################################################################
 
