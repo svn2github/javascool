@@ -151,7 +151,7 @@ jdoc : jdochi jdocfolders jdoc/api/doc.tar.gz jdoc/base.tar.gz $(SRC) makefile $
 	@echo "Good, dependences are ok and we now build the Javascool API Private Doc"
 	@mkdir -p $@/APIJVS
 	@echo "> Generating the JavaScool API Private Doc ..."
-	@javadoc -quiet -private -nohelp -nodeprecated -notree -noindex -author -charset "UTF-8" -use -link file:///home/philien/Documents/docs/api -windowtitle "Java's Cool v3" -d $@/APIJVS $(SRC)
+	@javadoc -quiet -private -nohelp -nodeprecated -notree -noindex -author -charset "UTF-8" -use -link jdoc/api/ -windowtitle "Java's Cool v3" -d $@/APIJVS $(SRC)
 	@echo "> Coping doc-file to the JavaScool API Doc ..."
 	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@/APIJVS)/'` ; done
 	@echo "> Generating colored source code ..."
