@@ -74,6 +74,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.DocumentEvent;
 
 /** This widget defines a general proglet source editor.
+ * @see <a href="doc-files/about-keystrokes.htm">key-strokes (in French)</a>
  * @see <a href="SourceEditor.java.html">source code</a>
  * @serial exclude
  */
@@ -127,21 +128,21 @@ public class SourceEditor extends JPanel implements Widget,Editor {
       menu.add(undo.getRedoItem());
       menu.addSeparator();
       JMenuItem item;
-      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.copyAction))); item.setText("^C Copy");
-      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.cutAction))); item.setText("^X Cut");
-      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.pasteAction))); item.setText("^V Paste");
+      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.copyAction))); item.setText("Copier");
+      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.cutAction))); item.setText("Couper");
+      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.pasteAction))); item.setText("Coller");
       menu.addSeparator();
-      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.selectAllAction))); item.setText("^A Select all");
+      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.selectAllAction))); item.setText("Tout sélectionner");
       menu.addSeparator();     
       // Adds a print interface
-      AbstractAction print = new AbstractAction("^P Print") {
+      AbstractAction print = new AbstractAction("Imprimer") {
 	  private static final long serialVersionUID = 1L;
 	  public void actionPerformed(ActionEvent evt) { 
 	    doPrint();
 	  }
 	};
       menu.add(new JMenuItem(print));
-      addBinding(pane, KeyEvent.VK_P, print);
+      // addBinding(pane, KeyEvent.VK_P, print);
 
       // Textfind/replace manager: to be improved before use
       // menu.addSeparator();
@@ -259,13 +260,13 @@ public class SourceEditor extends JPanel implements Widget,Editor {
       addBinding(pane, KeyEvent.VK_Z, undo_action);
       addBinding(pane, KeyEvent.VK_Y, redo_action);
     }
-    private Action undo_action = new AbstractAction("^Z Undo") {
+    private Action undo_action = new AbstractAction("Annuler") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent evt) { 
 	  try { if (canUndo()) undo(); undoUpdate(); } catch (Exception e) { }
 	}
       };
-    private Action redo_action = new AbstractAction("^Y Redo") {
+    private Action redo_action = new AbstractAction("Restaurer") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent evt) { 
 	  try { if (canRedo()) redo(); undoUpdate(); } catch (Exception e) { }
@@ -321,14 +322,14 @@ public class SourceEditor extends JPanel implements Widget,Editor {
       addBinding(pane, KeyEvent.VK_R, replace_action);
     }
     private JTextComponent pane;
-    private Action search_action = new AbstractAction("^S   Search:") {
+    private Action search_action = new AbstractAction("Chercher") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  if (search != null)
 	    doFindReplace(search.getText(), null);
 	}
       };
-    private Action replace_action = new AbstractAction("^R Replace:") {
+    private Action replace_action = new AbstractAction("Remplacer") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) {
 	  if ((search != null) && (replace != null))
@@ -338,13 +339,13 @@ public class SourceEditor extends JPanel implements Widget,Editor {
     /** Returns the search button. * /
     public JPanel getSearchItem(JMenu menu) {
       if (search == null)
-	search = new JMenuField(menu, "^S   Search", search_action);
+	search = new JMenuField(menu, "Chercher", search_action);
       return search;
     }
     /** Returns the replace button. * /
     public JPanel getReplaceItem(JMenu menu) {
       if (replace == null)
-	replace = new JMenuField(menu, "^R Replace", replace_action);
+      replace = new JMenuField(menu, "Remplacer", replace_action);
       return replace;
     }
     private JMenuField search = null, replace = null;

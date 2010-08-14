@@ -35,7 +35,7 @@ public class CurveOutput extends JPanel implements Widget {
   private static class oval { int i; int j; int w; int h; Color c; } private Vector<oval> ovals = new Vector<oval>();
   private static class label { int i; int j; String s; Color c; } private Vector<label> labels = new Vector<label>();
   {
-    setBackground(Color.WHITE); setPreferredSize(new Dimension(522, 430));
+    setPreferredSize(new Dimension(522, 430));
     ReticuleMouseListener l = new ReticuleMouseListener();
     addMouseMotionListener(l);
     addMouseListener(l);

@@ -32,6 +32,7 @@ import java.awt.Event;
 import java.awt.event.KeyEvent;
 
 /** This widget defines a re-oriented graohic algorithm editor. 
+ * @see <a href="doc-files/about-keystrokes.htm">key-strokes (in French)</a>
  * @see <a href="AlgoEditor.java.html">source code</a>
  * @see Jvs2Java
  * @serial exclude
@@ -46,7 +47,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
   {
     setLayout(new BorderLayout());
     JPanel bar = new JPanel();
-    edit = new JComboBox(new String[] {"Edit", "^C Copier", "^X Couper/Supprimer", "^V Coller", "^L Check"});
+    edit = new JComboBox(new String[] {"Edit", "Copier", "Couper/Supprimer", "Coller", "Valider"});
     edit.addActionListener(new ActionListener() {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) {
@@ -531,11 +532,11 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
     addTrailer((DefaultMutableTreeNode) root.getChildAt(0), "FIN_PROGRAMME");
   }
   private void doEdit(String action) {
-    if ("^C Copier".equals(action)) {
+    if ("Copier".equals(action)) {
       DefaultMutableTreeNode node = getCurrentNode(false);
       clipboard = copy(node);
       System.out.println(action + " : " + getText(clipboard, 0) + " == " + getText(node, 0));
-    } else if ("^X Couper/Supprimer".equals(action)) {
+    } else if ("Couper/Supprimer".equals(action)) {
       DefaultMutableTreeNode node = getCurrentNode(false);
       if (node == root.getChildAt(0)) {
 	dialog.show(Jdialog, "supprimer");
@@ -544,7 +545,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	model.removeNodeFromParent(node);
 	System.out.println(action + " : " + getText(clipboard, 0));
       }
-    } else if ("^V Coller".equals(action)) {
+    } else if ("Coller".equals(action)) {
       DefaultMutableTreeNode node = getCurrentNode(true);
       if (node == null) {
 	showMessage("Selectionner un position avant de coller");
@@ -554,7 +555,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	model.insertNodeInto(n, node, getCurrentNodeIndex(node));
 	System.out.println(action + " : " + getText(clipboard, 0));
       }
-    } else if ("^L Check".equals(action)) {
+    } else if ("Valider".equals(action)) {
       System.out.println(action + " : " + getText() + " == \n" + getJavaSource());
       Utils.saveString("tmp.jvs", getJavaSource());
       Jvs2Java.translate("tmp.jvs");
@@ -577,25 +578,25 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
     tree.getActionMap().put("copier",  new AbstractAction("copier") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  doEdit("^C Copier");
+	  doEdit("Copier");
 	}});
     tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_X, Event.CTRL_MASK), "couper");
     tree.getActionMap().put("couper",  new AbstractAction("couper") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  doEdit("^X Couper/Supprimer");
+	  doEdit("Couper/Supprimer");
 	}});
     tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "coller");
     tree.getActionMap().put("coller",  new AbstractAction("coller") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  doEdit("^V Coller");
+	  doEdit("Coller");
 	}});
     tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_L, Event.CTRL_MASK), "check");
     tree.getActionMap().put("check",  new AbstractAction("check") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  doEdit("^L Check");
+	  doEdit("Valider");
 	}});
   }
   private DefaultMutableTreeNode clipboard = null;

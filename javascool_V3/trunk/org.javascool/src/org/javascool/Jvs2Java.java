@@ -216,11 +216,10 @@ public class Jvs2Java { private Jvs2Java() { }
 
   /** Returns the proglet panel.
    * @param proglet The proglet class name.
-   * @return The panel corresponding to the proglet.
+   * @return The panel corresponding to the proglet, if any; else an empty panel.
    */
   public static JPanel getPanel(String proglet) {
-    try { return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null); } 
-    catch(Exception e) { Utils.report(e); return new JPanel(); }
+    try { return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null); } catch(Exception e) { return new JPanel(); }
   }
 
   /** Runs/Stops the proglet pupil's program. 

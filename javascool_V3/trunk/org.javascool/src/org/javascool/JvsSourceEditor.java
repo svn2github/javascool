@@ -7,8 +7,10 @@ package org.javascool;
 // Used to manage the colorization
 import javax.swing.text.Segment;
 
-/** This widget defines the proglet source editor.
+/** This widget defines a Jvs code source editor.
+ * @see <a href="doc-files/about-keystrokes.htm">key-strokes (in French)</a>
  * @see <a href="JvsSourceEditor.java.html">source code</a>
+ * @see Jvs2Java
  * @serial exclude
  */
 public class JvsSourceEditor extends SourceEditor implements Widget {

@@ -34,12 +34,11 @@ public class ConvAnalogique implements org.javascool.Proglet { private ConvAnalo
       JLayeredPane pane = new JLayeredPane();
       pane.setPreferredSize(new Dimension(540, 300));
       JLabel fig = new JLabel();
-      fig.setHorizontalAlignment(JLabel.CENTER);
       fig.setIcon(Utils.getIcon("proglet/convanalogique/doc-files/conv.png"));
-      fig.setBounds(2, 0, 540, 300);
+      fig.setBounds(3, 0, 540, 300);
       pane.add(fig, new Integer(1), 0);
       out = new JLabel("????");
-      out.setBounds(270, 80, 100, 50);
+      out.setBounds(270, 78, 100, 50);
       pane.add(out, new Integer(2), 0);
       cmp = new JLabel("?");
       cmp.setBounds(190, 178, 100, 50);
