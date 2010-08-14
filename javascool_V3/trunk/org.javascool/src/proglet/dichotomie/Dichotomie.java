@@ -96,7 +96,7 @@ public class Dichotomie implements org.javascool.Proglet { private Dichotomie() 
   }
 
   /** Gets the index of a given page.
-   * <div><tt>- DO NOT USE !!! This is the solution of the excercice !!!</tt></div>
+   * <div><tt>- DO NOT USE !!! This is the solution of the exercice !!!</tt></div>
    * @param pays The name to compare with.
    * @return The page index or -1 if the name is not on some page.
    */

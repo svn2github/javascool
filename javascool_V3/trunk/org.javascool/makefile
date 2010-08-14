@@ -125,7 +125,7 @@ endif
 
 #####################################################################################################################################
 
-# Java doc generation
+# JavaScool doc generation
 
 api: jar www/api 
 
@@ -139,6 +139,13 @@ www/api : $(SRC) $(DOC) makefile $(shell find src -name package.html)
 	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; done
 	@for f in `find $@ -name '*.java'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
+
+#####################################################################################################################################
+
+# Java doc generation
+
+viewjdoc: jdoc
+	@firefox $(PWD)/jdoc/index.html 
 
 jdoc : jdochi jdocfolders jdoc/api/doc.tar.gz jdoc/base.tar.gz $(SRC) makefile $(shell find src -name package.html) 
 	@echo "Good, dependances are ok and we now build the Javascool API Private Doc"
@@ -226,14 +233,6 @@ web:
 wiki:
 	@firefox http://wiki.inria.fr/sciencinfolycee/JavaScool:ToDoList
 
-viewjdoc: jdoc
-	@firefox $(PWD)/jdoc/index.html 
-#ifeq ($(USER), pvienne)
-#	@firefox /usr/share/doc/openjdk-6-jre-headless/api/index.html
-#else
-#	@firefox /usr/share/javadoc/java-1.6.0-openjdk/api/overview-summary.html 
-#endif
-
 #####################################################################################################################################
 
 #                                       System operation commands: TO BE USED WITH CARE !!!!                                        #
@@ -314,6 +313,7 @@ endif
 #: ./tst/*                    : contains local test files
 #: ./javascool                : convenient link to ./src/org/javascool
 #: ./proglets                 : convenient link to ./src/proglet.
+#: ./jdoc                     : convenient Java and JavaScool doc bundle for local use (make jdoc to generate it).
 #:
 #: [2] Makefile usage.
 #:
@@ -327,6 +327,7 @@ endif
 #:: make usage        : show the makefile usage'
 #:: make what         : show the README information contains in this makefile'
 #::System commands:'
+#:: make jdoc         : to build the convenient Java and JavaScool doc bundle for local use
 #:: make cmp          : build the java classes'
 #:: make jar          : build the java jar'
 #:: make api          : build the java doc'
