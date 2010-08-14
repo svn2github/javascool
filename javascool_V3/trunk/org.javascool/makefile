@@ -148,7 +148,7 @@ viewjdoc: jdoc
 	@firefox $(PWD)/jdoc/index.html 
 
 jdoc : jdochi jdocfolders jdoc/api/doc.tar.gz jdoc/base.tar.gz $(SRC) makefile $(shell find src -name package.html) 
-	@echo "Good, dependances are ok and we now build the Javascool API Private Doc"
+	@echo "Good, dependences are ok and we now build the Javascool API Private Doc"
 	@mkdir -p $@/APIJVS
 	@echo "> Generating the JavaScool API Private Doc ..."
 	@javadoc -quiet -private -nohelp -nodeprecated -notree -noindex -author -charset "UTF-8" -use -link file:///home/philien/Documents/docs/api -windowtitle "Java's Cool v3" -d $@/APIJVS $(SRC)
