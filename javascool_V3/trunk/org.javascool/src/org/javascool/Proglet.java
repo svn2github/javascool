@@ -16,7 +16,8 @@ package org.javascool;
  *    <li>Avoir un constructeur <tt>private</tt> puisque c'est une factory avec uniquement des méthodes statiques qui ne peut être construit.</li>
  *  </ul></p>
  *  <p>Une bonne méthode pour écrire une proglet est de partir d'un exemple et de l'adapter aux nouvelles fonctionnalités souhaitées.</p>
- *  <p>Ces classes sont écrites pour permettre facilement à un enseignant ou un partenaire, qui programme en Java au niveau élémentaire d'adapter, enrichir ces éléments.</p>
+ *  <p>Ces <a href="doc-files/about-proglets.htm">«proglets»</a> sont écrites pour permettre facilement à un enseignant ou un partenaire, 
+ *    qui programme en Java au niveau élémentaire d'adapter, enrichir ces éléments.</p>
  *  <p>Non sans les <a href="http://javascool.gforge.inria.fr/?page=contact">partager</a> avec nous tout(te)s en nous contactant.</p>
  */
 public interface Proglet { }

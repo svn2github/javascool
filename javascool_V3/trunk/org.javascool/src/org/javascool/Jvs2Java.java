@@ -224,13 +224,14 @@ public class Jvs2Java { private Jvs2Java() { }
   }
 
   /** Runs/Stops the proglet pupil's program. 
-   * @param start If true starts the proglet pupil's program. If false stops the proglet pupil's program. If given as a <tt>String</tt> runs the corresponding proglet demo.
+   * @param start If true starts the proglet pupil's program, if defined. If false stops the proglet pupil's program. 
+   * If given as a <tt>String</tt> runs the corresponding proglet demo.
    */
   public static void run(boolean start) {
     if (thread != null) { thread.interrupt(); thread = null; }
     if (start) (thread = new Thread(new Runnable() { public void run() {
       try {
-	runnable.run();
+	if (runnable != null) runnable.run(); 
       } catch(Exception e) { Utils.report(e); } 
     }})).start(); 
   }
