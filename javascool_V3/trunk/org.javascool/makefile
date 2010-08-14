@@ -129,7 +129,7 @@ endif
 
 api: jar www/api 
 
-www/api : $(SRC) makefile $(shell find src -name package.html) 
+www/api : $(SRC) $(DOC) makefile $(shell find src -name package.html) 
 	@echo "make $@"
 	@rm -rf $@ ; mkdir -p $@
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done

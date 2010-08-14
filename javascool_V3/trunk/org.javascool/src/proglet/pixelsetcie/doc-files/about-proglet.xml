@@ -1,7 +1,7 @@
 <div title="La «proglet» pixelsetcie">
   <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>
-    Cette proglet<l class="note" link="#1"/> permet de manipuler une petite image de résolution variable, dont les coordonnées se définissent ainsi:
+    Cette proglet<l class="note" link="1"/> permet de manipuler une petite image de résolution variable, dont les coordonnées se définissent ainsi:
      <div class="center"><l class="icon" icon="img/smiley.png"/></div>
      c'est à dire que l'abscisse (la position horizontale ou largeur, width en anglais) va de <c>-width</c> à <c>+width</c> 
      et l'ordonnée (la position verticale ou hauteur, height en anglais) va de <c>-height</c> à <c>+height</c>.

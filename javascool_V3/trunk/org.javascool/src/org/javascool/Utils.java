@@ -27,6 +27,10 @@ import java.io.FileWriter;
 // Used to load icon
 import javax.swing.ImageIcon;
 
+// Used for audio output
+import java.applet.AudioClip;
+import java.applet.Applet;
+
 // Used for string to name and file-name conversion
 import java.util.HashMap;
 import java.io.File;
@@ -181,6 +185,26 @@ public class Utils { private Utils() { }
   public static ImageIcon getIcon(String location) {
     return new ImageIcon(toUrl(location));
   }
+
+  /** Plays an audio clip (stop playing previous clip if the location is null).
+   *
+   * @param location A Universal Resource Location of the form: <table> 
+   * <tr><td><tt>http:/<i>path-name</i></tt></td><td>to load from a HTTP location</td></tr>
+   * <tr><td><tt>ftp:/<i>path-name</i></tt></td><td>to load from a FTP site</td></tr>
+   * <tr><td><tt>file:/<i>path-name</i></tt></td><td>to load from a file</td></tr>
+   * <tr><td><tt>jar:/<i>jar-path-name</i>!/<i>jar-entry</i></tt></td><td>to load from a JAR archive</td></tr>
+   * </table>
+   *
+   * @throws IOException if an I/O exception has occurred.
+   */
+  public static void play(String location) {
+    try {
+      if (clip != null) { clip.stop(); clip = null; } if (location != null) { clip = Main.newAudioClip(new URL(location)); clip.play(); }
+    } catch(IOException e) {
+      throw new RuntimeException(e+" when playing: "+location); 
+    }
+  } 
+  private static AudioClip clip;
 
   /** Converts a string to proper name.
    * <p>- A proper name is an identifier of lexical syntax: <tt>"[a-zA-Z_][a-zA-Z0-9_]*"</tt>.</p>

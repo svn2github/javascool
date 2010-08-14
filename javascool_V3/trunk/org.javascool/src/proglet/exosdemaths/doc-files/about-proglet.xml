@@ -1,7 +1,7 @@
 <div title="La «proglet» exosdemaths">
   <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>
-    Cette proglet<l class="note" link="#1"/> permet d'afficher des tracés de couleurs différentes.
+    Cette proglet<l class="note" link="1"/> permet d'afficher des tracés de couleurs différentes.
     <div>Pour tracer un point de la courbe: <div class="code">
       <p><r>scopeSet</r>(x, y, c);</p>
     </div><div class="ul">

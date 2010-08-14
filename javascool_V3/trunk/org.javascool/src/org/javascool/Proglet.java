@@ -5,7 +5,7 @@
 package org.javascool;
 
 /** Indique que la classe est une proglet.
- *  <p>Par contrat, une proglet doit: <ul>
+ *  <p>Par contrat, une <a href="doc-files/about-proglets.htm">«proglet»</a> doit: <ul>
  *    <li>Implementer l'interface <tt>org.javascool.Proglet</tt>.</li>
  *    <li>Définir un <tt>public static final JPanel panel;</tt> qui est l'instanciation graphique de la proglet.</li>
  *    <li>Définir une méthode <tt>static void test()</tt> pour fournir un test/démonstration de la proglet.</li>

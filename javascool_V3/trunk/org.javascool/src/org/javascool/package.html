@@ -8,8 +8,23 @@
        Les classes utilitaires utilisées pour créer/adapter des <a href="../../org/javascool/Proglet.html">proglets</a> dans l'environnement Java sont documentées an anglais.
        Un <a href="http://wiki.inria.fr/sciencinfolycee">wiki</a> permet de partager des contenus et 
          une <a href="https://gforge.inria.fr/projects/javascool">forge</a> de co-développer.</p>
-
   </p>
+
+
+  <hr/>
+
+  <h3>org.javascool standalone interfaces</h3><ul>
+    <li>Usage: <tt><i>java</i> org.javascool.<a href="Main.html">Main</a> [activity [file-name]]</tt>: 
+    Starts a JavaScool (V3) "activity" which result is to be stored in a "file-name".</li>
+    <li>Usage: <tt><i>java</i> org.javascool.<a href="MainV2.html">MainV2</a> (edit|run) [proglet-name [file-name]]</tt>: 
+    Used to edit a program or run a proglet with JavaScool V2.</li>
+    <li>Usage: <tt><i>java</i> org.javascool.<a href="Pml.html">Pml</a> input-file [output-file]</tt>: 
+    Checks the well-formedness of a file by mirroring its structure in a normalized <a href="Pml.html">PML</a> format, the file extension defines the format.</li>
+    <li>Usage: <tt><i>java</i> org.javascool.<a href="Hml.html">Hml</a> input-file [output-file]</tt>: 
+    Checks the well-formedness of a file by mirroring its structure in a normalized <a href="Hml.html">HML</a> format, the file extension defines the format.</li>
+    <li>Usage: <tt><i>java</i> org.javascool.<a href="ProgletApplet.html">ProgletApplet</a> proglet</tt>: 
+    Runs the demo of proglet.</li>
+    <li>Usage: <tt><i>java</i> org.javascool.<a href="LinkCheck.html">LinkCheck</a> [-recursive] location</tt>: 
+    Checks links in the HTML text at the given HTTP location, and optionnaly recurse in sub-directories.</li>
+  </ul> other standalone interfaces being used for debugging purposes,
 </body>
-
-

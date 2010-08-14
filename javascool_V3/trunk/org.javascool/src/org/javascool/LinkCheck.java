@@ -27,16 +27,12 @@ import java.util.regex.Matcher;
  */
 public class LinkCheck { private LinkCheck() { } 
 
-  /**  Defines the link-check executable.
-   * <div><tt>Usage: $JAVA org.javascoolLinkCheck [-recursive] location</tt> to check links in the given location.</div>
+  /** Checks links in a HTML text.
+   * @param usage <tt>java org.javascool.LinkCheck [-recursive] location</tt> to check links at the given HTTP location, and optionnaly recurse in sub-directories.
    */
-  public static void main(String arguments[]) {
-    try {
-      if (arguments.length > 0) {
-	boolean recursive = false; for(String argument: arguments) recursive |= argument.equals("-recursive");
-	check(arguments[arguments.length-1], recursive); 
-      } else throw new IllegalArgumentException("Bad command usage");
-    } catch(Exception e) { e.printStackTrace(); }
+  public static void main(String usage[]) {
+    if (usage.length > 0)
+      check(usage[usage.length-1], "-recursive".equals(usage[0]));
   }
 
   /** Checks links in a HTML text.

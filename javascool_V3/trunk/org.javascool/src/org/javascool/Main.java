@@ -327,7 +327,7 @@ public class Main extends JApplet { /**/public Main() { }
     }
   }
   /** Used to run a javasccol v3 as a standalone program. 
-   * <p>- Using javascool means: doing an "activity" which result is to be stored in a "file-name".</p>
+   * <p>- Starts a JavaScool "activity" which result is to be stored in a "file-name".</p>
    * @param usage <tt>java org.javascool.Main [activity [file-name]]</tt><ul>
    * <li><tt>activity</tt> specifies the activity to be done.</li>
    * <li><tt>file-name</tt> specifies the file used for the activity.</li>
@@ -339,6 +339,5 @@ public class Main extends JApplet { /**/public Main() { }
     if (usage.length >= 1) main.setActivity(usage[0]);
     if (usage.length >= 2) main.setFile(usage[1]);
     Utils.show(main, "Java'Scool v3.0");
-
   }
 }

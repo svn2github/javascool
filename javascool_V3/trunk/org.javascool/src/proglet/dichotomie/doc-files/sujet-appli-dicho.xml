@@ -38,7 +38,7 @@
     <div>Noter que l'on utilise ici la construction <r>return</r> pour sortir de la boucle, tandis que <r>while(true)</r> est toujours vrai, donc boucle indéfiniment.</div>
     <div class="ul">
       <div>Quelle variable est utilisée et (provisoirement) inutile ici ?</div>
-      <div>Que se passe t'il si le pays existe ? Utiliser la fonction<l class="note" link="#1"/> <b><r>echo</r>()</b> pour visualiser ce qui se passe à l'intérieur de la boucle.</div>
+      <div>Que se passe t'il si le pays existe ? Utiliser la fonction<l class="note" link="1"/> <b><r>echo</r>()</b> pour visualiser ce qui se passe à l'intérieur de la boucle.</div>
       <div>Que se passe t'il si le pays n'existe pas ? Que manque t'il pour qu'il fonctionne comme nous l'espérions ? </div>
     </div>Notez que cet algorithme est bien long car il faut essayer toutes les valeurs.</div>
     <div title="Couper le problème en deux : l'algorithme dichotomique">

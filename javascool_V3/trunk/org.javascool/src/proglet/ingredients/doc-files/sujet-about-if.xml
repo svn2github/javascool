@@ -167,7 +167,7 @@
       <div><c>De plus</c>, si nous trouvons quelqu'un qui a volé un oeuf et un boeuf, la phrase est assurément vraie.</div>
       <div><c>Par ailleurs</c>.. Et si personne n'a volé d'oeuf ? Ou si quelqu'un a volé (directement) un boeuf sans voler d'oeuf ? 
       La phrase, <i>en tant que telle</i>, n'est PAS fausse.
-      Donc elle est vraie<l class="note" link="#2"/>.</div>
+      Donc elle est vraie<l class="note" link="2"/>.</div>
     </div> Bref, nous pouvons dire que la phrase est : <div class="ul">
       <div><c>Vraie</c>, si et seulement si on n'a pas volé d'oeuf ou si on a volé un oeuf et un boeuf. Ou encore.</div>
       <div><c>Ou encore</c>, si et seulement si quelqu'un qui n'a pas volé de boeuf ne peut pas avoir volé d'oeuf.</div>

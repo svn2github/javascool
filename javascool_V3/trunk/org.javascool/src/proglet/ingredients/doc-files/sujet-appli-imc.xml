@@ -9,7 +9,7 @@
   </div>
   
   <div class="intros">
-    <div title="Calculer son indice de masse corporelle"> Voici<l class="note" link="#1"/> un exemple concret : 
+    <div title="Calculer son indice de masse corporelle"> Voici<l class="note" link="1"/> un exemple concret : 
     calculer son <l link="http://fr.wikipedia.org/wiki/Indice_de_masse_corporelle" text="indice de masse corporelle"/>. Voici un code (volontairement) erroné :
     <div class="code">
       <p><r>void main</r>() {</p>

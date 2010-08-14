@@ -1,7 +1,7 @@
 <div title="La «proglet» synthesons">
   <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>
-    Cette proglet<l class="note" link="#1"/> permet de générer une séquence de notes et d'en regarder le spectre de fréquence.
+    Cette proglet<l class="note" link="1"/> permet de générer une séquence de notes et d'en regarder le spectre de fréquence.
 
    <div>Pour définir son propre son il faut utiliser la construction <l class="javascool"/>, par exemple:<div class="code">
      <p><r>@tone:</r> sqr(t) + noi(t)</p>

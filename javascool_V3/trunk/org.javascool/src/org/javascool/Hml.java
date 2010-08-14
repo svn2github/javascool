@@ -17,9 +17,19 @@ import java.util.regex.Pattern;
 public class Hml extends Pml { /**/public Hml() { }
   private static final long serialVersionUID = 1L;
 
+  /** Resets the logical-structure, parsing the given string. 
+   * @param value The value following the <tt>"{tag name = value .. element .. }"</tt> syntax.
+   * @param format <ul>
+   * <li>"pml" Reads in pml format (default value).</li>
+   * <li>"xml, "htm" or "html" Reads in HTML format, translating HTML structure to HML, considering the Text convention defined here.</li>
+   * </ul> 
+   * @return This, allowing to use the <tt>new Hml().reset(..)</tt> construct.
+   */
   public Pml reset(String value, String format) {
-    if ("xml".equals(format) || "htm".equals(format) || "html".equals(format)) {
+    if ("htm".equals(format) || "html".equals(format)) {
       return reset(Utils.xml2xml(Utils.xml2xml(Utils.htm2xml(value), htm2hml.xsl), xml2pml));
+    } else if ("xml".equals(format)) {
+      return reset(Utils.xml2xml(Utils.xml2xml(value, htm2hml.xsl), xml2pml));
     } else {     
       return super.reset(value, format);
     }
@@ -41,15 +51,11 @@ public class Hml extends Pml { /**/public Hml() { }
     }
   }
 
-  /** Used to check the syntax the well-formedness by mirroring the structure in a HTML format.
-   * @param args Usage <tt>java org.javascool.Pml file-name</tt>
-   * <p>- The file name can be a PML, XML or HTML file name, with the corresponding extensions</p>.
+  /** Used to check the syntax the well-formedness by mirroring the Hml structure in a normalized format.
+   * @param usage <tt>java org.javascool.Pml input-file [output-file]</tt>
+   * <p>- The file name be a PML, XML or HTML file name, with the corresponding extensions</p>.
    */
-  public static void main(String[] args) {
-    if (args.length == 1) {
-      Hml pml = new Hml(); pml.load(args[0]); pml.save("stdout:", "htm");
-    } else {
-      System.out.println("Usage: java org.javascool.Hml file-name");
-    }
+  public static void main(String[] usage) {
+    if (usage.length > 0) new Hml().load(usage[0]).save(usage.length > 1 ? usage[0] : "stdout:");
   }
 }

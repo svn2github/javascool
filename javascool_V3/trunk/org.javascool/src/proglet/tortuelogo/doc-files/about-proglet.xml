@@ -1,7 +1,7 @@
 <div title="La «proglet» tortuelogo">
   <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>
-    Cette proglet<l class="note" link="#1"/> permet de simuler la célèbre <l link="http://fr.wikipedia.org/wiki/Logo_(langage)" text="tortue logo"/>.
+    Cette proglet<l class="note" link="1"/> permet de simuler la célèbre <l link="http://fr.wikipedia.org/wiki/Logo_(langage)" text="tortue logo"/>.
 
   <div>Dans ce contexte les instructions à utiliser sont celles de <l class="javascool"/>, la tortue évolue dans un carré de salade de taille <c>[512 x 512]</c>
   tandis que les <l link="http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_Logo" text="primitives graphiques usuelles"/> de la tortue logo sont disponibles:

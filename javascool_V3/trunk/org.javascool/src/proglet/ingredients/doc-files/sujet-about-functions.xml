@@ -9,7 +9,7 @@
   </div>
   
   <div class="intros">
-    <div title="Décortiquer un exemple de fonction"> Voici un exemple de fonction qui se nomme «valeur absolue<l class="note" link="#1"/>» et qui se définit ainsi: <div class="ul">
+    <div title="Décortiquer un exemple de fonction"> Voici un exemple de fonction qui se nomme «valeur absolue<l class="note" link="1"/>» et qui se définit ainsi: <div class="ul">
       <div>Si la variable <c>x</c> a une valeur est positive alors on retourne cette valeur positive.</div>
       <div>Si la variable <c>x</c> a une valeur est négative alors on retourne l'opposé de cette valeur (noté <c>-x</c>), donc une valeur encore positive.</div>
     </div>
@@ -41,8 +41,8 @@
     </div></div></div>
 
     <div title="Faire en sorte de réutiliser des portions de code"> Prenons un exemple.
-    Voici un bout de code, sûrement fort utile, qui calcule <i>la plus grande des valeurs absolues<l class="note" link="#1"/></i> de deux variables <b>x</b> et <b>y</b>.
-    Si nous notons <b><r>abs</r>(x)</b> la valeur absolue<l class="note" link="#1"/> de <b>x</b>, et <b><r>max</r>(x, y)</b> la plus grande valeur entre <b>x</b> et <b>y</b>.
+    Voici un bout de code, sûrement fort utile, qui calcule <i>la plus grande des valeurs absolues<l class="note" link="1"/></i> de deux variables <b>x</b> et <b>y</b>.
+    Si nous notons <b><r>abs</r>(x)</b> la valeur absolue<l class="note" link="1"/> de <b>x</b>, et <b><r>max</r>(x, y)</b> la plus grande valeur entre <b>x</b> et <b>y</b>.
     Eh bien nous cherchons à calculer <b><r>max</r>(<r>abs</r>(x), <r>abs</r>(y))</b>, c'est à dire le maximum des deux valeurs absolues. Voici ... le code
     (jeter un coup d'oeil et passer à la suite !):
     <div class="code">
@@ -114,7 +114,7 @@
       <div>Le code est beaucoup plus court et plus lisible, beaucoup plus facile à vérifier aussi.</div>
       <div>Le programme principal <r>void main</r> ne contient que ce que nous voulons faire, et la façon de le faire est déléguée aux fonctions.</div>
       <div>Chaque fonction est définie de manière modulaire et pourra être facilement réutilisée : nous créons ici <i>nos propres instructions</i>,
-      en plus de celles disponibles dans le langage<l class="note" link="#2"/>.</div>
+      en plus de celles disponibles dans le langage<l class="note" link="2"/>.</div>
     </div>
     Regardons plus en détail la fonction <r>max</r> : <div class="ul">
       <div>La ligne de commentaire "Définition de la fonction maximum de deux valeurs" explique à tous ceux qui vont utiliser le code, ce que fait cette fonction :
@@ -170,7 +170,7 @@
       <div>Recopier les deux portions de code dans deux fichiers différents et vérifier si les deux donnent le bon résulat.</div>
       <div>A partir du 2ème exemple de code, ajouter la fonction "min" (qui renvoie la plus petite des valeurs x ou y),
       pour calculer <i>la plus <b>petite</b> des valeurs absolues</i>, et non la plus grande. Vérifier le résultat.</div>
-      <div>A partir du 2ème exemple de code, puisque la valeur absolue<l class="note" link="#1"/> de x est aussi la plus grande entre x et -x, reprogrammer la fonction valeur absolue en une ligne, sans utiliser de <r>if</r>, mais en utilisant la fonction <r>max</r>.</div>
+      <div>A partir du 2ème exemple de code, puisque la valeur absolue<l class="note" link="1"/> de x est aussi la plus grande entre x et -x, reprogrammer la fonction valeur absolue en une ligne, sans utiliser de <r>if</r>, mais en utilisant la fonction <r>max</r>.</div>
     </div></div> 
     <div title="Programmer d'autres fonctions">Programmer les fonctions suivantes et faire un petit <r>main</r> pour un programme de test :<div class="ul">
       <div>Programmer la fonction "division sans bêtise" <b><r>double</r> div(<r>double</r> x, <r>double</r> y)</b>, 

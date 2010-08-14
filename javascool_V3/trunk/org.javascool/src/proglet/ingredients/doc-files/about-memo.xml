@@ -10,7 +10,7 @@
   </div></div>
   <div title="Verbes: fonctions utilisées">
     <div title="Macros générales"><div class="ul">
-      <div><b><r>void</r> <c>echo</c>(<r>String</r> string)</b> Affiche une chaîne de caractères sur la console<l class="note" link="#1"/>.</div>
+      <div><b><r>void</r> <c>echo</c>(<r>String</r> string)</b> Affiche une chaîne de caractères sur la console<l class="note" link="1"/>.</div>
       <div><b><r>boolean</r> <c>equal</c>(<r>String</r> string1, <r>String</r> string2)</b> Compare deux chaînes de caratères et renvoie <c>true</c> si elles sont égales.</div>
       <div><b><r>double</r> <c>pow</c>(<r>double</r> x, <r>double</r> y)</b> Calcul <b>x</b> à la puissance <b>y</b> (soit <b>x<S>y</S></b>). 
       Note : <r>Math.pow</r> est synonyme de <r>pow</r>.</div>

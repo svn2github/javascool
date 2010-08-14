@@ -36,12 +36,15 @@
 <xsl:template match="div|p"><xsl:call-template name="div"/></xsl:template>
 <xsl:template name="div">
   <xsl:choose>
-    <xsl:when test="@class = 'table' or @class = 'ul' or @class = 'ol'">
+    <xsl:when test="@class = 'table'">
+      <table align="center" width="90%" bgcolor="#eeeeee"><xsl:call-template name="div-2"/></table>
+    </xsl:when>
+    <xsl:when test="@class = 'ul' or @class = 'ol'">
       <xsl:element name="{@class}"><xsl:call-template name="div-2"/></xsl:element>
     </xsl:when>
     <xsl:when test="../@class = 'ul' or ../@class = 'ol'"><li><xsl:call-template name="div-2"/></li></xsl:when>
     <xsl:when test="../@class = 'table'"><tr><xsl:call-template name="div-2"/></tr></xsl:when>
-    <xsl:when test="../../@class = 'table'"><td><xsl:call-template name="div-2"/></td></xsl:when>
+    <xsl:when test="../../@class = 'table'"><td valign="top"><xsl:call-template name="div-2"/></td></xsl:when>
     <xsl:when test="@class = 'tag'"><xsl:call-template name="tag"/></xsl:when>
     <xsl:otherwise><div><xsl:call-template name="div-2"/></div></xsl:otherwise>
   </xsl:choose>

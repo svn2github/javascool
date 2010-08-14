@@ -1,7 +1,7 @@
 <div title="La «proglet» Console">
   <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>
-    Cette proglet<l class="note" link="#1"/> permet de définir des entrées/sorties textuelles au clavier comme pour une console<l class="note" link="#2"/>. <div class="ul">
+    Cette proglet<l class="note" link="1"/> permet de définir des entrées/sorties textuelles au clavier comme pour une console<l class="note" link="2"/>. <div class="ul">
   <div>On peut donc dans la fenêtre <c>input</c>: <div class="code">
        <m>Lire une chaine de caractère avec la fonction:</m>
        <p><T/><r>String</r> chaine = <r>readString</r>();</p>

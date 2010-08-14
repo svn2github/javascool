@@ -39,7 +39,7 @@ public class Pml { /**/public Pml() { }
    * @param format <ul>
    * <li>"pml" Reads in pml format (default value).</li>
    * <li>"xml" Reads in XML format.</li>
-   * <li>"htm" or "html" Reads in HTML format.</li>
+   * <li>"htm" or "html" Reads in raw HTML format (without translating HTML structure to HML).</li>
    * </ul> 
    * @return This, allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
@@ -169,16 +169,16 @@ public class Pml { /**/public Pml() { }
   /** Returns this logical-structure structure as a one-line string.
    * @param format <ul>
    * <li>"raw" To write in a normalized 1D plain text format (default).</li>
-   * <li>"txt" To write in a normalized 2D plain text format.</li>
+   * <li>"bml" To write in a normalized 2D plain text format.</li>
    * <li>"xml" To write in XML format, reducing tag and attribute names to valid XML names, and considering Pml without any attribute or elements as string.</li>
    * </ul>
    */
   public String toString(String format) { 
     return 
       "xml".equals(format) ? new XmlWriter().toString(this) :
-      "txt".equals(format) ? new PlainWriter().toString(this, 180) :
-      new PlainWriter().toString(this, 0);
-  } 
+      "raw".equals(format) ? new PlainWriter().toString(this, 0) :
+      new PlainWriter().toString(this, 180);
+  }
   /**/public final String toString() { 
     return toString("raw");
   }
@@ -190,9 +190,10 @@ public class Pml { /**/public Pml() { }
    * <tr><td><tt>stdout:/</tt></td><td>to print to the terminal standard output.</td></tr>
    * </table>
    * @param format <ul>
-   * <li>"txt" To write in a normalized 2D plain text format (default).</li>
+   * <li>"bml" To write in a normalized 2D plain text format (default).</li>
    * <li>"xml" To write in XML format, reducing tag and attribute names to valid XML names, and considering Pml without any attribute or elements as string.</li>
    * </ul>
+   * When not specified, detect the format extension from the file extension or used "pml" by default.
    * @return This, allowing to use the <tt>Pml pml = new Pml().reset(..)</tt> construct.
    */
   public final Pml save(String location, String format) {
@@ -200,7 +201,7 @@ public class Pml { /**/public Pml() { }
     return this;
   }
   /**/public final Pml save(String location) {
-    return save(location, "txt");
+    return load(location, location.replaceAll("^.*\\.([A-Za-z]+)$", "$1"));
   }
   // Pml Writer
   private static class PlainWriter {
@@ -408,15 +409,11 @@ public class Pml { /**/public Pml() { }
   private static boolean isIndex(String name) { return index.matcher(name).matches(); }
   static Pattern index = Pattern.compile("[0-9]+");
 
-  /** Used to check the syntax the well-formedness by mirroring the structure in a normalized format.
-   * @param args Usage <tt>java org.javascool.Pml file-name</tt>
-   * <p>- The file name can be a PML, XML or HTML file name, with the corresponding extensions</p>.
+  /** Checks the well-formedness of a file by mirroring its Pml structure in a normalized format.
+   * @param usage <tt>java org.javascool.Pml input-file [output-file]</tt>
+   * <p>- The file name be a PML, XML or HTML file name, with the corresponding extensions</p>.
    */
-  public static void main(String[] args) {
-    if (args.length == 1) {
-      Pml pml = new Pml(); pml.load(args[0]); pml.save("stdout:", "bml");
-    } else {
-      System.out.println("Usage: java org.javascool.Pml file-name");
-    }
+  public static void main(String[] usage) {
+    if (usage.length > 0) new Pml().load(usage[0]).save(usage.length > 1 ? usage[0] : "stdout:");
   }
 }

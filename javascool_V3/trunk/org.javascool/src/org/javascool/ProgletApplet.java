@@ -24,7 +24,7 @@ public class ProgletApplet extends JApplet {
    * <div><tt>&lt;param name="demo" value="true"/></tt></div>
    * <div><tt>&lt;/applet></tt></div>
    * </li><li>Or used in a standalone program:
-   * <div><tt>Utils.show(new Jvs2Java.ProgletApplet().reset("ingredients", true), "javascool proglet", 650, 720);</tt></div>
+   * <div><tt>Utils.show(new Jvs2Java.ProgletApplet().reset("ingredients", true), "javascool proglet", 560, 720);</tt></div>
    * </li></ul>
    * @param proglet The corresponding proglet name. Default is "ingredients".
    * @param demo If true runs the demo program. If false runs the proglet pupil's program. Default is "true".
@@ -60,5 +60,13 @@ public class ProgletApplet extends JApplet {
 	}}));
     getContentPane().add(bar, BorderLayout.NORTH);
     getContentPane().add(Jvs2Java.getPanel(proglet), BorderLayout.CENTER);
+  }
+
+  /** Runs the demo of proglet.
+   * @param usage <tt>java org.javascool.ProgletApplet proglet</tt> 
+   */
+  public static void main(String usage[]) {
+    if (usage.length > 0)
+      Utils.show(new  ProgletApplet().reset(usage[0], true), "Démo : "+usage[0], 560, 720);
   }
 }

@@ -37,7 +37,7 @@
       (ce sont les mots du langage <l class="javascool"/>), et doivent être utilisés tels quels.  Chaque mot a un sens précis que nous découvrons au fur et à mesure.</div>
       <div>Les mots en noir (ici <b>texte</b>) sont les identificateurs de nos variables, <i>nous</i> les choisissons et nous donnons à ces variables des <i>valeurs</i>, 
       un peu comme les "x" et les "y" en mathématiques.<div class="ul">
-      <div><i>Attention<l class="note" link="#1"/>:</i> Les identificateurs en <l class="javascool"/> sont uniquement composés de lettres minuscules sans accent 
+      <div><i>Attention<l class="note" link="1"/>:</i> Les identificateurs en <l class="javascool"/> sont uniquement composés de lettres minuscules sans accent 
         et du signe "_", par exemple vous pouvez écrire <c>leprenom</c> ou <c>le_prenom</c> mais PAS 
         <c>le-prenom</c> (on ne peut utiliser le tiret "-") ou <c>leprénom</c> (on ne peut utiliser d'accent).</div>
       </div></div>
@@ -67,7 +67,7 @@
   </div>
 
   <div class="works">
-    <div title="A nous de jouer"> Taper sans se tromper les cinq lignes du programme, puis  essayer (c'est à dire: sauver<l class="note" link="#2"/>, compiler et ... exécuter).<div class="ul">
+    <div title="A nous de jouer"> Taper sans se tromper les cinq lignes du programme, puis  essayer (c'est à dire: sauver<l class="note" link="2"/>, compiler et ... exécuter).<div class="ul">
       <div>Vérifier que si l'utilisateur entre des noms différents, alors le programme va bien stocker le nom dans la variable, le réutiliser pour dire <v>Enchanté ..</v>.</div>
       <div>Vérifier que si nous changeons l'identificateur de la variable (par exemple remplacer <b>texte</b> par <b>son_nom</b>),
       cela ne change pas le fonctionnement du programme.</div>

@@ -37,12 +37,15 @@
 "<xsl:template match=\"div|p\"><xsl:call-template name=\"div\"/></xsl:template>\n"+
 "<xsl:template name=\"div\">\n"+
 "  <xsl:choose>\n"+
-"    <xsl:when test=\"@class = 'table' or @class = 'ul' or @class = 'ol'\">\n"+
+"    <xsl:when test=\"@class = 'table'\">\n"+
+"      <table align=\"center\" width=\"90%\" bgcolor=\"#eeeeee\"><xsl:call-template name=\"div-2\"/></table>\n"+
+"    </xsl:when>\n"+
+"    <xsl:when test=\"@class = 'ul' or @class = 'ol'\">\n"+
 "      <xsl:element name=\"{@class}\"><xsl:call-template name=\"div-2\"/></xsl:element>\n"+
 "    </xsl:when>\n"+
 "    <xsl:when test=\"../@class = 'ul' or ../@class = 'ol'\"><li><xsl:call-template name=\"div-2\"/></li></xsl:when>\n"+
 "    <xsl:when test=\"../@class = 'table'\"><tr><xsl:call-template name=\"div-2\"/></tr></xsl:when>\n"+
-"    <xsl:when test=\"../../@class = 'table'\"><td><xsl:call-template name=\"div-2\"/></td></xsl:when>\n"+
+"    <xsl:when test=\"../../@class = 'table'\"><td valign=\"top\"><xsl:call-template name=\"div-2\"/></td></xsl:when>\n"+
 "    <xsl:when test=\"@class = 'tag'\"><xsl:call-template name=\"tag\"/></xsl:when>\n"+
 "    <xsl:otherwise><div><xsl:call-template name=\"div-2\"/></div></xsl:otherwise>\n"+
 "  </xsl:choose>\n"+

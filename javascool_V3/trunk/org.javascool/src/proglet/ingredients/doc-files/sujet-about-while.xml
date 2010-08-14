@@ -45,9 +45,9 @@
    avec des <l link="sujet-about-variables.htm" text="variables"/> et des <l link="sujet-about-functions.htm" text="fonctions"/>, 
    une <l link="sujet-hello-world.htm" text="séquence"/> d'instruction, 
    l'instruction <l link="sujet-about-if.htm" text="conditionnelle"/>, 
-   et une instruction<l class="note" link="#1"/> pour faire des <l link="sujet-about-while.htm" text="boucles"/>, 
+   et une instruction<l class="note" link="1"/> pour faire des <l link="sujet-about-while.htm" text="boucles"/>, 
    nous avons <i>tous les ingrédients</i> pour programmer efficacement <i>tous les algorithmes possibles</i>! 
-   Il y a bien entendu une subtilité ici : les fonctions doivent pouvoir s'appeler elles-même, c'est à dire être recursives<l class="note" link="#2"/>.
+   Il y a bien entendu une subtilité ici : les fonctions doivent pouvoir s'appeler elles-même, c'est à dire être recursives<l class="note" link="2"/>.
    Mais la <i>plupart</i> des programmes que nous avons besoin de faire n'ont pas besoin de fonctions récursives et se programment très bien avec les ingrédients
    proposés ici, grâce aux boucles.
    </div>
@@ -57,7 +57,7 @@
     <div title="A nous de jouer">Recopier le 2ème programme proposé ci-dessus et :<div class="ul">
       <div>Le modifier pour imprimer 11 fois le <v>Hello World !</v>.</div>
       <div>Puis partir de n = 1 (donc écrire <b><r>int</r> n = 1;</b>) et le modifier pour écrire 8 fois <v>Hello World !</v>.</div>
-      <div>Retirer la ligne <b>n = n + 1;</b>: que se passe t'il<l class="note" link="#3"/>?</div>
+      <div>Retirer la ligne <b>n = n + 1;</b>: que se passe t'il<l class="note" link="3"/>?</div>
       <div>Remplacer la ligne <b>n = n + 1;</b> par <b>n = n - 1;</b> et expliquer ce qui se passe.</div>
     </div></div>
     <div title="Comprendre quelques exemples de boucles">Pour chacun des bouts de codes suivants, expliquer ce qui est calculé (vous pouvez essayer les codes si besoin) : <div class="ul">
@@ -98,7 +98,7 @@
       Comparer avec les valeurs du nombre d'or connues par ailleurs.</div>
       <div>Avec votre professeur (ou quelqu'un pour vous aider si besoin) calculer les 100 premières décimales de <l link="http://fr.wikipedia.org/wiki/Pi#M.C3.A9thode_d.E2.80.99Archim.C3.A8de" text="PI"/> par la méthode d'Archimède.</div>
     </div></div>
-    <div title="D'autres formes de boucles"> Les langages informatiques proposent d'autres formes de boucles<l class="note" link="#1"/>, 
+    <div title="D'autres formes de boucles"> Les langages informatiques proposent d'autres formes de boucles<l class="note" link="1"/>, 
     qui sont équivalentes à la construction <r>while</r> apprise ici, mais peuvent être plus pratiques à utiliser. En voici un exemple <div class="ul">
       <div>La boucle <r>for</r> permet de rassembler en une ligne la boucle avec un compteur que nous avons découvert ici. Le même programme peut s'écrire :
       <div class="code">

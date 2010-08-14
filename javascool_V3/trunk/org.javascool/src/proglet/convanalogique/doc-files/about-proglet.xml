@@ -1,7 +1,7 @@
 <div title="La «proglet» convanalogique">
   <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>
-    Cette proglet<l class="note" link="#1"/> permet de programmer un <l link="http://fr.wikipedia.org/wiki/Convertisseur_analogique-numérique" text="convertisseur analogique-numérique"/>, pour comprendre le mécanisme de recherche dichotomique.
+    Cette proglet<l class="note" link="1"/> permet de programmer un <l link="http://fr.wikipedia.org/wiki/Convertisseur_analogique-numérique" text="convertisseur analogique-numérique"/>, pour comprendre le mécanisme de recherche dichotomique.
 
     <div>Plus précisément la fonction <r>convaOut</r> simule la sortie d'une valeur pour la comparaison
     <div class="code">

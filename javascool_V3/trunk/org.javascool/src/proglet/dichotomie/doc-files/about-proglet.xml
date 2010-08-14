@@ -1,7 +1,7 @@
 <div title="La «proglet» dichotomie">
   <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>
-    Cette proglet<l class="note" link="#1"/> permet d'apprendre la notion algorithmique de « recherche dichotomie ». 
+    Cette proglet<l class="note" link="1"/> permet d'apprendre la notion algorithmique de « recherche dichotomie ». 
     La proglet affiche un livre avec tous les drapeaux du monde 
     (répertoriés grâce à <l link="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde" text="wikipedia"/>)
     et permet d'ouvrir le livre à une page donnée pour comparer le nom de pays avec le nom du pays recherché. 

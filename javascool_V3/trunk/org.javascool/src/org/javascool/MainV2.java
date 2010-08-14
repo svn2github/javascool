@@ -561,7 +561,7 @@ public class MainV2 extends JApplet {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   /** Used to run a proglet as a standalone program. 
-   * @param usage <tt>java proglet.Proglets (edit|run) [proglet-name [file-name]]</tt>
+   * @param usage <tt>java org.javascool.MainV2 (edit|run) [proglet-name [file-name]]</tt>
    */
   public static void main(String usage[]) { 
     try { 
