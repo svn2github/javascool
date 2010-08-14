@@ -80,6 +80,7 @@ lib/manifest.mf : makefile
 	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
 
 %.htm : %.xml lib/xml2htm.xsl
+	@echo "xml2htm $*"
 	@java -jar lib/saxon.jar -o $@ $^
 
 lib/xml2htm.xsl : src/org/javascool/hml2htm.xslt

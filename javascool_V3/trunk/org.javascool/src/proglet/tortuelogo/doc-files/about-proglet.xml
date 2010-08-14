@@ -1,5 +1,6 @@
 <div title="La «proglet» tortuelogo">
-  <div class="table"><p><p>
+  <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+  <p>
     Cette proglet<l class="note" link="#1"/> permet de simuler la célèbre <l link="http://fr.wikipedia.org/wiki/Logo_(langage)" text="tortue logo"/>.
 
   <div>Dans ce contexte les instructions à utiliser sont celles de <l class="javascool"/>, la tortue évolue dans un carré de salade de taille <c>[512 x 512]</c>
@@ -9,7 +10,7 @@
   </div>
 
   <div>Que les nostalgiques de cette ancienne façon d'apprendre à programmer en profite, la tortue est de retour:
-    <div class="center"><l class="icon" icon="img/turtle.gif"/></div>
+  <div class="center"><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/proglet/tortuelogo/doc-files/turtle.gif"/></div>
   </div>
 
   <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>],
@@ -30,10 +31,10 @@
     </div>
   </div>
 
-  </p><p><l class="proglet" l="tortuelogo"/></p></p></div>
+  </p>
 
   <div class="notes">
-    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../TortueLogo.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link=" ../TortueLogo.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="../TortueLogo.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link="../TortueLogo.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

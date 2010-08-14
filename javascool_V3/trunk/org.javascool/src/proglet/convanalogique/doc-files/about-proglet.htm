@@ -2,66 +2,65 @@
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <div>
-   <h2>La &laquo;proglet&raquo; lconvanalogique.</h2>
+   <h2>La &laquo;proglet&raquo; convanalogique.</h2>
    
-   <table class="table">
-      <tr>
-         <td>
-            Cette proglet<a href="#1" class="note">[.]</a> permet de programmer un <a href="http://fr.wikipedia.org/wiki/Convertisseur_analogique-num%C3%A9rique">convertisseur analogique-num&eacute;rique</a>, pour comprendre le m&eacute;canisme de recherche dichotomique.
-            
-                
-            <div>Plus pr&eacute;cis&eacute;ment la fonction <font color="#990000"><b>convaOut</b></font> simule la sortie d'une valeur pour la comparaison
-                   
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>convaOut</b></font>(tension);
-                           </div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
-                   cette <b>tension</b> est un <font color="#990000"><b>int</b></font> varie entre 0 et 1.023 volts et est donn&eacute;e en milli-volts,
-                   et la fonction <font color="#990000"><b>convaCompare</b></font> compare cette tension &agrave; la tension inconnue avec la fonction:
-                   
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>convaCompare</b></font>();
-                           </div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
-                    qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou &eacute;gale.
-                   
-            </div>
-            
-                
-            <div>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png" alt="" class="icon"> <b>Demo</b>],
-                   les r&eacute;sultats de la conversion analogique-num&eacute;rique s'affichent avec un algorithme dichotomique . . qui doit &ecirc;tre trouv&eacute;
-               en exercice !
-            </div>
-              
-         </td>
-         <td><applet code="org.javascool.ProgletApplet" archive="http://javascool.gforge.inria.fr/v3/javascool.jar" width="560" height="720">
-               <param name="proglet" value=""></applet></td>
-      </tr>
-   </table>
+   <div align="right">
+      <div class="margin">Autres <a href="../../../org/javascool/doc-files/about-proglets.htm">&laquo;proglets&raquo;</a>.
+      </div>
+   </div>
+     
+   <div>
+       Cette proglet<sup><a href="##1">#1</a></sup> permet de programmer un <a href="http://fr.wikipedia.org/wiki/Convertisseur_analogique-num%C3%A9rique">convertisseur analogique-num&eacute;rique</a>, pour comprendre le m&eacute;canisme de recherche dichotomique.
+      
+          
+      <div>Plus pr&eacute;cis&eacute;ment la fonction <font color="#990000"><b>convaOut</b></font> simule la sortie d'une valeur pour la comparaison
+             
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                           
+                     <div><font color="#990000"><b>convaOut</b></font>(tension);
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+             cette <b>tension</b> est un <font color="#990000"><b>int</b></font> varie entre 0 et 1.023 volts et est donn&eacute;e en milli-volts,
+             et la fonction <font color="#990000"><b>convaCompare</b></font> compare cette tension &agrave; la tension inconnue avec la fonction:
+             
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                           
+                     <div><font color="#990000"><b>convaCompare</b></font>();
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+              qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou &eacute;gale.
+             
+      </div>
+      
+          
+      <div>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png" alt="" class="icon"> <b>Demo</b>],
+             les r&eacute;sultats de la conversion analogique-num&eacute;rique s'affichent avec un algorithme dichotomique . . qui doit &ecirc;tre trouv&eacute;
+         en exercice !
+      </div>
+        
+   </div>
    
      
    <h2>Remarques.</h2>
    <div id="notes">
       <ol>
          <li>
-            <div id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programm&eacute;e en Java et <a href=" ../ConvAnalogique.html">document&eacute;e</a> 
-                   pour sa libre redistribution, l'acc&egrave;s <a href=" ../ConvAnalogique.java.html">au code source</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
+            <div id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programm&eacute;e en Java et <a href="../ConvAnalogique.html">document&eacute;e</a> 
+                   pour sa libre redistribution, l'acc&egrave;s <a href="../ConvAnalogique.java.html">au code source</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
             </div>
          </li>
       </ol>

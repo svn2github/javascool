@@ -1,5 +1,6 @@
 <div title="La «proglet» pixelsetcie">
-  <div class="table"><p><p>
+  <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+  <p>
     Cette proglet<l class="note" link="#1"/> permet de manipuler une petite image de résolution variable, dont les coordonnées se définissent ainsi:
      <div class="center"><l class="icon" icon="img/smiley.png"/></div>
      c'est à dire que l'abscisse (la position horizontale ou largeur, width en anglais) va de <c>-width</c> à <c>+width</c> 
@@ -47,10 +48,10 @@
         <p>}</p>
       </div> où la routine <r>peace</r> trace le signe de la paix et correspond à une fonction à définir.
     </div>
-  </p><p><l class="proglet" l="pixelsetcie"/></p></p></div>
+  </p>
 
   <div class="notes">
-    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../ImageDisplay.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link=" ../ImageDisplay.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="../ImageDisplay.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link="../ImageDisplay.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

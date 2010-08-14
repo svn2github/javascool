@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.regex.Pattern;
 
 /** Defines a text as a PML data structure.
+ * See the semantic <a href="doc-files/about-hml.htm">description</a> (in French) for more info.
  *
  * @see <a href="Hml.java.html">source code</a>
  * @serial exclude

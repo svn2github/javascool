@@ -25,7 +25,8 @@ import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
 
 /** Définit une proglet javascool qui permet de faire des entrées/sorties au clavier.
- * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
+ * @see <a href="doc-files/about-proglet.htm">Description</a>
+ * @see <a href="doc-files/the-proglet.htm">La proglet</a>
  * @see <a href="Console.java.html">code source</a>
  * @serial exclude
  */

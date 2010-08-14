@@ -1,5 +1,6 @@
-<div title="La «proglet» lconvanalogique">
-  <div class="table"><p><p>
+<div title="La «proglet» convanalogique">
+  <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+  <p>
     Cette proglet<l class="note" link="#1"/> permet de programmer un <l link="http://fr.wikipedia.org/wiki/Convertisseur_analogique-numérique" text="convertisseur analogique-numérique"/>, pour comprendre le mécanisme de recherche dichotomique.
 
     <div>Plus précisément la fonction <r>convaOut</r> simule la sortie d'une valeur pour la comparaison
@@ -16,10 +17,10 @@
 
     <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>],
     les résultats de la conversion analogique-numérique s'affichent avec un algorithme dichotomique . . qui doit être trouvé en exercice !</div>
-  </p><p><l class="proglet" l="convanalogique"/></p></p></div>
+  </p>
 
   <div class="notes">
-    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link=" ../ConvAnalogique.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link=" ../ConvAnalogique.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="../ConvAnalogique.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link="../ConvAnalogique.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+  <!-- This translates HML code to HTML 4 output -->
+
 <xsl:output 
   method="html"
   encoding="UTF-8"
@@ -57,6 +59,7 @@
 </xsl:template>
 
 <!-- 1.1 : Pml construct description production -->
+
 <xsl:template name="tag"><table bgcolor="#eeeeee" width="90%">
   <tr><td colspan="4"><b>{</b><xsl:text> </xsl:text><xsl:value-of select="@title"/></td></tr>
   <tr><td align="center"><b>name</b></td><td align="center"><b>type</b></td><td align="center"><b>default value</b></td><td></td></tr>
@@ -70,16 +73,18 @@
      <td><xsl:apply-templates/></td>
   </tr></xsl:for-each>
   <tr><td colspan="4"><xsl:choose>
-    <xsl:when test="count(elements/@type) > 0">Structure: <font color="#202020"><xsl:value-of select="elements/@type"/>"</font></xsl:when>
+    <xsl:when test="count(elements/@type) > 0">Structure: "<font color="#202080"><xsl:value-of select="elements/@type"/>"</font></xsl:when>
     <xsl:otherwise><i>no element</i></xsl:otherwise>
   </xsl:choose></td></tr>
   <tr><td colspan="4"><hr/></td></tr>
   <tr><td colspan="4">
     <xsl:for-each select="*[name(.) != 'param' and name(.) != 'elements']"><xsl:apply-templates/></xsl:for-each>
   </td></tr>
+  <tr><td colspan="4"><b>}</b></td></tr>
 </table></xsl:template>
 
 <!-- 2 : Span production -->
+
 <xsl:template match="s">
   <span>
     <xsl:if test="count(@class)=1"><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:if>
@@ -93,6 +98,7 @@
 <xsl:template match="I"><sub><xsl:apply-templates/></sub></xsl:template>
 
 <!-- 3 : Link production -->
+
 <xsl:template match="l"><xsl:call-template name="l"/></xsl:template>
 <xsl:template name="l">
   <xsl:choose>

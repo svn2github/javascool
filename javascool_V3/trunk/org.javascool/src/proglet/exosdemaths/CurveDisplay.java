@@ -15,7 +15,8 @@ import org.javascool.NumberInput;
 import org.javascool.Jvs2Java;
 
 /** Définit une proglet javascool qui permet d'expérimenter avec des valeurs et signaux numériques.
- * <p><a href="doc-files/index.htm">En savoir plus ..</a></p>
+ * @see <a href="doc-files/about-proglet.htm">Description</a>
+ * @see <a href="doc-files/the-proglet.htm">La proglet</a>
  * @see <a href="CurveDisplay.java.html">code source</a>
  * @serial exclude
  */

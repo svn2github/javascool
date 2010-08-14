@@ -23,7 +23,7 @@
       <ol>
          <li>
             <div>
-               <h3>D&eacute;cortiquer un exemple de fonction.</h3> Voici un exemple de fonction qui se nomme &laquo;valeur absolue<a href="#1" class="note">[.]</a>&raquo; et qui se d&eacute;finit ainsi: 
+               <h3>D&eacute;cortiquer un exemple de fonction.</h3> Voici un exemple de fonction qui se nomme &laquo;valeur absolue<sup><a href="##1">#1</a></sup>&raquo; et qui se d&eacute;finit ainsi: 
                <ul class="ul">
                         
                   <li>Si la variable <tt>x</tt> a une valeur est positive alors on retourne cette valeur positive.
@@ -39,8 +39,7 @@
                      <td>
                         <div class="code">
                                  
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;D&eacute;finition de la fonction valeur absolue
-                           </p>
+                           <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition de la fonction valeur absolue</font></tt></p>
                                  
                            <div><font color="#990000"><b>int</b></font> abs(<font color="#990000"><b>int</b></font> x) {
                            </div>
@@ -125,8 +124,8 @@
          <li>
             <div>
                <h3>Faire en sorte de r&eacute;utiliser des portions de code.</h3> Prenons un exemple.
-                   Voici un bout de code, s&ucirc;rement fort utile, qui calcule <i>la plus grande des valeurs absolues<a href="#1" class="note">[.]</a></i> de deux variables <b>x</b> et <b>y</b>.
-                   Si nous notons <b><font color="#990000"><b>abs</b></font>(x)</b> la valeur absolue<a href="#1" class="note">[.]</a> de <b>x</b>, et <b><font color="#990000"><b>max</b></font>(x, y)</b> la plus grande valeur entre <b>x</b> et <b>y</b>.
+                   Voici un bout de code, s&ucirc;rement fort utile, qui calcule <i>la plus grande des valeurs absolues<sup><a href="##1">#1</a></sup></i> de deux variables <b>x</b> et <b>y</b>.
+                   Si nous notons <b><font color="#990000"><b>abs</b></font>(x)</b> la valeur absolue<sup><a href="##1">#1</a></sup> de <b>x</b>, et <b><font color="#990000"><b>max</b></font>(x, y)</b> la plus grande valeur entre <b>x</b> et <b>y</b>.
                    Eh bien nous cherchons &agrave; calculer <b><font color="#990000"><b>max</b></font>(<font color="#990000"><b>abs</b></font>(x), <font color="#990000"><b>abs</b></font>(y))</b>, c'est &agrave; dire le maximum des deux valeurs absolues. Voici ... le code
                    (jeter un coup d'oeil et passer &agrave; la suite !):
                    
@@ -153,8 +152,7 @@
                               <font color="#990000"><b>int</b></font> z;
                            </div>
                                  
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Calcul selon que x ou y soit positif ou n&eacute;gatif, de la plus grande valeur positive entre x et -x, y et -y
-                           </p>
+                           <p><tt><font color="#202080"><big>//</big>&nbsp;Calcul selon que x ou y soit positif ou n&eacute;gatif, de la plus grande valeur positive entre x et -x, y et -y</font></tt></p>
                                  
                            <div>
                               &nbsp;&nbsp;&nbsp;
@@ -431,8 +429,7 @@
                      <td>
                         <div class="code">
                                  
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;D&eacute;finition de la fonction maximum de deux valeurs
-                           </p>
+                           <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition de la fonction maximum de deux valeurs</font></tt></p>
                                  
                            <div><font color="#990000"><b>int</b></font> max(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y) {
                            </div>
@@ -468,8 +465,7 @@
                                  
                            <div>}</div>
                                  
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;D&eacute;finition de la fonction valeur absolue
-                           </p>
+                           <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition de la fonction valeur absolue</font></tt></p>
                                  
                            <div><font color="#990000"><b>int</b></font> abs(<font color="#990000"><b>int</b></font> x) {
                            </div>
@@ -543,7 +539,7 @@
                   </li>
                         
                   <li>Chaque fonction est d&eacute;finie de mani&egrave;re modulaire et pourra &ecirc;tre facilement r&eacute;utilis&eacute;e : nous cr&eacute;ons ici <i>nos propres instructions</i>,
-                           en plus de celles disponibles dans le langage<a href="#2" class="note">[.]</a>.
+                           en plus de celles disponibles dans le langage<sup><a href="##2">#2</a></sup>.
                   </li>
                       
                </ul>
@@ -680,7 +676,7 @@
                            pour calculer <i>la plus <b>petite</b> des valeurs absolues</i>, et non la plus grande. V&eacute;rifier le r&eacute;sultat.
                   </li>
                         
-                  <li>A partir du 2&egrave;me exemple de code, puisque la valeur absolue<a href="#1" class="note">[.]</a> de x est aussi la plus grande entre x et -x, reprogrammer la fonction valeur absolue en une ligne, sans utiliser de <font color="#990000"><b>if</b></font>, mais en utilisant la fonction <font color="#990000"><b>max</b></font>.
+                  <li>A partir du 2&egrave;me exemple de code, puisque la valeur absolue<sup><a href="##1">#1</a></sup> de x est aussi la plus grande entre x et -x, reprogrammer la fonction valeur absolue en une ligne, sans utiliser de <font color="#990000"><b>if</b></font>, mais en utilisant la fonction <font color="#990000"><b>max</b></font>.
                   </li>
                       
                </ul>
@@ -737,29 +733,25 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <font color="#990000"><b>infox</b></font>(<font color="#008000">"Il y a environ 100 millions d'ordinateurs dans le monde"</font>, <font color="#990000"><b>false</b></font>);
                                  </div>
-                                 <p><tt><big><font color="#808080">//</font></big></tt>&nbsp; ... il y en plus de 1 milliard!
-                                 </p>
+                                 <p><tt><font color="#202080"><big>//</big>&nbsp; ... il y en plus de 1 milliard!</font></tt></p>
                                          
                                  <div>
                                     &nbsp;&nbsp;&nbsp;
                                     <font color="#990000"><b>infox</b></font>(<font color="#008000">"Ada Byron-Lovelace &eacute;tait, d&egrave;s le XIX&egrave;me si&egrave;cle, la 1&egrave;re femme informaticienne"</font>, <font color="#990000"><b>true</b></font>);
                                  </div>
-                                 <p><tt><big><font color="#808080">//</font></big></tt>&nbsp; ... oui elle fut la premi&egrave;re &agrave; formaliser la notion de programme que nous apprenons ici.
-                                 </p>
+                                 <p><tt><font color="#202080"><big>//</big>&nbsp; ... oui elle fut la premi&egrave;re &agrave; formaliser la notion de programme que nous apprenons ici.</font></tt></p>
                                          
                                  <div>
                                     &nbsp;&nbsp;&nbsp;
                                     <font color="#990000"><b>infox</b></font>(<font color="#008000">"Toutes les fonctions math&eacute;matiques peuvent &ecirc;tre calcul&eacute;es par un ordinateur"</font>, <font color="#990000"><b>false</b></font>);
                                  </div>
-                                 <p><tt><big><font color="#808080">//</font></big></tt>&nbsp; ... il y a beaucoup de fonctions dont le temps de calcul est ... infini ! (donc impossible &agrave; calculer)
-                                 </p>
+                                 <p><tt><font color="#202080"><big>//</big>&nbsp; ... il y a beaucoup de fonctions dont le temps de calcul est ... infini ! (donc impossible &agrave; calculer)</font></tt></p>
                                          
                                  <div>
                                     &nbsp;&nbsp;&nbsp;
                                     <font color="#990000"><b>infox</b></font>(<font color="#008000">"Le cours de la 2nd guerre mondiale a chang&eacute; plus vite gr&acirc;ce &agrave; ... un calcul informatique"</font>, <font color="#990000"><b>true</b></font>);
                                  </div>
-                                 <p><tt><big><font color="#808080">//</font></big></tt>&nbsp; ... Alan-Turing a pu "craquer" le code de la machine Enigma qui codait les messages nazis grace &agrave; un calcul m&eacute;canique.
-                                 </p>
+                                 <p><tt><font color="#202080"><big>//</big>&nbsp; ... Alan-Turing a pu "craquer" le code de la machine Enigma qui codait les messages nazis grace &agrave; un calcul m&eacute;canique.</font></tt></p>
                                        
                                  <div>}</div>
                                      

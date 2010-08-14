@@ -2,6 +2,8 @@
 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
 "<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n"+
 "\n"+
+"  <!-- This translates HML code to HTML 4 output -->\n"+
+"\n"+
 "<xsl:output \n"+
 "  method=\"html\"\n"+
 "  encoding=\"UTF-8\"\n"+
@@ -58,6 +60,7 @@
 "</xsl:template>\n"+
 "\n"+
 "<!-- 1.1 : Pml construct description production -->\n"+
+"\n"+
 "<xsl:template name=\"tag\"><table bgcolor=\"#eeeeee\" width=\"90%\">\n"+
 "  <tr><td colspan=\"4\"><b>{</b><xsl:text> </xsl:text><xsl:value-of select=\"@title\"/></td></tr>\n"+
 "  <tr><td align=\"center\"><b>name</b></td><td align=\"center\"><b>type</b></td><td align=\"center\"><b>default value</b></td><td></td></tr>\n"+
@@ -71,16 +74,18 @@
 "     <td><xsl:apply-templates/></td>\n"+
 "  </tr></xsl:for-each>\n"+
 "  <tr><td colspan=\"4\"><xsl:choose>\n"+
-"    <xsl:when test=\"count(elements/@type) > 0\">Structure: <font color=\"#202020\"><xsl:value-of select=\"elements/@type\"/>\"</font></xsl:when>\n"+
+"    <xsl:when test=\"count(elements/@type) > 0\">Structure: \"<font color=\"#202080\"><xsl:value-of select=\"elements/@type\"/>\"</font></xsl:when>\n"+
 "    <xsl:otherwise><i>no element</i></xsl:otherwise>\n"+
 "  </xsl:choose></td></tr>\n"+
 "  <tr><td colspan=\"4\"><hr/></td></tr>\n"+
 "  <tr><td colspan=\"4\">\n"+
 "    <xsl:for-each select=\"*[name(.) != 'param' and name(.) != 'elements']\"><xsl:apply-templates/></xsl:for-each>\n"+
 "  </td></tr>\n"+
+"  <tr><td colspan=\"4\"><b>}</b></td></tr>\n"+
 "</table></xsl:template>\n"+
 "\n"+
 "<!-- 2 : Span production -->\n"+
+"\n"+
 "<xsl:template match=\"s\">\n"+
 "  <span>\n"+
 "    <xsl:if test=\"count(@class)=1\"><xsl:attribute name=\"class\"><xsl:value-of select=\"@class\"/></xsl:attribute></xsl:if>\n"+
@@ -94,6 +99,7 @@
 "<xsl:template match=\"I\"><sub><xsl:apply-templates/></sub></xsl:template>\n"+
 "\n"+
 "<!-- 3 : Link production -->\n"+
+"\n"+
 "<xsl:template match=\"l\"><xsl:call-template name=\"l\"/></xsl:template>\n"+
 "<xsl:template name=\"l\">\n"+
 "  <xsl:choose>\n"+

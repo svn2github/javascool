@@ -4,142 +4,133 @@
 <div>
    <h2>La &laquo;proglet&raquo; Console.</h2>
    
-   <table class="table">
-      <tr>
-         <td>
-            Cette proglet<a href="#1" class="note">[.]</a> permet de d&eacute;finir des entr&eacute;es/sorties textuelles au clavier comme pour une console<a href="#2" class="note">[.]</a>. 
-            <ul class="ul">
-                 
-               <li>On peut donc dans la fen&ecirc;tre <tt>input</tt>: 
-                  <table witdh="90%" border="1" align="center">
-                     <tr>
-                        <td>
-                           <div class="code">
-                                     
-                              <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Lire une chaine de caract&egrave;re avec la fonction:
-                              </p>
-                                     
-                              <div>
-                                 &nbsp;&nbsp;&nbsp;
-                                 <font color="#990000"><b>String</b></font> chaine = <font color="#990000"><b>readString</b></font>();
-                              </div>
-                                     
-                              <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Lire un nombre entier avec la fonction:
-                              </p>
-                                     
-                              <div>
-                                 &nbsp;&nbsp;&nbsp;
-                                 <font color="#990000"><b>int</b></font> entier = <font color="#990000"><b>readInteger</b></font>();
-                              </div>
-                                     
-                              <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Lire un nombre d&eacute;cimal avec la fonction:
-                              </p>
-                                     
-                              <div>
-                                 &nbsp;&nbsp;&nbsp;
-                                 <font color="#990000"><b>double</b></font> decimal = <font color="#990000"><b>readDouble</b></font>();
-                              </div>
-                                   
-                           </div>
-                        </td>
-                     </tr>
-                  </table>o&ugrave; les constructions propos&eacute;es ici utilisent des <a href="sujet-about-variables.htm">variables</a>.
-               </li>
-                    
-               <li>On peut aussi &eacute;crire dans la fen&ecirc;tre <tt>output</tt>: 
-                  <table witdh="90%" border="1" align="center">
-                     <tr>
-                        <td>
-                           <div class="code">
-                                     
-                              <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Ecrire une chaine de caract&egrave;re avec la fonction:
-                              </p>
-                                     
-                              <div>
-                                 &nbsp;&nbsp;&nbsp;
-                                 <font color="#990000"><b>println</b></font>(chaine);
-                              </div>
-                                   
-                           </div>
-                        </td>
-                     </tr>
-                  </table>cette chaine pouvant &ecirc;tre une constante, ou se voir ajouter des variables num&eacute;riques comme dans les exemples ci dessous: 
-                  <table witdh="90%" border="1" align="center">
-                     <tr>
-                        <td>
-                           <div class="code">
-                                     
-                              <div>
-                                 &nbsp;&nbsp;&nbsp;
-                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello world"</font>);
-                              </div>
-                                     
-                              <div>
-                                 &nbsp;&nbsp;&nbsp;
-                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"Valeur = "</font> + valeur);
-                              </div>
-                                   
-                           </div>
-                        </td>
-                     </tr>
-                  </table>o&ugrave; ici <b>valeur</b> est une variable num&eacute;rique enti&egrave;re ou d&eacute;cimale.
-               </li>
-                  
-            </ul>
-               
-            <div>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png" alt="" class="icon"> <b>Demo</b>] le programme suivant:
-                  
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Efface le contenu de la fen&ecirc;tre de sortie
-                           </p>
-                                
-                           <div><font color="#990000"><b>clear</b></font>();
-                           </div>
-                                
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Salue l'utilisateur et lit son nom
-                           </p>
-                                
-                           <div><font color="#990000"><b>println</b></font>(<font color="#008000">"Bonjour, qui es-tu ?"</font>);
-                           </div>
-                                
-                           <div><font color="#990000"><b>String</b></font> nom = <font color="#990000"><b>readString</b></font>();
-                           </div>
-                                
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;Lui demande alors son &acirc;ge
-                           </p>
-                                
-                           <div><font color="#990000"><b>println</b></font>(<font color="#008000">"Echant&eacute; "+nom+" ! Quel &acirc;ge as-tu ?"</font>);
-                           </div>
-                                
-                           <div><font color="#990000"><b>int</b></font> age = <font color="#990000"><b>readInteger</b></font>();
-                           </div>
-                                
-                           <p><tt><big><font color="#808080">//</font></big></tt>&nbsp;../..
-                           </p>
-                              
+   <div align="right">
+      <div class="margin">Autres <a href="../../../org/javascool/doc-files/about-proglets.htm">&laquo;proglets&raquo;</a>.
+      </div>
+   </div>
+     
+   <div>
+       Cette proglet<sup><a href="##1">#1</a></sup> permet de d&eacute;finir des entr&eacute;es/sorties textuelles au clavier comme pour une console<sup><a href="##2">#2</a></sup>. 
+      <ul class="ul">
+           
+         <li>On peut donc dans la fen&ecirc;tre <tt>input</tt>: 
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                               
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Lire une chaine de caract&egrave;re avec la fonction:</font></tt></p>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>String</b></font> chaine = <font color="#990000"><b>readString</b></font>();
                         </div>
-                     </td>
-                  </tr>
-               </table> s'ex&eacute;cute pour permettre d'exp&eacute;rimenter le fonctionnement de cette proglet.
-            </div>
+                               
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Lire un nombre entier avec la fonction:</font></tt></p>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>int</b></font> entier = <font color="#990000"><b>readInteger</b></font>();
+                        </div>
+                               
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Lire un nombre d&eacute;cimal avec la fonction:</font></tt></p>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>double</b></font> decimal = <font color="#990000"><b>readDouble</b></font>();
+                        </div>
+                             
+                     </div>
+                  </td>
+               </tr>
+            </table>o&ugrave; les constructions propos&eacute;es ici utilisent des <a href="sujet-about-variables.htm">variables</a>.
+         </li>
               
-         </td>
-         <td><applet code="org.javascool.ProgletApplet" archive="http://javascool.gforge.inria.fr/v3/javascool.jar" width="560" height="720">
-               <param name="proglet" value=""></applet></td>
-      </tr>
-   </table>
+         <li>On peut aussi &eacute;crire dans la fen&ecirc;tre <tt>output</tt>: 
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                               
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Ecrire une chaine de caract&egrave;re avec la fonction:</font></tt></p>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>println</b></font>(chaine);
+                        </div>
+                             
+                     </div>
+                  </td>
+               </tr>
+            </table>cette chaine pouvant &ecirc;tre une constante, ou se voir ajouter des variables num&eacute;riques comme dans les exemples ci dessous: 
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello world"</font>);
+                        </div>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>println</b></font>(<font color="#008000">"Valeur = "</font> + valeur);
+                        </div>
+                             
+                     </div>
+                  </td>
+               </tr>
+            </table>o&ugrave; ici <b>valeur</b> est une variable num&eacute;rique enti&egrave;re ou d&eacute;cimale.
+         </li>
+            
+      </ul>
+         
+      <div>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png" alt="" class="icon"> <b>Demo</b>] le programme suivant:
+            
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                          
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Efface le contenu de la fen&ecirc;tre de sortie</font></tt></p>
+                          
+                     <div><font color="#990000"><b>clear</b></font>();
+                     </div>
+                          
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Salue l'utilisateur et lit son nom</font></tt></p>
+                          
+                     <div><font color="#990000"><b>println</b></font>(<font color="#008000">"Bonjour, qui es-tu ?"</font>);
+                     </div>
+                          
+                     <div><font color="#990000"><b>String</b></font> nom = <font color="#990000"><b>readString</b></font>();
+                     </div>
+                          
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Lui demande alors son &acirc;ge</font></tt></p>
+                          
+                     <div><font color="#990000"><b>println</b></font>(<font color="#008000">"Echant&eacute; "+nom+" ! Quel &acirc;ge as-tu ?"</font>);
+                     </div>
+                          
+                     <div><font color="#990000"><b>int</b></font> age = <font color="#990000"><b>readInteger</b></font>();
+                     </div>
+                          
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;../..</font></tt></p>
+                        
+                  </div>
+               </td>
+            </tr>
+         </table> s'ex&eacute;cute pour permettre d'exp&eacute;rimenter le fonctionnement de cette proglet.
+      </div>
+        
+   </div>
    
      
    <h2>Remarques.</h2>
    <div id="notes">
       <ol>
          <li>
-            <div id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programm&eacute;e en Java et <a href=" ../Console.html">document&eacute;e</a> 
-                   pour sa libre redistribution, l'acc&egrave;s <a href=" ../Console.java.html">au code source</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
+            <div id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programm&eacute;e en Java et <a href="../Console.html">document&eacute;e</a> 
+                   pour sa libre redistribution, l'acc&egrave;s <a href="../Console.java.html">au code source</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
             </div>
          </li>
          <li>

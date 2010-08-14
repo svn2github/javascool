@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <!-- This translates the HML code to HTML proglet's doc (dml) to HTML3.2 http://www.w3.org/TR/REC-html32-19970114) -->
+  <!-- This translates the proglet's HML documentation to HTML3.2 http://www.w3.org/TR/REC-html32-19970114) -->
 
 <xsl:import href="../src/org/javascool/hml2htm.xslt"/>
 
@@ -11,7 +11,7 @@
   doctype-public="-//W3C//DTD HTML 3.2 Final//EN"
   indent="yes" />
 
-<!-- These tags produce dml specific constructs -->
+<!-- These tags produce proglet doc specific constructs -->
 
 <xsl:template match="div|p">
   <xsl:choose>
@@ -29,6 +29,7 @@
       <div id="{@class}"><ol><xsl:for-each select="*"><li><xsl:call-template name="div"/></li></xsl:for-each></ol></div>
     </xsl:when>
     <xsl:when test="@class = 'code'"><table witdh="90%" border="1" align="center"><tr><td><xsl:call-template name="div"/></td></tr></table></xsl:when>
+    <xsl:when test="@class = 'margin'"><div align="right"><xsl:call-template name="div"/></div></xsl:when>
     <xsl:otherwise><xsl:call-template name="div"/></xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -38,9 +39,10 @@
     <xsl:when test="@class = 'javascool'"><tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt></xsl:when>
     <xsl:when test="@class = 'proglet'">
       <applet code="org.javascool.ProgletApplet" archive="http://javascool.gforge.inria.fr/v3/javascool.jar" width="560" height="720">
-        <param name="proglet" value="{@name}"/>
+        <param name="proglet" value="{@link}"/>
       </applet>
     </xsl:when>
+    <xsl:when test="@class = 'note'"><sup><a href="{concat('#', @link)}"><xsl:value-of select="@link"/></a></sup></xsl:when>
     <xsl:otherwise><xsl:call-template name="l"/></xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -66,7 +68,7 @@
 </xsl:template>
 
 <xsl:template match="m">
-  <p><tt><big><font color="#808080">//</font></big></tt>&#160;<xsl:apply-templates/></p>
+  <p><tt><font color="#202080"><big>//</big>&#160;<xsl:apply-templates/></font></tt></p>
 </xsl:template>
 
 <xsl:template match="T">
