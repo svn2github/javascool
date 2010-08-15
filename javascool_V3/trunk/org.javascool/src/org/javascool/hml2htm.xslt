@@ -105,8 +105,12 @@
 <xsl:template match="l"><xsl:call-template name="l"/></xsl:template>
 <xsl:template name="l">
   <xsl:choose>
+    <xsl:when test='@class = jump'><script language="javascript">location.replace("<xsl:value-of select="@link"/></script></xsl:when>
     <xsl:when test='count(@link) = 1'><a href="{@link}"> 
-      <xsl:if test="count(@class)=1"><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:if>
+      <xsl:if test="count(@class)=1"><xsl:choose>
+        <xsl:when test="@class = 'new'"><xsl:attribute name="target">_blank</xsl:attribute></xsl:when>
+        <xsl:otherwise><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:otherwise>
+      </xsl:choose></xsl:if>
       <xsl:if test='count(@icon) = 1'><img src="{@icon}" alt="{@text}"/></xsl:if>
       <xsl:if test="count(@text)=1"><xsl:value-of select='@text'/></xsl:if>
       <xsl:if test="count(@text)=0">[.]</xsl:if>

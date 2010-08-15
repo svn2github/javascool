@@ -20,14 +20,14 @@
       <p><l link="../../../proglet/pixelsetcie/doc-files/about-proglet.htm" text="Description"/></p>
       <p><l link="../../../proglet/pixelsetcie/doc-files/the-proglet.htm" text="Proglet"/></p>
       <p><l link="../../../proglet/pixelsetcie/doc-files/index.htm" text="Activité"/></p>
-      <p>utilisée pour les exercices qui nécessitent de manipuler des images ou des graphismes 2D.</p>
+      <p>utilisée pour les exercices qui nécessitent de manipuler des images ou des graphismes 2D .</p>
     </p>
     <p>
       <p>«dichotomie»</p>
       <p><l link="../../../proglet/dichotomie/doc-files/about-proglet.htm" text="Description"/></p>
       <p><l link="../../../proglet/dichotomie/doc-files/the-proglet.htm" text="Proglet"/></p>
       <p><l link="../../../proglet/dichotomie/doc-files/index.htm" text="Activité"/></p>
-      <p>utilisée pour avec «convanalogique» pour comprendre le principe algorithmique de la dichotomie.</p>
+      <p>utilisée pour, avec «convanalogique», comprendre le principe algorithmique de la dichotomie.</p>
     </p>
     <p>
       <p>«convanalogique»</p>
@@ -35,6 +35,13 @@
       <p><l link="../../../proglet/convanalogique/doc-files/the-proglet.htm" text="Proglet"/></p>
       <p><l link="../../../proglet/convanalogique/doc-files/index.htm" text="Activité"/></p>
       <p>utilisée pour programmer des algorithmes de conversion analogique-digitaux.</p>
+    </p>
+    <p>
+      <p>«javaprog»</p>
+      <p><l link="../../../proglet/javaprog/doc-files/about-proglet.htm" text="Description"/></p>
+      <p><l link="../../../proglet/javaprog/doc-files/the-proglet.htm" text="Proglet"/></p>
+      <p><!--l link="../../../proglet/javaprog/doc-files/index.htm" text="Activité"/--></p>
+      <p>utilisée pour programmer tout ce que l'on souhaite en Java.</p>
     </p>
     <p>
       <p>«synthesons»</p>

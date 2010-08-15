@@ -1,8 +1,5 @@
 <div class="sujet" title="Le tutoriel &#34;Hello World&#34;">
   
-
-  
-  
   <div class="objectif">
     Le but de ce tutoriel est de se familiariser avec l'outil de programmation <l class="javascool"/>, pour pouvoir réaliser les autres <l link="../index.html" text="tutoriels"/>
   et de découvrir comment programmer une séquence d'instruction.
@@ -62,10 +59,10 @@
   </div>
   
   <div class="notes">
-    <div title="Mais dans quel langage programmons nous ?"> Nous sommes en train d'apprendre à programmer dans un langage commun aux langages <c>Java</c>, <c>C</c> ou <c>C++</c>, et même 
+    <div id="1" title="Mais dans quel langage programmons nous ?"> Nous sommes en train d'apprendre à programmer dans un langage commun aux langages <c>Java</c>, <c>C</c> ou <c>C++</c>, et même 
     <c>Javascript</c> ou <c>PHP</c> qui est un langage <l link="http://fr.wikipedia.org/wiki/Programmation_impérative" text="impératif"/>" qui décrit les opérations en termes de séquences d'instructions exécutées par l'ordinateur pour modifier l'état du programme. La bonne nouvelle est que ce que nous apprenons ici, servira donc ensuite <i>quel que soit</i> le langage de programmation : ce seront les mêmes mécanismes, juste exprimés parfois un peu différement.</div>
-    <div title="Pourquoi appeler ce langage commun 'Java'sCool' ?"> Parce que le langage "caché" derrière notre outil est le <c>Java</c> qui a été un peu simplifié ici pour le rendre "cool". D'ailleurs il est possible (à vos riques et bénéfices..) d'utiliser <i>tout</i> le langage 
+    <div id="2" title="Pourquoi appeler ce langage commun 'Java'sCool' ?"> Parce que le langage "caché" derrière notre outil est le <c>Java</c> qui a été un peu simplifié ici pour le rendre "cool". D'ailleurs il est possible (à vos riques et bénéfices..) d'utiliser <i>tout</i> le langage 
 <c>Java</c> ici. Simplement, un certain nombre de spécifications sont devenues optionelles en <l class="javascool"/> pour faciliter les choses aux débutants. C'est donc une école de <c>Java</c> <i>(a Java school)</i> avec laquelle <c>Java</c> <i>is cool</i>. Cette idée a été mise au point par des étudiants en informatique de l'<l link="http://deptinfo.unice.fr" text="Université de Nice Sophia-Antipolis"/> auteurs de <l link="http://javascool.gforge.inria.fr" text=""/>.</div>
-<div title="Que veux dire «void main» en fait ?"> Patience nous le comprendrons avec le tutoriel sur les <l link="sujet-about-functions.htm" text="fonctions"/>.</div>
+    <div id="3" title="Que veux dire «void main» en fait ?"> Patience nous le comprendrons avec le tutoriel sur les <l link="sujet-about-functions.htm" text="fonctions"/>.</div>
   </div>
 </div>

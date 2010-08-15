@@ -106,8 +106,12 @@
 "<xsl:template match=\"l\"><xsl:call-template name=\"l\"/></xsl:template>\n"+
 "<xsl:template name=\"l\">\n"+
 "  <xsl:choose>\n"+
+"    <xsl:when test='@class = jump'><script language=\"javascript\">location.replace(\"<xsl:value-of select=\"@link\"/></script></xsl:when>\n"+
 "    <xsl:when test='count(@link) = 1'><a href=\"{@link}\"> \n"+
-"      <xsl:if test=\"count(@class)=1\"><xsl:attribute name=\"class\"><xsl:value-of select=\"@class\"/></xsl:attribute></xsl:if>\n"+
+"      <xsl:if test=\"count(@class)=1\"><xsl:choose>\n"+
+"        <xsl:when test=\"@class = 'new'\"><xsl:attribute name=\"target\">_blank</xsl:attribute></xsl:when>\n"+
+"        <xsl:otherwise><xsl:attribute name=\"class\"><xsl:value-of select=\"@class\"/></xsl:attribute></xsl:otherwise>\n"+
+"      </xsl:choose></xsl:if>\n"+
 "      <xsl:if test='count(@icon) = 1'><img src=\"{@icon}\" alt=\"{@text}\"/></xsl:if>\n"+
 "      <xsl:if test=\"count(@text)=1\"><xsl:value-of select='@text'/></xsl:if>\n"+
 "      <xsl:if test=\"count(@text)=0\">[.]</xsl:if>\n"+

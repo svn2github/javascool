@@ -1,26 +1,27 @@
-<div>
+<div title="Faire des exercices d'application: les algorithmes mathématiques en 2nd">
 
-  <div>Exercices et applications<div><l text=""/>La 20taine d'exercices activités du document de <l link="more/Algo_Doc_Ress.pdf" text="ressources"/> publié par <l link="http://eduscol.education.fr" text="ÉduSCOL"/> a été instanciées en <l class="javascool"/> : les "<l link="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce" text="soluces"/>" (aide syntaxique) sont proposées ici (nous <l link="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet : accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,%20%20Je%20suis%20un%20enseignant%20du%20lycée%20de%20??%20à%20??%20et%20souhaite%20accéder%20aux%20soluces%20des%20proglets.%0a,%20%20%20Voici%20un%20élément%20qui%20prouve%20que%20je%20ne%20suis%20pas%20élève%20!%20:%20??%0a,%20%20Signature%20:%20??" text="contacter"/> pour l'accès). Avec le <l link="#parcours" text="parcours"/>  pour s'initier à la programmation, elles permettent de couvrir le programme de 2nd en algorithmique.</div></div>
+  <p><l class="javascool"/> permet de programmer la 20taine d'exercices et activités du document de <l link="http://javascool.gforge.inria.fr/v3/documents/Algo_Doc_Ress.pdf" text="ressources"/> publié par <l link="http://eduscol.education.fr" text="ÉduSCOL"/>, dont les solutions ont été instanciées en <l class="javascool"/>.</p>
 
+  <p>Ces exercices peuvent être programmés soit en <l link="../../ingredients/doc-files/sujet-hello-world.htm#1" text="Java'sCool"/>,
+  soit à l'aide d'un <i>éditeur graphique d'algorithme</i> qui évite de se poser de question avec la syntaxe.
+    <p title="Utiliser l'éditeur graphique d'algorithmes">En <l link="http://javascool.gforge.inria.fr/v3/javascool.jar" text="lançantjavasccol"/> 
+    choisir l'activité "Faire des exercices avec l'éditeur graphique d'algorithmes" cela permet d'éditer directement le texte du programme du manière graphique 
+    puis de voir sa traduction en <l link="../../ingredients/doc-files/sujet-hello-world.htm#1" text="Java'sCool"/> et bien-sûr de l'exécuter directement. 
+    Un moyen de s'éviter les problèmes de syntaxe en l'apprenant au fil de l'eau.</p>
+  </p>
 
+  <p>Les "<l link="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce" text="soluces"/>" (aide syntaxique) sont proposées ici (nous <l link="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet : accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,%20%20Je%20suis%20un%20enseignant%20du%20lycée%20de%20??%20à%20??%20et%20souhaite%20accéder%20aux%20soluces%20des%20proglets.%0a,%20%20%20Voici%20un%20élément%20qui%20prouve%20que%20je%20ne%20suis%20pas%20élève%20!%20:%20??%0a,%20%20Signature%20:%20??" text="contacter"/> pour l'accès).</p>
 
-<div>Quelques autres applications, exercices et activités :<div class="ul">
-  <div>Comprendre le principe de la <l link="sujet-appli-dicho.htm" text="recherche dichotomique"/>.</div>
-  <div>Programmer quelques <l link="sujet-appli-geometry.htm" text="calculs géométriques"/>.</div>
-  <div>Découvrir comment marche un <l link="sujet-appli-conva.htm" text="convertisseur analogique-numérique"/>.</div>
-  <div>Comprendre quelques opérations de <l link="sujet-appli-image.htm" text="manipulation d'images"/>.</div>
-</div> Note : Aide pour l'enseignant, des <l link="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce" text="soluces"/> (aide syntaxique) sont proposées ici (nous <l link="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de quelques proglets : accès aux solutions sur [scienceinfolycee]&amp;body=Bonjour,%0a,  Je suis un enseignant du lycée de ?? à ?? et souhaite accéder aux solutions des proglets.%0a,   Voici un élément qui prouve que je ne suis pas élève ! : ??%0a,  Signature : ??" text="contacter"/> pour l'accès).</div>
+  <p>Un modèle de sujet qui permet de programmer quelques <l link="sujet-appli-geometry.htm" text="calculs géométriques"/> est proposé ici.</p>
+  
+  <p>Avec le <l link="../../ingredients/doc-files/index.htm" text="parcours"/>  pour s'initier à la programmation, 
+  elles permettent de couvrir le programme de 2nd en algorithmique.</p>
+  
+  <div title="Des documents pour apprendre et se cultiver sur le sujet"><l link="../../ingredients/doc-files#1"/></div>
 
-
-  <div>Ces documents ne sont pas conçus pour apprendre la programmation en "autodidacte" ...
-  mais si vous le souhaitez et si vous pouvez dialoguer avec quelqu'un de votre entourage qui sait programmer 
-  (afin de ne pas être bloqué sur des détails de syntaxe ou d'implémentation) 
-  alors oui : n'hésitez pas à suivre le <l link="#parcours" text="parcours"/> pour s'initier à la programmation : 
-  vous allez vite épater ceux qui pensent être les seuls à savoir programmer !</div>
-  <div>Ces ressources ont vocation à être publiées de manière définitive sur les sites de ressources en ligne auxquels participent l'<l link="http://www-inria.fr" text="INRIA"/>,
-  tel que le site <l link="http://interstices.fr" text=")i(nterstices"/> ou <l link="http://fuscia.info" text="fuscia"/>, 
-  créés à l'initiative de l'<l link="http://www-inria.fr" text="INRIA"/>. 
-  Elles resteront évidemment accessibles à partir de cette page.
-  Et ... soyons indulgents avec cette 1ère mise en forme ! Le fond a été privilégié à la forme ici, pour aller à l'essentiel.</div>
-
+  <div title="Pour aller plus loin">>Quelques autres applications, exercices et activités :<div class="ul">
+    <p>Comprendre le principe de la <l link="../../dichotomie/doc-files/sujet-appli-dicho.htm" text="recherche dichotomique"/> et ...</p>
+    <p>Découvrir comment marche un <l link="../../convanalogique/doc-files/sujet-appli-conva.htm" text="convertisseur analogique-numérique"/>.</p>
+    <p>Comprendre quelques opérations de <l link="../../pixelsetcie/doc-files/sujet-appli-image.htm" text="manipulation d'images"/>.</p>
+  </div></div>
 </div>
