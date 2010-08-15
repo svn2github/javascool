@@ -45,6 +45,7 @@ public class Main extends JApplet { /**/public Main() { }
   JToolBar tools = new JToolBar();
   JTabbedPane tabbedPane = new JTabbedPane();
   JComboBox actList = new JComboBox();
+  String aide=new String(Utils.loadString("org/javascool/doc-files/helpdoc/index.html"));
   private Boolean notfirstrun=false;
   /**/public void init() {
     JPanel toppane = new JPanel();
@@ -93,7 +94,13 @@ public class Main extends JApplet { /**/public Main() { }
   public void addToolSeparator() {
     tools.addSeparator();
   }
+  /** HashMap for action list.
+  *The map associate a String to a Runnable
+  */
   private HashMap<String,Runnable> actions = new HashMap<String,Runnable>();
+  /** HashMap for button list.
+  *The map associate a String to a JButton
+  */
   private HashMap<String,JButton> buttons = new HashMap<String,JButton>();
   /** Adds a tab to the tabbed panel.
    * @param label Tab label.
@@ -117,6 +124,9 @@ public class Main extends JApplet { /**/public Main() { }
       tabbedPane.revalidate();
     }
   }
+  /** HashMap for tab list.
+  *The map associate a String to a JPanel
+  */
   private HashMap<String,JPanel> tabs = new HashMap<String,JPanel>();
   /** Defines an interactive activity. */
   public static class Activity {
@@ -136,7 +146,10 @@ public class Main extends JApplet { /**/public Main() { }
     actList.addItem(activity.getTitle());
     actList.revalidate();
   }
-  // Install the activity
+  /** Start any activity.
+  * The activity must be list in the HashMap activities
+  * @param name Name of Activity in the HashMap
+  */
   private void setActivity(String name) {
 
     activity = activities.get(name);
@@ -148,9 +161,13 @@ public class Main extends JApplet { /**/public Main() { }
     tools.revalidate();
     tabbedPane.revalidate();
   }
+  /**Set activity to null.*/
   private Activity activity = null;
+  /** HashMap for Activity list.
+  *The map associate a String to an Activity
+  */
   private HashMap<String,Activity> activities = new HashMap<String,Activity>();
-  // Generic action listener for all actions
+  /** Generic action listener for all actions.*/
   private ActionListener alistener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == actList) {
@@ -261,8 +278,7 @@ public class Main extends JApplet { /**/public Main() { }
     fcTitle = null;
   }
   private Runnable showHelp = new Runnable() { public void run() {
-    addTab("Aide", "", new HtmlDisplay().
-	   reset("<html><head><title>Ma page</title></head><body><h1>Titre</h1>Bienvenu dans l'aide de Java's cool :-)</body></html>")); 
+    addTab("Aide", "", aide); 
   }};
   private Runnable nothing = new Runnable() { public void run() {    getParent().setSize(800,600);
   }};

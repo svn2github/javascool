@@ -47,7 +47,8 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
    * <div>The default behavior is to attempt to load the location in the panel.</div>
    */
   public void show(String location) { 
-    try { pane.setPage(location); } catch(Exception e) { pane.setText(e.toString()); } 
+    //try { pane.setPage(location); } catch(Exception e) { pane.setText(e.toString()); } 
+    try{pane.setText(Utils.loadString(location));} catch(Exception e) { pane.setText(e.toString()); } 
   }
 }
 
