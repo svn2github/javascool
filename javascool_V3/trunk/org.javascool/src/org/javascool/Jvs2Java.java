@@ -179,7 +179,8 @@ public class Jvs2Java { private Jvs2Java() { }
    * @throws RuntimeException if an I/O exception occurs during command execution.
    */
   public static String compile(String path) {
-    String args[] = { path };
+    setJpathclass(path);
+    String args[] = { jpath+".java" };
     StringWriter out = new StringWriter();
     try { 
       Class.forName("com.sun.tools.javac.Main").getDeclaredMethod("compile", Class.forName("[Ljava.lang.String;"), Class.forName("java.io.PrintWriter")).

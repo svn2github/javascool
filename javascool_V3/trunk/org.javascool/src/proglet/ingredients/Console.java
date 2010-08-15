@@ -109,7 +109,7 @@ public class Console implements org.javascool.Proglet { private Console() { }
   }
 
   // Quotes a string for HTML
-  private static String quote(String string) { return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(" ", "&nbsp;"); }
+  private static String quote(String string) { return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(" ", "&nbsp;").replace("\n", "<br>\n"); }
 
   //
   // This defines the tests on the panel
