@@ -129,7 +129,7 @@
     <p>Le paramètre <r>class</r> prend comme précédemment une valeur sémantique, qui décrit en partculier si l'élément est inséré dans la page ou accessible par un clic.
     Il prend, par exemple, une valeur correspondant:
     <div class="table">
-      <p><p><r>jump</r></p><p>Pour fermer cette page et ouvrir une autre page à la place.</p></p>
+      <p><p><r>replace</r></p><p>Pour fermer cette page et ouvrir une autre page à la place.</p></p>
       <p><p><r>new</r></p><p>Pour s'ouvrir dans une autre fenêtre.</p></p>
       <p><p><r>*</r></p><p>Pour un autre rendu, à définir par ailleurs.</p></p>
     </div>.

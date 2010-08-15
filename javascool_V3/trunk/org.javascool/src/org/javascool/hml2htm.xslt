@@ -21,7 +21,7 @@
         <xsl:when test="name(.) = 'style'"><link rel="stylesheet" href="{.}"/></xsl:when>
         <xsl:when test="name(.) = 'script'"><script type="text/javascript" src="{.}"/></xsl:when>
         <xsl:otherwise><meta name="{name(.)}" content="{.}"/></xsl:otherwise> 
-        <!-- Possible improvement: take <meta http-equiv='$name' content='$value' /> or other <link rel='$name' href='$value' /> constructs into account !-->
+        <!-- Possible improvement: take <meta http-equiv="$name" content="$value" /> or other <link rel="$name" href="$value" /> constructs into account !-->
       </xsl:choose></xsl:for-each>
     </head>
     <body>
@@ -105,22 +105,22 @@
 <xsl:template match="l"><xsl:call-template name="l"/></xsl:template>
 <xsl:template name="l">
   <xsl:choose>
-    <xsl:when test='@class = jump'><script language="javascript">location.replace("<xsl:value-of select="@link"/></script></xsl:when>
-    <xsl:when test='count(@link) = 1'><a href="{@link}"> 
+    <xsl:when test="@class = 'replace'"><script language="javascript">location.replace("<xsl:value-of select="@link"/></script></xsl:when>
+    <xsl:when test="count(@link) = 1"><a href="{@link}"> 
       <xsl:if test="count(@class)=1"><xsl:choose>
         <xsl:when test="@class = 'new'"><xsl:attribute name="target">_blank</xsl:attribute></xsl:when>
         <xsl:otherwise><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:otherwise>
       </xsl:choose></xsl:if>
-      <xsl:if test='count(@icon) = 1'><img src="{@icon}" alt="{@text}"/></xsl:if>
-      <xsl:if test="count(@text)=1"><xsl:value-of select='@text'/></xsl:if>
+      <xsl:if test="count(@icon) = 1"><img src="{@icon}" alt="{@text}"/></xsl:if>
+      <xsl:if test="count(@text)=1"><xsl:value-of select="@text"/></xsl:if>
       <xsl:if test="count(@text)=0">[.]</xsl:if>
     </a></xsl:when>
-    <xsl:when test='count(@icon) = 1'><img src="{@icon}" alt="{@text}">
+    <xsl:when test="count(@icon) = 1"><img src="{@icon}" alt="{@text}">
       <xsl:if test="count(@class)=1"><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:if>
     </img></xsl:when>
-    <xsl:when test='count(@text) = 1'><span>
+    <xsl:when test="count(@text) = 1"><span>
       <xsl:if test="count(@class)=1"><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:if>
-      <xsl:value-of select='@text'/>
+      <xsl:value-of select="@text"/>
     </span></xsl:when>
   </xsl:choose>
 </xsl:template>
