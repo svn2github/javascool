@@ -77,26 +77,31 @@ import javax.swing.event.DocumentEvent;
  * @see <a href="SourceEditor.java.html">source code</a>
  * @serial exclude
  */
-public class SourceEditor extends JPanel implements Widget,Editor {
+public class SourceEditor extends JPanel implements Widget, Editor {
   private static final long serialVersionUID = 1L;
 
   // Implements the org.javascool interface
   public String getText() { return pane.getText(); }
-  public void setText(String text) { pane.setText(text); pane.setCaretPosition(0); doColorize(0, 0); modified = false; }
+  public Editor setText(String text) { pane.setText(text); pane.setCaretPosition(0); doColorize(0, 0); modified = false; return this; }
   public boolean isModified() { return modified; } private boolean modified = false;
 
   // Reference to this document with its menu-bar and contained
   private JMenuBar bar; private JTextPane pane; private JScrollPane scroll; private StyledDocument doc;
   // Line counting management
   private JLabel line; private int iline = 0; 
-  // Widget construction
-  {
+
+  /** Resets the editor in non-editable mode.
+   * @param editable True to edit the text. False to view it.
+   * @return This, allowing to use the <tt>new SourceEditor().reset(..)</tt> construct.
+   */
+  public SourceEditor reset(boolean editable) {
+    removeAll();
     // Builds the widget
     setLayout(new BorderLayout());
     bar = new JMenuBar();
     add(bar, BorderLayout.NORTH);
     pane = new JTextPane();
-    pane.setEditable(true);
+    pane.setEditable(editable);
     pane.setFont(new Font("Dialog", Font.PLAIN, 16));
     doc = pane.getStyledDocument();
     scroll = new JScrollPane(pane, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -117,21 +122,24 @@ public class SourceEditor extends JPanel implements Widget,Editor {
 	    }
 	  }});
     }
-    
     // Defines the Edit menu 
     {
       JMenu menu = new JMenu();
       menu.setText("Edition");
       bar.add(menu);
-      TextUndoManager undo = new TextUndoManager(pane);
-      menu.add(undo.getUndoItem());
-      menu.add(undo.getRedoItem());
-      menu.addSeparator();
+      if (editable) {
+	TextUndoManager undo = new TextUndoManager(pane);
+	menu.add(undo.getUndoItem());
+	menu.add(undo.getRedoItem());
+	menu.addSeparator();
+      }
       JMenuItem item;
       menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.copyAction))); item.setText("Copier");
-      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.cutAction))); item.setText("Couper");
-      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.pasteAction))); item.setText("Coller");
-      menu.addSeparator();
+      if (editable) {
+	menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.cutAction))); item.setText("Couper");
+	menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.pasteAction))); item.setText("Coller");
+	menu.addSeparator();
+      }
       menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.selectAllAction))); item.setText("Tout sélectionner");
       menu.addSeparator();     
       // Adds a print interface
@@ -158,29 +166,20 @@ public class SourceEditor extends JPanel implements Widget,Editor {
       // addBinding(pane, KeyEvent.VK_A, getAction(pane, DefaultEditorKit.beginLineAction));
       // addBinding(pane, KeyEvent.VK_E, getAction(pane, DefaultEditorKit.endLineAction));
       // addBinding(pane, KeyEvent.VK_D, getAction(pane, DefaultEditorKit.deleteNextCharAction));
-
     }
-
-    // Adds a quit interface
-    AbstractAction quit = new AbstractAction("Quit") {
-	private static final long serialVersionUID = 1L;
-	public void actionPerformed(ActionEvent evt) { 
-	  System.err.println(" No quit !");
-	}
-      };
-    //addBinding(pane, KeyEvent.VK_Q, quit);
-
     // Defines the view menu
     {
       JMenu menu = new JMenu();
       menu.setText("Reformate/Zoom");
       bar.add(menu);
-      menu.add(new JMenuItem(new AbstractAction("Reformate le code") {
-	  private static final long serialVersionUID = 1L;
-	  public void actionPerformed(ActionEvent evt) { 
-	    doReformat();
-	  }}));
-      menu.addSeparator();
+      if (editable) {
+	menu.add(new JMenuItem(new AbstractAction("Reformate le code") {
+	    private static final long serialVersionUID = 1L;
+	    public void actionPerformed(ActionEvent evt) { 
+	      doReformat();
+	    }}));
+	menu.addSeparator();
+      }
       menu.add(new JMenuItem(new AbstractAction("Zoom -") {
 	  private static final long serialVersionUID = 1L;
 	  public void actionPerformed(ActionEvent evt) { 
@@ -197,6 +196,12 @@ public class SourceEditor extends JPanel implements Widget,Editor {
 	    pane.setFont(new Font("Dialog", Font.PLAIN, 22));
 	  }}));
     }
+    revalidate();
+    return this;
+  }
+  // Initial reset is editable
+  {
+    reset(true);
   }
 
   /** Defines the text reformat mechanism.

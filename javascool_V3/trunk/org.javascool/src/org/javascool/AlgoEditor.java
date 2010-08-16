@@ -190,7 +190,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
    * draws a the string <tt>mot</tt> at the point (<tt>x, y</tt>).</li>
    * </ul></ul>   
    */
-  public void setText(String string) {
+  public Editor setText(String string) {
     Pml pml = new Pml().reset(string); 
     DefaultMutableTreeNode node = setText(pml);
     System.out.println("setText = "+getText(node, 0));
@@ -206,6 +206,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
     }
     model.nodeChanged((DefaultMutableTreeNode) root.getChildAt(0));		
     tree.scrollPathToVisible(new TreePath(root.getChildAt(0)));
+    return this;
   }
   private static DefaultMutableTreeNode setText(Pml pml) {
     DefaultMutableTreeNode node = new DefaultMutableTreeNode(pml.getTag());

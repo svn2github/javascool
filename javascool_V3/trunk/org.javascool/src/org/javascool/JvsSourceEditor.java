@@ -174,5 +174,12 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
 
   // Tests if the char belongs to a word
   private static boolean isWordChar(char c) { return  Character.isLetterOrDigit(c) || c == '_'; }
+
+  /** Shows a Jvs source file.
+   * @param usage <tt>java org.javascool.JvsSourceEditor location</tt>
+   */
+  public static void main(String[] usage) {
+    if (usage.length > 0) Utils.show((SourceEditor) new JvsSourceEditor().reset(false).setText(Utils.loadString(usage[0])), "Jvs Source File Shower", 1024, 800);
+  }
 }
 

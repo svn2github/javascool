@@ -58,6 +58,7 @@ import java.awt.event.WindowListener;
 import javax.swing.KeyStroke;
 import javax.swing.JComponent;
 import javax.swing.AbstractAction;
+import javax.swing.Action;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -369,7 +370,9 @@ public class Utils { private Utils() { }
    * @param title  Frame title. If null no title.
    * @param width  Applet width. Default is 80% of the screen size.
    * @param height Applet height. Default is 80% of the screen size.
-   * @return The opened frame.  Use <tt>frame.dispose()</tt> or <tt>[pane|applet.getRootPane()].getActionMap().get("exit").actionPerformed(e);</tt> to close the frame.
+   * @return The opened frame.  
+   * <p>Use <tt>frame.dispose()</tt> or <tt>[pane|applet.getRootPane()].getActionMap().get("quit").actionPerformed(e);</tt> to close the frame.</p>
+   * <p>The <tt>"close"</tt> action is fired before closing the frame.</p>
    */
   public static JFrame show(Component applet, String title, int width, int height) {
     Frame f = new Frame(); f.open(applet, title, width, height); return f;
@@ -387,8 +390,8 @@ public class Utils { private Utils() { }
     // Opens an applet in a standalone frame.
     public void open(Component pane, String title, int width, int height) {
       if (pane instanceof JApplet) this.applet = (JApplet) pane;
-      if (pane instanceof JComponent) ((JComponent) pane).getActionMap().put("exit", exit);
-      if (pane instanceof JApplet) ((JApplet) pane).getRootPane().getActionMap().put("exit", exit);
+      if (pane instanceof JComponent) { ((JComponent) pane).getActionMap().put("exit", exit); close = ((JComponent) pane).getActionMap().get("close"); }
+      if (pane instanceof JApplet) { ((JApplet) pane).getRootPane().getActionMap().put("exit", exit); close = ((JApplet) pane).getRootPane().getActionMap().get("close"); }
       getContentPane().add(pane); 
       if (applet != null) applet.init(); 
       pack(); 
@@ -404,11 +407,12 @@ public class Utils { private Utils() { }
       if (applet != null) { applet.stop(); applet.destroy(); }
       super.dispose(); System.gc(); frames--; if (frames == 0) System.exit(0);
     } 
+    private Action close = null;
     // Defines a listener for focus, iconification and dispose.
     {
       addWindowListener(new WindowListener() {
 	  public void windowOpened(WindowEvent e) { e.getWindow().requestFocus();  }
-	  public void windowClosing(WindowEvent e) { dispose(); }
+	  public void windowClosing(WindowEvent e) { if (close != null) close.actionPerformed(new ActionEvent(this, 0, "close")); dispose(); }
 	  public void windowClosed(WindowEvent e) { }
 	  public void windowIconified(WindowEvent e) { if (applet != null) applet.stop(); }
 	  public void windowDeiconified(WindowEvent e) { if (applet != null) applet.start(); }

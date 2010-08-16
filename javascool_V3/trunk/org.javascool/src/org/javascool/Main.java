@@ -363,6 +363,7 @@ public class Main extends JApplet { /**/public Main() { }
 //	private static final long serialVersionUID = 1L;
 //	public void actionPerformed(ActionEvent e) { 
 //	  openFile.run();
+// Open the tabbed oh hel when help
 //	}});
     getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_MASK), "validate");
     getRootPane().getActionMap().put("validate",  new AbstractAction("validate") {
@@ -370,13 +371,13 @@ public class Main extends JApplet { /**/public Main() { }
 	public void actionPerformed(ActionEvent e) { 
 	  if (validate != null) validate.run();
 	}});
-    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK), "quit");
-    getRootPane().getActionMap().put("quit",  new AbstractAction("quit") {
+    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK), "close");
+    getRootPane().getActionMap().put("close",  new AbstractAction("close") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  System.err.println("Bye guy !!!!");
 	  if(exitSaveFile())
-	  {getRootPane().getActionMap().get("exit").actionPerformed(e);}
+	  {getRootPane().getActionMap().get("quit").actionPerformed(e);}
 	}});
   }
   /** This is the runnable called when the ^L keystroke is called. */

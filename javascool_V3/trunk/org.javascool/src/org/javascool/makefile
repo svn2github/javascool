@@ -7,8 +7,8 @@ ifeq ($(USER), vthierry)
 
 all :
 #	@../../../lib/run.sh HtmlDisplay ./doc-files/about-proglets.htm
-	@$(MAKE) -C ../../.. jar
-	@cd ../tst ; java -jar  ../www/javascool.jar
+#	@$(MAKE) -C ../../.. jar
+#	@cd ../tst ; java -jar  ../www/javascool.jar
 #	@java -cp  ../../../www/javascool.jar org.javascool.HtmlDisplay ./doc-files/about-proglets.htm
 #	@cd ../tst ; java -cp ../www/javascool.jar org.javascool.MainV2 edit ingredients Test0.jvs
 

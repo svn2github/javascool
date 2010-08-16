@@ -9,8 +9,9 @@ public interface Editor {
 
   /** Sets the editing text. 
    * @param text The text to edit.
+   * @return This, allowing to use the <tt>new Editor().setText(..)</tt> construct.
    */
-  public void setText(String text);
+  public Editor setText(String text);
 
   /** Gets the edited text. */
   public String getText();
