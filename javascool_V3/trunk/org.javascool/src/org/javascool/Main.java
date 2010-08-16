@@ -370,8 +370,8 @@ public class Main extends JApplet { /**/public Main() { }
 	public void actionPerformed(ActionEvent e) { 
 	  if (validate != null) validate.run();
 	}});
-    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK), "close");
-    getRootPane().getActionMap().put("close",  new AbstractAction("close") {
+    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK), "quit");
+    getRootPane().getActionMap().put("quit",  new AbstractAction("quit") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  System.err.println("Bye guy !!!!");

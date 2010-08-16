@@ -6,7 +6,7 @@ ifeq ($(USER), vthierry)
 #* Activites : toutes les proglets et sujets 
 
 all :
-#	@../../../lib/run.sh HtmlDisplay ./doc-files/about-proglets.htm
+	@../../../lib/run.sh HtmlDisplay ./doc-files/about-proglets.htm
 	@$(MAKE) -C ../../.. jar
 	@cd ../tst ; java -jar  ../www/javascool.jar
 #	@java -cp  ../../../www/javascool.jar org.javascool.HtmlDisplay ./doc-files/about-proglets.htm
