@@ -205,6 +205,7 @@ public class Main extends JApplet { /**/public Main() { }
   }
   public String returnastring(String toreturn){return toreturn;};
   public void setFile(String filename) {
+    // A rendre compatblie avec mecanique de philien
     try { activity.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
   }
   private Runnable openFile = new Runnable() { public void run() {
@@ -366,6 +367,10 @@ public class Main extends JApplet { /**/public Main() { }
       description = s;
     }
   }
+
+
+
+
   /** Used to run a javasccol v3 as a standalone program. 
    * <p>- Starts a JavaScool "activity" which result is to be stored in a "file-name".</p>
    * @param usage <tt>java org.javascool.Main [activity [file-name]]</tt><ul>

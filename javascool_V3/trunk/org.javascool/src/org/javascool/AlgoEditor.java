@@ -28,7 +28,6 @@ import javax.swing.JComboBox;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
 import javax.swing.KeyStroke;
-import java.awt.Event;
 import java.awt.event.KeyEvent;
 
 /** This widget defines a re-oriented graohic algorithm editor. 
@@ -574,25 +573,25 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
   }
   // Defines the key bidding
   {
-    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_C, Event.CTRL_MASK), "copier");
+    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_MASK), "copier");
     tree.getActionMap().put("copier",  new AbstractAction("copier") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  doEdit("Copier");
 	}});
-    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_X, Event.CTRL_MASK), "couper");
+    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_MASK), "couper");
     tree.getActionMap().put("couper",  new AbstractAction("couper") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  doEdit("Couper/Supprimer");
 	}});
-    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "coller");
+    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_MASK), "coller");
     tree.getActionMap().put("coller",  new AbstractAction("coller") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  doEdit("Coller");
 	}});
-    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_L, Event.CTRL_MASK), "check");
+    tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_MASK), "check");
     tree.getActionMap().put("check",  new AbstractAction("check") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 

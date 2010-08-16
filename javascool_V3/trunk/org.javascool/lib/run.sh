@@ -19,7 +19,12 @@ main=`echo $1 | sed 's/^org\.javascool\.//'` ; shift
 # Running the saxon translator
 if [ "$main" = sax ] ; then java -jar $root/lib/saxon.jar $* ; exit $? ; fi
 
-# Running the class
-make -s -C $root cmp ; java -cp $root/src:$root/lib/tools.jar:$root/lib/saxon.jar org.javascool.$main $*
+# Running the class after compilation
+make -s -f - <<EOF
+all :
+	\$(MAKE) -C $root cmp
+	java -cp $root/src:$root/lib/tools.jar:$root/lib/saxon.jar org.javascool.$main $*
+EOF
+
 
 

@@ -106,7 +106,7 @@
 "<xsl:template match=\"l\"><xsl:call-template name=\"l\"/></xsl:template>\n"+
 "<xsl:template name=\"l\">\n"+
 "  <xsl:choose>\n"+
-"    <xsl:when test=\"@class = 'replace'\"><script language=\"javascript\">location.replace(\"<xsl:value-of select=\"@link\"/></script></xsl:when>\n"+
+"    <xsl:when test=\"@class = 'replace'\"><script language=\"javascript\">location.replace(\"<xsl:value-of select=\"@link\"/>\");</script></xsl:when>\n"+
 "    <xsl:when test=\"count(@link) = 1\"><a href=\"{@link}\"> \n"+
 "      <xsl:if test=\"count(@class)=1\"><xsl:choose>\n"+
 "        <xsl:when test=\"@class = 'new'\"><xsl:attribute name=\"target\">_blank</xsl:attribute></xsl:when>\n"+

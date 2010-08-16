@@ -23,7 +23,6 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 
 // Used for key binding
-import java.awt.Event;
 import java.awt.event.KeyEvent;
 import javax.swing.KeyStroke;
 import javax.swing.text.DefaultEditorKit;
@@ -416,7 +415,7 @@ public class SourceEditor extends JPanel implements Widget,Editor {
   
   // Adds a key binding
   private static void addBinding(JTextComponent pane, int key, Action action) {
-    pane.getKeymap().addActionForKeyStroke(KeyStroke.getKeyStroke(key, Event.CTRL_MASK), action);
+    pane.getKeymap().addActionForKeyStroke(KeyStroke.getKeyStroke(key, KeyEvent.CTRL_MASK), action);
   }
   // Returns an action from its name
   private static Action getAction(JTextComponent pane, String action) {

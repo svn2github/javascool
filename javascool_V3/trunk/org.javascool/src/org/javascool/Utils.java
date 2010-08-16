@@ -7,22 +7,20 @@ package org.javascool;
 
 // Used for URL formation
 import java.net.URL;
-import java.net.MalformedURLException;
+import java.io.File;
+import java.io.IOException;
 
 // Used for URL read
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.lang.StringBuilder;
 import java.net.URLEncoder;
 
 // Used for URL write
-import java.io.IOException;
-import java.lang.System; // .out.println
 import java.net.URLConnection;
 import java.io.OutputStreamWriter;
-import java.io.File;
 import java.io.FileWriter;
+import java.lang.System; // .out.println
 
 // Used to load icon
 import javax.swing.ImageIcon;
@@ -112,8 +110,9 @@ public class Utils { private Utils() { }
     try {
       if (location.matches("(file|ftp|http|https|jar|mailto|stdout):.*")) return new URL(location);
       URL url = Main.class.getClassLoader().getResource(location); if (url != null) return url;
+      File file = new File(location); if (file.exists()) return new URL("file:"+file.getCanonicalPath());
       return new URL("file:"+location);
-    } catch(MalformedURLException e) { throw new IllegalArgumentException(e+" : "+location+" is a malformed URL"); }
+    } catch(IOException e) { throw new IllegalArgumentException(e+" : "+location+" is a malformed URL"); }
   }
 
   /** Loads an URL textual contents and returns it as a string.
