@@ -365,54 +365,68 @@ public class Utils { private Utils() { }
       System.err.println(error.getStackTrace()[i]);
   }
 
-  /** Opens an applet in a standalone frame.
+  /** Opens an applet or panel in a standalone frame.
    * @param applet The applet or panel to display.
    * @param title  Frame title. If null no title.
    * @param width  Applet width. Default is 80% of the screen size.
    * @param height Applet height. Default is 80% of the screen size.
+   * @param quit   If true activate the <tt>Control+Q</tt> keystroke. Default is true.
+   * <p>Use <tt>unshow(pane);</tt> to properly close the window.</p>
    * @return The opened frame.  
-   * <p>Use <tt>frame.dispose()</tt> or <tt>[pane|applet.getRootPane()].getActionMap().get("quit").actionPerformed(e);</tt> to close the frame.</p>
-   * <p>The <tt>"close"</tt> action is fired before closing the frame.</p>
    */
-  public static JFrame show(Component applet, String title, int width, int height) {
-    Frame f = new Frame(); f.open(applet, title, width, height); return f;
+  public static JFrame show(Component applet, String title, int width, int height, boolean quit) {
+    Frame f = new Frame(); f.open(applet, title, width, height, quit); return f;
   }
-  /**/public static JFrame show(Component applet, String title) {
+  /**/public static JFrame show(Component applet, String title, boolean quit) {
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();  
     int width = (int) (1 * dim.getWidth()), height = (int) (1 * dim.getHeight());
     if (width > 1800) width = 1800; if(height > 1000) height = 1000;
-    return show(applet, title, width, height);
+    return show(applet, title, width, height, quit);
+  }    
+  /**/ public static JFrame show(Component applet, String title, int width, int height) {
+    return show(applet, title, width, height, true);
+  }
+  /**/public static JFrame show(Component applet, String title) {
+    return show(applet, title, true);
   }
   // Encapsulates an applet in a frame
   private static class Frame extends JFrame {
     private static final long serialVersionUID = 1L;
     private JApplet applet = null;
     // Opens an applet in a standalone frame.
-    public void open(Component pane, String title, int width, int height) {
+    public void open(Component pane, String title, int width, int height, boolean quite) {
       if (pane instanceof JApplet) this.applet = (JApplet) pane;
-      if (pane instanceof JComponent) { ((JComponent) pane).getActionMap().put("exit", exit); close = ((JComponent) pane).getActionMap().get("close"); }
-      if (pane instanceof JApplet) { ((JApplet) pane).getRootPane().getActionMap().put("exit", exit); close = ((JApplet) pane).getRootPane().getActionMap().get("close"); }
       getContentPane().add(pane); 
       if (applet != null) applet.init(); 
       pack(); 
-      frames++;
+      frames.put(pane, this);
       if (title != null) setTitle(title);
+      // Defines an quit on CTRL+Q input code.
+      if (this.quit = quit) { 
+	getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK), "quit");
+	getRootPane().getActionMap().put("quit", new AbstractAction("quit") {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  dispose(); 
+	}});
+      }
       this.setSize(width, height);
       //this.setResizable(false);
       setVisible(true); 
       if (applet != null) applet.start(); 
     }
-    // Closes the frame and dispose, force exit if all frames are closed.
+    // Closes the frame and dispose, force quit if all frames are closed.
     public void dispose() {
+      System.err.println("Dispose the "+frames.size()+"th frame");
       if (applet != null) { applet.stop(); applet.destroy(); }
-      super.dispose(); System.gc(); frames--; if (frames == 0) System.exit(0);
+      super.dispose(); System.gc(); frames.remove(applet); if (frames.size() == 0) System.exit(0);
     } 
-    private Action close = null;
+    private boolean quit = false;
     // Defines a listener for focus, iconification and dispose.
     {
       addWindowListener(new WindowListener() {
 	  public void windowOpened(WindowEvent e) { e.getWindow().requestFocus();  }
-	  public void windowClosing(WindowEvent e) { if (close != null) close.actionPerformed(new ActionEvent(this, 0, "close")); dispose(); }
+	  public void windowClosing(WindowEvent e) { if (quit) dispose(); }
 	  public void windowClosed(WindowEvent e) { }
 	  public void windowIconified(WindowEvent e) { if (applet != null) applet.stop(); }
 	  public void windowDeiconified(WindowEvent e) { if (applet != null) applet.start(); }
@@ -420,19 +434,15 @@ public class Utils { private Utils() { }
 	  public void windowDeactivated(WindowEvent e) { }
 	});
     }  
-    // Defines an exit on CTRL+Q input code.
-    AbstractAction exit = new AbstractAction("exit") {
-	private static final long serialVersionUID = 1L;
-	public void actionPerformed(ActionEvent e) { 
-	  System.err.println("Dispose the "+frames+"th frame");
-	  dispose();
-	}};
-    {
-      getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK), "exit");
-      getRootPane().getActionMap().put("exit", exit);
-    }
   }
-  private static int frames = 0;
+  /** Opens an applet or panel in a standalone frame.
+   *  applet The applet or panel to close.
+   */
+  public static void unshow(Component applet) {
+    if (frames.containsKey(applet))
+      ((JFrame) frames.get(applet)).dispose();
+  }
+  private static HashMap<Component,JFrame> frames = new HashMap<Component,JFrame>();
 
 
   /** Dumps the system properties. */

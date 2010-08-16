@@ -31,16 +31,28 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
 
   /** The Html Display pane. */
   private JTextPane pane;
-  { 
+
+  /** Resets the display a a given size.
+   * @param width Windows withh.
+   * @param height Windows height.
+   * @return This, allowing to use the <tt>new HtmlDisplay().reset(..)</tt> construct. 
+   */
+  public HtmlDisplay reset(int width, int height) { 
+    removeAll();
     pane = new JTextPane();
-    pane.setSize(1024, 2000);
+    pane.setSize(width, height);
     pane.setEditable(false);
     pane.setContentType("text/html");
     pane.addHyperlinkListener(new HyperlinkListener() {
 	public void hyperlinkUpdate(HyperlinkEvent e) { if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) { load(e.getDescription()); } } });
     JScrollPane spane = new JScrollPane(pane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    spane.setSize(1024, 800);
+    spane.setSize(width, height);
     add(spane);
+    revalidate();
+    return this;
+  }
+  {
+    reset(1024, 800);
   }
 
   /** Sets the HTML text to show and return this.

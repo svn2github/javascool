@@ -301,36 +301,37 @@ public class Main extends JApplet { /**/public Main() { }
   *Its ask to user by a JDialog if he wants to save, not save or cancel closing.
   */
   private boolean exitSaveFile(){
-	int result = 1000;
-	if(activity.getText().length() == 0) {
-		result=1;
+    int result = 1000;
+    if(activity.getText().length() == 0) {
+      result = 1;
     } else {
-		JOptionPane d = new JOptionPane();
-		result = 
+      JOptionPane d = new JOptionPane();
+      result = 
 	d.showConfirmDialog(Main.this, 
 			    "Voulez-vous enregistrer avant de fermer ?", 
 			    "Sauvgarder avant de fermer", 
 			    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-	}
-	if(result==0)
-	{
-		pleaseSaveFile();
-		return true;
     }
-    else if(result==2){return false;}
-    else if(result==1){return true;}
-    else{return false;}
+    if(result == 0) {
+      pleaseSaveFile();
+      return true;
+    } else if(result == 2){
+      return false;
+    } else if(result == 1){
+      return true;
+    } else{ 
+      return false;
+    }
   }
   private Runnable showHelp = new Runnable() { public void run() {
-	if(helpactiv){
-		delTab("Aide");
-		helpactiv=false;
-	}
-	else{
-		addTab("Aide", "", aide);
-		showTab("Aide"); 
-	helpactiv=true;
-	}
+    if(helpactiv) {
+      delTab("Aide");
+      helpactiv = false;
+    } else {
+      addTab("Aide", "", aide);
+      showTab("Aide"); 
+      helpactiv = true;
+    }
   }};
   private Runnable nothing = new Runnable() { public void run() {
     getParent().setSize(800,600);
@@ -357,14 +358,12 @@ public class Main extends JApplet { /**/public Main() { }
 	public void actionPerformed(ActionEvent e) { 
 	  saveFile.run();
 	}});
-// TODO Fix the CRL+H To show help
-//	getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_H, KeyEvent.CTRL_MASK), "help");
-//    getRootPane().getActionMap().put("help",  new AbstractAction("help") {
-//	private static final long serialVersionUID = 1L;
-//	public void actionPerformed(ActionEvent e) { 
-//	  openFile.run();
-// Open the tabbed oh hel when help
-//	}});
+    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_H, KeyEvent.CTRL_MASK), "help");
+    getRootPane().getActionMap().put("help",  new AbstractAction("help") {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  showHelp.run();
+	}});
     getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_MASK), "validate");
     getRootPane().getActionMap().put("validate",  new AbstractAction("validate") {
 	private static final long serialVersionUID = 1L;
@@ -377,7 +376,7 @@ public class Main extends JApplet { /**/public Main() { }
 	public void actionPerformed(ActionEvent e) { 
 	  System.err.println("Bye guy !!!!");
 	  if(exitSaveFile())
-	  {getRootPane().getActionMap().get("quit").actionPerformed(e);}
+	    Utils.unshow(Main.this);
 	}});
   }
   /** This is the runnable called when the ^L keystroke is called. */
@@ -482,6 +481,6 @@ public class Main extends JApplet { /**/public Main() { }
     Main main = new Main();
     if (usage.length >= 1) main.setActivity(usage[0]);
     if (usage.length >= 2) main.setFile(usage[1]);
-    Utils.show(main, "Java'Scool v3.0");
+    Utils.show(main, "Java'Scool v3.0", false);
   }
 }
