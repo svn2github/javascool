@@ -14,4 +14,7 @@ public interface Editor {
 
   /** Gets the edited text. */
   public String getText();
+
+  /** Checks if the text has been modified. */
+  public boolean isModified();
 }

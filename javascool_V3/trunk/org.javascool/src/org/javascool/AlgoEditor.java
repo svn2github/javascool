@@ -202,6 +202,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
       } else {
 	model.insertNodeInto(n, (DefaultMutableTreeNode) root.getChildAt(0), c);
       }
+      modified = false;
     }
     model.nodeChanged((DefaultMutableTreeNode) root.getChildAt(0));		
     tree.scrollPathToVisible(new TreePath(root.getChildAt(0)));
@@ -211,6 +212,8 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
     for(int c = 0; c < pml.getCount(); c++) node.add(setText(pml.getChild(c)));
     return node;
   }
+  public boolean isModified() { return modified; } private boolean modified = false;
+
   
   /** Returns the tree as a String using the Java syntax. */
   public String getJavaSource() {
@@ -335,6 +338,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
     pane.add(new JButton(new AbstractAction("Valider") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
+	  modified = true;
 	  setDefaultValue(); if (((String) name.getSelectedItem()).length() == 0) name.setSelectedItem("VARIABLE_SANS_NOM");
 	  String label = type.getSelectedItem()+" "+name.getSelectedItem()+" <- "+value.getSelectedItem()+";";
 	  for(int l = label.length(); l < 80; l++) label += " ";
@@ -395,6 +399,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
     pane.add(new JButton(new AbstractAction("Valider") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
+	  modified = true;
 	  if (((String) expression.getSelectedItem()).length() == 0) expression.setSelectedItem("VRAI");
 	  String label = construct.getSelectedItem()+" ("+expression.getSelectedItem()+")";
 	  for(int l = label.length(); l < 80; l++) label += " ";
@@ -468,6 +473,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
     pane.add(new JButton(new AbstractAction("Valider") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
+	  modified = true;
 	  if (((String) argument.getSelectedItem()).length() == 0) argument.setSelectedItem("\"???\"");
 	  String label = function.getSelectedItem()+" ("+argument.getSelectedItem()+");";
 	  for(int l = label.length(); l < 80; l++) label += " ";
@@ -536,6 +542,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
       clipboard = copy(node);
       System.out.println(action + " : " + getText(clipboard, 0) + " == " + getText(node, 0));
     } else if ("Couper/Supprimer".equals(action)) {
+      modified = true;
       DefaultMutableTreeNode node = getCurrentNode(false);
       if (node == root.getChildAt(0)) {
 	dialog.show(Jdialog, "supprimer");
@@ -545,6 +552,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	System.out.println(action + " : " + getText(clipboard, 0));
       }
     } else if ("Coller".equals(action)) {
+      modified = true;
       DefaultMutableTreeNode node = getCurrentNode(true);
       if (node == null) {
 	showMessage("Selectionner un position avant de coller");

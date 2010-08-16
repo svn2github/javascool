@@ -82,7 +82,8 @@ public class SourceEditor extends JPanel implements Widget,Editor {
 
   // Implements the org.javascool interface
   public String getText() { return pane.getText(); }
-  public void setText(String text) { pane.setText(text); pane.setCaretPosition(0); doColorize(0, 0); }
+  public void setText(String text) { pane.setText(text); pane.setCaretPosition(0); doColorize(0, 0); modified = false; }
+  public boolean isModified() { return modified; } private boolean modified = false;
 
   // Reference to this document with its menu-bar and contained
   private JMenuBar bar; private JTextPane pane; private JScrollPane scroll; private StyledDocument doc;
@@ -472,14 +473,14 @@ public class SourceEditor extends JPanel implements Widget,Editor {
 	public void keyPressed(KeyEvent e) {}
 	public void keyTyped(KeyEvent e) {}
 	// Here colorization is required in a window {-50 .. 50} around the caret position
-	public void keyReleased(KeyEvent e) { doColorize(pane.getCaretPosition() - 50, 100); }
+	public void keyReleased(KeyEvent e) { modified = true; doColorize(pane.getCaretPosition() - 50, 100); }
       }); 
     // Adds the listener which is going to colorize after the document is modified
     doc.addDocumentListener(new DocumentListener() {
-	public void changedUpdate(DocumentEvent e) { }
+	public void changedUpdate(DocumentEvent e) { modified = true; }
 	// Here colorization must be postponed and globalized to avoid write lock and offset/length incoherence
-	public void insertUpdate(DocumentEvent e) { recolorize = true ; }
-	public void removeUpdate(DocumentEvent e) { recolorize = true ; }
+	public void insertUpdate(DocumentEvent e) { modified = true; recolorize = true ; }
+	public void removeUpdate(DocumentEvent e) { modified = true; recolorize = true ; }
       }); 
   }
 
