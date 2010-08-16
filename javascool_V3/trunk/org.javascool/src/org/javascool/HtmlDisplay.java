@@ -38,7 +38,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     pane.addHyperlinkListener(new HyperlinkListener() {
 	public void hyperlinkUpdate(HyperlinkEvent e) { if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) { load(e.getDescription()); } } });
     JScrollPane spane = new JScrollPane(pane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    spane.setSize(1024, 400);
+    spane.setSize(1024, 800);
     add(spane);
   }
 
@@ -66,7 +66,6 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
       System.err.println("HtmlDisplay #"+urls.current+" : "+urls.current());
       return reset(Utils.loadString(urls.current().toString()));
     } catch(Exception e) {
-      e.printStackTrace();
       return reset(e.toString());
     }
   }
@@ -81,10 +80,14 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     public boolean empty() { return size() == 0; }
     /** Pushs an URL in the stack. */
     public void push(URL url) { setSize((++current)+1); set(current, url); }
+    /** Checks if there is a previous page. */
+    public boolean hasPrev() { return current > 0; }
     /** Returns the previous URL, if any. */
-    public URL prev() { if(current > 0) current--; return current(); }
+    public URL prev() { if(hasPrev()) current--; return current(); }
+    /** Checks if there is a next page. */
+    public boolean hasNext() { return current < size() - 1; }
     /** Returns the next URL, if any. */
-    public URL next() { if(current < size() - 1) current++; return current(); }
+    public URL next() { if (hasNext()) current++; return current(); }
   }
   private Stack urls = new Stack();
 
@@ -94,13 +97,13 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     pane.getActionMap().put("backward",  new AbstractAction("backward") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  if(urls.prev() != null) load(urls.current().toString(), false);
+	  if(urls.hasPrev()) load(urls.prev().toString(), false);
 	}});
     pane.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_MASK), "forward");
     pane.getActionMap().put("forward",  new AbstractAction("forward") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  if(urls.next() != null) load(urls.current().toString(), false);
+	  if(urls.hasNext()) load(urls.next().toString(), false);
 	}});
   }
   
@@ -108,7 +111,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
    * @param usage <tt>java org.javascool.HtmlDisplay location</tt>
    */
   public static void main(String[] usage) {
-    if (usage.length > 0) Utils.show(new HtmlDisplay().load(usage[0]), "Html3.2 browser", 1024, 400);
+    if (usage.length > 0) Utils.show(new HtmlDisplay().load(usage[0]), "Html3.2 browser", 1024, 800);
   }
 }
 
