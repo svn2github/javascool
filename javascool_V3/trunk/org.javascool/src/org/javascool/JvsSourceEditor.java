@@ -19,7 +19,7 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
   /** Sets the insertion menu for a given proglet.
    * @param proglet The proglet currently used.
    */
-  void setProglet(String proglet) {
+  public void setProglet(String proglet) {
     resetInsertion();
     addInsertion("void main",   "void main() {\n  \n}\n", 16);
     addInsertion("if",          "  if() {\n  \n  } else {\n  \n  }", 5);

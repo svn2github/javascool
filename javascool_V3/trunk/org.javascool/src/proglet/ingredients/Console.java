@@ -42,15 +42,15 @@ public class Console implements org.javascool.Proglet { private Console() { }
       setBackground(Color.WHITE); setPreferredSize(new Dimension(400, 500));
       out = new JEditorPane(); out.setEditable(false);  out.setContentType("text/html; charset=UTF-8");
       pane = new JScrollPane(); pane.setViewportView(out); pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); add(pane);
-      pane.setBorder(BorderFactory.createTitledBorder("output")); 
+      pane.setBorder(BorderFactory.createTitledBorder("Sortie")); 
       JPanel bar = new JPanel(); add(bar, BorderLayout.NORTH);    
-      prompt = new JLabel("input>"); bar.add(prompt);
+      prompt = new JLabel("Entrée > "); bar.add(prompt);
       in = new JTextField(); in.setEditable(false); in.setPreferredSize(new Dimension(300, 30)); bar.add(in);    
       in.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
 	// Reads the input text and reset the interface
 	input = ((JTextField) e.getSource()).getText(); in.setEditable(false);
       }});
-      JButton clear = new JButton("clear output"); add(clear, BorderLayout.SOUTH);
+      JButton clear = new JButton("<html><body><center>Effacer<br>la<br>sortie</center></body></html>"); add(clear, BorderLayout.EAST);
       clear.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
 	clear();
       }});
@@ -70,7 +70,7 @@ public class Console implements org.javascool.Proglet { private Console() { }
     /** Clears the output. */
     public void clear() {
       out.setText(output = "");
-      prompt.setText("input>"); 
+      prompt.setText("Entrée > "); 
       in.setText(""); 
     }
 
@@ -88,10 +88,10 @@ public class Console implements org.javascool.Proglet { private Console() { }
       } catch(Exception e) {
 	in.setText("");
 	in.setEditable(false); 
-	prompt.setText("input>"); 
+	prompt.setText("Entrée > "); 
 	throw new RuntimeException("Program stopped !");
       }
-      prompt.setText("input>"); 
+      prompt.setText("Entrée > "); 
       return input == null ? "" : input;
     }
     private JLabel prompt; private JTextField in; private String input, output = "";

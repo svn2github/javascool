@@ -301,6 +301,7 @@ public class Main extends JApplet { /**/public Main() { }
       public String getTitle() { return "Démonstration de l'éditeur Jvs"; }
       public void init(Main main) {
       editor = new JvsSourceEditor();
+      ((JvsSourceEditor)editor).setProglet("ingredients");
 	main.addTab("Jvs Editor", "",(JPanel) editor);
 	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
 	addTool("Compile", "org/javascool/doc-files/icones16/compil.png", cmpJvs);
