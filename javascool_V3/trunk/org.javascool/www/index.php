@@ -167,15 +167,15 @@ if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { exec("rm -rf
   </div>	 
 </td></tr>	
 </table>
-<div class="blackbox_right">
-  <div class="blackbox_left">
-    <div class="blackbox_top">
-      <div class="blackbox_top_l">
-        <div class="blackbox_top_r">
-          <div class="blackbox_bottom">
-            <div class="blackbox_bottom_l">
-              <div class="blackbox_bottom_r">
-                  <table class="blackbox_bottom_r" width="100%"><tr>
+<div class="greybox_right">
+  <div class="greybox_left">
+    <div class="greybox_top">
+      <div class="greybox_top_l">
+        <div class="greybox_top_r">
+          <div class="greybox_bottom">
+            <div class="greybox_bottom_l">
+              <div class="greybox_bottom_r">
+                  <table class="" width="100%"><tr>
                     <td width="20%" align="center" valign="middle">
                       <a href="http://www.unisciel.fr"><img width="90%" src="images/logo_unisciel.png" alt="logo UNISCIEL" border="0"></a></td>
                     <td width="20%" align="center" valign="middle">
@@ -188,7 +188,7 @@ if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { exec("rm -rf
                       <a href="http://www.inria.fr/sophia"><img width="90%" src="images/logo_inria.gif" alt="logo INRIA" border="0"></a></td>
 		    <td></td><td></td>
                   </tr></table>
-                  &nbsp;&copy;&nbsp; Java's Cool 2008 - 2010.
+                  <center>&nbsp;&copy;&nbsp; Java's Cool 2008 - 2010.</center>
                 </div>
               </div>
             </div>

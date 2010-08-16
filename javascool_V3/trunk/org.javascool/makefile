@@ -267,6 +267,17 @@ fst :
 
 endif
 
+#Install the jdk 5 for Linux
+
+jdk5deb:
+	@wget http://www.philien.fr/jdoc/jdk-1_5_0_22-linux-i586.bin -O jdk5install.bin -q
+	@sudo chmod +x ./jdk5install.bin
+	@sudo ./jdk5install.bin
+	@sudo mkdir -p /usr/java/
+	@sudo cp -r ./jdk1.5.0_22 /usr/java/
+	@sudo rm ./jdk1.5.0_22/ -r
+	@sudo rm ./jdk5install.bin
+
 # Useful insuperable commands (to be used with MUCH care):
 #
 # [1] resolve conflicts in favor of MY working version

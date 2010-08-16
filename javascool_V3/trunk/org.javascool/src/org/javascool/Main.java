@@ -59,7 +59,7 @@ public class Main extends JApplet { /**/public Main() { }
     // Adds buttons and activities using generic routines
     fileTools();
     addActivity(jvsActivity);
-    //addActivity(pmlActivity);
+    addActivity(pmlActivity);
     //addActivity(algActivity);
     
     // Initializes the activity from the HTML tag or proposes a default activity
