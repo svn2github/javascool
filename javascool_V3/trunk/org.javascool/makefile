@@ -220,8 +220,8 @@ wref: pub
 # Check the site log
 
 wlog:
-	@firefox http://javascool.gforge.inria.fr/log
-#	@firefox https://www.google.com/analytics
+#	@firefox http://javascool.gforge.inria.fr/log
+	@firefox https://www.google.com/analytics
 
 #####################################################################################################################################
 
@@ -249,7 +249,7 @@ ifeq ($(USER), vthierry)
 wv3 :
 	@(echo '<script>' ; echo 'location.replace("./v3/index.php");' ; echo '</script>') > tmp.htm
 	@rsync --rsh='ssh -C' tmp.htm scm.gforge.inria.fr:/home/groups/javascool/htdocs/index.html ; rm tmp.htm
-	@firefox http:javascool.gforge.inria.fr
+	@firefox http://javascool.gforge.inria.fr
 
 # This is used to test www/index.php in local mode
 
