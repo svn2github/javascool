@@ -408,6 +408,7 @@ public class Main extends JApplet { /**/public Main() { }
     }
   }};
    private Runnable runJvs = new Runnable() { public void run() {
+     proglet.ingredients.Console.clear();
      Jvs2Java.load(file.getPath());
      Jvs2Java.run(true);
   }};
