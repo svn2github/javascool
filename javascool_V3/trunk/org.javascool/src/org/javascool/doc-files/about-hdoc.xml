@@ -1,0 +1,44 @@
+<div title="JavaScool documentation">
+  <div title="Introduction">
+    <p>Les documentations de JavaScool sont écrites en syntaxe XML (voir en PML si souhaité) et utilisent les <l link="about-html.htm" text="structures logiques HML"/>.</p>
+    <p>Les définitions spécifiques suivantes sont introduites.</p>
+  </div>
+
+  <div title="Décrire une page HML">
+    <p>Les fichiers de documentation de JavaScool ne sont pas des pages mais des textes insérés dans des pages: 
+    ils ne sont pas encapsulés par le tag <r>page</r> mais <r>div</r>.</p>
+  </div>
+  
+  <div title="Structurer le texte en divisions">
+    <p>Les sections  (<r>{div class='..' </r>) de classes prédéfinies suivantes sont disposnibles:
+    <div class="table">
+      <p><p><r>{div class=sujet</r></p><p>Encapsule un sujet avec, selon le besoin, les sections "objectif", "intro", "works", "notes" dans cet ordre.</p></p>
+      <p><p><r>{div class=objectif</r></p><p>Section "Objectif"</p></p>
+      <p><p><r>{div class=intro</r></p><p>Section "Introduction"</p></p>
+      <p><p><r>{div class=works</r></p><p>Section "Travail proposé"</p></p>
+      <p><p><r>{div class=notes</r></p><p>Section "Remarques"</p></p> 
+      <p><p><r>{div class=code</r></p><p>Qui encapsule les portions de code montrées en exemple</p></p>
+      <p><p><r>{div class=margin</r></p><p>Qui des notes en marge</p></p>
+    </div></p>
+  </div>
+
+  <div title="Enrichir le texte en modifiant son aspect">
+    <p>Les constructions suivantes sont prédéfinies et permettent d'éditer des portions de code de manière colorée:
+    <div class="table">
+      <p><p><r>{r</r></p><p>Mot prédéfini dans le langage ou dans la construction, il est à recopier pour utiliser l'élément.</p></p>
+      <p><p><r>{n</r></p><p>Nom d'une construction logique ou d'un de ses attributs</p></p>
+      <p><p><r>{v</r></p><p>Valeur textuelle d'une variable ou d'un attribut mise entre "<v>..</v></p></p>
+      <p><p><r>{m</r></p><p>Ligne de commentaire qui documente le source </p></p>
+      <p><p><r>{T} </r></p><p>Force une tabulation pour la mise en page du code</p></p>
+    </div></p>
+  </div>
+
+  <div title="Créer de l'«hyper-texte» en ajoutant des objets et des liens">
+    <p>Les constructions suivantes sont prédéfinies:
+    <div class="table">
+      <p><p><r>{l class=javascool}</r></p><p>Entitée permettant de citer <l class="javasccol"/> avec un lien vers le site.</p></p>
+      <p><p><r>{l class=proglet link=<i>proglet-name</i>}</r></p><p>Insertion d'une applete de démonstration de la proglet dans la page, taille [560x720]</p></p>
+      <p><p><r>{l class=note link=<i>number</i>}</r></p><p>Liens vers une note qui à un id numérique fixé par l'utilisateur.</p></p>
+    </div></p>
+  </div>
+</div>
