@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import javax.swing.BorderFactory;
 
 // Used for the read/write
+import javax.swing.JToolBar;
 import javax.swing.JLabel;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
@@ -42,9 +43,9 @@ public class Console implements org.javascool.Proglet { private Console() { }
       setBackground(Color.WHITE); setPreferredSize(new Dimension(400, 500));
       out = new JEditorPane(); out.setEditable(false);  out.setContentType("text/html; charset=UTF-8");
       pane = new JScrollPane(); pane.setViewportView(out); pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); add(pane);
-      pane.setBorder(BorderFactory.createTitledBorder("Sortie")); 
-      JPanel bar = new JPanel(); add(bar, BorderLayout.NORTH);    
-      prompt = new JLabel("Entrée > "); bar.add(prompt);
+      pane.setBorder(BorderFactory.createTitledBorder("Affichage de la sortie")); 
+      JToolBar bar = new JToolBar(); add(bar, BorderLayout.NORTH);    
+      prompt = new JLabel(label); bar.add(prompt);
       in = new JTextField(); in.setEditable(false); in.setPreferredSize(new Dimension(300, 30)); bar.add(in);    
       in.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
 	// Reads the input text and reset the interface
@@ -70,7 +71,7 @@ public class Console implements org.javascool.Proglet { private Console() { }
     /** Clears the output. */
     public void clear() {
       out.setText(output = "");
-      prompt.setText("Entrée > "); 
+      prompt.setText(label); 
       in.setText(""); 
     }
 
@@ -88,13 +89,13 @@ public class Console implements org.javascool.Proglet { private Console() { }
       } catch(Exception e) {
 	in.setText("");
 	in.setEditable(false); 
-	prompt.setText("Entrée > "); 
-	throw new RuntimeException("Program stopped !");
+	prompt.setText(label); 
+	throw new RuntimeException("Programme arreté !");
       }
-      prompt.setText("Entrée > "); 
+      prompt.setText(label); 
       return input == null ? "" : input;
     }
-    private JLabel prompt; private JTextField in; private String input, output = "";
+    private JLabel prompt; private String label = "Entrée au clavier > "; private JTextField in; private String input, output = "";
   }
 
   // Redirect the System.out to the console

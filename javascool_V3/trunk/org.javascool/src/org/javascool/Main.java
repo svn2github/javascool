@@ -53,9 +53,9 @@ public class Main extends JApplet { /**/public Main() { }
   JTabbedPane tabbedPane = new JTabbedPane();
   JComboBox actList = new JComboBox();
   String aide = new String(Utils.loadString("org/javascool/doc-files/helpdoc/index.html"));
-  String actuproglet=new String();
-  private Boolean notfirstrun=false;
-  private boolean helpactiv=false;
+  String actuproglet = new String();
+  private Boolean notfirstrun = false;
+  private boolean helpactiv = false;
   /**/public void init() {
     JPanel toppane = new JPanel();
     toppane.setLayout(new BorderLayout());
@@ -74,7 +74,7 @@ public class Main extends JApplet { /**/public Main() { }
     
     // Initializes the activity from the HTML tag or proposes a default activity
     try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity("Démonstration de l'éditeur Jvs");}
-    actuproglet="ingredients";
+    actuproglet = "ingredients";
 
   }
   /** Adds a button to the toolbar.
@@ -86,8 +86,6 @@ public class Main extends JApplet { /**/public Main() { }
     JButton button = icon == null ? new JButton(label) : new JButton(label, Utils.getIcon(icon));
     button.addActionListener(alistener);
     tools.add(button);
-    //if(mnemonic)
-    //.setMnemonic(KeyEvent.VK_A);
     buttons.put(label, button);
     actions.put(label, action);
     tools.revalidate();
@@ -297,9 +295,7 @@ public class Main extends JApplet { /**/public Main() { }
     saveFile.run();
     fcTitle = null;
   }
-  /**Before exit its allow to save file.
-  *Its ask to user by a JDialog if he wants to save, not save or cancel closing.
-  */
+  /** Before exit, allows to save the file. */
   private boolean exitSaveFile(){
     int result = 1000;
     if(activity.getText().length() == 0) {
@@ -467,9 +463,6 @@ public class Main extends JApplet { /**/public Main() { }
       description = s;
     }
   }
-
-
-
 
   /** Used to run a javasccol v3 as a standalone program. 
    * <p>- Starts a JavaScool "activity" which result is to be stored in a "file-name".</p>
