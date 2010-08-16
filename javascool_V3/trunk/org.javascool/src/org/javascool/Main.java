@@ -46,6 +46,7 @@ public class Main extends JApplet { /**/public Main() { }
   JTabbedPane tabbedPane = new JTabbedPane();
   JComboBox actList = new JComboBox();
   String aide=new String(Utils.loadString("org/javascool/doc-files/helpdoc/index.html"));
+  String actuproglet=new String();
   private Boolean notfirstrun=false;
   /**/public void init() {
     JPanel toppane = new JPanel();
@@ -59,11 +60,13 @@ public class Main extends JApplet { /**/public Main() { }
     // Adds buttons and activities using generic routines
     fileTools();
     addActivity(jvsActivity);
+    addActivity(tortueActivity);
     addActivity(pmlActivity);
     //addActivity(algActivity);
     
     // Initializes the activity from the HTML tag or proposes a default activity
-    try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity("Démonstration de l'éditeur Jvs"); }
+    try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity("Démonstration de l'éditeur Jvs");}
+    actuproglet="ingredients";
 
   }
   /** Adds a button to the toolbar.
@@ -306,7 +309,7 @@ public class Main extends JApplet { /**/public Main() { }
 	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
 	addTool("Compile", "org/javascool/doc-files/icones16/compil.png", cmpJvs);
       }
-    };
+	};
   private Runnable cmpJvs = new Runnable() { public void run() {
     if(file==null)
       pleaseSaveFile();
@@ -331,6 +334,16 @@ public class Main extends JApplet { /**/public Main() { }
    private Runnable stpJvs = new Runnable() { public void run() {
      Jvs2Java.run(false);
   }};
+    private Activity tortueActivity = new Activity() {
+      public String getTitle() { return "Tortue"; }
+      public void init(Main main) {
+      editor = new JvsSourceEditor();
+      ((JvsSourceEditor)editor).setProglet("tortuelogo");
+	main.addTab("Jvs Editor", "",(JPanel) editor);
+	main.addTab("Console", "", Jvs2Java.getPanel("tortuelogo"));
+	addTool("Compile", "org/javascool/doc-files/icones16/compil.png", cmpJvs);
+      }
+    };
 
   private Activity pmlActivity = new Activity() {
       public String getTitle() { return "Démonstration de l'éditeur Pml"; }
