@@ -160,6 +160,15 @@ public class SourceEditor extends JPanel implements Widget,Editor {
 
     }
 
+    // Adds a quit interface
+    AbstractAction quit = new AbstractAction("Quit") {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent evt) { 
+	  System.err.println(" No quit !");
+	}
+      };
+    //addBinding(pane, KeyEvent.VK_Q, quit);
+
     // Defines the view menu
     {
       JMenu menu = new JMenu();

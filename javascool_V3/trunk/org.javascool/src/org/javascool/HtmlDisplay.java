@@ -29,6 +29,7 @@ import java.awt.event.KeyEvent;
 public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDisplay() { }
   private static final long serialVersionUID = 1L;
 
+  /** The Html Display pane. */
   private JTextPane pane;
   { 
     pane = new JTextPane();
@@ -70,10 +71,10 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
       return reset(e.toString());
     }
   }
-  // Defines the URL backward/forward mechanism
+  /** Defines the URL backward/forward mechanism. */
   private static class Stack extends Vector<URL> {
     private static final long serialVersionUID = 1L;
-    // Current index in the URL vector
+    /** Current index in the URL vector. */
     private int current = -1;
     /** Returns the current URL, if any. */
     public URL current() { return current < 0 ? null : get(current); }
@@ -90,6 +91,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     /** Returns the next URL, if any. */
     public URL next() { if (hasNext()) current++; return current(); }
   }
+  /** The URL stack. */
   private Stack urls = new Stack();
 
   // Defines the backward/forward key-stroke

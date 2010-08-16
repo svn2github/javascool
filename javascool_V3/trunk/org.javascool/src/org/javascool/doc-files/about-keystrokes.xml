@@ -18,4 +18,9 @@
     <p><p>Control Y</p><p>(redo)</p><p>Restaurer la dernière commande d'édition</p></p>
   </p>
 
+  <p class="table" title="Navigateur de documentation">
+    <p><p>Control B</p><p>(backward)</p><p>Revenir une page en arrière</p></p>
+    <p><p>Control F</p><p>(forward)</p><p>Avancer une page en avant</p></p>
+  </p>
+
 </p>

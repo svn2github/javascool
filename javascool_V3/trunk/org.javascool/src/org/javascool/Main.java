@@ -28,6 +28,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.lang.Object;
 
+// Used to manage keystroke
+import javax.swing.KeyStroke;
+import javax.swing.JFrame;
+import javax.swing.JComponent;
+import javax.swing.AbstractAction;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 // Used to register elements
 import java.util.HashMap;
@@ -45,7 +52,7 @@ public class Main extends JApplet { /**/public Main() { }
   JToolBar tools = new JToolBar();
   JTabbedPane tabbedPane = new JTabbedPane();
   JComboBox actList = new JComboBox();
-  String aide=new String(Utils.loadString("org/javascool/doc-files/helpdoc/index.html"));
+  String aide = new String(Utils.loadString("org/javascool/doc-files/helpdoc/index.html"));
   String actuproglet=new String();
   private Boolean notfirstrun=false;
   /**/public void init() {
@@ -187,8 +194,11 @@ public class Main extends JApplet { /**/public Main() { }
   private ActionListener alistener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == actList) {
-	  if(notfirstrun){pleaseSaveFile();}
-	  else{notfirstrun=true;}
+	  if(notfirstrun) { 
+	    pleaseSaveFile(); 
+	  } else { 
+	    notfirstrun = true;
+	  }
 	  setActivity((String) ((JComboBox) e.getSource()).getSelectedItem());
 	} else {
 	  actions.get(((JButton) e.getSource()).getText()).run();
@@ -197,9 +207,9 @@ public class Main extends JApplet { /**/public Main() { }
     };
 
   // [2] File Open/Save management
-  protected SourceEditor se = new SourceEditor();
-  protected JFileChooser fc = new JFileChooser();
-  protected String fcTitle = null;
+  private SourceEditor se = new SourceEditor();
+  private JFileChooser fc = new JFileChooser();
+  private String fcTitle = null;
   private File file = null;
   private boolean checksave = true;
   private boolean verisave = true;
@@ -213,7 +223,8 @@ public class Main extends JApplet { /**/public Main() { }
   public String returnastring(String toreturn){return toreturn;};
   /** Load a file. */
   public void setFile(String filename) {
-    try { activity.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
+    file = new File(filename);
+    activity.setText(Utils.loadString(file.getPath()));
   }
   private Runnable openFile = new Runnable() { public void run() {
     int result = 1000;
@@ -230,7 +241,7 @@ public class Main extends JApplet { /**/public Main() { }
     if(result == 0) {
       checksave=false;
       saveFile.run();
-      checksave=true;
+      checksave = true;
       if(verisave == false) {
 	return;
       }
@@ -258,10 +269,10 @@ public class Main extends JApplet { /**/public Main() { }
     if(file == null) {
       fc.setCurrentDirectory(new File(System.getProperty("user.dir")));
       int out=fc.showSaveDialog(Main.this);
-      if (out==0) {
+      if (out == 0) {
 	file = fc.getSelectedFile();
 	Utils.saveString(file.getPath(), activity.getText());
-	verisave=true;
+	verisave = true;
       } else {
         verisave = false;
       }
@@ -273,10 +284,10 @@ public class Main extends JApplet { /**/public Main() { }
       if (out == 0) {
 	file = fc.getSelectedFile();
 	Utils.saveString(file.getPath(), activity.getText());
-	verisave=true;
+	verisave = true;
       } 
       Utils.saveString(file.getPath(), activity.getText());
-      verisave=true;
+      verisave = true;
     }
   }};
   private void pleaseSaveFile() {
@@ -297,22 +308,51 @@ public class Main extends JApplet { /**/public Main() { }
     addTool("Aide", "org/javascool/doc-files/icones16/help.png", showHelp);
     addToolSeparator();
   }
-
+  // Defines the key-stroke
+  {
+    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_MASK), "open");
+    getRootPane().getActionMap().put("open",  new AbstractAction("open") {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  for(Object action : getRootPane().getActionMap().allKeys()) System.err.println("> A = "+action);
+	  openFile.run();
+	}});
+    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK), "save");
+    getRootPane().getActionMap().put("save",  new AbstractAction("save") {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  saveFile.run();
+	}});
+    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_MASK), "validate");
+    getRootPane().getActionMap().put("validate",  new AbstractAction("validate") {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  if (validate != null) validate.run();
+	}});
+    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK), "quit");
+    getRootPane().getActionMap().put("quit",  new AbstractAction("quit") {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  System.err.println("Bye guy !!!!");
+	  // PREVOIR LES SAUVEGARDES ICI , , ,
+	  getRootPane().getActionMap().get("exit").actionPerformed(e);
+	}});
+  }
+  /** This is the runnable called when the ^L keystroke is called. */
+  private Runnable validate = null;
+  
   // [3] Defined activities.
 
   private Activity jvsActivity = new Activity() {
       public String getTitle() { return "Démonstration de l'éditeur Jvs"; }
       public void init(Main main) {
       editor = new JvsSourceEditor();
-      ((JvsSourceEditor)editor).setProglet("ingredients");
-	main.addTab("Jvs Editor", "",(JPanel) editor);
+	main.addTab("Jvs Editor", "", (JPanel) editor);
 	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
-	addTool("Compile", "org/javascool/doc-files/icones16/compil.png", cmpJvs);
+	addTool("Compile", "org/javascool/doc-files/icones16/compil.png", validate = cmpJvs);
       }
 	};
   private Runnable cmpJvs = new Runnable() { public void run() {
-    if(file==null)
-      pleaseSaveFile();
     if(verisave == true)
       Utils.saveString(file.getPath(), activity.getText());
     delTool("Exécuter");
