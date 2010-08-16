@@ -159,7 +159,7 @@ jdoc : jdochi jdocfolders jdoc/api/doc.tar.gz jdoc/base.tar.gz $(SRC) makefile $
 	@echo "> Delete tmp files ..."
 	@rm -rf `find $@ -name .svn` 
 	@echo "Fine, JDoc is now generated. Its size is `du -s -B 1048576 $@ | awk '{print $$1}'`Mbytes"
-	@echo "To open JDoc, open in your browser jdoc/index.html and Read The Fine Manuel (RTMF)"
+	@echo "To open JDoc, open in your browser jdoc/index.html and Read The Fine Manuel (RTFM)"
 
 jdochi:
 	@echo "                    JDoc Generator                      "

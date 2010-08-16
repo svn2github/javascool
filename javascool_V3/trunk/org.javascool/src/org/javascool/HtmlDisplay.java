@@ -55,6 +55,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
    * - Called when a link is clicked in the page.
    * @param location The HTML text location to show.
    * @return This, allowing to use the <tt>new HtmlDisplay().loads(..)</tt> construct.
+   * @param location Location of file to show
    */
   public HtmlDisplay load(String location) { 
     return load(location, true);
