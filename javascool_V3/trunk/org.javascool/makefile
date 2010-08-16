@@ -204,10 +204,13 @@ jdoc/base.tar.gz:
 
 pub: api wraz
 	@php -l www/*.php ; rm -f www/*~
-	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
+	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php -exclude javascool.jar www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
 	 2>&1 | grep -v '^rsync: failed to set'
 	@-rsync --rsh='ssh -C' www/index.php scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/.htindex.php
 	@ssh scm.gforge.inria.fr 'sh -c "cd /home/groups/javascool/htdocs/v3 ; cat .htindex.php > index.php ; rm .htindex.php"'
+
+jpub: 
+	@-rsync --rsh='ssh -C' www/javascool.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3
 
 # Clean the web cache
 
@@ -345,7 +348,8 @@ jdk5deb:
 #:: make cmp          : build the java classes'
 #:: make jar          : build the java jar'
 #:: make api          : build the java doc'
-#:: make pub          : publish the present release on the web site'
+#:: make pub          : publish the present document release on the web site'
+#:: make jpub         : publish the present javascool.jar release on the web site'
 #:
 #: [3] Development tools used.
 #:
