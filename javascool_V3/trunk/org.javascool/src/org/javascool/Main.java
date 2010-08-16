@@ -482,6 +482,6 @@ public class Main extends JApplet { /**/public Main() { }
     if (usage.length >= 1) main.setActivity(usage[0]);
     if (usage.length >= 2) main.setFile(usage[1]);
     Utils.show(main, "Java'Scool v3.0", false);
-    Utils.whereAreWe();
+    //Utils.whereAreWe();
   }
 }
