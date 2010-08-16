@@ -447,6 +447,6 @@ public class Utils { private Utils() { }
 
   /** Dumps the system properties. */
   public static void whereAreWe() {
-    System.err.println("System properties:"); for(Object p : System.getProperties().keySet()) System.out.println(" - "+p+" = "+System.getProperty((String) p));
+    System.err.println("System properties:"); for(Object p : System.getProperties().keySet()) System.err.println(" - "+p+" = "+System.getProperty((String) p));
   }
 }
