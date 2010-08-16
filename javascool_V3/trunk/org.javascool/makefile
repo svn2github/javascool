@@ -301,6 +301,14 @@ endif
 # - svn rm `svn status | grep '^!' | awk '{print $2}'` 
 #
 
+# MakeToolBar commands
+
+please : cmp
+	@lib/run.sh MakeToolBar
+
+done : 
+	@read cont
+
 #####################################################################################################################################
 #</pre><a name="readme"/><pre>
 
@@ -347,13 +355,14 @@ endif
 #::Development commands:
 #:: make v3           : run javascool'v3 from locally compiled clases
 #:: make j3           : run javascool'v3 from the constructed jar
-#:: make doc          : show the javadoc locally
+#:: make doc          : show the javadoc local bundle
 #:: make svn          : synchronize with the svn repository (update + commit)
 #:: make clean        : clean all intermediate files
-#:: make usage        : show the makefile usage
-#:: make what         : show the README information contains in this makefile
+#:: make usage        ; show the makefile usage
+#:: make what         ; show the README information contains in this makefile
+#:: make please       ; show a toolbar to run make actions
 #::System commands:
-#:: make jdoc         : to build the convenient Java and JavaScool doc bundle for local use
+#:: make jdoc         ; build the convenient Java and JavaScool doc bundle for local use
 #:: make cmp          : build the java classes
 #:: make jar          : build the java jar
 #:: make api          : build the java doc
@@ -362,10 +371,10 @@ endif
 #:: make wraz         : clears the web site cache
 #:: make wref         : checks the web site broken links
 #::Useful links:
-#:: jweb              : opens the javascool web site
-#:: wiki              : opens the javascool wiki
-#:: glog              : connects to google analytics
-#:: gref              : connects to google dashboard
+#:: make jweb         , opens the javascool web site
+#:: make wiki         , opens the javascool wiki
+#:: make glog         , connects to google analytics
+#:: make gref         , connects to google dashboard
 #:
 #: [3] Development tools used.
 #:
