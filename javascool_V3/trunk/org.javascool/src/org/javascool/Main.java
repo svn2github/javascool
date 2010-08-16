@@ -49,11 +49,13 @@ public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;
 
   // [1] Defines the main panel and defines how to edit the toolbar, actList and tabbedpane
-  JToolBar tools = new JToolBar();
-  JTabbedPane tabbedPane = new JTabbedPane();
-  JComboBox actList = new JComboBox();
-  String aide = new String(Utils.loadString("org/javascool/doc-files/helpdoc/index.html"));
-  String actuproglet = new String();
+  private JToolBar tools = new JToolBar();
+  private JTabbedPane tabbedPane = new JTabbedPane();
+  private JComboBox actList = new JComboBox();
+  // Q ?
+  private String aide = new String(Utils.loadString("org/javascool/doc-files/helpdoc/index.html"));
+  // Q ?
+  private String actuproglet = new String();
   private Boolean notfirstrun = false;
   private boolean helpactiv = false;
   /**/public void init() {

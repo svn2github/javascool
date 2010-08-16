@@ -1,7 +1,6 @@
 
 ifeq ($(USER), vthierry)
 
-#* Finir mise au point HtmlDisplay . . avec des boutons ?
 #* Activite algo: AlgoEditor + ViewSource (JvsSourceEditor en edit-false) + Console + Curve
 #* Activites : toutes les proglets et sujets 
 
