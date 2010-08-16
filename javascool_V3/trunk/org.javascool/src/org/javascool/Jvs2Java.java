@@ -99,7 +99,7 @@ public class Jvs2Java { private Jvs2Java() { }
 	}
       }
     }
-    return "\n"+text1;
+    return text1;
   }
 
   /** Translates a Jvs code source.
@@ -135,7 +135,7 @@ public class Jvs2Java { private Jvs2Java() { }
       }
       // Declares the proglet's core as a Runnable in the Applet
       // - defined as a MainV2 in order to be loaded in a java page as an executable applet.
-      head.append("public class "+jclass+ " extends org.javascool.MainV2 {");
+      head.append("public class "+jclass+ " extends org.javascool.Main {");
       head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");
       head.append("  static { Jvs2Java.runnable = new ProgletRunnableMain(); }");
       head.append("}");

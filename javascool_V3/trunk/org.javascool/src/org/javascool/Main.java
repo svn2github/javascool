@@ -219,6 +219,7 @@ public class Main extends JApplet { /**/public Main() { }
     filtre.addType("pml");
     filtre.setDescription("Fichiers JVS et PML");
     fc.setFileFilter(filtre);
+    fc.setCurrentDirectory(new File(System.getProperty("user.dir")));
   }
   public String returnastring(String toreturn){return toreturn;};
   /** Load a file. */
@@ -419,7 +420,8 @@ public class Main extends JApplet { /**/public Main() { }
       editor = new JvsSourceEditor();
       ((JvsSourceEditor)editor).setProglet("tortuelogo");
 	main.addTab("Jvs Editor", "",(JPanel) editor);
-	main.addTab("Console", "", Jvs2Java.getPanel("tortuelogo"));
+	main.addTab("Tortue", "", Jvs2Java.getPanel("tortuelogo"));
+	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
 	addTool("Compile", "org/javascool/doc-files/icones16/compil.png", cmpJvs);
       }
     };
