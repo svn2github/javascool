@@ -105,14 +105,18 @@ public class Main extends JApplet { /**/public Main() { }
   /** Adds a tab to the tabbed panel.
    * @param label Tab label.
    * @param icon Tab icon.
-   * @param pane Tab panel or Html text.
+   * @param pane Tab panel.
    */
   public void addTab(String label, String icon, JPanel pane) {
     tabbedPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
     tabs.put(label, pane);
     tabbedPane.revalidate();
   }
-  /**/public void addTab(String label, String icon, String text) {
+  /** Adds a tab to the tabbed panel.
+   * @param label Tab label.
+   * @param icon Tab icon.
+   * @param pane Tab Html textfor the pane in string.
+   */public void addTab(String label, String icon, String text) {
     addTab(label, icon, new HtmlDisplay().reset(text));
   }
   /** Removes a tab from the tabbed panel.
@@ -125,7 +129,7 @@ public class Main extends JApplet { /**/public Main() { }
       tabbedPane.revalidate();
     }
   }
-  /** Removes a tab from the tabbed panel.
+  /** Show a tab from the tabbed panel.
    * @param label Tab label.
    */
   public void showTab(String label) {
@@ -204,8 +208,8 @@ public class Main extends JApplet { /**/public Main() { }
     fc.setFileFilter(filtre);
   }
   public String returnastring(String toreturn){return toreturn;};
+  /** Load a file. */
   public void setFile(String filename) {
-    // A rendre compatblie avec mecanique de philien
     try { activity.setText(Utils.loadString((file = new File(filename)).getPath())); } catch(Exception e) { }
   }
   private Runnable openFile = new Runnable() { public void run() {
