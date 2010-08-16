@@ -62,10 +62,10 @@
     et cette construction contient du texte avec des sous-division, des blocks de texte et des liens, comme définit ci-dessous.</p>
     <p>Le paramètre <c>class</c> prend, par exemple, une valeur correspondant:
     <div class="table">
-      <p><p><r>ul</r></p><p>Liste d'items non-numérotés</p></p>
-      <p><p><r>ol</r></p><p>Liste d'items numérotés</p></p>
-      <p><p><r>table</r></p><p>Table avec des lignes et des collones</p></p>
-      <p><p><r>*</r></p><p>Autre type de structure, à la discrétion de l'utilisateur</p></p>
+      <p><p><r>{div class=ul</r></p><p>Liste d'items non-numérotés</p></p>
+      <p><p><r>{div class=ol</r></p><p>Liste d'items numérotés</p></p>
+      <p><p><r>{div class=table</r></p><p>Table avec des lignes et des collones</p></p>
+      <p><p><r>{div class='*'</r></p><p>Autre type de structure, à la discrétion de l'utilisateur</p></p>
     </div>
     qui correspondent à la façon dont le texte est structuré et à la façon dont le texte sera rendu sur la page. 
     <p>A titre de raccourci les paragraphes peuvent s'appeler <r>{ p</r> au lieu de <r>{ div</r>.</p>

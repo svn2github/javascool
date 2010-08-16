@@ -2,7 +2,7 @@
 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
 "<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n"+
 "\n"+
-"  <!-- This translates HML code to HTML 4 output -->\n"+
+"  <!-- This XSLT translates HML code to HTML 4 output -->\n"+
 "\n"+
 "<xsl:output \n"+
 "  method=\"html\"\n"+

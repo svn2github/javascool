@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <!-- This translates the proglet's HML documentation to HTML3.2 http://www.w3.org/TR/REC-html32-19970114) -->
+  <!-- This XSLT translates the proglet's HML documentation to HTML3.2 http://www.w3.org/TR/REC-html32-19970114) -->
 
-<xsl:import href="../src/org/javascool/hml2htm.xslt"/>
+  <xsl:import href="./hml2htm.xslt"/>
 
 <xsl:output 
   method="html"
@@ -11,12 +11,16 @@
   doctype-public="-//W3C//DTD HTML 3.2 Final//EN"
   indent="yes" />
 
-<!-- These tags produce proglet doc specific constructs -->
+<!-- These tags produce javasccool's doc specific constructs -->
 
 <xsl:template match="div|p">
   <xsl:choose>
     <xsl:when test="@class = 'sujet'">
-      <div align="right">[<a href="#intros">introduction</a>] [<a href="#works">travail proposé</a>] [<a href="#notes">remarques</a>]</div>
+      <div align="right">
+        <xsl:if test ="count(intros) > 0">[<a href="#intros">introduction</a>]</xsl:if>
+        <xsl:if test ="count(works) > 0">[<a href="#works">travail proposé</a>]</xsl:if>
+        <xsl:if test ="count(notes) > 0">[<a href="#notes">remarques</a>]</xsl:if>
+      </div>
       <xsl:call-template name="div"/>
     </xsl:when>
     <xsl:when test="@class = 'objectif'"><h2>Objectif.</h2><xsl:call-template name="div"/></xsl:when>
@@ -47,13 +51,7 @@
   </xsl:choose>
 </xsl:template>
 
-<!-- These tags allows to show pieces of code: 
-     <r></r> : reserved words
-     <n></n> : name
-     <v></v> : string's value
-     <m></m> : comment ligne
-     <T/>    : tabulation
--->
+<!-- These tags allows to show pieces of code -->
 
 <xsl:template match="r">
   <font color="#990000"><b><xsl:apply-templates/></b></font>

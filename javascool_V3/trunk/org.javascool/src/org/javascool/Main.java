@@ -126,8 +126,9 @@ public class Main extends JApplet { /**/public Main() { }
   /** Adds a tab to the tabbed panel.
    * @param label Tab label.
    * @param icon Tab icon.
-   * @param pane Tab Html textfor the pane in string.
-   */public void addTab(String label, String icon, String text) {
+   * @param text Tab Html text for the pane in string.
+   */
+  public void addTab(String label, String icon, String text) {
     addTab(label, icon, new HtmlDisplay().reset(text));
   }
   /** Removes a tab from the tabbed panel.

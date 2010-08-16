@@ -1,31 +1,51 @@
-<body>
-  <hr/>
-	<center>Fran&ccedil;ais/French</center>
-  <p>Ce package Java implémente les mécanismes <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">JavaScool</a></tt>
-  de proglets destinés à s'initier à la programmation à partir du lycée (niveau ``L0´´).
+<body>This is the <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">JavaScool</a></tt> core Java and Xml bundle.
 
-    <p>Il permet bien évidemment d'utiliser toute l'<a href="http://java.sun.com/javase/6/docs/api/overview-summary.html">API Java</a>.</p>
+<hr/><center><i>Français</i>/French</center>
 
-    <p>Les classes utilisées par l'«élève» sont documentées en français.
-       Les classes utilitaires utilisées pour créer/adapter des <a href="../../org/javascool/Proglet.html">proglets</a> dans l'environnement Java sont documentées an anglais.
-       Un <a href="http://wiki.inria.fr/sciencinfolycee">wiki</a> permet de partager des contenus et 
-         une <a href="https://gforge.inria.fr/projects/javascool">forge</a> de co-développer.</p>
-  </p>
-  <hr/>
-	<center>Anglais/English</center>
-  <p>This java package implents gears of <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">JavaScool</a></tt> and show a GUI to proglets
+  <p><i>Ce package Java implémente les mécanismes <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">JavaScool</a></tt>
+  des «proglets» destinées à s'initier à la programmation à partir du niveau du lycée (niveau ``L0´´).</i></p>
 
-    <p>Absolutly, it's allow to use all the <a href="../api/overview-summary.html">Java API</a>.</p>
+  <p><i>Il permet bien évidemment d'utiliser toute l'<a href="http://java.sun.com/javase/6/docs/api/overview-summary.html">API Java</a>.</i></p>
 
-    <p>Classes used by studets are documented in French.
-       Classes used to create/adapt <a href="../../org/javascool/Proglet.html">proglets</a> in Java Environement are documented in English.
-       A <a href="http://wiki.inria.fr/sciencinfolycee">wiki</a> allow to share information (French) 
-         A <a href="https://gforge.inria.fr/projects/javascool">forge</a> for devloppers.</p>
-  </p>
+  <p><i>Les documents utilisés sont écrits en <a href="doc-files/about-hdoc.htm">Hml</a> (c'est à dire en syntaxe XML ou en <a href="Pml.html">Pml</a> 
+  avec des constructions prédéfinies pour simplifier l'écriture. Ils peuvent aussi être écrits sur le <a href="http://wiki.inria.fr/sciencinfolycee">wiki</a>.</i></p>
 
-  <hr/>
+  <p><i>Les classes utilisées par l'«élève» sont documentées en français.
+  Les classes utilitaires utilisées pour créer/adapter des <a href="../../org/javascool/Proglet.html">proglets</a> sont documentées an anglais.
+  Un <a href="http://wiki.inria.fr/sciencinfolycee">wiki</a> permet de partager des contenus et 
+  une <a href="https://gforge.inria.fr/projects/javascool">forge</a> de co-développer cet ensemble.</i></p>
 
-  <h3>org.javascool standalone interfaces</h3><ul>
+  <hr/><center><i>Anglais</i>/English</center>
+
+  <p>This Java package implements the core of <tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">JavaScool</a></tt> 
+  of «proglets» to be used in order to learn programming, starting at the high-school level.</p>
+
+  <p>It indeed allows to use all the <a href="../api/overview-summary.html">Java API</a>.</p>
+
+  <p>Documents are to be written using the <a href="doc-files/about-hdoc.htm">Hml</a> constructs (using the XML or <a href="Pml.html">Pml</a> syntax),
+  with predefined constructs allowing to simplify the writing. They can also be written on the <a href="http://wiki.inria.fr/sciencinfolycee">wiki</a>.</p>
+
+  <p>Classes used by students are documented in French.
+   Core classes Classes used to create/adapt <a href="../../org/javascool/Proglet.html">proglets</a> are documented in English.
+  A <a href="http://wiki.inria.fr/sciencinfolycee">wiki</a> (in French) allows to share information
+  and a <a href="https://gforge.inria.fr/projects/javascool">forge</a> to co-develop this bundle.</p></p>
+ 
+  <hr/><table border="1" width="100%" cellpadding="3" cellspacing="0" summary="">
+  <tr bgcolor="#ccccff" class="tableheadingcolor"><th align="left" colspan="2"><font size="+2"><b>XSLT translation rules</b></font></th></tr>
+  <tr bgcolor="white" class="tablerowcolor">
+    <td width="15%"><b><a href="../../org/javascool/hml2htm.xslt" title="xslt in org.javascool">hml2htm</a></b></td>
+    <td>This XSLT translates HML code to HTML 4 output.</td>
+  </tr>
+  <tr bgcolor="white" class="tablerowcolor">
+    <td width="15%"><b><a href="../../org/javascool/htm2hml.xslt" title="xslt in org.javascool">htm2hml</a></b></td>
+    <td>This XSLT translates HTNML to HML constructs.</td>
+  </tr>
+  <tr bgcolor="white" class="tablerowcolor">
+    <td width="15%"><b><a href="../../org/javascool/hdoc2htm.xslt" title="xslt in org.javascool">hdoc2htm</a></b></td>
+    <td>This XSLT translates the proglet's HML documentation to HTML3.2.</td>
+  </tr></table>
+
+  <hr/><h3>org.javascool standalone interfaces</h3><ul>
     <li>Usage: <tt><i>java</i> org.javascool.<a href="Main.html">Main</a> [activity [file-name]]</tt>: 
     Starts a JavaScool (V3) "activity" which result is to be stored in a "file-name".</li>
     <li>Usage: <tt><i>java</i> org.javascool.<a href="MainV2.html">MainV2</a> (edit|run) [proglet-name [file-name]]</tt>: 

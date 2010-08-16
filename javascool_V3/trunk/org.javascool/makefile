@@ -46,6 +46,9 @@ SRC = \
  $(shell find src -name '*.java') \
  src/org/javascool/proglets.java $(patsubst %.xslt,%.java,$(shell find src -name '*.xslt'))
 
+XSL = \
+ $(shell find src -name '*.xslt')
+
 DOC = \
  $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
 
@@ -79,11 +82,11 @@ lib/manifest.mf : makefile
 	@(echo 'Main-Class: org.javascool.Main') >> $@
 	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
 
-%.htm : %.xml lib/xml2htm.xsl
+%.htm : %.xml src/org/javascool/hdoc2htm.xslt
 	@echo "xml2htm $*"
 	@java -jar lib/saxon.jar -o $@ $^
 
-lib/xml2htm.xsl : src/org/javascool/hml2htm.xslt
+src/org/javascool/hdoc2htm.xslt : src/org/javascool/hml2htm.xslt
 	@touch $@
 
 %.png : %.fig
@@ -136,7 +139,7 @@ www/api : $(SRC) $(DOC) makefile $(shell find src -name package.html)
 	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -link http://download.oracle.com/javase/6/docs/api \
 	 -windowtitle "Java's Cool v3" -d $@ $(SRC)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
-	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; done
+	@for f in $(SRC) $(XSL) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; done
 	@for f in `find $@ -name '*.java'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
@@ -302,6 +305,7 @@ jdk5deb:
 #: [1.1] Source files:
 #: ./makefile                 : contains all compilation/publication/test commands
 #: ./src/org/javascool/*.java : contains the javascool core and widget classes and doc-files
+#: ./src/org/javascool/*.xslt : contains the javascool XSLT rules.
 #: ./src/proglet/*/*.java     : contains the proglets classes and doc-files
 #:
 #: [1.2] Web site files
@@ -317,7 +321,6 @@ jdk5deb:
 #: [1.3] Lib files:
 #: ./lib/run.sh               : simplifies the local use of saxon and javascool (starts org.javasccoo.* mains + performs xml2xml translation)
 #: ./lib/*.jar                : are used jar for the present development
-#: ./lib/xml2htm.xsl          : defines how to translate doc-files/*.xml files to HTML3.2
 #: ./lib/manifest.mf          : is a makefile generated file: do NOT edit
 #: 
 #: [1.4] Other files

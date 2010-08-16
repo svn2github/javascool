@@ -2,6 +2,8 @@
 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
 "<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n"+
 "\n"+
+"  <!-- This XSLT translates HTNML to HML constructs -->\n"+
+"\n"+
 "<xsl:output method=\"xml\" encoding=\"utf-8\" omit-xml-declaration=\"yes\"/>\n"+
 "\n"+
 "<!--- 1: Division translation -->\n"+

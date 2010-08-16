@@ -46,7 +46,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
   {
     setLayout(new BorderLayout());
     JPanel bar = new JPanel();
-    edit = new JComboBox(new String[] {"Edit", "Copier", "Couper/Supprimer", "Coller", "Valider"});
+    edit = new JComboBox(new String[] {"Edit", "Copier", "Couper/Supprimer", "Coller"});
     edit.addActionListener(new ActionListener() {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) {
@@ -554,7 +554,8 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	model.insertNodeInto(n, node, getCurrentNodeIndex(node));
 	System.out.println(action + " : " + getText(clipboard, 0));
       }
-    } else if ("Valider".equals(action)) {
+    // A VIRER APRES DEBUG
+    } else if ("Check".equals(action)) {
       System.out.println(action + " : " + getText() + " == \n" + getJavaSource());
       Utils.saveString("tmp.jvs", getJavaSource());
       Jvs2Java.translate("tmp.jvs");
@@ -591,11 +592,12 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	public void actionPerformed(ActionEvent e) { 
 	  doEdit("Coller");
 	}});
+    // A VIRER APRES DEBUG
     tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_MASK), "check");
     tree.getActionMap().put("check",  new AbstractAction("check") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  doEdit("Valider");
+	  doEdit("Check");
 	}});
   }
   private DefaultMutableTreeNode clipboard = null;
