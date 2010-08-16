@@ -38,7 +38,7 @@ import java.awt.event.KeyEvent;
 
 // Used to register elements
 import java.util.HashMap;
-
+//	TODO at line(s) 350 -
 /** This is the javascool v3 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
  * @author Philippe Vienne <philoumailabo@gmail.com>
@@ -55,6 +55,7 @@ public class Main extends JApplet { /**/public Main() { }
   String aide = new String(Utils.loadString("org/javascool/doc-files/helpdoc/index.html"));
   String actuproglet=new String();
   private Boolean notfirstrun=false;
+  private boolean helpactiv=false;
   /**/public void init() {
     JPanel toppane = new JPanel();
     toppane.setLayout(new BorderLayout());
@@ -69,7 +70,7 @@ public class Main extends JApplet { /**/public Main() { }
     addActivity(jvsActivity);
     addActivity(tortueActivity);
     addActivity(pmlActivity);
-    //addActivity(algActivity);
+    addActivity(algActivity);
     
     // Initializes the activity from the HTML tag or proposes a default activity
     try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity("Démonstration de l'éditeur Jvs");}
@@ -295,6 +296,9 @@ public class Main extends JApplet { /**/public Main() { }
     saveFile.run();
     fcTitle = null;
   }
+  /**Before exit its allow to save file.
+  *Its ask to user by a JDialog if he wants to save, not save or cancel closing.
+  */
   private boolean exitSaveFile(){
 	int result = 1000;
 	if(activity.getText().length() == 0) {
@@ -317,7 +321,15 @@ public class Main extends JApplet { /**/public Main() { }
     else{return false;}
   }
   private Runnable showHelp = new Runnable() { public void run() {
-    addTab("Aide", "", aide); 
+	if(helpactiv){
+		delTab("Aide");
+		helpactiv=false;
+	}
+	else{
+		addTab("Aide", "", aide);
+		showTab("Aide"); 
+	helpactiv=true;
+	}
   }};
   private Runnable nothing = new Runnable() { public void run() {
     getParent().setSize(800,600);
@@ -344,6 +356,13 @@ public class Main extends JApplet { /**/public Main() { }
 	public void actionPerformed(ActionEvent e) { 
 	  saveFile.run();
 	}});
+// TODO Fix the CRL+H To show help
+//	getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_H, KeyEvent.CTRL_MASK), "help");
+//    getRootPane().getActionMap().put("help",  new AbstractAction("help") {
+//	private static final long serialVersionUID = 1L;
+//	public void actionPerformed(ActionEvent e) { 
+//	  openFile.run();
+//	}});
     getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_MASK), "validate");
     getRootPane().getActionMap().put("validate",  new AbstractAction("validate") {
 	private static final long serialVersionUID = 1L;
@@ -415,11 +434,10 @@ public class Main extends JApplet { /**/public Main() { }
     };
 
   private Activity algActivity = new Activity() {
-      public String getTitle() { return "Démonstration de l'éditeur d'Algo"; }
+      public String getTitle() { return "Activité d'Algoritme simplifié"; }
       public void init(Main main) {
       editor=new AlgoEditor();
 	main.addTab("Algo Editor", "",(JPanel) editor);
-	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
       }
     };
   private static class JFileFilter extends FileFilter {
