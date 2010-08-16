@@ -295,6 +295,27 @@ public class Main extends JApplet { /**/public Main() { }
     saveFile.run();
     fcTitle = null;
   }
+  private boolean exitSaveFile(){
+	int result = 1000;
+	if(activity.getText().length() == 0) {
+		result=1;
+    } else {
+		JOptionPane d = new JOptionPane();
+		result = 
+	d.showConfirmDialog(Main.this, 
+			    "Voulez-vous enregistrer avant de fermer ?", 
+			    "Sauvgarder avant de fermer", 
+			    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+	}
+	if(result==0)
+	{
+		pleaseSaveFile();
+		return true;
+    }
+    else if(result==2){return false;}
+    else if(result==1){return true;}
+    else{return false;}
+  }
   private Runnable showHelp = new Runnable() { public void run() {
     addTab("Aide", "", aide); 
   }};
@@ -334,8 +355,8 @@ public class Main extends JApplet { /**/public Main() { }
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  System.err.println("Bye guy !!!!");
-	  // PREVOIR LES SAUVEGARDES ICI , , ,
-	  getRootPane().getActionMap().get("exit").actionPerformed(e);
+	  if(exitSaveFile())
+	  {getRootPane().getActionMap().get("exit").actionPerformed(e);}
 	}});
   }
   /** This is the runnable called when the ^L keystroke is called. */
