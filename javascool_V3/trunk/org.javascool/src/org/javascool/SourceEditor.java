@@ -503,5 +503,5 @@ public class SourceEditor extends JPanel implements Widget,Editor {
     doColorize(text);
   }
   // Global recolorization flag
-  private boolean recolorize = false;
+  private boolean recolorize = true;
 }
