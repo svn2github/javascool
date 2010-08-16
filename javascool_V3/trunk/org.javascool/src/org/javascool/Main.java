@@ -241,7 +241,7 @@ public class Main extends JApplet { /**/public Main() { }
 			    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
     }
     if(result == 0) {
-      checksave=false;
+      checksave = false;
       saveFile.run();
       checksave = true;
       if(verisave == false) {
@@ -315,11 +315,11 @@ public class Main extends JApplet { /**/public Main() { }
     if(result == 0) {
       pleaseSaveFile();
       return true;
-    } else if(result == 2){
+    } else if(result == 2) {
       return false;
-    } else if(result == 1){
+    } else if(result == 1) {
       return true;
-    } else{ 
+    } else { 
       return false;
     }
   }
@@ -375,8 +375,10 @@ public class Main extends JApplet { /**/public Main() { }
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  System.err.println("Bye guy !!!!");
-	  if(exitSaveFile())
+	  if(exitSaveFile()) {
+	    System.err.println("Please quit !!!!");
 	    Utils.unshow(Main.this);
+	  }
 	}});
   }
   /** This is the runnable called when the ^L keystroke is called. */

@@ -383,7 +383,7 @@ public class Utils { private Utils() { }
     if (width > 1800) width = 1800; if(height > 1000) height = 1000;
     return show(applet, title, width, height, quit);
   }    
-  /**/ public static JFrame show(Component applet, String title, int width, int height) {
+  /**/public static JFrame show(Component applet, String title, int width, int height) {
     return show(applet, title, width, height, true);
   }
   /**/public static JFrame show(Component applet, String title) {
@@ -422,18 +422,18 @@ public class Utils { private Utils() { }
     // Closes the frame and dispose, force quit if all frames are closed.
     public void dispose() {
       System.err.println("Dispose the "+frames.size()+"th frame, with close = " + close);
-      if (close == null) {
-	if (applet != null) { applet.stop(); applet.destroy(); }
-	super.dispose(); System.gc(); frames.remove(applet); if (frames.size() == 0) System.exit(0);
-      } else 
-	close.actionPerformed(new ActionEvent(this, 0, "quit"));
+      if (applet != null) { applet.stop(); applet.destroy(); }
+      super.dispose(); System.gc(); frames.remove(applet); if (frames.size() == 0) System.exit(0);
     } 
+    private void quit() {
+      if (close == null) dispose(); else close.actionPerformed(new ActionEvent(this, 0, "quit"));
+    }
     private Action close = null;
     // Defines a listener for focus, iconification and dispose.
     {
       addWindowListener(new WindowListener() {
 	  public void windowOpened(WindowEvent e) { e.getWindow().requestFocus();  }
-	  public void windowClosing(WindowEvent e) { dispose(); }
+	  public void windowClosing(WindowEvent e) { quit(); }
 	  public void windowClosed(WindowEvent e) { }
 	  public void windowIconified(WindowEvent e) { if (applet != null) applet.stop(); }
 	  public void windowDeiconified(WindowEvent e) { if (applet != null) applet.start(); }

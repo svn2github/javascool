@@ -38,7 +38,7 @@
 "<xsl:template name=\"div\">\n"+
 "  <xsl:choose>\n"+
 "    <xsl:when test=\"@class = 'table'\">\n"+
-"      <table align=\"center\" width=\"90%\" bgcolor=\"#eeeeee\"><xsl:call-template name=\"div-2\"/></table>\n"+
+"      <p><table align=\"center\" width=\"90%\" cellpadding=\"5px\" bgcolor=\"#eeeeee\"><xsl:call-template name=\"div-2\"/></table></p>\n"+
 "    </xsl:when>\n"+
 "    <xsl:when test=\"@class = 'ul' or @class = 'ol'\">\n"+
 "      <xsl:element name=\"{@class}\"><xsl:call-template name=\"div-2\"/></xsl:element>\n"+
