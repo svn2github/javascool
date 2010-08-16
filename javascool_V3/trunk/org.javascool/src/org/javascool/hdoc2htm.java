@@ -41,7 +41,7 @@
 "\n"+
 "<xsl:template match=\"l\">\n"+
 "  <xsl:choose>\n"+
-"    <xsl:when test=\"@class = 'javascool'\"><tt><a style=\"padding:0;margin:0;text-decoration:none\" href=\"http://javascool.gforge.inria.fr\">Java'sCool</a></tt></xsl:when>\n"+
+"    <xsl:when test=\"@class = 'javascool'\"><tt><a href=\"http://javascool.gforge.inria.fr\" style=\"padding:0;margin:0;text-decoration:none\">Java'sCool</a></tt></xsl:when>\n"+
 "    <xsl:when test=\"@class = 'proglet'\">\n"+
 "      <applet code=\"org.javascool.ProgletApplet\" archive=\"http://javascool.gforge.inria.fr/v3/javascool.jar\" width=\"560\" height=\"720\">\n"+
 "        <param name=\"proglet\" value=\"{@link}\"/>\n"+

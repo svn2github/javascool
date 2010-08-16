@@ -202,9 +202,9 @@ jdoc/base.tar.gz:
 
 # Web site files publication
 
-pub: api wraz
+wpub: api wraz
 	@php -l www/*.php ; rm -f www/*~
-	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php -exclude javascool.jar www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
+	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php --exclude javascool.jar www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
 	 2>&1 | grep -v '^rsync: failed to set'
 	@-rsync --rsh='ssh -C' www/index.php scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/.htindex.php
 	@ssh scm.gforge.inria.fr 'sh -c "cd /home/groups/javascool/htdocs/v3 ; cat .htindex.php > index.php ; rm .htindex.php"'
@@ -219,25 +219,25 @@ wraz:
 
 # Check the web site links 
 
-wref: pub
+wref: wpub
 	@lib/run.sh LinkCheck -recursive http://javascool.gforge.inria.fr/v3/ | tee lib/brokenlinks.txt
-#	@firefox https://www.google.com/webmasters/tools/dashboard
 
-# Check the site log
-
-wlog:
-#	@firefox http://javascool.gforge.inria.fr/log
-	@firefox https://www.google.com/analytics
 
 #####################################################################################################################################
 
 # Useful links
 
-web:
+jweb:
 	@firefox http://javascool.gforge.inria.fr/v3
 
 wiki:
 	@firefox http://wiki.inria.fr/sciencinfolycee/JavaScool:ToDoList
+
+glog :
+	@firefox https://www.google.com/analytics
+
+gref :
+	@firefox https://www.google.com/webmasters/tools/dashboard
 
 #####################################################################################################################################
 
@@ -273,7 +273,14 @@ fst :
 
 endif
 
-#Install the jdk 5 for Linux
+# Check the site apache log
+
+wlog:
+	@firefox http://javascool.gforge.inria.fr/log
+
+ifeq ($(USER), philien)
+
+# Install the jdk 5 for philien
 
 jdk5deb:
 	@wget http://www.philien.fr/jdoc/jdk-1_5_0_22-linux-i586.bin -O jdk5install.bin -q
@@ -283,6 +290,8 @@ jdk5deb:
 	@sudo cp -r ./jdk1.5.0_22 /usr/java/
 	@sudo rm ./jdk1.5.0_22/ -r
 	@sudo rm ./jdk5install.bin
+
+endif
 
 # Useful insuperable commands (to be used with MUCH care):
 #
@@ -334,22 +343,29 @@ jdk5deb:
 #:
 #: [2] Makefile usage.
 #:
-#::Usage:'
-#::Development commands:'
-#:: make v3           : run javascool'v3 from locally compiled clases'
-#:: make j3           : run javascool'v3 from the constructed jar'
-#:: make doc          : show the javadoc locally'
-#:: make svn          : synchronize with the svn repository (update + commit)'
-#:: make clean        : clean all intermediate files'
-#:: make usage        : show the makefile usage'
-#:: make what         : show the README information contains in this makefile'
-#::System commands:'
+#::Usage:
+#::Development commands:
+#:: make v3           : run javascool'v3 from locally compiled clases
+#:: make j3           : run javascool'v3 from the constructed jar
+#:: make doc          : show the javadoc locally
+#:: make svn          : synchronize with the svn repository (update + commit)
+#:: make clean        : clean all intermediate files
+#:: make usage        : show the makefile usage
+#:: make what         : show the README information contains in this makefile
+#::System commands:
 #:: make jdoc         : to build the convenient Java and JavaScool doc bundle for local use
-#:: make cmp          : build the java classes'
-#:: make jar          : build the java jar'
-#:: make api          : build the java doc'
-#:: make pub          : publish the present document release on the web site'
-#:: make jpub         : publish the present javascool.jar release on the web site'
+#:: make cmp          : build the java classes
+#:: make jar          : build the java jar
+#:: make api          : build the java doc
+#:: make wpub         : publish the present document release on the web site
+#:: make jpub         : publish the present javascool.jar release on the web site
+#:: make wraz         : clears the web site cache
+#:: make wref         : checks the web site broken links
+#::Useful links:
+#:: jweb              : opens the javascool web site
+#:: wiki              : opens the javascool wiki
+#:: glog              : connects to google analytics
+#:: gref              : connects to google dashboard
 #:
 #: [3] Development tools used.
 #:

@@ -105,16 +105,4 @@
     </div>
     </div>
   </div>
-  
-  <div class="notes">
-    <div title="Utiliser conjointement la proglet Scope et Konsol"> On peut souhaiter utiliser conjointement les proglets  et  pour 
-    combiner des tracés et des entrées-sorties au clavier. En fait ce n'est pas très recommandé, car celà risque de sur-compliquer les interfaces alors que le but ici est
-    de se concentrer sur l'algorithmique. <div>Mais c'est chose aisée: il suffit de choisir, par exemple la proglet , 
-    mais d'ouvrir en plus la proglet  en utilisant la fonction:
-    <div class="code">
-      <r>show</r>(<v>Konsol</v>);
-    </div>
-    qui va ouvrir la 2ème proglet.
-  </div></div>
-  </div>
 </div>

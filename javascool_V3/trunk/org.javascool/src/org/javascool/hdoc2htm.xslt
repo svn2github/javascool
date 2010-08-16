@@ -40,7 +40,7 @@
 
 <xsl:template match="l">
   <xsl:choose>
-    <xsl:when test="@class = 'javascool'"><tt><a style="padding:0;margin:0;text-decoration:none" href="http://javascool.gforge.inria.fr">Java'sCool</a></tt></xsl:when>
+    <xsl:when test="@class = 'javascool'"><tt><a href="http://javascool.gforge.inria.fr" style="padding:0;margin:0;text-decoration:none">Java'sCool</a></tt></xsl:when>
     <xsl:when test="@class = 'proglet'">
       <applet code="org.javascool.ProgletApplet" archive="http://javascool.gforge.inria.fr/v3/javascool.jar" width="560" height="720">
         <param name="proglet" value="{@link}"/>

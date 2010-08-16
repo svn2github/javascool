@@ -21,6 +21,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener; 
 import java.awt.event.ActionEvent; 
+import proglet.ingredients.Console;
+
+// used for file interface
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
@@ -38,7 +41,8 @@ import java.awt.event.KeyEvent;
 
 // Used to register elements
 import java.util.HashMap;
-//	TODO at line(s) 350 -
+
+
 /** This is the javascool v3 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
  * @author Philippe Vienne <philoumailabo@gmail.com>
@@ -48,36 +52,23 @@ import java.util.HashMap;
 public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;
 
-  // [1] Defines the main panel and defines how to edit the toolbar, actList and tabbedpane
-  private JToolBar tools = new JToolBar();
+  // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
+  private JToolBar toolBar = new JToolBar();
   private JTabbedPane tabbedPane = new JTabbedPane();
-  private JComboBox actList = new JComboBox();
-  // Q ?
-  private String aide = new String(Utils.loadString("org/javascool/doc-files/helpdoc/index.html"));
-  // Q ?
-  private String actuproglet = new String();
-  private Boolean notfirstrun = false;
-  private boolean helpactiv = false;
+  private JComboBox activityList = new JComboBox();
   /**/public void init() {
     JPanel toppane = new JPanel();
     toppane.setLayout(new BorderLayout());
-    toppane.add(tools, BorderLayout.WEST);
-    toppane.add(actList, BorderLayout.EAST);  
-    actList.addActionListener(alistener);
+    toppane.add(toolBar, BorderLayout.WEST);
+    toppane.add(activityList, BorderLayout.EAST);  
+    activityList.addActionListener(alistener);
     getContentPane().add(toppane, BorderLayout.NORTH);
     getContentPane().add(tabbedPane, BorderLayout.CENTER);
-
     // Adds buttons and activities using generic routines
     fileTools();
-    addActivity(jvsActivity);
-    addActivity(tortueActivity);
-    addActivity(pmlActivity);
-    addActivity(algActivity);
-    
+    addActivities();
     // Initializes the activity from the HTML tag or proposes a default activity
-    try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity("Démonstration de l'éditeur Jvs");}
-    actuproglet = "ingredients";
-
+    try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity((String) activityList.getSelectedItem()); }
   }
   /** Adds a button to the toolbar.
    * @param label Button label.
@@ -87,23 +78,23 @@ public class Main extends JApplet { /**/public Main() { }
   public void addTool(String label, String icon, Runnable action) {
     JButton button = icon == null ? new JButton(label) : new JButton(label, Utils.getIcon(icon));
     button.addActionListener(alistener);
-    tools.add(button);
+    toolBar.add(button);
     buttons.put(label, button);
     actions.put(label, action);
-    tools.revalidate();
+    toolBar.revalidate();
   }
   /** Removes a button from the tool bar. */
   public void delTool(String label) {
     if (buttons.containsKey(label)) {
-      tools.remove(buttons.get(label));
+      toolBar.remove(buttons.get(label));
       buttons.remove(label);
       actions.remove(label);
-      tools.revalidate();
+      toolBar.revalidate();
     }
   }
   /** Adds a separator on the toolbar. */
   public void addToolSeparator() {
-    tools.addSeparator();
+    toolBar.addSeparator();
   }
   /** HashMap for action list.
    * The map associate a String to a Runnable
@@ -115,21 +106,26 @@ public class Main extends JApplet { /**/public Main() { }
   private HashMap<String,JButton> buttons = new HashMap<String,JButton>();
   /** Adds a tab to the tabbed panel.
    * @param label Tab label.
-   * @param icon Tab icon.
    * @param pane Tab panel.
    */
-  public void addTab(String label, String icon, JPanel pane) {
-    tabbedPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
+  public void addTab(String label, JPanel pane) {
+    tabbedPane.addTab(label, null, pane, label);
     tabs.put(label, pane);
     tabbedPane.revalidate();
   }
-  /** Adds a tab to the tabbed panel.
+  /** Adds a tab to the tabbed panel to display a text.
    * @param label Tab label.
-   * @param icon Tab icon.
-   * @param text Tab Html text for the pane in string.
+   * @param location Tab Html text to display.
    */
-  public void addTab(String label, String icon, String text) {
-    addTab(label, icon, new HtmlDisplay().reset(text));
+  public void addTab(String label, String location) {
+    addTab(label, new HelpDisplay().load(location));
+  }
+  /** A display with external links canceled. */
+  private class HelpDisplay extends HtmlDisplay {
+    private static final long serialVersionUID = 1L;
+    public HtmlDisplay reset(String text) { 
+      return super.reset(text.replaceAll("<a href=\"http:[^\"]*\">([^<]*)</a>", "$1"));
+    }
   }
   /** Removes a tab from the tabbed panel.
    * @param label Tab label.
@@ -155,213 +151,207 @@ public class Main extends JApplet { /**/public Main() { }
    */
   private HashMap<String,JPanel> tabs = new HashMap<String,JPanel>();
   /** Defines an interactive activity. */
-  public static class Activity {
+  private interface Activity {
     /** Returns the activity title. */
-    public String getTitle() { return ""; }
+    public String getTitle();
     /** Initializes the activity, adding buttons and pannels. */
-    public void init(Main main) { }
-    public Editor editor;
-    public void setText(String text){editor.setText(text);}
-    public String getText(){return editor.getText();}
+    public void init();
+    /** Returns the activity editor. */
+    public Editor getEditor();
   }
   /** Adds an activity tab to the tabbed panel. 
    * @param activity Adds a predefined activity.
    */
   public void addActivity(Activity activity) {
     activities.put(activity.getTitle(), activity);
-    actList.addItem(activity.getTitle());
-    actList.revalidate();
+    activityList.addItem(activity.getTitle());
+    activityList.revalidate();
   }
   /** Start any activity.
   * The activity must be list in the HashMap activities
   * @param name Name of Activity in the HashMap
   */
   private void setActivity(String name) {
-    activity = activities.get(name);
-    if (activity == null) activity = activities.get("Démonstration de l'éditeur Pml");
-    tools.removeAll();
-    tabbedPane.removeAll();
-    fileTools();
-    activity.init(this);
-    tools.revalidate();
-    tabbedPane.revalidate();
+    if (activities.containsKey(name)) {
+      activity = activities.get(name);
+      toolBar.removeAll();
+      tabbedPane.removeAll();
+      fileTools();
+      activity.init();
+      toolBar.revalidate();
+      tabbedPane.revalidate();
+    }
   }
-  /**Set activity to null.*/
+  /** Current activity, set to null at reset. */
   private Activity activity = null;
   /** HashMap for Activity list.
-  *The map associate a String to an Activity
-  */
+   * The map associate a String to an Activity
+   */
   private HashMap<String,Activity> activities = new HashMap<String,Activity>();
-  /** Generic action listener for all actions.*/
+  /** Generic action listener for all actions. */
   private ActionListener alistener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-	if (e.getSource() == actList) {
-	  if(notfirstrun) { 
-	    pleaseSaveFile(); 
-	  } else { 
-	    notfirstrun = true;
-	  }
-	  setActivity((String) ((JComboBox) e.getSource()).getSelectedItem());
+	if (e.getSource() == activityList) {
+	  if (firstActivity || fileSavePlease()) 
+	    setActivity((String) ((JComboBox) e.getSource()).getSelectedItem());
+	  firstActivity = false;
 	} else {
 	  actions.get(((JButton) e.getSource()).getText()).run();
 	}
       }
     };
+  private boolean firstActivity = true;
 
-  // [2] File Open/Save management
-  private SourceEditor se = new SourceEditor();
-  private JFileChooser fc = new JFileChooser();
-  private String fcTitle = null;
-  private File file = null;
-  private boolean checksave = true;
-  private boolean verisave = true;
-  {
-    JFileFilter filtre = new JFileFilter();
-    filtre.addType("jvs");
-    filtre.addType("pml");
-    filtre.setDescription("Fichiers JVS et PML");
-    fc.setFileFilter(filtre);
-    fc.setCurrentDirectory(new File(System.getProperty("user.dir")));
-  }
-  public String returnastring(String toreturn){return toreturn;};
-  /** Load a file. */
-  public void setFile(String filename) {
-    file = new File(filename);
-    activity.setText(Utils.loadString(file.getPath()));
-  }
-  private Runnable openFile = new Runnable() { public void run() {
-    int result = 1000;
-    if(activity.getText().length() == 0) {
-      result=1;
-    } else {
-      JOptionPane d = new JOptionPane();
-      result = 
-	d.showConfirmDialog(Main.this, 
-			    "Voulez-vous enregistrer avant d'ouvrir un nouveau fichier ?", 
-			    "Sauvgarder avant d'ouvrir", 
-			    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+  // [2] File Open/Save management and Help
+  /** Defines the JavaScool dedicated file chooser. */
+  private class JsFileChooser extends JFileChooser {
+    private static final long serialVersionUID = 1L;
+    // Initializes the file chooser
+    {
+      // Use the user.dir to start the interaction
+      setCurrentDirectory(new File(System.getProperty("user.dir")));
+      // Defines a Jvs/Pml extension filter
+      setFileFilter(new FileFilter() {
+	  public String getDescription() { return "Fichiers JVS et PML"; }
+	  public boolean accept(File file) {
+	    return 
+	      file.isDirectory() ? true :
+	      file.getName().endsWith(".jvs") ||
+	      file.getName().endsWith(".pml");
+	  }
+	});
     }
-    if(result == 0) {
-      checksave = false;
-      saveFile.run();
-      checksave = true;
-      if(verisave == false) {
-	return;
-      }
-      fc.setDialogTitle("Ouvrir un programme");
-      fc.setDialogType(JFileChooser.OPEN_DIALOG);
-      fc.setApproveButtonText("Ouvrir");
-      if (fc.showOpenDialog(Main.this) == 0) {
-	file = fc.getSelectedFile();
-	activity.setText(Utils.loadString(file.getPath()));
-      }
-    } else if(result == 1) {
-      fc.setDialogTitle("Ouvrir un programme");
-      fc.setDialogType(JFileChooser.OPEN_DIALOG);
-      fc.setApproveButtonText("Ouvrir");
-      if (fc.showOpenDialog(Main.this) == 0) {
-	file = fc.getSelectedFile();
-	activity.setText(Utils.loadString(file.getPath()));
-      }
+    /** Gets the last selected file. */ 
+    public String getFile() { return file; } private String file;
+    /** Manages an open dialog action. 
+     * @param editor The editor where to load the file.
+     */
+    public void doOpen(Editor editor) {
+      setDialogTitle("Ouvrir un programme");
+      setDialogType(JFileChooser.OPEN_DIALOG);
+      setApproveButtonText("Ouvrir");
+      if (showOpenDialog(Main.this) == 0)
+	doOpen(editor, getSelectedFile().getPath());
+    }
+    /** Manages an open action (no dialog). */
+    public void doOpen(Editor editor, String file) {
+      setSelectedFile(new File(file));
+      editor.setText(Utils.loadString(this.file = file));
+    }
+    /** Manages a save dialog action. 
+     * @param editor The editor from where the file is saved.
+     * @return True if the dialog is validated, else false.
+     */
+    public boolean doSaveAs(Editor editor) {
+      if (title == null) title = "Enregister un programme";
+      setDialogTitle(title);
+      title = null;
+      setDialogType(JFileChooser.SAVE_DIALOG);
+      setApproveButtonText("Enregister");
+      if (showSaveDialog(Main.this) == 0) {
+	doSave(editor);
+	return true;
+      } else 
+	return false;
+    }
+    /** Manages a save action (no dialog). 
+     * @param editor The editor from where the file is saved.
+     */
+    public void doSave(Editor editor) {
+      Utils.saveString(file = getSelectedFile().getPath(), editor.getText());
+    }
+    /** Sets the next save dialog title. 
+     * @param title Optional title for a specific dialog
+     */
+    public void setSaveDialogTitle(String title) { this.title = title; } private String title = null;
+  }
+  private JsFileChooser fileChooser = new JsFileChooser();
+  private Runnable fileOpen = new Runnable() { public void run() {
+    if (activity == null) return;
+    switch(!activity.getEditor().isModified() ? 1 : new JOptionPane().
+	   showConfirmDialog(Main.this, 
+			     "Voulez-vous enregistrer avant d'ouvrir un nouveau fichier ?", 
+			     "Sauvgarder avant d'ouvrir", 
+			     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE)) {
+    case 0: // Yes save
+      if (fileChooser.doSaveAs(activity.getEditor())) 
+	fileChooser.doOpen(activity.getEditor());
+      break;
+    case 1: // No need to save
+      fileChooser.doOpen(activity.getEditor());
+      break;
     }
   }};
-  private Runnable saveFile = new Runnable() { public void run() {
-    fc.setDialogTitle(fcTitle == null ? "Enregister un programme" : fcTitle);
-    fc.setDialogType(JFileChooser.SAVE_DIALOG);
-    fc.setApproveButtonText("Enregister");
-    if(file == null) {
-      fc.setCurrentDirectory(new File(System.getProperty("user.dir")));
-      int out=fc.showSaveDialog(Main.this);
-      if (out == 0) {
-	file = fc.getSelectedFile();
-	Utils.saveString(file.getPath(), activity.getText());
-	verisave = true;
-      } else {
-        verisave = false;
-      }
-    } else {
-      fc.setDialogTitle(fcTitle == null ? "Enregister un programme" : fcTitle);
-      fc.setDialogType(JFileChooser.SAVE_DIALOG);
-      fc.setApproveButtonText("Enregister");
-      int out = fc.showSaveDialog(Main.this);
-      if (out == 0) {
-	file = fc.getSelectedFile();
-	Utils.saveString(file.getPath(), activity.getText());
-	verisave = true;
-      } 
-      Utils.saveString(file.getPath(), activity.getText());
-      verisave = true;
-    }
+  private Runnable fileSave = new Runnable() { public void run() {
+    if (activity == null) return;
+    fileChooser.doSaveAs(activity.getEditor());
   }};
-  private void pleaseSaveFile() {
-    fcTitle = "Enregistrer votre fichier avant de passer à la suite";
-    saveFile.run();
-    fcTitle = null;
+  /** Loads a file in the current activity editor. 
+   * @param file The file name.
+   */
+  public void setFile(String file) {
+    if (activity == null) return;
+    fileChooser.doOpen(activity.getEditor(), file);
   }
-  /** Before exit, allows to save the file. */
-  private boolean exitSaveFile(){
-    int result = 1000;
-    if(activity.getText().length() == 0) {
-      result = 1;
-    } else {
-      JOptionPane d = new JOptionPane();
-      result = 
-	d.showConfirmDialog(Main.this, 
-			    "Voulez-vous enregistrer avant de fermer ?", 
-			    "Sauvgarder avant de fermer", 
-			    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-    }
-    if(result == 0) {
-      pleaseSaveFile();
+  /** Saves a file, before exiting or activity change. */
+  private boolean fileSavePlease() {
+    switch(activity == null || !activity.getEditor().isModified() ? 1 : new JOptionPane().
+	   showConfirmDialog(Main.this, 
+			     "Voulez-vous enregistrer avant de fermer ?", 
+			     "Sauvgarder avant de fermer", 
+			     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE)) {
+    case 0: // Yes save and return true if and only if the save is validated
+      fileChooser.setSaveDialogTitle("Enregistrer votre fichier avant de passer à la suite");
+      return fileChooser.doSaveAs(activity.getEditor());
+    case 1: // No need to save
       return true;
-    } else if(result == 2) {
-      return false;
-    } else if(result == 1) {
-      return true;
-    } else { 
+    default: // Ah ! Cancel
       return false;
     }
   }
-  private Runnable showHelp = new Runnable() { public void run() {
-    if(helpactiv) {
+
+  // Help show mechanism
+  private Runnable helpShow = new Runnable() { public void run() {
+    if(helpOn) {
       delTab("Aide");
-      helpactiv = false;
+      helpOn = false;
     } else {
-      addTab("Aide", "", aide);
+      addTab("Aide", Utils.loadString(helpFile));
       showTab("Aide"); 
-      helpactiv = true;
+      helpOn = true;
     }
   }};
-  private Runnable nothing = new Runnable() { public void run() {
-    getParent().setSize(800,600);
-  }};
+  private boolean helpOn = false;
+  private String helpFile = "org/javascool/doc-files/about-keystrokes.htm";
+
+  // Sets the basic tools
   private void fileTools() {
-    addTool("Ouvrir", "org/javascool/doc-files/icones16/open.png", openFile);
-    addTool("Sauver", "org/javascool/doc-files/icones16/save.png", saveFile);
+    addTool("Ouvrir", "org/javascool/doc-files/icones16/open.png", fileOpen);
+    addTool("Sauver", "org/javascool/doc-files/icones16/save.png", fileSave);
     addToolSeparator();
-    addTool("Aide", "org/javascool/doc-files/icones16/help.png", showHelp);
+    addTool("Aide", "org/javascool/doc-files/icones16/help.png", helpShow);
     addToolSeparator();
   }
-  // Defines the key-stroke
+
+  // Defines the key-strokes
   {
     getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_MASK), "open");
     getRootPane().getActionMap().put("open",  new AbstractAction("open") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  for(Object action : getRootPane().getActionMap().allKeys()) System.err.println("> A = "+action);
-	  openFile.run();
+	  fileOpen.run();
 	}});
     getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK), "save");
     getRootPane().getActionMap().put("save",  new AbstractAction("save") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  saveFile.run();
+	  fileSave.run();
 	}});
     getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_H, KeyEvent.CTRL_MASK), "help");
     getRootPane().getActionMap().put("help",  new AbstractAction("help") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  showHelp.run();
+	  helpShow.run();
 	}});
     getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_MASK), "validate");
     getRootPane().getActionMap().put("validate",  new AbstractAction("validate") {
@@ -373,102 +363,151 @@ public class Main extends JApplet { /**/public Main() { }
     getRootPane().getActionMap().put("quit",  new AbstractAction("quit") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  System.err.println("Bye guy !!!!");
-	  if(exitSaveFile()) {
-	    System.err.println("Please quit !!!!");
+	  if(fileSavePlease()) 
 	    Utils.unshow(Main.this);
-	  }
 	}});
   }
   /** This is the runnable called when the ^L keystroke is called. */
   private Runnable validate = null;
   
   // [3] Defined activities.
-
-  private Activity jvsActivity = new Activity() {
-      public String getTitle() { return "Démonstration de l'éditeur Jvs"; }
-      public void init(Main main) {
-      editor = new JvsSourceEditor();
-	main.addTab("Jvs Editor", "", (JPanel) editor);
-	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
-	addTool("Compile", "org/javascool/doc-files/icones16/compil.png", validate = cmpJvs);
-      }
-	};
-  private Runnable cmpJvs = new Runnable() { public void run() {
-    if(verisave == true)
-      Utils.saveString(file.getPath(), activity.getText());
-    delTool("Exécuter");
-    delTool("Arrêter");
-    showTab("Console");
-    Jvs2Java.translate(file.getPath());
-    String out = Jvs2Java.compile(file.getPath());
-    System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
-    proglet.ingredients.Console.printHtml("<hr>\n");
-    if (out.length() == 0) {
-      addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", runJvs);
-      addTool("Arrêter", "org/javascool/doc-files/icones16/stop.png", stpJvs);
-    }
-  }};
-   private Runnable runJvs = new Runnable() { public void run() {
-     proglet.ingredients.Console.clear();
-     Jvs2Java.load(file.getPath());
-     Jvs2Java.run(true);
-  }};
-   private Runnable stpJvs = new Runnable() { public void run() {
-     Jvs2Java.run(false);
-  }};
-    private Activity tortueActivity = new Activity() {
-      public String getTitle() { return "Tortue"; }
-      public void init(Main main) {
-      editor = new JvsSourceEditor();
-      ((JvsSourceEditor)editor).setProglet("tortuelogo");
-	main.addTab("Jvs Editor", "",(JPanel) editor);
-	main.addTab("Tortue", "", Jvs2Java.getPanel("tortuelogo"));
-	main.addTab("Console", "", Jvs2Java.getPanel("ingredients"));
-	addTool("Compile", "org/javascool/doc-files/icones16/compil.png", cmpJvs);
-      }
-    };
-
-  private Activity pmlActivity = new Activity() {
-      public String getTitle() { return "Démonstration de l'éditeur Pml"; }
-      public void init(Main main) {
-      editor = new SourceEditor();
-	  main.addTab("Pml Editor", "",(JPanel) editor);
-      }
-    };
-
-  private Activity algActivity = new Activity() {
-      public String getTitle() { return "Activité d'Algoritme simplifié"; }
-      public void init(Main main) {
-      editor=new AlgoEditor();
-	main.addTab("Algo Editor", "",(JPanel) editor);
-      }
-    };
-  private static class JFileFilter extends FileFilter {
-    private ArrayList<String> exts = new ArrayList<String>();
-    private String description;
-    public void addType(String s) {
-      exts.add(s);
-    }
-    public boolean accept(File f) {
-      if(f.isDirectory()) {
-	return true;
-      } else if(f.isFile()){
-	Iterator it = exts.iterator();
-	while(it.hasNext()) 
-	  if(f.getName().endsWith((String)it.next()))
-	    return true;
-      }
-      return false;
-    }
-    public String getDescription() {
-      return description;
-    }
-    public void setDescription(String s) {
-      description = s;
-    }
+  /** Defines all registered activities. */
+  private void addActivities() {
+    addActivity(new ProgletActivity("ingredients") {
+	public String getTitle() { return "Découvrir les ingrédients des algorithmes"; }
+	public void init() {
+	  super.init();
+	  addTab("Séquence d'instruction", "proglet/ingredients/doc-files/sujet-hello-world.htm");
+	  addTab("Se servir de variables", "proglet/ingredients/doc-files/sujet-about-variables.htm");
+	  addTab("L'instruction conditionnelle", "proglet/ingredients/doc-files/sujet-about-if.htm");
+	  addTab("Utiliser des fonctions", "proglet/ingredients/doc-files/sujet-about-functions.htm");
+	  addTab("Programmer des boucles", "proglet/ingredients/doc-files/sujet-about-while.htm");
+	  addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm");
+	}
+      });
+    addActivity((new ProgletActivity("ingredients") {
+	public String getTitle() { return "Un tutoriel sur les valeurs numériques: une calculette d'indice de masse corporelle"; }
+	public void init() {
+	  super.init();
+	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm");
+	  addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm");
+	}}));
+    addActivity(new ProgletActivity("exodemaths") {
+	public String getTitle() { return "Faire un exercice d'application: programmer un calcul géométrique"; }
+	public void init() {
+	  super.init();
+	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm");
+	  initDoc();
+	}});
+    addActivity(new AlgoEditorActivity() {
+	public String getTitle() { return "Découvrir les ingrédients des algorithmes de manière graphique"; }
+      });
+    addActivity(new ProgletActivity("dichotomie") {
+	public String getTitle() { return "Comprendre le principe algorithmique de la dichotomie"; }
+	public void init() {
+	  super.init();
+	  addTab("Enoncé de l'exercice", "proglet/dichotomie/doc-files/sujet-appli-dicho.htm");
+	  initDoc();
+	}});
+    addActivity(new ProgletActivity("pixelsetcie") {
+	public String getTitle() { return "Comprendre quelques opérations de manipulation d'images"; }
+	public void init() {
+	  super.init();
+	  addTab("Enoncé de l'exercice", "proglet/pixelsetcie/doc-files/sujet-appli-image.htm");
+	  initDoc();
+	}});
+    addActivity(new ProgletActivity("convanalogique") {
+	public String getTitle() { return "Programmer la conversion analogique-digitale"; }
+	public void init() {
+	  super.init();
+	  addTab("Enoncé de l'exercice", "proglet/convanalogique/doc-files/sujet-appli-conva.htm");
+	  initDoc();
+	}});
+    addActivity(new ProgletActivity("synthesons") {
+	public String getTitle() { return "Découverte du signal sonore"; }
+	public void init() {
+	  super.init();
+	  initDoc();
+	}});
+    addActivity(new ProgletActivity("javaprog") {
+	public String getTitle() { return "Programmer directement en Java"; }
+	public void init() {
+	  super.init();
+	  initDoc();
+	}});
+    addActivity(new ProgletActivity("tortuelogo") {
+	public String getTitle() { return "Programmer avec la «tortue logo»"; }
+	public void init() {
+	  super.init();
+	  initDoc();
+	}});
   }
 
+  // Defines a compilation activity 
+  private abstract class JavaActivity implements Activity {
+    // Compilation/execution mechanism
+    protected void initCompile() {
+      addTab("Console", Jvs2Java.getPanel("ingredients"));
+      addTool("Compile", "org/javascool/doc-files/icones16/compil.png", validate = compile);
+    }
+    private Runnable compile = new Runnable() { public void run() {
+      fileChooser.doSave(activity.getEditor());
+      delTool("Exécuter");
+      delTool("Arrêter");
+      showTab("Console");
+      Jvs2Java.translate(fileChooser.getFile());
+      String out = Jvs2Java.compile(fileChooser.getFile());
+      System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
+      Console.printHtml("<hr>\n");
+      if (out.length() == 0) {
+	addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
+	addTool("Arrêter", "org/javascool/doc-files/icones16/stop.png", stop);
+      }
+    }};
+    private Runnable execute = new Runnable() { public void run() {
+      Console.clear();
+      Jvs2Java.load(fileChooser.getFile());
+      Jvs2Java.run(true);
+    }};
+    private Runnable stop = new Runnable() { public void run() {
+      Jvs2Java.run(false);
+    }};
+  }
+
+  // Defines a proglet activity
+  private abstract class ProgletActivity extends JavaActivity {
+    /** Constructs a proglet activity.
+     * @param proglet The proglet to use.
+     * @throws IllegalArgumentExceptionif the proglet is undefined.
+     */
+    public ProgletActivity(String proglet) { 
+      if (Jvs2Java.getPanel(proglet) == null) throw new IllegalArgumentException("Undefined proglet : "+proglet);
+      this.proglet = proglet;
+    } 
+    private String proglet;
+    // Common panels and tools
+    public void init() {
+      addTab("Jvs Editor", (JPanel) editor);
+      initCompile();
+      addTab(proglet, Jvs2Java.getPanel(proglet));
+    }
+    protected void initDoc() {
+      addTab("Document de la proglet", "proglet/"+proglet+"/doc-files/about-proglet.htm");
+      addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm");
+    }
+    public Editor getEditor() { return editor; } private JvsSourceEditor editor = new JvsSourceEditor();
+  }
+  // Defines a AlgoTree proglet activity
+  private abstract class AlgoEditorActivity extends JavaActivity {
+    // Common panels and tools
+    public void init() {
+      addTab("Algo Editor", (JPanel) editor);
+      initCompile();
+      addTab("Tracé", Jvs2Java.getPanel("exodemaths"));
+    }
+    public Editor getEditor() { return editor; } private AlgoEditor editor = new AlgoEditor();
+  }
+  
   /** Used to run a javasccol v3 as a standalone program. 
    * <p>- Starts a JavaScool "activity" which result is to be stored in a "file-name".</p>
    * @param usage <tt>java org.javascool.Main [activity [file-name]]</tt><ul>
@@ -482,6 +521,5 @@ public class Main extends JApplet { /**/public Main() { }
     if (usage.length >= 1) main.setActivity(usage[0]);
     if (usage.length >= 2) main.setFile(usage[1]);
     Utils.show(main, "Java'Scool v3.0", false);
-    //Utils.whereAreWe();
   }
 }

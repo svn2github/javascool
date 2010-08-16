@@ -6,6 +6,9 @@ package org.javascool;
 
 // Used to build the gui
 import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JToolBar;
+import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
@@ -31,28 +34,56 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
 
   /** The Html Display pane. */
   private JTextPane pane;
-
-  /** Resets the display a a given size.
-   * @param width Windows withh.
-   * @param height Windows height.
-   * @return This, allowing to use the <tt>new HtmlDisplay().reset(..)</tt> construct. 
-   */
-  public HtmlDisplay reset(int width, int height) { 
-    removeAll();
+  /** The navigation buttons. */
+  private JButton home, prev, next;
+  {
+    // Builds the GUI
+    setLayout(new BorderLayout());
+    JToolBar bar = new JToolBar();
+    bar.add(home = new JButton("Page initiale", Utils.getIcon("org/javascool/doc-files/icones16/refresh.png")));
+    bar.add(prev = new JButton("Page précédente", Utils.getIcon("org/javascool/doc-files/icones16/prev.png")));
+    bar.add(next = new JButton("Page suivante", Utils.getIcon("org/javascool/doc-files/icones16/next.png")));
+    add(bar, BorderLayout.NORTH);
     pane = new JTextPane();
-    pane.setSize(width, height);
     pane.setEditable(false);
     pane.setContentType("text/html");
     pane.addHyperlinkListener(new HyperlinkListener() {
 	public void hyperlinkUpdate(HyperlinkEvent e) { if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) { load(e.getDescription()); } } });
     JScrollPane spane = new JScrollPane(pane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    spane.setSize(width, height);
-    add(spane);
-    revalidate();
-    return this;
+    add(spane, BorderLayout.CENTER);
+    // Defines the backward/forward key-stroke and buttons
+    {
+      AbstractAction doHome, doPrev, doNext;
+      pane.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_HOME, KeyEvent.CTRL_MASK), "home");
+      pane.getActionMap().put("home",  doHome = new AbstractAction("home") {
+	  private static final long serialVersionUID = 1L;
+	  public void actionPerformed(ActionEvent e) { 
+	    if(urls.hasHome()) load(urls.home().toString(), false);
+	    updateButtons();
+	  }});
+      home.addActionListener(doHome); home.setEnabled(false);
+      pane.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, KeyEvent.CTRL_MASK), "backward");
+      pane.getActionMap().put("backward",  doPrev = new AbstractAction("backward") {
+	  private static final long serialVersionUID = 1L;
+	  public void actionPerformed(ActionEvent e) { 
+	    if(urls.hasPrev()) load(urls.prev().toString(), false);
+	    updateButtons();
+	  }});
+      prev.addActionListener(doPrev); prev.setEnabled(false);
+      pane.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, KeyEvent.CTRL_MASK), "forward");
+      pane.getActionMap().put("forward",  doNext = new AbstractAction("forward") {
+	  private static final long serialVersionUID = 1L;
+	  public void actionPerformed(ActionEvent e) { 
+	    if(urls.hasNext()) load(urls.next().toString(), false);
+	    updateButtons();
+	  }});
+      next.addActionListener(doPrev); next.setEnabled(false);
+    }
   }
-  {
-    reset(1024, 800);
+  private void updateButtons() {
+    home.setEnabled(urls.hasHome());
+    prev.setEnabled(urls.hasPrev());
+    next.setEnabled(urls.hasNext());
   }
 
   /** Sets the HTML text to show and return this.
@@ -61,6 +92,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
    */
   public HtmlDisplay reset(String text) { 
     pane.setText("<html><head></head><body width='"+(pane.getWidth()-40)+"' height='2000'>"+text+"</body></html>"); 
+    pane.setCaretPosition(0);
     return this; 
   }
 
@@ -76,6 +108,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     try {
       URL url = urls.empty() ? Utils.toUrl(location) : new URL(urls.current(), location);
       if (stack) urls.push(url);
+      updateButtons();
       System.err.println("HtmlDisplay #"+urls.current+" : "+urls.current());
       return reset(Utils.loadString(urls.current().toString()));
     } catch(Exception e) {
@@ -83,7 +116,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     }
   }
   /** Defines the URL backward/forward mechanism. */
-  private static class Stack extends Vector<URL> {
+  private class Stack extends Vector<URL> {
     private static final long serialVersionUID = 1L;
     /** Current index in the URL vector. */
     private int current = -1;
@@ -93,6 +126,10 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     public boolean empty() { return size() == 0; }
     /** Pushs an URL in the stack. */
     public void push(URL url) { setSize((++current)+1); set(current, url); }
+    /** Checks if there is a home page. */
+    public boolean hasHome() { return current >= 0; }
+    /** Returns the home URL, if any. */
+    public URL home() { if(hasHome()) current = 0; return current(); }
     /** Checks if there is a previous page. */
     public boolean hasPrev() { return current > 0; }
     /** Returns the previous URL, if any. */
@@ -104,22 +141,6 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
   }
   /** The URL stack. */
   private Stack urls = new Stack();
-
-  // Defines the backward/forward key-stroke
-  {
-    pane.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_B, KeyEvent.CTRL_MASK), "backward");
-    pane.getActionMap().put("backward",  new AbstractAction("backward") {
-	private static final long serialVersionUID = 1L;
-	public void actionPerformed(ActionEvent e) { 
-	  if(urls.hasPrev()) load(urls.prev().toString(), false);
-	}});
-    pane.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_MASK), "forward");
-    pane.getActionMap().put("forward",  new AbstractAction("forward") {
-	private static final long serialVersionUID = 1L;
-	public void actionPerformed(ActionEvent e) { 
-	  if(urls.hasNext()) load(urls.next().toString(), false);
-	}});
-  }
   
   /** Shows a HTML3.2 page.
    * @param usage <tt>java org.javascool.HtmlDisplay location</tt>

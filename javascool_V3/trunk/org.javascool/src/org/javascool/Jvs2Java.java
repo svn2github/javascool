@@ -126,18 +126,19 @@ public class Jvs2Java { private Jvs2Java() { }
       }
       // Imports proglet's static methods
       head.append("import static org.javascool.Macros.*;");
-      head.append("import org.javascool.Jvs2Java;");
       if (proglet.length() == 0) {	
 	for(String p : proglets.keySet()) 
 	head.append("import static "+proglets.get(p)+".*;");
       } else {
-	head.append("import static "+proglets.get(proglet)+".*;");
+	head.append("import static "+proglets.get("ingredients")+".*;");
+	if (!"ingredients".equals(proglet))
+	  head.append("import static "+proglets.get(proglet)+".*;");
       }
       // Declares the proglet's core as a Runnable in the Applet
-      // - defined as a MainV2 in order to be loaded in a java page as an executable applet.
-      head.append("public class "+jclass+ " extends org.javascool.Main {");
+      // - defined as a ProgletApplet in order to be loaded as an executable applet.
+      head.append("public class "+jclass+ " extends org.javascool.ProgletApplet {");
       head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");
-      head.append("  static { Jvs2Java.runnable = new ProgletRunnableMain(); }");
+      head.append("  static { org.javascool.Jvs2Java.runnable = new ProgletRunnableMain(); }");
       head.append("}");
       head.append("class ProgletRunnableMain implements Runnable {");
       head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");

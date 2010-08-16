@@ -1,18 +1,15 @@
 
 ifeq ($(USER), vthierry)
 
-#* Activite algo: AlgoEditor + ViewSource (JvsSourceEditor en edit-false) + Console + Curve
-#* Activites : toutes les proglets et sujets 
-
 all :
 	@$(MAKE) -C ../../.. jar
 	@cd ../tst ; java -jar  ../www/javascool.jar
-#	@java -cp  ../../../www/javascool.jar org.javascool.HtmlDisplay ./doc-files/about-proglets.htm
 #	@cd ../tst ; java -cp ../www/javascool.jar org.javascool.MainV2 edit ingredients Test0.jvs
 
 else
 
 all : 
-	@$(MAKE) -C ../../.. v3
+	@$(MAKE) -C ../../.. jar
+	@cd ../tst ; java -jar  ../www/javascool.jar
 
 endif
