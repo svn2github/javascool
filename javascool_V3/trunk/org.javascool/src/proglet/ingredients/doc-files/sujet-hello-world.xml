@@ -6,7 +6,7 @@
   </div>
   
   <div class="intros">
-    <div title="Ecrire notre premier programme">Voici un exemple de programme minimal qui affiche la chaine de caractère <v>HelloWorld</v>:
+    <div title="Ecrire notre premier programme">Voici un exemple de programme minimal qui affiche le message (la chaine de caractère) <v>HelloWorld</v>:
       <div class="code">
         <p><r>void main</r>() {</p>
         <p><T/><r>println</r>(<v>Hello World !</v>);</p>
@@ -15,7 +15,7 @@
       <div>Nous y lisons les mots <r>void main</r> et <r>println</r> qui sont des mots de <l class="javascool"/>, le langage informatique, 
       et la chaine de caractères <v>HelloWorld</v> qui est un mot "à  nous".</div>
       Regardons à quoi correspondent ces trois lignes d'instructions: <div class="ol">
-      <div>Ce que nous demandons, notre "instruction", est juste d'imprimer <v>HelloWorld</v>; 
+      <div>Ce que nous demandons est juste d'imprimer <v>HelloWorld</v>; 
       où, par convention, nous plaçons la chaine de caractères entre guillemets <v/> pour signifier que c'est juste une chaine de caractères.</div>
       <div>Nous spécifions donc l'instruction <r>println</r>(<v>HelloWorld</v>), où <r>println</r> signifie "imprime <i>(print)</i> sur une ligne" et
       où, par convention, ce qui doit être imprimé est placé entre parenthèse après le mot <r>println</r> et l'instruction se finit par <b>;</b>.</div>
