@@ -91,7 +91,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
    * @return This, allowing to use the <tt>new HtmlDisplay().reset(..)</tt> construct.
    */
   public HtmlDisplay reset(String text) { 
-    pane.setText("<html><head></head><body width='"+(pane.getWidth()-40)+"' height='2000'>"+text+"</body></html>"); 
+    pane.setText("<html><head></head><body>"+text+"</body></html>"); 
     pane.setCaretPosition(0);
     return this; 
   }

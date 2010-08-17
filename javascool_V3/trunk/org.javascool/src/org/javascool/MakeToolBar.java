@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
  * @see <a href="MakeToolBar.java.html">source code</a>
  * @serial exclude
  */
-public class MakeToolBar extends JToolBar implements Widget { /**/public MakeToolBar() { }
+/**/public class MakeToolBar extends JToolBar implements Widget { /**/public MakeToolBar() { }
   private static final long serialVersionUID = 1L;
   private static final int WIDTH = 500, LENGTH = 256;
   {
