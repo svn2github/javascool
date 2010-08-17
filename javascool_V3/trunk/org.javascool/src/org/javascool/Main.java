@@ -280,10 +280,10 @@ public class Main extends JApplet { /**/public Main() { }
     String parent = f.getParent(), extensionPattern = "(.*)(\\.[^\\.]*)$", name = f.getName().replaceAll(extensionPattern, "$1"), main;
     if (Jvs2Java.isReserved(name)) {
       main = "my_" + name;
-      System.out.println("Attention: le nom \""+name+"\" est interdit par Java,\n renommons le \""+main+"\"");
+      System.out.println("Attention: le nom \""+name+"\" est interdit par Java, renommons le \""+main+"\"");
     } else if (!name.matches("[A-Za-z_][A-Za-z0-9_]*")) {
       main = name.replaceAll("[^A-Za-z0-9_]", "_");
-      System.out.println("Attention: le nom \""+name+"\" contient quelque caractère interdit par Java,\n renommons le \""+main+"\"");
+      System.out.println("Attention: le nom \""+name+"\" contient quelque caractère interdit par Java, renommons le \""+main+"\"");
     } else
       main = name;
     if (extension == null) { extension = f.getName().matches(extensionPattern) ? f.getName().replaceFirst(extensionPattern, "$2") : ""; }
