@@ -474,7 +474,7 @@ public class Main extends JApplet { /**/public Main() { }
 	  addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
 	  addTool("Arrêter", "org/javascool/doc-files/icones16/stop.png", stop);
 	}
-      }
+	}else{System.err.println("Erreur, le fichier n'est pas sauvgarder !!!");}
     }};
     private Runnable execute = new Runnable() { public void run() {
       Console.clear();
