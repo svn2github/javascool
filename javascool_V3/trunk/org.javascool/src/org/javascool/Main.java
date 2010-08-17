@@ -237,7 +237,8 @@ public class Main extends JApplet { /**/public Main() { }
     public void doOpen(Editor editor, String file) {
       setSelectedFile(new File(file));
       String text = Utils.loadString(this.file = file);
-      // if (text.charAt(0) != '\n') text = "\n" + 
+      // Adds a new line if not yet done
+      if (!text.matches("^[ \t]*\n.*")) text = "\n" + text;
       editor.setText(text);
     }
     /** Manages a save dialog action. 
@@ -261,10 +262,14 @@ public class Main extends JApplet { /**/public Main() { }
      * @param editor The editor from where the file is saved.
      */
     public void doSave(Editor editor) {
-      if (file == null)
+      if (file == null) {
 	doSaveAs(editor);
-      else
-	Utils.saveString(file, editor.getText());
+      } else { 
+	String text = editor.getText();
+	// Cleans spurious chars
+	text = text.replaceAll("[\u00a0]", "");
+	Utils.saveString(file, text);
+      }
     }
     /** Sets the next save dialog title. 
      * @param title Optional title for a specific dialog
@@ -500,6 +505,7 @@ public class Main extends JApplet { /**/public Main() { }
     // Common panels and tools
     public void init() {
       addTab("Jvs Editor", (JPanel) editor);
+      editor.setProglet(proglet);
       initCompile();
       if (!"ingredients".equals(proglet))
 	addTab(proglet, Jvs2Java.getPanel(proglet));
