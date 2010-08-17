@@ -7,11 +7,9 @@
    
    
    
-   
-   
    <h2>Objectif.</h2>
    <div class="objectif">
-      Le but de ce tutoriel est de comprendre comment ce code manipule une image pixellique. 
+      Le but de ce tutoriel est de comprendre comment un code manipule une image pixellique. 
       Il faut d&eacute;ja savoir <a href="sujet-hello-world.htm">utiliser l'interface</a>,
           se servir de <a href="sujet-about-variables.htm">variables</a> et avoir d&eacute;couvert l'<a href="sujet-about-if.htm">instruction conditionnelle</a> et 
           utiliser des <a href="sujet-about-while.htm">boucles</a> et d&eacute;finir une <a href="sujet-about-functions.htm">fonction</a>.
@@ -183,8 +181,8 @@
                         <p>
                            <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
                               <tr>
-                                 <td valign="top"><img src="img/cmu-jump1.jpg" alt="" class="icon"></td>
-                                 <td valign="top"><img src="img/cmu-jump3.jpg" alt="" class="icon"></td>
+                                 <td valign="top"><img src="cmu-jump1.jpg" alt="" class="icon"></td>
+                                 <td valign="top"><img src="cmu-jump3.jpg" alt="" class="icon"></td>
                               </tr>
                            </table><br></p>
                      </div>
@@ -219,8 +217,8 @@
                         <p>
                            <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
                               <tr>
-                                 <td valign="top"><a href="img/13_11.avi"><img src="img/cmu-jump1.jpg" alt=""></a></td>
-                                 <td valign="top"><img src="img/cmu-jump2.jpg" alt="" class="icon"></td>
+                                 <td valign="top"><a href="http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/13_11.avi"><img src="cmu-jump1.jpg" alt=""></a></td>
+                                 <td valign="top"><img src="cmu-jump2.jpg" alt="" class="icon"></td>
                               </tr>
                            </table><br></p>
                      </div>
@@ -487,77 +485,5 @@
          </li>
       </ol>
    </div>
-   
-     
-   <h2>Remarques.</h2>
-   <div id="notes">
-      <ol>
-         <li>
-            <div>
-               <h3>Manipuler des objets num&eacute;riques: l'exemple des images..</h3> Le but de cette activit&eacute; est, maintenant que nous <a href="http://interstices.info/reflet-numerique">savons comment sont cod&eacute;es des images</a>, de regarder quelques op&eacute;rations que nous pouvons effectuer sur ces objets num&eacute;riques. Nous consid&eacute;rons ici des images o&ugrave;
-               chaque pixel est  un nombre entre 0% pour le noir (consid&eacute;r&eacute; ici comme une absence de couleur) et 100% pour le blanc, donc
-               des images monochromes qui vont de transparent &agrave; blanc. Nous allons essayer d'illustrer dans quelle mesure des op&eacute;rations
-               entre ces images peuvent prendre avoir un sens concret pour nous.
-            </div>
-         </li>
-         <li>
-            <div>
-               <h3>Ajouter deux images: l'effet de calque.</h3>. Que peux signifier "ajouter" deux images ? Tout simplement produire un effet de calque comme on le voit avec l'exemple ci-dessus.
-               En ajoutant les deux images, c'est &agrave; dire en ajoutant les valeurs de chaque pixel de la premi&egrave;re image &agrave; la valeur du pixel
-               correspondant dans la seconde image, on obtient une image qui amalgame les valeurs des deux, un peu comme un effet de calque.
-               Si nous avions consid&eacute;r&eacute; des pixels de couleurs alors en les ajoutant nous aurions m&eacute;lang&eacute; les couleurs et obtenues des combinaisons
-               diverses. De plus, la notion de calque est li&eacute; au fait que nous avons consid&eacute;r&eacute; la notion de transparence: il s'agit juste
-               ici d'illustrer un principe.
-            </div>
-         </li>
-         <li>
-            <div>
-               <h3>Soustraire deux images: un d&eacute;tecteur de mouvement..</h3> A quoi peut correspondre maintenant la "soustraction" de deux images, c'est &agrave; dire soustraire &agrave; chaque pixel de la premi&egrave;re
-               image, la valeur du pixel correspondant de la seconde ? Il est facile de voir que si les pixels ont une m&ecirc;me valeur, alors
-               la diff&eacute;rence sera nulle: ainsi si rien n'a chang&eacute; d'une image &agrave; l'autre, il n'y aura pas de diff&eacute;rence. Si au contraire,
-               quelque chose a chang&eacute;, alors la diff&eacute;rence sera ou positive (disons plut&ocirc;t noire) ou n&eacute;gative (disons plut&ocirc;t blanche) et
-               nous d&eacute;tectons ainsi les changements, comme nous le voyons ci dessus pour deux images entre lesquelles la figurine a quelque
-               peu boug&eacute;.
-                   Dans le cas d'un film, nous obtenons une "image de mouvement": la d&eacute;tection de ce qui bouge d'une image &agrave; l'autre. Ce
-               qui est tr&egrave;s int&eacute;ressant c'est que dans les r&eacute;tines biologiques ou dans les syst&egrave;mes de vision artificiels qui analysent les
-               mouvements, c'est un calcul tout &agrave; fait similaire qui est mis en oeuvre.
-            </div>
-         </li>
-         <li>
-            <div>
-               <h3>Manipuler les valeurs des pixels: r&eacute;glage de contraste et de luminosit&eacute;, etc...</h3>  Regardons maintenant quelques op&eacute;rations effectu&eacute;es sur chaque valeur des pixels d'une image.
-               <ul class="ul">
-                      
-                  <li>Par exemple, prenons chaque pixel de l'image et d&eacute;calons chaque valeur d'une quantit&eacute; constante, par exemple en ajoutant un
-                     nombre donn&eacute;. Que se passe t'il ? Les valeurs sombres deviennent plus claires, nous avons augment&eacute; la luminosit&eacute; de notre
-                     image. C'est exactement ce qui se passe sur le r&eacute;glage de luminosit&eacute; d'un &eacute;cran: il s'agit d'ajouter ou retirer une valeur
-                     constante pour donner plus ou moins de lumi&egrave;re.
-                  </li>
-                      
-                  <li>Prenons maintenant chaque pixel et multiplions sa valeur par une quantit&eacute; donn&eacute;e, disons plus grande que un. Que se passe
-                     t'il ? Nous augmentons les amplitudes entre valeurs sombres et claires, nous avons augment&eacute; le contraste de notre image. C'est
-                     exactement ce qui se passe sur le r&eacute;glage de contraste d'un &eacute;cran: il s'agit soit d'amplifier les &eacute;carts entre les valeurs
-                     donc favoriser les noirs et les blancs au d&eacute;triment des gris, soit de diminuer ces &eacute;carts (en multipliant toutes les valeurs
-                     par un nombre plus petit que un) donc de rapprocher toutes les couleurs du gris.
-                  </li>
-                    
-               </ul>Beaucoup d'autres op&eacute;rations sur la valeur des pixels peuvent facilement se pr&eacute;dire: par exemple que se passe t'il si nous
-               prenons l'oppos&eacute; de chaque valeur de pixel ? Les noirs deviennent blancs et les blancs deviennent noir et nous avons une op&eacute;ration
-               dites d'``inverse vid&eacute;o&acute;&acute;.
-            </div>
-         </li>
-         <li>
-            <div>
-               <h3>Les images comme des objets alg&eacute;briques:.</h3> Les math&eacute;maticiens voient donc s&ucirc;rement ces tableaux bi-dimensionnels que sont les images comme des objets alg&eacute;briques que
-               l'on peut ajouter (effet de calque), multiplier par un scalaire, translater etc... Ce sont effectivement des vecteurs d'un
-               espace vectoriel dont les composantes sont rang&eacute;es en tableau. Ce ne sont pas des matrices car multiplier deux images (au
-               sens de la multiplication des matrices des valeurs de pixels) correspond &agrave; une op&eacute;ration qui n'a pas de sens (hormis pour
-               un artiste surr&eacute;aliste !) en ce qui concerne les images. Nous sommes donc face &agrave; des objets alg&eacute;briques dot&eacute;es d'op&eacute;rations
-               riches de propri&eacute;t&eacute;s, mais diff&eacute;rents des objets usuels de l'alg&egrave;bre lin&eacute;aire. Les th&eacute;oriciens de la vision par ordinateur
-               ont largement explor&eacute;s ces aspects formels.
-            </div>
-         </li>
-      </ol>
-   </div>
-   
+    
 </div>
