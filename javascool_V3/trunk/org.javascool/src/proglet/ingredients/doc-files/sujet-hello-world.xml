@@ -13,15 +13,16 @@
         <p><T/><r>println</r>(<v>Hello World !</v>);</p>
         <p>}</p>
       </div>
-      <div>Nous y lisons les mots <r>void main</r> et <r>println</r> qui sont des mots de <l class="javascool"/>, le langage informatique, 
+      <div>Nous y lisons les mots <r>void main</r> et <r>println</r> qui sont des mots-clés de <l class="javascool"/>, le langage informatique, 
       et la chaine de caractères <v>HelloWorld</v> qui est un mot "à  nous".</div>
       Regardons à quoi correspondent ces trois lignes d'instructions: <div class="ol">
       <div>Ce que nous demandons est juste d'imprimer <v>HelloWorld</v>; 
       où, par convention, nous plaçons la chaine de caractères entre guillemets <v/> pour signifier que c'est juste une chaine de caractères.</div>
       <div>Nous spécifions donc l'instruction <r>println</r>(<v>HelloWorld</v>), où <r>println</r> signifie "imprime <i>(print)</i> sur une ligne" et
-      où, par convention, ce qui doit être imprimé est placé entre parenthèse après le mot <r>println</r> et l'instruction se finit par <b>;</b>.</div>
+      où, par convention, ce qui doit être imprimé est placé entre parenthèse après le mot <r>println</r> et l'instruction se finit par <b>;</b>.
+      C'est une fonction.</div>
       <div>Et c'est dans le bloc <b><r>void main</r>() { ../.. }</b> que se placent, entre les accolades, les instructions qui doivent être exécutées par le programme,
-      <r>void main</r> signifie "voici la tâche principale à exécuter" (cette façon de procéder sera évidemment mieux expliquée par la suite).</div>
+      <r>void main</r> signifie «tâche principale à exécuter» (cette façon de procéder sera évidemment mieux expliquée par la suite).</div>
       </div>
       Et voilà ! Il suffit de bien noter l'utilisation du bloc d'instruction (mise en évidence au point 3.) 
       et la façon de donner une instruction (donnée en exemple au point 2.).

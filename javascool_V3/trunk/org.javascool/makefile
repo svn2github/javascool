@@ -4,6 +4,8 @@
 ##  Philoumailabo@gmail.com and Thierry.Vieville@sophia.inria.fr, Copyright (C) 2010.  All rights reserved.                        ##
 #####################################################################################################################################
 
+default : j3
+
 # General commands
 
 usage :

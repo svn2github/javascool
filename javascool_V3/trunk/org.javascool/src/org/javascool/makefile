@@ -1,4 +1,7 @@
 
+# A remettre sur le site
+#### <html><center> - '''Pour télécharger JavaScool [http://javascool.gforge.inria.fr/v3/javascool.jar cliquer ici]''' </center> et mettre lle lien Tele->J.jar
+
 ifeq ($(USER), vthierry)
 
 all :
