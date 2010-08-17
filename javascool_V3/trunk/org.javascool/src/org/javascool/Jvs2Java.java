@@ -93,13 +93,11 @@ public class Jvs2Java { private Jvs2Java() { }
 	  // Cleans spaces after symbol
 	  for(;i < text0.length() - 1 && Character.isWhitespace(text0.charAt(i + 1)); i++);
 	  // Decides ln
-	  boolean esl = text0.substring(i).startsWith("} else");
-	  if (!esl) 
-	    ln = tab;
+	  ln = tab;
 	}
       }
     }
-    return text1;
+    return "\n"+text1.replaceAll("\\}\\s*else\\s*\\{", "} else {");
   }
 
   /** Translates a Jvs code source.

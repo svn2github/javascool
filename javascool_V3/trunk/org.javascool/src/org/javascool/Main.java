@@ -12,6 +12,7 @@ package org.javascool;
 
 // Used to define the gui
 import javax.swing.JApplet;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JToolBar;
@@ -167,6 +168,7 @@ public class Main extends JApplet { /**/public Main() { }
       activity = activities.get(name);
       toolBar.removeAll();
       tabbedPane.removeAll();
+      toolBar.add(new JLabel(Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif")));
       fileTools();
       fileChooser.resetFile();
       activity.init();
@@ -204,23 +206,26 @@ public class Main extends JApplet { /**/public Main() { }
       setCurrentDirectory(new File(System.getProperty("user.dir")));
       // Defines a Jvs/Pml extension filter
       setFileFilter(new FileFilter() {
-	  public String getDescription() { return "Fichiers JVS et PML"; }
+	  public String getDescription() { 
+	    return extension == null ? "Tous les Fichiers" : "Fichiers " + extension.substring(1).toUpperCase();
+	  }
 	  public boolean accept(File file) {
-	    return 
-	      file.isDirectory() ? true :
-	      file.getName().endsWith(".jvs") ||
-	      file.getName().endsWith(".pml");
+	    return file.isDirectory() ? true : extension == null ? true : file.getName().endsWith(extension);
 	  }
 	});
     }
+    private String extension = null;
     /** Gets the last selected file. */ 
     public String getFile() { return file; } private String file;
     /** Resets the selected file. */
     public void resetFile() { file = null; }
     /** Manages an open dialog action. 
      * @param editor The editor where to load the file.
+     * @param extension The required file extension, if any (else null).
      */
-    public void doOpen(Editor editor) {
+    public void doOpenAs(Editor editor, String extension) {
+      if (this.extension != extension) setSelectedFile(null);
+      this.extension = extension;
       setDialogTitle("Ouvrir un programme");
       setDialogType(JFileChooser.OPEN_DIALOG);
       setApproveButtonText("Ouvrir");
@@ -231,8 +236,6 @@ public class Main extends JApplet { /**/public Main() { }
     public void doOpen(Editor editor, String file) {
       setSelectedFile(new File(file));
       String text = Utils.loadString(this.file = file);
-      // Adds a new line if not yet done
-      if (!text.matches("^[ \t]*\n.*")) text = "\n" + text;
       editor.setText(text);
     }
     /** Manages a save dialog action. 
@@ -241,6 +244,8 @@ public class Main extends JApplet { /**/public Main() { }
      * @return True if the dialog is validated, else false.
      */
     public boolean doSaveAs(Editor editor, String extension) {
+      if (this.extension != extension) setSelectedFile(null);
+      this.extension = extension;
       if (title == null) title = "Enregister un programme";
       setDialogTitle(title);
       title = null;
@@ -261,13 +266,24 @@ public class Main extends JApplet { /**/public Main() { }
       if (file == null) {
 	doSaveAs(editor, extension);
       } else { 
-	// Normalizes the file name and extension
-	file = toJavaName(file, extension); setSelectedFile(new File(file));
-	String text = editor.getText();
-	// Cleans spurious chars
-	text = text.replaceAll("[\u00a0]", "");
-	Utils.saveString(file, text);
+	doSave(editor, editor.getText(), extension);
       }
+    }
+    /** Manages a save action (no dialog). 
+     * @param editor The editor where the text comes from.
+     * @param text The text to save.
+     * @param extension The required file extension, if any (else null).
+     */
+    public void doSave(Editor editor, String text, String extension) {
+      // Normalizes the file name and extension
+      file = toJavaName(file, extension); setSelectedFile(new File(file));
+      // Cleans spurious chars
+      text = text.replaceAll("[\u00a0]", "");
+      // Adds a new line if not yet done
+      if (!text.matches("^[ \t]*\n.*")) text = "\n" + text;
+      // Reload in editor the clean text
+      if (editor != null) editor.setText(text);
+      Utils.saveString(file, text);
     }
     /** Sets the next save dialog title. 
      * @param title Optional title for a specific dialog
@@ -300,10 +316,10 @@ public class Main extends JApplet { /**/public Main() { }
 			     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE)) {
     case 0: // Yes save
       if (fileChooser.doSaveAs(activity.getEditor(), activity.getExtension())) 
-	fileChooser.doOpen(activity.getEditor());
+	fileChooser.doOpenAs(activity.getEditor(), activity.getExtension());
       break;
     case 1: // No need to save
-      fileChooser.doOpen(activity.getEditor());
+      fileChooser.doOpenAs(activity.getEditor(), activity.getExtension());
       break;
     }
   }};
@@ -391,7 +407,8 @@ public class Main extends JApplet { /**/public Main() { }
     getRootPane().getActionMap().put("quit",  new AbstractAction("quit") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  if(fileSavePlease()) 
+	  if(fileSavePlease())
+	    activity = null;
 	    Utils.unshow(Main.this);
 	}});
   }
@@ -407,7 +424,9 @@ public class Main extends JApplet { /**/public Main() { }
     public void init();
     /** Returns the activity editor. */
     public Editor getEditor();
-    /** Returns the required file extension. */
+    /** Returns the required file extension. 
+     * e.g., ".jvs" or ".pml"
+     */
     public String getExtension();
   }
   /** Defines all registered activities. */
@@ -499,6 +518,9 @@ public class Main extends JApplet { /**/public Main() { }
       Console.clear();
       fileChooser.doSave(activity.getEditor(), activity.getExtension());
       if (fileChooser.getFile() != null) {
+	if (getEditor() instanceof AlgoEditor) {
+	  fileChooser.doSave(algoViewer, Jvs2Java.reformat(((AlgoEditor) getEditor()).getJavaSource()), ".jvs");
+	}
 	Jvs2Java.translate(fileChooser.getFile());
 	String out = Jvs2Java.compile(fileChooser.getFile());
 	System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
@@ -554,14 +576,16 @@ public class Main extends JApplet { /**/public Main() { }
     // Common panels and tools
     public void init() {
       if (algoEditor == null) algoEditor = new AlgoEditor(); 
+      if (algoViewer == null) { algoViewer = new JvsSourceEditor(); algoViewer.reset(false); }
       addTab("Algo Editor", (JPanel) algoEditor);
+      addTab("Code Viewer", (JPanel) algoViewer);
       initCompile();
       addTab("Tracé", Jvs2Java.getPanel("exodemaths"));
     }
     public Editor getEditor() { return algoEditor; }
     public String getExtension() { return ".pml"; }
   }
-  private AlgoEditor algoEditor = null;
+  private AlgoEditor algoEditor = null; private JvsSourceEditor algoViewer = null;
   
   /** Used to run a javasccol v3 as a standalone program. 
    * <p>- Starts a JavaScool "activity" which result is to be stored in a "file-name".</p>
@@ -575,6 +599,6 @@ public class Main extends JApplet { /**/public Main() { }
     Main main = new Main();
     if (usage.length >= 1) main.setActivity(usage[0]);
     if (usage.length >= 2) main.setFile(usage[1]);
-    Utils.show(main, "Java'Scool v3.0", false);
+    Utils.show(main, "Java'Scool v3.0-beta", false);
   }
 }

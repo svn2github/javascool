@@ -34,7 +34,7 @@
         <p>}</p>
         <p/>
         <p><r>void main</r>() {</p>
-        <p><T/><r>smileyLoad</r>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");</p>
+        <p><T/><r>smileyLoad</r>("http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/doisneaubuffon.jpg");</p>
         <p>}</p>
       </div><div class="ul">
         <div>Le programme principal <r>main</r> charge une belle photo noir et blanc de <l link="http://fr.wikipedia.org/wiki/Doisneau" text="Doisneau"/>.</div>

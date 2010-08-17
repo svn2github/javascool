@@ -2,7 +2,8 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2004.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascool;
+package org.javascooldev;
+import org.javascool.Utils;
 
 // Used to build the gui
 import javax.swing.JToolBar;
@@ -17,7 +18,7 @@ import java.awt.event.ActionEvent;
  * @see <a href="MakeToolBar.java.html">source code</a>
  * @serial exclude
  */
-/**/public class MakeToolBar extends JToolBar implements Widget { /**/public MakeToolBar() { }
+/**/public class MakeToolBar extends JToolBar { /**/public MakeToolBar() { }
   private static final long serialVersionUID = 1L;
   private static final int WIDTH = 500, LENGTH = 256;
   {

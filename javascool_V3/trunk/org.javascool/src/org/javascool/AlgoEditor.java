@@ -193,7 +193,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
   public Editor setText(String string) {
     Pml pml = new Pml().reset(string); 
     DefaultMutableTreeNode node = setText(pml);
-    System.out.println("setText = "+getText(node, 0));
+    //-System.out.println("setText = "+getText(node, 0));
     removeAlgo();
     for(int c = 0; node.getChildCount() > 0 ; c++) {
       DefaultMutableTreeNode n = (DefaultMutableTreeNode) node.getChildAt(0);
@@ -541,7 +541,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
     if ("Copier".equals(action)) {
       DefaultMutableTreeNode node = getCurrentNode(false);
       clipboard = copy(node);
-      System.out.println(action + " : " + getText(clipboard, 0) + " == " + getText(node, 0));
+      //-System.out.println(action + " : " + getText(clipboard, 0) + " == " + getText(node, 0));
     } else if ("Couper/Supprimer".equals(action)) {
       modified = true;
       DefaultMutableTreeNode node = getCurrentNode(false);
@@ -550,7 +550,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
       } else {
 	clipboard = node;
 	model.removeNodeFromParent(node);
-	System.out.println(action + " : " + getText(clipboard, 0));
+	//-System.out.println(action + " : " + getText(clipboard, 0));
       }
     } else if ("Coller".equals(action)) {
       modified = true;
@@ -561,17 +561,16 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	DefaultMutableTreeNode n = copy(clipboard);
 	node.add(n);									
 	model.insertNodeInto(n, node, getCurrentNodeIndex(node));
-	System.out.println(action + " : " + getText(clipboard, 0));
+	//-System.out.println(action + " : " + getText(clipboard, 0));
       }
-    // A VIRER APRES DEBUG
-    } else if ("Check".equals(action)) {
+    } /*else if ("Check".equals(action)) {
       System.out.println(action + " : " + getText() + " == \n" + getJavaSource());
       Utils.saveString("tmp.jvs", getJavaSource());
       Jvs2Java.translate("tmp.jvs");
       System.out.println(Jvs2Java.compile("tmp.java"));
       Jvs2Java.load("tmp.class"); 
       Utils.show(new ProgletApplet().reset("ingredients", false), "javascool proglet", 650, 720);
-    } 
+    } */
     edit.setSelectedItem("Edit");
   }
   private DefaultMutableTreeNode copy(DefaultMutableTreeNode node) {
@@ -601,17 +600,18 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	public void actionPerformed(ActionEvent e) { 
 	  doEdit("Coller");
 	}});
-    // A VIRER APRES DEBUG
+    /*
     tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_MASK), "check");
     tree.getActionMap().put("check",  new AbstractAction("check") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  doEdit("Check");
 	}});
+    */
   }
   private DefaultMutableTreeNode clipboard = null;
 
-  /** Used to test the interface. */
+  /* 
   public static void main(String[] args){
     String algo = 
       "{ DEBUT_PROGRAMME"+
@@ -621,6 +621,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
       "}";
     AlgoEditor fen = new AlgoEditor(); fen.setText(algo); Utils.show(fen, "AlgoEditor", 800, 600);
   }
+  */
 }
 
 

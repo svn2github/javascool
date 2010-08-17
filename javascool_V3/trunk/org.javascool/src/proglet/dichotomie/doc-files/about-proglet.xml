@@ -20,19 +20,19 @@
     </div> renvoie le nombre de pages.</div>
     <div>Un exemple d'utilisation: lors de la  <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/dichotomie/doc-files/the-proglet.htm" text="démonstration"/>, 
     le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
-    secondes à une dizaine de pages au hasard, selon le programme suivant:
+    secondes à une vingtaine de pages au hasard, selon le programme suivant:
     <div class="code">
-      <p><r>for</r>(<r>int</r> i = 0; i &lt; 10; i++) {</p>
+      <p><r>for</r>(<r>int</r> i = 0; i &lt; 26; i++) {</p>
       <p><r>int</r> page = <r>random</r>(0, <r>dichoLength</r>());</p>
       <p><T/><r>dichoCompare</r>(<v>rien</v>, page);</p>
-      <p><T/><r>sleep</r>(500);</p>
+      <p><T/><r>sleep</r>(400);</p>
       <p>}</p>
     </div></div>
     <div>En appuyant sur les touches <c>&lt;-</c> et <c>-&gt;</c> nous pouvons tourner manuellement les pages à gauche ou à droite.</div>
   </p>
 
   <div class="notes">
-    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="../Dichotomie.html" text="documentée"/> pour sa libre redistribution, l'accès <l link="../Dichotomie.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/dichotomie/doc-files/Dichotomie.html" text="documentée"/> pour sa libre redistribution, l'accès <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/dichotomie/doc-files/Dichotomie.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
     <div id="2">La liste de tous les pays est stockée dans le tableau <c><r>String</r> proglet.dichotomie.pays[]</c>, à disposition du programmeur, 
     qui souhaite travailler à partir d'un tableur.</div>
   </div>

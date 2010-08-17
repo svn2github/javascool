@@ -15,7 +15,7 @@
       </div>
       Analysons ces quelques lignes :<div class="ul">
         <div>Nous retrouvons le bloc <b><r>void main</r>() { .. }</b> qui permet de spécifier un bloc d'instructions à faire exécuter, 
-        comme lors du <l link="sujet-about-hello-world.htm" text="1er tutoriel"/>.</div>
+        comme lors du <l link="sujet-hello-world.htm" text="1er tutoriel"/>.</div>
         <div>Nous retrouvons un <r>println</r> qui permet d'imprimer une ligne pour saluer l'utilisateur.</div>
         <div>Mais voici quelque chose de nouveau : il va entrer son <i>nom</i>. Or chaque utilisateur a un nom probablement différent, il faut donc prévoir une "boite", 
         une <i>variable</i> où mémoriser le nom que l'utilisateur va entrer au clavier. <div class="ul">

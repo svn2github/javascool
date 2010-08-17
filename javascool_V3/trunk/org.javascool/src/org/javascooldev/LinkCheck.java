@@ -2,7 +2,8 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2005.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascool;
+package org.javascooldev;
+import org.javascool.Utils;
 
 // Used for the string interface
 import java.lang.String;
@@ -60,14 +61,16 @@ public class LinkCheck { private LinkCheck() { }
 	    links.add(href); nlinks++;
 	    String anchor = null; int i = href.indexOf("#"); if (i != -1) { anchor = href.substring(i+1); href = href.substring(0, i); }
 	    //-System.err.println(" ? "+ href + (anchor == null ? "" : " #"+ anchor));
-	    if (!isReadable(href)) 
+	    if (!isReadable(href)) {
 	      echoBroken("BROKEN  Link in "+location+" -> "+href);
-	    if (loop && href.startsWith(root) && href.matches("^http:.*([?][^?]*|/|\\.(htm|html|shtml|php))$") && !href.matches("^.*\\.(xslt|java)"))
-	      check(href);
-	    if (anchor != null) {
-	      if (!anchors.containsKey(href)) anchors.put(href, getAnchorSet(Utils.loadString(href)));
-	      if (!anchors.get(href).contains(anchor))
-		echoBroken("BROKEN  Anchor in "+location+" -> "+href+" #"+anchor);
+	    } else {
+	      if (loop && href.startsWith(root) && href.matches("^http:.*([?][^?]*|/|\\.(htm|html|shtml|php))$") && !href.matches("^.*\\.(xslt|java)"))
+		check(href);
+	      if (anchor != null) {
+		if (!anchors.containsKey(href)) anchors.put(href, getAnchorSet(Utils.loadString(href)));
+		if (!anchors.get(href).contains(anchor))
+		  echoBroken("BROKEN  Anchor in "+location+" -> "+href+" #"+anchor);
+	      }
 	    }
 	  }
 	} catch(Exception e) { 

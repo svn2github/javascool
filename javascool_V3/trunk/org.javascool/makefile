@@ -15,7 +15,7 @@ what :
 	@grep '^#:' makefile | sed 's/^#://'
 
 v3: cmp
-	@cd tst ; ../lib/run.sh Main
+	@cd tst ; ../lib/run.sh  org.javascool.Main
 
 j3: jar
 	@cd tst ; java -jar ../www/javascool.jar
@@ -220,7 +220,7 @@ jpub:
 # Check the web site links 
 
 wref: wpub
-	@lib/run.sh LinkCheck -recursive http://javascool.gforge.inria.fr/v3/ | tee lib/brokenlinks.txt
+	@lib/run.sh org.javascooldev.LinkCheck -recursive http://javascool.gforge.inria.fr/v3/ | tee lib/brokenlinks.txt
 
 
 # Clean the web cache
@@ -259,7 +259,11 @@ ifeq ($(USER), vthierry)
 
 wv3 :
 	@(echo '<script>' ; echo 'location.replace("./v3/index.php");' ; echo '</script>') > tmp.htm
-	@rsync --rsh='ssh -C' tmp.htm scm.gforge.inria.fr:/home/groups/javascool/htdocs/index.html ; rm tmp.htm
+	@rsync --rsh='ssh -C' tmp.htm scm.gforge.inria.fr:/home/groups/javascool/htdocs/index.html
+	@firefox http://javascool.gforge.inria.fr
+	@(echo '<script>' ; echo 'location.replace("../v3/index.php");' ; echo '</script>') > tmp.htm
+	@rsync --rsh='ssh -C' tmp.htm scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet/index.html 
+	@rsync --rsh='ssh -C' tmp.htm scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglets/index.html 
 	@firefox http://javascool.gforge.inria.fr
 
 # This is used to test www/index.php in local mode
@@ -309,7 +313,7 @@ endif
 # MakeToolBar commands
 
 please : cmp
-	@lib/run.sh MakeToolBar
+	@lib/run.sh  org.javascooldev.MakeToolBar
 
 done : 
 	@read cont
@@ -332,6 +336,7 @@ done :
 #: ./src/org/javascool/*.java : contains the javascool core and widget classes and doc-files
 #: ./src/org/javascool/*.xslt : contains the javascool XSLT rules.
 #: ./src/proglet/*/*.java     : contains the proglets classes and doc-files
+#: ./src/org/javascooldev/*   : contains the javascool development tools
 #:
 #: [1.2] Web site files
 #: src/.../doc-files          : contains all javascool and proglets corresponding resources (documentation, icons, ..)
@@ -344,7 +349,7 @@ done :
 #: www/javascool.jar          : is the makefile generated javascool JAR, deleted on clean: do NOT edit
 #:
 #: [1.3] Lib files:
-#: ./lib/run.sh               : simplifies the local use of saxon and javascool (starts org.javasccoo.* mains + performs xml2xml translation)
+#: ./lib/run.sh               : simplifies the local use of saxon and javascool (Java main + performs xml2xml translation)
 #: ./lib/*.jar                : are used jar for the present development
 #: ./lib/manifest.mf          : is a makefile generated file: do NOT edit
 #: 

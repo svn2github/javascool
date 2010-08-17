@@ -61,7 +61,7 @@ public class Macros { private Macros() { }
    * Cela permet aussi de mettre à jour l'affichage.
    * @param delay Durée d'attente en milli-secondes.
    */
-  public static void sleep(int delay) { try { if (delay > 0) Thread.sleep(delay); else Thread.yield(); } 
-    catch(Exception e) { throw new RuntimeException("Program stopped !"); } 
+  public static void sleep(int delay) { 
+    try { if (delay > 0) Thread.sleep(delay); else Thread.yield(); } catch(Exception e) { System.err.println(e); } 
   }
 }

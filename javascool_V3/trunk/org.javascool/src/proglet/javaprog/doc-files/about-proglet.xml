@@ -5,16 +5,12 @@
 
   <div>Dans ce contexte les instructions à utiliser sont celles de <l class="javascool"/> et toutes  .. </div>
 
-  <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>], on peut exécuter le code 
-
   FleurEnRythme.jvs  mettere en lien creer le code colre avec jaav2html dans le makefile citer les deux jeunes auteurs ajouter le code a la proglet en java montrer les includes
 
-
-  </div>
   </p>
 
   <div class="notes">
-    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="../JavaPanel.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link="../JavaPanel.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/javaprog/doc-files/JavaPanel.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/javaprog/doc-files/JavaPanel.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

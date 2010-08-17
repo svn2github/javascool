@@ -50,7 +50,6 @@
     tandis que le langage Java a beaucoup d'autres <l link="http://www.eteks.com/coursjava/instructions.html" text="instructions et opérateurs"/>.</div>
 
 <div class="notes">
-  <div id="1">La différence entre <c>echo</c> et <c>println</c> est <c>echo</c> affiche la chaîne de caractères dans la console, donc marche avec toutes les proglets, 
-  tandis que <c>println</c> est dédiée à la fenêtre de sortie de la proglet Console..</div>
+  <div id="1">Les fonctions <c>echo</c> et <c>println</c> sont des synonymes.</div>
 </div>
 </div>

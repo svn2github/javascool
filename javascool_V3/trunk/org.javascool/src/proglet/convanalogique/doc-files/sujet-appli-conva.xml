@@ -2,7 +2,7 @@
   
   <div class="objectif">
     Le but de ce tutoriel est de comprendre comment deviner une valeur  analogique à partir de comparaisons et de découvrir la recherche dichotomique.
-    Une autre activité, plus autonome, sur la recherche dichotomique est proposée <l link="../../ingredients/doc-files/sujet-appli-dicho.htm" text="ici"/>.
+    Une autre activité, plus autonome, sur la recherche dichotomique est proposée <l link="../../dichotomie/doc-files/sujet-appli-dicho.htm" text="ici"/>.
     Il faut déja savoir <l link="../../ingredients/doc-files/sujet-hello-world.htm" text="utiliser l'interface"/>,
     se servir de <l link="../../ingredients/doc-files/sujet-about-variables.htm" text="variables"/> 
     et avoir découvert l'<l link="../../ingredients/doc-files/sujet-about-if.htm" text="instruction conditionnelle"/> et 

@@ -29,11 +29,13 @@
       <p><T/><T/><r>int</r> c = <r>dichoCompare</r>(pays, debut);</p>
       <p><T/><T/><r>if</r> (c == 0) {</p>
       <p><T/><T/><T/><r>return</r> debut;</p>
+      <p><T/><T/>} <r>else</r>{</p>
+      <p><T/><T/><T/>debut = debut +1;</p>
       <p><T/><T/>}</p>
       <p><T/>}</p>
       <p>}</p>
     </div>
-    avec un "<r>main</r>" en appelant <r>getPage</r> avec un nom de pays <i>qui existe</i>.
+    avec un "<r>main</r>" en appelant <r>getPage</r> avec un nom de pays <i>qui existe</i> (<v>France</v>).
     <div>Noter que l'on utilise ici la construction <r>return</r> pour sortir de la boucle, tandis que <r>while(true)</r> est toujours vrai, donc boucle indéfiniment.</div>
     <div class="ul">
       <div>Quelle variable est utilisée et (provisoirement) inutile ici ?</div>

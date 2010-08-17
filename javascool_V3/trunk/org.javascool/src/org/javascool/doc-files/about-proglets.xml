@@ -39,7 +39,7 @@
     <p>
       <p>«javaprog»</p>
       <p><l link="../../../proglet/javaprog/doc-files/about-proglet.htm" text="Description"/></p>
-      <p><l link="../../../proglet/javaprog/doc-files/the-proglet.htm" text="Proglet"/></p>
+      <p><!--l link="../../../proglet/javaprog/doc-files/the-proglet.htm" text="Proglet"/--></p>
       <p><!--l link="../../../proglet/javaprog/doc-files/index.htm" text="Activité"/--></p>
       <p>utilisée pour programmer tout ce que l'on souhaite en Java.</p>
     </p>

@@ -66,10 +66,11 @@ public class Dichotomie implements org.javascool.Proglet { private Dichotomie() 
      * @param page L'index de la page de 0 à getSize() exclu.
      */
     public void show(int page) {
-      if (page < 0) page = 0; if (page >= length()) page = length() - 1; current = page;
+      if (page < 0) page = 0; if (page >= dichoLength()) page = dichoLength() - 1; current = page;
       num.setText(""+page);
       name.setText("<html><h2>"+dicho[page][0]+"</h2></html>"); 
       flag.setIcon(Utils.getIcon("proglet/dichotomie/doc-files/"+dicho[page][1]));
+      Macros.sleep(150);
     } 
     private JLabel name, flag, num; private int current;
   }
@@ -79,19 +80,20 @@ public class Dichotomie implements org.javascool.Proglet { private Dichotomie() 
   //
 
   /**/public static void test() {
-    // Tests if the dico is sorted
-    for(int i = 1; i < dicho.length; i++)
-      if (compare(dicho[i][0], i - 1) <= 0)
-	Macros.echo("Ahhh bad sort between "+dicho[i][0]+"#"+i+(compare(dicho[i][0], i - 1) == 0 ? " == " : " << ")+dicho[i-1][0]+"#"+(i-1));
-    /* Tests the index function
-    for(int i = 0; i < dicho.length; i++)
+    /*
+    // Tests if the dicho is sorted
+    for(int i = 1; i < dichoLength(); i++)
+      if (dichoCompare(dicho[i][0], i - 1) <= 0)
+	Macros.echo("Ahhh bad sort between "+dicho[i][0]+"#"+i+(dichoCompare(dicho[i][0], i - 1) == 0 ? " == " : " << ")+dicho[i-1][0]+"#"+(i-1));
+    // Tests the index function
+    for(int i = 0; i < dichoLength(); i++)
       if (i != getPage(dicho[i][0]))
 	Macros.echo("Ohhh bad index for "+dicho[i][0]+"#"+i+" <> "+getPage(dicho[i][0]));
     */
     // Shows a few random pages
-    for(int i = 0; i < 10; i++) {
-      Macros.sleep(500);
-      panel.show(((int) (Math.random() * dicho.length)));
+    for(int i = 0; i < 26; i++) {
+      Macros.sleep(200);
+      panel.show(((int) (Math.random() * dichoLength())));
     }
   }
 
@@ -101,7 +103,7 @@ public class Dichotomie implements org.javascool.Proglet { private Dichotomie() 
    * @return The page index or -1 if the name is not on some page.
    */
   private static int getPage(String pays) {
-    int debut = 0, fin = length();
+    int debut = 0, fin = dichoLength();
     while(true) {
       int milieu = (debut + fin) / 2;
       int c = compareTo(pays, milieu);
@@ -123,15 +125,15 @@ public class Dichotomie implements org.javascool.Proglet { private Dichotomie() 
   //
 
   /** Renvoie le nombre de page. */
-  public static int length() { return dicho.length; }
+  public static int dichoLength() { return dicho.length; }
 
   /** Ouvre le libre à une page et compare un nom au nom affiché sur cette page.
    * @param name Le nom à comparer.
-   * @param page L'index de la page, de 0 à length() exclu.
+   * @param page L'index de la page, de 0 à dichoLength() exclu.
    * @return -1 si le nom se situe avant celui de la page, +1 si le nom se situe après celui de la page, 0 si il correspond à celui de la page.
    */
-  public static int compare(String name, int page) { 
-    if (page < 0) page = 0; if (page >= length()) page = length() - 1;
+  public static int dichoCompare(String name, int page) { 
+    if (page < 0) page = 0; if (page >= dichoLength()) page = dichoLength() - 1;
     panel.show(page); 
     return compareTo(name, page);
   }
@@ -346,7 +348,6 @@ public class Dichotomie implements org.javascool.Proglet { private Dichotomie() 
     pays = new String[dicho.length];
     for(int n = 0; n < dicho.length; n++) pays[n] = dicho[n][0];
   }
-
 
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
