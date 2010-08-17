@@ -155,7 +155,7 @@ public class Jvs2Java { private Jvs2Java() { }
     // Translates the while statement with sleep
     line = line.replaceFirst("(while.*\\{)", "$1 sleep(10);");
     // Translates the Synthe proglet @tone macro
-    line = line.replaceFirst("@tone:(.*)", 
+    line = line.replaceFirst("@tone:(.*)\\s*;", 
       "proglet.synthesons.SoundDisplay.tone = new org.javascool.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.synthesons.SoundDisplay.syntheSet(\"16 a\");");
     return "    "+line;
   }

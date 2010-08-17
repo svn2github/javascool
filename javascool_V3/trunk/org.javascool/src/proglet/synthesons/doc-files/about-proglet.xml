@@ -4,7 +4,7 @@
     Cette proglet<l class="note" link="1"/> permet de générer une séquence de notes et d'en regarder le spectre de fréquence.
 
    <div>Pour définir son propre son il faut utiliser la construction <l class="javascool"/>, par exemple:<div class="code">
-     <p><r>@tone:</r> sqr(t) + noi(t)</p>
+     <p><r>@tone:</r> sqr(t) + noi(t);</p>
    </div>où <r>@tone:</r> est une « macro-instruction », suivie, sur la même ligne d'une expression de la variable <c>t</c> qui définit la forme du son, 
    tandis que les fonctions suivantes sont prédéfinies:<div class="code">
      <m>Sinusoide</m>
@@ -36,17 +36,17 @@
 
   <div>Un exemple d'utilisation: lors de la <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/synthesons/doc-files/the-proglet.htm" text="démonstration"/>, 
   les différents sons:<div class="code">
-     <p><r>@tone:</r> cos(t)</p>
+     <p><r>@tone:</r> cos(t);</p>
      <p><r>synthePlay</r>();</p>
    </div>puis<div class="code">
      <p><r>synthePlay</r>();</p>
-     <p><r>@tone:</r> 0.5 * sqr(t)</p>
+     <p><r>@tone:</r> 0.5 * sqr(t);</p>
    </div>puis<div class="code">
      <p><r>synthePlay</r>();</p>
-     <p><r>@tone:</r> 0.8 * tri(t) + 0.2 * noi(t)</p>
+     <p><r>@tone:</r> 0.8 * tri(t) + 0.2 * noi(t);</p>
    </div>puis<div class="code">
      <p><r>synthePlay</r>();</p>
-     <p><r>@tone:</r> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t)</p>
+     <p><r>@tone:</r> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t);</p>
    </div>sont présentés, puis les 1ères notes de quelque chose qui ressemble à la «Lettre à Elise» de L.v.Beethoven est jouée et son spectre affiché et ensuite 
    <div> . . à vous de jouer !</div></div>
 

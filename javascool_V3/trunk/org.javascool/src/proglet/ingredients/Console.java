@@ -64,7 +64,9 @@ public class Console implements org.javascool.Proglet { private Console() { }
     public void writeString(String string, boolean html) {
       output += (html ? string : quote(string));
       out.setText("<html><body>"+output+"</body></html>"); 
-      //pane.getVerticalScrollBar().setValue(pane.getVerticalScrollBar().getMaximum());
+      // Select the end of the text
+      out.selectAll(); int i = out.getSelectionEnd(); out.select(0, 0); out.setCaretPosition(i);
+      out.revalidate();
     }
     private JEditorPane out; private JScrollPane pane;
 
