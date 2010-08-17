@@ -25,50 +25,52 @@
                <h3>Calculer son indice de masse corporelle.</h3> Voici<sup><a href="#1">1</a></sup> un exemple concret : 
                    calculer son <a href="http://fr.wikipedia.org/wiki/Indice_de_masse_corporelle">indice de masse corporelle</a>. Voici un code (volontairement) erron&eacute; :
                    
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>void main</b></font>() {
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"Quel est ton poids ?"</font>) ;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> poids = <font color="#990000"><b>readInteger()</b></font> ;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"Quel est ta taille ?"</font>) ;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> taille = <font color="#990000"><b>readFloat()</b></font> ;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>???</b></font> imc = poids + taille / (poids * taille) ;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"Ton indice de masse corporelle est donc : "</font> + imc) ;
+                              </div>
+                                    
+                              <div>}</div>
+                                   
                            </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Quel est ton poids ?"</font>) ;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>int</b></font> poids = <font color="#990000"><b>readInteger()</b></font> ;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Quel est ta taille ?"</font>) ;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> taille = <font color="#990000"><b>readFloat()</b></font> ;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>???</b></font> imc = poids + taille / (poids * taille) ;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Ton indice de masse corporelle est donc : "</font> + imc) ;
-                           </div>
-                                 
-                           <div>}</div>
-                                
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                     Le d&eacute;but du code ressemble &agrave; celui utilis&eacute; pour apprendre &agrave; se servir de <a href="sujet-about-variables.htm">variables</a> : 
                     on demande &agrave; l'utilisateur son poids et sa taille. Ensuite on calcule l'indice de masse corporelle ...  mais ... attention
                :
@@ -114,56 +116,58 @@
             <div>
                <h3>Ajouter un message personnalis&eacute;.</h3> Ajoutons au code pr&eacute;c&eacute;dent un message "personnalis&eacute;" :
                    
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font>(imc &lt;= 25) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>if</b></font>(imc &lt;= 25) {
-                           </div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 println(<font color="#008000">"Plut&ocirc;t mince"</font>);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else if</b></font>(imc &lt;= 50) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              println(<font color="#008000">"Plut&ocirc;t mince"</font>);
-                           </div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 println(<font color="#008000">"Plut&ocirc;t gros"</font>);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              } <font color="#990000"><b>else if</b></font>(imc &lt;= 50) {
+                                 &nbsp;&nbsp;&nbsp;
+                                 println(<font color="#008000">"Sacr&eacute; menteur !"</font>);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                  
                            </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              println(<font color="#008000">"Plut&ocirc;t gros"</font>);
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              } <font color="#990000"><b>else</b></font> {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              println(<font color="#008000">"Sacr&eacute; menteur !"</font>);
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                <ul class="ul">
                         
                   <li>Ajoutez ce code au bon endroit et constatez qu'il permet de donner une information plus parlante &agrave; l'utilisateur.</li>

@@ -14,64 +14,70 @@
       
          
       <div>Pour d&eacute;finir son propre son il faut utiliser la construction <tt><a href="http://javascool.gforge.inria.fr" style="padding:0;margin:0;text-decoration:none">Java'sCool</a></tt>, par exemple:
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                          
-                     <div><font color="#990000"><b>@tone:</b></font> sqr(t) + noi(t)
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                             
+                        <div><font color="#990000"><b>@tone:</b></font> sqr(t) + noi(t)
+                        </div>
+                           
                      </div>
-                        
-                  </div>
-               </td>
-            </tr>
-         </table>o&ugrave; <font color="#990000"><b>@tone:</b></font> est une &laquo;&nbsp;macro-instruction&nbsp;&raquo;, suivie, sur la m&ecirc;me ligne d'une expression de la variable <tt>t</tt> qui d&eacute;finit la forme du son, 
+                  </td>
+               </tr>
+            </table>
+         </p>o&ugrave; <font color="#990000"><b>@tone:</b></font> est une &laquo;&nbsp;macro-instruction&nbsp;&raquo;, suivie, sur la m&ecirc;me ligne d'une expression de la variable <tt>t</tt> qui d&eacute;finit la forme du son, 
             tandis que les fonctions suivantes sont pr&eacute;d&eacute;finies:
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                          
-                     <p><tt><font color="#202080"><big>//</big>&nbsp;Sinusoide</font></tt></p>
-                          
-                     <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>sns</b></font>(t)
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                             
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Sinusoide</font></tt></p>
+                             
+                        <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>sns</b></font>(t)
+                        </div>
+                             
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Signal carr&eacute;</font></tt></p>
+                             
+                        <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>sqr</b></font>(t)
+                        </div>
+                             
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Signal triangulaire</font></tt></p>
+                             
+                        <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>tri</b></font>(t)
+                        </div>
+                             
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Souffle al&eacute;atoire</font></tt></p>
+                             
+                        <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>noi</b></font>(t)
+                        </div>
+                           
                      </div>
-                          
-                     <p><tt><font color="#202080"><big>//</big>&nbsp;Signal carr&eacute;</font></tt></p>
-                          
-                     <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>sqr</b></font>(t)
-                     </div>
-                          
-                     <p><tt><font color="#202080"><big>//</big>&nbsp;Signal triangulaire</font></tt></p>
-                          
-                     <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>tri</b></font>(t)
-                     </div>
-                          
-                     <p><tt><font color="#202080"><big>//</big>&nbsp;Souffle al&eacute;atoire</font></tt></p>
-                          
-                     <div><font color="#990000"><b>double</b></font> <font color="#990000"><b>noi</b></font>(t)
-                     </div>
-                        
-                  </div>
-               </td>
-            </tr>
-         </table>
+                  </td>
+               </tr>
+            </table>
+         </p>
       </div>
       
          
       <div>Pour &eacute;couter le son ou la s&eacute;quence de notes il faut utiliser la fonction:
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                          
-                     <div><font color="#990000"><b>synthePlay</b></font>();
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                             
+                        <div><font color="#990000"><b>synthePlay</b></font>();
+                        </div>
+                           
                      </div>
-                        
-                  </div>
-               </td>
-            </tr>
-         </table>
+                  </td>
+               </tr>
+            </table>
+         </p>
       </div>
       
          
@@ -95,83 +101,93 @@
        
          
       <div>Pour d&eacute;finir une s&eacute;quence de notes il faut utiliser la fonction:
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                          
-                     <div><font color="#990000"><b>syntheSet</b></font>(<font color="#008000">"s&eacute;quence-de-note"</font>);
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                             
+                        <div><font color="#990000"><b>syntheSet</b></font>(<font color="#008000">"s&eacute;quence-de-note"</font>);
+                        </div>
+                           
                      </div>
-                        
-                  </div>
-               </td>
-            </tr>
-         </table> o&ugrave; la syntaxe de <font color="#008000">"s&eacute;quence-de-note"</font> est d&eacute;finie dans la <a href="../NotesSoundBit.html#reset(java.lang.String)">documentation</a> de la classe.
+                  </td>
+               </tr>
+            </table>
+         </p> o&ugrave; la syntaxe de <font color="#008000">"s&eacute;quence-de-note"</font> est d&eacute;finie dans la <a href="../NotesSoundBit.html#reset(java.lang.String)">documentation</a> de la classe.
       </div>
       
         
       <div>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png" alt="" class="icon"> <b>Demo</b>], 
            les diff&eacute;rents sons:
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                          
-                     <div><font color="#990000"><b>@tone:</b></font> cos(t)
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                             
+                        <div><font color="#990000"><b>@tone:</b></font> cos(t)
+                        </div>
+                             
+                        <div><font color="#990000"><b>synthePlay</b></font>();
+                        </div>
+                           
                      </div>
-                          
-                     <div><font color="#990000"><b>synthePlay</b></font>();
+                  </td>
+               </tr>
+            </table>
+         </p>puis
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                             
+                        <div><font color="#990000"><b>synthePlay</b></font>();
+                        </div>
+                             
+                        <div><font color="#990000"><b>@tone:</b></font> 0.5 * sqr(t)
+                        </div>
+                           
                      </div>
-                        
-                  </div>
-               </td>
-            </tr>
-         </table>puis
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                          
-                     <div><font color="#990000"><b>synthePlay</b></font>();
+                  </td>
+               </tr>
+            </table>
+         </p>puis
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                             
+                        <div><font color="#990000"><b>synthePlay</b></font>();
+                        </div>
+                             
+                        <div><font color="#990000"><b>@tone:</b></font> 0.8 * tri(t) + 0.2 * noi(t)
+                        </div>
+                           
                      </div>
-                          
-                     <div><font color="#990000"><b>@tone:</b></font> 0.5 * sqr(t)
+                  </td>
+               </tr>
+            </table>
+         </p>puis
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                             
+                        <div><font color="#990000"><b>synthePlay</b></font>();
+                        </div>
+                             
+                        <div><font color="#990000"><b>@tone:</b></font> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t)
+                        </div>
+                           
                      </div>
-                        
-                  </div>
-               </td>
-            </tr>
-         </table>puis
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                          
-                     <div><font color="#990000"><b>synthePlay</b></font>();
-                     </div>
-                          
-                     <div><font color="#990000"><b>@tone:</b></font> 0.8 * tri(t) + 0.2 * noi(t)
-                     </div>
-                        
-                  </div>
-               </td>
-            </tr>
-         </table>puis
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                          
-                     <div><font color="#990000"><b>synthePlay</b></font>();
-                     </div>
-                          
-                     <div><font color="#990000"><b>@tone:</b></font> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t)
-                     </div>
-                        
-                  </div>
-               </td>
-            </tr>
-         </table>sont pr&eacute;sent&eacute;s, puis les 1&egrave;res notes de quelque chose qui ressemble &agrave; la &laquo;Lettre &agrave; Elise&raquo; de L.v.Beethoven est jou&eacute;e et son
+                  </td>
+               </tr>
+            </table>
+         </p>sont pr&eacute;sent&eacute;s, puis les 1&egrave;res notes de quelque chose qui ressemble &agrave; la &laquo;Lettre &agrave; Elise&raquo; de L.v.Beethoven est jou&eacute;e et son
          spectre affich&eacute; et ensuite 
             
          <div> . . &agrave; vous de jouer !</div>

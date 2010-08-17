@@ -47,79 +47,81 @@
             <div>
                <h3>D&eacute;couvrir un code qui modifie chaque pixel de l'image.</h3>
                      Consid&eacute;rons le code suivant : 
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel</font></tt></p>
-                                   
-                           <div><font color="#990000"><b>int</b></font> f(<font color="#990000"><b>int</b></font> x) {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>return</b></font> 255 - x;
-                           </div>
-                                   
-                           <div>}</div>
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Boucle sur tous les pixels</font></tt></p>
-                                   
-                           <div><font color="#990000"><b>void</b></font> filtre() {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>(); j &lt;= <font color="#990000"><b>smileyHeight</b></font>(); j = j + 1) {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>(); i &lt;= <font color="#990000"><b>smileyHeight</b></font>(); i = i + 1) {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>smileySet</b></font>(i, j, f(<font color="#990000"><b>smileyGet</b></font>(i, j)));
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                   
-                           <div>}</div>
-                                   
-                           <div></div>
-                                   
-                           <div><font color="#990000"><b>void main</b></font>() {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
-                           </div>
-                                   
-                           <div>}</div>
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>int</b></font> f(<font color="#990000"><b>int</b></font> x) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>return</b></font> 255 - x;
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Boucle sur tous les pixels</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>void</b></font> filtre() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>(); j &lt;= <font color="#990000"><b>smileyHeight</b></font>(); j = j + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
                                  
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>(); i &lt;= <font color="#990000"><b>smileyHeight</b></font>(); i = i + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>smileySet</b></font>(i, j, f(<font color="#990000"><b>smileyGet</b></font>(i, j)));
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <div></div>
+                                      
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
+                              </div>
+                                      
+                              <div>}</div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                <ul class="ul">
                           
                   <li>Le programme principal <font color="#990000"><b>main</b></font> charge une belle photo noir et blanc de <a href="http://fr.wikipedia.org/wiki/Doisneau">Doisneau</a>.
@@ -247,101 +249,103 @@
             <div>
                <h3>D&eacute;couvrir un code qui filtre les pixels de l'image.</h3>
                      Consid&eacute;rons le code suivant : 
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel</font></tt></p>
-                                   
-                           <div><font color="#990000"><b>void</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>int</b></font> valeur = (<font color="#990000"><b>smileyGet</b></font>(i, j) + <font color="#990000"><b>smileyGet</b></font>(i + 1, j)+ <font color="#990000"><b>smileyGet</b></font>(i, j + 1)+ <font color="#990000"><b>smileyGet</b></font>(i - 1, j)+ <font color="#990000"><b>smileyGet</b></font>(i, j - 1)) / 5;
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>smileySet</b></font>(i, j, valeur);
-                           </div>
-                                   
-                           <div>}</div>
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Boucle sur tous les pixels</font></tt></p>
-                                   
-                           <div><font color="#990000"><b>void</b></font> filtre() {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>() + 1; j &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; j = j + 1) {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>() + 1; i &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; i = i + 1) {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              filtrePixel(i, j);
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                   
-                           <div>}</div>
-                                   
-                           <div></div>
-                                   
-                           <div><font color="#990000"><b>void main</b></font>() {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> n = 0; n &lt; 2; n = n + 1) {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              filtre();
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                   
-                           <div>}</div>
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>void</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> valeur = (<font color="#990000"><b>smileyGet</b></font>(i, j) + <font color="#990000"><b>smileyGet</b></font>(i + 1, j)+ <font color="#990000"><b>smileyGet</b></font>(i, j + 1)+ <font color="#990000"><b>smileyGet</b></font>(i - 1, j)+ <font color="#990000"><b>smileyGet</b></font>(i, j - 1)) / 5;
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>smileySet</b></font>(i, j, valeur);
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Boucle sur tous les pixels</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>void</b></font> filtre() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>() + 1; j &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; j = j + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
                                  
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>() + 1; i &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; i = i + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 filtrePixel(i, j);
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <div></div>
+                                      
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> n = 0; n &lt; 2; n = n + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 filtre();
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>}</div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                <ul class="ul">
                           
                   <li>Le programme principal <font color="#990000"><b>main</b></font> charge la photo et appelle la nouvelle fonction <b>filtre</b> deux fois de suite (pour <b>n = 0</b> et <b>n = 1</b>).
@@ -368,89 +372,91 @@
             <div>
                <h3>D'autres filtres d'images.</h3>
                      Consid&eacute;rons le code suivant, avec une autre fonction de filtre : 
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel</font></tt></p>
-                                   
-                           <div><font color="#990000"><b>void</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>int</b></font> valeur = 128 + (<font color="#990000"><b>smileyGet</b></font>(i, j) - <font color="#990000"><b>smileyGet</b></font>(i + 1, j));
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>smileySet</b></font>(i, j, valeur);
-                           </div>
-                                   
-                           <div>}</div>
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Boucle sur tous les pixels</font></tt></p>
-                                   
-                           <div><font color="#990000"><b>void</b></font> filtre() {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>() + 1; j &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; j = j + 1) {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>() + 1; i &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; i = i + 1) {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              filtrePixel(i, j);
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                   
-                           <div>}</div>
-                                   
-                           <div></div>
-                                   
-                           <div><font color="#990000"><b>void main</b></font>() {
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              filtre();
-                           </div>
-                                   
-                           <div>}</div>
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>void</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> valeur = 128 + (<font color="#990000"><b>smileyGet</b></font>(i, j) - <font color="#990000"><b>smileyGet</b></font>(i + 1, j));
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>smileySet</b></font>(i, j, valeur);
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Boucle sur tous les pixels</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>void</b></font> filtre() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>smileyHeight</b></font>() + 1; j &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; j = j + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
                                  
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>smileyHeight</b></font>() + 1; i &lt;= <font color="#990000"><b>smileyHeight</b></font>() - 1; i = i + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 filtrePixel(i, j);
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <div></div>
+                                      
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>smileyLoad</b></font>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 filtre();
+                              </div>
+                                      
+                              <div>}</div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                <ul class="ul">
                          
                   <li>Que se passe t'il dans ce cas ? D&eacute;crivez ce que vous observez.</li>

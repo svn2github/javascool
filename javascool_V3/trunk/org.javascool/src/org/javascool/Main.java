@@ -249,6 +249,7 @@ public class Main extends JApplet { /**/public Main() { }
       setDialogType(JFileChooser.SAVE_DIALOG);
       setApproveButtonText("Enregister");
       if (showSaveDialog(Main.this) == 0) {
+	file = getSelectedFile().getPath();
 	doSave(editor);
 	return true;
       } else 
@@ -258,7 +259,8 @@ public class Main extends JApplet { /**/public Main() { }
      * @param editor The editor from where the file is saved.
      */
     public void doSave(Editor editor) {
-      Utils.saveString(file = getSelectedFile().getPath(), editor.getText());
+      if (file != null)
+	Utils.saveString(file, editor.getText());
     }
     /** Sets the next save dialog title. 
      * @param title Optional title for a specific dialog
@@ -316,7 +318,7 @@ public class Main extends JApplet { /**/public Main() { }
       delTab("Aide");
       helpOn = false;
     } else {
-      addTab("Aide", Utils.loadString(helpFile));
+      addTab("Aide", helpFile);
       showTab("Aide"); 
       helpOn = true;
     }
@@ -386,14 +388,14 @@ public class Main extends JApplet { /**/public Main() { }
 	}
       });
     addActivity((new ProgletActivity("ingredients") {
-	public String getTitle() { return "Un tutoriel sur les valeurs numériques: une calculette d'indice de masse corporelle"; }
+	public String getTitle() { return "Un tutoriel sur les valeurs numériques"; }
 	public void init() {
 	  super.init();
 	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm");
 	  addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm");
 	}}));
     addActivity(new ProgletActivity("exodemaths") {
-	public String getTitle() { return "Faire un exercice d'application: programmer un calcul géométrique"; }
+	public String getTitle() { return "Programmer un calcul géométrique"; }
 	public void init() {
 	  super.init();
 	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm");
@@ -455,13 +457,15 @@ public class Main extends JApplet { /**/public Main() { }
       delTool("Exécuter");
       delTool("Arrêter");
       showTab("Console");
-      Jvs2Java.translate(fileChooser.getFile());
-      String out = Jvs2Java.compile(fileChooser.getFile());
-      System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
-      Console.printHtml("<hr>\n");
-      if (out.length() == 0) {
-	addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
-	addTool("Arrêter", "org/javascool/doc-files/icones16/stop.png", stop);
+      if (fileChooser.getFile() != null) {
+	Jvs2Java.translate(fileChooser.getFile());
+	String out = Jvs2Java.compile(fileChooser.getFile());
+	System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
+	Console.printHtml("<hr>\n");
+	if (out.length() == 0) {
+	  addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
+	  addTool("Arrêter", "org/javascool/doc-files/icones16/stop.png", stop);
+	}
       }
     }};
     private Runnable execute = new Runnable() { public void run() {
@@ -489,7 +493,8 @@ public class Main extends JApplet { /**/public Main() { }
     public void init() {
       addTab("Jvs Editor", (JPanel) editor);
       initCompile();
-      addTab(proglet, Jvs2Java.getPanel(proglet));
+      if (!"ingredients".equals(proglet))
+	addTab(proglet, Jvs2Java.getPanel(proglet));
     }
     protected void initDoc() {
       addTab("Document de la proglet", "proglet/"+proglet+"/doc-files/about-proglet.htm");

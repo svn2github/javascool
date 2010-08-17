@@ -10,6 +10,6 @@ else
 
 all : 
 	@$(MAKE) -C ../../.. jar
-	@cd ../tst ; java -jar  ../www/javascool.jar
+	@cd ../../../tst ; java -jar  ../www/javascool.jar
 
 endif

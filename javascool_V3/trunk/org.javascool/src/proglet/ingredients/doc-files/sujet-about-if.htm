@@ -27,91 +27,97 @@
                et il existe une structure universelle
                     pour impl&eacute;menter ce m&eacute;canisme. Par exemple :
                    
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>if</b></font>(temp&eacute;rature <font color="#990000"><b>&lt;</b></font> 15) {
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>if</b></font>(temp&eacute;rature <font color="#990000"><b>&lt;</b></font> 15) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"allumer chauffage"</font>);
+                              </div>
+                                    
+                              <div>}</div>
+                                  
                            </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"allumer chauffage"</font>);
-                           </div>
-                                 
-                           <div>}</div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                    o&ugrave; la construction permet de n'allumer le chauffage qu'en cas de besoin. Tandis que :
                    
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>if</b></font>(temp&eacute;rature <font color="#990000"><b>&lt;</b></font> 15) {
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>if</b></font>(temp&eacute;rature <font color="#990000"><b>&lt;</b></font> 15) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"allumer chauffage"</font>);
+                              </div>
+                                    
+                              <div>} <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"ne rien faire"</font>);
+                              </div>
+                                    
+                              <div>}</div>
+                                  
                            </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"allumer chauffage"</font>);
-                           </div>
-                                 
-                           <div>} <font color="#990000"><b>else</b></font> {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"ne rien faire"</font>);
-                           </div>
-                                 
-                           <div>}</div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                    montre comment se traduit la construction <i><b>si</b> la temp&eacute;rature est en dessous de 15 degr&eacute;s alors allumer le chauffage <b>sinon</b> ne rien faire.</i> Ou encore :
                    
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>if</b></font>(temp&eacute;rature <font color="#990000"><b>&lt;</b></font> 15) {
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>if</b></font>(temp&eacute;rature <font color="#990000"><b>&lt;</b></font> 15) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"allumer chauffage"</font>);
+                              </div>
+                                    
+                              <div>} <font color="#990000"><b>else if</b></font>(temp&eacute;rature <font color="#990000"><b>&gt;</b></font> 100) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"appeler les pompiers"</font>);
+                              </div>
+                                    
+                              <div>} <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"ne rien faire"</font>);
+                              </div>
+                                    
+                              <div>}</div>
+                                  
                            </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"allumer chauffage"</font>);
-                           </div>
-                                 
-                           <div>} <font color="#990000"><b>else if</b></font>(temp&eacute;rature <font color="#990000"><b>&gt;</b></font> 100) {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"appeler les pompiers"</font>);
-                           </div>
-                                 
-                           <div>} <font color="#990000"><b>else</b></font> {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>println</b></font>(<font color="#008000">"ne rien faire"</font>);
-                           </div>
-                                 
-                           <div>}</div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                    montre comment emboiter les instructions conditionnelles.
                   
             </div>
@@ -121,149 +127,155 @@
                <h3>D&eacute;finir des conditions &agrave; tester.</h3> Pour d&eacute;finir le test &agrave; effectuer nous avons vu que nous pouvions comparer deux valeurs num&eacute;riques, 
                   voici une liste de tests possibles pour des nombres <b>a</b> et <b>b</b> et des cha&icirc;nes de carat&egrave;res <b>s</b> et <b>c</b>:
                     
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                  
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si le nombre a est strictement plus petit que le nombre b:</font></tt></p>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              a <font color="#990000"><b>&lt;</b></font> b
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                     
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si le nombre a est strictement plus petit que le nombre b:</font></tt></p>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 a <font color="#990000"><b>&lt;</b></font> b
+                              </div>
+                                     
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si le nombre a est strictement plus petit ou &eacute;gal au nombre b:</font></tt></p>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 a <font color="#990000"><b>&lt;=</b></font> b
+                              </div>
+                                     
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si le nombre a est &eacute;gal au nombre b:</font></tt></p>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 a <font color="#990000"><b>==</b></font> b
+                              </div>
+                                     
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;avec bien s&ucirc;r les symboles similares pour <font color="#990000"><b>&gt;</b></font> et <font color="#990000"><b>&gt;=</b></font> (strictement plus grand et plus grand ou &eacute;gal) et <font color="#990000"><b>!=</b></font> (pas &eacute;gal).</font></tt></p>
+                                     
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si la cha&icirc;ne s est &eacute;gale &agrave; la cha&icirc;ne c</font></tt></p>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>equal</b></font>(s, c)
+                              </div>
+                                   
                            </div>
-                                  
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si le nombre a est strictement plus petit ou &eacute;gal au nombre b:</font></tt></p>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              a <font color="#990000"><b>&lt;=</b></font> b
-                           </div>
-                                  
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si le nombre a est &eacute;gal au nombre b:</font></tt></p>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              a <font color="#990000"><b>==</b></font> b
-                           </div>
-                                  
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;avec bien s&ucirc;r les symboles similares pour <font color="#990000"><b>&gt;</b></font> et <font color="#990000"><b>&gt;=</b></font> (strictement plus grand et plus grand ou &eacute;gal) et <font color="#990000"><b>!=</b></font> (pas &eacute;gal).</font></tt></p>
-                                  
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si la cha&icirc;ne s est &eacute;gale &agrave; la cha&icirc;ne c</font></tt></p>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>equal</b></font>(s, c)
-                           </div>
-                                
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                     Nous pouvons ensuite <i>combiner</i> ces conditions :
                     
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                  
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si une_condition ET autre_condition sont vraies :</font></tt></p>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              une_condition <font color="#990000"><b>&amp;&amp;</b></font> autre_condition
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                     
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si une_condition ET autre_condition sont vraies :</font></tt></p>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 une_condition <font color="#990000"><b>&amp;&amp;</b></font> autre_condition
+                              </div>
+                                     
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si une_condition OU autre_condition, ou les deux, sont vraies :</font></tt></p>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 une_condition <font color="#990000"><b>||</b></font> autre_condition
+                              </div>
+                                     
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si une_condition n'est PAS vraie :</font></tt></p>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 (<font color="#990000"><b>!</b></font>une_condition)
+                              </div>
+                                   
                            </div>
-                                  
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si une_condition OU autre_condition, ou les deux, sont vraies :</font></tt></p>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              une_condition <font color="#990000"><b>||</b></font> autre_condition
-                           </div>
-                                  
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si une_condition n'est PAS vraie :</font></tt></p>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              (<font color="#990000"><b>!</b></font>une_condition)
-                           </div>
-                                
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                     ce qui nous permet de d&eacute;finir des expressions aussi complexes que nous avons besoin, par exemple :
                     
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                  
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si x est plus grand que a et plus petit que b donc dans l'intervale ]a, b[:</font></tt></p>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              a <font color="#990000"><b>&lt;</b></font> x <font color="#990000"><b>&amp;&amp;</b></font> x <font color="#990000"><b>&lt;</b></font> b
-                           </div> 
-                                  
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si la reponse &eacute;gale oui en minuscule ou majuscule :</font></tt></p>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>equal</b></font>(reponse, <font color="#008000">"oui"</font>) <font color="#990000"><b>||</b></font> <font color="#990000"><b>equal</b></font>(reponse, <font color="#008000">"OUI"</font>)
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                     
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si x est plus grand que a et plus petit que b donc dans l'intervale ]a, b[:</font></tt></p>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 a <font color="#990000"><b>&lt;</b></font> x <font color="#990000"><b>&amp;&amp;</b></font> x <font color="#990000"><b>&lt;</b></font> b
+                              </div> 
+                                     
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si la reponse &eacute;gale oui en minuscule ou majuscule :</font></tt></p>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>equal</b></font>(reponse, <font color="#008000">"oui"</font>) <font color="#990000"><b>||</b></font> <font color="#990000"><b>equal</b></font>(reponse, <font color="#008000">"OUI"</font>)
+                              </div>
+                                     
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si l'age est plus que 10 et le nom n'est pas Jean:</font></tt></p>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 age &gt; 10 <font color="#990000"><b>&amp;&amp;</b></font> (<font color="#990000"><b>!</b></font> <font color="#990000"><b>equal</b></font>(nom, <font color="#008000">"Jean"</font>))
+                              </div>
+                                   
                            </div>
-                                  
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Vrai si et seulement si l'age est plus que 10 et le nom n'est pas Jean:</font></tt></p>
-                                  
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              age &gt; 10 <font color="#990000"><b>&amp;&amp;</b></font> (<font color="#990000"><b>!</b></font> <font color="#990000"><b>equal</b></font>(nom, <font color="#008000">"Jean"</font>))
-                           </div>
-                                
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                     en utilisant des parenth&egrave;ses pour ne pas m&eacute;langer les termes de ces expressions.
                   
             </div>
@@ -275,21 +287,23 @@
                      si deux choses sont vraies alors on peut dire que l'une ET l'autre sont vraies. De m&ecirc;me <font color="#990000"><b>true &amp;&amp; false</b></font> donne <font color="#990000"><b>false</b></font> puisque 
                      si une chose est vraie et l'autre fausse on ne peut dire que l'une ET l'autre sont vraies. Le code :
                      
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                   
-                           <div><font color="#990000"><b>boolean</b></font> x = <font color="#990000"><b>readBoolean</b></font>();
-                           </div> 
-                                   
-                           <div>if (x) { <font color="#990000"><b>println</b></font>(<font color="#008000">"OK"</font>); } <font color="#990000"><b>else</b></font> { <font color="#990000"><b>println</b></font>(<font color="#008000">"KO"</font>); }
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div><font color="#990000"><b>boolean</b></font> x = <font color="#990000"><b>readBoolean</b></font>();
+                              </div> 
+                                      
+                              <div>if (x) { <font color="#990000"><b>println</b></font>(<font color="#008000">"OK"</font>); } <font color="#990000"><b>else</b></font> { <font color="#990000"><b>println</b></font>(<font color="#008000">"KO"</font>); }
+                              </div>
+                                     
                            </div>
-                                  
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                       nous permet de lire la variable bool&eacute;nne x et va imprimer OK/KO selon que sa valeur est Vraie/Fausse. Nous allons l'utiliser.
                     
             </div>
@@ -307,25 +321,27 @@
                      qui demandent le <i>nom</i> et l'<i>&acirc;ge</i> de l'utilisateur et ajouter
                      au bon endroit :
                      
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                   
-                           <div><font color="#990000"><b>if</b></font>(<font color="#990000"><b>equal</b></font>(whoisit, <font color="#008000">"Toto"</font>)) {
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div><font color="#990000"><b>if</b></font>(<font color="#990000"><b>equal</b></font>(whoisit, <font color="#008000">"Toto"</font>)) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 println(<font color="#008000">"Eh : Toto est pas un vrai nom, dis donc !"</font>);
+                              </div>
+                                      
+                              <div>}</div>
+                                    
                            </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              println(<font color="#008000">"Eh : Toto est pas un vrai nom, dis donc !"</font>);
-                           </div>
-                                   
-                           <div>}</div>
-                                 
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                      puis tester ce code pour v&eacute;rifier le m&eacute;canisme conditionnel. Ajouter ensuite des conditions pour signaler que : 
                <ul class="ul">
                           
@@ -346,78 +362,84 @@
                <ol class="ol">
                         
                   <li>Vrai pour <b>x</b> ?
-                     <table witdh="90%" border="1" align="center">
-                        <tr>
-                           <td>
-                              <div class="code">
-                                         
-                                 <div><font color="#990000"><b>int</b></font> x = 12;
+                     <p>
+                        <table witdh="90%" border="1" align="center">
+                           <tr>
+                              <td>
+                                 <div class="code">
+                                            
+                                    <div><font color="#990000"><b>int</b></font> x = 12;
+                                    </div>
+                                            
+                                    <div>if (x <font color="#990000"><b>&gt;=</b></font> 12 <font color="#990000"><b>&amp;&amp;</b></font> (x <font color="#990000"><b>&lt;</b></font> 0 <font color="#990000"><b>||</b></font> x <font color="#990000"><b>&gt;</b></font> 10)) { <font color="#990000"><b>println</b></font>(<font color="#008000">"OK"</font>); } <font color="#990000"><b>else</b></font> { <font color="#990000"><b>println</b></font>(<font color="#008000">"KO"</font>); }
+                                    </div>
+                                          
                                  </div>
-                                         
-                                 <div>if (x <font color="#990000"><b>&gt;=</b></font> 12 <font color="#990000"><b>&amp;&amp;</b></font> (x <font color="#990000"><b>&lt;</b></font> 0 <font color="#990000"><b>||</b></font> x <font color="#990000"><b>&gt;</b></font> 10)) { <font color="#990000"><b>println</b></font>(<font color="#008000">"OK"</font>); } <font color="#990000"><b>else</b></font> { <font color="#990000"><b>println</b></font>(<font color="#008000">"KO"</font>); }
-                                 </div>
-                                       
-                              </div>
-                           </td>
-                        </tr>
-                     </table>Votre commentaire commencera par : <i>Comme x vaut 12 alors <b>x <font color="#990000"><b>&lt;</b></font> 0</b> est [vrai?faux?], et <b> x <font color="#990000"><b>&gt;</b></font> 10</b> est [vrai?faux?],
+                              </td>
+                           </tr>
+                        </table>
+                     </p>Votre commentaire commencera par : <i>Comme x vaut 12 alors <b>x <font color="#990000"><b>&lt;</b></font> 0</b> est [vrai?faux?], et <b> x <font color="#990000"><b>&gt;</b></font> 10</b> est [vrai?faux?],
                               donc (x <font color="#990000"><b>&lt;</b></font> 0 <font color="#990000"><b>||</b></font> x <font color="#990000"><b>&gt;</b></font> 10) etc..</i></li>
                         
                   <li>Que va donner le code suivant ?
-                     <table witdh="90%" border="1" align="center">
-                        <tr>
-                           <td>
-                              <div class="code">
-                                         
-                                 <div><font color="#990000"><b>String</b></font> nom = <font color="#990000"><b>readString</b></font>();
+                     <p>
+                        <table witdh="90%" border="1" align="center">
+                           <tr>
+                              <td>
+                                 <div class="code">
+                                            
+                                    <div><font color="#990000"><b>String</b></font> nom = <font color="#990000"><b>readString</b></font>();
+                                    </div>
+                                            
+                                    <div>if (<font color="#990000"><b>equal</b></font>(nom, <font color="#008000">"John"</font>) <font color="#990000"><b>&amp;&amp;</b></font> <font color="#990000"><b>equal</b></font>(nom, <font color="#008000">"Joan"</font>)) { <font color="#990000"><b>println</b></font>(<font color="#008000">"OK"</font>); } <font color="#990000"><b>else</b></font> { <font color="#990000"><b>println</b></font>(<font color="#008000">"KO"</font>); }
+                                    </div>
+                                          
                                  </div>
-                                         
-                                 <div>if (<font color="#990000"><b>equal</b></font>(nom, <font color="#008000">"John"</font>) <font color="#990000"><b>&amp;&amp;</b></font> <font color="#990000"><b>equal</b></font>(nom, <font color="#008000">"Joan"</font>)) { <font color="#990000"><b>println</b></font>(<font color="#008000">"OK"</font>); } <font color="#990000"><b>else</b></font> { <font color="#990000"><b>println</b></font>(<font color="#008000">"KO"</font>); }
-                                 </div>
-                                       
-                              </div>
-                           </td>
-                        </tr>
-                     </table>
+                              </td>
+                           </tr>
+                        </table>
+                     </p>
                   </li>
                         
                   <li>Deviner <i>puis</i> v&eacute;rifier ces 8 r&eacute;ponses:
-                     <table witdh="90%" border="1" align="center">
-                        <tr>
-                           <td>
-                              <div class="code">
-                                         
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 1 = "</font> + (<font color="#990000"><b>false</b></font> <font color="#990000"><b>||</b></font> <font color="#990000"><b>false</b></font>));
+                     <p>
+                        <table witdh="90%" border="1" align="center">
+                           <tr>
+                              <td>
+                                 <div class="code">
+                                            
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 1 = "</font> + (<font color="#990000"><b>false</b></font> <font color="#990000"><b>||</b></font> <font color="#990000"><b>false</b></font>));
+                                    </div>
+                                            
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 2 = "</font> + (<font color="#990000"><b>true</b></font> <font color="#990000"><b>||</b></font> <font color="#990000"><b>false</b></font>));
+                                    </div>
+                                            
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 3 = "</font> + (<font color="#990000"><b>false</b></font> <font color="#990000"><b>||</b></font> <font color="#990000"><b>true</b></font>));
+                                    </div>
+                                            
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 4 = "</font> + (<font color="#990000"><b>true</b></font> <font color="#990000"><b>||</b></font> <font color="#990000"><b>true</b></font>));
+                                    </div>
+                                            
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 5 = "</font> + (<font color="#990000"><b>true</b></font> <font color="#990000"><b>&amp;&amp;</b></font> (<font color="#990000"><b>!</b></font><font color="#990000"><b>false</b></font>)));
+                                    </div>
+                                            
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 6 = "</font> + (<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font><font color="#990000"><b>false</b></font>)));
+                                    </div>
+                                            
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 6 = "</font> + (<font color="#990000"><b>!</b></font>(<font color="#990000"><b>true</b></font> <font color="#990000"><b>&amp;&amp;</b></font> <font color="#990000"><b>false</b></font>)));
+                                    </div>
+                                            
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 7 = "</font> + (<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font><font color="#990000"><b>false</b></font>)))))))))))))))))))));
+                                    </div>
+                                            
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 8 = "</font> + (equal(<font color="#008000">"toto"</font>, <font color="#008000">"titi"</font>) <font color="#990000"><b>||</b></font> 14 <font color="#990000"><b>&gt;</b></font> 13));
+                                    </div>
+                                          
                                  </div>
-                                         
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 2 = "</font> + (<font color="#990000"><b>true</b></font> <font color="#990000"><b>||</b></font> <font color="#990000"><b>false</b></font>));
-                                 </div>
-                                         
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 3 = "</font> + (<font color="#990000"><b>false</b></font> <font color="#990000"><b>||</b></font> <font color="#990000"><b>true</b></font>));
-                                 </div>
-                                         
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 4 = "</font> + (<font color="#990000"><b>true</b></font> <font color="#990000"><b>||</b></font> <font color="#990000"><b>true</b></font>));
-                                 </div>
-                                         
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 5 = "</font> + (<font color="#990000"><b>true</b></font> <font color="#990000"><b>&amp;&amp;</b></font> (<font color="#990000"><b>!</b></font><font color="#990000"><b>false</b></font>)));
-                                 </div>
-                                         
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 6 = "</font> + (<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font><font color="#990000"><b>false</b></font>)));
-                                 </div>
-                                         
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 6 = "</font> + (<font color="#990000"><b>!</b></font>(<font color="#990000"><b>true</b></font> <font color="#990000"><b>&amp;&amp;</b></font> <font color="#990000"><b>false</b></font>)));
-                                 </div>
-                                         
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 7 = "</font> + (<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font>(<font color="#990000"><b>!</b></font><font color="#990000"><b>false</b></font>)))))))))))))))))))));
-                                 </div>
-                                         
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse 8 = "</font> + (equal(<font color="#008000">"toto"</font>, <font color="#008000">"titi"</font>) <font color="#990000"><b>||</b></font> 14 <font color="#990000"><b>&gt;</b></font> 13));
-                                 </div>
-                                       
-                              </div>
-                           </td>
-                        </tr>
-                     </table> et donner une phrase explicative pour chaque r&eacute;ponse.
+                              </td>
+                           </tr>
+                        </table>
+                     </p> et donner une phrase explicative pour chaque r&eacute;ponse.
                   </li>
                       
                </ol>
@@ -591,24 +613,26 @@
                         
                   <li>V&eacute;rifier &agrave; la main ou en utilisant le bout de code suivant, que l'expression <b>(((<font color="#990000"><b>!</b></font>x) <font color="#990000"><b>&amp;&amp;</b></font> y) <font color="#990000"><b>||</b></font> (x <font color="#990000"><b>&amp;&amp;</b></font> (<font color="#990000"><b>!</b></font>y)))</b>
                              convient.
-                     <table witdh="90%" border="1" align="center">
-                        <tr>
-                           <td>
-                              <div class="code">
-                                           
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"x ?"</font>); <font color="#990000"><b>boolean</b></font> x = <font color="#990000"><b>readBoolean</b></font>();
+                     <p>
+                        <table witdh="90%" border="1" align="center">
+                           <tr>
+                              <td>
+                                 <div class="code">
+                                              
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"x ?"</font>); <font color="#990000"><b>boolean</b></font> x = <font color="#990000"><b>readBoolean</b></font>();
+                                    </div>
+                                              
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"y ?"</font>); <font color="#990000"><b>boolean</b></font> y = <font color="#990000"><b>readBoolean</b></font>();
+                                    </div>
+                                              
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse: "</font> + (((<font color="#990000"><b>!</b></font>x) <font color="#990000"><b>&amp;&amp;</b></font> y) <font color="#990000"><b>||</b></font> (x <font color="#990000"><b>&amp;&amp;</b></font> (<font color="#990000"><b>!</b></font>y))));
+                                    </div>
+                                            
                                  </div>
-                                           
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"y ?"</font>); <font color="#990000"><b>boolean</b></font> y = <font color="#990000"><b>readBoolean</b></font>();
-                                 </div>
-                                           
-                                 <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse: "</font> + (((<font color="#990000"><b>!</b></font>x) <font color="#990000"><b>&amp;&amp;</b></font> y) <font color="#990000"><b>||</b></font> (x <font color="#990000"><b>&amp;&amp;</b></font> (<font color="#990000"><b>!</b></font>y))));
-                                 </div>
-                                         
-                              </div>
-                           </td>
-                        </tr>
-                     </table>
+                              </td>
+                           </tr>
+                        </table>
+                     </p>
                            
                   </li>
                         

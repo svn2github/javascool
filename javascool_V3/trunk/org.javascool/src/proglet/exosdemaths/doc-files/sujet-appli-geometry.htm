@@ -30,83 +30,85 @@
             <div>
                <h3>Un exemple: le calcul du centre de de deux points.</h3>
                      Consid&eacute;rons le code suivant: 
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                   
-                           <div><font color="#990000"><b>void main</b></font>() {
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Lecture des valeurs du r&eacute;ticule</font></tt></p>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> x_A = scopeX();
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> y_A = scopeY();
+                              </div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition d'un autre point, avec des valeurs dans [-1, 1]</font></tt></p>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> x_B = 0.2;
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> y_B = 0.4;
+                              </div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Calcul du milieu du segment</font></tt></p>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> x_I = (x_A + x_B) / 2;
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> y_I = (y_A + y_B) / 2;
+                              </div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Trac&eacute; des points et des lignes correspondants</font></tt></p>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>scopeReset</b></font>();
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>scopeAdd</b></font>(x_A, y_A, <font color="#008000">"A"</font>, 4);
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>scopeAdd</b></font>(x_I, y_I, <font color="#008000">"I"</font>, 2);
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>scopeAdd</b></font>(x_B, y_B, <font color="#008000">"B"</font>, 4);
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>scopeAddLine</b></font>(x_A, y_A, x_B, y_B, 6);
+                              </div>
+                                      
+                              <div>}</div>
+                                  
                            </div>
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Lecture des valeurs du r&eacute;ticule</font></tt></p>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> x_A = scopeX();
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> y_A = scopeY();
-                           </div>
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition d'un autre point, avec des valeurs dans [-1, 1]</font></tt></p>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> x_B = 0.2;
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> y_B = 0.4;
-                           </div>
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Calcul du milieu du segment</font></tt></p>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> x_I = (x_A + x_B) / 2;
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> y_I = (y_A + y_B) / 2;
-                           </div>
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Trac&eacute; des points et des lignes correspondants</font></tt></p>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>scopeReset</b></font>();
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>scopeAdd</b></font>(x_A, y_A, <font color="#008000">"A"</font>, 4);
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>scopeAdd</b></font>(x_I, y_I, <font color="#008000">"I"</font>, 2);
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>scopeAdd</b></font>(x_B, y_B, <font color="#008000">"B"</font>, 4);
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>scopeAddLine</b></font>(x_A, y_A, x_B, y_B, 6);
-                           </div>
-                                   
-                           <div>}</div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>Le programme principal <font color="#990000"><b>main</b></font>:
+                        </td>
+                     </tr>
+                  </table>
+               </p>Le programme principal <font color="#990000"><b>main</b></font>:
                <ul class="ul">
                         
                   <li>lit dans <b>x_A</b> et <b>y_A</b> les valeurs horizontales et verticales du r&eacute;ticule du scope.
@@ -184,54 +186,56 @@
             <div>
                <h3>A vous de jouer: jouons avec un parall&eacute;logramme.</h3>
                      En utilisant le code qui commence ainsi: 
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                   
-                           <div><font color="#990000"><b>void main</b></font>() {
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Lecture des valeurs du r&eacute;ticule</font></tt></p>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> x_A = scopeX();
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> y_A = scopeY();
+                              </div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition de deux autres points, avec des valeurs dans [-1, 1]</font></tt></p>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> x_B = 0.2;
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> y_B = 0.4;
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> x_C = 0.4;
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> y_C = -0.6;
+                              </div>
+                                      
+                              <div>../..</div>
+                                    
                            </div>
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Lecture des valeurs du r&eacute;ticule</font></tt></p>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> x_A = scopeX();
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> y_A = scopeY();
-                           </div>
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition de deux autres points, avec des valeurs dans [-1, 1]</font></tt></p>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> x_B = 0.2;
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> y_B = 0.4;
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> x_C = 0.4;
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> y_C = -0.6;
-                           </div>
-                                   
-                           <div>../..</div>
-                                 
-                        </div>
-                     </td>
-                  </tr>
-               </table> compl&eacute;ter le en: 
+                        </td>
+                     </tr>
+                  </table>
+               </p> compl&eacute;ter le en: 
                <ul class="ul">
                           
                   <li>Calculant le milieu <font color="#008000">"M"</font> de (<font color="#008000">"A"</font>, <font color="#008000">"C"</font>).
@@ -250,44 +254,46 @@
             <div>
                <h3>A vous de jouer: le triangle isoc&egrave;le amovible.</h3>
                      En utilisant le code qui commence ainsi: 
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                   
-                           <div><font color="#990000"><b>void main</b></font>() {
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Lecture des valeurs du r&eacute;ticule</font></tt></p>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> x_A = scopeX();
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> y_A = scopeY();
+                              </div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition de deux autres points, avec des valeurs dans [-1, 1]</font></tt></p>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> x_B = 0.2;
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>double</b></font> y_B = 0;
+                              </div>
+                                     
+                              <div>../..</div>
+                                    
                            </div>
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;Lecture des valeurs du r&eacute;ticule</font></tt></p>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> x_A = scopeX();
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> y_A = scopeY();
-                           </div>
-                                   
-                           <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition de deux autres points, avec des valeurs dans [-1, 1]</font></tt></p>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> x_B = 0.2;
-                           </div>
-                                   
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>double</b></font> y_B = 0;
-                           </div>
-                                  
-                           <div>../..</div>
-                                 
-                        </div>
-                     </td>
-                  </tr>
-               </table> compl&eacute;ter le en: 
+                        </td>
+                     </tr>
+                  </table>
+               </p> compl&eacute;ter le en: 
                <ul class="ul">
                           
                   <li>Calculant la projection <font color="#008000">"P"</font> de <font color="#008000">"A"</font> sur l'axe des abscisses.
@@ -312,25 +318,27 @@
                <ul class="ul">
                          
                   <li>Calculer la distance <b>d</b> entre <font color="#008000">"A"</font> et <font color="#008000">"B"</font> en utilisant, pas exemple, les lignes de code suivantes: 
-                     <table witdh="90%" border="1" align="center">
-                        <tr>
-                           <td>
-                              <div class="code">
-                                         
-                                 <div>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <font color="#990000"><b>double</b></font> d_x = x_B - x_A;
+                     <p>
+                        <table witdh="90%" border="1" align="center">
+                           <tr>
+                              <td>
+                                 <div class="code">
+                                            
+                                    <div>
+                                       &nbsp;&nbsp;&nbsp;
+                                       <font color="#990000"><b>double</b></font> d_x = x_B - x_A;
+                                    </div>
+                                            
+                                    <div>
+                                       &nbsp;&nbsp;&nbsp;
+                                       <font color="#990000"><b>double</b></font> d_y = y_B - y_A;
+                                    </div>
+                                          
                                  </div>
-                                         
-                                 <div>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <font color="#990000"><b>double</b></font> d_y = y_B - y_A;
-                                 </div>
-                                       
-                              </div>
-                           </td>
-                        </tr>
-                     </table> et en utilisant la fonction <b><font color="#990000"><b>sqrt</b></font>(x)</b> qui renvoie la racine carr&eacute;e de <b>x</b> 
+                              </td>
+                           </tr>
+                        </table>
+                     </p> et en utilisant la fonction <b><font color="#990000"><b>sqrt</b></font>(x)</b> qui renvoie la racine carr&eacute;e de <b>x</b> 
                            (par exemple <b><font color="#990000"><b>double</b></font> r = <font color="#990000"><b>sqrt</b></font>(9);</b> donne la valeur <b>3</b> &agrave; <b>r</b>).
                   </li>
                         

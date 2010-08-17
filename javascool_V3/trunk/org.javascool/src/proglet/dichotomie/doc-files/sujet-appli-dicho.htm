@@ -26,22 +26,24 @@
          </li>
          <li>
             <div>Lire en d&eacute;tail la description de la  et essayons de programmer la fonction : 
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                 
-                           <div><font color="#990000"><b>int</b></font> getPage(<font color="#990000"><b>String</b></font> pays) {
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>int</b></font> getPage(<font color="#990000"><b>String</b></font> pays) {
+                              </div>
+                                    
+                              <div>.. / ..</div>
+                                    
+                              <div>}</div>
+                                  
                            </div>
-                                 
-                           <div>.. / ..</div>
-                                 
-                           <div>}</div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                    qui <i>renvoie le num&eacute;ro de la page correspondant &agrave; un nom de pays donn&eacute;, ou -1 si la page n'existe pas.</i>
                    
             </div>
@@ -56,65 +58,67 @@
             <div>
                <h3>Tester toutes les valeurs.</h3>Essayer le programme suivant :
                    
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>int</b></font> getPage(<font color="#990000"><b>String</b></font> pays) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 int debut = 0, fin = <font color="#990000"><b>dichoLength</b></font>();
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>while</b></font>(<font color="#990000"><b>true</b></font>) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
                                  
-                           <div><font color="#990000"><b>int</b></font> getPage(<font color="#990000"><b>String</b></font> pays) {
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> c = <font color="#990000"><b>dichoCompare</b></font>(pays, debut);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font> (c == 0) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>return</b></font> debut;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>}</div>
+                                  
                            </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              int debut = 0, fin = <font color="#990000"><b>dichoLength</b></font>();
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>while</b></font>(<font color="#990000"><b>true</b></font>) {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>int</b></font> c = <font color="#990000"><b>dichoCompare</b></font>(pays, debut);
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>if</b></font> (c == 0) {
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              <font color="#990000"><b>return</b></font> debut;
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                 
-                           <div>
-                              &nbsp;&nbsp;&nbsp;
-                              }
-                           </div>
-                                 
-                           <div>}</div>
-                               
-                        </div>
-                     </td>
-                  </tr>
-               </table>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
                    avec un "<font color="#990000"><b>main</b></font>" en appelant <font color="#990000"><b>getPage</b></font> avec un nom de pays <i>qui existe</i>.
                    
                <div>Noter que l'on utilise ici la construction <font color="#990000"><b>return</b></font> pour sortir de la boucle, tandis que <font color="#990000"><b>while(true)</b></font> est toujours vrai, donc boucle ind&eacute;finiment.
@@ -189,18 +193,20 @@
                          
                   <li>A partir de la ligne de code :
                             
-                     <table witdh="90%" border="1" align="center">
-                        <tr>
-                           <td>
-                              <div class="code">
-                                          
-                                 <div>n = n + 1; u = u * 2;  <font color="#990000"><b>echo</b></font>("2^" + n + "=" + u);
+                     <p>
+                        <table witdh="90%" border="1" align="center">
+                           <tr>
+                              <td>
+                                 <div class="code">
+                                             
+                                    <div>n = n + 1; u = u * 2;  <font color="#990000"><b>echo</b></font>("2^" + n + "=" + u);
+                                    </div>
+                                           
                                  </div>
-                                        
-                              </div>
-                           </td>
-                        </tr>
-                     </table>&eacute;crire une boucle qui calcule les puissances de 2 de 0 &agrave; 20.
+                              </td>
+                           </tr>
+                        </table>
+                     </p>&eacute;crire une boucle qui calcule les puissances de 2 de 0 &agrave; 20.
                   </li>
                        
                </ul>

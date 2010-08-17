@@ -33,7 +33,7 @@
 "      </xsl:choose>\n"+
 "      <div id=\"{@class}\"><ol><xsl:for-each select=\"*\"><li><xsl:call-template name=\"div\"/></li></xsl:for-each></ol></div>\n"+
 "    </xsl:when>\n"+
-"    <xsl:when test=\"@class = 'code'\"><table witdh=\"90%\" border=\"1\" align=\"center\"><tr><td><xsl:call-template name=\"div\"/></td></tr></table></xsl:when>\n"+
+"    <xsl:when test=\"@class = 'code'\"><p><table witdh=\"90%\" border=\"1\" align=\"center\"><tr><td><xsl:call-template name=\"div\"/></td></tr></table></p></xsl:when>\n"+
 "    <xsl:when test=\"@class = 'margin'\"><div align=\"right\"><xsl:call-template name=\"div\"/></div></xsl:when>\n"+
 "    <xsl:otherwise><xsl:call-template name=\"div\"/></xsl:otherwise>\n"+
 "  </xsl:choose>\n"+

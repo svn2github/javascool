@@ -25,108 +25,114 @@
       <div>
          <h3>Tourner les pages une &agrave; une.</h3>Tourner les pages une &agrave; une jusqu'&agrave; trouver le pays si il existe, ce qui pourrait s'&eacute;crire facilement comme ceci:
                
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                             
-                     <div><font color="#990000"><b>trouver</b></font>(pays) { 
-                     </div>
-                             
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        page = debut;
-                     </div>
-                             
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>tantque</b></font> page &lt;= fin; {
-                     </div>
-                             
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>si</b></font> (dictionnaire(page) == pays) <font color="#990000"><b>alors</b></font> { <font color="#990000"><b>renvoyer</b></font> page; }
-                     </div>
-                             
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        
-                        &nbsp;&nbsp;&nbsp;
-                        page = page + 1;
-                     </div>
-                             
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        }
-                     </div>
-                             
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>renvoyer</b></font> <font color="#008000">"pas trouv&eacute;"</font>;
-                     </div>
-                             
-                     <div>}</div>
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                                
+                        <div><font color="#990000"><b>trouver</b></font>(pays) { 
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           page = debut;
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>tantque</b></font> page &lt;= fin; {
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
                            
-                  </div>
-               </td>
-            </tr>
-         </table>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>si</b></font> (dictionnaire(page) == pays) <font color="#990000"><b>alors</b></font> { <font color="#990000"><b>renvoyer</b></font> page; }
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           page = page + 1;
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           }
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>renvoyer</b></font> <font color="#008000">"pas trouv&eacute;"</font>;
+                        </div>
+                                
+                        <div>}</div>
+                              
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
                c'est &agrave; dire &eacute;num&eacute;rer les pages du d&eacute;but &agrave; la fin du dictionnaire, ce qui est impl&eacute;ment&eacute; &agrave; travers la boucle:
                
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                             
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        page = debut;
-                     </div>
-                             
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>tantque</b></font> page &lt;= fin; {
-                     </div>
-                             
-                     <div>../..</div>
-                             
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        
-                        &nbsp;&nbsp;&nbsp;
-                        page = page + 1;
-                     </div>
-                             
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        }
-                     </div>
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           page = debut;
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>tantque</b></font> page &lt;= fin; {
+                        </div>
+                                
+                        <div>../..</div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
                            
-                  </div>
-               </td>
-            </tr>
-         </table>
+                           &nbsp;&nbsp;&nbsp;
+                           page = page + 1;
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           }
+                        </div>
+                              
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
                dont on sort en renvoyant la page du dictionnaire correspondant au pays si elle est trouv&eacute;e, comme le sp&eacute;cifie ce test
          de comparaison:
                
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                             
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>si</b></font> (dictionnaire(page) == pays) <font color="#990000"><b>alors</b></font> { <font color="#990000"><b>renvoyer</b></font> page; }
-                     </div>
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
                            
-                  </div>
-               </td>
-            </tr>
-         </table>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>si</b></font> (dictionnaire(page) == pays) <font color="#990000"><b>alors</b></font> { <font color="#990000"><b>renvoyer</b></font> page; }
+                        </div>
+                              
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
                et dont on sort, sinon, &agrave; la fin en signalant ne pas avoir trouv&eacute; la page.
                
          <div>Voil&agrave; un algorithme qui marche &agrave; coup s&ucirc;r. 
@@ -243,69 +249,71 @@
          <div>Il y a plusieurs mani&egrave;res de programmer ce m&eacute;canisme, en voici une o&ugrave; nous restreignons l'espace de recherche entre deux valeurs
             min et max:
                   
-            <table witdh="90%" border="1" align="center">
-               <tr>
-                  <td>
-                     <div class="code">
-                               
-                        <div><font color="#990000"><b>trouver</b></font>(pays) { 
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                  
+                           <div><font color="#990000"><b>trouver</b></font>(pays) { 
+                           </div>
+                                  
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              min = debut; max = fin;
+                           </div>
+                                  
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>repeter {</b></font></div>
+                                  
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              
+                              &nbsp;&nbsp;&nbsp;
+                              milieu = (min + max) / 2;
+                           </div>
+                                  
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>si</b></font> (dictionnaire(milieu) == pays) <font color="#990000"><b>alors</b></font> <font color="#990000"><b>renvoyer</b></font> milieu;
+                           </div>
+                                  
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>si</b></font> (min == max) <font color="#990000"><b>alors</b></font> <font color="#990000"><b>renvoyer</b></font> <font color="#008000">"pas trouv&eacute;"</font>;
+                           </div>
+                                  
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>si</b></font> (dictionnaire(milieu) &lt; pays) <font color="#990000"><b>alors</b></font> min = milieu;
+                           </div>
+                                  
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>si</b></font> (dictionnaire(milieu) &gt; pays) <font color="#990000"><b>alors</b></font> max = milieu;
+                           </div>
+                                  
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              }
+                           </div>
+                                  
+                           <div>}</div>
+                                
                         </div>
-                               
-                        <div>
-                           &nbsp;&nbsp;&nbsp;
-                           min = debut; max = fin;
-                        </div>
-                               
-                        <div>
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>repeter {</b></font></div>
-                               
-                        <div>
-                           &nbsp;&nbsp;&nbsp;
-                           
-                           &nbsp;&nbsp;&nbsp;
-                           milieu = (min + max) / 2;
-                        </div>
-                               
-                        <div>
-                           &nbsp;&nbsp;&nbsp;
-                           
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>si</b></font> (dictionnaire(milieu) == pays) <font color="#990000"><b>alors</b></font> <font color="#990000"><b>renvoyer</b></font> milieu;
-                        </div>
-                               
-                        <div>
-                           &nbsp;&nbsp;&nbsp;
-                           
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>si</b></font> (min == max) <font color="#990000"><b>alors</b></font> <font color="#990000"><b>renvoyer</b></font> <font color="#008000">"pas trouv&eacute;"</font>;
-                        </div>
-                               
-                        <div>
-                           &nbsp;&nbsp;&nbsp;
-                           
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>si</b></font> (dictionnaire(milieu) &lt; pays) <font color="#990000"><b>alors</b></font> min = milieu;
-                        </div>
-                               
-                        <div>
-                           &nbsp;&nbsp;&nbsp;
-                           
-                           &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>si</b></font> (dictionnaire(milieu) &gt; pays) <font color="#990000"><b>alors</b></font> max = milieu;
-                        </div>
-                               
-                        <div>
-                           &nbsp;&nbsp;&nbsp;
-                           }
-                        </div>
-                               
-                        <div>}</div>
-                             
-                     </div>
-                  </td>
-               </tr>
-            </table>
+                     </td>
+                  </tr>
+               </table>
+            </p>
          </div>
               
          <div>On remarque que la quantit&eacute; <tt>max - min</tt> vaut <tt>fin - debut</tt> au d&eacute;marrage puis se divise par 2 &agrave; chaque &eacute;tape, 
@@ -360,74 +368,76 @@
            
       <div>L&agrave; encore le m&ecirc;me m&eacute;canisme de dichotomie permet de r&eacute;soudre le probl&egrave;me comme incarn&eacute; dans l'algorithme suivant:
                
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                            
-                     <div><font color="#990000"><b>zero</b></font>(f) { 
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                               
+                        <div><font color="#990000"><b>zero</b></font>(f) { 
+                        </div>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           min = debut; max = fin;
+                        </div>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>si</b></font> (f(min) f(max) &gt;= 0) <font color="#990000"><b>alors</b></font> <font color="#990000"><b>renvoyer</b></font> <font color="#008000">"pas de solution"</font>;
+                        </div>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>repeter {</b></font></div>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           milieu = (min + max) / 2;
+                        </div>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>si</b></font> (|max - min| &lt; epsilon) <font color="#990000"><b>alors</b></font> <font color="#990000"><b>renvoyer</b></font> milieu;
+                        </div>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>sinon si</b></font> (f(max) f(milieu) &lt; 0) <font color="#990000"><b>alors</b></font> min = milieu;
+                        </div>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>sinon si</b></font> (f(min) f(milieu) &lt; 0) <font color="#990000"><b>alors</b></font> max = milieu;
+                        </div>     
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>sinon</b></font> <font color="#990000"><b>renvoyer</b></font> <font color="#008000">"pas de solution"</font>;
+                        </div>
+                               
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           }
+                        </div>
+                               
+                        <div>}</div>
+                             
                      </div>
-                            
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        min = debut; max = fin;
-                     </div>
-                            
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>si</b></font> (f(min) f(max) &gt;= 0) <font color="#990000"><b>alors</b></font> <font color="#990000"><b>renvoyer</b></font> <font color="#008000">"pas de solution"</font>;
-                     </div>
-                            
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>repeter {</b></font></div>
-                            
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        
-                        &nbsp;&nbsp;&nbsp;
-                        milieu = (min + max) / 2;
-                     </div>
-                            
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>si</b></font> (|max - min| &lt; epsilon) <font color="#990000"><b>alors</b></font> <font color="#990000"><b>renvoyer</b></font> milieu;
-                     </div>
-                            
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>sinon si</b></font> (f(max) f(milieu) &lt; 0) <font color="#990000"><b>alors</b></font> min = milieu;
-                     </div>
-                            
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>sinon si</b></font> (f(min) f(milieu) &lt; 0) <font color="#990000"><b>alors</b></font> max = milieu;
-                     </div>     
-                            
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>sinon</b></font> <font color="#990000"><b>renvoyer</b></font> <font color="#008000">"pas de solution"</font>;
-                     </div>
-                            
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        }
-                     </div>
-                            
-                     <div>}</div>
-                          
-                  </div>
-               </td>
-            </tr>
-         </table>
+                  </td>
+               </tr>
+            </table>
+         </p>
       </div>
            
       <div>Il ne diff&egrave;re du pr&eacute;c&eacute;dent que par la fa&ccedil;on de d&eacute;tecter le fait qu'il n'y ait pas de solution et par la fa&ccedil;on de faire les

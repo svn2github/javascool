@@ -16,18 +16,20 @@
           et permet d'ouvrir le livre &agrave; une page donn&eacute;e pour comparer le nom de pays avec le nom du pays recherch&eacute;. 
           
       <div>Plus pr&eacute;cis&eacute;ment la fonction <font color="#990000"><b>dichoCompare</b></font> ouvre le livre &agrave; une page et compare un nom au nom affich&eacute; sur cette page: 
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                           
-                     <div><font color="#990000"><b>int</b></font> r&eacute;sultat = <font color="#990000"><b>dichoCompare</b></font>(nom, page);
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                              
+                        <div><font color="#990000"><b>int</b></font> r&eacute;sultat = <font color="#990000"><b>dichoCompare</b></font>(nom, page);
+                        </div>
+                            
                      </div>
-                         
-                  </div>
-               </td>
-            </tr>
-         </table>
+                  </td>
+               </tr>
+            </table>
+         </p>
          <ul class="ul">
                 
             <li>o&ugrave; <b>nom</b> est un <font color="#990000"><b>String</b></font> dont la valeur est le nom du pays recherch&eacute;;
@@ -52,50 +54,54 @@
             </li>
                 
          </ul> tandis que la fonction: 
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                           
-                     <div><font color="#990000"><b>int</b></font> length = <font color="#990000"><b>dichoLength</b></font>();
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                              
+                        <div><font color="#990000"><b>int</b></font> length = <font color="#990000"><b>dichoLength</b></font>();
+                        </div>
+                            
                      </div>
-                         
-                  </div>
-               </td>
-            </tr>
-         </table> renvoie le nombre de pages.
+                  </td>
+               </tr>
+            </table>
+         </p> renvoie le nombre de pages.
       </div>
           
       <div>Un exemple d'utilisation: en appuyant sur la touche [<img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png" alt="" class="icon"> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
              secondes &agrave; une dizaine de pages au hasard, selon le programme suivant:
              
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                           
-                     <div><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = 0; i &lt; 10; i++) {
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                              
+                        <div><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = 0; i &lt; 10; i++) {
+                        </div>
+                              
+                        <div><font color="#990000"><b>int</b></font> page = <font color="#990000"><b>random</b></font>(0, <font color="#990000"><b>dichoLength</b></font>());
+                        </div>
+                              
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>dichoCompare</b></font>(<font color="#008000">"rien"</font>, page);
+                        </div>
+                              
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>sleep</b></font>(500);
+                        </div>
+                              
+                        <div>}</div>
+                            
                      </div>
-                           
-                     <div><font color="#990000"><b>int</b></font> page = <font color="#990000"><b>random</b></font>(0, <font color="#990000"><b>dichoLength</b></font>());
-                     </div>
-                           
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>dichoCompare</b></font>(<font color="#008000">"rien"</font>, page);
-                     </div>
-                           
-                     <div>
-                        &nbsp;&nbsp;&nbsp;
-                        <font color="#990000"><b>sleep</b></font>(500);
-                     </div>
-                           
-                     <div>}</div>
-                         
-                  </div>
-               </td>
-            </tr>
-         </table>
+                  </td>
+               </tr>
+            </table>
+         </p>
       </div>
           
       <div>En appuyant sur les touches <tt>&lt;-</tt> et <tt>-&gt;</tt> nous pouvons tourner manuellement les pages &agrave; gauche ou &agrave; droite.
