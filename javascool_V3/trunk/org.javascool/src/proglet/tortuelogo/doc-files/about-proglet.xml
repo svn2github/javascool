@@ -13,7 +13,7 @@
   <div class="center"><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/proglet/tortuelogo/doc-files/turtle.gif"/></div>
   </div>
 
-  <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>],
+  <div>Un exemple d'utilisation: lors de la <l link="the-proglet.htm" text="démonstration">,
   la tortue trace de belles <l link="http://fr.wikipedia.org/wiki/Courbe_de_Lissajous" text="courbes de Lissajous"/> en changeant la couleur:<div class="code">
     <m>Initialisation du tracé</m>
     <p><r>clear_all</r>();</p>

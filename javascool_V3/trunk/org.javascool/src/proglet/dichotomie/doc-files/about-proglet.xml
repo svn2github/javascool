@@ -18,7 +18,7 @@
     </div> tandis que la fonction: <div class="code">
       <p><r>int</r> length = <r>dichoLength</r>();</p>
     </div> renvoie le nombre de pages.</div>
-    <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
+    <div>Un exemple d'utilisation: lors de la <l link="the-proglet.htm" text="démonstration">, le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
     secondes à une dizaine de pages au hasard, selon le programme suivant:
     <div class="code">
       <p><r>for</r>(<r>int</r> i = 0; i &lt; 10; i++) {</p>

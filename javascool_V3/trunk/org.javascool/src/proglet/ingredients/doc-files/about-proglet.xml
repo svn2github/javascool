@@ -18,7 +18,7 @@
        <p><T/><r>println</r>(<v>Valeur = </v> + valeur);</p>
      </div>où ici <b>valeur</b> est une variable numérique entière ou décimale.</div>
    </div>
-   <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le programme suivant:
+   <div>Un exemple d'utilisation: lors de la <l link="the-proglet.htm" text="démonstration">, le programme suivant:
    <div class="code">
      <m>Efface le contenu de la fenêtre de sortie</m>
      <p><r>clear</r>();</p>

@@ -19,7 +19,7 @@
       <div><b><r>int</r> <c>random</c>(<r>int</r> min, <r>int</r> max)</b> Renvoie un nombre aléatoire entier uniformément distribué entre le min et le max (cette valeur incluse).</div>
       <div><b><r>void</r> <c>sleep</c>(<r>int</r> duree)</b> Arrête l'exécution du programme pendant une durée fixée donnée en milli-secondes.</div>
     </div></div>
-    <div title="Fonctions de la proglet Konsol"><div class="ul">
+    <div title="Fonctions de la Console"><div class="ul">
       <div><b><r>void</r> <c>clear</c>()</b> Efface tout le contenu la fenêtre de sortie.</div>
       <div><b><r>void</r> <c>println</c>(<r>String</r> string)</b> Ecrit une chaînes de caratères dans la fenêtre de sortie.</div>
       <div><b><r>String</r> <c>readString</c>()</b> Lit une chaîne de caratères dans la fenêtre d'entrée (ex: <b><r>String</r> nom = <r>readString</r>();</b>).</div>

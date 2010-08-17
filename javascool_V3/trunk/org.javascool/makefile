@@ -210,19 +210,21 @@ wpub: api wraz
 	@-rsync --rsh='ssh -C' www/index.php scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/.htindex.php
 	@ssh scm.gforge.inria.fr 'sh -c "cd /home/groups/javascool/htdocs/v3 ; cat .htindex.php > index.php ; rm .htindex.php"'
 
+# Jat file publication: WARNING this disseminates your new release all around the world !!!
+
 jpub: 
 	@-rsync --rsh='ssh -C' www/javascool.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3
-
-# Clean the web cache
-
-wraz: 
-	@wget -q -O - http://javascool.gforge.inria.fr/v3?kezako=niquelekacheux
 
 # Check the web site links 
 
 wref: wpub
 	@lib/run.sh LinkCheck -recursive http://javascool.gforge.inria.fr/v3/ | tee lib/brokenlinks.txt
 
+
+# Clean the web cache
+
+wraz: 
+	@wget -q -O - http://javascool.gforge.inria.fr/v3?kezako=niquelekacheux
 
 #####################################################################################################################################
 

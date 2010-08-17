@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  *   <li>Indexed <i>Elements</i> values implicitly indexed by an integer <tt>>= 0</tt></li>
  * </ul>values being either a Pml or a String. And not more.</p>
  *
- * <p>It is used to manage non-trivial routine parameters (including <a href="../../org/javascool/Text.html">text</a>) or to interface with other applications.</p>
+ * <p>It is used to manage non-trivial routine parameters (including <a href="Hml.html">text</a>) or to interface with other applications.</p>
  * 
  * <p>The textual syntax is of the form:
  * <div style="margin-left: 40px"><tt>"{tag name = value .. element .. }"</tt></div>where <ul>

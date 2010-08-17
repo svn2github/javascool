@@ -1,8 +1,9 @@
 <div class="sujet" title="Le tutoriel &#34;Hello World&#34;">
   
   <div class="objectif">
-    Le but de ce tutoriel est de se familiariser avec l'outil de programmation <l class="javascool"/>, pour pouvoir réaliser les autres <l link="../index.html" text="tutoriels"/>
-  et de découvrir comment programmer une séquence d'instruction.
+    Le but de ce tutoriel est de se familiariser avec l'outil de programmation <l class="javascool"/>, 
+    pour pouvoir réaliser les autres <l link="index.htm" text="tutoriels"/>
+    et de découvrir comment programmer une séquence d'instruction.
   </div>
   
   <div class="intros">

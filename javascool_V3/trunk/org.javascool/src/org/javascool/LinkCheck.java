@@ -62,7 +62,7 @@ public class LinkCheck { private LinkCheck() { }
 	    //-System.err.println(" ? "+ href + (anchor == null ? "" : " #"+ anchor));
 	    if (!isReadable(href)) 
 	      echoBroken("BROKEN  Link in "+location+" -> "+href);
-	    if (loop && href.startsWith(root) && href.matches("^http:.*([?][^?]*|/|\\.(htm|html|shtml|php))$"))
+	    if (loop && href.startsWith(root) && href.matches("^http:.*([?][^?]*|/|\\.(htm|html|shtml|php))$") && !href.matches("^.*\\.(xslt|java)"))
 	      check(href);
 	    if (anchor != null) {
 	      if (!anchors.containsKey(href)) anchors.put(href, getAnchorSet(Utils.loadString(href)));

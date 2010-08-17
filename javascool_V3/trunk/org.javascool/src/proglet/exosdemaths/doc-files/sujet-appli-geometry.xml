@@ -2,14 +2,13 @@
 
   <div class="objectif">
     Le but de ce tutoriel est de programmer quelques calculs géométriques.
-    Il faut déja savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>,
-    se servir de <l link="sujet-about-variables.htm" text="variables"/> et avoir découvert l'<l link="sujet-about-if.htm" text="instruction conditionnelle"/>
-    et définir une <l link="sujet-about-functions.htm" text="fonction"/>.
+    Il faut déja savoir <l link="../../ingredients/doc-files/sujet-hello-world.htm" text="utiliser l'interface"/>,
+    se servir de <l link="../../ingredients/doc-files/sujet-about-variables.htm" text="variables"/> 
+    et avoir découvert l'<l link="../../ingredients/doc-files/sujet-about-if.htm" text="instruction conditionnelle"/>
+    et définir une <l link="../../ingredients/doc-files/sujet-about-functions.htm" text="fonction"/>.
   </div>
   
   <div class="intros">
-    <div><l class="icon" icon="img/execute.png"/> Choisir la proglet <c>Scope</c> et non <c>Konsol</c> dans le bouton lié à l'exécution.</div>
-    <div>Lire en détail la description de la .</div>
     <div title="Un exemple: le calcul du centre de de deux points">
       Considérons le code suivant: <div class="code">
         <p><r>void main</r>() {</p>

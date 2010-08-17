@@ -2,7 +2,7 @@
   <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>
     Cette proglet<l class="note" link="1"/> permet de manipuler une petite image de résolution variable, dont les coordonnées se définissent ainsi:
-     <div class="center"><l class="icon" icon="img/smiley.png"/></div>
+     <div class="center"><l class="icon" icon="smiley.png"/></div>
      c'est à dire que l'abscisse (la position horizontale ou largeur, width en anglais) va de <c>-width</c> à <c>+width</c> 
      et l'ordonnée (la position verticale ou hauteur, height en anglais) va de <c>-height</c> à <c>+height</c>.
      <div>La fonction:<div class="code">
@@ -36,8 +36,9 @@
        toutes les valeurs entre <c>0</c> et <c>255</c> définissant les valeurs de gris,</div>
      </div>permettre de lire/écrire un pixel monochrome dans cette image.
     </div>
-    <div>Un exemple d'utilisation: en appuyant sur la touche [<l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/iconesv2/demo.png"/> <b>Demo</b>] le signe de la paix va s'afficher:
-      <div class="center"><l class="icon" icon="img/smiley2.jpg"/></div>
+    <div>Un exemple d'utilisation: lors de la <l link="the-proglet.htm" text="démonstration"> 
+      le signe de la paix va s'afficher:
+      <div class="center"><l class="icon" icon="smiley2.jpg"/></div>
       ceci, à différentes résolutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne résolution il sera très lisible, puis petit à petit il se réduira à quelques pixels,
       selon le programme suivant:
       <div class="code">

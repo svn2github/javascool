@@ -1,8 +1,5 @@
 <div class="sujet" title="Un tutoriel pour se familiariser avec les fonctions">
   
-  
-  
-  
   <div class="objectif">
     Le but de ce tutoriel est de se familiariser avec les fonctions. Il faut déja savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>,
   se servir de <l link="sujet-about-variables.htm" text="variables"/> et avoir découvert l'instruction <l link="sujet-about-if.htm" text="conditionnelle"/>.
@@ -179,7 +176,7 @@
         <div>imprime un message d'erreur, puis renvoie la valeur <b>Double.NaN</b>, si <b>y</b> est nul (<b>y == 0</b>) .</div>
       </div>(la valeur <b>Double.NaN</b> qui se lie "Not-a-Number" signifie que le résulat n'est pas un nombre, mais est indéfini.</div>
       <div>Programmer la fonction "ou exclusif" <b><r>boolean</r> xor(<r>boolean</r> x, <r>boolean</r> y)</b>,
-      découverte avec l'<l link="doc/sujet-about-if.htm" text="instruction conditionnelle"/>, 
+      découverte avec l'<l link="sujet-about-if.htm" text="instruction conditionnelle"/>, 
       qui renvoie <r>true</r> (vrai) si soit <b>x</b>, soit <b>y</b> est <r>true</r> mais pas les deux à la fois.</div> 
       <div>Programmer la fonction "maximum de trois entiers" <b><r>int</r> max(<r>int</r> x, <r>int</r> y, <r>int</r> z)</b>, 
       soit en utilisant la fonction <b><r>int</r> max(<r>int</r> x, <r>int</r> y)</b>, soit des <r>if</r>, comme vous voulez.</div>

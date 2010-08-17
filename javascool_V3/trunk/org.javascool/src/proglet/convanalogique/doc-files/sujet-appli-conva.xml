@@ -2,14 +2,14 @@
   
   <div class="objectif">
     Le but de ce tutoriel est de comprendre comment deviner une valeur  analogique à partir de comparaisons et de découvrir la recherche dichotomique.
-    Une autre activité, plus autonome, sur la recherche dichotomique est proposée <l link="sujet-appli-dicho.htm" text="ici"/>.
-    Il faut déja savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>,
-    se servir de <l link="sujet-about-variables.htm" text="variables"/> et avoir découvert l'<l link="sujet-about-if.htm" text="instruction conditionnelle"/> et 
-    utiliser des <l link="sujet-about-while.htm" text="boucles"/>.
+    Une autre activité, plus autonome, sur la recherche dichotomique est proposée <l link="../../ingredients/doc-files/sujet-appli-dicho.htm" text="ici"/>.
+    Il faut déja savoir <l link="../../ingredients/doc-files/sujet-hello-world.htm" text="utiliser l'interface"/>,
+    se servir de <l link="../../ingredients/doc-files/sujet-about-variables.htm" text="variables"/> 
+    et avoir découvert l'<l link="../../ingredients/doc-files/sujet-about-if.htm" text="instruction conditionnelle"/> et 
+    utiliser des <l link="../../ingredients/doc-files/sujet-about-while.htm" text="boucles"/>.
   </div>
   
   <div class="intros">
-    <div><l class="icon" icon="img/execute.png"/> Choisir la proglet <c>Conva</c> et non <c>Konsol</c> dans le bouton lié à l'exécution.</div>
     <div>L'ordinateur peut grâce à un convertisseur numérique analogique générer une tension en volt, grâce à la fonction :
     <div class="code">
       <p><r>convaOut</r>(tension);</p>
@@ -21,7 +21,7 @@
      qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
     </div>
     <div>Le schéma est illustré ici :
-     <div class="center"><l class="icon" icon="img/conv.png"/></div>
+     <div class="center"><l class="icon" icon="conv.png"/></div>
      Bien entendu, ici, nous simulons ce mécanisme par une petite proglet.
     </div>
    <div>
@@ -59,7 +59,7 @@
         <p>}</p>
       </div><div class="ul">
         <div>Compléter ce code en comparant à 256 et 768, puis utilisant le tableau ci dessous à 128, etc. Et essayer le résultat ...
-          <div class="center"><l class="icon" icon="img/dicho.png"/></div>
+          <div class="center"><l class="icon" icon="dicho.png"/></div>
           On remarque qu'en 3 étapes nous avons déjà une idée de la valeur à 12.5% près, mais c'est bien long à écrire !</div>
         <div>Notez que les intervalles sont de :
           <div>512 milli-volts à la 1ère étape</div>
@@ -100,6 +100,6 @@
      </div></div>
    </div>
    <div class="notes">
-     <div>La fonction <b><r>void</r> <c>echo</c>(<r>String</r> string)</b> affiche une chaîne de caractères sur la console.</div>
+     <div id="1">La fonction <b><r>void</r> <c>echo</c>(<r>String</r> string)</b> affiche une chaîne de caractères sur la console.</div>
    </div>
 </div>
