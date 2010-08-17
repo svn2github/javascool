@@ -37,7 +37,7 @@
 <xsl:template name="div">
   <xsl:choose>
     <xsl:when test="@class = 'table'">
-      <p><table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee"><xsl:call-template name="div-2"/></table></p>
+      <p><table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee"><xsl:call-template name="div-2"/></table><br/></p>
     </xsl:when>
     <xsl:when test="@class = 'ul' or @class = 'ol'">
       <xsl:element name="{@class}"><xsl:call-template name="div-2"/></xsl:element>

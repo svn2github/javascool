@@ -379,12 +379,15 @@ public class Main extends JApplet { /**/public Main() { }
 	public String getTitle() { return "Découvrir les ingrédients des algorithmes"; }
 	public void init() {
 	  super.init();
+	  addTab("Parcours d'initiation", "proglet/ingredients/doc-files/index.htm");
+	  /*
 	  addTab("Séquence d'instruction", "proglet/ingredients/doc-files/sujet-hello-world.htm");
 	  addTab("Se servir de variables", "proglet/ingredients/doc-files/sujet-about-variables.htm");
 	  addTab("L'instruction conditionnelle", "proglet/ingredients/doc-files/sujet-about-if.htm");
 	  addTab("Utiliser des fonctions", "proglet/ingredients/doc-files/sujet-about-functions.htm");
 	  addTab("Programmer des boucles", "proglet/ingredients/doc-files/sujet-about-while.htm");
 	  addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm");
+	  */
 	}
       });
     addActivity((new ProgletActivity("ingredients") {
@@ -405,14 +408,14 @@ public class Main extends JApplet { /**/public Main() { }
 	public String getTitle() { return "Découvrir les algorithmes de manière graphique"; }
       });
     addActivity(new ProgletActivity("dichotomie") {
-	public String getTitle() { return "Comprendre le principe algorithmique de la dichotomie"; }
+	public String getTitle() { return "Comprendre le principe de la dichotomie"; }
 	public void init() {
 	  super.init();
 	  addTab("Enoncé de l'exercice", "proglet/dichotomie/doc-files/sujet-appli-dicho.htm");
 	  initDoc();
 	}});
     addActivity(new ProgletActivity("pixelsetcie") {
-	public String getTitle() { return "Comprendre quelques opérations de manipulation d'images"; }
+	public String getTitle() { return "Comprendre la manipulation d'images"; }
 	public void init() {
 	  super.init();
 	  addTab("Enoncé de l'exercice", "proglet/pixelsetcie/doc-files/sujet-appli-image.htm");

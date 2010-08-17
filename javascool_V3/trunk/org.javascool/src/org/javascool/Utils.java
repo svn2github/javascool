@@ -49,6 +49,7 @@ import java.lang.reflect.InvocationTargetException;
 
 // Used to frame an applet as standalone application
 import javax.swing.JFrame;
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.Dimension;
@@ -396,7 +397,7 @@ public class Utils { private Utils() { }
     // Opens an applet in a standalone frame.
     public void open(Component pane, String title, int width, int height, boolean quit) {
       if (pane instanceof JApplet) this.applet = (JApplet) pane;
-      getContentPane().add(pane); 
+      getContentPane().add(pane, BorderLayout.CENTER); 
       if (applet != null) applet.init(); 
       pack(); 
       frames.put(pane, this);

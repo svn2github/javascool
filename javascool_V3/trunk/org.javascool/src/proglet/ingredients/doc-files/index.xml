@@ -1,5 +1,17 @@
 <div title="Découvrir les ingrédients des algorithmes">
 
+  <div title="Un parcours pour s'initier à la programmation">
+    Ce parcours permet de s'approprier les cinq ingrédients des algorithmes (en <l link="http://javascool.gforge.inria.fr/v3/javascool.jar" text="lançant javasccol"/>):
+   <div class="table">
+     <p><p><b>Utiliser des <l link="sujet-hello-world.htm" text="séquences d'instructions"/>.</b></p></p>
+     <p><p><b>Apprendre à se servir de <l link="sujet-about-variables.htm" text="variables"/>.</b></p></p>
+     <p><p><b>Découvrir l'instruction <l link="sujet-about-if.htm" text="conditionnelle"/>.</b></p></p>
+     <p><p><b>Se familiariser avec les <l link="sujet-about-functions.htm" text="fonctions"/>.</b></p></p>
+     <p><p><b>Programmer avec des <l link="sujet-about-while.htm" text="boucles"/>.</b></p></p>
+   </div>
+   <p>avec un <l link="about-memo.htm" text="mémorandum"/> des constructions et instructions, et la <l link="about-proglet.htm" text="proglet"/> "console".</p>
+  </div>
+
   <div title="La différence entre une machine à café et un ordinateur">
     Nous savons qu'un ordinateur peut effectuer des opérations très variées sur des types de données très variées,
     c'est une machine complètement polyvalente : tous les automatismes peuvent être programmés sur un ordinateur, 
@@ -9,16 +21,6 @@
     C'est pour cela que les ordinateurs ont besoin de programmes. 
     <div>Ce qui est vraiment remarquable c'est que tous les programmes du monde peuvent s'écrire à partir de cinq ingrédients et nous allons découvrir ces ingrédients, 
     ici, à partir d'un exemple très concret. Nous saurons alors programmer tous les algorithmes du monde.</div>
-  </div>
-
-  <div title="Un parcours pour s'initier à la programmation">
-    Ce parcours permet de s'approprier les cinq ingrédients des algorithmes (en <l link="http://javascool.gforge.inria.fr/v3/javascool.jar" text="lançantjavasccol"/>):<div class="ul">
-     <div>S'initier à l'outil et son <l link="sujet-hello-world.htm" text="interface"/>, utiliser les séquences d'instructions.</div>
-     <div>Apprendre à se servir de <l link="sujet-about-variables.htm" text="variables"/>.</div>
-     <div>Découvrir l'instruction <l link="sujet-about-if.htm" text="conditionnelle"/>.</div>
-     <div>Se familiariser avec les <l link="sujet-about-functions.htm" text="fonctions"/>.</div>
-     <div>Utiliser des <l link="sujet-about-while.htm" text="boucles"/>.</div>
-   </div>avec un <l link="about-memo.htm" text="mémorandum"/> des constructions et instructions, et la <l link="about-proglet.htm" text="proglet"/> "console".
   </div>
 
   <div id="1" title="Des documents pour apprendre et se cultiver sur le sujet"><div class="ul">
