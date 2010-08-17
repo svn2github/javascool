@@ -118,7 +118,7 @@ if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { exec("rm -rf
                   <div class="menu">
                     <ul>
                     <li><a href="?page=Accueil">Accueil</a></li>
-                    <li><a href="./javascool.jar">T&eacute;l&eacute;chargement</a></li> 
+                    <li><a href="?page=Telechargement">T&eacute;l&eacute;chargement</a></li> 
                     <li><a href="?page=Activites">Activit&eacute;s</a></li> 
                     <li><a href="?page=Ressources">Ressources</a></li> 
                     <li><a href="?page=Developpement">D&eacute;veloppement</a></li> 
