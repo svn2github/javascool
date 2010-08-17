@@ -354,28 +354,28 @@ done :
 #:
 #::Usage:
 #::Development commands:
-#:: make v3           : run javascool'v3 from locally compiled clases
-#:: make j3           : run javascool'v3 from the constructed jar
-#:: make doc          : show the javadoc local bundle
-#:: make svn          : synchronize with the svn repository (update + commit)
-#:: make clean        : clean all intermediate files
-#:: make usage        ; show the makefile usage
-#:: make what         ; show the README information contains in this makefile
-#:: make please       ; show a toolbar to run make actions
+#:: make v3           : Run javascool'v3 from locally compiled clases
+#:: make j3           : Run javascool'v3 from the constructed jar
+#:: make doc          : Show the javadoc local bundle
+#:: make svn          : Synchronize with the svn repository (update + commit)
+#:: make clean        : Clean all intermediate files
+#:: make usage        ; Show the makefile usage
+#:: make what         ; Show the README information contains in this makefile
+#:: make please       ; Show a toolbar to run make actions
 #::System commands:
-#:: make jdoc         ; build the convenient Java and JavaScool doc bundle for local use
-#:: make cmp          : build the java classes
-#:: make jar          : build the java jar
-#:: make api          : build the java doc
-#:: make wpub         : publish the present document release on the web site
-#:: make jpub         : publish the present javascool.jar release on the web site
-#:: make wraz         : clears the web site cache
-#:: make wref         : checks the web site broken links
+#:: make jdoc         ; Build the convenient Java and JavaScool doc bundle for local use
+#:: make cmp          : Build the java classes
+#:: make jar          : Build the java jar
+#:: make api          : Build the java doc
+#:: make wpub         : Publish the present document release on the web site
+#:: make jpub         : Publish the present javascool.jar release on the web site
+#:: make wraz         : Clears the web site cache
+#:: make wref         : Checks the web site broken links
 #::Useful links:
-#:: make jweb         , opens the javascool web site
-#:: make wiki         , opens the javascool wiki
-#:: make glog         , connects to google analytics
-#:: make gref         , connects to google dashboard
+#:: make jweb         , Opens the javascool web site
+#:: make wiki         , Opens the javascool wiki
+#:: make glog         , Connects to google analytics
+#:: make gref         , Connects to google dashboard
 #:
 #: [3] Development tools used.
 #:
