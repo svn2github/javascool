@@ -402,7 +402,7 @@ public class Main extends JApplet { /**/public Main() { }
 	  initDoc();
 	}});
     addActivity(new AlgoEditorActivity() {
-	public String getTitle() { return "Découvrir les ingrédients des algorithmes de manière graphique"; }
+	public String getTitle() { return "Découvrir les algorithmes de manière graphique"; }
       });
     addActivity(new ProgletActivity("dichotomie") {
 	public String getTitle() { return "Comprendre le principe algorithmique de la dichotomie"; }
