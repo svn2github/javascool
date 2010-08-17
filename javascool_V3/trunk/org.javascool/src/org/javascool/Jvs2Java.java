@@ -156,7 +156,7 @@ public class Jvs2Java { private Jvs2Java() { }
     line = line.replaceFirst("(while.*\\{)", "$1 sleep(10);");
     // Translates the Synthe proglet @tone macro
     line = line.replaceFirst("@tone:(.*)", 
-      "proglet.synthesons.Main.tone = new org.javascool.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.synthesons.Main.syntheSet(\"16 a\");");
+      "proglet.synthesons.SoundDisplay.tone = new org.javascool.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.synthesons.SoundDisplay.syntheSet(\"16 a\");");
     return "    "+line;
   }
   // Counter used to increment the serialVersionUID in order to reload the different versions of the class

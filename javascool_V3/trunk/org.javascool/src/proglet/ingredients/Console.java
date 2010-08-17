@@ -64,7 +64,7 @@ public class Console implements org.javascool.Proglet { private Console() { }
     public void writeString(String string, boolean html) {
       output += (html ? string : quote(string));
       out.setText("<html><body>"+output+"</body></html>"); 
-      pane.getVerticalScrollBar().setValue(pane.getVerticalScrollBar().getMaximum());
+      //pane.getVerticalScrollBar().setValue(pane.getVerticalScrollBar().getMaximum());
     }
     private JEditorPane out; private JScrollPane pane;
 

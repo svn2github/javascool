@@ -34,7 +34,8 @@
      <p><r>syntheSet</r>(<v>séquence-de-note</v>);</p>
    </div> où la syntaxe de <v>séquence-de-note</v> est définie dans la <l link="../NotesSoundBit.html#reset(java.lang.String)" text="documentation"/> de la classe.</div>
 
-  <div>Un exemple d'utilisation: lors de la <l link="the-proglet.htm" text="démonstration">, les différents sons:<div class="code">
+  <div>Un exemple d'utilisation: lors de la <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/synthesons/doc-files/the-proglet.htm" text="démonstration"/>, 
+  les différents sons:<div class="code">
      <p><r>@tone:</r> cos(t)</p>
      <p><r>synthePlay</r>();</p>
    </div>puis<div class="code">

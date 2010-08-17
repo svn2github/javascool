@@ -18,7 +18,8 @@
     </div> tandis que la fonction: <div class="code">
       <p><r>int</r> length = <r>dichoLength</r>();</p>
     </div> renvoie le nombre de pages.</div>
-    <div>Un exemple d'utilisation: lors de la <l link="the-proglet.htm" text="démonstration">, le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
+    <div>Un exemple d'utilisation: lors de la  <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/dichotomie/doc-files/the-proglet.htm" text="démonstration"/>, 
+    le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
     secondes à une dizaine de pages au hasard, selon le programme suivant:
     <div class="code">
       <p><r>for</r>(<r>int</r> i = 0; i &lt; 10; i++) {</p>
@@ -31,7 +32,8 @@
   </p>
 
   <div class="notes">
-    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="../Dichotomie.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link="../Dichotomie.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="../Dichotomie.html" text="documentée"/> pour sa libre redistribution, l'accès <l link="../Dichotomie.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="2">La liste de tous les pays est stockée dans le tableau <c><r>String</r> proglet.dichotomie.pays[]</c>, à disposition du programmeur, 
+    qui souhaite travailler à partir d'un tableur.</div>
   </div>
 </div>

@@ -142,6 +142,9 @@ public class Dichotomie implements org.javascool.Proglet { private Dichotomie() 
   private static String noAccent(String name) {
     return name.replaceAll("[éè]", "e").replace("É", "E").replace("Î", "I").replace("ô", "o").replace("ã", "a");
   }
+  
+  /** Tableau de tous les payes du monde. */
+  public static final String pays[];
 
   // All the data sorted in alphabetic order, flags icons are available thanks to http://fr.wikipedia.org !
   private static String dicho[][] = {
@@ -339,6 +342,11 @@ public class Dichotomie implements org.javascool.Proglet { private Dichotomie() 
     { "Zambie", "100px-Flag_of_Zambia.svg.png", "http://fr.wikipedia.org/wiki/Zambie" },    
     { "Zimbabwe", "100px-Flag_of_Zimbabwe.svg.png", "http://fr.wikipedia.org/wiki/Zimbabwe" }
   };  
+  static {
+    pays = new String[dicho.length];
+    for(int n = 0; n < dicho.length; n++) pays[n] = dicho[n][0];
+  }
+
 
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();

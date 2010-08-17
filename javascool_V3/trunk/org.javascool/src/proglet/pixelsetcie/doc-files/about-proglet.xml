@@ -36,7 +36,7 @@
        toutes les valeurs entre <c>0</c> et <c>255</c> définissant les valeurs de gris,</div>
      </div>permettre de lire/écrire un pixel monochrome dans cette image.
     </div>
-    <div>Un exemple d'utilisation: lors de la <l link="the-proglet.htm" text="démonstration"> 
+    <div>Un exemple d'utilisation: lors de la <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/pixelsetcie/doc-files/the-proglet.htm" text="démonstration"/>, 
       le signe de la paix va s'afficher:
       <div class="center"><l class="icon" icon="smiley2.jpg"/></div>
       ceci, à différentes résolutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne résolution il sera très lisible, puis petit à petit il se réduira à quelques pixels,

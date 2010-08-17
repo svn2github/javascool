@@ -15,7 +15,7 @@
      qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
     </div>
 
-    <div>Un exemple d'utilisation: <l link="the-proglet.htm" text="démonstration">,
+    <div>Un exemple d'utilisation:  <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/convanalogique/doc-files/the-proglet.htm" text="démonstration"/>, 
     les résultats de la conversion analogique-numérique s'affichent avec un algorithme dichotomique . . qui doit être trouvé en exercice !</div>
   </p>
 
