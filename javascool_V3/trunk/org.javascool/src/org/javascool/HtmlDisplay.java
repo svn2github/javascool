@@ -109,7 +109,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
       URL url = urls.empty() ? Utils.toUrl(location) : new URL(urls.current(), location);
       if (stack) urls.push(url);
       updateButtons();
-      System.err.println("HtmlDisplay #"+urls.current+" : "+urls.current());
+      //- System.err.println("HtmlDisplay #"+urls.current+" : "+urls.current());
       return reset(Utils.loadString(urls.current().toString()));
     } catch(Exception e) {
       return reset(e.toString());

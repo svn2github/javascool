@@ -236,7 +236,9 @@ public class Main extends JApplet { /**/public Main() { }
     /** Manages an open action (no dialog). */
     public void doOpen(Editor editor, String file) {
       setSelectedFile(new File(file));
-      editor.setText(Utils.loadString(this.file = file));
+      String text = Utils.loadString(this.file = file);
+      // if (text.charAt(0) != '\n') text = "\n" + 
+      editor.setText(text);
     }
     /** Manages a save dialog action. 
      * @param editor The editor from where the file is saved.
@@ -259,7 +261,9 @@ public class Main extends JApplet { /**/public Main() { }
      * @param editor The editor from where the file is saved.
      */
     public void doSave(Editor editor) {
-      if (file != null)
+      if (file == null)
+	doSaveAs(editor);
+      else
 	Utils.saveString(file, editor.getText());
     }
     /** Sets the next save dialog title. 
@@ -463,6 +467,7 @@ public class Main extends JApplet { /**/public Main() { }
       if (fileChooser.getFile() != null) {
 	Jvs2Java.translate(fileChooser.getFile());
 	String out = Jvs2Java.compile(fileChooser.getFile());
+	Console.clear();
 	System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
 	Console.printHtml("<hr>\n");
 	if (out.length() == 0) {

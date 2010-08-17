@@ -1,4 +1,4 @@
-void main() {
+void main()  {
    println("Bonjour, qui es tu ?");
    String nom = readString();
    println ("Enchanté "+nom+" ! Quel age as tu ?");
