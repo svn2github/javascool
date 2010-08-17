@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="1052.3622"
@@ -14,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.47 r22583"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="ressources.svg">
   <defs
      id="defs4">
     <inkscape:perspective
@@ -24,6 +25,34 @@
        inkscape:vp_z="744.09448 : 526.18109 : 1"
        inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
        id="perspective10" />
+    <inkscape:perspective
+       id="perspective3691"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2896"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3006"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3077"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -32,15 +61,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="375"
-     inkscape:cy="508.57143"
+     inkscape:zoom="1.1463598"
+     inkscape:cx="526.18109"
+     inkscape:cy="372.04724"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1909"
      inkscape:window-height="1132"
-     inkscape:window-x="0"
+     inkscape:window-x="1680"
      inkscape:window-y="32"
      inkscape:window-maximized="1" />
   <metadata
@@ -51,7 +80,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -59,5 +88,97 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-308.2677)" />
+     transform="translate(0,-308.2677)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2902"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:URW Chancery L;-inkscape-font-specification:URW Chancery L"
+       transform="translate(0,308.2677)"><flowRegion
+         id="flowRegion2904"><rect
+           id="rect2906"
+           width="263.4426"
+           height="40.999344"
+           x="727.52026"
+           y="114.27477" /></flowRegion><flowPara
+         id="flowPara2908">C</flowPara></flowRoot>    <g
+       id="g2836"
+       transform="translate(-21.808159,4.3616324)">
+      <a
+         transform="translate(-106.42383,-1.7446529)"
+         xlink:href="http://interstices.info"
+         id="a2914">
+        <image
+           y="351.42612"
+           x="732.13531"
+           id="image2898"
+           height="55"
+           width="242"
+           xlink:href="http://javascool.gforge.inria.fr/images/logo_interstices.jpg" />
+      </a>
+      <a
+         transform="translate(-104.67918,1.7446529)"
+         xlink:href="http://interstices.info"
+         id="a2917">
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:URW Chancery L;-inkscape-font-specification:URW Chancery L"
+           x="709.20142"
+           y="441.73364"
+           id="text2910"><tspan
+             sodipodi:role="line"
+             id="tspan2912"
+             x="709.20142"
+             y="441.73364">Culture Scientifique</tspan></text>
+      </a>
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2929"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:URW Chancery L;font-style:normal;font-weight:normal;font-size:40px;-inkscape-font-specification:URW Chancery L"><flowRegion
+         id="flowRegion2931"><rect
+           id="rect2933"
+           width="362.88782"
+           height="82.871017"
+           x="97.700562"
+           y="392.54691" /></flowRegion><flowPara
+         id="flowPara2935" /></flowRoot>    <a
+       id="a3095"
+       xlink:href="http://www.fuscia.info/accueil"
+       transform="translate(-28.786773,-68.913791)">
+      <text
+         id="text2937"
+         y="696.45294"
+         x="214.5923"
+         style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:URW Chancery L;-inkscape-font-specification:URW Chancery L"
+         xml:space="preserve"><tspan
+           y="696.45294"
+           x="214.5923"
+           id="tspan2939"
+           sodipodi:role="line">Pour les TPE et TIPE</tspan></text>
+    </a>
+    <a
+       id="a3083"
+       xlink:href="http://www.fuscia.info/accueil"
+       transform="translate(6.1062853,0)">
+      <image
+         xlink:href="http://javascool.gforge.inria.fr/images/logo_fuscia.gif"
+         width="200"
+         height="51"
+         id="image3008"
+         x="145.99606"
+         y="541.84869" />
+    </a>
+    <a
+       id="a3086"
+       xlink:href="http://www.fuscia.info/accueil"
+       transform="translate(8.7232647,2.6169794)">
+      <image
+         xlink:href="http://javascool.gforge.inria.fr/images/logo_ba.png"
+         width="166"
+         height="45"
+         id="image3079"
+         x="346.18463"
+         y="546.59326" />
+    </a>
+  </g>
 </svg>

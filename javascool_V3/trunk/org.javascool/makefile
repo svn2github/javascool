@@ -255,7 +255,13 @@ ssh :
 
 ifeq ($(USER), vthierry)
 
-# This is used to set the web site on v3 and cancel the v2 (i.e. instead of location.replace("./accueil.php");)
+# This is used to test www/index.php in local mode
+
+php:
+	@php -l www/index.php
+	@make -f /home/vthierry/Work/enas/src/yava/makefile.http ROOT=`pwd`/www PAGE=index.php?page=api:org/javascool/package-summary.html show
+
+# This is a remainder about what has been used to set the web site on v3
 
 wv3 :
 	@(echo '<script>' ; echo 'location.replace("./v3/index.php");' ; echo '</script>') > tmp.htm
@@ -265,16 +271,6 @@ wv3 :
 	@rsync --rsh='ssh -C' tmp.htm scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglet/index.html 
 	@rsync --rsh='ssh -C' tmp.htm scm.gforge.inria.fr:/home/groups/javascool/htdocs/proglets/index.html 
 	@firefox http://javascool.gforge.inria.fr
-
-# This is used to test www/index.php in local mode
-
-php:
-	@php -l www/index.php
-	@make -f /home/vthierry/Work/enas/src/yava/makefile.http ROOT=`pwd`/www PAGE=index.php?page=api:org/javascool/package-summary.html show
-
-# This cancels http://facets.inria.fr/javascool for the v3 and cancel the v2
-
-fst :
 	@ssh facets.inria.fr '/bin/rm -rf /home/vthierry/javascool/* /home/vthierry/javascool/.[a-zA-Z0-1]*'
 	@echo '<?php /* No web service in V3 ! */ header("Location:http://javascool.gforge.inria.fr"); ?>' > tmp.php	
 	@rsync --rsh='ssh -C' tmp.php facets.inria.fr:javascool/index.php ; rm tmp.php
