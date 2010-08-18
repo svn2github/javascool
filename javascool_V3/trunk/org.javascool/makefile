@@ -111,6 +111,7 @@ cmp : $(SRC)
 # Automatically generated java files
 
 %.java : %.jvs
+	@echo "jvs2java $*"
 	@lib/run.sh org.javascool.Jvs2Java $*
 
 %.java : %.xslt

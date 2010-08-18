@@ -44,7 +44,7 @@ public class Console implements org.javascool.Proglet { private Console() { }
       out = new JEditorPane(); out.setEditable(false);  out.setContentType("text/html; charset=UTF-8");
       pane = new JScrollPane(); pane.setViewportView(out); pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); add(pane);
       pane.setBorder(BorderFactory.createTitledBorder("Affichage de la sortie")); 
-      JToolBar bar = new JToolBar(); add(bar, BorderLayout.NORTH);    
+      JToolBar bar = new JToolBar(); add(bar, BorderLayout.NORTH); bar.setOrientation(JToolBar.HORIZONTAL); bar.setBorderPainted(false);
       prompt = new JLabel(label); bar.add(prompt);
       in = new JTextField(); in.setEditable(false); in.setPreferredSize(new Dimension(300, 30)); bar.add(in);    
       in.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {

@@ -423,7 +423,6 @@ public class Utils { private Utils() { }
     }
     // Closes the frame and dispose, force quit if all frames are closed.
     public void dispose() {
-      System.err.println("Dispose the "+frames.size()+"th frame, with close = " + close);
       if (applet != null) { applet.stop(); applet.destroy(); }
       super.dispose(); System.gc(); frames.remove(applet); if (frames.size() == 0) System.exit(0);
     } 

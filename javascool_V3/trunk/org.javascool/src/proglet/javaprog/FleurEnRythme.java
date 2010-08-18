@@ -1,11 +1,11 @@
-package proglet.javaprog;import javax.swing.*;import proglet.synthesons.FileSoundBit;import static org.javascool.Macros.*;import static proglet.synthesons.SoundDisplay.*;import static proglet.ingredients.Console.*;import static proglet.exosdemaths.CurveDisplay.*;import static proglet.tortuelogo.TortueLogo.*;import static proglet.pixelsetcie.ImageDisplay.*;import static proglet.javaprog.JavaPanel.*;import static proglet.convanalogique.ConvAnalogique.*;import static proglet.dichotomie.Dichotomie.*;public class FleurEnRythme extends org.javascool.ProgletApplet {  private static final long serialVersionUID = 1L;  static { org.javascool.Jvs2Java.runnable = new ProgletRunnableMain(); }}class ProgletRunnableMain implements Runnable {  private static final long serialVersionUID = 2L;  public void run() { main(); }    // Implément l'idée originale de Thomas Giraudon <ptiroccodu06@hotmail.fr> Victor Granet <victor.granet@hotmail.com>
+package proglet.javaprog;import javax.swing.*;import proglet.synthesons.FileSoundBit;import static org.javascool.Macros.*;import static proglet.ingredients.Console.*;import static proglet.synthesons.SoundDisplay.*;import static proglet.exosdemaths.CurveDisplay.*;import static proglet.pixelsetcie.ImageDisplay.*;import static proglet.tortuelogo.TortueLogo.*;import static proglet.javaprog.JavaPanel.*;import static proglet.convanalogique.ConvAnalogique.*;import static proglet.dichotomie.Dichotomie.*;public class FleurEnRythme extends org.javascool.ProgletApplet {  private static final long serialVersionUID = 1L;  static { org.javascool.Jvs2Java.runnable = new FleurEnRythmeMain(); }}class FleurEnRythmeMain implements Runnable {  private static final long serialVersionUID = 2L;  public void run() { main(); }    // Implément l'idée originale de Thomas Giraudon <ptiroccodu06@hotmail.fr> Victor Granet <victor.granet@hotmail.com>
     
 //package proglet.javaprog;
     
 //import javax.swing.*;
 //import proglet.synthesons.FileSoundBit;
     
-    JLayeredPane pane = getSwingPane();
+    JLayeredPane pane = getContentPane();
     
     // Ajoute une image sur le display en (x,y) de taille (w, h) à la profondeur p
     JLabel icon(String image, int x, int y, int w, int h, int p) {

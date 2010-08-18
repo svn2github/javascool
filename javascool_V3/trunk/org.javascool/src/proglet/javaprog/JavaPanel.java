@@ -35,7 +35,7 @@ public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { 
   //
 
   /**/public static void test() {
-    new FleurEnRythmeMain().run();
+    // new FleurEnRythmeMain().run();
   }
 
   //
