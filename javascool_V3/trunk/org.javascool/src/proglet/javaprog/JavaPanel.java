@@ -11,9 +11,10 @@ import java.awt.Dimension;
 
 /** Définit une proglet javascool qui permet d'utiliser toute les classes des swings.
  * @see <a href="doc-files/about-proglet.htm">Description</a>
+ * @see <a href="doc-files/the-proglet.htm">La proglet</a>
+ * @see <a href="JavaPanel.java.html">code source</a>
  * @see <a href="http://java.sun.com/docs/books/tutorial/uiswing">Java Swing tutorial</a>
  * @see <a href="http://java.sun.com/javase/6/docs/api/javax/swing/package-summary.html">Java Swing API</a>
- * @see <a href="JavaPanel.java.html">code source</a>
  * @serial exclude
  */
 public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { }
@@ -42,7 +43,7 @@ public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { 
   //
 
   /** Renvoie le panneau d'affichage de la proglet. */
-  public static JLayeredPane getSwingPane() {
+  public static JLayeredPane getContentPane() {
     return panel.pane;
   }
 

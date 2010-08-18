@@ -5,7 +5,7 @@ package proglet.javaprog;
 import javax.swing.*;
 import proglet.synthesons.FileSoundBit;
 
-JLayeredPane pane = getSwingPane();
+JLayeredPane pane = getContentPane();
 
 // Ajoute une image sur le display en (x,y) de taille (w, h) à la profondeur p
 JLabel icon(String image, int x, int y, int w, int h, int p) {
