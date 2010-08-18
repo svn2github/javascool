@@ -122,11 +122,17 @@ public class Main extends JApplet { /**/public Main() { }
    * @param pane Tab panel.
    */
   public void addTab(String label, JPanel pane) {
-    /* A mettre au point . . ca marche pas bien !!!
-    JToolBar bar = new JToolBar(); bar.setOrientation(JToolBar.HORIZONTAL); bar.setBorderPainted(false); bar.add(pane); pane.setName(label);
-    tabbedPane.addTab(label, null, bar, label);
-    */
-    tabbedPane.addTab(label, null, pane, label);
+    // POUR L INSTANT ON ARRIVE PAS A RENDRE LES TAILLES CORRECTES LE TRUC MANIPULABLE
+    boolean manipulable = false;
+    if (manipulable) {
+      JToolBar bar = new JToolBar(); bar.setOrientation(JToolBar.HORIZONTAL); bar.setBorderPainted(false); 
+      bar.add(pane);
+      JPanel par = new JPanel(); par.setLayout(new BorderLayout());
+      par.add(bar, BorderLayout.CENTER);
+      tabbedPane.addTab(label, null, par, label);
+    } else {
+      tabbedPane.addTab(label, null, pane, label);
+    }
     tabs.put(label, pane);
     tabbedPane.revalidate();
   }

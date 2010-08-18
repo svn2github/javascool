@@ -8,7 +8,20 @@
   <p>On utilisera en particulier les classes de l'<l link="http://java.sun.com/javase/6/docs/api/javax/swing/package-summary.html" text="API Swing"/>, 
   dont on trouve facilement des <l link="http://download.oracle.com/javase/tutorial/ui/features/components.html" text="exemples illustrés"/> 
   et un <l link="http://java.sun.com/docs/books/tutorial/uiswing" text="tutoriel complet"/></p></p>
-  
+
+  <div>Plus précisément la fonction <r>getSwingPane</r> renvoie le panneau Java dans lequel l'interface graphique sera défini, par exemple avec la construction:
+    <div class="code">
+      <p><r>JLayeredPane</r> pane = <r>getSwingPane()</r>;</p>
+    </div>
+    qui donne à la variable <c>pane</c> la valeur du <l link="http://download.oracle.com/javase/6/docs/api/javax/swing/JLayeredPane.html" text="JLayeredPane"/> 
+    où se feront les dessins.</div>
+
+    <div>Ne pas oublier d'ajouter les imports des classes Java utilisées par exemple en écrivant:
+     <div class="code">
+       <p><r>import javax.swing.*;</r></p>
+    </div>
+    au début du fichier.</div>
+
   <div>Un exemple d'utilisation est proposé en <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/javaprog/doc-files/the-proglet.htm" text="démonstration"/>, 
   à partir d'un <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/javaprog/FleurEnRythme.html" text="code Jvs"/> réalisé avec deux lycéens du 
   <l link="http://www.civfrance.com" text="Lycée International de Valbonne"/>.</div>

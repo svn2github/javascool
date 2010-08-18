@@ -6,6 +6,7 @@ package proglet.javaprog;
 
 // Used to define the gui
 import javax.swing.JPanel;
+import java.awt.BorderLayout;
 import javax.swing.JLayeredPane;
 import java.awt.Dimension;
 
@@ -25,7 +26,8 @@ public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { 
     private static final long serialVersionUID = 1L;
 
     public Panel() {
-       pane = new JLayeredPane(); add(pane);
+      setLayout(new BorderLayout());
+      pane = new JLayeredPane(); add(pane, BorderLayout.CENTER);
     }
     JLayeredPane pane;
   }
@@ -35,7 +37,7 @@ public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { 
   //
 
   /**/public static void test() {
-    // new FleurEnRythmeMain().run();
+    new FleurEnRythme().run();
   }
 
   //
@@ -43,7 +45,7 @@ public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { 
   //
 
   /** Renvoie le panneau d'affichage de la proglet. */
-  public static JLayeredPane getContentPane() {
+  public static JLayeredPane getSwingPane() {
     return panel.pane;
   }
 

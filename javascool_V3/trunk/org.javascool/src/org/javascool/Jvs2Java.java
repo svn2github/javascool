@@ -134,12 +134,9 @@ public class Jvs2Java { private Jvs2Java() { }
       }
       // Declares the proglet's core as a Runnable in the Applet
       // - defined as a ProgletApplet in order to be loaded as an executable applet.
-      head.append("public class "+jclass+ " extends org.javascool.ProgletApplet {");
+      head.append("public class "+jclass+ " extends org.javascool.ProgletApplet implements Runnable {");
       head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");
-      head.append("  static { org.javascool.Jvs2Java.runnable = new "+jclass+"Main(); }");
-      head.append("}");
-      head.append("class "+jclass+"Main implements Runnable {");
-      head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");
+      head.append("  static { org.javascool.Jvs2Java.runnable = new "+jclass+ "(); }");
       head.append("  public void run() { main(); }");
       body.append("}\n");
     }

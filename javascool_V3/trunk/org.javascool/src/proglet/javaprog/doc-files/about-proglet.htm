@@ -20,7 +20,47 @@
               dont on trouve facilement des <a href="http://download.oracle.com/javase/tutorial/ui/features/components.html">exemples illustr&eacute;s</a> 
               et un <a href="http://java.sun.com/docs/books/tutorial/uiswing">tutoriel complet</a></div>
       </div>
+      
         
+      <div>Plus pr&eacute;cis&eacute;ment la fonction <font color="#990000"><b>getSwingPane</b></font> renvoie le panneau Java dans lequel l'interface graphique sera d&eacute;fini, par exemple avec la construction:
+             
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                              
+                        <div><font color="#990000"><b>JLayeredPane</b></font> pane = <font color="#990000"><b>getSwingPane()</b></font>;
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+             qui donne &agrave; la variable <tt>pane</tt> la valeur du <a href="http://download.oracle.com/javase/6/docs/api/javax/swing/JLayeredPane.html">JLayeredPane</a> 
+             o&ugrave; se feront les dessins.
+      </div>
+      
+          
+      <div>Ne pas oublier d'ajouter les imports des classes Java utilis&eacute;es par exemple en &eacute;crivant:
+              
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                               
+                        <div><font color="#990000"><b>import javax.swing.*;</b></font></div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+             au d&eacute;but du fichier.
+      </div>
+      
         
       <div>Un exemple d'utilisation est propos&eacute; en <a href="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/javaprog/doc-files/the-proglet.htm">d&eacute;monstration</a>, 
            &agrave; partir d'un <a href="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/javaprog/FleurEnRythme.html">code Jvs</a> r&eacute;alis&eacute; avec deux lyc&eacute;ens du 

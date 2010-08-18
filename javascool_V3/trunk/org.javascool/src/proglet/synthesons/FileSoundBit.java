@@ -14,6 +14,7 @@ import java.io.IOException;
 // Used to read an audio file
 import java.net.URL; 
 import javax.sound.sampled.UnsupportedAudioFileException;
+import org.javascool.Utils;
 
 // Used to dump midi sounds
 import javax.sound.midi.MidiSystem;
@@ -38,18 +39,24 @@ public class FileSoundBit extends SoundBit {
   public SoundBit reset(String location) { 
     AudioInputStream stream;   
     if (location.startsWith("midi:")) {
-      String name = location.substring(5);
       getMidiNames();
-      if (midis.containsKey(name)) { stream = midis.get(name); } else { throw new RuntimeException("undefined midi sound "+name); }
+      String name = location.substring(5);
+      if (midis.containsKey(name)) { 
+	stream = midis.get(name); 
+      } else { 
+	throw new RuntimeException("undefined midi sound "+name); 
+      }
     } else {
       try {
-	stream = AudioSystem.getAudioInputStream(new URL(location.matches("^(file|ftp|http|https):.*$") ? location : "file:"+location));
+	stream = AudioSystem.getAudioInputStream(Utils.toUrl(location));
       } catch(UnsupportedAudioFileException e) { throw new RuntimeException(e); } catch(IOException e) { throw new RuntimeException(e); }
     }
     SoundBit.checkFormat(stream);
     c = stream.getFormat().getChannels(); s = stream.getFormat().getFrameSize();
     buffer = new byte[(int) stream.getFrameLength() * stream.getFormat().getFrameSize()]; 
-    try { stream.read(buffer); stream.close(); } catch(IOException e) { throw new RuntimeException(e); }
+    try { 
+      for(int offset = 0, length; (length = stream.read(buffer, offset, buffer.length - offset)) != -1; offset += length) { } stream.close(); 
+    } catch(IOException e) { throw new RuntimeException(e); }
     name = location;
     length = stream.getFrameLength() / SAMPLING;
     return this;

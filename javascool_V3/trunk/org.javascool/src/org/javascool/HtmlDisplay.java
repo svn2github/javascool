@@ -40,6 +40,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     // Builds the GUI
     setLayout(new BorderLayout());
     JToolBar bar = new JToolBar();
+    bar.setOrientation(JToolBar.HORIZONTAL); bar.setBorderPainted(false); bar.setFloatable(false);
     bar.add(home = new JButton("Page initiale", Utils.getIcon("org/javascool/doc-files/icones16/refresh.png")));
     bar.add(prev = new JButton("Page précédente", Utils.getIcon("org/javascool/doc-files/icones16/prev.png")));
     bar.add(next = new JButton("Page suivante", Utils.getIcon("org/javascool/doc-files/icones16/next.png")));
@@ -77,7 +78,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
 	    if(urls.hasNext()) load(urls.next().toString(), false);
 	    updateButtons();
 	  }});
-      next.addActionListener(doPrev); next.setEnabled(false);
+      next.addActionListener(doNext); next.setEnabled(false);
     }
   }
   private void updateButtons() {
@@ -109,7 +110,6 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
       URL url = urls.empty() ? Utils.toUrl(location) : new URL(urls.current(), location);
       if (stack) urls.push(url);
       updateButtons();
-      //- System.err.println("HtmlDisplay #"+urls.current+" : "+urls.current());
       return reset(Utils.loadString(urls.current().toString()));
     } catch(Exception e) {
       return reset(e.toString());
@@ -138,6 +138,8 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     public boolean hasNext() { return current < size() - 1; }
     /** Returns the next URL, if any. */
     public URL next() { if (hasNext()) current++; return current(); }
+    /** Dumps the stack (for debug) */
+    private void dump() { for (int i = 0; i < size(); i++) System.out.println((i == current ? "*" : " ")+" "+get(i)); }
   }
   /** The URL stack. */
   private Stack urls = new Stack();

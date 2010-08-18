@@ -417,7 +417,6 @@ public class Utils { private Utils() { }
 	setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
       }
       setSize(width, height);
-      //this.setResizable(false);
       setVisible(true); 
       if (applet != null) applet.start(); 
     }

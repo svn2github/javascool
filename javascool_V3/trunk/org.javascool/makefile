@@ -27,7 +27,7 @@ svn: clean
 	svn up ; svn ci -m '' ; svn status
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* .http.root www/.htcache lib/manifest.mf www/api www/javascool.jar 
+	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* .http.root www/.htcache lib/manifest.mf www/api www/javascool.jar www/sources.zip
 
 #####################################################################################################################################
 
@@ -57,12 +57,14 @@ DOC = \
 JVS = \
  $(patsubst %.jvs,%.java,$(shell find src -name '*.jvs'))
 
+CP=src:lib/tools.jar:lib/saxon.jar
+
 # Compiles the java classes using the default jdk5 and builds the certified jar
 
 www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC) $(JVS) htm
 	@echo "make $@"
 	@#[1] Compile the java classes
-	@$(J5)/bin/javac -Xlint -cp lib/tools.jar $(SRC)
+	@$(J5)/bin/javac -Xlint -cp $(CP) $(SRC)
 	@#[2] Collects the files in a tmp directory
 	@rm -rf tmp ; svn -q export src tmp ; 
 	@for f in `find src -name '*.class'` ; do cp $$f `echo $$f | sed 's/^src/tmp/'` ; done
@@ -106,13 +108,14 @@ src/org/javascool/doc-files/revision.xml : makefile .svn
 # Compiles the java classes using the default jdk 
 
 cmp : $(SRC)
-	@rm -f $@; javac -Xlint -cp src:lib/tools.jar:lib/saxon.jar $(SRC)
+	@rm -f $@; javac -Xlint -cp $(CP) $(SRC)
 
 # Automatically generated java files
 
 %.java : %.jvs
 	@echo "jvs2java $*"
-	@lib/run.sh org.javascool.Jvs2Java $*
+	@javac -Xlint -cp $(CP) $(shell find src/org/javascool -name '*.java') $(shell find src/proglet/ingredients -name '*.java') 
+	@java -cp $(CP) org.javascool.Jvs2Java $*
 
 %.java : %.xslt
 	@echo "<div/>" > /tmp/null.xml ; java -jar lib/saxon.jar -o /tmp/null.htm /tmp/null.xml $^ ; rm -f /tmp/null.xml /tmp/null.htm
@@ -129,9 +132,9 @@ src/org/javascool/proglets.java : $(shell find src/proglet -name '*.java')
 
 ifeq ($(USER), vthierry)
 
-CP=$(J5)/lib/tools.jar
+TL=$(J5)/lib/tools.jar
 
-lib/tools.jar : $(CP)
+lib/tools.jar : $(TL)
 	@cp $^ $@
 
 SX=/home/vthierry/bin/saxon.jar
@@ -157,7 +160,11 @@ www/api : $(SRC) $(DOC) makefile $(shell find src -name package.html)
 	@for f in $(SRC) $(XSL) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; done
 	@for f in `find $@ -name '*.java' -o -name '*.jvs'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@rm -rf `find $@ -name .svn`
+	@cd www ; rm -f sources.zip ; zip -9qr sources.zip api
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
+
+aps:
+	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
 
 #####################################################################################################################################
 
@@ -385,6 +392,7 @@ done :
 #:: make htm          : Build the documentation files
 #:: make jar          : Build the java jar
 #:: make api          : Build the java doc
+#:: make api          : Rebuild source files after a java doc build failure
 #:: make wpub         : Publish the present document release on the web site
 #:: make jpub         : Publish the present javascool.jar release on the web site
 #:: make wraz         , Clears the web site cache
