@@ -312,7 +312,7 @@ please : cmp
 	@lib/run.sh  org.javascooldev.MakeToolBar
 
 done : 
-	@read cont
+	@echo '..done (Enter to close)' ; read cont
 
 #####################################################################################################################################
 #</pre><a name="readme"/><pre>
