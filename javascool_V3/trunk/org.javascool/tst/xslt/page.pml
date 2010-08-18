@@ -1,1 +1,0 @@
-stdout: {page tags={"premiere;modial"} javascript={"js.js"} author={"Philippe Vienne"} title={"Ma page en XML"} desc={"La première conversion XML to PML"} "email-author"={"philoumailabo@gmail.com"} css={"style.css"} {div id={Test} classe={Abe} {test} {de} {xslt} {p {Test} {p} {l text={google} link={"http://www.google.fr"}}}}}

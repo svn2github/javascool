@@ -22,8 +22,9 @@ echo '<hr>';
 function get_page_contents($name) {
   // Manage cache mechanism
   $cname = rawurlencode($name);
-  if (!file_exists('.htcache')) mkdir('.htcache', 0777);
-  if (file_exists('.htcache/'.$cname)) return file_get_contents('.htcache/'.$cname);
+  $cache = '/home/groups/javascool/htdocs/v3/.htcache';
+  if (!file_exists($cache)) mkdir($cache, 0777);
+  if (file_exists($cache.'/'.$cname)) return file_get_contents($cache.'/'.$cname);
   {
     $notfound = "<h1>Désolé ! Cette page est en construction ou inacessible ..</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>"; 
     if(ereg('^api:.*', $name)) {
@@ -50,11 +51,11 @@ function get_page_contents($name) {
       if (ereg("<title>Erreur</title>", $page)) return $notfound;
     }
   }
-  file_put_contents('.htcache/'.$cname, $page); chmod('.htcache/'.$cname, 0666);
+  file_put_contents($cache.'/'.$cname, $page); chmod($cache.'/'.$cname, 0666);
   return $page;
 }
 // Usage: http://javascool.gforge.inria.fr/?kezako=niquelekacheux
-if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { exec("rm -rf .htcache"); exit; }
+if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { passthru("rm -rf v3/.htcache .htcache", &$status); echo "wraz.status = $status\n"; exit; }
 
 // Usage: http://javascool.gforge.inria.fr/?page=<page>
   $name = isset($_GET['page']) ? $_GET['page'] : "Accueil";
