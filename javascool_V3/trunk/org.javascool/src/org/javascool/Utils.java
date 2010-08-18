@@ -115,6 +115,7 @@ public class Utils { private Utils() { }
       if (location.matches("(file|ftp|http|https|jar|mailto|stdout):.*")) return new URL(location);
       URL url = Main.class.getClassLoader().getResource(location); if (url != null) return url;
       File file = new File(location); if (file.exists()) return new URL("file:"+file.getCanonicalPath());
+      // For debug only // { String u = "http://javascool.gforge.inria.fr/v3/api/"+location; if (LinkCheck.isReadable(u)) return new URL(u); }
       return new URL("file:"+location);
     } catch(IOException e) { throw new IllegalArgumentException(e+" : "+location+" is a malformed URL"); }
   }

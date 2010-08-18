@@ -1,4 +1,17 @@
 <p title="Aide à l'utilisation de l'interface">
+  <p>Utiliser l'interface se fait en trois temps: 
+  (1) choisir son activité, 
+  (2) éditer le fichier de travail en suivant ce qui est proposé dans la documentation, 
+  (3) Compiler/tester le résultat. Voici comment son disposés tous les éléments:
+    <p class="center"><l icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/about_main.png"/></p>
+    <p></p>
+    tandis que le  <l link="../../../proglet/ingredients/doc-files/sujet-hello-world.htm" text="tutoriel «Hello World»"/>
+    permet de s'initier avec la mécanique de cet interface.</p>
+
+  <p class="ul" title="Quelques Astuces">
+    <p>Pour voir simultanément plusieurs fenêtres (ex: code source, console, documentation, .) il suffit de les détacher de l'interface avec l'onglet de gauche. 
+    Pour les réinsérer, il faut fermer la fenêtre supplémentaire.</p>
+  </p>
   <l class="include" link="about-keystrokes.xml"/>
   <l class="include" link="revision.xml"/>
 </p>

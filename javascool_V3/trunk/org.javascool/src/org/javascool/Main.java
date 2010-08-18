@@ -24,13 +24,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent; 
 import proglet.ingredients.Console;
 
-// used for file interface
+// Used for the file interface
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.lang.Object;
+
+// Used for the size control when in floatable mode
+import java.awt.event.ComponentListener;
+import java.awt.event.ComponentEvent;
+import java.awt.Toolkit;
+import java.awt.Dimension;
 
 // Used to manage keystroke
 import javax.swing.KeyStroke;
@@ -47,6 +53,7 @@ import java.util.HashMap;
 /** This is the javascool v3 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
  * @author Philippe Vienne <philoumailabo@gmail.com>
+ * @see <a href="doc-files/about-main.htm">user documentation (in French)</a>
  * @see <a href="Main.java.html">source code</a>
  * @serial exclude
  */
@@ -57,7 +64,8 @@ public class Main extends JApplet { /**/public Main() { }
   private JToolBar toolBar = new JToolBar();
   private JTabbedPane tabbedPane = new JTabbedPane();
   private JComboBox activityList = new JComboBox();
-  /**/public void init() {
+  /** Builds the GUI. */
+  private void initGUI() {
     JPanel toppane = new JPanel();
     toppane.setLayout(new BorderLayout());
     toolBar.setOrientation(JToolBar.HORIZONTAL);
@@ -68,7 +76,6 @@ public class Main extends JApplet { /**/public Main() { }
     toppane.add(toppaneWest, BorderLayout.WEST);
     JToolBar activityBar = new JToolBar();
     activityList.addActionListener(alistener);
-    activityBar.setOrientation(JToolBar.HORIZONTAL);
     activityBar.setBorderPainted(false);
     activityBar.add(activityList);
     JPanel toppaneEast = new JPanel();
@@ -81,7 +88,7 @@ public class Main extends JApplet { /**/public Main() { }
     fileTools();
     addActivities();
     // Initializes the activity from the HTML tag or proposes a default activity
-    try { setActivity(getParameter("activity")); } catch(Exception e) { setActivity((String) activityList.getSelectedItem()); }
+    try { setActivityAs(getParameter("activity")); } catch(Exception e) { setActivityAs(""); }
   }
   /** Adds a button to the toolbar.
    * @param label Button label.
@@ -122,20 +129,31 @@ public class Main extends JApplet { /**/public Main() { }
    * @param pane Tab panel.
    */
   public void addTab(String label, JPanel pane) {
-    // POUR L INSTANT ON ARRIVE PAS A RENDRE LES TAILLES CORRECTES LE TRUC MANIPULABLE
-    boolean manipulable = false;
-    if (manipulable) {
-      JToolBar bar = new JToolBar(); bar.setOrientation(JToolBar.HORIZONTAL); bar.setBorderPainted(false); 
+    boolean floatable = true;
+    if (floatable) {
+      JToolBar bar = new JToolBar(); // bar.setBorderPainted(false); 
+      bar.addComponentListener(resizer);
       bar.add(pane);
       JPanel par = new JPanel(); par.setLayout(new BorderLayout());
       par.add(bar, BorderLayout.CENTER);
       tabbedPane.addTab(label, null, par, label);
+      tabs.put(label, par);
     } else {
       tabbedPane.addTab(label, null, pane, label);
+      tabs.put(label, pane);
     }
-    tabs.put(label, pane);
     tabbedPane.revalidate();
   }
+  // Control the component size
+  private ComponentListener resizer = new ComponentListener() {
+      public void componentResized(ComponentEvent e) {   
+	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();  
+	e.getComponent().setPreferredSize(new Dimension((int) (0.5 * dim.getWidth()), (int) (0.5 * dim.getHeight())));						      
+      }
+      public void componentHidden(ComponentEvent e) { }
+      public void componentMoved(ComponentEvent e) { }
+      public void componentShown(ComponentEvent e) { }
+    };
   /** Adds a tab to the tabbed panel to display a text.
    * @param label Tab label.
    * @param location Tab Html text to display.
@@ -181,10 +199,21 @@ public class Main extends JApplet { /**/public Main() { }
     activityList.addItem(activity.getTitle());
     activityList.revalidate();
   }
-  /** Start any activity.
-  * The activity must be list in the HashMap activities
-  * @param name Name of Activity in the HashMap
-  */
+  /** Starts an activity.
+   * @param name Name of Activity in the HashMap or Index in the chooser
+   */
+  private void setActivityAs(String name) {
+    if (activities.containsKey(name)) {
+      setActivity(name);
+    } else {
+      int index = name.matches("^[0-9]+$") ? Integer.parseInt(name) : 0; index = 0 <= index && index < activityList.getItemCount() ? index : 0;
+      activityList.setSelectedIndex(index);
+    }
+  }
+  /** Sets an any activity.
+   * The activity must be list in the HashMap activities
+   * @param name Name of Activity in the HashMap
+   */
   private void setActivity(String name) {
     if (activities.containsKey(name)) {
       activity = activities.get(name);
@@ -302,7 +331,7 @@ public class Main extends JApplet { /**/public Main() { }
       // Cleans spurious chars
       text = text.replaceAll("[\u00a0]", "");
       // Adds a new line if not yet done
-      if (!text.matches("^[ \t]*\n.*")) text = "\n" + text;
+      text = "\n"+text.trim();
       // Reload in editor the clean text
       if (editor != null) editor.setText(text);
       Utils.saveString(file, text);
@@ -352,7 +381,7 @@ public class Main extends JApplet { /**/public Main() { }
   /** Loads a file in the current activity editor. 
    * @param file The file name.
    */
-  public void setFile(String file) {
+  public void setFileAs(String file) {
     if (activity == null) return;
     fileChooser.doOpen(activity.getEditor(), file);
   }
@@ -475,7 +504,7 @@ public class Main extends JApplet { /**/public Main() { }
 	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm");
 	  addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm");
 	}}));
-    addActivity(new ProgletActivity("exodemaths") {
+    addActivity(new ProgletActivity("exosdemaths") {
 	public String getTitle() { return "Programmer un calcul géométrique"; }
 	public void init() {
 	  super.init();
@@ -582,8 +611,10 @@ public class Main extends JApplet { /**/public Main() { }
       addTab("Jvs Editor", (JPanel) jvsEditor);
       jvsEditor.setProglet(proglet);
       initCompile();
-      if (!"ingredients".equals(proglet))
-	addTab(proglet, Jvs2Java.getPanel(proglet));
+      if (!"ingredients".equals(proglet)) {
+	String name = "exosdemaths".equals(proglet) ? "Tracé" : proglet;
+	addTab(name, Jvs2Java.getPanel(proglet));
+      }
     }
     protected void initDoc() {
       addTab("Document de la proglet", "proglet/"+proglet+"/doc-files/about-proglet.htm");
@@ -602,25 +633,27 @@ public class Main extends JApplet { /**/public Main() { }
       addTab("Algo Editor", (JPanel) algoEditor);
       addTab("Code Viewer", (JPanel) algoViewer);
       initCompile();
-      addTab("Tracé", Jvs2Java.getPanel("exodemaths"));
+      addTab("Tracé", Jvs2Java.getPanel("exosdemaths"));
     }
     public Editor getEditor() { return algoEditor; }
     public String getExtension() { return ".pml"; }
   }
   private AlgoEditor algoEditor = null; private JvsSourceEditor algoViewer = null;
+
+  { initGUI(); }
   
   /** Used to run a javasccol v3 as a standalone program. 
    * <p>- Starts a JavaScool "activity" which result is to be stored in a "file-name".</p>
    * @param usage <tt>java org.javascool.Main [activity [file-name]]</tt><ul>
-   * <li><tt>activity</tt> specifies the activity to be done.</li>
+   * <li><tt>activity</tt> specifies the activity to be done (its index or name).</li>
    * <li><tt>file-name</tt> specifies the file used for the activity.</li>
    * </ul>
    */
   public static void main(String[] usage) {
     System.out.println("Hi ! V3 is coming :-)");
     Main main = new Main();
-    if (usage.length >= 1) main.setActivity(usage[0]);
-    if (usage.length >= 2) main.setFile(usage[1]);
+    if (usage.length >= 1) main.setActivityAs(usage[0]);
+    if (usage.length >= 2) main.setFileAs(usage[1]);
     Utils.show(main, "Java'Scool v3.0-beta", Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), false);
   }
 }

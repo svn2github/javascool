@@ -55,7 +55,7 @@ DOC = \
  $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) src/org/javascool/doc-files/revision.xml $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
 
 JVS = \
- $(patsubst %.jvs,%.java,$(shell find src -name '*.jvs'))
+  src/proglet/javaprog/FleurEnRythme.jvs
 
 CP=src:lib/tools.jar:lib/saxon.jar
 
@@ -157,7 +157,7 @@ www/api : $(SRC) $(DOC) makefile $(shell find src -name package.html)
 	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -link http://download.oracle.com/javase/6/docs/api \
 	 -windowtitle "Java's Cool v3" -d $@ $(SRC)
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
-	@for f in $(SRC) $(XSL) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; done
+	@for f in $(SRC) $(XSL) $(shell find src -name doc-files) ; do d=`echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; mkdir -p `dirname $$d` ; cp -r $$f $$d ; done
 	@for f in `find $@ -name '*.java' -o -name '*.jvs'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@rm -rf `find $@ -name .svn`
 	@cd www ; rm -f sources.zip ; zip -9qr sources.zip api
@@ -240,8 +240,7 @@ jpub: jar
 # Check the web site links 
 
 wref: wpub
-	@lib/run.sh org.javascooldev.LinkCheck -recursive http://javascool.gforge.inria.fr/v3/ | tee lib/brokenlinks.txt
-
+	@lib/run.sh org.javascool.LinkCheck -recursive http://javascool.gforge.inria.fr/v3/ | tee lib/brokenlinks.txt
 
 # Clean the web cache
 
@@ -371,8 +370,8 @@ done :
 #: 
 #: [1.4] Other files
 #: ./tst/*                    : contains local test files
-#: ./javascool                : convenient link to ./src/org/javascool
-#: ./proglets                 : convenient link to ./src/proglet.
+#: ./J                        : convenient link to ./src/org/javascool
+#: ./P                        : convenient link to ./src/proglet.
 #: ./jdoc                     : convenient Java and JavaScool doc bundle for local use (make jdoc to generate it).
 #:
 #: [2] Makefile usage.

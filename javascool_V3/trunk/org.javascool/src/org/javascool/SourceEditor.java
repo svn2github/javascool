@@ -223,7 +223,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     // Adds the menu if not yet done
     if (imenu == null) { 
       imenu = new JMenu();
-      imenu.setText("Insertions");
+      imenu.setText("Insertion");
       if (bar.getComponentCount() == 4)
 	bar.remove(2); 
       bar.add(imenu, 2);  

@@ -65,6 +65,8 @@
       <p><p><r>{div class=ul</r></p><p>Liste d'items non-numérotés</p></p>
       <p><p><r>{div class=ol</r></p><p>Liste d'items numérotés</p></p>
       <p><p><r>{div class=table</r></p><p>Table avec des lignes et des collones</p></p>
+      <p><p><r>{div class=margin</r></p><p>Pour des notes en marge</p></p>
+      <p><p><r>{div class=center</r></p><p>Pour des informations centrales</p></p>
       <p><p><r>{div class='*'</r></p><p>Autre type de structure, à la discrétion de l'utilisateur</p></p>
     </div>
     qui correspondent à la façon dont le texte est structuré et à la façon dont le texte sera rendu sur la page. 

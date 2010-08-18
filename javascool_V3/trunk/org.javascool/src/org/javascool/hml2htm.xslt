@@ -45,6 +45,8 @@
     <xsl:when test="../@class = 'ul' or ../@class = 'ol'"><li><xsl:call-template name="div-2"/></li></xsl:when>
     <xsl:when test="../@class = 'table'"><tr><xsl:call-template name="div-2"/></tr></xsl:when>
     <xsl:when test="../../@class = 'table'"><td valign="top"><xsl:call-template name="div-2"/></td></xsl:when>
+    <xsl:when test="@class = 'margin'"><div align="right"><xsl:call-template name="div-2"/></div></xsl:when>
+    <xsl:when test="@class = 'center'"><div align="center"><xsl:call-template name="div-2"/></div></xsl:when>
     <xsl:when test="@class = 'tag'"><xsl:call-template name="tag"/></xsl:when>
     <xsl:otherwise><div><xsl:call-template name="div-2"/></div></xsl:otherwise>
   </xsl:choose>
@@ -113,8 +115,9 @@
         <xsl:otherwise><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:otherwise>
       </xsl:choose></xsl:if>
       <xsl:if test="count(@icon) = 1"><img src="{@icon}" alt="{@text}"/></xsl:if>
+      <xsl:if test="count(@text)=1 and count(@icon)=1"><xsl:text> </xsl:text></xsl:if>
       <xsl:if test="count(@text)=1"><xsl:value-of select="@text"/></xsl:if>
-      <xsl:if test="count(@text)=0">[.]</xsl:if>
+      <xsl:if test="count(@text)=0 and count(@icon)=0">[.]</xsl:if>
     </a></xsl:when>
     <xsl:when test="count(@icon) = 1"><img src="{@icon}" alt="{@text}">
       <xsl:if test="count(@class)=1"><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:if>

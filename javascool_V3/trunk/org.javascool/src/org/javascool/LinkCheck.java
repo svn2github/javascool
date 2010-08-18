@@ -2,7 +2,8 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2005.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascooldev;
+package org.javascool;
+
 import org.javascool.Utils;
 
 // Used for the string interface

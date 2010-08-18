@@ -46,6 +46,8 @@
 "    <xsl:when test=\"../@class = 'ul' or ../@class = 'ol'\"><li><xsl:call-template name=\"div-2\"/></li></xsl:when>\n"+
 "    <xsl:when test=\"../@class = 'table'\"><tr><xsl:call-template name=\"div-2\"/></tr></xsl:when>\n"+
 "    <xsl:when test=\"../../@class = 'table'\"><td valign=\"top\"><xsl:call-template name=\"div-2\"/></td></xsl:when>\n"+
+"    <xsl:when test=\"@class = 'margin'\"><div align=\"right\"><xsl:call-template name=\"div-2\"/></div></xsl:when>\n"+
+"    <xsl:when test=\"@class = 'center'\"><div align=\"center\"><xsl:call-template name=\"div-2\"/></div></xsl:when>\n"+
 "    <xsl:when test=\"@class = 'tag'\"><xsl:call-template name=\"tag\"/></xsl:when>\n"+
 "    <xsl:otherwise><div><xsl:call-template name=\"div-2\"/></div></xsl:otherwise>\n"+
 "  </xsl:choose>\n"+
@@ -114,8 +116,9 @@
 "        <xsl:otherwise><xsl:attribute name=\"class\"><xsl:value-of select=\"@class\"/></xsl:attribute></xsl:otherwise>\n"+
 "      </xsl:choose></xsl:if>\n"+
 "      <xsl:if test=\"count(@icon) = 1\"><img src=\"{@icon}\" alt=\"{@text}\"/></xsl:if>\n"+
+"      <xsl:if test=\"count(@text)=1 and count(@icon)=1\"><xsl:text> </xsl:text></xsl:if>\n"+
 "      <xsl:if test=\"count(@text)=1\"><xsl:value-of select=\"@text\"/></xsl:if>\n"+
-"      <xsl:if test=\"count(@text)=0\">[.]</xsl:if>\n"+
+"      <xsl:if test=\"count(@text)=0 and count(@icon)=0\">[.]</xsl:if>\n"+
 "    </a></xsl:when>\n"+
 "    <xsl:when test=\"count(@icon) = 1\"><img src=\"{@icon}\" alt=\"{@text}\">\n"+
 "      <xsl:if test=\"count(@class)=1\"><xsl:attribute name=\"class\"><xsl:value-of select=\"@class\"/></xsl:attribute></xsl:if>\n"+

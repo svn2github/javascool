@@ -12,7 +12,7 @@
     </div>tandis que la fonction: <div class="code">
       <p><r>scopeReset</r>()</p>
     </div> permet d'effacer la courbe. Le système de coordonnée est donc de la forme:
-     <div class="center"><l class="icon" icon="scope.png"/></div>
+     <div class="center"><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/proglet/exosdemaths/doc-files/scope.png"/></div>
      <div>Il est aussi possible de changer l'échelle horizontale et verticale en utilisant la fonction: <div class="code">
       <p><r>scopeReset</r>(largeur, hauteur)</p>
     </div> où le tracé se fait alors avec les abcisses entre <b>[-largeur, largeur]</b> et les ordonnées entre les valeurs <b>[-hauteur, hauteur]</b>.</div>

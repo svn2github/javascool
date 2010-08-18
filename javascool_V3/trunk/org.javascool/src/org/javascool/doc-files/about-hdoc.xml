@@ -20,7 +20,6 @@
       <p><p><r>{div class=works</r></p><p>Section "Travail proposé"</p></p>
       <p><p><r>{div class=notes</r></p><p>Section "Remarques"</p></p> 
       <p><p><r>{div class=code</r></p><p>Qui encapsule les portions de code montrées en exemple</p></p>
-      <p><p><r>{div class=margin</r></p><p>Qui des notes en marge</p></p>
     </div></p>
   </div>
 

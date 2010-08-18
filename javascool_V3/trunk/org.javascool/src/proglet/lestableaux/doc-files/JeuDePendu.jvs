@@ -1,0 +1,55 @@
+
+
+// Ce programme a été conçu et réalisé par Olivier Dikken <garou9999@hotmail.com> et cie.
+
+void main() {
+  
+  // Initiatilisation d'un mot parmis les mots possibles
+  String mots[] = {"voiture", "INRIA", "pompe a vélo", "cool"};
+  String mot = mots[(int) (mots.length * Math.random())];
+  
+  // Création d'un tableau avec des 0 sauf aux extrémités
+  int juste[] = new int[mot.length()]; 
+  juste[0] = 1; 
+  juste[juste.length-1] = 1;
+  
+  // Boucle du jeu on laisse au joueur autant de coups que la longueur du mot
+  for(int j = 0; j < 2 * mot.length(); j++) {
+    // Test si le mot est correct
+    int gagne = 1; 
+    for(int i = 0; i < mot.length(); i++) 
+      if(juste[i] == 0) 
+	gagne = 0;
+    if (gagne == 1) {
+      println("Congratulations! you have won!!\n(restart the game to try another word!)");
+      return;
+    }
+    
+    // Le jeu commence
+    {
+      // On écrit les lettres devinées
+      {
+	for (int i = 0; i <mot.length() ; i++){
+	  if (juste[i] == 1) {
+	    print(mot.charAt(i));
+	  } else {
+	    print("_");
+	  }
+	}
+	println();
+      }
+
+      // On demande à l'utilisateur pour une lettre
+      print("Lettre? : "); char c = readString().charAt(0);
+
+      // On met à jour les lettres justes
+      for (int i = 0; i < mot.length(); i++) {
+	if (mot.charAt(i) == c) {
+	  juste[i] = 1;
+	}
+      }
+    }
+  }
+  println("Sorry guy! you have lost!!\n(restart the game to try another word!)");
+}
+

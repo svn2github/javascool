@@ -2,9 +2,9 @@
 ifeq ($(USER), vthierry)
 
 all :
-	@cd ../tst ; ../lib/run.sh org.javascool.ProgletApplet javaprog
-#	@$(MAKE) -C ../../.. jar
-#	@cd ../tst ; java -jar  ../www/javascool.jar
+	@$(MAKE) -C ../../.. jar
+	@cd ../tst ; java -jar  ../www/javascool.jar
+#	@cd ../tst ; ../lib/run.sh org.javascool.ProgletApplet javaprog
 
 else
 

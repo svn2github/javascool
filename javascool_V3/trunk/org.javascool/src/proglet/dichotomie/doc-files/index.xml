@@ -3,7 +3,7 @@
 
   <div title="Rechercher un mot dans un dictionnaire">Prenons par exemple ce dictionnaire des drapeaux des environ 200 (précisément 195) états du monde
     et faisons rechercher à un algorithme le drapeau de l'Albanie ou de la Zambie. 
-    <p><l link="the-proglet.htm" icon="proglet-dicho.jpg" text="La «proglet» dichotomie"/></p>
+    <p class="center"><l link="the-proglet.htm" icon="proglet-dicho.jpg" text="La «proglet» dichotomie"/></p>
     <i>Attention :</i> impossible d'invoquer l'intelligence humaine ici, il s'agit uniquement d'intelligence mécanique. 
     Pas facile donc de  profiter par exemple de notre connaissance naturelle du fait que les mots commençant par "A" sont plutôt au début, et "Z" à la fin. 
     Ce serait intéressant de prendre en compte de tels éléments, 
@@ -98,7 +98,7 @@
      Pour ``deviner´´ la valeur d'une tension électrique continue, 
      un ordinateur numérique doit en général comparer cette valeur à une valeur de référence qu'il va produire en sortie, 
      pour de proche en proche cerner cette valeur, comme le montre le diagramme ci-dessous:
-     <p><l link="../../convanalogique/doc-files/the-proglet.htm" icon="../../convanalogique/doc-files/proglet-conva.jpg" text="La «proglet» convanalogique"/></p>
+     <p class="center"><l link="../../convanalogique/doc-files/the-proglet.htm" icon="../../convanalogique/doc-files/proglet-conva.jpg" text="La «proglet» convanalogique"/></p>
      Là encore, la façon de fonctionner de ces convertisseurs à approximations successives est de procéder de manière dichotomique en divisant l'espace de recherche de 2 en 2. 
      Cela permet d'atteindre très rapidement les précisions requises, le millème en 10 étapes, le millionième en 20, comme vu précédemment.
    </div>
@@ -108,7 +108,7 @@
      où <c>f()</c> est une fonction continue monotone dans l'intervalle <c>[min, max]</c> donc a au plus une solution, puisque bijection vers un intervalle réel.</p>
      <p>Si elle change de signe dans cet intervalle <c>f(min) f(max) &lt; 0</c> et elle a une solution unique.</p>
      <p>C'est le cas par exemple de la fonction <c>sin(x)</c> dans l'intervalle <c>[2, 4]</c> où elle s'annule en Pi, comme le montre la figure ci-dessous:
-     <p><l link="../../exosdemaths/doc-files/about-proglet.htm" icon="dicho3.gif" text="La courbe sin(x) dans [2,4]"/></p></p>
+     <p class="center"><l link="../../exosdemaths/doc-files/about-proglet.htm" icon="dicho3.gif"/></p></p>
      <p>Là encore le même mécanisme de dichotomie permet de résoudre le problème comme incarné dans l'algorithme suivant:
       <div class="code">
        <p><r>zero</r>(f) { </p>
