@@ -1,7 +1,11 @@
 <div title="La «proglet» javaprog">
   <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>
-    Cette proglet<l class="note" link="1"/> permet de simuler ....
+    Cette proglet<l class="note" link="1"/> permet de simuler de programmer toutes sortes d'applet 
+
+http://javascool.gforge.inria.fr/v3/?page=api:org/javascool/package-summary.html
+
+
 
   <div>Dans ce contexte les instructions à utiliser sont celles de <l class="javascool"/> et toutes  .. </div>
 

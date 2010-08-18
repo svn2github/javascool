@@ -235,7 +235,7 @@ public class Main extends JApplet { /**/public Main() { }
     /** Manages an open action (no dialog). */
     public void doOpen(Editor editor, String file) {
       setSelectedFile(new File(file));
-      String text = Utils.loadString(this.file = file);
+      String text = ""; try { text = Utils.loadString(this.file = file); } catch(Exception e) { }
       editor.setText(text);
     }
     /** Manages a save dialog action. 
