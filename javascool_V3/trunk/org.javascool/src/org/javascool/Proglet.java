@@ -19,5 +19,17 @@ package org.javascool;
  *  <p>Ces <a href="doc-files/about-proglets.htm">«proglets»</a> sont écrites pour permettre facilement à un enseignant ou un partenaire, 
  *    qui programme en Java au niveau élémentaire d'adapter, enrichir ces éléments.</p>
  *  <p>Non sans les <a href="http://javascool.gforge.inria.fr/?page=contact">partager</a> avec nous tout(te)s en nous contactant.</p>
+ *
+ * <hr/>Intégration de la proglet dans javascool:<ol>
+ *  <li>Les fichiers sources sont dans un répertoire: <tt>src/proglet/<i>nom-de-la-proglet</i>/*.java</tt></li>
+ *  <li>Les fichiers de documentation et de description des activités sont dans un répertoire: <tt>src/proglet/<i>nom-de-la-proglet</i>/doc-files/*.(xml|png|..)</tt>:<ul>
+ *    <li>Les fichiers de documentation sont en XML avec les constructions de <a href="doc-files/about-hdoc.htm">Hdoc</a> et <a href="doc-files/about-hml.htm">Hml</a>.</li>
+ *    <li>Un fichier de documentation de la proglet est créé en <tt>src/proglet/<i>nom-de-la-proglet</i>/doc-files/about-proglet.xml</tt>.</li>
+ *    <li>Un fichier de lancement de la proglet est créé en <tt>src/proglet/<i>nom-de-la-proglet</i>/doc-files/the-proglet.xml</tt>:
+ *      <li>Il contient la directive <tt>&lt;p>&lt;l class="proglet" link="<i>nom-de-la-proglet</i>"/>&lt;/p></tt>.</li>
+ *   </ul></li>
+ *  </ul></li>
+ *  <li>Le fichier <tt>src/org/javascool/doc-files/about-proglets.xml</tt> contient la <a href="doc-files/about-proglets.htm">table de toutes les proglets</a>.</li>
+ * </ol>
  */
 public interface Proglet { }

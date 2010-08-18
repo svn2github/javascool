@@ -1,17 +1,19 @@
 <div title="La «proglet» javaprog">
   <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>
-    Cette proglet<l class="note" link="1"/> permet de simuler de programmer toutes sortes d'applet 
+    Cette proglet<l class="note" link="1"/> permet de simuler de programmer toutes sortes d'applet en utilisant la syntaxe Java ordinaire.
 
-http://javascool.gforge.inria.fr/v3/?page=api:org/javascool/package-summary.html
+  <p>On peut utiliser toute l'<l link="http://java.sun.com/javase/6/docs/api/overview-summary.html" text="API Java"/> et 
+  l'<l link="http://javascool.gforge.inria.fr/v3/api/org/javascool/package-summary.html" text="API JavaScool"/>. 
+  <p>On utilisera en particulier les classes de l'l link="http://java.sun.com/javase/6/docs/api/javax/swing/package-summary.html" text="API Swing"/>, 
+  dont on trouve facilement des <l link="http://download.oracle.com/javase/tutorial/ui/features/components.html" text="exemples illustrés"/> 
+  et un <l link="http://java.sun.com/docs/books/tutorial/uiswing" text="tutoriel complet"/></p></p>
+  
+  <div>Un exemple d'utilisation est proposé en <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/javaprog/doc-files/the-proglet.htm" text="démonstration"/>, 
+  à partir d'un <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/javaprog/FleurEnRythme.html" text="code Jvs"/> réalisé avec deux lycéens du 
+  <l link="http://www.civfrance.com" text="Lycée International de Valbonne"/>.</div>
 
-
-
-  <div>Dans ce contexte les instructions à utiliser sont celles de <l class="javascool"/> et toutes  .. </div>
-
-  FleurEnRythme.jvs  mettere en lien creer le code colre avec jaav2html dans le makefile citer les deux jeunes auteurs ajouter le code a la proglet en java montrer les includes
-
-  </p>
+ </p>
 
   <div class="notes">
     <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/javaprog/doc-files/JavaPanel.html" text="documentée"/> 

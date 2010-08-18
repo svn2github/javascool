@@ -1,3 +1,6 @@
+// Implément l'idée originale de Thomas Giraudon <ptiroccodu06@hotmail.fr> Victor Granet <victor.granet@hotmail.com>
+
+package proglet.javaprog;
 
 import javax.swing.*;
 import proglet.synthesons.FileSoundBit;
@@ -13,7 +16,7 @@ JLabel icon(String image, int x, int y, int w, int h, int p) {
   return icon;
 }
 
-// Defini un distributeur d'evenements
+// Défini l'affichage des icones lors d'évènements sonores
 class FlowerSoundBit extends FileSoundBit {
   double events[];
   public void sample(int n) {  

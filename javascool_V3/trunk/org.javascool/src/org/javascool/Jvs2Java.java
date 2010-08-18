@@ -115,7 +115,7 @@ public class Jvs2Java { private Jvs2Java() { }
     {
       // Copies the user's code
       for(String line : lines) {
-	if(line.matches("^\\s*import[^;]*;\\s*$")) {
+	if(line.matches("^\\s*(import|package)[^;]*;\\s*$")) {
 	  head.append(line);
 	  body.append("//"+line+"\n");
 	} else {
@@ -136,9 +136,9 @@ public class Jvs2Java { private Jvs2Java() { }
       // - defined as a ProgletApplet in order to be loaded as an executable applet.
       head.append("public class "+jclass+ " extends org.javascool.ProgletApplet {");
       head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");
-      head.append("  static { org.javascool.Jvs2Java.runnable = new ProgletRunnableMain(); }");
+      head.append("  static { org.javascool.Jvs2Java.runnable = new "+jclass+"Main(); }");
       head.append("}");
-      head.append("class ProgletRunnableMain implements Runnable {");
+      head.append("class "+jclass+"Main implements Runnable {");
       head.append("  private static final long serialVersionUID = "+ (uid++) + "L;");
       head.append("  public void run() { main(); }");
       body.append("}\n");
@@ -245,4 +245,18 @@ public class Jvs2Java { private Jvs2Java() { }
   }
   // This is the entry point to run  the proglet pupil's program: do not change directly !
   /**/public static Runnable runnable = null; private static String proglet = "ingredients"; private static Thread thread = null;
+
+  /** Translates Jvs files to Java files.
+   * @param usage <tt>java org.javascool.Jvs2Java [-reformat] [-compile] input-file</tt>
+   * <p><tt>-reformat</tt> : Reformat the Jvs code</p>
+   * <p><tt>-compile</tt> : Compile the java classes</p>
+   */
+  public static void main(String[] usage) {
+    if (usage.length > 0) {
+      boolean reformat = false, compile = false; for(String option : usage) { reformat |= "-reformat".equals(option);  compile |= "-compile".equals(option); }
+      if (reformat) Utils.saveString(usage[usage.length-1], reformat(Utils.loadString(usage[usage.length-1])));
+      translate(usage[usage.length-1]);
+      if (compile) { String out = Jvs2Java.compile(usage[usage.length-1]); System.out.println(out.length() == 0 ? "Compilation ok !" : out); }
+    }
+  }
 }

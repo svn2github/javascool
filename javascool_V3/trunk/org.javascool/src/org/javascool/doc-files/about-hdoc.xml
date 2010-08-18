@@ -1,6 +1,8 @@
-<div title="JavaScool documentation">
+<div title="Documentation des proglets">
+
   <div title="Introduction">
-    <p>Les documentations de JavaScool sont écrites en syntaxe XML (voir en PML si souhaité) et utilisent les <l link="about-hml.htm" text="structures logiques HML"/>.</p>
+    <p>Les documentations des «<l link="about-proglets.htm" text="proglets"/>» JavaScool sont écrites en syntaxe XML (voir en PML si souhaité) et 
+     utilisent les <l link="about-hml.htm" text="structures logiques HML"/>.</p>
     <p>Les définitions spécifiques suivantes sont introduites.</p>
   </div>
 

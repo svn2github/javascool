@@ -24,10 +24,9 @@ public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { 
     private static final long serialVersionUID = 1L;
 
     public Panel() {
-       pane = new JLayeredPane(); pane.setPreferredSize(new Dimension(width, height)); add(pane);
+       pane = new JLayeredPane(); add(pane);
     }
     JLayeredPane pane;
-    static final int width = 512, height = 512; 
   }
 
   //
@@ -35,13 +34,14 @@ public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { 
   //
 
   /**/public static void test() {
+    new FleurEnRythmeMain().run();
   }
 
   //
   // This defines the javascool interface 
   //
 
-  /** Renvoie le panneau. */
+  /** Renvoie le panneau d'affichage de la proglet. */
   public static JLayeredPane getSwingPane() {
     return panel.pane;
   }
