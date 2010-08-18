@@ -6,12 +6,6 @@
 "\n"+
 "  <xsl:import href=\"./hml2htm.xslt\"/>\n"+
 "\n"+
-"<xsl:output \n"+
-"  method=\"html\"\n"+
-"  encoding=\"UTF-8\"\n"+
-"  doctype-public=\"-//W3C//DTD HTML 3.2 Final//EN\"\n"+
-"  indent=\"yes\" />\n"+
-"\n"+
 "<!-- These tags produce javasccool's doc specific constructs -->\n"+
 "\n"+
 "<xsl:template match=\"div|p\">\n"+

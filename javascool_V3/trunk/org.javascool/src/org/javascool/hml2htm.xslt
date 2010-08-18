@@ -106,6 +106,7 @@
 <xsl:template name="l">
   <xsl:choose>
     <xsl:when test="@class = 'replace'"><script language="javascript">location.replace("<xsl:value-of select="@link"/>");</script></xsl:when>
+    <xsl:when test="@class = 'include'"><xsl:apply-templates select="document(@link)"/></xsl:when>
     <xsl:when test="count(@link) = 1"><a href="{@link}"> 
       <xsl:if test="count(@class)=1"><xsl:choose>
         <xsl:when test="@class = 'new'"><xsl:attribute name="target">_blank</xsl:attribute></xsl:when>

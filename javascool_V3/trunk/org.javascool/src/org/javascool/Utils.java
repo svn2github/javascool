@@ -368,40 +368,41 @@ public class Utils { private Utils() { }
 
   /** Opens an applet or panel in a standalone frame.
    * @param applet The applet or panel to display.
-   * @param title  Frame title. If null no title.
+   * @param title  Frame title. If null, no title.
+   * @param icon   Frame icon.  If null, no icon.
    * @param width  Applet width. Default is 80% of the screen size.
    * @param height Applet height. Default is 80% of the screen size.
    * @param quit   If true activate the <tt>Control+Q</tt> keystroke. If false fires the "quit" action of the applet or panel root panel. Default is true.
    * <p>Use <tt>unshow(pane);</tt> to properly close the window.</p>
    * @return The opened frame.  
    */
-  public static JFrame show(Component applet, String title, int width, int height, boolean quit) {
-    Frame f = new Frame(); f.open(applet, title, width, height, quit); return f;
+  public static JFrame show(Component applet, String title, ImageIcon icon, int width, int height, boolean quit) {
+    Frame f = new Frame(); f.open(applet, title, icon, width, height, quit); return f;
   }
-  /**/public static JFrame show(Component applet, String title, boolean quit) {
+  /**/public static JFrame show(Component applet, String title, ImageIcon icon, boolean quit) {
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();  
     int width = (int) (1 * dim.getWidth()), height = (int) (1 * dim.getHeight());
     if (width > 1800) width = 1800; if(height > 1000) height = 1000;
-    return show(applet, title, width, height, quit);
+    return show(applet, title, icon, width, height, quit);
   }    
-  /**/public static JFrame show(Component applet, String title, int width, int height) {
-    return show(applet, title, width, height, true);
-  }
-  /**/public static JFrame show(Component applet, String title) {
-    return show(applet, title, true);
-  }
+  /**/public static JFrame show(Component applet, String title, int width, int height) { return show(applet, title, null, width, height, true); }
+  /**/public static JFrame show(Component applet, String title) { return show(applet, title, null, true); }
+  /**/public static JFrame show(Component applet, int width, int height) { return show(applet, null, null, width, height, true); }
+  /**/public static JFrame show(Component applet) { return show(applet, null, null, true); }
+
   // Encapsulates an applet in a frame
   private static class Frame extends JFrame {
     private static final long serialVersionUID = 1L;
     private JApplet applet = null;
     // Opens an applet in a standalone frame.
-    public void open(Component pane, String title, int width, int height, boolean quit) {
+    public void open(Component pane, String title, ImageIcon icon, int width, int height, boolean quit) {
       if (pane instanceof JApplet) this.applet = (JApplet) pane;
       getContentPane().add(pane, BorderLayout.CENTER); 
       if (applet != null) applet.init(); 
       pack(); 
       frames.put(pane, this);
       if (title != null) setTitle(title);
+      if (icon != null) setIconImage(icon.getImage());
       // Defines an quit on CTRL+Q input code.
       if (quit) { 
 	getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK), "quit");

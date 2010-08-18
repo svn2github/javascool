@@ -1,7 +1,7 @@
 <?php
 ///////////////////////////////////////////////////////////////////
 // Script sous licence CeCILL                                    //
-// Auteur : Philippe Vienne et Thierry Viéville, inria.sophia.fr //
+// Auteurs : (Philippe Vienne&Thierry Viéville)@inria.sophia.fr  //
 ///////////////////////////////////////////////////////////////////
 //
 // Mécanisme de syndication des pages web à partir de http://wiki.inria.fr/sciencinfolycee

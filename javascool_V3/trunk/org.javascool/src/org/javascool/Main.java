@@ -366,7 +366,7 @@ public class Main extends JApplet { /**/public Main() { }
     }
   }};
   private boolean helpOn = false;
-  private String helpFile = "org/javascool/doc-files/about-keystrokes.htm";
+  private String helpFile = "org/javascool/doc-files/about-main.htm";
 
   // Sets the basic tools
   private void fileTools() {
@@ -595,10 +595,10 @@ public class Main extends JApplet { /**/public Main() { }
    * </ul>
    */
   public static void main(String[] usage) {
-    System.out.println("Hi ! V3 is comming :-)");
+    System.out.println("Hi ! V3 is coming :-)");
     Main main = new Main();
     if (usage.length >= 1) main.setActivity(usage[0]);
     if (usage.length >= 2) main.setFile(usage[1]);
-    Utils.show(main, "Java'Scool v3.0-beta", false);
+    Utils.show(main, "Java'Scool v3.0-beta", Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), false);
   }
 }

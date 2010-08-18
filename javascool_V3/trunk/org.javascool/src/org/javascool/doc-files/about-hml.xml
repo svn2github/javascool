@@ -130,6 +130,7 @@
     Il prend, par exemple, une valeur correspondant:
     <div class="table">
       <p><p><r>replace</r></p><p>Pour fermer cette page et ouvrir une autre page à la place.</p></p>
+      <p><p><r>include</r></p><p>Pour insérer le contenu d'un fichier <i>Hml</i> dans la présente page.</p></p>
       <p><p><r>new</r></p><p>Pour s'ouvrir dans une autre fenêtre.</p></p>
       <p><p><r>*</r></p><p>Pour un autre rendu, à définir par ailleurs.</p></p>
     </div>.
