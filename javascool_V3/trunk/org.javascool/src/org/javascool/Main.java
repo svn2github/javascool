@@ -55,13 +55,15 @@ public class Main extends JApplet { /**/public Main() { }
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar();
+  private JToolBar activityBar = new JToolBar();
   private JTabbedPane tabbedPane = new JTabbedPane();
   private JComboBox activityList = new JComboBox();
   /**/public void init() {
     JPanel toppane = new JPanel();
+    activityBar.add(activityList);
     toppane.setLayout(new BorderLayout());
     toppane.add(toolBar, BorderLayout.WEST);
-    toppane.add(activityList, BorderLayout.EAST);  
+    toppane.add(activityBar, BorderLayout.EAST);  
     activityList.addActionListener(alistener);
     getContentPane().add(toppane, BorderLayout.NORTH);
     getContentPane().add(tabbedPane, BorderLayout.CENTER);
@@ -110,7 +112,7 @@ public class Main extends JApplet { /**/public Main() { }
    * @param pane Tab panel.
    */
   public void addTab(String label, JPanel pane) {
-    tabbedPane.addTab(label, null, pane, label);
+    tabbedPane.addTab(label, null, new JToolBar(pane), label);
     tabs.put(label, pane);
     tabbedPane.revalidate();
   }
