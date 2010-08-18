@@ -531,7 +531,7 @@ public class Main extends JApplet { /**/public Main() { }
     // Compilation/execution mechanism
     protected void initCompile() {
       addTab("Console", Jvs2Java.getPanel("ingredients"));
-      addTool("Compile", "org/javascool/doc-files/icones16/compil.png", validate = compile);
+      addTool("Compile", "org/javascool/doc-files/icones16/compile.png", validate = compile);
     }
     private Runnable compile = new Runnable() { public void run() {
       delTool("Exécuter");
