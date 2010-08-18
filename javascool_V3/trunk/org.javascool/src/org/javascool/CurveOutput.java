@@ -58,6 +58,7 @@ public class CurveOutput extends JPanel implements Widget {
 
   /** Internal routine: do not use. */
   public void paint(Graphics g) {
+    width = getWidth(); height= getHeight();
     super.paint(g);
     paintBg(g);
     g.setPaintMode(); 
@@ -91,7 +92,7 @@ public class CurveOutput extends JPanel implements Widget {
   private int y2h(double y) { return  (int) Math.rint(y / Yscale * 200); }
   private double i2x(int i) { return  Xscale * (i - 260.0) / 240.0; }
   private double j2y(int j) { return  Yscale * (210.0 - j) / 200.0; }
-  private double Xscale = 1, Yscale = 1;
+  private double Xscale = 1, Yscale = 1; private int width, height;
 
   private class ReticuleMouseListener implements MouseMotionListener, MouseListener {
     private static final long serialVersionUID = 1L;

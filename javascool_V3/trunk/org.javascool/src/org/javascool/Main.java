@@ -165,7 +165,7 @@ public class Main extends JApplet { /**/public Main() { }
   private class HelpDisplay extends HtmlDisplay {
     private static final long serialVersionUID = 1L;
     public HtmlDisplay reset(String text) { 
-      return super.reset(text.replaceAll("<a\\s+href=\\s*\"(http|https):[^\"]*\"[^>]*>([^<]*)</a>", "$1"));
+      return super.reset(text.replaceAll("<a\\s+href=\\s*\"(http|https):[^\"]*\"[^>]*>", ""));
     }
   }
   /** Removes a tab from the tabbed panel.
