@@ -61,7 +61,7 @@ import java.util.HashMap;
  */
 public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;
-  static final String title = "Java'Scool v3.0-beta";
+  static final String title = "Java'Scool v3.0-beta2";
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar(title, JToolBar.HORIZONTAL);
@@ -638,7 +638,7 @@ public class Main extends JApplet { /**/public Main() { }
       if (algoEditor == null) algoEditor = new AlgoEditor(); 
       if (algoViewer == null) { algoViewer = new JvsSourceEditor(); algoViewer.reset(false); }
       addTab("Editeur d'Algo.", (JPanel) algoEditor);
-      addTab("Voir le code", (JPanel) algoViewer);
+      addTab("Voir le code en JVS", (JPanel) algoViewer);
       initCompile();
       addTab("Tracé", Jvs2Java.getPanel("exosdemaths"));
       addTab("Documentation", "org/javascool/doc-files/about-algo-editor.htm");
