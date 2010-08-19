@@ -131,7 +131,7 @@ public class Main extends JApplet { /**/public Main() { }
   public void addTab(String label, JPanel pane) {
     boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024;
     if (floatable) {
-      JToolBar bar = new JToolBar(); // bar.setBorderPainted(false); Why not ?
+      JToolBar bar = new JToolBar(); bar.setBorderPainted(false);
       bar.addComponentListener(resizer);
       bar.add(pane);
       JPanel par = new JPanel(); par.setLayout(new BorderLayout());
@@ -147,8 +147,10 @@ public class Main extends JApplet { /**/public Main() { }
   // Control the component size
   private ComponentListener resizer = new ComponentListener() {
       public void componentResized(ComponentEvent e) {   
-	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();  
-	e.getComponent().setPreferredSize(new Dimension((int) (0.5 * dim.getWidth()), (int) (0.5 * dim.getHeight())));						      
+	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize(); 
+	int width = (int) (0.5 * dim.getWidth()), height = (int) (0.5 * dim.getHeight());
+	if (width > 1024) width = 1024;
+	e.getComponent().setPreferredSize(new Dimension(width, height));
       }
       public void componentHidden(ComponentEvent e) { }
       public void componentMoved(ComponentEvent e) { }
@@ -206,7 +208,8 @@ public class Main extends JApplet { /**/public Main() { }
     if (activities.containsKey(name)) {
       setActivity(name);
     } else {
-      int index = name.matches("^[0-9]+$") ? Integer.parseInt(name) : 0; index = 0 <= index && index < activityList.getItemCount() ? index : 0;
+      int index = name.matches("^[0-9]+$") ? Integer.parseInt(name) : 0; 
+      index = 0 <= index && index < activityList.getItemCount() ? index : 0;
       activityList.setSelectedIndex(index);
     }
   }
