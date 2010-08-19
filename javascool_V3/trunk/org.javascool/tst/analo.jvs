@@ -1,0 +1,11 @@
+
+void main(){
+int v = 1023;
+while(v >= 0) {
+ convaOut(v);
+ if (convaCompare() == 1) {
+  echo("valeur = "+v);
+ }
+ v = v - 1;
+}
+}

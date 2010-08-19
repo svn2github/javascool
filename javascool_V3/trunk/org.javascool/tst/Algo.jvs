@@ -1,0 +1,9 @@
+
+// DEBUT_PROGRAMME
+void main() {
+   // NOMBRE_DECIMAL test <- 36.1;  
+   double test = 36.1;
+   // AFFICHER ("Test vaut : "+test);  
+   println ("Test vaut : "+test);
+   // FIN_PROGRAMME 
+}
