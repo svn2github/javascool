@@ -1,5 +1,3 @@
-# <a href="#readme">readme</a><pre>
-
 #####################################################################################################################################
 ##  Philoumailabo@gmail.com and Thierry.Vieville@sophia.inria.fr, Copyright (C) 2010.  All rights reserved.                        ##
 #####################################################################################################################################
@@ -33,7 +31,7 @@ clean:
 
 # Creation of a signed jar for standalone applications integrating the jdk5 classes
 
-jar : www/javascool.jar
+jar : htm www/javascool.jar
 
 # Jar parameters, files and meta-data
 
@@ -298,7 +296,6 @@ done :
 	@echo '..done (Enter to close)' ; read cont
 
 #####################################################################################################################################
-#</pre><a name="readme"/><pre>
 
 #: ********************************************************************************
 #: *****                 JavaScool developer's readme                         *****
@@ -386,29 +383,3 @@ done :
 #: > yum install java-1.5.0-gcj-devel
 #:
 #####################################################################################################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#</pre>

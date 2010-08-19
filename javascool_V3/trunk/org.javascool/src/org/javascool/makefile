@@ -1,15 +1,12 @@
 
+
 ifeq ($(USER), vthierry)
 
-all :
-	@$(MAKE) -C ../../.. jar
-	@cd ../tst ; java -jar  ../www/javascool.jar
+all : j3
+#	@cd ../tst ; ../lib/run.sh org.javascool.AlgoEditor
 #	@cd ../tst ; ../lib/run.sh org.javascool.ProgletApplet exosdemaths
 
-else
-
-all : 
-	@$(MAKE) -C ../../.. jar
-	@cd ../../../tst ; java -jar ../www/javascool.jar
-
 endif
+
+j3 :
+	@$(MAKE) -C ../../.. j3

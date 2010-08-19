@@ -49,7 +49,6 @@ import java.awt.event.KeyEvent;
 // Used to register elements
 import java.util.HashMap;
 
-
 /** This is the javascool v3 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
  * @author Philippe Vienne <philoumailabo@gmail.com>
@@ -59,22 +58,22 @@ import java.util.HashMap;
  */
 public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;
+  static final String title = "Java'Scool v3.0-beta";
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
-  private JToolBar toolBar = new JToolBar();
+  private JToolBar toolBar = new JToolBar(title, JToolBar.HORIZONTAL);
   private JTabbedPane tabbedPane = new JTabbedPane();
   private JComboBox activityList = new JComboBox();
   /** Builds the GUI. */
   private void initGUI() {
     JPanel toppane = new JPanel();
     toppane.setLayout(new BorderLayout());
-    toolBar.setOrientation(JToolBar.HORIZONTAL);
     toolBar.setBorderPainted(false);
     JPanel toppaneWest = new JPanel();
     toppaneWest.add(toolBar);
     toppaneWest.add(new JLabel(" "));
     toppane.add(toppaneWest, BorderLayout.WEST);
-    JToolBar activityBar = new JToolBar();
+    JToolBar activityBar = new JToolBar(title, JToolBar.HORIZONTAL);
     activityList.addActionListener(alistener);
     activityBar.setBorderPainted(false);
     activityBar.add(activityList);
@@ -131,7 +130,8 @@ public class Main extends JApplet { /**/public Main() { }
   public void addTab(String label, JPanel pane) {
     boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024;
     if (floatable) {
-      JToolBar bar = new JToolBar(); bar.setBorderPainted(false);
+      JToolBar bar = new JToolBar(label, JToolBar.HORIZONTAL);
+      bar.setBorderPainted(false);
       bar.addComponentListener(resizer);
       bar.add(pane);
       JPanel par = new JPanel(); par.setLayout(new BorderLayout());
@@ -637,6 +637,7 @@ public class Main extends JApplet { /**/public Main() { }
       addTab("Voir le code", (JPanel) algoViewer);
       initCompile();
       addTab("Tracé", Jvs2Java.getPanel("exosdemaths"));
+      addTab("Documentation", "org/javascool/doc-files/about-algo-editor.htm");
     }
     public Editor getEditor() { return algoEditor; }
     public String getExtension() { return ".pml"; }
@@ -657,6 +658,6 @@ public class Main extends JApplet { /**/public Main() { }
     Main main = new Main();
     if (usage.length >= 1) main.setActivityAs(usage[0]);
     if (usage.length >= 2) main.setFileAs(usage[1]);
-    Utils.show(main, "Java'Scool v3.0-beta", Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), false);
+    Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), false);
   }
 }

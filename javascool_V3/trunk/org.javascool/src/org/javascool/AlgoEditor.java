@@ -16,7 +16,9 @@ import java.util.Enumeration;
 
 // Used to build the panel
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.AbstractAction;
@@ -45,30 +47,51 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
   private JComboBox edit;
   {
     setLayout(new BorderLayout());
-    JPanel bar = new JPanel();
-    edit = new JComboBox(new String[] {"Edit", "Copier", "Couper/Supprimer", "Coller"});
-    edit.addActionListener(new ActionListener() {
-	private static final long serialVersionUID = 1L;
-	public void actionPerformed(ActionEvent e) {
-	  doEdit((String) edit.getSelectedItem());
-	}});
-    bar.add(edit);
-    bar.add(new JButton(new AbstractAction("Déclarer Variable") {
+    JToolBar bar = new JToolBar("AlgoEditor", JToolBar.VERTICAL);
+    bar.setBorderPainted(false);
+    bar.setLayout(new GridLayout(0, 1));
+
+    bar.add(new JButton(new AbstractAction("Déclarer Variable", Utils.getIcon("org/javascool/doc-files/icones16/add.png")) {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
 	  doDeclaration();
 	}}));
-    bar.add(new JButton(new AbstractAction("Ajouter Instruction") {
+    bar.add(new JButton(new AbstractAction("Ajout Instruction", Utils.getIcon("org/javascool/doc-files/icones16/add.png")) {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) {
 	  doInsertion();
 	}}));
-    bar.add(new JButton(new AbstractAction("Utiliser Fonction") {
+    bar.add(new JButton(new AbstractAction("Utiliser Fonction", Utils.getIcon("org/javascool/doc-files/icones16/add.png")) {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) {
 	  doFunctioncall();
 	}}));
-    add(bar, BorderLayout.NORTH);
+    bar.addSeparator();
+    bar.add(new JButton(new AbstractAction("Modifier élément", Utils.getIcon("org/javascool/doc-files/icones16/edit.png")) {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) {
+	  doModify();
+	}}));
+    bar.add(new JButton(new AbstractAction("Copier élément", Utils.getIcon("org/javascool/doc-files/icones16/copy.png")) {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) {
+	  doCopy();
+	}}));
+    bar.add(new JButton(new AbstractAction("Couper élément", Utils.getIcon("org/javascool/doc-files/icones16/cut.png")) {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) {
+	  doCut();
+	}}));
+    bar.add(new JButton(new AbstractAction("Coller élément", Utils.getIcon("org/javascool/doc-files/icones16/paste.png")) {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) {
+	  doPaste();
+	}}));
+    bar.addSeparator();
+    for(int i = 0; i < bar.getComponentCount(); i++)
+      if (bar.getComponent(i) instanceof JButton)
+	((JButton) bar.getComponent(i)).setHorizontalAlignment(JButton.LEADING);
+    add(bar, BorderLayout.EAST);
   }
 
   //
@@ -218,17 +241,19 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
   
   /** Returns the tree as a String using the Java syntax. */
   public String getJavaSource() {
-    return getJavaSource(root.getChildCount() > 0 ? (DefaultMutableTreeNode) root.getChildAt(0) : null, 0).toString();
+    return Jvs2Java.reformat(getJavaSource(root.getChildCount() > 0 ? (DefaultMutableTreeNode) root.getChildAt(0) : null, 0).toString());
   }
   private StringBuffer getJavaSource(DefaultMutableTreeNode node, int depth) {
     StringBuffer s = new StringBuffer(); 
     if (node != null) {
       String what = node.toString();
       if ("DEBUT_PROGRAMME".equals(what)) {
+	append(s, depth, "// DEBUT_PROGRAMME");
 	append(s, depth, "void main() {");
 	appendChilds(s, node, depth);
 	append(s, depth, "}");
       } else if (what.matches(declarationPattern)) {
+	append(s, depth, "//"+getJavaSourceComment(node, depth+1));
 	append(s, depth, what.
 	       replaceFirst("LIRE_AU_CLAVIER", "read"+getType(node, what)).
 	       replaceFirst("(DEJA_DECLAREE.*)(LIRE_AU_CLAVIER)", "$1IMPOSSIBLE_DE_LIRE_AU_CLAVIER_UNE_CHAINE_DEJA_DECLAREE").
@@ -245,21 +270,29 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	String construct =  what.replaceFirst(insertionPattern, "$1");
 	String expression = what.replaceFirst(insertionPattern, "$2");
 	if ("SI_ALORS".equals(construct)) {
+	  append(s, depth, "// SI_ALORS");
 	  append(s, depth, "if ("+expression+") {");
+	  append(s, depth+1, "// ALORS");
 	  appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(0), depth);
 	  append(s, depth, "}");
 	} else if ("SI_ALORS_SINON".equals(construct)) {
+	  append(s, depth, "// SI_ALORS_SINON");
 	  append(s, depth, "if ("+expression+") {");
+	  append(s, depth+1, "// ALORS");
 	  appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(0), depth);
 	  append(s, depth, "} else {");
+	  append(s, depth+1, "// SINON");
 	  appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(1), depth);
 	  append(s, depth, "}");
 	} else if ("TANT_QUE".equals(construct)) {
+	  append(s, depth, "// TANT_QUE");
 	  append(s, depth, "while ("+expression+") {");
+	  append(s, depth+1, "// FAIRE");
 	  appendChilds(s, (DefaultMutableTreeNode) node.getChildAt(0), depth);
 	  append(s, depth, "}");
 	}
       } else if (what.matches(functioncallPattern)) {
+	append(s, depth, "//"+getJavaSourceComment(node, depth+1));
 	append(s, depth, what.
 	       replaceFirst("AFFICHER", "println").
 	       replaceFirst("NOUVEAU_TRACE", "scopeReset").
@@ -269,10 +302,13 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	       replaceAll("FAUX", "false")
 	       +"\n");
       } else {
-	append(s, depth, "//"+getText(node, depth+1).toString().replaceAll("\\s+", " "));
+	append(s, depth, "//"+getJavaSourceComment(node, depth+1));
       }
     }
     return s;
+  }
+  private static String getJavaSourceComment(DefaultMutableTreeNode node, int depth) {
+    return getText(node, depth).toString().replaceAll("[{}]", "").replaceAll("\\s+", " ").replaceAll("([^\\\\])\"", "$1").replaceAll("\\\\\"", "\"");
   }
   private void appendChilds(StringBuffer s, DefaultMutableTreeNode node, int depth) {
     for(int c = 0; c < node.getChildCount(); c++) s.append(getJavaSource((DefaultMutableTreeNode) node.getChildAt(c), depth+1));
@@ -462,7 +498,6 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
   }
   private static final String insertionPattern = "^(SI_ALORS|SI_ALORS_SINON|TANT_QUE) \\((.*)\\) *$";
 
-
   // [3.4] Function call insertion implementation
   private String[] functions = {"AFFICHER", "NOUVEAU_TRACE", "TRACE_LIGNE", "TRACE_MOT"}; private JComboBox function = new JComboBox(functions); 
   private String[] arguments = {"", "\"??\""}; private JComboBox argument = new JComboBox(arguments); 
@@ -530,48 +565,44 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	}
       }));
     Jdialog.add(pane); dialog.addLayoutComponent(pane, "supprimer");
-    add(Jdialog, BorderLayout.SOUTH);
+    add(Jdialog, BorderLayout.NORTH);
   }
   private void removeAlgo() {
     while(root.getChildAt(0).getChildCount() > 0)
       model.removeNodeFromParent((DefaultMutableTreeNode) root.getChildAt(0).getChildAt(0));  
     addTrailer((DefaultMutableTreeNode) root.getChildAt(0), "FIN_PROGRAMME");
   }
-  private void doEdit(String action) {
-    if ("Copier".equals(action)) {
-      DefaultMutableTreeNode node = getCurrentNode(false);
-      clipboard = copy(node);
-      //-System.out.println(action + " : " + getText(clipboard, 0) + " == " + getText(node, 0));
-    } else if ("Couper/Supprimer".equals(action)) {
-      modified = true;
-      DefaultMutableTreeNode node = getCurrentNode(false);
-      if (node == root.getChildAt(0)) {
-	dialog.show(Jdialog, "supprimer");
-      } else {
-	clipboard = node;
-	model.removeNodeFromParent(node);
-	//-System.out.println(action + " : " + getText(clipboard, 0));
+  private void doModify() {
+    String what = getCurrentNode(false).toString();
+    if (what.matches(declarationPattern)) doDeclaration();
+    else if (what.matches(insertionPattern)) doInsertion();
+    else if (what.matches(functioncallPattern)) doFunctioncall();
+    else showMessage("Sélectionner une position avant de modifier");
+  }
+  private void doCopy() {
+    DefaultMutableTreeNode node = getCurrentNode(false);
+    clipboard = copy(node);
+  }
+  private void doCut() {
+    modified = true;
+    DefaultMutableTreeNode node = getCurrentNode(false);
+    if (node == root.getChildAt(0)) {
+      dialog.show(Jdialog, "supprimer");
+    } else {
+      clipboard = node;
+      model.removeNodeFromParent(node);
+    }
+  }
+  private void doPaste() {
+    modified = true;
+    DefaultMutableTreeNode node = getCurrentNode(true);
+    if (node == null) {
+      showMessage("Sélectionner une position avant de coller");
+    } else {
+      DefaultMutableTreeNode n = copy(clipboard);
+      node.add(n);									
+      model.insertNodeInto(n, node, getCurrentNodeIndex(node));
       }
-    } else if ("Coller".equals(action)) {
-      modified = true;
-      DefaultMutableTreeNode node = getCurrentNode(true);
-      if (node == null) {
-	showMessage("Selectionner un position avant de coller");
-      } else {
-	DefaultMutableTreeNode n = copy(clipboard);
-	node.add(n);									
-	model.insertNodeInto(n, node, getCurrentNodeIndex(node));
-	//-System.out.println(action + " : " + getText(clipboard, 0));
-      }
-    } /*else if ("Check".equals(action)) {
-      System.out.println(action + " : " + getText() + " == \n" + getJavaSource());
-      Utils.saveString("tmp.jvs", getJavaSource());
-      Jvs2Java.translate("tmp.jvs");
-      System.out.println(Jvs2Java.compile("tmp.java"));
-      Jvs2Java.load("tmp.class"); 
-      Utils.show(new ProgletApplet().reset("ingredients", false), "javascool proglet", 650, 720);
-    } */
-    edit.setSelectedItem("Edit");
   }
   private DefaultMutableTreeNode copy(DefaultMutableTreeNode node) {
     if (node == null) return null;
@@ -586,33 +617,31 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
     tree.getActionMap().put("copier",  new AbstractAction("copier") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  doEdit("Copier");
+	  doCopy();
 	}});
     tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_MASK), "couper");
     tree.getActionMap().put("couper",  new AbstractAction("couper") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  doEdit("Couper/Supprimer");
+	  doCut();
 	}});
     tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.CTRL_MASK), "coller");
     tree.getActionMap().put("coller",  new AbstractAction("coller") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  doEdit("Coller");
+	  doPaste();
 	}});
-    /*
     tree.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_MASK), "check");
-    tree.getActionMap().put("check",  new AbstractAction("check") {
+   /*DEBUG*/ tree.getActionMap().put("check",  new AbstractAction("check") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  doEdit("Check");
+	  System.out.println(getText());
+	  System.out.println(getJavaSource());
 	}});
-    */
   }
   private DefaultMutableTreeNode clipboard = null;
 
-  /* 
-  public static void main(String[] args){
+  /*DEBUG*/public static void main(String[] args){
     String algo = 
       "{ DEBUT_PROGRAMME"+
       "  { \"AFFICHER (\\\"Hello World!\\\");\" }"+
@@ -621,7 +650,6 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
       "}";
     AlgoEditor fen = new AlgoEditor(); fen.setText(algo); Utils.show(fen, "AlgoEditor", 800, 600);
   }
-  */
 }
 
 
