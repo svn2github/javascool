@@ -205,8 +205,6 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
    * </ul><li>Function call affectations: <ul>
    * <li><tt>{ "AFFICHER (<i>expression</i>);" }</tt> 
    * prints the expression value on the user display.</li>
-   * <li><tt>{ "NOUVEAU_TRACE (<i>largeur</i>, <i>hauteur</i>);" }</tt> 
-   * initializes a new drawing of sizes <tt>[0, largeur] x [0, hauteur]</tt>.</li>
    * <li><tt>{ "TRACE_LIGNE (<i>x1</i>, <i>y1</i>, <i>x1</i>, <i>y1</i>);" }</tt> 
    * draws a segment line from the point (<tt>x1, y1</tt>) to  the point (<tt>x2, y2</tt>).</li>
    * <li><tt>{ "TRACE_MOT (<i>x</i>, <i>y</i>, "<i>mot</i>");" }</tt> 
@@ -362,6 +360,12 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
   {
     name.setEditable(true);
     value.setEditable(true);
+    type.addActionListener(new ActionListener() {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  name.setSelectedItem(((String) name.getSelectedItem()).replaceAll("[^A_Za-z0-9]", "_").replaceFirst("^([0-9])", "_$1"));
+	}
+      });
     type.addActionListener(new ActionListener() {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 

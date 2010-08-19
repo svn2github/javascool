@@ -22,7 +22,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener; 
 import java.awt.event.ActionEvent; 
+
+// Proglets used
 import proglet.ingredients.Console;
+import proglet.exosdemaths.CurveDisplay;
 
 // Used for the file interface
 import javax.swing.JFileChooser;
@@ -589,6 +592,7 @@ public class Main extends JApplet { /**/public Main() { }
     }};
     private Runnable execute = new Runnable() { public void run() {
       Console.clear();
+      CurveDisplay.scopeReset();
       Jvs2Java.load(fileChooser.getFile());
       Jvs2Java.run(true);
     }};

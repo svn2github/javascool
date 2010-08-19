@@ -1,3 +1,62 @@
-<p title="Aide à l'utilisation de l'éditeur d'algorithme">
+<div title="Aide à l'utilisation de l'éditeur d'algorithme">
+  <div title="Préambule">
+    Ce petit éditeur graphique d'algorithmes permet à des élèves initiés à l'algorithmique avec un outil graphique<l class="note" link="1"/> tel que 
+    <l link="http://www.animanum.com/alice" text="alice"/>, <l link="http://scratch.mit.edu" text="sharp"/>, <l link="http://larp.marcolavoie.ca/fr/default.htm" text="larp"/> 
+    ou <l link="http://www.xm1math.net/algobox" text="algobox"/> de passer des «clicks souris» 
+    à une vraie <l link="http://javascool.gforge.inria.fr/?page=Faq#Pourquoi_ne_pas_utiliser_algobox_ou_la_calculette.2C_plut.C3.B4t_que_JavaScool_.3Fprogrammation syntaxique" 
+    text="programmation syntaxique"/>.
+  </div>
 
-</p>
+  <div class="ul" title="L'algorithmique en 3 x 4 éléments: 4 constructions, 4 types de variables, 4 fonctions">
+    <p><p class="ul" title="Instructions du langage">
+      <p>(séquence d'instruction) <c>{ <r>DEBUT_PROGRAMME</r> <i>instructions ..</i> <r>FIN_PROGRAMME</r> }</c> est la «boite» qui englobe tout le programme, 
+      entre le début et la fin du programme sera défini la <i>séquence d'instructions</i>. Les accolades "{" "}" permettent de délimiter la boite.</p>
+      <p>(instruction conditionnelle)<c>{ <r>SI_ALORS</r> (<i>expression booléenne</i>) {<r>ALORS</r> <i>instructions ..</i> <r>FIN_ALORS</r> }}</c> 
+      est une construction qui contient une «boite» d'instructions qui ne s'exécuteront 
+      que si l'expression booléenne (c'est à dire soit <r>VRAIE</r> soit <r>FAUSSE</r>) prend la valeur  <r>VRAIE</r> une fois évaluée.<p class="ul">
+        <p>(instruction conditionnelle double)<c>{ <r>SI_ALORS_SINON</r> (<i>expression booléenne</i>) {<r>ALORS</r> <i>instructions ..</i> <r>FIN_ALORS</r> } 
+        {<r>SINON</r> <i>instructions ..</i> <r>FIN_SINON</r> }}</c> est un construction qui contient deux «boites» d'instructions qui s'exécuteront selon que
+        l'expression booléenne est vraie ou fausse.</p>
+      </p></p>
+      <p>(boucle)<c>{ <r>TANT_QUE</r> (<i>expression booléenne</i>) {<r>FAIRE</r> <i>instructions ..</i> <r>FIN_FAIRE</r> }}</c>   
+      est une construction qui contient une «boite» d'instructions qui s'exécuteront tant que l'expression booléenne prend la valeur <r>VRAIE</r>: 
+      le mécanisme évalue l'expression booléenne, et si elle est vraie, toutes les instructions, 
+      puis ré-évalue l'expression booléenne, et si elle est vraie, toutes les instructions, etc..</p>
+    </p></p>
+    <p><p class="ul" title="Définition de variables">
+      Au moment de s'en servir<l class="note" link="2"/> d'une variable dans l'algorithme il faut déclarer son: <p class="ul">
+      <p><i>type</i> (texte: on dit «chaine de caractère», nombre: entier ou décimal, boolean: vrai ou faux).</p>
+      <p><i>nom</i> qui peut contenir des lettres suivies de chiffres et le caractère de liaison '_' (les noms "bizarres" sont à transformer en noms corrects).</p>
+      <p><i>valeur</i> qui est selon le <i>type</i> de la variable un <v>bout de texte</v> entre <v> </v>, ou un nombre, ou une expression mathématique ordinaire,
+      ou la fonction <r>LIRE_AU_CLAVIER()</r> pour lire la donnée au clavier.</p>
+    </p></p></p>
+    <p><p class="ul" title="Utilisation de fonctions">
+      Au delà de la fonction <r>LIRE_AU_CLAVIER()</r> il est possible de: <p class="ul">
+      <p><c>{ <r>AFFICHER</r> (<i>expression</i>); }</c> afficher un texte ou un calcul dans la <c>Console</c>.</p>
+      <p><c>{ <r>TRACE_LIGNE</r> (<i>x1</i>, <i>y1</i>, <i>x1</i>, <i>y1</i>);" }</c> pour tracer une ligne du point (<c>x1, y1</c>) au point (<c>x2, y2</c>).</p>
+      <p><c>{ <r>TRACE_MOT</r> (<i>x</i>, <i>y</i>, <v>mot</v>);" }</c>  pour tracer le <v>mot</v> au point  (<c>x, y</c>).</p>
+    </p></p></p>
+  </div>
+
+  <div title="Utilisation de l'interface">
+    <p>Utiliser l'interface se fait en trois temps: 
+    (1) choisir l'activité «Découvrir les algorithmes de manière graphique»,
+    (2) éditer l'algorithme à partir des boutons de l'interface,
+    (3) Compiler/tester le résultat. Voici comment son disposés tous les éléments:
+    <p class="center"><l icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/about_main.png"/></p>
+    </p>
+  </div>
+
+  <div class="notes">
+    <div id="1" title="Avertissement">De fait, si il s'agit d'apprendre l'algorithmique uniquement avec un outil graphique, nous vous proposons plutôt de considérer ces 
+      <l link="http://javascool.gforge.inria.fr/?page=Ailleurs" text="très beaux outils"/> conçus exactement pour <i>éviter</i> l'apprentissage syntaxique 
+      (qui, en bref, est indispensable pour comprendre les structures abstraites des concepts de l'informatique, mais peut être mis de côté dans un premier temps).</div>
+      <div id="2" title="Portée des variables">Dès le début de la programmation, il est conseillé d'initier l'apprenant à <p class="ul"></p>
+        <p>Définir chaque variable <i>dans la boite où on elle est utilisée</i>, et non au début du programme. Ceci évite beaucoup d'effets de bords falacieux.
+          <p>Cela permet aussi de comprendre la <i>portée des variables</i> c'est à dire le fait qu'elles ne sont visibles uniquement "en dessous" de là où elles sont définies 
+          et uniquement dans les "sous-boites" de la boite où elles sont définies. Autrement dit, uniquement dans les noeuds suivants du même sous-arbre.</p></p>
+        <p>Définir chaque variable <i>avec une valeur initiale</i>. Sinon le programme est indéfini.</p>
+    </div>
+  </div>
+</div>
+

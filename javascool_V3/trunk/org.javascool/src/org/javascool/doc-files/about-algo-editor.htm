@@ -4,5 +4,139 @@
 <div>
    <h2>Aide &agrave; l'utilisation de l'&eacute;diteur d'algorithme.</h2>
    
+   <div>
+      <h2>Pr&eacute;ambule.</h2>
+      Ce petit &eacute;diteur graphique d'algorithmes permet &agrave; des &eacute;l&egrave;ves initi&eacute;s &agrave; l'algorithmique avec un outil graphique<sup><a href="#1">1</a></sup> tel que 
+          <a href="http://www.animanum.com/alice">alice</a>, <a href="http://scratch.mit.edu">sharp</a>, <a href="http://larp.marcolavoie.ca/fr/default.htm">larp</a> 
+          ou <a href="http://www.xm1math.net/algobox">algobox</a> de passer des &laquo;clicks souris&raquo; 
+          &agrave; une vraie <a href="http://javascool.gforge.inria.fr/?page=Faq#Pourquoi_ne_pas_utiliser_algobox_ou_la_calculette.2C_plut.C3.B4t_que_JavaScool_.3Fprogrammation syntaxique">programmation syntaxique</a>.
+        
+   </div>
+   
+     
+   <ul class="ul">
+      <h2>L'algorithmique en 3 x 4 &eacute;l&eacute;ments: 4 constructions, 4 types de variables, 4 fonctions.</h2>
+          
+      <li>
+         <ul class="ul">
+            <h4>Instructions du langage.</h4>
+                  
+            <li>(s&eacute;quence d'instruction) <tt>{ <font color="#990000"><b>DEBUT_PROGRAMME</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_PROGRAMME</b></font> }</tt> est la &laquo;boite&raquo; qui englobe tout le programme, 
+                     entre le d&eacute;but et la fin du programme sera d&eacute;fini la <i>s&eacute;quence d'instructions</i>. Les accolades "{" "}" permettent de d&eacute;limiter la boite.
+            </li>
+                  
+            <li>(instruction conditionnelle)<tt>{ <font color="#990000"><b>SI_ALORS</b></font> (<i>expression bool&eacute;enne</i>) {<font color="#990000"><b>ALORS</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_ALORS</b></font> }}</tt> 
+                     est une construction qui contient une &laquo;boite&raquo; d'instructions qui ne s'ex&eacute;cuteront 
+                     que si l'expression bool&eacute;enne (c'est &agrave; dire soit <font color="#990000"><b>VRAIE</b></font> soit <font color="#990000"><b>FAUSSE</b></font>) prend la valeur  <font color="#990000"><b>VRAIE</b></font> une fois &eacute;valu&eacute;e.
+               <ul class="ul">
+                          
+                  <li>(instruction conditionnelle double)<tt>{ <font color="#990000"><b>SI_ALORS_SINON</b></font> (<i>expression bool&eacute;enne</i>) {<font color="#990000"><b>ALORS</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_ALORS</b></font> } 
+                                {<font color="#990000"><b>SINON</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_SINON</b></font> }}</tt> est un construction qui contient deux &laquo;boites&raquo; d'instructions qui s'ex&eacute;cuteront selon que
+                             l'expression bool&eacute;enne est vraie ou fausse.
+                  </li>
+                        
+               </ul>
+            </li>
+                  
+            <li>(boucle)<tt>{ <font color="#990000"><b>TANT_QUE</b></font> (<i>expression bool&eacute;enne</i>) {<font color="#990000"><b>FAIRE</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_FAIRE</b></font> }}</tt>   
+                     est une construction qui contient une &laquo;boite&raquo; d'instructions qui s'ex&eacute;cuteront tant que l'expression bool&eacute;enne prend
+               la valeur <font color="#990000"><b>VRAIE</b></font>: 
+                     le m&eacute;canisme &eacute;value l'expression bool&eacute;enne, et si elle est vraie, toutes les instructions, 
+                     puis r&eacute;-&eacute;value l'expression bool&eacute;enne, et si elle est vraie, toutes les instructions, etc..
+            </li>
+                
+         </ul>
+      </li>
+          
+      <li>
+         <ul class="ul">
+            <h4>D&eacute;finition de variables.</h4>
+                  Au moment de s'en servir<sup><a href="#2">2</a></sup> d'une variable dans l'algorithme il faut d&eacute;clarer son: 
+            <ul class="ul">
+                     
+               <li><i>type</i> (texte: on dit &laquo;chaine de caract&egrave;re&raquo;, nombre: entier ou d&eacute;cimal, boolean: vrai ou faux).
+               </li>
+                     
+               <li><i>nom</i> qui peut contenir des lettres suivies de chiffres et le caract&egrave;re de liaison '_' (les noms "bizarres" sont &agrave; transformer
+                  en noms corrects).
+               </li>
+                     
+               <li><i>valeur</i> qui est selon le <i>type</i> de la variable un <font color="#008000">"bout de texte"</font> entre <font color="#008000">" "</font>, ou un nombre, ou une expression math&eacute;matique ordinaire,
+                        ou la fonction <font color="#990000"><b>LIRE_AU_CLAVIER()</b></font> pour lire la donn&eacute;e au clavier.
+               </li>
+                   
+            </ul>
+         </ul>
+      </li>
+          
+      <li>
+         <ul class="ul">
+            <h4>Utilisation de fonctions.</h4>
+                  Au del&agrave; de la fonction <font color="#990000"><b>LIRE_AU_CLAVIER()</b></font> il est possible de: 
+            <ul class="ul">
+                     
+               <li><tt>{ <font color="#990000"><b>AFFICHER</b></font> (<i>expression</i>); }</tt> afficher un texte ou un calcul dans la <tt>Console</tt>.
+               </li>
+                     
+               <li><tt>{ <font color="#990000"><b>TRACE_LIGNE</b></font> (<i>x1</i>, <i>y1</i>, <i>x1</i>, <i>y1</i>);" }</tt> pour tracer une ligne du point (<tt>x1, y1</tt>) au point (<tt>x2, y2</tt>).
+               </li>
+                     
+               <li><tt>{ <font color="#990000"><b>TRACE_MOT</b></font> (<i>x</i>, <i>y</i>, <font color="#008000">"mot"</font>);" }</tt>  pour tracer le <font color="#008000">"mot"</font> au point  (<tt>x, y</tt>).
+               </li>
+                   
+            </ul>
+         </ul>
+      </li>
+        
+   </ul>
+   
+     
+   <div>
+      <h2>Utilisation de l'interface.</h2>
+          
+      <div>Utiliser l'interface se fait en trois temps: 
+             (1) choisir l'activit&eacute; &laquo;D&eacute;couvrir les algorithmes de mani&egrave;re graphique&raquo;,
+             (2) &eacute;diter l'algorithme &agrave; partir des boutons de l'interface,
+             (3) Compiler/tester le r&eacute;sultat. Voici comment son dispos&eacute;s tous les &eacute;l&eacute;ments:
+             
+         <div align="center" class="center"><img src="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/about_main.png" alt=""></div>
+             
+      </div>
+        
+   </div>
+   
+     
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div id="1">
+               <h3>Avertissement.</h3>De fait, si il s'agit d'apprendre l'algorithmique uniquement avec un outil graphique, nous vous proposons plut&ocirc;t de consid&eacute;rer
+               ces 
+                     <a href="http://javascool.gforge.inria.fr/?page=Ailleurs">tr&egrave;s beaux outils</a> con&ccedil;us exactement pour <i>&eacute;viter</i> l'apprentissage syntaxique 
+                     (qui, en bref, est indispensable pour comprendre les structures abstraites des concepts de l'informatique, mais peut
+               &ecirc;tre mis de c&ocirc;t&eacute; dans un premier temps).
+            </div>
+         </li>
+         <li>
+            <div id="2">
+               <h3>Port&eacute;e des variables.</h3>D&egrave;s le d&eacute;but de la programmation, il est conseill&eacute; d'initier l'apprenant &agrave; 
+               <ul class="ul"></ul>
+                       
+               <div>D&eacute;finir chaque variable <i>dans la boite o&ugrave; on elle est utilis&eacute;e</i>, et non au d&eacute;but du programme. Ceci &eacute;vite beaucoup d'effets de bords falacieux.
+                            
+                  <div>Cela permet aussi de comprendre la <i>port&eacute;e des variables</i> c'est &agrave; dire le fait qu'elles ne sont visibles uniquement "en dessous" de l&agrave; o&ugrave; elles sont d&eacute;finies 
+                               et uniquement dans les "sous-boites" de la boite o&ugrave; elles sont d&eacute;finies. Autrement dit, uniquement dans les noeuds
+                     suivants du m&ecirc;me sous-arbre.
+                  </div>
+               </div>
+                       
+               <div>D&eacute;finir chaque variable <i>avec une valeur initiale</i>. Sinon le programme est ind&eacute;fini.
+               </div>
+                   
+            </div>
+         </li>
+      </ol>
+   </div>
    
 </div>
