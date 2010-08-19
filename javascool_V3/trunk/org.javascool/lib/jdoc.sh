@@ -3,14 +3,20 @@
 # Usage of this script
 if [ "$1" = "-h" -o "$1" = "--help" ] 
 then cat <<EOD
-Usage: $0 [JDOCLOCATION]
-  JDoc generator
+Usage: $0 [jdoc-location]
+  JDoc generator and viewer, default location is /usr/local/javascool
 EOD
 exit 0
 fi
 
 # Defines the jdoc target directory (writable by all tu update the APIJVS)
-if [ -z "$1" ] ; then jdoc=/tmp/javascool/jdoc ; else jdoc=$1 ; fi
+if [ -z "$1" ] 
+  then if [ -d "/usr/local/javascool" ] 
+    then jdoc=/usr/local/javascool/jdoc
+    else jdoc=/tmp/javascool/jdoc
+  fi
+  else jdoc=$1 
+fi
 mkdir -p $jdoc/api $jdoc/APIJVS
 chmod a+w $jdoc/APIJVS
 

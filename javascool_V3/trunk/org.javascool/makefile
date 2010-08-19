@@ -228,7 +228,33 @@ gref :
 # This is used to access to web-site files
 
 ssh :
-	gnome-terminal -e "ssh scm.gforge.inria.fr 'cd /home/groups/javascool/htdocs ; bash -i'" 
+	@gnome-terminal -e "ssh scm.gforge.inria.fr 'cd /home/groups/javascool/htdocs ; bash -i'" 
+
+
+# This is used to install the javadoc bundle in /usr/local
+
+jinstall :
+	@sudo sh -c 'mkdir -p /usr/local/javascool/jdoc ; chmod a+rwx /usr/local/javascool/jdoc'
+
+# Check the site apache log
+
+wlog:
+	@firefox http://javascool.gforge.inria.fr/log
+
+ifeq ($(USER), philien)
+
+# Install the jdk 5 for philien
+
+jdk5deb:
+	@wget http://www.philien.fr/jdoc/jdk-1_5_0_22-linux-i586.bin -O jdk5install.bin -q
+	@sudo chmod +x ./jdk5install.bin
+	@sudo ./jdk5install.bin
+	@sudo mkdir -p /usr/java/
+	@sudo cp -r ./jdk1.5.0_22 /usr/java/
+	@sudo rm ./jdk1.5.0_22/ -r
+	@sudo rm ./jdk5install.bin
+
+endif
 
 ifeq ($(USER), vthierry)
 
@@ -252,26 +278,6 @@ wv3 :
 	@echo '<?php /* No web service in V3 ! */ header("Location:http://javascool.gforge.inria.fr"); ?>' > tmp.php	
 	@rsync --rsh='ssh -C' tmp.php facets.inria.fr:javascool/index.php ; rm tmp.php
 	@firefox http://facets.inria.fr/javascool
-
-endif
-
-# Check the site apache log
-
-wlog:
-	@firefox http://javascool.gforge.inria.fr/log
-
-ifeq ($(USER), philien)
-
-# Install the jdk 5 for philien
-
-jdk5deb:
-	@wget http://www.philien.fr/jdoc/jdk-1_5_0_22-linux-i586.bin -O jdk5install.bin -q
-	@sudo chmod +x ./jdk5install.bin
-	@sudo ./jdk5install.bin
-	@sudo mkdir -p /usr/java/
-	@sudo cp -r ./jdk1.5.0_22 /usr/java/
-	@sudo rm ./jdk1.5.0_22/ -r
-	@sudo rm ./jdk5install.bin
 
 endif
 
@@ -354,9 +360,9 @@ done :
 #:: make wraz         , Clears the web site cache
 #:: make wref         : Checks the web site broken links
 #::Useful links:
-#:: make jdoc         , Build the convenient Java and JavaScool doc bundle for local use
-#:: make jweb         , Opens the javascool web site
-#:: make wiki         , Opens the javascool wiki
+#:: make jdoc         , Opens the Java and JavaScool doc bundle
+#:: make jweb         , Opens the JavaScool web site
+#:: make wiki         , Opens the JavaScool wiki
 #:: make glog         , Connects to google analytics
 #:: make gref         , Connects to google dashboard
 # note: This makefile usage is fragible !! Take care. (here: ',' means run in background ':' run in external windows ';' do not run in the "please" toolbar)
