@@ -2,7 +2,8 @@
  * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2004.  All rights reserved. *
  *******************************************************************************/
 
-package org.javascooldev;
+package org.javascool;
+
 import org.javascool.Utils;
 
 // Used to build the gui
