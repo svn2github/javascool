@@ -21,7 +21,7 @@
      qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
     </div>
     <div>Le schéma est illustré ici :
-     <div class="center"><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/proglet/convanalogique/doc-files/conv.png"/></div>
+     <div class="center"><l class="icon" icon="conv.png"/></div>
      Bien entendu, ici, nous simulons ce mécanisme par une petite proglet.
     </div>
    <div>
@@ -59,7 +59,7 @@
         <p>}</p>
       </div><div class="ul">
         <div>Compléter ce code en comparant à 256 et 768, puis utilisant le tableau ci dessous à 128, etc. Et essayer le résultat ...
-          <div class="center"><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/proglet/convanalogique/doc-files/dicho.png"/></div>
+          <div class="center"><l class="icon" icon="dicho.png"/></div>
           On remarque qu'en 3 étapes nous avons déjà une idée de la valeur à 12.5% près, mais c'est bien long à écrire !</div>
         <div>Notez que les intervalles sont de :
           <div>512 milli-volts à la 1ère étape</div>

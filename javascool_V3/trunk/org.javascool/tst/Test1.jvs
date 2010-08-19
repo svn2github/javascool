@@ -1,6 +1,9 @@
 
+// DEBUT_PROGRAMME
 void main() {
- println("Bonjour, quel est ton nom ?");
- String texte = readString();
- println("Enchanté " + texte + ", et ... à bientôt !");
+   // AFFICHER ("Hello World !!! !");  
+   println ("Hello World  !!!   !");
+   // AFFICHER ("How do you do ?"); 
+   println ("How do you do ?");
+   // FIN_PROGRAMME 
 }

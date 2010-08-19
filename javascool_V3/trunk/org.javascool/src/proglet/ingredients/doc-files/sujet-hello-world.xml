@@ -29,17 +29,17 @@
     </div>
     <div title="Compiler et exécuter notre premier programme">Comment faire exécuter ce programme minimal par l'ordinateur ? Il y a trois étapes.
     <div class="ol">
-      <div><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/icones16/save.png"/> D'abord toujours ... sauver le texte source du programme dans un fichier d'extension <c>.jvs</c>, 
+      <div><l class="icon" icon="../../../org/javascool/doc-files/icones16/save.png"/> D'abord toujours ... sauver le texte source du programme dans un fichier d'extension <c>.jvs</c>, 
       par exemple <c>Hi1.jvs</c>, puis <c>Hi2.jvs</c> pour la version suivante, etc.. 
       Il faut <i>régulièrement</i> penser à sauvegarder ce qui a été entré au clavier !</div>
-      <div><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/icones16/compile.png"/> Puis . . compiler le programme: celà veut dire le traduire dans le langage de l'ordinateur.<div class="ul">
+      <div><l class="icon" icon="../../../org/javascool/doc-files/icones16/compile.png"/> Puis . . compiler le programme: celà veut dire le traduire dans le langage de l'ordinateur.<div class="ul">
         <div>En effet, l'ordinateur est une machine électronique et le "langage qu'il comprend" est extrêment basique (ouvrir tel interrupteur, 
         connecter telle partie du circuit à une autre, etc..) et tout ceci est bien trop fastidieux à décrire directement 
         (l'action <r>println</r>, par exemple, comporte elle-même des milliers d'opérations élémentaires !).</div>
         <div>Alors, nous disposons d'un langage <i>formel de haut niveau</i> celui que nous découvrons ici et que nous appelons <l class="javascool"/> et
         qui permet de spécifier des instructions de la manière la plus efficace possible.</div>
       </div> Compiler signifie alors <i>traduire le langage <l class="javascool"/> en langage machine</i>.</div>
-      <div><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/icones16/play.png"/> Enfin ... exécuter le programme : 
+      <div><l class="icon" icon="../../../org/javascool/doc-files/icones16/play.png"/> Enfin ... exécuter le programme : 
       celà veut dire demander à l'ordinateur de partir de <b><r>void main</r></b> et d'exécuter toutes les instructions données. 
       Dans notre cas, nous obtiendrons l'écriture de <b>Hello World !</b>... et 
       nous aurons en main la base pour faire des choses bien plus intéressantes et plus sophistiquées !</div>

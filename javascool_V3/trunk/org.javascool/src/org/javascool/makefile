@@ -1,8 +1,8 @@
 
-
 ifeq ($(USER), vthierry)
 
-all : j3
+all : 
+	@$(MAKE) j3
 #	@cd ../tst ; ../lib/run.sh org.javascool.AlgoEditor
 #	@cd ../tst ; ../lib/run.sh org.javascool.ProgletApplet exosdemaths
 

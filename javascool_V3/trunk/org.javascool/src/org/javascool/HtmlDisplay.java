@@ -10,13 +10,16 @@ import java.awt.BorderLayout;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
+import javax.swing.JEditorPane;
 
 // Used to manage links
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import java.net.URL;
 import java.util.Vector;
+import java.net.URLEncoder;
+import java.net.URLDecoder;
+import javax.swing.text.Document;
 
 // Used to manage keystroke
 import javax.swing.KeyStroke;
@@ -33,7 +36,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
   private static final long serialVersionUID = 1L;
 
   /** The Html Display pane. */
-  private JTextPane pane;
+  private JEditorPane pane;
   /** The navigation buttons. */
   private JButton home, prev, next;
   {
@@ -45,7 +48,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     bar.add(prev = new JButton("Page précédente", Utils.getIcon("org/javascool/doc-files/icones16/prev.png")));
     bar.add(next = new JButton("Page suivante", Utils.getIcon("org/javascool/doc-files/icones16/next.png")));
     add(bar, BorderLayout.NORTH);
-    pane = new JTextPane();
+    pane = new JEditorPane();
     pane.setEditable(false);
     pane.setContentType("text/html");
     pane.addHyperlinkListener(new HyperlinkListener() {
@@ -88,14 +91,15 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
   }
 
   /** Sets the HTML text to show and return this.
-   * @param text The HTML text to show.
-   * @return This, allowing to use the <tt>new HtmlDisplay().reset(..)</tt> construct.
+   * - Called to show a HTML string.
+   * @param text The HTML text location to show.
+   * @return This, allowing to use the <tt>new HtmlDisplay().setText(..)</tt> construct.
    */
   public HtmlDisplay reset(String text) { 
-    pane.setText(text); 
-    pane.setCaretPosition(0);
-    return this; 
+    try { load(prefix+URLEncoder.encode(text, "UTF-8"), true); } catch(Exception e) { }
+    return this;
   }
+  static private final String prefix = "file://string/?value=:";
 
   /** Sets the HTML text to show and return this.
    * - Called when a link is clicked in the page.
@@ -105,15 +109,21 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
   public HtmlDisplay load(String location) { 
     return load(location, true);
   }
-  /**/public HtmlDisplay load(String location, boolean stack) { 
+  private HtmlDisplay load(String location, boolean stack) { 
     try {
       URL url = urls.empty() ? Utils.toUrl(location) : new URL(urls.current(), location);
       if (stack) urls.push(url);
       updateButtons();
-      return reset(Utils.loadString(urls.current().toString()));
+      if (urls.current().toString().startsWith(prefix)) {
+	pane.setText(URLDecoder.decode(urls.current().toString().substring(prefix.length()), "UTF-8"));
+      } else {
+	pane.getDocument().putProperty(Document.StreamDescriptionProperty, null);
+	pane.setPage(urls.current());
+      }
     } catch(Exception e) {
-      return reset(e.toString());
+      pane.setText("Upps : erreur de lien internet «"+e.toString()+"»");
     }
+    return this;
   }
   /** Defines the URL backward/forward mechanism. */
   private class Stack extends Vector<URL> {
@@ -139,7 +149,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     /** Returns the next URL, if any. */
     public URL next() { if (hasNext()) current++; return current(); }
     /** Dumps the stack (for debug) */
-    private void dump() { for (int i = 0; i < size(); i++) System.out.println((i == current ? "*" : " ")+" "+get(i)); }
+    private void dump() { for (int i = 0; i < size(); i++) System.err.println((i == current ? "*" : " ")+" "+get(i)); System.err.println(); }
   }
   /** The URL stack. */
   private Stack urls = new Stack();

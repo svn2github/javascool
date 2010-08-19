@@ -29,8 +29,7 @@ public class CurveDisplay implements org.javascool.Proglet { private CurveDispla
 
     public Panel() {
       super(new BorderLayout());
-      setPreferredSize(new Dimension(560, 580));
-      add(scope = new CurveOutput(), BorderLayout.NORTH);
+      add(scope = new CurveOutput(), BorderLayout.CENTER);
       JPanel input = new JPanel(new BorderLayout());
       input.add(inputX = new NumberInput("X"), BorderLayout.NORTH);
       input.add(inputY = new NumberInput("Y"), BorderLayout.SOUTH);
@@ -71,6 +70,13 @@ public class CurveDisplay implements org.javascool.Proglet { private CurveDispla
       scopeSet(x, 0.5 * Math.sin(10 * x) + 0.5, 6);
       scopeSet(x, -Math.exp(-(x + 1)), 7);
     }
+    /*
+      scopeAddLine(0, 0, 1, 1, 7);
+      scopeAddString(-1, -1, "OK", 7);
+      for(int c = 1; c <= 10; c++) {
+      scopeAddCircle(0, 0, 0.1 * c, c - 1);
+      }
+    */
   }
 
   //
@@ -98,6 +104,7 @@ public class CurveDisplay implements org.javascool.Proglet { private CurveDispla
   }
 
   /** Ajoute un chaîne de caratère au tracé.
+   * <p><tt>scopeAdd</tt> est une abréviation pour <tt>scopeAddString</tt>.</p>
    * @param x Abcisse du coin inférieur gauche de la chaîne, dans [-X, X], par défaut [-1, 1].
    * @param y Ordonnée du coin inférieur gauche de la chaîne, dans [-Y, Y], par défaut [-1, 1].
    * @param s Valeur de la chaîne de caratère.
@@ -111,6 +118,9 @@ public class CurveDisplay implements org.javascool.Proglet { private CurveDispla
   }
   /**/public static void scopeAdd(double x, double y, String s, int c) {
     scopeAddString(x, y, s, c);
+  }
+  /**/public static void scopeAdd(double x, double y, String s) {
+    scopeAddString(x, y, s);
   }
 
   /** Trace un rectangle. 

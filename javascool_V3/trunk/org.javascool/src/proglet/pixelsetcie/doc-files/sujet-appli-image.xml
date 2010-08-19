@@ -59,7 +59,7 @@
       Considérons les deux images issues d'une célèbre <l link="http://www.ri.cmu.edu/publication_view.html?pub_id=3904" text="base de donnée"/>,
       mise à disposition de la communauté scientifique internationale pour étudier les logiciels de traitement des séquences d'images contenant des mouvements humains.<div class="ul">
         <div>Si l'on considère les deux images suivantes:
-        <div class="center"><div class="table"><div><div><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/cmu-jump1.jpg"/></div><div><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/cmu-jump3.jpg"/></div></div></div></div>
+        <div class="center"><div class="table"><div><div><l class="icon" icon="cmu-jump1.jpg"/></div><div><l class="icon" icon="cmu-jump3.jpg"/></div></div></div></div>
         que se passera t'il si on ``additionne´´ ces deux images ? 
         C'est à dire si l'on construit une nouvelle image dont la valeur de chaque pixel est la somme des valeurs des pixels de chaque image ? Expliquer en une phrase.</div>
         <div>Si chaque image était dessinée sur une feuille de papier calque, à quoi correspondrait la valeur ``transparente´´ par rapport à la couleur de ces images ?</div>
@@ -70,7 +70,7 @@
     <div title="Soustraire deux images : détecter des changements">
       Cette partie se fera sans rien programmer, comme la précédente. <div class="ul">
         <div>Si l'on considère les deux images suivantes (cliquer sur l'image de gauche pour visualiser la séquence):
-        <div class="center"><div class="table"><div><div><l link="http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/13_11.avi" icon="http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/cmu-jump1.jpg" text=""/></div><div><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/cmu-jump2.jpg"/></div></div></div></div>
+        <div class="center"><div class="table"><div><div><l link="http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/13_11.avi" icon="cmu-jump1.jpg" text=""/></div><div><l class="icon" icon="cmu-jump2.jpg"/></div></div></div></div>
         que s'est il passé entre les deux images ? Si l'on ``soustrait´´ les deux images de manière similaire à ce qui a été fait pour les ``additionner´´ que va t'il se passer,
         pour les pixels correspondants à des points immobiles entre les deux images ? Et les pixels correspondants à des points en mouvement ? 
         Expliquer en deux/trois phrases.</div>

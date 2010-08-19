@@ -2,7 +2,7 @@
   <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>
     Cette proglet<l class="note" link="1"/> permet de manipuler une petite image de résolution variable, dont les coordonnées se définissent ainsi:
-     <div class="center"><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/smiley.png"/></div>
+     <div class="center"><l class="icon" icon="smiley.png"/></div>
      c'est à dire que l'abscisse (la position horizontale ou largeur, width en anglais) va de <c>-width</c> à <c>+width</c> 
      et l'ordonnée (la position verticale ou hauteur, height en anglais) va de <c>-height</c> à <c>+height</c>.
      <div>La fonction:<div class="code">
@@ -38,7 +38,7 @@
     </div>
     <div>Un exemple d'utilisation: lors de la <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/pixelsetcie/doc-files/the-proglet.htm" text="démonstration"/>, 
       le signe de la paix va s'afficher:
-      <div class="center"><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/smiley2.jpg"/></div>
+      <div class="center"><l class="icon" icon="smiley2.jpg"/></div>
       ceci, à différentes résolutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne résolution il sera très lisible, puis petit à petit il se réduira à quelques pixels,
       selon le programme suivant:
       <div class="code">

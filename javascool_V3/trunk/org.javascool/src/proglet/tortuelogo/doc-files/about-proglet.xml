@@ -10,7 +10,7 @@
   </div>
 
   <div>Que les nostalgiques de cette ancienne façon d'apprendre à programmer en profite, la tortue est de retour:
-  <div class="center"><l class="icon" icon="http://javascool.gforge.inria.fr/v3/api/proglet/tortuelogo/doc-files/turtle.gif"/></div>
+  <div class="center"><l class="icon" icon="turtle.gif"/></div>
   </div>
 
   <div>Un exemple d'utilisation: lors de la <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/tortuelogo/doc-files/the-proglet.htm" text="démonstration"/>,

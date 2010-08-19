@@ -48,6 +48,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
   {
     setLayout(new BorderLayout());
     JToolBar bar = new JToolBar("AlgoEditor", JToolBar.VERTICAL);
+    bar.setFloatable(false);
     bar.setBorderPainted(false);
     bar.setLayout(new GridLayout(0, 1));
 
@@ -295,7 +296,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	       replaceFirst("AFFICHER", "println").
 	       replaceFirst("NOUVEAU_TRACE", "scopeReset").
 	       replaceFirst("TRACE_LIGNE", "scopeAddLine").
-	       replaceFirst("TRACE_MOT", "scopeAdd").
+	       replaceFirst("TRACE_MOT", "scopeAddString").
 	       replaceAll("VRAI", "true").
 	       replaceAll("FAUX", "false")
 	       +"\n");

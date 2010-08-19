@@ -169,8 +169,12 @@ public class Main extends JApplet { /**/public Main() { }
   /** A display with external links canceled. */
   private class HelpDisplay extends HtmlDisplay {
     private static final long serialVersionUID = 1L;
-    public HtmlDisplay reset(String text) { 
-      return super.reset(text.replaceAll("<a\\s+href=\\s*\"(http|https):[^\"]*\"[^>]*>", ""));
+    public HtmlDisplay load(String location) { 
+      if (location.matches("^(http|https):.*$"))
+	reset("Cette page est à l'adresse internet: <tt>"+location+"</tt> (non accessible ici).");
+      else 
+        super.load(location);
+      return this;
     }
   }
   /** Removes a tab from the tabbed panel.
@@ -573,21 +577,25 @@ public class Main extends JApplet { /**/public Main() { }
       delTool("Arrêter");
       showTab("Console");
       Console.clear();
-      fileChooser.doSave(activity.getEditor(), activity.getExtension());
-      if (fileChooser.getFile() != null) {
-	if (getEditor() instanceof AlgoEditor) {
-	  fileChooser.doSave(algoViewer, Jvs2Java.reformat(((AlgoEditor) getEditor()).getJavaSource()), ".jvs");
-	}
-	Jvs2Java.translate(fileChooser.getFile());
-	String out = Jvs2Java.compile(fileChooser.getFile());
-	System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
-	Console.printHtml("<hr>\n");
-	if (out.length() == 0) {
-	  addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
+      if (getEditor().getText().trim().length() > 0) {
+	fileChooser.doSave(getEditor(), getExtension());
+	if (fileChooser.getFile() != null) {
+	  if (getEditor() instanceof AlgoEditor) {
+	    fileChooser.doSave(algoViewer, Jvs2Java.reformat(((AlgoEditor) getEditor()).getJavaSource()), ".jvs");
+	  }
+	  Jvs2Java.translate(fileChooser.getFile());
+	  String out = Jvs2Java.compile(fileChooser.getFile());
+	  System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
+	  Console.printHtml("<hr>\n");
+	  if (out.length() == 0) {
+	    addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
 	  addTool("Arrêter", "org/javascool/doc-files/icones16/stop.png", stop);
+	  }
+	} else {
+	  System.out.println("Impossible de compiler: le fichier n'est pas sauvegardé !");
 	}
-      } else {
-	System.out.println("Impossible de compiler: le fichier n'est pas sauvegardé !");
+      }  else {
+	System.out.println("Rien à compiler: il n'y pas de code dans l'éditeur !");
       }
     }};
     private Runnable execute = new Runnable() { public void run() {

@@ -3,7 +3,7 @@
     Ce petit éditeur graphique d'algorithmes permet à des élèves initiés à l'algorithmique avec un outil graphique<l class="note" link="1"/> tel que 
     <l link="http://www.animanum.com/alice" text="alice"/>, <l link="http://scratch.mit.edu" text="sharp"/>, <l link="http://larp.marcolavoie.ca/fr/default.htm" text="larp"/> 
     ou <l link="http://www.xm1math.net/algobox" text="algobox"/> de passer des «clicks souris» 
-    à une vraie <l link="http://javascool.gforge.inria.fr/?page=Faq#Pourquoi_ne_pas_utiliser_algobox_ou_la_calculette.2C_plut.C3.B4t_que_JavaScool_.3Fprogrammation syntaxique" 
+    à une vraie <l link="http://javascool.gforge.inria.fr/?page=Faq#Pourquoi_ne_pas_utiliser_algobox_ou_la_calculette.2C_plut.C3.B4t_que_JavaScool_.3F"
     text="programmation syntaxique"/>.
   </div>
 
@@ -43,7 +43,7 @@
     (1) choisir l'activité «Découvrir les algorithmes de manière graphique»,
     (2) éditer l'algorithme à partir des boutons de l'interface,
     (3) Compiler/tester le résultat. Voici comment son disposés tous les éléments:
-    <p class="center"><l icon="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/about_main.png"/></p>
+    <p class="center"><l icon="about_algo-editor.png"/></p>
     </p>
   </div>
 
@@ -51,11 +51,12 @@
     <div id="1" title="Avertissement">De fait, si il s'agit d'apprendre l'algorithmique uniquement avec un outil graphique, nous vous proposons plutôt de considérer ces 
       <l link="http://javascool.gforge.inria.fr/?page=Ailleurs" text="très beaux outils"/> conçus exactement pour <i>éviter</i> l'apprentissage syntaxique 
       (qui, en bref, est indispensable pour comprendre les structures abstraites des concepts de l'informatique, mais peut être mis de côté dans un premier temps).</div>
-      <div id="2" title="Portée des variables">Dès le début de la programmation, il est conseillé d'initier l'apprenant à <p class="ul"></p>
+      <div id="2" title="Portée des variables">Dès le début de la programmation, il est conseillé d'initier l'apprenant à <p class="ul">
         <p>Définir chaque variable <i>dans la boite où on elle est utilisée</i>, et non au début du programme. Ceci évite beaucoup d'effets de bords falacieux.
           <p>Cela permet aussi de comprendre la <i>portée des variables</i> c'est à dire le fait qu'elles ne sont visibles uniquement "en dessous" de là où elles sont définies 
           et uniquement dans les "sous-boites" de la boite où elles sont définies. Autrement dit, uniquement dans les noeuds suivants du même sous-arbre.</p></p>
         <p>Définir chaque variable <i>avec une valeur initiale</i>. Sinon le programme est indéfini.</p>
+      </p>
     </div>
   </div>
 </div>
