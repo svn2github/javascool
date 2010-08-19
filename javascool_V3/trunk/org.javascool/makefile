@@ -148,14 +148,27 @@ endif
 
 # JavaScool doc generation
 
+jdoc :
+	@lib/jdoc.sh
+
+JDOC_OPTION=-quiet -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -charset "UTF-8" -windowtitle "Java's Cool v3" 
+ifdef JDOC
+JDOC_OPTION+= -private -linkoffline $(JDOC)/api/ $(JDOC)/api/ 
+
+api: htm $(JDOC)/APIJVS
+
+$(JDOC)/APIJVS : $(SRC) $(DOC) makefile $(shell find src -name package.html) 
+else
+JDOC_OPTION+= -public -link http://download.oracle.com/javase/6/docs/api
+
 api: htm www/api 
 
 www/api : $(SRC) $(DOC) makefile $(shell find src -name package.html) 
-	@echo "make $@"
+endif
 	@rm -rf $@ ; mkdir -p $@
+	@echo "make $@"
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
-	@javadoc -quiet -public -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -link http://download.oracle.com/javase/6/docs/api \
-	 -windowtitle "Java's Cool v3" -d $@ $(SRC)
+	@javadoc $(JDOC_OPTION) $(SRC) -d $@
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
 	@for f in $(SRC) $(XSL) $(shell find src -name doc-files) ; do d=`echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; mkdir -p `dirname $$d` ; cp -r $$f $$d ; done
 	@for f in `find $@ -name '*.java' -o -name '*.jvs'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
@@ -165,61 +178,6 @@ www/api : $(SRC) $(DOC) makefile $(shell find src -name package.html)
 
 aps:
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
-
-#####################################################################################################################################
-
-# Java doc generation
-
-viewjdoc: jdoc
-	@firefox $(PWD)/jdoc/index.html 
-
-jdoc : jdochi jdocfolders jdoc/api/doc.tar.gz jdoc/base.tar.gz $(SRC) makefile $(shell find src -name package.html) 
-	@echo "Good, dependences are ok and we now build the Javascool API Private Doc"
-	@mkdir -p $@/APIJVS
-	@echo "> Generating the JavaScool API Private Doc ..."
-	@javadoc -quiet -private -nohelp -nodeprecated -notree -noindex -author -charset "UTF-8" -use -linkoffline ../api/ jdoc/api/ -windowtitle "Java's Cool v3" -d $@/APIJVS $(SRC)
-	@echo "> Coping doc-file to the JavaScool API Doc ..."
-	@for f in $(SRC) $(shell find src -name doc-files) ; do cp -r $$f `echo $$f | sed 's/^src/$(subst /,\\/,$@/APIJVS)/'` ; done
-	@echo "> Generating colored source code ..."
-	@for f in `find $@ -name '*.java'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
-	@echo "> Delete tmp files ..."
-	@rm -rf `find $@ -name .svn` 
-	@echo "Fine, JDoc is now generated. Its size is `du -s -B 1048576 $@ | awk '{print $$1}'`Mbytes"
-	@echo "To open JDoc, open in your browser jdoc/index.html and Read The Fine Manuel (RTFM)"
-
-jdochi:
-	@echo "                    JDoc Generator                      "
-	@echo "  Welcome to the generator of the bigest Java Doc"
-	@echo ""
-	@echo " --------------------------------------------------------"
-	@echo " | Copyright 2010 INRIA for JavaScool Doc               |"
-	@echo " | Copyright 1993-2010 Oracle for Java API Doc          |"
-	@echo " --------------------------------------------------------"
-	@echo " "
-	@echo " Distributed on GNU GPL V3                      "
-	@echo " For more information : http://javascool.gforge.inria.fr"
-	@echo " ________________________________________________________"
-	@echo " "
-	@echo "> Evaluate and build dependances ..."
-
-jdocfolders:
-	@mkdir -p jdoc/api
-
-jdoc/api/doc.tar.gz:
-	@echo "You need to build the Java Api Doc :  (This can make some time)"
-	@echo "> Dowloading of the Java api doc ..."
-	@wget http://www.philien.fr/jdoc/java_api_doc.tar.gz -O $@ -q
-	@echo "> Uncompressing the Java api doc ..."
-	@cd jdoc/api/;tar xzf ./doc.tar.gz;
-	@echo "The Java api doc is build"
-
-jdoc/base.tar.gz:
-	@echo "You need to build the Doc Base : (This can make some time)"
-	@echo "> Dowloading of the doc base ..."
-	@wget http://www.philien.fr/jdoc/usefull.tar.gz -O $@ -q
-	@echo "> Uncompressing the doc base ..."
-	@cd jdoc/;tar xzf ./base.tar.gz;
-	@echo "The doc base is build"
 
 #####################################################################################################################################
 
@@ -328,7 +286,7 @@ endif
 # MakeToolBar commands
 
 please : cmp
-	@lib/run.sh  org.javascooldev.MakeToolBar
+	@lib/run.sh  org.javascool.MakeToolBar
 
 done : 
 	@echo '..done (Enter to close)' ; read cont
@@ -351,7 +309,6 @@ done :
 #: ./src/org/javascool/*.java : contains the javascool core and widget classes and doc-files
 #: ./src/org/javascool/*.xslt : contains the javascool XSLT rules.
 #: ./src/proglet/*/*.java     : contains the proglets classes and doc-files
-#: ./src/org/javascooldev/*   : contains the javascool development tools
 #:
 #: [1.2] Web site files
 #: src/.../doc-files          : contains all javascool and proglets corresponding resources (documentation, icons, ..)
@@ -397,7 +354,7 @@ done :
 #:: make wraz         , Clears the web site cache
 #:: make wref         : Checks the web site broken links
 #::Useful links:
-#:: make jdoc         ; Build the convenient Java and JavaScool doc bundle for local use
+#:: make jdoc         , Build the convenient Java and JavaScool doc bundle for local use
 #:: make jweb         , Opens the javascool web site
 #:: make wiki         , Opens the javascool wiki
 #:: make glog         , Connects to google analytics
