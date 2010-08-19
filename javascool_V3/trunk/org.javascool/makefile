@@ -22,7 +22,8 @@ doc: api
 	firefox file:www/api/org/javascool/package-summary.html
 
 svn: clean
-	svn up ; svn ci -m '' ; svn status
+	@svn propset svn:ignore revision.xml lib ; svn propset svn:ignore about-main.htm src/org/javascool/doc-files
+	@svn up ; svn ci -m '' ; svn status
 
 clean:
 	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java .http.root www/.htcache lib/manifest.mf www/api www/javascool.jar www/sources.zip
