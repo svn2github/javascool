@@ -124,6 +124,7 @@ public class Jvs2Java { private Jvs2Java() { }
       }
       // Imports proglet's static methods
       head.append("import static org.javascool.Macros.*;");
+      head.append("import static java.lang.Math.*;");
       if (proglet.length() == 0) {	
 	for(String p : proglets.keySet()) 
 	head.append("import static "+proglets.get(p)+".*;");

@@ -23,9 +23,9 @@
         <p><T/><r>double</r> y_I = (y_A + y_B) / 2;</p>
         <m>Tracé des points et des lignes correspondants</m>
         <p><T/><r>scopeReset</r>();</p>
-        <p><T/><r>scopeAdd</r>(x_A, y_A, <v>A</v>, 4);</p>
+        <p><T/><r>scopeAdd</r>(x_A, y_A, <v>A</v>, 5);</p>
         <p><T/><r>scopeAdd</r>(x_I, y_I, <v>I</v>, 2);</p>
-        <p><T/><r>scopeAdd</r>(x_B, y_B, <v>B</v>, 4);</p>
+        <p><T/><r>scopeAdd</r>(x_B, y_B, <v>B</v>, 5);</p>
         <p><T/><r>scopeAddLine</r>(x_A, y_A, x_B, y_B, 6);</p>
         <p>}</p>
     </div>Le programme principal <r>main</r>:<div class="ul">

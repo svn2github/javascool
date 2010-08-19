@@ -6,13 +6,3 @@ void main()  {
    int age = readInteger();
    println("He, "+age+" ? Je suis plus vieux que toi !!");
 }
-
-
-
-
-
-
-
-
-
-

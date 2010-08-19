@@ -95,7 +95,7 @@
         <p>}</p>
         <p/>
         <p><r>void main</r>() {</p>
-        <p><T/><r>smileyLoad</r>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");</p>
+        <p><T/><r>smileyLoad</r>("http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/doisneaubuffon.jpg");</p>
         <p><T/><r>for</r>(<r>int</r> n = 0; n &lt; 2; n = n + 1) {</p>
         <p><T/><T/>filtre();</p>
         <p><T/>}</p>
@@ -126,7 +126,7 @@
         <p>}</p>
         <p/>
         <p><r>void main</r>() {</p>
-        <p><T/><r>smileyLoad</r>("http://facets.inria.fr/javascool/doisneaubuffon.jpg");</p>
+        <p><T/><r>smileyLoad</r>("http://javascool.gforge.inria.fr/v3/api/proglet/pixelsetcie/doc-files/doisneaubuffon.jpg");</p>
         <p><T/>filtre();</p>
         <p>}</p>
       </div><div class="ul">
