@@ -129,7 +129,7 @@ public class Main extends JApplet { /**/public Main() { }
    * @param pane Tab panel.
    */
   public void addTab(String label, JPanel pane) {
-    boolean floatable = true;
+    boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024;
     if (floatable) {
       JToolBar bar = new JToolBar(); // bar.setBorderPainted(false); 
       bar.addComponentListener(resizer);
@@ -560,7 +560,7 @@ public class Main extends JApplet { /**/public Main() { }
     // Compilation/execution mechanism
     protected void initCompile() {
       addTab("Console", Jvs2Java.getPanel("ingredients"));
-      addTool("Compile", "org/javascool/doc-files/icones16/compile.png", validate = compile);
+      addTool("Compiler", "org/javascool/doc-files/icones16/compile.png", validate = compile);
     }
     private Runnable compile = new Runnable() { public void run() {
       delTool("Exécuter");
@@ -608,7 +608,7 @@ public class Main extends JApplet { /**/public Main() { }
     // Common panels and tools
     public void init() {
       if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
-      addTab("Jvs Editor", (JPanel) jvsEditor);
+      addTab("Editeur", (JPanel) jvsEditor);
       jvsEditor.setProglet(proglet);
       initCompile();
       if (!"ingredients".equals(proglet)) {
@@ -630,8 +630,8 @@ public class Main extends JApplet { /**/public Main() { }
     public void init() {
       if (algoEditor == null) algoEditor = new AlgoEditor(); 
       if (algoViewer == null) { algoViewer = new JvsSourceEditor(); algoViewer.reset(false); }
-      addTab("Algo Editor", (JPanel) algoEditor);
-      addTab("Code Viewer", (JPanel) algoViewer);
+      addTab("Editeur d'Algo.", (JPanel) algoEditor);
+      addTab("Voir le code", (JPanel) algoViewer);
       initCompile();
       addTab("Tracé", Jvs2Java.getPanel("exosdemaths"));
     }
