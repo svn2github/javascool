@@ -13,5 +13,5 @@
     Pour les réinsérer, il faut fermer la fenêtre supplémentaire.</p>
   </p>
   <l class="include" link="about-keystrokes.xml"/>
-  <l class="include" link="revision.xml"/>
+  <l class="include" link="../../../../lib/revision.xml"/>
 </p>
