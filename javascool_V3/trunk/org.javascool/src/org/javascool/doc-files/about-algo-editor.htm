@@ -17,36 +17,36 @@
    <div>
       <h2>L'algorithmique en 3 x 4 &eacute;l&eacute;ments: 4 constructions, 4 types de variables, 4 fonctions.</h2>
           
-      <ul class="ul">
+      <div>
          <h3>Instructions du langage.</h3>
-               
-         <li>(s&eacute;quence d'instruction) <tt>{ <font color="#990000"><b>DEBUT_PROGRAMME</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_PROGRAMME</b></font> }</tt> est la &laquo;boite&raquo; qui englobe tout le programme, 
-                  entre le d&eacute;but et la fin du programme sera d&eacute;fini la <i>s&eacute;quence d'instructions</i>. Les accolades "{" "}" permettent de d&eacute;limiter la boite.
-         </li>
-               
-         <li>(instruction conditionnelle)<tt>{ <font color="#990000"><b>SI_ALORS</b></font> (<i>expression bool&eacute;enne</i>) {<font color="#990000"><b>ALORS</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_ALORS</b></font> }}</tt> 
-                  est une construction qui contient une &laquo;boite&raquo; d'instructions qui ne s'ex&eacute;cuteront 
-                  que si l'expression bool&eacute;enne (c'est &agrave; dire soit <font color="#990000"><b>VRAIE</b></font> soit <font color="#990000"><b>FAUSSE</b></font>) prend la valeur  <font color="#990000"><b>VRAIE</b></font> une fois &eacute;valu&eacute;e.
-            <ul class="ul">
+         <ul class="ul">
+                  
+            <li>(s&eacute;quence d'instruction) <tt>{ <font color="#990000"><b>DEBUT_PROGRAMME</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_PROGRAMME</b></font> }</tt> est la &laquo;boite&raquo; qui englobe tout le programme, 
+                     entre le d&eacute;but et la fin du programme sera d&eacute;fini la <i>s&eacute;quence d'instructions</i>. Les accolades "{" "}" permettent de d&eacute;limiter la boite.
+            </li>
+                  
+            <li>(instruction conditionnelle)<tt>{ <font color="#990000"><b>SI_ALORS</b></font> (<i>expression bool&eacute;enne</i>) {<font color="#990000"><b>ALORS</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_ALORS</b></font> }}</tt> 
+                     est une construction qui contient une &laquo;boite&raquo; d'instructions qui ne s'ex&eacute;cuteront 
+                     que si l'expression bool&eacute;enne (c'est &agrave; dire soit <font color="#990000"><b>VRAIE</b></font> soit <font color="#990000"><b>FAUSSE</b></font>) prend la valeur  <font color="#990000"><b>VRAIE</b></font> une fois &eacute;valu&eacute;e.
                        
-               <li>(instruction conditionnelle double)<tt>{ <font color="#990000"><b>SI_ALORS_SINON</b></font> (<i>expression bool&eacute;enne</i>) {<font color="#990000"><b>ALORS</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_ALORS</b></font> } 
+               <div>(instruction conditionnelle double)<tt>{ <font color="#990000"><b>SI_ALORS_SINON</b></font> (<i>expression bool&eacute;enne</i>) {<font color="#990000"><b>ALORS</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_ALORS</b></font> } 
                              {<font color="#990000"><b>SINON</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_SINON</b></font> }}</tt> est un construction qui contient deux &laquo;boites&raquo; d'instructions qui s'ex&eacute;cuteront selon que
                           l'expression bool&eacute;enne est vraie ou fausse.
-               </li>
+               </div>
                      
-            </ul>
-         </li>
-               
-         <li>(boucle)<tt>{ <font color="#990000"><b>TANT_QUE</b></font> (<i>expression bool&eacute;enne</i>) {<font color="#990000"><b>FAIRE</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_FAIRE</b></font> }}</tt>   
-                  est une construction qui contient une &laquo;boite&raquo; d'instructions qui s'ex&eacute;cuteront tant que l'expression bool&eacute;enne prend
-            la valeur <font color="#990000"><b>VRAIE</b></font>: 
-                  le m&eacute;canisme &eacute;value l'expression bool&eacute;enne, et si elle est vraie, toutes les instructions, 
-                  puis r&eacute;-&eacute;value l'expression bool&eacute;enne, et si elle est vraie, toutes les instructions, etc..
-         </li>
-             
-      </ul>
+            </li>
+                  
+            <li>(boucle)<tt>{ <font color="#990000"><b>TANT_QUE</b></font> (<i>expression bool&eacute;enne</i>) {<font color="#990000"><b>FAIRE</b></font> <i>instructions ..</i> <font color="#990000"><b>FIN_FAIRE</b></font> }}</tt>   
+                     est une construction qui contient une &laquo;boite&raquo; d'instructions qui s'ex&eacute;cuteront tant que l'expression bool&eacute;enne prend
+               la valeur <font color="#990000"><b>VRAIE</b></font>: 
+                     le m&eacute;canisme &eacute;value l'expression bool&eacute;enne, et si elle est vraie, toutes les instructions, 
+                     puis r&eacute;-&eacute;value l'expression bool&eacute;enne, et si elle est vraie, toutes les instructions, etc..
+            </li>
+                
+         </ul>
+      </div>
           
-      <ul class="ul">
+      <div>
          <h3>D&eacute;finition de variables.</h3>
                Au moment de s'en servir<sup><a href="#2">2</a></sup> d'une variable dans l'algorithme il faut d&eacute;clarer son: 
          <ul class="ul">
@@ -63,9 +63,9 @@
             </li>
                 
          </ul>
-      </ul>
+      </div>
           
-      <ul class="ul">
+      <div>
          <h3>Utilisation de fonctions.</h3>
                Au del&agrave; de la fonction <font color="#990000"><b>LIRE_AU_CLAVIER()</b></font> il est possible de: 
          <ul class="ul">
@@ -80,7 +80,7 @@
             </li>
                 
          </ul>
-      </ul>
+      </div>
         
    </div>
    
