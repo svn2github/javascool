@@ -131,7 +131,7 @@ public class Main extends JApplet { /**/public Main() { }
   public void addTab(String label, JPanel pane) {
     boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024;
     if (floatable) {
-      JToolBar bar = new JToolBar(); // bar.setBorderPainted(false); 
+      JToolBar bar = new JToolBar(); // bar.setBorderPainted(false); Why not ?
       bar.addComponentListener(resizer);
       bar.add(pane);
       JPanel par = new JPanel(); par.setLayout(new BorderLayout());
