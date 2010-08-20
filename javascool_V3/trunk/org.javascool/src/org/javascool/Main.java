@@ -61,7 +61,7 @@ import java.util.HashMap;
  */
 public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;
-  static final String title = "Java'Scool v3.0-betaaaaa";
+  static final String title = "Java'Scool v3.0 - RC1";
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar(title, JToolBar.HORIZONTAL);
