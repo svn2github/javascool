@@ -39,7 +39,7 @@ J5=/usr/java/jdk1.5.0_22
 
 vendor=thierry.vieville@sophia.inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
 version=3.0
-revision=$(shell svn info | grep '^R.vision:' | sed 's/^R.vision: *//')
+revision=$(shell svn info | grep '^R.vision *:' | sed 's/^R.vision *: *//')
 public-key=hello-world
 private-key=mer,d,azof
 
