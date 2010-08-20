@@ -173,7 +173,7 @@ endif
 	@for f in `find $@ -name '*.java' -o -name '*.jvs'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@rm -rf `find $@ -name .svn`
 	@cd www ; rm -f sources.zip ; zip -9qr sources.zip api
-	@cp lib/js-manifest.mf $@
+	@cp lib/js-manifest.mf $@/js-manifest.txt
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
 aps:

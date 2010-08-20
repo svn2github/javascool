@@ -473,7 +473,7 @@ public class Main extends JApplet { /**/public Main() { }
 	    activity = null;
 	    Utils.unshow(Main.this);
 	}});
-    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_G, KeyEvent.CTRL_MASK), "info");
+    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_I, KeyEvent.CTRL_MASK), "info");
     getRootPane().getActionMap().put("info",  new AbstractAction("info") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
