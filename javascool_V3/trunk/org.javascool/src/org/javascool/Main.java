@@ -61,7 +61,7 @@ import java.util.HashMap;
  */
 public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;
-  static final String title = "Java'Scool v3.0-beta2";
+  static final String title = "Java'Scool v3.0-rc";
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar(title, JToolBar.HORIZONTAL);
@@ -81,7 +81,7 @@ public class Main extends JApplet { /**/public Main() { }
     activityBar.setBorderPainted(false);
     activityBar.add(activityList);
     JPanel toppaneEast = new JPanel();
-    toppaneEast.add(new JLabel(" "));
+    toppaneEast.add(new JLabel("Activité : "));
     toppaneEast.add(activityBar);
     toppane.add(toppaneEast, BorderLayout.EAST);  
     getContentPane().add(toppane, BorderLayout.NORTH);
@@ -146,9 +146,6 @@ public class Main extends JApplet { /**/public Main() { }
     tabs.put(label, pane);
     tabbedPane.revalidate();
   }
-  /**/public void addTab(String label, JPanel pane) {
-    addTab(label, pane, null);
-  }
   // Control the component size
   private ComponentListener resizer = new ComponentListener() {
       public void componentResized(ComponentEvent e) {   
@@ -164,14 +161,7 @@ public class Main extends JApplet { /**/public Main() { }
   /** Adds a tab to the tabbed panel to display a text.
    * @param label Tab label.
    * @param location Tab Html text to display.
-   */
-  public void addTab(String label, String location) {
-    addTab(label, new HelpDisplay().load(location));
-  }
-  /** Adds a tab to the tabbed panel to display a text.
-   * @param label Tab label.
-   * @param location Tab Html text to display.
-   * @param icon Icon Location
+   * @param icon Location of the icon for the tab. If null, no icon.
    */
   public void addTab(String label, String location, String icon) {
     addTab(label, new HelpDisplay().load(location),icon);
@@ -432,7 +422,7 @@ public class Main extends JApplet { /**/public Main() { }
       delTab("Aide");
       helpOn = false;
     } else {
-      addTab("Aide", helpFile);
+      addTab("Aide", helpFile, "org/javascool/doc-files/icones16/help.png");
       showTab("Aide"); 
       helpOn = true;
     }
@@ -526,29 +516,21 @@ public class Main extends JApplet { /**/public Main() { }
 	public String getTitle() { return "Découvrir les ingrédients des algorithmes"; }
 	public void init() {
 	  super.init();
-	  addTab("Parcours d'initiation", "proglet/ingredients/doc-files/index.htm","org/javascool/doc-files/icones16/globe.png");
-	  /*
-	  addTab("Séquence d'instruction", "proglet/ingredients/doc-files/sujet-hello-world.htm");
-	  addTab("Se servir de variables", "proglet/ingredients/doc-files/sujet-about-variables.htm");
-	  addTab("L'instruction conditionnelle", "proglet/ingredients/doc-files/sujet-about-if.htm");
-	  addTab("Utiliser des fonctions", "proglet/ingredients/doc-files/sujet-about-functions.htm");
-	  addTab("Programmer des boucles", "proglet/ingredients/doc-files/sujet-about-while.htm");
-	  addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm");
-	  */
+	  addTab("Parcours d'initiation", "proglet/ingredients/doc-files/index.htm", "org/javascool/doc-files/icones16/globe.png");
 	}
       });
     addActivity((new ProgletActivity("ingredients") {
 	public String getTitle() { return "Un tutoriel sur les valeurs numériques"; }
 	public void init() {
 	  super.init();
-	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm","org/javascool/doc-files/icones16/globe.png");
-	  addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm","org/javascool/doc-files/icones16/globe.png");
+	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm", "org/javascool/doc-files/icones16/globe.png");
+	  addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/globe.png");
 	}}));
     addActivity(new ProgletActivity("exosdemaths") {
 	public String getTitle() { return "Programmer un calcul géométrique"; }
 	public void init() {
 	  super.init();
-	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm","org/javascool/doc-files/icones16/globe.png");
+	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm", "org/javascool/doc-files/icones16/globe.png");
 	  initDoc();
 	}});
     addActivity(new AlgoEditorActivity() {
@@ -599,7 +581,7 @@ public class Main extends JApplet { /**/public Main() { }
   private abstract class JavaActivity implements Activity {
     // Compilation/execution mechanism
     protected void initCompile() {
-      addTab("Console", Jvs2Java.getPanel("ingredients"),"org/javascool/doc-files/icones16/compile.png");
+      addTab("Console", Jvs2Java.getPanel("ingredients"), "org/javascool/doc-files/icones16/compile.png");
       addTool("Compiler", "org/javascool/doc-files/icones16/compile.png", validate = compile);
     }
     private Runnable compile = new Runnable() { public void run() {
@@ -653,17 +635,17 @@ public class Main extends JApplet { /**/public Main() { }
     // Common panels and tools
     public void init() {
       if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
-      addTab("Editeur", (JPanel) jvsEditor);
+      addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png");
       jvsEditor.setProglet(proglet);
       initCompile();
       if (!"ingredients".equals(proglet)) {
 	String name = "exosdemaths".equals(proglet) ? "Tracé" : proglet;
-	addTab(name, Jvs2Java.getPanel(proglet));
+	addTab(name, Jvs2Java.getPanel(proglet), "org/javascool/doc-files/icones16/compile.png");
       }
     }
     protected void initDoc() {
-      addTab("Document de la proglet", "proglet/"+proglet+"/doc-files/about-proglet.htm","org/javascool/doc-files/icones16/help.png");
-      addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm","org/javascool/doc-files/icones16/help.png");
+      addTab("Document de la proglet", "proglet/"+proglet+"/doc-files/about-proglet.htm", "org/javascool/doc-files/icones16/help.png");
+      addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/help.png");
     }
     public Editor getEditor() { return jvsEditor; }
     public String getExtension() { return ".jvs"; }
@@ -675,11 +657,11 @@ public class Main extends JApplet { /**/public Main() { }
     public void init() {
       if (algoEditor == null) algoEditor = new AlgoEditor(); 
       if (algoViewer == null) { algoViewer = new JvsSourceEditor(); algoViewer.reset(false); }
-      addTab("Editeur d'Algo.", (JPanel) algoEditor);
-      addTab("Voir le code en JVS", (JPanel) algoViewer);
+      addTab("Editeur d'Algo.", (JPanel) algoEditor, "org/javascool/doc-files/icones16/edit.png");
+      addTab("Voir le code en JVS", (JPanel) algoViewer, "org/javascool/doc-files/icones16/zoom-in.png");
       initCompile();
-      addTab("Tracé", Jvs2Java.getPanel("exosdemaths"));
-      addTab("Documentation", "org/javascool/doc-files/about-algo-editor.htm");
+      addTab("Tracé", Jvs2Java.getPanel("exosdemaths"), "org/javascool/doc-files/icones16/compile.png");
+      addTab("Documentation", "org/javascool/doc-files/about-algo-editor.htm", "org/javascool/doc-files/icones16/help.png");
     }
     public Editor getEditor() { return algoEditor; }
     public String getExtension() { return ".pml"; }
