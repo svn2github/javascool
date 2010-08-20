@@ -258,6 +258,10 @@ endif
 
 ifeq ($(USER), vthierry)
 
+# This is used in case of emmergency
+
+all : jar svn wpub jpub
+
 # This is used to test www/index.php in local mode
 
 php:

@@ -91,7 +91,7 @@
     Cela permet de montrer que l'importance ou le sens de ce morceau de texte est différent du reste.</p>
     <p>Une telle construction est de la forme:
     <div class="code">
-      <p>.. (texte ordinaire) ..<r>{ s</r> <n>class</n><r>=</r><v>type-de-texte</v> .. (texte enrichi) .. <r>}</r> .. (suite du texte) ..</p>
+      <p>(texte ordinaire) ..<r>{ s</r> <n>class</n><r>=</r><v>type-de-texte</v> .. (texte enrichi) .. <r>}</r> .. (suite du texte)</p>
     </div>
     où le texte enrichi est mis entre accolade en précisant la classe de texte en question.</p>
     <p>La syntaxe est:
@@ -104,12 +104,12 @@
     indépendemment de la forme avec laquelle il sera redu.</p>
     <p>A titre de raccourci, les constructions suivantes sont définies:
     <div class="table">
-      <p><p><r>{ b</r></p><p><r>{ s class=bold  </r></p><p>Texte ou texte important à ne pas manquer lors de lecture rapide</p></p>
-      <p><p><r>{ i</r></p><p><r>{ s class=idiom </r></p><p>Mot ou texte utilisé dans un sens particulier ou d'une autre langue, dont le sens est à bien calculer</p></p>
-      <p><p><r>{ c</r></p><p><r>{ s class=code  </r></p><p>Mot ou texte appartenant à un langage informatique ou formel</p></p>
-      <p><p><r>{ S</r></p><p><r>{ s class=sup   </r></p><p>Mot ou texte en exposant (comme dans «x au carré» <c>x{S 2}</c> </p></p>
-      <p><p><r>{ I</r></p><p><r>{ s class=sub   </r></p><p>Mot ou texte en indexe (inverse de l'exposant) pour décrire des objets paramétrés</p></p>
-    </div> cette liste n'étant pas limitative.</p>
+      <p><p><r>{ b</r></p><p>(bold) Texte ou texte important à ne pas manquer lors de lecture rapide</p></p>
+      <p><p><r>{ i</r></p><p>(idiom) Mot ou texte utilisé dans un sens particulier ou d'une autre langue, dont le sens est à bien calculer</p></p>
+      <p><p><r>{ c</r></p><p>(code) Mot ou texte appartenant à un langage informatique ou formel</p></p>
+      <p><p><r>{ S</r></p><p>(sup) Mot ou texte en exposant (comme dans «x au carré» <c>x{S 2}</c> </p></p>
+      <p><p><r>{ I</r></p><p>(sub) Mot ou texte en indexe (inverse de l'exposant) pour décrire des objets paramétrés</p></p>
+    </div> cette liste n'étant pas limitative. Ces constructions sont des synonymes de <r>{ s class="boldb</r>, etc..</p>
     <div title="Discussion">
       Cette construction correspond à l'élément HTML <c>&lt;span>..&lt;/span></c> et à tous les éléments dérivés.
       L'introduction de raccourci allège la lecture et l'édition du texte source, que l'on veut rester lisible ici 
