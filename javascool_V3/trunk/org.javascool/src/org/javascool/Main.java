@@ -129,8 +129,9 @@ public class Main extends JApplet { /**/public Main() { }
   /** Adds a tab to the tabbed panel.
    * @param label Tab label.
    * @param pane Tab panel.
+   * @param icon Location of the icon for the tab. If null, no icon.
    */
-  public void addTab(String label, JPanel pane) {
+  public void addTab(String label, JPanel pane, String icon) {
     boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024 && !System.getProperty("os.name").matches("^.*Mac.*$");
     if (floatable) {
       JToolBar bar = new JToolBar(label, JToolBar.HORIZONTAL);
@@ -139,35 +140,14 @@ public class Main extends JApplet { /**/public Main() { }
       bar.add(pane);
       JPanel par = new JPanel(); par.setLayout(new BorderLayout());
       par.add(bar, BorderLayout.CENTER);
-      tabbedPane.addTab(label, null, par, label);
-      tabs.put(label, par);
-    } else {
-      tabbedPane.addTab(label, null, pane, label);
-      tabs.put(label, pane);
+      pane = par;
     }
+    tabbedPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
+    tabs.put(label, pane);
     tabbedPane.revalidate();
   }
-  /** Adds a tab to the tabbed panel.
-   * @param label Tab label.
-   * @param pane Tab panel.
-   * @param icon String for location of Icon for the tab
-   */
-  public void addTab(String label, JPanel pane, String icon) {
-    boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024;
-    if (floatable) {
-      JToolBar bar = new JToolBar(label, JToolBar.HORIZONTAL);
-      bar.setBorderPainted(false);
-      bar.addComponentListener(resizer);
-      bar.add(pane);
-      JPanel par = new JPanel(); par.setLayout(new BorderLayout());
-      par.add(bar, BorderLayout.CENTER);
-      tabbedPane.addTab(label, Utils.getIcon(icon), par, label);
-      tabs.put(label, par);
-    } else {
-      tabbedPane.addTab(label, Utils.getIcon(icon), pane, label);
-      tabs.put(label, pane);
-    }
-    tabbedPane.revalidate();
+  /**/public void addTab(String label, JPanel pane) {
+    addTab(label, pane, null);
   }
   // Control the component size
   private ComponentListener resizer = new ComponentListener() {
@@ -507,11 +487,15 @@ public class Main extends JApplet { /**/public Main() { }
     getRootPane().getActionMap().put("info",  new AbstractAction("info") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  JOptionPane.showMessageDialog(Main.this, new JLabel("<html><body><h4>"+
+	  JOptionPane.showMessageDialog(Main.this, new JLabel("<html><body><h4><hr>"+
 							      Utils.loadString("org/javascool/js-manifest.mf").
-							      replaceAll("Summary", "Name").
-							      replaceAll("Manifest-version", "Version").
+							      replaceFirst("Summary", "Nom").
+							      replaceFirst("Manifest-version", "Version").
+							      replaceFirst("Created-By", "Créé-Par").
+							      replaceFirst("Implementation-URL", "Site-web").
+							      replaceFirst("©", "\nLicence: ©").
 							      replaceAll("(Implementation-(Vendor|Version)|Main-Class).*\n", "").
+							      replaceAll(":", " :").
 							      replaceAll("\n", "<hr>")+
 							      "</h4></body></html>", 
 							      Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), 
