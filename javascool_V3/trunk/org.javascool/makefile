@@ -150,26 +150,29 @@ endif
 jdoc :
 	@lib/jdoc.sh
 
-JDOC_OPTION=-quiet -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -charset "UTF-8" -windowtitle "Java's Cool v3" 
+JDOC_OPTION = -quiet -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -charset "UTF-8" -windowtitle "Java's Cool v3" 
+
+JDOC_DEP    = $(SRC) $(DOC) $(JVS) $(shell find src -name package.html) lib/js-manifest.mf makefile 
+
 ifdef JDOC
 JDOC_OPTION+= -private -linkoffline $(JDOC)/api/ $(JDOC)/api/ 
 
 api: htm $(JDOC)/APIJVS
 
-$(JDOC)/APIJVS : $(SRC) $(DOC)  lib/js-manifest.mf makefile $(shell find src -name package.html) 
+$(JDOC)/APIJVS : $(JDOC_DEP)
 else
 JDOC_OPTION+= -public -link http://download.oracle.com/javase/6/docs/api
 
 api: htm www/api 
 
-www/api : $(SRC) $(DOC) lib/js-manifest.mf makefile $(shell find src -name package.html) 
+www/api : $(JDOC_DEP)
 endif
 	@rm -rf $@ ; mkdir -p $@
 	@echo "make $@"
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
 	@javadoc $(JDOC_OPTION) $(SRC) -d $@
-	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
-	@for f in $(SRC) $(XSL) $(shell find src -name doc-files) ; do d=`echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; mkdir -p `dirname $$d` ; cp -r $$f $$d ; done
+	@$(MAKE) aps
+	@for f in $(SRC) $(JVS) $(XSL) $(shell find src -name doc-files) ; do d=`echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; mkdir -p `dirname $$d` ; cp -r $$f $$d ; done
 	@for f in `find $@ -name '*.java' -o -name '*.jvs'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@rm -rf `find $@ -name .svn`
 	@cd www ; rm -f sources.zip ; zip -9qr sources.zip api
