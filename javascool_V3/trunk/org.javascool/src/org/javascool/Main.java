@@ -131,7 +131,7 @@ public class Main extends JApplet { /**/public Main() { }
    * @param pane Tab panel.
    */
   public void addTab(String label, JPanel pane) {
-    boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024;
+    boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024 && !System.getProperty("os.name").matches("^.*Mac.*$");
     if (floatable) {
       JToolBar bar = new JToolBar(label, JToolBar.HORIZONTAL);
       bar.setBorderPainted(false);
@@ -170,10 +170,11 @@ public class Main extends JApplet { /**/public Main() { }
   private class HelpDisplay extends HtmlDisplay {
     private static final long serialVersionUID = 1L;
     public HtmlDisplay load(String location) { 
-      if (location.matches("^(http|https):.*$"))
+      if(location.matches("^(http|https):.*$")) {
 	reset("Cette page est à l'adresse internet: <tt>"+location+"</tt> (non accessible ici).");
-      else 
+      } else {
         super.load(location);
+      }
       return this;
     }
   }
@@ -471,6 +472,21 @@ public class Main extends JApplet { /**/public Main() { }
 	  if(fileSavePlease())
 	    activity = null;
 	    Utils.unshow(Main.this);
+	}});
+    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_G, KeyEvent.CTRL_MASK), "info");
+    getRootPane().getActionMap().put("info",  new AbstractAction("info") {
+	private static final long serialVersionUID = 1L;
+	public void actionPerformed(ActionEvent e) { 
+	  JOptionPane.showMessageDialog(Main.this, new JLabel("<html><body><h4>"+
+							      Utils.loadString("org/javascool/js-manifest.mf").
+							      replaceAll("Summary", "Name").
+							      replaceAll("Manifest-version", "Version").
+							      replaceAll("(Implementation-(Vendor|Version)|Main-Class).*\n", "").
+							      replaceAll("\n", "<hr>")+
+							      "</h4></body></html>", 
+							      Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), 
+							      JLabel.CENTER), 
+					"About "+title+"...", JOptionPane.INFORMATION_MESSAGE);
 	}});
   }
   /** This is the runnable called when the ^L keystroke is called. */

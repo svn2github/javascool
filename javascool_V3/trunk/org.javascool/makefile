@@ -25,7 +25,7 @@ svn: clean
 	@svn up ; svn ci -m '' ; svn status
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java .http.root www/.htcache lib/manifest.mf www/api www/javascool.jar www/sources.zip
+	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java .http.root www/.htcache lib/js-manifest.mf www/api www/javascool.jar www/sources.zip
 
 #####################################################################################################################################
 
@@ -39,9 +39,9 @@ J5=/usr/java/jdk1.5.0_22
 
 vendor=thierry.vieville@sophia.inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
 version=3.0
+revision=$(shell svn info | grep '^R.vision:' | sed 's/^R.vision: *//')
 public-key=hello-world
 private-key=mer,d,azof
-revision=$(shell svn info | grep '^R.vision:' | sed 's/^R.vision: *//')
 
 SRC = \
  $(shell find src -name '*.java') \
@@ -60,19 +60,20 @@ CP=src:lib/tools.jar:lib/saxon.jar
 
 # Compiles the java classes using the default jdk5 and builds the certified jar
 
-www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC) $(JVS) htm
+www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/js-manifest.mf $(SRC) $(JVS) htm
 	@echo "make $@"
 	@#[1] Compile the java classes
 	@$(J5)/bin/javac -Xlint -cp $(CP) $(SRC)
 	@#[2] Collects the files in a tmp directory
-	@rm -rf tmp ; svn -q export src tmp ; 
+	@rm -rf tmp ; svn -q export src tmp 
 	@for f in `find src -name '*.class'` ; do cp $$f `echo $$f | sed 's/^src/tmp/'` ; done
+	@cp lib/js-manifest.mf tmp/org/javascool
 	@# + The jdk5 compiler classes
 	@unzip -qod tmp lib/tools.jar 
 	@# + The saxon transformer classes
 	@unzip -qod tmp lib/saxon.jar
 	@#Build the raw jar
-	@cd tmp ; jar cfm ../tmp.jar ../lib/manifest.mf org proglet com/sun/tools/javac sun/tools/javac com/icl/saxon org/w3c/xsl META-INF/services
+	@cd tmp ; jar cfm ../tmp.jar ../lib/js-manifest.mf org proglet com/sun/tools/javac sun/tools/javac com/icl/saxon org/w3c/xsl META-INF/services
 	@#Sign the jar file
 	@keytool -genkey -alias javascool -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key
 	@jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key -signedjar $@ tmp.jar javascool
@@ -83,10 +84,14 @@ www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/manifest.mf $(SRC) 
 	@rm -rf tmp tmp.key tmp.jar javascool.crt 
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
-lib/manifest.mf : makefile
-	@(echo 'Summary: javascool v3'; echo 'Created-By: $(version) (javascool.gforge.inria.fr © creative-commons)' ; echo "Manifest-version: `date '+%Y:%m:%d'` revision #$(revision)") > $@
-	@(echo 'Main-Class: org.javascool.Main') >> $@
-	@(echo 'Implementation-Vendor: $(vendor)'; echo 'Implementation-URL: http://javascool.gforge.inria.fr' ; echo 'Implementation-Version: $(version)') >> $@
+lib/js-manifest.mf : makefile
+	@echo 'Summary: javascool v3.0' > $@
+	@echo "Manifest-version: 3.0 on `date '+%Y:%m:%d'` REVISION #$(revision)" >> $@
+	@echo 'Created-By: inria.fr (javascool.gforge.inria.fr) © CeCILL + CreativeCommons BY-NC-ND V2' >> $@
+	@echo 'Implementation-URL: http://javascool.gforge.inria.fr'  >> $@
+	@echo 'Implementation-Vendor: $(vendor)' >> $@
+	@echo 'Implementation-Version: $(version)' >> $@
+	@echo 'Main-Class: org.javascool.Main' >> $@
 
 htm : $(DOC)
 
@@ -151,13 +156,13 @@ JDOC_OPTION+= -private -linkoffline $(JDOC)/api/ $(JDOC)/api/
 
 api: htm $(JDOC)/APIJVS
 
-$(JDOC)/APIJVS : $(SRC) $(DOC) makefile $(shell find src -name package.html) 
+$(JDOC)/APIJVS : $(SRC) $(DOC)  lib/js-manifest.mf makefile $(shell find src -name package.html) 
 else
 JDOC_OPTION+= -public -link http://download.oracle.com/javase/6/docs/api
 
 api: htm www/api 
 
-www/api : $(SRC) $(DOC) makefile $(shell find src -name package.html) 
+www/api : $(SRC) $(DOC) lib/js-manifest.mf makefile $(shell find src -name package.html) 
 endif
 	@rm -rf $@ ; mkdir -p $@
 	@echo "make $@"
@@ -168,6 +173,7 @@ endif
 	@for f in `find $@ -name '*.java' -o -name '*.jvs'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@rm -rf `find $@ -name .svn`
 	@cd www ; rm -f sources.zip ; zip -9qr sources.zip api
+	@cp lib/js-manifest.mf $@
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
 aps:
@@ -322,7 +328,7 @@ done :
 #: [1.3] Lib files:
 #: ./lib/run.sh               : simplifies the local use of saxon and javascool (Java main + performs xml2xml translation)
 #: ./lib/*.jar                : are used jar for the present development
-#: ./lib/manifest.mf          : is a makefile generated file: do NOT edit
+#: ./lib/js-manifest.mf       : is the makefile generated JAR manifest file: do NOT edit
 #: 
 #: [1.4] Other files
 #: ./tst/*                    : contains local test files
