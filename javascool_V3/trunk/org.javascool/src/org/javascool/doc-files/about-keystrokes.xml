@@ -8,7 +8,7 @@
     <p><p>Control H</p><p>(help)</p><p>Montre la page d'aide</p></p>
     <p><p>Control Q</p><p>(quit)</p><p>Quitter le logiciel</p></p>
     <p><p></p><p></p><p></p></p>
-    <p><p>Control I</p><p>(info)</p><p>Affiche les informations sur JavaScool</p></p>
+    <p><p>Control I</p><p>(info)</p><p>Affiche les informations d'attestation de JavaScool, dont le numéro de révision</p></p>
     <p><p></p><p></p><p></p></p>
     <p><p>Control C</p><p>(copy)</p><p>Copier la portion de texte ou de donnée sélectionnée</p></p>
     <p><p>Control X</p><p>(cut)</p><p>Couper la portion de texte ou de donnée sélectionnée</p></p>

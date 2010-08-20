@@ -110,16 +110,19 @@ public class Jvs2Java { private Jvs2Java() { }
   public static void translate(String path, String proglet) {
     setJpathclass(path);
     String text = Utils.loadString(jpath+".jvs");
-    if (!text.matches("^.*void\\s+main.*$")) {
-      System.err.println(text);
-      if (text.matches(".*main\\s*[(]\\s*[)].*")) {
+    /*
+    String voidMainPattern = "[.\n]*void\\s+main\\s*\\(\\s*\\)[.\n]*";
+    String mainPattern = "[.\n]*main\\s*\\(\\s*\\)[.\n]*";
+    if (!text.matches(voidMainPattern)) {
+      if (text.matches("mainPattern")) {
 	System.out.println("Attention: il manque le \"void\" à \"void main()\" . . penser à l'ajouter");
-	text = text.replaceFirst("main\\s*[(]\\s*[)]", "void main()");
+	text = text.replaceFirst("mainPattern", "void main()");
       } else {
-	System.out.println("Attention: il manque le \"void main()\" . . penser à insérer le code dedans");
+	System.out.println("Attention: il manque le \"void main()\" . . penser à l'ajouter et à y insérer le code");
 	text = "void main() {\n"+text+"}\n";
       }
-    } 
+    }
+    */
     String[] lines = text.split("\n");
     StringBuffer head = new StringBuffer(), body = new StringBuffer();
     // Here is the translation loop
