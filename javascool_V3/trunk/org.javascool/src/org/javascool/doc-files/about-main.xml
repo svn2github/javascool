@@ -11,8 +11,8 @@
   <p class="ul" title="Quelques Astuces">
     <p><b>Sauver les fichiers</b> : Attention à bien sauvegarder les fichiers <i>dans un dossier de l'utilisateur</i> (sur le "bureau" ou dans le dossier "documents"),
     sinon le système risque de se plaindre d'une tentative d'écriture illicite.</p>
-    <p>Pour voir simultanément plusieurs fenêtres (ex: code source, console, documentation, .) il suffit de les détacher de l'interface avec l'onglet de gauche. 
-    Pour les réinsérer, il faut fermer la fenêtre supplémentaire.</p>
+    <!--p>Pour voir simultanément plusieurs fenêtres (ex: code source, console, documentation, .) il suffit de les détacher de l'interface avec l'onglet de gauche. 
+    Pour les réinsérer, il faut fermer la fenêtre supplémentaire.</p-->
   </p>
   <l class="include" link="about-keystrokes.xml"/>
 </p>
