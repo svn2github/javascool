@@ -73,7 +73,7 @@ www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/js-manifest.mf $(SR
 	@# + The saxon transformer classes
 	@unzip -qod tmp lib/saxon.jar
 	@#Build the raw jar
-	@cd tmp ; jar cfm ../tmp.jar ../lib/js-manifest.mf org proglet com/sun/tools/javac sun/tools/javac com/icl/saxon org/w3c/xsl META-INF/services
+	@cd tmp ; jar cfm ../tmp.jar ../lib/js-manifest.mf org proglet com/sun/tools/javac sun/tools/javac com/icl/saxon org/w3c/xsl
 	@#Sign the jar file
 	@keytool -genkey -alias javascool -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key
 	@jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key -signedjar $@ tmp.jar javascool

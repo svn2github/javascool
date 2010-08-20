@@ -120,6 +120,7 @@ public class Console implements org.javascool.Proglet { private Console() { }
 
   /**/public static void test() {
     clear();
+    // System.out.println(new org.javascool.Pml().reset("<p>This is translated from <tt>XML</tt> !</p>", "xml"));
     println("Bonjour, qui es tu ?");
     String nom = readString();
     println ("Enchanté "+nom+" ! Quel age as tu ?");
