@@ -147,6 +147,28 @@ public class Main extends JApplet { /**/public Main() { }
     }
     tabbedPane.revalidate();
   }
+  /** Adds a tab to the tabbed panel.
+   * @param label Tab label.
+   * @param pane Tab panel.
+   * @param icon String for location of Icon for the tab
+   */
+  public void addTab(String label, JPanel pane, String icon) {
+    boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024;
+    if (floatable) {
+      JToolBar bar = new JToolBar(label, JToolBar.HORIZONTAL);
+      bar.setBorderPainted(false);
+      bar.addComponentListener(resizer);
+      bar.add(pane);
+      JPanel par = new JPanel(); par.setLayout(new BorderLayout());
+      par.add(bar, BorderLayout.CENTER);
+      tabbedPane.addTab(label, Utils.getIcon(icon), par, label);
+      tabs.put(label, par);
+    } else {
+      tabbedPane.addTab(label, Utils.getIcon(icon), pane, label);
+      tabs.put(label, pane);
+    }
+    tabbedPane.revalidate();
+  }
   // Control the component size
   private ComponentListener resizer = new ComponentListener() {
       public void componentResized(ComponentEvent e) {   
@@ -165,6 +187,14 @@ public class Main extends JApplet { /**/public Main() { }
    */
   public void addTab(String label, String location) {
     addTab(label, new HelpDisplay().load(location));
+  }
+  /** Adds a tab to the tabbed panel to display a text.
+   * @param label Tab label.
+   * @param location Tab Html text to display.
+   * @param icon Icon Location
+   */
+  public void addTab(String label, String location, String icon) {
+    addTab(label, new HelpDisplay().load(location),icon);
   }
   /** A display with external links canceled. */
   private class HelpDisplay extends HtmlDisplay {
@@ -512,7 +542,7 @@ public class Main extends JApplet { /**/public Main() { }
 	public String getTitle() { return "Découvrir les ingrédients des algorithmes"; }
 	public void init() {
 	  super.init();
-	  addTab("Parcours d'initiation", "proglet/ingredients/doc-files/index.htm");
+	  addTab("Parcours d'initiation", "proglet/ingredients/doc-files/index.htm","org/javascool/doc-files/icones16/globe.png");
 	  /*
 	  addTab("Séquence d'instruction", "proglet/ingredients/doc-files/sujet-hello-world.htm");
 	  addTab("Se servir de variables", "proglet/ingredients/doc-files/sujet-about-variables.htm");
@@ -527,14 +557,14 @@ public class Main extends JApplet { /**/public Main() { }
 	public String getTitle() { return "Un tutoriel sur les valeurs numériques"; }
 	public void init() {
 	  super.init();
-	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm");
-	  addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm");
+	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm","org/javascool/doc-files/icones16/globe.png");
+	  addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm","org/javascool/doc-files/icones16/globe.png");
 	}}));
     addActivity(new ProgletActivity("exosdemaths") {
 	public String getTitle() { return "Programmer un calcul géométrique"; }
 	public void init() {
 	  super.init();
-	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm");
+	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm","org/javascool/doc-files/icones16/globe.png");
 	  initDoc();
 	}});
     addActivity(new AlgoEditorActivity() {
@@ -544,21 +574,21 @@ public class Main extends JApplet { /**/public Main() { }
 	public String getTitle() { return "Comprendre le principe de la dichotomie"; }
 	public void init() {
 	  super.init();
-	  addTab("Enoncé de l'exercice", "proglet/dichotomie/doc-files/sujet-appli-dicho.htm");
+	  addTab("Enoncé de l'exercice", "proglet/dichotomie/doc-files/sujet-appli-dicho.htm","org/javascool/doc-files/icones16/globe.png");
 	  initDoc();
 	}});
     addActivity(new ProgletActivity("pixelsetcie") {
 	public String getTitle() { return "Comprendre la manipulation d'images"; }
 	public void init() {
 	  super.init();
-	  addTab("Enoncé de l'exercice", "proglet/pixelsetcie/doc-files/sujet-appli-image.htm");
+	  addTab("Enoncé de l'exercice", "proglet/pixelsetcie/doc-files/sujet-appli-image.htm","org/javascool/doc-files/icones16/globe.png");
 	  initDoc();
 	}});
     addActivity(new ProgletActivity("convanalogique") {
 	public String getTitle() { return "Programmer la conversion analogique-digitale"; }
 	public void init() {
 	  super.init();
-	  addTab("Enoncé de l'exercice", "proglet/convanalogique/doc-files/sujet-appli-conva.htm");
+	  addTab("Enoncé de l'exercice", "proglet/convanalogique/doc-files/sujet-appli-conva.htm","org/javascool/doc-files/icones16/globe.png");
 	  initDoc();
 	}});
     addActivity(new ProgletActivity("synthesons") {
@@ -585,7 +615,7 @@ public class Main extends JApplet { /**/public Main() { }
   private abstract class JavaActivity implements Activity {
     // Compilation/execution mechanism
     protected void initCompile() {
-      addTab("Console", Jvs2Java.getPanel("ingredients"));
+      addTab("Console", Jvs2Java.getPanel("ingredients"),"org/javascool/doc-files/icones16/compile.png");
       addTool("Compiler", "org/javascool/doc-files/icones16/compile.png", validate = compile);
     }
     private Runnable compile = new Runnable() { public void run() {
@@ -648,8 +678,8 @@ public class Main extends JApplet { /**/public Main() { }
       }
     }
     protected void initDoc() {
-      addTab("Document de la proglet", "proglet/"+proglet+"/doc-files/about-proglet.htm");
-      addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm");
+      addTab("Document de la proglet", "proglet/"+proglet+"/doc-files/about-proglet.htm","org/javascool/doc-files/icones16/help.png");
+      addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm","org/javascool/doc-files/icones16/help.png");
     }
     public Editor getEditor() { return jvsEditor; }
     public String getExtension() { return ".jvs"; }
