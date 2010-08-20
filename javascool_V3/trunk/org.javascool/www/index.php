@@ -35,7 +35,7 @@ function get_page_contents($name) {
       if (!file_exists($file)) return $notfound;
       $page = file_get_contents($file);
       // Remplace tous les liens entre pages par des pages vues du site
-      $base = substr(realpath(dirname($file)), strlen($pwd)+4);
+      $base = ereg_replace("api/", "", substr(realpath(dirname($file)), strlen($pwd)+4));
       $page = ereg_replace('(href|HREF)="([^/#][^:"]*)"', '\\1="?page=api:'.$base.'/\\2"', $page);
       $page = ereg_replace('(src|SRC)="([^/#][^:"]*)"', '\\1="api/'.$base.'/\\2"', $page);
       // Passe en <pre></pre> les pages de source

@@ -132,7 +132,8 @@ public class Main extends JApplet { /**/public Main() { }
    * @param icon Location of the icon for the tab. If null, no icon.
    */
   public void addTab(String label, JPanel pane, String icon) {
-    boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024 && !System.getProperty("os.name").matches("^.*Mac.*$");
+    //- boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024 && !System.getProperty("os.name").matches("^.*Mac.*$");
+    boolean floatable = false;
     if (floatable) {
       JToolBar bar = new JToolBar(label, JToolBar.HORIZONTAL);
       bar.setBorderPainted(false);

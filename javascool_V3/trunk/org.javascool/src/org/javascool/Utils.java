@@ -319,15 +319,16 @@ public class Utils { private Utils() { }
       throw new IllegalArgumentException(e.getMessageAndLocation());
     }
   }
-  // Cash mechanism      
-  private static TransformerFactory tfactory = TransformerFactory.newInstance();
+  // Cash mechanism    
+  private static TransformerFactory tfactory;
   private static HashMap<String,Transformer> tranformers = new HashMap<String,Transformer>();
   static {
     try {
+      tfactory = TransformerFactory.newInstance();
       System.setProperty("javax.xml.parsers.SAXParserFactory", "com.icl.saxon.aelfred.SAXParserFactoryImpl");
       System.setProperty("javax.xml.transform.TransformerFactory", "com.icl.saxon.TransformerFactoryImpl");  
       System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.icl.saxon.om.DocumentBuilderFactoryImpl");
-    } catch(Exception e) {
+    } catch(Throwable e) {
       System.err.println("Configuration error: "+e);
     }
   }

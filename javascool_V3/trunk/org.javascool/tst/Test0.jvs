@@ -1,8 +1,5 @@
 
-void main()  {
-   println("Bonjour, qui es tu ?");
-   String nom = readString();
-   println ("Enchanté "+nom+" ! Quel age as tu ?");
-   int age = readInteger();
-   println("He, "+age+" ? Je suis plus vieux que toi !!");
+// DEBUT_PROGRAMME
+void main() {
+   // FIN_PROGRAMME 
 }
