@@ -1,4 +1,4 @@
-package proglet.javaprog;import javax.swing.*;import org.javascool.Utils;import proglet.synthesons.FileSoundBit;import static org.javascool.Macros.*;import static proglet.ingredients.Console.*;import static proglet.synthesons.SoundDisplay.*;import static proglet.exosdemaths.CurveDisplay.*;import static proglet.pixelsetcie.ImageDisplay.*;import static proglet.tortuelogo.TortueLogo.*;import static proglet.javaprog.JavaPanel.*;import static proglet.convanalogique.ConvAnalogique.*;import static proglet.dichotomie.Dichotomie.*;public class FleurEnRythme extends org.javascool.ProgletApplet implements Runnable {  private static final long serialVersionUID = 1L;  static { org.javascool.Jvs2Java.runnable = new FleurEnRythme(); }  public void run() { main(); }    
+package proglet.javaprog;import javax.swing.*;import org.javascool.Utils;import proglet.synthesons.FileSoundBit;import static org.javascool.Macros.*;import static java.lang.Math.*;import static proglet.ingredients.Console.*;import static proglet.synthesons.SoundDisplay.*;import static proglet.exosdemaths.CurveDisplay.*;import static proglet.pixelsetcie.ImageDisplay.*;import static proglet.tortuelogo.TortueLogo.*;import static proglet.javaprog.JavaPanel.*;import static proglet.convanalogique.ConvAnalogique.*;import static proglet.dichotomie.Dichotomie.*;public class FleurEnRythme extends org.javascool.ProgletApplet implements Runnable {  private static final long serialVersionUID = 1L;  static { org.javascool.Jvs2Java.runnable = new FleurEnRythme(); }  public void run() { main(); }    
     // Implément l'idée originale de Thomas Giraudon <ptiroccodu06@hotmail.fr> et Victor Granet <victor.granet@hotmail.com>
     
 //package proglet.javaprog;
@@ -30,7 +30,7 @@ package proglet.javaprog;import javax.swing.*;import org.javascool.Utils;import 
     }
     
     // Programme principal
-    void main() {
+    void main() {    
        // On efface tout
        pane.removeAll();
        // On affiche une image de fond

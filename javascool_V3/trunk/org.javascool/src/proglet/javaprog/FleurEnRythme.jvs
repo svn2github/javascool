@@ -30,7 +30,7 @@ class FlowerSoundBit extends FileSoundBit {
 }
 
 // Programme principal
-void main() {
+void main() {    
    // On efface tout
    pane.removeAll();
    // On affiche une image de fond

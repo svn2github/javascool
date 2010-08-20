@@ -215,8 +215,8 @@ public class Jvs2Java { private Jvs2Java() { }
       URL[] urls = new URL[] { new URL("file:"+new File(jpath).getParent()+File.separator) };
       Class<?> j_class = new URLClassLoader(urls).loadClass(jclass);
       return j_class.newInstance(); 
-    } catch(Exception e) { 
-      throw new RuntimeException("Erreur: impossible de charger "+jpath+" / "+jclass+", il y a une erreur d'installation ("+e+"), contacter http://javascool.gforge.inria.fr");
+    } catch(Throwable e) { 
+      throw Utils.report(new RuntimeException("Erreur: impossible de charger "+jpath+" / "+jclass+" ("+e+") \n . . le package est il mal défini ?"));
     }
   }
 

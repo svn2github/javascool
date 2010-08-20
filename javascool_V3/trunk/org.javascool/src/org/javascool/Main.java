@@ -170,8 +170,8 @@ public class Main extends JApplet { /**/public Main() { }
   private class HelpDisplay extends HtmlDisplay {
     private static final long serialVersionUID = 1L;
     public HtmlDisplay load(String location) { 
-      if(location.matches("^(http|https):.*$")) {
-	reset("Cette page est à l'adresse internet: <tt>"+location+"</tt> (non accessible ici).");
+      if(location.matches("^(http|https|rtsp|mailto):.*$")) {
+	reset("Cette page est à l'adresse internet: <tt>"+location.replaceFirst("^(mailto):.*", "$1: ...")+"</tt> (non accessible ici).");  
       } else {
         super.load(location);
       }

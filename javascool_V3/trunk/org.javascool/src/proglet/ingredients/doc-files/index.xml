@@ -23,7 +23,7 @@
     ici, à partir d'un exemple très concret. Nous saurons alors programmer tous les algorithmes du monde.</div>
   </div>
 
-  <div id="1" title="Des documents pour apprendre et se cultiver sur le sujet"><div class="ul">
+  <div id="1" title="Des documents (sur le web) pour apprendre et se cultiver sur le sujet"><div class="ul">
     <div>Le poly de cours pour <l link="http://interstices.info/ingredients-algorithmes" text="découvrir les ingrédients des algorithmes"/>.</div>
     <div>Les documents <l link="http://interstices.info/algo-mode-emploi" text="Algorithme mode d'emploi"/> et 
       <l link="http://interstices.info/demandez-le-programme" text="Demandez le programme"/> offrent une introduction à l'élève ce sujet.</div>
@@ -31,11 +31,11 @@
       accompagnée de ses <l link="http://javascool.gforge.inria.fr/v3/documents/slides-dowek.pdf" text="supports"/> donne les fondements de cette leçon.</div>
   </div></div>
 
-  <div title="Pour aller plus loin"><div class="ul">
+  <div title="Pour aller plus loin (sur le web)."><div class="ul">
     <div>Découvrir <l link="http://interstices.info/turing" text="Alan Turing"/>, "le" pionnier de l'informatique et 
      sur la différence entre <l link="http://interstices.info/calculer-penser" text="calculer (avec un ordinateur) et penser (avec un cerveau)"/>.</div>
     <div>Réaliser une <l link="sujet-appli-imc.htm" text="calculette d'indice de masse corporelle"/> pour appliquer ces notions.</div>
-    <div>Faire des exercices d'<l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/doc-files/index.htm" text="algoritmhique du programme de mathématique de seconde"/>.</div>
-    <div>Découvrir le <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/dichotomie/doc-files/index.htm" text="principe algoritmhique de la dichotomie"/>.</div>
+    <div>Faire des exercices d'<l link="../../exosdemaths/doc-files/index.htm" text="algoritmhique du programme de mathématique de seconde"/>.</div>
+    <div>Découvrir le <l link="../../dichotomie/doc-files/index.htm" text="principe algoritmhique de la dichotomie"/>.</div>
   </div></div>
 </div>

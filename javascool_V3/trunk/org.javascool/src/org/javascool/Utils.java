@@ -323,9 +323,13 @@ public class Utils { private Utils() { }
   private static TransformerFactory tfactory = TransformerFactory.newInstance();
   private static HashMap<String,Transformer> tranformers = new HashMap<String,Transformer>();
   static {
-    System.setProperty("javax.xml.parsers.SAXParserFactory", "com.icl.saxon.aelfred.SAXParserFactoryImpl");
-    System.setProperty("javax.xml.transform.TransformerFactory", "com.icl.saxon.TransformerFactoryImpl");  
-    System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.icl.saxon.om.DocumentBuilderFactoryImpl");
+    try {
+      System.setProperty("javax.xml.parsers.SAXParserFactory", "com.icl.saxon.aelfred.SAXParserFactoryImpl");
+      System.setProperty("javax.xml.transform.TransformerFactory", "com.icl.saxon.TransformerFactoryImpl");  
+      System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.icl.saxon.om.DocumentBuilderFactoryImpl");
+    } catch(Exception e) {
+      System.err.println("Configuration error: "+e);
+    }
   }
 
   /** Converts a HTML string to a XHTML string.
@@ -358,13 +362,15 @@ public class Utils { private Utils() { }
 
   /** Reports a throwable with the related context.
    * @param error The error or exception to report.
+   * @return A RuntimeException encapsulation this error or exception, if it has to be rethrown.
    */
-  static void report(Throwable error) {
+  public static RuntimeException report(Throwable error) {
     if (error instanceof InvocationTargetException) report(error.getCause());
     System.out.println(error.toString());
     System.err.println(error.toString());
     for(int i = 0; i < 4 && i < error.getStackTrace().length; i++)
       System.err.println(error.getStackTrace()[i]);
+    return error instanceof RuntimeException ?  (RuntimeException) error : new RuntimeException(error);
   }
 
   /** Opens an applet or panel in a standalone frame.
