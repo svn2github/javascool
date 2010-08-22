@@ -1,6 +1,12 @@
 
 void main(){
-   @tone: 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t);
-   syntheSet("e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e 4 g g 4 a");
+int i=0;
+
+   @tone: 0.8 * tri(t);
+   syntheSet("c c c c");
+while(i<10){
    synthePlay();
+wait(3);
+   i=i+1;
+}
 }
