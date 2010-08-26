@@ -132,8 +132,8 @@ public class Main extends JApplet { /**/public Main() { }
    * @param icon Location of the icon for the tab. If null, no icon.
    */
   public void addTab(String label, JPanel pane, String icon) {
-    //- boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024 && !System.getProperty("os.name").matches("^.*Mac.*$");
-    boolean floatable = false;
+    boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024 && !System.getProperty("os.name").matches("^.*Makakac.*$");
+    // boolean floatable = false;
     if (floatable) {
       JToolBar bar = new JToolBar(label, JToolBar.HORIZONTAL);
       bar.setBorderPainted(false);
@@ -150,10 +150,7 @@ public class Main extends JApplet { /**/public Main() { }
   // Control the component size
   private ComponentListener resizer = new ComponentListener() {
       public void componentResized(ComponentEvent e) {   
-	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize(); 
-	int width = (int) (0.5 * dim.getWidth()), height = (int) (0.5 * dim.getHeight());
-	if (width > 1024) width = 1024;
-	e.getComponent().setPreferredSize(new Dimension(width, height));
+	e.getComponent().setPreferredSize(new Dimension(e.getComponent().getParent().getWidth(), e.getComponent().getParent().getHeight()));
       }
       public void componentHidden(ComponentEvent e) { }
       public void componentMoved(ComponentEvent e) { }
