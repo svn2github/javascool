@@ -345,7 +345,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
   // [3.1] Message implementation
   private JLabel message = new JLabel();
   {
-    Jdialog.add(message); dialog.addLayoutComponent(message, "message"); showMessage();
+    Jdialog.add(message, "message"); showMessage();
   }
   private void showMessage(String string) {
     message.setText("    "+string); dialog.show(Jdialog, "message");
@@ -408,7 +408,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	  showMessage();
 	}
       }));
-    Jdialog.add(pane); dialog.addLayoutComponent(pane, "declaration");
+    Jdialog.add(pane, "declaration");
   }  
   private void doDeclaration() {
     String what = getCurrentNode(false).toString();
@@ -491,7 +491,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	  showMessage();
 	}
       }));
-    Jdialog.add(pane); dialog.addLayoutComponent(pane, "insertion");
+    Jdialog.add(pane, "insertion");
   }
   private void doInsertion() {
     String what = getCurrentNode(false).toString();
@@ -541,7 +541,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	  showMessage();
 	}
       }));
-    Jdialog.add(pane); dialog.addLayoutComponent(pane, "functioncall");
+    Jdialog.add(pane, "functioncall");
   }
   private void doFunctioncall() {
     String what = getCurrentNode(false).toString();
@@ -569,7 +569,7 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
 	  showMessage();
 	}
       }));
-    Jdialog.add(pane); dialog.addLayoutComponent(pane, "supprimer");
+    Jdialog.add(pane, "supprimer");
     add(Jdialog, BorderLayout.NORTH);
   }
   private void removeAlgo() {

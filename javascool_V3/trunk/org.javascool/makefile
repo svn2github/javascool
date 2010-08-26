@@ -82,7 +82,7 @@ www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/js-manifest.mf $(SR
 	@#-jarsigner -verify -verbose -certs $@
 	@#Cleanup
 	@rm -rf tmp tmp.key tmp.jar javascool.crt 
-	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
+	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes revision = `grep REVISION lib/js-manifest.mf | sed 's/.*REVISION//'`"
 
 lib/js-manifest.mf : makefile
 	@echo 'Summary: javascool v3.0' > $@
@@ -196,6 +196,7 @@ wpub: api wraz
 # Jat file publication: WARNING this disseminates your new release all around the world !!!
 
 jpub: jar
+#	@echo 'Ok to change the official javascool.jar ? CTRL+C to cancel, Enter to confirm: ' ; read cont
 	@-rsync --rsh='ssh -C' www/javascool.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3
 
 # Check the web site links 

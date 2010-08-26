@@ -402,7 +402,7 @@ public class Main extends JApplet { /**/public Main() { }
   }
   /** Saves a file, before exiting or activity change. */
   private boolean fileSavePlease() {
-    switch(activity == null || !activity.getEditor().isModified() ? 1 : new JOptionPane().
+    switch(activity == null || activity.getEditor() == null || !activity.getEditor().isModified() ? 1 : new JOptionPane().
 	   showConfirmDialog(Main.this, 
 			     "Voulez-vous enregistrer avant de fermer ?", 
 			     "Sauvgarder avant de fermer", 

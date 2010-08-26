@@ -220,6 +220,32 @@ public class Jvs2Java { private Jvs2Java() { }
     }
   }
 
+  /** Compiles and saves a HTML launcher page in order to run the compile proglet as an applet.
+   * DISCLAIMER: DO NOT USE, TO BE VALIDATED.
+   * @param path The file path of the proglet code.
+   * @param proglet The proglet name.
+   *
+   * @throws RuntimeException if an I/O exception occurs during command execution.
+   * @throws IllegalArgumentException If the Java class name is not valid.
+   */
+  public static void saveHtmlLauncher(String path, String proglet) { 
+    setJpathclass(path);
+    
+
+
+String out = " "; if (new File(jpath + ".jvs").exists()) { translate(path); out = compile(path); }
+    Utils.saveString(path + ".html", 
+      "<html><head><meta http-equiv='pragma' content='no-cache'/></head><body><table><tr><td valign='top'>" +
+      "<div><a href='http://javascool.gforge.inria.fr'><img width='200' src=='http://javascool.gforge.inria.fr/images/icon_js.png' alt='JavaScool'/></a></div>" +
+      "<p><applet code='org.javascool.Main' archive='http://javascool.gforge.inria.fr/v3/javascool.jar' width='50%' height='100%'>"+
+      "  <param name='html' value='true'/></applet></p>" +
+        "</td><td width='50%' valign='top'>" + (" ".equals(out) ? "" : out.length() > 0 ?
+        "<b>Le programme "+jclass+" a des erreurs de compilation:</b><div style='background:#DDDDDD;'><pre>"+out+"</pre></div>" :
+	"<p><applet code='org.javascool.ProgletApplet' codebase='.' archive='http://javascool.gforge.inria.fr/v3/javascool.jar' width='50%' height='100%'>"+
+        "  <param name='proglet' value='"+proglet+"'/></applet></p>") +
+	       "</td></tr></table></body></html>");
+  }
+
   /** Registered proglets. */
   static final HashMap<String,String> proglets = new HashMap<String, String>();
   static {
@@ -228,7 +254,7 @@ public class Jvs2Java { private Jvs2Java() { }
 
   /** Returns the proglet panel.
    * @param proglet The proglet class name.
-   * @return The panel corresponding to the proglet, if any; else an empty panel.
+   * @return The panel corresponding to the proglet, if any. Else an empty panel.
    */
   public static JPanel getPanel(String proglet) {
     try { return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null); } catch(Exception e) { return new JPanel(); }
