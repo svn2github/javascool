@@ -222,6 +222,7 @@ public class Jvs2Java { private Jvs2Java() { }
 
   /** Compiles and saves a HTML launcher page in order to run the compile proglet as an applet.
    * DISCLAIMER: DO NOT USE, TO BE VALIDATED.
+   * SEE HOW TO USE JAVASCRIPT TO AVOID RELOAD
    * @param path The file path of the proglet code.
    * @param proglet The proglet name.
    *
@@ -230,20 +231,16 @@ public class Jvs2Java { private Jvs2Java() { }
    */
   public static void saveHtmlLauncher(String path, String proglet) { 
     setJpathclass(path);
-    
-
-
-String out = " "; if (new File(jpath + ".jvs").exists()) { translate(path); out = compile(path); }
+    String out = " "; if (new File(jpath + ".jvs").exists()) { translate(path); out = compile(path); }
     Utils.saveString(path + ".html", 
-      "<html><head><meta http-equiv='pragma' content='no-cache'/></head><body><table><tr><td valign='top'>" +
-      "<div><a href='http://javascool.gforge.inria.fr'><img width='200' src=='http://javascool.gforge.inria.fr/images/icon_js.png' alt='JavaScool'/></a></div>" +
-      "<p><applet code='org.javascool.Main' archive='http://javascool.gforge.inria.fr/v3/javascool.jar' width='50%' height='100%'>"+
-      "  <param name='html' value='true'/></applet></p>" +
-        "</td><td width='50%' valign='top'>" + (" ".equals(out) ? "" : out.length() > 0 ?
+      "<html><head><meta http-equiv='pragma' content='no-cache'/></head><body><table><tr><td valign='top'>\n" +
+      "<p><applet code='org.javascool.Main' archive='http://javascool.gforge.inria.fr/v3/javascool.jar' width='750' height='600'>" +
+      "  <param name='activity' value='ingredients'/><param name='html' value='true'/></applet></p>\n" +
+      "</td><td width='512' valign='top'><div id='out'>\n" + (" ".equals(out) ? "" : out.length() > 0 ?
         "<b>Le programme "+jclass+" a des erreurs de compilation:</b><div style='background:#DDDDDD;'><pre>"+out+"</pre></div>" :
-	"<p><applet code='org.javascool.ProgletApplet' codebase='.' archive='http://javascool.gforge.inria.fr/v3/javascool.jar' width='50%' height='100%'>"+
-        "  <param name='proglet' value='"+proglet+"'/></applet></p>") +
-	       "</td></tr></table></body></html>");
+	"<p><applet code='org.javascool.ProgletApplet' codebase='.' archive='http://javascool.gforge.inria.fr/v3/javascool.jar' width='512' height='600'>"+
+        "  <param name='proglet' value='"+proglet+"'/><param name='demo' value='false'/></applet></p>\n") +
+      "</div></td></tr></table></body></html>\n");
   }
 
   /** Registered proglets. */
@@ -290,6 +287,10 @@ String out = " "; if (new File(jpath + ".jvs").exists()) { translate(path); out 
    * <p><tt>-compile</tt> : Compile the java classes</p>
    */
   public static void main(String[] usage) {
+    if (usage.length > 0 && usage[0].equals("-test")) {
+      saveHtmlLauncher("htest", "ingredients");
+      Utils.exec("firefox htest.html", 0);
+    } else 
     if (usage.length > 0) {
       boolean reformat = false, compile = false; for(String option : usage) { reformat |= "-reformat".equals(option);  compile |= "-compile".equals(option); }
       if (reformat) Utils.saveString(usage[usage.length-1], reformat(Utils.loadString(usage[usage.length-1])));

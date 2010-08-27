@@ -1,7 +1,4 @@
 
-// DEBUT_PROGRAMME
 void main() {
-   // BOOLEEN firstrun <- VRAI;  
-   boolean firstrun = true;
-   // FIN_PROGRAMME 
+  
 }
