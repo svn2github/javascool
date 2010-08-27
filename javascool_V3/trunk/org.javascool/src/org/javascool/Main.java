@@ -64,7 +64,7 @@ import javax.swing.UIManager;
  */
 public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;
-  static final String title = "Java'Scool v3.0 - RC1";
+  static final String title = "Java'Scool v3.0 - RC2";
 
   // [0] Defines the look and field.
   static {
@@ -73,10 +73,12 @@ public class Main extends JApplet { /**/public Main() { }
       try { UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); } catch (Exception e) { }
     } else {
       System.err.println("Vous n'êtes pas sous Windows, bravo !!!!");
-      if (os.startsWith("Mac OS")) {
-	System.setProperty("com.apple.mrj.application.apple.menu.about.name", title);
-      }
-    }
+     // if (os.startsWith("Mac OS")) {
+	//System.setProperty("com.apple.mrj.application.apple.menu.about.name", title);
+      //}
+	try{System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Java'SCool v3.0 - RC2");}catch(Exception e){System.out.println("Vous n'êtes pas sous mac, on ne modifie pas le menu");}
+       try{UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}catch(Exception e){System.err.println("Erreur : Thème du système introuvable, utilisation du thème Java");}
+    } 
   }
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
