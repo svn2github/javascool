@@ -65,11 +65,13 @@ import javax.swing.UIManager;
 public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;
   static final String title = "Java'Scool v3.0 - RC1";
+{
   try {
       UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
   } catch (Exception e) {
       System.out.println("Vous n'êtes pas sous Windows, bravo !!!!");
   }
+}
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar(title, JToolBar.HORIZONTAL);
