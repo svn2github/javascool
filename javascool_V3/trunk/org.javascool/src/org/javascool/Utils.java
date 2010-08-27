@@ -470,4 +470,9 @@ public class Utils { private Utils() { }
   public static void whereAreWe() {
     System.err.println("System properties:"); for(Object p : System.getProperties().keySet()) System.err.println(" - "+p+" = "+System.getProperty((String) p));
   }
+  /** Say if we are on a Mac. */
+  public static boolean isMacOSX() {
+    String osName = System.getProperty("os.name");
+    return osName.startsWith("Mac OS X");
+  }
 }

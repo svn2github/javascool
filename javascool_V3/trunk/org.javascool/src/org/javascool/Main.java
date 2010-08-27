@@ -67,11 +67,22 @@ public class Main extends JApplet { /**/public Main() { }
   static final String title = "Java'Scool v3.0 - RC1";
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
-   {   try {
+  // If we are on Windows, set System look to Windows
+{   
+    try {
       UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
     } catch (Exception e) {
-      System.out.println("Vous n'êtes pas sous Windows, bravo !!!!");
-    }}
+	try{UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());} catch(Exception err){System.out.println("Impossible de fixer le style du Système, on utilise donc le style de Java");}
+    }
+}
+  // Are we on a mac ?
+  private Boolean isAMac=Utils.isMacOSX();
+  // if yes
+  {
+  if(isAMac){
+   System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Java'SCool v3.0 - RC1");
+  }
+  }
   private JToolBar toolBar = new JToolBar(title, JToolBar.HORIZONTAL);
   private JTabbedPane tabbedPane = new JTabbedPane();
   private JComboBox activityList = new JComboBox();
@@ -140,8 +151,9 @@ public class Main extends JApplet { /**/public Main() { }
    * @param icon Location of the icon for the tab. If null, no icon.
    */
   public void addTab(String label, JPanel pane, String icon) {
-    boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024 && !System.getProperty("os.name").matches("^.*Makakac.*$");
-    // boolean floatable = false;
+    // Finaly this function is not friendly
+    //boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024 && !System.getProperty("os.name").matches("^.*Makakac.*$");
+    boolean floatable = false;
     if (floatable) {
       JToolBar bar = new JToolBar(label, JToolBar.HORIZONTAL);
       bar.setBorderPainted(false);
