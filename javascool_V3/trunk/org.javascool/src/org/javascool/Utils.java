@@ -63,6 +63,9 @@ import javax.swing.Action;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
+// Used to set Win LOOK
+import javax.swing.UIManager;
+
 /** This factory contains useful methods to interface javascool with the environment. 
  * @see <a href="Utils.java.html">source code</a>
  * @serial exclude
@@ -403,11 +406,7 @@ public class Utils { private Utils() { }
     private static final long serialVersionUID = 1L;
     private JApplet applet = null;
     {
-    	try {
-    	  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-    	} catch (Exception e) {
-    	  System.out.println("Vous n'êtes pas sous Windows, bravo !!!!");
-    	}
+    	
     }
     // Opens an applet in a standalone frame.
     public void open(Component pane, String title, ImageIcon icon, int width, int height, boolean quit) {
