@@ -402,6 +402,13 @@ public class Utils { private Utils() { }
   private static class Frame extends JFrame {
     private static final long serialVersionUID = 1L;
     private JApplet applet = null;
+    {
+    	try {
+    	  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+    	} catch (Exception e) {
+    	  System.out.println("Vous n'êtes pas sous Windows, bravo !!!!");
+    	}
+    }
     // Opens an applet in a standalone frame.
     public void open(Component pane, String title, ImageIcon icon, int width, int height, boolean quit) {
       if (pane instanceof JApplet) this.applet = (JApplet) pane;

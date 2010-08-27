@@ -65,6 +65,11 @@ import javax.swing.UIManager;
 public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;
   static final String title = "Java'Scool v3.0 - RC1";
+  try {
+      UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+  } catch (Exception e) {
+      System.out.println("Vous n'êtes pas sous Windows, bravo !!!!");
+  }
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar(title, JToolBar.HORIZONTAL);
@@ -72,6 +77,11 @@ public class Main extends JApplet { /**/public Main() { }
   private JComboBox activityList = new JComboBox();
   /** Builds the GUI. */
   private void initGUI() {
+    try {
+      UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+    } catch (Exception e) {
+      System.out.println("Vous n'êtes pas sous Windows, bravo !!!!");
+    }
     JPanel toppane = new JPanel();
     toppane.setLayout(new BorderLayout());
     toolBar.setBorderPainted(false);
@@ -681,13 +691,13 @@ public class Main extends JApplet { /**/public Main() { }
   public static void main(String[] usage) {
     System.out.println("Hi ! V3 is coming :-)");
     Main main = new Main();
+    if (usage.length >= 1) main.setActivityAs(usage[0]);
+    if (usage.length >= 2) main.setFileAs(usage[1]);
+    Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/logo_JVS.png"), false);
     try {
       UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
     } catch (Exception e) {
       System.out.println("Vous n'êtes pas sous Windows, bravo !!!!");
     }
-    if (usage.length >= 1) main.setActivityAs(usage[0]);
-    if (usage.length >= 2) main.setFileAs(usage[1]);
-    Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/logo_JVS.png"), false);
   }
 }
