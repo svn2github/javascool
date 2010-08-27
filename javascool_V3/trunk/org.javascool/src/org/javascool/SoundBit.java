@@ -170,7 +170,7 @@ public class SoundBit implements Widget {
 	final int size = (int) (FRAME_SIZE * (period <= 0 ? 1 : period) * SAMPLING); int n = 0; byte data[] = new byte[size];
 	for(long t = 0; t < FRAME_SIZE * stream.getFrameLength(); t += size, n++) {
 	  if (period > 0) sample(n);
-	  int s = stream.read(data, 0, size); if (s > 0) line.write(data, 0, s);
+	  int s = stream.read(data, 0, size); if (s > 0) line.write(data, 0, s); Macros.sleep(0);
 	}
       }
       line.close();

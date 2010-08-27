@@ -1,5 +1,5 @@
 
 { "DEBUT_PROGRAMME"
- { "BOOLEEN firstrun <- VRAI;                                                       " }
+ { "AFFICHER (\"OK\");                                                                " }
  { "FIN_PROGRAMME" }
 }

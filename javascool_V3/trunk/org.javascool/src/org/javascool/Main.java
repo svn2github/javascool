@@ -67,21 +67,18 @@ public class Main extends JApplet { /**/public Main() { }
   static final String title = "Java'Scool v3.0 - RC1";
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
-  // If we are on Windows, set System look to Windows
-{   
-    try {
-      UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-    } catch (Exception e) {
-	try{UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());} catch(Exception err){System.out.println("Impossible de fixer le style du Système, on utilise donc le style de Java");}
+  // Defines the look and field.
+  static {
+    String os = System.getProperty("os.name");
+    if (os.startsWith("Windows")) {
+      try {
+	UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+      } catch (Exception e) {
+	System.err.println("Vous n'êtes pas sous Windows, bravo !!!!");
+      }
+    } else if(os.startsWith("Mac OS")) {
+      System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Java'SCool v3.0 - RC1");
     }
-}
-  // Are we on a mac ?
-  private Boolean isAMac=Utils.isMacOSX();
-  // if yes
-  {
-  if(isAMac){
-   System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Java'SCool v3.0 - RC1");
-  }
   }
   private JToolBar toolBar = new JToolBar(title, JToolBar.HORIZONTAL);
   private JTabbedPane tabbedPane = new JTabbedPane();
@@ -108,8 +105,9 @@ public class Main extends JApplet { /**/public Main() { }
     // Adds buttons and activities using generic routines
     fileTools();
     addActivities();
-    // Initializes the activity from the HTML tag or proposes a default activity
-    try { setActivityAs(getParameter("activity")); } catch(Exception e) { setActivityAs(""); }
+    // Initializes the activity from the HTML tag if any
+    try { setActivityAs(getParameter("activity")); } catch(Exception e) { }
+    try { setFileAs(getParameter("file")); } catch(Exception e) { }
   }
   /** Adds a button to the toolbar.
    * @param label Button label.
@@ -151,8 +149,7 @@ public class Main extends JApplet { /**/public Main() { }
    * @param icon Location of the icon for the tab. If null, no icon.
    */
   public void addTab(String label, JPanel pane, String icon) {
-    // Finaly this function is not friendly
-    //boolean floatable = Toolkit.getDefaultToolkit().getScreenSize().getWidth() >= 1024 && !System.getProperty("os.name").matches("^.*Makakac.*$");
+    /* Finaly this function is not friendly
     boolean floatable = false;
     if (floatable) {
       JToolBar bar = new JToolBar(label, JToolBar.HORIZONTAL);
@@ -163,6 +160,7 @@ public class Main extends JApplet { /**/public Main() { }
       par.add(bar, BorderLayout.CENTER);
       pane = par;
     }
+    */
     tabbedPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
     tabs.put(label, pane);
     tabbedPane.revalidate();
@@ -232,11 +230,13 @@ public class Main extends JApplet { /**/public Main() { }
    */
   private void setActivityAs(String name) {
     if (activities.containsKey(name)) {
+      System.out.println("Activité : "+name);
       setActivity(name);
-    } else {
+      activityList.getParent().getParent().getParent().remove(activityList.getParent().getParent());
+    } else if (name != null) {
       int index = name.matches("^[0-9]+$") ? Integer.parseInt(name) : 0; 
-      index = 0 <= index && index < activityList.getItemCount() ? index : 0;
-      activityList.setSelectedIndex(index);
+      if (0 <= index && index < activityList.getItemCount())
+	setActivityAs((String) activityList.getItemAt(index));
     }
   }
   /** Sets an any activity.
@@ -315,7 +315,7 @@ public class Main extends JApplet { /**/public Main() { }
     /** Manages an open action (no dialog). */
     public void doOpen(Editor editor, String file) {
       setSelectedFile(new File(file));
-      String text = ""; try { text = Utils.loadString(this.file = file); } catch(Exception e) { }
+      String text = ""; try { this.file = file; text = Utils.loadString(file); } catch(Exception e) { }
       editor.setText(text);
     }
     /** Manages a save dialog action. 

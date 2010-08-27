@@ -22,8 +22,8 @@ if [ "$main" = sax ] ; then java -jar $root/lib/saxon.jar $* ; exit $? ; fi
 # Running the class after compilation
 make -s -f - <<EOF
 all :
-	\$(MAKE) -C $root cmp
-	java -cp $root/src:$root/lib/tools.jar:$root/lib/saxon.jar $main $*
+	\$(MAKE) -C $root jar
+	java -cp $root/www/javascool.jar $main $*
 EOF
 
 

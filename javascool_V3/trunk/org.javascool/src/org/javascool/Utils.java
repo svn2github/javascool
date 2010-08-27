@@ -63,9 +63,6 @@ import javax.swing.Action;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-// Used to set Win LOOK
-import javax.swing.UIManager;
-
 /** This factory contains useful methods to interface javascool with the environment. 
  * @see <a href="Utils.java.html">source code</a>
  * @serial exclude
@@ -393,7 +390,7 @@ public class Utils { private Utils() { }
   /**/public static JFrame show(Component applet, String title, ImageIcon icon, boolean quit) {
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();  
     int width = (int) (1 * dim.getWidth()), height = (int) (1 * dim.getHeight());
-    if (width > 1800) width = 1800; if(height > 1000) height = 1000;
+    if (width > 1600) width = 1600; if(height > 1000) height = 1000;
     return show(applet, title, icon, width, height, quit);
   }    
   /**/public static JFrame show(Component applet, String title, int width, int height) { return show(applet, title, null, width, height, true); }
@@ -464,15 +461,4 @@ public class Utils { private Utils() { }
       frames.get(applet).dispose();
   }
   private static HashMap<Component,JFrame> frames = new HashMap<Component,JFrame>();
-
-
-  /** Dumps the system properties. */
-  public static void whereAreWe() {
-    System.err.println("System properties:"); for(Object p : System.getProperties().keySet()) System.err.println(" - "+p+" = "+System.getProperty((String) p));
-  }
-  /** Say if we are on a Mac. */
-  public static boolean isMacOSX() {
-    String osName = System.getProperty("os.name");
-    return osName.startsWith("Mac OS X");
-  }
 }

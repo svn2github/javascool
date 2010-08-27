@@ -163,7 +163,7 @@ public class Jvs2Java { private Jvs2Java() { }
   // Translates one line of the source file
   private static String translateOnce(String line) {
     // Translates the while statement with sleep
-    line = line.replaceFirst("(while.*\\{)", "$1 sleep(10);");
+    line = line.replaceFirst("(while.*\\{)", "$1 sleep(0);");
     // Translates the Synthe proglet @tone macro
     line = line.replaceFirst("@tone:(.*)\\s*;", 
       "proglet.synthesons.SoundDisplay.tone = new org.javascool.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.synthesons.SoundDisplay.syntheSet(\"16 a\");");
@@ -221,27 +221,23 @@ public class Jvs2Java { private Jvs2Java() { }
   }
 
   /** Compiles and saves a HTML launcher page in order to run the compile proglet as an applet.
-   * DISCLAIMER: DO NOT USE, TO BE VALIDATED.
-   * SEE HOW TO USE JAVASCRIPT TO AVOID RELOAD
+   * DISCLAIMER: DO NOT USE, TO BE VALIDATED + SEE HOW TO USE JAVASCRIPT TO AVOID RELOAD
+   * @param activity The activity name or index.
    * @param path The file path of the proglet code.
-   * @param proglet The proglet name.
    *
    * @throws RuntimeException if an I/O exception occurs during command execution.
    * @throws IllegalArgumentException If the Java class name is not valid.
-   */
-  public static void saveHtmlLauncher(String path, String proglet) { 
+   * /
+  public static void saveHtmlLauncher(String activity, String path) { 
     setJpathclass(path);
-    String out = " "; if (new File(jpath + ".jvs").exists()) { translate(path); out = compile(path); }
     Utils.saveString(path + ".html", 
-      "<html><head><meta http-equiv='pragma' content='no-cache'/></head><body><table><tr><td valign='top'>\n" +
-      "<p><applet code='org.javascool.Main' archive='http://javascool.gforge.inria.fr/v3/javascool.jar' width='750' height='600'>" +
-      "  <param name='activity' value='ingredients'/><param name='html' value='true'/></applet></p>\n" +
-      "</td><td width='512' valign='top'><div id='out'>\n" + (" ".equals(out) ? "" : out.length() > 0 ?
-        "<b>Le programme "+jclass+" a des erreurs de compilation:</b><div style='background:#DDDDDD;'><pre>"+out+"</pre></div>" :
-	"<p><applet code='org.javascool.ProgletApplet' codebase='.' archive='http://javascool.gforge.inria.fr/v3/javascool.jar' width='512' height='600'>"+
-        "  <param name='proglet' value='"+proglet+"'/><param name='demo' value='false'/></applet></p>\n") +
-      "</div></td></tr></table></body></html>\n");
+      "<html><head><meta http-equiv='pragma' content='no-cache'/></head><body><table><tr><td><div id='js-exec-bar'>\n" +
+      "</div></td></tr><tr><td>\n" +
+      "<p><applet code='org.javascool.Main' archive='http://javascool.gforge.inria.fr/v3/javascool.jar' width='800' height='600'>" +
+      "  <param name='activity' value='"+activity+"'/><!--param name='file' value='"+jpath+"'/--></applet></p>\n" +
+      "</td></tr></table></body></html>\n");
   }
+  */
 
   /** Registered proglets. */
   static final HashMap<String,String> proglets = new HashMap<String, String>();
@@ -251,35 +247,38 @@ public class Jvs2Java { private Jvs2Java() { }
 
   /** Returns the proglet panel.
    * @param proglet The proglet class name.
-   * @return The panel corresponding to the proglet, if any. Else an empty panel.
+   * @return The panel corresponding to the proglet, if any, else null;
    */
   public static JPanel getPanel(String proglet) {
-    try { return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null); } catch(Exception e) { return new JPanel(); }
+    if (Jvs2Java.proglets.containsKey(proglet)) {
+      try { return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null); } catch(Exception e) { return null; }
+    } else
+      return null;
   }
 
   /** Runs/Stops the proglet pupil's program. 
    * @param start If true starts the proglet pupil's program, if defined. If false stops the proglet pupil's program. 
-   * If given as a <tt>String</tt> runs the corresponding proglet demo.
    */
   public static void run(boolean start) {
     if (thread != null) { thread.interrupt(); thread = null; }
-    if (start) (thread = new Thread(new Runnable() { public void run() {
-      try {
-	if (runnable != null) runnable.run(); 
-      } catch(Exception e) { Utils.report(e); } 
+    if (start && runnable != null) (thread = new Thread(new Runnable() { public void run() {
+      try { runnable.run(); } catch(Throwable e) { if ("Programme arrêté !".equals(e.getMessage())) System.out.println(e); else Utils.report(e); } 
     }})).start(); 
   }
-  /**/public static void run(String proglet) {
+  /** Runs/Stops a proglet demo.. 
+   * @param proglet The proglet name. 
+   */
+  public static void run(String proglet) {
     if (thread != null) { thread.interrupt(); thread = null; }
-    Jvs2Java.proglet = proglet;
-    (thread = new Thread(new Runnable() { public void run() {
-      try { 
-	Class.forName(Jvs2Java.proglets.get(Jvs2Java.proglet)).getDeclaredMethod("test").invoke(null); 
-      } catch(Exception e) { Utils.report(e); } 
-    }})).start();
+    if (Jvs2Java.proglets.containsKey(proglet)) {
+      Jvs2Java.proglet = proglets.get(proglet);
+      (thread = new Thread(new Runnable() { public void run() {
+	try { Class.forName(Jvs2Java.proglet).getDeclaredMethod("test").invoke(null); } catch(Throwable e) { Utils.report(e); } 
+      }})).start();
+    }
   }
   // This is the entry point to run  the proglet pupil's program: do not change directly !
-  /**/public static Runnable runnable = null; private static String proglet = "ingredients"; private static Thread thread = null;
+  /**/public static Runnable runnable = null; private static String proglet = null; private static Thread thread = null;
 
   /** Translates Jvs files to Java files.
    * @param usage <tt>java org.javascool.Jvs2Java [-reformat] [-compile] input-file</tt>
@@ -287,10 +286,6 @@ public class Jvs2Java { private Jvs2Java() { }
    * <p><tt>-compile</tt> : Compile the java classes</p>
    */
   public static void main(String[] usage) {
-    if (usage.length > 0 && usage[0].equals("-test")) {
-      saveHtmlLauncher("htest", "ingredients");
-      Utils.exec("firefox htest.html", 0);
-    } else 
     if (usage.length > 0) {
       boolean reformat = false, compile = false; for(String option : usage) { reformat |= "-reformat".equals(option);  compile |= "-compile".equals(option); }
       if (reformat) Utils.saveString(usage[usage.length-1], reformat(Utils.loadString(usage[usage.length-1])));

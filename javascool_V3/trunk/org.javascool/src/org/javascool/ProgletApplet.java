@@ -26,7 +26,7 @@ public class ProgletApplet extends JApplet {
    * </li><li>Or used in a standalone program:
    * <div><tt>Utils.show(new Jvs2Java.ProgletApplet().reset("ingredients", true), "javascool proglet", 560, 720);</tt></div>
    * </li></ul>
-   * @param proglet The corresponding proglet name. Default is "ingredients".
+   * @param proglet The corresponding proglet name. Default generates a Run/Stop panel without prroglet.
    * @param demo If true runs the demo program. If false runs the proglet pupil's program. Default is "true".
    * @return This, allowing to use the <tt>new ProgletApplet().reset(..)</tt> construct.
    *
@@ -34,16 +34,19 @@ public class ProgletApplet extends JApplet {
    * @serial exclude
    */
   public ProgletApplet reset(String proglet, boolean demo) { this.proglet = proglet; this.demo = demo; return this; } 
-  private String proglet = "ingredients"; private boolean demo = true;
+  private String proglet = ""; private boolean demo = true;
   /**/public void init() {
     // Init the parameters from the HTML tags
     try { String p  = getParameter("proglet"); if (p != null) proglet = p; } catch(Exception e) { }
     try { String p  = getParameter("demo"); if (p != null) demo = p.toLowerCase().equals("true"); } catch(Exception e) { }
+    JPanel panel = Jvs2Java.getPanel(proglet);
+    if (panel == null) demo = false;
     // Builds the GUI
     JToolBar bar = new JToolBar();
     bar.setRollover(false);
     bar.setFloatable(false);
-    bar.add(new JLabel("Proglet \""+proglet+"\" : "));
+    if (panel != null)
+      bar.add(new JLabel("Proglet \""+proglet+"\" : "));
     bar.add(new JButton(new AbstractAction(demo ? "Démonstration" : "Executer", Utils.getIcon("org/javascool/doc-files/icones16/play.png")) {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) {
@@ -59,7 +62,8 @@ public class ProgletApplet extends JApplet {
 	  Jvs2Java.run(false);
 	}}));
     getContentPane().add(bar, BorderLayout.NORTH);
-    getContentPane().add(Jvs2Java.getPanel(proglet), BorderLayout.CENTER);
+    if (panel != null)
+      getContentPane().add(panel, BorderLayout.CENTER);
   }
 
   /** Runs the demo of proglet.
