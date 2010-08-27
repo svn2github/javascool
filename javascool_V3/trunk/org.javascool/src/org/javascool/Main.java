@@ -66,20 +66,20 @@ public class Main extends JApplet { /**/public Main() { }
   private static final long serialVersionUID = 1L;
   static final String title = "Java'Scool v3.0 - RC1";
 
-  // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
-  // Defines the look and field.
+  // [0] Defines the look and field.
   static {
     String os = System.getProperty("os.name");
     if (os.startsWith("Windows")) {
-      try {
-	UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-      } catch (Exception e) {
-	System.err.println("Vous n'êtes pas sous Windows, bravo !!!!");
+      try { UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); } catch (Exception e) { }
+    } else {
+      System.err.println("Vous n'êtes pas sous Windows, bravo !!!!");
+      if (os.startsWith("Mac OS")) {
+	System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Java'SCool v3.0 - RC1");
       }
-    } else if(os.startsWith("Mac OS")) {
-      System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Java'SCool v3.0 - RC1");
     }
   }
+
+  // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar(title, JToolBar.HORIZONTAL);
   private JTabbedPane tabbedPane = new JTabbedPane();
   private JComboBox activityList = new JComboBox();
