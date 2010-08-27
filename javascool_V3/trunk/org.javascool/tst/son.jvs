@@ -1,12 +1,10 @@
 
 void main(){
 int i=0;
-
    @tone: 0.8 * tri(t);
    syntheSet("c c c c");
 while(i<10){
    synthePlay();
-wait(3);
    i=i+1;
 }
 }

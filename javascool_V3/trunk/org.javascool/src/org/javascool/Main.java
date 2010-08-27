@@ -59,7 +59,7 @@ import java.util.HashMap;
  * @see <a href="Main.java.html">source code</a>
  * @serial exclude
  */
-public class Main extends JApplet { /**/public Main() { }
+public class Main extends JApplet { /*public*/ Main() { }
   private static final long serialVersionUID = 1L;
   static final String title = "Java'Scool v3.0 - RC1";
 
@@ -394,7 +394,7 @@ public class Main extends JApplet { /**/public Main() { }
     if (activity == null) return;
     fileChooser.doOpen(activity.getEditor(), file);
   }
-  /**/public void stop() {
+  /*public*/ void stop() {
     fileSavePlease();
   }
   /** Saves a file, before exiting or activity change. */
@@ -680,6 +680,6 @@ public class Main extends JApplet { /**/public Main() { }
     Main main = new Main();
     if (usage.length >= 1) main.setActivityAs(usage[0]);
     if (usage.length >= 2) main.setFileAs(usage[1]);
-    Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), false);
+    Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/logo_JVS.png"), false);
   }
 }
