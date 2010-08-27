@@ -74,7 +74,7 @@ public class Main extends JApplet { /**/public Main() { }
     } else {
       System.err.println("Vous n'êtes pas sous Windows, bravo !!!!");
       if (os.startsWith("Mac OS")) {
-	System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Java'SCool v3.0 - RC1");
+	System.setProperty("com.apple.mrj.application.apple.menu.about.name", title);
       }
     }
   }
