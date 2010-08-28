@@ -70,14 +70,11 @@ public class Main extends JApplet { /**/public Main() { }
   static {
     String os = System.getProperty("os.name");
     if (os.startsWith("Windows")) {
-      try { UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); } catch (Exception e) { }
+      try { UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); } catch(Exception e) { }
     } else {
-      System.err.println("Vous n'êtes pas sous Windows, bravo !!!!");
-     // if (os.startsWith("Mac OS")) {
-	//System.setProperty("com.apple.mrj.application.apple.menu.about.name", title);
-      //}
-	try{System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Java'SCool v3.0 - RC2");}catch(Exception e){System.out.println("Vous n'êtes pas sous mac, on ne modifie pas le menu");}
-       try{UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}catch(Exception e){System.err.println("Erreur : Thème du système introuvable, utilisation du thème Java");}
+      System.err.println("Note: Vous n'êtes pas sous Windows, bravo !!!!");
+      try{ System.setProperty("com.apple.mrj.application.apple.menu.about.name", title); } catch(Exception e) { }
+      try{ UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); } catch(Exception e) { System.err.println("Note: Utilisaton du thème Java (et non du système)"); }
     } 
   }
 
@@ -698,7 +695,7 @@ public class Main extends JApplet { /**/public Main() { }
    * </ul>
    */
   public static void main(String[] usage) {
-    System.out.println("Hi ! V3 is coming :-)");
+    System.out.println("Note: Hi ! V3 is coming :-)");
     Main main = new Main();
     if (usage.length >= 1) main.setActivityAs(usage[0]);
     if (usage.length >= 2) main.setFileAs(usage[1]);
