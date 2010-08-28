@@ -224,7 +224,7 @@ public class Main extends JApplet { /**/public Main() { }
     activityList.addItem(activity.getTitle());
     activityList.revalidate();
   }
-  /** Starts an activity.
+  /** Starts a unique activity.
    * @param name Name of Activity in the HashMap or Index in the chooser
    */
   private void setActivityAs(String name) {
