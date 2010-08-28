@@ -73,8 +73,8 @@ public class Main extends JApplet { /**/public Main() { }
       try { UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); } catch(Exception e) { }
     } else {
       System.err.println("Note: Vous n'êtes pas sous Windows, bravo !!!!");
-      try{ System.setProperty("com.apple.mrj.application.apple.menu.about.name", title); } catch(Exception e) { }
-      try{ UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); } catch(Exception e) { System.err.println("Note: Utilisaton du thème Java (et non du système)"); }
+      try { System.setProperty("com.apple.mrj.application.apple.menu.about.name", title); } catch(Exception e) { }
+      try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); } catch(Exception e) { System.err.println("Note: Utilisaton du thème Java (et non du système)"); }
     } 
   }
 
