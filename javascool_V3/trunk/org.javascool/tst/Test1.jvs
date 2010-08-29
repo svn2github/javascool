@@ -1,9 +1,7 @@
 
 // DEBUT_PROGRAMME
 void main() {
-   // AFFICHER ("Hello World !!! !");  
-   println ("Hello World  !!!   !");
-   // AFFICHER ("How do you do ?"); 
-   println ("How do you do ?");
+   // AFFICHER ("OK !");  
+   println ("OK !");
    // FIN_PROGRAMME 
 }
