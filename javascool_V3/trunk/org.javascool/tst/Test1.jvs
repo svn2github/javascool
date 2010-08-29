@@ -1,7 +1,9 @@
 
 // DEBUT_PROGRAMME
 void main() {
-   // AFFICHER ("OK !");  
-   println ("OK !");
+   // CHAINE_DE_CARACTERE x <- "name" + 12;  
+   String x = "name" + 12;
+   // AFFICHER (x);  
+   println (x);
    // FIN_PROGRAMME 
 }

@@ -105,7 +105,8 @@ public class Main extends JApplet { /**/public Main() { }
     westPane.setMinimumSize(new Dimension(100, 100));
     eastPane.setMinimumSize(new Dimension(100, 100));
     splitPane.setResizeWeight(0.5);
-    splitPane.setContinuousLayout(true);
+    splitPane.setContinuousLayout(true); 
+    splitPane.setOneTouchExpandable(false);
     getContentPane().add(splitPane, BorderLayout.CENTER);
     // Adds buttons and activities using generic routines
     fileTools();

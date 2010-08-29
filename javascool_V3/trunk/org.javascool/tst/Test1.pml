@@ -1,5 +1,6 @@
 
 { "DEBUT_PROGRAMME"
- { "AFFICHER (\"OK !\");                                                              " }
+ { "CHAINE_DE_CARACTERE x <- \"name\" + 12;                                           " }
+ { "AFFICHER (x);                                                                   " }
  { "FIN_PROGRAMME" }
 }
