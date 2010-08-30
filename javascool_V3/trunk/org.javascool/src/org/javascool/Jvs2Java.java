@@ -111,8 +111,10 @@ public class Jvs2Java { private Jvs2Java() { }
     setJpathclass(path);
     String text = Utils.loadString(jpath+".jvs");
     /*
-    String voidMainPattern = "[.\n]*void\\s+main\\s*\\(\\s*\\)[.\n]*";
-    String mainPattern = "[.\n]*main\\s*\\(\\s*\\)[.\n]*";
+    String voidMainPattern = "\\A[.\\s]*\\z";
+    System.err.println("Match with '"+voidMainPattern+"' : "+text.matches(voidMainPattern));
+    //String voidMainPattern = "^[.\n]*void\\s+main\\s*[(]\\s*[)][.\n]*$";
+    String mainPattern = "^[.\n]*main\\s*[(]\\s*[)][.\n]*$";
     if (!text.matches(voidMainPattern)) {
       if (text.matches("mainPattern")) {
 	System.out.println("Attention: il manque le \"void\" à \"void main()\" . . penser à l'ajouter");
@@ -163,7 +165,7 @@ public class Jvs2Java { private Jvs2Java() { }
   // Translates one line of the source file
   private static String translateOnce(String line) {
     // Translates the while statement with sleep
-    line = line.replaceFirst("(while.*\\{)", "$1 sleep(0);");
+    line = line.replaceAll("(while.*\\{)", "$1 sleep(0);");
     // Translates the Synthe proglet @tone macro
     line = line.replaceFirst("@tone:(.*)\\s*;", 
       "proglet.synthesons.SoundDisplay.tone = new org.javascool.SoundBit() { public double get(char c, double t) { return $1; } }; proglet.synthesons.SoundDisplay.syntheSet(\"16 a\");");
