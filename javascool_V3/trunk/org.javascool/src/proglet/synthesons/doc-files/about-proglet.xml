@@ -39,14 +39,14 @@
      <p><r>@tone:</r> cos(t);</p>
      <p><r>synthePlay</r>();</p>
    </div>puis<div class="code">
-     <p><r>synthePlay</r>();</p>
      <p><r>@tone:</r> 0.5 * sqr(t);</p>
-   </div>puis<div class="code">
      <p><r>synthePlay</r>();</p>
+   </div>puis<div class="code">
      <p><r>@tone:</r> 0.8 * tri(t) + 0.2 * noi(t);</p>
-   </div>puis<div class="code">
      <p><r>synthePlay</r>();</p>
+   </div>puis<div class="code">
      <p><r>@tone:</r> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t);</p>
+     <p><r>synthePlay</r>();</p>
    </div>sont présentés, puis les 1ères notes de quelque chose qui ressemble à la «Lettre à Elise» de L.v.Beethoven est jouée et son spectre affiché et ensuite 
    <div> . . à vous de jouer !</div></div>
 
