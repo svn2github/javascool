@@ -385,11 +385,10 @@ done :
 #:  while firefox                can be replaced by any other open-source convenient browser
 #:
 #: [3.2] Java development tools: java javac jarsigner javadoc keytool
-#: Installing these commands run; e.g., yum or apt-get:
-#: > yum java-1.6.0-openjdk-devel java-1.6.0-openjdk-javadoc
+#: > (apt-get|yum) java-1.6.0-openjdk-devel java-1.6.0-openjdk-javadoc
 #: while we still need the JDK5, i.e.:
 #: > cd /usr/java ; ./jdk-1_5_0_22-linux-i586.bin
 #: or (to be validated):
-#: > yum install java-1.5.0-gcj-devel
+#: > (apt-get|yum) install java-1.5.0-gcj-devel
 #:
 #####################################################################################################################################
