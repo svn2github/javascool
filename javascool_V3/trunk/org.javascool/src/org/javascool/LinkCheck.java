@@ -52,7 +52,6 @@ public class LinkCheck { private LinkCheck() { }
   private static HashSet<String> links; private static HashMap<String,HashSet<String>> anchors; 
   private static String root; private static boolean loop; private static int npages, nlinks, nbrokens;
   private static void check(String location) {
-    //-System.err.println("Check "+ location);
     try { 
       String text = Utils.loadString(location); npages++;
       for(String href : getLinks(text)) if (!href.matches("^(https|javascript|rtsp|mailto):.*$")) {
@@ -61,7 +60,6 @@ public class LinkCheck { private LinkCheck() { }
 	  if(!links.contains(href)) {
 	    links.add(href); nlinks++;
 	    String anchor = null; int i = href.indexOf("#"); if (i != -1) { anchor = href.substring(i+1); href = href.substring(0, i); }
-	    //-System.err.println(" ? "+ href + (anchor == null ? "" : " #"+ anchor));
 	    if (!isReadable(href)) {
 	      echoBroken("BROKEN  Link in "+location+" -> "+href);
 	    } else {

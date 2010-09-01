@@ -10,8 +10,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.DefaultTreeCellRenderer;
-//-import javax.swing.event.TreeModelListener;
-//-import javax.swing.event.TreeModelEvent;
 import java.util.Enumeration;
 
 // Used to build the panel
@@ -114,22 +112,6 @@ public class AlgoEditor extends JPanel implements Widget,Editor {
     tree.setCellRenderer(renderer);
     tree.setModel(model);
     tree.setEditable(true);
-    /* Used for debug only
-    tree.getModel().addTreeModelListener(new TreeModelListener() {
-	public void treeNodesChanged(TreeModelEvent e) {
-	  System.out.println("Un noeud a été changé !" + getJavaSource());				
-	}	
-	public void treeNodesInserted(TreeModelEvent event) {
-	  System.out.println("Un noeud a été inséré !" + getJavaSource());				
-	}
-	public void treeNodesRemoved(TreeModelEvent event) {
-	  System.out.println("Un noeud a été retiré !" + getJavaSource());
-	}
-	public void treeStructureChanged(TreeModelEvent event) {
-	  System.out.println("La structure d'un noeud a changé !" + getJavaSource());
-	}
-      });
-    */
     add(new JScrollPane(tree), BorderLayout.CENTER);
   }
   // [2.1] Interface between algo edition and Jtree

@@ -20,7 +20,7 @@ import java.net.URLEncoder;
 import java.net.URLConnection;
 import java.io.OutputStreamWriter;
 import java.io.FileWriter;
-import java.lang.System; // .out.println
+import java.lang.System; 
 
 // Used to load icon
 import javax.swing.ImageIcon;
@@ -115,7 +115,6 @@ public class Utils { private Utils() { }
       if (location.matches("(file|ftp|http|https|jar|mailto|stdout):.*")) return new URL(location);
       URL url = Main.class.getClassLoader().getResource(location); if (url != null) return url;
       File file = new File(location); if (file.exists()) return new URL("file:"+file.getCanonicalPath());
-      // For debug only // { String u = "http://javascool.gforge.inria.fr/v3/api/"+location; if (LinkCheck.isReadable(u)) return new URL(u); }
       return new URL("file:"+location);
     } catch(IOException e) { throw new IllegalArgumentException(e+" : "+location+" is a malformed URL"); }
   }
@@ -231,7 +230,8 @@ public class Utils { private Utils() { }
     }
     return name;
   }
-  // string2name conversion table
+  /** String2name conversion table.
+  */
   private static HashMap<String,String> string2name;
   static {
     string2name = new HashMap<String,String>();
@@ -309,13 +309,6 @@ public class Utils { private Utils() { }
       tranformers.get(xsl).transform(new StreamSource(new StringReader(xml)), new StreamResult(writer));
       return writer.toString();
     } catch(TransformerException e) {
-      /* FOR DEBUG ONLY: Uses an external transformer to get a better error report
-      try {
-	saveString("/tmp/xml2xml.xml", xml);
-	saveString("/tmp/xml2xml.xsl", xsl);
-	System.err.println(exec("java -jar /home/vthierry/bin/saxon.jar -o /tmp/xml2xml.out /tmp/xml2xml.xml /tmp/xml2xml.xsl")); 
-      } catch(Exception e2) { System.err.println("Double error in xml2xml"+e+" + "+e2+": this a BUG, please report !!"); }
-      */
       throw new IllegalArgumentException(e.getMessageAndLocation());
     }
   }

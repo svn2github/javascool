@@ -53,7 +53,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     pane.setContentType("text/html");
     pane.addHyperlinkListener(new HyperlinkListener() {
 	public void hyperlinkUpdate(HyperlinkEvent e) { if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) { load(e.getDescription()); } } });
-    JScrollPane spane = new JScrollPane(pane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    JScrollPane spane = new JScrollPane(pane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     add(spane, BorderLayout.CENTER);
     // Defines the backward/forward key-stroke and buttons
     {

@@ -150,22 +150,6 @@ public class SourceEditor extends JPanel implements Widget, Editor {
 	  }
 	};
       menu.add(new JMenuItem(print));
-      // addBinding(pane, KeyEvent.VK_P, print);
-
-      // Textfind/replace manager: to be improved before use
-      // menu.addSeparator();
-      // TextReplaceManager find = new TextReplaceManager(pane);
-      // menu.add(find.getSearchItem(menu));
-      // menu.add(find.getReplaceItem(menu));
-      
-      // Emacs like bindings: note used here !
-      // addBinding(pane, KeyEvent.VK_B, getAction(pane, DefaultEditorKit.backwardAction));
-      // addBinding(pane, KeyEvent.VK_F, getAction(pane, DefaultEditorKit.forwardAction));
-      // addBinding(pane, KeyEvent.VK_P, getAction(pane, DefaultEditorKit.upAction));
-      // addBinding(pane, KeyEvent.VK_N, getAction(pane, DefaultEditorKit.downAction));
-      // addBinding(pane, KeyEvent.VK_A, getAction(pane, DefaultEditorKit.beginLineAction));
-      // addBinding(pane, KeyEvent.VK_E, getAction(pane, DefaultEditorKit.endLineAction));
-      // addBinding(pane, KeyEvent.VK_D, getAction(pane, DefaultEditorKit.deleteNextCharAction));
     }
     // Defines the view menu
     {
@@ -325,108 +309,6 @@ public class SourceEditor extends JPanel implements Widget, Editor {
       }
     }}).start();
   }
-
-  /* Defines a text search and replace manager.
-  private static class TextReplaceManager {
-    private static final long serialVersionUID = 1L;
-    /** Constructs a text search/replace manager for the given pane. * /
-    public TextReplaceManager(JTextComponent pane) {
-      this.pane = pane;
-      addBinding(pane, KeyEvent.VK_S, search_action);
-      addBinding(pane, KeyEvent.VK_R, replace_action);
-    }
-    private JTextComponent pane;
-    private Action search_action = new AbstractAction("Chercher") {
-	private static final long serialVersionUID = 1L;
-	public void actionPerformed(ActionEvent e) { 
-	  if (search != null)
-	    doFindReplace(search.getText(), null);
-	}
-      };
-    private Action replace_action = new AbstractAction("Remplacer") {
-	private static final long serialVersionUID = 1L;
-	public void actionPerformed(ActionEvent e) {
-	  if ((search != null) && (replace != null))
-	    doFindReplace(search.getText(), replace.getText());
-	}
-      };
-    /** Returns the search button. * /
-    public JPanel getSearchItem(JMenu menu) {
-      if (search == null)
-	search = new JMenuField(menu, "Chercher", search_action);
-      return search;
-    }
-    /** Returns the replace button. * /
-    public JPanel getReplaceItem(JMenu menu) {
-      if (replace == null)
-      replace = new JMenuField(menu, "Remplacer", replace_action);
-      return replace;
-    }
-    private JMenuField search = null, replace = null;
-
-    /** Closes a menu and its sub-menu. * /
-    public static void close(JMenu menu) {
-      menu.setPopupMenuVisible(false);
-      menu.setSelected(false);
-      for (int i = 0; i < menu.getItemCount(); i++)
-	if (menu.getItem(i) instanceof JMenu) 
-	  close((JMenu) menu.getItem(i));
-    }
-
-    private boolean doFindReplace(String source, String target) {
-      if ((source == null) || (source.length() == 0)) return false;
-      int i0 = pane.getCaretPosition();
-      if (target != null) { i0 -= source.length(); if (i0 < 0) i0 = 0; }
-      int  l = pane.getDocument().getEndPosition().getOffset();
-      for (int i = i0, j = i0 + source.length(); j < l; i++, j++) {
-	pane.setCaretPosition(i); pane.moveCaretPosition(j);
-	if (pane.getSelectedText().equals(source)) {
-	  pane.setSelectionStart(i);
-	  pane.setSelectionEnd(j);
-	  pane.requestFocus();
-	  if (target != null) {
-	    pane.replaceSelection(target);
-	    pane.setSelectionStart(i);
-	    pane.setSelectionEnd(i+target.length());
-	  }
-	  return true;
-	}
-      }
-      pane.setCaretPosition(0);
-      pane.setSelectionStart(0);
-      pane.setSelectionEnd(0); 
-      return false;
-    }
-
-    /** Defines a menu textual field. * /
-    static class JMenuField extends JPanel {
-      private static final long serialVersionUID = 1L;
-      /** Constructs a menu textual field.
-       * @param menu this textual field is added to.
-       * @param name Field name.
-       * @param action Action to be fired when the textual field is input.
-       * /
-      public JMenuField(JMenu menu, String name, Action action) { 
-	this.menu = menu;
-	add(new JLabel(name));
-	this.action = action;
-	add(field =  new JTextField(12) {
-	    private static final long serialVersionUID = 1L;
-	    {
-	      addActionListener(JMenuField.this.action);
-	      addActionListener(new AbstractAction() { 
-		  private static final long serialVersionUID = 1L;
-		  public void actionPerformed(ActionEvent e) { 
-		    close(JMenuField.this.menu);
-		  }});
-	    }});
-      }
-      /** Returns the input textual field. * /
-      public String getText() { return field.getText(); }
-      private JMenu menu; private Action action; private JTextField field;
-    }
-  }
-  */
   
   // Adds a key binding
   private static void addBinding(JTextComponent pane, int key, Action action) {

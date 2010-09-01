@@ -104,7 +104,7 @@ public class Main extends JApplet { /**/public Main() { }
     JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, westPane, eastPane);
     westPane.setMinimumSize(new Dimension(100, 100));
     eastPane.setMinimumSize(new Dimension(100, 100));
-    splitPane.setResizeWeight(0.5);
+    splitPane.setResizeWeight(0.6);
     splitPane.setContinuousLayout(true); 
     splitPane.setOneTouchExpandable(false);
     getContentPane().add(splitPane, BorderLayout.CENTER);
@@ -115,16 +115,7 @@ public class Main extends JApplet { /**/public Main() { }
     try { setActivityAs(getParameter("activity")); } catch(Exception e) { }
     try { setFileAs(getParameter("file")); } catch(Exception e) { }
   }
-  /* Control the component size of panes.  (not yet used)
-  private ComponentListener resizer = new ComponentListener() {
-      public void componentResized(ComponentEvent e) {   
-	e.getComponent().setPreferredSize(new Dimension(e.getComponent().getParent().getWidth(), e.getComponent().getParent().getHeight()));
-      }
-      public void componentHidden(ComponentEvent e) { }
-      public void componentMoved(ComponentEvent e) { }
-      public void componentShown(ComponentEvent e) { }
-    };
-  */
+
   /** Adds a button to the toolbar.
    * @param label Button label.
    * @param icon Button icon. If null do not show icon.
