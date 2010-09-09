@@ -210,7 +210,7 @@
     
     // Draw the waveforms
     stroke(255);
-    strokeWeight(1.5);  
+    strokeWeight(3);  
     if (msine) {
     for(int i = 0; i < out.bufferSize() - 1; i++)
       {
@@ -220,9 +220,7 @@
         line(x1, 40 + out.left.get(i)*30, x2, 40 + out.left.get(i+1)*30);
         line(x1, 120 + out.right.get(i)*30, x2, 120 + out.right.get(i+1)*30);
       }
-    }
-    if (msound) {
-      //println("buffer: " + player.bufferSize());
+    } else if (msound) {
       
       for (int i = 0; i < player.bufferSize() - 1; i++)
       {
@@ -231,6 +229,17 @@
         line(x1, 40 + player.left.get(i)*30, x2, 40 + player.left.get(i+1)*30);
         line(x1, 120 + player.right.get(i)*30, x2, 120 + player.right.get(i+1)*30);
       }
+    } else {
+      
+      for(int i = 0; i < in.bufferSize() - 1; i++)
+      {
+        //println("buffer: " + in.bufferSize());
+        float x1 = map(i, 0, in.bufferSize(), 0, width);
+        float x2 = map(i+1, 0, in.bufferSize(), 0, width);
+        line(x1, 40 + in.left.get(i)*50, x2, 40 + in.left.get(i+1)*50);
+        line(x1, 120 + in.right.get(i)*50, x2, 120 + in.right.get(i+1)*50);
+      }
+      
     }
 
         
@@ -270,7 +279,6 @@
       count +=1;
       
       mySample = selectInput(); 
-      player = minim.loadFile(mySample);
       player = minim.loadFile(mySample);
       player.loop();
       msound = true;
