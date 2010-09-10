@@ -24,6 +24,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener; 
 import java.awt.event.ActionEvent; 
 
+// Processing interface
+import java.awt.Container;
+import java.applet.Applet;
+
 // Proglets used
 import proglet.ingredients.Console;
 import proglet.exosdemaths.CurveDisplay;
@@ -156,7 +160,7 @@ public class Main extends JApplet { /**/public Main() { }
    * @param icon Location of the icon for the tab. If null, no icon.
    * @param east If true use the east pane, else the west pane.
    */
-  public void addTab(String label, JPanel pane, String icon, boolean east) {
+  public void addTab(String label, Container pane, String icon, boolean east) {
     if (east) { 
       eastPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
       eastPane.revalidate();
@@ -221,7 +225,7 @@ public class Main extends JApplet { /**/public Main() { }
   /** HashMap for tab list.
    * The map associate a String to a JPanel
    */
-  private HashMap<String,JPanel> jtabs = new HashMap<String,JPanel>();
+  private HashMap<String,Container> jtabs = new HashMap<String,Container>();
   /** HashMap for west/east location of the tab list.
    * The map associate a String to a JPanel
    */
@@ -254,6 +258,8 @@ public class Main extends JApplet { /**/public Main() { }
    * @param name Name of Activity in the HashMap
    */
   private void setActivity(String name) {
+    if (activity != null) 
+      activity.stop();
     if (activities.containsKey(name)) {
       activity = activities.get(name);
       toolBar.removeAll();
@@ -530,9 +536,11 @@ public class Main extends JApplet { /**/public Main() { }
   private interface Activity {
     /** Returns the activity title. */
     public String getTitle();
-    /** Initializes the activity, adding buttons and pannels. */
+    /** Initializes the activity, adding buttons and pannels and start it. */
     public void init();
-    /** Returns the activity editor. */
+    /** Stops the activity. */
+    public void stop();
+   /** Returns the activity editor. */
     public Editor getEditor();
     /** Returns the required file extension. 
      * e.g., ".jvs" or ".pml"
@@ -604,8 +612,21 @@ public class Main extends JApplet { /**/public Main() { }
 	  super.init();
 	  initDoc();
 	}});
+    // Adds processing activities
+    try {
+      addActivity(new ProcessingActivity("PerceptionSonore") {
+	  public String getTitle() { return "Découvrir la perception sonore"; }
+	  public void init() {
+	    super.init();
+	    //addTab("Document de la processing", "proglet/"+proglet+"/doc-files/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true);
+	    //addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/help.png", true);
+	  }
+	});
+    } catch(Exception e) { 
+      System.err.println("Notice: "+e+"\n");
+    }
   }
-
+  
   // Defines a compilation activity 
   private abstract class JavaActivity implements Activity {
     // Compilation/execution mechanism
@@ -648,6 +669,7 @@ public class Main extends JApplet { /**/public Main() { }
     private Runnable stop = new Runnable() { public void run() {
       Jvs2Java.run(false);
     }};
+    public void stop() { }
   }
 
   // Defines a proglet activity
@@ -680,6 +702,35 @@ public class Main extends JApplet { /**/public Main() { }
     public String getExtension() { return ".jvs"; }
   }
   private JvsSourceEditor jvsEditor = null;
+
+  // Defines a processing activity
+  private abstract class ProcessingActivity extends JavaActivity {
+    /** Constructs a processing activity.
+     * @param processing The processing to use.
+     * @throws IllegalArgumentExceptionif the processing is undefined.
+     */
+    public ProcessingActivity(String processing) { 
+      try {
+	this.processing = (Container) Class.forName(name = processing).newInstance();
+      } catch(Throwable e) {
+	throw new IllegalArgumentException("Undefined processing ("+e+") : "+processing);
+      }
+    } 
+    private Container processing; private String name;
+    // Common panels and tools
+    public void init() {
+      if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
+      addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false);
+      initCompile();
+      ((Applet) processing).init();
+      addTab(name, processing, "org/javascool/doc-files/icones16/compile.png", true);
+      ((Applet) processing).start();
+    }
+    public Editor getEditor() { return jvsEditor; }
+    public String getExtension() { return ".jvs"; }
+    public void stop() { ((Applet) processing).stop(); }
+  }
+
   // Defines a AlgoTree proglet activity
   private abstract class AlgoEditorActivity extends JavaActivity {
     // Common panels and tools

@@ -72,8 +72,10 @@ www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/js-manifest.mf $(SR
 	@unzip -qod tmp lib/tools.jar 
 	@# + The saxon transformer classes
 	@unzip -qod tmp lib/saxon.jar
+	@# + The processing jars
+	@if [ -f lib/processing.zip ] ; then echo '  + processing ..' ; unzip -qod tmp lib/processing.zip ; fi
 	@#Build the raw jar
-	@cd tmp ; jar cfm ../tmp.jar ../lib/js-manifest.mf org proglet com/sun/tools/javac sun/tools/javac com/icl/saxon org/w3c/xsl
+	@cd tmp ; jar cfm ../tmp.jar ../lib/js-manifest.mf *
 	@#Sign the jar file
 	@keytool -genkey -alias javascool -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key
 	@jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore tmp.key -signedjar $@ tmp.jar javascool
@@ -134,7 +136,9 @@ ifeq ($(USER), vthierry)
 TL=$(J5)/lib/tools.jar
 
 lib/tools.jar : $(TL)
-	@cp $^ $@
+	@rm -rf tmp $@ ; mkdir tmp ; unzip -qod tmp $^
+	@cd tmp ; jar cf ../$@ com/sun/tools/javac sun/tools/javac 
+	@rm -rf tmp
 
 SX=/home/vthierry/bin/saxon.jar
 

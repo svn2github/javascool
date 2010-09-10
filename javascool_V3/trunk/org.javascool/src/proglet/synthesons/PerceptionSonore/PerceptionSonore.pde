@@ -51,6 +51,7 @@
   int myRed = color(255,0,0);
   
   void setup() {
+    frame = new Frame();
   
     size(screen.width/2,2*screen.height/3,P3D);
     frameRate(30);

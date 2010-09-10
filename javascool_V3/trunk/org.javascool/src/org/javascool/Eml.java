@@ -26,6 +26,7 @@ public class Eml extends Pml { /**/public Eml() { }
    * </ul> 
    * @return This, allowing to use the <tt>new Eml().reset(..)</tt> construct.
    */
+  /*
   public Pml reset(String value, String format) {
     if ("eml".equals(format)) {
       return reset(value); 
@@ -33,9 +34,11 @@ public class Eml extends Pml { /**/public Eml() { }
       return super.reset(value, format);
     }
   }
-  /**/public Pml reset(String value) {
+  */
+  /*public Pml reset(String value) {
     return this;
   }
+  */
 
   /** Returns this logical-structure structure as a one-line string.
    * @param format <ul>
@@ -51,9 +54,10 @@ public class Eml extends Pml { /**/public Eml() { }
       return super.toString(format);
     }
   }
-  /**/public String toString() {
+  /*public String toString() {
     return null;
   }
+  */
 
   /** Used to check the syntax the well-formedness by mirroring the Eml structure in a normalized format.
    * @param usage <tt>java org.javascool.Pml input-file [output-file]</tt>
