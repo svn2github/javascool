@@ -711,24 +711,24 @@ public class Main extends JApplet { /**/public Main() { }
      */
     public ProcessingActivity(String processing) { 
       try {
-	this.processing = (Container) Class.forName(name = processing).newInstance();
+	this.processing = (Applet) Class.forName(name = processing).newInstance();
       } catch(Throwable e) {
 	throw new IllegalArgumentException("Undefined processing ("+e+") : "+processing);
       }
     } 
-    private Container processing; private String name;
+    private Applet processing; private String name; private boolean init = false;
     // Common panels and tools
     public void init() {
       if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
       addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false);
       initCompile();
-      ((Applet) processing).init();
+      if (!init) { init = true; processing.init(); }
       addTab(name, processing, "org/javascool/doc-files/icones16/compile.png", true);
-      ((Applet) processing).start();
+      processing.start();
     }
     public Editor getEditor() { return jvsEditor; }
     public String getExtension() { return ".jvs"; }
-    public void stop() { ((Applet) processing).stop(); }
+    public void stop() { /* processing.stop(); */ }
   }
 
   // Defines a AlgoTree proglet activity

@@ -36,11 +36,11 @@ public class Pml { /**/public Pml() { }
 
   /** Resets the logical-structure, parsing the given string. 
    * @param value The value following the <tt>"{tag name = value .. element .. }"</tt> syntax.
-   * @param format <ul>
+   * @param format <div id="input-format"><ul>
    * <li>"pml" Reads in pml format (default value).</li>
    * <li>"xml" Reads in XML format.</li>
    * <li>"htm" or "html" Reads in raw HTML format (without translating HTML structure to HML).</li>
-   * </ul> 
+   * </ul></div>
    * @return This, allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
   public Pml reset(String value, String format) { 
@@ -52,7 +52,7 @@ public class Pml { /**/public Pml() { }
      // Initializes the Pml
      data = new  HashMap<String, Pml>(); tag = ""; parent = null; count = -1;
      // Parses the string
-     new PmlReader().reset(value, this);
+     new PmlReader().read(value, this);
      return this;
    }
   }  
@@ -68,11 +68,7 @@ public class Pml { /**/public Pml() { }
    * <tr><td><tt>jar:/<i>jar-path-name</i>!/<i>jar-entry</i></tt></td><td>to load from a JAR archive
    *  <div>(e.g.:<tt>jar:http://javascool.gforge.inria.fr/javascool.jar!/META-INF/MANIFEST.MF</tt>)</div></td></tr>
    * </table>
-   * @param format <ul>
-   * <li>"pml" Reads in pml format (default value).</li>
-   * <li>"xml" Readsin XML format.</li>
-   * <li>"htm" or "html" Reads in HTML format.</li>
-   * </ul> 
+   * @param format The <a href="#input-format">input format</a> as defined by the <a href="#reset(java.lang.String,java.lang.String)">reset()</a> routine.
    * When not specified, detect the format extension from the file extension or used "pml" by default.
    * @return This, allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
@@ -82,21 +78,62 @@ public class Pml { /**/public Pml() { }
   /**/public final Pml load(String location) {
     return load(location, location.replaceAll("^.*\\.([A-Za-z]+)$", "$1"));
   }
-  // Pml Reader
-  private static class PmlReader {
+  /** Defines a token reader, reading a string word by word, normalizing spaces and quoting string with the '"' char. */
+  protected static class TokenReader {
     private String string; private char chars[]; private int ichar, ichar0;
-    /** Parses the string and set the parameters in the pml structure. */
-    public void reset(String string, Pml pml) {
+    /** Resets the reader. */
+    public TokenReader reset(String string) {
       // Initializes the buffer
       this.string = string; chars = string.toCharArray(); ichar = 0; ichar0 = 0;
+      return this;
+    }
+    /** Returns the string trailer. */
+    public String trailer() {
+      return ichar < chars.length ? string.substring(ichar, chars.length) : "";
+    }
+    /** Gets the next token. */
+    public String next() {
+      // Skips spaces
+      while(ichar < chars.length && Character.isWhitespace(chars[ichar])) ichar++;
+      ichar0 = ichar; int i0 = ichar, i1;
+      // Detects a end of file
+      if (ichar >= chars.length) {
+	return "}";
+      // Detects a quoted string taking "{" "}" and \" constructs into account
+      } else if (chars[i0] == '"') {
+	while(ichar < chars.length && (ichar == i0 || chars[ichar] != '"' ||  chars[ichar-1] == '\\')) ichar++; ichar++;
+	if (ichar == i0 + 3 && (chars[i0+1] == '{' || chars[i0+1] == '}')) { i1 = ichar; } else { i0++; i1 = ichar-1; } 
+	return string.substring(i0, i1).replaceAll("\\\\\"", "\"");
+      // Detects a meta-char
+      } else if (chars[i0] == '{' || chars[i0] == '}' || chars[i0] == '=') {
+	i1 = ++ichar;
+      // Detects a word
+      } else {
+	while(ichar < chars.length && chars[ichar] != '{' && chars[ichar] != '}' && chars[ichar] != '=' && !Character.isWhitespace(chars[ichar])) ichar++;
+	i1 = ichar;
+      }
+      return current string.substring(i0, i1);
+    }
+    /** Gets the current token. */
+    public String current() { if(current == null) next(); return current; } private Sring current = null;
+    /** Pushs-back one token. */
+    public void back() {
+      ichar = ichar0;
+    }
+  }
+  /** Defines a PML reader. */
+  private static class PmlReader extends TokenReader {
+    /** Parses the string and set the parameters in the pml structure. */
+    public void read(String string, Pml pml) {
+      reset(string);
       // Parses the string
       parse(pml);
       // Detects the trailer if any
-      if (ichar < chars.length) {
-	Pml p = new Pml(); back(); p.setTag(string.substring(ichar, chars.length)); pml.set("string_trailer", p);
+      if (trailer().length() > 0) {
+	Pml p = new Pml(); back(); p.setTag(trailer()); pml.set("string_trailer", p);
       }
     }
-    // Parses recursively the string
+    /** Parses recursively the string. */
     private Pml parse(Pml pml) {
       String b = next();
       // Parses a { } Pml construct
@@ -127,33 +164,6 @@ public class Pml { /**/public Pml() { }
       }
       return pml;
     }
-    // Gets the next token
-    private String next() {
-      // Skips spaces
-      while(ichar < chars.length && Character.isWhitespace(chars[ichar])) ichar++;
-      ichar0 = ichar; int i0 = ichar, i1;
-      // Detects a end of file
-      if (ichar >= chars.length) {
-	return "}";
-      // Detects a quoted string taking "{" "}" and \" constructs into account
-      } else if (chars[i0] == '"') {
-	while(ichar < chars.length && (ichar == i0 || chars[ichar] != '"' ||  chars[ichar-1] == '\\')) ichar++; ichar++;
-	if (ichar == i0 + 3 && (chars[i0+1] == '{' || chars[i0+1] == '}')) { i1 = ichar; } else { i0++; i1 = ichar-1; } 
-	return string.substring(i0, i1).replaceAll("\\\\\"", "\"");
-      // Detects a meta-char
-      } else if (chars[i0] == '{' || chars[i0] == '}' || chars[i0] == '=') {
-	i1 = ++ichar;
-      // Detects a word
-      } else {
-	while(ichar < chars.length && chars[ichar] != '{' && chars[ichar] != '}' && chars[ichar] != '=' && !Character.isWhitespace(chars[ichar])) ichar++;
-	i1 = ichar;
-      }
-      return string.substring(i0, i1);
-    }
-    // Pushs-back one token
-    private void back() {
-      ichar = ichar0;
-    }
   }
   protected static String xml2pml = 
     "<?xml version='1.0' encoding='utf-8'?>\n"+
@@ -167,11 +177,11 @@ public class Pml { /**/public Pml() { }
     "</xsl:stylesheet>";
 
   /** Returns this logical-structure structure as a one-line string.
-   * @param format <ul>
+   * @param format <div id="output-format"><ul>
    * <li>"raw" To write in a normalized 1D plain text format (default).</li>
-   * <li>"bml" To write in a normalized 2D plain text format.</li>
+   * <li>"txt" To write in a normalized 2D plain text format.</li>
    * <li>"xml" To write in XML format, reducing tag and attribute names to valid XML names, and considering Pml without any attribute or elements as string.</li>
-   * </ul>
+   * </ul></div>
    */
   public String toString(String format) { 
     return 
@@ -189,10 +199,7 @@ public class Pml { /**/public Pml() { }
    * <tr><td><tt>mailto:<i>address</i>?subject=<i>subject</i></tt></td><td>to send as an email in a readable form.</td></tr>
    * <tr><td><tt>stdout:/</tt></td><td>to print to the terminal standard output.</td></tr>
    * </table>
-   * @param format <ul>
-   * <li>"bml" To write in a normalized 2D plain text format (default).</li>
-   * <li>"xml" To write in XML format, reducing tag and attribute names to valid XML names, and considering Pml without any attribute or elements as string.</li>
-   * </ul>
+   * @param format The <a href="#output-format">output format</a> as defined by the <a href="#toSring(java.lang.String)">toString()</a> routine.
    * When not specified, detect the format extension from the file extension or used "pml" by default.
    * @return This, allowing to use the <tt>Pml pml = new Pml().reset(..)</tt> construct.
    */
@@ -203,7 +210,7 @@ public class Pml { /**/public Pml() { }
   /**/public final Pml save(String location) {
     return load(location, location.replaceAll("^.*\\.([A-Za-z]+)$", "$1"));
   }
-  // Pml Writer
+  /** Defines a PML writer. */
   private static class PlainWriter {
     private StringBuffer string; int width, l;
     /** Converts the pml into a 1D string if width == 0, else a 2D string of the given width. */
@@ -218,7 +225,7 @@ public class Pml { /**/public Pml() { }
       }
       return string.toString();
     }
-    // Writes the data inlined
+    /** Writes the data inlined. */
     private void write1d(Pml pml) {
       string.append("{"+quote(pml.getTag()));
       for(String name : pml.attributes()) {
@@ -229,7 +236,7 @@ public class Pml { /**/public Pml() { }
       }
       string.append("}");
     }
-    // Writes the data formated
+    /** Writes the data formated. */
     private boolean write2d(Pml pml, int n, int tab) {
       if (pml.getSize() == 0) {
 	boolean ln = n >= 0 && (n == 0 || (pml.getParent() != null && pml.getParent().getChild(n-1).getSize() > 0));
@@ -249,7 +256,7 @@ public class Pml { /**/public Pml() { }
 	return ln;
       }
     }
-    // Writes a tabulated newline
+    /** Writes a tabulated newline. */
     private void writeln(boolean ln, int tab) {
       if (ln) {
 	string.append("\n"); for(int t = 0; t < tab; t++) string.append(" "); l = tab;
@@ -257,17 +264,17 @@ public class Pml { /**/public Pml() { }
 	string.append(" ");
       }
     }
-    // Writes a word
+    /** Writes a word. */
     private void write(String word, int tab) {
       if (l + word.length() > width) writeln(false, tab+1); string.append(word); l += word.length();
     }
-    // Quotes a string taking "{" "}" and \" constructs into account
+    /** Quotes a string taking "{" "}" and \" constructs into account. */
     private static String quote(String string) {
       return string == null ? "null" : string == Utils.toName(string) || "\"{\"".equals(string) || "\"}\"".equals(string) ? string : 
 	"\""+string.replaceAll("\\\\", "\\\\\\\\").replaceAll("\"", "\\\\\"")+"\"";
     }
   }
-  // Xml Writer
+  /** Defines a XML writer. */
   private static class XmlWriter {
     private StringBuffer string;
     /** Converts the pml into a XML 1D string. */
@@ -277,7 +284,7 @@ public class Pml { /**/public Pml() { }
       write(pml);
       return string.toString();
     }
-    // Writes the data
+    /** Writes the data. */
     private void write(Pml pml) {
       if (pml.getSize() == 0) {
 	string.append(" "+pml.getTag().replaceFirst("^\"([{}])\"$", "$1").replaceAll("&", "&amp;").replaceAll("<", "&lt;"));
@@ -295,7 +302,7 @@ public class Pml { /**/public Pml() { }
 	  string.append("/>");
       }
     }
-    // 
+    /** Converts a string to a name. */
     private static String toName(String string) {
       String c_0 = string.substring(0, 1); String name = c_0.matches("_-") || Character.isLetter(c_0.charAt(0)) ? "" : "_";
       for (int i = 0; i < string.length(); i++) {
@@ -310,7 +317,7 @@ public class Pml { /**/public Pml() { }
    * @return The tag name if defined when reseting the data structure, otherwise the Java class name.
    */
   public final String getTag() { return tag; }
-  private final void setTag(String value) { tag = value; }
+  protected final void setTag(String value) { tag = value; }
   private String tag = getClass().getName();
 
   /** Gets this logical-structure parent's reference if any. */

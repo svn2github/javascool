@@ -56,11 +56,11 @@ DOC = \
 JVS = \
   src/proglet/javaprog/FleurEnRythme.jvs
 
-CP=src:lib/tools.jar:lib/saxon.jar
+CP=src:lib/tools.zip:lib/saxon.jar
 
 # Compiles the java classes using the default jdk5 and builds the certified jar
 
-www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/js-manifest.mf $(SRC) $(JVS) htm
+www/javascool.jar : makefile lib/tools.zip lib/saxon.jar lib/js-manifest.mf $(SRC) $(JVS) htm
 	@echo "make $@"
 	@#[1] Compile the java classes
 	@$(J5)/bin/javac -Xlint -cp $(CP) $(SRC)
@@ -69,7 +69,7 @@ www/javascool.jar : makefile lib/tools.jar lib/saxon.jar lib/js-manifest.mf $(SR
 	@for f in `find src -name '*.class'` ; do cp $$f `echo $$f | sed 's/^src/tmp/'` ; done
 	@cp lib/js-manifest.mf tmp/org/javascool
 	@# + The jdk5 compiler classes
-	@unzip -qod tmp lib/tools.jar 
+	@unzip -qod tmp lib/tools.zip 
 	@# + The saxon transformer classes
 	@unzip -qod tmp lib/saxon.jar
 	@# + The processing jars
@@ -135,7 +135,8 @@ ifeq ($(USER), vthierry)
 
 TL=$(J5)/lib/tools.jar
 
-lib/tools.jar : $(TL)
+lib/tools.zip : $(TL)
+	@echo "cp $@ .."
 	@rm -rf tmp $@ ; mkdir tmp ; unzip -qod tmp $^
 	@cd tmp ; jar cf ../$@ com/sun/tools/javac sun/tools/javac 
 	@rm -rf tmp
@@ -143,6 +144,7 @@ lib/tools.jar : $(TL)
 SX=/home/vthierry/bin/saxon.jar
 
 lib/saxon.jar : $(SX)
+	@echo "cp $@ .."
 	@cp $^ $@
 
 endif

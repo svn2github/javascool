@@ -2,6 +2,7 @@
 ifeq ($(USER), vthierry)
 
 all : 
+#	$(MAKE) -C ../../.. www/api ; firefox `pwd`/../www/api/org/javascool/Eml.html
 	$(MAKE) j3
 #	@cd ../tst ; ../lib/run.sh org.javascool.Main 0 tst.jvs
 #	@cd ../tst ; ../lib/run.sh org.javascool.AlgoEditor
