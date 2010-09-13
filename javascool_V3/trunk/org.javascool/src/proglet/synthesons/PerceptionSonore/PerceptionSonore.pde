@@ -1,6 +1,6 @@
   /*///////////////////////////////////////////////////////////////////////////////////
   *
-  * 08.2010 Cécile P-L for Fuscia
+  * 08.2010 Cécile P-L for Fuscia - ccl.picard@gmail.com
   * PERCEPTION SONORE
   * Interface pédagogique sur les notions de contenu sonore et perception
   * Utilisation de Minim pour le son et ControlP5
@@ -40,6 +40,7 @@
   //int FreqS = 1000;
   //float Vol = 1.0;
   String mySample;
+  float volSound;
   float cutoff = 100;
   int count =0;
   
@@ -51,9 +52,11 @@
   int myRed = color(255,0,0);
   
   void setup() {
+    
     frame = new Frame();
-  
-    size(screen.width/2,2*screen.height/3,P3D);
+    
+    //size(screen.width/2,2*screen.height/3,P3D);
+    size(512,2*screen.height/3,P3D);
     frameRate(30);
     controlP5 = new ControlP5(this);
     PFont pfont = createFont("Courrier",10,true); // true/false pour smooth/no-smooth
@@ -86,7 +89,8 @@
     /////////////////////////////////////////////////
     // Interface de manipulation: génère sinusoide, charge enregistrement, etc
     
-    controlWindow = controlP5.addControlWindow(" I N T E R F A C E ",0,screen.height/6,screen.width/2,2*screen.height/3);
+    //controlWindow = controlP5.addControlWindow(" I N T E R F A C E ",0,screen.height/6,screen.width/2,2*screen.height/3);
+    controlWindow = controlP5.addControlWindow(" I N T E R F A C E ",0,screen.height/6,512,2*screen.height/3);
     controlWindow.hideCoordinates();
     controlWindow.setBackground(color(255));
     
@@ -98,9 +102,9 @@
     controlP5.controller("InfoA").setColorActive(myOr); 
     controlP5.controller("InfoA").setColorBackground(myOr); 
     controlP5.controller("InfoA").setWindow(controlWindow);
-    boxA = controlP5.addButton("buttonValue",0,-screen.width/2,20,60,50);
+    boxA = controlP5.addButton("buttonValue",0,-width,20,60,50);
     boxA.setId(2);
-    boxA.setWidth(screen.width/2);
+    boxA.setWidth(width);
     boxA.setHeight(100);
     boxA.setColorActive(255); 
     boxA.setColorBackground(255); 
@@ -109,21 +113,23 @@
     boxA.captionLabel().setControlFontSize(12);
     boxA.captionLabel().toUpperCase(false);
     boxA.captionLabel().set(//"Notre but est de te faire découvrir les subtilités des sons. A droite se trouve un analyseur de contenu sonore. \n \n"+
-    "Parles, siffles, chuchotes.., et tu verras ce qui se passe sur l'analyseur de contenu sonore (à droite).. \n \n"+
-    "Tu peux aussi jouer une sinusoide ou un enregistrement issu d'une bibliothèque d'extraits. \n \n"+
-    "Pour ajuster la fréquence et l'amplitude de la sinusoide, bouges la souris sur la fenetre de l'analyseur. \n \n"+
-    "Pour ajuster le volume de l'enregistrement sonore, tu peux procéder de la meme manière, \n \n"+
-    "tandis que le contenu fréquentiel peut etre réglé par un filtre. Expérimentes! \n \n" );
-    boxA.captionLabel().style().marginLeft = 20;
-    boxA.captionLabel().style().marginTop = -30;
+    "Parles, siffles, chuchotes.., \n \n"+
+    "et tu verras ce qui se passe sur l'analyseur de contenu sonore (à droite).. \n \n"+
+    "Tu peux aussi jouer une sinusoide ou un enregistrement de ton choix. \n \n"+
+    "Pour ajuster la fréquence et l'amplitude de la sinusoide, \n \n"+
+    "bouges la souris sur la fenetre de l'analyseur. \n \n"+
+    "Pour ajuster le volume de l'enregistrement sonore, \n \n"+
+    "tu peux procéder de la meme manière, \n \n"+
+    "tandis que le contenu fréquentiel peut etre réglé par un filtre. \n \n"+
+    "Expérimentes! \n \n" );
+    boxA.captionLabel().style().marginLeft = 30;
+    boxA.captionLabel().style().marginTop = -40;
     
   
-    boxFreq = controlP5.addTextfield(" ",50,screen.height/4+5,220,20);
-    boxFreq.setText(  "  ");
-    boxFreq.setWindow(controlWindow);
+    
     
     // Générer une Sinusoide
-    controlP5.addButton("mSine",0,50,screen.height/4-40,220,40);
+    controlP5.addButton("mSine",0,50,height/2-height/10,width-100,40);
     controlP5.controller("mSine").setCaptionLabel(" Jouer une sinusoide");
     controlP5.controller("mSine").captionLabel().setControlFont(font); // change the font
     controlP5.controller("mSine").captionLabel().setControlFontSize(10);
@@ -131,9 +137,12 @@
     // Une ligne de sortie pour la sinusoide émise, 
     // les paramètres par défaut sont: 1024 pour la taille d ebuffer, 44100 pour la fréquence d'échantillonage, 16 bit depth.
     out = minim.getLineOut(Minim.STEREO);
+    boxFreq = controlP5.addTextfield(" ",width-(50+220),height/2-height/10+(40+5),220,20);
+    boxFreq.setText(  "  ");
+    boxFreq.setWindow(controlWindow);
     
     // Charger un enregistrement
-    controlP5.addButton("mPlaySound",0,50,screen.height/4+70,220,40);
+    controlP5.addButton("mPlaySound",0,50,height/2+height/10,width-100,40);
     controlP5.controller("mPlaySound").setCaptionLabel(" Jouer un enregistrement sonore");
     controlP5.controller("mPlaySound").captionLabel().setControlFont(font); // change the font
     controlP5.controller("mPlaySound").captionLabel().setControlFontSize(10);
@@ -141,13 +150,13 @@
     
     // Filtre Basse Fréquence applicable sur l'enregistrement
     lpf = new LowPassSP(100, out.sampleRate());
-    controlP5.addButton("mFilter",0,screen.width/2-(50+220),screen.height/4+70,220,30);
+    controlP5.addButton("mFilter",0,width-(50+220),height/2+height/10+(40+5),220,25);
     controlP5.controller("mFilter").setCaptionLabel(" FILTRAGE - Fréquence de coupure reglable");
     controlP5.controller("mFilter").captionLabel().setControlFont(font); // change the font
     controlP5.controller("mFilter").captionLabel().setControlFontSize(10);
     controlP5.controller("mFilter").captionLabel().toUpperCase(false);
     controlP5.controller("mFilter").setWindow(controlWindow);
-    controlP5.addSlider("sFreq",500,5000,600,screen.width/2-(50+220),screen.height/4+105,220,20);
+    controlP5.addSlider("sFreq",500,5000,600,width-(50+220),height/2+height/10+(40+25+5*2),220,20);
     controlP5.controller("sFreq").captionLabel().setControlFont(font); // change the font
     controlP5.controller("sFreq").captionLabel().setControlFontSize(10);
     controlP5.controller("sFreq").setColorActive(myOr); 
@@ -160,7 +169,7 @@
     controlP5.controller("sFreq").setWindow(controlWindow);
     
     // Stopper tout son
-    controlP5.addButton("mStopSound",0,screen.width/2-(50+70),screen.height/4+100+(screen.height/2-(screen.height/4+20))/2,70,40);
+    controlP5.addButton("mStopSound",0,width-(50+70),height/2+135+(height/2-(height/4+20))/2,70,40);
     controlP5.controller("mStopSound").setCaptionLabel("  S  t  o  p");
     controlP5.controller("mStopSound").captionLabel().setControlFont(font); // change the font
     controlP5.controller("mStopSound").captionLabel().setControlFontSize(11);
@@ -211,7 +220,7 @@
     
     // Draw the waveforms
     stroke(255);
-    strokeWeight(3);  
+    strokeWeight(1.5);  
     if (msine) {
     for(int i = 0; i < out.bufferSize() - 1; i++)
       {
@@ -227,8 +236,11 @@
       {
         float x1 = map(i, 0, player.bufferSize(), 0, width);
         float x2 = map(i+1, 0, player.bufferSize(), 0, width);
-        line(x1, 40 + player.left.get(i)*30, x2, 40 + player.left.get(i+1)*30);
-        line(x1, 120 + player.right.get(i)*30, x2, 120 + player.right.get(i+1)*30);
+        //line(x1, 40 + player.left.get(i)*30, x2, 40 + player.left.get(i+1)*30);
+        //line(x1, 120 + player.right.get(i)*30, x2, 120 + player.right.get(i+1)*30);
+        line(x1, 40 + player.left.get(i)*(volSound+30), x2, 40 + player.left.get(i+1)*(volSound+30));
+        line(x1, 120 + player.right.get(i)*(volSound+30), x2, 120 + player.right.get(i+1)*(volSound+30));
+        //print("bibi " +player.getGain());
       }
     } else {
       
@@ -247,7 +259,7 @@
   }
       
   // Controlleur pour la sinusoide ou oscillateur   
-  void mSine() {
+ /* void mSine() {
     
       if (msine) { // si une sinusoide joue, on ne peut en générer une par-dessus
         println(" Une sinusoide est déjà en train de jouer!"); 
@@ -262,48 +274,25 @@
       out.addSignal(sine);
       msine = true;
       }      
-  }
+  }*/
       
   // Controlleur pour l'info    
-  public void InfoA(float theValueA) {
+  /*public void InfoA(float theValueA) {
       //println("a button event. "+theValueA);
       isOpen = !isOpen;
       controlP5.controller("InfoA").setCaptionLabel((isOpen==true) ? "fermer Info":"voir Info");
-  }
-      
-  void mPlaySound() {
+  }*/
+  
+  // Appliquer le filtrage  
+  /*void mFilter() {
     
-      if (msound) { // si un enregistrement joue, on ne peut en charger un par-dessus
-        println(" Un enregistrement est déjà en train de jouer. Veuillez le stopper avant de charger un nouveau morceau.");
-      } else {
-      
-      count +=1;
-      
-      mySample = selectInput(); 
-      player = minim.loadFile(mySample);
-      player.loop();
-      msound = true;
-      }
-  
-  }
-     
-  // Stopper tout son  
-  void mStopSound() {
-      
-    if (msine) {
-      out.noSound();
-      out.clearSignals();
-      boxFreq.setText(  "  ");
-      boxFreq.setWindow(controlWindow);
-      msine = false;
-    } else if (msound) {
-      player.pause();
-      msound = false;
-    }
-  
-  }
-  
-  // Lors de la fermeture du programme, arreter tout outil de Minim  
+     if (msound) {
+     player.addEffect(lpf);
+     lpf.setFreq(cutoff);
+     }
+  }*/
+    
+      // Lors de la fermeture du programme, arreter tout outil de Minim  
   void stop() {
     
       out.close();
@@ -313,43 +302,6 @@
       
       super.stop();
   }
-    
-  void mouseMoved()
-  {
-    if (msine) {
-    // Régler les déplacements de la souris sur les paramètres de la sinusoide
-    float freqSine = map(mouseX, 0, width, 100, 8000);
-    //print("La fréquence de la sinusoide est: " + freqSine );  
-    // Fréquence
-    sine.setFreq(freqSine);
-    // Volume
-    float volSine = map(mouseY, 0, height, 1, 0);
-    print(" // Son volume est: " + volSine + "\n"); 
-    sine.setAmp(volSine);
-    boxFreq.captionLabel().setControlFont(font); // change the font
-    boxFreq.captionLabel().setControlFontSize(8);
-    boxFreq.setText(" " + freqSine + " Hz ");
-    boxFreq.setWindow(controlWindow);
-    } 
-    
-    // change volume for loaded file
-    if (msound) {
-     float volSound = map(mouseY, 0, height, 10, 0);
-    player.setGain(volSound);
-    }
-    
-  }
-  
-  // Appliquer le filtrage  
-  void mFilter() {
-    
-     if (msound) {
-     player.addEffect(lpf);
-     lpf.setFreq(cutoff);
-     }
-  }
-    
-  
   
   
 
