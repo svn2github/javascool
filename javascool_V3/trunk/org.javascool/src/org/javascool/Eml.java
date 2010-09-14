@@ -4,6 +4,8 @@
 
 /* To be implemented
  * out: Array assignment
+ * in : distinguer inst/exp
+ * in : c ? : e1 : e0
  * out: Pml attributes generate a non parsable construct
  * in: instruction sequence ; ; ; 
  */
@@ -50,13 +52,13 @@ package org.javascool;
  *  <div><b>Additional constructs.</b><table>
  *   <tr><td valign="top"><div><i>Variable assignment: </i></div></td>
  *     <td valign="top"><div><tt><i>type</i> <i>name</i> =  <i>expression</i>;</tt></div></td></tr>
- *     <tr><td valign="top"><div/></td><td valign="top"><div>corresponds to the term <tt>set(<i>type</i>, <i>name</i>, <i>expression</i>)</tt></div></td></tr>
+ *     <tr><td valign="top"><div/></td><td valign="top"><div>corresponds to the term <tt>let(<i>type</i>, <i>name</i>, <i>expression</i>)</tt></div></td></tr>
  *     <tr><td valign="top"><div/></td><td valign="top"><div>which semantic is 
  *      «defines <i>name</i> as new variable of the given <i>type</i>, which initial value is the result of the present evaluation of the <i>expression</i>»</div></td></tr>
  *     <tr><td valign="top"><div/></td><td valign="top"><div>as a functional term, the initial value is returned</div></td></tr>
  *   <tr><td valign="top"><div><i>Array assignment: </i></div></td>
  *     <td valign="top"><div><tt><i>type</i>[] <i>name</i> =  {<i>expression</i>, ...};</tt></div></td></tr>
- *     <tr><td valign="top"><div/></td><td valign="top"><div>corresponds to the term <tt>set(<i>type</i>, <i>name</i>, <i>expression</i>)</tt></div></td></tr>
+ *     <tr><td valign="top"><div/></td><td valign="top"><div>corresponds to the term <tt>let(<i>type</i>, <i>name</i>, <i>expression</i>)</tt></div></td></tr>
  *     <tr><td valign="top"><div/></td><td valign="top"><div>which semantic is 
  *      «defines <i>name</i> as new variable of the given array <i>type</i>, which initial value is the result of the present evaluation of the list of <i>expression</i>»</div></td></tr>
  *     <tr><td valign="top"><div/></td><td valign="top"><div>as a functional term, the initial value is returned</div></td></tr>
@@ -68,7 +70,7 @@ package org.javascool;
  *     <tr><td valign="top"><div/></td><td valign="top"><div>as a functional term, the evaluated expression value is returned</div></td></tr>
  *   <tr><td valign="top"><div><i>Loop iteration: </i></div></td>
  *     <td valign="top"><div><tt>while (<i>condition</i>) { <i>iterative-expression</i> }</tt></div></td></tr>
- *     <tr><td valign="top"><div/></td><td valign="top"><div>corresponds to the term <tt>set(<i>type</i>, <i>name</i>, <i>expression</i>)</tt></div></td></tr>
+ *     <tr><td valign="top"><div/></td><td valign="top"><div>corresponds to the term <tt>while(<i>condition</i>, <i>iterative-expression</i>)</tt></div></td></tr>
  *     <tr><td valign="top"><div/></td><td valign="top"><div>which semantic is
  *      «evaluates the <i>condition</i> and, if <tt>true</tt>, evaluates the <i>loop-expression</i> and repeat»</div></td></tr>
  *     <tr><td valign="top"><div/></td><td valign="top"><div>as a functional term, the last evaluated expression value is returned</div></td></tr>
@@ -92,7 +94,7 @@ public class Eml extends Pml { /*public*/ Eml() { }
    */
   public Pml reset(String value, String format) {
     if ("eml".equals(format)) {
-      new ExpressionReader().read(value, this); 
+      reset(new ExpressionReader().read(value));
       return this;
     } else {     
       return super.reset(value, format);
@@ -104,58 +106,114 @@ public class Eml extends Pml { /*public*/ Eml() { }
   /** Defines an expression reader. */
   private static class ExpressionReader extends TokenReader {
     /** Parses the string and set the parameters in the pml structure. */
-    public void read(String string, Pml pml) {
-      reset(string);
-      // Parses the string
-      parse(pml);
-      // Detects the trailer if any
-      if (trailer().length() > 0) {
-	Pml p = new Pml(); back(); p.setTag(trailer()); pml.set("string_trailer", p);
-      }
-    }
-    /** Parses recursively the string. */
-    private Pml parse(Pml pml) {
-      if (!(parseIf(pml) &&
-	    parseWhile(pml))) 
-	return null;
+    public Pml read(String string) {
+      Pml pml = parse();
+      check(trailer().length() == 0, "il reste du texte inutilisé");
       return pml;
     }
-    // Parses a sequence of the "open" (item ("next" item)*)? "end"
-    void parseBracket(String open, String next, String end, Pml pml) {
+    /** Parses recursively the string. */
+    private Pml parse() {
+      Pml pml;
+      if ((pml = parseIf()) != null) return pml;
+      if ((pml = parseLet()) != null) return pml;
+      if ((pml = parseParenthesis()) != null) return pml;
+      return parseExpression(0);
     }
-    void parseBracket(Pml pml) {
-      if ("{".equals(current())) {
+    // Parses a sequence a instruction sequence "{ (i1 (, ik)*)? }"
+    private Pml parseBracket() {
+      Pml pml = new Pml().setTag("seq");
+      if ("{".equals(current())) { next();
 	while(true) {
-	  
+	  pml.add(parse());
+	  if ("}".equals(current())) { next();
+	    break;
+	  }
 	}
-      } else {
-	parse(pml);
-      }
+      } else
+	pml.add(parse());
+      return pml;
     }
     // Parses a conditional of syntax: "if (c) { e1 } else { e0 }"
-    boolean parseIf(Pml pml) {
-      if ("if".equals(current())) {
+    private Pml parseIf() {
+      if ("if".equals(current())) { next();
 	Pml pml = new Pml().setTag("if");
-	{ Pml p = new Pml(); parseExpression(p); pml.add(p); }
-	{ Pml p = new Pml(); parseBracket(p); pml.add(p); }
-	if ("else".equals(next())) {
-	  { Pml p = new Pml(); parseBracket(p); pml.add(p); }
+	pml.add(parseExpression(0));
+	pml.add(parseBracket());
+	if ("else".equals(current())) { next();
+	  pml.add(parseBracket());
 	}
-      }
+	return pml;
+      } else
+	return null;
     }
-    
-
+    // Parses an assignment of syntax: "[type] name = value;"
+    private Pml parseLet() {
+      if ("=".equals(current(2))) { 
+	String t = current(); next(); String n = current(); next();
+	Pml pml = new Pml().setTag("let").add(t).add(n).add(parse());
+	return pml;
+      } else if ("=".equals(current(1))) { 
+	String n = current(); next();
+	Pml pml = new Pml().setTag("let").add("void").add(n).add(parse());
+	return pml;
+      }
+      check(";".equals(current()), "le caractère ';' a été oublié");
+      if (";".equals(current())) next();
+      return null;
+    }
+    // Parses an expression with infix operator of syntax: item1 "O" item2
+    private Pml parseExpression(int precedence) {
+      // Stores the infix expression sequence
+      Pml tokens = new Pml();
+      while(true) {
+	tokens.add(parse());
+	String word = current();
+	if (getPrecedence(word) == -999 || getPrecedence(word) > precedence) 
+	  break;
+	else
+	  next();
+	tokens.add(word);
+      }
+      check((tokens.getCount() % 2) == 1, "il manque un argument à l'expression");
+      // Reduces the expression sequence
+      for (int i = 1; i < tokens.getCount() - 1;) {
+	if (((i == 1) || (getPrecedence(tokens.getString(i-2)) > getPrecedence(tokens.getString(i)))) &&
+	    ((i == tokens.getCount() - 2) || (getPrecedence(tokens.getString(i+2)) >= getPrecedence(tokens.getString(i))))) {
+	  tokens.set(i-1, new Pml().setTag(tokens.getString(i)).add(tokens.getChild(i-1)).add(tokens.getChild(i+1)));
+	  for(int j = i; j < tokens.getCount();)
+	    tokens.set(j, j < tokens.getCount() - 2 ? tokens.getChild(j + 2) : (Pml) null);
+	  i = 1;
+	} else
+	  i += 2;
+      }
+      if(tokens.getCount() != 1) 
+	throw new IllegalStateException("Spurious parser state: "+tokens);
+      return tokens.getChild(0);
+    }
+    // Parses an expression with prefix operator of syntax: "O" item1
+    private Pml parsePrefix() {
+      String t = current();
+      if ("!"..equals(t) || "-".equals(t)) { next();
+	Pml pml = new Pml().setTag(t).add(parse());
+	return pml;
+      } 
+      return null;
+    }
+    // Parses an expression between parentheses
+    private Pml parseParenthesis() {
+      String t = current();
+      if ("(".equals(t)) { next();
+	Pml pml = readExpression(0);
+	check(")".equals(current()), "le caractère ')' a été oublié");
+	if (")".equals(current())) next();
+	return pml;
+      }
+      return null;
+    }
   }
 
   /*
 
-    /** Parses the string and set the parameters in the pml structure. */
-    
-    /** Reads an expression 
-    /** Constructs an  ExpressionReader wrapped onto the given token reader. * /
-    private ExpressionReader(TokenReader reader) { this.reader = reader; } private TokenReader reader;
-
-    public Value read() { Value r = readExpression(0); reader.checkEnd(); return r; }
 
     // Parses a token in an expression
     private Value readToken() {
@@ -228,41 +286,6 @@ public class Eml extends Pml { /*public*/ Eml() { }
       return expression;
     }
     private Value readIf() { return readIf(false); }
-
-    // Parses an iteration of syntax: "for i ((from b)? (by s)? to e|in l) (while c)? do x"
-    private Value readFor() {
-      if (!reader.readWord().equals("for")) { reader.unreadWord(); return null; }
-      Value expression = null; Value i = readExpression(0);
-      Value next = reader.readWord();
-      if ("from".equals(next) || "by".equals(next) || "to".equals(next)) {
-	expression = new Structure("for-to").add(i);
-	if (next.equals("from")) {
-	  expression.add(readExpression(0));
-	  next = reader.readWord();
-	} else
-	  expression.add(new Structure("number").set("value", "1"));
-	if (next.equals("by")) {
-	  expression.add(readExpression(0));
-	  next = reader.readWord();
-	} else 
-	  expression.add(new Structure("imp:numeric").set("value", "1"));
-	reader.check(next.equals("to"), "to expected");
-	expression.add(readExpression(0));
-      } else if ("in".equals(next)) {
-	expression = new Structure("for-in").add(i); 
-	expression.add(readExpression(0));
-      } else
-	reader.check(false, "in/to/from/by expected");
-      if (reader.readWord().equals("while")) {
-	expression.add(readExpression(0));
-      } else {
-	expression.add(new Structure("imp:chars").set("value", "true"));
-	reader.unreadWord();
-      }
-      reader.check(reader.readWord().equals("do"), "do expected");
-      expression.add(readExpression(0));
-      return expression;
-    }
 
     // Parses a parenthesized list of syntax: "B" item, .. "E"
     private Value readList(Value expression, String B, String E) {

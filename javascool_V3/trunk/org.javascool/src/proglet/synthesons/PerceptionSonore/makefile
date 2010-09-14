@@ -22,6 +22,9 @@ jar :
 	cd applet/tmp ; zip -9qr ../../../../../../lib/processing.zip *
 	rm -rf applet
 
+j3 :
+	gjhgjhgjhg
+
 run :
 	rm -rf applet
 	cd $(P_HOME) ; java processing.app.Commander --build --sketch=$(PWD) --output=$(PWD)/applet

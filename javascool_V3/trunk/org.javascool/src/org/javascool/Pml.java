@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.regex.Pattern;
 
+import java.util.Vector;
+
 /** Defines a PML: a Pml (Programmatic Markup Language) Memory Loader.
  * 
  * <p> A Pml (for «Programmatic Métadata Logicalstructure») is a Parametric Minimal Logical-structure, which parameters are <ul>
@@ -59,6 +61,22 @@ public class Pml { /**/public Pml() { }
   /**/public final Pml reset(String value) { 
     return reset(value, "pml");
   }
+  /** Copies one logical-structure in this.
+   * @param pml The logical-structure to copy. If null resets to an empty logical-structure.
+   */
+  public Pml reset(Pml pml) {
+    // Initializes the Pml
+    data = new  HashMap<String, Pml>(); tag = ""; parent = null; count = -1;
+    if (pml != null) {
+      setTag(pml.getTag());
+      for(String name : pml.attributes())
+	set(name, pml.getChild(name));
+      for(int i = 0; i < pml.getCount(); i++)
+	set(i, pml.getChild(i));
+    }
+    return this;
+  }
+
   /** Loads this logical-structure structure from a location.    *
    * @param location A Universal Resource Location of the form: <table align="center"> 
    * <tr><td><tt>http:/<i>path-name</i></tt></td><td>to load from a HTTP location</td></tr>
@@ -80,45 +98,91 @@ public class Pml { /**/public Pml() { }
   }
   /** Defines a token reader, reading a string word by word, normalizing spaces and quoting string with the '"' char. */
   protected static class TokenReader {
-    private String string; private char chars[]; private int ichar, ichar0;
+    private static class token { String string; int line; token(String s, int i0, int i1, int l) { string = s.substring(i0, i1-i0); line = l; } }
+    Vector<token> tokens; int itoken;
     /** Resets the reader. */
     public TokenReader reset(String string) {
       // Initializes the buffer
-      this.string = string; chars = string.toCharArray(); ichar = 0; ichar0 = 0;
+      tokens = new Vector<token>(); itoken = 0;
+      // Split the string into tokens
+      {
+	char[] chars = string.toCharArray(); 
+	for(int ichar = 0, ln = 0; ichar < chars.length;) {
+	  // Skips spaces
+	  while(ichar < chars.length && Character.isWhitespace(chars[ichar])) {
+	    if (chars[ichar] == '\n')
+		ln++;
+	    ichar++;
+	  }
+	  if (ichar < chars.length) {
+	    int ichar0 = ichar;
+	    // Detects a quoted string taking "{" "}" and \" constructs into account
+	    if (chars[ichar0] == '"') {
+	      while(ichar < chars.length && (ichar == ichar0 || chars[ichar] != '"' ||  chars[ichar-1] == '\\')) ichar++; ichar++;
+	      int ichar1;
+	      if (ichar == ichar0 + 3 && (chars[ichar0+1] == '{' || chars[ichar0+1] == '}')) { ichar1 = ichar; } else { ichar0++; ichar1 = ichar-1; } 
+	      tokens.add(new token(string, ichar0, ichar1, ln));
+            // Detects a name
+	    } else if(Character.isLetter(chars[ichar0]) || chars[ichar0] == '_') {
+	      while(ichar < chars.length && (Character.isLetterOrDigit(chars[ichar]) || chars[ichar0] == '_')) ichar++;
+	      tokens.add(new token(string, ichar0, ichar, ln));
+            // Detects a number
+	    } else if(Character.isDigit(chars[ichar0]) || chars[ichar0] == '.') {
+	      while(ichar < chars.length && Character.isDigit(chars[ichar])) ichar++;
+	      if (ichar < chars.length && chars[ichar] == '.') { ichar++;
+		while(ichar < chars.length && Character.isDigit(chars[ichar])) ichar++;
+	      }
+	      if (ichar < chars.length && (chars[ichar] == 'E' || chars[ichar] == 'e')) { ichar++;
+		if (ichar < chars.length && (chars[ichar] == '+' || chars[ichar] == '-')) ichar++;
+		while(ichar < chars.length && Character.isDigit(chars[ichar])) ichar++;
+	      }
+	      tokens.add(new token(string, ichar0, ichar, ln));
+            // Detects operators and punctuation
+	    } else if (isOperator(chars[ichar0])) {
+	      while(ichar < chars.length && isOperator(chars[ichar])) ichar++;
+	      tokens.add(new token(string, ichar0, ichar, ln));
+	    } else {
+	      tokens.add(new token(string, ichar0, ++ichar, ln));
+	    }
+	  }
+	}
+      }
+      itoken = 0;
       return this;
+    }
+    private static boolean isOperator(char c) {
+      switch(c) {
+      case '+': case '-': case '*': case '/': case '%': case '&': case '|': case '^': case '=': case '!': case '<': case '>': case '.': case ':':
+	return true;
+      default:
+	return false;
+      }
+    }
+    /** Gets the current token or '}' if end of file. */
+    public String current(int next) { 
+      return itoken+next < tokens.size() ? tokens.get(itoken+next).string : "}";
+    }
+    /**/public String current() { 
+      return current(0);
+    } 
+    /** Tests if there is more tokens. */
+    public boolean isNext() {
+      return itoken < tokens.size();
+    }
+    /** Gets the next token. */
+    public void next(int next) {
+      itoken += next;
+    }
+    /**/public void next() {
+      next(1);
     }
     /** Returns the string trailer. */
     public String trailer() {
-      return ichar < chars.length ? string.substring(ichar, chars.length) : "";
+      String t = ""; while(itoken < tokens.size()) t += " "+tokens.get(itoken).string; return t.trim();
     }
-    /** Gets the next token. */
-    public String next() {
-      // Skips spaces
-      while(ichar < chars.length && Character.isWhitespace(chars[ichar])) ichar++;
-      ichar0 = ichar; int i0 = ichar, i1;
-      // Detects a end of file
-      if (ichar >= chars.length) {
-	return "}";
-      // Detects a quoted string taking "{" "}" and \" constructs into account
-      } else if (chars[i0] == '"') {
-	while(ichar < chars.length && (ichar == i0 || chars[ichar] != '"' ||  chars[ichar-1] == '\\')) ichar++; ichar++;
-	if (ichar == i0 + 3 && (chars[i0+1] == '{' || chars[i0+1] == '}')) { i1 = ichar; } else { i0++; i1 = ichar-1; } 
-	return string.substring(i0, i1).replaceAll("\\\\\"", "\"");
-      // Detects a meta-char
-      } else if (chars[i0] == '{' || chars[i0] == '}' || chars[i0] == '=') {
-	i1 = ++ichar;
-      // Detects a word
-      } else {
-	while(ichar < chars.length && chars[ichar] != '{' && chars[ichar] != '}' && chars[ichar] != '=' && !Character.isWhitespace(chars[ichar])) ichar++;
-	i1 = ichar;
-      }
-      return current string.substring(i0, i1);
-    }
-    /** Gets the current token. */
-    public String current() { if(current == null) next(); return current; } private Sring current = null;
-    /** Pushs-back one token. */
-    public void back() {
-      ichar = ichar0;
+    /** Checks a syntax condition. */
+    public void check(boolean ok, String message) {
+      if (!ok) System.out.println("Erreur de syntaxe \""+message+"\", ligne "+(itoken < tokens.size() ? ""+tokens.get(itoken).line+" vers \""+current()+"\"" : "finale"));
     }
   }
   /** Defines a PML reader. */
@@ -129,38 +193,33 @@ public class Pml { /**/public Pml() { }
       // Parses the string
       parse(pml);
       // Detects the trailer if any
-      if (trailer().length() > 0) {
-	Pml p = new Pml(); back(); p.setTag(trailer()); pml.set("string_trailer", p);
+      String trailer = trailer();
+      if (trailer.length() > 0) {
+	Pml p = new Pml(); p.setTag(trailer); pml.set("string_trailer", p);
       }
     }
     /** Parses recursively the string. */
     private Pml parse(Pml pml) {
-      String b = next();
+      String b = current();
       // Parses a { } Pml construct
-      if ("{".equals(b)) {
-	// Loops with state = 0 for tag reading, state = 1 for attribute reading, state = 2 for element reading
-	for(int state = 0; true;) {
-	  String t = next();
+      if ("{".equals(b)) { next();
+	for(boolean start = true; true; start = false) {
+	  String t = current();
 	  if ("}".equals(t)) {
 	    break;
-	  } else if ("{".equals(t)) {
-	    state = 2; back(); Pml p = new Pml(); parse(p); pml.add(p);
-	  } else if (state < 2 && "=".equals(t)) {
-	    state = 1; Pml p = new Pml(); parse(p); pml.set("null", p);
+	  } else if ("{".equals(t)) { 
+	    Pml p = new Pml(); parse(p); pml.add(p);
+	  } else if ("=".equals(current(1))) { next(2); 
+	    Pml p = new Pml(); parse(p); pml.set(t, p);
+	  } else if (start) { next();
+	    pml.setTag(t);
 	  } else {
-	    String e = next();
-	    if (state < 2 && "=".equals(e)) {
-	      state = 1; Pml p = new Pml(); parse(p); pml.set(t, p);
-	    } else if (state == 0) {
-	      state = 1; back(); pml.setTag(t);
-	    } else {
-	      state = 2; back(); Pml p = new Pml(); p.setTag(t); pml.add(p); 
-	    }
+	    pml.add(t);
 	  }
 	}
       // Considers the Pml as a simple string
       } else {
-	pml.setTag(b);
+	pml.setTag(b); next();
       }
       return pml;
     }
@@ -317,7 +376,7 @@ public class Pml { /**/public Pml() { }
    * @return The tag name if defined when reseting the data structure, otherwise the Java class name.
    */
   public final String getTag() { return tag; }
-  protected final void setTag(String value) { tag = value; }
+  protected final Pml setTag(String value) { tag = value; return this; }
   private String tag = getClass().getName();
 
   /** Gets this logical-structure parent's reference if any. */
@@ -346,6 +405,8 @@ public class Pml { /**/public Pml() { }
    */
   public final String getString(String name, String value) { String v = data.get(name).toString(); return v != null ? v : value != null ? value : ""; }
   /**/public final String getString(int index, String value) { return getString(Integer.toString(index), value); }
+  /**/public final String getString(String name) { return getString(name, null); }
+  /**/public final String getString(int index) { return getString(index, null); }
   
   /** Gets a parameter value as a decimal. 
    * @param name The attribute's name or element's index.
@@ -354,6 +415,8 @@ public class Pml { /**/public Pml() { }
    */
   public final double getDecimal(String name, double value) { try { return Double.parseDouble(getString(name, "0")); } catch(NumberFormatException e) { return value; } }
   /**/public final double getDecimal(int index, double value) { return getDecimal(Integer.toString(index), value); }
+  /**/public final double getDecimal(String name) { return getDecimal(name, 0); }
+  /**/public final double getDecimal(int index) { return getDecimal(index, 0); }
   
   /** Gets a parameter value as an integer. 
    * @param name The attribute's name or element's index.
@@ -362,6 +425,8 @@ public class Pml { /**/public Pml() { }
    */
   public final int getInteger(String name, int value) { try { return Integer.parseInt(getString(name, "0")); } catch(NumberFormatException e) { return value; } }
   /**/public final int getInteger(int index, int value) { return getInteger(Integer.toString(index), value); }
+  /**/public final int getInteger(String name) { return getInteger(name, 0); }
+  /**/public final int getInteger(int index) { return getInteger(index, 0); }
   
   /** Sets a parameter value.
    * @param name The attribute's name or element's index.

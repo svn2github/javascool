@@ -724,6 +724,7 @@ public class Main extends JApplet { /**/public Main() { }
       initCompile();
       if (!init) { init = true; processing.init(); }
       addTab(name, processing, "org/javascool/doc-files/icones16/compile.png", true);
+      showTab(name);
       processing.start();
     }
     public Editor getEditor() { return jvsEditor; }
