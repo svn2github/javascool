@@ -107,6 +107,7 @@ public class Eml extends Pml { /*public*/ Eml() { }
   private static class ExpressionReader extends TokenReader {
     /** Parses the string and set the parameters in the pml structure. */
     public Pml read(String string) {
+      super.reset(string);
       Pml pml = parse();
       check(trailer().length() == 0, "il reste du texte inutilisé");
       return pml;
@@ -117,9 +118,12 @@ public class Eml extends Pml { /*public*/ Eml() { }
       if ((pml = parseIf()) != null) return pml;
       if ((pml = parseLet()) != null) return pml;
       if ((pml = parseParenthesis()) != null) return pml;
+      if ((pml = parsePrefix()) != null) return pml;
+      if ((pml = parseTerm()) != null) return pml;
+      
       return parseExpression(0);
     }
-    // Parses a sequence a instruction sequence "{ (i1 (, ik)*)? }"
+    // Parses a sequence a instruction sequence "{ (i1 (; ik)*)? }"
     private Pml parseBracket() {
       Pml pml = new Pml().setTag("seq");
       if ("{".equals(current())) { next();
@@ -193,17 +197,52 @@ public class Eml extends Pml { /*public*/ Eml() { }
     // Parses an expression with prefix operator of syntax: "O" item1
     private Pml parsePrefix() {
       String t = current();
-      if ("!"..equals(t) || "-".equals(t)) { next();
+      if ("!".equals(t) || "-".equals(t)) { next();
 	Pml pml = new Pml().setTag(t).add(parse());
 	return pml;
       } 
       return null;
+    }   
+    // Parses a term of syntax: "name { att=val, ..}  (element, ..)"
+    private Pml parseTerm() {
+      if ("(".equals(current(1)) || "{".equals(current(1))) {	
+	Pml pml = new Pml().setTag(current()).add(parse()); next();
+	// Parses an attribute's list 
+	if ("{".equals(current())) {
+	  while(true) {
+	    if ("}".equals(current())) { next();
+	      break;
+	    } else if ("=".equals(current(1))) {
+	      String n = current(); next(2); pml.set(n, parse());
+	    } else {
+	      check(!"=".equals(current()), "il manque un nom ou une value");
+	      String n = current(); next(); pml.set(n, "true");
+	    }
+	  }
+	}
+	// Parses the terms's elements
+	if ("(".equals(current())) {
+	  while(true) {
+	    check(!"}".equals(current()), "un terme est tronqué");
+	    if ("}".equals(current())) {
+	      break;
+	    } else if (")".equals(current())) { next();
+	      break;
+	    } else {
+	      pml.add(parse());
+	      check(",".equals(current()) || ")".equals(current()), "il manque une ',' ou une ')'");
+	    }
+	  }
+	}
+	return pml;
+      } else
+	return null;
     }
-    // Parses an expression between parentheses
+    // Parses an expression between parentheses 
     private Pml parseParenthesis() {
       String t = current();
       if ("(".equals(t)) { next();
-	Pml pml = readExpression(0);
+	Pml pml = parseExpression(0);
 	check(")".equals(current()), "le caractère ')' a été oublié");
 	if (")".equals(current())) next();
 	return pml;
@@ -211,133 +250,6 @@ public class Eml extends Pml { /*public*/ Eml() { }
       return null;
     }
   }
-
-  /*
-
-
-    // Parses a token in an expression
-    private Value readToken() {
-      Value token = null;
-      if ((token = readIf()) != null) { return token; }
-      if ((token = readFor()) != null) { return token; }
-      // Parses prefix operators
-      Value word = reader.readWord(); 
-      if (word.equals("!") || word.equals("$")|| word.equals("#") || word.equals("-")) { 
-        return new Structure(word.stringValue()).add(readExpression(getPrecedence(word.stringValue())));
-      } 
-      // Parses a list of the form "[element, .. ]"
-      if (word.equals("[")) { reader.unreadWord(); return readList(new Structure("list"), "[", "]"); }
-      // Parses an expression between parentheses
-      if (word.equals("(")) {
-	token = readExpression(0);
-	reader.check(reader.readWord().equals(")"), "')' expected");
-	// Parses postfix operators
-	word = reader.readWord();
-	if (word.equals("?") || word.equals("?*")) {
-	  token = new Structure(word.stringValue()).add(token); 
-	} else
-	  reader.unreadWord(); 
-	return token;
-      }       
-      // Parses a term
-      {
-	// Parses an attribute's list of syntax: "name { att=val, ..} "
-	Value next = reader.readWord();
-	if (next.equals("{")) {
-	  token = new Structure(word.stringValue());
-	  reader.unreadWord(); 
-	  Value atts = readList(new Structure(), "{", "}");
-	  for (int i = 0; i < atts.getCount(); i++) {
-	    Value eqs = atts.get(i);
-	    if (eqs.getType().equals("=")) {
-	      token.set(eqs.get(0).stringValue(), eqs.get(1));
-	    } else {
-	      token.set(eqs.toString(), "true");
-	    }
-	  }
-	  next = reader.readWord();
-	}
-	// Parses a functional term of syntax: "name (element, ..)"
-	if (next.equals("(")) {
-	  if (token == null) token = new Structure(word.stringValue());
-	  reader.unreadWord(); 
-	  token = readList(token, "(", ")");
-	} else reader.unreadWord();
-      }
-      // Parses a word
-      if (token == null) token = word;
-      return token;
-    }
-
-    // Parses a conditional of syntax: "if c then e1 (elif c then e1)* else e0"
-    private Value readIf(boolean isnext) {
-      if ((!isnext) && (!reader.readWord().equals("if"))) { reader.unreadWord(); return null; }
-      Value expression = new Structure("if");
-      expression.add(readExpression(0));
-      reader.check(reader.readWord().equals("then"), "then expected");
-      expression.add(readExpression(0));
-      Value next = reader.readWord();
-      if (next.equals("elif"))
-	expression.add(readIf(true));
-      else if (next.equals("else"))
-	expression.add(readExpression(0)); 
-      else
-	reader.unreadWord(); 
-      return expression;
-    }
-    private Value readIf() { return readIf(false); }
-
-    // Parses a parenthesized list of syntax: "B" item, .. "E"
-    private Value readList(Value expression, String B, String E) {
-      if (!reader.readWord().equals(B)) { reader.unreadWord(); return null; }
-      while (true) {
-	Value word = reader.readWord();
-	reader.check(!word.equals(""), "unexpected end of file");
-	if (word.equals(E)) return expression;
-	if (!word.equals(",")) reader.unreadWord();
-	expression.add(readExpression(0));
-      }
-    }
-
-    // Parses an expression with infix operator of syntax: item1 "O" item2
-    private Value readExpression(int precedence) {
-      Value tokens = new Structure();
-      // Stores the infix expression sequence
-      while(true) {
-	Value token = readToken();
-	tokens.add(token);
-	Value word = reader.readWord();
-	// Manage the lexixal << x -#>> construct
-	if (word.getType().equals("imp:numeric") &&
-	    word.stringValue().startsWith("-")) {
-	  tokens.add(new Chars().setValue("+"));
-	  tokens.add(word);
-	  word = reader.readWord();
-	}
-	if (getPrecedence(word.stringValue()) == -999 || getPrecedence(word.stringValue()) > precedence) {
-	  reader.unreadWord();
-	  break;
-	}
-	tokens.add(word);
-      }
-      reader.check((tokens.length() % 2) == 1, "unexpected token");
-      // Reduces the expression sequence
-      for (int i = 1; i < tokens.length()-1;) {
-	if (((i == 1) || (getPrecedence(tokens.get(i-2).stringValue()) > getPrecedence(tokens.get(i).stringValue()))) &&
-	    ((i == tokens.length()-2) || (getPrecedence(tokens.get(i+2).stringValue()) >= getPrecedence(tokens.get(i).stringValue())))) {
-	  tokens.set(i-1, new Structure(tokens.get(i).stringValue()).add(tokens.get(i-1)).add(tokens.get(i+1)));
-	  tokens.add(i+1, NULL);
-	  tokens.add(i, NULL);
-	  i = 1;
-	} else
-	  i += 2;
-      }
-      if(tokens.length() != 1) 
-	throw new IllegalStateException("Spurious parser state: "+tokens);
-      return tokens.get(0);
-    }
-  }
-  */
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -439,6 +351,6 @@ public class Eml extends Pml { /*public*/ Eml() { }
    * <p>- The file name be a EML, PML, or XML file name, with the corresponding extensions</p>.
    */
   public static void main(String[] usage) {
-    if (usage.length > 0) new Eml().load(usage[0]).save(usage.length > 1 ? usage[0] : "stdout:");
+    if (usage.length > 0) new Eml().load(usage[0], "eml").save(usage.length > 1 ? usage[0] : "stdout:");
   }
 }

@@ -148,6 +148,7 @@ public class Pml { /**/public Pml() { }
 	}
       }
       itoken = 0;
+      for(token t : tokens) System.out.println(t.line+"> \""+t.string+"\"\n");
       return this;
     }
     private static boolean isOperator(char c) {

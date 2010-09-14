@@ -613,9 +613,23 @@ public class Main extends JApplet { /**/public Main() { }
 	  initDoc();
 	}});
     // Adds processing activities
+    /*
     try {
       addActivity(new ProcessingActivity("PerceptionSonore") {
 	  public String getTitle() { return "Découvrir la perception sonore"; }
+	  public void init() {
+	    super.init();
+	    //addTab("Document de la processing", "proglet/"+proglet+"/doc-files/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true);
+	    //addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/help.png", true);
+	  }
+	});
+    } catch(Exception e) { 
+      System.err.println("Notice: "+e+"\n");
+    }
+    */
+    try {
+      addActivity(new ProcessingActivity("RSAInteract") {
+	  public String getTitle() { return "Expérimenter avec la cryptographie"; }
 	  public void init() {
 	    super.init();
 	    //addTab("Document de la processing", "proglet/"+proglet+"/doc-files/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true);
