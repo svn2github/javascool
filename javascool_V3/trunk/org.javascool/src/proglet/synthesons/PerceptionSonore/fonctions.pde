@@ -11,7 +11,7 @@
     
     stroke(0);
   
-    fft.logAverages(60,7);
+    fft.logAverages(60,6*width/(screen.width/2)); //6 pour screen.width/2
   
     w = width/fft.avgSize();
     strokeWeight(w);
@@ -24,85 +24,120 @@
     rHeight = height * 0.99; 
   
   }
+  
+  
+  void traceFFT() {
+   
+   //  Rendu de la FFT
+    strokeWeight(10);
+    tint(250, 250); //gris,alpha sinon (255, 150, 0, 250)
+    image(fade, (width - rWidth) / 2, (height - rHeight) / 2, rWidth, rHeight);
+    noTint();
+    
+    fft.forward(in.mix);
+  
+    stroke(240, 240, 240);
+    for(int i = 0; i < fft.avgSize(); i++){
+      line((i * w) + (w / 2), height, (i * w) + (w / 2), height - fft.getAvg(i) * 30);
+    }
+   
+    fade = get(0, 0, width, height);
+    
+    stroke(250,70,0);
+    for(int i = 0; i < fft.avgSize(); i++){
+      line((i * w) + (w / 2), height, (i * w) + (w / 2), height - fft.getAvg(i) * 30);
+    } 
+    
+  }
+  
+  
+  void traceSignal() {
+    
+   stroke(255);
+    strokeWeight(1.5);  
+      for(int i = 0; i < in.bufferSize() - 1; i++)
+      {
+        //println("buffer: " + in.bufferSize());
+        float x1 = map(i, 0, in.bufferSize(), 0, width);
+        float x2 = map(i+1, 0, in.bufferSize(), 0, width);
+        line(x1, 40 + in.left.get(i)*100, x2, 40 + in.left.get(i+1)*100);
+        line(x1, 120 + in.right.get(i)*100, x2, 120 + in.right.get(i+1)*100);
+      } 
+  }
    
    
   // Controlleur pour la sinusoide ou oscillateur   
   void mSine() {
     
-      if (msine) { // si une sinusoide joue, on ne peut en générer une par-dessus
-        println(" Une sinusoide est déjà en train de jouer!"); 
-      } else {
-      out.sound();
+    if (maSinusoide.sonne)  {
+        
+        maSinusoide.imprimeMessage();
+        
+    } else if (monEnregistrement.sonne)  {
       
-      // Créer un oscillateur sinusoidale avec une fréquence de 1000Hz, une amplitude de 1.0, et une fréquence d'échantillonage callée sur la ligne out
-      sine = new SineWave(1000, 0.2, out.sampleRate());
-      // la vitesse portamento pour l'oscillateur est réglée à 20 millisecondess
-      sine.portamento(20);
-      // ajouter le signal à la ligne de sortie
-      out.addSignal(sine);
-      msine = true;
-      }      
-  }
-  
-   void mPlaySound() {
-    
-      if (msound) { // si un enregistrement joue, on ne peut en charger un par-dessus
-        println(" Un enregistrement est déjà en train de jouer. Veuillez le stopper avant de charger un nouveau morceau.");
-      } else {
+      monEnregistrement.imprimeMessage();
       
-      count +=1;
-      
-      mySample = selectInput(); 
-      player = minim.loadFile(mySample);
-      player.loop();
-      msound = true;
-      }
-  
-  }
-  
-    // Appliquer le filtrage  
-  void mFilter() {
-    
-     if (msound && !(mfiltre)) {
-       player.addEffect(lpf);
-       lpf.setFreq(cutoff);
-       mfiltre = true;
-     } else {
-       player.clearEffects();
-       boxFiltre.setText(" ");
-       boxFiltre.setWindow(controlWindow);
-       mfiltre = false;
+    } else {
+        
+        maSinusoide.joue();
+        
      }
+    
   }
   
+  void mPlaySound() {
+    
 
+    if (monEnregistrement.sonne)  {
+      
+      monEnregistrement.imprimeMessage();
+      
+    } else if (maSinusoide.sonne)  {
+        
+        maSinusoide.imprimeMessage();
+        
+    } else {
+      
+      
+      monEnregistrement.joue();
+      
+    }
   
-   void mouseMoved()
-  {
-    if (msine) {
-    // Régler les déplacements de la souris sur les paramètres de la sinusoide
-    freqSine = map(mouseX, 0, width, 100, 8000);
-    //print("La fréquence de la sinusoide est: " + freqSine );  
-    // Fréquence
-    sine.setFreq(freqSine);
-    // Volume
-    volume = map(mouseY, 0, height, 0.4, 0);
-    //print(" // Son volume est: " + volume + "\n"); 
-    sine.setAmp(volume);
-    
-    InfoInteractive();
-    
-    } 
-    
-    // change volume for loaded file
-    if (msound && mfiltre) {
-    volume = map(mouseY, 0, height, 0, -20);
-    player.setGain(volume);
-    cutoff = map(mouseX, 0, width, 500, 5000);
-    print(" // cutoff: " + cutoff + "\n"); 
-    lpf.setFreq(cutoff);
-    
-    InfoInteractive();
+  }
+  
+  
+  // Appliquer le filtrage  
+  void mFilter() {
+     
+     if (monEnregistrement.sonne)  {
+       
+       if (!monEnregistrement.filtre) {
+         
+         monEnregistrement.appliqueFiltre() ;
+         
+       } else {
+         
+         monEnregistrement.retireFiltre();
+         
+       }
+       
+     }
+     
+  }
+  
+ 
+  void mouseMoved() {
+   
+    if (maSinusoide.sonne) {
+      
+      maSinusoide.changeValeur();
+      maSinusoide.imprimeValeur();
+      
+    } else if (monEnregistrement.sonne) {
+      
+      monEnregistrement.changeValeur();
+      monEnregistrement.imprimeValeur();
+      
     }
     
   }
@@ -110,21 +145,14 @@
   
   // Stopper tout son  
   void mStopSound() {
+    
+    if (maSinusoide.sonne) {
       
-    if (msine) {
+      maSinusoide.stopSonne();
       
-      out.noSound();
-      out.clearSignals();
-      boxSinus.setText(" ");
-      boxSinus.setWindow(controlWindow);
-      msine = false;
+    } else if (monEnregistrement.sonne) {
       
-    } else if (msound) {
-      
-      player.pause();
-      boxFiltre.setText(" ");
-      boxFiltre.setWindow(controlWindow);
-      msound = false;
+      monEnregistrement.stopSonne();
       
     }
   
