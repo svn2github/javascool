@@ -98,7 +98,8 @@ public class Pml { /**/public Pml() { }
   }
   /** Defines a token reader, reading a string word by word, normalizing spaces and quoting string with the '"' char. */
   protected static class TokenReader {
-    private static class token { String string; int line; token(String s, int i0, int i1, int l) { string = s.substring(i0, i1-i0); line = l; } }
+    /** Defines the information of each lexical token. */
+    private static class token { String string; int line; token(String s, int i0, int i1, int l) { string = s.substring(i0, i1); line = l; } }
     Vector<token> tokens; int itoken;
     /** Resets the reader. */
     public TokenReader reset(String string) {
@@ -111,7 +112,7 @@ public class Pml { /**/public Pml() { }
 	  // Skips spaces
 	  while(ichar < chars.length && Character.isWhitespace(chars[ichar])) {
 	    if (chars[ichar] == '\n')
-		ln++;
+	      ln++;
 	    ichar++;
 	  }
 	  if (ichar < chars.length) {
@@ -148,7 +149,7 @@ public class Pml { /**/public Pml() { }
 	}
       }
       itoken = 0;
-      for(token t : tokens) System.out.println(t.line+"> \""+t.string+"\"\n");
+      // used to test: for(token t : tokens) System.out.println(t.line+"> \""+t.string+"\""); System.out.println("..");
       return this;
     }
     private static boolean isOperator(char c) {
@@ -161,7 +162,9 @@ public class Pml { /**/public Pml() { }
     }
     /** Gets the current token or '}' if end of file. */
     public String current(int next) { 
-      return itoken+next < tokens.size() ? tokens.get(itoken+next).string : "}";
+      String current = itoken+next < tokens.size() ? tokens.get(itoken+next).string : "}";
+      System.out.println(" ? '"+current+"'");
+      return current;
     }
     /**/public String current() { 
       return current(0);
@@ -172,6 +175,7 @@ public class Pml { /**/public Pml() { }
     }
     /** Gets the next token. */
     public void next(int next) {
+      System.out.println(">> '"+current()+"'");
       itoken += next;
     }
     /**/public void next() {
@@ -207,6 +211,7 @@ public class Pml { /**/public Pml() { }
 	for(boolean start = true; true; start = false) {
 	  String t = current();
 	  if ("}".equals(t)) {
+	    next();
 	    break;
 	  } else if ("{".equals(t)) { 
 	    Pml p = new Pml(); parse(p); pml.add(p);
@@ -268,7 +273,7 @@ public class Pml { /**/public Pml() { }
     return this;
   }
   /**/public final Pml save(String location) {
-    return load(location, location.replaceAll("^.*\\.([A-Za-z]+)$", "$1"));
+    return save(location, location.replaceAll("^.*\\.([A-Za-z]+)$", "$1"));
   }
   /** Defines a PML writer. */
   private static class PlainWriter {

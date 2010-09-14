@@ -159,9 +159,9 @@ public class Utils { private Utils() { }
    * @throws RuntimeException if an I/O exception has occurred.
    */
   public static void saveString(String location, String string) {
+    if (location.startsWith("stdout:")) { System.out.println(location+" "+string); return; }
     location = toUrl(location).toString();
     try {
-      if (location.startsWith("stdout:")) { System.out.println(location+" "+string); return; }
       OutputStreamWriter writer = location.startsWith("file:") ? getFileWriter(location.substring(5)) : getUrlWriter(location);
       for(int i = 0; i < string.length(); i++) writer.write(string.charAt(i)); writer.close();
     } catch(IOException e) {
