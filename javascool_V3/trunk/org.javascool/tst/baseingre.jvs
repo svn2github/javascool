@@ -20,7 +20,7 @@ int tirage() {
 }
 // Calcule la moyenne sur un grand nombre de tirages
 void main() {
-  double N = 100000;
+  double N = 10;
   double M = 0;
   for(int n = 0; n < N; n++) {
     M = M + tirage();
