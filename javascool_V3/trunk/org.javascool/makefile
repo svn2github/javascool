@@ -25,7 +25,7 @@ svn: clean
 	@svn up ; svn ci -m '' ; svn status
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java .http.root www/.htcache lib/js-manifest.mf www/api www/javascool.jar www/sources.zip
+	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java .http.root www/.htcache lib/js-manifest.mf www/api www/javascool.jar www/sources.zip sketchbook/*/applet
 
 #####################################################################################################################################
 
