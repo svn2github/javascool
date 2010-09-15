@@ -51,14 +51,14 @@
     
     frame = new Frame();
     
-    size(1024,2*screen.height/3,P3D);
+    size(1024,768,P3D);
     frameRate(30);
     controlP5 = new ControlP5(this);
     PFont pfont = createFont("Courrier",10,true); // police de caractère
     font = new ControlFont(pfont);
     
     // Fenetre principale: celle de l'analyseur
-    frame.setLocation(screen.width/2,screen.height/6);
+    //frame.setLocation(screen.width/2,screen.height/6);
     this.frame.setTitle("A N A L Y S E   D U   C O N T E N U   F R E Q U E N T I E L");
 
     
