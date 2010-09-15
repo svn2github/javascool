@@ -106,38 +106,6 @@
   }
   
   
- /* void InfoInteractive(){
-    
-    if (msinus) {
-      
-      float vol = (volume)/0.4;
-      boxSinus.captionLabel().setControlFontSize(8);
-      boxSinus.setText(" Freq.: " + freqSine + " Hz  -  Vol.: " + vol + " ");
-      boxSinus.captionLabel().setControlFont(font); // change the font
-      boxSinus.setWindow(controlWindow);
-      
-    } 
-    
-    if (msound) {
-      
-      float vol = (volume+20)/20;
-      boxFiltre.captionLabel().setControlFontSize(8);
-      boxFiltre.setText(" Vol.: " + vol + " ");
-      boxFiltre.captionLabel().setControlFont(font); // change the font
-      boxFiltre.setWindow(controlWindow);
-      
-      if (mfiltre) {
-
-        boxFiltre.setText(" Freq. de coupure: " + cutoff + " Hz  -  Vol.: " + vol + " ");
-        boxFiltre.captionLabel().setControlFont(font); // change the font
-        boxFiltre.setWindow(controlWindow);
-      }
-    
-    } 
-    
-  }*/
-  
-  
   int InterfaceLargeur() {
  
     return controlWindow.papplet().getWidth();
@@ -150,7 +118,7 @@
   }
   
   
-  public processing.core.PApplet getInterface() {
+  public processing.core.PApplet getControl() {
     
     controlWindow.hide();
     return controlWindow.papplet();
