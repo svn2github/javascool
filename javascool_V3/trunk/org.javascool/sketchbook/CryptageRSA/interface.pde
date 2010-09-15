@@ -202,7 +202,7 @@
     myTextfield_kpr.clear(); // clé privée
   }
    
-  public processing.core.PApplet getInterface() {
+  public processing.core.PApplet getControl() {
     
     controlWindow.hide();
     return controlWindow.papplet();
