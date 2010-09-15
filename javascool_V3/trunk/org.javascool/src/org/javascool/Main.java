@@ -613,26 +613,18 @@ public class Main extends JApplet { /**/public Main() { }
 	  initDoc();
 	}});
     // Adds processing activities
-    try {
-      addActivity(new ProcessingActivity("ExplorationSonore") {
-	  public String getTitle() { return "Découvrir la perception sonore"; }
-	  public void init() {
-	    super.init();
-	    //addTab("Document de la processing", "proglet/"+proglet+"/doc-files/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true);
-	    //addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/help.png", true);
-	  }
-	});
-    } catch(Exception e) { System.err.println("Notice: "+e+"\n"); }
-    try {
-      addActivity(new ProcessingActivity("CryptageRSA") {
-	  public String getTitle() { return "Expérimenter avec la cryptographie"; }
-	  public void init() {
-	    super.init();
-	    //addTab("Document de la processing", "proglet/"+proglet+"/doc-files/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true);
-	    //addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/help.png", true);
-	  }
-	});
-    } catch(Exception e) { System.err.println("Notice: "+e+"\n"); }
+    addActivity(new ProcessingActivity("ExplorationSonore") {
+	public String getTitle() { return "Découvrir la perception sonore"; }
+	public void init() {
+	  super.init();
+	}
+      });
+    addActivity(new ProcessingActivity("CryptageRSA") {
+	public String getTitle() { return "Expérimenter avec la cryptographie"; }
+	public void init() {
+	  super.init();
+	}
+      });
   }
   
   // Defines a compilation activity 
@@ -717,34 +709,37 @@ public class Main extends JApplet { /**/public Main() { }
      * @param processing The processing to use.
      * @throws IllegalArgumentExceptionif the processing is undefined.
      */
-    public ProcessingActivity(String processing) { 
-      try {
-	this.processing = (Applet) Class.forName(name = processing).newInstance();
-	try {
-	  control = (Applet) Class.forName(name).getDeclaredMethod("getControl").invoke(this);
-	} catch(Throwable e) { System.err.println("Undefined control ("+e+") : "+processing);}
-      } catch(Throwable e) {
-	throw new IllegalArgumentException("Undefined processing ("+e+") : "+processing);
-      }
-    } 
-    private Applet processing, control = null; private String name; private boolean init = false;
+    public ProcessingActivity(String processing) { name = processing; } private String name; 
     // Common panels and tools
     public void init() {
       if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
       addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false);
       initCompile();
-      if (!init) { init = true; processing.init(); }
-      addTab(name, processing, "org/javascool/doc-files/icones16/compile.png", true);
-      showTab(name);
-      if (control != null) {
-	addTab(name+":control", processing, "org/javascool/doc-files/icones16/compile.png", true);	
-	showTab(name+":control");
+      initApplet();
+      if (applet != null) {
+	addTab(name, applet, "org/javascool/doc-files/icones16/compile.png", false);
+	showTab(name);
       }
-      processing.start();
+      if (control != null) {
+	addTab(name+"2", control, "org/javascool/doc-files/icones16/compile.png", false);	
+	showTab(name+"2");
+      }
     }
+    private void initApplet() {
+      if (applet == null) {
+	try {
+	  applet = (Applet) Class.forName(name).newInstance();
+	  applet.init();
+	  applet.start();
+	  try {
+	    control = (Applet) Class.forName(name).getDeclaredMethod("getControl").invoke(applet);
+	  } catch(Throwable e) { Utils.report(e); System.err.println("Undefined processing control ("+e+") : "+name); }
+	} catch(Throwable e) { System.err.println("Undefined processing applet ("+e+") : "+name); }
+      } 
+    }
+    private Applet applet = null, control = null;
     public Editor getEditor() { return jvsEditor; }
     public String getExtension() { return ".jvs"; }
-    public void stop() { /* processing.stop(); */ }
   }
 
   // Defines a AlgoTree proglet activity

@@ -8,21 +8,22 @@ export CLASSPATH=$(shell echo '$(J_HOME)/lib/tools.jar $(J_HOME)/jre/lib/rt.jar 
 # Default rule
 all : gui jar
 
-# Runs the processing interface
+# Runs the processing interface GUI
 
 gui :
 	@rm -rf */applet
 	@cd $(P_HOME) ; java processing.app.Base
 
-# Generates the javascool jar include
+# Generates the javascool jar include: processing.zip
 
 jar :
 	@rm -f ../lib/processing.zip
-	@rm -rf tmp ; mkdir tmp; for j in */applet/*.jar ; do unzip -qo $$j -d tmp ; done ; rm -rf tmp/META-INF
-	@cd tmp ; zip -9qr ../../lib/processing.zip *
-	rm -rf tmp */applet
+	@rm -rf ../tmp ; mkdir ../tmp; for j in */applet/*.jar ; do unzip -qo $$j -d ../tmp ; done ; rm -rf ../tmp/META-INF
+	@cd ../tmp ; zip -9qr ../lib/processing.zip *
+	@rm -rf ../tmp
 
 # Runs the javasccol interface
+
 j3 :
 	$(MAKE) -C .. j3
 
@@ -33,14 +34,14 @@ j3 :
 APP = ExplorationSonore
 
 tst :
-	echo 'grant { permission java.security.AllPermission; };' > applet.policy
-	appletviewer -J-Djava.security.policy=./applet.policy $(APP)/applet/index.html
-	rm applet.policy
+	@echo 'grant { permission java.security.AllPermission; };' > applet.policy
+	@appletviewer -J-Djava.security.policy=./applet.policy $(APP)/applet/index.html
+	@rm applet.policy
 
-# Exports the applet (NOT YET AVAILABLE)
+# Exports the applets without using the GUI (NOT YET AVAILABLE)
 
 APPS = CryptageRSA  ExplorationSonore
 
 export :
-	rm -rf */applet
-	for f in $(APPS) ; do cd $(P_HOME) ; java processing.app.Commander --build --sketch=$(PWD)/$$f --output=$(PWD)/$$f/applet ; done
+	@rm -rf */applet
+	@for f in $(APPS) ; do cd $(P_HOME) ; java processing.app.Commander --build --sketch=$(PWD)/$$f --output=$(PWD)/$$f/applet ; done
