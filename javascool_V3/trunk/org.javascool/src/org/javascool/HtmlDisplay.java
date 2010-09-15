@@ -7,6 +7,7 @@ package org.javascool;
 // Used to build the gui
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -49,6 +50,7 @@ public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDispl
     bar.add(next = new JButton("Page suivante", Utils.getIcon("org/javascool/doc-files/icones16/next.png")));
     add(bar, BorderLayout.NORTH);
     pane = new JEditorPane();
+    pane.setBackground(Color.WHITE); 
     pane.setEditable(false);
     pane.setContentType("text/html");
     pane.addHyperlinkListener(new HyperlinkListener() {

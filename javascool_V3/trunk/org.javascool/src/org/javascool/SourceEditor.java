@@ -101,6 +101,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     bar = new JMenuBar();
     add(bar, BorderLayout.NORTH);
     pane = new JTextPane();
+    pane.setBackground(Color.WHITE);
     pane.setEditable(editable);
     pane.setFont(new Font("Dialog", Font.PLAIN, 16));
     doc = pane.getStyledDocument();

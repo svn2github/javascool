@@ -2,6 +2,9 @@
 ##  Philoumailabo@gmail.com and Thierry.Vieville@sophia.inria.fr, Copyright (C) 2010.  All rights reserved.                        ##
 #####################################################################################################################################
 
+# Used to use sun jdk instead of open jdk
+export PATH:= /usr/java/jdk1.6.0_21/bin:$(PATH)
+
 default : j3
 
 # General commands

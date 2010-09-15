@@ -40,8 +40,8 @@ public class Console implements org.javascool.Proglet { private Console() { }
 
     public Panel() {
       super(new BorderLayout()); 
-      setBackground(Color.WHITE); setPreferredSize(new Dimension(400, 500));
-      out = new JEditorPane(); out.setEditable(false);  out.setContentType("text/html; charset=UTF-8");
+      setPreferredSize(new Dimension(400, 500));
+      out = new JEditorPane(); out.setEditable(false);  out.setContentType("text/html; charset=UTF-8"); out.setBackground(Color.WHITE); 
       pane = new JScrollPane(); pane.setViewportView(out); pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); add(pane);
       pane.setBorder(BorderFactory.createTitledBorder("Affichage de la sortie")); 
       JToolBar bar = new JToolBar(); add(bar, BorderLayout.NORTH); bar.setOrientation(JToolBar.HORIZONTAL); bar.setBorderPainted(false);

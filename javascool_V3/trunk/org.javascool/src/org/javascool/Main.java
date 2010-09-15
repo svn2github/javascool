@@ -614,7 +614,7 @@ public class Main extends JApplet { /**/public Main() { }
 	}});
     // Adds processing activities
     addActivity(new ProcessingActivity("ExplorationSonore") {
-	public String getTitle() { return "Découvrir la perception sonore"; }
+	public String getTitle() { return "Exploration du signal sonore"; }
 	public void init() {
 	  super.init();
 	}
@@ -710,7 +710,14 @@ public class Main extends JApplet { /**/public Main() { }
      * @throws IllegalArgumentExceptionif the processing is undefined.
      */
     public ProcessingActivity(String processing) { name = processing; } private String name; 
-    // Common panels and tools
+
+    public void init() {
+      if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
+      addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false);
+      initCompile();
+      initApplet();
+    }
+    /* Common panels and tools
     public void init() {
       if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
       addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false);
@@ -720,24 +727,33 @@ public class Main extends JApplet { /**/public Main() { }
 	addTab(name, applet, "org/javascool/doc-files/icones16/compile.png", false);
 	showTab(name);
       }
-      if (control != null) {
-	addTab(name+"2", control, "org/javascool/doc-files/icones16/compile.png", false);	
-	showTab(name+"2");
+      new Thread(new Runnable() { public void run() {
+	Macros.sleep(2000);
+	initControl();
+	if (control != null) {
+	  addTab(name+"2", control, "org/javascool/doc-files/icones16/compile.png", false);	
+	  showTab(name+"2");
+	}
+      }}).start();
+    }
+    private void initControl() {  
+      if (applet != null) {
+	try {
+	  control = (Applet) Class.forName(name).getDeclaredMethod("getControl").invoke(applet);
+	} catch(Throwable e) { Utils.report(e); System.err.println("Undefined processing control ("+e+") : "+name); }
       }
     }
+    private Applet control = null;
+    */
     private void initApplet() {
-      if (applet == null) {
-	try {
-	  applet = (Applet) Class.forName(name).newInstance();
-	  applet.init();
-	  applet.start();
-	  try {
-	    control = (Applet) Class.forName(name).getDeclaredMethod("getControl").invoke(applet);
-	  } catch(Throwable e) { Utils.report(e); System.err.println("Undefined processing control ("+e+") : "+name); }
-	} catch(Throwable e) { System.err.println("Undefined processing applet ("+e+") : "+name); }
-      } 
-    }
-    private Applet applet = null, control = null;
+      try {
+	applet = (Applet) Class.forName(name).newInstance();
+	applet.init();
+	Utils.show(applet, name, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"), 1024, 800, false);
+	applet.start();
+      } catch(Throwable e) { System.err.println("Undefined processing applet ("+e+") : "+name); }
+    } 
+    private Applet applet = null;
     public Editor getEditor() { return jvsEditor; }
     public String getExtension() { return ".jvs"; }
   }
