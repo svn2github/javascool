@@ -328,6 +328,7 @@ done :
 #: ./src/org/javascool/*.java : contains the javascool core and widget classes and doc-files
 #: ./src/org/javascool/*.xslt : contains the javascool XSLT rules.
 #: ./src/proglet/*/*.java     : contains the proglets classes and doc-files
+#: ./sketchbook/*/*.pde       : contains the processing proglet extensions
 #:
 #: [1.2] Web site files
 #: src/.../doc-files          : contains all javascool and proglets corresponding resources (documentation, icons, ..)
