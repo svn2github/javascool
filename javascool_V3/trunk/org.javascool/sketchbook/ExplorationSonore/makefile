@@ -10,7 +10,7 @@ export CLASSPATH=$(shell echo '$(J_HOME)/lib/tools.jar $(J_HOME)/jre/lib/rt.jar 
 gui :
 	rm -rf applet
 	cd $(P_HOME) ; java processing.app.Base
-	#rm -f applet/*.java
+	rm -f applet/*.java
 
 tst :
 	echo 'grant { permission java.security.AllPermission; };' > applet.policy
@@ -19,11 +19,11 @@ tst :
 
 jar :
 	cd applet ; rm -rf tmp ; mkdir tmp ; for f in *.jar ; do unzip -qo $$f -d tmp ; done ; rm -rf tmp/META-INF
-	cd applet/tmp ; zip -9qr ../../../../../../lib/processing.zip *
+	cd applet/tmp ; zip -9qr ../../lib/processing.zip *
 	rm -rf applet
 
 j3 :
-	$(MAKE) -C ../../../.. j3
+	$(MAKE) -C ../.. j3
 
 run :
 	rm -rf applet

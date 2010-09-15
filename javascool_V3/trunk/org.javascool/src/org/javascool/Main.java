@@ -613,9 +613,8 @@ public class Main extends JApplet { /**/public Main() { }
 	  initDoc();
 	}});
     // Adds processing activities
-    /*
     try {
-      addActivity(new ProcessingActivity("PerceptionSonore") {
+      addActivity(new ProcessingActivity("ExplorationSonore") {
 	  public String getTitle() { return "Découvrir la perception sonore"; }
 	  public void init() {
 	    super.init();
@@ -623,12 +622,9 @@ public class Main extends JApplet { /**/public Main() { }
 	    //addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/help.png", true);
 	  }
 	});
-    } catch(Exception e) { 
-      System.err.println("Notice: "+e+"\n");
-    }
-    */
+    } catch(Exception e) { System.err.println("Notice: "+e+"\n"); }
     try {
-      addActivity(new ProcessingActivity("RSAInteract") {
+      addActivity(new ProcessingActivity("CryptageRSA") {
 	  public String getTitle() { return "Expérimenter avec la cryptographie"; }
 	  public void init() {
 	    super.init();
@@ -636,9 +632,7 @@ public class Main extends JApplet { /**/public Main() { }
 	    //addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/help.png", true);
 	  }
 	});
-    } catch(Exception e) { 
-      System.err.println("Notice: "+e+"\n");
-    }
+    } catch(Exception e) { System.err.println("Notice: "+e+"\n"); }
   }
   
   // Defines a compilation activity 
@@ -726,11 +720,14 @@ public class Main extends JApplet { /**/public Main() { }
     public ProcessingActivity(String processing) { 
       try {
 	this.processing = (Applet) Class.forName(name = processing).newInstance();
+	try {
+	  control = (Applet) Class.forName(name).getDeclaredMethod("getControl").invoke(this);
+	} catch(Throwable e) { System.err.println("Undefined control ("+e+") : "+processing);}
       } catch(Throwable e) {
 	throw new IllegalArgumentException("Undefined processing ("+e+") : "+processing);
       }
     } 
-    private Applet processing; private String name; private boolean init = false;
+    private Applet processing, control = null; private String name; private boolean init = false;
     // Common panels and tools
     public void init() {
       if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
@@ -739,6 +736,10 @@ public class Main extends JApplet { /**/public Main() { }
       if (!init) { init = true; processing.init(); }
       addTab(name, processing, "org/javascool/doc-files/icones16/compile.png", true);
       showTab(name);
+      if (control != null) {
+	addTab(name+":control", processing, "org/javascool/doc-files/icones16/compile.png", true);	
+	showTab(name+":control");
+      }
       processing.start();
     }
     public Editor getEditor() { return jvsEditor; }

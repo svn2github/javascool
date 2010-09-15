@@ -183,7 +183,7 @@ public class Jvs2Java { private Jvs2Java() { }
     try { 
       Class.forName("com.sun.tools.javac.Main").getDeclaredMethod("compile", Class.forName("[Ljava.lang.String;"), Class.forName("java.io.PrintWriter")).
 	invoke(null, args, new PrintWriter(out)); 
-    } catch(Exception e) { 
+    } catch(Throwable e) { 
       throw new RuntimeException("Erreur: impossible de compiler, il y a une erreur d'installation ("+e+"), contacter http://javascool.gforge.inria.fr");
     }
     return out.toString().trim().replaceAll(path.replaceAll("\\\\", "\\\\\\\\"), new File(path).getName());
