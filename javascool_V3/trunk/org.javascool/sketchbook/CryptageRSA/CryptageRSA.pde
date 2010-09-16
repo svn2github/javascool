@@ -48,8 +48,6 @@
     frameRate(30);
     PFont pfont = createFont("Courrier",10,true); // use true/false for smooth/no-smooth
     font = new ControlFont(pfont);
-    PFont myFont = createFont(PFont.list()[2], 20);
-    textFont(myFont);
   
     controlP5 = new ControlP5(this);
     controlP5.setAutoDraw(false);

@@ -34,7 +34,7 @@
     
     // Choisir/générer p et q
     pq_size = int(random(4, 10));
-    myTextfield_p = controlP5.addTextfield(" ",100,height/2-height/4,width/8,20);
+    myTextfield_p = controlP5.addTextfield("",100,height/2-height/4,width/8,20);
     myTextfield_q = controlP5.addTextfield(" ",100+width/8+20,height/2-height/4,width/8,20);
     //controlP5.addButton("reset",0,n.width/2-(100+100),150,100,20).setCaptionLabel("1. Genere P et Q");
     controlP5.addButton("reset",0,width-(100+width/5),height/2-height/4,width/5,20).setCaptionLabel("1.  Génère   P  et  Q");
@@ -44,14 +44,14 @@
     myTextfield_q.setText("Q = "+ q + " ");
     
     // Calculer n=pxq
-    myTextfield_n = controlP5.addTextfield(" ",100,height/2-height/6,width/3,20);
+    myTextfield_n = controlP5.addTextfield("  ",100,height/2-height/6,width/3,20);
     //controlP5.addButton("calculate_n",0,width/2-(100+100),200,100,20).setCaptionLabel("2. Calcule n");
     controlP5.addButton("calculate_n",0,width-(100+width/5),height/2-height/6,width/5,20).setCaptionLabel("2.  Calcule   n");
     controlP5.controller("calculate_n").captionLabel().setControlFont(font);
     controlP5.controller("calculate_n").captionLabel().setControlFontSize(11);
     
     // Générer e tel qu'il soit premier avec (p-1)*(q-1)
-    myTextfield_e = controlP5.addTextfield(" ",100,height/2-height/12,width/3,20);
+    myTextfield_e = controlP5.addTextfield("   ",100,height/2-height/12,width/3,20);
     //controlP5.addButton("launch_e",0,width/2-(100+100),250,100,20).setCaptionLabel("3. Genere e");
     controlP5.addButton("launch_e",0,width-(100+width/5),height/2-height/12,width/5,20).setCaptionLabel("3.  Génère   e");
     controlP5.controller("launch_e").captionLabel().setControlFont(font);
@@ -61,7 +61,7 @@
     // Calculer d selon: 
     // Il existe un relatif entier m, tel que e × d + m × (p - 1)(q - 1) = 1
     // d est la clé privée
-    myTextfield_d = controlP5.addTextfield(" ",100,height/2,width/3,20);
+    myTextfield_d = controlP5.addTextfield("    ",100,height/2,width/3,20);
     //controlP5.addButton("launch_d",0,width/2-(100+100),300,100,20).setCaptionLabel("4. Calcule d");
     controlP5.addButton("launch_d",0,width-(100+width/5),height/2,width/5,20).setCaptionLabel("4.  Calcule   d");
     controlP5.controller("launch_d").captionLabel().setControlFont(font);
@@ -149,7 +149,7 @@
     controlP5.controller("translate_m").captionLabel().setControlFont(font);
     controlP5.controller("translate_m").captionLabel().setControlFontSize(11);
     controlP5.controller("translate_m").setWindow(controlWindow);
-    myTextfield_MessBits = controlP5.addTextfield(" ",100,height/2+height/10,width-100*2,30);
+    myTextfield_MessBits = controlP5.addTextfield("     ",100,height/2+height/10,width-100*2,30);
     
     myTextfield_MessBits.setWindow(controlWindow);
     
@@ -159,7 +159,7 @@
     controlP5.controller("encrypt_m").captionLabel().setControlFont(font);
     controlP5.controller("encrypt_m").captionLabel().setControlFontSize(11);
     controlP5.controller("encrypt_m").setWindow(controlWindow);
-    myTextfield_EncMessBits = controlP5.addTextfield(" ",100,height/2+height/5+height/20,width-100*2,30);
+    myTextfield_EncMessBits = controlP5.addTextfield("      ",100,height/2+height/5+height/20,width-100*2,30);
     myTextfield_EncMessBits.setWindow(controlWindow);
     // Envoyer le message encryté
     controlP5.addButton("send_m",0,width-(185+100),height/2+2*height/5,185,20);
