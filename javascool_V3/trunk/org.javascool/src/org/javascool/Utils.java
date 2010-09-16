@@ -417,6 +417,8 @@ public class Utils { private Utils() { }
 	if (pane instanceof JApplet) close = ((JApplet) pane).getRootPane().getActionMap().get("quit");
 	setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
       }
+      if (width == 0) width = (int) pane.getPreferredSize().getWidth();
+      if (height == 0) height = (int) pane.getPreferredSize().getHeight();
       setSize(width, height);
       setVisible(true); 
       if (applet != null) applet.start(); 

@@ -1,0 +1,118 @@
+<div title="vrac a trier">
+
+
+
+Le but de ce tutoriel est de vous apprendre à utiliser et manipuler les structures de donné que sont les tableaux.
+
+
+Le but de ce tutoriel est de vous apprendre à utiliser et manipuler les structures de donné que sont les tableaux.
+
+Notes :
+
+Pour réaliser ce tutoriel vous pouvez utiliser les fonctions présente dans la boîte à outils dont le fonctionnement est rappelé dans le manuel d'utilisation.
+
+Vous trouverez ici un rappel sur les tableaux .
+
+voici l'exemple du programme qui range dans un tableau différents nombres et qui les affiches :
+
+Exemple{
+
+   void afficher(int[] tab){
+      for(int i=0 ; i&lt;tab.length; i++){
+         println(tab[i]+"");
+      }
+   }
+
+
+   void main(){
+      int[] tab = new int[8];
+      tab[0] = 1;
+      tab[1] = 2;
+      tab[2] = 3;
+      tab[3] = 4;
+      tab[4] = 5;
+      tab[5] = 6;
+      tab[6] = 7;
+      tab[7] = 8;
+      afficher(tab);
+   }
+}
+Le fichier correspondant : Exemple.jvs
+
+Travaille demandé :
+
+Le programme suivant est-il correct ? expliquez pourquoi.
+
+   void main(){
+      int[] tab = new int[8];
+      tab[0] = 10;
+      tab[1] = 5;
+      tab[2] = 9;
+      tab[3] = "trois";
+      tab[4] = 7;
+      tab[5] = 59;
+      tab[6] = "douze";
+      tab[7] = 1;
+   }
+
+Ecrivez une fonction "ajouterUn(...)" qui ajoute dans le tableau placé en paramétre 10 fois le chiffre 1 ,faites ceci à l'aide d'une boucle "for".
+Faites afficher le tableau.
+
+Faite la même chose que la question précedente avec une boucle "while".
+Les tableaux se distinguent des autres conteneurs sur deux points : l'efficacité et le type. Un tableau constitue la manière la plus efficace que propose Java pour stocker et accéder aléatoirement à une séquence d'objets (en fait de référence sur ces objets). Un tableau est une simple séquence linéaire, ce qui rend l'accès aux éléments extrêmement rapide; mais cette rapidité se paye : la taille d'un tableau est fixée lors de la création et ne peut plus être changé pendant toute la durée de sa vie. Une solution est de créer un nouveau tableau et de déplacer toutes les références de l'ancien tableau vers le nouveau.
+[modifier] Déclaration de tableaux
+
+La création de tableaux en Java se fait à peu près de la même manière que la création de variables. Prenons l'exemple suivant :
+
+String[] monTableau ;
+//On a créé un tableau de chaînes de caractères mais ce tableau n'est
+//pas encore utilisable car il n'a pas de taille !
+monTableau = new String[nombreDObjets] ;
+//Il est maintenant utilisable et indexé de 0 à nombreDObjets-1.
+//On peut toutefois compresser l'écriture en mettant directement :
+String[] monTableau2 = new String[nombreDObjets] ;
+
+Il est possible de faire des tableaux de tout type de données, y compris les types que l'on crée soit même (mais nous verrons ça dans le chapitre sur les objets). Il est aussi possible de créer des tableaux de tableaux et plus encore. Par exemple :
+
+int[][] tableauDeTableau = new int[5][4] ;
+//Ainsi tableauDeTableau est en réalité une matrice de taille 5x4.
+//Ceci peut être très utile pour la manipulation de grille par exemple.
+boolean[][][] pave = new boolean[3][4][5] ;
+//On peut aussi créer des tableaux à plus de deux dimensions, 
+//on n'est en fait pas limité dans la dimension de notre tableau
+
+Remarque : un tableau ne peut contenir qu'un seul type de donnée. Ainsi, il est impossible de stocker des entiers dans un tableau qui a été déclaré comme contenant des chaînes de caractères.
+[modifier] Utilisation de tableaux
+
+Maintenant que l'on sait déclarer un tableau, il peut être intéressant de savoir comment s'en servir. Plusieurs choses sont à savoir :
+
+    * la première est comment utiliser les objets présents dans le tableau
+    * la deuxième est comment utiliser de manière pratique les tableaux
+
+int[] monTableau = new int[5] ;
+//Ici on crée un tableau de 5 entier, les indices du tableau
+//vont donc de 0 à 4.
+ 
+for(int i=0 ; i&lt;monTableau.length ; ++i){
+   monTableau[i] = i + 1 ;
+}
+
+Ici, on utilise une boucle for pour parcourir l'ensemble du tableau. On utilisera le plus souvent ce genre de boucle sur les tableaux car leur taille est définie lors de la déclaration et donc on connait leur taille. Pour être sur de ne pas se tromper sur la taille du tableau, ce nous ferait sortir du tableau lors de l'exécution de la boucle, on utilise ici la méthode length qui est valable sur tous les tableaux de données de type de base.
+
+Si l'on crée un tableau d'objets qui ne sont pas d'un type de base, il faudrait alors utiliser la méthode length() héritée de Object mais on reverra ceci plus en détail dans le partie destinée aux objets.
+
+monTableau[i] désigne le i+1 ième entier de monTableau
+
+
+
+
+
+construire
+  lire/ecrire
+itérer 
+détruire
+
+tab;eaux à plusieurs dimensions
+
+
+</div>
