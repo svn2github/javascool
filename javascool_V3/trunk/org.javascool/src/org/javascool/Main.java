@@ -42,9 +42,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.lang.Object;
 
-// Used for the location/size control when in floatable mode
+/* Used for the location/size control when in floatable mode
 import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;
+*/
 
 // Used to manage keystroke
 import javax.swing.KeyStroke;
@@ -772,7 +773,7 @@ public class Main extends JApplet { /**/public Main() { }
       /*
       rightFrame.setLocationRelativeTo(this);
       rightFrame.setLocation(20, 100);
-      */
+      * /
       int x = getX() + getWidth() - rightFrame.getWidth() - 20, y = getY() + getHeight() - rightFrame.getHeight() - 20;      
       System.err.println("move ("+x+" "+y+")");
       // rightFrame.setLocation(x, y);
