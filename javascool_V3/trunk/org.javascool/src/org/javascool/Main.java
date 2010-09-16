@@ -613,13 +613,13 @@ public class Main extends JApplet { /**/public Main() { }
 	  initDoc();
 	}});
     // Adds processing activities
-    addActivity(new ProcessingActivity("ExplorationSonore") {
+    addActivity(new ProcessingActivity("ExplorationSonore", 1024, 768) {
 	public String getTitle() { return "Exploration du signal sonore"; }
 	public void init() {
 	  super.init();
 	}
       });
-    addActivity(new ProcessingActivity("CryptageRSA") {
+    addActivity(new ProcessingActivity("CryptageRSA", 700, 700) {
 	public String getTitle() { return "Expérimenter avec la cryptographie"; }
 	public void init() {
 	  super.init();
@@ -709,7 +709,7 @@ public class Main extends JApplet { /**/public Main() { }
      * @param processing The processing to use.
      * @throws IllegalArgumentExceptionif the processing is undefined.
      */
-    public ProcessingActivity(String processing) { name = processing; } private String name; 
+    public ProcessingActivity(String processing, int w, int h) { name = processing; width = w; height = h; } private String name; private int width, height;
 
     public void init() {
       if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
@@ -748,9 +748,7 @@ public class Main extends JApplet { /**/public Main() { }
     private void initApplet() {
       try {
 	applet = (Applet) Class.forName(name).newInstance();
-	applet.init();
-	Utils.show(applet, name, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"), 1024, 800, false);
-	applet.start();
+	Utils.show(applet, name, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"), width, height, false);
       } catch(Throwable e) { System.err.println("Undefined processing applet ("+e+") : "+name); }
     } 
     private Applet applet = null;

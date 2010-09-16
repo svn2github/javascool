@@ -394,13 +394,10 @@ public class Utils { private Utils() { }
   // Encapsulates an applet in a frame
   private static class Frame extends JFrame {
     private static final long serialVersionUID = 1L;
-    private JApplet applet = null;
-    {
-    	
-    }
+    private Applet applet = null;
     // Opens an applet in a standalone frame.
     public void open(Component pane, String title, ImageIcon icon, int width, int height, boolean quit) {
-      if (pane instanceof JApplet) this.applet = (JApplet) pane;
+      if (pane instanceof Applet) this.applet = (Applet) pane;
       getContentPane().add(pane, BorderLayout.CENTER); 
       if (applet != null) applet.init(); 
       pack(); 
