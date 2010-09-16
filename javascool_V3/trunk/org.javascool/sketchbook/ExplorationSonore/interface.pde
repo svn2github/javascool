@@ -100,7 +100,7 @@
   
   void ouvreFenetreInfo() {
    
-    fenetreInfo.position().x += ((isOpen==true ? 0:-width/2-3) - fenetreInfo.position().x) * 0.2;
+    fenetreInfo.position().x += ((isOpen==true ? 0:-screen.width/2-3) - fenetreInfo.position().x) * 0.2;
     fenetreInfo.setWindow(controlWindow); 
     
   }

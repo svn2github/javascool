@@ -10,12 +10,8 @@
     fft = new FFT(in.bufferSize(), in.sampleRate());
     
     stroke(0);
-    
-    if (height>width) {
-      fft.logAverages(60,6*(height/width)); //6 pour screen.width/2
-    } else {
-      fft.logAverages(60,6*(width/height));
-    }
+  
+    fft.logAverages(60,6*width/(screen.width/2)); //6 pour screen.width/2
   
     w = width/fft.avgSize();
     strokeWeight(w);

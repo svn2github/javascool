@@ -31,6 +31,7 @@
   float rWidth, rHeight;
   int myOr = color(255,100,0);
   int myRed = color(255,0,0);
+  int myBlue = color(100,100,255);
   int largeur_;
   int hauteur_;
   boolean isOpen;
@@ -41,7 +42,7 @@
   AudioOutput out;
   SineWave sine;
   // Paramètres pour la sinusoide, et l'enregistrement chargé
-  int count =0;
+  int count = 0;
   sinusoide maSinusoide;
   enregistrement monEnregistrement;
 

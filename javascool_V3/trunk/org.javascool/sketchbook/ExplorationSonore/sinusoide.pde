@@ -16,21 +16,12 @@ class sinusoide {
   sinusoide() {
     
     out.sound();
-    // Créer un oscillateur sinusoidale avec une fréquence de 1000Hz, une amplitude de 1.0, et une fréquence d'échantillonage callée sur la ligne out
-    /*sinusoide_ = new SineWave(1000, 0.2, out.sampleRate());
-    // la vitesse portamento pour l'oscillateur est réglée à 20 millisecondess
-    sinusoide_.portamento(20);
-    // ajouter le signal à la ligne de sortie
-    out.addSignal(sinusoide_);
     
-    sonne = true;*/
-    
-    
-    fenetreValeur = controlP5.addTextfield(" ",largeur_-(50+221),hauteur_/2-hauteur_/10+(40+5),220,20);
+    fenetreValeur = controlP5.addTextfield(" parametres sinusoide ",largeur_-(50+221),hauteur_/2-hauteur_/10+(40+5),220,20);
     fenetreValeur.setText(" ");
     fenetreValeur.setWindow(controlWindow);
     
-    message = controlP5.addTextfield(" ",largeur_-(50+190),hauteur_/2-hauteur_/10+(40+20+10),190,20);
+    message = controlP5.addTextfield(" message sinusoide ",largeur_-(50+190),hauteur_/2-hauteur_/10+(40+20+10),190,20);
     message.setColorBackground(255); 
     message.setColorForeground(255); 
     message.setWindow(controlWindow);
