@@ -46,7 +46,7 @@
     
     size(600,600);
     frameRate(30);
-    PFont pfont = createFont("Courrier",10,true); // use true/false for smooth/no-smooth
+    PFont pfont = createFont("Lucida Grande",10,true); // use true/false for smooth/no-smooth
     font = new ControlFont(pfont);
   
     controlP5 = new ControlP5(this);
@@ -56,6 +56,7 @@
     /// ALICE
     
     this.frame.setTitle("Alice"); // interface principale: celle d'Alice
+    this.frame.setUndecorated(true);
     
     interfaceAlice();
     
