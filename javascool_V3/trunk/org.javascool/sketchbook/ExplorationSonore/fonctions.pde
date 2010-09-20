@@ -38,14 +38,14 @@
   
     stroke(240, 240, 240);
     for(int i = 0; i < fft.avgSize(); i++){
-      line((i * w) + (w / 2), height, (i * w) + (w / 2), height - fft.getAvg(i) * 30);
+      line((i * w) + (w / 2), height, (i * w) + (w / 2), height - fft.getAvg(i) * 20);
     }
    
     fade = get(0, 0, width, height);
     
     stroke(250,70,0);
     for(int i = 0; i < fft.avgSize(); i++){
-      line((i * w) + (w / 2), height, (i * w) + (w / 2), height - fft.getAvg(i) * 30);
+      line((i * w) + (w / 2), height, (i * w) + (w / 2), height - fft.getAvg(i) * 20);
     } 
     
   }

@@ -52,7 +52,7 @@
     
     frame = new Frame();
     
-    size(1024,768,P3D);
+    size(1024,512,P3D);
     frameRate(30);
     controlP5 = new ControlP5(this);
     PFont pfont = createFont("Courrier",10,true); // police de caractère
@@ -94,11 +94,22 @@
     // Fenetre informative
     ouvreFenetreInfo();
   
+    if (maSinusoide.sonne) {
+      
+        maSinusoide.traceFFT();
+        maSinusoide.traceSignal();
+        
+    } else if (monEnregistrement.sonne) {
+      
+        monEnregistrement.traceFFT();
+        monEnregistrement.traceSignal();
+    } else {
     //  Trace la FFT
     traceFFT();
     
     // Trace le signal temporel
     traceSignal();
+    }
          
   }
      
