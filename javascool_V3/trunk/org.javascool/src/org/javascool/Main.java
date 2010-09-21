@@ -725,16 +725,16 @@ public class Main extends JApplet { /**/public Main() { }
       initApplet();
     }
     private void initApplet() {
+      PrintStream out = System.out;
+      System.setOut(System.err);
       try {
-        PrintStream out = System.out;
-	System.setOut(System.err);
 	applet = (Applet) Class.forName(name).newInstance();
 	/*rightFrame = */ frame = Utils.show(applet, name, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"), width, height, false);
 	frame.setResizable(false);
 	Macros.sleep(1000);
-	System.setOut(out);
 	/*addProcessingDriver();*/
       } catch(Throwable e) { System.out.println("Désolé, l'activité "+name+" n'est pas définie dans cette version ("+e+")."); }
+      System.setOut(out);
     } 
     private Applet applet = null;
     private void initControl() {  
