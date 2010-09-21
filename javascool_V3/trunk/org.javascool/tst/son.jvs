@@ -1,10 +1,6 @@
 
 void main(){
-int i=0;
-   @tone: 0.8 * tri(t);
-   syntheSet("c c c c");
-while(i<10){
+   @tone: sqr(t) + noi(t);
+   syntheSet("c4 c4 c4 c4");
    synthePlay();
-   i=i+1;
-}
 }
