@@ -46,7 +46,7 @@ class Graph {
    */
   void removeNode(String n) {
     
-    Node N_ = nodes.get(n);
+    Node N_ = (Node) nodes.get(n);
     nodes.remove(n);                  // retire le noeud en question
     N_.links.clear();                 // retire tous les liens en relation avec le noeud
      
