@@ -3,9 +3,11 @@
 #####################################################################################################################################
 
 # Used to use sun jdk instead of open jdk
-export PATH:= /usr/java/jdk1.6.0_21/bin:$(PATH)
+export PATH:=/usr/java/jdk1.6.0_21/bin:$(PATH)
 
-default : j3
+default : 
+	rm lib/tools.zip
+	$(MAKE) j3
 
 # General commands
 
@@ -39,6 +41,7 @@ jar : htm www/javascool.jar
 # Jar parameters, files and meta-data
 
 J5=/usr/java/jdk1.5.0_22
+J5=/usr/java/jdk1.6.0_21
 
 vendor=thierry.vieville@sophia.inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
 version=3.0
@@ -141,7 +144,7 @@ TL=$(J5)/lib/tools.jar
 lib/tools.zip : $(TL)
 	@echo "cp $@ .."
 	@rm -rf tmp $@ ; mkdir tmp ; unzip -qod tmp $^
-	@cd tmp ; jar cf ../$@ com/sun/tools/javac sun/tools/javac 
+	@cd tmp ; jar cf ../$@ com/sun/tools/javac sun/tools/javac com/sun/source/tree com/sun/source/util
 	@rm -rf tmp
 
 SX=/home/vthierry/bin/saxon.jar
