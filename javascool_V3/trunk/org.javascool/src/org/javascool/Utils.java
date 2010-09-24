@@ -159,7 +159,7 @@ public class Utils { private Utils() { }
    * @throws RuntimeException if an I/O exception has occurred.
    */
   public static void saveString(String location, String string) {
-    if (location.startsWith("stdout:")) { System.out.println(location+" "+string); return; }
+    if (location.startsWith("stdout:")) { System.out.println("\n"+location+" "+string); return; }
     location = toUrl(location).toString();
     try {
       OutputStreamWriter writer = location.startsWith("file:") ? getFileWriter(location.substring(5)) : getUrlWriter(location);

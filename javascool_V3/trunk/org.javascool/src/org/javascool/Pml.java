@@ -163,7 +163,6 @@ public class Pml { /**/public Pml() { }
     /** Gets the current token or '}' if end of file. */
     public String current(int next) { 
       String current = itoken+next < tokens.size() ? tokens.get(itoken+next).string : "}";
-      System.out.println(" ? '"+current+"'");
       return current;
     }
     /**/public String current() { 
@@ -175,7 +174,6 @@ public class Pml { /**/public Pml() { }
     }
     /** Gets the next token. */
     public void next(int next) {
-      System.out.println(">> '"+current()+"'");
       itoken += next;
     }
     /**/public void next() {
@@ -292,6 +290,7 @@ public class Pml { /**/public Pml() { }
     }
     /** Writes the data inlined. */
     private void write1d(Pml pml) {
+      if (pml == null) { string.append(" {null} "); return; }
       string.append("{"+quote(pml.getTag()));
       for(String name : pml.attributes()) {
 	string.append(" "+quote(name)+"="); write1d(pml.getChild(name));
@@ -303,8 +302,9 @@ public class Pml { /**/public Pml() { }
     }
     /** Writes the data formated. */
     private boolean write2d(Pml pml, int n, int tab) {
+      if (pml == null) { string.append(" {null} "); return false; }
       if (pml.getSize() == 0) {
-	boolean ln = n >= 0 && (n == 0 || (pml.getParent() != null && pml.getParent().getChild(n-1).getSize() > 0));
+	boolean ln = n >= 0 && (n == 0 || (pml.getParent() != null && pml.getParent().getChild(n-1) != null && pml.getParent().getChild(n-1).getSize() > 0));
 	writeln(ln, tab); write(quote(pml.getTag()), tab);
 	return ln;
       } else {
@@ -436,11 +436,30 @@ public class Pml { /**/public Pml() { }
   
   /** Sets a parameter value.
    * @param name The attribute's name or element's index.
-   * @param value The parameter value, or <tt>null</tt> to cancel the value.
-   * @return This, allowing to use the <tt>pml.set(..,..).set(..,..)</tt> construct.
+   * @param value The parameter value, or <tt>null</tt> to unset the value.
+   * @return This, allowing to use the <tt>pml.set(..,..)...</tt> construct.
    */
   public Pml set(String name, Pml value) { 
-    if (value == null) { data.remove(name); } else { data.put(name, value); value.setParent(this); } count = -1; return this; 
+    // Deletes the attribute value
+    if (value == null) { 
+      try {
+	// Shifts removed elements to avoid "null wholes"
+	int i = Integer.parseInt(name), l = getCount() - 1; 
+	if (0 <= i && i <= l) {
+	  for(int j = i; j < l; j++)
+	    data.put(Integer.toString(j), data.get(Integer.toString(j + 1)));
+	  data.remove(Integer.toString(l));
+	} else {
+	  data.remove(name); 
+	}
+      } catch(NumberFormatException e) { 
+	data.remove(name); 
+      }
+    // Adds the parameter value
+    } else { 
+      data.put(name, value); value.setParent(this); 
+    } 
+    count = -1; return this; 
   }
   /**/public final Pml set(int index, Pml value) { return set(Integer.toString(index), value); }
   /**/public final Pml set(String name, String value) { Pml v = new Pml(); v.reset(value); return set(name, v); }
@@ -450,9 +469,16 @@ public class Pml { /**/public Pml() { }
   /**/public final Pml set(String name, int value) { return set(name, Integer.toString(value)); }
   /**/public final Pml set(int index, int value) { return set(Integer.toString(index), value); }
 
+  /** Unsets a parameter value.
+   * @param name The attribute's name or element's index.
+   * @return This, allowing to use the <tt>pml.del(..,..)...</tt> construct.
+   */
+  public Pml del(String name) { return set(name, (Pml) null); }
+  /**/public final Pml del(int index) { return set(Integer.toString(index), (Pml) null); }
+
   /** Adds an element's value. 
    * @param value The element value.
-   * @return This, allowing to use the <tt>pml.add(..).set(..,..)</tt> construct.
+   * @return This, allowing to use the <tt>pml.add(..)...</tt> construct.
    */
   public final Pml add(Pml value) { int c = getCount(); set(c, value); count = ++c; return this; }
   /**/public final Pml add(String value) { Pml v = new Pml(); v.reset(value); return add(v); }
@@ -460,7 +486,7 @@ public class Pml { /**/public Pml() { }
   /**/public final Pml add(int value) {  return add(Integer.toString(value)); }
 
   /** Returns the number of elements. */
-  public int getCount() { if (count < 0) { count = 0; for(String key : data.keySet()) if (isIndex(key)) count = Math.max(Integer.parseInt(key), count); } return count; } 
+  public int getCount() { if (count < 0) { count = 0; for(String key : data.keySet()) if (isIndex(key)) count = Math.max(Integer.parseInt(key)+1, count); } return count; } 
   private int count = -1;
 
   /** Returns the number of parameters (attributes and elements). */

@@ -1,5 +1,13 @@
 {
-  k = 1;
-  a = 2 + 3;
-  if (u == 0) { y = f(u - b / x); } else { g(); }
+  int k = 1;
+  a = 3 * 2 + 3 / (x - z);
+  call(toto, titi, f(x) / g(y % z));
+  while (k < a) {
+    if (k == 2) {
+      ok(mec);
+    } else if (k == 1) {
+      ok(aussi, mec);
+    }
+    k = k + 1;
+  }
 }

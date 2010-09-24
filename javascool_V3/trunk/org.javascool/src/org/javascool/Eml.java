@@ -2,12 +2,14 @@
  * Thierry.Vieville@linux-azur.org, Copyright (C) 2010.  All rights reserved.  *
  *******************************************************************************/
 
-/* To be implemented
+/* Missing features
  * out: Array assignment
- * in : distinguer inst/exp
  * in : c ? : e1 : e0
+ */
+
+/* Caveats
+ * in : Any difference between a() and a
  * out: Pml attributes generate a non parsable construct
- * in: instruction sequence ; ; ; 
  */
 
 package org.javascool;
@@ -80,7 +82,7 @@ package org.javascool;
  * @see <a href="Eml.java.html">source code</a>
  * @serial exclude
  */
-public class Eml extends Pml { /*public*/ Eml() { }
+public class Eml extends Pml { /**/public Eml() { }
   private static final long serialVersionUID = 1L;
 
   /** Resets the logical-structure, parsing the given string. 
@@ -107,92 +109,101 @@ public class Eml extends Pml { /*public*/ Eml() { }
   private static class ExpressionReader extends TokenReader {
     /** Parses the string and set the parameters in the pml structure. */
     public Pml read(String string) { 
+      System.out.println("Parsing :\n---------------------------------------------------\n"+ string +"\n---------------------------------------------------\n");
       reset(string);
-      Pml pml = parse(true);
-      check(trailer().length() == 0, "il reste du texte inutilisé");
+      Pml pml = parseInstruction();
+      check(trailer().length() == 0, "il reste du texte qui n'a pu être analysé");
+      System.out.println("Parsed : "+ pml +"\n---------------------------------------------------\n");
       return pml;
     }
-    /** Parses recursively the string. */
-    private Pml parse(boolean expr) {
-      System.out.println("parse");
+    // Parses a algorithmic construct
+    private Pml parseInstruction() {
       Pml pml;
       if ((pml = parseSeq()) != null) return pml;
-      if ((pml = parseIf()) != null) return pml;
       if ((pml = parseLet()) != null) return pml;
-      if ((pml = parseParenthesis()) != null) return pml;
-      if ((pml = parsePrefix()) != null) return pml;
-      if ((pml = parseTerm()) != null) return pml;
-      if (expr) return parseInfix(0);
-      { pml = new Pml().setTag(current()); next(); return pml; }
+      if ((pml = parseIf()) != null) return pml;
+      if ((pml = parseWhile()) != null) return pml;
+      return parseCall();
     }
-    // Parses a sequence a instruction sequence "{ (i1 (; ik)*)? }"
-    private Pml parseSeq() {
-      Pml pml = new Pml().setTag("seq");
-      if ("{".equals(current())) { next();
-	System.out.println("parseSeq");
-	while(true) {
-	  pml.add(parse(true));
-	  if ("}".equals(current())) { next();
-	    break;
-	  }
-	}
-      } else
-	pml.add(parse(true));
-      return pml;
+    // Parses an assignment of syntax: "[type] name = value;"
+    private Pml parseLet() {
+      if ("=".equals(current(2))) { 
+	String t = current(); next(); String n = current(); next(2);
+	Pml pml = new Pml().setTag("let").add(new Pml().setTag(t)).add(new Pml().setTag(n)).add(parseExpression(0));
+	check(";".equals(current()), "le caractère ';' a été oublié");
+	if (";".equals(current())) next();
+	return pml;
+      } else if ("=".equals(current(1))) { 
+	String n = current(); next(2);
+	Pml pml = new Pml().setTag("let").add("void").add(new Pml().setTag(n)).add(parseExpression(0));
+	check(";".equals(current()), "le caractère ';' a été oublié");
+	if (";".equals(current())) next();
+	return pml;
+      }
+      return null;
     }
     // Parses a conditional of syntax: "if (c) { e1 } else { e0 }"
     private Pml parseIf() {
       if ("if".equals(current())) { next();
-	System.out.println("parseIf");
 	Pml pml = new Pml().setTag("if");
-	pml.add(parseInfix(0));
-	pml.add(parseSeq());
+	pml.add(parseExpression(0));
+	pml.add(parseInstruction());
 	if ("else".equals(current())) { next();
-	  pml.add(parseSeq());
+	  pml.add(parseInstruction());
 	}
 	return pml;
       } else
 	return null;
     }
-    // Parses an assignment of syntax: "[type] name = value;"
-    private Pml parseLet() {
-      if ("=".equals(current(2))) { 
-	System.out.println("parseLet");
-	String t = current(); next(); String n = current(); next();
-	Pml pml = new Pml().setTag("let").add(new Pml().setTag(t)).add(new Pml().setTag(n)).add(parse(true));
+    // Parses a conditional of syntax: "while (c) { e }"
+    private Pml parseWhile() {
+      if ("while".equals(current())) { next();
+	Pml pml = new Pml().setTag("while");
+	pml.add(parseExpression(0));
+	pml.add(parseInstruction());
 	return pml;
-      } else if ("=".equals(current(1))) { 
-	System.out.println("parseLet");
-	String n = current(); next();
-	Pml pml = new Pml().setTag("let").add("void").add(new Pml().setTag(n)).add(parse(true));
+      } else
+	return null;
+    }
+    // Parses a sequence a instruction sequence "{ (i1 (; ik)*)? }"
+    private Pml parseSeq() {
+      if ("{".equals(current())) { next();
+	Pml pml = new Pml().setTag("seq");
+	while(true) {
+	  pml.add(parseInstruction());
+	  if ("}".equals(current())) { next();
+	    break;
+	  }
+	}
 	return pml;
-      }
+      } else
+	return null;
+    }
+    // Parses a function call
+    private Pml parseCall() {
+      Pml pml = parseExpression(0);
       check(";".equals(current()), "le caractère ';' a été oublié");
       if (";".equals(current())) next();
-      return null;
+      return pml;
     }
     // Parses an expression with infix operator of syntax: item1 "O" item2
-    private Pml parseInfix(int precedence) {
-      System.out.println("parseInfix");
+    private Pml parseExpression(int precedence) {
       // Stores the infix expression sequence
       Pml tokens = new Pml();
       while(true) {
-	tokens.add(parse(false));
-	String word = current();
-	if (getPrecedence(word) == -999 || getPrecedence(word) > precedence) 
+	tokens.add(parseToken()); 
+	if (getPrecedence(current()) == -999 || getPrecedence(current()) >= precedence) 
 	  break;
-	else
-	  next();
-	tokens.add(new Pml().setTag(word));
+	tokens.add(new Pml().setTag(current())); next();
       }
       check((tokens.getCount() % 2) == 1, "il manque un argument à l'expression");
       // Reduces the expression sequence
-      for (int i = 1; i < tokens.getCount() - 1;) {
-	if (((i == 1) || (getPrecedence(tokens.getString(i-2)) > getPrecedence(tokens.getString(i)))) &&
-	    ((i == tokens.getCount() - 2) || (getPrecedence(tokens.getString(i+2)) >= getPrecedence(tokens.getString(i))))) {
-	  tokens.set(i-1, new Pml().setTag(tokens.getString(i)).add(tokens.getChild(i-1)).add(tokens.getChild(i+1)));
-	  for(int j = i; j < tokens.getCount();)
-	    tokens.set(j, j < tokens.getCount() - 2 ? tokens.getChild(j + 2) : (Pml) null);
+      for (int i = 1; 1 < tokens.getCount();) {
+	if ((i == 1 || getPrecedence(tokens.getChild(i).getTag()) < getPrecedence(tokens.getChild(i-2).getTag())) &&
+	    (i == tokens.getCount()-2 || getPrecedence(tokens.getChild(i).getTag()) <= getPrecedence(tokens.getChild(i+2).getTag()))) {
+	  tokens.set(i-1, new Pml().setTag(tokens.getChild(i).getTag()).add(tokens.getChild(i-1)).add(tokens.getChild(i+1)));
+	  tokens.del(i);
+	  tokens.del(i);
 	  i = 1;
 	} else
 	  i += 2;
@@ -201,36 +212,44 @@ public class Eml extends Pml { /*public*/ Eml() { }
 	throw new IllegalStateException("Spurious parser state: "+tokens);
       return tokens.getChild(0);
     }
-    // Parses an expression with prefix operator of syntax: "O" item1
-    private Pml parsePrefix() {
+    private Pml parseToken() {
+      Pml pml;
+      if ((pml = parseParenthesis()) != null) return pml;
+      if ((pml = parseTerm()) != null) return pml;
+      if ((pml = parsePrefix()) != null) return pml;
+      { pml = new Pml(); pml.setTag(current()); next(); return pml; }
+    }
+    // Parses an expression between parentheses 
+    private Pml parseParenthesis() {
       String t = current();
-      if ("!".equals(t) || "-".equals(t)) { next();
-	System.out.println("parsePrefix");
-	Pml pml = new Pml().setTag(t).add(parse(true));
+      if ("(".equals(t)) { next();
+	Pml pml = parseExpression(0);
+	check(")".equals(current()), "le caractère ')' a été oublié");
+	if (")".equals(current())) next();
 	return pml;
-      } 
+      }
       return null;
-    }   
+    }
     // Parses a term of syntax: "name { att=val, ..}  (element, ..)"
     private Pml parseTerm() {
       if ("(".equals(current(1)) || "{".equals(current(1))) {	
-	System.out.println("parseTerm");
-	Pml pml = new Pml().setTag(current()).add(parse(true)); next();
+	Pml pml = new Pml().setTag(current()); next();
 	// Parses an attribute's list 
-	if ("{".equals(current())) {
+	if ("{".equals(current())) { next();
 	  while(true) {
 	    if ("}".equals(current())) { next();
 	      break;
 	    } else if ("=".equals(current(1))) {
-	      String n = current(); next(2); pml.set(n, parse(true));
+	      String n = current(); next(2); pml.set(n, parseExpression(0));
 	    } else {
 	      check(!"=".equals(current()), "il manque un nom ou une value");
+	      if ("=".equals(current())) next();
 	      String n = current(); next(); pml.set(n, "true");
 	    }
 	  }
 	}
 	// Parses the terms's elements
-	if ("(".equals(current())) {
+	if ("(".equals(current())) { next();
 	  while(true) {
 	    check(!"}".equals(current()), "un terme est tronqué");
 	    if ("}".equals(current())) {
@@ -238,8 +257,9 @@ public class Eml extends Pml { /*public*/ Eml() { }
 	    } else if (")".equals(current())) { next();
 	      break;
 	    } else {
-	      pml.add(parse(true));
+	      pml.add(parseExpression(0));
 	      check(",".equals(current()) || ")".equals(current()), "il manque une ',' ou une ')'");
+	      if (",".equals(current())) next();
 	    }
 	  }
 	}
@@ -247,18 +267,15 @@ public class Eml extends Pml { /*public*/ Eml() { }
       } else
 	return null;
     }
-    // Parses an expression between parentheses 
-    private Pml parseParenthesis() {
+    // Parses an expression with prefix operator of syntax: "O" item1
+    private Pml parsePrefix() {
       String t = current();
-      if ("(".equals(t)) { next();
-	System.out.println("parseParent");
-	Pml pml = parseInfix(0);
-	check(")".equals(current()), "le caractère ')' a été oublié");
-	if (")".equals(current())) next();
+      if ("!".equals(t) || "-".equals(t)) { next();
+	Pml pml = new Pml().setTag(t).add(parseExpression(0));
 	return pml;
-      }
+      } 
       return null;
-    }
+    }   
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -272,7 +289,7 @@ public class Eml extends Pml { /*public*/ Eml() { }
    */
   public String toString(String format) { 
     if ("eml".equals(format)) {
-      return toString(this, 0); 
+      return Jvs2Java.reformat(toString(this, 0)); 
     } else {     
       return super.toString(format);
     }
@@ -282,6 +299,7 @@ public class Eml extends Pml { /*public*/ Eml() { }
 
   /** Writes a PML as an expression. */
   private static String toString(Pml value, int precedence) {
+    if (value == null) return "(null)";
     StringBuffer b = new StringBuffer();
     // Write an operator
     String name = value.getTag(); int length = value.getCount(); int precedence0 = getPrecedence(name);
@@ -303,26 +321,32 @@ public class Eml extends Pml { /*public*/ Eml() { }
 	}
 	return b.toString();
       }
-      // Write the assignation operaator
-    } else  if (length == 3 && name.equals("set")) {
-      b.append(toString(value.getChild(0), 999)).
-	append(" ").append(toString(value.getChild(1), 999)).
-	append(" = ").append(toString(value.getChild(2), 1)).
+    // Write the sequence operator
+    } else if (length > 0 && name.equals("seq")) {
+      b.append("{");
+      for (int i = 0; i < length; i++)
+	b.append(toString(value.getChild(i), 999));
+      b.append("}");
+    // Write the assigment operator.
+    } else if (length == 3 && name.equals("let") && value.getChild(0).getSize() == 0 && value.getChild(1).getSize() == 0) {
+      if (!"void".equals(value.getChild(0).getTag()))
+	b.append(value.getChild(0).getTag()).
+	  append(" ");
+      b.append(value.getChild(1).getTag()).
+	append(" = ").append(toString(value.getChild(2), 0)).
 	append("; ");
-      // Write the conditional operator.
+    // Write the conditional operator.
     } else if ((length == 2 || length == 3) && name.equals("if")) {
       b.append(" if (").append(toString(value.getChild(0), 0)).
-	append(" ) { ").append(toString(value.getChild(1), 0));
+	append(") ").append(toString(value.getChild(1), 0));
       if (length == 3)
-	b.append(" } else { ").append(toString(value.getChild(2), 0));
-      b.append(" } ");
+	b.append(" else ").append(toString(value.getChild(2), 0));
       return b.toString();
-      // Write the iteration operators.
+    // Write the iteration operators.
     } else if (length == 2 && name.equals("while")) {
       b.append(" while (").append(toString(value.getChild(0), 0)).
-	append(" ) { ").append(toString(value.getChild(1), 0)).
-	append(" } ");
-      // Write a functional term
+	append(") ").append(toString(value.getChild(1), 0));
+    // Write a functional term
     } else {
       b.append(name);
       if (value.getCount() < value.getSize()) {
@@ -342,7 +366,9 @@ public class Eml extends Pml { /*public*/ Eml() { }
 	  if (i < length-1) b.append(", ");
 	}
 	b.append(")");
-      }
+      } 
+      if (precedence == 999)
+	b.append(";");
     }
     return b.toString();
   }
@@ -352,7 +378,7 @@ public class Eml extends Pml { /*public*/ Eml() { }
   //
   // Defines operator precedences: infix operators as it, prefix operators are prefixed by a space, postfix operators are postfixed by a space
   //
-  private static int getPrecedence(String op) { for(int i = 0; i < precedences.length; i++) if (precedences[i].equals(op)) return -1-i; return -999; }
+  private static int getPrecedence(String op) { for(int i = 0; i < precedences.length; i++) if (precedences[i].equals(op)) return -i; return -999; }
   private static final String[] precedences = new String[]
     { "=", "||", "&&", "!", "==", "!=", ">=", "<=", ">", "<", "+", "-", "*", "/", "%", ".", "-"};
 
@@ -361,6 +387,6 @@ public class Eml extends Pml { /*public*/ Eml() { }
    * <p>- The file name be a EML, PML, or XML file name, with the corresponding extensions</p>.
    */
   public static void main(String[] usage) {
-    if (usage.length > 0) new Eml().load(usage[0], "eml").save(usage.length > 1 ? usage[0] : "stdout:");
+    if (usage.length > 0) new Eml().load(usage[0], "eml").save(usage.length > 1 ? usage[0] : "stdout:", "eml");
   }
 }

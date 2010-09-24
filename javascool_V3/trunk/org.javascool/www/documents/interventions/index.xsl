@@ -15,7 +15,7 @@
   <xsl:template match="tpes"><big><big><xsl:value-of select="@title"/></big></big><ol><xsl:apply-templates/></ol></xsl:template>
 
   <xsl:template match="tpe"><li><br/><div id="{@id}"><table>
-  <tr><td valign="top" rowspan="4"><img src="{@icon}" width="120" height="120"/></td><td><b>Problématique:</b></td><td><b><i><u><xsl:value-of select="@title"/></u></i></b></td></tr>
+  <tr><td rowspan="4"><img src="{@icon}" width="120" height="120"/></td><td><b>Problématique:</b></td><td><b><i><u><xsl:value-of select="@title"/></u></i></b></td></tr>
   <tr><td><b>Thème</b>:</td><td><i><xsl:choose>
       <xsl:when test="@theme = 'A'">-A- : Modélisation des phénomènes physiques</xsl:when>
       <xsl:when test="@theme = 'B'">-B- : Sciences, informatique et société</xsl:when>

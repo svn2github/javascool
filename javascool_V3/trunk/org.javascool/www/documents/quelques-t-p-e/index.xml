@@ -6,12 +6,9 @@
 
   <br/><div align="right">Version <a href="quelques-t-p-e.pdf ">PDF</a></div>
 
-  <br/><div align="center">Les thèmes <a href="http://www.education.gouv.fr/bo/2008/25/MENE0800484N.htm">2008-2009</a></div><br/>
-
   <div><big>Comment ça marche ?</big> Facile ! Regarder, choisir, et si une idée plaît: n'hésitez pas à <a href="mailto:science-participative@sophia.inria.fr?subject=A_propos_de_TPEs">nous contacter</a>, nous sommes des chercheurs et des enseignants qui allons essayer de vous conseiller. Si vous êtes un élève de la CASA, c'est encore plus simple, votre professeur participe à ce projet, allez lui en parler !
    <div>Vous pouvez aussi obtenir des renseignements précieux sur le <a href="http://www.sciences-tpe.ens-cachan.fr">site de l'ENS</a></div></div>
-   <div align="right"><a href="presse/affiche_finale_inria.pdf"><img src="presse/logo_finale_inria.jpg" width="100"/></a></div>
-   <div><a href="index.php?page=id%C3%A9es-de-tpe">la suite .. </a></div>
+   <div align="right"><a href="affiche_finale_inria.pdf"><img src="logo_finale_inria.jpg" width="100"/></a></div>
 
 <tpes>
 
@@ -40,7 +37,7 @@
     <link l="http://www.imf.org" n="FMI à Washington"/>
   </tpe>
 
-  <tpe id="crise-financiere" title="D'où viennent les crises financières ?" icon="http://www.leblogfinance.com/images/thailandstockexchnage.jpg" theme="A">
+  <tpe id="crise-financiere" title="D'où viennent les crises financières ?" icon="http://upload.wikimedia.org/wikipedia/commons/thumb/4/40/RVS_Handelsraum.jpg/220px-RVS_Handelsraum.jpg" theme="A">
     Les crises financières ne sont pas un phénomène nouveau. 
     La fameuse <a href="http://fr.wikipedia.org/wiki/Tulipomanie">crise des tulipes au 17ème siècle</a> en est le parfait exemple. 
     <div>Quelles sont les origines de ces crises financières, leurs mécanismes et conséquences ? En quoi la crise immobilière des "subprime" aux Etats-Unis en est-elle une nouvelle illustration ?</div>
@@ -177,7 +174,7 @@
     <div>Que signifie jouer en bourse ? Quels sont les <a href="http://fr.wikipedia.org/wiki/Math%C3%A9matiques_financi%C3%A8res">outils</a> pour prévoir comment gagner ?</div>
   </tpe>
 
-  <tpe title="Les algorithmes de tri: le plus bel exemple d'algorithme" icon="http://www.datastructures.info/wp-content/uploads/2006/12/sorting.jpg" theme="A">
+  <tpe title="Les algorithmes de tri: le plus bel exemple d'algorithme" icon="http://interstices.info/upload/ingredients/ingredients2.jpg" theme="A">
     Où on regarde comment trier au plus vite un tableau de données: pour 1 million de mots on peut aller 50000 fois plus vite !
     <div>Programmer une méthode de tri "triviale" puis une méthode de tri "rapide". Appliquer au lexique des mots du français: que gange t'on ?</div>
     <div>A quoi peut servir les méthodes de tri ? Que gagne t'on en vitesse quand on recherche une information ?</div>
@@ -206,7 +203,7 @@
     <link l="http://www.avem.fr"/>
   </tpe>
 
-  <tpe id="opensource" title="Le logiciel libre et ouvert : révolution ou évolution ?" icon="http://www.solyluna.es/images/LogosExternos/logo_wiki.GIF" theme="B">
+  <tpe id="opensource" title="Le logiciel libre et ouvert : révolution ou évolution ?" icon="http://interstices.info/upload/libre-dvpt/img_gnou.jpg" theme="B">
     Que veux dire logiciel libre ? Comment gagner de l'argent en faisant un logiciel . . gratuit ? Comment se mettre à plusieurs pour faire mieux ?
     <div>Logiciel libre et logiciel ouvert: des notions précises qui correspondent à des centaines d'années-homme de travail partagé: à définir précisément.</div>
     <div>Les grands logiciels libres LiNuX, OpenOffice, Mozilla/Firefox, Apache, logiciels GNU: comment ça marche ? Pourquoi avoir choisi cette solution ?</div>
@@ -257,7 +254,7 @@
     <linl l="http://www.hygeiaweb.gr/home.html"/>
   </tpe>
 
-  <tpe id="sourd" title="Comment aider les sourds qui communiquent par la langue des signes à partager le monde des entendants et réciproquement ?" icon="http://www.limsi.fr/Individu/filhol/files/Elsi.png" theme="C">
+  <tpe id="sourd" title="Comment aider les sourds qui communiquent par la langue des signes à partager le monde des entendants et réciproquement ?" icon="lgsigne.png" theme="C">
     <link l="http://interstices.info/display.jsp?id=c_7039"/>
   </tpe>
 
@@ -269,11 +266,11 @@
     <link l="http://www.cnrs.fr/cw/dossiers/dosgeol/accueil.html"/>
   </tpe>
 
-  <tpe id="simul" title="La simulation par ordinateur change-t-elle les sciences ?"  icon="http://lsiit.u-strasbg.fr/sites/img/rendu_fluide.jpg" theme="D">
+  <tpe id="simul" title="La simulation par ordinateur change-t-elle les sciences ?"  icon="http://interstices.info/upload/calculer-penser/penser-calculer-4.jpg" theme="D">
     <link l="http://interstices.info/display.jsp?id=c_19121"/>
   </tpe>
 
-  <tpe id="grille" title="Quand tous les ordinateurs se mettent en grille pour les plus grands calculs de tous les temps" icon="http://www.itrnews.com/images/Grid-5000-logo.jpg" theme="D">
+  <tpe id="grille" title="Quand tous les ordinateurs se mettent en grille pour les plus grands calculs de tous les temps" icon="http://cri.univ-lille1.fr/digitalAssets/0/472_new-grid5000.jpg" theme="D">
     <link l="http://interstices.info/display.jsp?id=c_12882"/>
   </tpe>
 
@@ -303,7 +300,7 @@
     <link l="http://interstices.info/display.jsp?id=c_16864"/>
   </tpe>
 
-  <tpe id="evolution" title="Et Dieu créa la fabuleuse histoire de l'évolution du monde vivant" icon="http://www.humainevolution.com/figure%201.jpg" theme="C">
+  <tpe id="evolution" title="Et Dieu créa la fabuleuse histoire de l'évolution du monde vivant" icon="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Maggia_lacerta_sicula_fg06.jpg/250px-Maggia_lacerta_sicula_fg06.jpg" theme="C">
     <link l="http://www.cnrs.fr/cw/dossiers/dosevol/accueil.html"/>
     <link l="http://fr.wikipedia.org/wiki/Cr%C3%A9ationnisme"/>
   </tpe>
@@ -334,11 +331,11 @@
     <link l="http://www.cnrs.fr/cw/dossiers/doscel/accueil2.htm"/>
   </tpe>
 
-  <tpe id="chemin" title="Comment l'ordinateur trouve le plus court chemin mieux que nous" icon="http://www.caradisiac.com/media/images/le_mag/mag260/gps-medion-pna-240.jpg" theme="D">
+  <tpe id="chemin" title="Comment l'ordinateur trouve le plus court chemin mieux que nous" icon="http://interstices.info/upload/sans-fil/fig04b.gif" theme="D">
     <link l="http://interstices.info/display.jsp?id=c_15578"/>
   </tpe>
 
-  <tpe id="cd" title="Comment encoder au mieux un CD ? (les formats, le principe, le son ...)" icon="http://www.voir.ca/blogs/nouvelles_musique/cd.jpgh" theme="D">
+  <tpe id="cd" title="Comment encoder au mieux un CD ? (les formats, le principe, le son ...)" icon="http://www.voir.ca/blogs/nouvelles_musique/cd.jpg" theme="D">
     <link l="http://www.zdnet.fr/produits/logiciels/audio_video/0,39049729,39161987,00.htm"/>
     <link l="http://www.ogg-stream.info/Ogg_Vorbis.html"/>
   </tpe>
