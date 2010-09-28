@@ -5,9 +5,7 @@
 # Used to use sun jdk instead of open jdk
 export PATH:=/usr/java/jdk1.6.0_21/bin:$(PATH)
 
-default : 
-	rm lib/tools.zip
-	$(MAKE) j3
+default : j3
 
 # General commands
 

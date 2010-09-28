@@ -4,7 +4,7 @@ PFrame f;
   void setup() {
    size(400, 300);
    f = new PFrame();
-
+   this.frame = new Frame();
   }
   
   void draw() {
@@ -41,7 +41,6 @@ PFrame f;
   }
   
   public processing.core.PApplet getControl() {
-  
     s.hide();
     return s;
   

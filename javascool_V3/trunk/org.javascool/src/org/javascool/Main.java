@@ -728,11 +728,19 @@ public class Main extends JApplet { /**/public Main() { }
       PrintStream out = System.out;
       System.setOut(System.err);
       try {
+	final boolean popup = true;
 	applet = (Applet) Class.forName(name).newInstance();
-	/*rightFrame = */ frame = Utils.show(applet, name, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"), width, height, false);
-	frame.setResizable(false);
-	Macros.sleep(1000);
-	/*addProcessingDriver();*/
+	if (popup) {
+	  frame = Utils.show(applet, name, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"), width, height, false);
+	  frame.setResizable(false);
+	  Macros.sleep(1000);
+	} else {
+	  applet.init(); applet.start();
+	  Macros.sleep(1000);
+	  addTab(name+"1", applet, "org/javascool/doc-files/icones16/edit.png", true);
+	  initControl();
+	  addTab(name+"2", control, "org/javascool/doc-files/icones16/edit.png", false);
+	}
       } catch(Throwable e) { System.out.println("Désolé, l'activité "+name+" n'est pas définie dans cette version ("+e+")."); }
       System.setOut(out);
     } 
@@ -746,12 +754,12 @@ public class Main extends JApplet { /**/public Main() { }
     }
     private Applet control = null;
     public void stop() { 
-      if (frame != null) { frame.dispose(); /*rightFrame = */ frame = null; } 
+      if (frame != null) { frame.dispose(); frame = null; } 
       initControl(); if (control != null) { control.setVisible(false); }
     }
     private JFrame frame = null;
   }
-  /*
+  /* This deos NOT work keep here . . to copy/cut for other developments
   // Adds a component mover
   private void addProcessingDriver() {
     if (!frameDriver) {
