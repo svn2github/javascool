@@ -24,7 +24,7 @@
   ControlP5 controlP5;
   ControlFont font;
   ControlWindow controlWindow;
-  controlP5.Button fenetreInfo;
+  controlP5.Button wInfo;
 
   int w;
   PImage fade;
@@ -32,19 +32,19 @@
   int myOr = color(255,100,0);
   int myRed = color(255,0,0);
   int myBlue = color(100,100,255);
-  int largeur_;
-  int hauteur_;
+  int width_;
+  int height_;
   boolean isOpen;
   int buttonValue = 1;
 
   
   // Outils pour le son
   AudioOutput out;
-  SineWave sine;
+
   // Paramètres pour la sinusoide, et l'enregistrement chargé
   int count = 0;
-  sinusoide maSinusoide;
-  enregistrement monEnregistrement;
+  signal signal1;
+  record record1;
 
 
   // Ce qui est lancé une fois, au départ
@@ -52,7 +52,7 @@
     
     frame = new Frame();
     
-    size(1024,512,P3D);
+    size(800,512,P3D);
     frameRate(30);
     controlP5 = new ControlP5(this);
     PFont pfont = createFont("Courrier",10,true); // police de caractère
@@ -70,21 +70,19 @@
 
     
     // FFT: Transformation de Fourier pour l'analyse fréquentielle en temps réel
-    monAnalyseFFT();
-    
+    launchFFT();
     
     // Interface de manipulation: génère sinusoide, charge enregistrement, etc
-    monInterface(512, 512);
+    launchInterface(512, 512);
     
-    largeur_ = InterfaceLargeur();
-    hauteur_ = InterfaceHauteur();
-    maSinusoide = new sinusoide();
-    monEnregistrement = new enregistrement();
-    
+    width_ = getWidthInterface();
+    height_ = getHeightInterface();
+    signal1 = new signal();
+    record1 = new record();
+   
   }
   
 
-  
   // Ce qui est effectué tout au long de l'animation
   void draw() {
     
@@ -92,35 +90,79 @@
     controlP5.draw();
     
     // Fenetre informative
-    ouvreFenetreInfo();
+    openInfo();
   
-    if (maSinusoide.sonne) {
+    if (signal1.sonne) {
       
-        maSinusoide.traceFFT();
-        maSinusoide.traceSignal();
+        signal1.drawFFT();
+        signal1.drawSignal();
         
-    } else if (monEnregistrement.sonne) {
+    } else if (record1.sonne) {
       
-        monEnregistrement.traceFFT();
-        monEnregistrement.traceSignal();
+        record1.drawFFT();
+        record1.drawSignal();
+        
     } else {
     //  Trace la FFT
-    traceFFT();
+    drawFFT();
     
     // Trace le signal temporel
-    traceSignal();
+    drawSignal();
     }
          
   }
      
+     
+  void keyPressed()                                                  
+  {
+    
+    if( key=='1' ) {
+          
+      signal1.addSignal("sine", 1000, 0.2);
+      
+    }
+    
+    if( key=='2' ) {
+     
+      signal1.addSignal("square", 1000, 0.2);
+      
+    }
+    
+    if( key=='3' ) {
+     
+      signal1.addSignal("saw", 1000, 0.2);
+      
+    }
+    
+    if( key=='4' ) {
+     
+      signal1.addSignal("noise", 1000, 0.2);
+      
+    }
+    
+    if( key=='e' ) {
+         
+      record1.addRecord("../data/music/Ahmed_Ex2.wav");
+      
+    }
+    
+    if( key=='s' ) {
+     
+      StopAnySound();
+      
+    }
+  }
+  
+  
     
   // Lors de la fermeture du programme, arreter tout outil de Minim  
-  void stop() {
+  void stop()
+  {
     
       out.close();
-      if (count!=0) {
-      //player.close();
-      monEnregistrement.ferme();}
+      if (count!=0) {  
+        record1.ferme();
+      }
       minim.stop();
       
       super.stop();
