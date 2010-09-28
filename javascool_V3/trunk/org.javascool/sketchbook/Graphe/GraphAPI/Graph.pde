@@ -12,7 +12,10 @@ class Graph {
   
   Graph() {
    
-   HashMap nodes = new HashMap();
+   nodes = new HashMap();
+   
+   
+    
    
   }
 
@@ -23,7 +26,18 @@ class Graph {
    */
   void addNode(String n, int x, int y) {
     
-    nodes.put(n, new Node(n, x, y));
+    if (nodes.containsKey(n)) {
+      
+      //removeNode(n);
+      //nodes.put(n, new Node(n, x, y));
+      Node N_ = (Node) nodes.get(n);
+      N_.moveTo(x,y);
+      
+    } else {
+      
+      nodes.put(n, new Node(n, x, y));
+      
+    }
     
   }
   
@@ -32,13 +46,44 @@ class Graph {
    * @return objet Node.
    */
    
-  Node getNode(n) {
+  Node getNode(String n) {
     
-    Node N_;
-    
+    Node N_ = (Node) nodes.get(n);
     
     return N_;
     
+  }
+  
+  /** Cherche noeud plus proche d'une position de la souris.
+   * @param x Abcisse position souris.
+   * @param y Ordonnée position souris.
+   * @return Nom du noeud.
+   */
+
+  String getClosestNode(float x,float y)                              
+  {
+    //println("x " + x + " // y " + y);
+    
+    float curBest = 9999;
+    Node best = (Node) nodes.get(listN[0]);
+    String n_ = null;
+    
+    if (nodes.size() != 0) {
+      for(String ni_ : (Iterable<String>) nodes.keySet()) 
+      {   
+        Node N_ = (Node) nodes.get(ni_);
+  
+        float d = dist(x,y,N_.x,N_.y);
+        if(d < curBest)
+        {
+          curBest = d;
+          best = N_;
+          n_ = ni_;
+        }
+      }
+    }
+    //println(" nom: " + best.n + " x " + best.x + " // y " + best.y);
+    return n_;
   }
 
   /** Détruit un noeud au graphe si il existe.
@@ -46,9 +91,16 @@ class Graph {
    */
   void removeNode(String n) {
     
-    Node N_ = (Node) nodes.get(n);
-    nodes.remove(n);                  // retire le noeud en question
-    N_.links.clear();                 // retire tous les liens en relation avec le noeud
+      Node N_ = (Node) nodes.get(n);
+                       
+      // retire tous les liens en relation avec le noeud 
+      for(String ni_ : (Iterable<String>) nodes.keySet()) 
+      {   
+        removeLink(n, ni_);
+      }
+      
+      // retire le noeud en question
+      nodes.remove(n); 
      
   }
 
@@ -58,18 +110,19 @@ class Graph {
    */
   String[] getNodes(String n) {
     
-    ListNodes = new String[];
-    Node N_ = nodes.get(n);
-    String ni_;
+    String[] ListNodes = new String[10];
+    Node N_ = (Node) nodes.get(n);
+    int count = 0;
     
-    Collection collectionString = N_.links.values(); //  est une collection
-    Iterator iterator = collectionString.iterator();
-    while (iterator.hasNext()) {
-      ni_ = iterator.next();
+    for(String ni_ : (Iterable<String>) nodes.keySet()) 
+    {
       if (isLink(n, ni_)) {
-        ListNodes.add(ni_);
+        ListNodes[count] = ni_;
+        count++;
       }
     }
+    
+    return ListNodes;
      
   }
 
@@ -77,15 +130,19 @@ class Graph {
   /** Ajoute ou modifie un lien entre deux noeuds (modifie dans le cas ou memes noeuds et différent poids attribué).
    * @param nA Premier noeud du lien.
    * @param nB Deuxième noeud du lien.
-   * @param p Poids du lien.
+   * @param p Poids du lien. // no?? poids=distance??
    */
-  void addLink(String nA, String nB, double p) {
+  //void addLink(String nA, String nB, double p) {
+  void addLink(String nA, String nB) {
     
-    Node NA_ = nodes.get(nA);
-    Node NB_ = nodes.get(nB);
-    NA_.links.put(nA, new Link(nA, nB, p));
+    Node NA_ = (Node) nodes.get(nA);
+    Node NB_ = (Node) nodes.get(nB);
+    double p_ = dist(NA_.x,NA_.y,NB_.x,NB_.y)/100;
+    NA_.links.put(nB, new Link(nA, nB, p_));
+    NB_.links.put(nA, new Link(nB, nA, p_));
       
   }
+
 
   /** Détruit un lien entre deux noeuds si il existe.
    * @param nA Premier noeud du lien.
@@ -93,11 +150,13 @@ class Graph {
    */
   void removeLink(String nA, String nB) {
     
-    Node NA_ = nodes.get(nA);
-    
+    Node NA_ = (Node) nodes.get(nA);
+    Node NB_ = (Node) nodes.get(nB);
+
     if (isLink(nA, nB)) {
      
      NA_.links.remove(nB);
+     NB_.links.remove(nA);
      
     }
     
@@ -110,14 +169,12 @@ class Graph {
    */
   boolean isLink(String nA, String nB) {
     
-    Node NA_ = nodes.get(nA);
-    String ni_;
+    Node NA_ = (Node) nodes.get(nA);
+    //String ni_;
     boolean link_ = false;
     
-    Collection collectionString = NA_.links.values(); // est une collection
-    Iterator iterator = collectionString.iterator();
-    while (iterator.hasNext()) {
-      ni_ = iterator.next();
+    for(String ni_ : (Iterable<String>) NA_.links.keySet())
+    {
       if (ni_.equals(nB)) { // test si les deux string sont équivalents
         link_ = true;
       }
@@ -133,13 +190,13 @@ class Graph {
    */
   double getLink(String nA, String nB) {
     
-    Node NA_ = nodes.get(nA);
+    Node NA_ = (Node) nodes.get(nA);
     Link li_;
     double p_ = 0;
     
     if (isLink(nA,nB)) {
      
-      li_ = NA_.links.get(nB);
+      li_ = (Link) NA_.links.get(nB);
       p_ = li_.p;
 
     }
@@ -147,6 +204,71 @@ class Graph {
     return p_;
   }
   
+  /**  Cherche noeud intermédiaire entre nInit et nTarget tel que la distance entre nInit et nTarget soit minimal.
+   * @param nInit Noeud initial.
+   * @param nTarget Noeud cible.
+   * @return Noeud intermédiaire.
+   */
+   
+  String exploreNode(String nInit, String nTarget)                            
+  {
+    if(nInit == nTarget)
+      return nTarget;
+    String next = nInit; // initialization
+    Node Ninit = (Node) nodes.get(nInit);
+    Node Ntarget = (Node) nodes.get(nTarget);
+    float d = 999;
+    for(String ni_ : (Iterable<String>) Ninit.links.keySet())
+    {
+      Node Ni_ = (Node) nodes.get(ni_);
+      if(path.indexOf(ni_) == -1 && restricted.indexOf(ni_) == -1) // si le noeud n'a pas été parcouru
+      {
+        float di = PVector.dist(Ni_.position, Ninit.position)+PVector.dist(Ntarget.position,Ni_.position);
+        if(di < d )
+        {
+          d = di;
+          next = ni_;
+        }
+      }
+    }
+    println("Distance parcourue par le trajet: " + d );
+    path.add(nInit);
+    return next;
   
-
+  }
+  
+  
+  /**   Construit le trajet avec tous les noeuds - appel à exploreNode
+   * @param nStart Noeud départ.
+   * @param nEnd Noeud final.
+   */
+   
+  void findPath(String nStart, String nEnd)
+  {
+    
+    path.clear();
+    restricted.clear();
+    String next = nStart;
+    int its = 0;
+    int tests = 0;
+    while(next != nEnd && tests < 100)
+    {
+      next = exploreNode(next,nEnd);
+      its++;
+      if(its > 500)
+      {
+        its = 0;
+        tests++;
+        restricted.add(path.get(path.size()-1));
+        next = (String) path.get(0);
+        path.clear();
+        println(tests);
+      }
+    }
+    if(tests < 100)
+      path.add(nEnd);
+    else
+      background(255,0,0);
+  }
+    
 }

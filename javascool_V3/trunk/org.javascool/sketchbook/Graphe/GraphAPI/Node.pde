@@ -8,19 +8,25 @@ class Node {
   
   PVector position;
   
-  Node(String n_) {
-    
-    n = n_;
-    
-  }
-  
   Node(String n_, int x_, int y_) {
     
-    position = new PVector(x_, y_);
+    x = x_;
+    y = y_;
     n = n_;
-    HashMap links = new HashMap();
+
+    position = new PVector(x, y);
+    links = new HashMap();
     
   }
   
+  
+  void moveTo(int x_, int y_) {
+    
+    x = x_;
+    y = y_;
+    
+    position = new PVector(x, y);
+    
+  }
   
 }
