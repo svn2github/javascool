@@ -1,9 +1,9 @@
-  PFrame f;
+PFrame f;
   secondApplet s;
   
   void setup() {
    size(400, 300);
-   PFrame f = new PFrame();
+   f = new PFrame();
 
   }
   
@@ -39,5 +39,12 @@
       public void draw() {
       }
   }
+  
+  public processing.core.PApplet getControl() {
+  
+    s.hide();
+    return s;
+  
+}
   
  
