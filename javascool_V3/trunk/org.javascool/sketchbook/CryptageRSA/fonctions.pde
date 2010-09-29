@@ -8,7 +8,7 @@
    ////////////////////////////////////////////////////
   /// Actions des controlleurs
   
-  void reset(int theValue) {
+  void reset() {
     pq_size = int(random(4, 10));
     
     p = new BigInteger(pq_size + 1, prime_certainty, new Random());
@@ -19,6 +19,7 @@
     if (q == null) {
       q = new BigInteger(pq_size - 1, prime_certainty, new Random());
     }
+    
     myTextfield_p.setText("P = "+ p + " ");
     myTextfield_q.setText("Q = "+ q + " ");
     myTextfield_EncMessBitsA.hide();
@@ -151,4 +152,69 @@
       	return m;
       
   }
+  
+  ////////////////////////////////////////////////////
+  // Fonctions pour API
+  
+  /** Créer une clé privée et une clé publique pour le codage et décodage de messages   
+   * @return les clés
+   */  
+  BigInteger[] createKeys() {
+    
+    BigInteger[] Keys = new BigInteger[3];
+    
+    int pqSize = int(random(4, 10));
+    BigInteger p_ = new BigInteger(pqSize + 1, prime_certainty, new Random());
+    BigInteger q_ = new BigInteger(pqSize - 1, prime_certainty, new Random());
+    if (p_ == null) {
+      p_ = new BigInteger(pqSize + 1, prime_certainty, new Random());
+    }
+    if (q_ == null) {
+      q_ = new BigInteger(pqSize - 1, prime_certainty, new Random());
+    }
+    
+    BigInteger n_ = p_.multiply(q_);
+    BigInteger e_ = generate_e(p_, q_, 16);
+    BigInteger d_ = calculate_d(p_, q_, e_);
+
+    Keys[0] = d_;
+    Keys[1] = e_;
+    Keys[2] = n_;
+    
+    return Keys;
+  }
+  
+  /** Encrypt un message à l'aide de clés  
+   * @param m message à encrypter, à inscrire entre "".
+   * @param pk1 clé publique1. 
+   * @param pk2 clé publique2. 
+   * @return message encrypté sous forme de chiffres
+   */  
+  BigInteger encrypt(String m, BigInteger pk1, BigInteger pk2) {
+   
+    BigInteger EncMessBits = null;
+    
+    BigInteger MessBits = new BigInteger(m.getBytes());
+    EncMessBits = encrypt(MessBits, pk1, pk2);
+    
+    return EncMessBits;
+    
+  }
+  
+  /** Encrypt un message à l'aide de clés  
+   * @param me message encrypté sous forme de chiffres.
+   * @param k clés, publique et privée. 
+   * @return message
+   */  
+  String decrypt(BigInteger me, BigInteger[] k) {
+   
+    String decryptedMessage = null;
+    
+    BigInteger DecMessBits = decrypt(me, k[0], k[2]);
+    decryptedMessage = new String(DecMessBits.toByteArray());
+    
+    return decryptedMessage;
+    
+  }
+  
      

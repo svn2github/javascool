@@ -46,7 +46,7 @@
     
     size(600,600);
     frameRate(30);
-    PFont pfont = createFont("Lucida Grande",10,true); // use true/false for smooth/no-smooth
+    PFont pfont = createFont("Arial Bold",10,true); // use true/false for smooth/no-smooth
     font = new ControlFont(pfont);
   
     controlP5 = new ControlP5(this);
@@ -78,4 +78,33 @@
     // Fenetres informatives
     ouvreFenetreInfo();
     
+  }
+  
+  void keyPressed() {
+    
+   if(key == '1') {
+     BigInteger[] myKeys = new BigInteger[3];
+     myKeys = createKeys();  
+     println("Private Key is: " + myKeys[0] + " // Public Key is: " + myKeys[1] + " " + myKeys[2]);
+   }
+   
+   if(key == '2') {
+     BigInteger[] myKeys = new BigInteger[3];
+     myKeys = createKeys();  
+     BigInteger EncMess;
+     EncMess = encrypt("BIBI IS TODAY", myKeys[1], myKeys[2]);
+     println("Public Key is: " + myKeys[1] + " " + myKeys[2] + " // encrypted message: " + EncMess);
+   }
+   
+   if(key == '3') {
+     BigInteger[] myKeys = new BigInteger[3];
+     myKeys = createKeys();  
+     BigInteger EncMess;
+     String decryptedMessage;
+     EncMess = encrypt("BIBI IS TODAY", myKeys[1], myKeys[2]);
+     decryptedMessage = decrypt(EncMess, myKeys);
+     println("Public Key is: " + myKeys[1] + " " + myKeys[2] + " // encrypted message: " + EncMess);
+     println("Private Key is: " + myKeys[0] + " // decrypted message: " + decryptedMessage);
+   }
+   
   }

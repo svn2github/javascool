@@ -26,11 +26,11 @@
     boxA.captionLabel().setControlFont(font);
     boxA.captionLabel().setControlFontSize(12);
     boxA.captionLabel().toUpperCase(false);
-    boxA.captionLabel().set("Tu es Alice. Nous te proposons d'experimenter le CODAGE et le DECODAGE de messages.\n \n" +
-    "Tout d'abord, tu dois generer une 'cle publique' et 'une cle privee'.\n \n" +
-    "Tu divulgueras ensuite la cle publique à Bob, et tu garderas la cle privee precieusement. \n \n" +
-    "Bob encryptera son message secret à l'aide de la cle publique.\n \n" +
-    "Seul toi pourras decrypter le message grace à la cle privee!" );
+    boxA.setCaptionLabel("Tu es Alice. Nous te proposons d'expérimenter le CODAGE et le DECODAGE de messages.\n \n" +
+    "Tout d'abord, tu dois gén2rer une 'clé publique' et 'une clé privée'.\n \n" +
+    "Tu divulgueras ensuite la clé publique à Bob, et tu garderas la clé privée précieusement. \n \n" +
+    "Bob encryptera son message secret à l'aide de la clé publique.\n \n" +
+    "Seul toi pourras décrypter le message grace à la clé privée!" );
     boxA.captionLabel().style().marginLeft = 30;
     boxA.captionLabel().style().marginTop = -42;
     
@@ -41,9 +41,10 @@
     myTextfield_q = controlP5.addTextfield(" ",100+width/8+20,height/2-height/4,width/8,20);
     myTextfield_q.captionLabel().setControlFont(font);
     //controlP5.addButton("reset",0,n.width/2-(100+100),150,100,20).setCaptionLabel("1. Genere P et Q");
-    controlP5.addButton("reset",0,width-(100+width/5),height/2-height/4,width/5,20).setCaptionLabel("1.  Genere   P  et  Q");
+    controlP5.addButton("reset",0,width-(100+width/5),height/2-height/4,width/5,20);
     controlP5.controller("reset").captionLabel().setControlFont(font);
     controlP5.controller("reset").captionLabel().setControlFontSize(11);
+    controlP5.controller("reset").setCaptionLabel("1.  Génère   P  et  Q");
     myTextfield_p.setText("P = "+ p + " ");
     myTextfield_q.setText("Q = "+ q + " ");
     
@@ -51,17 +52,21 @@
     myTextfield_n = controlP5.addTextfield("  ",100,height/2-height/4+(20*2),width/3,20);
     myTextfield_n.captionLabel().setControlFont(font);
     //controlP5.addButton("calculate_n",0,width/2-(100+100),200,100,20).setCaptionLabel("2. Calcule n");
-    controlP5.addButton("calculate_n",0,width-(100+width/5),height/2-height/4+(20*2),width/5,20).setCaptionLabel("2.  Calcule   n");
+    controlP5.addButton("calculate_n",0,width-(100+width/5),height/2-height/4+(20*2),width/5,20);
     controlP5.controller("calculate_n").captionLabel().setControlFont(font);
     controlP5.controller("calculate_n").captionLabel().setControlFontSize(11);
+    controlP5.controller("calculate_n").setCaptionLabel("2.  Calcule   n");
+    
     
     // Generer e tel qu'il soit premier avec (p-1)*(q-1)
     myTextfield_e = controlP5.addTextfield("   ",100,height/2-height/4+(20*4),width/3,20);
     myTextfield_e.captionLabel().setControlFont(font);
     //controlP5.addButton("launch_e",0,width/2-(100+100),250,100,20).setCaptionLabel("3. Genere e");
-    controlP5.addButton("launch_e",0,width-(100+width/5),height/2-height/4+(20*4),width/5,20).setCaptionLabel("3.  Genere   e");
+    controlP5.addButton("launch_e",0,width-(100+width/5),height/2-height/4+(20*4),width/5,20);
     controlP5.controller("launch_e").captionLabel().setControlFont(font);
     controlP5.controller("launch_e").captionLabel().setControlFontSize(11);
+    controlP5.controller("launch_e").setCaptionLabel("3.  Génère   e");
+    
     // (n, e) est la cle publique
     
     // Calculer d selon: 
@@ -70,9 +75,11 @@
     myTextfield_d = controlP5.addTextfield("    ",100,height/2-height/4+(20*6),width/3,20);
     myTextfield_d.captionLabel().setControlFont(font);
     //controlP5.addButton("launch_d",0,width/2-(100+100),300,100,20).setCaptionLabel("4. Calcule d");
-    controlP5.addButton("launch_d",0,width-(100+width/5),height/2-height/4+(20*6),width/5,20).setCaptionLabel("4.  Calcule   d");
+    controlP5.addButton("launch_d",0,width-(100+width/5),height/2-height/4+(20*6),width/5,20);
     controlP5.controller("launch_d").captionLabel().setControlFont(font);
     controlP5.controller("launch_d").captionLabel().setControlFontSize(11);
+    controlP5.controller("launch_d").setCaptionLabel("4.  Calcule   d");
+    
   
     // Revèle les clés privée et publique: 
     myTextfield_kpr = controlP5.addTextfield("Cle privee",100,height/2+20,width/3,20);
@@ -93,9 +100,10 @@
     // Décrypter
     controlP5.addButton("decrypt_m",0,width-(170+100),height/2+(20*10+10),170,20);
     //controlP5.controller("decrypt_m").setCaptionLabel("Decryptage du message");
-    controlP5.controller("decrypt_m").setCaptionLabel("  Decryptage  du  message");
     controlP5.controller("decrypt_m").captionLabel().setControlFont(font);
     controlP5.controller("decrypt_m").captionLabel().setControlFontSize(11);
+    controlP5.controller("decrypt_m").setCaptionLabel("  Décryptage  du  message");
+    
     
     myTextfield_DecMessBits = controlP5.addTextfield("Ceci est le message de Bob",100,height/2+(20*12),width-100*2,30);
     myTextfield_DecMessBits.valueLabel().toUpperCase(true);
@@ -126,9 +134,9 @@
     boxB.captionLabel().setControlFont(font);
     boxB.captionLabel().setControlFontSize(12);
     boxB.captionLabel().toUpperCase(false);
-    boxB.captionLabel().set("Tu es Bob. Nous te proposons d'experimenter le CODAGE et le DECODAGE de messages.\n \n" +
-    "Tu vas recevoir une 'cle', dite 'publique', qui va te permettre d'encrypter un message secret.\n \n" +
-    "Apres encryptage du message, transmet-le à Alice qui essayera de le decrypter! ");
+    boxB.setCaptionLabel("Tu es Bob. Nous te proposons d'expérimenter le CODAGE et le DECODAGE de messages.\n \n" +
+    "Tu vas recevoir une 'clé', dite 'publique', qui va te permettre d'encrypter un message secret.\n \n" +
+    "Apres encryptage du message, transmet-le à Alice qui essayera de le décrypter! ");
     boxB.captionLabel().style().marginLeft = 30;
     boxB.captionLabel().style().marginTop = -20;
     
@@ -153,9 +161,9 @@
     
     // Traduire en chiffres
     controlP5.addButton("translate_m",0,width-(240+100),height/2-height/4+(20*7),240,20);
-    controlP5.controller("translate_m").setCaptionLabel(" Traduction  du  message  en  chiffres");
     controlP5.controller("translate_m").captionLabel().setControlFont(font);
     controlP5.controller("translate_m").captionLabel().setControlFontSize(11);
+    controlP5.controller("translate_m").setCaptionLabel(" Traduction  du  message  en  chiffres");
     controlP5.controller("translate_m").setWindow(controlWindow);
     myTextfield_MessBits = controlP5.addTextfield("     ",100,height/2-height/4+(20*8+10),width-100*2,30);
     
@@ -163,17 +171,17 @@
     
     // Encrypter le message
     controlP5.addButton("encrypt_m",0,width-(165+100),height/2-height/4+(20*11+10),165,20);
-    controlP5.controller("encrypt_m").setCaptionLabel(" Encryptage  du  message");
     controlP5.controller("encrypt_m").captionLabel().setControlFont(font);
     controlP5.controller("encrypt_m").captionLabel().setControlFontSize(11);
+    controlP5.controller("encrypt_m").setCaptionLabel(" Encryptage  du  message");
     controlP5.controller("encrypt_m").setWindow(controlWindow);
     myTextfield_EncMessBits = controlP5.addTextfield("      ",100,height/2-height/4+(20*13),width-100*2,30);
     myTextfield_EncMessBits.setWindow(controlWindow);
     // Envoyer le message encryté
     controlP5.addButton("send_m",0,width-(185+100),height/2-height/4+(20*17),185,20);
-    controlP5.controller("send_m").setCaptionLabel(" Envoi  du  message  encrypte");
     controlP5.controller("send_m").captionLabel().setControlFont(font);
     controlP5.controller("send_m").captionLabel().setControlFontSize(11);
+    controlP5.controller("send_m").setCaptionLabel(" Envoi  du  message  encrypté");
     controlP5.controller("send_m").setColorBackground(myRed);
     controlP5.controller("send_m").setWindow(controlWindow);
     controlP5.controller("send_m").setColorActive(myOr); 
