@@ -29,6 +29,7 @@
   int w;
   PImage fade;
   float rWidth, rHeight;
+  Frame frame;
   int myOr = color(255,100,0);
   int myRed = color(255,0,0);
   int myBlue = color(100,100,255);
@@ -45,18 +46,18 @@
   int count = 0;
   signal signal1;
   record record1;
+  PFont f;
 
 
   // Ce qui est lancé une fois, au départ
   void setup() {
     
     frame = new Frame();
-    
+    f = createFont("Arial Bold",12,true);
     size(800,512,P3D);
     frameRate(30);
     controlP5 = new ControlP5(this);
-    PFont pfont = createFont("Courrier",10,true); // police de caractère
-    font = new ControlFont(pfont);
+    font = new ControlFont(f);
     
     // Fenetre principale: celle de l'analyseur
     //frame.setLocation(screen.width/2,screen.height/6);

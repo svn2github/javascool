@@ -80,16 +80,18 @@ class signal {
     stroke(240, 240, 240);
     for(int i = 0; i < fftSignal.avgSize(); i++){
       
-      line((i * w) + (w / 2), height, (i * w) + (w / 2), height - fftSignal.getAvg(i) *(volume+20));
+      line((i * w) + (w / 2), 19*height/20, (i * w) + (w / 2), 19*height/20 - fftSignal.getAvg(i) *(volume+20));
       
     }
    
     fade = get(0, 0, width, height);
     
     stroke(250,70,0);
+    textFont(f,14);
+    text("                  100     125                  250                500             1000             2000              4000                8000                              Hz", 0, height-6);
     for(int i = 0; i < fftSignal.avgSize(); i++){
       
-      line((i * w) + (w / 2), height, (i * w) + (w / 2), height - fftSignal.getAvg(i) *(volume+20));
+      line((i * w) + (w / 2), 19*height/20, (i * w) + (w / 2), 19*height/20 - fftSignal.getAvg(i) *(volume+20));
       // draw a rectangle for each average, multiply the value by 5 so we can see it better
       //line(i*w, height, i*w + w, height - fftSignal.getAvg(i)*5);
       
@@ -100,6 +102,7 @@ class signal {
   void drawSignal() {
     
    stroke(255);
+   
     strokeWeight(1.5);  
       for(int i = 0; i < out.bufferSize() - 1; i++)
       {
