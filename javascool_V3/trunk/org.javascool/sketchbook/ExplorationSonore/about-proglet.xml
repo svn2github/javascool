@@ -1,42 +1,38 @@
 <div title="La «proglet» Exploration sonore">
   <p class="margin">Autres <l link="../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
-  <p>
-    Cette proglet<l class="note" link="1"/> permet de définir des entrées/sorties textuelles au clavier comme pour une console<l class="note" link="2"/>. <div class="ul">
-  <div>On peut donc dans la fenêtre <c>input</c>: <div class="code">
-       <m>Lire une chaine de caractère avec la fonction:</m>
-       <p><T/><r>String</r> chaine = <r>readString</r>();</p>
-       <m>Lire un nombre entier avec la fonction:</m>
-       <p><T/><r>int</r> entier = <r>readInteger</r>();</p>
-       <m>Lire un nombre décimal avec la fonction:</m>
-       <p><T/><r>double</r> decimal = <r>readDouble</r>();</p>
-     </div>où les constructions proposées ici utilisent des <l link="sujet-about-variables.htm" text="variables"/>.</div>
-     <div>On peut aussi écrire dans la fenêtre <c>output</c>: <div class="code">
-       <m>Ecrire une chaine de caractère avec la fonction:</m>
-       <p><T/><r>println</r>(chaine);</p>
-     </div>cette chaine pouvant être une constante, ou se voir ajouter des variables numériques comme dans les exemples ci dessous: <div class="code">
-       <p><T/><r>println</r>(<v>Hello world</v>);</p>
-       <p><T/><r>println</r>(<v>Valeur = </v> + valeur);</p>
-     </div>où ici <b>valeur</b> est une variable numérique entière ou décimale.</div>
-   </div>
-   <div>Un exemple d'utilisation: lors de la <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/ingredients/doc-files/the-proglet.htm" text="démonstration"/>, 
-   le programme suivant:
-   <div class="code">
-     <m>Efface le contenu de la fenêtre de sortie</m>
-     <p><r>clear</r>();</p>
-     <m>Salue l'utilisateur et lit son nom</m>
-     <p><r>println</r>(<v>Bonjour, qui es-tu ?</v>);</p>
-     <p><r>String</r> nom = <r>readString</r>();</p>
-     <m>Lui demande alors son âge</m>
-     <p><r>println</r>(<v>Echanté "+nom+" ! Quel âge as-tu ?</v>);</p>
-     <p><r>int</r> age = <r>readInteger</r>();</p>
-     <m>../..</m>
-   </div> s'exécute pour permettre d'expérimenter le fonctionnement de cette proglet.</div>
+  <p>Cette proglet<l class="note" link="1"/> permet de visualiser l'évolution temporelle et le contenu fréquentiel (le spectre) d'un son, 
+  d'une parole, d'un extrait musical ou d'un signal sonore numérique.</p>
+  <p>L'analyse s'effectue en temps réel. 
+  Dès l'ouverture de l'application on peut visualiser les sons émis par soi-même ou dans l'environnement grâce à la captation par microphone. 
+  L'application permet également de générer des signaux numériques (sinusoïde, signaux carrés et scie, bruit), pour en observer le spectre.
+  Finalement on peut lancer des enregistrements (musicaux ou autres), et en visualiser les représentations temporelles et fréquentielles.</p>
+  <p>Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: <div class="code">
+    <m>Lancer un signal prédéfini:</m>
+    <p><r>playSignal</r>(<r>String</r> type, <r>double</r> frequence, <r>double</r> amplitude)</p>
+    </div>où: <div class="ul">
+      <p><c>type</c> est le type de signal à choisir parmi: "sine" (sinusoïde), "square" (signal carré), "saw" (signal en dent de scie scie), "noise" (bruit, ici bruit blanc);</p>
+      <p><c>frequence</c> est la fréquence en Hz, à choisir entre 100 et 8000.</p>
+      <p><c>amplitude</c> est l'amplitudm,  à choisir entre 0 (silence) et 1 (100% du volume sonore).</p>
+    </div><div class="code">
+    <m>Lancer un signal enregistré:</m>
+    <p><r>playRecord</r>(<r>String</r> location)</p>
+    </div>où: <div class="ul">
+      <p><c>location</c>désigne le chemin de l'enregistrement sonore (par exemple: <c>../data/music/Ahmed_Ex2.wav</c>).</p>
+    </div>Si l'argument <c>location</c> n'est pas spécifié un sélecteur de fichier s'ouvre.<div class="code">
+    <m>Arrêter toute émission sonore:</m>
+    <p><r>playStop</r>(<r>String</r> location)</p>
+  </div>arrêtera l'émission sonore et remettra la visualisation des sons capté par le microphone.
   </p>
-
-  <div class="notes">
-    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/ingredients/doc-files/Console.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/ingredients/doc-files/Console.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
-    <div id="2">Une console ou « terminal alphanumérique » correspond à une fenêtre où l'utilisateur peut dialoguer avec un programme en entrant des données au clavier et 
-    en lisant les chaines de caractères imprimées par le programme.</div>
+   <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
+   <div class="notes">
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, 
+    programmée en <l link="http://processing.org" title="Processing"/> et disponible sous forme de code documenté:
+    <div class="table"><p>
+      <p><l link="ExplorationSonore.pde" title="ExplorationSonore"/></p>
+      <p><l link="interface.pde" title="ExplorationSonore"/></p>
+      <p><l link="record.pde" title="ExplorationSonore"/></p>
+      <p><l link="signal.pde" title="signal"/></p>
+    </p></div>
+    pour permettre des développements dérivés.</div>
   </div>
 </div>
