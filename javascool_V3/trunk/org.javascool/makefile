@@ -55,7 +55,7 @@ XSL = \
  $(shell find src -name '*.xslt')
 
 DOC = \
- $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(patsubst %.xml,%.htm,$(shell find src -name '*.xml'))
+ $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(patsubst %.xml,%.htm,$(shell find src -name '*.xml')) $(patsubst %.xml,%.htm,$(shell find sketchbook -name '*.xml'))
 
 JVS = \
   src/proglet/javaprog/FleurEnRythme.jvs
@@ -78,6 +78,7 @@ www/javascool.jar : makefile lib/tools.zip lib/saxon.jar lib/js-manifest.mf $(SR
 	@unzip -qod tmp lib/saxon.jar
 	@# + The processing jars
 	@if [ -f lib/processing.zip ] ; then echo '  + processing ..' ; unzip -qod tmp lib/processing.zip ; fi
+	@rm -f tmp.zip ; zip -q0 tmp.zip `find sketchbook -name '*.htm' -o -name '*.xml' -o -name '*.pde'` ; unzip -qod tmp tmp.zip
 	@#Build the raw jar
 	@cd tmp ; jar cfm ../tmp.jar ../lib/js-manifest.mf *
 	@#Sign the jar file
@@ -87,7 +88,7 @@ www/javascool.jar : makefile lib/tools.zip lib/saxon.jar lib/js-manifest.mf $(SR
 	@#-keytool -export -alias proglet -storepass '$(public-key)' -keystore tmp.key -file javascool.crt
 	@#-jarsigner -verify -verbose -certs $@
 	@#Cleanup
-	@rm -rf tmp tmp.key tmp.jar javascool.crt 
+	@rm -rf tmp tmp.zip tmp.key tmp.jar javascool.crt 
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes revision = `grep REVISION lib/js-manifest.mf | sed 's/.*REVISION//'`"
 
 lib/js-manifest.mf : .svn makefile
