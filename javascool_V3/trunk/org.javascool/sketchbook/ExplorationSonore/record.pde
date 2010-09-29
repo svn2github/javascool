@@ -1,92 +1,62 @@
+/** Définit un signal sonore enregistré. */
 class record {
+  
+  /** Construction du signal et de son interaction graphique. */
+  record() {
+    boxValue = controlP5.addTextfield(" parametres enregistrement ",width_-(50+281),height_/2+height_/10+(40+5),280,19);
+    boxValue.setText(" ");
+    boxValue.setWindow(controlWindow);
+    lpf = new LowPassSP(100, out.sampleRate());
+  }
   
   float volume;
   float frequenceCoupe = 100; 
   String monExtrait;
-  
   AudioPlayer player;
   LowPassSP lpf;
-  
   FFT fftEnr;
-  
   boolean sonne = false;
   boolean filtre = false;
-  
   Textfield boxValue;
-  
-  
-  record() {
-    
-    boxValue = controlP5.addTextfield(" parametres enregistrement ",width_-(50+281),height_/2+height_/10+(40+5),280,19);
-    boxValue.setText(" ");
-    boxValue.setWindow(controlWindow);
-    
-    lpf = new LowPassSP(100, out.sampleRate());
-    
-  }
-  
     
   /** Joue un enregistrement de son choix
-  * @param n Nom de l'extrait
+  * @param path Nom de l'extrait
   */ 
-  void addRecord(String n) {
-   
-   
+  void setRecord(String path) {
    if(sonne) {
-     
      stopSonne();
-     
      if(filtre) {
-       
        retireFiltre();
-       
      }
    } else if(signal1.sonne) {
-     
      signal1.stopSonne();
-     
    }
-   
-   monExtrait = n; 
-   
+   monExtrait = path; 
    //println("record: " + monExtrait);
    if (monExtrait != null) {
-      
       count += 1;
       player = minim.loadFile(monExtrait);
       player.loop();
-      
-      //FFT
       fftEnr = new FFT(player.bufferSize(), player.sampleRate());
       fftEnr.logAverages(60,6*width/(screen.width/2));
-    
       sonne = true;
-      
     }
-    
   }
   
   void appliqueFiltre() {
-    
     if (sonne)  {
-       
        if (!filtre) {
-         
          filtre = true;
          player.addEffect(lpf);
          lpf.setFreq(frequenceCoupe);
-         
        } else {
-         
          retireFiltre();
-         
        }
      }
   }
   
   
-  void retireFiltre() {
-    
+  void retireFiltre() {    
     effaceInfo();
     filtre = false;
     player.clearEffects();
@@ -95,12 +65,9 @@ class record {
   
   
   void changeValeur() {
-    
     volume = map(mouseY, 0, height, 0, -20);
     player.setGain(volume);
-    
     if (filtre) {
-      
       frequenceCoupe = map(mouseX, 0, width, 500, 5000);
       lpf.setFreq(frequenceCoupe);
     
@@ -109,39 +76,26 @@ class record {
   
   
   void drawFFT() {
-   
-   //  Rendu de la FFT
     strokeWeight(10);
     tint(250, 250); //gris,alpha sinon (255, 150, 0, 250)
     image(fade, (width - rWidth) / 2, (height - rHeight) / 2, rWidth, rHeight);
     noTint();
-    
     fftEnr.forward(player.mix);
-    
     int w = int(width/fftEnr.avgSize());//fftEnr.specSize()/128);
-  
     stroke(240, 240, 240);
-    for(int i = 0; i < fftEnr.avgSize(); i++){
-      
+    for(int i = 0; i < fftEnr.avgSize(); i++) {
       line((i * w) + (w / 2), 19*height/20, (i * w) + (w / 2), 19*height/20 - fftEnr.getAvg(i) * (volume+20));
-      
     }
-   
     fade = get(0, 0, width, height);
-    
     stroke(250,70,0);
     textFont(f,14);
     text("                  100     125                  250                500             1000             2000              4000                8000                              Hz", 0, height-6);
-    for(int i = 0; i < fftEnr.avgSize(); i++){
-      
+    for(int i = 0; i < fftEnr.avgSize(); i++) {
       line((i * w) + (w / 2), 19*height/20, (i * w) + (w / 2), 19*height/20 - fftEnr.getAvg(i) * (volume+20));
-      
     } 
   }
   
-  
   void drawSignal() {
-    
     stroke(255);
     strokeWeight(1.5);  
     for(int i = 0; i < player.bufferSize() - 1; i++)
@@ -152,7 +106,6 @@ class record {
       line(x1, 120 + player.right.get(i)*(volume+20)*3, x2, 120 + player.right.get(i+1)*(volume+20)*3);
     } 
   }
-  
   
   void imprimeValeur() {
     
@@ -173,28 +126,20 @@ class record {
   
   
   void effaceInfo() {
-    
     boxValue.setText(" ");
     boxValue.setWindow(controlWindow);
-    
   }
   
   
   void stopSonne() {
-    
     player.pause();
     effaceInfo();
     monExtrait = null;
     sonne = false;
-    
   }
   
   
   void ferme() {
-    
     player.close();
-    
   }
-  
-  
 }
