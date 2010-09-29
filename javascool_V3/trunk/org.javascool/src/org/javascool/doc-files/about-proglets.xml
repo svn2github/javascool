@@ -68,6 +68,14 @@
       <p>Jw1<l class="note" link="4"/> </p>
       <p>simule la «bonne vieille» <l link="http://fr.wikipedia.org/wiki/Logo_(langage)" text="tortue logo"/>, donc permet de faire beaucoup d'autres activités.</p>
     </p>
+    <p>
+      <p>«Exploration sonore»</p>
+      <p><l link="../../../sketchbook/ExplorationSonore/about-proglet.htm" text="Description"/></p>
+      <p><!--l link="http://javascool.gforge.inria.fr/?page=api:proglet/tortuelogo/doc-files/the-proglet.htm" text="Proglet"/--></p>
+      <p><!--l link="../../../proglet/tortuelogo/doc-files/index.htm" text="Activité"/--></p>
+      <p>CP<l class="note" link="4"/> </p>
+      <p>permet de visualiser l'évolution temporelle et le contenu fréquentiel (le spectre) d'un son.</p>
+    </p>
   </p>
 
   <p>Ne pas hésiter à nous <l link="http://javascool.gforge.inria.fr/v3/?page=Contacts" text="contacter"/> pour en savoir plus !</p>
@@ -94,6 +102,7 @@
     AA: Aurélien Astoux; HbA: Hamdi ben Abdallah; GD et al.: collectif d'auteurs
     des <l link="http://interstices.info/ingredients-algorithmes" text="«ingrédients des algorithmes»"/> et 
     du <l link="http://interstices.info/reflet-numerique" text="«reflet numérique des objets»"/>;
+    CP : Cécile Picard-Limpens;
     JPA et al. :  collectif d'auteurs des activités de
     <l link="http://tdc.cndp.fr/archives-des-numeros/linformatique.html" text="Textes et documents pour la classe l'«informatique»"/>;
     Jw1 et Jv3 : développeur de <l class="javascool"/> web_v1 et v3.

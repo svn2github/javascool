@@ -64,7 +64,7 @@ CP=src:lib/tools.zip:lib/saxon.jar
 
 # Compiles the java classes using the default jdk5 and builds the certified jar
 
-www/javascool.jar : makefile lib/tools.zip lib/saxon.jar lib/js-manifest.mf $(SRC) $(JVS) htm
+www/javascool.jar : makefile lib/tools.zip lib/saxon.jar lib/sketchbook.zip lib/js-manifest.mf $(SRC) $(JVS) htm
 	@echo "make $@"
 	@#[1] Compile the java classes
 	@$(J5)/bin/javac -Xlint -cp $(CP) $(SRC)
@@ -76,9 +76,9 @@ www/javascool.jar : makefile lib/tools.zip lib/saxon.jar lib/js-manifest.mf $(SR
 	@unzip -qod tmp lib/tools.zip 
 	@# + The saxon transformer classes
 	@unzip -qod tmp lib/saxon.jar
-	@# + The processing jars
+	@# + The processing jars and docs
 	@if [ -f lib/processing.zip ] ; then echo '  + processing ..' ; unzip -qod tmp lib/processing.zip ; fi
-	@rm -f tmp.zip ; zip -q0 tmp.zip `find sketchbook -name '*.htm' -o -name '*.xml' -o -name '*.pde'` ; unzip -qod tmp tmp.zip
+	@unzip -qod tmp lib/sketchbook.zip
 	@#Build the raw jar
 	@cd tmp ; jar cfm ../tmp.jar ../lib/js-manifest.mf *
 	@#Sign the jar file
@@ -100,13 +100,18 @@ lib/js-manifest.mf : .svn makefile
 	@echo 'Implementation-Version: $(version)' >> $@
 	@echo 'Main-Class: org.javascool.Main' >> $@
 
-htm : $(DOC)
+# Compiles the xml doc files
+
+htm : $(DOC) 
 
 %.htm : %.xml src/org/javascool/hdoc2htm.xslt
 	@java -jar lib/saxon.jar -o $@ $^
 
 src/org/javascool/hdoc2htm.xslt : src/org/javascool/hml2htm.xslt
 	@touch $@
+
+lib/sketchbook.zip : $(DOC)
+	@rm -f $@; zip -9qr $@ `find sketchbook -name '*.htm' -o -name '*.xml' -o -name '*.pde'` 
 
 %.png : %.fig
 	@fig2dev -L png $^ > $@
@@ -163,7 +168,7 @@ jdoc :
 
 JDOC_OPTION = -quiet -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -charset "UTF-8" -windowtitle "Java's Cool v3" 
 
-JDOC_DEP    = $(SRC) $(DOC) $(JVS) $(shell find src -name package.html) lib/js-manifest.mf makefile 
+JDOC_DEP    = $(SRC) $(DOC) $(JVS) $(shell find src -name package.html) lib/sketchbook.zip lib/js-manifest.mf makefile 
 
 ifdef JDOC
 JDOC_OPTION+= -private -linkoffline $(JDOC)/api/ $(JDOC)/api/ 
@@ -184,7 +189,8 @@ endif
 	@javadoc $(JDOC_OPTION) $(SRC) -d $@
 	@$(MAKE) aps
 	@for f in $(SRC) $(JVS) $(XSL) $(shell find src -name doc-files) ; do d=`echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; mkdir -p `dirname $$d` ; cp -r $$f $$d ; done
-	@for f in `find $@ -name '*.java' -o -name '*.jvs'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
+	@unzip -qod $@ lib/sketchbook.zip
+	@for f in `find $@ -name '*.java' -o -name '*.pde' -o -name '*.jvs'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@rm -rf `find $@ -name .svn`
 	@cd www ; rm -f sources.zip ; zip -9qr sources.zip api
 	@cp lib/js-manifest.mf $@/js-manifest.txt
