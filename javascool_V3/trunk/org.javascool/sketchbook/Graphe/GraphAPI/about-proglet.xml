@@ -56,7 +56,7 @@
     </div>où: <div class="ul">
       <p><c>nA</c> est le nom du premier noeud du lien considéré.</p>
       <p><c>nB</c> est le nom du second noeud du lien considéré.</p>
-      </div><div class="code">
+      </div>
   </p>
    <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
    <div class="notes">
