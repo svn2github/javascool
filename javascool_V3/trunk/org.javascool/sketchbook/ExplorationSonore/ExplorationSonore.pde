@@ -16,6 +16,7 @@ import controlP5.*;
   
 Minim minim;
 AudioInput in;
+AudioPlayer player;
 FFT fft;
 
   
@@ -92,18 +93,22 @@ void draw() {
   
   // Fenetre informative
   openInfo();
-  
-  if (signal1.sonne) {
-    signal1.drawFFT();
-    signal1.drawSignal();
-  } else if (record1.sonne) {
-    record1.drawFFT();
-    record1.drawSignal();
+ 
+  if (signal1.sounding) {
+    fft = new FFT(out.bufferSize(), out.sampleRate());
+    fft.logAverages(60,6*width/(screen.width/2));
+    drawFFT("out");                                               // Trace la FFT
+    drawSignal("out");                                            // Trace le signal temporel
+  } else if (record1.sounding) {
+    fft = new FFT(player.bufferSize(), player.sampleRate());
+    fft.logAverages(60,6*width/(screen.width/2));
+    drawFFT("player");
+    drawSignal("player");
   } else {
-    //  Trace la FFT
-    drawFFT();
-    // Trace le signal temporel
-    drawSignal();
+    fft = new FFT(in.bufferSize(), in.sampleRate());
+    fft.logAverages(60,6*width/(screen.width/2));
+    drawFFT("in");
+    drawSignal("in");
   }
 }
      
@@ -124,6 +129,9 @@ void keyPressed()
   }
   if (key == 'e') {
     record1.setRecord("../data/music/Ahmed_Ex2.wav");
+  }
+  if ( key=='f') {
+    record1.setFilter("../data/music/Ahmed_Ex2.wav", 500);
   }
   if ( key=='s') {
     StopAnySound();

@@ -103,26 +103,26 @@ void PlayRecord() {
 }
 
 void FilterRecord() {
-  record1.appliqueFiltre() ;
+  record1.applyFilter() ;
 }
  
 void mouseMoved() {
-  if (signal1.sonne) {
-    signal1.changeValeur();
-    signal1.imprimeValeur();
-  } else if (record1.sonne) {
-    record1.changeValeur();
-    record1.imprimeValeur();
+  if (signal1.sounding) {
+    signal1.changeValue();
+    signal1.printV();
+  } else if (record1.sounding) {
+    record1.changeValue();
+    record1.printV();
   }
 }
   
   
 /** Stop tout son  */  
 void StopAnySound() {
-  if (signal1.sonne) {
-    signal1.stopSonne();
-  } else if (record1.sonne) {
-    record1.stopSonne();
+  if (signal1.sounding) {
+    signal1.switchOff();
+  } else if (record1.sounding) {
+    record1.switchOff();
   }
 }
    
@@ -147,15 +147,24 @@ void launchFFT() {
 }
   
   
-// FFT pour le signal capté par le micro, signal par défaut
-void drawFFT() {
- 
+
+/** Tracé 3D du spectre au fil du temps. */
+void drawFFT(String n) {
+
+  String type = n;
   strokeWeight(10);
   tint(250, 250); //gris,alpha sinon (255, 150, 0, 250)
   image(fade, (width - rWidth) / 2, (height - rHeight) / 2, rWidth, rHeight);
   noTint();
   
-  fft.forward(in.mix);
+  if(n.equals("out")) {
+    fft.forward(out.mix);
+  } else if(n.equals("player")) {
+    fft.forward(player.mix);
+  } else {
+    fft.forward(in.mix);
+  }
+
 
   stroke(240, 240, 240);
   for(int i = 0; i < fft.avgSize(); i++) {
@@ -171,17 +180,36 @@ void drawFFT() {
     line((i * w) + (w / 2), 19*height/20, (i * w) + (w / 2), 19*height/20 - fft.getAvg(i) * 20);
   } 
 }
+
   
-// Tracé temporel du signal capté par le micro, signla par défaut  
-void drawSignal() {
+/** Tracé temporel du signal. */
+void drawSignal(String n) {
+  
   stroke(255);
   strokeWeight(1.5);  
-  for(int i = 0; i < in.bufferSize() - 1; i++) {
+  int k; 
+  if(n.equals("out")) {
+    k = out.bufferSize();
+  } else if(n.equals("player")) {
+    k = player.bufferSize();
+  } else {
+    k = in.bufferSize();
+  }
+  for(int i = 0; i < k - 1; i++) {
     //println("buffer: " + in.bufferSize());
-    float x1 = map(i, 0, in.bufferSize(), 0, width);
-    float x2 = map(i+1, 0, in.bufferSize(), 0, width);
-    line(x1, 40 + in.left.get(i)*100, x2, 40 + in.left.get(i+1)*100);
-    line(x1, 120 + in.right.get(i)*100, x2, 120 + in.right.get(i+1)*100);
+
+    float x1 = map(i, 0, k, 0, width);
+    float x2 = map(i+1, 0, k, 0, width);
+    if(n.equals("out")) {
+      line(x1, 40 + out.left.get(i)*100, x2, 40 + out.left.get(i+1)*100);
+      line(x1, 120 + out.right.get(i)*100, x2, 120 + out.right.get(i+1)*100);
+    } else if(n.equals("player")) {
+      line(x1, 40 + player.left.get(i)*100, x2, 40 + player.left.get(i+1)*100);
+      line(x1, 120 + player.right.get(i)*100, x2, 120 + player.right.get(i+1)*100);
+    } else {
+      line(x1, 40 + in.left.get(i)*100, x2, 40 + in.left.get(i+1)*100);
+      line(x1, 120 + in.right.get(i)*100, x2, 120 + in.right.get(i+1)*100);
+    }
   } 
 }
   
@@ -231,6 +259,14 @@ public static void playSignal(String n, float f, float a) {
  */ 
 public static void playRecord(String path) {
   proglet.record1.setRecord(path);
+}
+
+/** Applique un filtre avec une fréquence de coupure ajustable sur l'enregistrement de son choix 
+ * @param path Nom de l'extrait
+ * @param f fréquence de coupure du filtre (entre 100 et 10000, sinon rien)
+ */ 
+public static void setFilter(String path, float fc) {
+  proglet.record1.setFilter(path, fc);
 }
 
 /** Arrête l'émission sonore. */

@@ -7,9 +7,6 @@ class signal {
     boxValue = controlP5.addTextfield(" parametres sinusoide ",50,height_/2-height_/10+(40+5),220,20);
     boxValue.setText(" ");
     boxValue.setWindow(controlWindow);
-    // FFT
-    fftSignal = new FFT(out.bufferSize(), out.sampleRate());
-    fftSignal.logAverages(60,6*width/(screen.width/2));
   }
   float volume;
   float frequence; 
@@ -17,9 +14,9 @@ class signal {
   SquareWave square_;
   SawWave saw_;
   WhiteNoise wnoise_;
-  FFT fftSignal;
+
   String type;
-  boolean sonne = false;
+  boolean sounding = false;
   Textfield boxValue; 
   
   
@@ -30,8 +27,8 @@ class signal {
    */  
   public void setSignal(String n, float f, float a) {
     type = n;
-    if(sonne) stopSonne();
-    else if(record1.sonne) record1.stopSonne();
+    if(sounding) switchOff();
+    else if(record1.sounding) record1.switchOff();
     // Créer un oscillateur sinusoidale avec une fréquence de 1000Hz, une amplitude de 1.0, et une fréquence d'échantillonage callée sur la ligne out
     if(n.equals("sine")) {
       sinus_ = new SineWave(f, a, out.sampleRate());
@@ -49,48 +46,11 @@ class signal {
       wnoise_ = new WhiteNoise(a);
       out.addSignal(wnoise_);
     }     
-    sonne = true;
-  }
-  
-  /** Rendu du spectre pour ce signal. */
-  void drawFFT() {
-    strokeWeight(10);
-    tint(250, 250); //gris,alpha sinon (255, 150, 0, 250)
-    image(fade, (width - rWidth) / 2, (height - rHeight) / 2, rWidth, rHeight);
-    noTint();
-    fftSignal.forward(out.mix);
-    int w = int(width/fftSignal.avgSize());//fftSignal.specSize()/128);
-    stroke(240, 240, 240);
-    for(int i = 0; i < fftSignal.avgSize(); i++) {
-      line((i * w) + (w / 2), 19*height/20, (i * w) + (w / 2), 19*height/20 - fftSignal.getAvg(i) *(volume+20));
-    }
-    fade = get(0, 0, width, height);
-    stroke(250,70,0);
-    // Affichage des fréquences en haut de l'écran
-    textFont(f,14);
-    text("                  100     125                  250                500             1000             2000              4000                8000                              Hz", 0, height-6);
-    for(int i = 0; i < fftSignal.avgSize(); i++){
-      
-      line((i * w) + (w / 2), 19*height/20, (i * w) + (w / 2), 19*height/20 - fftSignal.getAvg(i) *(volume+20));
-      // draw a rectangle for each average, multiply the value by 5 so we can see it better
-      //line(i*w, height, i*w + w, height - fftSignal.getAvg(i)*5);
-    } 
-  }
-
-  /** Tracé 3D du spectre au fil du temps. */
-  void drawSignal() {
-    stroke(255);
-    strokeWeight(1.5);  
-    for(int i = 0; i < out.bufferSize() - 1; i++) {
-      float x1 = map(i, 0, out.bufferSize(), 0, width);
-      float x2 = map(i+1, 0, out.bufferSize(), 0, width);
-      line(x1, 40 + out.left.get(i)*(volume+20)*5, x2, 40 + out.left.get(i+1)*(volume+20)*5);
-      line(x1, 120 + out.right.get(i)*(volume+20)*5, x2, 120 + out.right.get(i+1)*(volume+20)*5);
-    } 
+    sounding = true;
   }
   
   /** Mise à jour des valeurs lors du déplacement de la souris. */
-  void changeValeur() {
+  void changeValue() {
     frequence = map(mouseX, 0, width, 100, 8000);
     volume = map(mouseY, 0, height, 0.4, 0); 
     if(type.equals("sine")) {
@@ -108,7 +68,7 @@ class signal {
   }
   
   /** Affichage de la valeur dans l'interface. */  
-  void imprimeValeur() {
+  void printV() {
     float vol = (volume)/0.4;
     boxValue.captionLabel().setControlFontSize(8);
     if(type.equals("noise")) {
@@ -121,16 +81,17 @@ class signal {
   }
   
   /** Effacement de l'affichage. */
-  void effaceInfo() {
+  void deleteI() {
     boxValue.setText(" ");
     boxValue.setWindow(controlWindow);
   }
   
   /** Arrêt de la sortie sonore. */
-  void stopSonne() {
+  void switchOff() {
     out.noSound();
     out.clearSignals();
-    effaceInfo();
-    sonne = false;
+    deleteI();
+    sounding = false;
+    
   }
 }
