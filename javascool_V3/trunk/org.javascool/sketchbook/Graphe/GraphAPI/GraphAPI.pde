@@ -10,14 +10,14 @@
  double[] listP = {10, 15, 20, 10, 20};
  int indN = 0, indP = 0;
  Graph myGraph;
- String firstSelect, secondSelect, start, end;;
+ String firstSelect, secondSelect, start=null, end=null;
  ArrayList path, restricted;
  color pathC = color(0,124,30); 
    
  void setup()
  {
    
-  size(1200,800); 
+  size(screen.width,screen.height);//1200,800); 
   
   myGraph = new Graph();
   
@@ -177,6 +177,7 @@
         else
         {
           end = myGraph.getClosestNode(mouseX,mouseY);
+          println("start: " + start + " // end: " + end);
           if(end != start)
           {
             println("trajet? " +pathSelect);
@@ -184,6 +185,7 @@
           }
           start = null;  
         }
+        end = null;
       }
       
    
@@ -226,10 +228,11 @@ void keyPressed()
  
   // Efface un noeud (le plus proche du curseur de la souris)
   if( key == 'd' ) { 
-    
+    path.clear();
     if(myGraph.nodes.size() != 0) {
       String n_ = myGraph.getClosestNode(mouseX,mouseY);
       myGraph.removeNode(n_);
+     
     }
     
   }

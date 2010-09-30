@@ -231,7 +231,7 @@ class Graph {
         }
       }
     }
-    println("Distance parcourue par le trajet: " + d );
+    //println("Distance parcourue par le trajet: " + d );
     path.add(nInit);
     return next;
   
