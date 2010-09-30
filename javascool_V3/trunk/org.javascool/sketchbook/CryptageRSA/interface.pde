@@ -27,68 +27,78 @@
     boxA.captionLabel().setControlFontSize(12);
     boxA.captionLabel().toUpperCase(false);
     boxA.setCaptionLabel("Tu es Alice. Nous te proposons d'expérimenter le CODAGE et le DECODAGE de messages.\n \n" +
-    "Tout d'abord, tu dois gén2rer une 'clé publique' et 'une clé privée'.\n \n" +
+    "Tout d'abord, tu dois générer une 'clé publique' et 'une clé privée'.\n \n" +
     "Tu divulgueras ensuite la clé publique à Bob, et tu garderas la clé privée précieusement. \n \n" +
     "Bob encryptera son message secret à l'aide de la clé publique.\n \n" +
-    "Seul toi pourras décrypter le message grace à la clé privée!" );
+    "Seul toi pourras décrypter le message au moyen de la clé privée!" );
     boxA.captionLabel().style().marginLeft = 30;
     boxA.captionLabel().style().marginTop = -42;
     
     // Choisir/generer p et q
     pq_size = int(random(4, 10));
-    myTextfield_p = controlP5.addTextfield("",100,height/2-height/4,width/8,20);
-    myTextfield_p.captionLabel().setControlFont(font);
-    myTextfield_q = controlP5.addTextfield(" ",100+width/8+20,height/2-height/4,width/8,20);
-    myTextfield_q.captionLabel().setControlFont(font);
+    myTextfield_p = controlP5.addTextfield("P et Q sont des nombres premier",100,height/2-height/4,width/10,20);
+    myTextfield_p.setColorBackground(myOr);
+    //myTextfield_p.captionLabel().setControlFont(font);
+    myTextfield_q = controlP5.addTextfield(" ",100+width/8+15,height/2-height/4,width/10,20);
+    myTextfield_q.setColorBackground(myOr);
+    //myTextfield_q.captionLabel().setControlFont(font);
     //controlP5.addButton("reset",0,n.width/2-(100+100),150,100,20).setCaptionLabel("1. Genere P et Q");
-    controlP5.addButton("reset",0,width-(100+width/5),height/2-height/4,width/5,20);
+    controlP5.addButton("reset",0,width-(100+width/4),height/2-height/4,width/4,20);
     controlP5.controller("reset").captionLabel().setControlFont(font);
     controlP5.controller("reset").captionLabel().setControlFontSize(11);
-    controlP5.controller("reset").setCaptionLabel("1.  Génère   P  et  Q");
+    controlP5.controller("reset").setCaptionLabel("    1.  Génère   P  et  Q");
+    controlP5.controller("reset").setColorBackground(myOr);
     myTextfield_p.setText("P = "+ p + " ");
     myTextfield_q.setText("Q = "+ q + " ");
     
+    
     // Calculer n=pxq
-    myTextfield_n = controlP5.addTextfield("  ",100,height/2-height/4+(20*2),width/3,20);
-    myTextfield_n.captionLabel().setControlFont(font);
+    myTextfield_n = controlP5.addTextfield("N = P * Q",100,height/2-height/4+(20*2+4),width/3,20);
+    myTextfield_n.setColorBackground(myOr);
+    //myTextfield_n.captionLabel().setControlFont(font);
     //controlP5.addButton("calculate_n",0,width/2-(100+100),200,100,20).setCaptionLabel("2. Calcule n");
-    controlP5.addButton("calculate_n",0,width-(100+width/5),height/2-height/4+(20*2),width/5,20);
+    controlP5.addButton("calculate_n",0,width-(100+width/4),height/2-height/4+(20*2+4),width/4,20);
     controlP5.controller("calculate_n").captionLabel().setControlFont(font);
     controlP5.controller("calculate_n").captionLabel().setControlFontSize(11);
-    controlP5.controller("calculate_n").setCaptionLabel("2.  Calcule   n");
+    controlP5.controller("calculate_n").setCaptionLabel("        2.  Calcule   n");
+    controlP5.controller("calculate_n").setColorBackground(myOr);
     
     
     // Generer e tel qu'il soit premier avec (p-1)*(q-1)
-    myTextfield_e = controlP5.addTextfield("   ",100,height/2-height/4+(20*4),width/3,20);
-    myTextfield_e.captionLabel().setControlFont(font);
+    myTextfield_e = controlP5.addTextfield("e est premier avec (p-1) * (q-1)",100,height/2-height/4+(20*4+4*2),width/3,20);
+    myTextfield_e.setColorBackground(myOr);
+    //myTextfield_e.captionLabel().setControlFont(font);
     //controlP5.addButton("launch_e",0,width/2-(100+100),250,100,20).setCaptionLabel("3. Genere e");
-    controlP5.addButton("launch_e",0,width-(100+width/5),height/2-height/4+(20*4),width/5,20);
+    controlP5.addButton("launch_e",0,width-(100+width/4),height/2-height/4+(20*4+4*2),width/4,20);
     controlP5.controller("launch_e").captionLabel().setControlFont(font);
     controlP5.controller("launch_e").captionLabel().setControlFontSize(11);
-    controlP5.controller("launch_e").setCaptionLabel("3.  Génère   e");
+    controlP5.controller("launch_e").setCaptionLabel("        3.  Génère   e");
+    controlP5.controller("launch_e").setColorBackground(myOr);
     
     // (n, e) est la cle publique
     
     // Calculer d selon: 
     // Il existe un relatif entier m, tel que e × d + m × (p - 1)(q - 1) = 1
     // d est la cle privee
-    myTextfield_d = controlP5.addTextfield("    ",100,height/2-height/4+(20*6),width/3,20);
-    myTextfield_d.captionLabel().setControlFont(font);
+    myTextfield_d = controlP5.addTextfield("m verifie: e * d + m * (p-1) * (q-1) = 1",100,height/2-height/4+(20*6+4*3),width/3,20);
+    myTextfield_d.setColorBackground(myOr);
+    //myTextfield_d.captionLabel().setControlFont(font);
     //controlP5.addButton("launch_d",0,width/2-(100+100),300,100,20).setCaptionLabel("4. Calcule d");
-    controlP5.addButton("launch_d",0,width-(100+width/5),height/2-height/4+(20*6),width/5,20);
+    controlP5.addButton("launch_d",0,width-(100+width/4),height/2-height/4+(20*6+4*3),width/4,20);
     controlP5.controller("launch_d").captionLabel().setControlFont(font);
     controlP5.controller("launch_d").captionLabel().setControlFontSize(11);
-    controlP5.controller("launch_d").setCaptionLabel("4.  Calcule   d");
+    controlP5.controller("launch_d").setCaptionLabel("        4.  Calcule   d");
+    controlP5.controller("launch_d").setColorBackground(myOr);
     
   
     // Revèle les clés privée et publique: 
-    myTextfield_kpr = controlP5.addTextfield("Cle privee",100,height/2+20,width/3,20);
+    myTextfield_kpr = controlP5.addTextfield("Cle privee",100,height/2+20+10,width/4,20);
     myTextfield_kpr.setColorBackground(myRed);
-    myTextfield_kpu = controlP5.addTextfield("Cle publique",100,height/2+(20*3),width/3,20);
+    myTextfield_kpu = controlP5.addTextfield("Cle publique",2*width/3-100,height/2+20+10,width/3,20);
     myTextfield_kpu.setColorBackground(myRed);
     
     // Cacher les infos confidentielles
-    controlP5.addButton("hideAll",0,width-(200+100),height/2+(20*5),200,20);
+    controlP5.addButton("hideAll",0,width-(200+100),height/2+(20*4),200,20);
     controlP5.controller("hideAll").setCaptionLabel("  Masquer  toute  information");
     controlP5.controller("hideAll").captionLabel().setControlFont(font);
     controlP5.controller("hideAll").captionLabel().setControlFontSize(11);
@@ -96,16 +106,16 @@
     controlP5.controller("hideAll").setColorActive(myOr); 
     
     // Recevoir le message encrypté
-    myTextfield_EncMessBitsA = controlP5.addTextfield("Reception du message encrypte",100,height/2+(20*8),width-100*2,30);
+    myTextfield_EncMessBitsA = controlP5.addTextfield("Reception du message encrypte",100,height/2+(20*7),width-100*2,30);
     // Décrypter
-    controlP5.addButton("decrypt_m",0,width-(170+100),height/2+(20*10+10),170,20);
+    controlP5.addButton("decrypt_m",0,width-(3*width/10+100),height/2+(20*10),3*width/10,20);
     //controlP5.controller("decrypt_m").setCaptionLabel("Decryptage du message");
     controlP5.controller("decrypt_m").captionLabel().setControlFont(font);
     controlP5.controller("decrypt_m").captionLabel().setControlFontSize(11);
     controlP5.controller("decrypt_m").setCaptionLabel("  Décryptage  du  message");
     
     
-    myTextfield_DecMessBits = controlP5.addTextfield("Ceci est le message de Bob",100,height/2+(20*12),width-100*2,30);
+    myTextfield_DecMessBits = controlP5.addTextfield("Ceci est le message de Bob",100,height/2+(20*11+10),width-100*2,30);
     myTextfield_DecMessBits.valueLabel().toUpperCase(true);
   }
   
@@ -217,9 +227,16 @@
     myTextfield_e.clear();
     myTextfield_kpr.clear(); // clé privée
   }
-   
+  
+  
+  /** Utilisé pour fermer la fenêtre secondaire de l'interface, par JavaScool. */
   public processing.core.PApplet getControl() {
-    
+    controlWindow.hide();
     return controlWindow.papplet();
     
   }
+  
+  /** Créer une clé privée et une clé publique pour le codage et décodage de messages   
+   * @return les clés
+   */  
+  

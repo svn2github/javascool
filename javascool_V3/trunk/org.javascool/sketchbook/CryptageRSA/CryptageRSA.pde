@@ -31,6 +31,7 @@
   
   // Paramètres de l'interface 
   ControlWindow controlWindow;
+  PFont pfont;
   ControlFont font;
   controlP5.Button boxA, boxB;
   int buttonValue = 1;
@@ -46,7 +47,7 @@
     
     size(600,600);
     frameRate(30);
-    PFont pfont = createFont("Arial Bold",10,true); // use true/false for smooth/no-smooth
+    pfont = createFont("Courrier",10,true); // use true/false for smooth/no-smooth
     font = new ControlFont(pfont);
   
     controlP5 = new ControlP5(this);

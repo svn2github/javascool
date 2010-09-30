@@ -184,6 +184,7 @@
     return Keys;
   }
   
+  
   /** Encrypt un message à l'aide de clés  
    * @param m message à encrypter, à inscrire entre "".
    * @param pk1 clé publique1. 
@@ -217,4 +218,4 @@
     
   }
   
-     
+  static CryptageRSA proglet;  
