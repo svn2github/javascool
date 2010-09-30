@@ -625,7 +625,7 @@ public class Main extends JApplet { /**/public Main() { }
       addActivity(new ProcessingActivity("CryptageRSA", 600, 600) {
 	  public String getTitle() { return "Expérimenter avec la cryptographie"; }
 	  public void init() {
-	  super.init();
+	    super.init();
 	  }
 	});
     }
@@ -720,7 +720,9 @@ public class Main extends JApplet { /**/public Main() { }
 
     public void init() {
       if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
-      addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false);
+      addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false); 
+      jvsEditor.setProglet(name);
+      addTab("Document de la proglet", "sketchbook/"+name+"/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true);
       initCompile();
       initApplet();
     }

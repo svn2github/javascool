@@ -71,7 +71,7 @@
     <p>
       <p>«Exploration sonore»</p>
       <p><l link="../../../sketchbook/ExplorationSonore/about-proglet.htm" text="Description"/></p>
-      <p><!--l link="http://javascool.gforge.inria.fr/?page=api:proglet/tortuelogo/doc-files/the-proglet.htm" text="Proglet"/--></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/applets/ExplorationSonore.html" text="Proglet"/></p>
       <p><!--l link="../../../proglet/tortuelogo/doc-files/index.htm" text="Activité"/--></p>
       <p>CP<l class="note" link="4"/> </p>
       <p>permet de visualiser l'évolution temporelle et le contenu fréquentiel (le spectre) d'un son.</p>

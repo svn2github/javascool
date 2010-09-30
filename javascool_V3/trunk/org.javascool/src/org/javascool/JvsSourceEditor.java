@@ -64,6 +64,12 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
       addInsertion("synthePlay",           " synthePlay();", 0);
       addInsertion("syntheSet",            " syntheSet(\" \");", 12);
     }
+    if (proglet.equals("ExplorationSonore")) {
+      addInsertionSeparator();
+      addInsertion("playSignal",           " playSignal(\" \", , );", 13);
+      addInsertion("playRecord",           " playRecord(\" \", );", 14);
+      addInsertion("playStop",             " playStrop();", 0);
+    }
     {
       addInsertionSeparator();
       addInsertion("equal (entre String)", " equal( , );", 6);

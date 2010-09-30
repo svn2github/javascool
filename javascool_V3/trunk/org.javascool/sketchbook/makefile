@@ -6,7 +6,7 @@ export PATH:=$(J_HOME)/bin:$(PATH)
 export CLASSPATH=$(shell echo '$(J_HOME)/lib/tools.jar $(J_HOME)/jre/lib/rt.jar $(wildcard $(P_HOME)/lib/*.jar)' | sed 's/ /:/g')
 
 # Default rule
-all : gui jar
+all : gui jar sgn
 
 # Runs the processing interface GUI
 
@@ -22,6 +22,24 @@ jar :
 	@cd ../tmp ; zip -9qr ../lib/processing.zip *
 	@rm -rf ../tmp
 
+# Signs the generated jars and cp in www/applets dir
+
+sgn :
+	@for d in * ; do if [ -f $$d/applet/$$d.jar ] ; then $(MAKE) $$d/applet/$$d.key ; fi ; done
+	@for d in * ; do if [ -f $$d/applet/index.html ] ; then mv $$d/applet/index.html $$d/applet/$$d.html ; fi ; done
+	@mkdir -p ../www/applets ; cp */applet/*.* ../www/applets
+
+vendor=cecile.picard@inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
+public-key=hello-world
+private-key=mer,d,azof
+
+%.key : %.jar
+	@echo "sign $*"
+	@rm -f $@ ; mv $*.jar $*-tmp.jar
+	@keytool -genkey -alias javascool -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore $*.key
+	@jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore $*.key -signedjar $*.jar $*-tmp.jar javascool
+	@rm $*-tmp.jar $*.key
+
 # Runs the javasccol interface
 
 j3 :
@@ -29,22 +47,17 @@ j3 :
 
 #################################################################################################################
 
-# Tests the applet export
-
-APP = ExplorationSonore
-
-tst :
-	@echo 'grant { permission java.security.AllPermission; };' > applet.policy
-	@appletviewer -J-Djava.security.policy=./applet.policy $(APP)/applet/index.html
-	@rm applet.policy
-
 # Exports the applets without using the GUI (NOT YET AVAILABLE)
 
-APPS = CryptageRSA  ExplorationSonore
+APPS = ExplorationSonore CryptageRSA  
 
 export :
 	@rm -rf */applet
 	@for f in $(APPS) ; do cd $(P_HOME) ; java processing.app.Commander --build --sketch=$(PWD)/$$f --output=$(PWD)/$$f/applet ; done
+
+#
+
+# Manual commands to make it run with Linux.
 
 # Notes: as root we have to :
 # cp /usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/i386/libpulse-java.so  /usr/java/jdk1.6.0_21/jre/lib/i386/

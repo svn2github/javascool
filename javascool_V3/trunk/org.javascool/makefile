@@ -41,7 +41,7 @@ jar : htm www/javascool.jar
 J5=/usr/java/jdk1.5.0_22
 J5=/usr/java/jdk1.6.0_21
 
-vendor=thierry.vieville@sophia.inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
+vendor=thierry.vieville@inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
 version=3.0
 revision=$(shell svn info | grep '^R.vision *:' | sed 's/^R.vision *: *//')
 public-key=hello-world
