@@ -14,6 +14,13 @@ gui :
 	@rm -rf */applet
 	@cd $(P_HOME) ; java processing.app.Base
 
+# Generates the htm from xml
+
+htm : $(patsubst %.xml,%.htm,$(shell find . -name '*.xml'))
+
+%.htm : %.xml ../src/org/javascool/hdoc2htm.xslt
+	@java -jar ../lib/saxon.jar -o $@ $^
+
 # Generates the javascool jar include: processing.zip
 
 jar :
