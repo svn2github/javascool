@@ -104,12 +104,13 @@
     <link l="http://www.avem.fr"/>
   </tpe>
 
-  <tpe id="ciel-bleu" title="Pourquoi le ciel est bleu ?" icon="http://www.meteo.org/phenomen/blue_sky.gif" theme="A">
+  <tpe id="ciel-bleu" title="Pourquoi le ciel est bleu ?" icon="http://lespetiteschoses.viabloga.com/images/ciel_bleu.jpg" theme="A">
     Une question simple ? Pas sûr, les réponses que l'on trouve sur le web se contredisent parfois ! Comment savoir ce qui est vraiment vrai ?
     <div>Analyser les réponses internet, les vraies les fausses, les confronter à l'avis d'un physicien de l'université de Nice.</div>
     <div>Et puis . . maintenant que vous avez compris . . comment expliquer à quelqu'un selon son niveau scolaire, sa culture pourquoi le ciel est bien bleu ?</div>
     <div>Un peu de pratique ? Essayons de simuler la vibration des molécules d'azote (avec les tailles, dimensions, ..) avec le chercheur, 
     regarder quel serait la couleur du ciel si un autre gaz "inerte" remplçait l'azote, etc..</div>
+    <link l="http://lespetiteschoses.viabloga.com/news/pourquoi-le-ciel-est-bleu"/>
     <link l="http://eureka.povlab.org/fiche.php?qid=1"/>
     <link l="http://www.meteo.org/phenomen/cielbleu.htm"/>
   </tpe>
