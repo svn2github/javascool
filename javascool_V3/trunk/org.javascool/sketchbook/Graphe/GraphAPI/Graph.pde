@@ -217,13 +217,14 @@ class Graph {
     String next = nInit; // initialization
     Node Ninit = (Node) nodes.get(nInit);
     Node Ntarget = (Node) nodes.get(nTarget);
-    float d = 999;
+    float d = 999999;
     for(String ni_ : (Iterable<String>) Ninit.links.keySet())
     {
       Node Ni_ = (Node) nodes.get(ni_);
       if(path.indexOf(ni_) == -1 && restricted.indexOf(ni_) == -1) // si le noeud n'a pas été parcouru
       {
         float di = PVector.dist(Ni_.position, Ninit.position)+PVector.dist(Ntarget.position,Ni_.position);
+        println("di: " + di);
         if(di < d )
         {
           d = di;
@@ -248,6 +249,7 @@ class Graph {
     
     path.clear();
     restricted.clear();
+    println(" " + nStart + " à " + nEnd);
     String next = nStart;
     int its = 0;
     int tests = 0;
@@ -262,7 +264,7 @@ class Graph {
         restricted.add(path.get(path.size()-1));
         next = (String) path.get(0);
         path.clear();
-        println(tests);
+        //println(tests);
       }
     }
     if(tests < 100)

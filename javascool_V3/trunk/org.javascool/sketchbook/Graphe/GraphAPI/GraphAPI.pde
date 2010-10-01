@@ -13,16 +13,20 @@
  String firstSelect, secondSelect, start=null, end=null;
  ArrayList path, restricted;
  color pathC = color(0,124,30); 
+ HScrollbar hs1;
+ int topWidth; // width of text
    
  void setup()
  {
    
   size(screen.width,screen.height);//1200,800); 
-  
+  smooth();
   myGraph = new Graph();
   
   path = new ArrayList();
   restricted = new ArrayList();
+  
+  hs1 = new HScrollbar(0, 15, width, 15, 3*10+1);
   
  }
   
@@ -32,20 +36,20 @@
  
    background(130);
    Verdana = loadFont("Verdana-48.vlw");
+   float topPos = hs1.getPos()-width/2;
    
    textAlign(LEFT);
    fill(0, 40, 63);
-   textFont(Verdana, 12);
+   textFont(Verdana, 13);
    text(" - INSTRUCTIONS - \n " + 
-    ". Ajouter un noeud: clic gauche \n " +
-    ". Tracer des liens: clic centre \n " +
-    ". Effacer un noeud:  'd' \n " +
-    ". Bouger un noeud via la souris: 'm' \n " +
-    ". Génerer un placement de noeuds aléatoire: 'a' \n " +
-    ". Générer tous les liens possibles entre les noeuds: 'l' \n " +
+    ". Ajouter un noeud: clic gauche // Tracer des liens ou effacer des liens existants: clic centre // Effacer un noeud:  'd' // Bouger un noeud via la souris: 'm' \n " +
+    ". Génerer un placement de noeuds aléatoire: 'a' // Générer tous les liens possibles entre les noeuds: 'l' \n " +
     ". Faire apparaitre la pondération des liens: 'i' \n " +
-    ". Arreter l'application: ESC " ,10 ,20);
-   
+    ". Trouver le plus court chemin entre 2 noeuds: clic + 'p' \n " +
+    ". Arreter l'application: ESC " , topPos*2, 40);//10 ,20);
+   hs1.update();
+   hs1.display();
+  
    if(!pathSelect)
     start = null;
     
@@ -126,7 +130,7 @@
       }
       
    }
-   smooth();
+   
     
  }
  
