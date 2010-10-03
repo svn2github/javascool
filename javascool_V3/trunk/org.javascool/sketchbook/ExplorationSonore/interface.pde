@@ -5,7 +5,7 @@ void launchInterface(int largeur, int hauteur) {
     
   // Interface de manipulation: génère sinusoide, charge enregistrement, etc
   
-  controlWindow = controlP5.addControlWindow(" I N T E R F A C E ",0,hauteur/6,largeur,hauteur);
+  controlWindow = controlP5.addControlWindow(" I N T E R F A C E ",0,0,largeur,hauteur);
   controlWindow.hideCoordinates();
   //controlWindow.setUndecorated(true);
   controlWindow.setBackground(color(255));
@@ -274,4 +274,4 @@ public static void playStop() {
   proglet.StopAnySound();
 }
 
-static ExplorationSonore proglet;
+static ExplorationSonoreV1 proglet;

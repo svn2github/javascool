@@ -7,6 +7,9 @@
  *
  *////////////////////////////////////////////////////////////////////////////////////
   
+import processing.opengl.*;
+import javax.media.opengl.*;
+
 import ddf.minim.*;
 import ddf.minim.signals.*;
 import ddf.minim.analysis.*;
@@ -56,7 +59,7 @@ void setup() {
   frame = new Frame();
 
   f = createFont("Arial Bold",12,true);
-  size(800,512,P3D);
+  size(800,512,P3D);//OPENGL);
   frameRate(30);
   controlP5 = new ControlP5(this);
   font = new ControlFont(f);
@@ -76,7 +79,7 @@ void setup() {
   launchFFT();
   
   // Interface de manipulation: génère sinusoide, charge enregistrement, etc
-  launchInterface(512, 512);
+  launchInterface(475, 475);
   
   width_ = getWidthInterface();
   height_ = getHeightInterface();
