@@ -224,7 +224,6 @@ class Graph {
       if(path.indexOf(ni_) == -1 && restricted.indexOf(ni_) == -1) // si le noeud n'a pas été parcouru
       {
         float di = PVector.dist(Ni_.position, Ninit.position)+PVector.dist(Ntarget.position,Ni_.position);
-        println("di: " + di);
         if(di < d )
         {
           d = di;
@@ -232,7 +231,7 @@ class Graph {
         }
       }
     }
-    //println("Distance parcourue par le trajet: " + d );
+    println("Distance parcourue par le trajet: " + d );
     path.add(nInit);
     return next;
   
@@ -274,3 +273,7 @@ class Graph {
   }
     
 }
+
+
+// Taille pour l'insertion dans JavaScool
+  public static final int WIDTH = 1024, HEIGHT = 700;

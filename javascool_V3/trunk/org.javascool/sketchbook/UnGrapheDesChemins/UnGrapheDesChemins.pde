@@ -19,14 +19,14 @@
  void setup()
  {
    
-  size(screen.width,screen.height);//1200,800); 
+  size(1024,700); //screen.width,screen.height);//1200,800); 
   smooth();
   myGraph = new Graph();
   
   path = new ArrayList();
   restricted = new ArrayList();
   
-  hs1 = new HScrollbar(0, 15, width, 15, 3*10+1);
+  hs1 = new HScrollbar(0, 15, width, 15, 3+1);
   
  }
   
@@ -101,6 +101,7 @@
       Node N_ = (Node) myGraph.nodes.get(ni_);
       fill(255, 150, 0);
       stroke(0);
+      strokeWeight(1);
       ellipse(N_.x,N_.y,20,20);
       noStroke();
       textFont(Verdana, width*14/800);

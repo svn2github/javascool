@@ -8,6 +8,7 @@ class HScrollbar
   int loose;              // how loose/heavy
   boolean over;           // is the mouse over the slider?
   boolean locked;
+  boolean show = false;
   float ratio;
 
   HScrollbar (int xp, int yp, int sw, int sh, int l) {
@@ -26,27 +27,16 @@ class HScrollbar
 
   void update() {
     if(over()) {
-      over = true;
+        newspos = width/2;//constrain(mouseX-sheight/2, sposMin, sposMax);
     } else {
-      over = false;
+        newspos = 0;
     }
-    if(mousePressed && over) {
-      locked = true;
-    }
-    if(!mousePressed) {
-      locked = false;
-    }
-    if(locked) {
-      newspos = constrain(mouseX-sheight/2, sposMin, sposMax);
-    }
+   
     if(abs(newspos - spos) > 1) {
       spos = spos + (newspos-spos)/loose;
     }
   }
 
-  int constrain(int val, int minv, int maxv) {
-    return min(max(val, minv), maxv);
-  }
 
   boolean over() {
     if(mouseX > xpos && mouseX < xpos+swidth &&
@@ -60,16 +50,15 @@ class HScrollbar
   void display() {
     fill(255);
     strokeWeight(0.1);
-    rect(xpos, ypos, swidth, sheight);
-    if(over || locked) {
+    if(over()) {
       fill(0, 40, 63);
     } else {
       fill(255, 150, 0);
     }
-    rect(spos+sheight/2, ypos, sheight*5, sheight);
+    rect(sheight/2, ypos, sheight*5, sheight);
     fill(130);
     textFont(Verdana, 11);
-    text("I N F O >>>", spos+sheight/2+sheight/5, ypos+4*sheight/5);
+    text("I N F O >>>", sheight/2+sheight/5, ypos+4*sheight/5);
     
   }
 
