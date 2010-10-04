@@ -47,7 +47,7 @@
     
     frame = new Frame();
     
-    size(screen.width,screen.height);
+     size(WIDTH, HEIGHT); // au lieu de size(screen.width,screen.height);
     frameRate(30);
     pfont = createFont("Courrier",10,true); // use true/false for smooth/no-smooth
     font = new ControlFont(pfont);

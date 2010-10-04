@@ -733,7 +733,7 @@ public class Main extends JApplet { /**/public Main() { }
 	final boolean popup = true;
 	applet = (Applet) Class.forName(name).newInstance();
 	try { width = (Integer) Class.forName(name).getDeclaredField("WIDTH").get(null); } catch(Throwable e) { System.err.println("Width undefined !"); width = 800; }
-	try { height = (Integer) Class.forName(name).getDeclaredField("HEIGHT").get(null); } catch(Throwable e) { System.err.println("Height undefined !"); height = 600; }
+	try { height = 20 + (Integer) Class.forName(name).getDeclaredField("HEIGHT").get(null); } catch(Throwable e) { System.err.println("Height undefined !"); height = 600; }
 	if (popup) {
 	  frame = Utils.show(applet, name, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"), width, height, false);
 	  frame.setResizable(false);

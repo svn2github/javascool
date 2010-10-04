@@ -61,7 +61,7 @@
     frame = new Frame();
   
     f = createFont("Arial Bold",12,true);
-    size(800, 600);//size(800,512);//,P3D);//OPENGL);
+    size(WIDTH, HEIGHT);
     frameRate(30);
     controlP5 = new ControlP5(this);
     font = new ControlFont(f);
