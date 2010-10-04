@@ -22,15 +22,21 @@
     
     myTextfield_p.setText("P = "+ p + " ");
     myTextfield_q.setText("Q = "+ q + " ");
-    myTextfield_EncMessBitsA.hide();
+    //if(myTextfield_EncMessBitsA.isVisible()) {
+    myTextfield_EncMessBitsA.hide();//hide();
+    //println("VU!");
+    //myTextfield_EncMessBitsA.update();
+    //}
     controlP5.controller("decrypt_m").hide();
     myTextfield_DecMessBits.hide();
+    //myTextfield_DecMessBits.update();
   }
   
   void calculate_n() {
     // Calculer n = p×q
     n = p.multiply(q);
     myTextfield_n.setText("N = P x Q =   "+ n + " ");
+    
   }
   
   void launch_e() {

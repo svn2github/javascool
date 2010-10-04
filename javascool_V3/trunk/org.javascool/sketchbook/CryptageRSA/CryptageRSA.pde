@@ -38,6 +38,8 @@
   int buttonValueB = 1;
   boolean isOpen, isOpenB;
   int myOr = color(255,100,0);
+  int myGreen = color(0,100,30);
+  int myGreenA = color(0,200,100);
   int myRed = color(255,0,0);
   
   // Ce qui est lancé une fois, au départ
@@ -45,26 +47,24 @@
     
     frame = new Frame();
     
-    size(600,600);
+    size(screen.width,screen.height);
     frameRate(30);
     pfont = createFont("Courrier",10,true); // use true/false for smooth/no-smooth
     font = new ControlFont(pfont);
   
     controlP5 = new ControlP5(this);
-    controlP5.setAutoDraw(false);
     
     ////////////////////////////////////////////////////
     /// ALICE
     
     this.frame.setTitle("Alice"); // interface principale: celle d'Alice
-    this.frame.setUndecorated(true);
+    //this.frame.setUndecorated(true);
     
     interfaceAlice();
     
   
     ////////////////////////////////////////////////////
     /// BOB 
-    
     interfaceBob();
     
   }
@@ -74,6 +74,8 @@
   void draw() {
     
     background(0);
+    fill(150);
+    rect(width/2+1, 0, width/2, height);
     controlP5.draw();
     
     // Fenetres informatives
@@ -93,7 +95,7 @@
      BigInteger[] myKeys = new BigInteger[3];
      myKeys = createKeys();  
      BigInteger EncMess;
-     EncMess = encrypt("BIBI IS TODAY", myKeys[1], myKeys[2]);
+     EncMess = encrypt("oh oh je suis le père Noel!!!", myKeys[1], myKeys[2]);
      println("Public Key is: " + myKeys[1] + " " + myKeys[2] + " // encrypted message: " + EncMess);
    }
    
@@ -102,7 +104,7 @@
      myKeys = createKeys();  
      BigInteger EncMess;
      String decryptedMessage;
-     EncMess = encrypt("BIBI IS TODAY", myKeys[1], myKeys[2]);
+     EncMess = encrypt("oh oh je suis le père Noel!!!", myKeys[1], myKeys[2]);
      decryptedMessage = decrypt(EncMess, myKeys);
      println("Public Key is: " + myKeys[1] + " " + myKeys[2] + " // encrypted message: " + EncMess);
      println("Private Key is: " + myKeys[0] + " // decrypted message: " + decryptedMessage);

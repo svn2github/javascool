@@ -200,7 +200,7 @@
   void drawSignal(String n) {
   
     stroke(255);
-    strokeWeight(1.5);  
+    strokeWeight(1);  
     int k; 
     if(n.equals("out")) {
       k = out.bufferSize();
@@ -292,5 +292,5 @@
     proglet.StopAnySound();
   }
   
-  static ExploSonoreB proglet;
+  static ExplorationSonore proglet;
 

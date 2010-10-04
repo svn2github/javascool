@@ -55,6 +55,7 @@
   
   // Ce qui est lancé une fois, au départ
   void setup() {
+    frameRate(60);
     // Ces deux lignes permettent l'interface avec JavaScool
     proglet = this;
     frame = new Frame();
@@ -133,10 +134,10 @@
       signal1.setSignal("noise", 1000, 0.2);
     }
     if (key == 'e') {
-      record1.setRecord("../../data/music/Ahmed_Ex2.wav");
+      record1.setRecord("data/music/Ahmed_Ex2.wav");
     }
     if ( key=='f') {
-      record1.setFilter("../../data/music/Ahmed_Ex2.wav", 500);
+      record1.setFilter("data/music/Ahmed_Ex2.wav", 500);
     }
     if ( key=='s') {
       StopAnySound();
