@@ -62,10 +62,4 @@ export :
 	@rm -rf */applet
 	@for f in $(APPS) ; do cd $(P_HOME) ; java processing.app.Commander --build --sketch=$(PWD)/$$f --output=$(PWD)/$$f/applet ; done
 
-#
-
-# Manual commands to make it run with Linux.
-
-# Notes: as root we have to :
-# cp /usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/i386/libpulse-java.so  /usr/java/jdk1.6.0_21/jre/lib/i386/
-# cp /usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/ext/pulse-java.jar /usr/java/jdk1.6.0_21/
+#See http://wiki.inria.fr/sciencinfolycee/JavaScool:ProcessingLinux for more infos
