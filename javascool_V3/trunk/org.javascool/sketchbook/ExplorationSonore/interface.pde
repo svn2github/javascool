@@ -293,4 +293,6 @@
   }
   
   static ExplorationSonore proglet;
-
+  
+  // Taille pour l'insertion dans JavaScool
+  public static final int WIDTH = 800, HEIGHT = 600;

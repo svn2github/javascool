@@ -616,13 +616,13 @@ public class Main extends JApplet { /**/public Main() { }
 	}});
     // Adds processing activities
     if (withProcessing) {
-      addActivity(new ProcessingActivity("ExplorationSonore", 1024, 768) {
+      addActivity(new ProcessingActivity("ExplorationSonore") {
 	  public String getTitle() { return "Exploration du signal sonore"; }
 	  public void init() {
 	    super.init();
 	  }
 	});
-      addActivity(new ProcessingActivity("CryptageRSA", 600, 600) {
+      addActivity(new ProcessingActivity("CryptageRSA") {
 	  public String getTitle() { return "Expérimenter avec la cryptographie"; }
 	  public void init() {
 	    super.init();
@@ -716,7 +716,7 @@ public class Main extends JApplet { /**/public Main() { }
      * @param processing The processing to use.
      * @throws IllegalArgumentExceptionif the processing is undefined.
      */
-    public ProcessingActivity(String processing, int w, int h) { name = processing; width = w; height = h; } private String name; private int width, height;
+    public ProcessingActivity(String processing) { name = processing; } private String name; private int width, height;
 
     public void init() {
       if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
@@ -732,6 +732,8 @@ public class Main extends JApplet { /**/public Main() { }
       try {
 	final boolean popup = true;
 	applet = (Applet) Class.forName(name).newInstance();
+	try { width = (Integer) Class.forName(name).getDeclaredField("WIDTH").get(null); } catch(Throwable e) { System.err.println("Width undefined !"); width = 800; }
+	try { height = (Integer) Class.forName(name).getDeclaredField("HEIGHT").get(null); } catch(Throwable e) { System.err.println("Height undefined !"); height = 600; }
 	if (popup) {
 	  frame = Utils.show(applet, name, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"), width, height, false);
 	  frame.setResizable(false);
@@ -739,58 +741,18 @@ public class Main extends JApplet { /**/public Main() { }
 	} else {
 	  applet.init(); applet.start();
 	  Macros.sleep(1000);
-	  addTab(name+"1", applet, "org/javascool/doc-files/icones16/edit.png", true);
-	  initControl();
-	  addTab(name+"2", control, "org/javascool/doc-files/icones16/edit.png", false);
+	  applet.setMinimumSize(new Dimension(width, height));
+	  addTab(name, applet, "org/javascool/doc-files/icones16/edit.png", true);
 	}
       } catch(Throwable e) { System.out.println("Désolé, l'activité "+name+" n'est pas définie dans cette version ("+e+")."); }
       System.setOut(out);
     } 
     private Applet applet = null;
-    private void initControl() {  
-      if (applet != null) {
-	try {
-	  control = (Applet) Class.forName(name).getDeclaredMethod("getControl").invoke(applet);
-	} catch(Throwable e) { Utils.report(e); System.err.println("Undefined processing control ("+e+") : "+name); }
-      }
-    }
-    private Applet control = null;
     public void stop() { 
       if (frame != null) { frame.dispose(); frame = null; } 
-      initControl(); if (control != null) { control.setVisible(false); }
     }
     private JFrame frame = null;
   }
-  /* This deos NOT work keep here . . to copy/cut for other developments
-  // Adds a component mover
-  private void addProcessingDriver() {
-    if (!frameDriver) {
-      System.err.println("DRV");
-      frameDriver = true;
-      ((JFrame) getParent()).addWindowListener(new WindowListener() {
-	  public void windowOpened(WindowEvent e) { }
-	  public void windowClosing(WindowEvent e) { }
-	  public void windowClosed(WindowEvent e) { if (rightFrame != null) rightFrame.dispose(); }
-	  public void windowIconified(WindowEvent e) { System.err.println("MIN"); if (rightFrame != null) rightFrame.setVisible(false); }
-	  public void windowDeiconified(WindowEvent e) { System.err.println("MAX"); if (rightFrame != null) rightFrame.setVisible(true); relocateFrames(); }
-	  public void windowActivated(WindowEvent e) { }
-	  public void windowDeactivated(WindowEvent e) { }
-	});
-    }
-  }
-  private void relocateFrames() {
-    if (rightFrame != null) {
-      /*
-      rightFrame.setLocationRelativeTo(this);
-      rightFrame.setLocation(20, 100);
-      * /
-      int x = getX() + getWidth() - rightFrame.getWidth() - 20, y = getY() + getHeight() - rightFrame.getHeight() - 20;      
-      System.err.println("move ("+x+" "+y+")");
-      // rightFrame.setLocation(x, y);
-    }
-  }
-  private JFrame rightFrame = null; private boolean frameDriver = false;
-  */
 
   // Defines a AlgoTree proglet activity
   private abstract class AlgoEditorActivity extends JavaActivity {

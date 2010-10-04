@@ -251,3 +251,5 @@
    * @return les clés
    */  
   
+  // Taille pour l'insertion dans JavaScool
+  public static final int WIDTH = 1024, HEIGHT = 700;
