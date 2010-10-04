@@ -1,0 +1,40 @@
+<div title="La «proglet» Exploration sonore">
+  <p class="margin">Autres <l link="../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+  <p>Cette proglet<l class="note" link="1"/> permet de visualiser l'évolution temporelle et le contenu fréquentiel (le spectre) d'un son, 
+  d'une parole, d'un extrait musical ou d'un signal sonore numérique.</p>
+  <p>L'analyse s'effectue en temps réel. 
+  Dès l'ouverture de l'application on peut visualiser les sons émis par soi-même ou dans l'environnement grâce à la captation par microphone. 
+  L'application permet également de générer des signaux numériques (sinusoïde, signaux carrés et scie, bruit), pour en observer le spectre.
+  Finalement on peut lancer des enregistrements (musicaux ou autres), et en visualiser les représentations temporelles et fréquentielles.</p>
+  <p>Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: <div class="code">
+    <m>Lancer un signal prédéfini:</m>
+    <p><r>ExplorationSonore.playSignal</r>(<r>String</r> type, <r>double</r> frequence, <r>double</r> amplitude)</p>
+    </div>où: <div class="ul">
+      <p><c>type</c> est le type de signal à choisir parmi: "sine" (sinusoïde), "square" (signal carré), "saw" (signal en dent de scie scie), "noise" (bruit, ici bruit blanc);</p>
+      <p><c>frequence</c> est la fréquence en Hz, à choisir entre 100 et 8000.</p>
+      <p><c>amplitude</c> est l'amplitude, à choisir entre 0 (silence) et 1 (100% du volume sonore).</p>
+    </div><div class="code">
+    <m>Lancer un signal enregistré:</m>
+    <p><r>ExplorationSonore.playRecord</r>(<r>String</r> location, <r>double</r> frequence, <r>double</r> amplitude)</p>
+    </div>où: <div class="ul">
+      <p><c>location</c>désigne le chemin de l'enregistrement sonore (par exemple: <c>../data/music/Ahmed_Ex2.wav</c>).</p>
+      <p><c>frequence</c> est la fréquence de coupure en Hz, qui élimine les aigues, à choisir entre 100 et 8000.</p>
+      <p><c>amplitude</c> est l'amplitude, à choisir entre 0 (silence) et 1 (100% du volume sonore).</p>
+    </div>Si l'argument <c>location</c> n'est pas spécifié un sélecteur de fichier s'ouvre.<div class="code">
+    <m>Arrêter une émission sonore:</m>
+    <p><r>ExplorationSonore.playStop</r>()</p>
+  </div>arrêtera l'émission sonore et remettra la visualisation des sons capté par le microphone.
+  </p>
+   <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
+   <div class="notes">
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, 
+    programmée en <l link="http://processing.org" text="Processing"/> et disponible sous forme de code documenté:
+    <div class="table"><p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/ExplorationSonore/ExplorationSonore.pde.html" text="ExplorationSonore"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/ExplorationSonore/interface.pde.html" text="interface"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/ExplorationSonore/record.pde.html" text="record"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/ExplorationSonore/signal.pde.html" text="signal"/></p>
+    </p></div>
+    pour permettre des développements dérivés.</div>
+  </div>
+</div>
