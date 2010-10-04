@@ -34,7 +34,7 @@ jar :
 sgn :
 	@for d in * ; do if [ -f $$d/applet/$$d.jar ] ; then $(MAKE) $$d/applet/$$d.key ; fi ; done
 	@for d in * ; do if [ -f $$d/applet/index.html ] ; then mv $$d/applet/index.html $$d/applet/$$d.html ; fi ; done
-	@mkdir -p ../www/applets ; cp */applet/*.* ../www/applets
+	@mkdir -p ../www/applets ; cp -u */applet/*.jar */applet/*.html ../www/applets ; svn -q add ../www/applets/*.*
 
 vendor=cecile.picard@inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
 public-key=hello-world
