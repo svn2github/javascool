@@ -22,14 +22,10 @@
     
     myTextfield_p.setText("P = "+ p + " ");
     myTextfield_q.setText("Q = "+ q + " ");
-    //if(myTextfield_EncMessBitsA.isVisible()) {
-    myTextfield_EncMessBitsA.hide();//hide();
-    //println("VU!");
-    //myTextfield_EncMessBitsA.update();
-    //}
+    myTextfield_EncMessBitsA.hide();
     controlP5.controller("decrypt_m").hide();
     myTextfield_DecMessBits.hide();
-    //myTextfield_DecMessBits.update();
+
   }
   
   void calculate_n() {
