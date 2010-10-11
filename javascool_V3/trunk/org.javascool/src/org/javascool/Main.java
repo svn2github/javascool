@@ -42,11 +42,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.lang.Object;
 
-/* Used for the location/size control when in floatable mode
-import java.awt.event.WindowListener;
-import java.awt.event.WindowEvent;
-*/
-
 // Used to manage keystroke
 import javax.swing.KeyStroke;
 import javax.swing.JFrame;
@@ -187,7 +182,11 @@ public class Main extends JApplet { /**/public Main() { }
     private static final long serialVersionUID = 1L;
     public HtmlDisplay load(String location) { 
       if(location.matches("^(http|https|rtsp|mailto):.*$")) {
-	reset("Cette page est à l'adresse internet: <tt>"+location.replaceFirst("^(mailto):.*", "$1: ...")+"</tt> (non accessible ici).");  
+	try {
+	  java.awt.Desktop.getDesktop().browse(new java.net.URI(location));
+	} catch(Exception e) {
+	  reset("Cette page est à l'adresse internet: <tt>"+location.replaceFirst("^(mailto):.*", "$1: ...")+"</tt> (non accessible ici).");  
+	}
       } else {
         super.load(location);
       }

@@ -1,137 +1,311 @@
 
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<div>
-   <h2>vrac a trier.</h2>
+<div align="right"></div>
+<div class="sujet">
+   <h2>Un tutoriel sur les tableaux.</h2> 
    
+   <h2>Objectif.</h2>
+   <div class="objectif">
+      Le but de ce tutoriel est d'apprendre &agrave; utiliser et manipuler les structures de donn&eacute;es que sont les tableaux.
+      Il faut d&eacute;ja savoir <a href="../../ingredients/doc-files/sujet-hello-world.htm">utiliser l'interface</a>,
+          se servir de <a href="../../ingredients/doc-files/sujet-about-variables.htm">variables</a> 
+          et avoir d&eacute;couvert l'<a href="../../ingredients/doc-files/sujet-about-if.htm">instruction conditionnelle</a> et 
+          les <a href="../../ingredients/doc-files/sujet-about-while.htm">boucles</a>, 
+          ansi que les <a href="../../ingredients/doc-files/sujet-about-functions.htm">fonctions</a>..
+        
+   </div>
    
+     
+   <h2>Introduction.</h2>
+   <div id="intros">
+      <ol>
+         <li>
+            <div>
+               <h3>La notion de tableau.</h3> Un tableau constitue la mani&egrave;re la plus efficace pour stocker et acc&eacute;der al&eacute;atoirement &agrave; une s&eacute;quence de donn&eacute;es.
+                     Chaque donn&eacute;e est r&eacute;f&eacute;renc&eacute;e par un <i>index</i> compt&eacute; <i>&agrave; partir de z&eacute;ro</i>, par exemple, en &eacute;crivant:
+                     
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div><font color="#990000"><b>String</b></font> names = {<span>Alice</span>, <span>Bob</span>, <span>Samia</span>, <span>Zheng-You</span>};
+                              </div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                     nous avons cr&eacute;&eacute; une collection de quatre jolis<sup><a href="#2">2</a></sup> pr&eacute;noms, et la variable <tt>noms[0]</tt> a pris la valeur <span>Alice</span> et, 
+                     par exemple, <tt>noms[2]</tt> a pris la valeur <tt><span>Samia</span></tt>. On peut lire une valeur d'un tableau, par exemple:
+                     
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div><font color="#990000"><b>String</b></font> him = noms[3];
+                              </div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                     donne la valeur <span>Zheng-You</span> &agrave; la variable de nom <tt>him</tt>. On peut aussi changer la valeur d'un tableau, par exemple:
+                     
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div>noms[2] = <span>Samiha</span>;
+                              </div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                     changera la valeur de la <i>3&egrave;me</i> valeurs du tableau, celle d'index <i>2</i>.
+                   
+            </div>
+         </li>
+         <li>
+            <ul class="ul">
+               <h3>La taille du tableau.</h3>
+                     
+               <li>La taille<sup><a href="#1">1</a></sup> d'un tableau est fix&eacute;e lors de la cr&eacute;ation et ne peut plus &ecirc;tre chang&eacute; pendant toute la dur&eacute;e de sa vie.
+               </li>
+                     
+               <li>La taille d'un tableau est donn&eacute;e par la variable <tt>noms.<font color="#990000"><b>length</b></font></tt> (dans notre cas elle vaut <tt>4</tt>).
+               </li>
+                     
+               <li>Si on tente d'acc&eacute;der &agrave; une case du tableau qui n'existe pas (par exemple <tt>noms[-1]</tt> ou <tt>noms[4]</tt>),
+                        alors une erreur est g&eacute;n&eacute;r&eacute;e lors de l'ex&eacute;cution du programme.
+               </li>
+                     
+               <li>Note:Il y a d'autres structures de donn&eacute;es (des "piles", des "tables", etc..) de taille variable, . . mais c'est une autre
+                  histoire.
+                        Ces autres structures qui peuvent d'ailleurs &ecirc;tre ind&eacute;x&eacute;es par autre chose que des entiers positifs: des mots, des objets
+                  num&eacute;riques, etc..
+               </li>
+                   
+            </ul>
+         </li>
+      </ol>
+   </div>
    
-   Le but de ce tutoriel est de vous apprendre &agrave; utiliser et manipuler les structures de donn&eacute; que sont les tableaux.
-   
-   
-   Le but de ce tutoriel est de vous apprendre &agrave; utiliser et manipuler les structures de donn&eacute; que sont les tableaux.
-   
-   Notes :
-   
-   Pour r&eacute;aliser ce tutoriel vous pouvez utiliser les fonctions pr&eacute;sente dans la bo&icirc;te &agrave; outils dont le fonctionnement est rappel&eacute;
-   dans le manuel d'utilisation.
-   
-   Vous trouverez ici un rappel sur les tableaux .
-   
-   voici l'exemple du programme qui range dans un tableau diff&eacute;rents nombres et qui les affiches :
-   
-   Exemple{
-   
-   void afficher(int[] tab){
-   for(int i=0 ; i&lt;tab.length; i++){
-   println(tab[i]+"");
-   }
-   }
-   
-   
-   void main(){
-   int[] tab = new int[8];
-   tab[0] = 1;
-   tab[1] = 2;
-   tab[2] = 3;
-   tab[3] = 4;
-   tab[4] = 5;
-   tab[5] = 6;
-   tab[6] = 7;
-   tab[7] = 8;
-   afficher(tab);
-   }
-   }
-   Le fichier correspondant : Exemple.jvs
-   
-   Travaille demand&eacute; :
-   
-   Le programme suivant est-il correct ? expliquez pourquoi.
-   
-   void main(){
-   int[] tab = new int[8];
-   tab[0] = 10;
-   tab[1] = 5;
-   tab[2] = 9;
-   tab[3] = "trois";
-   tab[4] = 7;
-   tab[5] = 59;
-   tab[6] = "douze";
-   tab[7] = 1;
-   }
-   
-   Ecrivez une fonction "ajouterUn(...)" qui ajoute dans le tableau plac&eacute; en param&eacute;tre 10 fois le chiffre 1 ,faites ceci &agrave; l'aide
-   d'une boucle "for".
-   Faites afficher le tableau.
-   
-   Faite la m&ecirc;me chose que la question pr&eacute;cedente avec une boucle "while".
-   Les tableaux se distinguent des autres conteneurs sur deux points : l'efficacit&eacute; et le type. Un tableau constitue la mani&egrave;re
-   la plus efficace que propose Java pour stocker et acc&eacute;der al&eacute;atoirement &agrave; une s&eacute;quence d'objets (en fait de r&eacute;f&eacute;rence sur
-   ces objets). Un tableau est une simple s&eacute;quence lin&eacute;aire, ce qui rend l'acc&egrave;s aux &eacute;l&eacute;ments extr&ecirc;mement rapide; mais cette
-   rapidit&eacute; se paye : la taille d'un tableau est fix&eacute;e lors de la cr&eacute;ation et ne peut plus &ecirc;tre chang&eacute; pendant toute la dur&eacute;e
-   de sa vie. Une solution est de cr&eacute;er un nouveau tableau et de d&eacute;placer toutes les r&eacute;f&eacute;rences de l'ancien tableau vers le nouveau.
-   [modifier] D&eacute;claration de tableaux
-   
-   La cr&eacute;ation de tableaux en Java se fait &agrave; peu pr&egrave;s de la m&ecirc;me mani&egrave;re que la cr&eacute;ation de variables. Prenons l'exemple suivant
-   :
-   
-   String[] monTableau ;
-   //On a cr&eacute;&eacute; un tableau de cha&icirc;nes de caract&egrave;res mais ce tableau n'est
-   //pas encore utilisable car il n'a pas de taille !
-   monTableau = new String[nombreDObjets] ;
-   //Il est maintenant utilisable et index&eacute; de 0 &agrave; nombreDObjets-1.
-   //On peut toutefois compresser l'&eacute;criture en mettant directement :
-   String[] monTableau2 = new String[nombreDObjets] ;
-   
-   Il est possible de faire des tableaux de tout type de donn&eacute;es, y compris les types que l'on cr&eacute;e soit m&ecirc;me (mais nous verrons
-   &ccedil;a dans le chapitre sur les objets). Il est aussi possible de cr&eacute;er des tableaux de tableaux et plus encore. Par exemple :
-   
-   int[][] tableauDeTableau = new int[5][4] ;
-   //Ainsi tableauDeTableau est en r&eacute;alit&eacute; une matrice de taille 5x4.
-   //Ceci peut &ecirc;tre tr&egrave;s utile pour la manipulation de grille par exemple.
-   boolean[][][] pave = new boolean[3][4][5] ;
-   //On peut aussi cr&eacute;er des tableaux &agrave; plus de deux dimensions, 
-   //on n'est en fait pas limit&eacute; dans la dimension de notre tableau
-   
-   Remarque : un tableau ne peut contenir qu'un seul type de donn&eacute;e. Ainsi, il est impossible de stocker des entiers dans un
-   tableau qui a &eacute;t&eacute; d&eacute;clar&eacute; comme contenant des cha&icirc;nes de caract&egrave;res.
-   [modifier] Utilisation de tableaux
-   
-   Maintenant que l'on sait d&eacute;clarer un tableau, il peut &ecirc;tre int&eacute;ressant de savoir comment s'en servir. Plusieurs choses sont
-   &agrave; savoir :
-   
-   * la premi&egrave;re est comment utiliser les objets pr&eacute;sents dans le tableau
-   * la deuxi&egrave;me est comment utiliser de mani&egrave;re pratique les tableaux
-   
-   int[] monTableau = new int[5] ;
-   //Ici on cr&eacute;e un tableau de 5 entier, les indices du tableau
-   //vont donc de 0 &agrave; 4.
-   
-   for(int i=0 ; i&lt;monTableau.length ; ++i){
-   monTableau[i] = i + 1 ;
-   }
-   
-   Ici, on utilise une boucle for pour parcourir l'ensemble du tableau. On utilisera le plus souvent ce genre de boucle sur les
-   tableaux car leur taille est d&eacute;finie lors de la d&eacute;claration et donc on connait leur taille. Pour &ecirc;tre sur de ne pas se tromper
-   sur la taille du tableau, ce nous ferait sortir du tableau lors de l'ex&eacute;cution de la boucle, on utilise ici la m&eacute;thode length
-   qui est valable sur tous les tableaux de donn&eacute;es de type de base.
-   
-   Si l'on cr&eacute;e un tableau d'objets qui ne sont pas d'un type de base, il faudrait alors utiliser la m&eacute;thode length() h&eacute;rit&eacute;e
-   de Object mais on reverra ceci plus en d&eacute;tail dans le partie destin&eacute;e aux objets.
-   
-   monTableau[i] d&eacute;signe le i+1 i&egrave;me entier de monTableau
-   
-   
-   
-   
-   
-   construire
-   lire/ecrire
-   it&eacute;rer 
-   d&eacute;truire
-   
-   tab;eaux &agrave; plusieurs dimensions
-   
-   
+     
+   <h2>Travail propos&eacute;.</h2>
+   <div id="works">
+      <ol>
+         <li>
+            <div>
+               <h3>Manipuler un tableau de valeurs num&eacute;riques.</h3> La construction suivante va vous permettre de cr&eacute;er<sup><a href="#3">3</a></sup> un tableau de dix nombres entiers:
+                     
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div><font color="#990000"><b>int</b></font> squares[] = <font color="#990000"><b>new</b></font> <font color="#990000"><b>int</b></font>[10];
+                              </div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                     C'est la commande <font color="#990000"><b>new</b></font> qui permet de construire ce tableau.
+                     La construction de remplir les valeurs avec des <tt>1</tt>:
+                    
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                     
+                              <div><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = 0; i &lt;squares.<font color="#990000"><b>length</b></font>; i++) {
+                              </div>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 squares[i] = 1;
+                              </div>
+                                     
+                              <div>}</div>
+                                   
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                    et cette construction d'imprimer toutes les valeurs du tableau:
+                    
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                     
+                              <div><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = 0; i &lt;squares.<font color="#990000"><b>length</b></font>; i++) {
+                              </div>
+                                     
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 println(<span>squares[</span>+i+<span>] = </span>+squares[i]);
+                              </div>
+                                     
+                              <div>}</div>
+                                   
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                    Mettez ces trois blocs bout &agrave; bout et observer.
+                    
+               <div>Modifier le code pour .. non pas imprimer des <tt>1</tt> mais imprimer les dix premiers carr&eacute;s : <tt>0, 1, 4, 9, ..</tt>.
+               </div>
+                   
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Trouver l'erreur !!.</h3> Le morceau de programme suivant est-il correct ? expliquez pourquoi.
+                     
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">    
+                                      
+                              <div><font color="#990000"><b>int</b></font> tab[] = <font color="#990000"><b>new</b></font> <font color="#990000"><b>int</b></font>[5];
+                              </div>
+                                      
+                              <div>tab[0] = 5;</div>
+                                      
+                              <div>tab[1] = 9;</div>
+                                      
+                              <div>tab[2] = "trois";</div>
+                                      
+                              <div>tab[3] = 59;</div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                     Note aussi que l'&eacute;l&eacute;ment <tt>tab[4]</tt> n'a pas &eacute;t&eacute; initialis&eacute; . . c'est &agrave; dire que personne n'a donn&eacute; de valeur &agrave; cette case du tableau. 
+                     
+               <div>Faire un petit code pour v&eacute;rifier &agrave; quelle valeur Java initialise les valeurs des tabelaux par d&eacute;faut. Lancer le code plusieurs
+                  fois, pour exp&eacute;rimenter.
+               </div>
+                   
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Appliquer une fonction &agrave; un tableau.</h3> Cr&eacute;er la fonction:
+                     
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div><font color="#990000"><b>void</b></font> incremente(<font color="#990000"><b>int</b></font> tab[]) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 ../..
+                              </div>
+                                      
+                              <div>}</div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                     qui prend un tableau et multiplie par deux tous ces &eacute;l&eacute;ments. Ecrire un petit code qui illustre cette fonction.
+                     
+               <div>Nous notons ici que la <i>r&eacute;f&eacute;rence</i> du tableau est pass&eacute; &agrave; la fonction <tt>incremente</tt> qui peut donc le modifier. 
+                        Le tableau n'est donc pas recopi&eacute; avant d'&ecirc;tre pass&eacute; &agrave; la fonction.
+               </div>
+                   
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Tableaux &agrave; plusieurs dimensions.</h3> Ecrite un algorithme qui remplisse ce tableau &agrave; deux dimensions:
+                     
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div><font color="#990000"><b>int</b></font> table[][] = <font color="#990000"><b>new</b></font> <font color="#990000"><b>int</b></font>[11][11];
+                              </div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                     avec la cable de multiplication, c'est &agrave; dire de mani&egrave;re &agrave; ce que <tt>table[i][j]</tt> soit le produit de <tt>i</tt> par <tt>j</tt> et &eacute;crire le r&eacute;sultat sous forme de table.
+                     
+               <div>On voit ici qu'il est tr&egrave;s facile de passer &agrave; des tableaux de dimensions quelconques.</div>
+                   
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Aller plus loin: un exemple de jeu avec des tableaux..</h3> 
+                      Prendre connaissance du <a href="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/doc-files/JeuDePendu.jvs.html">petit programme</a> ,
+                      propos&eacute; par des lyc&eacute;ens, qui permet de jouer <a href="http://fr.wikipedia.org/wiki/Le_pendu_%28jeu%29">jeu du pendu</a> et s'en inspirer pour cr&eacute;er un autre 
+                      <a href="http://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Jeu_de_papier_et_crayon">jeu de crayon</a>
+                      comme le <a href="http://fr.wikipedia.org/wiki/Mastermind">mastermind</a> . !
+                    
+            </div>
+         </li>
+      </ol>
+   </div>
+     
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div id="1">
+               <h3>Tableau et r&eacute;f&eacute;rences.</h3> Dans la m&eacute;moire de l'ordinateur, le tableau m&eacute;morise juste les r&eacute;f&eacute;rences des donn&eacute;es ou des objets qui le composent.
+                   Les donn&eacute;es ne sont donc pas "recopi&eacute;es dans le tableau".
+            </div>
+         </li>
+         <li>
+            <div id="2">
+               <h3>Pr&eacute;noms et significations.</h3> Tandis que <tt>Samia</tt> signifie "la noble" , <tt>Samiha</tt> signifie "la g&eacute;n&eacute;reuse": 
+                     plusieurs langues dont l'<a href="http://www.djamila.be/Documents/prenoms.htm">arabe</a> et le chinois (<tt>Zheng-You</tt> signifie "l'ami fid&egrave;le")
+                     permettent d'assosier une belle qualit&eacute; morale &agrave; un pr&eacute;nom.
+            </div>
+         </li>
+         <li>
+            <div id="3">
+               <h3>Cr&eacute;er et d&eacute;truire les objets en m&eacute;moire.</h3>Il faut cr&eacute;er un tableau avant de pouvoir l'utiliser, 
+                     mais en Java pas besoin de se soucier de le d&eacute;truire quand on ne s'en sert plus: ce sera d&eacute;tect&eacute; et g&eacute;r&eacute; automatiquement.
+               
+                     D'autres langages comem le <tt>C/C++</tt> obligent &agrave; explicitement d&eacute;truire les objets qui ne servent plus.
+            </div>
+         </li>
+      </ol>
+   </div>
    
 </div>

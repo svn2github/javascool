@@ -1,7 +1,7 @@
 <div title="Découvrir les ingrédients des algorithmes">
 
   <div title="Un parcours pour s'initier à la programmation">
-    Ce parcours permet de s'approprier les cinq ingrédients des algorithmes (en <l link="http://javascool.gforge.inria.fr/v3/javascool.jar" text="lançant javasccol"/>):
+    Ce parcours permet de s'approprier les cinq ingrédients des algorithmes (en <l link="http://javascool.gforge.inria.fr/v3/javascool.jar" text="lançant javascool"/>):
    <div class="table">
      <p><p><b>Utiliser des <l link="sujet-hello-world.htm" text="séquences d'instructions"/>.</b></p></p>
      <p><p><b>Apprendre à se servir de <l link="sujet-about-variables.htm" text="variables"/>.</b></p></p>

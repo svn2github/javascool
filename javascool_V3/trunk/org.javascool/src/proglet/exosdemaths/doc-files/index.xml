@@ -14,15 +14,18 @@
 
   <div title="Quelques sujets:"><div class="table">
 
+    <p><p>Réaliser une <l link="sujet-appli-imc.htm" text="calculette d'indice de masse corporelle"/> pour appliquer les notions d'algorithmique.</p></p>
+
     <p><p>Programmer quelques <l link="sujet-appli-geometry.htm" text="calculs géométriques"/>.</p></p>
   
-    <p><p>Un travail sur la <l link=" sujet-conversion-binaire.htm" text="conversion binaire/décimale"/>.</p></p>
+    <p><p>Apprentissage de l'<l link="sujet-about-tableaux.htm" text="utilisation des tableaux"/>.</p></p>
+
+    <p><p>Un travail sur la <l link="sujet-conversion-binaire.htm" text="conversion binaire/décimale"/>.</p></p>
 
     <p><p>Un approfondissement <l link="sujet-appli-booleen.htm" text="découvrir quelques notions de logique"/>.</p></p>
 
-    <p><p>Réaliser une <l link="sujet-appli-imc.htm" text="calculette d'indice de masse corporelle"/> pour appliquer les notions d'algorithmique.</p></p>
-
   </div></div>
+
 
   <p>Avec le <l link="../../ingredients/doc-files/index.htm" text="parcours"/>  pour s'initier à la programmation, 
   elles permettent de couvrir le programme de 2nd en algorithmique.</p>

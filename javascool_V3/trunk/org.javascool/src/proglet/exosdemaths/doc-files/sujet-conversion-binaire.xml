@@ -1,8 +1,10 @@
 <div class="sujet" title="Un tutoriel sur la conversion binaire/décimale"> 
   
   <div class="objectif">
-    Le but de ce tutoriel est d'expliquer comment sont codés les nombres en binaire. Il faut déjà savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>,
-  se servir de <l link="sujet-about-variables.htm" text="variables"/> et avoir découvert l'<l link="sujet-about-if.htm" text="instruction conditionnelle"/>.
+    Le but de ce tutoriel est d'expliquer comment sont codés les nombres en binaire.    
+    Il faut déja savoir <l link="../../ingredients/doc-files/sujet-hello-world.htm" text="utiliser l'interface"/>,
+    se servir de <l link="../../ingredients/doc-files/sujet-about-variables.htm" text="variables"/> 
+    et avoir découvert l'<l link="../../ingredients/doc-files/sujet-about-if.htm" text="instruction conditionnelle"/>.
   </div>
 
   <div class="intros">

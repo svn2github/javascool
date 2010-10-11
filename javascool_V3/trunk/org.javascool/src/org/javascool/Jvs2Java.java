@@ -11,7 +11,7 @@ import java.io.File;
 import javax.swing.JPanel;
 import java.util.HashMap;
 
-// Used to interface with the j5 compiler
+// Used to interface with the j5/j6 compiler
 import java.io.StringWriter;
 import java.io.PrintWriter;
 
@@ -21,7 +21,7 @@ import java.net.URLClassLoader;
 
 /** This factory defines how a Jvs code is translated into a Java code and compiled. 
  * The goal of the Jvs syntax is to ease the syntax when starting to program in an imperative language, like Java. 
- * <p>- This factory calls the java compiler in the jdk5 (and earlier) case. It is designed to be used in standalone mode.</p>
+ * <p>- This factory calls the java compiler as in the jdk5 (and earlier) case. It is designed to be used in standalone mode.</p>
  * @see <a href="Jvs2Java.java.html">source code</a>
  * @serial exclude
  */
@@ -110,6 +110,16 @@ public class Jvs2Java { private Jvs2Java() { }
   public static void translate(String path, String proglet) {
     setJpathclass(path);
     String text = Utils.loadString(jpath+".jvs");
+    // Here we check and correct a missing "void main()"
+    if (!text.replaceAll("[ \n\t]+", " ").matches(".*void[ ]+main[ ]*\\([ ]*\\).*")) {
+      if (text.replaceAll("[ \n\t]+", " ").matches(".*main[ ]*\\([ ]*\\).*")) {
+	System.out.println("Attention: il faut mettre \"void\" devant \"main()\" pour que le programme puisque se compiler");
+	text = text.replaceFirst("main[ ]*\\([ ]*\\)", "void main()");
+      } else {
+	System.out.println("Attention: il faut un block \"void main()\" pour que le programme puisque se compiler");
+	text = "\nvoid main() {\n" + text + "\n}\n";
+      }
+    }
     String[] lines = text.split("\n");
     StringBuffer head = new StringBuffer(), body = new StringBuffer();
     // Here is the translation loop
