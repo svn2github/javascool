@@ -509,7 +509,7 @@ public class Pml { /**/public Pml() { }
     };
   }
 
-  // Returns true if the name is an index
+  // @return true if the name is an index
   private static boolean isIndex(String name) { return index.matcher(name).matches(); }
   static Pattern index = Pattern.compile("[0-9]+");
 

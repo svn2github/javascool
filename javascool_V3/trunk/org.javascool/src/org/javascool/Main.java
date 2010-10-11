@@ -730,7 +730,7 @@ public class Main extends JApplet { /**/public Main() { }
       PrintStream out = System.out;
       System.setOut(System.err);
       try {
-	final boolean popup = true;
+	final boolean popup = false;
 	applet = (Applet) Class.forName(name).newInstance();
 	try { width = (Integer) Class.forName(name).getDeclaredField("WIDTH").get(null); } catch(Throwable e) { System.err.println("Width undefined !"); width = 800; }
 	try { height = 20 + (Integer) Class.forName(name).getDeclaredField("HEIGHT").get(null); } catch(Throwable e) { System.err.println("Height undefined !"); height = 600; }
@@ -742,7 +742,7 @@ public class Main extends JApplet { /**/public Main() { }
 	  applet.init(); applet.start();
 	  Macros.sleep(1000);
 	  applet.setMinimumSize(new Dimension(width, height));
-	  addTab(name, applet, "org/javascool/doc-files/icones16/edit.png", true);
+	  addTab(name, applet, "org/javascool/doc-files/icones16/edit.png", false);
 	}
       } catch(Throwable e) { System.out.println("Désolé, l'activité "+name+" n'est pas définie dans cette version ("+e+")."); }
       System.setOut(out);
