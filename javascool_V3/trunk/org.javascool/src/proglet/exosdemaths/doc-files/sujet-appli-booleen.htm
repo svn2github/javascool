@@ -1,0 +1,319 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div align="right"></div>
+<div class="sujet">
+   <h2>Un tutoriel sur les valeurs num&eacute;riques.</h2>
+   
+   
+   
+   
+   <h2>Objectif.</h2>
+   <div class="objectif">
+      Le but de ce tutoriel est de d&eacute;couvrir quelques notions de logique &agrave; travers la programmation.
+      Il faut d&eacute;ja savoir <a href="../../ingredients/doc-files/sujet-hello-world.htm">utiliser l'interface</a>,
+          se servir de <a href="../../ingredients/doc-files/sujet-about-variables.htm">variables</a> 
+          et avoir d&eacute;couvert l'<a href="../../ingredients/doc-files/sujet-about-if.htm">instruction conditionnelle</a>.
+        
+   </div>
+   
+     
+   <h2>Introduction.</h2>
+   <div id="intros">
+      <ol>
+         <li>
+            <div>
+               <h3>Avant de commencer . . .</h3>
+                     . . . Relire attentivement le sujet sur l'<a href="sujet-about-if.htm">instruction conditionnelle</a>.
+                   
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+     
+   <h2>Travail propos&eacute;.</h2>
+   <div id="works">
+      <ol>
+         <li>
+            <div>
+               <h3>Calculer les tables de v&eacute;rit&eacute;.</h3>De m&ecirc;me que nous connaissons les tables de multiplication, il y des tables pour les "op&eacute;rateurs" logiques ET, OU et PAS.
+                     Compl&eacute;ter les tableaux suivants: 
+               <p>
+                  <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                     <tr>
+                              
+                        <td valign="top" class="top">
+                           <p>
+                              <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                                 <tr>
+                                    <td valign="top"><b>x</b></td>
+                                    <td valign="top"><b><font color="#990000"><b>!</b></font>x</b></td>
+                                 </tr>
+                                         
+                                 <tr>
+                                    <td valign="top"><font color="#990000"><b>false</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>?</b></font></td>
+                                 </tr>
+                                         
+                                 <tr>
+                                    <td valign="top"><font color="#990000"><b>true</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>?</b></font></td>
+                                 </tr>
+                                       
+                              </table><br></p>
+                        </td>
+                              
+                        <td valign="top">
+                           <p>
+                              <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                                 <tr>
+                                    <td valign="top"><b>x</b></td>
+                                    <td valign="top"><b>y</b></td>
+                                    <td valign="top"><b>x <font color="#990000"><b>||</b></font> y</b></td>
+                                 </tr>
+                                         
+                                 <tr>
+                                    <td valign="top"><font color="#990000"><b>false</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>false</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>?</b></font></td>
+                                 </tr>
+                                         
+                                 <tr>
+                                    <td valign="top"><font color="#990000"><b>false</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>true</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>?</b></font></td>
+                                 </tr>
+                                         
+                                 <tr>
+                                    <td valign="top"><font color="#990000"><b>true</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>false</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>?</b></font></td>
+                                 </tr>
+                                         
+                                 <tr>
+                                    <td valign="top"><font color="#990000"><b>true</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>true</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>?</b></font></td>
+                                 </tr>
+                                       
+                              </table><br></p>
+                        </td>
+                              
+                        <td valign="top">
+                           <p>
+                              <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                                 <tr>
+                                    <td valign="top"><b>x</b></td>
+                                    <td valign="top"><b>y</b></td>
+                                    <td valign="top"><b>x <font color="#990000"><b>&amp;&amp;</b></font> y</b></td>
+                                 </tr>
+                                         
+                                 <tr>
+                                    <td valign="top"><font color="#990000"><b>false</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>false</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>?</b></font></td>
+                                 </tr>
+                                         
+                                 <tr>
+                                    <td valign="top"><font color="#990000"><b>false</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>true</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>?</b></font></td>
+                                 </tr>
+                                         
+                                 <tr>
+                                    <td valign="top"><font color="#990000"><b>true</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>false</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>?</b></font></td>
+                                 </tr>
+                                         
+                                 <tr>
+                                    <td valign="top"><font color="#990000"><b>true</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>true</b></font></td>
+                                    <td valign="top"><font color="#990000"><b>?</b></font></td>
+                                 </tr>
+                                       
+                              </table><br></p>
+                        </td>
+                            
+                     </tr>
+                  </table><br></p>
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Programmer le ou exclusif.</h3>Il y a le ou <i>inclusif</i> comme par exemple "grand ou gentil" (on peut &ecirc;tre les deux !) c'est le cas de <font color="#990000"><b>||</b></font>,
+                    et le ou "`exclusif" comme par exemple "grand ou petit3 (mais pas les deux !). 
+                   Nous voulons &eacute;tudier ici comment : 
+               <ul class="ul">
+                        
+                  <li>non pas &eacute;crire "<b>x</b> OU <b>y</b>" (<b>x</b> <font color="#990000"><b>||</b></font> <b>y</b>) c'est &agrave; dire soit <b>x</b> est vrai, soit <b>y</b> est vrai, soit les deux le sont
+                  </li>
+                        
+                  <li>mais &eacute;crire "SOIT <b>x</b> SOIT <b>y</b>" c'est &agrave; dire soit <b>x</b> est vrai et <b>y</b> est faux, soit <b>x</b> est faux et <b>y</b> est vrai.
+                  </li>
+                      
+               </ul>Prenons deux variables bool&eacute;ennes <b>x</b> et <b>y</b>.
+               <ul class="ul">
+                      
+                  <li>Compl&eacute;ter le tableau suivant:
+                     <p>
+                        <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                           <tr>
+                              <td valign="top"><b>x</b></td>
+                              <td valign="top"><b>y</b></td>
+                              <td valign="top"><b><font color="#990000"><b>SOIT</b></font> x <font color="#990000"><b>,SOIT</b></font> y</b></td>
+                           </tr>
+                                   
+                           <tr>
+                              <td valign="top"><font color="#990000"><b>false</b></font></td>
+                              <td valign="top"><font color="#990000"><b>false</b></font></td>
+                              <td valign="top"><font color="#990000"><b>?</b></font></td>
+                           </tr>
+                                   
+                           <tr>
+                              <td valign="top"><font color="#990000"><b>false</b></font></td>
+                              <td valign="top"><font color="#990000"><b>true</b></font></td>
+                              <td valign="top"><font color="#990000"><b>?</b></font></td>
+                           </tr>
+                                   
+                           <tr>
+                              <td valign="top"><font color="#990000"><b>true</b></font></td>
+                              <td valign="top"><font color="#990000"><b>false</b></font></td>
+                              <td valign="top"><font color="#990000"><b>?</b></font></td>
+                           </tr>
+                                   
+                           <tr>
+                              <td valign="top"><font color="#990000"><b>true</b></font></td>
+                              <td valign="top"><font color="#990000"><b>true</b></font></td>
+                              <td valign="top"><font color="#990000"><b>?</b></font></td>
+                           </tr>
+                                 
+                        </table><br></p>
+                  </li>
+                        
+                  <li>V&eacute;rifier &agrave; la main ou en utilisant le bout de code suivant, que l'expression <b>(((<font color="#990000"><b>!</b></font>x) <font color="#990000"><b>&amp;&amp;</b></font> y) <font color="#990000"><b>||</b></font> (x <font color="#990000"><b>&amp;&amp;</b></font> (<font color="#990000"><b>!</b></font>y)))</b>
+                             convient.
+                     <p>
+                        <table witdh="90%" border="1" align="center">
+                           <tr>
+                              <td>
+                                 <div class="code">
+                                              
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"x ?"</font>); <font color="#990000"><b>boolean</b></font> x = <font color="#990000"><b>readBoolean</b></font>();
+                                    </div>
+                                              
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"y ?"</font>); <font color="#990000"><b>boolean</b></font> y = <font color="#990000"><b>readBoolean</b></font>();
+                                    </div>
+                                              
+                                    <div><font color="#990000"><b>println</b></font>(<font color="#008000">"R&eacute;ponse: "</font> + (((<font color="#990000"><b>!</b></font>x) <font color="#990000"><b>&amp;&amp;</b></font> y) <font color="#990000"><b>||</b></font> (x <font color="#990000"><b>&amp;&amp;</b></font> (<font color="#990000"><b>!</b></font>y))));
+                                    </div>
+                                            
+                                 </div>
+                              </td>
+                           </tr>
+                        </table>
+                     </p>
+                           
+                  </li>
+                        
+                  <li>Coder l'expression autrement, sous la forme "x ou y et pas x et y".</li>
+                      
+               </ul>
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Comprendre l'implication logique.</h3> Prenons un exemple : <i>voler un oeuf implique toujours de voler un boeuf</i><ul class="ul">
+                        
+                  <li><tt>Certes</tt>, si nous trouvons quelqu'un qui a vol&eacute; un oeuf mais n'a pas vol&eacute; de boeuf, la phrase est assur&eacute;ment fausse.
+                  </li>
+                        
+                  <li><tt>De plus</tt>, si nous trouvons quelqu'un qui a vol&eacute; un oeuf et un boeuf, la phrase est assur&eacute;ment vraie.
+                  </li>
+                        
+                  <li><tt>Par ailleurs</tt>.. Et si personne n'a vol&eacute; d'oeuf ? Ou si quelqu'un a vol&eacute; (directement) un boeuf sans voler d'oeuf ? 
+                           La phrase, <i>en tant que telle</i>, n'est PAS fausse.
+                           Donc elle est vraie<sup><a href="#1">1</a></sup>.
+                  </li>
+                      
+               </ul> Bref, nous pouvons dire que la phrase est : 
+               <ul class="ul">
+                        
+                  <li><tt>Vraie</tt>, si et seulement si on n'a pas vol&eacute; d'oeuf ou si on a vol&eacute; un oeuf et un boeuf. Ou encore.
+                  </li>
+                        
+                  <li><tt>Ou encore</tt>, si et seulement si quelqu'un qui n'a pas vol&eacute; de boeuf ne peut pas avoir vol&eacute; d'oeuf.
+                  </li>
+                      
+               </ul>Pour formaliser les choses : 
+               <ul class="ul">
+                        
+                  <li>Compl&eacute;ter le tableau suivant :
+                     <p>
+                        <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                           <tr>
+                              <td valign="top"><b>x</b></td>
+                              <td valign="top"><b>y</b></td>
+                              <td valign="top"><b>x <font color="#990000"><b>IMPLIQUE</b></font> y</b></td>
+                           </tr>
+                                   
+                           <tr>
+                              <td valign="top"><font color="#990000"><b>false</b></font></td>
+                              <td valign="top"><font color="#990000"><b>false</b></font></td>
+                              <td valign="top"><font color="#990000"><b>?</b></font></td>
+                           </tr>
+                                   
+                           <tr>
+                              <td valign="top"><font color="#990000"><b>false</b></font></td>
+                              <td valign="top"><font color="#990000"><b>true</b></font></td>
+                              <td valign="top"><font color="#990000"><b>?</b></font></td>
+                           </tr>
+                                   
+                           <tr>
+                              <td valign="top"><font color="#990000"><b>true</b></font></td>
+                              <td valign="top"><font color="#990000"><b>false</b></font></td>
+                              <td valign="top"><font color="#990000"><b>?</b></font></td>
+                           </tr>
+                                   
+                           <tr>
+                              <td valign="top"><font color="#990000"><b>true</b></font></td>
+                              <td valign="top"><font color="#990000"><b>true</b></font></td>
+                              <td valign="top"><font color="#990000"><b>?</b></font></td>
+                           </tr>
+                                 
+                        </table><br></p>
+                  </li>
+                        
+                  <li>En prenant l'exemple : <i>Savoir &eacute;crire implique toujours de savoir lire</i>, r&eacute;-&eacute;crire avec des mots l'explication ci-dessus qui commence par 
+                             <tt>Vraie</tt> et <tt>Ou encore</tt> et celle qui commence par <tt>Certes</tt>, <tt>De plus</tt>, <tt>Par ailleurs</tt>.
+                  </li>
+                        
+                  <li>Prenons deux variables bool&eacute;ennes <b>x</b> et <b>y</b>, &eacute;crire (&agrave; partir de la phrase qui commence par <tt>Vraie</tt> ou bien celle
+                           qui commence par <tt>Ou encore</tt>) une formule avec des <font color="#990000"><b>&amp;&amp;</b></font>,  <font color="#990000"><b>||</b></font> et <font color="#990000"><b>!</b></font> et qui corresponde &agrave; <b>x <font color="#990000"><b>IMPLIQUE</b></font> y</b>.
+                  </li>
+                      
+               </ul>
+            </div>
+         </li>
+      </ol>
+   </div>
+     
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div id="1">
+               <h3>A propos de l'implication.</h3> Dire <b>A implique B</b> consiste &agrave; dire que si <b>A</b> est vrai alors forc&eacute;ment <b>B</b> est vrai, 
+                   tandis que si <b>A</b> est faux et bien tout peut arriver &agrave; <b>B</b> vrai ou faux, c'est ok.
+                   
+               <div>Noter aussi que l'implication ne signifie pas qu'il y a une relation de <i>de cause &agrave; effet</i> ; par exemple, qu'il pleuve <i>implique</i> que je prenne mon parapluie,
+                      mais ce n'est <i>pas</i> la pluie qui est la cause que je prenne mon parapluie, c'est moi !
+               </div>
+                   
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+</div>

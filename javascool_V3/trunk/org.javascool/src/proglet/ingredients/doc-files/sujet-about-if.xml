@@ -1,8 +1,6 @@
 <div class="sujet" title="Un tutoriel pour découvrir l'instruction conditionnelle.">
   
   
-  
-  
   <div class="objectif">
     Le but de ce tutoriel est de découvrir l'instruction conditionnelle. Il faut déjà savoir <l link="sujet-hello-world.htm" text="utiliser l'interface"/>,
     et savoir se servir de <l link="sujet-about-variables.htm" text="variables"/>.
@@ -44,7 +42,7 @@
        <p><T/><T/><T/>a <r>&lt;</r> b</p>
        <m>Vrai si et seulement si le nombre a est strictement plus petit ou égal au nombre b:</m>
        <p><T/><T/><T/>a <r>&lt;=</r> b</p>
-       <m>Vrai si et seulement si le nombre a est égal au nombre b:</m>
+       <m>Vrai si et seulement si le nombre a est égal<l class="note" link="1"/> au nombre b:</m>
        <p><T/><T/><T/>a <r>==</r> b</p>
        <m>avec bien sûr les symboles similares pour <r>&gt;</r> et <r>&gt;=</r> (strictement plus grand et plus grand ou égal) et <r>!=</r> (pas égal).</m>
        <m>Vrai si et seulement si la chaîne s est égale à la chaîne c</m>
@@ -54,7 +52,8 @@
      <div class="code">
        <m>Vrai si et seulement si une_condition ET autre_condition sont vraies :</m>
        <p><T/><T/><T/>une_condition <r>&amp;&amp;</r> autre_condition</p>
-       <m>Vrai si et seulement si une_condition OU autre_condition, ou les deux, sont vraies :</m>
+       <m>Vrai si et seulement si une_condition OU autre_condition, ou les deux, sont vraies<l class="note" link="2"/> 
+       (Voir<l class="note" link="2"/> pour "trouver" la touche <c>|</c>):</m>
        <p><T/><T/><T/>une_condition <r>||</r> autre_condition</p>
        <m>Vrai si et seulement si une_condition n'est PAS vraie :</m>
        <p><T/><T/><T/>(<r>!</r>une_condition)</p>
@@ -120,78 +119,15 @@
         <p><r>println</r>(<v>Réponse 8 = </v> + (equal(<v>toto</v>, <v>titi</v>) <r>||</r> 14 <r>&gt;</r> 13));</p>
       </div> et donner une phrase explicative pour chaque réponse.</div>
     </div>
-    <div class="center"><b>(la suite du travail proposé n'est pas indispensable pour notre apprentissage de la programmation, mais permet d'approfondir le sujet)</b></div>
+    <div class="center">Pour approfondir le sujet,  on peut travailler sur des <l link="../../exosdemaths/doc-files/sujet-appli-booleen.htm" text="mécanismes logiques"/>.</div>
     </div>
-    <div title="Calculer les tables de vérité">De même que nous connaissons les tables de multiplication, il y des tables pour les "opérateurs" logiques ET, OU et PAS.
-      Compléter les tableaux suivants: <div class="table"><div>
-      <div class="top"><div class="table"><div><div><b>x</b></div><div><b><r>!</r>x</b></div></div>
-        <div><div><r>false</r></div><div><r>?</r></div></div>
-        <div><div><r>true</r></div><div><r>?</r></div></div>
-      </div></div>
-      <div><div class="table"><div><div><b>x</b></div><div><b>y</b></div><div><b>x <r>||</r> y</b></div></div>
-        <div><div><r>false</r></div><div><r>false</r></div><div><r>?</r></div></div>
-        <div><div><r>false</r></div><div><r>true</r></div><div><r>?</r></div></div>
-        <div><div><r>true</r></div><div><r>false</r></div><div><r>?</r></div></div>
-        <div><div><r>true</r></div><div><r>true</r></div><div><r>?</r></div></div>
-      </div></div>
-      <div><div class="table"><div><div><b>x</b></div><div><b>y</b></div><div><b>x <r>&amp;&amp;</r> y</b></div></div>
-        <div><div><r>false</r></div><div><r>false</r></div><div><r>?</r></div></div>
-        <div><div><r>false</r></div><div><r>true</r></div><div><r>?</r></div></div>
-        <div><div><r>true</r></div><div><r>false</r></div><div><r>?</r></div></div>
-        <div><div><r>true</r></div><div><r>true</r></div><div><r>?</r></div></div>
-      </div></div>
-    </div></div></div>
-    <div title="Programmer le ou exclusif">Il y a le ou <i>inclusif</i> comme par exemple "grand ou gentil" (on peut être les deux !) c'est le cas de <r>||</r>,
-     et le ou "`exclusif" comme par exemple "grand ou petit3 (mais pas les deux !). 
-    Nous voulons étudier ici comment : <div class="ul">
-      <div>non pas écrire "<b>x</b> OU <b>y</b>" (<b>x</b> <r>||</r> <b>y</b>) c'est à dire soit <b>x</b> est vrai, soit <b>y</b> est vrai, soit les deux le sont</div>
-      <div>mais écrire "SOIT <b>x</b> SOIT <b>y</b>" c'est à dire soit <b>x</b> est vrai et <b>y</b> est faux, soit <b>x</b> est faux et <b>y</b> est vrai.</div>
-    </div>Prenons deux variables booléennes <b>x</b> et <b>y</b>.<div class="ul">
-    <div>Compléter le tableau suivant:<div class="table"><div><div><b>x</b></div><div><b>y</b></div><div><b><r>SOIT</r> x <r>,SOIT</r> y</b></div></div>
-        <div><div><r>false</r></div><div><r>false</r></div><div><r>?</r></div></div>
-        <div><div><r>false</r></div><div><r>true</r></div><div><r>?</r></div></div>
-        <div><div><r>true</r></div><div><r>false</r></div><div><r>?</r></div></div>
-        <div><div><r>true</r></div><div><r>true</r></div><div><r>?</r></div></div>
-      </div></div>
-      <div>Vérifier à la main ou en utilisant le bout de code suivant, que l'expression <b>(((<r>!</r>x) <r>&amp;&amp;</r> y) <r>||</r> (x <r>&amp;&amp;</r> (<r>!</r>y)))</b>
-        convient.<div class="code">
-          <p><r>println</r>(<v>x ?</v>); <r>boolean</r> x = <r>readBoolean</r>();</p>
-          <p><r>println</r>(<v>y ?</v>); <r>boolean</r> y = <r>readBoolean</r>();</p>
-          <p><r>println</r>(<v>Réponse: </v> + (((<r>!</r>x) <r>&amp;&amp;</r> y) <r>||</r> (x <r>&amp;&amp;</r> (<r>!</r>y))));</p>
-        </div>
-      </div>
-      <div>Coder l'expression autrement, sous la forme "x ou y et pas x et y".</div>
-    </div></div>
-    <div title="Comprendre l'implication logique"> Prenons un exemple : <i>voler un oeuf implique toujours de voler un boeuf</i><div class="ul">
-      <div><c>Certes</c>, si nous trouvons quelqu'un qui a volé un oeuf mais n'a pas volé de boeuf, la phrase est assurément fausse.</div>
-      <div><c>De plus</c>, si nous trouvons quelqu'un qui a volé un oeuf et un boeuf, la phrase est assurément vraie.</div>
-      <div><c>Par ailleurs</c>.. Et si personne n'a volé d'oeuf ? Ou si quelqu'un a volé (directement) un boeuf sans voler d'oeuf ? 
-      La phrase, <i>en tant que telle</i>, n'est PAS fausse.
-      Donc elle est vraie<l class="note" link="2"/>.</div>
-    </div> Bref, nous pouvons dire que la phrase est : <div class="ul">
-      <div><c>Vraie</c>, si et seulement si on n'a pas volé d'oeuf ou si on a volé un oeuf et un boeuf. Ou encore.</div>
-      <div><c>Ou encore</c>, si et seulement si quelqu'un qui n'a pas volé de boeuf ne peut pas avoir volé d'oeuf.</div>
-    </div>Pour formaliser les choses : <div class="ul">
-      <div>Compléter le tableau suivant :<div class="table"><div><div><b>x</b></div><div><b>y</b></div><div><b>x <r>IMPLIQUE</r> y</b></div></div>
-        <div><div><r>false</r></div><div><r>false</r></div><div><r>?</r></div></div>
-        <div><div><r>false</r></div><div><r>true</r></div><div><r>?</r></div></div>
-        <div><div><r>true</r></div><div><r>false</r></div><div><r>?</r></div></div>
-        <div><div><r>true</r></div><div><r>true</r></div><div><r>?</r></div></div>
-      </div></div>
-      <div>En prenant l'exemple : <i>Savoir écrire implique toujours de savoir lire</i>, ré-écrire avec des mots l'explication ci-dessus qui commence par 
-        <c>Vraie</c> et <c>Ou encore</c> et celle qui commence par <c>Certes</c>, <c>De plus</c>, <c>Par ailleurs</c>.</div>
-      <div>Prenons deux variables booléennes <b>x</b> et <b>y</b>, écrire (à partir de la phrase qui commence par <c>Vraie</c> ou bien celle
-      qui commence par <c>Ou encore</c>) une formule avec des <r>&amp;&amp;</r>,  <r>||</r> et <r>!</r> et qui corresponde à <b>x <r>IMPLIQUE</r> y</b>.</div>
-    </div></div>
   </div>
   
   <div class="notes">
     <div title="A propos de l'égalité" id="1"> Notez que le signe <r>=</r> veut dire "<l link="sujet-about-variables.htm" text="affecter une valeur"/>"
     tandis que être égal s'écrit <r>==</r> pour les nombres et <b><r>equal</r>(s, c)</b> pour les chaines de caractères : voici quelque chose d'un peu compliqué.</div>
-    <div title="A propos de l'implication" id="2"> Dire <b>A implique B</b> consiste à dire que si <b>A</b> est vrai alors forcément <b>B</b> est vrai, 
-    tandis que si <b>A</b> est faux et bien tout peut arriver à <b>B</b> vrai ou faux, c'est ok.
-    <div>Noter aussi que l'implication ne signifie pas qu'il y a une relation de <i>de cause à effet</i> ; par exemple, qu'il pleuve <i>implique</i> que je prenne mon parapluie,
-    mais ce n'est <i>pas</i> la pluie qui est la cause que je prenne mon parapluie, c'est moi !</div>
-    </div>
+    <div title="A propos de la touche |" id="2"> Sur les claviers français des PC, il faut taper <c>Alt Gr + 6</c>: 
+    <c>Alt Gr</c> est la touche à droite de la barre espace qu'il faut enfoncer en même temps que la touche du chiffre 6. 
+    Sur les Macs il faut enfoncer simultanément les trois touches <c>Alt+Shift+L</c>.</div>
   </div>
 </div>

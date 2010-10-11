@@ -558,18 +558,11 @@ public class Main extends JApplet { /**/public Main() { }
 	  addTab("Parcours d'initiation", "proglet/ingredients/doc-files/index.htm", "org/javascool/doc-files/icones16/globe.png", true);
 	}
       });
-    addActivity((new ProgletActivity("ingredients") {
-	public String getTitle() { return "Un tutoriel sur les valeurs numériques"; }
-	public void init() {
-	  super.init();
-	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm", "org/javascool/doc-files/icones16/globe.png", true);
-	  addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/globe.png", true);
-	}}));
     addActivity(new ProgletActivity("exosdemaths") {
-	public String getTitle() { return "Programmer un calcul géométrique"; }
+	public String getTitle() { return "Programmer des calculs numériques et géométrique"; }
 	public void init() {
 	  super.init();
-	  addTab("Enoncé de l'exercice", "proglet/exosdemaths/doc-files/sujet-appli-geometry.htm", "org/javascool/doc-files/icones16/globe.png", true);
+	  addTab("Propositions d'exercices", "proglet/exosdemaths/doc-files/index.htm", "org/javascool/doc-files/icones16/globe.png", true);
 	  initDoc();
 	}});
     addActivity(new AlgoEditorActivity() {

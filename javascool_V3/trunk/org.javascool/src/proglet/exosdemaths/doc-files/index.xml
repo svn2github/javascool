@@ -4,7 +4,7 @@
 
   <p>Ces exercices peuvent être programmés, soit en <l link="../../ingredients/doc-files/index.htm" text="Java simplifié"/>,
   soit à l'aide d'un <i>éditeur graphique d'algorithme</i> qui évite de se poser de question avec la syntaxe.
-    <p title="Utiliser l'éditeur graphique d'algorithmes">En <l link="http://javascool.gforge.inria.fr/v3/javascool.jar" text="lançantjavasccol"/> 
+    <p title="Utiliser l'éditeur graphique d'algorithmes">En <l link="http://javascool.gforge.inria.fr/v3/javascool.jar" text="lançant javasccol"/> 
     choisir l'activité "Faire des exercices avec l'éditeur graphique d'algorithmes" cela permet d'éditer directement le texte du programme du manière graphique 
     puis de voir sa traduction en Java simplifié et bien-sûr de l'exécuter directement. 
     Un moyen de s'éviter les problèmes de syntaxe en l'apprenant au fil de l'eau.</p>
@@ -12,8 +12,18 @@
 
   <p>Les "<l link="http://wiki.inria.fr/sciencinfolycee/Profs2009:ProgletSoluce" text="soluces"/>" (aide syntaxique) sont proposées ici (nous <l link="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet : accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,%20%20Je%20suis%20un%20enseignant%20du%20lycée%20de%20??%20à%20??%20et%20souhaite%20accéder%20aux%20soluces%20des%20proglets.%0a,%20%20%20Voici%20un%20élément%20qui%20prouve%20que%20je%20ne%20suis%20pas%20élève%20!%20:%20??%0a,%20%20Signature%20:%20??" text="contacter"/> pour l'accès).</p>
 
-  <p>Un modèle de sujet qui permet de programmer quelques <l link="sujet-appli-geometry.htm" text="calculs géométriques"/> est proposé ici.</p>
+  <div title="Quelques sujets:"><div class="table">
+
+    <p><p>Programmer quelques <l link="sujet-appli-geometry.htm" text="calculs géométriques"/>.</p></p>
   
+    <p><p>Un travail sur la <l link=" sujet-conversion-binaire.htm" text="conversion binaire/décimale"/>.</p></p>
+
+    <p><p>Un approfondissement <l link="sujet-appli-booleen.htm" text="découvrir quelques notions de logique"/>.</p></p>
+
+    <p><p>Réaliser une <l link="sujet-appli-imc.htm" text="calculette d'indice de masse corporelle"/> pour appliquer les notions d'algorithmique.</p></p>
+
+  </div></div>
+
   <p>Avec le <l link="../../ingredients/doc-files/index.htm" text="parcours"/>  pour s'initier à la programmation, 
   elles permettent de couvrir le programme de 2nd en algorithmique.</p>
   
