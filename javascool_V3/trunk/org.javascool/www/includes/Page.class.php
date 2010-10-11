@@ -1,6 +1,6 @@
 <?php
 /**
-*
+* 
 */
 class Page{
 	var $page="";
@@ -28,8 +28,9 @@ class Page{
 			$page = ereg_replace('(src|SRC)="([^/#][^:"]*)"', '\\1="api/'.$base.'/\\2"', $page);
 			// Passe en <pre></pre> les pages de source
 			if (ereg("\.java$", $name)) $page = "<pre>".$page."</pre>";
+			return $page;
 		} else {
-				// Recuperation de la page sur le wiki
+			// Recuperation de la page sur le wiki
 			$page = file_get_contents('http://wiki.inria.fr/sciencinfolycee/JavaScool:'.$name.'?printable=yes&action=render');
 			// Remplace tous les liens entre pages par des pages vues du site
 			$page = ereg_replace('href="http://wiki.inria.fr/sciencinfolycee/JavaScool:', 'href="?page=', $page);
