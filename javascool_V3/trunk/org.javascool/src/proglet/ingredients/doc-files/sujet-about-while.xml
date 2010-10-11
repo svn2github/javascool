@@ -133,6 +133,6 @@
     <div>Il faut éviter de définir des fonctions récursives, sauf dans les cas indispensables.</div>
     <div>Il faut être prudent si c'est le cas, et bien comprendre la notion de <l link="sujet-about-while.htm" text="boucle"/> avant.</div>
   </div>.</div>
-  <div title="Arrêter un programme" id="3"> C'est le bouton <l class="icon" icon="../../../org/javascool/doc-files/icones16/Stop_16x16.png"/> qui permet d'arrêter un programme qui boucle indéfiniment.</div>
+  <div title="Arrêter un programme" id="3"> C'est le bouton <l class="icon" icon="../../../org/javascool/doc-files/icones16/stop.png"/> qui permet d'arrêter un programme qui boucle indéfiniment.</div>
   </div>
 </div>

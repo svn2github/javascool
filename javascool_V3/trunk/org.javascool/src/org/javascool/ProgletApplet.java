@@ -56,7 +56,7 @@ public class ProgletApplet extends JApplet {
 	    Jvs2Java.run(true);
 	  }
 	}}));
-    bar.add(new JButton(new AbstractAction("Arrêter", Utils.getIcon("org/javascool/doc-files/icones16/Stop_16x16.png")) {
+    bar.add(new JButton(new AbstractAction("Arrêter", Utils.getIcon("org/javascool/doc-files/icones16/stop.png")) {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) {
 	  Jvs2Java.run(false);

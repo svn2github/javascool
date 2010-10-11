@@ -39,7 +39,7 @@ jar : htm www/javascool.jar
 # Jar parameters, files and meta-data
 
 J5=/usr/java/jdk1.5.0_22
-J5=/usr/java/jdk1.6.0_21
+J6=/usr/java/jdk1.6.0_21
 
 vendor=thierry.vieville@inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
 version=3.0
@@ -67,7 +67,7 @@ CP=src:lib/tools.zip:lib/saxon.jar
 www/javascool.jar : makefile lib/tools.zip lib/saxon.jar lib/sketchbook.zip lib/js-manifest.mf $(SRC) $(JVS) htm
 	@echo "make $@"
 	@#[1] Compile the java classes
-	@$(J5)/bin/javac -Xlint -cp $(CP) $(SRC)
+	@$(J6)/bin/javac -Xlint -cp $(CP) $(SRC)
 	@#[2] Collects the files in a tmp directory
 	@rm -rf tmp ; svn -q export src tmp 
 	@for f in `find src -name '*.class'` ; do cp $$f `echo $$f | sed 's/^src/tmp/'` ; done
@@ -143,7 +143,7 @@ src/org/javascool/proglets.java : $(shell find src/proglet -name '*.java')
 
 ifeq ($(USER), vthierry)
 
-TL=$(J5)/lib/tools.jar
+TL=$(J6)/lib/tools.jar
 
 lib/tools.zip : $(TL)
 	@echo "cp $@ .."
