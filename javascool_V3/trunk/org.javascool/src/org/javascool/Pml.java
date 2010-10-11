@@ -86,7 +86,7 @@ public class Pml { /**/public Pml() { }
    * <tr><td><tt>jar:/<i>jar-path-name</i>!/<i>jar-entry</i></tt></td><td>to load from a JAR archive
    *  <div>(e.g.:<tt>jar:http://javascool.gforge.inria.fr/javascool.jar!/META-INF/MANIFEST.MF</tt>)</div></td></tr>
    * </table>
-   * @param format The <a href="#input-format">input format</a> as defined by the <a href="#reset(java.lang.String,java.lang.String)">reset()</a> routine.
+   * @param format The <a href="#input-format">input format</a> as defined by the <a href="#reset(java.lang.String, java.lang.String)">reset()</a> routine.
    * When not specified, detect the format extension from the file extension or used "pml" by default.
    * @return This, allowing to use the <tt>Pml pml= new Pml().reset(..)</tt> construct.
    */
@@ -262,7 +262,7 @@ public class Pml { /**/public Pml() { }
    * <tr><td><tt>mailto:<i>address</i>?subject=<i>subject</i></tt></td><td>to send as an email in a readable form.</td></tr>
    * <tr><td><tt>stdout:/</tt></td><td>to print to the terminal standard output.</td></tr>
    * </table>
-   * @param format The <a href="#output-format">output format</a> as defined by the <a href="#toSring(java.lang.String)">toString()</a> routine.
+   * @param format The <a href="#output-format">output format</a> as defined by the <a href="#toString(java.lang.String)">toString()</a> routine.
    * When not specified, detect the format extension from the file extension or used "pml" by default.
    * @return This, allowing to use the <tt>Pml pml = new Pml().reset(..)</tt> construct.
    */

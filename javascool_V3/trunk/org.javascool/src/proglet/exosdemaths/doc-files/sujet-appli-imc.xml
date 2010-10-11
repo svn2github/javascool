@@ -20,7 +20,7 @@
       <p><T/><r>println</r>(<v>Ton indice de masse corporelle est donc : </v> + imc) ;</p>
       <p>}</p>
      </div>
-     Le début du code ressemble à celui utilisé pour apprendre à se servir de <l link="sujet-about-variables.htm" text="variables"/> : 
+     Le début du code ressemble à celui utilisé pour apprendre à se servir de <l link="../../ingredients/doc-files/sujet-about-variables.htm" text="variables"/> : 
      on demande à l'utilisateur son poids et sa taille. Ensuite on calcule l'indice de masse corporelle ...  mais ... attention :<div class="ul">
        <div>La formule est fausse !!! Ce sera à vous de la corriger.</div>
        <div>Il faut remplacer <r>???</r> par le bon 'adjectif' (<r>int</r> ? <r>double</r> ?)</div>
