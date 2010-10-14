@@ -6,6 +6,8 @@ class Spot extends Vec2D {
   Vec3D pos;
   PVector position;
   String n;
+  int col;
+  char f;
   float h;
   float d1, d2;
   float x2D, y2D;
@@ -15,7 +17,7 @@ class Spot extends Vec2D {
   IsectData3D isec;
 
 
-  public Spot(String n_, int x_, int y_, float d1_, float d2_, float h_) { 
+  public Spot(String n_, int col_, char f_, int x_, int y_, float d1_, float d2_, float h_) { 
   
     x = x_;
     y = y_;
@@ -23,12 +25,14 @@ class Spot extends Vec2D {
     d2 = d2_;
     h = h_;
     n = n_;
+    col = col_;
+    f = f_;
     
     pos = new Vec3D(x,h,y);
     position = new PVector(x, y);
     
-    x2D = (((x_+b.getMax().to2DXZ().x)/(2*b.getMax().to2DXZ().x))*s.width);
-    y2D = (((y_+b.getMax().to2DXZ().x)/(2*b.getMax().to2DXZ().x))*s.width);
+    x2D = (((x_+b.getMax().to2DXZ().x)/(2*b.getMax().to2DXZ().x))*100);
+    y2D = (((y_+b.getMax().to2DXZ().x)/(2*b.getMax().to2DXZ().x))*100);
     
     links = new HashMap();
     
@@ -42,8 +46,8 @@ class Spot extends Vec2D {
     pos = new Vec3D(x,h,y);
     position = new PVector(x, y);
     
-    x2D = (((x_+b.getMax().to2DXZ().x)/(2*b.getMax().to2DXZ().x))*s.width);
-    y2D = (((y_+b.getMax().to2DXZ().x)/(2*b.getMax().to2DXZ().x))*s.width);
+    x2D = (((x_+b.getMax().to2DXZ().x)/(2*b.getMax().to2DXZ().x))*100);
+    y2D = (((y_+b.getMax().to2DXZ().x)/(2*b.getMax().to2DXZ().x))*100);
     
   }
 
@@ -52,7 +56,16 @@ class Spot extends Vec2D {
 
     // create an axis aligned box and convert to mesh
     TriangleMesh building = new AABB(new Vec3D(), new Vec3D(d1, d2, h)).toMesh();
-    if(n==listN[0] || n==listN[1]) {
+    if(f==form[0]) {
+      building = new AABB(new Vec3D(), new Vec3D(d1, d2, h)).toMesh();
+    } else if(f==form[1]) {
+      building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(10);
+    } else if(f==form[2]) {
+      building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(30);
+    } else if(f==form[3]) {
+      building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(100);
+    }
+    /*if(n==listN[0] || n==listN[1]) {
       building = new AABB(new Vec3D(), new Vec3D(d1, d2, h)).toMesh();
     } else if(n==listN[2]) {
       building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(10);
@@ -60,15 +73,21 @@ class Spot extends Vec2D {
       building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(50);
     } else if(n==listN[4]) {
       building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(100);
-    }
+    }*/
     // align to terrain normal
     building.pointTowards(currNormal);
     // move to correct position
     building.translate(pos);
     // and draw
-    fill(255,100,0);
+    //fill(255,100,0);
+    fill(col);
     gfx.mesh(building);
     
+    
+    /*textFont(Arial, 100.0);
+    String n_ = n.substring(0, 1);
+    //rotateX(PI);
+    text(n_, y-50, x-50);*/
    
   }
 

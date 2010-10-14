@@ -13,6 +13,10 @@
   import toxi.processing.*;
   
   import processing.opengl.*;
+  import javax.media.opengl.*;
+  
+  PGraphicsOpenGL pgl;
+  GL _gl;
   
   float NOISE_SCALE = 0.07f;
   int DIM=80;
@@ -28,29 +32,36 @@
 
 
   PFont Verdana, Arial;
-  PFrame f;
-  secondApplet s; // Second Window for 2D view
   int gX, gY; int indN = 0;
   boolean mouseDown = false, info = false;
-  double distance, distanceC,  comp; // calcule distance parcourue
+  double distance, distanceC;//,  comp; // calcule distance parcourue
   String[] listN = {"Nice", "Marseille", "Avignon", "Toulouse", "Bordeaux", "Dijon", "Fréjus", "Strasbourg", "Caen", "Grenoble", "Lille", "Rennes"};
   String firstSelect, secondSelect, start, end;
   ArrayList path, restricted;
   
+  color[] colors = new color[listN.length];
+  char[] form = {'B', 'P', 'O', 'C'}; 
 
-
-
+  
+  
   void setup() 
   {
     
-    size(900, 700, OPENGL);//1024, 576, OPENGL);
-    f = new PFrame();
-    this.frame.setTitle(" Principale ");
-    this.frame.setLocation(s.width+1,0);
+    size(1200, 700, OPENGL);//1024, 576, OPENGL);
     Verdana = loadFont("Verdana-48.vlw");
     Arial = loadFont("ArialMT-48.vlw");
+    
+    // Pour créer les 2 vues
+    pgl = (PGraphicsOpenGL) g;  
+    _gl = pgl.gl;
   
-    // create terrain & generate elevation data
+    colors[0] = color(#FF9900); colors[1] = color(100, 200,0); colors[2] = color(#FFFF00);
+    colors[3] = color(200); colors[4] = color(150); colors[5] = color(100);
+    colors[6] = color(#0000FF);  colors[7] = color(0,0,100);  colors[8] = color(#00FFFF);
+    colors[9] = color(#FF00FF); colors[10] = color(100, 0, 100); colors[11] = color(0,70,75);
+    
+
+    // Créer le terrain et son dénivelé
     terrain = new Terrain(DIM,DIM, 50);
     float[] el = new float[DIM*DIM];
     noiseSeed(23);
@@ -60,12 +71,12 @@
       }
     }
     terrain.setElevation(el);
-    // create mesh
+    // maillage
     mesh = terrain.toMesh(0);
-    // create car
+    // voiture
     car = new Car(0, 0);
     myTrip = new Trip();
-    // attach drawing utils
+    // utilitaires de dessin
     gfx = new ToxiclibsSupport(this);
     
     path = new ArrayList();
@@ -80,61 +91,11 @@
     gY = frame.getY(); 
     
     // in 2D
-    s.background(30, 75, 35);
     b = mesh.getBoundingBox();
-    
-    
-    for(String ni_ : (Iterable<String>) myTrip.spots.keySet()) {
-      
-      s.fill(180);
-      s.textFont(Arial, 10.0);
-      if(myTrip.spots.size()==listN.length) {
-        s.text("Départ: "+ start + " - Arrivée: " + end, 4, s.height-20);
-        s.text("distance parcourue: "+ (float) distance, 4, s.height-10);
-        if(distance!=0 && abs((float) (distance-distanceC))<0.01) {
-          s.textFont(Arial, 20.0);
-          s.fill(255,0,0);
-          s.text("BRAVO!", s.width/2-30, s.height-10);
-        }
-      }
-          
-      Spot S_ = (Spot) myTrip.spots.get(ni_);
-      s.fill(255, 170, 0);
-      s.strokeWeight(1.1);
-      s.ellipse(S_.y2D, S_.x2D, 10, 10); //inversed otherwise from bottom
-      s.textFont(Arial, 10);
-      String n = S_.n.substring(0, 1);
-      if(S_.y2D+10<400 && S_.y2D+10>0 && S_.x2D+10<400 && S_.x2D+10>0 )  s.text(n, S_.y2D+10, S_.x2D+10);
-      else  s.text(n, S_.y2D-10, S_.x2D-10);
-      
-      // Pour chaque spot, les liens sont détectés pour les tracer en noir  
-      for(String nj_ : (Iterable<String>) myTrip.spots.keySet())
-      {
-        
-        if (myTrip.isLink(ni_,nj_) && !(ni_.equals(nj_))) {
-          Spot S2_ = (Spot) myTrip.spots.get(nj_);
-          double p_ = myTrip.getLink(ni_,nj_);
-          
-          fill(0);
-          stroke(0);
-          s.strokeWeight(1.5);
-          s.line(S_.y2D, S_.x2D, S2_.y2D, S2_.x2D);
-          
-          
-          if (info) {
-            s.textFont(Arial, 10.0);
-            s.fill(180);
-            s.text(" " + (float) p_, abs((S_.x2D+S2_.x2D)/2), abs((S_.y2D+S2_.y2D)/2));
-          }
-          
-        }
-        
-      }
-      
-    }
+
     
     // in 3D
-    // update steering & position
+    // Met à jour voiture et les spots
     car.update();
     for(String ni_ : (Iterable<String>) myTrip.spots.keySet()) {
       
@@ -143,7 +104,7 @@
     }
     
     // Ajuste la caméra (hauteur et angle) derrière la voiture, en se basant sur l'angle de direction
-    Vec3D camPos = car.pos.add(camOffset.getRotatedY(car.currTheta + HALF_PI)); //Vec3D camPos
+    Vec3D camPos = car.pos.add(camOffset.getRotatedY(car.currTheta + HALF_PI)); 
     camPos.constrain(mesh.getBoundingBox());
     float y = terrain.getHeightAtPoint(camPos.x, camPos.z);
     if (!Float.isNaN(y)) {
@@ -152,8 +113,11 @@
     eyePos.interpolateToSelf(camPos, 0.05f);     
     background(0xffaaeeff);
     camera(eyePos.x, eyePos.y, eyePos.z, car.pos.x, car.pos.y, car.pos.z, 0, -1, 0);
-    // Lumières
-    directionalLight(82, 62, 62, 0, -0.5f, -0.5f);
+    
+    // Scinder la vision 3D et planaire
+    _gl.glViewport( 0, 0, width, height); 
+    
+    directionalLight(82, 62, 62, 0, -0.5f, -0.5f); // Lumières
     directionalLight(0, 100, 30, 0.5f, -0.1f, 0.5f);
   
     fill(255);
@@ -166,10 +130,101 @@
     for(String ni_ : (Iterable<String>) myTrip.spots.keySet()) {
       
       Spot S_ = (Spot) myTrip.spots.get(ni_);
+      if(ni_.equals(start) || ni_.equals(end)) {strokeWeight(3); stroke(255,0,0); }
+      else {noStroke();}
+      
       S_.draw();
+ 
     }
-   
-    //s.redraw();
+    noStroke();
+    
+    // Vision planaire
+    camera(15, 10, -90, // eyeX, eyeY, eyeZ
+           114, 219, width/2, // centerX, centerY, centerZ
+           0.0, 1.0, 0.0); // upX, upY, upZ
+    lights();
+    
+    rotateY(-PI);
+    if(distance!=0 && abs((float) (distance-distanceC))<0.01) {
+      textFont(Arial, 10.0);
+      fill(255,0,0);
+      text("BRAVO!", -100, 10);
+    }
+
+    _gl.glClear(GL.GL_DEPTH_BUFFER_BIT);
+    _gl.glLoadIdentity();
+    _gl.glDisable(GL.GL_BLEND); //turns off blending
+    _gl.glViewport( 0, 0, width/2, height/2 );
+    
+    rotateY(PI);
+    pushMatrix();
+    translate(0,-2,0);
+    rotateZ(-5*PI/height);
+    
+    fill(30, 75, 35);
+    rect(0,0,100, 100);
+    fill(255, 30, 0);
+    strokeWeight(2);
+    stroke(0);
+    translate(0,0,-1);
+    ellipse(car.y2D, car.x2D, 2, 2);
+    
+    
+    for(String ni_ : (Iterable<String>) myTrip.spots.keySet()) {
+          
+      Spot S_ = (Spot) myTrip.spots.get(ni_);
+      fill(S_.col);
+      strokeWeight(1.1);
+      if(start!=null && end!=null) {
+        if(ni_.equals(start) || ni_.equals(end)) {strokeWeight(3); stroke(255,0,25); }
+        else {strokeWeight(1.1); stroke(0);}
+      }
+ 
+      if(S_.f==form[0]) {
+        rect(S_.y2D, S_.x2D, 3, 3); //inversed otherwise from bottom
+      } else if(S_.f==form[1]) {
+        triangle(S_.y2D, S_.x2D, S_.y2D-4, S_.x2D, S_.y2D, S_.x2D-4);
+      } else if(S_.f==form[2]) {
+        ellipse(S_.y2D, S_.x2D, 3, 3); 
+      } else if(S_.f==form[3]) {
+        ellipse(S_.y2D, S_.x2D, 3, 3); 
+      }
+      
+      strokeWeight(1.1); 
+      stroke(0);
+      
+      //textFont(Arial, 5.0);
+      /*String n = S_.n.substring(0, 1);
+      translate(0,0,-1);
+      if(S_.y2D+10<100 && S_.y2D+10>0 && S_.x2D+10<100 && S_.x2D+10>0 )  text(n, S_.y2D+10, S_.x2D+10);
+      else  text(n, S_.y2D-10, S_.x2D-10);*/
+      
+      // Pour chaque spot, les liens sont détectés pour les tracer en noir  
+      for(String nj_ : (Iterable<String>) myTrip.spots.keySet())
+      {
+        
+        if (myTrip.isLink(ni_,nj_) && !(ni_.equals(nj_))) {
+          Spot S2_ = (Spot) myTrip.spots.get(nj_);
+          double p_ = myTrip.getLink(ni_,nj_);
+          
+          fill(0);
+          stroke(0);
+          strokeWeight(1);
+          line(S_.y2D, S_.x2D, S2_.y2D, S2_.x2D);
+          
+          
+          /*if (info) {
+            s.textFont(Arial, 10.0);
+            s.fill(180);
+            s.text(" " + (float) p_, abs((S_.x2D+S2_.x2D)/2), abs((S_.y2D+S2_.y2D)/2));
+          }*/
+          
+        }
+        
+      }
+    
+    }
+    popMatrix();
   
   }
 
@@ -189,14 +244,15 @@
     int x_ = (int) car.x;
     int y_ = (int) car.y;
     if (indN<listN.length) {
-      
-      myTrip.addSpot(listN[indN], x_, y_, d1_, d2_, h_);      
+      int col_ = color((int) (indN*255/listN.length), (int) (indN*255/listN.length), 0);
+      myTrip.addSpot(listN[indN], col_, form[(indN%4)], x_, y_, d1_, d2_, h_);      
       indN++;
       
     } else {
       
       indN = 0;
-      myTrip.addSpot(listN[indN], x_, y_, d1_, d2_, h_);        
+      int col_ = color((int) (indN*255/listN.length), (int) (indN*255/listN.length), 0);
+      myTrip.addSpot(listN[indN], col_, form[(indN%4)], x_, y_, d1_, d2_, h_);
       indN++;
       
     }
@@ -216,7 +272,7 @@
  }
  
  
- void mouseReleased()                                                   // appelé a chaque moment que la souris est relachée
+ void mouseReleased()   // appelé a chaque moment que la souris est relachée
  {
    
   mouseDown = false;
@@ -233,18 +289,15 @@
         } else {
           myTrip.addLink(firstSelect, secondSelect);
           distance += myTrip.getLink(firstSelect, secondSelect);
-          println("added link: "+ firstSelect + " - " + secondSelect);
+          println("un lien créé: "+ firstSelect + " - " + secondSelect);
+          println("distance parcourue: "+ distance);
           
         }
       }
       
-      
     }
     firstSelect = null;
     secondSelect = null;
-    
-    
-
 
  }
  
@@ -282,76 +335,118 @@
   
    // Génère les noeuds de manière aléatoire
    if( key == 'a' ) { 
-  
-     for(int i=0; i<listN.length; i++) {  //string array -> length
       
+     for(int i=0; i<listN.length; i++) {  //string array -> length
+       
        int x_, y_; float d1_, d2_, h_;
        x_ = (int) random(b.getMin().to2DXZ().x, b.getMax().to2DXZ().x); 
        y_ = (int) random(b.getMin().to2DXZ().y, b.getMax().to2DXZ().y);
-       constrain(y_,0,s.width);
-       constrain(x_,0,s.height);
        
        d1_ =  random(50,100);
        d2_ = random(50,100);
        h_ = random(100,200);
       
-       myTrip.addSpot(listN[i], x_, y_, d1_, d2_, h_); 
+       myTrip.addSpot(listN[i], colors[i], form[(i%4)], x_, y_, d1_, d2_, h_); 
       
      }
   
    }
    
-   // Remise à zero de la distance parcourue
-   if( key == '0' ) { 
-    
+   // Remise à zero de la distance parcourue, élimine tout lien créé
+   if( key == 'd' ) { 
+     
     distance = 0;
-      
+    for(String ni_ : (Iterable<String>) myTrip.spots.keySet())
+    {
+      for(String nj_ : (Iterable<String>) myTrip.spots.keySet())
+      {
+        
+        if(myTrip.isLink(ni_,nj_) && !(ni_.equals(nj_))) {
+          myTrip.removeLink(ni_, nj_);
+        }
+          
+      }
+    }
+
    }
    
-   // joue à trouver le plus court chemin entre 2 villes, hors chemin direct évidemment
+   
+   // Joue à trouver le plus court chemin entre 2 villes, hors chemin direct évidemment
    if( key == 'p') {
      
-     int l = 0;
-     distanceC = 0; comp = 0;
+     //int l = 0;
+     distanceC = 0; //comp = 0;
+     String intermediate = null;
+     path.clear(); 
      if(myTrip.spots.size()==listN.length) {
-       path.clear();  
        int k = (int) random(listN.length);
        start = listN[k];
        k = (int) random(listN.length);
        while(listN[k]==start)  k = (int) random(listN.length);
        end = listN[k];
        
-       // plus court chemin entre 2 stations, en faisant obligatoirement nb stations supplémentaires
-       int nb = 2;
-       ArrayList pathTemp = new ArrayList();
-       myTrip.findPath(start,end, pathTemp);
-       distanceC += comp;
-       for(int i=0; i<path.size(); i++) pathTemp.add((String) path.get(i)); // initialization
 
-       for(int i=0; i<pathTemp.size(); i++) {
-         String p = (String) pathTemp.get(i);
+       ArrayList pathTemp = new ArrayList();
+       intermediate = myTrip.findPath(start,end, pathTemp);
+       distanceC += myTrip.getDistance(start, intermediate) + myTrip.getDistance(intermediate, end);
+       println("Ville intermédiaire: " + intermediate + " - Distance parcourue: " + distanceC);
+       
+       for(int i=0; i<path.size(); i++) {
+         String p = (String) path.get(i);
          println(p);
        }
-       myTrip.findPath(start, (String) pathTemp.get(1), pathTemp);
-       double compT = comp;
-       ArrayList pathT = new ArrayList();
-       for(int i=0; i<path.size(); i++) pathT.add((String) path.get(i));
-       myTrip.findPath((String) pathTemp.get(1), end, pathTemp);
-       if (comp>compT) {
-         distanceC += compT;
-         pathTemp.add(1,(String) pathT.get(1));
+       
+     }
+     
+   }
+   
+   // Joue à trouver le plus court chemin entre 2 stations, en visitant obligatoirement 2 stations, sachant une déja donnée
+   if( key == 'q') {
+     
+     if(myTrip.spots.size()==listN.length) {
+       
+       if (start==null || path.size()==0) {
+         println("Rejoue la première étape!");
        } else {
-         distanceC += comp;
-         pathTemp.add(2,(String) path.get(1));
-       }
-       for(int i=0; i<pathTemp.size(); i++) {
-         String p = (String) pathTemp.get(i);
-         println("___" + p);
+
+         String interm1 = null, interm2= null;
+         distanceC = 0;
+         ArrayList pathTemp = new ArrayList();
+         //myTrip.findPath(start,end, pathTemp);
+         //distanceC += comp;
+         for(int i=0; i<path.size(); i++) pathTemp.add((String) path.get(i)); // initialization
+         for(int i=0; i<pathTemp.size(); i++) {
+           String p = (String) pathTemp.get(i);
+           println(p);
+         }
+         interm1 = myTrip.findPath(start, (String) pathTemp.get(1), pathTemp);
+         interm2 = myTrip.findPath((String) pathTemp.get(1), end, pathTemp);
+         
+         if ((myTrip.getDistance((String) pathTemp.get(1), interm2) + myTrip.getDistance(interm2, end))      
+             > (myTrip.getDistance(start, interm1) + myTrip.getDistance(interm1, (String) pathTemp.get(1)))) {
+           distanceC += (myTrip.getDistance(start, interm1) 
+                         + myTrip.getDistance(interm1, (String) pathTemp.get(1))
+                         + myTrip.getDistance((String) pathTemp.get(1), end));
+           pathTemp.add(1, interm1);
+         } else {
+           distanceC += (myTrip.getDistance(start, (String) pathTemp.get(1))
+                         + myTrip.getDistance((String) pathTemp.get(1), interm2) 
+                         + myTrip.getDistance(interm2, end));
+           pathTemp.add(2, interm2);
+         }
+         path = pathTemp;
+         for(int i=0; i<path.size(); i++) {
+           String p = (String) path.get(i);
+           println("___" + p);
+         }
+         
+         println(distanceC);
        }
        
-       println(distanceC);
      }
-   
+     
+     path.clear();
+     
    }
     
    // Montrer ou non les pondérations
