@@ -33,7 +33,9 @@
 
   <xsl:template match="autres-tpes"><br/><br/><big><big>Autres idées de sujets</big> (elles seront développées sur <a href="mailto:science-participative@sophia.inria.fr?subject=A_propos_de_TPEs">simple demande</a>)</big><br/><br/></xsl:template>
 
-  <xsl:template match="link"><div><a href="{@l}"><xsl:value-of select="saxon:if(count(@n)>0, @n, @l)"/></a></div></xsl:template>
+  <xsl:template match="link"><div><a target="_blank" href="{@l}"><xsl:value-of select="saxon:if(count(@n)>0, @n, @l)"/></a></div></xsl:template>
+
+  <xsl:template match="a"><a target="_blank" href="{@href}"><xsl:value-of select="."/></a></xsl:template>
 
   <xsl:template match="*|@*"><xsl:copy><xsl:apply-templates select="@*"/><xsl:apply-templates/></xsl:copy></xsl:template>
 
