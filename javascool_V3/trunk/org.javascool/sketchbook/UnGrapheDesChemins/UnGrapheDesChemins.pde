@@ -6,7 +6,7 @@
   */
  PFont Verdana;
  boolean mouseDown = false, info = false, pathSelect = false;
- String[] listN = {"Nice", "Marseille", "Avignon", "Toulouse", "Bordeaux"};
+ String[] listN = {"Nice", "Marseille", "Avignon", "Toulouse", "Bordeaux", "Dijon", "Fréjus"};//, "Strasbourg", "Caen", "Grenoble", "Lille", "Rennes"};
  double[] listP = {10, 15, 20, 10, 20};
  int indN = 0, indP = 0;
  Graph myGraph;
@@ -143,7 +143,7 @@
   
   if(mouseButton == RIGHT) {
     
-    if (indN<5) {
+    if (indN<listN.length) {
       
       println("ind " + indN);
       myGraph.addNode(listN[indN], mouseX, mouseY);        // ajoute nouveau noeud
@@ -172,11 +172,12 @@
   if(keyPressed)                                                      // controles par touches clavier
   {
    
-    
-    if(key == 'p' && myGraph.nodes.size() > 1)                               // cherche trajet entre noeuds depart et fin
+    // Cherche trajet entre noeuds depart et fin
+    // MARCHE PAS TRÈS BIEN!!!!
+    if(key == 'p' && myGraph.nodes.size() > 1)                        
       {
         pathSelect = true;
-        
+        double p1 = 0.0, p2 = 0.0;
         if(start == null)
           start = myGraph.getClosestNode(mouseX,mouseY);
         else
@@ -185,8 +186,35 @@
           println("start: " + start + " // end: " + end);
           if(end != start)
           {
-            println("trajet? " +pathSelect);
             myGraph.findPath(start,end);
+            ArrayList pathT = new ArrayList();
+            for(int i=0; i<path.size()-1; i++) {
+             p1 += myGraph.getLink((String) path.get(i),(String) path.get(i+1));
+            }
+            println(p1);
+            for(int i=0; i<path.size(); i++) pathT.add((String) path.get(i)); // initialization
+            for(int i=0; i<pathT.size(); i++) {
+              String n = (String) pathT.get(i);
+            }
+            myGraph.findPath(end,start);
+            for(int i=0; i<path.size()-1; i++) {
+             p2 += myGraph.getLink((String) path.get(i),(String) path.get(i+1));
+            }
+            println(p2);
+            if(p2>p1) {
+              //path.clear();
+              for(int i=0; i<path.size(); i++) {
+                path.remove(i);
+                if(i<pathT.size()) {
+                path.add((String) pathT.get(i)); 
+                }
+              }
+            }
+            
+            for(int i=0; i<path.size(); i++) {
+              String n = (String) path.get(i);
+              println("___" + n);
+            }
           }
           start = null;  
         }
@@ -233,11 +261,27 @@ void keyPressed()
  
   // Efface un noeud (le plus proche du curseur de la souris)
   if( key == 'd' ) { 
+    
     path.clear();
     if(myGraph.nodes.size() != 0) {
       String n_ = myGraph.getClosestNode(mouseX,mouseY);
       myGraph.removeNode(n_);
-     
+    }
+    
+  }
+  
+  // Efface tous les liens tracés
+  if( key == 's' ) { 
+    
+    path.clear();
+    for(String ni_ : (Iterable<String>) myGraph.nodes.keySet())
+    {
+      for(String nj_ : (Iterable<String>) myGraph.nodes.keySet())
+      {
+        if(myGraph.isLink(ni_,nj_) && !(ni_.equals(nj_))) {
+          myGraph.removeLink(ni_, nj_);
+        }
+      }
     }
     
   }
@@ -262,6 +306,8 @@ void keyPressed()
   
   // Génère les noeuds de manière aléatoire
   if( key == 'a' ) { 
+    
+    path.clear();
     
     for(int i=0; i<listN.length; i++) {  //string array -> length
       
@@ -289,6 +335,37 @@ void keyPressed()
     }
   } 
   
+  // Génère des liens possibles entre les noeuds de manière aléatoire
+  if( key == 'r' ) {
+   
+    for(String ni_ : (Iterable<String>) myGraph.nodes.keySet())
+    {
+      for(String nj_ : (Iterable<String>) myGraph.nodes.keySet())
+      {
+        if(myGraph.isLink(ni_,nj_) && !(ni_.equals(nj_))) {
+          myGraph.removeLink(ni_, nj_);
+        }
+      }
+      
+      boolean done = false;
+      String nk_ = null;
+      while(!done) {
+        int k = (int) random(listN.length);
+        nk_ = listN[k];
+        if(!(myGraph.isLink(ni_,nk_))) done = true;
+        println(nk_);
+      }
+      for(String nj_ : (Iterable<String>) myGraph.nodes.keySet())
+      {
+        if(!(nj_.equals(nk_)) && (myGraph.isLink(ni_,nj_) == false)) {
+          myGraph.addLink(ni_,nj_);
+          
+        }
+
+      }
+      
+    }
+  }
   
   /*if(key == 'p' && myGraph.nodes.size() > 1)                               // cherche trajet entre noeuds depart et fin
     {

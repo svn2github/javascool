@@ -54,7 +54,7 @@ class Graph {
     
   }
   
-  /** Cherche noeud plus proche d'une position de la souris.
+  /** Cherche noeud plus proche d'une position.
    * @param x Abcisse position souris.
    * @param y Ordonnée position souris.
    * @return Nom du noeud.
@@ -135,11 +135,14 @@ class Graph {
   //void addLink(String nA, String nB, double p) {
   void addLink(String nA, String nB) {
     
-    Node NA_ = (Node) nodes.get(nA);
-    Node NB_ = (Node) nodes.get(nB);
-    double p_ = dist(NA_.x,NA_.y,NB_.x,NB_.y)/100;
-    NA_.links.put(nB, new Link(nA, nB, p_));
-    NB_.links.put(nA, new Link(nB, nA, p_));
+    if (!(nA.equals(nB))) {  // pas de lien de et vers un meme noeud
+      Node NA_ = (Node) nodes.get(nA);
+      Node NB_ = (Node) nodes.get(nB);
+      double p_ = (PVector.dist(NA_.position, NB_.position))/100;
+      
+      NA_.links.put(nB, new Link(nA, nB, p_));
+      NB_.links.put(nA, new Link(nB, nA, p_));
+    }
       
   }
 
@@ -171,14 +174,28 @@ class Graph {
     
     Node NA_ = (Node) nodes.get(nA);
     //String ni_;
-    boolean link_ = false;
+    boolean link1_ = false;
     
     for(String ni_ : (Iterable<String>) NA_.links.keySet())
     {
       if (ni_.equals(nB)) { // test si les deux string sont équivalents
-        link_ = true;
+        link1_ = true;
       }
     }
+    
+    // et inverse aussi!
+    Node NB_ = (Node) nodes.get(nB);
+    boolean link2_ = false;
+    
+    for(String ni_ : (Iterable<String>) NB_.links.keySet())
+    {
+      if (ni_.equals(nA)) { // test si les deux string sont équivalents
+        link2_ = true;
+      }
+    }
+    
+    boolean link_ = false;
+    if(link1_ || link2_) link_ = true;
     
     return link_;
   }
@@ -217,21 +234,22 @@ class Graph {
     String next = nInit; // initialization
     Node Ninit = (Node) nodes.get(nInit);
     Node Ntarget = (Node) nodes.get(nTarget);
-    float d = 999999;
+    double p = 999999;
     for(String ni_ : (Iterable<String>) Ninit.links.keySet())
     {
       Node Ni_ = (Node) nodes.get(ni_);
       if(path.indexOf(ni_) == -1 && restricted.indexOf(ni_) == -1) // si le noeud n'a pas été parcouru
       {
-        float di = PVector.dist(Ni_.position, Ninit.position)+PVector.dist(Ntarget.position,Ni_.position);
-        if(di < d )
+        //double di = PVector.dist(Ni_.position, Ninit.position)+PVector.dist(Ntarget.position,Ni_.position);
+        double pi = getLink(nInit, ni_) + getLink(ni_, nTarget);
+        if(pi < p )
         {
-          d = di;
+          p = pi;
           next = ni_;
         }
       }
     }
-    println("Distance parcourue par le trajet: " + d );
+    //println("Distance parcourue par le trajet: " + p );
     path.add(nInit);
     return next;
   
