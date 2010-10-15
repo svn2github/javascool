@@ -256,6 +256,42 @@ class Graph {
   }
   
   
+  /*String exploreNode(String nO, String nInit, String nTarget)                            
+  {
+    if(nInit == nTarget)
+      return nTarget;
+    String next = nInit; // initialization
+    Node Ninit = (Node) nodes.get(nInit);
+    Node Ntarget = (Node) nodes.get(nTarget);
+    double p = 999999;
+    //for(String ni_ : (Iterable<String>) Ninit.links.keySet())
+    //{
+    for(String ni_ : (Iterable<String>) nodes.keySet())
+    {
+ 
+      if((!(nInit.equals(nO) && ni_.equals(nTarget)) && !ni_.equals(nInit))) {
+        if(isLink(nInit, ni_)) {
+          Node Ni_ = (Node) nodes.get(ni_);
+          if(path.indexOf(ni_) == -1 && restricted.indexOf(ni_) == -1) // si le noeud n'a pas été parcouru
+          {
+            //double di = PVector.dist(Ni_.position, Ninit.position)+PVector.dist(Ntarget.position,Ni_.position);
+            double pi = getLink(nInit, ni_) + getLink(ni_, nTarget);
+            if(pi < p )
+            {
+              p = pi;
+              next = ni_;
+            }
+          
+           }
+        }
+      }
+    }
+    //println("Distance parcourue par le trajet: " + p );
+    path.add(nInit);
+    return next;
+  
+  }*/
+  
   /**   Construit le trajet avec tous les noeuds - appel à exploreNode
    * @param nStart Noeud départ.
    * @param nEnd Noeud final.
@@ -273,6 +309,7 @@ class Graph {
     while(next != nEnd && tests < 100)
     {
       next = exploreNode(next,nEnd);
+      //next = exploreNode(nStart,next,nEnd);
       its++;
       if(its > 500)
       {

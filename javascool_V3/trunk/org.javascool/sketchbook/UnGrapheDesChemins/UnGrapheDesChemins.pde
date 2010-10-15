@@ -187,7 +187,7 @@
           if(end != start)
           {
             myGraph.findPath(start,end);
-            ArrayList pathT = new ArrayList();
+            /*ArrayList pathT = new ArrayList();
             for(int i=0; i<path.size()-1; i++) {
              p1 += myGraph.getLink((String) path.get(i),(String) path.get(i+1));
             }
@@ -209,7 +209,7 @@
                 path.add((String) pathT.get(i)); 
                 }
               }
-            }
+            }*/
             
             for(int i=0; i<path.size(); i++) {
               String n = (String) path.get(i);
