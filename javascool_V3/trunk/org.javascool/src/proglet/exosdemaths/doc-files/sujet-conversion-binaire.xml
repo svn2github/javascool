@@ -39,8 +39,9 @@
      </div>
      <div title="Représenter des nombres entiers négatifs et positifsde toute taille et des nombres décimaux">Tout ceci marche aussi pour des nombres plus grands, 
        plus compliqués et d'autres objets numériques (images, sons, ..)
-       comme cela vous est expliqué dans le texte "<l l="http://interstices.info/reflet-numerique" n="tout a un reflet numérique"/>" à notre disposition.
+       comme cela vous est expliqué dans le texte "<l link="http://interstices.info/reflet-numerique" text="tout a un reflet numérique"/>" à notre disposition.
      </div>
+     <div class="margin">Une <l link="http://javascool.gforge.inria.fr/v3/documents/ExosBaseDeux.html" text="activité sans ordinateur"/> est disponible ici.</div>
    </div>
 
   <div class="works">
