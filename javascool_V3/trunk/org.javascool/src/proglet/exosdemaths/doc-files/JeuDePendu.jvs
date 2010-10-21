@@ -1,11 +1,10 @@
 
-
 // Ce programme a été conçu et réalisé par Olivier Dikken <garou9999@hotmail.com> et cie.
 
 void main() {
   
   // Initiatilisation d'un mot parmis les mots possibles
-  String mots[] = {"voiture", "INRIA", "pompe a vélo", "cool"};
+  String mots[] = {"voiture", "INRIA", "pompeux", "cool"};
   String mot = mots[(int) (mots.length * Math.random())];
   
   // Création d'un tableau avec des 0 sauf aux extrémités
@@ -21,7 +20,7 @@ void main() {
       if(juste[i] == 0) 
 	gagne = 0;
     if (gagne == 1) {
-      println("Congratulations! you have won!!\n(restart the game to try another word!)");
+      System.out.println("Congratulations! you have won!!\n(restart the game to try another word!)");
       return;
     }
     
@@ -31,16 +30,16 @@ void main() {
       {
 	for (int i = 0; i <mot.length() ; i++){
 	  if (juste[i] == 1) {
-	    print(mot.charAt(i));
+	    System.out.print(mot.charAt(i));
 	  } else {
-	    print("_");
+	    System.out.print("_");
 	  }
 	}
-	println();
+	System.out.println();
       }
 
       // On demande à l'utilisateur pour une lettre
-      print("Lettre? : "); char c = readString().charAt(0);
+      System.out.print("Lettre? : "); char c = readString().charAt(0);
 
       // On met à jour les lettres justes
       for (int i = 0; i < mot.length(); i++) {
@@ -52,4 +51,3 @@ void main() {
   }
   println("Sorry guy! you have lost!!\n(restart the game to try another word!)");
 }
-
