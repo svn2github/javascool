@@ -25,6 +25,7 @@
     
     boxValue = controlP5.addTextfield("  ",width-50-300,2*height/3+height/7,300,20);
     boxValue.setText(" ");
+    boxValue.hide();
   
   
     // Charger un enregistrement
@@ -56,7 +57,7 @@
   
     
      // Info
-    controlP5.addButton("info",10,4,2*height/3+25,60,15).setId(1);
+    controlP5.addButton("info",10,4,2*height/3+25,75,20).setId(1);
     controlP5.controller("info").setCaptionLabel("Info"); // change content
     controlP5.controller("info").captionLabel().setControlFont(font); // change the font
     controlP5.controller("info").captionLabel().setControlFontSize(10);
@@ -188,7 +189,15 @@
   
     stroke(250,70,0);
     textFont(f,14);
-    text("                  100     125                  250                    500                 1000                2000                4000                      8000 Hz", 0,2*height/3+height/30);
+    //text("                  100         125                               250                           500                      1000                        2000                        4000                    8000 Hz", 0,2*height/3+height/30);
+    text("100", width/10, 2*height/3+height/30);
+    text("125", width/6, 2*height/3+height/30);
+    text("250", width/5 + width/12, 2*height/3+height/30);
+    text("500", width/2 - width/12, 2*height/3+height/30);
+    text("1000", width/2 + width/36, 2*height/3+height/30);
+    text("2000", 2*width/3 - width/100, 2*height/3+height/30);
+    text("4000", 4*width/5 - width/50, 2*height/3+height/30);
+    text("8000  Hz", width - width/10, 2*height/3+height/30);
     for(int i = 0; i < fft.avgSize(); i++) {
       line((i * w) + (w / 2), 2*height/3, (i * w) + (w / 2), 2*height/3 - fft.getAvg(i) * factor);
     }
@@ -236,8 +245,10 @@
   // Controlleur pour l'info    
   void info(float theValueA) {
     isOpen = !isOpen;
-    controlP5.controller("info").captionLabel().setControlFontSize(8);
+    controlP5.controller("info").captionLabel().setControlFont(font);
+    controlP5.controller("info").captionLabel().setControlFontSize(10);
     controlP5.controller("info").setCaptionLabel((isOpen==true) ? "fermer Info":"voir Info");
+
   }
   
   void openInfo() {
@@ -293,6 +304,4 @@
   }
   
   static ExplorationSonore proglet;
-  
-  // Taille pour l'insertion dans JavaScool
-  public static final int WIDTH = 800, HEIGHT = 600;
+

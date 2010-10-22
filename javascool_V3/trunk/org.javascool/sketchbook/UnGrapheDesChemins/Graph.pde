@@ -237,15 +237,17 @@ class Graph {
     double p = 999999;
     for(String ni_ : (Iterable<String>) Ninit.links.keySet())
     {
-      Node Ni_ = (Node) nodes.get(ni_);
-      if(path.indexOf(ni_) == -1 && restricted.indexOf(ni_) == -1) // si le noeud n'a pas été parcouru
-      {
-        //double di = PVector.dist(Ni_.position, Ninit.position)+PVector.dist(Ntarget.position,Ni_.position);
-        double pi = getLink(nInit, ni_) + getLink(ni_, nTarget);
-        if(pi < p )
+      if(!(ni_.equals(nInit))) {
+        Node Ni_ = (Node) nodes.get(ni_);
+        if(path.indexOf(ni_) == -1 && restricted.indexOf(ni_) == -1) // si le noeud n'a pas été parcouru
         {
-          p = pi;
-          next = ni_;
+          //double di = PVector.dist(Ni_.position, Ninit.position)+PVector.dist(Ntarget.position,Ni_.position);
+          double pi = getLink(nInit, ni_) + getLink(ni_, nTarget);
+          if(pi < p )
+          {
+            p = pi;
+            next = ni_;
+          }
         }
       }
     }
@@ -325,6 +327,83 @@ class Graph {
       path.add(nEnd);
     else
       background(255,0,0);
+  }
+  
+  /**   Algorithme de Dijkstra
+   * @param nStart Noeud départ.
+   * @param nEnd Noeud final.
+   */
+  void dijkstra(String nStart, String nEnd)
+  {
+    path.clear();
+    for(String ni_ : (Iterable<String>) nodes.keySet())
+    {
+      Node N_ = (Node) nodes.get(ni_);
+      N_.init();
+    }
+    opened.clear();
+    closed.clear();
+    opened.add(nStart);
+    Node Ns = (Node) nodes.get(nStart);
+    Ns.g = 0;
+    while(opened.size() > 0){
+      String nCurrent = (String) opened.remove(0);
+      //println("nCurrent: " + nCurrent);
+      closed.add(nCurrent);
+      if(nCurrent == nEnd){
+	break;
+      }
+      Node Nc = (Node) nodes.get(nCurrent);
+      for(String ni_ : (Iterable<String>) Nc.links.keySet()) {
+        //println("ni_: " + ni_);
+        Node adjacent = (Node) nodes.get(ni_);
+        Link a = (Link) Nc.links.get(ni_);
+	if(adjacent.walkable && !arrayListContains(closed, ni_)){ 
+	  if(!arrayListContains(opened, ni_)){
+	    opened.add(ni_);
+	    adjacent.parent = Nc; 
+	    adjacent.setG(a); 
+            //println("g ds open: " + adjacent.g);
+	  } else {
+	    if(adjacent.g > Nc.g + a.p){
+	      adjacent.parent = Nc; 
+	      adjacent.setG(a); 
+              //println("g hors open: " + adjacent.g);
+            }
+	  }
+        }
+      }
+    }
+    // Path generation
+    String pathNode = nEnd;
+    //println(pathNode);
+    double di = 0;
+    while(!(pathNode.equals(nStart))){
+      path.add(pathNode);
+      Node Np = (Node) nodes.get(pathNode);
+      di += Np.g;
+      println(di);
+      Np = Np.parent;
+      
+      pathNode = Np.n;
+    }
+    path.add(nStart);
+    Node Np = (Node) nodes.get(nStart);
+    di += Np.g;
+    println(di);
+  }
+  
+  // Utilities
+  
+  boolean arrayListContains(ArrayList c, String nA)
+  {
+    for(int i = 0; i < c.size(); i++){
+      String o = (String) c.get(i);
+      if(o == nA){
+	 return true;
+      }
+    }
+    return false;
   }
     
 }

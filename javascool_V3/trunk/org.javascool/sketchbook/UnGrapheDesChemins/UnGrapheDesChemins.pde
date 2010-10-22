@@ -12,6 +12,7 @@
  Graph myGraph;
  String firstSelect, secondSelect, start=null, end=null;
  ArrayList path, restricted;
+ ArrayList opened, closed;
  color pathC = color(0,124,30); 
  HScrollbar hs1;
  int topWidth; // width of text
@@ -25,6 +26,8 @@
   
   path = new ArrayList();
   restricted = new ArrayList();
+  opened = new ArrayList();
+  closed = new ArrayList();
   
   hs1 = new HScrollbar(0, 15, width, 15, 3+1);
   
@@ -73,7 +76,7 @@
      ellipse(N_.x,N_.y,30,30);
      stroke(0);
    }
-   
+   //println(path.size());
    for(int i=0;i<path.size();i++)
    {
      String p = (String) path.get(i);
@@ -178,43 +181,20 @@
       {
         pathSelect = true;
         double p1 = 0.0, p2 = 0.0;
-        if(start == null)
+        if(start == null) {
+          //path.clear();
           start = myGraph.getClosestNode(mouseX,mouseY);
-        else
-        {
+        } else {
           end = myGraph.getClosestNode(mouseX,mouseY);
           println("start: " + start + " // end: " + end);
           if(end != start)
           {
-            myGraph.findPath(start,end);
-            /*ArrayList pathT = new ArrayList();
-            for(int i=0; i<path.size()-1; i++) {
-             p1 += myGraph.getLink((String) path.get(i),(String) path.get(i+1));
-            }
-            println(p1);
-            for(int i=0; i<path.size(); i++) pathT.add((String) path.get(i)); // initialization
-            for(int i=0; i<pathT.size(); i++) {
-              String n = (String) pathT.get(i);
-            }
-            myGraph.findPath(end,start);
-            for(int i=0; i<path.size()-1; i++) {
-             p2 += myGraph.getLink((String) path.get(i),(String) path.get(i+1));
-            }
-            println(p2);
-            if(p2>p1) {
-              //path.clear();
-              for(int i=0; i<path.size(); i++) {
-                path.remove(i);
-                if(i<pathT.size()) {
-                path.add((String) pathT.get(i)); 
-                }
-              }
-            }*/
-            
-            for(int i=0; i<path.size(); i++) {
+            //myGraph.findPath(start,end);
+            myGraph.dijkstra(start, end);
+            /*for(int i=0; i<path.size(); i++) {
               String n = (String) path.get(i);
               println("___" + n);
-            }
+            }*/
           }
           start = null;  
         }
@@ -353,7 +333,7 @@ void keyPressed()
         int k = (int) random(listN.length);
         nk_ = listN[k];
         if(!(myGraph.isLink(ni_,nk_))) done = true;
-        println(nk_);
+        //println(nk_);
       }
       for(String nj_ : (Iterable<String>) myGraph.nodes.keySet())
       {

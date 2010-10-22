@@ -12,4 +12,11 @@ class Link {
     
   }
   
+  /*Link(String n1_, double p_) { // cas d'un lien considéré dans un ensemble de liens d'un noeud    
+ 
+    n1 = n1_;
+    p = p_;
+    
+  }*/
+  
 }

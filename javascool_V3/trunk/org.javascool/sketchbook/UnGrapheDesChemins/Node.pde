@@ -3,6 +3,9 @@ class Node {
   int x;
   int y;
   String n;
+  Node parent = null; // Parent Node setting
+  double g = 0; // Cost of reaching goal
+  boolean walkable = true; // Is this Node to be ignored?
   
   HashMap links; // tous les liens qui sont accolés au noeud
   
@@ -27,6 +30,16 @@ class Node {
     
     position = new PVector(x, y);
     
+  }
+  
+  void init(){
+    parent = null;
+    g = 0;
+  }
+  
+  // Calculate G
+  void setG(Link o){
+    g = parent.g + o.p;
   }
   
 }
