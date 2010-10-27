@@ -1,4 +1,4 @@
-<div title="La «proglet» CryptageRSA">
+<div title="La «proglet» EnVoiture">
   <p class="margin">Autres <l link="../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>Cette proglet<l class="note" link="1"/> permet de . . 
   </p>
@@ -7,9 +7,11 @@
     <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, 
     programmée en <l link="http://processing.org" text="Processing"/> et disponible sous forme de code documenté:
     <div class="table"><p>
-      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/CryptageRSA/CryptageRSA.pde.html" text="CryptageRSA"/></p>
-      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/CryptageRSA/interface.pde.html" text="interface"/></p>
-      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/CryptageRSA/fonctions.pde.html" text="fonctions"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/CryptageRSA/EnVoiture.pde.html" text="EnVoiture"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Car.pde.html" text="Car"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Spot.pde.html" text="Spot"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Trip.pde.html" text="Trip"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Link.pde.html" text="Link"/></p>
     </p></div>
     pour permettre des développements dérivés.</div>
   </div>

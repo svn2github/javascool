@@ -110,7 +110,7 @@ src/org/javascool/hdoc2htm.xslt : src/org/javascool/hml2htm.xslt
 	@touch $@
 
 lib/sketchbook.zip : $(DOC)
-	@rm -f $@; zip -9qr $@ `find sketchbook -name '*.htm' -o -name '*.xml' -o -name '*.pde'` 
+	@rm -f $@; zip -9qr $@ `find sketchbook -name '*.htm' -o -name '*.xml' -o -name '*.pde' -o -name '*.pdf'` 
 
 %.png : %.fig
 	@fig2dev -L png $^ > $@
