@@ -63,9 +63,10 @@ import javax.swing.UIManager;
  * @see <a href="Main.java.html">source code</a>
  * @serial exclude
  */
-public class Main extends JApplet { /**/public Main() { }
+public class Main extends JApplet { 
+  /**/public Main() { }
   private static final long serialVersionUID = 1L;
-  static final String title = "Java'Scool 3.0";
+  static final String title = "Java'Scool 3.1";
   static final boolean withProcessing = true; // If true includes the processing applets
 
   // [0] Defines the look and field.
@@ -74,7 +75,6 @@ public class Main extends JApplet { /**/public Main() { }
     if (os.startsWith("Windows")) {
       try { UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); } catch(Exception e) { }
     } else {
-      System.err.println("Note: Vous n'êtes pas sous Windows, bravo !!!!");
       try { System.setProperty("com.apple.mrj.application.apple.menu.about.name", title); } catch(Exception e) { }
       try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); } catch(Exception e) { System.err.println("Note: Utilisaton du thème Java (et non du système)"); }
     } 
@@ -773,10 +773,13 @@ public class Main extends JApplet { /**/public Main() { }
    * </ul>
    */
   public static void main(String[] usage) {
-    System.out.println("Note: Hi ! V3 is here :-)");
+    System.out.println("---------------------\nJava's cool 3.1\n---------------------");
     Main main = new Main();
-    if (usage.length >= 1) main.setActivityAs(usage[0]);
-    if (usage.length >= 2) main.setFileAs(usage[1]);
+    if (usage.length >= 1){
+    	main.setActivityAs(usage[0]);
+    }
+    if (usage.length >= 2){
+    main.setFileAs(usage[1]);
     Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
   }
 }
