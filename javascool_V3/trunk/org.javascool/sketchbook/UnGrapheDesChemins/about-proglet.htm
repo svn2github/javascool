@@ -1,0 +1,258 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div>
+   <h2>La &laquo;proglet&raquo; UnGrapheDesChemins.</h2>
+   
+   <div align="right" class="margin">Autres <a href="../../org/javascool/doc-files/about-proglets.htm">&laquo;proglets&raquo;</a>.
+   </div>
+     
+   <div>Cette proglet<sup><a href="#1">1</a></sup> permet de s&#8217;approprier les diff&eacute;rents &eacute;l&eacute;ments caract&eacute;ristiques d&#8217;un graphe, 
+      en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin.
+   </div>
+     
+   <div>Un graphe est un ensemble de points, dont certaines paires sont directement reli&eacute;es par un lien. 
+      Ces liens peuvent &ecirc;tre orient&eacute;s, d'un point vers un autre ou vice versa. 
+      Dans le cas contraire, les liens sont sym&eacute;triques, et le graphe est non-orient&eacute;. 
+        G&eacute;n&eacute;ralement, les points sont appel&eacute;s les sommets ou les n&#339;uds. Les liens sont appel&eacute;s ar&ecirc;tes dans les graphes non-orient&eacute;
+      
+        et arcs dans un graphe orient&eacute;. (<a href="http://fr.wikipedia.org/wiki/Th%C3%A9orie_des_graphes">Wikipedia</a>)
+        
+   </div>
+     
+   <div>Pour construire et manipuler un graphe, il faut utiliser la construction javascool. 
+        Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: 
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                         
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Ajouter ou modifier un noeud existant au graphe:</font></tt></p>
+                         
+                     <div><font color="#990000"><b>UnGrapheDesChemins.addNode</b></font>(<font color="#990000"><b>String</b></font> n, <font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>o&ugrave;: 
+      <ul class="ul">
+               
+         <li><tt>n</tt> est le nom du noeud.
+         </li>
+               
+         <li><tt>x</tt> est l'abscisse du noeud.
+         </li>
+               
+         <li><tt>y</tt> est l'ordonn&eacute;e du noeud.
+         </li>
+             
+      </ul>
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                         
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir un noeud &agrave; partir d'une position de souris:</font></tt></p>
+                         
+                     <div><font color="#990000"><b>UnGrapheDesChemins.getClosestNode</b></font>(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>o&ugrave;: 
+      <ul class="ul">
+               
+         <li><tt>x</tt> est l'abscisse de la position de souris.
+         </li>
+               
+         <li><tt>y</tt> est l'ordonn&eacute;e de la position de souris.
+         </li>
+               
+      </ul>
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                         
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;truire un noeud:</font></tt></p>
+                         
+                     <div><font color="#990000"><b>UnGrapheDesChemins.removeNode</b></font>(<font color="#990000"><b>String</b></font> n)
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>o&ugrave;: 
+      <ul class="ul">
+               
+         <li><tt>n</tt> est le nom du noeud.
+         </li>
+               
+      </ul>
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                       	
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir la liste des noeuds en lien avec un noeud sp&eacute;cifique:</font></tt></p>
+                         
+                     <div><font color="#990000"><b>UnGrapheDesChemins.getNodes</b></font>(<font color="#990000"><b>String</b></font> n)
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>o&ugrave;: 
+      <ul class="ul">
+               
+         <li><tt>n</tt> est le nom du noeud sp&eacute;cifique.
+         </li>
+               
+      </ul>
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                           
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Ajouter ou modifier un lien existant entre deux noeuds:</font></tt></p>
+                         
+                     <div><font color="#990000"><b>UnGrapheDesChemins.addLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>o&ugrave;: 
+      <ul class="ul">
+               
+         <li><tt>nA</tt> est le nom du premier noeud.
+         </li>
+               
+         <li><tt>nB</tt> est le nom du second noeud.
+         </li>
+               
+      </ul>
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                           
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;truire un lien existant entre deux noeuds:</font></tt></p>
+                         
+                     <div><font color="#990000"><b>UnGrapheDesChemins.removeLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>o&ugrave;: 
+      <ul class="ul">
+               
+         <li><tt>nA</tt> est le nom du premier noeud du lien &agrave; d&eacute;truire.
+         </li>
+               
+         <li><tt>nB</tt> est le nom du second noeud du lien &agrave; d&eacute;truire.
+         </li>
+               
+      </ul>
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                           
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Questionner si deux noeuds sont li&eacute;s:</font></tt></p>
+                         
+                     <div><font color="#990000"><b>UnGrapheDesChemins.isLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>o&ugrave;: 
+      <ul class="ul">
+               
+         <li><tt>nA</tt> est le nom du premier noeud du lien consid&eacute;r&eacute;.
+         </li>
+               
+         <li><tt>nB</tt> est le nom du second noeud du lien consid&eacute;r&eacute;.
+         </li>
+               
+      </ul>
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                           
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir le poids d'un lien entre deux noeud:</font></tt></p>
+                         
+                     <div><font color="#990000"><b>UnGrapheDesChemins.getLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>o&ugrave;: 
+      <ul class="ul">
+               
+         <li><tt>nA</tt> est le nom du premier noeud du lien consid&eacute;r&eacute;.
+         </li>
+               
+         <li><tt>nB</tt> est le nom du second noeud du lien consid&eacute;r&eacute;.
+         </li>
+               
+      </ul>
+        
+   </div>
+      
+   <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fen&ecirc;tre d'interaction.</div>
+      
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, 
+                   programm&eacute;e en <a href="http://processing.org">Processing</a> et disponible sous forme de code document&eacute;:
+                   
+               <p>
+                  <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                     <tr>
+                              
+                        <td valign="top"><a href="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/UnGrapheDesChemins.pde.html">UnGrapheDesChemins</a></td>
+                              
+                        <td valign="top"><a href="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Graph.pde.html">Graph</a></td>
+                              
+                        <td valign="top"><a href="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Node.pde.html">Node</a></td>
+                              
+                        <td valign="top"><a href="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Link.pde.html">Link</a></td>
+                              
+                        <td valign="top"><a href="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Link.pde.html">Link</a></td>
+                              
+                        <td valign="top"><a href="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/HScrollbar.pde.html">HScrollbar</a></td>
+                            
+                     </tr>
+                  </table><br></p>
+                   pour permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+</div>
