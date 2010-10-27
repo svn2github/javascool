@@ -173,29 +173,25 @@ class Graph {
   boolean isLink(String nA, String nB) {
     
     Node NA_ = (Node) nodes.get(nA);
-    //String ni_;
-    boolean link1_ = false;
+    Node NB_ = (Node) nodes.get(nB);
+    boolean link_ = false;
     
     for(String ni_ : (Iterable<String>) NA_.links.keySet())
     {
       if (ni_.equals(nB)) { // test si les deux string sont équivalents
-        link1_ = true;
+        link_ = true;
       }
     }
     
     // et inverse aussi!
-    Node NB_ = (Node) nodes.get(nB);
-    boolean link2_ = false;
     
     for(String ni_ : (Iterable<String>) NB_.links.keySet())
     {
       if (ni_.equals(nA)) { // test si les deux string sont équivalents
-        link2_ = true;
+        link_ = true;
       }
     }
-    
-    boolean link_ = false;
-    if(link1_ || link2_) link_ = true;
+
     
     return link_;
   }

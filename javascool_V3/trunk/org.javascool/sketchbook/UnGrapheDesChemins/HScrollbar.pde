@@ -16,7 +16,7 @@ class HScrollbar
     sheight = sh;
     int widthtoheight = sw - sh;
     ratio = (float)sw / (float)widthtoheight;
-    xpos = xp;
+    xpos = xp-3*swidth/4;
     ypos = yp-sheight/2;
     spos = xpos;// + swidth/2 - sheight/2;
     newspos = spos;
