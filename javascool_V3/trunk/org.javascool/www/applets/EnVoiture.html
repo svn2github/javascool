@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <!-- charset must remain utf-8 to be handled properly by Processing -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    
+    
+    <style type="text/css">
+      /* <![CDATA[ */
+	
+		body {
+  		  margin: 60px 0px 0px 55px;
+		  font-family: verdana, geneva, arial, helvetica, sans-serif; 
+		  font-size: 11px; 
+		  background-color: #ddddcc; 
+		  text-decoration: none; 
+		  font-weight: normal; 
+		  line-height: normal; 
+		}
+		 
+		a          { color: #3399cc; }
+		a:link     { color: #3399cc; text-decoration: underline; }
+		a:visited  { color: #3399cc; text-decoration: underline; }
+		a:active   { color: #3399cc; text-decoration: underline; }
+		a:hover    { color: #3399cc; text-decoration: underline; }
+	
+		/* ]]> */
+    </style>
+    
+  </head>
+  <body>
+    <div id="content">
+      
+      <div id="EnVoiture_container">
+	
+	<!--[if !IE]> -->
+	<object classid="java:org.jdesktop.applet.util.JNLPAppletLauncher" 
+            	type="application/x-java-applet"
+            	archive="EnVoiture.jar,toxiclibscore.jar,toxiclibscore.jar,toxiclibscore.jar,toxiclibs_p5.jar,opengl.jar,opengl.jar,core.jar,http://download.java.net/media/applet-launcher/applet-launcher.jar,http://download.java.net/media/jogl/builds/archive/jsr-231-webstart-current/jogl.jar,http://download.java.net/media/gluegen/webstart/gluegen-rt.jar"
+            	width="1200" height="700"
+            	standby="Loading Processing software..." >
+          
+	  <param name="archive" value="EnVoiture.jar,toxiclibscore.jar,toxiclibscore.jar,toxiclibscore.jar,toxiclibs_p5.jar,opengl.jar,opengl.jar,core.jar,http://download.java.net/media/applet-launcher/applet-launcher.jar,http://download.java.net/media/jogl/builds/archive/jsr-231-webstart-current/jogl.jar,http://download.java.net/media/gluegen/webstart/gluegen-rt.jar" />
+	  <param name="jnlpNumExtensions" value="1">
+	  <param name="jnlpExtension1" value="http://download.java.net/media/jogl/builds/archive/jsr-231-webstart-current/jogl.jnlp">
+
+	  <param name="mayscript" value="true" />
+	  <param name="scriptable" value="true" />
+	  
+	  <param name="image" value="loading.gif" />
+	  <param name="boxmessage" value="Loading Processing software..." />
+	  <param name="boxbgcolor" value="#FFFFFF" />
+	  <param name="progressbar" value="true" />
+	  <!--<param name="noddraw.check" value="true">-->
+	  
+	  <param name="subapplet.classname" value="EnVoiture" /> 
+	  <param name="subapplet.displayname" value="EnVoiture" />
+	  
+	  <param name="test_string" value="outer" />
+	  <!--<![endif]-->
+	  
+	  <object classid="clsid:CAFEEFAC-0016-0000-FFFF-ABCDEFFEDCBA" 
+		  width="1200" height="700"
+		  standby="Loading Processing software..."  >
+
+	    <param name="code" 
+		   value="org.jdesktop.applet.util.JNLPAppletLauncher" />
+	    <param name="archive" value="EnVoiture.jar,toxiclibscore.jar,toxiclibscore.jar,toxiclibscore.jar,toxiclibs_p5.jar,opengl.jar,opengl.jar,core.jar,http://download.java.net/media/applet-launcher/applet-launcher.jar,http://download.java.net/media/jogl/builds/archive/jsr-231-webstart-current/jogl.jar,http://download.java.net/media/gluegen/webstart/gluegen-rt.jar" />
+	    <param name="jnlpNumExtensions" value="1">
+	    <param name="jnlpExtension1" value="http://download.java.net/media/jogl/builds/archive/jsr-231-webstart-current/jogl.jnlp">
+	    
+	    <param name="mayscript" value="true" />
+	    <param name="scriptable" value="true" />
+	    
+	    <param name="image" value="loading.gif" />
+	    <param name="boxmessage" value="Loading Processing software..." />
+	    <param name="boxbgcolor" value="#FFFFFF" />
+	    <param name="progressbar" value="true" />
+	    <!--<param name="noddraw.check" value="true">-->
+
+	    <param name="subapplet.classname" value="EnVoiture" /> 
+	    <param name="subapplet.displayname" value="EnVoiture" />
+	    
+	    <param name="test_string" value="inner" />
+	    
+	    <p>
+	      <strong>
+		This browser does not have a Java Plug-in.
+		<br />
+		<a href="http://www.java.com/getjava" title="Download Java Plug-in">
+		  Get the latest Java Plug-in here.
+		</a>
+	      </strong>
+	    </p>
+	    
+	  </object>
+	  
+	  <!--[if !IE]> -->
+	</object>
+	<!--<![endif]-->
+	
+      </div>
+      
+      <p>
+	 
+ 10.2010 Cécile P-L for Fuscia, ccl.picard@gmail.com
+ GRAPHES
+ Interface pédagogique sur la manipulation des concepts liés aux graphes
+
+ Inspirée de 'Steering Car' de toxiclibs par Karsten Schmidt
+/
+
+  
+  import toxi.geom.*;
+  import toxi.geom.mesh.*;
+  import toxi.math.*;
+  import toxi.processing.*;
+  
+  import processing.opengl.*;
+  import javax.media.opengl.*;
+  
+  PGraphicsOpenGL pgl;
+  GL _gl;
+  
+  float NOISE_SCALE = 0.07f;
+  int DIM=80;
+  
+  Terrain terrain;
+  ToxiclibsSupport gfx;
+  TriangleMesh mesh; AABB b;
+  Car car;
+  Trip myTrip;
+  
+  Vec3D camOffset = new Vec3D(0, 100, 300);
+  Vec3D eyePos = new Vec3D(0, 1000, 0);
+
+
+  PFont Verdana, Arial;
+  int gX, gY; int indN = 0;
+  boolean mouseDown = false, info = false;
+  double distance, distanceC;//,  comp; // calcule distance parcourue
+  String[] listN = {"Nice", "Marseille", "Avignon", "Toulouse", "Bordeaux", "Dijon", "Fréjus", "Strasbourg", "Caen", "Grenoble", "Lille", "Rennes"};
+  String firstSelect, secondSelect, start, end;
+  ArrayList path, restricted;
+  
+  color[] colors = new color[listN.length];
+  char[] form = {'B', 'P', 'O', 'C'}; 
+
+  
+  
+  void setup() 
+  {
+    
+    size(1200, 700, OPENGL);//1024, 576, OPENGL);
+    Verdana = loadFont("Verdana-48.vlw");
+    Arial = loadFont("ArialMT-48.vlw");
+    
+    // Pour créer les 2 vues
+    pgl = (PGraphicsOpenGL) g;  
+    _gl = pgl.gl;
+  
+    colors[0] = color(#FF9900); colors[1] = color(100, 200,0); colors[2] = color(#FFFF00);
+    colors[3] = color(200); colors[4] = color(150); colors[5] = color(100);
+    colors[6] = color(#0000FF);  colors[7] = color(0,0,100);  colors[8] = color(#00FFFF);
+    colors[9] = color(#FF00FF); colors[10] = color(100, 0, 100); colors[11] = color(0,70,75);
+    
+
+    // Créer le terrain et son dénivelé
+    terrain = new Terrain(DIM,DIM, 50);
+    float[] el = new float[DIM*DIM];
+    noiseSeed(23);
+    for (int z = 0, i = 0; z < DIM; z++) {
+      for (int x = 0; x < DIM; x++) {
+        el[i++] = noise(x * NOISE_SCALE, z * NOISE_SCALE) * 400;
+      }
+    }
+    terrain.setElevation(el);
+    // maillage
+    mesh = terrain.toMesh(0);
+    // voiture
+    car = new Car(0, 0);
+    myTrip = new Trip();
+    // utilitaires de dessin
+    gfx = new ToxiclibsSupport(this);
+    
+    path = new ArrayList();
+    restricted = new ArrayList();
+
+  }
+
+  void draw() 
+  {
+    smooth();
+    gX = frame.getX(); 
+    gY = frame.getY(); 
+    
+    // in 2D
+    b = mesh.getBoundingBox();
+
+    
+    // in 3D
+    // Met à jour voiture et les spots
+    car.update();
+    for(String ni_ : (Iterable<String>) myTrip.spots.keySet()) {
+      
+      Spot S_ = (Spot) myTrip.spots.get(ni_);
+      S_.update();
+    }
+    
+    // Ajuste la caméra (hauteur et angle) derrière la voiture, en se basant sur l'angle de direction
+    Vec3D camPos = car.pos.add(camOffset.getRotatedY(car.currTheta + HALF_PI)); 
+    camPos.constrain(mesh.getBoundingBox());
+    float y = terrain.getHeightAtPoint(camPos.x, camPos.z);
+    if (!Float.isNaN(y)) {
+      camPos.y = max(camPos.y, y + 100);
+    }
+    eyePos.interpolateToSelf(camPos, 0.05f);     
+    background(0xffaaeeff);
+    camera(eyePos.x, eyePos.y, eyePos.z, car.pos.x, car.pos.y, car.pos.z, 0, -1, 0);
+    
+    // Scinder la vision 3D et planaire
+    _gl.glViewport( 0, 0, width, height); 
+    
+    directionalLight(82, 62, 62, 0, -0.5f, -0.5f); // Lumières
+    directionalLight(0, 100, 30, 0.5f, -0.1f, 0.5f);
+  
+    fill(255);
+    noStroke();
+    // Dessine le terrain et la voiture
+    gfx.mesh(mesh, false);
+    directionalLight(255, 255, 255, 0.05f, -0.005f, 0.05f);
+    car.draw();
+    
+    for(String ni_ : (Iterable<String>) myTrip.spots.keySet()) {
+      
+      Spot S_ = (Spot) myTrip.spots.get(ni_);
+      if(ni_.equals(start) || ni_.equals(end)) {strokeWeight(3); stroke(255,0,0); }
+      else {noStroke();}
+      
+      S_.draw();
+ 
+    }
+    noStroke();
+    
+    // Vision planaire
+    camera(15, 10, -90, // eyeX, eyeY, eyeZ
+           114, 219, width/2, // centerX, centerY, centerZ
+           0.0, 1.0, 0.0); // upX, upY, upZ
+    lights();
+    
+    rotateY(-PI);
+    if(distance!=0 && abs((float) (distance-distanceC))<0.01) {
+      textFont(Arial, 10.0);
+      fill(255,0,0);
+      text("BRAVO!", -100, 10);
+    }
+
+    _gl.glClear(GL.GL_DEPTH_BUFFER_BIT);
+    _gl.glLoadIdentity();
+    _gl.glDisable(GL.GL_BLEND); //turns off blending
+    _gl.glViewport( 0, 0, width/2, height/2 );
+    
+    rotateY(PI);
+    pushMatrix();
+    translate(0,-2,0);
+    rotateZ(-5*PI/height);
+    
+    fill(30, 75, 35);
+    rect(0,0,100, 100);
+    fill(255, 30, 0);
+    strokeWeight(2);
+    stroke(0);
+    translate(0,0,-1);
+    ellipse(car.y2D, car.x2D, 2, 2);
+    
+    
+    for(String ni_ : (Iterable<String>) myTrip.spots.keySet()) {
+          
+      Spot S_ = (Spot) myTrip.spots.get(ni_);
+      fill(S_.col);
+      strokeWeight(1.1);
+      if(start!=null && end!=null) {
+        if(ni_.equals(start) || ni_.equals(end)) {strokeWeight(3); stroke(255,0,25); }
+        else {strokeWeight(1.1); stroke(0);}
+      }
+ 
+      if(S_.f==form[0]) {
+        rect(S_.y2D, S_.x2D, 3, 3); //inversed otherwise from bottom
+      } else if(S_.f==form[1]) {
+        triangle(S_.y2D, S_.x2D, S_.y2D-4, S_.x2D, S_.y2D, S_.x2D-4);
+      } else if(S_.f==form[2]) {
+        ellipse(S_.y2D, S_.x2D, 3, 3); 
+      } else if(S_.f==form[3]) {
+        ellipse(S_.y2D, S_.x2D, 3, 3); 
+      }
+      
+      strokeWeight(1.1); 
+      stroke(0);
+      
+      //textFont(Arial, 5.0);
+      /*String n = S_.n.substring(0, 1);
+      translate(0,0,-1);
+      if(S_.y2D+10<100 && S_.y2D+10>0 && S_.x2D+10<100 && S_.x2D+10>0 )  text(n, S_.y2D+10, S_.x2D+10);
+      else  text(n, S_.y2D-10, S_.x2D-10);*/
+      
+      // Pour chaque spot, les liens sont détectés pour les tracer en noir  
+      for(String nj_ : (Iterable<String>) myTrip.spots.keySet())
+      {
+        
+        if (myTrip.isLink(ni_,nj_) && !(ni_.equals(nj_))) {
+          Spot S2_ = (Spot) myTrip.spots.get(nj_);
+          double p_ = myTrip.getLink(ni_,nj_);
+          
+          fill(0);
+          stroke(0);
+          strokeWeight(1);
+          line(S_.y2D, S_.x2D, S2_.y2D, S2_.x2D);
+          
+          
+          /*if (info) {
+            s.textFont(Arial, 10.0);
+            s.fill(180);
+            s.text(" " + (float) p_, abs((S_.x2D+S2_.x2D)/2), abs((S_.y2D+S2_.y2D)/2));
+          }
+
+      </p>
+      
+      <p>
+      </p>
+      
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

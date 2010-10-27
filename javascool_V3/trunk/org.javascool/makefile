@@ -38,7 +38,6 @@ jar : htm www/javascool.jar
 
 # Jar parameters, files and meta-data
 
-J5=/usr/java/jdk1.5.0_22
 J6=/usr/java/jdk1.6.0_21
 
 vendor=thierry.vieville@inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr

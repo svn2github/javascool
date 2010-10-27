@@ -23,9 +23,11 @@ htm : $(patsubst %.xml,%.htm,$(shell find . -name '*.xml'))
 
 # Generates the javascool jar include: processing.zip
 
+JARS=/usr/java/processing-1.2.1/libraries/opengl/library/jogl.jar /usr/java/processing-1.2.1/libraries/opengl/library/gluegen-rt.jar
+
 jar :
 	@rm -f ../lib/processing.zip
-	@rm -rf ../tmp ; mkdir ../tmp; for j in */applet/*.jar ; do unzip -qo $$j -d ../tmp ; done ; rm -rf ../tmp/META-INF
+	@rm -rf ../tmp ; mkdir ../tmp; for j in */applet/*.jar $(JARS) ; do unzip -qo $$j -d ../tmp ; done ; rm -rf ../tmp/META-INF
 	@cd ../tmp ; zip -9qr ../lib/processing.zip *
 	@rm -rf ../tmp
 

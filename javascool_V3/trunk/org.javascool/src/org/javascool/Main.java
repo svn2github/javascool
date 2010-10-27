@@ -620,6 +620,18 @@ public class Main extends JApplet {
 	    super.init();
 	  }
 	});
+      addActivity(new ProcessingActivity("EnVoiture") {
+	  public String getTitle() { return "Découvrir les graphes et les chemins"; }
+	  public void init() {
+	    super.init();
+	  }
+	});
+      addActivity(new ProcessingActivity("UnGrapheDesChemins") {
+	  public String getTitle() { return "Explorer les graphes et les chemins"; }
+	  public void init() {
+	    super.init();
+	  }
+	});
     }
   }
   
@@ -709,7 +721,6 @@ public class Main extends JApplet {
      * @throws IllegalArgumentExceptionif the processing is undefined.
      */
     public ProcessingActivity(String processing) { name = processing; } private String name; private int width, height;
-
     public void init() {
       if (jvsEditor == null) jvsEditor = new JvsSourceEditor(); 
       addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false); 
@@ -776,10 +787,11 @@ public class Main extends JApplet {
     System.out.println("---------------------\nJava's cool 3.1\n---------------------");
     Main main = new Main();
     if (usage.length >= 1){
-    	main.setActivityAs(usage[0]);
+      main.setActivityAs(usage[0]);
     }
-    if (usage.length >= 2){
-    main.setFileAs(usage[1]);
+    if (usage.length >= 2) {
+      main.setFileAs(usage[1]);
+    }
     Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
   }
 }
