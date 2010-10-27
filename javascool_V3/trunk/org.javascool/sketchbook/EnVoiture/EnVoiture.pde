@@ -48,6 +48,10 @@
   {
     
     size(1200, 700, OPENGL);//1024, 576, OPENGL);
+    // Ces deux lignes permettent l'interface avec JavaScool
+    proglet = this;
+    frame = new Frame();
+    
     Verdana = loadFont("Verdana-48.vlw");
     Arial = loadFont("ArialMT-48.vlw");
     
