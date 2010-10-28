@@ -6,6 +6,9 @@ class Spot extends Vec2D {
   Vec3D pos;
   PVector position;
   String n;
+  Spot parent = null; // Parent Node setting
+  double g = 0; // Cost of reaching goal
+  boolean walkable = true; // Is this Node to be ignored?
   int col;
   char f;
   float h;
@@ -49,6 +52,16 @@ class Spot extends Vec2D {
     x2D = (((x_+b.getMax().to2DXZ().x)/(2*b.getMax().to2DXZ().x))*100);
     y2D = (((y_+b.getMax().to2DXZ().x)/(2*b.getMax().to2DXZ().x))*100);
     
+  }
+  
+  void init(){
+    parent = null;
+    g = 0;
+  }
+  
+  // Calculate G
+  void setG(Link o){
+    g = parent.g + o.p;
   }
 
 
@@ -104,9 +117,9 @@ class Spot extends Vec2D {
       Vec3D newPos = isec.pos.add(0, 10, 0);
       pos.interpolateToSelf(newPos, 0.25f);
     }
-    
-     
+
   }
+  
 }
 
 

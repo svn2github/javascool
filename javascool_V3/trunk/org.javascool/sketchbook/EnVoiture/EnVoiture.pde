@@ -38,6 +38,7 @@
   String[] listN = {"Nice", "Marseille", "Avignon", "Toulouse", "Bordeaux", "Dijon", "Fréjus", "Strasbourg", "Caen", "Grenoble", "Lille", "Rennes"};
   String firstSelect, secondSelect, start, end;
   ArrayList path, restricted;
+  ArrayList opened, closed;
   
   color[] colors = new color[listN.length];
   char[] form = {'B', 'P', 'O', 'C'}; 
@@ -85,12 +86,16 @@
     
     path = new ArrayList();
     restricted = new ArrayList();
+    opened = new ArrayList();
+    closed = new ArrayList();
+  
 
   }
 
   void draw() 
   {
     smooth();
+    
     gX = frame.getX(); 
     gY = frame.getY(); 
     
@@ -155,6 +160,21 @@
       text("BRAVO!", -100, 10);
     }
 
+     if(info) {
+       textAlign(LEFT);
+       fill(255, 70, 0);
+       textFont(Arial, 2.5);
+       text(" - I  N  S  T  R  U  C  T  I  O  N  S - \n " + 
+        "> Navigation: \n" + "    . voiture = les 4 fleches \n" + "    . camera: '+/-' pour zoom/dézoom \n" +
+        "> Noeud: \n" + "    . ajout = clic droit \n" + 
+        "> Lien: \n" + "    . ajout/suppression: clic centre + glisse \n " +
+        "> Générer tous les noeuds = 'a' \n" + 
+        "> Jouer à trouver le plus court chemin entre 2 villes tirées au hasard: \n" + "    . 'p' pour une seul escale \n" + "    . 'q' pour deux escales\n " +
+        "> Afficher/cacher les instructions: 'i' \n " +
+        "> Fermer l'application: ESC " , -100, -10);
+     }
+    
+    
     _gl.glClear(GL.GL_DEPTH_BUFFER_BIT);
     _gl.glLoadIdentity();
     _gl.glDisable(GL.GL_BLEND); //turns off blending
@@ -378,8 +398,17 @@
    // Joue à trouver le plus court chemin entre 2 villes, hors chemin direct évidemment
    if( key == 'p') {
      
-     //int l = 0;
-     distanceC = 0; //comp = 0;
+     for(String ni_ : (Iterable<String>) myTrip.spots.keySet())
+     {
+      for(String nj_ : (Iterable<String>) myTrip.spots.keySet())
+      {
+        if (myTrip.isLink(ni_,nj_) == false) {
+          myTrip.addLink(ni_,nj_);
+        }
+        
+      }
+     }
+     distanceC = 0; 
      String intermediate = null;
      path.clear(); 
      if(myTrip.spots.size()==listN.length) {
@@ -389,23 +418,50 @@
        while(listN[k]==start)  k = (int) random(listN.length);
        end = listN[k];
        
+       myTrip.removeLink(start, end);
+       
 
        ArrayList pathTemp = new ArrayList();
-       intermediate = myTrip.findPath(start,end, pathTemp);
-       distanceC += myTrip.getDistance(start, intermediate) + myTrip.getDistance(intermediate, end);
-       println("Ville intermédiaire: " + intermediate + " - Distance parcourue: " + distanceC);
+       //intermediate = myTrip.findPath(start,end, pathTemp);
+       myTrip.dijkstra(start, end);
+       //distanceC += myTrip.getDistance(start, intermediate) + myTrip.getDistance(intermediate, end);
+       distanceC += myTrip.getDistance((String) path.get(0), (String) path.get(1)) + myTrip.getDistance((String) path.get(1), (String) path.get(2));
+       //println("Ville intermédiaire: " + intermediate + " - Distance parcourue: " + distanceC);
        
        for(int i=0; i<path.size(); i++) {
          String p = (String) path.get(i);
          println(p);
        }
+       println(distanceC);
        
+     }
+     
+     for(String ni_ : (Iterable<String>) myTrip.spots.keySet())
+     {
+      for(String nj_ : (Iterable<String>) myTrip.spots.keySet())
+      {
+        if (myTrip.isLink(ni_,nj_) == true) {
+          myTrip.removeLink(ni_,nj_);
+        }
+        
+      }
      }
      
    }
    
    // Joue à trouver le plus court chemin entre 2 stations, en visitant obligatoirement 2 stations, sachant une déja donnée
    if( key == 'q') {
+     
+     for(String ni_ : (Iterable<String>) myTrip.spots.keySet())
+     {
+      for(String nj_ : (Iterable<String>) myTrip.spots.keySet())
+      {
+        if (myTrip.isLink(ni_,nj_) == false) {
+          myTrip.addLink(ni_,nj_);
+        }
+        
+      }
+     }
      
      if(myTrip.spots.size()==listN.length) {
        
@@ -423,8 +479,14 @@
            String p = (String) pathTemp.get(i);
            println(p);
          }
-         interm1 = myTrip.findPath(start, (String) pathTemp.get(1), pathTemp);
-         interm2 = myTrip.findPath((String) pathTemp.get(1), end, pathTemp);
+         myTrip.removeLink(start, (String) pathTemp.get(1));
+         myTrip.removeLink((String) pathTemp.get(1), end);
+         //interm1 = myTrip.findPath(start, (String) pathTemp.get(1), pathTemp);
+         myTrip.dijkstra(start, (String) pathTemp.get(1));
+         interm1 = (String) path.get(1);
+         //interm2 = myTrip.findPath((String) pathTemp.get(1), end, pathTemp);
+         myTrip.dijkstra((String) pathTemp.get(1), end);
+         interm2 = (String) path.get(1);
          
          if ((myTrip.getDistance((String) pathTemp.get(1), interm2) + myTrip.getDistance(interm2, end))      
              > (myTrip.getDistance(start, interm1) + myTrip.getDistance(interm1, (String) pathTemp.get(1)))) {
@@ -449,11 +511,22 @@
        
      }
      
+     
+     for(String ni_ : (Iterable<String>) myTrip.spots.keySet())
+     {
+      for(String nj_ : (Iterable<String>) myTrip.spots.keySet())
+      {
+        if (myTrip.isLink(ni_,nj_) == true) {
+          myTrip.removeLink(ni_,nj_);
+        }
+        
+      }
+     }
      path.clear();
      
    }
     
-   // Montrer ou non les pondérations
+   // Montrer ou non les instructions
    if( key == 'i' ) { 
     
     if (info) {
@@ -467,6 +540,22 @@
     }
     
    }
+   
+   
+   // Génère tous les liens possibles entre les noeuds
+  /*if( key == 'l' ) {
+   
+    for(String ni_ : (Iterable<String>) myTrip.spots.keySet())
+    {
+      for(String nj_ : (Iterable<String>) myTrip.spots.keySet())
+      {
+        if (myTrip.isLink(ni_,nj_) == false) {
+          myTrip.addLink(ni_,nj_);
+        }
+        
+      }
+    }
+  } */
 
  }
 

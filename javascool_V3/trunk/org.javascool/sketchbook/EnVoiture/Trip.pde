@@ -284,5 +284,97 @@ class Trip {
   }
   
   
+  
+  /**   Algorithme de Dijkstra
+   * @param sStart Spot départ.
+   * @param sEnd Spot final.
+   */
+  void dijkstra(String sStart, String sEnd)
+  {
+    path.clear();
+    println(" " + sStart + " à " + sEnd);
+    for(String ni_ : (Iterable<String>) spots.keySet())
+    {
+      Spot S_ = (Spot) spots.get(ni_);
+      S_.init();
+    }
+    opened.clear();
+    closed.clear();
+    opened.add(sStart);
+    Spot Ss = (Spot) spots.get(sStart);
+    Ss.g = 0;
+    while(opened.size() > 0){
+      String nCurrent = (String) opened.remove(0);
+      //println("nCurrent: " + nCurrent);
+      closed.add(nCurrent);
+      if(nCurrent == sEnd){
+	break;
+      }
+      Spot Sc = (Spot) spots.get(nCurrent);
+      for(String ni_ : (Iterable<String>) Sc.links.keySet()) {
+      //for(String ni_ : (Iterable<String>) spots.keySet()) {
+      //if(!ni_.equals(sEnd) && !ni_.equals(sStart)) {
+        //println("ni_: " + ni_);
+        Spot adjacent = (Spot) spots.get(ni_);
+        Link a = (Link) Sc.links.get(ni_);
+	if(adjacent.walkable && !arrayListContains(closed, ni_)){ 
+	  if(!arrayListContains(opened, ni_)){
+	    opened.add(ni_);
+	    adjacent.parent = Sc; 
+	    adjacent.setG(a); 
+            //println("g ds open: " + adjacent.g);
+	  } else {
+	    if(adjacent.g > Sc.g + a.p){
+	      adjacent.parent = Sc; 
+	      adjacent.setG(a); 
+              //println("g hors open: " + adjacent.g);
+            }
+	  }
+        }
+      }
+     // }
+    }
+    // Path generation
+    String pathSpot = sEnd;
+    //println(pathSpot);
+    double di = 0;
+    if(closed.size() >1) {
+    while(!(pathSpot.equals(sStart))){
+      path.add(pathSpot);
+      Spot Sp = (Spot) spots.get(pathSpot);
+      
+      di += Sp.g;
+      //println(di);
+      Sp = Sp.parent;
+      
+      pathSpot = Sp.n;
+      //println(pathSpot);
+    }
+    path.add(sStart);
+    Spot Sp = (Spot) spots.get(sStart);
+    di += Sp.g;
+    //println(di);
+  }
+    }
+  
+  // Utilities
+  
+  boolean arrayListContains(ArrayList c, String nA)
+  {
+    for(int i = 0; i < c.size(); i++){
+      String o = (String) c.get(i);
+      if(o == nA){
+	 return true;
+      }
+    }
+    return false;
+  }
+    
 }
+
+
+// Taille pour l'insertion dans JavaScool
+  public static final int WIDTH = 1024, HEIGHT = 700;
+  
+  
 
