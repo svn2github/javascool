@@ -277,7 +277,7 @@ public class Main extends JApplet {
   /** Current activity, set to null at reset. */
   private Activity activity = null;
   /** HashMap for Activity list.
-   * The map associate a String to an Activity
+   * The map associate a String to an Activity.
    */
   private HashMap<String,Activity> activities = new HashMap<String,Activity>();
   /** Generic action listener for all actions. */
