@@ -17,6 +17,7 @@
 
   <div class="works">
     <div title="Construire un signal périodique de forme donnée">
+      sinus(t) + sinus(3 * t) / 3 + sinus(5 * t) / 5.
 
       La figure ci-contre, la courbe (a) montre un signal f de fréquence fondamentale et d'amplitude 1 et un signal H3 de fréquence 3 fois plus élevé que la fréquence de f et d'amplitude 0,1.
     </div>
