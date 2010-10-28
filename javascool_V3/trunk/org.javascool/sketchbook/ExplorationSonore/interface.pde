@@ -87,8 +87,12 @@
   void controlEvent(ControlEvent theEvent) {
     //println(theEvent.controller().name()+" = "+theEvent.value());  
   
+    if(theEvent.value()==0) {
+      signal1.setSignal("sine", 1000, 0.2);
+    }
     if(theEvent.value()==1) {
       signal1.setSignal("sine", 1000, 0.2);
+      signal2.setSignal("sine", 4000, 0.2);
     } 
     else if(theEvent.value()==2) {
       signal1.setSignal("square", 1000, 0.2);
@@ -128,10 +132,13 @@
   void StopAnySound() {
     if (signal1.sounding) {
       signal1.switchOff();
-    } 
-    else if (record1.sounding) {
+    } else if (record1.sounding) {
       record1.switchOff();
     }
+    if (signal2.sounding) {
+      signal2.switchOff();
+    } 
+    
   }
   
   

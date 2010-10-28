@@ -48,7 +48,7 @@
   
   // Paramètres pour la sinusoide, et l'enregistrement chargé
   int count = 0;
-  signal signal1;
+  signal signal1, signal2;
   record record1;
   PFont f;
   
@@ -81,6 +81,7 @@
     out = minim.getLineOut(Minim.STEREO);
   
     signal1 = new signal();
+    signal2 = new signal();
     record1 = new record();
   
     // FFT: Transformation de Fourier pour l'analyse fréquentielle en temps réel
@@ -101,7 +102,6 @@
   
     //unhint(DISABLE_DEPTH_TEST);
     background(0);
-  println(screen.width/2);
     pushMatrix();
     if (signal1.sounding) {
       fft = new FFT(out.bufferSize(), out.sampleRate());
@@ -139,8 +139,12 @@
   
   void keyPressed()                                                  
   {
+    if (key == '0') {
+      signal1.setSignal("sine", 1000, 0.2);
+    }
     if (key == '1') {
       signal1.setSignal("sine", 1000, 0.2);
+      signal2.setSignal("sine", 4000, 0.2);
     }
     if (key == '2') {
       signal1.setSignal("square", 1000, 0.2);
