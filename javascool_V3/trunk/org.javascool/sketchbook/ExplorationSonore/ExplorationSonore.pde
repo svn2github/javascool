@@ -52,6 +52,7 @@
   record record1;
   PFont f;
   
+  int c = 0;
   
   // Ce qui est lancé une fois, au départ
   void setup() {
@@ -104,17 +105,22 @@
     background(0);
     pushMatrix();
     if (signal1.sounding) {
+      c+=1;
       fft = new FFT(out.bufferSize(), out.sampleRate());
       fft.logAverages(60,6*width/(640));
       drawFFT("out");                                               // Trace la FFT
-      drawSignal("out");                                            // Trace le signal temporel
+      //drawSignal("out");                                            // Trace le signal temporel
+      if((c)%2 == 0) {
+        //println(c);
+        drawSignal("out");
+      }
     } 
     else if (record1.sounding) {
       fft = new FFT(player.bufferSize(), player.sampleRate());
       
       fft.logAverages(60,6*width/(640));
       drawFFT("player");
-      drawSignal("player");
+      //drawSignal("player");
     } 
     else {
       fft = new FFT(in.bufferSize(), in.sampleRate());

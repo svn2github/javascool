@@ -56,7 +56,7 @@
       
       volume = map(mouseY, 0, height, 0.2, 0); 
       if(type.equals("sine")) {
-        println("freq: " + frequence);
+        //println("freq: " + frequence);
         sinus_.setFreq(frequence);
         sinus_.setAmp(volume);
       } else if(type.equals("square")){

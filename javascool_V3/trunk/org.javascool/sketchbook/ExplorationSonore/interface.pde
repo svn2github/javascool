@@ -87,12 +87,8 @@
   void controlEvent(ControlEvent theEvent) {
     //println(theEvent.controller().name()+" = "+theEvent.value());  
   
-    if(theEvent.value()==0) {
-      signal1.setSignal("sine", 1000, 0.2);
-    }
     if(theEvent.value()==1) {
       signal1.setSignal("sine", 1000, 0.2);
-      signal2.setSignal("sine", 4000, 0.2);
     } 
     else if(theEvent.value()==2) {
       signal1.setSignal("square", 1000, 0.2);
@@ -150,7 +146,7 @@
   
     fft.logAverages(60,6);///(screen.width/2)); //6 pour screen.width/2
   
-      w = width/fft.avgSize();
+    w = width/fft.avgSize();
     strokeWeight(w);
     strokeCap(SQUARE);
   
