@@ -415,7 +415,7 @@ public class Utils { private Utils() { }
       } else {
 	if (pane instanceof JComponent) close = ((JComponent) pane).getActionMap().get("quit");
 	if (pane instanceof JApplet) close = ((JApplet) pane).getRootPane().getActionMap().get("quit");
-	setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       }
       if (width == 0) width = (int) pane.getPreferredSize().getWidth();
       if (height == 0) height = (int) pane.getPreferredSize().getHeight();
@@ -436,8 +436,8 @@ public class Utils { private Utils() { }
     {
       addWindowListener(new WindowListener() {
 	  public void windowOpened(WindowEvent e) { e.getWindow().requestFocus();  }
-	  public void windowClosing(WindowEvent e) { quit(); }
-	  public void windowClosed(WindowEvent e) { }
+	  public void windowClosing(WindowEvent e) {JsHome home=new JsHome();Main main = new Main();home.JsHome(main);}
+	  public void windowClosed(WindowEvent e) {}
 	  public void windowIconified(WindowEvent e) { if (applet != null) applet.stop(); }
 	  public void windowDeiconified(WindowEvent e) { if (applet != null) applet.start(); }
 	  public void windowActivated(WindowEvent e) { e.getWindow().requestFocus(); }

@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener; 
 import java.awt.event.ActionEvent; 
+import java.lang.reflect.Array;
 
 // Processing interface
 import java.awt.Container;
@@ -233,19 +234,21 @@ public class Main extends JApplet {
    * The map associate a String to a JPanel
    */
   private HashMap<String,Boolean> wtabs = new HashMap<String,Boolean>();
-
+  private int actsnumber = 0;
   /** Adds an activity tab to the tabbed panel. 
    * @param activity Adds a predefined activity.
    */
   public void addActivity(Activity activity) {
+    actsnumber++;
     activities.put(activity.getTitle(), activity);
+    acts.add(activity.getTitle());
     activityList.addItem(activity.getTitle());
     activityList.revalidate();
   }
   /** Starts a unique activity.
    * @param name Name of Activity in the HashMap or Index in the chooser
    */
-  private void setActivityAs(String name) {
+  public void setActivityAs(String name) {
     if (activities.containsKey(name)) {
       System.out.println("Activité : "+name);
       setActivity(name);
@@ -282,6 +285,10 @@ public class Main extends JApplet {
    * The map associate a String to an Activity.
    */
   private HashMap<String,Activity> activities = new HashMap<String,Activity>();
+  private ArrayList acts = new ArrayList();
+  public Object[] getActivities(){
+    return acts.toArray();
+  }
   /** Generic action listener for all actions. */
   private ActionListener alistener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
@@ -694,13 +701,17 @@ public class Main extends JApplet {
    */
   public static void main(String[] usage) {
     System.out.println("--------------------- Java's cool 3.1 ---------------------");
+    JsHome home=new JsHome();
+    
     Main main = new Main();
-    if (usage.length >= 1){
-      main.setActivityAs(usage[0]);
-    }
-    if (usage.length >= 2) {
-      main.setFileAs(usage[1]);
-    }
-    Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
+    home.JsHome(main);
+//     if (usage.length >= 1){
+//       try{main.setFileAs(usage[0]);} catch(Exception e) {main.setActivityAs(usage[0]);}
+//     }
+//     if (usage.length >= 2) {
+//       main.setFileAs(usage[1]);
+//     }
+//     main.setActivityAs(home.getAct());
+//     Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
   }
 }
