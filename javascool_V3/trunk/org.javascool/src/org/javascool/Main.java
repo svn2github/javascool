@@ -90,7 +90,7 @@ public class Main extends JApplet {
     JPanel toppane = new JPanel();
     fileChooser = new JsFileChooser();
     toppane.setLayout(new BorderLayout());
-    toolBar.setBorderPainted(false);
+    toolBar.setBorderPainted(false); 
     JPanel toppaneWest = new JPanel();
     toppaneWest.add(toolBar);
     toppaneWest.add(new JLabel(" "));
@@ -693,7 +693,7 @@ public class Main extends JApplet {
    * </ul>
    */
   public static void main(String[] usage) {
-    System.out.println("---------------------\nJava's cool 3.1\n---------------------");
+    System.out.println("--------------------- Java's cool 3.1 ---------------------");
     Main main = new Main();
     if (usage.length >= 1){
       main.setActivityAs(usage[0]);
