@@ -18,8 +18,13 @@ what :
 v3: cmp
 	@cd tst ; ../lib/run.sh  org.javascool.Main
 
+runj3:
+	@cd tst ; java -jar ../www/javascool.jar
+	@make clean
+
 j3: jar
 	@cd tst ; java -jar ../www/javascool.jar
+	@make clean
 
 doc: api
 	firefox file:www/api/org/javascool/package-summary.html

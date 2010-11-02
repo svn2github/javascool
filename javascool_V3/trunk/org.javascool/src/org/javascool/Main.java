@@ -295,7 +295,7 @@ public class Main extends JApplet {
   private boolean firstActivity = true;
 
   // [2] File Open/Save management and Help
-  /** Defines the JavaScool dedicated file chooser. */
+  
   private class JsFileChooser extends JFileChooser {
     private static final long serialVersionUID = 1L;
     // Initializes the file chooser
