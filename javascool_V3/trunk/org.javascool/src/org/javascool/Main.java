@@ -64,7 +64,7 @@ import javax.swing.UIManager;
  * @see <a href="Main.java.html">source code</a>
  * @serial exclude
  */
-public class Main extends JApplet { 
+public class Main extends JApplet implements ActionListener { 
   /**/public Main() { }
   private static final long serialVersionUID = 1L;
   static final String title = "Java'Scool 3.1";
@@ -83,6 +83,8 @@ public class Main extends JApplet {
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar(title, JToolBar.HORIZONTAL);
+  private JFrame parentFrame;
+  private JFrame homeFrame;
   private JTabbedPane westPane = new JTabbedPane(), eastPane = new JTabbedPane();
   private JComboBox activityList = new JComboBox();
   private JsFileChooser fileChooser;
@@ -96,13 +98,15 @@ public class Main extends JApplet {
     toppaneWest.add(toolBar);
     toppaneWest.add(new JLabel(" "));
     toppane.add(toppaneWest, BorderLayout.WEST);
-    JToolBar activityBar = new JToolBar(title, JToolBar.HORIZONTAL);
-    activityList.addActionListener(alistener);
-    activityBar.setBorderPainted(false);
-    activityBar.add(activityList);
+    //JToolBar activityBar = new JToolBar(title, JToolBar.HORIZONTAL);
+    //activityList.addActionListener(alistener);
+    //activityBar.setBorderPainted(false);
+    //activityBar.add(activityList);
     JPanel toppaneEast = new JPanel();
-    toppaneEast.add(new JLabel("Activité : "));
-    toppaneEast.add(activityBar);
+    //toppaneEast.add(new JLabel("Activité : "));
+    JButton goback = new JButton("Terminer l'activité");
+    goback.addActionListener(this);
+    toppaneEast.add(goback);
     toppane.add(toppaneEast, BorderLayout.EAST);  
     getContentPane().add(toppane, BorderLayout.NORTH);
     JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, westPane, eastPane);
@@ -252,7 +256,7 @@ public class Main extends JApplet {
     if (activities.containsKey(name)) {
       System.out.println("Activité : "+name);
       setActivity(name);
-      activityList.getParent().getParent().getParent().remove(activityList.getParent().getParent());
+      //activityList.getParent().getParent().getParent().remove(activityList.getParent().getParent());
     } else if (name != null) {
       int index = name.matches("^[0-9]+$") ? Integer.parseInt(name) : 0; 
       if (0 <= index && index < activityList.getItemCount())
@@ -367,7 +371,15 @@ public class Main extends JApplet {
       return false;
     }
   }
-
+  public void exitApp(){destroy();}
+  public void saveFrame(JFrame a){parentFrame=a;}
+  public void saveHome(JFrame a){homeFrame=a;}
+  // GoBackHome mechanism
+  public void actionPerformed (ActionEvent e)
+  {
+    parentFrame.setVisible(false);
+    homeFrame.setVisible(true);
+  }
   // Help show mechanism
   private Runnable helpShow = new Runnable() { public void run() {
     if(helpOn) {

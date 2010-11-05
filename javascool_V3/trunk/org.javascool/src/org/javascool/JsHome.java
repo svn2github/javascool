@@ -86,13 +86,13 @@ public class JsHome {
       try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); } catch(Exception e) { System.err.println("Note: Utilisaton du thème Java (et non du système)"); }
     } 
   }
-
+  public JFrame frame = new JFrame(title);
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JPanel pane=new JPanel();
   /** Builds the GUI. */
   private void initGUI() {
     //1. Create the frame.
-    JFrame frame = new JFrame(title);
+    
     listModel = new DefaultListModel();
     for(Object act : gui.getActivities()){
       listModel.addElement(act);
@@ -150,7 +150,11 @@ public class JsHome {
       public void actionPerformed(ActionEvent e) {
 	Activity=(String)list.getSelectedValue();
 	gui.setActivityAs(Activity);
-	Utils.show(gui, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
+	JFrame a=Utils.show(gui, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
+	gui.saveFrame(a);
+	gui.saveHome(frame);
+	a.setVisible(true);
+	frame.setVisible(false);
       }
     };
 }

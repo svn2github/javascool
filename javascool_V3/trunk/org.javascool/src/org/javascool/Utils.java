@@ -436,8 +436,9 @@ public class Utils { private Utils() { }
     {
       addWindowListener(new WindowListener() {
 	  public void windowOpened(WindowEvent e) { e.getWindow().requestFocus();  }
-	  public void windowClosing(WindowEvent e) {JsHome home=new JsHome();Main main = new Main();home.JsHome(main);}
-	  public void windowClosed(WindowEvent e) {}
+	  public void windowClosing(WindowEvent e) {//JsHome home=new JsHome();Main main = new Main();home.JsHome(main);
+}
+	  public void windowClosed(WindowEvent e) {System.exit(0);}
 	  public void windowIconified(WindowEvent e) { if (applet != null) applet.stop(); }
 	  public void windowDeiconified(WindowEvent e) { if (applet != null) applet.start(); }
 	  public void windowActivated(WindowEvent e) { e.getWindow().requestFocus(); }
