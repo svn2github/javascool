@@ -20,13 +20,23 @@
   
     <p><p>Apprentissage de l'<l link="sujet-about-tableaux.htm" text="utilisation des tableaux"/>.</p></p>
 
-    <p><p>Un travail sur la <l link="sujet-conversion-binaire.htm" text="conversion binaire/décimale"/> 
-    (une <l link="http://javascool.gforge.inria.fr/v3/documents/ExosBaseDeux.html" text="activité sans ordinateur"/> est aussi disponible).</p></p>
+    <p><p>Un travail sur la <l link="sujet-conversion-binaire.htm" text="conversion binaire/décimale"/>.</p></p>
 
     <p><p>Un approfondissement <l link="sujet-appli-booleen.htm" text="découvrir quelques notions de logique"/>.</p></p>
 
   </div></div>
 
+  <div title="Quelques sujets «unplugged» (sans ordinateur):"><div class="ul">
+     
+    <p><l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/dageville-exos-base-deux.html" text="Découvrir le codage binaire"/></p>
+
+    <p><l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/larrieu-codage-binaire.odt" text="Fabriquer un reflet numérique d'un objet"/></p>
+
+    <p><l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/larrieu-sujet-ascii.odt" text="Le codage numérique ASCII"/></p>
+
+    <p><l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/larrieu-sujet-image.odt" text="Codage des images"/></p>
+
+  </div></div>
 
   <p>Avec le <l link="../../ingredients/doc-files/index.htm" text="parcours"/>  pour s'initier à la programmation, 
   elles permettent de couvrir le programme de 2nd en algorithmique.</p>
