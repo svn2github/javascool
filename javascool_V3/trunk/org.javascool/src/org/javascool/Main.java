@@ -285,7 +285,7 @@ public class Main extends JApplet {
    * The map associate a String to an Activity.
    */
   private HashMap<String,Activity> activities = new HashMap<String,Activity>();
-  private ArrayList acts = new ArrayList();
+  private ArrayList<String> acts = new ArrayList<String>();
   public Object[] getActivities(){
     return acts.toArray();
   }

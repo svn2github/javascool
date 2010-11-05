@@ -11,13 +11,13 @@
      Voilà qui est bien limité. Un vrai programme doit pouvoir exécuter des instructions différentes selon certaines conditions et il existe une structure universelle
      pour implémenter ce mécanisme. Par exemple :
     <div class="code">
-      <p><r>if</r>(température <r>&lt;</r> 15) {</p>
+      <p><r>if</r>(temperature <r>&lt;</r> 15) {</p>
       <p><T/><r>println</r>(<v>allumer chauffage</v>);</p>
       <p>}</p>
     </div>
     où la construction permet de n'allumer le chauffage qu'en cas de besoin. Tandis que :
     <div class="code">
-      <p><r>if</r>(température <r>&lt;</r> 15) {</p>
+      <p><r>if</r>(temperature <r>&lt;</r> 15) {</p>
       <p><T/><r>println</r>(<v>allumer chauffage</v>);</p>
       <p>} <r>else</r> {</p>
       <p><T/><r>println</r>(<v>ne rien faire</v>);</p>
@@ -25,9 +25,9 @@
     </div>
     montre comment se traduit la construction <i><b>si</b> la température est en dessous de 15 degrés alors allumer le chauffage <b>sinon</b> ne rien faire.</i> Ou encore :
     <div class="code">
-      <p><r>if</r>(température <r>&lt;</r> 15) {</p>
+      <p><r>if</r>(temperature <r>&lt;</r> 15) {</p>
       <p><T/><r>println</r>(<v>allumer chauffage</v>);</p>
-      <p>} <r>else if</r>(température <r>&gt;</r> 100) {</p>
+      <p>} <r>else if</r>(temperature <r>&gt;</r> 100) {</p>
       <p><T/><r>println</r>(<v>appeler les pompiers</v>);</p>
       <p>} <r>else</r> {</p>
       <p><T/><r>println</r>(<v>ne rien faire</v>);</p>

@@ -21,20 +21,24 @@ public class Macros { private Macros() { }
   public static void echo(double string) { echo (""+string); }
   public static void echo(boolean string) { echo (""+string); }
 
+  /*
+
   /** Renvoie x à la puissance y.
    * @param x 1er argument.
    * @param y 2eme argument.
-   */
+   * /
   public static double pow(double x, double y) { return Math.pow(x, y); }
 
   /** Renvoie la racine carrée de x.
    * @param x argument.
-   */
+   * /
   public static double sqrt(double x) { return Math.sqrt(x); }
 
   /** Renvoie un nombre aléatoire uniformément distribué entre 0 et 1.
-   */
+   * /
   public static double random() { return Math.random(); }
+
+  */
 
   /** Renvoie un nombre entier aléatoire uniformément distribué entre deux valeurs (maximum inclus).
    */
