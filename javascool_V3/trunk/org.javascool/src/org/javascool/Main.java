@@ -381,7 +381,12 @@ public class Main extends JApplet {
   }};
   private boolean helpOn = false;
   private String helpFile = "org/javascool/doc-files/about-main.htm";
-
+  // Reback Button
+  private Runnable reback = new Runnable() { public void run() {
+    JsHome home=new JsHome();
+    Main main = new Main();
+    home.JsHome(main);
+  }};
   // Sets the basic tools
   private void fileTools() {
     addTool("Ouvrir", "org/javascool/doc-files/icones16/open.png", fileOpen);

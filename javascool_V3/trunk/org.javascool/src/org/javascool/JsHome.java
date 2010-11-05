@@ -148,7 +148,6 @@ public class JsHome {
     };
   private ActionListener GoButtonListener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-	NoStartApp=false;
 	Activity=(String)list.getSelectedValue();
 	gui.setActivityAs(Activity);
 	Utils.show(gui, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
