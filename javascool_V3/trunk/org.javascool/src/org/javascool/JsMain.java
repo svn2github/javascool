@@ -1,8 +1,7 @@
 /********************************************************************************
       ______________________________________________
      | By Philippe Vienne <philoumailabo@gmail.com> |
-     | Distrubuted on GNU General Public Licence    |
-     | Revision 904 du SVN                          |
+     | Distributed on GNU General Public Licence    |
      | © 2010 INRIA, All rights reserved            |
      |______________________________________________|
 
@@ -24,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener; 
 import java.awt.event.ActionEvent; 
+import java.lang.reflect.Array;
 
 // Processing interface
 import java.awt.Container;
@@ -53,18 +53,18 @@ import java.awt.event.KeyEvent;
 // Used to register elements
 import java.util.HashMap;
 
-// Used to set Win look and feel
+// Used to set Win LOOK
 import javax.swing.UIManager;
 
 /** This is the javascool v3 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
  * @author Philippe Vienne <philoumailabo@gmail.com>
  * @see <a href="doc-files/about-main.htm">user documentation (in French)</a>
- * @see <a href="Main.java.html">source code</a>
+ * @see <a href="JsMain.java.html">source code</a>
  * @serial exclude
  */
-public class Main extends JApplet { 
-  /**/public Main() { }
+public class JsMain extends JApplet implements ActionListener { 
+  /**/public JsMain() { }
   private static final long serialVersionUID = 1L;
   static final String title = "Java'Scool 3.1";
   static final boolean withProcessing = true; // If true includes the processing applets
@@ -82,24 +82,30 @@ public class Main extends JApplet {
 
   // [1] Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar(title, JToolBar.HORIZONTAL);
+  private JFrame parentFrame;
+  private JFrame homeFrame;
   private JTabbedPane westPane = new JTabbedPane(), eastPane = new JTabbedPane();
   private JComboBox activityList = new JComboBox();
+  private JsFileChooser fileChooser;
   /** Builds the GUI. */
   private void initGUI() {
     JPanel toppane = new JPanel();
+    fileChooser = new JsFileChooser(this);
     toppane.setLayout(new BorderLayout());
-    toolBar.setBorderPainted(false);
+    toolBar.setBorderPainted(false); 
     JPanel toppaneWest = new JPanel();
     toppaneWest.add(toolBar);
     toppaneWest.add(new JLabel(" "));
     toppane.add(toppaneWest, BorderLayout.WEST);
-    JToolBar activityBar = new JToolBar(title, JToolBar.HORIZONTAL);
-    activityList.addActionListener(alistener);
-    activityBar.setBorderPainted(false);
-    activityBar.add(activityList);
+    //JToolBar activityBar = new JToolBar(title, JToolBar.HORIZONTAL);
+    //activityList.addActionListener(alistener);
+    //activityBar.setBorderPainted(false);
+    //activityBar.add(activityList);
     JPanel toppaneEast = new JPanel();
-    toppaneEast.add(new JLabel("Activité : "));
-    toppaneEast.add(activityBar);
+    //toppaneEast.add(new JLabel("Activité : "));
+    JButton goback = new JButton("Terminer l'activité");
+    goback.addActionListener(this);
+    toppaneEast.add(goback);
     toppane.add(toppaneEast, BorderLayout.EAST);  
     getContentPane().add(toppane, BorderLayout.NORTH);
     JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, westPane, eastPane);
@@ -231,23 +237,25 @@ public class Main extends JApplet {
    * The map associate a String to a JPanel
    */
   private HashMap<String,Boolean> wtabs = new HashMap<String,Boolean>();
-
+  private int actsnumber = 0;
   /** Adds an activity tab to the tabbed panel. 
    * @param activity Adds a predefined activity.
    */
   public void addActivity(Activity activity) {
+    actsnumber++;
     activities.put(activity.getTitle(), activity);
+    acts.add(activity.getTitle());
     activityList.addItem(activity.getTitle());
     activityList.revalidate();
   }
   /** Starts a unique activity.
    * @param name Name of Activity in the HashMap or Index in the chooser
    */
-  private void setActivityAs(String name) {
+  public void setActivityAs(String name) {
     if (activities.containsKey(name)) {
       System.out.println("Activité : "+name);
       setActivity(name);
-      activityList.getParent().getParent().getParent().remove(activityList.getParent().getParent());
+      //activityList.getParent().getParent().getParent().remove(activityList.getParent().getParent());
     } else if (name != null) {
       int index = name.matches("^[0-9]+$") ? Integer.parseInt(name) : 0; 
       if (0 <= index && index < activityList.getItemCount())
@@ -280,6 +288,10 @@ public class Main extends JApplet {
    * The map associate a String to an Activity.
    */
   private HashMap<String,Activity> activities = new HashMap<String,Activity>();
+  private ArrayList<String> acts = new ArrayList<String>();
+  public Object[] getActivities(){
+    return acts.toArray();
+  }
   /** Generic action listener for all actions. */
   private ActionListener alistener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
@@ -295,99 +307,6 @@ public class Main extends JApplet {
   private boolean firstActivity = true;
 
   // [2] File Open/Save management and Help
-  /** Defines the JavaScool dedicated file chooser. */
-  private class JsFileChooser extends JFileChooser {
-    private static final long serialVersionUID = 1L;
-    // Initializes the file chooser
-    {
-      // Use the user.dir to start the interaction
-      setCurrentDirectory(new File(System.getProperty("user.dir")));
-      // Defines a Jvs/Pml extension filter
-      setFileFilter(new FileFilter() {
-	  public String getDescription() { 
-	    return extension == null ? "Tous les Fichiers" : "Fichiers " + extension.substring(1).toUpperCase();
-	  }
-	  public boolean accept(File file) {
-	    return file.isDirectory() ? true : extension == null ? true : file.getName().endsWith(extension);
-	  }
-	});
-    }
-    private String extension = null;
-    /** Gets the last selected file. */ 
-    public String getFile() { return file; } private String file;
-    /** Resets the selected file. */
-    public void resetFile() { file = null; }
-    /** Manages an open dialog action. 
-     * @param editor The editor where to load the file.
-     * @param extension The required file extension, if any (else null).
-     */
-    public void doOpenAs(Editor editor, String extension) {
-      if (this.extension != extension) setSelectedFile(null);
-      this.extension = extension;
-      setDialogTitle("Ouvrir un programme");
-      setDialogType(JFileChooser.OPEN_DIALOG);
-      setApproveButtonText("Ouvrir");
-      if (showOpenDialog(Main.this) == 0)
-	doOpen(editor, getSelectedFile().getPath());
-    }
-    /** Manages an open action (no dialog). */
-    public void doOpen(Editor editor, String file) {
-      setSelectedFile(new File(file));
-      String text = ""; try { this.file = file; text = Utils.loadString(file); } catch(Exception e) { }
-      editor.setText(text);
-    }
-    /** Manages a save dialog action. 
-     * @param editor The editor from where the file is saved.
-     * @param extension The required file extension, if any (else null).
-     * @return True if the dialog is validated, else false.
-     */
-    public boolean doSaveAs(Editor editor, String extension) {
-      if (this.extension != extension) setSelectedFile(null);
-      this.extension = extension;
-      if (title == null) title = "Enregister un programme";
-      setDialogTitle(title);
-      title = null;
-      setDialogType(JFileChooser.SAVE_DIALOG);
-      setApproveButtonText("Enregister");
-      if (showSaveDialog(Main.this) == 0) {
-	file = getSelectedFile().getPath();
-	doSave(editor, extension);
-	return true;
-      } else 
-	return false;
-    }
-    /** Manages a save action (no dialog). 
-     * @param editor The editor from where the file is saved.
-     * @param extension The required file extension, if any (else null).
-     */
-    public void doSave(Editor editor, String extension) {
-      if (file == null) {
-	doSaveAs(editor, extension);
-      } else { 
-	doSave(editor, editor.getText(), extension);
-      }
-    }
-    /** Manages a save action (no dialog). 
-     * @param editor The editor where the text comes from.
-     * @param text The text to save.
-     * @param extension The required file extension, if any (else null).
-     */
-    public void doSave(Editor editor, String text, String extension) {
-      // Normalizes the file name and extension
-      file = toJavaName(file, extension); setSelectedFile(new File(file));
-      // Cleans spurious chars
-      text = text.replaceAll("[\u00a0]", "");
-      // Adds a new line if not yet done
-      text = "\n"+text.trim();
-      // Reload in editor the clean text
-      if (editor != null) editor.setText(text);
-      Utils.saveString(file, text);
-    }
-    /** Sets the next save dialog title. 
-     * @param title Optional title for a specific dialog
-     */
-    public void setSaveDialogTitle(String title) { this.title = title; } private String title = null;
-  }
   // Corrects the file name if not standard and cancel the extension
   private static String toJavaName(String file, String extension) {
     File f = new File(file);
@@ -403,12 +322,11 @@ public class Main extends JApplet {
     if (extension == null) { extension = f.getName().matches(extensionPattern) ? f.getName().replaceFirst(extensionPattern, "$2") : ""; }
     return parent + File.separator + main + extension;
   }
-
-  private JsFileChooser fileChooser = new JsFileChooser();
+  
   private Runnable fileOpen = new Runnable() { public void run() {
     if (activity == null) return;
     switch(!activity.getEditor().isModified() ? 1 : new JOptionPane().
-	   showConfirmDialog(Main.this, 
+	   showConfirmDialog(JsMain.this, 
 			     "Voulez-vous enregistrer avant d'ouvrir un nouveau fichier ?", 
 			     "Sauvgarder avant d'ouvrir", 
 			     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE)) {
@@ -438,7 +356,7 @@ public class Main extends JApplet {
   /** Saves a file, before exiting or activity change. */
   private boolean fileSavePlease() {
     switch(activity == null || activity.getEditor() == null || !activity.getEditor().isModified() ? 1 : new JOptionPane().
-	   showConfirmDialog(Main.this, 
+	   showConfirmDialog(JsMain.this, 
 			     "Voulez-vous enregistrer avant de fermer ?", 
 			     "Sauvgarder avant de fermer", 
 			     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE)) {
@@ -451,7 +369,15 @@ public class Main extends JApplet {
       return false;
     }
   }
-
+  public void exitApp(){destroy();}
+  public void saveFrame(JFrame a){parentFrame=a;}
+  public void saveHome(JFrame a){homeFrame=a;}
+  // GoBackHome mechanism
+  public void actionPerformed (ActionEvent e)
+  {
+    parentFrame.setVisible(false);
+    homeFrame.setVisible(true);
+  }
   // Help show mechanism
   private Runnable helpShow = new Runnable() { public void run() {
     if(helpOn) {
@@ -465,9 +391,15 @@ public class Main extends JApplet {
   }};
   private boolean helpOn = false;
   private String helpFile = "org/javascool/doc-files/about-main.htm";
-
+  // Reback Button
+  private Runnable reback = new Runnable() { public void run() {
+    JsHome home=new JsHome();
+    JsMain main = new JsMain();
+    home.JsHome(main);
+  }};
   // Sets the basic tools
   private void fileTools() {
+    //addTool("Nouvelle Activité", "org/javascool/doc-files/icones16/new.png", newActivity);
     addTool("Ouvrir", "org/javascool/doc-files/icones16/open.png", fileOpen);
     addTool("Sauver", "org/javascool/doc-files/icones16/save.png", fileSave);
     addToolSeparator();
@@ -507,13 +439,13 @@ public class Main extends JApplet {
 	public void actionPerformed(ActionEvent e) { 
 	  if(fileSavePlease())
 	    activity = null;
-	    Utils.unshow(Main.this);
+	    Utils.unshow(JsMain.this);
 	}});
     getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_I, KeyEvent.CTRL_MASK), "info");
     getRootPane().getActionMap().put("info",  new AbstractAction("info") {
 	private static final long serialVersionUID = 1L;
 	public void actionPerformed(ActionEvent e) { 
-	  JOptionPane.showMessageDialog(Main.this, new JLabel("<html><body><h4><hr>"+
+	  JOptionPane.showMessageDialog(JsMain.this, new JLabel("<html><body><h4><hr>"+
 							      Utils.loadString("org/javascool/js-manifest.mf").
 							      replaceFirst("Summary", "Nom").
 							      replaceFirst("Manifest-version", "Version").
@@ -778,20 +710,24 @@ public class Main extends JApplet {
   
   /** Used to run a javasccol v3 as a standalone program. 
    * <p>- Starts a JavaScool "activity" which result is to be stored in a "file-name".</p>
-   * @param usage <tt>java org.javascool.Main [activity [file-name]]</tt><ul>
+   * @param usage <tt>java org.javascool.JsMain [activity [file-name]]</tt><ul>
    * <li><tt>activity</tt> specifies the activity to be done (its index or name).</li>
    * <li><tt>file-name</tt> specifies the file used for the activity.</li>
    * </ul>
    */
   public static void main(String[] usage) {
-    System.out.println("---------------------\nJava's cool 3.1\n---------------------");
-    Main main = new Main();
-    if (usage.length >= 1){
-      main.setActivityAs(usage[0]);
-    }
-    if (usage.length >= 2) {
-      main.setFileAs(usage[1]);
-    }
-    Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
+    System.out.println("--------------------- Java's cool 3.1 ---------------------");
+    JsHome home=new JsHome();
+    
+    JsMain main = new JsMain();
+    home.JsHome(main);
+//     if (usage.length >= 1){
+//       try{main.setFileAs(usage[0]);} catch(Exception e) {main.setActivityAs(usage[0]);}
+//     }
+//     if (usage.length >= 2) {
+//       main.setFileAs(usage[1]);
+//     }
+//     main.setActivityAs(home.getAct());
+//     Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
   }
 }

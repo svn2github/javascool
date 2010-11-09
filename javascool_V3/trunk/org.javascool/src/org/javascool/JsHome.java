@@ -70,7 +70,7 @@ public class JsHome {
   static final String title = "Java'Scool 3.1";
   private JList list;
   private DefaultListModel listModel;
-  private Main gui;
+  private JsMain gui;
   Boolean NoStartApp=true;
   private String Activity;
   private JButton CloseButton;
@@ -121,7 +121,7 @@ public class JsHome {
     frame.setVisible(true);
   }
 
-  public void JsHome(Main main){
+  public void JsHome(JsMain main){
     gui=main;
     initGUI();
   }
