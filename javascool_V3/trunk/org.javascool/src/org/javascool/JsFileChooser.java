@@ -18,6 +18,9 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
 
+// Used for the dialogs
+import javax.swing.JOptionPane;
+
 /** Defines the JavaScool dedicated file chooser.
  * @author Philippe Vienne <philoumailabo@gmail.com>
  * @serial exclude
@@ -51,6 +54,27 @@ class JsFileChooser extends JFileChooser {
   public String getFile() { return file; } private String file;
   /** Resets the selected file. */
   public void resetFile() { file = null; }
+
+  /** Manages an open dialog action after saving the file. 
+   * @param editor The editor where to load the file.
+   * @param extension The required file extension, if any (else null).
+   */
+  public void doSaveOpenAs(Editor editor, String extension) {
+    switch(!editor.isModified() ? 1 : new JOptionPane().
+	   showConfirmDialog(parent, 
+			     "Voulez-vous enregistrer avant d'ouvrir un nouveau fichier ?", 
+			     "Sauvgarder avant d'ouvrir", 
+			     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE)) {
+    case 0: // Yes save
+      if (doSaveAs(editor, extension))
+	doOpenAs(editor, extension);
+      break;
+    case 1: // No need to save
+      doOpenAs(editor, extension);
+      break;
+    }
+  }
+
   /** Manages an open dialog action. 
    * @param editor The editor where to load the file.
    * @param extension The required file extension, if any (else null).
@@ -70,6 +94,7 @@ class JsFileChooser extends JFileChooser {
     String text = ""; try { this.file = file; text = Utils.loadString(file); } catch(Exception e) { }
     editor.setText(text);
   }
+
   /** Manages a save dialog action. 
    * @param editor The editor from where the file is saved.
    * @param extension The required file extension, if any (else null).

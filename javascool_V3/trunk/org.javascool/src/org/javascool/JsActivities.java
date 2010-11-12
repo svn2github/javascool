@@ -70,53 +70,57 @@ public class JsActivities {
   static {
 
     // This is the "home" activity allowing to choose other activities
-    activities.add(new Activity() {
-	public void init(JsFrame frame) {
-	  this.frame = frame;
-	  list = new JList(getTitles());
-	  list.setSelectedIndex(0);
-	  list.addListSelectionListener(new ListSelectionListener() {
-	      public void valueChanged(ListSelectionEvent e) {
-		// frame.setActivity((String) list.getSelectedValue()); FAIRE UNE SelectionOfActivity
-	      }});
-	  frame.addTab("Console", list, "org/javascool/doc-files/icones16/new.png", false);
-	}
-	private JsFrame frame;
-	private JList list;
-	public String getTitle() { return ""; }
-	public Editor getEditor() { return null; }
-	public String getExtension() { return null; }
-	public void stop() { }
-      });
+    activities.add(new HomeActivity());
+  }
+
+  /** Defines the "home" activity allowing the user to select an activity. */
+  private static class HomeActivity implements Activity {
+    public void init(JsFrame f) {
+      this.frame = f;
+      list = new JList(getTitles());
+      list.setSelectedIndex(0);
+      list.addListSelectionListener(new ListSelectionListener() {
+	  public void valueChanged(ListSelectionEvent e) {
+	    frame.setActivity((String) list.getSelectedValue());
+	  }});
+      frame.addTab("Choisir son activité", list, "org/javascool/doc-files/icones16/new.png", false);
+    }
+    private JsFrame frame;
+    private JList list;
+    // The "home" activity is recognized by JsFrame as being the only one with an empty name.
+    public String getTitle() { return ""; }
+    public Editor getEditor() { return null; }
+    public String getExtension() { return null; }
+    public void stop() { }
   }
   
-  /*
-  // Defines a compilation activity 
+  /** Defines a compilation activity. */
   private abstract class JavaActivity implements Activity {
-    JsLayout layout;
+    JsFrame frame; public JavaActivity(JsFrame frame) { this.frame = frame; }
     // Compilation/execution mechanism
     protected void initCompile() {
-      layout.addTab("Console", Jvs2Java.getPanel("ingredients"), "org/javascool/doc-files/icones16/compile.png", true);
-      layout.addTool("Compiler", "org/javascool/doc-files/icones16/compile.png", validate = compile);
+      frame.addTab("Console", Jvs2Java.getPanel("ingredients"), "org/javascool/doc-files/icones16/compile.png", true);
+      ////////////frame.addTool("Compiler", "org/javascool/doc-files/icones16/compile.png", validate = compile);
     }
+    /*
     private Runnable compile = new Runnable() { public void run() {
-      layout.delTool("Exécuter");
-      layout.delTool("Arrêter");
-      layout.showTab("Console");
+      frame.delTool("Exécuter");
+      frame.delTool("Arrêter");
+      frame.showTab("Console");
       Console.clear();
       if (getEditor().getText().trim().length() > 0) {
-	fileChooser.doSave(getEditor(), getExtension());
-	if (fileChooser.getFile() != null) {
+	frame.fileChooser.doSave(getEditor(), getExtension());
+	if (frame.fileChooser.getFile() != null) {
 	  if (getEditor() instanceof AlgoEditor) {
-	    fileChooser.doSave(algoViewer, Jvs2Java.reformat(((AlgoEditor) getEditor()).getJavaSource()), ".jvs");
+	    frame.fileChooser.doSave(algoViewer, Jvs2Java.reformat(((AlgoEditor) getEditor()).getJavaSource()), ".jvs");
 	  }
-	  Jvs2Java.translate(fileChooser.getFile());
-	  String out = Jvs2Java.compile(fileChooser.getFile());
+	  Jvs2Java.translate(frame.fileChooser.getFile());
+	  String out = Jvs2Java.compile(frame.fileChooser.getFile());
 	  System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
 	  Console.printHtml("<hr>\n");
 	  if (out.length() == 0) {
-	    layout.addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
-	    layout.addTool("Arrêter", "org/javascool/doc-files/icones16/stop.png", stop);
+	    frame.addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
+	    frame.addTool("Arrêter", "org/javascool/doc-files/icones16/stop.png", stop);
 	  }
 	} else {
 	  System.out.println("Impossible de compiler: le fichier n'est pas sauvegardé !");
@@ -125,10 +129,11 @@ public class JsActivities {
 	System.out.println("Rien à compiler: il n'y pas de code dans l'éditeur !");
       }
     }};
+    */
     private Runnable execute = new Runnable() { public void run() {
       Console.clear();
       CurveDisplay.scopeReset();
-      Jvs2Java.load(fileChooser.getFile());
+      //////////////Jvs2Java.load(frame.fileChooser.getFile());
       Jvs2Java.run(true);
     }};
     private Runnable stop = new Runnable() { public void run() {
@@ -136,5 +141,4 @@ public class JsActivities {
     }};
     public void stop() { }
   }
-  */
 }

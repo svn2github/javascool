@@ -9,9 +9,6 @@
 
 package org.javascool;
 
-// Used for the dialogs
-import javax.swing.JOptionPane;
-
 // Used to set Win look and feel
 import javax.swing.UIManager;
 
@@ -41,8 +38,8 @@ public class JsFrame extends JsLayout {
     reset("org/javascool/doc-files/icones32/logo_jvs.gif");
     activity = JsActivities.getActivity(name);
     if (activity != null) {
-      addTool("Nouvelle Activité", "org/javascool/doc-files/icones16/new.png", newActivity);
       if (activity.getTitle().length() > 0) {
+	addTool("Nouvelle Activité", "org/javascool/doc-files/icones16/new.png", newActivity);
 	addTool("Ouvrir", "org/javascool/doc-files/icones16/open.png", fileOpen);
 	addTool("Sauver", "org/javascool/doc-files/icones16/save.png", fileSave);
 	fileChooser.resetFile();
@@ -63,20 +60,8 @@ public class JsFrame extends JsLayout {
 
   private Runnable fileOpen = new Runnable() { public void run() {
     if (activity == null) return;
-    switch(!activity.getEditor().isModified() ? 1 : new JOptionPane().
-	   showConfirmDialog(JsFrame.this, 
-			     "Voulez-vous enregistrer avant d'ouvrir un nouveau fichier ?", 
-			     "Sauvgarder avant d'ouvrir", 
-			     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE)) {
-    case 0: // Yes save
-      if (fileChooser.doSaveAs(activity.getEditor(), activity.getExtension())) 
-	fileChooser.doOpenAs(activity.getEditor(), activity.getExtension());
-      break;
-    case 1: // No need to save
-      fileChooser.doOpenAs(activity.getEditor(), activity.getExtension());
-      break;
-    }
-  }};
+    fileChooser.doSaveOpenAs(activity.getEditor(), activity.getExtension());
+   }};
 
   private Runnable fileSave = new Runnable() { public void run() {
     if (activity == null) return;
@@ -98,6 +83,9 @@ public class JsFrame extends JsLayout {
   private String helpFile = "org/javascool/doc-files/about-main.htm";
   };
   
+  {
+    setActivity("");
+  }
 
   public static void main(String[] usage) {
     JsFrame main = new JsFrame();

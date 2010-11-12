@@ -39,14 +39,11 @@ public class JsLayout extends JApplet {
   // Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar(JToolBar.HORIZONTAL);
   private JTabbedPane westPane = new JTabbedPane(), eastPane = new JTabbedPane();
-  JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, westPane, eastPane);
+  private JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, westPane, eastPane);
 
   /** Builds the GUI. */
   {
-    JPanel toppaneWest = new JPanel();
-    toppaneWest.add(toolBar);
-    toppaneWest.add(new JLabel(" "));
-    getContentPane().add(toppaneWest, BorderLayout.NORTH);
+    getContentPane().add(toolBar, BorderLayout.NORTH);
     westPane.setMinimumSize(new Dimension(100, 100));
     eastPane.setMinimumSize(new Dimension(100, 100));
     splitPane.setResizeWeight(0.5);
@@ -71,9 +68,12 @@ public class JsLayout extends JApplet {
    * @param icon Button icon. If null do not show icon.
    * @param action Button action.
    */
-  public void addTool(String label, String icon, Runnable action) {
+  public void addTool(String label, String icon, Runnable action) { 
     JButton button = icon == null ? new JButton(label) : new JButton(label, Utils.getIcon(icon));
-    button.addActionListener(alistener);
+    button.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent e) {
+	  actions.get(((JButton) e.getSource()).getText()).run();
+	}});
     toolBar.add(button);
     buttons.put(label, button);
     actions.put(label, action);
@@ -110,12 +110,12 @@ public class JsLayout extends JApplet {
     if (east) { 
       eastPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
       eastPane.revalidate();
+      etabs.put(label, pane);
     } else {
       westPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
       westPane.revalidate();
+      wtabs.put(label, pane);
     }
-    jtabs.put(label, pane);
-    wtabs.put(label, east);
     splitPane.setResizeWeight(eastPane.getTabCount() == 0 ? 1 : westPane.getTabCount() == 0 ? 0 : 0.5);
     splitPane.revalidate();
   }
@@ -148,15 +148,14 @@ public class JsLayout extends JApplet {
    * @param label Tab label.
    */
   public void delTab(String label) {
-    if (jtabs.containsKey(label)) {
-      if(wtabs.get(label)) {
-	eastPane.remove(jtabs.get(label));
-	eastPane.revalidate();
-      } else {
-	westPane.remove(jtabs.get(label));
-	westPane.revalidate();
-      }
-      jtabs.remove(label);
+    if (etabs.containsKey(label)) {
+      eastPane.remove(etabs.get(label));
+      eastPane.revalidate();    
+      etabs.remove(label);
+    } 
+    if (wtabs.containsKey(label)) {
+      westPane.remove(wtabs.get(label));
+      westPane.revalidate();
       wtabs.remove(label);
     }
   }
@@ -164,29 +163,17 @@ public class JsLayout extends JApplet {
    * @param label Tab label.
    */
   public void showTab(String label) {
-    if (jtabs.containsKey(label)) {
-      if(wtabs.get(label)) {
-	eastPane.setSelectedComponent(jtabs.get(label));
-	eastPane.revalidate();
-      } else {
-	westPane.setSelectedComponent(jtabs.get(label));
-	westPane.revalidate();
-      }
+    if (etabs.containsKey(label)) {
+      eastPane.setSelectedComponent(etabs.get(label));
+      eastPane.revalidate();
+    }
+    if (wtabs.containsKey(label)) {
+      westPane.setSelectedComponent(wtabs.get(label));
+      westPane.revalidate();
     }
   }
-  /** HashMap for tab list.
+  /** HashMap for west and east tab list.
    * The map associate a String to a JPanel
    */
-  private HashMap<String,Container> jtabs = new HashMap<String,Container>();
-  /** HashMap for west/east location of the tab list.
-   * The map associate a String to a JPanel
-   */
-  private HashMap<String,Boolean> wtabs = new HashMap<String,Boolean>();
-
-  /** Generic action listener for all actions. */
-  private ActionListener alistener = new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-	actions.get(((JButton) e.getSource()).getText()).run();
-      }
-    };
+  private HashMap<String,Container> wtabs = new HashMap<String,Container>(), etabs = new HashMap<String,Container>();
 }
