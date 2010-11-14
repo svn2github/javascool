@@ -56,7 +56,7 @@ import java.util.HashMap;
 // Used to set Win look and feel
 import javax.swing.UIManager;
 
-/** This is the javascool v3 interface starter.
+/** This is the javascool v3.0 interface starter.
  * <p>- It can be used either as standalone application or a certified applet.</p>
  * @author Philippe Vienne <philoumailabo@gmail.com>
  * @see <a href="doc-files/about-main.htm">user documentation (in French)</a>

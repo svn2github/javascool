@@ -21,7 +21,7 @@ import java.io.File;
 // Used for the dialogs
 import javax.swing.JOptionPane;
 
-/** Defines the JavaScool dedicated file chooser.
+/** Defines the JavaScool 3.2 file load/save interactions.
  * @author Philippe Vienne <philoumailabo@gmail.com>
  * @serial exclude
  */
@@ -75,11 +75,28 @@ class JsFileChooser extends JFileChooser {
     }
   }
 
+  /** Saves a file, before exiting or activity change. */
+  public boolean doSaveCloseAs(Editor editor, String extension) {
+    switch(editor == null || !editor.isModified() ? 1 : new JOptionPane().
+	   showConfirmDialog(parent, 
+			     "Voulez-vous enregistrer avant de fermer ?", 
+			     "Sauvgarder avant de fermer", 
+			     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE)) {
+    case 0: // Yes save and return true if and only if the save is validated
+      setSaveDialogTitle("Enregistrer votre fichier avant de passer à la suite");
+      return doSaveAs(editor, extension);
+    case 1: // No need to save
+      return true;
+    default: // Ah ! Cancel
+      return false;
+    }
+  }
+
   /** Manages an open dialog action. 
    * @param editor The editor where to load the file.
    * @param extension The required file extension, if any (else null).
    */
-  public void doOpenAs(Editor editor, String extension) {
+  private void doOpenAs(Editor editor, String extension) {
     if (this.extension != extension) setSelectedFile(null);
     this.extension = extension;
     setDialogTitle("Ouvrir un programme");
@@ -88,6 +105,7 @@ class JsFileChooser extends JFileChooser {
       if (showOpenDialog(parent) == 0)
 	doOpen(editor, getSelectedFile().getPath());
   }
+
   /** Manages an open action (no dialog). */
   public void doOpen(Editor editor, String file) {
     setSelectedFile(new File(file));
@@ -115,6 +133,7 @@ class JsFileChooser extends JFileChooser {
     } else 
       return false;
   }
+
   /** Manages a save action (no dialog). 
    * @param editor The editor from where the file is saved.
    * @param extension The required file extension, if any (else null).
@@ -126,6 +145,7 @@ class JsFileChooser extends JFileChooser {
       doSave(editor, editor.getText(), extension);
     }
   }
+
   /** Manages a save action (no dialog). 
    * @param editor The editor where the text comes from.
    * @param text The text to save.
@@ -142,10 +162,17 @@ class JsFileChooser extends JFileChooser {
     if (editor != null) editor.setText(text);
     Utils.saveString(file, text);
   }
+
   /** Sets the next save dialog title. 
    * @param title Optional title for a specific dialog
    */
-  public void setSaveDialogTitle(String title) { this.title = title; } private String title = null;
+  private void setSaveDialogTitle(String title) { this.title = title; } private String title = null;
+
+  /** Returns a correct Java name with a specific extension from the given name.
+   * @param path The original file path to checck/correct.
+   * @param extension The extension to set
+   * @return The checked/corrected path. A warning message is printed if the name has to be coreected.
+   */
   private static String toJavaName(String file, String extension) {
     File f = new File(file);
     String parent = f.getParent(), extensionPattern = "(.*)(\\.[^\\.]*)$", name = f.getName().replaceAll(extensionPattern, "$1"), main;

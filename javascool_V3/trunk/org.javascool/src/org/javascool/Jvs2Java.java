@@ -217,27 +217,6 @@ public class Jvs2Java { private Jvs2Java() { }
       throw Utils.report(new RuntimeException("Erreur: impossible de charger "+jpath+" / "+jclass+" ("+e+") \n . . le package est il mal défini ?"));
     }
   }
-
-  /** Returns a correct Java name with a specific extension from the given name.
-   * @param path The original file path to checck/correct.
-   * @param extension The extension to set
-   * @return The checked/corrected path. A warning message is printed if the name has to be coreected.
-   */
-  public static String toJavaName(String path, String extension) {
-    File f = new File(path);
-    String parent = f.getParent(), extensionPattern = "(.*)(\\.[^\\.]*)$", name = f.getName().replaceAll(extensionPattern, "$1"), main;
-    if (Jvs2Java.isReserved(name)) {
-      main = "my_" + name;
-      System.out.println("Attention: le nom \""+name+"\" est interdit par Java, renommons le \""+main+"\"");
-    } else if (!name.matches("[A-Za-z_][A-Za-z0-9_]*")) {
-      main = name.replaceAll("[^A-Za-z0-9_]", "_");
-      System.out.println("Attention: le nom \""+name+"\" contient quelque caractère interdit par Java, renommons le \""+main+"\"");
-    } else
-      main = name;
-    if (extension == null) { extension = f.getName().matches(extensionPattern) ? f.getName().replaceFirst(extensionPattern, "$2") : ""; }
-    return parent + File.separator + main + extension;
-  }
-
   /** Compiles and saves a HTML launcher page in order to run the compile proglet as an applet.
    * DISCLAIMER: DO NOT USE, TO BE VALIDATED + SEE HOW TO USE JAVASCRIPT TO AVOID RELOAD
    * @param activity The activity name or index.
