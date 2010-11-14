@@ -13,5 +13,5 @@ endif
 j3 :
 	@$(MAKE) -C ../../.. j3
 
-clean "
+clean :
 	@$(MAKE) -C ../../.. clean
