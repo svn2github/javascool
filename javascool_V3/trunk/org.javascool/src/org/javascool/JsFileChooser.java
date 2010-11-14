@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
  * @see <a href="JsFileChooser.java.html">source code</a>
  * @serial exclude
  */
-class JsFileChooser extends JFileChooser {
+public class JsFileChooser extends JFileChooser {
   private static final long serialVersionUID = 1L;
 
   /** Constructs a file chooser.

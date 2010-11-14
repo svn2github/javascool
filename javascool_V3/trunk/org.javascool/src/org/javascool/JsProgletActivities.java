@@ -15,6 +15,7 @@ import proglet.exosdemaths.CurveDisplay;
  * @serial exclude
  */
 public class JsProgletActivities {
+  /**/private JsProgletActivities () { }
 
   /** Adds all proglet activities. */
   public static void addActivities(JsMain main) {
@@ -147,6 +148,7 @@ public class JsProgletActivities {
       init2(main.getFrame());
       main.getFrame().addTab("Document de la proglet", "proglet/"+proglet+"/doc-files/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true);
       main.getFrame().addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/help.png", true);
+      main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
     }
     // Proglet specific pannels
     protected void init2(JsFrame frame) {

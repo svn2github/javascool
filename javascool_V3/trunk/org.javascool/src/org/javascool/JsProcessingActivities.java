@@ -16,6 +16,7 @@ import java.applet.Applet;
  * @serial exclude
  */
 public class JsProcessingActivities {
+  /**/private JsProcessingActivities () { }
 
   /** Adds all processing activities. */
   public static void addActivities(JsMain main) {

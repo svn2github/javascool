@@ -212,6 +212,7 @@ public class JsMain extends JApplet {
     addActivity(new HomeActivity());
     JsProgletActivities.addActivities(this);
     JsProcessingActivities.addActivities(this);
+    setActivity("");
   }  
   static private ArrayList<Activity> activities = new ArrayList<Activity>();
 
@@ -227,7 +228,7 @@ public class JsMain extends JApplet {
 	  public void valueChanged(ListSelectionEvent e) {
 	    HomeActivity.this.main.setActivity((String) list.getSelectedValue());
 	  }});
-      this.main.getFrame().addTab("Choisir son activité (double cliquer)", list, "org/javascool/doc-files/icones16/new.png", false);
+      this.main.getFrame().addTab("Choisir (cliquer sur le titre) son activité", list, "org/javascool/doc-files/icones16/new.png", false);
     }
     private JsMain main;
     private JList list;

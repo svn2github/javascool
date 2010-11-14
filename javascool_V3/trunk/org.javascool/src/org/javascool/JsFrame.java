@@ -45,7 +45,7 @@ public class JsFrame extends JPanel {
     add(toolBar, BorderLayout.NORTH);
     westPane.setMinimumSize(new Dimension(100, 100));
     eastPane.setMinimumSize(new Dimension(100, 100));
-    splitPane.setResizeWeight(0.5);
+    splitPane.setResizeWeight(0.4);
     splitPane.setContinuousLayout(true); 
     splitPane.setOneTouchExpandable(false);
     add(splitPane, BorderLayout.CENTER);
@@ -55,7 +55,10 @@ public class JsFrame extends JPanel {
    * @param logoFile If not null, displays a logo to label the interface.
    */
   public void reset(String logoFile) {
+    add(new JLabel(), BorderLayout.NORTH);
+    revalidate();
     toolBar.removeAll();
+    add(toolBar, BorderLayout.NORTH);
     westPane.removeAll();
     eastPane.removeAll();
     if (logoFile != null)  
@@ -116,7 +119,6 @@ public class JsFrame extends JPanel {
       wtabs.put(label, pane);
     }
     showTab(label);
-    splitPane.setResizeWeight(eastPane.getTabCount() == 0 ? 1 : westPane.getTabCount() == 0 ? 0 : 0.5);
     revalidate();
   }
   /** Adds a tab to the tabbed panel to display a text.
