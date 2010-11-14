@@ -33,7 +33,18 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 
-/** Defines the JavaScool 3.2 apllication launcher. */
+/** Defines the JavaScool v3-2 launcher (warning not yet validated). 
+ * JavaScool 3.2 graphic user interface components: <ul>
+ * <li>The frame with buttons and panels is defined in <a href="JsFrame.html">JsFrame</a>.</li>
+ * <li>The file load/save namagement defined in <a href="JsFileChooser.html">JsFileChooser</a>.</li>
+ * <li>The activities are defined in:<ul>
+ * <li><a href="JsProgletActivities.html">JsProgletActivities</a> and</li>
+ * <li><a href="JsProcessingActivities.html">JsProcessingActivities</a>.</li>
+ * </ul></li></ul>
+ * @author Philippe Vienne <philoumailabo@gmail.com>
+ * @see <a href="JsMain.java.html">source code</a>
+ * @serial exclude
+ */
 public class JsMain extends JApplet { 
   /**/public JsMain() { }
   private static final long serialVersionUID = 1L;
@@ -71,7 +82,7 @@ public class JsMain extends JApplet {
    */
   public void setActivity(String name) {
     jsFrame.reset("org/javascool/doc-files/icones32/logo_jvs.gif");
-    activity = JsActivities.getActivity(name);
+    activity = getActivity(name);
     if (activity != null) {
       if (activity.getTitle().length() > 0) {
 	jsFrame.addTool("Nouvelle Activité", "org/javascool/doc-files/icones16/new.png", newActivity);
@@ -163,9 +174,9 @@ public class JsMain extends JApplet {
     /** Returns the activity title. */
     public String getTitle();
     /** Initializes the activity, adding buttons and pannels and start it. */
-    public void start(JsMain m);
-    /** Stops the activity, saving files. */
-    public void stop(JsMain m);
+    public void init(JsMain main);
+    /** Stops the activity. */
+    public void stop(JsMain main);
     /** Returns the activity editor. */
     public Editor getEditor();
     /** Returns the required file extension. 
@@ -208,23 +219,23 @@ public class JsMain extends JApplet {
  
   /** Defines the "home" activity allowing the user to select an activity. */
   private static class HomeActivity implements Activity {
-    public void init(JsMain f) {
-      this.frame = f;
-      list = new JList(getTitles());
+    public void init(JsMain main) {
+      this.main = main;
+      list = new JList(main.getTitles());
       list.setSelectedIndex(0);
       list.addListSelectionListener(new ListSelectionListener() {
 	  public void valueChanged(ListSelectionEvent e) {
-	    frame.setActivity((String) list.getSelectedValue());
+	    HomeActivity.this.main.setActivity((String) list.getSelectedValue());
 	  }});
-      frame.getFrame().addTab("Choisir son activité (double cliquer)", list, "org/javascool/doc-files/icones16/new.png", false);
+      this.main.getFrame().addTab("Choisir son activité (double cliquer)", list, "org/javascool/doc-files/icones16/new.png", false);
     }
-    private JsMain frame;
+    private JsMain main;
     private JList list;
     // The "home" activity is recognized by JsFrame as being the only one with an empty name.
     public String getTitle() { return ""; }
     public Editor getEditor() { return null; }
     public String getExtension() { return null; }
-    public void stop(JsMain f) { }
+    public void stop(JsMain main) { }
   }
 
   /** Used to run a JavaScool 3.2 as a standalone program. 

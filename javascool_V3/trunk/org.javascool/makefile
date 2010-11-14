@@ -26,6 +26,10 @@ j3: jar
 	@cd tst ; java -jar ../www/javascool.jar
 	@make clean
 
+j3-2: jar
+	@cd tst ; ../lib/run.sh org.javascool.JsMain
+	@make clean
+
 doc: api
 	firefox file:www/api/org/javascool/package-summary.html
 

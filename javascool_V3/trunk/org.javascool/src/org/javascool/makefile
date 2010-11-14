@@ -1,10 +1,6 @@
 
 ifeq ($(USER), vthierry)
 
-#- Utiliser stop pour rendre les editeurs locaux aux Activity
-#- Creer une JavaSource dont derive proglet et processing
-#- Regler le pb de affichge en renda JsLayout un panel
-
 all : 
 	@cd ../tst ; ../lib/run.sh org.javascool.JsMain
 #	@cd ../tst ; ../lib/run.sh org.javascool.Eml exp.jvs

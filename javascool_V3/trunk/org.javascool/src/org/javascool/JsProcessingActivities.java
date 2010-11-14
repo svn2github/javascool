@@ -11,57 +11,43 @@ import java.awt.Dimension;
 import java.io.PrintStream;
 import java.applet.Applet;
 
-/** This factory defines the different JavaScool processing activities. */
+/** This factory defines the different JavaScool v3-2 processing activities.
+ * @see <a href="JsProgletActivities.java.html">source code</a>
+ * @serial exclude
+ */
 public class JsProcessingActivities {
 
   /** Adds all processing activities. */
-  public static void addActivities() {
-    JsActivities.addActivity(new ProcessingActivity("ExplorationSonore") {
+  public static void addActivities(JsMain main) {
+    main.addActivity(new ProcessingActivity("ExplorationSonore") {
 	public String getTitle() { return "Exploration du signal sonore"; }
-	public void init(JsFrame frame) {
-	  super.init(frame);
-	}
       });
-    JsActivities.addActivity(new ProcessingActivity("CryptageRSA") {
+    main.addActivity(new ProcessingActivity("CryptageRSA") {
 	public String getTitle() { return "Expérimenter avec la cryptographie"; }
-	public void init(JsFrame frame) {
-	  super.init(frame);
-	}
       });
-    JsActivities.addActivity(new ProcessingActivity("EnVoiture") {
+    main.addActivity(new ProcessingActivity("EnVoiture") {
 	public String getTitle() { return "Découvrir les graphes et les chemins"; }
-	public void init(JsFrame frame) {
-	  super.init(frame);
-	}
       });
-    JsActivities.addActivity(new ProcessingActivity("UnGrapheDesChemins") {
-	  public String getTitle() { return "Explorer les graphes et les chemins"; }
-	public void init(JsFrame frame) {
-	  super.init(frame);
-	}
+    main.addActivity(new ProcessingActivity("UnGrapheDesChemins") {
+	public String getTitle() { return "Explorer les graphes et les chemins"; }
       });
   }
 
   // Defines a processing activity
-  private static abstract class ProcessingActivity extends JsActivities.JavaActivity {
-    private JsFrame frame;
-    public Editor getEditor() { return JsActivities.jvsEditor; }
-    public String getExtension() { return ".jvs"; }
+  private static abstract class ProcessingActivity extends JsProgletActivities.JavaActivity {
     /** Constructs a processing activity.
      * @param processing The processing to use.
      * @throws IllegalArgumentExceptionif the processing is undefined.
      */
     public ProcessingActivity(String processing) { name = processing; } private String name; private int width, height;
-    public void init(JsFrame f) {
-      frame = f;
-      if (JsActivities.jvsEditor == null) JsActivities.jvsEditor = new JvsSourceEditor(); 
-      frame.getFrame().addTab("Editeur", (JPanel) JsActivities.jvsEditor, "org/javascool/doc-files/icones16/edit.png", false); 
-      JsActivities.jvsEditor.setProglet(name);
-      frame.getFrame().addTab("Document de la proglet", "sketchbook/"+name+"/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true);
-      initCompile();
-      initApplet();
+    public void init(JsMain main) {
+      main.getFrame().addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false); 
+      jvsEditor.setProglet(name);
+      main.getFrame().addTab("Document de la proglet", "sketchbook/"+name+"/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true);
+      init1(main);
+      init2(main);
     }
-    private void initApplet() {
+    private void init2(JsMain main) {
       PrintStream out = System.out;
       System.setOut(System.err);
       try {
@@ -77,7 +63,7 @@ public class JsProcessingActivities {
 	  applet.init(); applet.start();
 	  Macros.sleep(1000);
 	  applet.setMinimumSize(new Dimension(width, height));
-	  frame.getFrame().addTab(name, applet, "org/javascool/doc-files/icones16/edit.png", false);
+	  main.getFrame().addTab(name, applet, "org/javascool/doc-files/icones16/edit.png", false);
 	}
       } catch(Throwable e) { System.out.println("Désolé, l'activité "+name+" n'est pas définie dans cette version ("+e+")."); }
       System.setOut(out);

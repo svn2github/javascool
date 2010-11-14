@@ -21,8 +21,9 @@ import java.io.File;
 // Used for the dialogs
 import javax.swing.JOptionPane;
 
-/** Defines the JavaScool 3.2 file load/save interactions.
+/** Defines the JavaScool v3-2 file load/save interactions.
  * @author Philippe Vienne <philoumailabo@gmail.com>
+ * @see <a href="JsFileChooser.java.html">source code</a>
  * @serial exclude
  */
 class JsFileChooser extends JFileChooser {

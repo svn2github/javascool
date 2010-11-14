@@ -25,7 +25,7 @@ import java.awt.event.ActionEvent;
 // Used to register elements
 import java.util.HashMap;
 
-/** Defines the general frame of the JavaScool 3.2 interface in terms of a button toolbar and splitted tab panes.
+/** Defines the general frame of the JavaScool v3-2 interface in terms of a button toolbar and splitted tab panes.
  * @author Philippe Vienne <philoumailabo@gmail.com>
  * @see <a href="JsFrame.java.html">source code</a>
  * @serial exclude
