@@ -1,8 +1,16 @@
 <div title="La «proglet» CryptageRSA">
   <p class="margin">Autres <l link="../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>Cette proglet<l class="note" link="1"/> permet de manipuler les concepts liés à l'encryptage/décryptage par clés publique et privée, RSA. 
-  L'intérêt de la manipulation est de faire passer la non-symétrie du processus: autrement dit, tout le monde peut encrypter (par la clé publique),
-  mais seule une personne pourra décrypter (possédant la clé privée).
+  La cryptologie, science du secret, englobe la cryptographie — le codage secret d'un message — et la cryptanalyse — le décodage d'un message codé. 
+	Le principe de la cryptographie consiste à définir une transformation des symboles d'un langage (les lettres ou les mots par exemple) qui soit difficilement inversible, 
+	de telle sorte que retrouver le mot original à partir du mot codé devienne une opération difficile à effectuer. 
+	Il existe deux grandes familles d'algorithmes de cryptographie : les algorithmes symétriques (à clé secrète) 
+	et les algorithmes asymétriques (à clé publique). 
+	Le système RSA est un système de cryptographie à clé publique donc asymétrique.
+	
+	L'intérêt de cette manipulation est de faire passer la non-symétrie du processus: autrement dit, tout le monde peut encrypter (par la clé publique),
+    mais seule une personne pourra décrypter (à l'aide de la clé privée).
+  
   </p>
   <p>Pour manipuler les notions et outils du cryptage, il faut utiliser la construction javascool. 
   Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: <div class="code">
