@@ -4,7 +4,7 @@
     en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin. 
     La première partie de ce tutoriel est introductive à la notion de graphe, 
 	se limitant essentiellement à un cas concret de parcours d'une voiture entre des villes. 
-	L'idée étant de faire passer l'idée que l'application se retrouve dans nombreuses situations du quotidien.
+	On veut faire passer l'idée ici que l'application se retrouve dans de nombreuses situations du quotidien.
     Il faut déja savoir <l link="../../ingredients/doc-files/sujet-hello-world.htm" text="utiliser l'interface"/>,
     se servir de <l link="../../ingredients/doc-files/sujet-about-variables.htm" text="variables"/> 
     et avoir découvert l'<l link="../../ingredients/doc-files/sujet-about-if.htm" text="instruction conditionnelle"/> et 
