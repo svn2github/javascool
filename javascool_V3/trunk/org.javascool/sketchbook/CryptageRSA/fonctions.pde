@@ -187,7 +187,7 @@
   }
   
   
-  /** Encrypt un message à l'aide de clés  
+  /** Encrypte un message à l'aide de clés  
    * @param m message à encrypter, à inscrire entre "".
    * @param pk1 clé publique1. 
    * @param pk2 clé publique2. 
@@ -204,7 +204,7 @@
     
   }
   
-  /** Encrypt un message à l'aide de clés  
+  /** Décrypte un message à l'aide de clés  
    * @param me message encrypté sous forme de chiffres.
    * @param k clés, publique et privée. 
    * @return message
