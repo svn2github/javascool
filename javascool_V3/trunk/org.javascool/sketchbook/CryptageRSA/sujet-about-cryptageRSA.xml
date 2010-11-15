@@ -1,0 +1,28 @@
+<div class="sujet" title="Un tutoriel sur les signaux sonores"> 
+  <div class="objectif">
+    Le but de ce tutoriel est de . . 
+    Il faut déja savoir <l link="../../ingredients/doc-files/sujet-hello-world.htm" text="utiliser l'interface"/>,
+    se servir de <l link="../../ingredients/doc-files/sujet-about-variables.htm" text="variables"/> 
+    et avoir découvert l'<l link="../../ingredients/doc-files/sujet-about-if.htm" text="instruction conditionnelle"/> et 
+    les <l link="../../ingredients/doc-files/sujet-about-while.htm" text="boucles"/>, 
+    ansi que les <l link="../../ingredients/doc-files/sujet-about-functions.htm" text="fonctions"/>..
+  </div>
+  <div class="intros">
+    <div title="La notion de signal périodique"> Une note est une vibration . . [résumer le tete de Cécile] 
+    comme <l link="OndeSonore.pdf" text="détaillé ici"/> (bien lire le dcouemtn avant de commencer).
+  </div>
+   </div>
+
+  <div class="works">
+    <div title="faire un truc">
+
+1.	Dans un premier temps, on peut laisser manipuler l'interface qui présente une voiture dans un environnement 3D. Les 4 différentes flèches permettent la navigation. Cette vue est complétée par une représentation 2D (type aérienne) de l'environnement et des mouvements du véhicule. Dans cet environnement, peuvent être ajoutés des "stations" (spots), soit par touche 'a' pour les générer toutes en une seule fois et de manière aléatoire, soit par clic droit et la station apparaitra à la position courante de la voiture. Les stations apparaissent en orange dans les deux représentations. 
+
+OBJECTIF: En fixant une station de départ et une station d'arrivée, l'objectif de la voiture est de passer par toutes les stations en minimisant la distance parcourue (et oui, l'impact carbone..).
+
+2.	On propose que l'élève cherche le plus court chemin par déduction. Il ballade la voiture de station en station et par un 'clic centre + relâche' mémorise le chemin. La distance est alors automatiquement calculée.
+
+3.	On propose de programmer par l'intermédiaire de la proglet.
+    </div>
+  </div>
+</div>
