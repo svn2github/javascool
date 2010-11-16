@@ -32,6 +32,9 @@ public class JsProcessingActivities {
     main.addActivity(new ProcessingActivity("UnGrapheDesChemins") {
 	public String getTitle() { return "Explorer les graphes et les chemins"; }
       });
+    main.addActivity(new ProcessingActivity("BoiteAMusique") {
+	public String getTitle() { return "Programmer une séquence musicale"; }
+      });
   }
 
   // Defines a processing activity
@@ -59,15 +62,17 @@ public class JsProcessingActivities {
 	if (popup) {
 	  jframe = Utils.show(applet, name, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"), width, height, false);
 	  jframe.setResizable(false);
-	  Macros.sleep(1000);
 	} else {
 	  applet.init(); applet.start();
-	  Macros.sleep(1000);
 	  applet.setMinimumSize(new Dimension(width, height));
 	  main.getFrame().addTab(name, applet, "org/javascool/doc-files/icones16/edit.png", false);
 	}
-      } catch(Throwable e) { System.out.println("Désolé, l'activité "+name+" n'est pas définie dans cette version ("+e+")."); }
-      System.setOut(out);
+	Macros.sleep(1000);
+	System.setOut(out);
+      } catch(Throwable e) { 
+	System.setOut(out);
+	System.out.println("Désolé, l'activité "+name+" n'est pas définie dans cette version ("+e+")."); 
+      }
     } 
     private Applet applet = null;
     public void stop() { 

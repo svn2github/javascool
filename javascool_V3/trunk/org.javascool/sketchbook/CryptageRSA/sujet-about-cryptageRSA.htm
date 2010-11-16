@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div align="right"></div>
+<div class="sujet">
+   <h2>Un tutoriel sur le cryptage RSA.</h2> 
+   
+   <h2>Objectif.</h2>
+   <div class="objectif">
+      Le but de ce tutoriel est de manipuler les concepts li&eacute;s &agrave; l'encryptage/d&eacute;cryptage par cl&eacute;s publique et priv&eacute;e, RSA. 
+      L'int&eacute;r&ecirc;t de la manipulation est de faire passer la non-sym&eacute;trie du processus: autrement dit, tout le monde peut encrypter
+      (par la cl&eacute; publique),
+      mais seule une personne pourra d&eacute;crypter (poss&eacute;dant la cl&eacute; priv&eacute;e).. 
+      Il faut d&eacute;ja savoir <a href="../../ingredients/doc-files/sujet-hello-world.htm">utiliser l'interface</a>,
+          se servir de <a href="../../ingredients/doc-files/sujet-about-variables.htm">variables</a> 
+          et avoir d&eacute;couvert l'<a href="../../ingredients/doc-files/sujet-about-if.htm">instruction conditionnelle</a> et 
+          les <a href="../../ingredients/doc-files/sujet-about-while.htm">boucles</a>, 
+          ansi que les <a href="../../ingredients/doc-files/sujet-about-functions.htm">fonctions</a>..
+        
+   </div>
+     
+   <h2>Introduction.</h2>
+   <div id="intros">
+      <ol></ol>
+   </div>
+   
+     
+   <h2>Travail propos&eacute;.</h2>
+   <div id="works">
+      <ol>
+         <li>
+            <div>
+               <h3>faire un truc.</h3>
+               
+               	I) Manipuler l'interface. 
+               	Sce&#769;nario: on imagine qu'il puisse se faire par l'interme&#769;diaire d'un serveur web local, afin de permettre les actions se&#769;pare&#769;es
+               	de deux protagonistes, Alice et Bob.
+               	
+               	1.	Alice est charge&#769;e de ge&#769;ne&#769;rer les cle&#769;s publique et prive&#769;e en suivant les diffe&#769;rentes e&#769;tapes: 
+               	a) ge&#769;ne&#769;ration de deux entiers premiers P et Q; 
+               	b) Calcul de N=PxQ; 
+               	c) Ge&#769;ne&#769;rer E tel que E soit premier avec (P-1)*(Q-1); 
+               	d) Calculer D selon: Il existe un relatif entier M, tel que E &times; D + M &times; (P - 1)(Q - 1) = 1 
+               	-&gt; (N,E) est la cle&#769; publique; D est la cle&#769; prive&#769;e 
+               	Alice divulgue la cle&#769; publique et garde pre&#769;cieusement la cle&#769; prive&#769;e.
+               	
+               	2.	Bob rec&#807;oit la cle&#769; publique. 
+               	Il e&#769;crit son message secret, il le traduit en chiffres. Il encrypte ensuite le re&#769;sultat gra&#770;ce a&#768; la cle&#769; publique,
+               	c'est &agrave; dire: Bob &eacute;l&egrave;ve la traduction en chiffres &agrave; la puissance E, et prend le reste de la division du nombre qu'il a obtenu
+               	par N que lui a &eacute;galement fourni Alice.
+               	Il envoit le message encrypte&#769; a&#768; Alice.
+               
+               	3.	Alice rec&#807;oit le message encrypte&#769;. Elle le de&#769;crypte gra&#770;ce a&#768; sa cle&#769; prive&#769;e,
+               	c'est &agrave; dire elle &eacute;l&egrave;ve le nombre re&ccedil;u de Bob &agrave; la puissance D, puis prend le reste de sa division par N.
+               	Elle obtient une suite de chiffres qu'elle traduit en lettres et aboutit au message secret de Bob. 
+               	
+               	II) Faire les &eacute;tapes de g&eacute;n&eacute;ration de cl&eacute;s a), b), c) et d) par d&eacute;duction &agrave; partir des formules.
+               	
+               	III) Lancer les routines de cryptage et d&eacute;cryptage via javascool
+               	
+               	IV) RSA et authentification:
+               	Un professeur envoie ses notes au secre&#769;tariat de l'E&#769;cole par mail. 
+               	La clef publique du professeur est (55,3); celle du secre&#769;tariat est (33,3).
+               	
+               	a) Ve&#769;rifier, &agrave; l'aide des formules, que la clef prive&#769;e du professeur (suppose&#769;e connue de lui seul) est 27; et que celle
+               du secre&#769;tariat est 7.
+               	Impl&eacute;menter la commande correspondante &agrave; l'authentification.
+               	b) Pour assurer la confidentialite&#769; de ses messages, le professeur chiffre les notes avec la clef RSA du secre&#769;tariat. 
+               	Quel message chiffre&#769; correspond a&#768; la note 12 ?
+               	c) Pour assurer l'authenticite&#769; des messages contenant les notes, le professeur signe ses messages pour le secre&#769;tariat 
+               	apre&#769;s les avoir chiffre&#769;s. Le secre&#769;tariat rec&#807;oit le message 23. Quelle est la note correspondante ?
+               	
+               
+                   
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+</div>

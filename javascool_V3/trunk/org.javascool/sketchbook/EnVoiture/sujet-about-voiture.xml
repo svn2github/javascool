@@ -17,14 +17,14 @@
   	Généralement, les points sont appelés les sommets ou les nœuds. Les liens sont appelés arêtes dans les graphes non-orienté 
   	et arcs dans un graphe orienté.
   	Dans le cas concret d'une carte de villes, les noeuds ou sommets sont représentés par les villes, 
-  	et les liens correspondent aux routes construites pour les relier.
-    Lorsqu'un chemin existe entre deux noeuds ou sommets dans un graphe, on se pose rapidement la question non seulement de trouver un tel chemin, 
+        et les liens correspondent aux routes construites pour les relier.</p>
+    <p>Lorsqu'un chemin existe entre deux noeuds ou sommets dans un graphe, on se pose rapidement la question non seulement de trouver un tel chemin, 
     mais également le plus court chemin possible entre ces deux sommets. 
     Notre oeil est d'ailleurs particulièrement efficace dans cette tâche, tant que le graphe est de taille raisonnable... 
     Mais dès que le graphe comporte plusieurs dizaines de sommets et d'arêtes, 
     trouver le plus court chemin entre deux points devient vite un casse-tête: 
     avez vous déjà eu l'expérience de trouver l'itinéraire le plus rusé entre 2 stations de métro de Paris passant par le minimum de stations??
-    (sans demander au site de la RATP de calculer votre itinéraire, bien entendu!)
+   (sans demander au site de la RATP de calculer votre itinéraire, bien entendu!)</p>
    </div>
 
   <div class="works">

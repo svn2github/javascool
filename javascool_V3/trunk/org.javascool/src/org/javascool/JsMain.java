@@ -33,6 +33,9 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 
+// Used to test if a file exists in main()
+import java.io.File;
+
 /** Defines the JavaScool v3-2 launcher (warning not yet validated). 
  * JavaScool 3.2 graphic user interface components: <ul>
  * <li>The frame with buttons and panels is defined in <a href="JsFrame.html">JsFrame</a>.</li>
@@ -49,7 +52,7 @@ public class JsMain extends JApplet {
   /**/public JsMain() { }
   private static final long serialVersionUID = 1L;
   
-  static final String title = "Java'Scool 3.1";
+  static final String title = "Java'Scool 3.2-beta";
 
   // [0] Defines the look and field.
   static {
@@ -64,8 +67,10 @@ public class JsMain extends JApplet {
 
   // [1] Builds the JavaSccol standard G.U.I.
   private Runnable newActivity = new Runnable() { public void run() {
-    if(fileChooser.doSaveCloseAs(activity.getEditor(), activity.getExtension()))
+    if(fileChooser.doSaveCloseAs(activity.getEditor(), activity.getExtension())) {
+      fileChooser.resetFile();
       setActivity("");
+    }
   }};
   private Runnable fileOpen = new Runnable() { public void run() {
     fileChooser.doSaveOpenAs(activity.getEditor(), activity.getExtension());
@@ -80,7 +85,7 @@ public class JsMain extends JApplet {
   /** Sets an activity.
    * @param name The name of the activity to set.
    */
-  public void setActivity(String name) {
+  private void setActivity(String name) {
     jsFrame.reset("org/javascool/doc-files/icones32/logo_jvs.gif");
     activity = getActivity(name);
     if (activity != null) {
@@ -92,7 +97,6 @@ public class JsMain extends JApplet {
       }
       jsFrame.addTool("Aide", "org/javascool/doc-files/icones16/help.png", helpShow);
       jsFrame.addToolSeparator();
-      fileChooser.resetFile();
       activity.init(this);
     }
   }
@@ -108,7 +112,6 @@ public class JsMain extends JApplet {
 
   {
     getContentPane().add(jsFrame);
-    setActivity("");
   }
 
   // [1.1] Defines the key-strokes
@@ -196,10 +199,15 @@ public class JsMain extends JApplet {
   
   /** Gets an activity by its title. */
   private Activity getActivity(String name) {
+    if (name.matches("[0-9]+")) {
+      int i = Integer.parseInt(name); 
+      if (0 <= i && i < activities.size())
+	return activities.get(i);
+    }
     for(Activity activity : activities) 
       if (activity.getTitle().equals(name))
 	return activity;
-    return null;
+    return activities.get(0);
   }
 
   /** Adds an activity to the application list. */
@@ -240,18 +248,19 @@ public class JsMain extends JApplet {
   }
 
   /** Used to run a JavaScool 3.2 as a standalone program. 
-   * @param usage <tt>java org.javascool.Main</tt>
-   */
-  public static void main(String[] usage) {
-    JsMain main = new JsMain();
-    Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
-  }
-
-  /* [A REDEPLOYER] pourlancer javascool sur un fichier dont l'activite est stocqee en commentaire de 1ere ligne
    * <p>- Starts a JavaScool "activity" which result is to be stored in a "file-name".</p>
-   * @param usage <tt>java org.javascool.Main [activity] [file-name]</tt><ul>
+   * @param usage <tt>java org.javascool.Main [activity [file-name]]</tt><ul>
    * <li><tt>activity</tt> specifies the activity to be done (its index or name).</li>
    * <li><tt>file-name</tt> specifies the file used for the activity.</li>
    * </ul>
    */
+  public static void main(String[] usage) {
+    System.out.println("---------------------\n"+title+"\n---------------------\nstarting..");
+    JsMain main = new JsMain();
+    if (usage.length > 0)
+      main.setActivity(usage[0]);
+    if (usage.length > 0 && new File(usage[usage.length - 1]).exists() && main.activity.getEditor() != null)
+      main.getFileChooser().doOpen(main.activity.getEditor(), usage[usage.length - 1]);
+    Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
+  }
 }

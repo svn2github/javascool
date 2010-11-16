@@ -25,8 +25,10 @@ htm : $(patsubst %.xml,%.htm,$(shell find . -name '*.xml'))
 
 JARS=/usr/java/processing-1.2.1/libraries/opengl/library/jogl.jar /usr/java/processing-1.2.1/libraries/opengl/library/gluegen-rt.jar
 
-jar :
+njar :
 	@rm -f ../lib/processing.zip
+
+jar :
 	@rm -rf ../tmp ; mkdir ../tmp; for j in */applet/*.jar $(JARS) ; do unzip -qo $$j -d ../tmp ; done ; rm -rf ../tmp/META-INF
 	@cd ../tmp ; zip -9qr ../lib/processing.zip *
 	@rm -rf ../tmp

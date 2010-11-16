@@ -12,7 +12,7 @@
     mais seule une personne pourra décrypter (à l'aide de la clé privée).
   
   </p>
-  <p>Pour manipuler les notions et outils du cryptage, il faut utiliser la construction javascool. 
+  <div>Pour manipuler les notions et outils du cryptage, il faut utiliser la construction javascool. 
   Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: <div class="code">
     <m>Créer une clé privée et une clé publique pour le codage et décodage de messages:</m>
     <p><r>CryptageRSA.createKeys</r>()</p>
@@ -45,4 +45,4 @@
     </p></div>
     pour permettre des développements dérivés.</div>
   </div>
-</div>
+</div></div></div>

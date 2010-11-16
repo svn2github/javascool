@@ -65,7 +65,7 @@ public class JsProgletActivities {
   /** Defines a compilation activity. */
   public static abstract class JavaActivity implements JsMain.Activity {
     protected JsMain main;
-    protected JvsSourceEditor jvsEditor = new JvsSourceEditor();
+    protected static JvsSourceEditor jvsEditor = new JvsSourceEditor();
     private Runnable compile = new Runnable() { public void run() {
       main.getFrame().delTool("Exécuter");
       main.getFrame().delTool("Arrêter");
@@ -113,7 +113,7 @@ public class JsProgletActivities {
 
   /** Defines an AlgoTree activity. */
   private static abstract class AlgoEditorActivity extends JavaActivity {
-    private AlgoEditor algoEditor = new AlgoEditor(); 
+    private static AlgoEditor algoEditor = new AlgoEditor(); 
     public void init(JsMain main) {
       jvsEditor.reset(false);
       main.getFrame().addTab("Editeur d'Algo.", (JPanel) algoEditor, "org/javascool/doc-files/icones16/edit.png", false);

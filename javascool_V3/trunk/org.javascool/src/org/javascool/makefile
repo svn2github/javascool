@@ -2,7 +2,7 @@
 ifeq ($(USER), vthierry)
 
 all : 
-	@cd ../tst ; ../lib/run.sh org.javascool.JsMain
+	@cd ../tst ; ../lib/run.sh org.javascool.JsMain basiqueproba.jvs 
 #	$(MAKE) j3
 #	@cd ../tst ; ../lib/run.sh org.javascool.Eml exp.jvs
 #	@cd ../tst ; ../lib/run.sh org.javascool.AlgoEditor
