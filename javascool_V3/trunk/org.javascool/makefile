@@ -106,7 +106,7 @@ lib/js-manifest.mf : .svn makefile
 	@echo 'Implementation-URL: http://javascool.gforge.inria.fr'  >> $@
 	@echo 'Implementation-Vendor: $(vendor)' >> $@
 	@echo 'Implementation-Version: $(version)' >> $@
-	@echo 'Main-Class: org.javascool.Main' >> $@
+	@echo 'Main-Class: org.javascool.JsMain' >> $@
 
 # Compiles the xml doc files
 
