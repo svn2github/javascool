@@ -5,8 +5,6 @@ J_HOME=$(P_HOME)/java
 export PATH:=$(J_HOME)/bin:$(PATH)
 export CLASSPATH=$(shell echo '$(J_HOME)/lib/tools.jar $(J_HOME)/jre/lib/rt.jar $(wildcard $(P_HOME)/lib/*.jar)' | sed 's/ /:/g')
 
-dft : gui
-
 # Default rule
 all : gui jar sgn
 

@@ -5,7 +5,7 @@
 # Used to use sun jdk instead of open jdk
 export PATH:=/usr/java/jdk1.6.0_21/bin:$(PATH)
 
-default : j3
+default : j3-2
 
 # General commands
 
@@ -15,19 +15,12 @@ usage :
 what :
 	@grep '^#:' makefile | sed 's/^#://'
 
-v3: cmp
-	@cd tst ; ../lib/run.sh  org.javascool.Main
-
-runj3:
-	@cd tst ; java -jar ../www/javascool.jar
-	@make clean
-
-j3: jar
-	@cd tst ; java -jar ../www/javascool.jar
+j3-1: jar
+	@cd tst ; ../lib/run.sh org.javascool.Main
 	@make clean
 
 j3-2: jar
-	@cd tst ; ../lib/run.sh org.javascool.JsMain
+	@cd tst ; java -jar ../www/javascool.jar
 	@make clean
 
 doc: api

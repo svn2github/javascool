@@ -282,8 +282,8 @@
    * @param f fréquence du signal. 
    * @param a amplitude du signal. 
    */
-  public static void playSignal(String n, float f, float a) {
-    proglet.signal1.setSignal(n, f, a);
+  public static void playSignal(String n, double f, double a) {
+    proglet.signal1.setSignal(n, (float) f, (float) a);
   }
   
   /** Joue un enregistrement de son choix
@@ -297,8 +297,8 @@
    * @param path Nom de l'extrait
    * @param f fréquence de coupure du filtre (entre 100 et 10000, sinon rien)
    */
-  public static void setFilter(String path, float fc) {
-    proglet.record1.setFilter(path, fc);
+  public static void setFilter(String path, double fc) {
+    proglet.record1.setFilter(path, (float) fc);
   }
   
   /** Arrête l'émission sonore. */
