@@ -47,6 +47,7 @@ private-key=mer,d,azof
 	@keytool -genkey -alias javascool -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore $*.key
 	@jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore $*.key -signedjar $*.jar $*-tmp.jar javascool
 	@rm $*-tmp.jar
+	@touch $@
 
 #################################################################################################################
 
