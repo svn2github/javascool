@@ -1,0 +1,78 @@
+<div title="La «proglet» EnVoiture">
+  <p class="margin">Autres <l link="../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+  <p>Cette proglet<l class="note" link="1"/> vise à s’approprier les différents éléments caractéristiques d’un graphe, 
+    en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin. 
+    Il s'agit de la première partie du tutoriel sur les graphes. De nature introductive, 
+	elle se limite essentiellement à un cas concret de parcours d'une voiture entre des villes, ici appelées "spots". 
+	On veut faire passer l'idée ici que l'application se retrouve dans de nombreuses situations du quotidien.</p>
+  <p>Un graphe est un ensemble de points, dont certaines paires sont directement reliées par un lien. 
+  Ces liens peuvent être orientés, d'un point vers un autre ou vice versa. 
+  Dans le cas contraire, les liens sont symétriques, et le graphe est non-orienté. 
+  Généralement, les points sont appelés les sommets ou les nœuds. Les liens sont appelés arêtes dans les graphes non-orienté 
+  et arcs dans un graphe orienté. (<l link="http://fr.wikipedia.org/wiki/Th%C3%A9orie_des_graphes" text="Wikipedia"/>)
+  </p>
+  <p>Pour construire et manipuler un graphe, ici un ensemble de villes dénommées "spots", il faut utiliser la construction javascool. 
+  Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: <div class="code">
+    <m>Ajouter ou modifier un spot:</m>
+    <p><r>EnVoiture.addSpot</r>(...)</p>
+    </div>où: <div class="ul">
+      <p><c>n</c> est le nom du noeud.</p>
+      <p><c>x</c> est l'abscisse du noeud.</p>
+      <p><c>y</c> est l'ordonnée du noeud.</p>
+    </div><div class="code">
+    <m>Obtenir un spot à partir de son nom:</m>
+    <p><r>EnVoiture.getSpot</r>(<r>String</r> n)</p>
+    </div>où: <div class="ul">
+      <p><c>n</c> est le nom du spot.</p>
+      </div><div class="code">
+    <m>Obtenir un spot à partir d'une position 2D:</m>
+    <p><r>EnVoiture.getClosestSpot</r>(<r>int</r> x, <r>int</r> y)</p>
+    </div>où: <div class="ul">
+      <p><c>x</c> est l'abscisse de la position.</p>
+      <p><c>y</c> est l'ordonnée de la position.</p>
+      </div><div class="code">
+    <m>Détruire un spot:</m>
+    <p><r>EnVoiture.removeSpot</r>(<r>String</r> n)</p>
+    </div>où: <div class="ul">
+      <p><c>n</c> est le nom du spot.</p>
+      </div><div class="code">
+    <m>Ajouter ou modifier un lien existant entre deux spots:</m>
+    <p><r>EnVoiture.addLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
+    </div>où: <div class="ul">
+      <p><c>nA</c> est le nom du premier spot.</p>
+      <p><c>nB</c> est le nom du second spot.</p>
+      </div><div class="code">
+    <m>Détruire un lien existant entre deux spots:</m>
+    <p><r>EnVoiture.removeLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
+    </div>où: <div class="ul">
+      <p><c>nA</c> est le nom du premier spot du lien à détruire.</p>
+      <p><c>nB</c> est le nom du second spot du lien à détruire.</p>
+      </div><div class="code">
+    <m>Questionner si deux spots sont liés:</m>
+    <p><r>EnVoiture.isLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
+    </div>où: <div class="ul">
+      <p><c>nA</c> est le nom du premier spot du lien considéré.</p>
+      <p><c>nB</c> est le nom du second spot du lien considéré.</p>
+      </div><div class="code">
+      <m>Obtenir le poids d'un lien entre deux spots:</m>
+    <p><r>EnVoiture.getLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
+    </div>où: <div class="ul">
+      <p><c>nA</c> est le nom du premier spot du lien considéré.</p>
+      <p><c>nB</c> est le nom du second spot du lien considéré.</p>
+      </div>
+  </p>
+      
+   <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
+   <div class="notes">
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, 
+    programmée en <l link="http://processing.org" text="Processing"/> et disponible sous forme de code documenté:
+    <div class="table"><p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/CryptageRSA/EnVoiture.pde.html" text="EnVoiture"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Car.pde.html" text="Car"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Spot.pde.html" text="Spot"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Trip.pde.html" text="Trip"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Link.pde.html" text="Link"/></p>
+    </p></div>
+    pour permettre des développements dérivés.</div>
+  </div>
+</div>

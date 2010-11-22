@@ -1,0 +1,67 @@
+<div class="sujet" title="Un tutoriel sur le cryptage RSA"> 
+  <div class="objectif">
+    Le but de ce tutoriel est de manipuler les concepts liés à l'encryptage/décryptage par clés publique et privée, RSA. 
+    L'intérêt de la manipulation est de faire passer la non-symétrie du processus: autrement dit, tout le monde peut encrypter (par la clé publique),
+    mais seule une personne pourra décrypter (possédant la clé privée).. 
+    Il faut déja savoir <l link="../../ingredients/doc-files/sujet-hello-world.htm" text="utiliser l'interface"/>,
+    se servir de <l link="../../ingredients/doc-files/sujet-about-variables.htm" text="variables"/> 
+    et avoir découvert l'<l link="../../ingredients/doc-files/sujet-about-if.htm" text="instruction conditionnelle"/> et 
+    les <l link="../../ingredients/doc-files/sujet-about-while.htm" text="boucles"/>, 
+    ansi que les <l link="../../ingredients/doc-files/sujet-about-functions.htm" text="fonctions"/>..
+  </div>
+  <div class="intros">
+    La cryptologie, science du secret, englobe la cryptographie — le codage secret d'un message — et la cryptanalyse — le décodage d'un message codé. 
+	Le principe de la cryptographie consiste à définir une transformation des symboles d'un langage (les lettres ou les mots par exemple) qui soit difficilement inversible, 
+	de telle sorte que retrouver le mot original à partir du mot codé devienne une opération difficile à effectuer. 
+	Il existe deux grandes familles d'algorithmes de cryptographie : les algorithmes symétriques (à clé secrète) 
+	et les algorithmes asymétriques (à clé publique). 
+	En cryptographie symétrique, la clé est l'information qui permet de coder et de décoder un message. 
+	En cryptographie asymétrique (ou à clé publique), il existe une fonction dite à sens unique, pour transformer un message en message codé.
+	Il faut que cette fonction soit simple à appliquer à un quelconque message, mais qu'il soit difficile de retrouver le message original 
+	à partir du message codé. La cryptographie à clé publique permet de coder un message secret et aussi d'authentifier l'émetteur d'un message, par le protocole symmétrique.
+   </div>
+
+  <div class="works">
+    <div title="faire un truc">
+
+	I) Manipuler l'interface. 
+	Scénario: on imagine qu'il puisse se faire par l'intermédiaire d'un serveur web local, afin de permettre les actions séparées
+	de deux protagonistes, Alice et Bob.
+	
+	1.	Alice est chargée de générer les clés publique et privée en suivant les différentes étapes: 
+	a) génération de deux entiers premiers P et Q; 
+	b) Calcul de N=PxQ; 
+	c) Générer E tel que E soit premier avec (P-1)*(Q-1); 
+	d) Calculer D selon: Il existe un relatif entier M, tel que E × D + M × (P - 1)(Q - 1) = 1 
+	-> (N,E) est la clé publique; D est la clé privée 
+	Alice divulgue la clé publique et garde précieusement la clé privée.
+	
+	2.	Bob reçoit la clé publique. 
+	Il écrit son message secret, il le traduit en chiffres. Il encrypte ensuite le résultat grâce à la clé publique,
+	c'est à dire: Bob élève la traduction en chiffres à la puissance E, et prend le reste de la division du nombre qu'il a obtenu
+	par N que lui a également fourni Alice.
+	Il envoit le message encrypté à Alice.
+
+	3.	Alice reçoit le message encrypté. Elle le décrypte grâce à sa clé privée,
+	c'est à dire elle élève le nombre reçu de Bob à la puissance D, puis prend le reste de sa division par N.
+	Elle obtient une suite de chiffres qu'elle traduit en lettres et aboutit au message secret de Bob. 
+	
+	II) Faire les étapes de génération de clés a), b), c) et d) par déduction à partir des formules.
+	
+	III) Lancer les routines de cryptage et décryptage via javascool
+	
+	IV) RSA et authentification:
+	Un professeur envoie ses notes au secrétariat de l'École par mail. 
+	La clef publique du professeur est (55,3); celle du secrétariat est (33,3).
+	
+	a) Vérifier, à l'aide des formules, que la clef privée du professeur (supposée connue de lui seul) est 27; et que celle du secrétariat est 7.
+	Implémenter la commande correspondante à l'authentification.
+	b) Pour assurer la confidentialité de ses messages, le professeur chiffre les notes avec la clef RSA du secrétariat. 
+	Quel message chiffré correspond à la note 12 ?
+	c) Pour assurer l'authenticité des messages contenant les notes, le professeur signe ses messages pour le secrétariat 
+	aprés les avoir chiffrés. Le secrétariat reçoit le message 23. Quelle est la note correspondante ?
+	
+
+    </div>
+  </div>
+</div>

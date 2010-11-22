@@ -55,7 +55,7 @@ public class JsProcessingActivities {
       PrintStream out = System.out;
       System.setOut(System.err);
       try {
-	final boolean popup = false;
+	final boolean popup = true;
 	applet = (Applet) Class.forName(name).newInstance();
 	try { width = (Integer) Class.forName(name).getDeclaredField("WIDTH").get(null); } catch(Throwable e) { System.err.println("Width undefined !"); width = 800; }
 	try { height = 20 + (Integer) Class.forName(name).getDeclaredField("HEIGHT").get(null); } catch(Throwable e) { System.err.println("Height undefined !"); height = 600; }

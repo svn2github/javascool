@@ -1,0 +1,25 @@
+<div class="sujet" title="Un tutoriel sur les signaux sonores"> 
+  <div class="objectif">
+    Le but de ce tutoriel est <ul>
+      <li>d'apprendre à programmer des sons, c'est à dire une séquence de signaux sonores périodiques, </li>
+      <li>en appliquant les ingrédients des algorithmes sur un objet numérique non alpha-numérique.</li>
+    </ul>
+    Il faut déja savoir <l link="../../ingredients/doc-files/sujet-hello-world.htm" text="utiliser l'interface"/>,
+    se servir de <l link="../../ingredients/doc-files/sujet-about-variables.htm" text="variables"/> 
+    et avoir découvert l'<l link="../../ingredients/doc-files/sujet-about-if.htm" text="instruction conditionnelle"/> et 
+    les <l link="../../ingredients/doc-files/sujet-about-while.htm" text="boucles"/>, 
+    ansi que les <l link="../../ingredients/doc-files/sujet-about-functions.htm" text="fonctions"/>..
+  </div>
+  <div class="intros">
+    <div title="La notion de signal périodique"> Une note est une vibration . . [résumer le tete de Cécile] 
+    comme <l link="OndeSonore.pdf" text="détaillé ici"/> (bien lire le dcouemtn avant de commencer).</div>
+   </div>
+
+  <div class="works">
+    <div title="Construire un signal périodique de forme donnée">
+      sinus(t) + sinus(3 * t) / 3 + sinus(5 * t) / 5.
+
+      La figure ci-contre, la courbe (a) montre un signal f de fréquence fondamentale et d'amplitude 1 et un signal H3 de fréquence 3 fois plus élevé que la fréquence de f et d'amplitude 0,1.
+    </div>
+  </div>
+</div>
