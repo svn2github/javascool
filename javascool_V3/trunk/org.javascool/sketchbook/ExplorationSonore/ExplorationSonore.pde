@@ -120,7 +120,7 @@
       
       fft.logAverages(60,6*width/(640));
       drawFFT("player");
-      //drawSignal("player");
+      drawSignal("player");
     } 
     else {
       fft = new FFT(in.bufferSize(), in.sampleRate());

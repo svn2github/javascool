@@ -210,7 +210,7 @@
   
   /** Tracé temporel du signal. */
   void drawSignal(String n) {
-  
+
     stroke(255);
     strokeWeight(1);  
     int k; 
@@ -218,6 +218,7 @@
       k = out.bufferSize();
     } 
     else if(n.equals("player")) {
+      
       k = player.bufferSize();
     } 
     else {
