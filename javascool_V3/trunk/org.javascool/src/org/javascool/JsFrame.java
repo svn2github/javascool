@@ -109,16 +109,21 @@ public class JsFrame extends JPanel {
    * @param pane Tab panel.
    * @param icon Location of the icon for the tab. If null, no icon.
    * @param east If true use the east pane, else the west pane.
+   * @param show If true show the panel when adding it.
    */
-  public void addTab(String label, Container pane, String icon, boolean east) {
+  public void addTab(String label, Container pane, String icon, boolean east, boolean show) {
     if (east) { 
       eastPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
+      eastPane.setPreferredSize(pane.getMinimumSize());
       etabs.put(label, pane);
     } else {
       westPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
+      westPane.setPreferredSize(pane.getMinimumSize());
       wtabs.put(label, pane);
     }
-    showTab(label);
+    if (show)
+      showTab(label);
+    splitPane.resetToPreferredSizes();
     revalidate();
   }
   /** Adds a tab to the tabbed panel to display a text.
@@ -126,9 +131,10 @@ public class JsFrame extends JPanel {
    * @param location Tab Html text to display.
    * @param icon Location of the icon for the tab. If null, no icon.
    * @param east If true use the east pane, else the west pane.
+   * @param show If true show the panel when adding it.
    */
-  public void addTab(String label, String location, String icon, boolean east) {
-    addTab(label, new HelpDisplay().load(location),icon,east);
+  public void addTab(String label, String location, String icon, boolean east, boolean show) {
+    addTab(label, new HelpDisplay().load(location), icon, east, show);
   }
   /** A display with external links canceled. */
   private class HelpDisplay extends HtmlDisplay {

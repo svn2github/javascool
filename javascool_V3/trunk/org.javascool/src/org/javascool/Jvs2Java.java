@@ -111,8 +111,8 @@ public class Jvs2Java { private Jvs2Java() { }
     setJpathclass(path);
     String text = Utils.loadString(jpath+".jvs");
     // Here we check and correct a missing "void main()"
-    if (!text.replaceAll("[ \n\t]+", " ").matches(".*void[ ]+main[ ]*\\([ ]*\\).*")) {
-      if (text.replaceAll("[ \n\t]+", " ").matches(".*main[ ]*\\([ ]*\\).*")) {
+    if (!text.replaceAll("[ \n\r\t]+", " ").matches(".*void[ ]+main[ ]*\\([ ]*\\).*")) {
+      if (text.replaceAll("[ \n\r\t]+", " ").matches(".*main[ ]*\\([ ]*\\).*")) {
 	System.out.println("Attention: il faut mettre \"void\" devant \"main()\" pour que le programme puisque se compiler");
 	text = text.replaceFirst("main[ ]*\\([ ]*\\)", "void main()");
       } else {

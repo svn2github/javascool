@@ -371,8 +371,8 @@ public class Utils { private Utils() { }
    * @param applet The applet or panel to display.
    * @param title  Frame title. If null, no title.
    * @param icon   Frame icon.  If null, no icon.
-   * @param width  Applet width. Default is 80% of the screen size.
-   * @param height Applet height. Default is 80% of the screen size.
+   * @param width  Applet width. Default is 80% of the screen size. If 0 set to 800.
+   * @param height Applet height. Default is 80% of the screen size. If 0 set to 600.
    * @param quit   If true activate the <tt>Control+Q</tt> keystroke. If false fires the "quit" action of the applet or panel root panel. Default is true.
    * <p>Use <tt>unshow(pane);</tt> to properly close the window.</p>
    * @return The opened frame.  
@@ -397,6 +397,8 @@ public class Utils { private Utils() { }
     private Applet applet = null;
     // Opens an applet in a standalone frame.
     public void open(Component pane, String title, ImageIcon icon, int width, int height, boolean quit) {
+      if (width == 0) width = 800;
+      if (height == 0) height = 600;
       if (pane instanceof Applet) this.applet = (Applet) pane;
       getContentPane().add(pane, BorderLayout.CENTER); 
       if (applet != null) applet.init(); 
@@ -417,8 +419,6 @@ public class Utils { private Utils() { }
 	if (pane instanceof JApplet) close = ((JApplet) pane).getRootPane().getActionMap().get("quit");
 	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       }
-      if (width == 0) width = (int) pane.getPreferredSize().getWidth();
-      if (height == 0) height = (int) pane.getPreferredSize().getHeight();
       setSize(width, height);
       setVisible(true); 
       if (applet != null) applet.start(); 
@@ -437,7 +437,7 @@ public class Utils { private Utils() { }
       addWindowListener(new WindowListener() {
 	  public void windowOpened(WindowEvent e) { e.getWindow().requestFocus();  }
 	  public void windowClosing(WindowEvent e) { }
-	  public void windowClosed(WindowEvent e) {System.exit(0);}
+	  public void windowClosed(WindowEvent e) { }
 	  public void windowIconified(WindowEvent e) { if (applet != null) applet.stop(); }
 	  public void windowDeiconified(WindowEvent e) { if (applet != null) applet.start(); }
 	  public void windowActivated(WindowEvent e) { e.getWindow().requestFocus(); }

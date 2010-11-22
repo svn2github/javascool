@@ -79,7 +79,7 @@ public class JsMain extends JApplet {
     fileChooser.doSaveAs(activity.getEditor(), activity.getExtension());
   }};
   private Runnable helpShow = new Runnable() { boolean on = false; public void run() {
-    if (on = !on) jsFrame.addTab("Aide",  "org/javascool/doc-files/about-main.htm", "org/javascool/doc-files/icones16/help.png", false); else jsFrame.delTab("Aide");
+    if (on = !on) jsFrame.addTab("Aide", "org/javascool/doc-files/about-main.htm", "org/javascool/doc-files/icones16/help.png", false, true); else jsFrame.delTab("Aide");
   }};
 
   /** Sets an activity.
@@ -236,7 +236,7 @@ public class JsMain extends JApplet {
 	  public void valueChanged(ListSelectionEvent e) {
 	    HomeActivity.this.main.setActivity((String) list.getSelectedValue());
 	  }});
-      this.main.getFrame().addTab("Choisir (cliquer sur le titre) son activité", list, "org/javascool/doc-files/icones16/new.png", false);
+      this.main.getFrame().addTab("Choisir (cliquer sur le titre) son activité", list, "org/javascool/doc-files/icones16/new.png", false, true);
     }
     private JsMain main;
     private JList list;
@@ -261,6 +261,6 @@ public class JsMain extends JApplet {
       main.setActivity(usage[0]);
     if (usage.length > 0 && new File(usage[usage.length - 1]).exists() && main.activity.getEditor() != null)
       main.getFileChooser().doOpen(main.activity.getEditor(), usage[usage.length - 1]);
-    Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), true);
+    Utils.show(main, title, Utils.getIcon("org/javascool/doc-files/icones32/logo_jvs.gif"), false);
   }
 }
