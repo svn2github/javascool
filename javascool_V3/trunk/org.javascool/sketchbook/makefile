@@ -1,32 +1,20 @@
-
-# Configuration variables
-P_HOME=/usr/java/processing-1.2.1
-J_HOME=$(P_HOME)/java
-export PATH:=$(J_HOME)/bin:$(PATH)
-export CLASSPATH=$(shell echo '$(J_HOME)/lib/tools.jar $(J_HOME)/jre/lib/rt.jar $(wildcard $(P_HOME)/lib/*.jar)' | sed 's/ /:/g')
-
-# Default rule
-all : gui publish
-
-# Runs the processing interface GUI
-
-gui :
-	@rm -rf */applet
-	@cd $(P_HOME) ; java processing.app.Base
+#####################################################################################################################################
+##  Cecile.Picard@sophia.inria.fr and Thierry.Vieville@sophia.inria.fr, Copyright (C) 2010.  All rights reserved.                  ##
+#####################################################################################################################################
 
 # Publishs the exported applets on the web site
 
 publish : 
 # export the applet to the www directory
-	@for d in */applet ; do mv $$d ../www/sketchbook/`echo $$d | sed 's/\/applet//'` ; done
+	@if [ -f */applet ] ; then for d in */applet ; do mv $$d ../www/sketchbook/`echo $$d | sed 's/\/applet//'` ; done ; fi
 # sign the exported jar
 	@cd ../www/sketchbook ; for d in * ; do if [ -f $$d/$$d.jar ] ; then $(MAKE) -f ../../sketchbook/makefile $$d/$$d.key ; fi ; done
 # copy the documentation files
-	@cd ../www/sketchbook ; for d in * ; do rsync --archive --exclude .svn/ ../../sketchbook/$$d . ; done
+	@cd ../www/sketchbook ; for d in * ; do if [ -f $$d/$$d.jar ] ; then rsync --archive --exclude .svn/ ../../sketchbook/$$d . ; fi ; done
 # generates an index
 	@cd ../www/sketchbook ; (echo "<h1>sketchbook files</h1>"; for f in */*.htm* ; do echo "<p><a href='$$f'>$$f</a></p>"; done) > index.html
 # add new files to svn
-	@mkdir -p ../www/sketchbook ; svn -q add */*.*
+	@cd ../www/sketchbook ; svn -q add */*.*
 
 # Generates the javasccol processing.zip 
 
@@ -59,6 +47,19 @@ private-key=mer,d,azof
 	@keytool -genkey -alias javascool -validity 3000 -dname cn='$(vendor)' -storepass '$(public-key)' -keypass '$(private-key)' -keystore $*.key
 	@jarsigner -storepass '$(public-key)' -keypass '$(private-key)' -keystore $*.key -signedjar $*.jar $*-tmp.jar javascool
 	@rm $*-tmp.jar $*.key
+
+#################################################################################################################
+
+# Runs the processing interface GUI under Linux
+
+P_HOME=/usr/java/processing-1.2.1
+J_HOME=$(P_HOME)/java
+export PATH:=$(J_HOME)/bin:$(PATH)
+export CLASSPATH=$(shell echo '$(J_HOME)/lib/tools.jar $(J_HOME)/jre/lib/rt.jar $(wildcard $(P_HOME)/lib/*.jar)' | sed 's/ /:/g')
+
+gui :
+	@rm -rf */applet
+	@cd $(P_HOME) ; java processing.app.Base
 
 #################################################################################################################
 
