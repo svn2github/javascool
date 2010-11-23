@@ -4,7 +4,7 @@
 
 # Publishs the exported applets on the web site
 
-publish : 
+publish : htm
 # export the applet to the www directory
 	@if [ -f */applet ] ; then for d in */applet ; do mv $$d ../www/sketchbook/`echo $$d | sed 's/\/applet//'` ; done ; fi
 # sign the exported jar
@@ -12,9 +12,12 @@ publish :
 # copy the documentation files
 	@cd ../www/sketchbook ; for d in * ; do if [ -f $$d/$$d.jar ] ; then rsync --archive --exclude .svn/ ../../sketchbook/$$d . ; fi ; done
 # generates an index
-	@cd ../www/sketchbook ; (echo "<h1>sketchbook files</h1>"; for f in */*.htm* ; do echo "<p><a href='$$f'>$$f</a></p>"; done) > index.html
+	@cd ../www/sketchbook ; (echo "<h1>sketchbook files</h1>"; for f in */*.htm* ; do echo "<p><a href='$$f'>$$f</a></p>"; done) > ls.html
+	@cp index.htm ../www/sketchbook/index.html
 # add new files to svn
 	@cd ../www/sketchbook ; svn -q add */*.*
+# publsih on the web site
+	@$(MAKE) -C .. wsync
 
 # Generates the javasccol processing.zip 
 

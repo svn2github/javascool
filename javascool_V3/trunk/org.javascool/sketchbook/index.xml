@@ -1,0 +1,23 @@
+<div title="Nos «proglets» en processing">
+  <p>Une  «proglet» permet d'expérimenter des algorithmes qui s'appliquent sur des objets numériques. </p>
+  Plusieurs proglets<l class="note" link="1"/> sont disponibles <l link="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-proglets.htm" text="ici"/>, 
+  pour s'initier à la programmation et créer des exercices animés et interactifs, dont celles développées en <l link="http://www.processing.org" text="processing"/>:
+
+  <l class="include" link="../src/org/javascool/doc-files/about-pro-proglets.xml"/>
+
+  <div class="margin"><l link="ls.html" text="index des fichiers"/></div>
+
+  <p>Ne pas hésiter à nous <l link="http://javascool.gforge.inria.fr/v3/?page=Contacts" text="contacter"/> pour en savoir plus !</p>
+
+  <div class="notes">
+    <p title="Définition d'une «proglet»" id="1">
+      Une <c>proglet</c> est une petite <l link="http://fr.wikipedia.org/wiki/Applet" text="applette"/> qui permet de s'initier à la programmation de manière ludique,
+    puisque les petits programmes créés animent un élément visuel ou sonore, à la fois pour mieux comprendre ces objets numériques et pour offrir une démarche
+    expérimentale concrète, vers la compréhension des notions abstraites qui forment le fondement des sciences de l'information. 
+    <p>Ces <c>proglets</c> sont des exemples de «<c>gamelet</c>» (c'est à dire de grains pédagogiques interactifs pour un apprentissage ludique d'une notion), 
+    telle que définie par <l link="http://fuscia.info" text="fuscia"/>.</p>
+  </p>
+  <p title="Auteurs et co-auteurs des  «proglets»" id="4">
+    CP : Cécile Picard-Limpens;
+  </p>
+</div></div>

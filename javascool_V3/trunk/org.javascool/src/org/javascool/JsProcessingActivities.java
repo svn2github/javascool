@@ -22,18 +22,36 @@ public class JsProcessingActivities {
   public static void addActivities(JsMain main) {
     main.addActivity(new ProcessingActivity("ExplorationSonore", 800, 600) {
 	public String getTitle() { return "Exploration du signal sonore"; }
+	public void init2(JsFrame frame) {
+	  frame.addTab("Un tutoriel sur les signaux sonores.", "sketchbook/ExplorationSonore/sujet-creation-de-sons.htm", 
+		       "org/javascool/doc-files/icones16/globe.png", true, false);
+	}
       });
     main.addActivity(new ProcessingActivity("CryptageRSA", 1024, 700) {
 	public String getTitle() { return "Expérimenter avec la cryptographie"; }
+	public void init2(JsFrame frame) {
+	  frame.addTab("Un tutoriel sur le cryptage RSA", "sketchbook/CryptageRSA/sujet-about-cryptageRSA.htm",
+		       "org/javascool/doc-files/icones16/globe.png", true, false);
+	}
       });
     main.addActivity(new ProcessingActivity("EnVoiture", 1200, 700) {
 	public String getTitle() { return "Découvrir les graphes et les chemins"; }
+	public void init2(JsFrame frame) {
+	  frame.addTab("Un tutoriel sur les graphes (1ère partie)", "sketchbook/EnVoiture/sujet-about-voiture.htm",
+		       "org/javascool/doc-files/icones16/globe.png", true, false);
+	}
       });
     main.addActivity(new ProcessingActivity("UnGrapheDesChemins", 1024, 700) {
 	public String getTitle() { return "Explorer les graphes et les chemins"; }
+	public void init2(JsFrame frame) {
+	  frame.addTab("Un tutoriel sur les graphes (2ème partie)", "sketchbook/UnGrapheDesChemins/sujet-about-chemins.htmd",
+		       "org/javascool/doc-files/icones16/globe.png", true, false);
+	}
       });
     main.addActivity(new ProcessingActivity("BoiteAMusique", 1300, 750) {
 	public String getTitle() { return "Programmer une séquence musicale"; }
+	public void init2(JsFrame frame) {
+	}
       });
   }
 
@@ -49,9 +67,12 @@ public class JsProcessingActivities {
       jvsEditor.setProglet(name);
       init1(main);
       main.getFrame().addTab("Document de la proglet", "sketchbook/"+name+"/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true, true);
-      init2(main);
+      init1b(main);
+      init2(main.getFrame());
     }
-    private void init2(JsMain main) {
+    protected void init2(JsFrame frame) {
+    }
+    private void init1b(JsMain main) {
       PrintStream out = System.out;
       System.setOut(System.err);
       try {

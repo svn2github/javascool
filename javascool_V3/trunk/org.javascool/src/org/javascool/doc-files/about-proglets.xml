@@ -69,15 +69,9 @@
       <p>Jw1<l class="note" link="4"/> </p>
       <p>simule la «bonne vieille» <l link="http://fr.wikipedia.org/wiki/Logo_(langage)" text="tortue logo"/>, donc permet de faire beaucoup d'autres activités.</p>
     </p>
-    <p>
-      <p>«Exploration sonore»</p>
-      <p><l link="../../../sketchbook/ExplorationSonore/about-proglet.htm" text="Description"/></p>
-      <p><l link="http://javascool.gforge.inria.fr/v3/applets/ExplorationSonore.html" text="Proglet"/></p>
-      <p><!--l link="../../../proglet/tortuelogo/doc-files/index.htm" text="Activité"/--></p>
-      <p>CP<l class="note" link="4"/> </p>
-      <p>permet de visualiser l'évolution temporelle et le contenu fréquentiel (le spectre) d'un son.</p>
-    </p>
   </p>
+
+  <l class="include" link="about-pro-proglets.xml"/>
 
   <p>Ne pas hésiter à nous <l link="http://javascool.gforge.inria.fr/v3/?page=Contacts" text="contacter"/> pour en savoir plus !</p>
 
