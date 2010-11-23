@@ -27,9 +27,9 @@ JARS = \
 
 jar : ../lib/processing.zip
 
-../lib/processing.zip : $(JARS)
+../lib/processing.zip : $(shell ls $(JARS))
 	@rm -rf $@ tmp ; mkdir tmp 
-	@for j in $(JARS) ; do unzip -qo $$j -d tmp ; done ; rm -rf tmp/META-INF
+	@for j in $^ ; do unzip -qo $$j -d tmp ; done ; rm -rf tmp/META-INF
 	@cd tmp ; zip -9qr ../$@ *
 	@rm -rf tmp
 
@@ -66,6 +66,10 @@ export CLASSPATH=$(shell echo '$(J_HOME)/lib/tools.jar $(J_HOME)/jre/lib/rt.jar 
 gui :
 	@rm -rf */applet
 	@cd $(P_HOME) ; java processing.app.Base
+
+wui :
+	echo "fermer firefox avant de le lancer ici"
+	firefox ../www/sketchbook/index.html
 
 #################################################################################################################
 
