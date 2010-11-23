@@ -14,7 +14,6 @@
   import ddf.minim.signals.*;
   import ddf.minim.analysis.*;
   import ddf.minim.effects.*;
-  import controlP5.*;
   
   
   Minim minim;
