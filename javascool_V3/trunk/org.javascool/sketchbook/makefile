@@ -17,7 +17,7 @@ publish : htm
 # add new files to svn
 	@cd ../www/sketchbook ; svn -q add */*.*
 # publsih on the web site
-	@$(MAKE) -C .. wsync
+	@$(MAKE) -C .. svn
 
 # Generates the javasccol processing.zip 
 
