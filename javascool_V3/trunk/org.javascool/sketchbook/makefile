@@ -21,13 +21,15 @@ publish : htm
 
 # Generates the javasccol processing.zip 
 
-JARS=/usr/java/processing-1.2.1/libraries/opengl/library/jogl.jar /usr/java/processing-1.2.1/libraries/opengl/library/gluegen-rt.jar
+JARS = \
+ ../www/sketchbook/{ExplorationSonore,CryptageRSA,EnVoiture,UnGrapheDesChemins,BoiteAMusique}/*.jar \
+ /usr/java/processing-1.2.1/libraries/opengl/library/{jogl,gluegen-rt}.jar 
 
 jar : ../lib/processing.zip
 
-../lib/processing.zip : $(wildcard ../www/sketchbook/*/*.jar)
+../lib/processing.zip : $(JARS)
 	@rm -rf $@ tmp ; mkdir tmp 
-	@for j in $(JARS) $^ ; do unzip -qo $$j -d tmp ; done ; rm -rf tmp/META-INF
+	@for j in $(JARS) ; do unzip -qo $$j -d tmp ; done ; rm -rf tmp/META-INF
 	@cd tmp ; zip -9qr ../$@ *
 	@rm -rf tmp
 

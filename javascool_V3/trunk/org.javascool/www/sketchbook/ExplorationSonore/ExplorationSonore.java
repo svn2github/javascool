@@ -7,7 +7,6 @@ import ddf.minim.*;
 import ddf.minim.signals.*; 
 import ddf.minim.analysis.*; 
 import ddf.minim.effects.*; 
-import controlP5.*; 
 
 import java.applet.*; 
 import java.awt.Dimension; 
@@ -43,19 +42,12 @@ public class ExplorationSonore extends PApplet {
   
   
   
-  
   Minim minim;
   AudioInput in;
+    AudioOutput out;
   AudioPlayer player;
   FFT fft;
-  
-  
-  // Param\u00e8tres de l'interface
-  ControlP5 controlP5;
-  ControlFont font;
-  //ControlWindow controlWindow;
-  controlP5.Button wInfo;
-  Textfield boxValue;
+
   
   int w;
   PImage fade;
@@ -63,15 +55,19 @@ public class ExplorationSonore extends PApplet {
   Frame frame;
   int myOr = color(255,100,0);
   int myRed = color(255,0,0);
-  int myBlue = color(100,100,255);
+  int myBlue = color(20,70,105);
   int width_;
   int height_;
   boolean isOpen;
   int buttonValue = 1;
   
+  TextButton[] T1 = new TextButton[8];
+  boolean locked = false;
+  boolean info = false;
   
-  // Outils pour le son
-  AudioOutput out;
+  String[] ListN = { "sine", "square", "saw", "noise", "extrait", " filtre", " S T O P", " - Info - "};
+  String sig = "null";
+
   
   // Param\u00e8tres pour la sinusoide, et l'enregistrement charg\u00e9
   int count = 0;
@@ -89,16 +85,9 @@ public class ExplorationSonore extends PApplet {
     frame = new Frame();
   
   
-    f = createFont("ArialMT",14,true);
-    //f= textFont(loadFont("ArialMT-48.vlw"),24);
+    f = createFont("Arial Bold",14,true);
     size(800, 600, P3D);//size(800,512);//,P3D);//OPENGL);
-    //frameRate(30);
-    controlP5 = new ControlP5(this);
-    font = new ControlFont(f);
-    
-   
-  
-    // Fenetre principale: celle de l'analyseur
+
     //frame.setLocation(screen.width/2,screen.height/6);
     this.frame.setTitle("A N A L Y S E   D U   C O N T E N U   F R E Q U E N T I E L");
   
@@ -117,7 +106,23 @@ public class ExplorationSonore extends PApplet {
   
     // Interface de manipulation: g\u00e9n\u00e8re sinusoide, charge enregistrement, etc
     Arrays.fill(((PGraphics3D)g).zbuffer,Float.MAX_VALUE);
-    launchInterface();
+    // Define and create buttons
+    fill(0);
+    rect(0,height-100,width,100);
+    fill(myBlue);
+    int buttoncolor; int highlight; 
+    for(int i=0; i< T1.length; i++)
+    {
+      if(i<6) {
+        buttoncolor = color(250); highlight = color(150);
+      } else if(i==6){
+        buttoncolor = myRed; highlight = color(150);
+      } else {
+        buttoncolor = myBlue; highlight = color(150);
+      }
+      T1[i] = new TextButton(5+((i%4)*2*width/3/T1.length)+(PApplet.parseInt(i/6))*60+(PApplet.parseInt(i/7))*(width/2+60), height-100+60*(PApplet.parseInt(i/4)) -(PApplet.parseInt(i/7))*110, 100, buttoncolor, highlight, myOr, ListN[i]);
+
+    }
   
     width_ = this.frame.getWidth();//getWidthInterface();
     height_ = this.frame.getHeight();//getHeightInterface();
@@ -126,19 +131,19 @@ public class ExplorationSonore extends PApplet {
   
   // Ce qui est effectu\u00e9 tout au long de l'animation
   public void draw() {
-  
-  
-    //unhint(DISABLE_DEPTH_TEST);
+ 
     background(0);
     pushMatrix();
+    
+    
+    
     if (signal1.sounding) {
       c+=1;
       fft = new FFT(out.bufferSize(), out.sampleRate());
       fft.logAverages(60,6*width/(640));
       drawFFT("out");                                               // Trace la FFT
-      //drawSignal("out");                                            // Trace le signal temporel
+      //drawSignal("out");                                          // Trace le signal temporel
       if((c)%2 == 0) {
-        //println(c);
         drawSignal("out");
       }
     } 
@@ -147,7 +152,7 @@ public class ExplorationSonore extends PApplet {
       
       fft.logAverages(60,6*width/(640));
       drawFFT("player");
-      //drawSignal("player");
+      drawSignal("player");
     } 
     else {
       fft = new FFT(in.bufferSize(), in.sampleRate());
@@ -157,19 +162,32 @@ public class ExplorationSonore extends PApplet {
     }
     popMatrix();
   
-    //hint(DISABLE_DEPTH_TEST);
-    //hint(ENABLE_NATIVE_FONTS);
-    //textMode(SCREEN);
-    //textMode(SHAPE);
     Arrays.fill(((PGraphics3D)g).zbuffer,Float.MAX_VALUE);
-    controlP5.draw();
-    text(boxValue.getText(),width-300,2*height/3+height/6);
+
+    
+    fill(0);
+    rect(0,height-150,width,150);
+    fill(myBlue);
+    textFont(f, 12);
+    text("S I G N A U X  N U M E R I Q U E S", 6, height-125);
+    text("E N R E G I S T R E M E N T", 6, height-65);
+    update(mouseX, mouseY);
+    for(int i=0; i<T1.length; i++) 
+    {
+      if(i<6)  {
+        fill(myBlue);
+        rect(5+((i%4)*2*width/3/T1.length)-5, height-118+60*(PApplet.parseInt(i/4)),60,25);
+      }
+      T1[i].display();
+    }
+    
     // Fenetre informative
-    openInfo();
-    //textMode(MODEL);
+    myInfo();
+    
+
   }
   
-  
+  // Un acc\u00e8s rapide aux fonctions via le clavier
   public void keyPressed()                                                  
   {
     if (key == '0') {
@@ -199,6 +217,69 @@ public class ExplorationSonore extends PApplet {
     }
   }
   
+  
+  // Update les \u00e9tats des boutons
+  public void update(int x, int y)
+  {
+    if(locked == false) {
+  
+      for(int i=0; i<T1.length; i++) 
+      {
+        T1[i].update();
+      }
+    
+    } 
+    else {
+      locked = false;
+    }
+  
+    if(mousePressed) {
+      for(int i=0; i<T1.length; i++) 
+      {
+        if(T1[i].pressed() && i==7) {
+          if(T1[i].select==true) { 
+            T1[i].select = false; info = false;
+          } else {
+            T1[i].select = true; info = true;
+          }
+        } else if(T1[i].pressed() && !(T1[i].select)) {
+          T1[i].select = true;
+          if(i<4) {
+            signal1.setSignal(T1[i].value, 1000, 0.2f);
+          } else if(i==4) {
+            record1.setRecord(selectInput());
+          } else if(i==5) {
+            record1.applyFilter() ;
+          } else if(i==6) {
+            StopAnySound();
+          } 
+        }
+
+          for(int j=0; j<T1.length-1; j++) 
+          {
+            if(!(j==i)) T1[j].select = false;
+          }
+        }
+      }
+
+  }
+  
+  
+  // Fenetre informative
+  public void myInfo() {
+    if(T1[7].over()) {
+    fill(255);
+    rect(0,height-145,width,130);
+    fill(myOr);
+    text(" Parles, siffles, chuchotes.., et tu verras ce qui se passe sur l'analyseur de contenu sonore (\u00e0 droite).. \n "+
+      "Tu peux aussi jouer une signal ou un enregistrement de ton choix. \n "+
+      "Pour ajuster la fr\u00e9quence et l'amplitude du signal, bouges la souris sur la fenetre de l'analyseur. \n "+
+      "Pour faire varier le volume de l'enregistrement sonore, tu peux proc\u00e9der pareillement, \n "+
+      "tandis que le contenu fr\u00e9quentiel peut s'ajuster par un filtre. Exp\u00e9rimentes! \n ", 50, height-110 );
+    }
+  }
+  
+  
   // Lors de la fermeture du programme, arreter tout outil de Minim  
   public void stop()
   {
@@ -210,120 +291,104 @@ public class ExplorationSonore extends PApplet {
     super.stop();
   }
 
+class Button
+{
+  int x, y;
+  int size;
+  int basecolor, highlightcolor, selectcolor;
+  int currentcolor;
+  String value;
+  boolean over = false;
+  boolean pressed = false;   
+  boolean select = false;
+
+  public void update() 
+  {
+    if(over()) {
+      currentcolor = highlightcolor;
+    } else if(select) {
+      currentcolor = selectcolor;
+    }
+    else {
+      currentcolor = basecolor;
+    }
+  }
+
+  public boolean pressed() 
+  {
+    if(over) {
+      locked = true;
+      return true;
+    } 
+    else {
+      locked = false;
+      return false;
+    }    
+  }
+
+  public boolean over() 
+  { 
+    return true; 
+  }
+
+  public boolean overText(int x, int y, int width, int height) 
+  {
+    if (mouseX >= x && mouseX <= x+50 && 
+      mouseY >= y-25 && mouseY <= y+15) {
+      return true;
+    } 
+    else {
+      return false;
+    }
+  }
+
+
+}
+
+class TextButton extends Button
+{
+  TextButton(int ix, int iy, int isize, int icolor, int ihighlight, int iselect, String itext) 
+  {
+    x = ix;
+    y = iy;
+    size = isize;
+    selectcolor = iselect;
+    basecolor = icolor;
+    highlightcolor = ihighlight;
+    selectcolor = iselect;
+    currentcolor = basecolor;
+    value = itext;
+  }
+
+  public boolean over() 
+  {
+    if( overText(x, y, size, size) ) {
+      over = true;
+      return true;
+    } 
+    else {
+      over = false;
+      return false;
+    }
+  }
+
+  public void display() 
+  {
+    stroke(255);
+    strokeWeight(2);
+    fill(currentcolor);
+
+    textFont(f);
+    //if(size==100) text(" "+ (int)value, x, y);
+    //else 
+    text(" "+ value, x, y);
+    noStroke();
+  }
+}
+
   /* Fonctions relatives \u00e0 l'interface. */
   
-  
-  public void launchInterface() {
-  
-    // Interface de manipulation: g\u00e9n\u00e8re sinusoide, charge enregistrement, etc
-  
-  strokeWeight(0.5f);  
-    String[] ListN = {
-      "sinusoide", "carr\u00e9", "scie", "bruit"
-    };
-    MultiList l = controlP5.addMultiList("myList", 50,2*height/3+height/10,300,35);
-    MultiListButton b;
-    b = l.add("  Jouer  un  signal",1);
-    b.captionLabel().setControlFont(font);
-    b.captionLabel().setControlFontSize(10);
-    for(int i=0;i<4;i++) {
-      MultiListButton c = b.add("signal"+(i+1),i+1);
-      c.captionLabel().setControlFont(font);
-      c.setLabel("  "+ListN[i]+"  ");
-      c.captionLabel().setControlFontSize(10);
-      c.setHeight(17);
-      c.setWidth(80);
-    }
-    
-    boxValue = controlP5.addTextfield("  ",width-50-300,2*height/3+height/7,300,20);
-    boxValue.setText(" ");
-    boxValue.hide();
-  
-  
-    // Charger un enregistrement
-    controlP5.addButton("PlayRecord",0,50,2*height/3+2*height/10+15,300,35);
-    controlP5.controller("PlayRecord").setCaptionLabel("  Jouer  un  enregistrement  sonore");
-    controlP5.controller("PlayRecord").captionLabel().setControlFont(font); // change the font
-    controlP5.controller("PlayRecord").captionLabel().setControlFontSize(10);
-    
-    //record1.boxValue = controlP5.addTextfield("  ",width-(50+281),2*height/3+2*height/10,280,19);
-    
-  
-    
-    // Filtre Basse Fr\u00e9quence applicable sur l'enregistrement
-    controlP5.addButton("FilterRecord",0,50+300+1,2*height/3+2*height/10+15,80,35);
-    controlP5.controller("FilterRecord").setCaptionLabel("   FILTRAGE"); // - Fr\u00e9quence de coupure reglable
-    controlP5.controller("FilterRecord").captionLabel().setControlFont(font); // change the font
-    controlP5.controller("FilterRecord").captionLabel().setControlFontSize(10);
-    controlP5.controller("FilterRecord").captionLabel().toUpperCase(false);
-  
-  
-    // Stopper tout son
-    controlP5.addButton("StopAnySound",0,width-50-70,height-50,70,35);
-    controlP5.controller("StopAnySound").setCaptionLabel("  S  t  o  p");
-    controlP5.controller("StopAnySound").captionLabel().setControlFont(font); // change the font
-    controlP5.controller("StopAnySound").captionLabel().setControlFontSize(11);
-    controlP5.controller("StopAnySound").setColorBackground(myRed);
-    controlP5.controller("StopAnySound").setColorActive(myOr);
-  
-  
-    
-     // Info
-    controlP5.addButton("info",10,4,2*height/3+25,75,20).setId(1);
-    controlP5.controller("info").setCaptionLabel("Info"); // change content
-    controlP5.controller("info").captionLabel().setControlFont(font); // change the font
-    controlP5.controller("info").captionLabel().setControlFontSize(10);
-    controlP5.controller("info").setColorActive(myOr); 
-    controlP5.controller("info").setColorBackground(myOr); 
-    wInfo = controlP5.addButton("buttonValue",0,-width,2*height/3+25+15,0,50);
-    wInfo.setId(2);
-    wInfo.setWidth(width-10);
-    wInfo.setHeight(height/3-50);
-    wInfo.setColorActive(255); 
-    wInfo.setColorBackground(255); 
-    wInfo.setColorLabel(myOr);
-    wInfo.captionLabel().setControlFont(font);
-    wInfo.captionLabel().setControlFontSize(12);
-    wInfo.captionLabel().toUpperCase(false);
-    wInfo.captionLabel().set(
-    "Parles, siffles, chuchotes.., et tu verras ce qui se passe sur l'analyseur de contenu sonore (\u00e0 droite).. \n \n"+
-      "Tu peux aussi jouer une signal ou un enregistrement de ton choix. \n \n"+
-      "Pour ajuster la fr\u00e9quence et l'amplitude du signal, bouges la souris sur la fenetre de l'analyseur. \n \n"+
-      "Pour faire varier le volume de l'enregistrement sonore, tu peux proc\u00e9der pareillement, \n \n"+
-      "tandis que le contenu fr\u00e9quentiel peut s'ajuster par un filtre. Exp\u00e9rimentes! \n \n" );
-    wInfo.captionLabel().style().marginLeft = 100;
-    wInfo.captionLabel().style().marginTop = -height/12;
-    
-  }
-  
-  public void controlEvent(ControlEvent theEvent) {
-    //println(theEvent.controller().name()+" = "+theEvent.value());  
-  
-    if(theEvent.value()==1) {
-      signal1.setSignal("sine", 1000, 0.2f);
-    } 
-    else if(theEvent.value()==2) {
-      signal1.setSignal("square", 1000, 0.2f);
-    } 
-    else if(theEvent.value()==3) {
-      signal1.setSignal("saw", 1000, 0.2f);
-    } 
-    else if(theEvent.value()==4) {
-      signal1.setSignal("noise", 1000, 0.2f);
-    }
-    // uncomment the line below to remove a multilist item when clicked.
-    // theEvent.controller().remove();
-  }
-  
-  
-  public void PlayRecord() {
-    record1.setRecord(selectInput());
-  }
-  
-  public void FilterRecord() {
-    record1.applyFilter() ;
-  }
-  
+
   public void mouseMoved() {
     if (signal1.sounding) {
       signal1.changeValue();
@@ -340,6 +405,7 @@ public class ExplorationSonore extends PApplet {
   public void StopAnySound() {
     if (signal1.sounding) {
       signal1.switchOff();
+      sig = "null";
     } else if (record1.sounding) {
       record1.switchOff();
     }
@@ -394,7 +460,6 @@ public class ExplorationSonore extends PApplet {
       factor = 20;
     }
   
-  
     stroke(240, 240, 240);
     for(int i = 0; i < fft.avgSize(); i++) {
       line((i * w) + (w / 2), 2*height/3, (i * w) + (w / 2), 2*height/3 - fft.getAvg(i) * factor);
@@ -404,7 +469,7 @@ public class ExplorationSonore extends PApplet {
   
     stroke(250,70,0);
     textFont(f,14);
-    //text("                  100         125                               250                           500                      1000                        2000                        4000                    8000 Hz", 0,2*height/3+height/30);
+    fill(255);
     text("100", width/10, 2*height/3+height/30);
     text("125", width/6, 2*height/3+height/30);
     text("250", width/5 + width/12, 2*height/3+height/30);
@@ -422,7 +487,7 @@ public class ExplorationSonore extends PApplet {
   
   /** Trac\u00e9 temporel du signal. */
   public void drawSignal(String n) {
-  
+
     stroke(255);
     strokeWeight(1);  
     int k; 
@@ -430,6 +495,7 @@ public class ExplorationSonore extends PApplet {
       k = out.bufferSize();
     } 
     else if(n.equals("player")) {
+      
       k = player.bufferSize();
     } 
     else {
@@ -456,38 +522,10 @@ public class ExplorationSonore extends PApplet {
     strokeWeight(0.5f);
   }
   
+ 
   
-  // Controlleur pour l'info    
-  public void info(float theValueA) {
-    isOpen = !isOpen;
-    controlP5.controller("info").captionLabel().setControlFont(font);
-    controlP5.controller("info").captionLabel().setControlFontSize(10);
-    controlP5.controller("info").setCaptionLabel((isOpen==true) ? "fermer Info":"voir Info");
-
-  }
-  
-  public void openInfo() {
-    wInfo.position().x += ((isOpen==true ? 5:-width+5) - wInfo.position().x) * 0.2f;
-    //wInfo.setWindow(controlWindow);
-  }
-  
-  
-  // Fonctions pour l'insertion dans javascool
-  /*int getWidthInterface() {
-    return controlWindow.papplet().getWidth();
-  }
-  
-  
-  int getHeightInterface() {
-    return controlWindow.papplet().getHeight();
-  }*/
-  
-  
-  /** Utilis\u00e9 pour fermer la fen\u00eatre secondaire de l'interface, par JavaScool. */
-  /*public processing.core.PApplet getControl() {
-    controlWindow.hide();
-    return controlWindow.papplet();
-  }*/
+ 
+  /* Fonctions pour javascool. */
   
   /** Joue un signal de type choisi  
    * @param n nom du type: sinus, square, triangle, saw, white noise.
@@ -496,7 +534,7 @@ public class ExplorationSonore extends PApplet {
    */
   public static void playSignal(String n, double f, double a) {
     proglet.signal1.setSignal(n, (float) f, (float) a);
-  }
+  }  
   
   /** Joue un enregistrement de son choix
    * @param path Nom de l'extrait
@@ -525,21 +563,16 @@ public class ExplorationSonore extends PApplet {
     
     /** Construction du signal et de son interaction graphique. */
     record() {
-      //boxValue = controlP5.addTextfield("  ",width-280-50,2*height/3+2*height/10+10,280,39);
-      //boxValue.setText(" ");
-      //boxValue.setWindow(controlWindow);
       lpf = new LowPassSP(100, out.sampleRate());
     }
     
     float volume;
     float Fc = 100; 
-    //String monExtrait;
-  
+
     LowPassSP lpf;
   
     boolean sounding = false;
     boolean filtering = false;
-    //Textfield boxValue;
       
     /** Joue un enregistrement de son choix
     * @param path Nom de l'extrait
@@ -606,7 +639,6 @@ public class ExplorationSonore extends PApplet {
     
     
     public void removeFilter() {    
-      deleteI();
       filtering = false;
       player.clearEffects();
       
@@ -628,30 +660,22 @@ public class ExplorationSonore extends PApplet {
     public void printV() {
       
       float vol = (volume+20)/20;
-      boxValue.captionLabel().setControlFontSize(8);
-      boxValue.setText(" Vol.: " + vol + " ");
-      boxValue.captionLabel().setControlFont(font); 
-      //boxValue.setWindow(controlWindow);
-      
+      fill(0);
+      rect(0,height-175,width/2,30);
+      fill(myOr);
+      text("Vol.: " + vol + " ", 10, height-155);
       if(filtering) {
-        
-        boxValue.setText(" Freq. de coupure: " + Fc + " Hz  -  Vol.: " + vol + " ");
-        boxValue.captionLabel().setControlFont(font); 
-        //boxValue.setWindow(controlWindow);
+        fill(0);
+        rect(0,height-175,width/2,30);
+        fill(myOr);
+        text(" Freq. de coupure: " + Fc + " Hz  -  Vol.: " + vol + " ", 10, height-155);
       
       }
     }
     
     
-    public void deleteI() {
-      boxValue.setText(" ");
-      //boxValue.setWindow(controlWindow);
-    }
-    
-    
     public void switchOff() {
       player.pause();
-      deleteI();
       sounding = false;
       
     }
@@ -667,9 +691,6 @@ public class ExplorationSonore extends PApplet {
     /** Construction du signal et de son interaction graphique. */
     signal() {
       out.sound();
-      //boxValue = controlP5.addTextfield("  ",width-280-50,2*height/3+height/12,280,39);
-      //boxValue.setText(" ");
-      //boxValue.setWindow(controlWindow);
     }
     float volume;
     float frequence; 
@@ -680,7 +701,6 @@ public class ExplorationSonore extends PApplet {
   
     String type;
     boolean sounding = false;
-    //Textfield boxValue; 
     
     
     /** Joue un signal de type choisi  
@@ -719,7 +739,6 @@ public class ExplorationSonore extends PApplet {
       
       volume = map(mouseY, 0, height, 0.2f, 0); 
       if(type.equals("sine")) {
-        //println("freq: " + frequence);
         sinus_.setFreq(frequence);
         sinus_.setAmp(volume);
       } else if(type.equals("square")){
@@ -736,32 +755,26 @@ public class ExplorationSonore extends PApplet {
     /** Affichage de la valeur dans l'interface. */  
     public void printV() {
       float vol = (volume)/0.4f;
-      boxValue.captionLabel().setControlFontSize(8);
+      fill(0);
+      rect(0,height-175,width/2,30);
+      fill(myOr);
       if(type.equals("noise")) {
-        boxValue.setText("Vol.: " + vol + " ");
+        text("Vol.: " + vol + " ", 10, height-155);
       } else {
-        boxValue.setText(" Freq.: " + frequence + " Hz  -  Vol.: " + vol + " ");
+        text(" Freq.: " + frequence + " Hz  -  Vol.: " + vol + " ", 10, height-155);
       }
-      boxValue.captionLabel().setControlFont(font); // change the font
-      //boxValue.setWindow(controlWindow);
     }
     
-    /** Effacement de l'affichage. */
-    public void deleteI() {
-      boxValue.setText(" ");
-      //boxValue.setWindow(controlWindow);
-    }
     
     /** Arr\u00eat de la sortie sonore. */
     public void switchOff() {
       out.noSound();
       out.clearSignals();
-      deleteI();
       sounding = false;
       
     }
   }
   static public void main(String args[]) {
-    PApplet.main(new String[] { "--bgcolor=#DFDFDF", "ExplorationSonore" });
+    PApplet.main(new String[] { "--bgcolor=#FFFFFF", "ExplorationSonore" });
   }
 }

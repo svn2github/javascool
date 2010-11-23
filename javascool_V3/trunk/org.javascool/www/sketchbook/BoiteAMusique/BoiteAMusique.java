@@ -810,6 +810,6 @@ class Source {
   
 }
   static public void main(String args[]) {
-    PApplet.main(new String[] { "--bgcolor=#DFDFDF", "BoiteAMusique" });
+    PApplet.main(new String[] { "--bgcolor=#FFFFFF", "BoiteAMusique" });
   }
 }
