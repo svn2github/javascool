@@ -3,21 +3,16 @@
     
     /** Construction du signal et de son interaction graphique. */
     record() {
-      //boxValue = controlP5.addTextfield("  ",width-280-50,2*height/3+2*height/10+10,280,39);
-      //boxValue.setText(" ");
-      //boxValue.setWindow(controlWindow);
       lpf = new LowPassSP(100, out.sampleRate());
     }
     
     float volume;
     float Fc = 100; 
-    //String monExtrait;
-  
+
     LowPassSP lpf;
   
     boolean sounding = false;
     boolean filtering = false;
-    //Textfield boxValue;
       
     /** Joue un enregistrement de son choix
     * @param path Nom de l'extrait
@@ -84,7 +79,6 @@
     
     
     void removeFilter() {    
-      deleteI();
       filtering = false;
       player.clearEffects();
       
@@ -106,30 +100,22 @@
     void printV() {
       
       float vol = (volume+20)/20;
-      boxValue.captionLabel().setControlFontSize(8);
-      boxValue.setText(" Vol.: " + vol + " ");
-      boxValue.captionLabel().setControlFont(font); 
-      //boxValue.setWindow(controlWindow);
-      
+      fill(0);
+      rect(0,height-175,width/2,30);
+      fill(myOr);
+      text("Vol.: " + vol + " ", 10, height-155);
       if(filtering) {
-        
-        boxValue.setText(" Freq. de coupure: " + Fc + " Hz  -  Vol.: " + vol + " ");
-        boxValue.captionLabel().setControlFont(font); 
-        //boxValue.setWindow(controlWindow);
+        fill(0);
+        rect(0,height-175,width/2,30);
+        fill(myOr);
+        text(" Freq. de coupure: " + Fc + " Hz  -  Vol.: " + vol + " ", 10, height-155);
       
       }
     }
     
     
-    void deleteI() {
-      boxValue.setText(" ");
-      //boxValue.setWindow(controlWindow);
-    }
-    
-    
     void switchOff() {
       player.pause();
-      deleteI();
       sounding = false;
       
     }

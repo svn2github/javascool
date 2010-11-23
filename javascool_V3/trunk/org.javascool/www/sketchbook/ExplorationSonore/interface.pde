@@ -1,117 +1,6 @@
   /* Fonctions relatives à l'interface. */
   
-  
-  void launchInterface() {
-  
-    // Interface de manipulation: génère sinusoide, charge enregistrement, etc
-  
-  strokeWeight(0.5);  
-    String[] ListN = {
-      "sinusoide", "carré", "scie", "bruit"
-    };
-    MultiList l = controlP5.addMultiList("myList", 50,2*height/3+height/10,300,35);
-    MultiListButton b;
-    b = l.add("  Jouer  un  signal",1);
-    b.captionLabel().setControlFont(font);
-    b.captionLabel().setControlFontSize(10);
-    for(int i=0;i<4;i++) {
-      MultiListButton c = b.add("signal"+(i+1),i+1);
-      c.captionLabel().setControlFont(font);
-      c.setLabel("  "+ListN[i]+"  ");
-      c.captionLabel().setControlFontSize(10);
-      c.setHeight(17);
-      c.setWidth(80);
-    }
-    
-    boxValue = controlP5.addTextfield("  ",width-50-300,2*height/3+height/7,300,20);
-    boxValue.setText(" ");
-    boxValue.hide();
-  
-  
-    // Charger un enregistrement
-    controlP5.addButton("PlayRecord",0,50,2*height/3+2*height/10+15,300,35);
-    controlP5.controller("PlayRecord").setCaptionLabel("  Jouer  un  enregistrement  sonore");
-    controlP5.controller("PlayRecord").captionLabel().setControlFont(font); // change the font
-    controlP5.controller("PlayRecord").captionLabel().setControlFontSize(10);
-    
-    //record1.boxValue = controlP5.addTextfield("  ",width-(50+281),2*height/3+2*height/10,280,19);
-    
-  
-    
-    // Filtre Basse Fréquence applicable sur l'enregistrement
-    controlP5.addButton("FilterRecord",0,50+300+1,2*height/3+2*height/10+15,80,35);
-    controlP5.controller("FilterRecord").setCaptionLabel("   FILTRAGE"); // - Fréquence de coupure reglable
-    controlP5.controller("FilterRecord").captionLabel().setControlFont(font); // change the font
-    controlP5.controller("FilterRecord").captionLabel().setControlFontSize(10);
-    controlP5.controller("FilterRecord").captionLabel().toUpperCase(false);
-  
-  
-    // Stopper tout son
-    controlP5.addButton("StopAnySound",0,width-50-70,height-50,70,35);
-    controlP5.controller("StopAnySound").setCaptionLabel("  S  t  o  p");
-    controlP5.controller("StopAnySound").captionLabel().setControlFont(font); // change the font
-    controlP5.controller("StopAnySound").captionLabel().setControlFontSize(11);
-    controlP5.controller("StopAnySound").setColorBackground(myRed);
-    controlP5.controller("StopAnySound").setColorActive(myOr);
-  
-  
-    
-     // Info
-    controlP5.addButton("info",10,4,2*height/3+25,75,20).setId(1);
-    controlP5.controller("info").setCaptionLabel("Info"); // change content
-    controlP5.controller("info").captionLabel().setControlFont(font); // change the font
-    controlP5.controller("info").captionLabel().setControlFontSize(10);
-    controlP5.controller("info").setColorActive(myOr); 
-    controlP5.controller("info").setColorBackground(myOr); 
-    wInfo = controlP5.addButton("buttonValue",0,-width,2*height/3+25+15,0,50);
-    wInfo.setId(2);
-    wInfo.setWidth(width-10);
-    wInfo.setHeight(height/3-50);
-    wInfo.setColorActive(255); 
-    wInfo.setColorBackground(255); 
-    wInfo.setColorLabel(myOr);
-    wInfo.captionLabel().setControlFont(font);
-    wInfo.captionLabel().setControlFontSize(12);
-    wInfo.captionLabel().toUpperCase(false);
-    wInfo.captionLabel().set(
-    "Parles, siffles, chuchotes.., et tu verras ce qui se passe sur l'analyseur de contenu sonore (à droite).. \n \n"+
-      "Tu peux aussi jouer une signal ou un enregistrement de ton choix. \n \n"+
-      "Pour ajuster la fréquence et l'amplitude du signal, bouges la souris sur la fenetre de l'analyseur. \n \n"+
-      "Pour faire varier le volume de l'enregistrement sonore, tu peux procéder pareillement, \n \n"+
-      "tandis que le contenu fréquentiel peut s'ajuster par un filtre. Expérimentes! \n \n" );
-    wInfo.captionLabel().style().marginLeft = 100;
-    wInfo.captionLabel().style().marginTop = -height/12;
-    
-  }
-  
-  void controlEvent(ControlEvent theEvent) {
-    //println(theEvent.controller().name()+" = "+theEvent.value());  
-  
-    if(theEvent.value()==1) {
-      signal1.setSignal("sine", 1000, 0.2);
-    } 
-    else if(theEvent.value()==2) {
-      signal1.setSignal("square", 1000, 0.2);
-    } 
-    else if(theEvent.value()==3) {
-      signal1.setSignal("saw", 1000, 0.2);
-    } 
-    else if(theEvent.value()==4) {
-      signal1.setSignal("noise", 1000, 0.2);
-    }
-    // uncomment the line below to remove a multilist item when clicked.
-    // theEvent.controller().remove();
-  }
-  
-  
-  void PlayRecord() {
-    record1.setRecord(selectInput());
-  }
-  
-  void FilterRecord() {
-    record1.applyFilter() ;
-  }
-  
+
   void mouseMoved() {
     if (signal1.sounding) {
       signal1.changeValue();
@@ -128,6 +17,7 @@
   void StopAnySound() {
     if (signal1.sounding) {
       signal1.switchOff();
+      sig = "null";
     } else if (record1.sounding) {
       record1.switchOff();
     }
@@ -182,7 +72,6 @@
       factor = 20;
     }
   
-  
     stroke(240, 240, 240);
     for(int i = 0; i < fft.avgSize(); i++) {
       line((i * w) + (w / 2), 2*height/3, (i * w) + (w / 2), 2*height/3 - fft.getAvg(i) * factor);
@@ -192,7 +81,7 @@
   
     stroke(250,70,0);
     textFont(f,14);
-    //text("                  100         125                               250                           500                      1000                        2000                        4000                    8000 Hz", 0,2*height/3+height/30);
+    fill(255);
     text("100", width/10, 2*height/3+height/30);
     text("125", width/6, 2*height/3+height/30);
     text("250", width/5 + width/12, 2*height/3+height/30);
@@ -245,38 +134,10 @@
     strokeWeight(0.5);
   }
   
+ 
   
-  // Controlleur pour l'info    
-  void info(float theValueA) {
-    isOpen = !isOpen;
-    controlP5.controller("info").captionLabel().setControlFont(font);
-    controlP5.controller("info").captionLabel().setControlFontSize(10);
-    controlP5.controller("info").setCaptionLabel((isOpen==true) ? "fermer Info":"voir Info");
-
-  }
-  
-  void openInfo() {
-    wInfo.position().x += ((isOpen==true ? 5:-width+5) - wInfo.position().x) * 0.2;
-    //wInfo.setWindow(controlWindow);
-  }
-  
-  
-  // Fonctions pour l'insertion dans javascool
-  /*int getWidthInterface() {
-    return controlWindow.papplet().getWidth();
-  }
-  
-  
-  int getHeightInterface() {
-    return controlWindow.papplet().getHeight();
-  }*/
-  
-  
-  /** Utilisé pour fermer la fenêtre secondaire de l'interface, par JavaScool. */
-  /*public processing.core.PApplet getControl() {
-    controlWindow.hide();
-    return controlWindow.papplet();
-  }*/
+ 
+  /* Fonctions pour javascool. */
   
   /** Joue un signal de type choisi  
    * @param n nom du type: sinus, square, triangle, saw, white noise.
@@ -285,7 +146,7 @@
    */
   public static void playSignal(String n, double f, double a) {
     proglet.signal1.setSignal(n, (float) f, (float) a);
-  }
+  }  
   
   /** Joue un enregistrement de son choix
    * @param path Nom de l'extrait

@@ -4,9 +4,6 @@
     /** Construction du signal et de son interaction graphique. */
     signal() {
       out.sound();
-      //boxValue = controlP5.addTextfield("  ",width-280-50,2*height/3+height/12,280,39);
-      //boxValue.setText(" ");
-      //boxValue.setWindow(controlWindow);
     }
     float volume;
     float frequence; 
@@ -17,7 +14,6 @@
   
     String type;
     boolean sounding = false;
-    //Textfield boxValue; 
     
     
     /** Joue un signal de type choisi  
@@ -56,7 +52,6 @@
       
       volume = map(mouseY, 0, height, 0.2, 0); 
       if(type.equals("sine")) {
-        //println("freq: " + frequence);
         sinus_.setFreq(frequence);
         sinus_.setAmp(volume);
       } else if(type.equals("square")){
@@ -73,27 +68,21 @@
     /** Affichage de la valeur dans l'interface. */  
     void printV() {
       float vol = (volume)/0.4;
-      boxValue.captionLabel().setControlFontSize(8);
+      fill(0);
+      rect(0,height-175,width/2,30);
+      fill(myOr);
       if(type.equals("noise")) {
-        boxValue.setText("Vol.: " + vol + " ");
+        text("Vol.: " + vol + " ", 10, height-155);
       } else {
-        boxValue.setText(" Freq.: " + frequence + " Hz  -  Vol.: " + vol + " ");
+        text(" Freq.: " + frequence + " Hz  -  Vol.: " + vol + " ", 10, height-155);
       }
-      boxValue.captionLabel().setControlFont(font); // change the font
-      //boxValue.setWindow(controlWindow);
     }
     
-    /** Effacement de l'affichage. */
-    void deleteI() {
-      boxValue.setText(" ");
-      //boxValue.setWindow(controlWindow);
-    }
     
     /** Arrêt de la sortie sonore. */
     void switchOff() {
       out.noSound();
       out.clearSignals();
-      deleteI();
       sounding = false;
       
     }
