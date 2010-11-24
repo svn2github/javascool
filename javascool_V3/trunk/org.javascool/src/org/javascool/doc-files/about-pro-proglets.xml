@@ -34,10 +34,10 @@
   </p>
   <p>
     <p>«Boite à Musique»</p>
-    <p><!--l link="../../../sketchbook/BoiteAMusique/about-proglet.htm" text="Description"/--></p>
-    <p><!--l link="http://javascool.gforge.inria.fr/v3/sketchbook/BoiteAMusique/index.html" text="Proglet"/--></p>
-    <p><!--l link="../../../sketchbook/BoiteAMusique/sujet-about-chemins.htm" text="Activité"/--></p>
+    <p><l link="../../../sketchbook/BoiteAMusique/about-proglet.htm" text="Description"/></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/sketchbook/BoiteAMusique/index.html" text="Proglet"/></p>
+    <p><l link="../../../sketchbook/BoiteAMusique/sujet-about-chemins.htm" text="Activité"/></p>
     <p>CP<l class="note" link="4"/> </p>
-    <p>vise à entrevoir quelques éléments de la programmation temps-réel à travers la programmation d'un <l link="http://fr.wikipedia.org/wiki/Limonaire" text="limonaire"/></p>
+    <p>vise à entrevoir quelques éléments de la programmation temps-réel à travers un séquenceur de sons.</p>
   </p>
 </p>
