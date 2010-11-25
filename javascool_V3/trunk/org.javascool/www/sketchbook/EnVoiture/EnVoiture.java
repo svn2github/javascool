@@ -24,15 +24,15 @@ import java.util.regex.*;
 
 public class EnVoiture extends PApplet {
 
-/**
- *
- * 08.2010 C\u00e9cile P-L for Fuscia - ccl.picard@gmail.com - 
- * PERCEPTION SONORE:
- * Interface p\u00e9dagogique sur les notions de contenu sonore et perception; 
- * Utilisation de Minim pour le son -  
- *
- * Inspired by a tutorial of Andy Best http://andybest.net/
- **/    
+ /*////////////////////////////////////////////////////////////////////////////
+   *
+   * 10.2010 C\u00e9cile P-L for Fuscia, ccl.picard@gmail.com
+   * GRAPHES Part 1
+   * Interface p\u00e9dagogique sur la manipulation des concepts li\u00e9s aux graphes
+   *
+   * Inspired from 'TerrainSteering', toxiclibs from Karsten Schmidt http://www.openprocessing.org/portal/?userID=4530
+   *
+   **/
 
 
 

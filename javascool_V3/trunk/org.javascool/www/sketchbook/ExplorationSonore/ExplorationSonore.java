@@ -24,7 +24,7 @@ import java.util.regex.*;
 
 public class ExplorationSonore extends PApplet {
 
-/**
+/*////////////////////////////////////////////////////////////////////////////
  *
  * 08.2010 C\u00e9cile P-L for Fuscia - ccl.picard@gmail.com - 
  * PERCEPTION SONORE:
