@@ -5,7 +5,7 @@
  * Interface pédagogique sur les notions de contenu sonore et perception; 
  * Utilisation de Minim pour le son -  
  *
- * Inspired by a tutorial of Andy Best http://andybest.net/
+ * Inspired from a tutorial of Andy Best http://andybest.net/
  **/                                                                                                                                                                                                                                                                                                                    // /////////////////////////////////////////////////////////////////////////////////
 
 import processing.opengl.*;
