@@ -2,110 +2,87 @@ class Button
 {
   int x, y;
   int L, h;
-  color basecolor, highlightcolor;//, selectcolor;
+  color basecolor, highlightcolor; // , selectcolor;
   color currentcolor, fcolor;
   String value;
   boolean over = false;
-  boolean pressed = false;   
+  boolean pressed = false;
   boolean select = false;
 
-  void update() 
-  {
-    if(over()) {
+  void update() {
+    if(over())
       currentcolor = highlightcolor;
-    }
-    else {
+    else
       currentcolor = basecolor;
-    }
   }
-
-  boolean pressed() 
-  {
+  boolean pressed() {
     if(over) {
       locked = true;
       return true;
-    } 
-    else {
+    } else {
       locked = false;
-      return false;
-    }    
-  }
-
-  boolean over() 
-  { 
-    return true; 
-  }
-
-  boolean overText(int x, int y, int width, int height) 
-  {
-    if (mouseX >= x && mouseX <= x+width && 
-      mouseY >= y-height/2 && mouseY <= y+height/2) {
-      return true;
-    } 
-    else {
       return false;
     }
   }
-
-
+  boolean over() {
+    return true;
+  }
+  boolean overText(int x, int y, int width, int height) {
+    if((mouseX >= x) && (mouseX <= x + width) &&
+       (mouseY >= y - height / 2) && (mouseY <= y + height / 2))
+      return true;
+    else
+      return false;
+  }
 }
 
 class rectButton extends Button
 {
-  rectButton(int ix, int iy, int iL, int ih,  color icolor) 
-  {
+  rectButton(int ix, int iy, int iL, int ih, color icolor) {
     x = ix;
     y = iy;
-    L = iL; h = ih;
+    L = iL;
+    h = ih;
     value = "null";
     currentcolor = icolor;
-    
-    
   }
 
-  void display() 
-  {
-    
+  void display() {
     noStroke();
     fill(currentcolor);
-    rect(x, y-17,L, h);
-
+    rect(x, y - 17, L, h);
     if(!(value.equals("null"))) {
       fill(255);
       textFont(pfont);
-      if(value.length()<45) {
-        text(" "+ value.substring(0,value.length()), x, y);
-      } else {
-        textFont(pfont,10);
-        if(int(value.length()/63)==0) {
-          text(" "+ value.substring(0,value.length()), x, y);
-        } else {
-          int count =0;
-          for(int i=0; i<int(value.length()/63); i++) {
-          text(" "+ value.substring(i*63,(i+1)*63-1), x, y+i*15);
-          count = i+1;
+      if(value.length() < 45)
+        text(" " + value.substring(0, value.length()), x, y);
+      else {
+        textFont(pfont, 10);
+        if(int (value.length() / 63) == 0)
+          text(" " + value.substring(0, value.length()), x, y);
+        else {
+          int count = 0;
+          for(int i = 0; i < int (value.length() / 63); i++) {
+            text(" " + value.substring(i * 63, (i + 1) * 63 - 1), x, y + i * 15);
+            count = i + 1;
+          }
+          text(" " + value.substring(count * 63, value.length()), x, y + count * 15);
         }
-        text(" "+ value.substring(count*63,value.length()), x, y+count*15);
-        }
-
-      } 
+      }
     }
   }
-  
-  void setText(String iText) 
-  {
+  void setText(String iText) {
     value = iText;
   }
-  
 }
 
 class TextButton extends Button
 {
-  TextButton(int ix, int iy, int iL, int ih, color ifcolor, color icolor, color ihighlight, String itext) 
-  {
+  TextButton(int ix, int iy, int iL, int ih, color ifcolor, color icolor, color ihighlight, String itext) {
     x = ix;
     y = iy;
-    L = iL; h = ih;
+    L = iL;
+    h = ih;
     fcolor = ifcolor;
     highlightcolor = ihighlight;
     basecolor = icolor;
@@ -113,33 +90,29 @@ class TextButton extends Button
     value = itext;
   }
 
-  boolean over() 
-  {
-    if( overText(x, y, L, h) ) {
+  boolean over() {
+    if(overText(x, y, L, h)) {
       over = true;
       return true;
-    } 
-    else {
+    } else {
       over = false;
       return false;
     }
   }
-
-  void display() 
-  {
-    if(x<width/2)
-    stroke(153);
+  void display() {
+    if(x < width / 2)
+      stroke(153);
     else
-    stroke(190);
+      stroke(190);
     strokeWeight(0.8);
-    
+
     fill(currentcolor);
-    rect(x, y-17,L, h);
-    
+    rect(x, y - 17, L, h);
+
     fill(fcolor);
     textFont(pfont);
 
-    text(value, x+10, y);
+    text(value, x + 10, y);
     noStroke();
   }
 }
