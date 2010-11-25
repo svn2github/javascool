@@ -6,7 +6,7 @@
 
 publish : htm
 # export the applet to the www directory
-	@if [ -f */applet ] ; then for d in */applet ; do ls $$d/applet/*.* ; ecjo 'cp $$d/applet/*.*' ../www/sketchbook/`echo $$d | sed 's/\/applet//'` ; done ; fi
+	@if [ -d */applet ] ; then for d in */applet ; do cp $$d/*.* ../www/sketchbook/`echo $$d | sed 's/\/applet//'` ; /bin/rm -rf $$d ; done ; fi
 # sign the exported jar
 	@cd ../www/sketchbook ; for d in * ; do if [ -f $$d/$$d.jar ] ; then $(MAKE) -s -f ../../sketchbook/makefile $$d/$$d.key ; fi ; done
 # copy the documentation files
@@ -16,7 +16,7 @@ publish : htm
 	@cp index.htm ../www/sketchbook/index.html
 # add new files to svn
 	@cd ../www/sketchbook ; svn -q add */*.*
-# publsih on the web site
+# commit in the svn
 	@$(MAKE) -C .. svn
 
 # Beautify a source code
