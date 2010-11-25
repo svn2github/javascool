@@ -47,7 +47,7 @@ String[] filenames;
 String path;
 
 public void setup() {
-  size(1300, 750); // (screen.width-50,screen.height-50);//900,616);
+  size(1000, 600); // (screen.width-50,screen.height-50);//900,616);
   background(50);
   frameRate(30);
   mySource[0] = 0;
