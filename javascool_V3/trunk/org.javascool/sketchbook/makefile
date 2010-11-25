@@ -19,17 +19,24 @@ publish : htm
 # publsih on the web site
 	@$(MAKE) -C .. svn
 
+# Beautify a source code
+
+btfy :
+	echo to be done
+
 # Generates the javasccol processing.zip 
 
 JARS = \
  ../www/sketchbook/{ExplorationSonore,CryptageRSA,EnVoiture,UnGrapheDesChemins,BoiteAMusique}/*.jar \
  /usr/java/processing-1.2.1/libraries/opengl/library/{jogl,gluegen-rt}.jar 
 
-jar : ../lib/processing.zip
+jar : 
+	@rm -f ../lib/processing.zip
+	$(MAKE) ../lib/processing.zip
 
-../lib/processing.zip : $(shell ls $(JARS))
+../lib/processing.zip : 
 	@rm -rf $@ tmp ; mkdir tmp 
-	@for j in $^ ; do unzip -qo $$j -d tmp ; done ; rm -rf tmp/META-INF
+	@for j in $(shell ls $(JARS)) ; do unzip -qo $$j -d tmp ; done ; rm -rf tmp/META-INF
 	@cd tmp ; zip -9qr ../$@ *
 	@rm -rf tmp
 
