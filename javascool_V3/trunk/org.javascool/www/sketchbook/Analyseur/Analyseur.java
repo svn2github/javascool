@@ -1,17 +1,40 @@
+import processing.core.*; 
+import processing.xml.*; 
+
+import ddf.minim.analysis.*; 
+import ddf.minim.*; 
+import ddf.minim.signals.*; 
+
+import java.applet.*; 
+import java.awt.Dimension; 
+import java.awt.Frame; 
+import java.awt.event.MouseEvent; 
+import java.awt.event.KeyEvent; 
+import java.awt.event.FocusEvent; 
+import java.awt.Image; 
+import java.io.*; 
+import java.net.*; 
+import java.text.*; 
+import java.util.*; 
+import java.util.zip.*; 
+import java.util.regex.*; 
+
+public class Analyseur extends PApplet {
+
 /*////////////////////////////////////////////////////////////////////////////
  *
- * 08.2010 Cécile P-L for Fuscia - ccl.picard@gmail.com - 
- * Analyseur FFT avec bandes de fréquences ajustables 
- * pour noter l'influence de la résolution des bandes sur le spectre
+ * 08.2010 C\u00e9cile P-L for Fuscia - ccl.picard@gmail.com - 
+ * Analyseur FFT avec bandes de fr\u00e9quences ajustables 
+ * pour noter l'influence de la r\u00e9solution des bandes sur le spectre
  *
  * Inspired from Linear Averages
  * by Damien Di Fede.
  *  
  */
 
-import ddf.minim.analysis.*;
-import ddf.minim.*;
-import ddf.minim.signals.*;
+
+
+
 
 Minim minim;
 AudioInput in;
@@ -26,7 +49,7 @@ PFont f;
 boolean info = false, sounding = false;
 float fs = 44100;
 
-void setup()
+public void setup()
 {
   size(512, 240, P2D);
   background(0);
@@ -45,7 +68,7 @@ void setup()
   rectMode(CORNERS);
 }
 
-void draw()
+public void draw()
 {
   fill(255);
   if(path != null) {
@@ -57,7 +80,7 @@ void draw()
   else {
     fft.forward(in.mix);
   }
-  int w = int(fft.specSize()/nb);
+  int w = PApplet.parseInt(fft.specSize()/nb);
 
   for(int i = 0; i < fft.avgSize(); i++)
   {
@@ -75,9 +98,9 @@ void draw()
     textAlign(LEFT);
     fill(255, 150, 0);
     text(" - COMMANDES - \n " + 
-      ".  L / l : chargement d'un fichier son:  accès dans une base de données \n " +
-      ".  + / - : raffine/élargit les bandes de fréquences pour la FFT (entre 64 et 256) \n " +
-      ".  S / s : stop/redémarre la lecture \n " +
+      ".  L / l : chargement d'un fichier son:  acc\u00e8s dans une base de donn\u00e9es \n " +
+      ".  + / - : raffine/\u00e9largit les bandes de fr\u00e9quences pour la FFT (entre 64 et 256) \n " +
+      ".  S / s : stop/red\u00e9marre la lecture \n " +
       ".  I / i : afficher/cacher les instructions \n " +
       ".  ESC: Fermer l'application ", 10, 15);
 
@@ -93,16 +116,16 @@ void draw()
   
 }
 
-void mouseMoved() {
-  int w = int((fs+nb)/(nb));
+public void mouseMoved() {
+  int w = PApplet.parseInt((fs+nb)/(nb));
   println("/ " + nb+ "/ " +fft.avgSize() + "/ " +fft.specSize());
   textFont(f,12);
   fill(0);
   rect(width, 150, width/2+80, height/3);
   fill(255);
-  text("Fréquence pointée = " + w*(fft.avgSize()*mouseX)/width, width-170, int(height/2));
+  text("Fr\u00e9quence point\u00e9e = " + w*(fft.avgSize()*mouseX)/width, width-170, PApplet.parseInt(height/2));
 }
-void keyPressed()                                                  
+public void keyPressed()                                                  
 {
   if (key == '+') {
     if(nb<256) {
@@ -151,7 +174,7 @@ void keyPressed()
   }
 }
 
-void stop()
+public void stop()
 {
   if(path != null) {
     jingle.close();
@@ -161,3 +184,7 @@ void stop()
   super.stop();
 }
 
+  static public void main(String args[]) {
+    PApplet.main(new String[] { "--bgcolor=#FFFFFF", "Analyseur" });
+  }
+}
