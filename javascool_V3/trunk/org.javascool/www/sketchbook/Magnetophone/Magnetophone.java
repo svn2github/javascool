@@ -19,7 +19,10 @@ import java.util.regex.*;
 
 public class Magnetophone extends PApplet {
 
-/**
+/*////////////////////////////////////////////////////////////////////////////
+ *
+ * 11.2010 C\u00e9cile P-L for Fuscia - ccl.picard@gmail.com - 
+ * 
  * Inspired by Record Line In
  * by Damien Di Fede.
  *
