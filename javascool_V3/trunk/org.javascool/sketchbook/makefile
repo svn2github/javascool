@@ -6,8 +6,8 @@
 
 publish : htm
 # export the applet to the www directory
-	@applets="" ; for d in * ; do if [ -d $$d/applets ] ; then applets="$$applets $$d" ; fi ; done ;\
-	 for d in $$applets ; do mkdir -p ../www/sketchbook/applet ; cp $$d/applet/*.* ../www/sketchbook/$$d ; /bin/rm -rf $$d/applet ; done
+	@a="" ; for d in * ; do if [ -d $$d/applet ] ; then a="$$a $$d" ; fi ; done ; if [ \! -z "$$a" ] ; then echo "publishing $$a" ; \
+	 for d in $$a ; do mkdir -p ../www/sketchbook/$$d ; cp $$d/applet/*.* ../www/sketchbook/$$d ; /bin/rm -rf $$d/applet ; done ; fi
 # sign the exported jar
 	@cd ../www/sketchbook ; for d in * ; do if [ -f $$d/$$d.jar ] ; then $(MAKE) -s -f ../../sketchbook/makefile $$d/$$d.key ; fi ; done
 # copy the documentation files
@@ -20,16 +20,18 @@ publish : htm
 # commit in the svn
 	@$(MAKE) -C .. svn
 
-
-# Beautify a source code
+# Beautifies a source code
 
 btfy :
 	echo to be done
 
 # Generates the javasccol processing.zip 
 
+PROGLETS = \
+ ExplorationSonore CryptageRSA EnVoiture UnGrapheDesChemins BoiteAMusique
+
 JARS = \
- ../www/sketchbook/{ExplorationSonore,CryptageRSA,EnVoiture,UnGrapheDesChemins,BoiteAMusique}/*.jar \
+ $(patsubst %,../www/sketchbook/%/*.jar, $(PROGLETS)) \
  /usr/java/processing-1.2.1/libraries/opengl/library/{jogl,gluegen-rt}.jar 
 
 jar : ../lib/processing.zip
