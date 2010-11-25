@@ -29,7 +29,7 @@
   Frame frame;
   int myOr = color(255,100,0);
   int myRed = color(255,0,0);
-  int myBlue = color(20,70,105);
+  int myBlue = color(153);//(120,140,150);//(20,70,105);
   int width_;
   int height_;
   boolean isOpen;
@@ -37,9 +37,9 @@
   
   TextButton[] T1 = new TextButton[8];
   boolean locked = false;
-  boolean info = false;
+  //boolean info = false;
   
-  String[] ListN = { "sine", "square", "saw", "noise", "extrait", " filtre", " S T O P", " - Info - "};
+  String[] ListN = { "sinus", "carré", "scie", "bruit", " extrait ", " extrait filtré ", " S T O P ", " - Info - "};
   String sig = "null";
 
   
@@ -88,18 +88,18 @@
     for(int i=0; i< T1.length; i++)
     {
       if(i<6) {
-        buttoncolor = color(250); highlight = color(150);
+        T1[i] = new TextButton(5+((i%4)*2*width/3/T1.length), height-100+60*(int(i/4)), 60 + int(i/5)*35, 25, color(255), myBlue, myRed, myOr, ListN[i]);
       } else if(i==6){
-        buttoncolor = myRed; highlight = color(150);
+        T1[i] = new TextButton(5+((i%4)*2*width/3/T1.length)+60, height-40, 70, 30, color(255), myRed, myOr, color(0), ListN[i]);
       } else {
-        buttoncolor = myBlue; highlight = color(150);
+        T1[i] = new TextButton(5+((i%4)*2*width/3/T1.length)+width/2+120, height-155, 60, 25, color(255), color(0), myOr, color(0), ListN[i]);
       }
-      T1[i] = new TextButton(5+((i%4)*2*width/3/T1.length)+(int(i/6))*60+(int(i/7))*(width/2+60), height-100+60*(int(i/4)) -(int(i/7))*110, 100, buttoncolor, highlight, myOr, ListN[i]);
+      
 
     }
   
-    width_ = this.frame.getWidth();//getWidthInterface();
-    height_ = this.frame.getHeight();//getHeightInterface();
+    width_ = this.frame.getWidth();
+    height_ = this.frame.getHeight();
   }
   
   
@@ -148,10 +148,6 @@
     update(mouseX, mouseY);
     for(int i=0; i<T1.length; i++) 
     {
-      if(i<6)  {
-        fill(myBlue);
-        rect(5+((i%4)*2*width/3/T1.length)-5, height-118+60*(int(i/4)),60,25);
-      }
       T1[i].display();
     }
     
@@ -165,20 +161,20 @@
   void keyPressed()                                                  
   {
     if (key == '0') {
-      signal1.setSignal("sine", 1000, 0.2);
+      signal1.setSignal("sinus", 1000, 0.2);
     }
     if (key == '1') {
-      signal1.setSignal("sine", 1000, 0.2);
-      signal2.setSignal("sine", 4000, 0.2);
+      signal1.setSignal("sinus", 1000, 0.2);
+      signal2.setSignal("sinus", 4000, 0.2);
     }
     if (key == '2') {
-      signal1.setSignal("square", 1000, 0.2);
+      signal1.setSignal("carré", 1000, 0.2);
     }
     if (key == '3') {
-      signal1.setSignal("saw", 1000, 0.2);
+      signal1.setSignal("scie", 1000, 0.2);
     }
     if (key == '4') {
-      signal1.setSignal("noise", 1000, 0.2);
+      signal1.setSignal("bruit", 1000, 0.2);
     }
     if (key == 'e') {
       record1.setRecord("../data/music/Ahmed_Ex2.wav");
@@ -210,29 +206,27 @@
     if(mousePressed) {
       for(int i=0; i<T1.length; i++) 
       {
-        if(T1[i].pressed() && i==7) {
-          if(T1[i].select==true) { 
-            T1[i].select = false; info = false;
-          } else {
-            T1[i].select = true; info = true;
-          }
-        } else if(T1[i].pressed() && !(T1[i].select)) {
+
+        if(T1[i].pressed() && !(T1[i].select)) {
           T1[i].select = true;
+          
           if(i<4) {
             signal1.setSignal(T1[i].value, 1000, 0.2);
           } else if(i==4) {
             record1.setRecord(selectInput());
           } else if(i==5) {
+            record1.setRecord(selectInput());
             record1.applyFilter() ;
           } else if(i==6) {
             StopAnySound();
           } 
-        }
-
           for(int j=0; j<T1.length-1; j++) 
           {
             if(!(j==i)) T1[j].select = false;
           }
+        }
+
+          
         }
       }
 

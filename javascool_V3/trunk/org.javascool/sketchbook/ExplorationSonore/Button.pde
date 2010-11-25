@@ -1,9 +1,9 @@
 class Button
 {
   int x, y;
-  int size;
+  int L, h;
   color basecolor, highlightcolor, selectcolor;
-  color currentcolor;
+  color currentcolor, fcolor;
   String value;
   boolean over = false;
   boolean pressed = false;   
@@ -40,8 +40,8 @@ class Button
 
   boolean overText(int x, int y, int width, int height) 
   {
-    if (mouseX >= x && mouseX <= x+50 && 
-      mouseY >= y-25 && mouseY <= y+15) {
+    if (mouseX >= x && mouseX <= x+width && 
+      mouseY >= y-height/2 && mouseY <= y+height/2) {
       return true;
     } 
     else {
@@ -54,12 +54,12 @@ class Button
 
 class TextButton extends Button
 {
-  TextButton(int ix, int iy, int isize, color icolor, color ihighlight, color iselect, String itext) 
+  TextButton(int ix, int iy, int iL, int ih, color ifcolor, color icolor, color ihighlight, color iselect, String itext) 
   {
     x = ix;
     y = iy;
-    size = isize;
-    selectcolor = iselect;
+    L = iL; h = ih;
+    fcolor = ifcolor;
     basecolor = icolor;
     highlightcolor = ihighlight;
     selectcolor = iselect;
@@ -69,7 +69,7 @@ class TextButton extends Button
 
   boolean over() 
   {
-    if( overText(x, y, size, size) ) {
+    if( overText(x, y, L, h) ) {
       over = true;
       return true;
     } 
@@ -81,15 +81,19 @@ class TextButton extends Button
 
   void display() 
   {
-    stroke(255);
-    strokeWeight(2);
+   
+      stroke(255);
+      strokeWeight(1);
+    
     fill(currentcolor);
-
-    textFont(f);
-    //if(size==100) text(" "+ (int)value, x, y);
-    //else 
-    text(" "+ value, x, y);
+    rect(x, y-int(h/2 + h/4),L, h);
+    
     noStroke();
+    fill(fcolor);
+    textFont(f);
+
+    text(value, x+(L-value.length()*6)/2, y);
+
   }
 }
 
