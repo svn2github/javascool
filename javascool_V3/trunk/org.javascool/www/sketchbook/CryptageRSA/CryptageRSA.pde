@@ -38,6 +38,7 @@
   rectButton[] T3 = new rectButton[5];
   TextButton[] T4 = new TextButton[4];
   TextButton[] T5 = new TextButton[2]; //infos
+  TextButton T6;// = new TextButton; //masquer
   boolean locked = false;
   boolean info = false;
   
@@ -82,7 +83,7 @@
       if(i==2) {
         T2[i] = new rectButton(width/2+100, height/2-height/4, 200, 25, myRed);
       } else {
-        T2[i] = new rectButton(((i+1)%2)*100 + int((i+1)/2)*(width/2-(100+160)) - i*40, height/2+height/10, 160 + i*40, 25, myRed);
+        T2[i] = new rectButton(((i+1)%2)*100 + int((i+1)/2)*(width/2-(100+160)) - i*40, height/2+height/20, 160 + i*40, 25, myRed);
       }
       T2[i].setText(ListN2[i]);
     }
@@ -115,7 +116,9 @@
       T5[i] = new TextButton(10+i*width/2, 12, 70, 22, color(255), color(i*153), myOr, "- info -");
     }
     
-    lastInput = "Bonjour! ";
+    T6 = new TextButton(width/2-100-170, height/2+height/10, 170, 25, color(255), myRed, myOr, "Masquer toute information");
+    
+    lastInput = "Ecrit ton message, il s'inscrira ici ";
     T3[0].setText(lastInput);
     
   }
@@ -150,6 +153,7 @@
     {
       T5[i].display();
     }
+    T6.display();
     
   }
   
@@ -220,6 +224,8 @@
       {
         T4[i].update();
       }
+      
+      T6.update();
     
     } 
     else {
@@ -227,6 +233,8 @@
     }
   
     if(mousePressed) {
+      
+      // Actions pour génération des clés
       for(int i=0; i<T1.length; i++) 
       {
         if(T1[i].pressed()) {
@@ -253,13 +261,23 @@
           } 
         }
 
-          for(int j=0; j<T1.length-1; j++) 
-          {
-            if(!(j==i)) T1[j].select = false;
-          }
+        for(int j=0; j<T1.length-1; j++) 
+        {
+          if(!(j==i)) T1[j].select = false;
         }
         
-        
+      }
+      
+      
+      // Masquage des infos
+      if(T6.pressed()) {
+        T6.select = true;
+        for(int i=0; i<T0.length; i++) T0[i].setText("");
+        T2[0].setText("");
+      }
+
+      
+      // Actions pour l'encryptage du message
       for(int i=0; i<T4.length; i++) 
       {
         if(T4[i].pressed()) {
@@ -270,8 +288,13 @@
             if(!(n.equals(A)))
             encrypt_m();
           } else if(i==2) {
-            if(!(n.equals(A)))
-            send_m();
+            if(!(n.equals(A))) {
+              send_m();
+              lastInput = "";
+              T3[0].setText(lastInput);
+              T2[0].setText(ListN2[0] + "");
+              //T3[0].display();
+            }
           } else if(i==3) {
            if(!(n.equals(A)))
             decrypt_m();
@@ -279,12 +302,17 @@
           } 
         }
 
-          for(int j=0; j<T4.length-1; j++) 
-          {
-            if(!(j==i)) T4[j].select = false;
-          }
+        for(int j=0; j<T4.length-1; j++) 
+        {
+          if(!(j==i)) T4[j].select = false;
         }
       }
+      
+      
+      
+      
+      
+    }
 
   }
   
