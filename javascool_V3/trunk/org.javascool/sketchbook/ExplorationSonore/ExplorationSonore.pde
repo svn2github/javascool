@@ -1,6 +1,6 @@
 /**
  *
- * 08.2010 Cécile P-L for Fuscia - ccl.picard@gmail.com
+ * 08.2010 Cécile P-L for Fuscia - ccl.picard@gmail.com \n
  * PERCEPTION SONORE
  * Interface pédagogique sur les notions de contenu sonore et perception
  * Utilisation de Minim pour le son
