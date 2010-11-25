@@ -1,6 +1,9 @@
 
 ifeq ($(USER), vthierry)
 
+bt :
+	uncrustify -q -c ../../../lib/uncrustify.cfg -f Pml.java -o Pml.java.ok
+
 all : 
 	@cd ../tst ; ../lib/run.sh org.javascool.JsMain basiqueproba.jvs 
 #	$(MAKE) j3-2

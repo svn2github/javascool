@@ -33,7 +33,8 @@ import java.awt.event.KeyEvent;
  * @see <a href="HtmlDisplay.java.html">source code</a>
  * @serial exclude
  */
-public class HtmlDisplay extends JPanel implements Widget { /**/public HtmlDisplay() { }
+public class HtmlDisplay extends JPanel implements Widget { 
+  /**/public HtmlDisplay() { }
   private static final long serialVersionUID = 1L;
 
   /** The Html Display pane. */

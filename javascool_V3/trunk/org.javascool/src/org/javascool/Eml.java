@@ -82,7 +82,8 @@ package org.javascool;
  * @see <a href="Eml.java.html">source code</a>
  * @serial exclude
  */
-public class Eml extends Pml { /**/public Eml() { }
+public class Eml extends Pml { 
+  /**/public Eml() { }
   private static final long serialVersionUID = 1L;
 
   /** Resets the logical-structure, parsing the given string. 

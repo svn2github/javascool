@@ -31,7 +31,8 @@ import java.util.Vector;
  * @see <a href="Pml.java.html">source code</a>
  * @serial exclude
  */
-public class Pml { /**/public Pml() { }
+public class Pml { 
+  /**/public Pml() { }
   private static final long serialVersionUID = 1L;
 
   private HashMap<String, Pml> data = new  HashMap<String, Pml>();
@@ -99,7 +100,10 @@ public class Pml { /**/public Pml() { }
   /** Defines a token reader, reading a string word by word, normalizing spaces and quoting string with the '"' char. */
   protected static class TokenReader {
     /** Defines the information of each lexical token. */
-    private static class token { String string; int line; token(String s, int i0, int i1, int l) { string = s.substring(i0, i1); line = l; } }
+    private static class token { 
+      String string; int line; 
+      token(String s, int i0, int i1, int l) { string = s.substring(i0, i1); line = l; } 
+    }
     Vector<token> tokens; int itoken;
     /** Resets the reader. */
     public TokenReader reset(String string) {

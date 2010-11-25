@@ -14,7 +14,8 @@ import java.util.regex.Pattern;
  * @see <a href="Hml.java.html">source code</a>
  * @serial exclude
  */
-public class Hml extends Pml { /**/public Hml() { }
+public class Hml extends Pml {
+  /**/public Hml() { }
   private static final long serialVersionUID = 1L;
 
   /** Resets the logical-structure, parsing the given string. 
