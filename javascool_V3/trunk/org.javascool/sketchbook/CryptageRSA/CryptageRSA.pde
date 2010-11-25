@@ -7,8 +7,6 @@
  *
  */                                                                                                                                                                                                                                                                                                                                                   // /////////////////////////////////////////////////////////////////////////////////
 
-// import controlP5.*;
-// ControlP5 controlP5;
 
 import java.awt.*;
 import java.applet.*;
