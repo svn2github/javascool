@@ -17,12 +17,13 @@ import java.util.regex.*;
 
 public class UnGrapheDesChemins extends PApplet {
 
-/**
+/*////////////////////////////////////////////////////////////////////////////
+ *
  * 09.2010 C\u00e9cile P-L for Fuscia, ccl.picard@gmail.com
- * GRAPHES
+ * GRAPHES Part 2
  * Interface p\u00e9dagogique sur la manipulation des concepts li\u00e9s aux graphes
  *
- */
+ **/
 PFont Verdana;
 boolean mouseDown = false, info = false, pathSelect = false;
 String[] listN = { "Ahmed", "Barbara", "Charlotte", "Diego", "Elliot", "Ida", "Jelena", "Pontus", "R\u00e9da", "Samiha" }; // {"Nice", "Marseille", "Avignon", "Toulouse", "Bordeaux", "Dijon", "Fr\u00e9jus"};//, "Strasbourg", "Caen", "Grenoble", "Lille", "Rennes"};

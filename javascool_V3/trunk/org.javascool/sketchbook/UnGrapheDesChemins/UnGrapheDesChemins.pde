@@ -1,9 +1,10 @@
-/**
+/*////////////////////////////////////////////////////////////////////////////
+ *
  * 09.2010 Cécile P-L for Fuscia, ccl.picard@gmail.com
- * GRAPHES
+ * GRAPHES Part 2
  * Interface pédagogique sur la manipulation des concepts liés aux graphes
  *
- */
+ **/
 PFont Verdana;
 boolean mouseDown = false, info = false, pathSelect = false;
 String[] listN = { "Ahmed", "Barbara", "Charlotte", "Diego", "Elliot", "Ida", "Jelena", "Pontus", "Réda", "Samiha" }; // {"Nice", "Marseille", "Avignon", "Toulouse", "Bordeaux", "Dijon", "Fréjus"};//, "Strasbourg", "Caen", "Grenoble", "Lille", "Rennes"};
