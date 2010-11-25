@@ -6,9 +6,9 @@
 
 publish : htm
 # export the applet to the www directory
-	@if [ -f */applet ] ; then for d in */applet ; do ls $$d/applet/*.* ; cp $$d/applet/*.* ../www/sketchbook/`echo $$d | sed 's/\/applet//'` ; done ; fi
+	@if [ -f */applet ] ; then for d in */applet ; do ls $$d/applet/*.* ; ecjo 'cp $$d/applet/*.*' ../www/sketchbook/`echo $$d | sed 's/\/applet//'` ; done ; fi
 # sign the exported jar
-	@cd ../www/sketchbook ; for d in * ; do if [ -f $$d/$$d.jar ] ; then $(MAKE) -f ../../sketchbook/makefile $$d/$$d.key ; fi ; done
+	@cd ../www/sketchbook ; for d in * ; do if [ -f $$d/$$d.jar ] ; then $(MAKE) -s -f ../../sketchbook/makefile $$d/$$d.key ; fi ; done
 # copy the documentation files
 	@cd ../www/sketchbook ; for d in * ; do if [ -f $$d/$$d.jar ] ; then rsync --archive --exclude .svn/ ../../sketchbook/$$d . ; fi ; done
 # generates an index
