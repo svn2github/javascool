@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Used to use sun jdk instead of open jdk
-export PATH=/usr/java/jdk1.6.0_21/bin:$PATH
+export PATH=/usr/java/jdk1.6.0_22/bin:$PATH
 
 # Usage of this script
 if [ -z "$1" -o "$1" = "-h" -o "$1" = "--help" ] 

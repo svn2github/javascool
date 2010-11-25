@@ -295,6 +295,11 @@ public class JsMain extends JApplet {
    * </ul>
    */
   public static void main(String[] usage) {
+    proglet.synthesons.FileSoundBit sound = new proglet.synthesons.FileSoundBit();
+    sound.reset("midi:grand_piano");
+    sound.play();
+
+
     System.out.println("---------------------\n" + title + "\n---------------------\nstarting..");
     JsMain main = new JsMain();
     if(usage.length > 0)

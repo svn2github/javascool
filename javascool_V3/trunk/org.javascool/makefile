@@ -3,7 +3,7 @@
 #####################################################################################################################################
 
 # Used to use sun jdk instead of open jdk
-export PATH:=/usr/java/jdk1.6.0_21/bin:$(PATH)
+export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
 
 default : j3-2
 
@@ -40,7 +40,7 @@ jar : htm www/javascool.jar
 
 # Jar parameters, files and meta-data
 
-J6=/usr/java/jdk1.6.0_21
+J6=/usr/java/jdk1.6.0_22
 
 vendor=thierry.vieville@inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
 version=3.0
