@@ -1,6 +1,6 @@
 /*******************************************************************************
- * Hamdi.Ben_Abdallah@inria.fr, Copyright (C) 2009.  All rights reserved.      *
- *******************************************************************************/
+* Hamdi.Ben_Abdallah@inria.fr, Copyright (C) 2009.  All rights reserved.      *
+*******************************************************************************/
 
 package org.javascool;
 
@@ -81,14 +81,29 @@ public class SourceEditor extends JPanel implements Widget, Editor {
   private static final long serialVersionUID = 1L;
 
   // Implements the org.javascool interface
-  public String getText() { return pane.getText(); }
-  public Editor setText(String text) { pane.setText(text); pane.setCaretPosition(0); doColorize(0, 0); modified = false; return this; }
-  public boolean isModified() { return modified; } private boolean modified = false;
+  public String getText() {
+    return pane.getText();
+  }
+  public Editor setText(String text) {
+    pane.setText(text);
+    pane.setCaretPosition(0);
+    doColorize(0, 0);
+    modified = false;
+    return this;
+  }
+  public boolean isModified() {
+    return modified;
+  }
+  private boolean modified = false;
 
   // Reference to this document with its menu-bar and contained
-  private JMenuBar bar; private JTextPane pane; private JScrollPane scroll; private StyledDocument doc;
+  private JMenuBar bar;
+  private JTextPane pane;
+  private JScrollPane scroll;
+  private StyledDocument doc;
   // Line counting management
-  private JLabel line; private int iline = 0; 
+  private JLabel line;
+  private int iline = 0;
 
   /** Resets the editor in non-editable mode.
    * @param editable True to edit the text. False to view it.
@@ -111,45 +126,51 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     {
       bar.add(line = new JLabel("ligne :   0 | "));
       pane.addCaretListener(new CaretListener() {
-	  public void caretUpdate(CaretEvent e) {
-	    try { 
-	      int l = pane.getDocument().getRootElements()[0].getElementIndex(pane.getCaretPosition()) + 1;
-	      if (l != iline) {
-		line.setText("ligne : " + (l < 10 ? "  " : l < 100 ? " " : "") + l + " | ");
-		iline = l;
-	      }
-	    } catch(Exception err) {
-	      line.setText(err.getMessage());
-	    }
-	  }});
+                              public void caretUpdate(CaretEvent e) {
+                                try {
+                                  int l = pane.getDocument().getRootElements()[0].getElementIndex(pane.getCaretPosition()) + 1;
+                                  if(l != iline) {
+                                    line.setText("ligne : " + (l < 10 ? "  " : l < 100 ? " " : "") + l + " | ");
+                                    iline = l;
+                                  }
+                                } catch(Exception err) {
+                                  line.setText(err.getMessage());
+                                }
+                              }
+                            }
+                            );
     }
-    // Defines the Edit menu 
+    // Defines the Edit menu
     {
       JMenu menu = new JMenu();
       menu.setText("Edition");
       bar.add(menu);
-      if (editable) {
-	TextUndoManager undo = new TextUndoManager(pane);
-	menu.add(undo.getUndoItem());
-	menu.add(undo.getRedoItem());
-	menu.addSeparator();
+      if(editable) {
+        TextUndoManager undo = new TextUndoManager(pane);
+        menu.add(undo.getUndoItem());
+        menu.add(undo.getRedoItem());
+        menu.addSeparator();
       }
       JMenuItem item;
-      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.copyAction))); item.setText("Copier");
-      if (editable) {
-	menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.cutAction))); item.setText("Couper");
-	menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.pasteAction))); item.setText("Coller");
-	menu.addSeparator();
+      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.copyAction)));
+      item.setText("Copier");
+      if(editable) {
+        menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.cutAction)));
+        item.setText("Couper");
+        menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.pasteAction)));
+        item.setText("Coller");
+        menu.addSeparator();
       }
-      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.selectAllAction))); item.setText("Tout sélectionner");
-      menu.addSeparator();     
+      menu.add(item = new JMenuItem(getAction(pane, DefaultEditorKit.selectAllAction)));
+      item.setText("Tout sélectionner");
+      menu.addSeparator();
       // Adds a print interface
       AbstractAction print = new AbstractAction("Imprimer") {
-	  private static final long serialVersionUID = 1L;
-	  public void actionPerformed(ActionEvent evt) { 
-	    doPrint();
-	  }
-	};
+        private static final long serialVersionUID = 1L;
+        public void actionPerformed(ActionEvent evt) {
+          doPrint();
+        }
+      };
       menu.add(new JMenuItem(print));
     }
     // Defines the view menu
@@ -157,29 +178,37 @@ public class SourceEditor extends JPanel implements Widget, Editor {
       JMenu menu = new JMenu();
       menu.setText("Reformate/Zoom");
       bar.add(menu);
-      if (editable) {
-	menu.add(new JMenuItem(new AbstractAction("Reformate le code") {
-	    private static final long serialVersionUID = 1L;
-	    public void actionPerformed(ActionEvent evt) { 
-	      doReformat();
-	    }}));
-	menu.addSeparator();
+      if(editable) {
+        menu.add(new JMenuItem(new AbstractAction("Reformate le code") {
+                                 private static final long serialVersionUID = 1L;
+                                 public void actionPerformed(ActionEvent evt) {
+                                   doReformat();
+                                 }
+                               }
+                               ));
+        menu.addSeparator();
       }
       menu.add(new JMenuItem(new AbstractAction("Zoom -") {
-	  private static final long serialVersionUID = 1L;
-	  public void actionPerformed(ActionEvent evt) { 
-	    pane.setFont(new Font("Dialog", Font.PLAIN, 12));
-	  }}));
+                               private static final long serialVersionUID = 1L;
+                               public void actionPerformed(ActionEvent evt) {
+                                 pane.setFont(new Font("Dialog", Font.PLAIN, 12));
+                               }
+                             }
+                             ));
       menu.add(new JMenuItem(new AbstractAction("Zoom 0") {
-	  private static final long serialVersionUID = 1L;
-	  public void actionPerformed(ActionEvent evt) { 
-	    pane.setFont(new Font("Dialog", Font.PLAIN, 16));
-	  }}));
+                               private static final long serialVersionUID = 1L;
+                               public void actionPerformed(ActionEvent evt) {
+                                 pane.setFont(new Font("Dialog", Font.PLAIN, 16));
+                               }
+                             }
+                             ));
       menu.add(new JMenuItem(new AbstractAction("Zoom +") {
-	  private static final long serialVersionUID = 1L;
-	  public void actionPerformed(ActionEvent evt) { 
-	    pane.setFont(new Font("Dialog", Font.PLAIN, 22));
-	  }}));
+                               private static final long serialVersionUID = 1L;
+                               public void actionPerformed(ActionEvent evt) {
+                                 pane.setFont(new Font("Dialog", Font.PLAIN, 22));
+                               }
+                             }
+                             ));
     }
     revalidate();
     return this;
@@ -192,53 +221,63 @@ public class SourceEditor extends JPanel implements Widget, Editor {
   /** Defines the text reformat mechanism.
    * To be overloaded to define the proper reformat mechanism
    */
-  public void doReformat() { }
+  public void doReformat() {}
 
   /** Resets the predefined insertion in the insertion menu. */
   public void resetInsertion() {
-    if (imenu != null) { bar.remove(imenu); imenu = null; }
+    if(imenu != null) {
+      bar.remove(imenu);
+      imenu = null;
+    }
   }
-
-  /** Adds an predefined insertion in the insertion menu. 
+  /** Adds an predefined insertion in the insertion menu.
    * @param label The insertion label.
    * @param text The insertion text.
    * @param offset The carret offset in the inserted text.
    */
   public void addInsertion(String label, String text, int offset) {
     // Adds the menu if not yet done
-    if (imenu == null) { 
+    if(imenu == null) {
       imenu = new JMenu();
       imenu.setText("Insertion");
-      if (bar.getComponentCount() == 4)
-	bar.remove(2); 
-      bar.add(imenu, 2);  
+      if(bar.getComponentCount() == 4)
+        bar.remove(2);
+      bar.add(imenu, 2);
     }
     imenu.add(new JMenuItem(new InsertAction(label, text, offset)));
     bar.validate();
   }
-
   /** Adds a separator in the insertion menu.  */
   public void addInsertionSeparator() {
-    if (imenu != null) imenu.addSeparator();
+    if(imenu != null)
+      imenu.addSeparator();
   }
-
   private JMenu imenu = null;
 
   // Defines a  text insertion
   private class InsertAction extends AbstractAction {
     private static final long serialVersionUID = 1L;
+
     /** Constructs an insert acton for the given word.
      * @param name   The name of the insertion.
      * @param string The string to insert.
      * @param offset The offset of the caret within the string.
      */
-    public InsertAction(String name, String string, int offset) { super(name); this.string = string; this.offset = offset; } private String string; private int offset;
-    public void actionPerformed(ActionEvent evt) { 
+    public InsertAction(String name, String string, int offset) {
+      super(name);
+      this.string = string;
+      this.offset = offset;
+    }
+    private String string;
+    private int offset;
+    public void actionPerformed(ActionEvent evt) {
       try {
-	int offset = pane.getCaretPosition();
-	pane.getDocument().insertString(offset, string, null);
-	pane.setCaretPosition(offset + this.offset);
-      } catch(Exception e) { System.err.println(e); }
+        int offset = pane.getCaretPosition();
+        pane.getDocument().insertString(offset, string, null);
+        pane.setCaretPosition(offset + this.offset);
+      } catch(Exception e) {
+        System.err.println(e);
+      }
     }
   }
 
@@ -248,136 +287,167 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     /** Constructs a text undo/redo manager for the given pane. */
     public TextUndoManager(JTextComponent pane) {
       pane.getDocument().
-	addUndoableEditListener(new UndoableEditListener() {
-	    private static final long serialVersionUID = 1L;
-	    public void undoableEditHappened(UndoableEditEvent e) {
-	      addEdit(e.getEdit());
-	      undoUpdate();
-	    }
-	  });
+      addUndoableEditListener(new UndoableEditListener() {
+                                private static final long serialVersionUID = 1L;
+                                public void undoableEditHappened(UndoableEditEvent e) {
+                                  addEdit(e.getEdit());
+                                  undoUpdate();
+                                }
+                              }
+                              );
       undoUpdate();
       addBinding(pane, KeyEvent.VK_Z, undo_action);
       addBinding(pane, KeyEvent.VK_Y, redo_action);
     }
     private Action undo_action = new AbstractAction("Annuler") {
-	private static final long serialVersionUID = 1L;
-	public void actionPerformed(ActionEvent evt) { 
-	  try { if (canUndo()) undo(); undoUpdate(); } catch (Exception e) { }
-	}
-      };
+      private static final long serialVersionUID = 1L;
+      public void actionPerformed(ActionEvent evt) {
+        try { if(canUndo())
+                undo();
+              undoUpdate();
+        } catch(Exception e) {}
+      }
+    };
     private Action redo_action = new AbstractAction("Restaurer") {
-	private static final long serialVersionUID = 1L;
-	public void actionPerformed(ActionEvent evt) { 
-	  try { if (canRedo()) redo(); undoUpdate(); } catch (Exception e) { }
-	}
-      };
+      private static final long serialVersionUID = 1L;
+      public void actionPerformed(ActionEvent evt) {
+        try { if(canRedo())
+                redo();
+              undoUpdate();
+        } catch(Exception e) {}
+      }
+    };
     /** Returns the undo button. */
-    public JMenuItem getUndoItem() { return undo_item; }
+    public JMenuItem getUndoItem() {
+      return undo_item;
+    }
     private JMenuItem undo_item = new JMenuItem(undo_action);
     /** Returns the redo button. */
-    public JMenuItem getRedoItem() { return redo_item; }
+    public JMenuItem getRedoItem() {
+      return redo_item;
+    }
     private JMenuItem redo_item = new JMenuItem(redo_action);
     private void undoUpdate() {
-      if (undo_item != null) undo_item.setEnabled(canUndo());
-      if (redo_item != null) redo_item.setEnabled(canRedo());
+      if(undo_item != null)
+        undo_item.setEnabled(canUndo());
+      if(redo_item != null)
+        redo_item.setEnabled(canRedo());
     }
   }
 
   // Defines the text print in Jdk5 context
   // - http://java.sun.com/docs/books/tutorial/2d/printing/index.html
   private void doPrint() {
-    new Thread(new Runnable() { public void run() {
-      System.out.println("Lancement de l'impression . . ");
-      try {
-	Printable printable = new Printable() {
-	    public int print(Graphics g, PageFormat f, int page) {
-	      if (page > 0) {
-		return NO_SUCH_PAGE;
-	      } else {
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.translate(f.getImageableX(), f.getImageableY());
-		pane.print(g2d);
-		return PAGE_EXISTS;
-	      }
-	    }
-	  };
-	PrinterJob job = PrinterJob.getPrinterJob();
-	job.setPrintable(printable);
-	if (job.printDialog())
-	  job.print();
-      } catch(Exception e) {
-	System.out.println("Echec de l'impression ("+e+") !");
-      }
-    }}).start();
+    new Thread(new Runnable() {
+                 public void run() {
+                   System.out.println("Lancement de l'impression . . ");
+                   try {
+                     Printable printable = new Printable() {
+                       public int print(Graphics g, PageFormat f, int page) {
+                         if(page > 0)
+                           return NO_SUCH_PAGE;
+                         else {
+                           Graphics2D g2d = (Graphics2D) g;
+                           g2d.translate(f.getImageableX(), f.getImageableY());
+                           pane.print(g2d);
+                           return PAGE_EXISTS;
+                         }
+                       }
+                     };
+                     PrinterJob job = PrinterJob.getPrinterJob();
+                     job.setPrintable(printable);
+                     if(job.printDialog())
+                       job.print();
+                   } catch(Exception e) {
+                     System.out.println("Echec de l'impression (" + e + ") !");
+                   }
+                 }
+               }
+               ).start();
   }
-  
   // Adds a key binding
   private static void addBinding(JTextComponent pane, int key, Action action) {
     pane.getKeymap().addActionForKeyStroke(KeyStroke.getKeyStroke(key, KeyEvent.CTRL_MASK), action);
   }
   // Returns an action from its name
   private static Action getAction(JTextComponent pane, String action) {
-    Action[] a = pane.getActions(); for (int i = 0; i < a.length; i++) if (a[i].getValue(Action.NAME).equals(action))  return a[i]; return null;
+    Action[] a = pane.getActions();
+    for(int i = 0; i < a.length; i++)
+      if(a[i].getValue(Action.NAME).equals(action))
+        return a[i];
+    return null;
   }
-
   /** Predefined coolorization style. */
   public final Style NormalStyle, CodeStyle, OperatorStyle, NameStyle, StringStyle, CommentStyle;
   // Defines the colorization styles
   {
     pane.setCaretColor(Color.BLUE);
-    
+
     // Style Normal: it must ``cancel´´ all other style effects
     NormalStyle = doc.addStyle("Normal", null);
     StyleConstants.setForeground(NormalStyle, Color.BLACK);
     StyleConstants.setBold(NormalStyle, false);
-    
+
     // Style Code: for reserved words
     CodeStyle = doc.addStyle("Code", null);
     StyleConstants.setForeground(CodeStyle, new Color(0xaa4444)); // Orange
     StyleConstants.setBold(CodeStyle, true);
-    
+
     // Style String: for quoted strings
     StringStyle = doc.addStyle("String", null);
     StyleConstants.setForeground(StringStyle, new Color(0x008800)); // Green
     StyleConstants.setBold(StringStyle, false);
-    
+
     // Style Operator: for operators chars
     OperatorStyle = doc.addStyle("Operateur", null);
     StyleConstants.setForeground(OperatorStyle, Color.BLACK);
     StyleConstants.setBold(OperatorStyle, true);
-    
+
     // Style Name: for identificator of declared variables (used in BML)
     NameStyle = doc.addStyle("Name", null);
     StyleConstants.setForeground(NameStyle, Color.GRAY);
     StyleConstants.setBold(NameStyle, true);
-    
+
     // Style Comment: for comments added to the text
     CommentStyle = doc.addStyle("Comment", null);
     StyleConstants.setForeground(CommentStyle, new Color(0x0000ee)); // Blue
     StyleConstants.setBold(CommentStyle, true);
-  
+
     // Adds the listener which is going to colorize after a key is entered
     pane.addKeyListener(new KeyListener() {
-	public void keyPressed(KeyEvent e) {}
-	public void keyTyped(KeyEvent e) {}
-	// Here colorization is required in a window {-50 .. 50} around the caret position
-	public void keyReleased(KeyEvent e) { modified = true; doColorize(pane.getCaretPosition() - 50, 100); }
-      }); 
+                          public void keyPressed(KeyEvent e) {}
+                          public void keyTyped(KeyEvent e) {}
+                          // Here colorization is required in a window {-50 .. 50} around the caret position
+                          public void keyReleased(KeyEvent e) {
+                            modified = true;
+                            doColorize(pane.getCaretPosition() - 50, 100);
+                          }
+                        }
+                        );
     // Adds the listener which is going to colorize after the document is modified
     doc.addDocumentListener(new DocumentListener() {
-	public void changedUpdate(DocumentEvent e) { modified = true; }
-	// Here colorization must be postponed and globalized to avoid write lock and offset/length incoherence
-	public void insertUpdate(DocumentEvent e) { modified = true; recolorize = true ; }
-	public void removeUpdate(DocumentEvent e) { modified = true; recolorize = true ; }
-      }); 
+                              public void changedUpdate(DocumentEvent e) {
+                                modified = true;
+                              }
+                              // Here colorization must be postponed and globalized to avoid write lock and offset/length incoherence
+                              public void insertUpdate(DocumentEvent e) {
+                                modified = true;
+                                recolorize = true;
+                              }
+                              public void removeUpdate(DocumentEvent e) {
+                                modified = true;
+                                recolorize = true;
+                              }
+                            }
+                            );
   }
 
   /** Colorizes a text's segment
    * @param text The text segment to [re]colorize.
    */
-  public void doColorize(Segment text) {  }
+  public void doColorize(Segment text) {}
 
-  /** Sets the content element attributes in the document. 
+  /** Sets the content element attributes in the document.
    * @param offset The start index of the change.
    * @param count The length of the change.
    * @param style The predefined style: <tt>SourceEditor.(NormalStyle|CodeStyle|OperatorStyle|NameStyle|StringStyle|CommentStyle)</tt>
@@ -385,19 +455,29 @@ public class SourceEditor extends JPanel implements Widget, Editor {
   public void setCharacterAttributes(int offset, int count, Style style) {
     doc.setCharacterAttributes(offset, count, style, true);
   }
-
   // Colorizes a part of the text
   private void doColorize(int offset, int length) {
     // Manages a global recolorization
-    if (recolorize) { offset = length = 0; recolorize = false; }
+    if(recolorize) {
+      offset = length = 0;
+      recolorize = false;
+    }
     // Gets the text to colorize and adjust the bounds to the closest beginning/end of lines
-    Segment text = new Segment(); try { doc.getText(0, doc.getLength(), text); } catch(Exception e) { }
-    if (offset < 0) offset = 0; 
-    while(offset > 0 && text.array[offset] != '\n') offset--;
-    if (length == 0) length = text.count; 
-    if (offset + length > text.count) length = text.count - offset; 
-    while(offset + length < text.count && text.array[offset + length - 1] != '\n') length++;
-    text.offset = offset; text.count = length;
+    Segment text = new Segment();
+    try { doc.getText(0, doc.getLength(), text);
+    } catch(Exception e) {}
+    if(offset < 0)
+      offset = 0;
+    while(offset > 0 && text.array[offset] != '\n')
+      offset--;
+    if(length == 0)
+      length = text.count;
+    if(offset + length > text.count)
+      length = text.count - offset;
+    while(offset + length < text.count && text.array[offset + length - 1] != '\n')
+      length++;
+    text.offset = offset;
+    text.count = length;
     doColorize(text);
   }
   // Global recolorization flag

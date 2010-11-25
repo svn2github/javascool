@@ -1,6 +1,6 @@
 /*******************************************************************************
- * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
- *******************************************************************************/
+* Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
+*******************************************************************************/
 
 package proglet.convanalogique;
 
@@ -21,7 +21,8 @@ import org.javascool.NumberInput;
  * @see <a href="ConvAnalogique.java.html">code source</a>
  * @serial exclude
  */
-public class ConvAnalogique implements org.javascool.Proglet { private ConvAnalogique() { }
+public class ConvAnalogique implements org.javascool.Proglet {
+  private ConvAnalogique() {}
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -29,7 +30,8 @@ public class ConvAnalogique implements org.javascool.Proglet { private ConvAnalo
     private static final long serialVersionUID = 1L;
 
     public Panel() {
-      super(new BorderLayout()); setPreferredSize(new Dimension(560, 450));
+      super(new BorderLayout());
+      setPreferredSize(new Dimension(560, 450));
       // Adds the figure
       JLayeredPane pane = new JLayeredPane();
       pane.setPreferredSize(new Dimension(540, 300));
@@ -52,44 +54,45 @@ public class ConvAnalogique implements org.javascool.Proglet { private ConvAnalo
       border.setPreferredSize(new Dimension(560, 190));
       add(border, BorderLayout.SOUTH);
     }
-    public NumberInput value; public JLabel out, cmp;
+    public NumberInput value;
+    public JLabel out, cmp;
   }
 
   //
   // This defines the tests on the panel
   //
 
-  /**/public static void test() {
+  /**/ public static void test() {
     /* Méthode brute
-    { 
-      int v = 1023; while(v >= 0) {
-	convaOut(v);
-	if (convaCompare() == 1) {
-	  Macros.echo("valeur = "+v);
-	  break;
-	}
-	v = v - 1;
-      }
-    }
-    */
+     *  {
+     *  int v = 1023; while(v >= 0) {
+     *  convaOut(v);
+     *  if (convaCompare() == 1) {
+     *  Macros.echo("valeur = "+v);
+     *  break;
+     *  }
+     *  v = v - 1;
+     *  }
+     *  }
+     */
     // Méthode dichotomique
     {
       int min = 0, max = 1024;
       while(min < max - 1) {
-	//Macros.echo("La valeur est comprise entre " + (min) + " et " + (max - 1));
-	int milieu = (min + max) / 2;
-	convaOut(milieu); if (convaCompare() == 1) {
-	  min = milieu;
-	} else {
-	  max = milieu;
-	}
-	Macros.sleep(1000);
+        // Macros.echo("La valeur est comprise entre " + (min) + " et " + (max - 1));
+        int milieu = (min + max) / 2;
+        convaOut(milieu);
+        if(convaCompare() == 1)
+          min = milieu;
+        else
+          max = milieu;
+        Macros.sleep(1000);
       }
-      convaOut(min); convaCompare();
-      Macros.echo("La valeur vaut "+min);
+      convaOut(min);
+      convaCompare();
+      Macros.echo("La valeur vaut " + min);
     }
   }
-
   //
   // This defines the javascool interface
   //
@@ -97,13 +100,20 @@ public class ConvAnalogique implements org.javascool.Proglet { private ConvAnalo
   /** Applique une tension en sortie.
    * @param value La tension en milli-volts entre 0 et 1023.
    */
-  static public void convaOut(int value) { ConvAnalogique.value = value;  panel.out.setText(value+" mV"); } private static int value = 0;
+  static public void convaOut(int value) {
+    ConvAnalogique.value = value;
+    panel.out.setText(value + " mV");
+  }
+  private static int value = 0;
 
   /** Compare la tension appliquée en sortie à la tension inconnue.
    * @return -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
    */
-  public static int convaCompare() { int r = panel.value.getValue() < value ? -1 : 1; panel.cmp.setText(""+r); return r; }
-
+  public static int convaCompare() {
+    int r = panel.value.getValue() < value ? -1 : 1;
+    panel.cmp.setText("" + r);
+    return r;
+  }
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
 }

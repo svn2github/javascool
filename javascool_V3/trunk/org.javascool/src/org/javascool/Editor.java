@@ -1,13 +1,12 @@
 /*******************************************************************************
- * Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
- *******************************************************************************/
+* Thierry.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
+*******************************************************************************/
 
 package org.javascool;
 
 /** Indicates that this class is a graphic editor that get/set text. */
 public interface Editor {
-
-  /** Sets the editing text. 
+  /** Sets the editing text.
    * @param text The text to edit.
    * @return This, allowing to use the <tt>new Editor().setText(..)</tt> construct.
    */

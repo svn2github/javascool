@@ -1,6 +1,6 @@
 /*******************************************************************************
- * Thievery.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
- *******************************************************************************/
+* Thievery.Vieville@sophia.inria.fr, Copyright (C) 2009.  All rights reserved. *
+*******************************************************************************/
 
 package proglet.javaprog;
 
@@ -18,7 +18,8 @@ import java.awt.Dimension;
  * @see <a href="http://java.sun.com/javase/6/docs/api/javax/swing/package-summary.html">Java Swing API</a>
  * @serial exclude
  */
-public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { }
+public class JavaPanel implements org.javascool.Proglet {
+  private JavaPanel() {}
   private static final long serialVersionUID = 1L;
 
   // This defines the panel to display
@@ -27,7 +28,8 @@ public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { 
 
     public Panel() {
       setLayout(new BorderLayout());
-      pane = new JLayeredPane(); add(pane, BorderLayout.CENTER);
+      pane = new JLayeredPane();
+      add(pane, BorderLayout.CENTER);
     }
     JLayeredPane pane;
   }
@@ -36,19 +38,17 @@ public class JavaPanel implements org.javascool.Proglet { private JavaPanel() { 
   // This defines the tests on the panel
   //
 
-  /**/public static void test() {
+  /**/ public static void test() {
     new FleurEnRythme().run();
   }
-
   //
-  // This defines the javascool interface 
+  // This defines the javascool interface
   //
 
   /** Renvoie le panneau d'affichage de la proglet. */
   public static JLayeredPane getSwingPane() {
     return panel.pane;
   }
-
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
 }

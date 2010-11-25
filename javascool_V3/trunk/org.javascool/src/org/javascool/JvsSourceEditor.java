@@ -1,6 +1,6 @@
 /*******************************************************************************
- * Hamdi.Ben_Abdallah@inria.fr, Copyright (C) 2009.  All rights reserved.      *
- *******************************************************************************/
+* Hamdi.Ben_Abdallah@inria.fr, Copyright (C) 2009.  All rights reserved.      *
+*******************************************************************************/
 
 package org.javascool;
 
@@ -21,70 +21,68 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
    */
   public void setProglet(String proglet) {
     resetInsertion();
-    addInsertion("void main",   "void main() {\n  \n}\n", 16);
-    addInsertion("if",          "  if() {\n  \n  } else {\n  \n  }", 5);
-    addInsertion("while",       "  while() {\n  \n  }", 8);
-    if (proglet.equals("ingredients")) {
+    addInsertion("void main", "void main() {\n  \n}\n", 16);
+    addInsertion("if", "  if() {\n  \n  } else {\n  \n  }", 5);
+    addInsertion("while", "  while() {\n  \n  }", 8);
+    if(proglet.equals("ingredients")) {
       addInsertionSeparator();
-      addInsertion("println",              "  println(\"\");", 11);
-      addInsertion("readString",           "  String   = readString();", 10);
-      addInsertion("readInteger",          "  int   = readInteger();", 7);
-      addInsertion("readDouble",           "  double   = readDouble();", 10);
+      addInsertion("println", "  println(\"\");", 11);
+      addInsertion("readString", "  String   = readString();", 10);
+      addInsertion("readInteger", "  int   = readInteger();", 7);
+      addInsertion("readDouble", "  double   = readDouble();", 10);
     }
-    if (proglet.equals("dichotomie")) {
+    if(proglet.equals("dichotomie")) {
       addInsertionSeparator();
-      addInsertion("dichoLength",          " dichoLength()", 0);
-      addInsertion("dichoCompare",         " dichoCompare( , )", 0);
+      addInsertion("dichoLength", " dichoLength()", 0);
+      addInsertion("dichoCompare", " dichoCompare( , )", 0);
     }
-    if (proglet.equals("pixelsetcie")) {
+    if(proglet.equals("pixelsetcie")) {
       addInsertionSeparator();
-      addInsertion("smileyReset",           "  smileyReset( , );", 14);
-      addInsertion("smileyLoad",            "  smileyLoad( , );", 13);
-      addInsertion("smileySet",             "  smileySet( , , );", 12);
-      addInsertion("smileyGet",             " smileyGet( , )", 11);
+      addInsertion("smileyReset", "  smileyReset( , );", 14);
+      addInsertion("smileyLoad", "  smileyLoad( , );", 13);
+      addInsertion("smileySet", "  smileySet( , , );", 12);
+      addInsertion("smileyGet", " smileyGet( , )", 11);
     }
-    if (proglet.equals("exosdemaths")) {
+    if(proglet.equals("exosdemaths")) {
       addInsertionSeparator();
-      addInsertion("scopeReset",           "  scopeReset();", 0);
-      addInsertion("scopeSet",             "  scopeSet( , , );", 12);
-      addInsertion("scopeAdd",             "  scopeAdd( , , , );", 12);
-      addInsertion("scopeAddLine",         "  scopeAddLine( , , , );", 16);
-      addInsertion("scopeAddCircle",       "  scopeAddCircle( , , );", 18);
-      addInsertion("scopeAddRectangle",    "  scopeAddRectangle( , , , );", 21);
-      addInsertion("scopeX",               "  scopeX();", 0);
-      addInsertion("scopeY",               "  scopeY();", 0);
-     }
-    if (proglet.equals("convanalogique")) {
-      addInsertionSeparator();
-      addInsertion("convaOut",             " convaOut()", 0);
-      addInsertion("convaCompare",         " convaCompare( )", 0);
+      addInsertion("scopeReset", "  scopeReset();", 0);
+      addInsertion("scopeSet", "  scopeSet( , , );", 12);
+      addInsertion("scopeAdd", "  scopeAdd( , , , );", 12);
+      addInsertion("scopeAddLine", "  scopeAddLine( , , , );", 16);
+      addInsertion("scopeAddCircle", "  scopeAddCircle( , , );", 18);
+      addInsertion("scopeAddRectangle", "  scopeAddRectangle( , , , );", 21);
+      addInsertion("scopeX", "  scopeX();", 0);
+      addInsertion("scopeY", "  scopeY();", 0);
     }
-    if (proglet.equals("syntheson")) {
+    if(proglet.equals("convanalogique")) {
       addInsertionSeparator();
-      addInsertion("synthePlay",           " synthePlay();", 0);
-      addInsertion("syntheSet",            " syntheSet(\" \");", 12);
+      addInsertion("convaOut", " convaOut()", 0);
+      addInsertion("convaCompare", " convaCompare( )", 0);
     }
-    if (proglet.equals("ExplorationSonore")) {
+    if(proglet.equals("syntheson")) {
       addInsertionSeparator();
-      addInsertion("playSignal",           " playSignal(\" \", , );", 13);
-      addInsertion("playRecord",           " playRecord(\" \", );", 14);
-      addInsertion("playStop",             " playStrop();", 0);
+      addInsertion("synthePlay", " synthePlay();", 0);
+      addInsertion("syntheSet", " syntheSet(\" \");", 12);
+    }
+    if(proglet.equals("ExplorationSonore")) {
+      addInsertionSeparator();
+      addInsertion("playSignal", " playSignal(\" \", , );", 13);
+      addInsertion("playRecord", " playRecord(\" \", );", 14);
+      addInsertion("playStop", " playStrop();", 0);
     }
     {
       addInsertionSeparator();
       addInsertion("equal (entre String)", " equal( , );", 6);
-      addInsertion("pow  (x^y)",           "Math.pow( , );", 9);
-      addInsertion("sqrt (racine)",        "Math.sqrt( );", 10);
-      addInsertion("aleat entre 0 et 1",   "  double   = random();", 10);
-      addInsertion("echo",                   "  echo(\" \");", 8);
-      addInsertion("sleep",                  "  sleep();", 8);
+      addInsertion("pow  (x^y)", "Math.pow( , );", 9);
+      addInsertion("sqrt (racine)", "Math.sqrt( );", 10);
+      addInsertion("aleat entre 0 et 1", "  double   = random();", 10);
+      addInsertion("echo", "  echo(\" \");", 8);
+      addInsertion("sleep", "  sleep();", 8);
     }
   }
-
   public void doReformat() {
     setText(Jvs2Java.reformat(getText()));
   }
-
   public void doColorize(Segment text) {
     String string = new String(text.array, text.offset, text.count);
     // Resets the colorization
@@ -92,7 +90,7 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
     // Colorizes names : put 1st to make reserved/declared words overwrite it
     doColorizeNames(text);
     // Colorizes all reserved and declared words
-    for(String word : Jvs2Java.Reserved) 
+    for(String word : Jvs2Java.Reserved)
       doColorizeWord(word, text, string);
     for(String word : Jvs2Java.Declared)
       doColorizeWord(word, text, string);
@@ -103,89 +101,104 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
     // Colorizes comments : put at last of the last, to cover other colorization
     doColorizeComments(text);
   }
-  
   // Colorizes reserved/declared words
   private void doColorizeWord(String word, Segment text, String string) {
     // Search all words occurences in the text
-    for(int i = 0, j; (j = string.indexOf(word, i)) != -1;) { i = j + word.length();
+    for(int i = 0, j; (j = string.indexOf(word, i)) != -1;) {
+      i = j + word.length();
       // Checks the word bound, avoiding to consider a charsequence within a word
-      if ((j == 0 || (!isWordChar(string.charAt(j-1)))) && (i == string.length() || (!isWordChar(string.charAt(i))))) {
-	setCharacterAttributes(j + text.offset, word.length(), CodeStyle);
-      }
+      if(((j == 0) || (!isWordChar(string.charAt(j - 1)))) && ((i == string.length()) || (!isWordChar(string.charAt(i)))))
+        setCharacterAttributes(j + text.offset, word.length(), CodeStyle);
     }
   }
-  
   // Colorizes operators
   private void doColorizeOperators(Segment text) {
     for(int i = text.offset, n = 0; n < text.count; i++, n++) {
       switch(text.array[i]) {
-      case '+': case '-': case '*': case '/': case '%': 
-      case '|': case '&': case '!': 
-      case '=': case '(': case ')': case'{': case'}': case '[': case ']': 
-	setCharacterAttributes(i, 1, OperatorStyle);
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+      case '%':
+      case '|':
+      case '&':
+      case '!':
+      case '=':
+      case '(':
+      case ')':
+      case '{':
+      case '}':
+      case '[':
+      case ']':
+        setCharacterAttributes(i, 1, OperatorStyle);
       }
     }
   }
-  
   // Colorizes the quoted strings of the "([^"]|\")*"
   private void doColorizeStrings(Segment text) {
-    boolean quoted = false; int j = 0;
-    for(int i = text.offset, n = 0; n < text.count; i++, n++) {
-      if ((text.array[i] == '"' && (i == 0 || text.array[i - 1] != '\\')) || (quoted && text.array[i] == '\n')) {
-	if (quoted) {
-	  setCharacterAttributes(j, i - j + 1, StringStyle);
-	  quoted = false;
-	} else {
-	  j = i;
-	  quoted = true;
-	}
-      } 
-    }
+    boolean quoted = false;
+    int j = 0;
+    for(int i = text.offset, n = 0; n < text.count; i++, n++)
+      if(((text.array[i] == '"') && ((i == 0) || (text.array[i - 1] != '\\'))) || (quoted && (text.array[i] == '\n'))) {
+        if(quoted) {
+          setCharacterAttributes(j, i - j + 1, StringStyle);
+          quoted = false;
+        } else {
+          j = i;
+          quoted = true;
+        }
+      }
   }
-  
   // Colorizes comments of the form (//.*\n|/\*.*\*/)
   private void doColorizeComments(Segment text) {
-    int comment = 0; int j = 0;
-    for(int i = text.offset, n = 0; n < text.count; i++, n++)  {
-      if (comment == 0) {
-	if (i > 0 && text.array[i - 1] == '/' && text.array[i] == '/') {
-	  j = i - 1;
-	  comment = 1;
-	} else if (i > 0 && text.array[i - 1] == '/' && text.array[i] == '*') {
-	  j = i - 1;
-	  comment = -1;
-	}
-      } else if ((comment == 1 && text.array[i] == '\n') ||
-		 (comment == -1 && i > 0 && text.array[i - 1] == '*' && text.array[i] == '/')) {
-	comment = 0;
-	setCharacterAttributes(j, i - j + 1, CommentStyle);
+    int comment = 0;
+    int j = 0;
+    for(int i = text.offset, n = 0; n < text.count; i++, n++) {
+      if(comment == 0) {
+        if((i > 0) && (text.array[i - 1] == '/') && (text.array[i] == '/')) {
+          j = i - 1;
+          comment = 1;
+        } else if((i > 0) && (text.array[i - 1] == '/') && (text.array[i] == '*')) {
+          j = i - 1;
+          comment = -1;
+        }
+      } else if(((comment == 1) && (text.array[i] == '\n')) ||
+                ((comment == -1) && (i > 0) && (text.array[i - 1] == '*') && (text.array[i] == '/')))
+      {
+        comment = 0;
+        setCharacterAttributes(j, i - j + 1, CommentStyle);
       }
     }
   }
-  
   // Colorizes the variables names before [={] operators
   private void doColorizeNames(Segment text) {
-    for(int i = text.offset, n = 0; n < text.count; i++, n++) {  
-      switch(text.array[i]) { 
-      case '=': case '{': 
-	// Looks for the previous word and colorizes it if any
-	int i1 = i - 1; while(i1 > 0 && Character.isWhitespace(text.array[i1])) i1--;
-	if (i1 > 0 && isWordChar(text.array[i1])) {
-	  int i0 = i1 - 1; while(i0 > 0 && isWordChar(text.array[i0])) i0--;
-	  setCharacterAttributes(i0, i1 - i0 + 1, NameStyle);
-	}
+    for(int i = text.offset, n = 0; n < text.count; i++, n++) {
+      switch(text.array[i]) {
+      case '=':
+      case '{':
+        // Looks for the previous word and colorizes it if any
+        int i1 = i - 1;
+        while(i1 > 0 && Character.isWhitespace(text.array[i1]))
+          i1--;
+        if((i1 > 0) && isWordChar(text.array[i1])) {
+          int i0 = i1 - 1;
+          while(i0 > 0 && isWordChar(text.array[i0]))
+            i0--;
+          setCharacterAttributes(i0, i1 - i0 + 1, NameStyle);
+        }
       }
     }
   }
-
   // Tests if the char belongs to a word
-  private static boolean isWordChar(char c) { return  Character.isLetterOrDigit(c) || c == '_'; }
-
+  private static boolean isWordChar(char c) {
+    return Character.isLetterOrDigit(c) || c == '_';
+  }
   /** Shows a Jvs source file.
    * @param usage <tt>java org.javascool.JvsSourceEditor location</tt>
    */
   public static void main(String[] usage) {
-    if (usage.length > 0) Utils.show((SourceEditor) new JvsSourceEditor().reset(false).setText(Utils.loadString(usage[0])), "Jvs Source File Shower", 1024, 800);
+    if(usage.length > 0)
+      Utils.show((SourceEditor) new JvsSourceEditor().reset(false).setText(Utils.loadString(usage[0])), "Jvs Source File Shower", 1024, 800);
   }
 }
 
