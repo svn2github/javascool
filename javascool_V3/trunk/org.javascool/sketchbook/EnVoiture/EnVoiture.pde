@@ -44,7 +44,7 @@ color[] colors = new color[listN.length];
 char[] form = { 'B', 'P', 'O', 'C' };
 
 void setup() {
-  size(1200, 700, OPENGL);  // 1024, 576, OPENGL);
+  size(1000, 600, OPENGL);  // 1024, 576, OPENGL);
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();
@@ -56,16 +56,16 @@ void setup() {
   pgl = (PGraphicsOpenGL) g;
   _gl = pgl.gl;
 
-  colors[0] = color(# FF9900);
+  colors[0] = color(#FF9900);
   colors[1] = color(100, 200, 0);
-  colors[2] = color(# FFFF00);
+  colors[2] = color(#FFFF00);
   colors[3] = color(200);
   colors[4] = color(150);
   colors[5] = color(100);
-  colors[6] = color(# 0000FF);
+  colors[6] = color(#0000FF);
   colors[7] = color(0, 0, 100);
-  colors[8] = color(# 00FFFF);
-  colors[9] = color(# FF00FF);
+  colors[8] = color(#00FFFF);
+  colors[9] = color(#FF00FF);
   colors[10] = color(100, 0, 100);
   colors[11] = color(0, 70, 75);
 
