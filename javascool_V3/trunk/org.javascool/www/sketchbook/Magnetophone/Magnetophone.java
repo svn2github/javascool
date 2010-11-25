@@ -53,7 +53,7 @@ public void setup() {
   // the file will be located in the sketch's root folder.
   // recorder = minim.createRecorder(in, "rec" + int(nb) + ".wav", true);
   recorder = minim.createRecorder(in, "rec" + PApplet.parseInt (nb) + ".wav", true);
-  textFont(createFont("SanSerif", 12));
+  textFont(createFont("Arial Bold", 12));
 }
 public void draw() {
   background(100); // 0);
