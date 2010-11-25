@@ -162,6 +162,13 @@ endif
 
 #####################################################################################################################################
 
+# Source file beautifier
+
+bty :
+	for f in `find src -name '*.java' -o -name '*.jvs'` ; do echo uncrustify -q -c lib/uncrustify.cfg --replace $$f ; done
+
+#####################################################################################################################################
+
 # JavaScool doc generation
 
 jdoc :
@@ -373,6 +380,7 @@ done :
 #:: make v3           : Run javascool'v3 from locally compiled clases
 #:: make j3           : Run javascool'v3 from the constructed jar
 #:: make doc          : Show the javadoc local bundle
+#:: make bty          : Beautify all source files (requires the uncrustify) software
 #:: make svn          : Synchronize with the svn repository (update + commit)
 #:: make clean        , Clean all intermediate files
 #:: make usage        ; Show the makefile usage
