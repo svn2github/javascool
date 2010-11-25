@@ -1,6 +1,6 @@
 <div title="Nos «proglets» en processing">
   <p>Une  «proglet» permet de manipuler et d'expérimenter des algorithmes à travers des objets numériques.</p>
-  pour s'initier à la programmation, nous vous offrons plusieurs proglets, sous forme d'exercices animés et interactifs,<l class="note" link="1"/> sont disponibles <l link="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-proglets.htm" text="ici"/>. 
+  Pour s'initier à la programmation, nous vous offrons plusieurs proglets, sous forme d'exercices animés et interactifs,<l class="note" link="1"/> sont disponibles <l link="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-proglets.htm" text="ici"/>. 
   dont certaines sont développées en <l link="http://www.processing.org" text="processing"/>:
 
   <l class="include" link="../src/org/javascool/doc-files/about-pro-proglets.xml"/>
