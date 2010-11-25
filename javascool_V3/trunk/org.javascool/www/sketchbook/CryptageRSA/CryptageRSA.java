@@ -1,7 +1,6 @@
 import processing.core.*; 
 import processing.xml.*; 
 
-import controlP5.*; 
 import java.awt.*; 
 import java.applet.*; 
 import java.awt.event.*; 
@@ -33,8 +32,8 @@ public class CryptageRSA extends PApplet {
   *
   *////////////////////////////////////////////////////////////////////////////////////
   
-  
-  ControlP5 controlP5;
+  //import controlP5.*;
+  //ControlP5 controlP5;
   
   
   
@@ -43,55 +42,106 @@ public class CryptageRSA extends PApplet {
   
   
   // Param\u00e8tres pour la m\u00e9thode RSA 
-  Textfield myTextfield_p, myTextfield_q, myTextfield_n, myTextfield_e, myTextfield_d;
   int pq_size;
   int prime_certainty = 20;
-  BigInteger p, q, n, e, d;
-  
-  // Cl\u00e9s
-  Textfield myTextfield_kpr, myTextfield_kpu, myTextfield_kpuB;
-  
-  // Message
-  Textfield myTextfield_Mess, myTextfield_MessBits, myTextfield_EncMessBits, myTextfield_EncMessBitsA, myTextfield_DecMessBits;
+  BigInteger p, q, n, e, d, A;
   BigInteger EncMessBits;
   
   // Param\u00e8tres de l'interface 
-  ControlWindow controlWindow;
   PFont pfont;
-  ControlFont font;
-  controlP5.Button boxA, boxB;
-  int buttonValue = 1;
-  int buttonValueB = 1;
-  boolean isOpen, isOpenB;
+  int space;
   int myOr = color(255,100,0);
   int myGreen = color(0,100,30);
   int myGreenA = color(0,200,100);
   int myRed = color(255,0,0);
+  int myBlue = color(120);//(120,140,150);  
+  int myBlueA = color(100);//(120,165,175); 
   
+  rectButton[] T0 = new rectButton[4];
+  TextButton[] T1 = new TextButton[4];
+  rectButton[] T2 = new rectButton[3];
+  rectButton[] T3 = new rectButton[5];
+  TextButton[] T4 = new TextButton[4];
+  TextButton[] T5 = new TextButton[2]; //infos
+  boolean locked = false;
+  boolean info = false;
+  
+  String[] ListN1 = { "1. G\u00e9n\u00e8re   P  et  Q", "2. Calcule N", "3. G\u00e9n\u00e8re E", "4. Calcule D"};
+  String[] ListN2 = { "Cl\u00e9 priv\u00e9e = ", "Cl\u00e9 publique = ", "Cl\u00e9 publique = "};
+  String[] ListN3 = { "Traduction  du  message  en  chiffres", "Encryptage du message", "E N V O I   du message encrypt\u00e9", "D\u00e9cryptage du message"};
+  String[] ListN4 = { "Tu es Alice. Nous te proposons d'exp\u00e9rimenter le CODAGE et le DECODAGE de messages.\n" +
+    "Tout d'abord, tu dois g\u00e9n\u00e9rer une 'cl\u00e9 publique' et 'une cl\u00e9 priv\u00e9e'.\n" +
+    "Tu divulgueras ensuite la cl\u00e9 publique \u00e0 Bob, et tu garderas la cl\u00e9 priv\u00e9e pr\u00e9cieusement. \n" +
+    "Bob encryptera son message secret \u00e0 l'aide de la cl\u00e9 publique.\n" +
+    "Seul toi pourras d\u00e9crypter le message au moyen de la cl\u00e9 priv\u00e9e!", 
+    "Tu es Bob. Nous te proposons d'exp\u00e9rimenter le CODAGE et le DECODAGE de messages.\n" +
+    "Tu vas recevoir une 'cl\u00e9', dite 'publique', qui te permettra d'encrypter un message secret.\n" +
+    "Apres encryptage du message, transmet-le \u00e0 Alice qui essayera de le d\u00e9crypter! "};
+  String lastInput = new String();
+
+
   // Ce qui est lanc\u00e9 une fois, au d\u00e9part
   public void setup() {
     
     frame = new Frame();
     
-     size(WIDTH, HEIGHT); // au lieu de size(screen.width,screen.height);
+    size(1150,650);
+    space = 50;
     frameRate(30);
-    pfont = createFont("Courrier",10,true); // use true/false for smooth/no-smooth
-    font = new ControlFont(pfont);
+    pfont = createFont("Arial Bold",12,true); // use true/false for smooth/no-smooth
   
-    controlP5 = new ControlP5(this);
-    
-    ////////////////////////////////////////////////////
-    /// ALICE
+    p = new BigInteger("0"); q = new BigInteger("0"); n = new BigInteger("0"); e = new BigInteger("0"); d = new BigInteger("0"); A = new BigInteger("0");
     
     this.frame.setTitle("Alice"); // interface principale: celle d'Alice
-    //this.frame.setUndecorated(true);
     
-    interfaceAlice();
+
+    for(int i=0; i< T1.length; i++)
+    {
+
+      T0[i] = new rectButton(100, height/2-height/4 + i*40, 160, 25, myGreen);
+      T1[i] = new TextButton(width/2-(100+160), height/2-height/4 + i*40, 160, 25, color(255), myGreen, myGreenA, ListN1[i]);
+
+    }
+    for(int i=0; i< T2.length; i++)
+    {
+      if(i==2) {
+        T2[i] = new rectButton(width/2+100, height/2-height/4, 200, 25, myRed);
+      } else {
+        T2[i] = new rectButton(((i+1)%2)*100 + PApplet.parseInt((i+1)/2)*(width/2-(100+160)) - i*40, height/2+height/10, 160 + i*40, 25, myRed);
+      }
+      T2[i].setText(ListN2[i]);
+    }
+    for(int i=0; i< T3.length; i++)
+    {
+      if(i<3) {
+        if(i==0) {
+          T3[i] = new rectButton(width/2+100, height/2-height/6 +i*90, width/2-(100*2), 30, myBlue);
+        } else {
+          T3[i] = new rectButton(width/2+100, height/2-height/6 +i*90 + PApplet.parseInt(i/2)*30, width/2-(100*2), 60, myBlue);
+        }
+      } else
+      T3[i] = new rectButton(100, height/2-height/4 + PApplet.parseInt(i/2)*30 +i*90, width/2-(100*2), 30 +(i%2)*30, myBlue);
+    }
     
-  
-    ////////////////////////////////////////////////////
-    /// BOB 
-    interfaceBob();
+    for(int i=0; i< T4.length; i++)
+    {
+      if(i<2)
+      T4[i] = new TextButton(width-(100+250), height/2-height/6 +55 + i*120, 250, 25, color(255), myBlue, myBlueA, ListN3[i]);
+      //T4[i] = new rectButton(width/2+100, height/2-height/8 +i*90, width/2-200, 30, myBlue);
+      else if(i==2)
+      T4[i] = new TextButton(width-(100+250), height/2 -height/6 +115 + i*90, 250, 25, color(255), myRed, myOr, ListN3[i]);
+      else
+      T4[i] = new TextButton(width/2-(100+250), height/2-height/6 +60 +i*90, 250, 25, color(255), myBlue, myBlueA, ListN3[i]);
+      //T4[i] = new rectButton(100, height/2-height/8 +i*90, width/2-200, 30, myBlue);
+    }
+    
+    for(int i=0; i< T5.length; i++)
+    {
+      T5[i] = new TextButton(10+i*width/2, 12, 70, 22, color(255), color(i*153), myOr, "- info -");
+    }
+    
+    lastInput = "Bonjour! ";
+    T3[0].setText(lastInput);
     
   }
   
@@ -100,16 +150,53 @@ public class CryptageRSA extends PApplet {
   public void draw() {
     
     background(0);
-    fill(150);
+    fill(153);
     rect(width/2+1, 0, width/2, height);
-    controlP5.draw();
     
-    // Fenetres informatives
-    ouvreFenetreInfo();
+    update(mouseX, mouseY);
+    for(int i=0; i<T1.length; i++) 
+    {
+      T0[i].display();
+      T1[i].display();
+    }
+    for(int i=0; i<T2.length; i++) 
+    {
+      T2[i].display();
+    }
+    for(int i=0; i<T3.length; i++) 
+    {
+      T3[i].display();
+    }
+    for(int i=0; i<T4.length; i++) 
+    {
+      T4[i].display();
+    }
+    for(int i=0; i<T5.length; i++) 
+    {
+      T5[i].display();
+    }
     
   }
   
   public void keyPressed() {
+    
+    if(!(key == CODED)) {
+      if(lastInput.length()>62) {
+    lastInput = lastInput.substring(0,62);
+    }
+      if(key == BACKSPACE){
+        if(lastInput.length()>1) {
+        lastInput = lastInput.substring(0, lastInput.length() - 2);
+        T3[0].setText(lastInput);
+        T3[0].display();
+        }
+      } else {
+        //println((T3[0].value).length());
+        lastInput = lastInput + key;
+        T3[0].setText(lastInput);
+        T3[0].display();
+      }
+    }  
     
    if(key == '1') {
      BigInteger[] myKeys = new BigInteger[3];
@@ -137,6 +224,250 @@ public class CryptageRSA extends PApplet {
    }
    
   }
+  
+  
+  // Update les \u00e9tats des boutons
+  public void update(int x, int y)
+  {
+    for(int i=0; i<T5.length; i++) 
+      {
+        T5[i].update();
+        if(T5[i].over) myInfo(ListN4[i],0+i*width/2, 110 -i*40);
+      }
+      
+    if(locked == false) {
+  
+      for(int i=0; i<T1.length; i++) 
+      {
+        T1[i].update();
+      }
+      for(int i=0; i<T4.length; i++) 
+      {
+        T4[i].update();
+      }
+    
+    } 
+    else {
+      locked = false;
+    }
+  
+    if(mousePressed) {
+      for(int i=0; i<T1.length; i++) 
+      {
+        if(T1[i].pressed()) {
+          T1[i].select = true;
+          if(i==0) {
+            reset(); 
+            T0[i].setText("  P = " +p + "      Q = " +q);
+          } else if(i==1) {
+            if(!(p==A))
+            calculate_n();
+            T0[i].setText("  N = " +n);
+          } else if(i==2) {
+            if(!(p==A))
+            launch_e();
+            T0[i].setText("  E = " +e);
+          } else if(i==3) {
+            if(!(e==A)) {
+            launch_d();
+            T0[i].setText("  D = " +d);
+            T2[0].setText(ListN2[0] +d);
+            T2[1].setText(ListN2[1] + "(" + n + "; " +e +")");
+            T2[2].setText(ListN2[2] + "(" + n + "; " +e +")");
+            }
+          } 
+        }
+
+          for(int j=0; j<T1.length-1; j++) 
+          {
+            if(!(j==i)) T1[j].select = false;
+          }
+        }
+        
+        
+      for(int i=0; i<T4.length; i++) 
+      {
+        if(T4[i].pressed()) {
+          T4[i].select = true;
+          if(i==0) {
+            translate_m();  
+          } else if(i==1) {
+            if(!(n.equals(A)))
+            encrypt_m();
+          } else if(i==2) {
+            if(!(n.equals(A)))
+            send_m();
+          } else if(i==3) {
+           if(!(n.equals(A)))
+            decrypt_m();
+
+          } 
+        }
+
+          for(int j=0; j<T4.length-1; j++) 
+          {
+            if(!(j==i)) T4[j].select = false;
+          }
+        }
+      }
+
+  }
+  
+   // Fenetre informative
+  public void myInfo(String sinfo, int ix, int isize) {
+
+    fill(255);
+    rect(ix,20,width/2,isize);
+    fill(myOr);
+    text(sinfo, ix+20, 40);
+ 
+  }
+class Button
+{
+  int x, y;
+  int L, h;
+  int basecolor, highlightcolor;//, selectcolor;
+  int currentcolor, fcolor;
+  String value;
+  boolean over = false;
+  boolean pressed = false;   
+  boolean select = false;
+
+  public void update() 
+  {
+    if(over()) {
+      currentcolor = highlightcolor;
+    }
+    else {
+      currentcolor = basecolor;
+    }
+  }
+
+  public boolean pressed() 
+  {
+    if(over) {
+      locked = true;
+      return true;
+    } 
+    else {
+      locked = false;
+      return false;
+    }    
+  }
+
+  public boolean over() 
+  { 
+    return true; 
+  }
+
+  public boolean overText(int x, int y, int width, int height) 
+  {
+    if (mouseX >= x && mouseX <= x+width && 
+      mouseY >= y-height/2 && mouseY <= y+height/2) {
+      return true;
+    } 
+    else {
+      return false;
+    }
+  }
+
+
+}
+
+class rectButton extends Button
+{
+  rectButton(int ix, int iy, int iL, int ih,  int icolor) 
+  {
+    x = ix;
+    y = iy;
+    L = iL; h = ih;
+    value = "null";
+    currentcolor = icolor;
+    
+    
+  }
+
+  public void display() 
+  {
+    
+    noStroke();
+    fill(currentcolor);
+    rect(x, y-17,L, h);
+
+    if(!(value.equals("null"))) {
+      fill(255);
+      textFont(pfont);
+      if(value.length()<45) {
+        text(" "+ value.substring(0,value.length()), x, y);
+      } else {
+        textFont(pfont,10);
+        if(PApplet.parseInt(value.length()/63)==0) {
+          text(" "+ value.substring(0,value.length()), x, y);
+        } else {
+          int count =0;
+          for(int i=0; i<PApplet.parseInt(value.length()/63); i++) {
+          text(" "+ value.substring(i*63,(i+1)*63-1), x, y+i*15);
+          count = i+1;
+        }
+        text(" "+ value.substring(count*63,value.length()), x, y+count*15);
+        }
+
+      } 
+    }
+  }
+  
+  public void setText(String iText) 
+  {
+    value = iText;
+  }
+  
+}
+
+class TextButton extends Button
+{
+  TextButton(int ix, int iy, int iL, int ih, int ifcolor, int icolor, int ihighlight, String itext) 
+  {
+    x = ix;
+    y = iy;
+    L = iL; h = ih;
+    fcolor = ifcolor;
+    highlightcolor = ihighlight;
+    basecolor = icolor;
+    currentcolor = basecolor;
+    value = itext;
+  }
+
+  public boolean over() 
+  {
+    if( overText(x, y, L, h) ) {
+      over = true;
+      return true;
+    } 
+    else {
+      over = false;
+      return false;
+    }
+  }
+
+  public void display() 
+  {
+    if(x<width/2)
+    stroke(153);
+    else
+    stroke(190);
+    strokeWeight(0.8f);
+    
+    fill(currentcolor);
+    rect(x, y-17,L, h);
+    
+    fill(fcolor);
+    textFont(pfont);
+
+    text(value, x+10, y);
+    noStroke();
+  }
+}
+
 /**
    *
    * Fonctions g\u00e9n\u00e9rales de l'application
@@ -159,25 +490,17 @@ public class CryptageRSA extends PApplet {
       q = new BigInteger(pq_size - 1, prime_certainty, new Random());
     }
     
-    myTextfield_p.setText("P = "+ p + " ");
-    myTextfield_q.setText("Q = "+ q + " ");
-    myTextfield_EncMessBitsA.hide();
-    controlP5.controller("decrypt_m").hide();
-    myTextfield_DecMessBits.hide();
 
   }
   
   public void calculate_n() {
     // Calculer n = p\u00d7q
     n = p.multiply(q);
-    myTextfield_n.setText("N = P x Q =   "+ n + " ");
     
   }
   
   public void launch_e() {
-    // G\u00e9n\u00e9rer e tel qu'il soit premier avec (p-1)*(q-1)
     e = generate_e(p, q, 16);
-    myTextfield_e.setText("E = "+ e + " ");
   }
   
   public void launch_d() {
@@ -185,42 +508,34 @@ public class CryptageRSA extends PApplet {
     // Il existe un relatif entier m, tel que e \u00d7 d + m \u00d7 (p - 1)(q - 1) = 1
     // d est la cl\u00e9 priv\u00e9e
     d = calculate_d(p, q, e);
-    myTextfield_d.setText("D = "+ d + " ");
-    // Cl\u00e9s
-    myTextfield_kpr.setText("D = "+ d + " ");
-    myTextfield_kpu.setText("( N , E ) = ( "+ n + " , " + e + " ) ");
     
-    // Cl\u00e9 publique r\u00e9v\u00e9l\u00e9e \u00e0 Bob
-    myTextfield_kpuB.setText("( N , E ) = ( "+ n + " , " + e + " ) ");
   }
   
   public void translate_m() {
-    BigInteger MessBits = new BigInteger(myTextfield_Mess.getText().getBytes());
-    myTextfield_MessBits.setText(" " + MessBits +" ");
-    myTextfield_EncMessBitsA.clear();
-    myTextfield_DecMessBits.clear();
+    BigInteger MessBits = new BigInteger(lastInput.getBytes());
+    T3[1].setText(MessBits +" ");
+   
   }
   
   public void encrypt_m() {
-    BigInteger MessBits = new BigInteger(myTextfield_Mess.getText().getBytes());
+    
+    BigInteger MessBits = new BigInteger(lastInput.getBytes());
     EncMessBits = encrypt(MessBits, e, n);
-    myTextfield_EncMessBits.setText(" " + EncMessBits +" ");
+    T3[2].setText(EncMessBits + " ");
+    
   }
   
   public void decrypt_m() {
     BigInteger DecMessBits = decrypt(EncMessBits, d, n);
     String decryptedMessage = new String(DecMessBits.toByteArray());
-    myTextfield_DecMessBits.setText(" " + decryptedMessage +" ");
+    T3[4].setText(decryptedMessage + " ");
+    
   }
   
   public void send_m() {
-   myTextfield_EncMessBitsA.show();
-   controlP5.controller("decrypt_m").show();
-   myTextfield_DecMessBits.show();
-   myTextfield_Mess.clear();
-   myTextfield_MessBits.clear();
-   myTextfield_EncMessBits.clear();
-   myTextfield_EncMessBitsA.setText(" " + EncMessBits +" ");
+   
+   T3[3].setText(EncMessBits + " ");
+   
   }
   
   
@@ -326,7 +641,7 @@ public class CryptageRSA extends PApplet {
   }
   
   
-  /** Encrypte un message \u00e0 l'aide de cl\u00e9s  
+  /** Encrypt un message \u00e0 l'aide de cl\u00e9s  
    * @param m message \u00e0 encrypter, \u00e0 inscrire entre "".
    * @param pk1 cl\u00e9 publique1. 
    * @param pk2 cl\u00e9 publique2. 
@@ -343,7 +658,7 @@ public class CryptageRSA extends PApplet {
     
   }
   
-  /** D\u00e9crypte un message \u00e0 l'aide de cl\u00e9s  
+  /** Encrypt un message \u00e0 l'aide de cl\u00e9s  
    * @param me message encrypt\u00e9 sous forme de chiffres.
    * @param k cl\u00e9s, publique et priv\u00e9e. 
    * @return message
@@ -360,262 +675,7 @@ public class CryptageRSA extends PApplet {
   }
   
   static CryptageRSA proglet;  
-/**
-   *
-   * Fonctions de l'interface
-   *
-   */
-   
-  
-  public void interfaceAlice() {
-    
-    // Information
-    
-    //this.frame.setUndecorated(true);
-    controlP5.addButton("InfoA",10,0,0,75,15).setId(1);
-    controlP5.controller("InfoA").setCaptionLabel("A L I C E : info"); // change le titre
-    controlP5.controller("InfoA").captionLabel().toUpperCase(false);
-    controlP5.controller("InfoA").captionLabel().setControlFont(font); // change la police  controlP5.controller("InfoA").captionLabel().setControlFontSize(8);
-    controlP5.controller("InfoA").setColorActive(myRed); 
-    controlP5.controller("InfoA").setColorBackground(myOr); 
-    boxA = controlP5.addButton("buttonValue",0,0,-170,60,40);
-    boxA.setId(2);
-    boxA.setWidth(width/2);
-    boxA.setHeight(170);
-    boxA.setColorActive(0); 
-    boxA.setColorBackground(0); 
-    boxA.setColorLabel(255);
-    boxA.captionLabel().setControlFont(font);
-    boxA.captionLabel().setControlFontSize(12);
-    boxA.captionLabel().toUpperCase(false);
-    boxA.setCaptionLabel("Tu es Alice. Nous te proposons d'exp\u00e9rimenter le CODAGE et le DECODAGE de messages.\n \n" +
-    "Tout d'abord, tu dois g\u00e9n\u00e9rer une 'cl\u00e9 publique' et 'une cl\u00e9 priv\u00e9e'.\n \n" +
-    "Tu divulgueras ensuite la cl\u00e9 publique \u00e0 Bob, et tu garderas la cl\u00e9 priv\u00e9e pr\u00e9cieusement. \n \n" +
-    "Bob encryptera son message secret \u00e0 l'aide de la cl\u00e9 publique.\n \n" +
-    "Seul toi pourras d\u00e9crypter le message au moyen de la cl\u00e9 priv\u00e9e!" );
-    boxA.captionLabel().style().marginLeft = 30;
-    boxA.captionLabel().style().marginTop = -62;
-    
-    // Choisir/generer p et q
-    pq_size = PApplet.parseInt(random(4, 10));
-    myTextfield_p = controlP5.addTextfield("P et Q sont des nombres premier",100,height/2-height/4,width/2/10,20);
-    myTextfield_p.setColorBackground(myGreen);
-    //myTextfield_p.captionLabel().setControlFont(font);
-    myTextfield_q = controlP5.addTextfield(" ",100+width/2/8+15,height/2-height/4,width/2/10,20);
-    myTextfield_q.setColorBackground(myGreen);
-    //myTextfield_q.captionLabel().setControlFont(font);
-    //controlP5.addButton("reset",0,n.width/2-(100+100),150,100,20).setCaptionLabel("1. Genere P et Q");
-    controlP5.addButton("reset",0,width/2-(100+width/2/4),height/2-height/4,width/2/4,20);
-    controlP5.controller("reset").captionLabel().setControlFont(font);
-    controlP5.controller("reset").captionLabel().setControlFontSize(11);
-    controlP5.controller("reset").setCaptionLabel("    1.  G\u00e9n\u00e8re   P  et  Q");
-    controlP5.controller("reset").setColorBackground(myGreen);
-    controlP5.controller("reset").setColorActive(myGreenA); 
-    myTextfield_p.setText("P = "+ p + " ");
-    myTextfield_q.setText("Q = "+ q + " ");
-    
-    
-    // Calculer n=pxq
-    myTextfield_n = controlP5.addTextfield("N = P * Q",100,height/2-height/4+(20*2+4),width/2/3,20);
-    myTextfield_n.setColorBackground(myGreen);
-    //myTextfield_n.captionLabel().setControlFont(font);
-    //controlP5.addButton("calculate_n",0,width/2-(100+100),200,100,20).setCaptionLabel("2. Calcule n");
-    controlP5.addButton("calculate_n",0,width/2-(100+width/2/4),height/2-height/4+(20*2+4),width/2/4,20);
-    controlP5.controller("calculate_n").captionLabel().setControlFont(font);
-    controlP5.controller("calculate_n").captionLabel().setControlFontSize(11);
-    controlP5.controller("calculate_n").setCaptionLabel("        2.  Calcule   n");
-    controlP5.controller("calculate_n").setColorBackground(myGreen);
-    controlP5.controller("calculate_n").setColorActive(myGreenA); 
-    
-    
-    // Generer e tel qu'il soit premier avec (p-1)*(q-1)
-    myTextfield_e = controlP5.addTextfield("e est premier avec (p-1) * (q-1)",100,height/2-height/4+(20*4+4*2),width/2/3,20);
-    myTextfield_e.setColorBackground(myGreen);
-    //myTextfield_e.captionLabel().setControlFont(font);
-    //controlP5.addButton("launch_e",0,width/2-(100+100),250,100,20).setCaptionLabel("3. Genere e");
-    controlP5.addButton("launch_e",0,width/2-(100+width/2/4),height/2-height/4+(20*4+4*2),width/2/4,20);
-    controlP5.controller("launch_e").captionLabel().setControlFont(font);
-    controlP5.controller("launch_e").captionLabel().setControlFontSize(11);
-    controlP5.controller("launch_e").setCaptionLabel("        3.  G\u00e9n\u00e8re   e");
-    controlP5.controller("launch_e").setColorBackground(myGreen);
-    controlP5.controller("launch_e").setColorActive(myGreenA); 
-    
-    // (n, e) est la cle publique
-    
-    // Calculer d selon: 
-    // Il existe un relatif entier m, tel que e \u00d7 d + m \u00d7 (p - 1)(q - 1) = 1
-    // d est la cle privee
-    myTextfield_d = controlP5.addTextfield("d verifie: e * d + m * (p-1) * (q-1) = 1",100,height/2-height/4+(20*6+4*3),width/2/3,20);
-    myTextfield_d.setColorBackground(myGreen);
-    //myTextfield_d.captionLabel().setControlFont(font);
-    //controlP5.addButton("launch_d",0,width/2/2-(100+100),300,100,20).setCaptionLabel("4. Calcule d");
-    controlP5.addButton("launch_d",0,width/2-(100+width/2/4),height/2-height/4+(20*6+4*3),width/2/4,20);
-    controlP5.controller("launch_d").captionLabel().setControlFont(font);
-    controlP5.controller("launch_d").captionLabel().setControlFontSize(11);
-    controlP5.controller("launch_d").setCaptionLabel("        4.  Calcule   d");
-    controlP5.controller("launch_d").setColorBackground(myGreen);
-    controlP5.controller("launch_d").setColorActive(myGreenA); 
-    
-  
-    // Rev\u00e8le les cl\u00e9s priv\u00e9e et publique: 
-    myTextfield_kpr = controlP5.addTextfield("Cle privee",100,height/2+20+10,width/2/4,20);
-    myTextfield_kpr.setColorBackground(myRed);
-    myTextfield_kpu = controlP5.addTextfield("Cle publique",2*width/2/3-100,height/2+20+10,width/2/3,20);
-    myTextfield_kpu.setColorBackground(myRed);
-    
-    // Cacher les infos confidentielles
-    controlP5.addButton("hideAll",0,width/2-(200+100),height/2+(20*4),200,20);
-    controlP5.controller("hideAll").setCaptionLabel("  Masquer  toute  information");
-    controlP5.controller("hideAll").captionLabel().setControlFont(font);
-    controlP5.controller("hideAll").captionLabel().setControlFontSize(11);
-    controlP5.controller("hideAll").setColorBackground(myRed);
-    controlP5.controller("hideAll").setColorActive(myOr); 
-    
-    // Recevoir le message encrypt\u00e9
-    myTextfield_EncMessBitsA = controlP5.addTextfield("Reception du message encrypte",100,height/2+(20*7),width/2-100*2,30);
-    // D\u00e9crypter
-    controlP5.addButton("decrypt_m",0,width/2-(3*width/2/10+100),height/2+(20*10),3*width/2/10,20);
-    //controlP5.controller("decrypt_m").setCaptionLabel("Decryptage du message");
-    controlP5.controller("decrypt_m").captionLabel().setControlFont(font);
-    controlP5.controller("decrypt_m").captionLabel().setControlFontSize(11);
-    controlP5.controller("decrypt_m").setCaptionLabel("  D\u00e9cryptage  du  message");
-
-    
-    
-    myTextfield_DecMessBits = controlP5.addTextfield("Ceci est le message de Bob",100,height/2+(20*11+10),width/2-100*2,30);
-    myTextfield_DecMessBits.valueLabel().toUpperCase(true);
-    
-
-  }
-  
-  public void interfaceBob() {
-    
-    
-    //controlWindow = controlP5.addControlWindow("Bob",-5,0,width/2,height);
-
-    //controlWindow.setUndecorated(true);
-    //controlWindow.hideCoordinates();
-    //controlWindow.setBackground(color(150,150,150));
-    // Information
-    controlP5.addButton("InfoB",10,width/2+1,0,75,15).setId(1);
-    controlP5.controller("InfoB").setCaptionLabel("B O B : info"); // change the content
-    controlP5.controller("InfoB").captionLabel().toUpperCase(false);
-    //controlP5.controller("InfoB").setWindow(controlWindow);
-    controlP5.controller("InfoB").captionLabel().setControlFont(font); // change the font
-    controlP5.controller("InfoB").captionLabel().setControlFontSize(10);
-    controlP5.controller("InfoB").setColorActive(myRed); 
-    controlP5.controller("InfoB").setColorBackground(myOr); 
-    boxB = controlP5.addButton("buttonValueB",width/2,width/2+1,-110,60,40);
-    boxB.setId(2);
-    boxB.setWidth(width/2);
-    boxB.setHeight(110);
-    boxB.setColorActive(150); 
-    boxB.setColorBackground(150); 
-    boxB.setColorLabel(255);
-    //boxB.setWindow(controlWindow);
-    boxB.captionLabel().setControlFont(font);
-    boxB.captionLabel().setControlFontSize(12);
-    boxB.captionLabel().toUpperCase(false);
-    boxB.setCaptionLabel("Tu es Bob. Nous te proposons d'exp\u00e9rimenter le CODAGE et le DECODAGE de messages.\n \n" +
-    "Tu vas recevoir une 'cl\u00e9', dite 'publique', qui va te permettre d'encrypter un message secret.\n \n" +
-    "Apres encryptage du message, transmet-le \u00e0 Alice qui essayera de le d\u00e9crypter! ");
-    boxB.captionLabel().style().marginLeft = 30;
-    boxB.captionLabel().style().marginTop = -20;
-    
-    // Recevoir la cl\u00e9 publique
-    myTextfield_kpuB = controlP5.addTextfield("Cle public pour l'encryptage",width/2+1+100,height/2-height/4,width/2/3,20);
-    myTextfield_kpuB.setColorBackground(myRed);
-    //myTextfield_kpuB.setWindow(controlWindow);
-    
-    // Message secret
-    myTextfield_Mess = controlP5.addTextfield("Ton message secret",width/2+1+100,height/2-height/4+(20*4),width/2-100*2,30);
-    myTextfield_Mess.valueLabel().toUpperCase(true);
-    //myTextfield_Mess.captionLabel().fixedSize(12); 
-    //myTextfield_Mess.valueLabel().setFont(ControlP5.grixel);
-    //myTextfield_Mess.valueLabel().setColorBackground(myOr); 
-    
-    //myTextfield_Mess.setWindow(controlWindow);
-    myTextfield_Mess.setText("Ceci est un message secret.. ");
-    //myTextfield_Mess.valueLabel().textHeight();
-    //myTextfield_Mess.valueLabel().setWidth(50); 
-    //myTextfield_Mess.valueLabel().setHeight(50);
-    
-    
-    // Traduire en chiffres
-    controlP5.addButton("translate_m",0,width-(240+100),height/2-height/4+(20*7),240,20);
-    controlP5.controller("translate_m").captionLabel().setControlFont(font);
-    controlP5.controller("translate_m").captionLabel().setControlFontSize(11);
-    controlP5.controller("translate_m").setCaptionLabel(" Traduction  du  message  en  chiffres");
-    //controlP5.controller("translate_m").setWindow(controlWindow);
-    myTextfield_MessBits = controlP5.addTextfield("     ",width/2+1+100,height/2-height/4+(20*8+10),width/2-100*2,30);
-    
-    //myTextfield_MessBits.setWindow(controlWindow);
-    
-    // Encrypter le message
-    controlP5.addButton("encrypt_m",0,width-(165+100),height/2-height/4+(20*11+10),165,20);
-    controlP5.controller("encrypt_m").captionLabel().setControlFont(font);
-    controlP5.controller("encrypt_m").captionLabel().setControlFontSize(11);
-    controlP5.controller("encrypt_m").setCaptionLabel(" Encryptage  du  message");
-    //controlP5.controller("encrypt_m").setWindow(controlWindow);
-    myTextfield_EncMessBits = controlP5.addTextfield("      ",width/2+1+100,height/2-height/4+(20*13),width/2-100*2,30);
-    //myTextfield_EncMessBits.setWindow(controlWindow);
-    // Envoyer le message encryt\u00e9
-    controlP5.addButton("send_m",0,width-(185+100),height/2-height/4+(20*17),185,20);
-    controlP5.controller("send_m").captionLabel().setControlFont(font);
-    controlP5.controller("send_m").captionLabel().setControlFontSize(11);
-    controlP5.controller("send_m").setCaptionLabel(" Envoi  du  message  encrypt\u00e9");
-    controlP5.controller("send_m").setColorBackground(myRed);
-    //controlP5.controller("send_m").setWindow(controlWindow);
-    controlP5.controller("send_m").setColorActive(myOr); 
-    
-  }
-  
-  
-  public void ouvreFenetreInfo() {
-    
-    boxA.position().y += ((isOpen==true ? 15+1:-170) - boxA.position().y) * 0.2f;
-    boxB.position().y += ((isOpenB==true ? 15+1:-110) - boxB.position().y) * 0.2f;
-    //boxB.setWindow(controlWindow);
-    
-  }
-  
-  public void InfoA(float theValueA) {
-    println("a button event. "+theValueA);
-    isOpen = !isOpen;
-    controlP5.controller("InfoA").setCaptionLabel((isOpen==true) ? "FERMER info":"A L I C E : info");
-  }
-  
-  public void InfoB(float theValueB) {
-    println("a button event. "+theValueB);
-    isOpenB = !isOpenB;
-    controlP5.controller("InfoB").setCaptionLabel((isOpenB==true) ? "fermer Info":"B O B : info");
-  }
-  
-  public void hideAll(int theValue) {
-    myTextfield_p.clear();
-    myTextfield_q.clear();
-    myTextfield_n.clear();
-    myTextfield_d.clear();
-    myTextfield_e.clear();
-    myTextfield_kpr.clear(); // cl\u00e9 priv\u00e9e
-
-  }
-  
-  
-  /** Utilis\u00e9 pour fermer la fen\u00eatre secondaire de l'interface, par JavaScool. */
-  /*public processing.core.PApplet getControl() {
-    controlWindow.hide();
-    return controlWindow.papplet();
-    
-  }*/
-  
-  /** Cr\u00e9er une cl\u00e9 priv\u00e9e et une cl\u00e9 publique pour le codage et d\u00e9codage de messages   
-   * @return les cl\u00e9s
-   */  
-  
-  // Taille pour l'insertion dans JavaScool
-  public static final int WIDTH = 1024, HEIGHT = 700;
   static public void main(String args[]) {
-    PApplet.main(new String[] { "--bgcolor=#DFDFDF", "CryptageRSA" });
+    PApplet.main(new String[] { "--bgcolor=#FFFFFF", "CryptageRSA" });
   }
 }
