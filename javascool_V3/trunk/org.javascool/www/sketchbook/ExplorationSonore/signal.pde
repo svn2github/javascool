@@ -26,19 +26,19 @@
       if(sounding) switchOff();
       else if(record1.sounding) record1.switchOff();
       // Créer un oscillateur sinusoidale avec une fréquence de 1000Hz, une amplitude de 1.0, et une fréquence d'échantillonage callée sur la ligne out
-      if(n.equals("sine")) {
+      if(n.equals("sinus")) {
         sinus_ = new SineWave(f, a, out.sampleRate());
         sinus_.portamento(20);
         out.addSignal(sinus_);
-      } else if(n.equals("square")) {
+      } else if(n.equals("carré")) {
         square_ = new SquareWave(f, a, out.sampleRate());
         square_.portamento(20);
         out.addSignal(square_);
-      } else if(n.equals("saw")) {
+      } else if(n.equals("scie")) {
         saw_ = new SawWave(f, a, out.sampleRate());
         saw_.portamento(20);
         out.addSignal(saw_);
-      } else if(n.equals("noise")) {
+      } else if(n.equals("bruit")) {
         wnoise_ = new WhiteNoise(a);
         out.addSignal(wnoise_);
       }     
@@ -51,16 +51,16 @@
       //constrain(mouseX, 0, width-500);
       
       volume = map(mouseY, 0, height, 0.2, 0); 
-      if(type.equals("sine")) {
+      if(type.equals("sinus")) {
         sinus_.setFreq(frequence);
         sinus_.setAmp(volume);
-      } else if(type.equals("square")){
+      } else if(type.equals("carré")){
         square_.setFreq(frequence);
         square_.setAmp(volume);
-      } else if(type.equals("saw")){
+      } else if(type.equals("scie")){
         saw_.setFreq(frequence);
         saw_.setAmp(volume);
-      } else if(type.equals("noise")){
+      } else if(type.equals("bruit")){
         wnoise_.setAmp(volume);
       }
     }
@@ -71,7 +71,7 @@
       fill(0);
       rect(0,height-175,width/2,30);
       fill(myOr);
-      if(type.equals("noise")) {
+      if(type.equals("bruit")) {
         text("Vol.: " + vol + " ", 10, height-155);
       } else {
         text(" Freq.: " + frequence + " Hz  -  Vol.: " + vol + " ", 10, height-155);
