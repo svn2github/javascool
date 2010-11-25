@@ -29,7 +29,7 @@ btfy :
 # Generates the javasccol processing.zip 
 
 JARS = \
- $(shell ls  ../www/sketchbook/{ExplorationSonore,CryptageRSA,EnVoiture,UnGrapheDesChemins,BoiteAMusique}/*.jar) \
+ ../www/sketchbook/{ExplorationSonore,CryptageRSA,EnVoiture,UnGrapheDesChemins,BoiteAMusique}/*.jar \
  /usr/java/processing-1.2.1/libraries/opengl/library/{jogl,gluegen-rt}.jar 
 
 jar : ../lib/processing.zip
