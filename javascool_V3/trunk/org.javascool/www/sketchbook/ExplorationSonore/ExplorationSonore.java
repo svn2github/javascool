@@ -55,7 +55,7 @@ public class ExplorationSonore extends PApplet {
   Frame frame;
   int myOr = color(255,100,0);
   int myRed = color(255,0,0);
-  int myBlue = color(20,70,105);
+  int myBlue = color(153);//(120,140,150);//(20,70,105);
   int width_;
   int height_;
   boolean isOpen;
@@ -63,9 +63,9 @@ public class ExplorationSonore extends PApplet {
   
   TextButton[] T1 = new TextButton[8];
   boolean locked = false;
-  boolean info = false;
+  //boolean info = false;
   
-  String[] ListN = { "sine", "square", "saw", "noise", "extrait", " filtre", " S T O P", " - Info - "};
+  String[] ListN = { "sinus", "carr\u00e9", "scie", "bruit", " extrait ", " extrait filtr\u00e9 ", " S T O P ", " - Info - "};
   String sig = "null";
 
   
@@ -114,18 +114,18 @@ public class ExplorationSonore extends PApplet {
     for(int i=0; i< T1.length; i++)
     {
       if(i<6) {
-        buttoncolor = color(250); highlight = color(150);
+        T1[i] = new TextButton(5+((i%4)*2*width/3/T1.length), height-100+60*(PApplet.parseInt(i/4)), 60 + PApplet.parseInt(i/5)*35, 25, color(255), myBlue, myRed, myOr, ListN[i]);
       } else if(i==6){
-        buttoncolor = myRed; highlight = color(150);
+        T1[i] = new TextButton(5+((i%4)*2*width/3/T1.length)+60, height-40, 70, 30, color(255), myRed, myOr, color(0), ListN[i]);
       } else {
-        buttoncolor = myBlue; highlight = color(150);
+        T1[i] = new TextButton(5+((i%4)*2*width/3/T1.length)+width/2+120, height-155, 60, 25, color(255), color(0), myOr, color(0), ListN[i]);
       }
-      T1[i] = new TextButton(5+((i%4)*2*width/3/T1.length)+(PApplet.parseInt(i/6))*60+(PApplet.parseInt(i/7))*(width/2+60), height-100+60*(PApplet.parseInt(i/4)) -(PApplet.parseInt(i/7))*110, 100, buttoncolor, highlight, myOr, ListN[i]);
+      
 
     }
   
-    width_ = this.frame.getWidth();//getWidthInterface();
-    height_ = this.frame.getHeight();//getHeightInterface();
+    width_ = this.frame.getWidth();
+    height_ = this.frame.getHeight();
   }
   
   
@@ -174,10 +174,6 @@ public class ExplorationSonore extends PApplet {
     update(mouseX, mouseY);
     for(int i=0; i<T1.length; i++) 
     {
-      if(i<6)  {
-        fill(myBlue);
-        rect(5+((i%4)*2*width/3/T1.length)-5, height-118+60*(PApplet.parseInt(i/4)),60,25);
-      }
       T1[i].display();
     }
     
@@ -191,20 +187,20 @@ public class ExplorationSonore extends PApplet {
   public void keyPressed()                                                  
   {
     if (key == '0') {
-      signal1.setSignal("sine", 1000, 0.2f);
+      signal1.setSignal("sinus", 1000, 0.2f);
     }
     if (key == '1') {
-      signal1.setSignal("sine", 1000, 0.2f);
-      signal2.setSignal("sine", 4000, 0.2f);
+      signal1.setSignal("sinus", 1000, 0.2f);
+      signal2.setSignal("sinus", 4000, 0.2f);
     }
     if (key == '2') {
-      signal1.setSignal("square", 1000, 0.2f);
+      signal1.setSignal("carr\u00e9", 1000, 0.2f);
     }
     if (key == '3') {
-      signal1.setSignal("saw", 1000, 0.2f);
+      signal1.setSignal("scie", 1000, 0.2f);
     }
     if (key == '4') {
-      signal1.setSignal("noise", 1000, 0.2f);
+      signal1.setSignal("bruit", 1000, 0.2f);
     }
     if (key == 'e') {
       record1.setRecord("../data/music/Ahmed_Ex2.wav");
@@ -236,29 +232,27 @@ public class ExplorationSonore extends PApplet {
     if(mousePressed) {
       for(int i=0; i<T1.length; i++) 
       {
-        if(T1[i].pressed() && i==7) {
-          if(T1[i].select==true) { 
-            T1[i].select = false; info = false;
-          } else {
-            T1[i].select = true; info = true;
-          }
-        } else if(T1[i].pressed() && !(T1[i].select)) {
+
+        if(T1[i].pressed() && !(T1[i].select)) {
           T1[i].select = true;
+          
           if(i<4) {
             signal1.setSignal(T1[i].value, 1000, 0.2f);
           } else if(i==4) {
             record1.setRecord(selectInput());
           } else if(i==5) {
+            record1.setRecord(selectInput());
             record1.applyFilter() ;
           } else if(i==6) {
             StopAnySound();
           } 
-        }
-
           for(int j=0; j<T1.length-1; j++) 
           {
             if(!(j==i)) T1[j].select = false;
           }
+        }
+
+          
         }
       }
 
@@ -294,9 +288,9 @@ public class ExplorationSonore extends PApplet {
 class Button
 {
   int x, y;
-  int size;
+  int L, h;
   int basecolor, highlightcolor, selectcolor;
-  int currentcolor;
+  int currentcolor, fcolor;
   String value;
   boolean over = false;
   boolean pressed = false;   
@@ -333,8 +327,8 @@ class Button
 
   public boolean overText(int x, int y, int width, int height) 
   {
-    if (mouseX >= x && mouseX <= x+50 && 
-      mouseY >= y-25 && mouseY <= y+15) {
+    if (mouseX >= x && mouseX <= x+width && 
+      mouseY >= y-height/2 && mouseY <= y+height/2) {
       return true;
     } 
     else {
@@ -347,12 +341,12 @@ class Button
 
 class TextButton extends Button
 {
-  TextButton(int ix, int iy, int isize, int icolor, int ihighlight, int iselect, String itext) 
+  TextButton(int ix, int iy, int iL, int ih, int ifcolor, int icolor, int ihighlight, int iselect, String itext) 
   {
     x = ix;
     y = iy;
-    size = isize;
-    selectcolor = iselect;
+    L = iL; h = ih;
+    fcolor = ifcolor;
     basecolor = icolor;
     highlightcolor = ihighlight;
     selectcolor = iselect;
@@ -362,7 +356,7 @@ class TextButton extends Button
 
   public boolean over() 
   {
-    if( overText(x, y, size, size) ) {
+    if( overText(x, y, L, h) ) {
       over = true;
       return true;
     } 
@@ -374,15 +368,19 @@ class TextButton extends Button
 
   public void display() 
   {
-    stroke(255);
-    strokeWeight(2);
+   
+      stroke(255);
+      strokeWeight(1);
+    
     fill(currentcolor);
-
-    textFont(f);
-    //if(size==100) text(" "+ (int)value, x, y);
-    //else 
-    text(" "+ value, x, y);
+    rect(x, y-PApplet.parseInt(h/2 + h/4),L, h);
+    
     noStroke();
+    fill(fcolor);
+    textFont(f);
+
+    text(value, x+(L-value.length()*6)/2, y);
+
   }
 }
 
@@ -713,19 +711,19 @@ class TextButton extends Button
       if(sounding) switchOff();
       else if(record1.sounding) record1.switchOff();
       // Cr\u00e9er un oscillateur sinusoidale avec une fr\u00e9quence de 1000Hz, une amplitude de 1.0, et une fr\u00e9quence d'\u00e9chantillonage call\u00e9e sur la ligne out
-      if(n.equals("sine")) {
+      if(n.equals("sinus")) {
         sinus_ = new SineWave(f, a, out.sampleRate());
         sinus_.portamento(20);
         out.addSignal(sinus_);
-      } else if(n.equals("square")) {
+      } else if(n.equals("carr\u00e9")) {
         square_ = new SquareWave(f, a, out.sampleRate());
         square_.portamento(20);
         out.addSignal(square_);
-      } else if(n.equals("saw")) {
+      } else if(n.equals("scie")) {
         saw_ = new SawWave(f, a, out.sampleRate());
         saw_.portamento(20);
         out.addSignal(saw_);
-      } else if(n.equals("noise")) {
+      } else if(n.equals("bruit")) {
         wnoise_ = new WhiteNoise(a);
         out.addSignal(wnoise_);
       }     
@@ -738,16 +736,16 @@ class TextButton extends Button
       //constrain(mouseX, 0, width-500);
       
       volume = map(mouseY, 0, height, 0.2f, 0); 
-      if(type.equals("sine")) {
+      if(type.equals("sinus")) {
         sinus_.setFreq(frequence);
         sinus_.setAmp(volume);
-      } else if(type.equals("square")){
+      } else if(type.equals("carr\u00e9")){
         square_.setFreq(frequence);
         square_.setAmp(volume);
-      } else if(type.equals("saw")){
+      } else if(type.equals("scie")){
         saw_.setFreq(frequence);
         saw_.setAmp(volume);
-      } else if(type.equals("noise")){
+      } else if(type.equals("bruit")){
         wnoise_.setAmp(volume);
       }
     }
@@ -758,7 +756,7 @@ class TextButton extends Button
       fill(0);
       rect(0,height-175,width/2,30);
       fill(myOr);
-      if(type.equals("noise")) {
+      if(type.equals("bruit")) {
         text("Vol.: " + vol + " ", 10, height-155);
       } else {
         text(" Freq.: " + frequence + " Hz  -  Vol.: " + vol + " ", 10, height-155);
