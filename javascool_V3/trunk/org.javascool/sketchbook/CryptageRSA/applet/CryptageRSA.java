@@ -1,0 +1,682 @@
+import processing.core.*; 
+import processing.xml.*; 
+
+import java.awt.*; 
+import java.applet.*; 
+import java.awt.event.*; 
+import java.math.BigInteger; 
+import java.util.Random; 
+
+import java.applet.*; 
+import java.awt.Dimension; 
+import java.awt.Frame; 
+import java.awt.event.MouseEvent; 
+import java.awt.event.KeyEvent; 
+import java.awt.event.FocusEvent; 
+import java.awt.Image; 
+import java.io.*; 
+import java.net.*; 
+import java.text.*; 
+import java.util.*; 
+import java.util.zip.*; 
+import java.util.regex.*; 
+
+public class CryptageRSA extends PApplet {
+
+  /*///////////////////////////////////////////////////////////////////////////////////
+  *
+  * 08.2010 C\u00e9cile P-L for Fuscia, ccl.picard@gmail.com
+  * CRYPTOGRAPHIE
+  * Interface p\u00e9dagogique sur le codage/d\u00e9codage de messages avec cl\u00e9s RSA
+  * Interface r\u00e9alis\u00e9e avec ControlP5 (bas\u00e9e sur l'example ControlP5TextfieldAdvanced)
+  *
+  *////////////////////////////////////////////////////////////////////////////////////
+  
+  //import controlP5.*;
+  //ControlP5 controlP5;
+  
+  
+  
+  
+  
+  
+  
+  // Param\u00e8tres pour la m\u00e9thode RSA 
+  int pq_size;
+  int prime_certainty = 20;
+  BigInteger p, q, n, e, d, A;
+  BigInteger EncMessBits;
+  
+  // Param\u00e8tres de l'interface 
+  PFont pfont;
+  int myOr = color(255,100,0);
+  int myGreen = color(0,100,30);
+  int myGreenA = color(0,200,100);
+  int myRed = color(255,0,0);
+  int myBlue = color(120);//(120,140,150);  
+  int myBlueA = color(100);//(120,165,175); 
+  
+  rectButton[] T0 = new rectButton[4];
+  TextButton[] T1 = new TextButton[4];
+  rectButton[] T2 = new rectButton[3];
+  rectButton[] T3 = new rectButton[5];
+  TextButton[] T4 = new TextButton[4];
+  TextButton[] T5 = new TextButton[2]; //infos
+  boolean locked = false;
+  boolean info = false;
+  
+  String[] ListN1 = { "1. G\u00e9n\u00e8re   P  et  Q", "2. Calcule N", "3. G\u00e9n\u00e8re E", "4. Calcule D"};
+  String[] ListN2 = { "Cl\u00e9 priv\u00e9e = ", "Cl\u00e9 publique = ", "Cl\u00e9 publique = "};
+  String[] ListN3 = { "Traduction  du  message  en  chiffres", "Encryptage du message", "E N V O I   du message encrypt\u00e9", "D\u00e9cryptage du message"};
+  String[] ListN4 = { "Tu es Alice. Nous te proposons d'exp\u00e9rimenter le CODAGE et le DECODAGE de messages.\n" +
+    "Tout d'abord, tu dois g\u00e9n\u00e9rer une 'cl\u00e9 publique' et 'une cl\u00e9 priv\u00e9e'.\n" +
+    "Tu divulgueras ensuite la cl\u00e9 publique \u00e0 Bob, et tu garderas la cl\u00e9 priv\u00e9e pr\u00e9cieusement. \n" +
+    "Bob encryptera son message secret \u00e0 l'aide de la cl\u00e9 publique.\n" +
+    "Seul toi pourras d\u00e9crypter le message au moyen de la cl\u00e9 priv\u00e9e!", 
+    "Tu es Bob. Nous te proposons d'exp\u00e9rimenter le CODAGE et le DECODAGE de messages.\n" +
+    "Tu vas recevoir une 'cl\u00e9', dite 'publique', qui va te permettre d'encrypter un message secret.\n" +
+    "Apres encryptage du message, transmet-le \u00e0 Alice qui essayera de le d\u00e9crypter! "};
+  String lastInput = new String();
+
+
+  // Ce qui est lanc\u00e9 une fois, au d\u00e9part
+  public void setup() {
+    
+    frame = new Frame();
+    
+    size(1200,650);
+    frameRate(30);
+    pfont = createFont("Arial Bold",12,true); // use true/false for smooth/no-smooth
+  
+    p = new BigInteger("0"); q = new BigInteger("0"); n = new BigInteger("0"); e = new BigInteger("0"); d = new BigInteger("0"); A = new BigInteger("0");
+    
+    this.frame.setTitle("Alice"); // interface principale: celle d'Alice
+    
+    fill(0);
+    rect(0,height-100,width,100);
+    fill(myBlue);
+    int buttoncolor; int highlight; 
+    for(int i=0; i< T1.length; i++)
+    {
+
+      T0[i] = new rectButton(100, height/2-height/4 + i*40, 160, 25, myGreen);
+      T1[i] = new TextButton(width/2-(100+160), height/2-height/4 + i*40, 160, 25, color(255), myGreen, myGreenA, ListN1[i]);
+
+    }
+    for(int i=0; i< T2.length; i++)
+    {
+      if(i==2) {
+        T2[i] = new rectButton(width/2+100, height/2-height/4, 210, 25, myRed);
+      } else {
+        T2[i] = new rectButton(((i+1)%2)*100 + PApplet.parseInt((i+1)/2)*(width/2-(100+160)) - i*50, height/2+height/10, 160 + i*50, 25, myRed);
+      }
+      T2[i].setText(ListN2[i]);
+    }
+    for(int i=0; i< T3.length; i++)
+    {
+      if(i<3) {
+        if(i==0) {
+          T3[i] = new rectButton(width/2+100, height/2-height/6 +i*90, width/2-200, 30, myBlue);
+        } else {
+          T3[i] = new rectButton(width/2+100, height/2-height/6 +i*90 + PApplet.parseInt(i/2)*30, width/2-200, 60, myBlue);
+        }
+      } else
+      T3[i] = new rectButton(100, height/2-height/4 + PApplet.parseInt(i/2)*30 +i*90, width/2-200, 30 +(i%2)*30, myBlue);
+    }
+    
+    for(int i=0; i< T4.length; i++)
+    {
+      if(i<2)
+      T4[i] = new TextButton(width-(100+250), height/2-height/6 +55 + i*120, 250, 25, color(255), myBlue, myBlueA, ListN3[i]);
+      //T4[i] = new rectButton(width/2+100, height/2-height/8 +i*90, width/2-200, 30, myBlue);
+      else if(i==2)
+      T4[i] = new TextButton(width-(100+250), height/2 -height/6 +115 + i*90, 250, 25, color(255), myRed, myOr, ListN3[i]);
+      else
+      T4[i] = new TextButton(width/2-(100+250), height/2-height/6 +60 +i*90, 250, 25, color(255), myBlue, myBlueA, ListN3[i]);
+      //T4[i] = new rectButton(100, height/2-height/8 +i*90, width/2-200, 30, myBlue);
+    }
+    
+    for(int i=0; i< T5.length; i++)
+    {
+      T5[i] = new TextButton(10+i*width/2, 12, 70, 22, color(255), color(i*153), myOr, "- info -");
+    }
+    
+    lastInput = "Bonjour! ";
+    T3[0].setText(lastInput);
+    
+  }
+  
+  
+  // Ce qui est effectu\u00e9 tout au long de l'animation
+  public void draw() {
+    
+    background(0);
+    fill(153);
+    rect(width/2+1, 0, width/2, height);
+    
+    update(mouseX, mouseY);
+    for(int i=0; i<T1.length; i++) 
+    {
+      T0[i].display();
+      T1[i].display();
+    }
+    for(int i=0; i<T2.length; i++) 
+    {
+      T2[i].display();
+    }
+    for(int i=0; i<T3.length; i++) 
+    {
+      T3[i].display();
+    }
+    for(int i=0; i<T4.length; i++) 
+    {
+      T4[i].display();
+    }
+    for(int i=0; i<T5.length; i++) 
+    {
+      T5[i].display();
+    }
+    
+  }
+  
+  public void keyPressed() {
+    
+    if(!(key == CODED)) {
+      if(lastInput.length()>62) {
+    lastInput = lastInput.substring(0,62);
+    }
+      if(key == BACKSPACE){
+        if(lastInput.length()>1) {
+        lastInput = lastInput.substring(0, lastInput.length() - 2);
+        T3[0].setText(lastInput);
+        T3[0].display();
+        }
+      } else {
+        //println((T3[0].value).length());
+        lastInput = lastInput + key;
+        T3[0].setText(lastInput);
+        T3[0].display();
+      }
+    }  
+    
+   if(key == '1') {
+     BigInteger[] myKeys = new BigInteger[3];
+     myKeys = createKeys();  
+     println("Private Key is: " + myKeys[0] + " // Public Key is: " + myKeys[1] + " " + myKeys[2]);
+   }
+   
+   if(key == '2') {
+     BigInteger[] myKeys = new BigInteger[3];
+     myKeys = createKeys();  
+     BigInteger EncMess;
+     EncMess = encrypt("oh oh je suis le p\u00e8re Noel!!!", myKeys[1], myKeys[2]);
+     println("Public Key is: " + myKeys[1] + " " + myKeys[2] + " // encrypted message: " + EncMess);
+   }
+   
+   if(key == '3') {
+     BigInteger[] myKeys = new BigInteger[3];
+     myKeys = createKeys();  
+     BigInteger EncMess;
+     String decryptedMessage;
+     EncMess = encrypt("oh oh je suis le p\u00e8re Noel!!!", myKeys[1], myKeys[2]);
+     decryptedMessage = decrypt(EncMess, myKeys);
+     println("Public Key is: " + myKeys[1] + " " + myKeys[2] + " // encrypted message: " + EncMess);
+     println("Private Key is: " + myKeys[0] + " // decrypted message: " + decryptedMessage);
+   }
+   
+  }
+  
+  
+  // Update les \u00e9tats des boutons
+  public void update(int x, int y)
+  {
+    for(int i=0; i<T5.length; i++) 
+      {
+        T5[i].update();
+        if(T5[i].over) myInfo(ListN4[i],0+i*width/2);
+      }
+      
+    if(locked == false) {
+  
+      for(int i=0; i<T1.length; i++) 
+      {
+        T1[i].update();
+      }
+      for(int i=0; i<T4.length; i++) 
+      {
+        T4[i].update();
+      }
+    
+    } 
+    else {
+      locked = false;
+    }
+  
+    if(mousePressed) {
+      for(int i=0; i<T1.length; i++) 
+      {
+        if(T1[i].pressed()) {
+          T1[i].select = true;
+          if(i==0) {
+            reset(); 
+            T0[i].setText("  P = " +p + "      Q = " +q);
+          } else if(i==1) {
+            if(!(p==A))
+            calculate_n();
+            T0[i].setText("  N = " +n);
+          } else if(i==2) {
+            if(!(p==A))
+            launch_e();
+            T0[i].setText("  E = " +e);
+          } else if(i==3) {
+            if(!(e==A)) {
+            launch_d();
+            T0[i].setText("  D = " +d);
+            T2[0].setText(ListN2[0] +d);
+            T2[1].setText(ListN2[1] + "(" + n + "; " +e +")");
+            T2[2].setText(ListN2[2] + "(" + n + "; " +e +")");
+            }
+          } 
+        }
+
+          for(int j=0; j<T1.length-1; j++) 
+          {
+            if(!(j==i)) T1[j].select = false;
+          }
+        }
+        
+        
+      for(int i=0; i<T4.length; i++) 
+      {
+        if(T4[i].pressed()) {
+          T4[i].select = true;
+          if(i==0) {
+            translate_m();  
+          } else if(i==1) {
+            if(!(n.equals(A)))
+            encrypt_m();
+          } else if(i==2) {
+            if(!(n.equals(A)))
+            send_m();
+          } else if(i==3) {
+           if(!(n.equals(A)))
+            decrypt_m();
+
+          } 
+        }
+
+          for(int j=0; j<T4.length-1; j++) 
+          {
+            if(!(j==i)) T4[j].select = false;
+          }
+        }
+      }
+
+  }
+  
+   // Fenetre informative
+  public void myInfo(String sinfo, int ix) {
+
+    fill(255);
+    rect(ix,20,width/2,110);
+    fill(myOr);
+    text(sinfo, ix+30, 40);
+ 
+  }
+class Button
+{
+  int x, y;
+  int L, h;
+  int basecolor, highlightcolor;//, selectcolor;
+  int currentcolor, fcolor;
+  String value;
+  boolean over = false;
+  boolean pressed = false;   
+  boolean select = false;
+
+  public void update() 
+  {
+    if(over()) {
+      currentcolor = highlightcolor;
+    }
+    else {
+      currentcolor = basecolor;
+    }
+  }
+
+  public boolean pressed() 
+  {
+    if(over) {
+      locked = true;
+      return true;
+    } 
+    else {
+      locked = false;
+      return false;
+    }    
+  }
+
+  public boolean over() 
+  { 
+    return true; 
+  }
+
+  public boolean overText(int x, int y, int width, int height) 
+  {
+    if (mouseX >= x && mouseX <= x+width && 
+      mouseY >= y-height/2 && mouseY <= y+height/2) {
+      return true;
+    } 
+    else {
+      return false;
+    }
+  }
+
+
+}
+
+class rectButton extends Button
+{
+  rectButton(int ix, int iy, int iL, int ih,  int icolor) 
+  {
+    x = ix;
+    y = iy;
+    L = iL; h = ih;
+    value = "null";
+    currentcolor = icolor;
+    
+    
+  }
+
+  public void display() 
+  {
+    
+    noStroke();
+    fill(currentcolor);
+    rect(x, y-17,L, h);
+
+    if(!(value.equals("null"))) {
+      fill(255);
+      textFont(pfont);
+      if(value.length()<45) {
+        text(" "+ value.substring(0,value.length()), x, y);
+      } else {
+        textFont(pfont,10);
+        if(PApplet.parseInt(value.length()/63)==0) {
+          text(" "+ value.substring(0,value.length()), x, y);
+        } else {
+          int count =0;
+          for(int i=0; i<PApplet.parseInt(value.length()/63); i++) {
+          text(" "+ value.substring(i*63,(i+1)*63-1), x, y+i*15);
+          count = i+1;
+        }
+        text(" "+ value.substring(count*63,value.length()), x, y+count*15);
+        }
+
+      } 
+    }
+  }
+  
+  public void setText(String iText) 
+  {
+    value = iText;
+  }
+  
+}
+
+class TextButton extends Button
+{
+  TextButton(int ix, int iy, int iL, int ih, int ifcolor, int icolor, int ihighlight, String itext) 
+  {
+    x = ix;
+    y = iy;
+    L = iL; h = ih;
+    fcolor = ifcolor;
+    highlightcolor = ihighlight;
+    basecolor = icolor;
+    currentcolor = basecolor;
+    value = itext;
+  }
+
+  public boolean over() 
+  {
+    if( overText(x, y, L, h) ) {
+      over = true;
+      return true;
+    } 
+    else {
+      over = false;
+      return false;
+    }
+  }
+
+  public void display() 
+  {
+    if(x<width/2)
+    stroke(153);
+    else
+    stroke(190);
+    strokeWeight(0.8f);
+    
+    fill(currentcolor);
+    rect(x, y-17,L, h);
+    
+    fill(fcolor);
+    textFont(pfont);
+
+    text(value, x+10, y);
+    noStroke();
+  }
+}
+
+/**
+   *
+   * Fonctions g\u00e9n\u00e9rales de l'application
+   *
+   */
+   
+   
+   ////////////////////////////////////////////////////
+  /// Actions des controlleurs
+  
+  public void reset() {
+    pq_size = PApplet.parseInt(random(4, 10));
+    
+    p = new BigInteger(pq_size + 1, prime_certainty, new Random());
+    q = new BigInteger(pq_size - 1, prime_certainty, new Random());
+    if (p == null) {
+      p = new BigInteger(pq_size + 1, prime_certainty, new Random());
+    }
+    if (q == null) {
+      q = new BigInteger(pq_size - 1, prime_certainty, new Random());
+    }
+    
+
+  }
+  
+  public void calculate_n() {
+    // Calculer n = p\u00d7q
+    n = p.multiply(q);
+    
+  }
+  
+  public void launch_e() {
+    e = generate_e(p, q, 16);
+  }
+  
+  public void launch_d() {
+    // Calculer d selon: 
+    // Il existe un relatif entier m, tel que e \u00d7 d + m \u00d7 (p - 1)(q - 1) = 1
+    // d est la cl\u00e9 priv\u00e9e
+    d = calculate_d(p, q, e);
+    
+  }
+  
+  public void translate_m() {
+    BigInteger MessBits = new BigInteger(lastInput.getBytes());
+    T3[1].setText(MessBits +" ");
+   
+  }
+  
+  public void encrypt_m() {
+    
+    BigInteger MessBits = new BigInteger(lastInput.getBytes());
+    EncMessBits = encrypt(MessBits, e, n);
+    T3[2].setText(EncMessBits + " ");
+    
+  }
+  
+  public void decrypt_m() {
+    BigInteger DecMessBits = decrypt(EncMessBits, d, n);
+    String decryptedMessage = new String(DecMessBits.toByteArray());
+    T3[4].setText(decryptedMessage + " ");
+    
+  }
+  
+  public void send_m() {
+   
+   T3[3].setText(EncMessBits + " ");
+   
+  }
+  
+  
+  
+  ////////////////////////////////////////////////////
+  // Fonctions pour la m\u00e9thode RSA
+  
+  public BigInteger generate_e(BigInteger p, BigInteger q, int bitsize) {
+  
+  	BigInteger e, phi_pq;
+  
+  	e = new BigInteger("0");
+  	phi_pq = q.subtract(new BigInteger("1"));
+  	phi_pq = phi_pq.multiply(p.subtract(new BigInteger("1")));
+  	
+  	int i = 0;
+  	
+  	do {
+  		e = (new BigInteger(bitsize, 0, new Random())).setBit(0);
+  		i = i + 1;
+  	} while( i<100 && (e.gcd(phi_pq).compareTo(new BigInteger("1")) != 0));
+  	return e;
+  
+  }
+  
+  
+  public BigInteger calculate_d(BigInteger p, BigInteger q, BigInteger e) {
+    
+    	BigInteger d, phi_pq;
+        
+    	phi_pq = q.subtract(new BigInteger("1"));
+    	phi_pq = phi_pq.multiply(p.subtract(new BigInteger("1")));
+      
+    	d = e.modInverse(phi_pq);
+    	return d;
+    
+  }
+  
+  
+  public BigInteger encrypt(BigInteger m, BigInteger e, BigInteger n) {
+  	
+    BigInteger c, bitmask;
+  	c = new BigInteger("0");
+  	int i = 0;
+  	bitmask = (new BigInteger("2")).pow(n.bitLength()-1).subtract(new BigInteger("1"));
+  	while (m.compareTo(bitmask) == 1) {
+  		c = m.and(bitmask).modPow(e,n).shiftLeft(i*n.bitLength()).or(c);
+  		m = m.shiftRight(n.bitLength()-1);
+  		i = i+1;
+  	}
+  	c = m.modPow(e,n).shiftLeft(i*n.bitLength()).or(c);
+  	return c;
+  
+  }
+  
+  
+  public BigInteger decrypt(BigInteger c, BigInteger d, BigInteger n) {
+    
+    	BigInteger m, bitmask;
+    	m = new BigInteger("0");
+    	int i = 0;
+    	bitmask = (new BigInteger("2")).pow(n.bitLength()).subtract(new BigInteger("1"));
+    	while (c.compareTo(bitmask) == 1) {
+    		m = c.and(bitmask).modPow(d,n).shiftLeft(i*(n.bitLength()-1)).or(m);
+    		c = c.shiftRight(n.bitLength());
+    		i = i+1;
+    	}
+    	m = c.modPow(d,n).shiftLeft(i*(n.bitLength()-1)).or(m);
+    	
+      	return m;
+      
+  }
+  
+  ////////////////////////////////////////////////////
+  // Fonctions pour API
+  
+  /** Cr\u00e9er une cl\u00e9 priv\u00e9e et une cl\u00e9 publique pour le codage et d\u00e9codage de messages   
+   * @return les cl\u00e9s
+   */  
+  public BigInteger[] createKeys() {
+    
+    BigInteger[] Keys = new BigInteger[3];
+    
+    int pqSize = PApplet.parseInt(random(4, 10));
+    BigInteger p_ = new BigInteger(pqSize + 1, prime_certainty, new Random());
+    BigInteger q_ = new BigInteger(pqSize - 1, prime_certainty, new Random());
+    if (p_ == null) {
+      p_ = new BigInteger(pqSize + 1, prime_certainty, new Random());
+    }
+    if (q_ == null) {
+      q_ = new BigInteger(pqSize - 1, prime_certainty, new Random());
+    }
+    
+    BigInteger n_ = p_.multiply(q_);
+    BigInteger e_ = generate_e(p_, q_, 16);
+    BigInteger d_ = calculate_d(p_, q_, e_);
+
+    Keys[0] = d_;
+    Keys[1] = e_;
+    Keys[2] = n_;
+    
+    return Keys;
+  }
+  
+  
+  /** Encrypt un message \u00e0 l'aide de cl\u00e9s  
+   * @param m message \u00e0 encrypter, \u00e0 inscrire entre "".
+   * @param pk1 cl\u00e9 publique1. 
+   * @param pk2 cl\u00e9 publique2. 
+   * @return message encrypt\u00e9 sous forme de chiffres
+   */  
+  public BigInteger encrypt(String m, BigInteger pk1, BigInteger pk2) {
+   
+    BigInteger EncMessBits = null;
+    
+    BigInteger MessBits = new BigInteger(m.getBytes());
+    EncMessBits = encrypt(MessBits, pk1, pk2);
+    
+    return EncMessBits;
+    
+  }
+  
+  /** Encrypt un message \u00e0 l'aide de cl\u00e9s  
+   * @param me message encrypt\u00e9 sous forme de chiffres.
+   * @param k cl\u00e9s, publique et priv\u00e9e. 
+   * @return message
+   */  
+  public String decrypt(BigInteger me, BigInteger[] k) {
+   
+    String decryptedMessage = null;
+    
+    BigInteger DecMessBits = decrypt(me, k[0], k[2]);
+    decryptedMessage = new String(DecMessBits.toByteArray());
+    
+    return decryptedMessage;
+    
+  }
+  
+  static CryptageRSA proglet;  
+  static public void main(String args[]) {
+    PApplet.main(new String[] { "--bgcolor=#FFFFFF", "CryptageRSA" });
+  }
+}
