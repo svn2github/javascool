@@ -6,7 +6,8 @@
 
 publish : htm
 # export the applet to the www directory
-	@if [ -d */applet ] ; then for d in */applet ; do cp $$d/*.* ../www/sketchbook/`echo $$d | sed 's/\/applet//'` ; /bin/rm -rf $$d ; done ; fi
+	@applets="" ; for d in * ; do if [ -d $$d/applets ] ; then applets="$$applets $$d" ; fi ; done ;\
+	 for d in $$applets ; do mkdir -p ../www/sketchbook/applet ; cp $$d/applet/*.* ../www/sketchbook/$$d ; /bin/rm -rf $$d/applet ; done
 # sign the exported jar
 	@cd ../www/sketchbook ; for d in * ; do if [ -f $$d/$$d.jar ] ; then $(MAKE) -s -f ../../sketchbook/makefile $$d/$$d.key ; fi ; done
 # copy the documentation files
@@ -15,9 +16,10 @@ publish : htm
 	@cd ../www/sketchbook ; (echo "<h1>sketchbook files</h1>"; for f in */*.htm* ; do echo "<p><a href='$$f'>$$f</a></p>"; done) > ls.html
 	@cp index.htm ../www/sketchbook/index.html
 # add new files to svn
-	@cd ../www/sketchbook ; svn -q add */*.*
+	@cd ../www/sketchbook ; svn -q add * */*.*
 # commit in the svn
 	@$(MAKE) -C .. svn
+
 
 # Beautify a source code
 
@@ -27,16 +29,14 @@ btfy :
 # Generates the javasccol processing.zip 
 
 JARS = \
- ../www/sketchbook/{ExplorationSonore,CryptageRSA,EnVoiture,UnGrapheDesChemins,BoiteAMusique}/*.jar \
+ $(shell ls  ../www/sketchbook/{ExplorationSonore,CryptageRSA,EnVoiture,UnGrapheDesChemins,BoiteAMusique}/*.jar) \
  /usr/java/processing-1.2.1/libraries/opengl/library/{jogl,gluegen-rt}.jar 
 
-jar : 
-	@rm -f ../lib/processing.zip
-	$(MAKE) ../lib/processing.zip
+jar : ../lib/processing.zip
 
-../lib/processing.zip : 
+../lib/processing.zip : $(JARS)
 	@rm -rf $@ tmp ; mkdir tmp 
-	@for j in $(shell ls $(JARS)) ; do unzip -qo $$j -d tmp ; done ; rm -rf tmp/META-INF
+	@for j in $^ ; do unzip -qo $$j -d tmp ; done ; rm -rf tmp/META-INF
 	@cd tmp ; zip -9qr ../$@ *
 	@rm -rf tmp
 
