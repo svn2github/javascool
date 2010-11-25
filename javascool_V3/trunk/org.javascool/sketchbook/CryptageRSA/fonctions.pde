@@ -20,25 +20,17 @@
       q = new BigInteger(pq_size - 1, prime_certainty, new Random());
     }
     
-    myTextfield_p.setText("P = "+ p + " ");
-    myTextfield_q.setText("Q = "+ q + " ");
-    myTextfield_EncMessBitsA.hide();
-    controlP5.controller("decrypt_m").hide();
-    myTextfield_DecMessBits.hide();
 
   }
   
   void calculate_n() {
     // Calculer n = p×q
     n = p.multiply(q);
-    myTextfield_n.setText("N = P x Q =   "+ n + " ");
     
   }
   
   void launch_e() {
-    // Générer e tel qu'il soit premier avec (p-1)*(q-1)
     e = generate_e(p, q, 16);
-    myTextfield_e.setText("E = "+ e + " ");
   }
   
   void launch_d() {
@@ -46,42 +38,34 @@
     // Il existe un relatif entier m, tel que e × d + m × (p - 1)(q - 1) = 1
     // d est la clé privée
     d = calculate_d(p, q, e);
-    myTextfield_d.setText("D = "+ d + " ");
-    // Clés
-    myTextfield_kpr.setText("D = "+ d + " ");
-    myTextfield_kpu.setText("( N , E ) = ( "+ n + " , " + e + " ) ");
     
-    // Clé publique révélée à Bob
-    myTextfield_kpuB.setText("( N , E ) = ( "+ n + " , " + e + " ) ");
   }
   
   void translate_m() {
-    BigInteger MessBits = new BigInteger(myTextfield_Mess.getText().getBytes());
-    myTextfield_MessBits.setText(" " + MessBits +" ");
-    myTextfield_EncMessBitsA.clear();
-    myTextfield_DecMessBits.clear();
+    BigInteger MessBits = new BigInteger(lastInput.getBytes());
+    T3[1].setText(MessBits +" ");
+   
   }
   
   void encrypt_m() {
-    BigInteger MessBits = new BigInteger(myTextfield_Mess.getText().getBytes());
+    
+    BigInteger MessBits = new BigInteger(lastInput.getBytes());
     EncMessBits = encrypt(MessBits, e, n);
-    myTextfield_EncMessBits.setText(" " + EncMessBits +" ");
+    T3[2].setText(EncMessBits + " ");
+    
   }
   
   void decrypt_m() {
     BigInteger DecMessBits = decrypt(EncMessBits, d, n);
     String decryptedMessage = new String(DecMessBits.toByteArray());
-    myTextfield_DecMessBits.setText(" " + decryptedMessage +" ");
+    T3[4].setText(decryptedMessage + " ");
+    
   }
   
   void send_m() {
-   myTextfield_EncMessBitsA.show();
-   controlP5.controller("decrypt_m").show();
-   myTextfield_DecMessBits.show();
-   myTextfield_Mess.clear();
-   myTextfield_MessBits.clear();
-   myTextfield_EncMessBits.clear();
-   myTextfield_EncMessBitsA.setText(" " + EncMessBits +" ");
+   
+   T3[3].setText(EncMessBits + " ");
+   
   }
   
   
@@ -187,7 +171,7 @@
   }
   
   
-  /** Encrypte un message à l'aide de clés  
+  /** Encrypt un message à l'aide de clés  
    * @param m message à encrypter, à inscrire entre "".
    * @param pk1 clé publique1. 
    * @param pk2 clé publique2. 
@@ -204,7 +188,7 @@
     
   }
   
-  /** Décrypte un message à l'aide de clés  
+  /** Encrypt un message à l'aide de clés  
    * @param me message encrypté sous forme de chiffres.
    * @param k clés, publique et privée. 
    * @return message
