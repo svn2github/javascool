@@ -61,7 +61,7 @@
     frame = new Frame();
     
     size(1100,650);
-    space = width*100/1200;
+    space = 50;
     frameRate(30);
     pfont = createFont("Arial Bold",12,true); // use true/false for smooth/no-smooth
   
@@ -69,10 +69,7 @@
     
     this.frame.setTitle("Alice"); // interface principale: celle d'Alice
     
-    //fill(0);
-    //rect(0,height-100,width,100);
-    //fill(myBlue);
-    //color buttoncolor; color highlight; 
+
     for(int i=0; i< T1.length; i++)
     {
 
@@ -210,7 +207,7 @@
     for(int i=0; i<T5.length; i++) 
       {
         T5[i].update();
-        if(T5[i].over) myInfo(ListN4[i],0+i*width/2);
+        if(T5[i].over) myInfo(ListN4[i],0+i*width/2, 110 -i*40);
       }
       
     if(locked == false) {
@@ -292,11 +289,11 @@
   }
   
    // Fenetre informative
-  void myInfo(String sinfo, int ix) {
+  void myInfo(String sinfo, int ix, int isize) {
 
     fill(255);
-    rect(ix,20,width/2,110);
+    rect(ix,20,width/2,isize);
     fill(myOr);
-    text(sinfo, ix+(20*width/1200), 40);
+    text(sinfo, ix+20, 40);
  
   }
