@@ -71,7 +71,7 @@ public class CurveDisplay implements org.javascool.Proglet {
   // This defines the tests on the panel
   //
 
-  /**/ public static void test() {
+  /**/public static void test() {
     scopeReset();
     for(double x = -1; x <= 1; x += 0.001) {
       scopeSet(x, 0.5 * Math.sin(10 * x) + 0.5, 6);
@@ -96,7 +96,7 @@ public class CurveDisplay implements org.javascool.Proglet {
   public static void scopeReset(double X, double Y) {
     panel.reset(X, Y);
   }
-  /**/ public static void scopeReset() {
+  /**/public static void scopeReset() {
     panel.reset(1, 1);
   }
   /** Change la valeur d'un point du tracé.
@@ -117,13 +117,13 @@ public class CurveDisplay implements org.javascool.Proglet {
   public static void scopeAddString(double x, double y, String s, int c) {
     panel.scope.add(x, y, s, c);
   }
-  /**/ public static void scopeAddString(double x, double y, String s) {
+  /**/public static void scopeAddString(double x, double y, String s) {
     scopeAddString(x, y, s, 0);
   }
-  /**/ public static void scopeAdd(double x, double y, String s, int c) {
+  /**/public static void scopeAdd(double x, double y, String s, int c) {
     scopeAddString(x, y, s, c);
   }
-  /**/ public static void scopeAdd(double x, double y, String s) {
+  /**/public static void scopeAdd(double x, double y, String s) {
     scopeAddString(x, y, s);
   }
   /** Trace un rectangle.
@@ -139,7 +139,7 @@ public class CurveDisplay implements org.javascool.Proglet {
     scopeAddLine(xmax, ymax, xmin, ymax, c);
     scopeAddLine(xmin, ymax, xmin, ymin, c);
   }
-  /**/ public static void scopeAddRectangle(double xmin, double ymin, double xmax, double ymax) {
+  /**/public static void scopeAddRectangle(double xmin, double ymin, double xmax, double ymax) {
     scopeAddRectangle(xmin, ymin, xmax, ymax, 0);
   }
   /** Trace une ligne.
@@ -152,7 +152,7 @@ public class CurveDisplay implements org.javascool.Proglet {
   public static void scopeAddLine(double x1, double y1, double x2, double y2, int c) {
     panel.scope.add(x1, y1, x2, y2, c);
   }
-  /**/ public static void scopeAddLine(double x1, double y1, double x2, double y2) {
+  /**/public static void scopeAddLine(double x1, double y1, double x2, double y2) {
     scopeAddLine(x1, y1, x2, y2, 0);
   }
   /** Trace un  cercle.
@@ -164,7 +164,7 @@ public class CurveDisplay implements org.javascool.Proglet {
   public static void scopeAddCircle(double x, double y, double r, int c) {
     panel.scope.add(x, y, r, c);
   }
-  /**/ public static void scopeAddCircle(double x, double y, double r) {
+  /**/public static void scopeAddCircle(double x, double y, double r) {
     scopeAddCircle(x, y, r, 0);
   }
   /** Renvoie la valeur horizontale du réticule. */

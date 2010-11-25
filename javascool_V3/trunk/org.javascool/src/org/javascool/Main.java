@@ -64,7 +64,7 @@ import javax.swing.UIManager;
  * @serial exclude
  */
 public class Main extends JApplet {
-  /**/ public Main() {}
+  /**/public Main() {}
   private static final long serialVersionUID = 1L;
   static final String title = "Java'Scool 3.1";
   static final boolean withProcessing = true; // If true includes the processing applets
@@ -466,7 +466,7 @@ public class Main extends JApplet {
       return;
     fileChooser.doOpen(activity.getEditor(), file);
   }
-  /**/ public void stop() {
+  /**/public void stop() {
     fileSavePlease();
   }
   /** Saves a file, before exiting or activity change. */

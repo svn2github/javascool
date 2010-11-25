@@ -34,7 +34,7 @@ import java.awt.event.KeyEvent;
  * @serial exclude
  */
 public class HtmlDisplay extends JPanel implements Widget {
-  /**/ public HtmlDisplay() {}
+  /**/public HtmlDisplay() {}
   private static final long serialVersionUID = 1L;
 
   /** The Html Display pane. */

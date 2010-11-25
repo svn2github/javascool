@@ -118,7 +118,7 @@ public class Utils {
     } catch(IOException e) { throw new RuntimeException(e + " when executing: " + command);
     }
   }
-  /**/ public static String exec(String command) {
+  /**/public static String exec(String command) {
     return exec(command, 10);
   }
   /** Converts a location to a well-formed URL.
@@ -424,7 +424,7 @@ public class Utils {
     f.open(applet, title, icon, width, height, quit);
     return f;
   }
-  /**/ public static JFrame show(Component applet, String title, ImageIcon icon, boolean quit) {
+  /**/public static JFrame show(Component applet, String title, ImageIcon icon, boolean quit) {
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     int width = (int) (1 * dim.getWidth()), height = (int) (1 * dim.getHeight());
     if(width > 1600)
@@ -433,16 +433,16 @@ public class Utils {
       height = 1000;
     return show(applet, title, icon, width, height, quit);
   }
-  /**/ public static JFrame show(Component applet, String title, int width, int height) {
+  /**/public static JFrame show(Component applet, String title, int width, int height) {
     return show(applet, title, null, width, height, true);
   }
-  /**/ public static JFrame show(Component applet, String title) {
+  /**/public static JFrame show(Component applet, String title) {
     return show(applet, title, null, true);
   }
-  /**/ public static JFrame show(Component applet, int width, int height) {
+  /**/public static JFrame show(Component applet, int width, int height) {
     return show(applet, null, null, width, height, true);
   }
-  /**/ public static JFrame show(Component applet) {
+  /**/public static JFrame show(Component applet) {
     return show(applet, null, null, true);
   }
   // Encapsulates an applet in a frame

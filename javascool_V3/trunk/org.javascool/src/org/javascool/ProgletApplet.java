@@ -41,7 +41,7 @@ public class ProgletApplet extends JApplet {
   }
   private String proglet = "";
   private boolean demo = true;
-  /**/ public void init() {
+  /**/public void init() {
     // Init the parameters from the HTML tags
     try { String p = getParameter("proglet");
           if(p != null)

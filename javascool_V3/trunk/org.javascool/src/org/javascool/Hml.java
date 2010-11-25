@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  * @serial exclude
  */
 public class Hml extends Pml {
-  /**/ public Hml() {}
+  /**/public Hml() {}
   private static final long serialVersionUID = 1L;
 
   /** Resets the logical-structure, parsing the given string.
