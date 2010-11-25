@@ -24,7 +24,7 @@ import java.util.regex.*;
 
 public class EnVoiture extends PApplet {
 
-/**
+ /**
  * 10.2010 C\u00e9cile P-L for Fuscia, ccl.picard@gmail.com
  * GRAPHES
  * Interface p\u00e9dagogique sur la manipulation des concepts li\u00e9s aux graphes
