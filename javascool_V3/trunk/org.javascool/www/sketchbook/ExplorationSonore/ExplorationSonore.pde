@@ -1,11 +1,12 @@
-/*///////////////////////////////////////////////////////////////////////////////////
+/**
  *
  * 08.2010 Cécile P-L for Fuscia - ccl.picard@gmail.com
  * PERCEPTION SONORE
  * Interface pédagogique sur les notions de contenu sonore et perception
- * Utilisation de Minim pour le son et ControlP5
+ * Utilisation de Minim pour le son
  *
- */                                                                                                                                                                                                                                                                                                                    // /////////////////////////////////////////////////////////////////////////////////
+ * Inspired by a tutorial of Andy Best http://andybest.net/
+ **/                                                                                                                                                                                                                                                                                                                    // /////////////////////////////////////////////////////////////////////////////////
 
 import processing.opengl.*;
 import javax.media.opengl.*;
