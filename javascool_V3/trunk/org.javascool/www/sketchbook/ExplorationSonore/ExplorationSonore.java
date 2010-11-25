@@ -26,11 +26,11 @@ public class ExplorationSonore extends PApplet {
 
 /**
  *
- * 08.2010 C\u00e9cile P-L for Fuscia - ccl.picard@gmail.com \n
- * PERCEPTION SONORE
- * Interface p\u00e9dagogique sur les notions de contenu sonore et perception
- * Utilisation de Minim pour le son
- *
+ * 08.2010 C\u00e9cile P-L for Fuscia - ccl.picard@gmail.com **/
+ /** PERCEPTION SONORE:
+ * Interface p\u00e9dagogique sur les notions de contenu sonore et perception; 
+ * Utilisation de Minim pour le son**/
+ /**
  * Inspired by a tutorial of Andy Best http://andybest.net/
  **/                                                                                                                                                                                                                                                                                                                    // /////////////////////////////////////////////////////////////////////////////////
 
