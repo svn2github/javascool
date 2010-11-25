@@ -25,13 +25,14 @@ import java.util.regex.*;
 public class EnVoiture extends PApplet {
 
  /**
- *
- * 10.2010 C\u00e9cile P-L for Fuscia, ccl.picard@gmail.com
- * GRAPHES
- * Interface p\u00e9dagogique sur la manipulation des concepts li\u00e9s aux graphes
- *
- * Inspired from ''TerrainSteering', toxiclibs from Karsten Schmidt http://www.openprocessing.org/portal/?userID=4530
- **/
+   *
+   * 10.2010 C\u00e9cile P-L for Fuscia, ccl.picard@gmail.com
+   * GRAPHES Part 1
+   * Interface p\u00e9dagogique sur la manipulation des concepts li\u00e9s aux graphes
+   *
+   * Inspired from ''TerrainSteering', toxiclibs from Karsten Schmidt http://www.openprocessing.org/portal/?userID=4530
+   *
+   **/
 
 
 

@@ -1,11 +1,12 @@
  /**
- *
- * 10.2010 Cécile P-L for Fuscia, ccl.picard@gmail.com
- * GRAPHES
- * Interface pédagogique sur la manipulation des concepts liés aux graphes
- *
- * Inspired from ''TerrainSteering', toxiclibs from Karsten Schmidt http://www.openprocessing.org/portal/?userID=4530
- **/
+   *
+   * 10.2010 Cécile P-L for Fuscia, ccl.picard@gmail.com
+   * GRAPHES Part 1
+   * Interface pédagogique sur la manipulation des concepts liés aux graphes
+   *
+   * Inspired from ''TerrainSteering', toxiclibs from Karsten Schmidt http://www.openprocessing.org/portal/?userID=4530
+   *
+   **/
 
 import toxi.geom.*;
 import toxi.geom.mesh.*;
