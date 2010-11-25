@@ -24,13 +24,13 @@ import java.util.regex.*;
 
 public class EnVoiture extends PApplet {
 
-/*///////////////////////////////////////////////////////////////////////////////////
+/**
  * 10.2010 C\u00e9cile P-L for Fuscia, ccl.picard@gmail.com
  * GRAPHES
  * Interface p\u00e9dagogique sur la manipulation des concepts li\u00e9s aux graphes
  *
- * Inspir\u00e9e de 'Steering Car' de toxiclibs par Karsten Schmidt
- */
+ * Inspired from ''TerrainSteering', toxiclibs from Karsten Schmidt http://www.openprocessing.org/portal/?userID=4530
+ **/
 
 
 
@@ -70,7 +70,7 @@ int[] colors = new int[listN.length];
 char[] form = { 'B', 'P', 'O', 'C' };
 
 public void setup() {
-  size(1000, 600, OPENGL);  // 1024, 576, OPENGL);
+  size(1000, 500, OPENGL);  // 1024, 576, OPENGL);
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();

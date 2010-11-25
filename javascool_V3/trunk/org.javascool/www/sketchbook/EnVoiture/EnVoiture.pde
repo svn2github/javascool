@@ -1,10 +1,10 @@
-/*///////////////////////////////////////////////////////////////////////////////////
+/**
  * 10.2010 Cécile P-L for Fuscia, ccl.picard@gmail.com
  * GRAPHES
  * Interface pédagogique sur la manipulation des concepts liés aux graphes
  *
- * Inspirée de 'Steering Car' de toxiclibs par Karsten Schmidt
- */
+ * Inspired from ''TerrainSteering', toxiclibs from Karsten Schmidt http://www.openprocessing.org/portal/?userID=4530
+ **/
 
 import toxi.geom.*;
 import toxi.geom.mesh.*;
@@ -44,7 +44,7 @@ color[] colors = new color[listN.length];
 char[] form = { 'B', 'P', 'O', 'C' };
 
 void setup() {
-  size(1000, 600, OPENGL);  // 1024, 576, OPENGL);
+  size(1000, 500, OPENGL);  // 1024, 576, OPENGL);
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();
