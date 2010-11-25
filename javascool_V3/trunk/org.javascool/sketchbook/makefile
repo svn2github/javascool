@@ -22,8 +22,8 @@ publish : htm
 
 # Beautifies a source code
 
-btfy :
-	echo to be done
+uncrust :
+	for f in `find . -name '*.pde'` ; do uncrustify -q -c ../lib/uncrustify.cfg --replace $$f ; done
 
 # Generates the javasccol processing.zip 
 
