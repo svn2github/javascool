@@ -5,7 +5,8 @@
  * Interface pédagogique sur la manipulation des concepts liés aux graphes
  *
  **/
-PFont Verdana;
+
+PFont font;
 boolean mouseDown = false, info = false, pathSelect = false;
 String[] listN = { "Ahmed", "Barbara", "Charlotte", "Diego", "Elliot", "Ida", "Jelena", "Pontus", "Réda", "Samiha" }; // {"Nice", "Marseille", "Avignon", "Toulouse", "Bordeaux", "Dijon", "Fréjus"};//, "Strasbourg", "Caen", "Grenoble", "Lille", "Rennes"};
 double[] listP = { 10, 15, 20, 10, 20 };
@@ -32,12 +33,12 @@ void setup() {
 }
 void draw() {
   background(130);
-  Verdana = loadFont("Verdana-48.vlw");
+  font = createFont("Arial Bold", 14, true);
   float topPos = hs1.getPos() - width / 2;
 
   textAlign(LEFT);
   fill(0, 40, 63);
-  textFont(Verdana, 13);
+  textFont(font, 13);
   text(" - I  N  S  T  R  U  C  T  I  O  N  S - \n " +
        "> Noeud: \n" + "    . ajout = clic droit \n" + "    . déplacement: 'm'\n" + "    . suppression: clic gauche + 'd' \n " +
        "> Lien: \n" + "    . ajout/suppression: clic centre + glisse \n " +
@@ -98,7 +99,7 @@ void draw() {
     strokeWeight(1);
     ellipse(N_.x, N_.y, 20, 20);
     noStroke();
-    textFont(Verdana, width * 14 / 800);
+    textFont(font, width * 14 / 800);
     text(N_.n, N_.x + 12, N_.y);
     for(String nj_ : (Iterable<String> )myGraph.nodes.keySet())
       if(myGraph.isLink(ni_, nj_) && !(ni_.equals(nj_))) {
@@ -111,7 +112,7 @@ void draw() {
         line(N_.x, N_.y, N2_.x, N2_.y);
         noStroke();
         if(info) {
-          textFont(Verdana, width * 10 / 800);
+          textFont(font, width * 10 / 800);
           fill(180);
           text(" " + (float) p_, abs((N_.x + N2_.x) / 2), abs((N_.y + N2_.y) / 2) + 10);
         }

@@ -48,7 +48,7 @@ class HScrollbar
       fill(255, 150, 0);
     rect(sheight / 2, ypos, sheight * 5, sheight);
     fill(130);
-    textFont(Verdana, 11);
+    textFont(font, 11);
     text("I N F O >>>", sheight / 2 + sheight / 5, ypos + 4 * sheight / 5);
   }
   float getPos() {
