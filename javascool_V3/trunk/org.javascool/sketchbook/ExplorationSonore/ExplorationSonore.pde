@@ -168,9 +168,9 @@ void update(int x, int y) {
         if(i < 4)
           signal1.setSignal(T1[i].value, 1000, 0.2);
         else if(i == 4)
-          record1.setRecord(selectInput());
+          record1.setRecord("data/music/Ahmed_Ex2.wav");
         else if(i == 5) {
-          record1.setRecord(selectInput());
+          record1.setRecord("data/music/Ahmed_Ex2.wav");
           record1.applyFilter();
         } else if(i == 6)
           StopAnySound();

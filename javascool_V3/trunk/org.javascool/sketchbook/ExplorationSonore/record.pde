@@ -26,6 +26,7 @@ class record {
     if(path != null) {
       count += 1;
       player = minim.loadFile(path);
+      changeValue();
       player.loop();
       sounding = true;
     }
@@ -54,6 +55,7 @@ class record {
     if(path != null) {
       count += 1;
       player = minim.loadFile(path);
+      changeValue();
       player.loop();
       sounding = true;
       if((Fc_ > 100) && (Fc_ < 10000)) {
