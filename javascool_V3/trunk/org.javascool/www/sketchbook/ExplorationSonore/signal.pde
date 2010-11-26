@@ -29,17 +29,21 @@ class signal {
     if(n.equals("sinus")) {
       sinus_ = new SineWave(f, a, out.sampleRate());
       sinus_.portamento(20);
+      changeValue();
       out.addSignal(sinus_);
     } else if(n.equals("carré")) {
       square_ = new SquareWave(f, a, out.sampleRate());
       square_.portamento(20);
+      changeValue();
       out.addSignal(square_);
     } else if(n.equals("scie")) {
       saw_ = new SawWave(f, a, out.sampleRate());
       saw_.portamento(20);
+      changeValue();
       out.addSignal(saw_);
     } else if(n.equals("bruit")) {
       wnoise_ = new WhiteNoise(a);
+      changeValue();
       out.addSignal(wnoise_);
     }
     sounding = true;
