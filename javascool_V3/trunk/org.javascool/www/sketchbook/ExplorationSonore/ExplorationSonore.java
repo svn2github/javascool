@@ -194,9 +194,9 @@ public void update(int x, int y) {
         if(i < 4)
           signal1.setSignal(T1[i].value, 1000, 0.2f);
         else if(i == 4)
-          record1.setRecord(selectInput());
+          record1.setRecord("data/music/Ahmed_Ex2.wav");
         else if(i == 5) {
-          record1.setRecord(selectInput());
+          record1.setRecord("data/music/Ahmed_Ex2.wav");
           record1.applyFilter();
         } else if(i == 6)
           StopAnySound();
@@ -469,6 +469,7 @@ class record {
     if(path != null) {
       count += 1;
       player = minim.loadFile(path);
+      changeValue();
       player.loop();
       sounding = true;
     }
@@ -497,6 +498,7 @@ class record {
     if(path != null) {
       count += 1;
       player = minim.loadFile(path);
+      changeValue();
       player.loop();
       sounding = true;
       if((Fc_ > 100) && (Fc_ < 10000)) {
@@ -570,17 +572,21 @@ class signal {
     if(n.equals("sinus")) {
       sinus_ = new SineWave(f, a, out.sampleRate());
       sinus_.portamento(20);
+      changeValue();
       out.addSignal(sinus_);
     } else if(n.equals("carr\u00e9")) {
       square_ = new SquareWave(f, a, out.sampleRate());
       square_.portamento(20);
+      changeValue();
       out.addSignal(square_);
     } else if(n.equals("scie")) {
       saw_ = new SawWave(f, a, out.sampleRate());
       saw_.portamento(20);
+      changeValue();
       out.addSignal(saw_);
     } else if(n.equals("bruit")) {
       wnoise_ = new WhiteNoise(a);
+      changeValue();
       out.addSignal(wnoise_);
     }
     sounding = true;
