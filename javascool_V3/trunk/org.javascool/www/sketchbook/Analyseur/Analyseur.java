@@ -48,26 +48,68 @@ String path = null;
 PFont f;
 boolean info = false, sounding = false;
 float fs = 44100;
-
+int k = 0;
 public void setup()
 {
-  size(512, 240, P2D);
+  size(700, 270, P2D);
   background(0);
   
-  f = createFont("Arial Bold",12,true);
+  f = createFont("Arial Bold",14,true);
   minim = new Minim(this);
   in = minim.getLineIn(Minim.STEREO, 512);
-
+  //fft = new FFT(in.bufferSize(), in.sampleRate());
   nb = 128;
-
+  //fft.linAverages(nb);
+  
+  
+  /*//TEST Sine
+  // get a line out from Minim, default bufferSize is 1024, default sample rate is 44100, bit depth is 16
+  out = minim.getLineOut(Minim.STEREO,2048);
+  // create a sine wave Oscillator, set to 440 Hz, at 0.5 amplitude, sample rate from line out
+  sine = new SineWave(440, 0.5, out.sampleRate());
+  // set the portamento speed on the oscillator to 200 milliseconds
+  sine.portamento(200);
+  // add the oscillator to the line out
+  out.addSignal(sine);
+  fftS = new FFT(out.bufferSize(), out.sampleRate());
+  // use 'nb' averages (between 64 and 1024).
+  // the maximum number of averages we could ask for is half the spectrum size. 
+  fftS.linAverages(nb);*/
+  
   rectMode(CORNERS);
+  
 }
 
 public void draw()
 {
   fill(255);
-  
+
+  /*fft = new FFT(in.bufferSize(), in.sampleRate());
+    fft.linAverages(nb);
+  fft.forward(in.mix);
+  int w = int(fft.specSize()/nb);
+  strokeWeight(w);
+  strokeCap(SQUARE);
+  stroke(255);
+  for(int i = 0; i < fft.avgSize(); i++) {
+    if(i==k) stroke(255, 0, 0);
+    else stroke(255); 
+    line((i*w)  + w, height-5, (i*w)  + w, height-5 - fft.getAvg(i)  );
+  }
+  noStroke();*/
   update();
+  /*//TEST Sine
+  fftS.forward(out.mix);
+  int w = int(fftS.specSize()/nb);
+  strokeWeight(w);
+  strokeCap(SQUARE);
+  stroke(255);
+  for(int i = 0; i < fftS.avgSize(); i++) {
+    if(i==k) stroke(255, 0, 0);
+    else stroke(255); 
+    line((i*w)  + w, height-5, (i*w)  + w, height-5 - fftS.getAvg(i)  );
+  }
+  noStroke();*/
   
   printInfo();
  
@@ -78,30 +120,29 @@ public void printInfo() {
 
   if(info) {
     fill(0);
-    rect(0, 100, width/2+200, -10);
-    textFont(f,12);
+    rect(0, 100, width, -10);
+    textFont(f);
     textAlign(LEFT);
     fill(255, 150, 0);
-    text(" - COMMANDES - \n " + 
-      ".  L / l : chargement d'un fichier son (Nina Hagen, Born in Xixas) \n " +
-      ".  + / - : raffine/\u00e9largit les bandes de fr\u00e9quences pour la FFT (entre 64 et 256) \n " +
-      ".  S / s : stop la lecture, analyse de l'entr\u00e9e micro \n " +
-      ".  I / i : afficher/cacher les instructions \n " +
-      ".  ESC: Fermer l'application ", 10, 15);
+    text("\n " + 
+      ".  Clic Gauche : joue enregistrement (Nina Hagen, ''Born in Xixas'') \n " +
+      ".  Clic Droit : stop la lecture, analyse de l'entr\u00e9e micro \n " +
+      ".  Clic Centre + souris \u00e0 droite/gauche: \u00e9largit/rafine les bandes de fr\u00e9quences (entre 32 et 128) \n " +
+      ".  Pointe une bande de fr\u00e9quence pour savoir ses valeurs.", 10, 15);
 
   } else {
     fill(0);
-      rect(0, 100, width/2+200, -10);
-      textFont(f,12);
+      rect(0, 100, width, -10);
+      textFont(f);
       textAlign(LEFT);
       fill(255, 150, 0);
-      text("'i' pour info ", 10, 15);
+      text("- INFO - ", 10, 15);
   } 
 }
 
 public void update() {
-    int coeff;
-    if(path != null) {
+  int coeff;
+  if(path != null) {
     fft = new FFT(jingle.bufferSize(), jingle.sampleRate());
     fs = jingle.sampleRate();
     fft.linAverages(nb);
@@ -114,49 +155,70 @@ public void update() {
     fft.forward(in.mix);
     coeff = 5;
   }
+  
+  //fft.linAverages(nb);
   int w = PApplet.parseInt(fft.specSize()/nb);
-
-  for(int i = 0; i < fft.avgSize(); i++)
-  {
-    // draw a rectangle for each average, multiply the value by 5 so we can see it better
-    rect(i*w, height, i*w + w, height - coeff*fft.getAvg(i));
+  //strokeWeight(w);
+  //strokeCap(SQUARE);
+  for(int i = 0; i < fft.avgSize(); i++) {
+    /*if(i==k) fill(100); //stroke(255, 0, 0);
+    else fill(255); //stroke(255);   */
+    if(mouseX<width/2) {
+      fill(0); rect(0 , height-5+10, width/2, height-10);
+      fill(255, 0, 0); ellipse(k*w , height-5, 5, 5); 
+    }
+    fill(255);
+    //line((i*w)  + w, height-5, (i*w)  + w, height-5 - fft.getAvg(i)  );
+    rect(i*w , height-10, (i*w)  + w, height-10 - fft.getAvg(i)*coeff);
   }
+  //noStroke();
+  
+  /*//TEST Sine
+  fftS.linAverages(nb);
+  int w = int(fftS.specSize()/nb);
+  strokeWeight(w);
+  strokeCap(SQUARE);
+  for(int i = 0; i < fftS.avgSize(); i++) {
+    if(i==k) stroke(255, 0, 0);
+    else stroke(255);    
+    line((i*w)  + w, height-5, (i*w)  + w, height-5 - fftS.getAvg(i)  );
+  }
+  noStroke(); */
     
 }
 
 public void mouseMoved() {
-  int w = PApplet.parseInt((fs+nb)/(nb));
-  //println("/ " + nb+ "/ " +fft.avgSize() + "/ " +fft.specSize());
-  textFont(f,12);
-  fill(0);
-  rect(width, 150, width/2+80, height/3);
-  fill(255);
-  text("Fr\u00e9quence point\u00e9e = " + w*(fft.avgSize()*mouseX)/width, width-170, PApplet.parseInt(height/2));
+  // Print info
+  if(mouseX<50 && mouseY<20) {
+    info = true;
+  } else {
+    info = false;
+    textFont(f,12);
+    fill(0);
+    rect(width, 150, width/2+80, height/3);
+    fill(255);
+    text("nombre de bandes = "+ nb , width-170, PApplet.parseInt(height/2)-20);
+    if(mouseY>height/2) k = getClosestBand(mouseX);
+    text(" Fr\u00e9quences = [" + (int)getClosestBand(mouseX)*(fs/2/nb) + " - "+ (int)(getClosestBand(mouseX)+1)*(fs/2/(nb)) + " Hz]", width-270, PApplet.parseInt(height/2));
+  }
+  
 }
 
-public void keyPressed()                                                  
-{
-  if (key == '+') {
-    // use 'nb' averages (between 32 and 256).
-    if(nb<128) {
-      background(0);
-      nb*=2;
-    } else {
-    }
-  }
-  if (key == '-') {
-    if(nb>32) {
-      background(0);
-      nb/=2;
-    }
-  }
-  if (key == 'l') {
+public int getClosestBand(int mx) {
+  int ix = 0;
+  ix = (mx/PApplet.parseInt(fft.specSize()/nb));//ix = (mx/int(fftS.specSize()/nb));
+  return ix; 
+}
+
+
+public void mouseReleased() {
+  // Load file
+  if(mouseButton == LEFT) {
     background(0);
     String pathN;
-
     //pathN = selectInput();
     pathN = "NinaHagen_BornInXixas_ext.mp3";
-    if(pathN != null && !(sounding)) {
+    if(!(pathN==path) && pathN != null && !(sounding)) {
       path = pathN;
       jingle = minim.loadFile(path);
       sounding = true;
@@ -164,14 +226,8 @@ public void keyPressed()
     // loop the file
     jingle.loop();
   }
-  if (key == 'i') {
-    if(info) {
-      info = false;
-    } else {
-      info = true;
-    }
-  }
-  if (key == 's') {
+  // Micro in
+  if(mouseButton == RIGHT) {
     if(sounding) {
       jingle.pause();
       sounding = false;
@@ -181,7 +237,26 @@ public void keyPressed()
       update();
     } 
   }
+  // Change width of frequency band
+  if(mouseButton == CENTER) { 
+    if(mouseX>width/2) {
+      if(nb<128) {
+        background(0);
+        nb*=2;
+        update();
+      }
+    } else {
+      if(nb>32) {
+        background(0);
+        nb/=2;
+        update();
+      } 
+    }
+  }
+  
 }
+
+
 
 public void stop()
 {
