@@ -20,52 +20,37 @@ public class JsProcessingActivities {
 
   /** Adds all processing activities. */
   public static void addActivities(JsMain main) {
-    main.addActivity(new ProcessingActivity("ExplorationSonore", 800, 600) {
-                       public String getTitle() {
-                         return "Exploration du signal sonore";
-                       }
+    main.addActivity(new ProcessingActivity("ExplorationSonore", "Objet numérique: le son", "Exploration du signal sonore", 800, 600) {
                        public void init2(JsFrame frame) {
                          frame.addTab("Un tutoriel sur les signaux sonores.", "sketchbook/ExplorationSonore/sujet-creation-de-sons.htm",
                                       "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
-    main.addActivity(new ProcessingActivity("CryptageRSA", 1024, 700) {
-                       public String getTitle() {
-                         return "Expérimenter avec la cryptographie";
-                       }
+    main.addActivity(new ProcessingActivity("CryptageRSA", "Aller plus loin en programmation", "Expérimenter avec la cryptographie", 1024, 700) {
                        public void init2(JsFrame frame) {
                          frame.addTab("Un tutoriel sur le cryptage RSA", "sketchbook/CryptageRSA/sujet-about-cryptageRSA.htm",
                                       "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
-    main.addActivity(new ProcessingActivity("EnVoiture", 1200, 700) {
-                       public String getTitle() {
-                         return "Découvrir les graphes et les chemins";
-                       }
+    main.addActivity(new ProcessingActivity("EnVoiture", "Objet numérique: les graphes",  "Découvrir les graphes et les chemins", 1200, 700) {
                        public void init2(JsFrame frame) {
                          frame.addTab("Un tutoriel sur les graphes (1ère partie)", "sketchbook/EnVoiture/sujet-about-voiture.htm",
                                       "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
-    main.addActivity(new ProcessingActivity("UnGrapheDesChemins", 1024, 700) {
-                       public String getTitle() {
-                         return "Explorer les graphes et les chemins";
-                       }
+    main.addActivity(new ProcessingActivity("UnGrapheDesChemins", "Objet numérique: les graphes", "Explorer les graphes et les chemins", 1024, 700) {
                        public void init2(JsFrame frame) {
                          frame.addTab("Un tutoriel sur les graphes (2ème partie)", "sketchbook/UnGrapheDesChemins/sujet-about-chemins.htmd",
                                       "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
-    main.addActivity(new ProcessingActivity("BoiteAMusique", 1300, 750) {
-                       public String getTitle() {
-                         return "Programmer une séquence musicale";
-                       }
-                       public void init2(JsFrame frame) {}
-                     }
+    main.addActivity(new ProcessingActivity("BoiteAMusique", "Objet numérique: le son", "Programmer une séquence musicale", 1300, 750) {
+	public void init2(JsFrame frame) {}
+      }
                      );
   }
   // Defines a processing activity
@@ -74,12 +59,20 @@ public class JsProcessingActivities {
      * @param processing The processing to use.
      * @throws IllegalArgumentExceptionif the processing is undefined.
      */
-    public ProcessingActivity(String n, int w, int h) {
+    public ProcessingActivity(String n, String c, String t, int w, int h) {
       name = n;
+      type = c;
+      title = t;
       width = w + 20;
       height = h + 20;
     }
-    private String name;
+    private String name, type, title;
+    public String getType() {
+      return type;
+    }
+    public String getTitle() {
+      return title;
+    }
     private int width, height;
     public void init(JsMain main) {
       main.getFrame().addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false, true);

@@ -19,76 +19,47 @@ public class JsProgletActivities {
 
   /** Adds all proglet activities. */
   public static void addActivities(JsMain main) {
-    main.addActivity(new ProgletActivity("ingredients") {
-                       public String getTitle() {
-                         return "Découvrir les ingrédients des algorithmes";
-                       }
+    main.addActivity(new ProgletActivity("ingredients", "Apprendre à programmer", "Découvrir les ingrédients des algorithmes") {
                        public void init2(JsFrame frame) {
                          frame.addTab("Parcours d'initiation", "proglet/ingredients/doc-files/index.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
-    main.addActivity(new ProgletActivity("exosdemaths") {
-                       public String getTitle() {
-                         return "Programmer des calculs numériques et géométrique";
-                       }
-                       public void init2(JsFrame frame) {
+    main.addActivity(new ProgletActivity("exosdemaths", "Apprendre à programmer", "Programmer des calculs numériques et géométrique") {
+	               public void init2(JsFrame frame) {
                          frame.addTab("Propositions d'exercices", "proglet/exosdemaths/doc-files/index.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
-    main.addActivity(new AlgoEditorActivity() {
-                       public String getTitle() {
-                         return "Découvrir les algorithmes de manière graphique";
-                       }
-                     }
-                     );
-    main.addActivity(new ProgletActivity("dichotomie") {
-                       public String getTitle() {
-                         return "Comprendre le principe de la dichotomie";
-                       }
+    main.addActivity(new AlgoEditorActivity());
+    main.addActivity(new ProgletActivity("dichotomie", "Algorithmes dichotomiques", "Comprendre le principe de la dichotomie") {
                        public void init2(JsFrame frame) {
                          frame.addTab("Enoncé de l'exercice", "proglet/dichotomie/doc-files/sujet-appli-dicho.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
-    main.addActivity(new ProgletActivity("pixelsetcie") {
-                       public String getTitle() {
-                         return "Comprendre la manipulation d'images";
-                       }
+    main.addActivity(new ProgletActivity("pixelsetcie", "Objet numérique: les images", "Comprendre la manipulation d'images") {
                        public void init2(JsFrame frame) {
                          frame.addTab("Enoncé de l'exercice", "proglet/pixelsetcie/doc-files/sujet-appli-image.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
-    main.addActivity(new ProgletActivity("convanalogique") {
-                       public String getTitle() {
-                         return "Programmer la conversion analogique-digitale";
-                       }
+    main.addActivity(new ProgletActivity("convanalogique", "Algorithmes dichotomiques", "Programmer la conversion analogique-digitale") {
                        public void init2(JsFrame frame) {
                          frame.addTab("Enoncé de l'exercice", "proglet/convanalogique/doc-files/sujet-appli-conva.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
-    main.addActivity(new ProgletActivity("synthesons") {
-                       public String getTitle() {
-                         return "Découverte du signal sonore";
-                       }
-                       public void init2(JsFrame frame) {}
+    main.addActivity(new ProgletActivity("synthesons", "Objet numérique: le son", "Manipuler un signal sonore") {
+	              public void init2(JsFrame frame) {}
                      }
                      );
-    main.addActivity(new ProgletActivity("javaprog") {
-                       public String getTitle() {
-                         return "Programmer directement en Java";
-                       }
-                       public void init2(JsFrame frame) {}
+    main.addActivity(new ProgletActivity("javaprog", "Aller plus loin en programmation", "Programmer directement en Java") {
+	public void init2(JsFrame frame) {}
                      }
                      );
-    main.addActivity(new ProgletActivity("tortuelogo") {
-                       public String getTitle() {
-                         return "Programmer avec la «tortue logo»";
-                       }
-                       public void init2(JsFrame frame) {}
+    main.addActivity(new ProgletActivity("tortuelogo", "Aller plus loin en programmation", "Programmer avec la «tortue logo»") {
+	public void init2(JsFrame frame) {}
                      }
                      );
   }
@@ -149,7 +120,7 @@ public class JsProgletActivities {
   }
 
   /** Defines an AlgoTree activity. */
-  private static abstract class AlgoEditorActivity extends JavaActivity {
+  private static class AlgoEditorActivity extends JavaActivity {
     private static AlgoEditor algoEditor = new AlgoEditor();
     public void init(JsMain main) {
       jvsEditor.reset(false);
@@ -158,6 +129,12 @@ public class JsProgletActivities {
       init1(main);
       main.getFrame().addTab("Tracé", Jvs2Java.getPanel("exosdemaths"), "org/javascool/doc-files/icones16/compile.png", true, false);
       main.getFrame().addTab("Documentation", "org/javascool/doc-files/about-algo-editor.htm", "org/javascool/doc-files/icones16/help.png", true, false);
+    }
+    public String getType() {
+      return "Apprendre à programmer";
+    }
+    public String getTitle() {
+      return "Découvrir les algorithmes de manière graphique";
     }
     public Editor getEditor() {
       return algoEditor;
@@ -169,14 +146,21 @@ public class JsProgletActivities {
 
   /** Defines a proglet activity. */
   private static abstract class ProgletActivity extends JavaActivity {
-    private String proglet;
-
+    private String proglet, type, title;
+    public String getType() {
+      return type;
+    }
+    public String getTitle() {
+      return title;
+    }
     /** Constructs a proglet activity.
      * @param proglet The proglet to use.
      * @throws IllegalArgumentExceptionif the proglet is undefined.
      */
-    public ProgletActivity(String proglet) {
+    public ProgletActivity(String proglet, String type, String title) {
       if(Jvs2Java.getPanel(proglet) == null) throw new IllegalArgumentException("Undefined proglet : " + proglet);
+      this.type= type;
+      this.title = title;
       this.proglet = proglet;
     }
     public void init(JsMain main) {

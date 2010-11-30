@@ -27,11 +27,17 @@ import javax.swing.JLabel;
 
 // Used to store the activities
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 // Used for the JsHome activity chooser
-import javax.swing.JList;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
+import javax.swing.JPanel;
+import java.awt.Color;
+import javax.swing.BoxLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 // Used to test if a file exists in main()
 import java.io.File;
@@ -206,6 +212,8 @@ public class JsMain extends JApplet {
 
   /** Defines a JavaScool interactive activity. */
   public interface Activity {
+    /** Returns the activity category. */
+    public String getType();
     /** Returns the activity title. */
     public String getTitle();
     /** Initializes the activity, adding buttons and pannels and start it. */
@@ -223,16 +231,9 @@ public class JsMain extends JApplet {
 
   // [2.1] Activity table
 
-  /** Gets the activity titles. */
-  private String[] getTitles() {
-    String titles[] = new String[activities.size()];
-    int n = 0;
-    for(Activity activity : activities)
-      titles[n++] = activity.getTitle();
-    return titles;
-  }
   /** Gets an activity by its title. */
   private Activity getActivity(String name) {
+    name = name.trim();
     if(name.matches("[0-9]+")) {
       int i = Integer.parseInt(name);
       if((0 <= i) && (i < activities.size()))
@@ -246,15 +247,22 @@ public class JsMain extends JApplet {
   /** Adds an activity to the application list. */
   public void addActivity(Activity activity) {
     activities.add(activity);
+    if (activity.getType().length() > 0) {
+      if (!types.containsKey(activity.getType()))
+	types.put(activity.getType(), new ArrayList<String>());
+      types.get(activity.getType()).add(activity.getTitle());
+    }
   }
   // Register all activities
   {
+    types.put("Apprendre à programmer", new ArrayList<String>());
     addActivity(new HomeActivity());
-    JsProgletActivities.addActivities(this);
     JsProcessingActivities.addActivities(this);
+    JsProgletActivities.addActivities(this);
     setActivity("");
   }
   static private ArrayList<Activity> activities = new ArrayList<Activity>();
+  static private LinkedHashMap<String, ArrayList<String>> types = new LinkedHashMap<String, ArrayList<String>>();
 
   // [2.2] JsHome activity (activity chooser)
 
@@ -262,20 +270,37 @@ public class JsMain extends JApplet {
   private static class HomeActivity implements Activity {
     public void init(JsMain main) {
       this.main = main;
-      list = new JList(main.getTitles());
-      list.setSelectedIndex(0);
-      list.addListSelectionListener(new ListSelectionListener() {
-                                      public void valueChanged(ListSelectionEvent e) {
-                                        HomeActivity.this.main.setActivity((String) list.getSelectedValue());
-                                      }
-                                    }
-                                    );
-      this.main.getFrame().addTab("Choisir (cliquer sur le titre) son activité", list, "org/javascool/doc-files/icones16/new.png", false, true);
+      JPanel panel = new JPanel();
+      panel.setBackground(new Color(20,255,20));
+      panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.yellow, 4), BorderFactory.createEmptyBorder(30, 50, 0, 0)));
+      panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+      for(String type : types.keySet()) {
+	JLabel label = new JLabel(" " +type+" :");
+	label.setAlignmentX(JPanel.LEFT_ALIGNMENT);
+	panel.add(label);
+	for(String title : types.get(type)) {
+	  JButton button = new JButton(title, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"));
+	  button.setAlignmentX(JPanel.LEFT_ALIGNMENT);
+	  button.setContentAreaFilled(false);
+	  button.setRolloverEnabled(true);
+	  button.setRolloverIcon(Utils.getIcon("org/javascool/doc-files/icones16/open.png"));
+	  button.addActionListener(listener);
+	  panel.add(button);
+	}
+      }
+      this.main.getFrame().addTab("Choisir (cliquer sur le titre) son activité", panel, "org/javascool/doc-files/icones16/new.png", false, true);
     }
+    ActionListener listener = new ActionListener() {
+	public void actionPerformed(ActionEvent e) {
+	  main.setActivity(((JButton) e.getSource()).getText());
+	}
+      };
     private JsMain main;
-    private JList list;
     // The "home" activity is recognized by JsFrame as being the only one with an empty name.
     public String getTitle() {
+      return "";
+    }
+    public String getType() {
       return "";
     }
     public Editor getEditor() {
@@ -295,11 +320,6 @@ public class JsMain extends JApplet {
    * </ul>
    */
   public static void main(String[] usage) {
-    proglet.synthesons.FileSoundBit sound = new proglet.synthesons.FileSoundBit();
-    sound.reset("midi:grand_piano");
-    sound.play();
-
-
     System.out.println("---------------------\n" + title + "\n---------------------\nstarting..");
     JsMain main = new JsMain();
     if(usage.length > 0)
