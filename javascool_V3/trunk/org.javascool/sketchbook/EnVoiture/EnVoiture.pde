@@ -46,7 +46,7 @@ color[] colors = new color[listN.length];
 char[] form = { 'B', 'P', 'O', 'C' };
 
 void setup() {
-  size(1000, 500, OPENGL);  // 1024, 576, OPENGL);
+  size(900, 500, OPENGL);  // 1024, 576, OPENGL);
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();

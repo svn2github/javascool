@@ -58,15 +58,15 @@ class rectButton extends Button
         text(" " + value.substring(0, value.length()), x, y);
       else {
         textFont(pfont, 10);
-        if(int (value.length() / 63) == 0)
+        if(int (value.length() / 58) == 0)
           text(" " + value.substring(0, value.length()), x, y);
         else {
           int count = 0;
-          for(int i = 0; i < int (value.length() / 63); i++) {
-            text(" " + value.substring(i * 63, (i + 1) * 63 - 1), x, y + i * 15);
+          for(int i = 0; i < int (value.length() / 58); i++) {
+            text(" " + value.substring(i * 58, (i + 1) * 58 - 1), x, y + i * 15);
             count = i + 1;
           }
-          text(" " + value.substring(count * 63, value.length()), x, y + count * 15);
+          text(" " + value.substring(count * 58, value.length()), x, y + count * 15);
         }
       }
     }
