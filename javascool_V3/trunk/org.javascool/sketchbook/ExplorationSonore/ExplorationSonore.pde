@@ -185,7 +185,7 @@ void myInfo() {
     fill(255);
     rect(0, height - 145, width, 130);
     fill(myOr);
-    text(" Parles, siffles, chuchotes.., et tu verras ce qui se passe sur l'analyseur de contenu sonore (à droite).. \n " +
+    text(" Parles, siffles, chuchotes.., et tu verras ce qui se passe sur l'analyseur de contenu sonore.. \n " +
          "Tu peux aussi jouer une signal ou un enregistrement de ton choix. \n " +
          "Pour ajuster la fréquence et l'amplitude du signal, bouges la souris sur la fenetre de l'analyseur. \n " +
          "Pour faire varier le volume de l'enregistrement sonore, tu peux procéder pareillement, \n " +
