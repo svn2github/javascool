@@ -39,7 +39,7 @@ HScrollbar hs1;
 int topWidth;  // width of text
 
 public void setup() {
-  size(1000, 600); // screen.width,screen.height);//1200,800);
+  size(1000, 500); // screen.width,screen.height);//1200,800);
   smooth();
   myGraph = new Graph();
 
