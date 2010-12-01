@@ -50,7 +50,7 @@ void send_m() {
 // //////////////////////////////////////////////////
 // Fonctions pour la méthode RSA
 
-BigInteger generate_e(BigInteger p, BigInteger q, int bitsize) {
+static BigInteger generate_e(BigInteger p, BigInteger q, int bitsize) {
   BigInteger e, phi_pq;
 
   e = new BigInteger("0");
@@ -64,7 +64,7 @@ BigInteger generate_e(BigInteger p, BigInteger q, int bitsize) {
   } while(i < 100 && (e.gcd(phi_pq).compareTo(new BigInteger("1")) != 0));
   return e;
 }
-BigInteger calculate_d(BigInteger p, BigInteger q, BigInteger e) {
+static BigInteger calculate_d(BigInteger p, BigInteger q, BigInteger e) {
   BigInteger d, phi_pq;
 
   phi_pq = q.subtract(new BigInteger("1"));
@@ -73,7 +73,7 @@ BigInteger calculate_d(BigInteger p, BigInteger q, BigInteger e) {
   d = e.modInverse(phi_pq);
   return d;
 }
-BigInteger encrypt(BigInteger m, BigInteger e, BigInteger n) {
+static BigInteger encrypt(BigInteger m, BigInteger e, BigInteger n) {
   BigInteger c, bitmask;
   c = new BigInteger("0");
   int i = 0;
@@ -86,7 +86,7 @@ BigInteger encrypt(BigInteger m, BigInteger e, BigInteger n) {
   c = m.modPow(e, n).shiftLeft(i * n.bitLength()).or (c);
   return c;
 }
-BigInteger decrypt(BigInteger c, BigInteger d, BigInteger n) {
+static BigInteger decrypt(BigInteger c, BigInteger d, BigInteger n) {
   BigInteger m, bitmask;
   m = new BigInteger("0");
   int i = 0;
@@ -103,13 +103,13 @@ BigInteger decrypt(BigInteger c, BigInteger d, BigInteger n) {
 // //////////////////////////////////////////////////
 // Fonctions pour API
 
-/** Créer une clé privée et une clé publique pour le codage et décodage de messages
- * @return les clés
+/** Créer une clé privée D et le couple de clé publiques (E, N).
+ * @return Un tableau de 3 entiers avec les clés keys[] = {D, E, N};
  */
-BigInteger[] createKeys() {
+static BigInteger[] createKeys() {
   BigInteger[] Keys = new BigInteger[3];
 
-  int pqSize = int (random(4, 10));
+  int pqSize = (int) (4 + 6 * Math.random());
   BigInteger p_ = new BigInteger(pqSize + 1, prime_certainty, new Random());
   BigInteger q_ = new BigInteger(pqSize - 1, prime_certainty, new Random());
   if(p_ == null)
@@ -126,29 +126,29 @@ BigInteger[] createKeys() {
 
   return Keys;
 }
-/** Encrypt un message à l'aide de clés
- * @param m message à encrypter, à inscrire entre "".
- * @param pk1 clé publique1.
- * @param pk2 clé publique2.
- * @return message encrypté sous forme de chiffres
+/** Encrypte un message à l'aide de clés.
+ * @param m Le message à encrypter.
+ * @param E clé publique.
+ * @param N clé publique.
+ * @return Le message encrypté sous forme d'une suite de chiffres.
  */
-BigInteger encrypt(String m, BigInteger pk1, BigInteger pk2) {
+static BigInteger encrypt(String m, BigInteger E, BigInteger N) {
   BigInteger EncMessBits = null;
 
   BigInteger MessBits = new BigInteger(m.getBytes());
-  EncMessBits = encrypt(MessBits, pk1, pk2);
+  EncMessBits = encrypt(MessBits, E, N);
 
   return EncMessBits;
 }
-/** Encrypt un message à l'aide de clés
- * @param me message encrypté sous forme de chiffres.
+/** Décrypte un message à l'aide de clés.
+ * @param m Le message encrypté sous forme de chiffres.
  * @param k clés, publique et privée.
- * @return message
+ * @return Le message décrypté.
  */
-String decrypt(BigInteger me, BigInteger[] k) {
+String decrypt(BigInteger m, BigInteger[] k) {
   String decryptedMessage = null;
 
-  BigInteger DecMessBits = decrypt(me, k[0], k[2]);
+  BigInteger DecMessBits = decrypt(m, k[0], k[2]);
   decryptedMessage = new String(DecMessBits.toByteArray());
 
   return decryptedMessage;

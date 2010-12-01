@@ -48,66 +48,108 @@
       <ol>
          <li>
             <div>
-               <h3>faire un truc.</h3>
-               
-               	La premi&egrave;re partie de ce tutoriel (interface EnVoiture) a &eacute;t&eacute; introductive &agrave; la notion de graphe, 
+               <h3>Avant de commencer.</h3>
+               	La premi&egrave;re partie de ce tutoriel [METTRE UN LIEN (interface EnVoiture)] a &eacute;t&eacute; introductive &agrave; la notion de graphe, 
                	partant d'un cas concret avec le parcours d'une voiture, de telle sorte &agrave; visiter des villes tout en limitant le chemin parcouru.
                	Dans cette partie, on propose de programmer les concepts cl&eacute;s des graphes. 
-               	
-               	Pour avoir davantage d'informations pour la manipulation de l'interface, touche 'i'.
-               	Pour une manipulation rapide, 'a' g&eacute;n&egrave;re tous les noeuds disponibles, 'r' g&eacute;n&egrave;re quelques liens.
-               	Trouver le plus court chemin entre 2 noeuds: clic gauche + 'b' pour le noeud de d&eacute;part, clic gauche + 'e' pour le noeud d'arriv&eacute;e.
-               	
-               	1. Construire son propre r&eacute;seau via:
-               	- l'ajout d'un noeud:
-               	
-               <div><font color="#990000"><b>UnGrapheDesChemins.addNode</b></font>(<font color="#990000"><b>String</b></font> n, <font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
+                   
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>D&eacute;couverte de l'interface.</h3>
+                     Essayer les diff&eacute;rentes fonctions de l'interface pour vous familiariser avant de . . le programmer: 
+               <ul class="ul">
+                        
+                  <li>Pour avoir davantage d'informations pour la manipulation de l'interface, touche 'i'.</li>
+                        
+                  <li>Pour une manipulation rapide, 'a' g&eacute;n&egrave;re tous les noeuds disponibles, 'r' g&eacute;n&egrave;re quelques liens.</li>
+                        
+                  <li>Pour lancer l'algotithme de calcul du plus court chemin entre 2 noeuds: clic gauche + 'b' pour le noeud de d&eacute;part, clic gauche
+                     + 'e' pour le noeud d'arriv&eacute;e.
+                  </li>
+                      
+               </ul>
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Construire son propre r&eacute;seau.</h3>
+                     Utiliser les fonctions ci dessous pour d&eacute;finir &agrave; partir d'un petit bout de code votre propre r&eacute;seau:
+               <ul class="ul">
+                          
+                  <li>Ajout d'un noeud: 
+                     <div><font color="#990000"><b>UnGrapheDesChemins.addNode</b></font>(<font color="#990000"><b>String</b></font> n, <font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
+                     </div>
+                  </li>
+                          
+                  <li>Destruction d'un noeud: 
+                     <div><font color="#990000"><b>UnGrapheDesChemins.removeNode</b></font>(<font color="#990000"><b>String</b></font> n)
+                     </div>
+                  </li>
+                          
+                  <li>Ajout/modification d'un lien entre deux noeuds: 
+                     <div><font color="#990000"><b>UnGrapheDesChemins.addLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     </div>
+                  </li>
+                          
+                  <li>Destruction d'un lien existant entre deux noeuds: 
+                     <div><font color="#990000"><b>UnGrapheDesChemins.removeLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     </div>
+                  </li>
+                        
+               </ul>
+                   
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>R&eacute;cup&eacute;rer des informations du r&eacute;seau.</h3>
+                     [AHHH IL FAUT LA LISTE DES NOAUDS AUSSI !!!]
+                     Utiliser les <a href="about-proglet.htm">fonctions</a> propos&eacute;es 
+                     pour calculer le nombre de sommets et de liens, ainsi que la somme des poids des chemins.
+                   
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Pr&eacute;misse &agrave; un algorithme de plus court chemin.</h3>
+                     
+               <div>Soit un graphe &agrave; 4 noeuds, avec une ville de d&eacute;part et une ville d'arriv&eacute;e (que vous aurez programm&eacute; &agrave; votre convenance).</div>
+                     
+               <div>Depuis la ville d&eacute;part, si elle est en lien avec la ville d'arriv&eacute;e, c'est fini; 
+                        sinon choisir la ville dont le lien a le poids le plus faible.
+                        Si la boucle n'est pas fini, repartir de la ville pr&eacute;c&eacute;dente, et refaire le raisonnement.
+                        Continuer jusqu'&agrave; aboutir &agrave; la ville d'arriv&eacute;e.
                </div>
-               	- la destruction d'un noeud:
-               	
-               <div><font color="#990000"><b>UnGrapheDesChemins.removeNode</b></font>(<font color="#990000"><b>String</b></font> n)
+                     
+               <ul class="ul">
+                          
+                  <li>Programmer cet algorithme et regarder son ex&eacute;cution</li>
+                          
+                  <li>Prendre conscience que l'algorithme ainsi construit fait le travail, mais est non-optimis&eacute;.
+                     <ul class="ul">
+                                  
+                        <li>On imprimera le nom des villes parcourues et on se rendra compte de la redondance des chemins.</li>
+                                  
+                        <li>De plus, en ajoutant un noeud au graphe, on prendra conscience du temps de calcul exponentiel.</li>
+                              
+                     </ul>
+                  </li>
+                      
+               </ul>
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>S'attaquer &agrave; un probl&egrave;me peut-&ecirc;tre plus facile . . .</h3>
+                     
+               <div>On propose d'utiliser le graphe pour calculer le chemin entre deux villes avec un <i>nombre minimum de villes interm&eacute;diaires</i>.
                </div>
-               	- l'ajout/modification d'un lien entre deux noeuds:
-                   
-               <div><font color="#990000"><b>UnGrapheDesChemins.addLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
-               </div>
-                   - la destruction d'un lien existant entre deux noeuds:
-                   
-               <div><font color="#990000"><b>UnGrapheDesChemins.removeLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
-               </div>
-               	
-               	2. R&eacute;cup&eacute;rer des informations du r&eacute;seau via:
-               	- l'obtention d'un noeud &agrave; partir d'une position
-               	
-               <div><font color="#990000"><b>UnGrapheDesChemins.getClosestNode</b></font>(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
-               </div>
-               	- questionner si deux noeuds sont li&eacute;s:
-                   
-               <div><font color="#990000"><b>UnGrapheDesChemins.isLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
-               </div>
-               	- l'obtention de la liste des noeuds en lien avec un noeud sp&eacute;cifique:
-                   
-               <div><font color="#990000"><b>UnGrapheDesChemins.getNodes</b></font>(<font color="#990000"><b>String</b></font> n)
-               </div>
-                   - l'obtention du poids d'un lien entre deux noeud:
-                   
-               <div><font color="#990000"><b>UnGrapheDesChemins.getLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
-               </div>
-                   
-                   3. Comme pr&eacute;misse d'un algorithme de plus court chemin, on propose &agrave; l'&eacute;l&egrave;ve:
-                   Soit un graphe &agrave; 4 noeuds, avec une ville de d&eacute;part et une ville d'arriv&eacute;e. 
-                   Depuis la ville d&eacute;part, si elle est en lien avec la ville d'arriv&eacute;e, c'est fini; 
-                   sinon choisir la ville dont le lien a le poids le plus faible.
-                   Si la boucle n'est pas fini, repartir de la ville pr&eacute;c&eacute;dente, et refaire le raisonnement.
-                   Continuer jusqu'&agrave; aboutir &agrave; la ville d'arriv&eacute;e.
-                   
-                   Objectif: prendre conscience que l'algorithme ainsi construit fait le travail, mais est non-optimis&eacute;.
-                   On imprimera le nom des villes parcourues et on se rendra compte de la redondance des chemins. 
-                   Deplus, en ajoutant un noeud au graphe, on prendra conscience du temps de calcul exponentiel.
-                   
-                   4. On propose &agrave; l'&eacute;l&egrave;ve d'utiliser le graphe pour calculer le chemin entre deux villes 
-                   avec un nombre minimum de villes interm&eacute;diaires.
-                   
+                     
+               <div>Ecrire au crayon l'&eacute;bauche de l'algorithme . . l'exploration des cas possibles est-elle plus simple dans ce cas ?</div>
+                     
+               <div>Qu'en d&eacute;duire alors ? </div>
                    
             </div>
          </li>

@@ -28,11 +28,12 @@ uncrust :
 # Generates the javasccol processing.zip 
 
 PROGLETS = \
- ExplorationSonore CryptageRSA EnVoiture UnGrapheDesChemins BoiteAMusique
+ ExplorationSonore CryptageRSA EnVoiture UnGrapheDesChemins
 
 JARS = \
- $(patsubst %,../www/sketchbook/%/*.jar, $(PROGLETS)) \
- /usr/java/processing-1.2.1/libraries/opengl/library/{jogl,gluegen-rt}.jar 
+ /usr/java/processing-1.2.1/libraries/opengl/library/gluegen-rt.jar \
+ /usr/java/processing-1.2.1/libraries/opengl/library/jogl.jar \
+ $(patsubst %,../www/sketchbook/%/*.jar, $(PROGLETS))
 
 jar : ../lib/processing.zip
 
@@ -84,10 +85,8 @@ wui :
 
 # Exports the applets without using the GUI (NOT YET AVAILABLE)
 
-APPS = ExplorationSonore CryptageRSA  
-
 export :
 	@rm -rf */applet
-	@for f in $(APPS) ; do cd $(P_HOME) ; java processing.app.Commander --build --sketch=$(PWD)/$$f --output=$(PWD)/$$f/applet ; done
+	@for f in $(PROGLETS) ; do cd $(P_HOME) ; java processing.app.Commander --build --sketch=$(PWD)/$$f --output=$(PWD)/$$f/applet ; done
 
 #See http://wiki.inria.fr/sciencinfolycee/JavaScool:ProcessingLinux for more infos

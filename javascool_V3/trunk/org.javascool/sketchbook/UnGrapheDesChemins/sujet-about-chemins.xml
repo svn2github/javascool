@@ -22,50 +22,47 @@
    </div>
 
   <div class="works">
-    <div title="faire un truc">
-
-	La première partie de ce tutoriel (interface EnVoiture) a été introductive à la notion de graphe, 
+    <div title="Avant de commencer">
+	La première partie de ce tutoriel [METTRE UN LIEN (interface EnVoiture)] a été introductive à la notion de graphe, 
 	partant d'un cas concret avec le parcours d'une voiture, de telle sorte à visiter des villes tout en limitant le chemin parcouru.
 	Dans cette partie, on propose de programmer les concepts clés des graphes. 
-	
-	Pour avoir davantage d'informations pour la manipulation de l'interface, touche 'i'.
-	Pour une manipulation rapide, 'a' génère tous les noeuds disponibles, 'r' génère quelques liens.
-	Trouver le plus court chemin entre 2 noeuds: clic gauche + 'b' pour le noeud de départ, clic gauche + 'e' pour le noeud d'arrivée.
-	
-	1. Construire son propre réseau via:
-	- l'ajout d'un noeud:
-	<p><r>UnGrapheDesChemins.addNode</r>(<r>String</r> n, <r>int</r> x, <r>int</r> y)</p>
-	- la destruction d'un noeud:
-	<p><r>UnGrapheDesChemins.removeNode</r>(<r>String</r> n)</p>
-	- l'ajout/modification d'un lien entre deux noeuds:
-    <p><r>UnGrapheDesChemins.addLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
-    - la destruction d'un lien existant entre deux noeuds:
-    <p><r>UnGrapheDesChemins.removeLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
-	
-	2. Récupérer des informations du réseau via:
-	- l'obtention d'un noeud à partir d'une position
-	<p><r>UnGrapheDesChemins.getClosestNode</r>(<r>int</r> x, <r>int</r> y)</p>
-	- questionner si deux noeuds sont liés:
-    <p><r>UnGrapheDesChemins.isLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
-	- l'obtention de la liste des noeuds en lien avec un noeud spécifique:
-    <p><r>UnGrapheDesChemins.getNodes</r>(<r>String</r> n)</p>
-    - l'obtention du poids d'un lien entre deux noeud:
-    <p><r>UnGrapheDesChemins.getLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
-    
-    3. Comme prémisse d'un algorithme de plus court chemin, on propose à l'élève:
-    Soit un graphe à 4 noeuds, avec une ville de départ et une ville d'arrivée. 
-    Depuis la ville départ, si elle est en lien avec la ville d'arrivée, c'est fini; 
-    sinon choisir la ville dont le lien a le poids le plus faible.
-    Si la boucle n'est pas fini, repartir de la ville précédente, et refaire le raisonnement.
-    Continuer jusqu'à aboutir à la ville d'arrivée.
-    
-    Objectif: prendre conscience que l'algorithme ainsi construit fait le travail, mais est non-optimisé.
-    On imprimera le nom des villes parcourues et on se rendra compte de la redondance des chemins. 
-    Deplus, en ajoutant un noeud au graphe, on prendra conscience du temps de calcul exponentiel.
-    
-    4. On propose à l'élève d'utiliser le graphe pour calculer le chemin entre deux villes 
-    avec un nombre minimum de villes intermédiaires.
-    
+    </div>
+    <div title="Découverte de l'interface">
+      Essayer les différentes fonctions de l'interface pour vous familiariser avant de . . le programmer: <div class="ul">
+      <p>Pour avoir davantage d'informations pour la manipulation de l'interface, touche 'i'.</p>
+      <p>Pour une manipulation rapide, 'a' génère tous les noeuds disponibles, 'r' génère quelques liens.</p>
+      <p>Pour lancer l'algotithme de calcul du plus court chemin entre 2 noeuds: clic gauche + 'b' pour le noeud de départ, clic gauche + 'e' pour le noeud d'arrivée.</p>
+    </div></div>
+    <div title="Construire son propre réseau">
+      Utiliser les fonctions ci dessous pour définir à partir d'un petit bout de code votre propre réseau:<div class="ul">
+        <p>Ajout d'un noeud: <p><r>UnGrapheDesChemins.addNode</r>(<r>String</r> n, <r>int</r> x, <r>int</r> y)</p></p>
+        <p>Destruction d'un noeud: <p><r>UnGrapheDesChemins.removeNode</r>(<r>String</r> n)</p></p>
+        <p>Ajout/modification d'un lien entre deux noeuds: <p><r>UnGrapheDesChemins.addLink</r>(<r>String</r> nA, <r>String</r> nB)</p></p>
+        <p>Destruction d'un lien existant entre deux noeuds: <p><r>UnGrapheDesChemins.removeLink</r>(<r>String</r> nA, <r>String</r> nB)</p></p>
+      </div>
+    </div>
+    <div title="Récupérer des informations du réseau">
+      [AHHH IL FAUT LA LISTE DES NOAUDS AUSSI !!!]
+      Utiliser les <l link="about-proglet.htm" text="fonctions"/> proposées 
+      pour calculer le nombre de sommets et de liens, ainsi que la somme des poids des chemins.
+    </div>
+    <div title="Prémisse à un algorithme de plus court chemin">
+      <p>Soit un graphe à 4 noeuds, avec une ville de départ et une ville d'arrivée (que vous aurez programmé à votre convenance).</p>
+      <p>Depuis la ville départ, si elle est en lien avec la ville d'arrivée, c'est fini; 
+      sinon choisir la ville dont le lien a le poids le plus faible.
+      Si la boucle n'est pas fini, repartir de la ville précédente, et refaire le raisonnement.
+      Continuer jusqu'à aboutir à la ville d'arrivée.</p>
+      <div class="ul">
+        <p>Programmer cet algorithme et regarder son exécution</p>
+        <p>Prendre conscience que l'algorithme ainsi construit fait le travail, mais est non-optimisé.<div class="ul">
+          <p>On imprimera le nom des villes parcourues et on se rendra compte de la redondance des chemins.</p>
+          <p>De plus, en ajoutant un noeud au graphe, on prendra conscience du temps de calcul exponentiel.</p>
+      </div></p>
+    </div></div>
+    <div title="S'attaquer à un problème peut-être plus facile . . ">
+      <p>On propose d'utiliser le graphe pour calculer le chemin entre deux villes avec un <i>nombre minimum de villes intermédiaires</i>.</p>
+      <p>Ecrire au crayon l'ébauche de l'algorithme . . l'exploration des cas possibles est-elle plus simple dans ce cas ?</p>
+      <p>Qu'en déduire alors ? </p>
     </div>
   </div>
 </div>

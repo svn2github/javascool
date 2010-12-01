@@ -31,6 +31,12 @@ public class JsProgletActivities {
                        }
                      }
                      );
+    main.addActivity(new ProgletActivity("ingredients", "Apprendre à programmer", "Apprendre à programmer avec des tableaux") {
+	               public void init2(JsFrame frame) {
+                         frame.addTab("Propositions d'exercices", "proglet/exosdemaths/doc-files/sujet-about-tableaux.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
+                       }
+                     }
+                     );
     main.addActivity(new AlgoEditorActivity());
     main.addActivity(new ProgletActivity("dichotomie", "Algorithmes dichotomiques", "Comprendre le principe de la dichotomie") {
                        public void init2(JsFrame frame) {

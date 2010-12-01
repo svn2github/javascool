@@ -48,10 +48,6 @@ public class JsProcessingActivities {
                        }
                      }
                      );
-    main.addActivity(new ProcessingActivity("BoiteAMusique", "Objet numérique: le son", "Programmer une séquence musicale", 1300, 750) {
-	public void init2(JsFrame frame) {}
-      }
-                     );
   }
   // Defines a processing activity
   private static abstract class ProcessingActivity extends JsProgletActivities.JavaActivity {

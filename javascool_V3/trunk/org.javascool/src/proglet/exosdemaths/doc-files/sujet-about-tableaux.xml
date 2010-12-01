@@ -12,16 +12,16 @@
     <div title="La notion de tableau"> Un tableau constitue la manière la plus efficace pour stocker et accéder aléatoirement à une séquence de données.
       Chaque donnée est référencée par un <i>index</i> compté <i>à partir de zéro</i>, par exemple, en écrivant:
       <div class="code">
-        <p><r>String</r> names = {<s>Alice</s>, <s>Bob</s>, <s>Samia</s>, <s>Zheng-You</s>};</p>
+        <p><r>String</r> names = {<v>Alice</v>, <v>Bob</v>, <v>Samia</v>, <v>Zheng-You</v>};</p>
       </div>
-      nous avons créé une collection de quatre jolis<l class="note" link="2"/> prénoms, et la variable <c>noms[0]</c> a pris la valeur <s>Alice</s> et, 
-      par exemple, <c>noms[2]</c> a pris la valeur <c><s>Samia</s></c>. On peut lire une valeur d'un tableau, par exemple:
+      nous avons créé une collection de quatre jolis<l class="note" link="2"/> prénoms, et la variable <c>noms[0]</c> a pris la valeur <v>Alice</v> et, 
+      par exemple, <c>noms[2]</c> a pris la valeur <c><v>Samia</v></c>. On peut lire une valeur d'un tableau, par exemple:
       <div class="code">
         <p><r>String</r> him = noms[3];</p>
       </div>
-      donne la valeur <s>Zheng-You</s> à la variable de nom <c>him</c>. On peut aussi changer la valeur d'un tableau, par exemple:
+      donne la valeur <v>Zheng-You</v> à la variable de nom <c>him</c>. On peut aussi changer la valeur d'un tableau, par exemple:
       <div class="code">
-        <p>noms[2] = <s>Samiha</s>;</p>
+        <p>noms[2] = <v>Samiha</v>;</p>
       </div>
       changera la valeur de la <i>3ème</i> valeurs du tableau, celle d'index <i>2</i>.
     </div>
@@ -50,7 +50,7 @@
      et cette construction d'imprimer toutes les valeurs du tableau:
      <div class="code">
        <p><r>for</r>(<r>int</r> i = 0; i &lt;squares.<r>length</r>; i++) {</p>
-       <p><T/>println(<s>squares[</s>+i+<s>] = </s>+squares[i]);</p>
+       <p><T/>println(<v>squares[</v>+i+<v>] = </v>+squares[i]);</p>
        <p>}</p>
      </div>
      Mettez ces trois blocs bout à bout et observer.
