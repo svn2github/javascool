@@ -145,7 +145,7 @@ static BigInteger encrypt(String m, BigInteger E, BigInteger N) {
  * @param k clés, publique et privée.
  * @return Le message décrypté.
  */
-String decrypt(BigInteger m, BigInteger[] k) {
+static String decrypt(BigInteger m, BigInteger[] k) {
   String decryptedMessage = null;
 
   BigInteger DecMessBits = decrypt(m, k[0], k[2]);
@@ -153,4 +153,4 @@ String decrypt(BigInteger m, BigInteger[] k) {
 
   return decryptedMessage;
 }
-static CryptageRSA proglet;
+
