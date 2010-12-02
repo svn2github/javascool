@@ -110,21 +110,21 @@ class Radar {
     stroke(255);
     rectMode(CORNER);
     for(int i = 0; i < 3; i++)
-      rect(10, by - 15 + i * 120, 210, 20);
+      rect(10, by -35 + i * 120, 210, 20);
     textAlign(LEFT);
     fill(255);
-    text(" - " + freqs.tab[0].length + " notes de piano -\n", 10, by);
-    text(" - " + freqs.tab[1].length + " bips digitaux (Hz) -\n", 10, by + 120);
-    text(" - " + freqs.tabE.length + " enregistrements -\n", 10, by + 240);
+    text(" - " + freqs.tab[0].length + " notes de piano -\n", 10, by-20);
+    text(" - " + freqs.tab[1].length + " bips digitaux (Hz) -\n", 10, by + 100);
+    text(" - " + freqs.tabE.length + " enregistrements -\n", 10, by + 220);
     fill(50);
     noStroke();
     for(int i = 0; i < 3; i++)
-      rect(10, by - 15 + 25 + i * (120), 220, 90);
+      rect(10, by - 35 + 25 + i * (120), 220, 90);
      // A simplifier!!
     for(int i = 0; i < freqs.tab[0].length; i++) {
-      sources[0][i] = new Source(10 + (i % 7) *30, by + 30 + ((i - (i % 7)) / 7) *20, 0, i);
-      sources[1][i] = new Source(10 + (i % 7) *30, by + 120 + 30 + ((i - (i % 7)) / 7) *20, 1, i);
-      sources[2][i] = new Source(10 + (i % 3) *70, by + 240 + 30 + ((i - (i % 3)) / 3) *20, 2, i);
+      sources[0][i] = new Source(10 + (i % 7) *30, by + 10 + ((i - (i % 7)) / 7) *20, 0, i);
+      sources[1][i] = new Source(10 + (i % 7) *30, by + 100 + 30 + ((i - (i % 7)) / 7) *20, 1, i);
+      sources[2][i] = new Source(10 + (i % 3) *70, by + 220 + 30 + ((i - (i % 3)) / 3) *20, 2, i);
       if(mySource[1] == i) {
         fill(0, 190, 0);
         if(mySource[0] == 0) {
@@ -136,7 +136,7 @@ class Radar {
         } else if(mySource[0] == 1) {
           text(" " + int (freqs.tab[1][i]) + " ", sources[1][i].x, sources[1][i].y);
           fill(255);
-          text(" " + freqs.tabN[i] + " ", sources[0][i].x, sources[0][i].y);
+          text(" " + freqs.tabN[i] + " ", sources[0][i].x, sources[0][i].y);  
           if(i < freqs.tabE.length)
             text(" " + freqs.tabE[i] + " ", sources[2][i].x, sources[2][i].y);
         } else {

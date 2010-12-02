@@ -25,7 +25,7 @@ boolean locked = false;
 void setup() {
   size(600,400,P3D);
   dim = 400;
-  myFont = createFont("Courrier", 15);
+  myFont = createFont("Arial Bold", 15);
 
   color baseColor = color(255,150,0);
   currentcolor = baseColor;
