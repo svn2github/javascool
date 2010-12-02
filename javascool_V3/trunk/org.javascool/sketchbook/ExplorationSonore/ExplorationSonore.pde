@@ -43,7 +43,7 @@ String sig = "null";
 
 // Paramètres pour la sinusoide, et l'enregistrement chargé
 int count = 0;
-signal signal1, signal2;
+signal signal1, signal2, signal3;
 record record1;
 PFont f;
 
