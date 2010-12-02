@@ -100,8 +100,10 @@ static BigInteger decrypt(BigInteger c, BigInteger d, BigInteger n) {
 
   return m;
 }
+
 // //////////////////////////////////////////////////
 // Fonctions pour API
+// //////////////////////////////////////////////////
 
 /** Créer une clé privée D et le couple de clé publiques (E, N).
  * @return Un tableau de 3 entiers avec les clés keys[] = {D, E, N};
@@ -153,4 +155,3 @@ static String decrypt(BigInteger m, BigInteger[] k) {
 
   return decryptedMessage;
 }
-
