@@ -69,6 +69,7 @@ void setup() {
 
   signal1 = new signal();
   signal2 = new signal();
+  signal3 = new signal();
   record1 = new record();
 
   // FFT: Transformation de Fourier pour l'analyse fréquentielle en temps réel
