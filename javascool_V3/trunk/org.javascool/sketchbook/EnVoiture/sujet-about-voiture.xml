@@ -39,33 +39,36 @@
   </div>
   <div title="Introduire la notion de plus court chemin (sans programmation)">
     <p>En fixant une station de départ et une station d'arrivée, l'objectif de la voiture est de minimiser la distance parcourue (et oui, l'impact carbone..).</p>
-    <p>En tapant 'p', jouer à trouver le plus court chemin entre 2 villes tirées au hasard par notre algorithme (notées V_Dep et V_Arr), 
-    en passant par une ville intermédiaire seulement (notée V_interm1). [UPSPSS COMMENT ÇA MARCHE?!? C EST PAS CLAIR : QUUE FAIT P ?]</p>
-    <p>Chercher le plus court chemin par déduction: <div class="ul">
-      <p>Ballader la voiture de station en station et par un 'clic centre + relâche' somme la distance parcourue ('d' remet à zéro la distance parcourue).</p>
-      <p>Si sa distance parcourue égale celle calculée par notre algorithme, on [QUI EST ON] lui indique sa réussite par un "BRAVO!!"</p>
-      <p>Cette manipulation repose sur le lemme de Koenig: Un plus court chemin entre 2 sommets est élémentaire, premier algorithme pour trouver le plus court chemin. 
-      [AHHH RAPPELET LE LEMME DE KEONING: EXPLIQUER PQ . . ]</p>
+    <p> En tapant 'p', notre programme tire au hasard deux villes, une ville de départ 
+    et une ville d'arrivée (notées respectivement V_Dep et V_Arr), et calcule implicitement (sans le divulguer) la ville intermédiaire (notée V_interm1) qui
+    minimise la distance parcourue. Le joueur doit trouver V_interm1, sachant V_Dep et V_Arr allumées en rouge sur la visualisation. </p>
+    <p>Chercher par déduction le plus court chemin entre les villes de départ et d'arrivée (respectivement V_Dep et V_Arr): <div class="ul">
+      <p>Ballader la voiture entre V_Dep et V_Arr de station en station, et par un 'clic centre + relâche' somme la distance parcourue ('d' remet à zéro la distance parcourue).</p>
+      <p>Si cette distance parcourue égale celle calculée (implicitement) par notre algorithme, la réussite du joueur est indiquée par un "BRAVO!!" qui s'inscrit sur la visualisation.</p>
     </div></p>
-    <p>Le nombre de chemins élémentaires entre s et t étant finis, nous pouvons tous les énumérer en calculant leur longueur et retenir le plus court.
-    Cet algorithme est correct mais révèle un grave défaut : son temps d'exécution. 
-    Si le nombre de chemins élémentaires est bien fini, il n'en demeure pas moins très grand, de l'ordre du factoriel de n (<c>n! = n (n-1) (n-2) . . 1</c>)
-    sur un graphe d'ordre <c>n</c>, c'est à dire à <c>n</c> sommets.</p>
-    <p>Pour estimation: sur un graphe de seulement 20 sommets, en supposant que trouver un chemin et calculer sa longueur puissent se faire en une seule opération, 
-    sur un ordinateur pouvant effectuer 1 milliard d'opérations par seconde, il nous faudra patienter 77 ans pour obtenir le meilleur trajet..</p>
+    <p>Cette manipulation repose sur le lemme de Koenig: Un plus court chemin entre 2 sommets est élémentaire, premier algorithme
+     pour trouver le plus court chemin. Le lemme de Koenig se traduit par: étant donné que le nombre de chemins élémentaires entre deux 
+     villes est fini, nous pouvons tous les énumérer en calculant leur longueur et retenir le plus court. 
+     Cet algorithme est correct mais révèle un grave défaut : son temps d'exécution. 
+     Si le nombre de chemins élémentaires est bien fini, il n'en demeure pas moins très grand, de l'ordre du factoriel de n
+     (<c>n! = n (n-1) (n-2) . . 1</c>) sur un graphe d'ordre <c>n</c>, c'est à dire à <c>n</c> sommets. Pour estimation: sur un graphe de seulement 20 sommets, en supposant que trouver un chemin et calculer sa longueur puissent
+     se faire en une seule opération, sur un ordinateur pouvant effectuer 1 milliard d'opérations par seconde, il nous faudra patienter 77 ans pour obtenir
+     le meilleur trajet..</p>
   </div>
   <div title="Expérimenter une solution sous-optimale (sans programmation)">
     <p>Pour éviter d'explorer tous les chemins élémentaires du graphe, la manipulation de l'interface aboutira à la seconde propriété, fondamentale: la sous-optimalité.</p>
-    <p>Il s'agit simplement de remarquer qu'être un plus court chemin, ça s'hérite : le "bout" d'un plus court chemin est encore un plus court chemin entre ses extrémités.</p>
-    <p>Autrement dit, si le trajet le plus rapide entre s et t passe par 2 sommets x et y, ce trajet emprunte nécessairement le plus court chemin entre x et y.</p>
+    <p>Il s'agit simplement de remarquer qu'être un plus court chemin, ça s'hérite : le "bout" d'un plus court chemin est encore
+      un plus court chemin entre ses extrémités. Autrement dit, si le trajet le plus rapide entre deux villes passe par 2 villes intermédiaires <c>x</c> et <c>y</c>, ce trajet emprunte nécessairement le plus
+      court chemin entre <c>x</c> et <c>y</c>.</p>
     <p>Afin de dépeindre cette propriété, on propose de continuer l'exploration précédente: <div class="ul">
-      <p>Rajouter une ville dans vootre parcours de telle manière à toujours limiter la distance parcourue entre la ville de départ et celle d'arrivée.</p>
-      <p>Donc chercher la ville intermédiaire (notée <c>V_interm21</c>) pour le parcours <c>V_Dep/V_interm1</c>,
-      puis la ville intermédiaire (notée <c>V_interm22</c>) pour le parcours V_interm1/V_Arr, puis de comparer les parcours:
-      <p class="center"><c>V_Dep - V_interm21 - V_interm1 - V_Arr</c> à comparer à <c>V_Dep - V_interm1 - V_interm22 - V_Arr</c></p></p>
+    <p>Rajouter une ville dans votre parcours de telle manière à toujours limiter la distance parcourue entre la ville de départ
+     et celle d'arrivée. Ceci se traduit par chercher la ville intermédiaire (notée <c>V_interm21</c>) pour le parcours <c>V_Dep/V_interm1</c>,
+      puis la ville intermédiaire (notée <c>V_interm22</c>) pour le parcours <c>V_interm1</c>/<c>V_Arr</c>, puis de comparer les parcours:
+      <p class="center"><c>V_Dep - V_interm21 - V_interm1 - V_Arr</c> </p>
+      <p class="center"><c>V_Dep - V_interm1 - V_interm22 - V_Arr</c></p></p>
       <p>On gardera le parcours le plus court.</p>
     </div></p>
-    On propose de programmer l'algorithme du plus court chemin dans une seconde partie grâce à l'interface [METTRE UN LIEN UnGrapheDesChemins].
+    On propose de programmer l'algorithme du plus court chemin dans une seconde partie grâce à l'interface <l link="../../../sketchbook/UnGrapheDesChemins/about-proglet.htm" text="Un graphe et des chemins"/>.
     </div>
   </div>
   <div title="Pour se détendre . . programmer soi-même la voiture et les villes">

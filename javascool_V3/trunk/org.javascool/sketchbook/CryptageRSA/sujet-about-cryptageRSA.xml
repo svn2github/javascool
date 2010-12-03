@@ -64,7 +64,9 @@
    </div>
    <div title ="Traiter à la main, un exemple numérique:">
      <p>Un professeur envoie ses notes au secrétariat de l'école par mail. La clef publique du professeur est (55,3); celle du secrétariat est (33,3).</p>
-     <p>Vérifier, à l'aide des formules, que la clef privé du professeur (supposée connue de lui seul) est 27; et que celle du secrétariat est 7. <div class="ul">
+     <p>Vérifier, à l'aide des formules, que la clef privé du professeur (supposée connue de lui seul) est 27; et que celle du secrétariat est 7. 
+     Pour cela, reprise de la formule E x D + M x (P - 1) x (Q - 1) = 1, ce qui fait pour le professeur 3 x 27 - 2 x (5 - 1) x (11 - 1) = 1,
+                  et pour le secrétariat 3 x 7 - 1 x (3 - 1) x (11 - 1) = 1. <div class="ul">
        <p>On voit bien que avec de si petit nombres un espion peut facilement essayer toutes les clés privées jusqu'à trouver la bonne !!!</p>
        <p>Oui mais si clé est un mombre de plusieurs milliards de milliards (donc de 9 + 9 = une 20taine de chiffres) . . alors: <div class="ul">
          <p>On pourra tout de même facilement faire les calculs de cryptage et de décrytage avec un ordinateur, en quelques dizaines d'opérations.</p>
