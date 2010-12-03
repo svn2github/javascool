@@ -73,9 +73,11 @@
          <p>A vous: calculer combien cela fait en années . .</p>
        </div></p>
      </div></p>
-     <p>Pour assurer la confidentialité de ses messages, le professeur chiffre les notes avec la clef RSA du secrétariat. Quel message chiffre correspond à la note 12 ?</p>
+     <p>Pour assurer la confidentialité de ses messages, le professeur chiffre les notes avec la clef RSA du secrétariat. Quel message chiffre correspond à la note 12 
+     (convertit en nombre: 12594; regrouper en tranche de chiffres < n=33: 12 5 9 4; élever chaque nombre à la puissance
+                  e=3 et en prendre le reste par la division par la division par n=33: 12 26 3 31. Mais si déjà converti en nombre: ce sera 12)?</p>
      <p>Pour assurer l'authenticité des messages contenant les notes, le professeur signe ses messages pour le secrétariat aprés les avoir chiffrés. 
-     Le secrétariat reçoit le message 23. Quelle est la note correspondante ?</p>
+     Le secrétariat reçoit le message 23. Quelle est la note correspondante ? (élever 23 à la puissance 7, prenez le reste de sa division avec 33)</p>
    </div>
    <div title="Utiliser les fonctions dans votre propre programme.">  <div class="ul">
      <p>Utiliser les fonctions de la proglet pour programmer une interface pour Bob qui demande un message au clavier et renvoie le message encrypté.
