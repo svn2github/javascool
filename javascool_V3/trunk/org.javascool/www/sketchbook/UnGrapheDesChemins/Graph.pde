@@ -40,8 +40,8 @@ class Graph {
     return N_;
   }
   /** Cherche noeud plus proche d'une position.
-   * @param x Abcisse position souris.
-   * @param y Ordonnée position souris.
+   * @param x Abcisse position.
+   * @param y Ordonnée position.
    * @return Nom du noeud.
    */
   String getClosestNode(float x, float y) {
@@ -75,6 +75,18 @@ class Graph {
        // retire le noeud en question
     nodes.remove(n);
   }
+  /** Donne la liste de tous les noeuds.
+   * @return La liste des noms des noeuds.
+   */
+  String[] getAllNodes() {
+    String[] ListNodes = new String[50];
+    int count = 0;
+    for(String ni_ : (Iterable<String> )nodes.keySet()) {
+        ListNodes[count] = ni_;
+        count++;
+    }
+    return ListNodes;
+  }
   /** Donne la liste des noeuds en lien avec un noeud donné.
    * @param n Nom du noeud dont on veut les noeuds en lien.
    * @return La liste des noms des noeuds en lien avec le noeud donné.
@@ -93,13 +105,27 @@ class Graph {
   /** Ajoute ou modifie un lien entre deux noeuds (modifie dans le cas ou memes noeuds et différent poids attribué).
    * @param nA Premier noeud du lien.
    * @param nB Deuxième noeud du lien.
-   * @param p Poids du lien. // no?? poids=distance??
+   * @param p Poids du lien. 
    */
-  // void addLink(String nA, String nB, double p) {
+  void addLink(String nA, String nB, double p) {
+    if(!(nA.equals(nB))) {   // pas de lien de et vers un meme noeud
+      Node NA_ = (Node) nodes.get(nA);
+      Node NB_ = (Node) nodes.get(nB);
+
+      NA_.links.put(nB, new Link(nA, nB, p));
+      NB_.links.put(nA, new Link(nB, nA, p));
+    }
+  }
+  /** Ajoute ou modifie un lien entre deux noeuds (modifie dans le cas ou memes noeuds et différent poids attribué).
+   * @param nA Premier noeud du lien.
+   * @param nB Deuxième noeud du lien.
+   * ici poids du lien = distance euclidienne entre les deux noeuds
+   */
   void addLink(String nA, String nB) {
     if(!(nA.equals(nB))) {   // pas de lien de et vers un meme noeud
       Node NA_ = (Node) nodes.get(nA);
       Node NB_ = (Node) nodes.get(nB);
+      // ici le poids = distance euclidienne entre les deux noeuds
       double p_ = (PVector.dist(NA_.position, NB_.position)) / 100;
 
       NA_.links.put(nB, new Link(nA, nB, p_));
@@ -156,7 +182,7 @@ class Graph {
    * @param nTarget Noeud cible.
    * @return Noeud intermédiaire.
    */
-  String exploreNode(String nInit, String nTarget) {
+  /*String exploreNode(String nInit, String nTarget) {
     if(nInit == nTarget)
       return nTarget;
     String next = nInit; // initialization
@@ -178,48 +204,14 @@ class Graph {
      // println("Distance parcourue par le trajet: " + p );
     path.add(nInit);
     return next;
-  }
-  /*String exploreNode(String nO, String nInit, String nTarget)
-   *  {
-   *  if(nInit == nTarget)
-   *   return nTarget;
-   *  String next = nInit; // initialization
-   *  Node Ninit = (Node) nodes.get(nInit);
-   *  Node Ntarget = (Node) nodes.get(nTarget);
-   *  double p = 999999;
-   *  //for(String ni_ : (Iterable<String>) Ninit.links.keySet())
-   *  //{
-   *  for(String ni_ : (Iterable<String>) nodes.keySet())
-   *  {
-   *
-   *   if((!(nInit.equals(nO) && ni_.equals(nTarget)) && !ni_.equals(nInit))) {
-   *     if(isLink(nInit, ni_)) {
-   *       Node Ni_ = (Node) nodes.get(ni_);
-   *       if(path.indexOf(ni_) == -1 && restricted.indexOf(ni_) == -1) // si le noeud n'a pas été parcouru
-   *       {
-   *         //double di = PVector.dist(Ni_.position, Ninit.position)+PVector.dist(Ntarget.position,Ni_.position);
-   *         double pi = getLink(nInit, ni_) + getLink(ni_, nTarget);
-   *         if(pi < p )
-   *         {
-   *           p = pi;
-   *           next = ni_;
-   *         }
-   *
-   *        }
-   *     }
-   *   }
-   *  }
-   *  //println("Distance parcourue par le trajet: " + p );
-   *  path.add(nInit);
-   *  return next;
-   *
-   *  }*/
+  }*/
+ 
 
   /**   Construit le trajet avec tous les noeuds - appel à exploreNode
    * @param nStart Noeud départ.
    * @param nEnd Noeud final.
    */
-  void findPath(String nStart, String nEnd) {
+  /*void findPath(String nStart, String nEnd) {
     path.clear();
     restricted.clear();
     println(" " + nStart + " à " + nEnd);
@@ -243,7 +235,8 @@ class Graph {
       path.add(nEnd);
     else
       background(255, 0, 0);
-  }
+  }*/
+  
   /**   Algorithme de Dijkstra
    * @param nStart Noeud départ.
    * @param nEnd Noeud final.
@@ -315,4 +308,7 @@ class Graph {
 }
 
 // Taille pour l'insertion dans JavaScool
-public static final int WIDTH = 1024, HEIGHT = 700;
+public static final int WIDTH = 900, HEIGHT = 500;
+
+
+

@@ -16,7 +16,7 @@ import java.util.Random;
 
 // Paramètres pour la méthode RSA
 int pq_size;
-int prime_certainty = 20;
+static int prime_certainty = 20;
 BigInteger p, q, n, e, d, A;
 BigInteger EncMessBits;
 

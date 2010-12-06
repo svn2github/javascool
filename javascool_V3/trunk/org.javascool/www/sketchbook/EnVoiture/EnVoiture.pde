@@ -32,7 +32,7 @@ Trip myTrip;
 Vec3D camOffset = new Vec3D(0, 100, 300);
 Vec3D eyePos = new Vec3D(0, 1000, 0);
 
-PFont Verdana, Arial;
+PFont ArialB;
 int gX, gY;
 int indN = 0;
 boolean mouseDown = false, info = false;
@@ -47,12 +47,13 @@ char[] form = { 'B', 'P', 'O', 'C' };
 
 void setup() {
   size(900, 500, OPENGL);  // 1024, 576, OPENGL);
+  
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();
 
-  Verdana = loadFont("Verdana-48.vlw");
-  Arial = loadFont("ArialMT-48.vlw");
+  
+  ArialB = createFont("Arial Bold", 14, true);
 
   // Pour créer les 2 vues
   pgl = (PGraphicsOpenGL) g;
@@ -149,14 +150,14 @@ void draw() {
 
   rotateY(-PI);
   if((distance != 0) && (abs((float) (distance - distanceC)) < 0.01)) {
-    textFont(Arial, 10.0);
+    textFont(ArialB, 10.0);
     fill(255, 0, 0);
     text("BRAVO!", -100, 10);
   }
   if(info) {
     textAlign(LEFT);
     fill(255, 70, 0);
-    textFont(Arial, 2.5);
+    textFont(ArialB, 2.5);
     text(" - I  N  S  T  R  U  C  T  I  O  N  S - \n " +
          "> Navigation: \n" + "    . voiture = les 4 fleches \n" + "    . camera: '+/-' pour zoom/dézoom \n" +
          "> Noeud: \n" + "    . ajout = clic droit \n" +
@@ -164,7 +165,7 @@ void draw() {
          "> Générer tous les noeuds = 'a' \n" +
          "> Jouer à trouver le plus court chemin entre 2 villes tirées au hasard: \n" + "    . 'p' pour une seul escale \n" + "    . 'q' pour deux escales\n " +
          "> Afficher/cacher les instructions: 'i' \n " +
-         "> Fermer l'application: ESC ", -100, -10);
+         "> Fermer l'application: ESC ", -100, 0);
   }
   _gl.glClear(GL.GL_DEPTH_BUFFER_BIT);
   _gl.glLoadIdentity();
@@ -206,7 +207,7 @@ void draw() {
     strokeWeight(1.1);
     stroke(0);
 
-    // textFont(Arial, 5.0);
+    // textFont(ArialB, 5.0);
 
     /*String n = S_.n.substring(0, 1);
      *  translate(0,0,-1);
@@ -224,7 +225,7 @@ void draw() {
         line(S_.y2D, S_.x2D, S2_.y2D, S2_.x2D);
 
         /*if (info) {
-         *  s.textFont(Arial, 10.0);
+         *  s.textFont(ArialB, 10.0);
          *  s.fill(180);
          *  s.text(" " + (float) p_, abs((S_.x2D+S2_.x2D)/2), abs((S_.y2D+S2_.y2D)/2));
          *  }*/
@@ -347,11 +348,8 @@ void keyPressed() {
       myTrip.removeLink(start, end);
 
       ArrayList pathTemp = new ArrayList();
-      // intermediate = myTrip.findPath(start,end, pathTemp);
       myTrip.dijkstra(start, end);
-      // distanceC += myTrip.getDistance(start, intermediate) + myTrip.getDistance(intermediate, end);
       distanceC += myTrip.getDistance((String) path.get(0), (String) path.get(1)) + myTrip.getDistance((String) path.get(1), (String) path.get(2));
-      // println("Ville intermédiaire: " + intermediate + " - Distance parcourue: " + distanceC);
       for(int i = 0; i < path.size(); i++) {
         String p = (String) path.get(i);
         println(p);
@@ -386,10 +384,8 @@ void keyPressed() {
         }
         myTrip.removeLink(start, (String) pathTemp.get(1));
         myTrip.removeLink((String) pathTemp.get(1), end);
-        // interm1 = myTrip.findPath(start, (String) pathTemp.get(1), pathTemp);
         myTrip.dijkstra(start, (String) pathTemp.get(1));
         interm1 = (String) path.get(1);
-        // interm2 = myTrip.findPath((String) pathTemp.get(1), end, pathTemp);
         myTrip.dijkstra((String) pathTemp.get(1), end);
         interm2 = (String) path.get(1);
         if((myTrip.getDistance((String) pathTemp.get(1), interm2) + myTrip.getDistance(interm2, end))
@@ -430,7 +426,6 @@ void keyPressed() {
       info = true;
   }
   // Génère tous les liens possibles entre les noeuds
-
   /*if( key == 'l' ) {
    *
    *  for(String ni_ : (Iterable<String>) myTrip.spots.keySet())
@@ -445,3 +440,84 @@ void keyPressed() {
    *  }
    *  } */
 }
+
+
+/* Fonctions pour javascool. */
+
+ /** Ajoute ou modifie un spot au graphe (modifie dans le cas ou meme nom employé et différentes coordonnées).
+ * @param n Nom du spot.
+ * @param col Couleur du spot.
+ * @param f forme du spot: 'B' = Box, 'P' = Pentagone, 'O' = Octogone, 'C' = Cylindre.
+ * @param x Abcisse du spot.
+ * @param y Ordonnée du spot.
+ * @param d1 dimension1 à la base du spot.
+ * @param d2 dimension2 à la base du spot.
+ * @param h hauteur du spot.
+ */
+
+public static void addSpot(String n, int col, char f, int x, int y, float d1, float d2, float h) {
+  proglet.myTrip.addSpot(n, col, f, x, y, d1, d2, h);
+}
+
+/** Cherche spot plus proche d'une position.
+ * @param x Abcisse position.
+ * @param y Ordonnée position.
+ * @return Nom du spot.
+ */
+public static String getClosestSpot(float x, float y) {
+  String S_;
+  S_ = proglet.myTrip.getClosestSpot(x, y);
+  return S_;
+}
+
+/** Détruit un spot au graphe si il existe.
+ * @param n Nom du spot.
+ */
+public static void removeSpot(String n) {
+  proglet.myTrip.removeSpot(n);  
+}
+
+/** Ajoute ou modifie un lien entre deux spots
+ * @param nA Premier spot du lien.
+ * @param nB Deuxième spot du lien.
+ * ici poids du lien = distance euclidienne entre les deux spots.
+ */
+public static void addLink(String nA, String nB) {
+  proglet.myTrip.addLink(nA, nB);  
+}
+
+/** Détruit un lien entre deux spots si il existe.
+   * @param nA Premier spot du lien.
+   * @param nB Deuxième spot du lien.
+   */
+public static void removeLink(String nA, String nB) {
+  proglet.myTrip.removeLink(nA, nB);
+}
+
+/** Affirme si il y a lien entre 2 spots.
+ * @param nA Premier spot du lien.
+ * @param nB Deuxième spot du lien.
+ * @return oui ou non.
+ */
+public static boolean isLink(String nA, String nB) {
+  boolean link_ = false;
+  link_ = proglet.myTrip.isLink(nA, nB);
+  return link_;
+}
+
+ /** Donne le poids d'un lien entre deux spots.
+ * @param nA Premier spot du lien.
+ * @param nB Deuxième spot du lien.
+ * @return Le poids du lien où 0 si il n'y a pas de lien.
+ */
+public static double getLink(String nA, String nB) {
+  double p_ = 0;
+  p_ = proglet.myTrip.getLink(nA, nB);
+  return p_;
+}
+
+ static EnVoiture proglet; 
+
+
+
+

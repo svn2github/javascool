@@ -35,8 +35,13 @@
         <p>Dans cet environnement, peuvent être ajoutés des "stations" (spots), soit par touche 'a' pour les générer toutes en une seule fois et de manière aléatoire, 
         soit par clic droit et la station apparaitra à la position courante de la voiture. Les stations apparaissent dans les deux représentations.</p>
       </div>A vous d'essayer toutes ces possibilités.
-    </p>
-  </div>
+     </p>
+   </div>
+  <div title="Les différentes commandes de l'interface">
+      <p>Pour avoir davantage d'informations pour la manipulation de l'interface, touche 'i'.</p>
+      <p>Pour une manipulation rapide, 'a' génère tous les spots disponibles, clic gauche génère un spot à la position d ela voiture.</p>
+      <p>Pour ajouter/supprimer un lien entre deux spots: clic centre maintenus pendant le trajet entre deux spots.</p>
+    </div>
   <div title="Introduire la notion de plus court chemin (sans programmation)">
     <p>En fixant une station de départ et une station d'arrivée, l'objectif de la voiture est de minimiser la distance parcourue (et oui, l'impact carbone..).</p>
     <p> En tapant 'p', notre programme tire au hasard deux villes, une ville de départ 

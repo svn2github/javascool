@@ -1,6 +1,6 @@
 <div title="La «proglet» Exploration sonore">
   <p class="margin">Autres <l link="../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
-  <p>Cette proglet<l class="note" link="1"/> permet de visualiser l'évolution temporelle et le contenu fréquentiel (le spectre) d'un son, 
+  <p>Cette proglet<l class="note" link="1"/> permet de visualiser l'évolution temporelle et le contenu fréquentiel des graves aux aigues (le spectre) d'un son, 
   d'une parole, d'un extrait musical ou d'un signal sonore numérique.</p>
   <p>L'analyse s'effectue en temps réel. 
   Dès l'ouverture de l'application on peut visualiser les sons émis par soi-même ou dans l'environnement grâce à la captation par microphone. 
@@ -17,13 +17,13 @@
     <m>Lancer un signal enregistré:</m>
     <p><r>ExplorationSonore.playRecord</r>(<r>String</r> location, <r>double</r> frequence, <r>double</r> amplitude)</p>
     </div>où: <div class="ul">
-      <p><c>location</c>désigne le chemin de l'enregistrement sonore (par exemple: <c>../data/music/Ahmed_Ex2.wav</c>).</p>
+      <p><c>location</c> désigne le chemin de l'enregistrement sonore (par exemple: <c>../data/music/Ahmed_Ex2.wav</c>).</p>
       <p><c>frequence</c> est la fréquence de coupure en Hz, qui élimine les aigues, à choisir entre 100 et 8000.</p>
       <p><c>amplitude</c> est l'amplitude, à choisir entre 0 (silence) et 1 (100% du volume sonore).</p>
     </div>Si l'argument <c>location</c> n'est pas spécifié un sélecteur de fichier s'ouvre.<div class="code">
     <m>Arrêter une émission sonore:</m>
     <p><r>ExplorationSonore.playStop</r>()</p>
-  </div>arrêtera l'émission sonore et remettra la visualisation des sons capté par le microphone.
+  </div>arrêtera l'émission sonore et remettra la visualisation des sons captés par le microphone.
   </p>
    <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
    <div class="notes">

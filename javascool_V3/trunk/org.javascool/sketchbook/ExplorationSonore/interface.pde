@@ -114,7 +114,7 @@ void drawSignal(String n) {
  * @param a amplitude du signal.
  */
 public static void playSignal(int c, String n, double f, double a) {
-  swicth(c) {
+  switch(c) {
   case 1:
     proglet.signal1.setSignal(n, (float) f, (float) a);
     break;

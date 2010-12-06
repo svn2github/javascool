@@ -60,5 +60,4 @@ class Car extends Vec2D {
   }
 }
 
-static EnVoiture proglet;
 

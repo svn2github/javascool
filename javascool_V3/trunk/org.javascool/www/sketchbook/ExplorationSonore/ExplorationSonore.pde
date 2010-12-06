@@ -43,7 +43,7 @@ String sig = "null";
 
 // Paramètres pour la sinusoide, et l'enregistrement chargé
 int count = 0;
-signal signal1, signal2;
+signal signal1, signal2, signal3;
 record record1;
 PFont f;
 
@@ -52,6 +52,7 @@ int c = 0;
 // Ce qui est lancé une fois, au départ
 void setup() {
   frameRate(60);
+  
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();
@@ -69,6 +70,7 @@ void setup() {
 
   signal1 = new signal();
   signal2 = new signal();
+  signal3 = new signal();
   record1 = new record();
 
   // FFT: Transformation de Fourier pour l'analyse fréquentielle en temps réel

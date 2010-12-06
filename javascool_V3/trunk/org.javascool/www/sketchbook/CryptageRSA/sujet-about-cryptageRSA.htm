@@ -21,7 +21,30 @@
      
    <h2>Introduction.</h2>
    <div id="intros">
-      <ol></ol>
+      <ol>
+         <li>
+            <div>Le principe de la cryptographie consiste &agrave; d&eacute;finir une transformation des symboles d'un langage (les lettres ou les mots par
+               exemple) 
+                       qui soit difficilement inversible, 
+                       de telle sorte que retrouver le mot original &agrave; partir du mot cod&eacute; devienne une op&eacute;ration difficile &agrave; effectuer.
+            </div>
+         </li>
+         <li>
+            <div>Il existe deux grandes familles d'algorithmes de cryptographie : les algorithmes sym&eacute;triques (&agrave; cl&eacute; secr&egrave;te) 
+               	et les algorithmes asym&eacute;triques (&agrave; cl&eacute; publique). 
+                       En cryptographie asym&eacute;trique (ou &agrave; cl&eacute; publique), il existe une fonction dite &agrave; sens unique, pour transformer un message
+               en message cod&eacute;.
+            </div>
+         </li>
+         <li>
+            <div>Il faut que cette fonction soit simple &agrave; appliquer &agrave; un quelconque message, mais qu'il soit difficile de retrouver le message
+               original 
+               	&agrave; partir du message cod&eacute;. La cryptographie &agrave; cl&eacute; publique permet de coder un message secret et aussi d'authentifier l'&eacute;metteur
+               d'un message,
+                       par le protocole symm&eacute;trique.
+            </div>
+         </li>
+      </ol>
    </div>
    
      
@@ -30,48 +53,183 @@
       <ol>
          <li>
             <div>
-               <h3>faire un truc.</h3>
-               
-               	I) Manipuler l'interface. 
-               	Sce&#769;nario: on imagine qu'il puisse se faire par l'interme&#769;diaire d'un serveur web local, afin de permettre les actions se&#769;pare&#769;es
-               	de deux protagonistes, Alice et Bob.
-               	
-               	1.	Alice est charge&#769;e de ge&#769;ne&#769;rer les cle&#769;s publique et prive&#769;e en suivant les diffe&#769;rentes e&#769;tapes: 
-               	a) ge&#769;ne&#769;ration de deux entiers premiers P et Q; 
-               	b) Calcul de N=PxQ; 
-               	c) Ge&#769;ne&#769;rer E tel que E soit premier avec (P-1)*(Q-1); 
-               	d) Calculer D selon: Il existe un relatif entier M, tel que E &times; D + M &times; (P - 1)(Q - 1) = 1 
-               	-&gt; (N,E) est la cle&#769; publique; D est la cle&#769; prive&#769;e 
-               	Alice divulgue la cle&#769; publique et garde pre&#769;cieusement la cle&#769; prive&#769;e.
-               	
-               	2.	Bob rec&#807;oit la cle&#769; publique. 
-               	Il e&#769;crit son message secret, il le traduit en chiffres. Il encrypte ensuite le re&#769;sultat gra&#770;ce a&#768; la cle&#769; publique,
-               	c'est &agrave; dire: Bob &eacute;l&egrave;ve la traduction en chiffres &agrave; la puissance E, et prend le reste de la division du nombre qu'il a obtenu
-               	par N que lui a &eacute;galement fourni Alice.
-               	Il envoit le message encrypte&#769; a&#768; Alice.
-               
-               	3.	Alice rec&#807;oit le message encrypte&#769;. Elle le de&#769;crypte gra&#770;ce a&#768; sa cle&#769; prive&#769;e,
-               	c'est &agrave; dire elle &eacute;l&egrave;ve le nombre re&ccedil;u de Bob &agrave; la puissance D, puis prend le reste de sa division par N.
-               	Elle obtient une suite de chiffres qu'elle traduit en lettres et aboutit au message secret de Bob. 
-               	
-               	II) Faire les &eacute;tapes de g&eacute;n&eacute;ration de cl&eacute;s a), b), c) et d) par d&eacute;duction &agrave; partir des formules.
-               	
-               	III) Lancer les routines de cryptage et d&eacute;cryptage via javascool
-               	
-               	IV) RSA et authentification:
-               	Un professeur envoie ses notes au secre&#769;tariat de l'E&#769;cole par mail. 
-               	La clef publique du professeur est (55,3); celle du secre&#769;tariat est (33,3).
-               	
-               	a) Ve&#769;rifier, &agrave; l'aide des formules, que la clef prive&#769;e du professeur (suppose&#769;e connue de lui seul) est 27; et que celle
-               du secre&#769;tariat est 7.
-               	Impl&eacute;menter la commande correspondante &agrave; l'authentification.
-               	b) Pour assurer la confidentialite&#769; de ses messages, le professeur chiffre les notes avec la clef RSA du secre&#769;tariat. 
-               	Quel message chiffre&#769; correspond a&#768; la note 12 ?
-               	c) Pour assurer l'authenticite&#769; des messages contenant les notes, le professeur signe ses messages pour le secre&#769;tariat 
-               	apre&#769;s les avoir chiffre&#769;s. Le secre&#769;tariat rec&#807;oit le message 23. Quelle est la note correspondante ?
-               	
-               
-                   
+               <h3>Manipuler l'interface: cryptage de donn&eacute;es..</h3>
+                     Sc&eacute;nario: Deux &eacute;l&egrave;ves sont "Alice" et "Bob" et vont se succ&eacute;der &agrave; tour de r&ocirc;le sur devant l'interface.
+                     
+               <ol class="ol">
+                          
+                  <li>Alice est charg&eacute;e de g&eacute;n&eacute;rer les cl&eacute;s publique et priv&eacute;e en suivant les diff&eacute;rentes &eacute;tapes: 
+                     <ol class="ol">
+                                  
+                        <li>G&eacute;n&eacute;ration de deux entiers premiers P et Q;</li>
+                                  
+                        <li>Calcul de N = P x Q;</li>
+                                  
+                        <li>G&eacute;n&eacute;ration de E tel que E soit premier avec (P - 1) x (Q - 1);</li>
+                                  
+                        <li>Calcul de D tel qu'il existe un relatif entier M, tel que E &times; D + M &times; (P - 1) x (Q - 1) = 1</li>
+                                
+                     </ol>
+                             Ainsi, (N,E) est la cl&eacute; publique et D est la cl&eacute; priv&eacute;e.
+                             
+                     <div>Bien entendu nous n'avons pas &agrave; faire le calcul nous m&ecirc;me . . juste &agrave; utiliser l'interface qui l'a programm&eacute;.</div>
+                             
+                     <div>Alice divulgue la cl&eacute; publique et garde pr&eacute;cieusement la cl&eacute; priv&eacute;e.</div>
+                            
+                  </li>
+                         
+                  <li>Bob re&ccedil;oit alors la cl&eacute; publique d'Alice.
+                              
+                     <div>Il &eacute;crit son message secret, puis le traduit en chiffres, donc un nombre X, pour qu'il puisse se faire encrypter &agrave; l'aide
+                        d'un calcul arythm&eacute;tique,
+                                 qui ne peut porter que sur des nombres et non une chaine de carat&egrave;res.
+                     </div>
+                              
+                     <div>Il encrypte ensuite le r&eacute;sultat gr&acirc;ce &agrave; la cl&eacute; publique de la mani&egrave;re suivante: il &eacute;l&egrave;ve le message chiffr&eacute; X &agrave; la puissance
+                        E, 
+                                 et prend le reste de la division du nombre qu'il a obtenu par N que lui a &eacute;galement fourni Alice.
+                     </div>
+                              
+                     <div>Il envoie alors le message encrypt&eacute; Y &agrave;  Alice.</div>
+                            
+                  </li>
+                         
+                  <li>Alice re&ccedil;oit le message encrypt&eacute; Y.
+                              
+                     <div>Elle le d&eacute;crypte alors gr&acirc;ce &agrave; sa cl&eacute; priv&eacute;e de la mani&egrave;re suivante: elle &eacute;l&egrave;ve le nombre re&ccedil;u de Bob &agrave; la puissance D, puis
+                        prend le reste de sa division par N.
+                     </div>
+                              
+                     <div>Elle obtient alors une suite de chiffres Z qu'elle traduit en lettres et aboutit au message secret de Bob: c'est &agrave; dire que
+                        Z = X !
+                     </div>
+                            
+                  </li>
+                       
+               </ol>
+                    essayer ce sc&eacute;nario par bin&ocirc;me de deux, pour bien vous familiariser avec l'interface.
+                    
+               <div>Puis refaire le sc&eacute;nario sans l'interface, mais sur papier, en essayant de se faire deviner un nombre X.</div>
+                  
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Utiliser les cl&eacute;s pour s'authentifier..</h3>
+                     Sc&eacute;nario: "Alice" va maintenant prouver &agrave; "Bob" qu'elle est Alice. 
+               <ol class="ol">
+                          
+                  <li>Puis il encrypte avec la cl&eacute; publique d'Alice un nombre secret (tir&eacute; au hasard) et l'envoie &agrave; Alice.</li>
+                          
+                  <li>Alice le d&eacute;crypte avec sa cl&eacute; priv&eacute;e (elle seule peut le faire, car elle seule &agrave; la cl&eacute; priv&eacute;e) et annonce &agrave; Bob le nombre
+                     secret.
+                  </li>
+                          
+                  <li>Bob sait alors que ce ne peut &ecirc;tre que Alice, la voil&agrave; authentifi&eacute;e.</li>
+                        
+               </ol>
+                     
+               <div>Jouer ce sc&eacute;nario sans l'interface, mais sur papier.</div>
+                     
+               <div>Proposer ensuite &agrave; Bob d'aller sur l'interface et de se calculer lui aussi des cl&eacute;s publiques et priv&eacute;es et 
+                        rejouer le sc&eacute;nario de fa&ccedil;on &agrave; ce que personne ne puisse jamais conna&icirc;tre le nombre secret.
+               </div>
+                  
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Traiter &agrave; la main, un exemple num&eacute;rique:.</h3>
+                    
+               <div>Un professeur envoie ses notes au secr&eacute;tariat de l'&eacute;cole par mail. La clef publique du professeur est (55,3); celle du secr&eacute;tariat
+                  est (33,3).
+               </div>
+                    
+               <div>V&eacute;rifier, &agrave; l'aide des formules, que la clef priv&eacute; du professeur (suppos&eacute;e connue de lui seul) est 27; et que celle du secr&eacute;tariat
+                  est 7. 
+                       Pour cela, reprise de la formule E x D + M x (P - 1) x (Q - 1) = 1, ce qui fait pour le professeur 3 x 27 - 2 x (5 -
+                  1) x (11 - 1) = 1,
+                                    et pour le secr&eacute;tariat 3 x 7 - 1 x (3 - 1) x (11 - 1) = 1. 
+                  <ul class="ul">
+                            
+                     <li>On voit bien que avec de si petit nombres un espion peut facilement essayer toutes les cl&eacute;s priv&eacute;es jusqu'&agrave; trouver la bonne
+                        !!!
+                     </li>
+                            
+                     <li>Oui mais si cl&eacute; est un mombre de plusieurs milliards de milliards (donc de 9 + 9 = une 20taine de chiffres) . . alors: 
+                        <ul class="ul">
+                                    
+                           <li>On pourra tout de m&ecirc;me facilement faire les calculs de cryptage et de d&eacute;crytage avec un ordinateur, en quelques dizaines d'op&eacute;rations.</li>
+                                    
+                           <li>Mais le programme qui devra essayer lees milliards de milliards de cl&eacute; priv&eacute;es avant de trouver la bonne . . 
+                                       m&ecirc;me en faisant un milliard d'op&eacute;rations par secondes en aura pour un milliard de secondes . c'est &agrave; dire . .
+                           </li>
+                                    
+                           <li>A vous: calculer combien cela fait en ann&eacute;es . .</li>
+                                  
+                        </ul>
+                     </li>
+                          
+                  </ul>
+               </div>
+                    
+               <div>Pour assurer la confidentialit&eacute; de ses messages, le professeur chiffre les notes avec la clef RSA du secr&eacute;tariat. Quel message
+                  chiffre correspond &agrave; la note 12 ?
+                       (convertit en nombre: 12594; regrouper en tranche de chiffres strictement plus petit que n=33: 12 5 9 4; &eacute;lever chaque
+                  nombre &agrave; la puissance e=3 et en prendre le reste par la division par la division par n=33: 12 26 3 31. Mais si d&eacute;j&agrave; converti
+                  en nombre: ce sera 12)
+               </div>
+                    
+               <div>Pour assurer l'authenticit&eacute; des messages contenant les notes, le professeur signe ses messages pour le secr&eacute;tariat apr&eacute;s les
+                  avoir chiffr&eacute;s. 
+                       Le secre&#769;tariat re&ccedil;oit le message 23. Quelle est la note correspondante ? (&eacute;lever 23 &agrave; la puissance 7, prenez le reste
+                  de sa division avec 33)
+               </div>
+                  
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Utiliser les fonctions dans votre propre programme..</h3>  
+               <ul class="ul">
+                       
+                  <li>Utiliser les fonctions de la proglet pour programmer une interface pour Bob qui demande un message au clavier et renvoie le
+                     message encrypt&eacute;.
+                          Vous mettrez les cl&eacute;s publiques dans le code &agrave; partir d'un jeu de cl&eacute; d&eacute;j&agrave; calcul&eacute;. ce sont des cl&eacute;s publiques . . le
+                     code a pas besoin d'&ecirc;tre cach&eacute;.
+                  </li>
+                       
+                  <li>Utiliser les fonctions de la proglet pour programmer une interface pour Alice qui demande le message crypt&eacute; au clavier et
+                     renvoie le message encrypt&eacute;.
+                          Vous mettrez les cl&eacute;s publiques et priv&eacute;es dans le code (qui devra donc rester secret, lui !).
+                  </li>
+                       
+                  <li>Rejouer un des deux sc&eacute;narios en utilisant les deux bouts de programme.</li>
+                       
+                  <li>Comment faire pour le code d'Alice ne risque pas d'&ecirc;tre pirat&eacute; . . pour y lire la cl&eacute; priv&eacute;e ?</li>
+                     
+               </ul>
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Coder vous m&ecirc;me les fonctions de cryptage et de d&eacute;cryptage.</h3>
+                    
+               <div>Ecrire la formule du cryptage de Bob et celle du d&eacute;cyptage d'Alice.</div>
+                    
+               <div>Reprendre alors les deux codes pr&eacute;c&eacute;dents en rempla&ccedil;ant les routines <font color="#990000"><b>CryptageRSA.encrypt</b></font> et <font color="#990000"><b>CryptageRSA.dcrypt</b></font> par vos propres routines:
+                  <ul class="ul">
+                            
+                     <li>Pour passer du message &agrave; sa valeur en chiffres on utilise: <tt><font color="#990000"><b>BigInteger</b></font> X = new <font color="#990000"><b>BigInteger</b></font>(message.<font color="#990000"><b>getBytes</b></font>());</tt></li>
+                            
+                     <li>Pour passer du message en chiffres &agrave; sa valeur en chaine de caract&egrave;res on utilise: <tt><font color="#990000"><b>String</b></font> message = new <font color="#990000"><b>String</b></font>(X.<font color="#990000"><b>totByteArray</b></font>());</tt></li>
+                            
+                     <li>Pour calculer <tt>Y = X ^ E modulo N</tt> on utilise: <tt>modPow</tt> [mettre un lien vers la doc] 
+                     </li>
+                          
+                  </ul> Vous avez donc tous les ingr&eacute;dients.
+               </div>
+                  
             </div>
          </li>
       </ol>

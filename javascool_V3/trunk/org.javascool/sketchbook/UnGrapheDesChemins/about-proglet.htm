@@ -56,9 +56,9 @@
                <td>
                   <div class="code">
                          
-                     <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir un noeud &agrave; partir d'une position de souris:</font></tt></p>
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir un noeud &agrave; partir d'une position:</font></tt></p>
                          
-                     <div><font color="#990000"><b>UnGrapheDesChemins.getClosestNode</b></font>(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
+                     <div><font color="#990000"><b>String</b></font> n =<font color="#990000"><b>UnGrapheDesChemins.getClosestNode</b></font>(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
                      </div>
                          
                   </div>
@@ -72,6 +72,9 @@
          </li>
                
          <li><tt>y</tt> est l'ordonn&eacute;e de la position de souris.
+         </li>
+               
+         <li><tt>n</tt> est le nom du noeud, qui est renvoy&eacute;.
          </li>
                
       </ul>
@@ -102,10 +105,32 @@
             <tr>
                <td>
                   <div class="code">
+                         
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir la liste de tous les noeuds:</font></tt></p>
+                         
+                     <div><font color="#990000"><b>String[]</b></font> Listn_ = <font color="#990000"><b>UnGrapheDesChemins.getAllNodes</b></font>()
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>o&ugrave;: 
+      <ul class="ul">
+               
+         <li><tt>Listn_</tt> est le tableau des noms de tous les noeuds, qui est renvoy&eacute;.
+         </li>
+               
+      </ul>
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
                        	
                      <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir la liste des noeuds en lien avec un noeud sp&eacute;cifique:</font></tt></p>
                          
-                     <div><font color="#990000"><b>UnGrapheDesChemins.getNodes</b></font>(<font color="#990000"><b>String</b></font> n)
+                     <div><font color="#990000"><b>String[]</b></font> Listn_ = <font color="#990000"><b>UnGrapheDesChemins.getNodes</b></font>(<font color="#990000"><b>String</b></font> n)
                      </div>
                          
                   </div>
@@ -118,13 +143,16 @@
          <li><tt>n</tt> est le nom du noeud sp&eacute;cifique.
          </li>
                
+         <li><tt>Listn_</tt> est le tableau des noms des noeuds en lien avec le noeud sp&eacute;cifique n, qui est renvoy&eacute;.
+         </li>
+               
       </ul>
       <p>
          <table witdh="90%" border="1" align="center">
             <tr>
                <td>
                   <div class="code">
-                           
+                         
                      <p><tt><font color="#202080"><big>//</big>&nbsp;Ajouter ou modifier un lien existant entre deux noeuds:</font></tt></p>
                          
                      <div><font color="#990000"><b>UnGrapheDesChemins.addLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
@@ -177,7 +205,7 @@
                            
                      <p><tt><font color="#202080"><big>//</big>&nbsp;Questionner si deux noeuds sont li&eacute;s:</font></tt></p>
                          
-                     <div><font color="#990000"><b>UnGrapheDesChemins.isLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     <div><font color="#990000"><b>boolean</b></font> a = <font color="#990000"><b>UnGrapheDesChemins.isLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
                      </div>
                          
                   </div>
@@ -191,6 +219,9 @@
          </li>
                
          <li><tt>nB</tt> est le nom du second noeud du lien consid&eacute;r&eacute;.
+         </li>
+               
+         <li><tt>a</tt> est la r&eacute;ponse &agrave; la question "Les noeuds nA et nB sont-ils en lien?", soit "vrai" soit "faux", qui est renvoy&eacute;e.
          </li>
                
       </ul>
@@ -202,7 +233,7 @@
                            
                      <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir le poids d'un lien entre deux noeud:</font></tt></p>
                          
-                     <div><font color="#990000"><b>UnGrapheDesChemins.getLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     <div><font color="#990000"><b>double</b></font> p = <font color="#990000"><b>UnGrapheDesChemins.getLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
                      </div>
                          
                   </div>
@@ -216,6 +247,9 @@
          </li>
                
          <li><tt>nB</tt> est le nom du second noeud du lien consid&eacute;r&eacute;.
+         </li>
+               
+         <li><tt>p</tt> est le poids du lien entre les neouds nA et nB, qui est renvoy&eacute;.
          </li>
                
       </ul>

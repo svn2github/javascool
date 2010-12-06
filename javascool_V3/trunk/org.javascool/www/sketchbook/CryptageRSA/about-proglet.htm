@@ -8,19 +8,26 @@
    </div>
      
    <div>Cette proglet<sup><a href="#1">1</a></sup> permet de manipuler les concepts li&eacute;s &agrave; l'encryptage/d&eacute;cryptage par cl&eacute;s publique et priv&eacute;e, RSA. 
-      La cryptologie, science du secret, englobe la cryptographie &#8212; le codage secret d'un message &#8212; et la cryptanalyse &#8212; le d&eacute;codage
+   </div>
+           
+   <div>La cryptologie, science du secret, englobe la cryptographie &#8212; le codage secret d'un message &#8212; et la cryptanalyse &#8212; le d&eacute;codage
       d'un message cod&eacute;. 
-      	Le principe de la cryptographie consiste &agrave; d&eacute;finir une transformation des symboles d'un langage (les lettres ou les mots
-      par exemple) qui soit difficilement inversible, 
-      	de telle sorte que retrouver le mot original &agrave; partir du mot cod&eacute; devienne une op&eacute;ration difficile &agrave; effectuer. 
-      	Il existe deux grandes familles d'algorithmes de cryptographie : les algorithmes sym&eacute;triques (&agrave; cl&eacute; secr&egrave;te) 
-      	et les algorithmes asym&eacute;triques (&agrave; cl&eacute; publique). 
-      	Le syst&egrave;me RSA est un syst&egrave;me de cryptographie &agrave; cl&eacute; publique donc asym&eacute;trique.
       	
-      	L'int&eacute;r&ecirc;t de cette manipulation est de faire passer la non-sym&eacute;trie du processus: autrement dit, tout le monde peut encrypter
-      (par la cl&eacute; publique),
-      mais seule une personne pourra d&eacute;crypter (&agrave; l'aide de la cl&eacute; priv&eacute;e).
-        
+      <div>Le principe de la cryptographie consiste &agrave; d&eacute;finir une transformation des symboles d'un langage (les lettres ou les mots par
+         exemple) 
+                 qui soit difficilement inversible, 
+         	de telle sorte que retrouver le mot original &agrave; partir du mot cod&eacute; devienne une op&eacute;ration difficile &agrave; effectuer.
+      </div>
+      	
+      <div>Il existe deux grandes familles d'algorithmes de cryptographie : les algorithmes sym&eacute;triques (&agrave; cl&eacute; secr&egrave;te) 
+         	et les algorithmes asym&eacute;triques (&agrave; cl&eacute; publique). 
+         	Le syst&egrave;me RSA est un syst&egrave;me de cryptographie &agrave; cl&eacute; publique donc asym&eacute;trique.  
+      </div>
+      	
+      <div>L'int&eacute;r&ecirc;t de cette manipulation est de faire passer la non-sym&eacute;trie du processus: autrement dit, tout le monde peut encrypter
+         (par la cl&eacute; publique),
+                 mais seule une personne pourra d&eacute;crypter (&agrave; l'aide de la cl&eacute; priv&eacute;e).  
+      </div>
         
    </div>
      
@@ -34,7 +41,7 @@
                          
                      <p><tt><font color="#202080"><big>//</big>&nbsp;Cr&eacute;er une cl&eacute; priv&eacute;e et une cl&eacute; publique pour le codage et d&eacute;codage de messages:</font></tt></p>
                          
-                     <div><font color="#990000"><b>CryptageRSA.createKeys</b></font>()
+                     <div><font color="#990000"><b>BigInteger</b></font> keys[] = <font color="#990000"><b>CryptageRSA.createKeys</b></font>()
                      </div>
                          
                   </div>
@@ -44,7 +51,9 @@
       </p>o&ugrave;: 
       <ul class="ul">
                
-         <li>est retourn&eacute; les cl&eacute;s sous forme de BigInteger.</li>
+         <li>est retourn&eacute; les cl&eacute;s sous forme d'un tableau de 3 BigInteger, keys[0] est la cl&eacute; priv&eacute;e D, et (keys[1],keys[2]) sont les
+            cl&eacute;s publiques (E, N).
+         </li>
              
       </ul>
       <p>
@@ -55,7 +64,7 @@
                          
                      <p><tt><font color="#202080"><big>//</big>&nbsp;Encrypter un message &agrave; l'aide d'une cl&eacute; (publique):</font></tt></p>
                          
-                     <div><font color="#990000"><b>CryptageRSA.encrypt</b></font>(<font color="#990000"><b>String</b></font> n, <font color="#990000"><b>BigInteger</b></font> pk1, <font color="#990000"><b>BigInteger</b></font> pk2)
+                     <div><font color="#990000"><b>BigInteger</b></font> crypt = <font color="#990000"><b>CryptageRSA.encrypt</b></font>(<font color="#990000"><b>String</b></font> message, <font color="#990000"><b>BigInteger</b></font> pk1, <font color="#990000"><b>BigInteger</b></font> pk2)
                      </div>
                          
                   </div>
@@ -65,13 +74,13 @@
       </p>o&ugrave;: 
       <ul class="ul">
                
-         <li><tt>m</tt> est le message &agrave; encrypter, &agrave; inscrire entre "".
+         <li><tt>message</tt> est le message &agrave; encrypter, &agrave; inscrire entre "" puisque c'est une chaine de caract&egrave;res.
          </li>
                
-         <li><tt>pk1</tt> est la cl&eacute; publique, 1ere partie.
+         <li><tt>pk1</tt> est la cl&eacute; publique, 1ere partie, c'est &agrave; dire E.
          </li>
                
-         <li><tt>pk2</tt> est la cl&eacute; publique, 2nde partie.
+         <li><tt>pk2</tt> est la cl&eacute; publique, 2nde partie, c'est &agrave; dire N.
          </li>
                
          <li>est retourn&eacute; le message encrypt&eacute; sous forme de chiffres.</li>
@@ -85,7 +94,7 @@
                          
                      <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;crypter un message &agrave; l'aide de cl&eacute;s:</font></tt></p>
                          
-                     <div><font color="#990000"><b>CryptageRSA.decrypt</b></font>(<font color="#990000"><b>BigInteger</b></font> me, <font color="#990000"><b>BigInteger[]</b></font> k)
+                     <div><font color="#990000"><b>String</b></font> message = <font color="#990000"><b>CryptageRSA.decrypt</b></font>(<font color="#990000"><b>BigInteger</b></font> crypt, <font color="#990000"><b>BigInteger[]</b></font> keys)
                      </div>
                          
                   </div>
@@ -95,10 +104,10 @@
       </p>o&ugrave;: 
       <ul class="ul">
                
-         <li><tt>me</tt> est le message encrypt&eacute; sous forme de chiffres.
+         <li><tt>crypt</tt> est le message encrypt&eacute; sous forme de chiffres.
          </li>
                
-         <li><tt>k</tt> sont les cl&eacute;s, publique et priv&eacute;e, sous forme de vecteur &agrave; 2 lignes.
+         <li><tt>keys</tt> sont les cl&eacute;s, publique et priv&eacute;es, sous forme de vecteur &agrave; 3 entr&eacute;es, comme celui donn&eacute; par <font color="#990000"><b>createKeys</b></font>().
          </li>
                
          <li>est retourn&eacute; le message decrypt&eacute; en caract&egrave;res.</li>

@@ -38,35 +38,7 @@
                          
                      <p><tt><font color="#202080"><big>//</big>&nbsp;Ajouter ou modifier un spot:</font></tt></p>
                          
-                     <div><font color="#990000"><b>EnVoiture.addSpot</b></font>(...)
-                     </div>
-                         
-                  </div>
-               </td>
-            </tr>
-         </table>
-      </p>o&ugrave;: 
-      <ul class="ul">
-               
-         <li><tt>n</tt> est le nom du noeud.
-         </li>
-               
-         <li><tt>x</tt> est l'abscisse du noeud.
-         </li>
-               
-         <li><tt>y</tt> est l'ordonn&eacute;e du noeud.
-         </li>
-             
-      </ul>
-      <p>
-         <table witdh="90%" border="1" align="center">
-            <tr>
-               <td>
-                  <div class="code">
-                         
-                     <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir un spot &agrave; partir de son nom:</font></tt></p>
-                         
-                     <div><font color="#990000"><b>EnVoiture.getSpot</b></font>(<font color="#990000"><b>String</b></font> n)
+                     <div><font color="#990000"><b>EnVoiture.addSpot</b></font>(<font color="#990000"><b>String</b></font> n, <font color="#990000"><b>int</b></font> col, <font color="#990000"><b>char</b></font> f, <font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y, <font color="#990000"><b>float</b></font> d1, <font color="#990000"><b>float</b></font> d2, <font color="#990000"><b>float</b></font> h)
                      </div>
                          
                   </div>
@@ -79,6 +51,27 @@
          <li><tt>n</tt> est le nom du spot.
          </li>
                
+         <li><tt>col</tt> est la couleur du spot.
+         </li>
+               
+         <li><tt>f</tt> est la forme du spot: 'B' = Box, 'P' = Pentagone, 'O' = Octogone, 'C' = Cylindre.
+         </li>
+               
+         <li><tt>x</tt> est l'abscisse du spot.
+         </li>
+               
+         <li><tt>y</tt> est l'ordonn&eacute;e du spot.
+         </li>
+               
+         <li><tt>d1</tt> est la dimension1 &agrave; la base du spot.
+         </li>
+               
+         <li><tt>d2</tt> est la dimension2 &agrave; la base du spot.
+         </li>
+               
+         <li><tt>h</tt> est la hauteur du spot.
+         </li>
+             
       </ul>
       <p>
          <table witdh="90%" border="1" align="center">
@@ -88,7 +81,7 @@
                          
                      <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir un spot &agrave; partir d'une position 2D:</font></tt></p>
                          
-                     <div><font color="#990000"><b>EnVoiture.getClosestSpot</b></font>(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
+                     <div><font color="#990000"><b>String</b></font> n = <font color="#990000"><b>EnVoiture.getClosestSpot</b></font>(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
                      </div>
                          
                   </div>
@@ -102,6 +95,9 @@
          </li>
                
          <li><tt>y</tt> est l'ordonn&eacute;e de la position.
+         </li>
+               
+         <li><tt>n</tt> est le nom du spot, qui est renvoy&eacute;.
          </li>
                
       </ul>
@@ -185,7 +181,7 @@
                          
                      <p><tt><font color="#202080"><big>//</big>&nbsp;Questionner si deux spots sont li&eacute;s:</font></tt></p>
                          
-                     <div><font color="#990000"><b>EnVoiture.isLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     <div><font color="#990000"><b>boolean</b></font> a = <font color="#990000"><b>EnVoiture.isLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
                      </div>
                          
                   </div>
@@ -199,6 +195,9 @@
          </li>
                
          <li><tt>nB</tt> est le nom du second spot du lien consid&eacute;r&eacute;.
+         </li>
+               
+         <li><tt>a</tt> est la r&eacute;ponse &agrave; la question "Les spots nA et nB sont-ils en lien?", soit "vrai" soit "faux", qui est renvoy&eacute;e.
          </li>
                
       </ul>
@@ -210,7 +209,7 @@
                            
                      <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir le poids d'un lien entre deux spots:</font></tt></p>
                          
-                     <div><font color="#990000"><b>EnVoiture.getLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     <div><font color="#990000"><b>double</b></font> p = <font color="#990000"><b>EnVoiture.getLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
                      </div>
                          
                   </div>
@@ -224,6 +223,9 @@
          </li>
                
          <li><tt>nB</tt> est le nom du second spot du lien consid&eacute;r&eacute;.
+         </li>
+               
+         <li><tt>p</tt> est le poids du lien entre les spots nA et nB, qui est renvoy&eacute;.
          </li>
                
       </ul>

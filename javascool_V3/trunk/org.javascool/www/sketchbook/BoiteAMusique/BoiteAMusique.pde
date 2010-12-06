@@ -20,11 +20,14 @@ int bs;
 int[] mySource = new int[2];
 boolean hasChanged = false;
 
-String[] filenames;
-String path;
+// Comment this for an automatic search
+String[] filenames = {"plink.aif", "hats.wav", "kick.wav", "SD.wav", "snare.wav", "rec0.wav", "rec1.wav", "rec2.wav", "rec3.wav"};
+// Uncomment this for an automatic search
+/*String[] filenames;*/
+
 
 void setup() {
-  size(1000, 600); // (screen.width-50,screen.height-50);//900,616);
+  size(1000, 700); // (screen.width-50,screen.height-50);//900,616);
   background(50);
   frameRate(30);
   mySource[0] = 0;
@@ -32,13 +35,14 @@ void setup() {
 
   in = minim.getLineIn(Minim.STEREO, 1648);
   out = minim.getLineOut(Minim.STEREO);
-  path = sketchPath + "/data/effects";
-  filenames = listFileNames(path);
+  // Uncomment this for an automatic search
+  /*path = sketchPath + "/data/effects";
+  filenames = listFileNames(path);*/
   freqs = new Freq();
 
   smooth();
 
-  potarVol = new Potar(40, 170);
+  potarVol = new Potar(width/20, height/5);
   w = width / 100;
   bs = 4 * width / 9; // 2*screen.height/3;
 

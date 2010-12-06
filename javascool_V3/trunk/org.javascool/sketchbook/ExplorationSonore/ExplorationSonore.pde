@@ -52,6 +52,7 @@ int c = 0;
 // Ce qui est lancé une fois, au départ
 void setup() {
   frameRate(60);
+  
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();

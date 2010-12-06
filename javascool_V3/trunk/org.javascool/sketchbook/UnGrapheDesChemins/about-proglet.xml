@@ -17,23 +17,30 @@
       <p><c>x</c> est l'abscisse du noeud.</p>
       <p><c>y</c> est l'ordonnée du noeud.</p>
     </div><div class="code">
-    <m>Obtenir un noeud à partir d'une position de souris:</m>
-    <p><r>UnGrapheDesChemins.getClosestNode</r>(<r>int</r> x, <r>int</r> y)</p>
+    <m>Obtenir un noeud à partir d'une position:</m>
+    <p><r>String</r> n =<r>UnGrapheDesChemins.getClosestNode</r>(<r>int</r> x, <r>int</r> y)</p>
     </div>où: <div class="ul">
       <p><c>x</c> est l'abscisse de la position de souris.</p>
       <p><c>y</c> est l'ordonnée de la position de souris.</p>
+      <p><c>n</c> est le nom du noeud, qui est renvoyé.</p>
       </div><div class="code">
     <m>Détruire un noeud:</m>
     <p><r>UnGrapheDesChemins.removeNode</r>(<r>String</r> n)</p>
     </div>où: <div class="ul">
       <p><c>n</c> est le nom du noeud.</p>
       </div><div class="code">
+    <m>Obtenir la liste de tous les noeuds:</m>
+    <p><r>String[]</r> Listn_ = <r>UnGrapheDesChemins.getAllNodes</r>()</p>
+    </div>où: <div class="ul">
+      <p><c>Listn_</c> est le tableau des noms de tous les noeuds, qui est renvoyé.</p>
+      </div><div class="code">
   	<m>Obtenir la liste des noeuds en lien avec un noeud spécifique:</m>
-    <p><r>UnGrapheDesChemins.getNodes</r>(<r>String</r> n)</p>
+    <p><r>String[]</r> Listn_ = <r>UnGrapheDesChemins.getNodes</r>(<r>String</r> n)</p>
     </div>où: <div class="ul">
       <p><c>n</c> est le nom du noeud spécifique.</p>
+      <p><c>Listn_</c> est le tableau des noms des noeuds en lien avec le noeud spécifique n, qui est renvoyé.</p>
       </div><div class="code">
-      <m>Ajouter ou modifier un lien existant entre deux noeuds:</m>
+    <m>Ajouter ou modifier un lien existant entre deux noeuds:</m>
     <p><r>UnGrapheDesChemins.addLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
     </div>où: <div class="ul">
       <p><c>nA</c> est le nom du premier noeud.</p>
@@ -46,16 +53,18 @@
       <p><c>nB</c> est le nom du second noeud du lien à détruire.</p>
       </div><div class="code">
       <m>Questionner si deux noeuds sont liés:</m>
-    <p><r>UnGrapheDesChemins.isLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
+    <p><r>boolean</r> a = <r>UnGrapheDesChemins.isLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
     </div>où: <div class="ul">
       <p><c>nA</c> est le nom du premier noeud du lien considéré.</p>
       <p><c>nB</c> est le nom du second noeud du lien considéré.</p>
+      <p><c>a</c> est la réponse à la question "Les noeuds nA et nB sont-ils en lien?", soit "vrai" soit "faux", qui est renvoyée.</p>
       </div><div class="code">
       <m>Obtenir le poids d'un lien entre deux noeud:</m>
-    <p><r>UnGrapheDesChemins.getLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
+    <p><r>double</r> p = <r>UnGrapheDesChemins.getLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
     </div>où: <div class="ul">
       <p><c>nA</c> est le nom du premier noeud du lien considéré.</p>
       <p><c>nB</c> est le nom du second noeud du lien considéré.</p>
+      <p><c>p</c> est le poids du lien entre les neouds nA et nB, qui est renvoyé.</p>
       </div>
   </p>
    <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>

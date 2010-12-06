@@ -107,21 +107,32 @@ void drawSignal(String n) {
 }
 /* Fonctions pour javascool. */
 
-/** Joue un signal de type choisi
+/** Joue un signal de type choisi.
+ * @param c : numero du canal à lancer: 1, 2 ou 3.
  * @param n nom du type: sinus, square, triangle, saw, white noise.
  * @param f fréquence du signal.
  * @param a amplitude du signal.
  */
-public static void playSignal(String n, double f, double a) {
-  proglet.signal1.setSignal(n, (float) f, (float) a);
+public static void playSignal(int c, String n, double f, double a) {
+  switch(c) {
+  case 1:
+    proglet.signal1.setSignal(n, (float) f, (float) a);
+    break;
+  case 2:
+    proglet.signal2.setSignal(n, (float) f, (float) a);
+    break;
+  case 3:
+    proglet.signal3.setSignal(n, (float) f, (float) a);
+    break;
+  }
 }
-/** Joue un enregistrement de son choix
+/** Joue un enregistrement de son choix.
  * @param path Nom de l'extrait
  */
 public static void playRecord(String path) {
   proglet.record1.setRecord(path);
 }
-/** Applique un filtre avec une fréquence de coupure ajustable sur l'enregistrement de son choix
+/** Applique un filtre avec une fréquence de coupure ajustable sur l'enregistrement de son choix.
  * @param path Nom de l'extrait
  * @param f fréquence de coupure du filtre (entre 100 et 10000, sinon rien)
  */

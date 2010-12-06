@@ -11,7 +11,9 @@
       en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin. 
       Si la premi&egrave;re partie de ce tutoriel visait uniquement &agrave; introduire la notion de graphe avec un cas concret de parcours d'une
       voiture,
-      on s'int&eacute;resse ici aux notions cl&eacute;s et outils n&eacute;cessaires pour la construction de l'algorithme du plus court chemin.
+      on manipulera ici les notions cl&eacute;s et on &eacute;laborera les outils n&eacute;cessaires pour la construction de l'algorithme du plus court
+      chemin 
+      avec cette fois le cas du graphe appliqu&eacute; &agrave; un r&eacute;seau d'amis qui entre eux poss&egrave;dent ou non des liens de familiarit&eacute;.
       Il faut d&eacute;ja savoir <a href="../../ingredients/doc-files/sujet-hello-world.htm">utiliser l'interface</a>,
           se servir de <a href="../../ingredients/doc-files/sujet-about-variables.htm">variables</a> 
           et avoir d&eacute;couvert l'<a href="../../ingredients/doc-files/sujet-about-if.htm">instruction conditionnelle</a> et 
@@ -51,7 +53,9 @@
                <h3>Avant de commencer.</h3>
                	La premi&egrave;re partie de ce tutoriel [METTRE UN LIEN (interface EnVoiture)] a &eacute;t&eacute; introductive &agrave; la notion de graphe, 
                	partant d'un cas concret avec le parcours d'une voiture, de telle sorte &agrave; visiter des villes tout en limitant le chemin parcouru.
-               	Dans cette partie, on propose de programmer les concepts cl&eacute;s des graphes. 
+               	Dans cette partie, on propose de programmer les concepts cl&eacute;s des graphes autour d'un r&eacute;seau d'amis symbolis&eacute;s par des noeuds
+               pour les
+               	personnes et des liens entre les noeuds pour les liens de familiarit&eacute;. 
                    
             </div>
          </li>
@@ -105,7 +109,6 @@
          <li>
             <div>
                <h3>R&eacute;cup&eacute;rer des informations du r&eacute;seau.</h3>
-                     [AHHH IL FAUT LA LISTE DES NOAUDS AUSSI !!!]
                      Utiliser les <a href="about-proglet.htm">fonctions</a> propos&eacute;es 
                      pour calculer le nombre de sommets et de liens, ainsi que la somme des poids des chemins.
                    
@@ -115,22 +118,22 @@
             <div>
                <h3>Pr&eacute;misse &agrave; un algorithme de plus court chemin.</h3>
                      
-               <div>Soit un graphe &agrave; 4 noeuds, avec une ville de d&eacute;part et une ville d'arriv&eacute;e (que vous aurez programm&eacute; &agrave; votre convenance).</div>
+               <div>Soit un graphe &agrave; 4 noeuds, avec un noeud de d&eacute;part et un noeud d'arriv&eacute;e (que vous aurez programm&eacute; &agrave; votre convenance).</div>
                      
-               <div>Depuis la ville d&eacute;part, si elle est en lien avec la ville d'arriv&eacute;e, c'est fini; 
-                        sinon choisir la ville dont le lien a le poids le plus faible.
-                        Si la boucle n'est pas fini, repartir de la ville pr&eacute;c&eacute;dente, et refaire le raisonnement.
-                        Continuer jusqu'&agrave; aboutir &agrave; la ville d'arriv&eacute;e.
+               <div>Depuis le noeud de d&eacute;part, si le noeud est en lien avec le noeud d'arriv&eacute;e, c'est fini; 
+                        sinon choisir le noeud dont le lien a le poids le plus faible.
+                        Si la boucle n'est pas fini, repartir du noeud pr&eacute;c&eacute;dent, et refaire le raisonnement.
+                        Continuer jusqu'&agrave; aboutir au noeud d'arriv&eacute;e.
                </div>
                      
                <ul class="ul">
                           
                   <li>Programmer cet algorithme et regarder son ex&eacute;cution</li>
                           
-                  <li>Prendre conscience que l'algorithme ainsi construit fait le travail, mais est non-optimis&eacute;.
+                  <li>Prendre conscience que l'algorithme ainsi construit aboutit &agrave; la solution, mais est non-optimis&eacute;.
                      <ul class="ul">
                                   
-                        <li>On imprimera le nom des villes parcourues et on se rendra compte de la redondance des chemins.</li>
+                        <li>On imprimera le nom des noeuds parcourus, ici des personnes, et on se rendra compte de la redondance des chemins.</li>
                                   
                         <li>De plus, en ajoutant un noeud au graphe, on prendra conscience du temps de calcul exponentiel.</li>
                               
@@ -144,7 +147,7 @@
             <div>
                <h3>S'attaquer &agrave; un probl&egrave;me peut-&ecirc;tre plus facile . . .</h3>
                      
-               <div>On propose d'utiliser le graphe pour calculer le chemin entre deux villes avec un <i>nombre minimum de villes interm&eacute;diaires</i>.
+               <div>On propose d'utiliser le graphe pour calculer le chemin entre deux personnes avec un <i>nombre minimum de personnes interm&eacute;diaires</i>.
                </div>
                      
                <div>Ecrire au crayon l'&eacute;bauche de l'algorithme . . l'exploration des cas possibles est-elle plus simple dans ce cas ?</div>

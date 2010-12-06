@@ -7,15 +7,20 @@ class Trip {
 
   /** Ajoute ou modifie un spot au graphe (modifie dans le cas ou meme nom employé et différentes coordonnées).
    * @param n Nom du spot.
+   * @param col Couleur du spot.
+   * @param f forme du spot: 'B' = Box, 'P' = Pentagone, 'O' = Octogone, 'C' = Cylindre.
    * @param x Abcisse du spot.
    * @param y Ordonnée du spot.
+   * @param d1 dimension1 à la base du spot.
+   * @param d2 dimension2 à la base du spot.
+   * @param h hauteur du spot.
    */
-  void addSpot(String n, int col, char f, int x, int y, float d1_, float d2_, float h_) {
+  void addSpot(String n, int col, char f, int x, int y, float d1, float d2, float h) {
     if(spots.containsKey(n)) {
       Spot S_ = (Spot) spots.get(n);
-      S_.moveTo(x, y, d1_, d2_, h_);
+      S_.moveTo(x, y, d1, d2, h);
     } else
-      spots.put(n, new Spot(n, col, f, x, y, d1_, d2_, h_));
+      spots.put(n, new Spot(n, col, f, x, y, d1, d2, h));
   }
   /** Renvoie l'objet Spot à partir de son nom.
    * @param n Nom du spot.
@@ -27,8 +32,8 @@ class Trip {
     return S_;
   }
   /** Cherche spot plus proche d'une position.
-   * @param x Abcisse position souris.
-   * @param y Ordonnée position souris.
+   * @param x Abcisse position.
+   * @param y Ordonnée position.
    * @return Nom du spot.
    */
   String getClosestSpot(float x, float y) {
@@ -65,9 +70,8 @@ class Trip {
   /** Ajoute ou modifie un lien entre deux spots
    * @param nA Premier spot du lien.
    * @param nB Deuxième spot du lien.
-   * @param p Poids du lien. // no?? poids=distance??
+   * ici poids du lien = distance euclidienne entre les deux spots.
    */
-  // void addLink(String nA, String nB, double p) {
   void addLink(String nA, String nB) {
     Spot SA_ = (Spot) spots.get(nA);
     Spot SB_ = (Spot) spots.get(nB);
@@ -134,7 +138,7 @@ class Trip {
    * @param nTarget Spot cible.
    * @return Spot intermédiaire.
    */
-  String exploreSpot(String sO, String sInit, String sTarget, ArrayList Visited) {
+  /*String exploreSpot(String sO, String sInit, String sTarget, ArrayList Visited) {
     if(sInit == sTarget)
       return sTarget;
     String next = sInit; // initialization
@@ -167,12 +171,12 @@ class Trip {
     path.add(sInit);
     // println(next);
     return next;
-  }
+  }*/
   /**   Construit le trajet avec tous les spots - appel à exploreSpot
    * @param sStart Spot départ.
    * @param sEnd Spot final.
    */
-  String findPath(String sStart, String sEnd, ArrayList VisitedSpots) {
+  /*String findPath(String sStart, String sEnd, ArrayList VisitedSpots) {
     path.clear();
     restricted.clear();
     println(" " + sStart + " à " + sEnd);
@@ -200,7 +204,7 @@ class Trip {
     }
     println("interm: " + interm);
     return interm;
-  }
+  }*/
   /**   Algorithme de Dijkstra
    * @param sStart Spot départ.
    * @param sEnd Spot final.
@@ -280,5 +284,6 @@ class Trip {
 }
 
 // Taille pour l'insertion dans JavaScool
-public static final int WIDTH = 1024, HEIGHT = 700;
+public static final int WIDTH = 900, HEIGHT = 500;
+
 
