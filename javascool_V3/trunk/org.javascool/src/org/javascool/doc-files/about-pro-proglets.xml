@@ -2,42 +2,42 @@
   <p> <p></p>    <p></p>    <p></p>    <p></p> <p>Auteurs</p> <p></p> </p>
   <p>
     <p>«Exploration sonore»</p>
-    <p><l link="../../../sketchbook/ExplorationSonore/about-proglet.htm" text="Description"/></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/ExplorationSonore/about-proglet.htm" text="Description"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/sketchbook/ExplorationSonore/index.html" text="Proglet"/></p>
-    <p><l link="../../../sketchbook/ExplorationSonore/sujet-creation-de-sons.htm" text="Activité"/></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/ExplorationSonore/sujet-creation-de-sons.htm" text="Activité"/></p>
     <p>CP<l class="note" link="4"/> </p>
     <p>permet de visualiser l'évolution temporelle et le contenu fréquentiel (le spectre) d'un son.</p>
   </p>
   <p>
     <p>«Cryptage RSA»</p>
-    <p><l link="../../../sketchbook/CryptageRSA/about-proglet.htm" text="Description"/></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/CryptageRSA/about-proglet.htm" text="Description"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/sketchbook/CryptageRSA/index.html" text="Proglet"/></p>
-    <p><l link="../../../sketchbook/CryptageRSA/sujet-about-cryptageRSA.htm" text="Activité"/></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/CryptageRSA/sujet-about-cryptageRSA.htm" text="Activité"/></p>
     <p>CP<l class="note" link="4"/> </p>
     <p>permet de manipuler les concepts liés à l'encryptage/décryptage par clés publique et privée.</p>
   </p>
   <p>
     <p>«En Voiture»</p>
-    <p><l link="../../../sketchbook/EnVoiture/about-proglet.htm" text="Description"/></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/EnVoiture/about-proglet.htm" text="Description"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/sketchbook/EnVoiture/index.html" text="Proglet"/></p>
-    <p><l link="../../../sketchbook/EnVoiture/sujet-about-voiture.htm" text="Activité"/></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/EnVoiture/sujet-about-voiture.htm" text="Activité"/></p>
     <p>CP<l class="note" link="4"/> </p>
     <p>vise à s’approprier les différents éléments caractéristiques d’un graphe, en vue de saisir les algorithmes qui en font usage 1/2.</p>
   </p>
   <p>
     <p>«Un graphe des chemins»</p>
-    <p><l link="../../../sketchbook/UnGrapheDesChemins/about-proglet.htm" text="Description"/></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/UnGrapheDesChemins/about-proglet.htm" text="Description"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/sketchbook/UnGrapheDesChemins/index.html" text="Proglet"/></p>
-    <p><l link="../../../sketchbook/UnGrapheDesChemins/sujet-about-chemins.htm" text="Activité"/></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/UnGrapheDesChemins/sujet-about-chemins.htm" text="Activité"/></p>
     <p>CP<l class="note" link="4"/> </p>
     <p>vise à s’approprier les différents éléments caractéristiques d’un graphe, en vue de saisir les algorithmes qui en font usage 2/2.</p>
   </p>
-  <p>
+  <!--p>
     <p>«Boite à Musique»</p>
-    <p><l link="../../../sketchbook/BoiteAMusique/about-proglet.htm" text="Description"/></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/BoiteAMusique/about-proglet.htm" text="Description"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/sketchbook/BoiteAMusique/index.html" text="Proglet"/></p>
-    <p><l link="../../../sketchbook/BoiteAMusique/sujet-about-chemins.htm" text="Activité"/></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/BoiteAMusique/sujet-about-chemins.htm" text="Activité"/></p>
     <p>CP<l class="note" link="4"/> </p>
     <p>vise à entrevoir quelques éléments de la programmation temps-réel à travers un séquenceur de sons.</p>
-  </p>
+  </p-->
 </p>

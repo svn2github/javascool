@@ -27,19 +27,24 @@ function get_page_contents($name) {
   if (file_exists($cache.'/'.$cname)) return file_get_contents($cache.'/'.$cname);
   {
     $notfound = "<h1>Désolé ! Cette page est en construction ou inacessible ..</h1><a href=\"javascript:history.back()\">Revenir en arri&egrave;re</a>"; 
-    if(ereg('^api:.*', $name)) {
-      // Traitement d'une demande de page de doc java
-      $name = ereg_replace('^api:', '', $name);
-      // Recuperation de la page javadoc
-      $pwd = getcwd(); $file = $pwd.'/api/'.$name; 
-      if (!file_exists($file)) return $notfound;
+    if(ereg('^(api|doc):.*', $name)) {
+      // Traitement d'une demande de page de doc java ou de doc du site
+      $pwd = getcwd(); 
+      $ext = ereg_replace('^(api|doc):.*', '\\1', $name); 
+      $pfx = ereg('^api:.*', $name) ? '/api' : ''; 
+      $name = ereg_replace('^(api|doc):', '', $name);
+      $file = $pwd.''.$pfx.'/'.$name;
+      $banner = "<pre>{pwd = '$pwd', ext = '$ext', pfx = '$pfx', name ='$name', file ='$file'}</pre>";
+      if (!file_exists($file)) return $notfound.''.$banner;
       $page = file_get_contents($file);
       // Remplace tous les liens entre pages par des pages vues du site
-      $base = ereg_replace("api/", "", substr(realpath(dirname($file)), strlen($pwd)+4));
-      $page = ereg_replace('(href|HREF)="([^/#][^:"]*)"', '\\1="?page=api:'.$base.'/\\2"', $page);
-      $page = ereg_replace('(src|SRC)="([^/#][^:"]*)"', '\\1="api/'.$base.'/\\2"', $page);
+      if ($ext == 'api')
+	$base = ereg_replace("api/", "", substr(realpath(dirname($file)), strlen($pwd)+4));
+      $page = ereg_replace('(href=|HREF=|location.replace[(])"([^/#][^:"]*)"', '\\1"?page='.$ext.':'.$base.'/\\2"', $page);
+      $page = ereg_replace('(src|SRC)="([^/#][^:"]*)"', '\\1="$pfx/'.$base.'/\\2"', $page);
       // Passe en <pre></pre> les pages de source
       if (ereg("\.java$", $name)) $page = "<pre>".$page."</pre>";
+      $page = $banner.''.$page;
     } else {
       // Recuperation de la page sur le wiki
       $page = file_get_contents('http://wiki.inria.fr/sciencinfolycee/JavaScool:'.$name.'?printable=yes&action=render');
