@@ -1,5 +1,5 @@
 <div title="La «proglet» CryptageRSA">
-  <p class="margin">Autres <l link="../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+  <p class="margin">Autres <l link="../../api/org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>Cette proglet<l class="note" link="1"/> permet de manipuler les concepts liés à l'encryptage/décryptage par clés publique et privée, RSA. </p>
         <p>La cryptologie, science du secret, englobe la cryptographie — le codage secret d'un message — et la cryptanalyse — le décodage d'un message codé. 
 	<p>Le principe de la cryptographie consiste à définir une transformation des symboles d'un langage (les lettres ou les mots par exemple) 

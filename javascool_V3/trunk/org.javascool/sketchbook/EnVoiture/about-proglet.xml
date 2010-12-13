@@ -1,5 +1,10 @@
 <div title="La «proglet» EnVoiture">
-  <p class="margin">Autres <l link="../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+  <p class="margin">Autres <l link="../../api/org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+
+  <div class="center" title="Utilisation du 3D">Attention, sous <i>windows</i>, pour utiliser cette proglet (qui utilise OpenGL)
+  il faut copier les librairies dynamiques <l link="http://javascool.gforge.inria.fr/v3/sketchbook/EnVoiture/opengl-windows.zip" text="disponibles ici"/>
+  dans le répertoire <i>Java</i> de la machine, c'est à dire, normallement <c>Program Files/java/jre6/bin</c>. Se faire aider du responsable informatique si besoin.</div>
+
   <p>Cette proglet<l class="note" link="1"/> vise à s’approprier les différents éléments caractéristiques d’un graphe, 
   en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin.</p>
   <p>Il s'agit de la première partie du tutoriel sur les graphes. De nature introductive, 
