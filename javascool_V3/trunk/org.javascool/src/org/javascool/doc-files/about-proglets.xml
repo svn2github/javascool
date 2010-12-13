@@ -81,7 +81,7 @@
     puisque les petits programmes créés animent un élément visuel ou sonore, à la fois pour mieux comprendre ces objets numériques et pour offrir une démarche
     expérimentale concrète, vers la compréhension des notions abstraites qui forment le fondement des sciences de l'information. 
     <p>Ces <c>proglets</c> sont des exemples de «<c>gamelet</c>» (c'est à dire de grains pédagogiques interactifs pour un apprentissage ludique d'une notion), 
-    telle que définie par <l link="http://fuscia.info" text="fuscia"/>.</p>
+    telle que définie par <l link="http://fuscia.info" text="fuscia"/>. On parle d' «<c>educlet</c>».</p>
   </p>
   <p title="Faire de nouvelles «proglets»" id ="2">
     Un enseignant qui connait un peu de programmation peut facilement développer ces <l link="../Proglet.html" text="propres proglet's"/>.
@@ -97,7 +97,7 @@
     AA: Aurélien Astoux; HbA: Hamdi ben Abdallah; GD et al.: collectif d'auteurs
     des <l link="http://interstices.info/ingredients-algorithmes" text="«ingrédients des algorithmes»"/> et 
     du <l link="http://interstices.info/reflet-numerique" text="«reflet numérique des objets»"/>;
-    CP : Cécile Picard-Limpens;
+    CP : <l link="http://www-sop.inria.fr/members/Cecile.Picard" text="Cécile Picard-Limpens"/>;
     JPA et al. :  collectif d'auteurs des activités de
     <l link="http://tdc.cndp.fr/archives-des-numeros/linformatique.html" text="Textes et documents pour la classe l'«informatique»"/>;
     Jw1 et Jv3 : développeur de <l class="javascool"/> web_v1 et v3.
