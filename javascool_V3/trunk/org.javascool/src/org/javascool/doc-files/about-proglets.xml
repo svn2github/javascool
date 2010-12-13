@@ -77,9 +77,10 @@
 
   <div class="notes">
     <p title="Définition d'une «proglet»" id="1">
-      Une <c>proglet</c> est une petite <l link="http://fr.wikipedia.org/wiki/Applet" text="applette"/> qui permet de s'initier à la programmation de manière ludique,
-    puisque les petits programmes créés animent un élément visuel ou sonore, à la fois pour mieux comprendre ces objets numériques et pour offrir une démarche
-    expérimentale concrète, vers la compréhension des notions abstraites qui forment le fondement des sciences de l'information. 
+      Une <c>proglet</c> est une petite <l link="http://fr.wikipedia.org/wiki/Applet" text="applette"/> qui permet de s'initier à la programmation de manière ludique.
+    Elle se présente sous forme d'une interface mettant en scènele/les concept(s) clé(s) à manipuler, sous forme visuel et/ou sonore, 
+    à la fois pour mieux comprendre l'objet numérique et pour offrir une démarche expérimentale concrète. 
+    Il s'agit ici de concourir à la compréhension des notions abstraites qui forment le fondement des sciences de l'information. 
     <p>Ces <c>proglets</c> sont des exemples de «<c>gamelet</c>» (c'est à dire de grains pédagogiques interactifs pour un apprentissage ludique d'une notion), 
     telle que définie par <l link="http://fuscia.info" text="fuscia"/>. On parle d' «<c>educlet</c>».</p>
   </p>
