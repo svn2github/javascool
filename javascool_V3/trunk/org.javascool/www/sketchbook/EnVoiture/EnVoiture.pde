@@ -161,9 +161,9 @@ void draw() {
     text(" - I  N  S  T  R  U  C  T  I  O  N  S - \n " +
          "> Navigation: \n" + "    . voiture = les 4 fleches \n" + "    . camera: '+/-' pour zoom/dézoom \n" +
          "> Noeud: \n" + "    . ajout = clic droit \n" +
-         "> Lien: \n" + "    . ajout/suppression: clic centre + glisse \n " +
+         "> Lien: \n" + "    . ajout/suppression: clic centre maintenu entre deux spots \n " +
          "> Générer tous les noeuds = 'a' \n" +
-         "> Jouer à trouver le plus court chemin entre 2 villes tirées au hasard: \n" + "    . 'p' pour une seul escale \n" + "    . 'q' pour deux escales\n " +
+         "> Jouer à trouver le plus court chemin entre 2 stations tirées au hasard: \n" + "    . 'p' pour une seul escale \n" + "    . 'q' pour deux escales\n " +
          "> Afficher/cacher les instructions: 'i' \n " +
          "> Fermer l'application: ESC ", -100, 0);
   }
