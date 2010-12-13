@@ -43,7 +43,7 @@ public class JsProcessingActivities {
                      );
     main.addActivity(new ProcessingActivity("UnGrapheDesChemins", "Objet numérique: les graphes", "Explorer les graphes et les chemins", 1024, 700) {
                        public void init2(JsFrame frame) {
-                         frame.addTab("Un tutoriel sur les graphes (2ème partie)", "sketchbook/UnGrapheDesChemins/sujet-about-chemins.htmd",
+                         frame.addTab("Un tutoriel sur les graphes (2ème partie)", "sketchbook/UnGrapheDesChemins/sujet-about-chemins.htm",
                                       "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
