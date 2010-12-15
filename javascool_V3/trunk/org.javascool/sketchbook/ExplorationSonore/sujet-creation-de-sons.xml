@@ -1,4 +1,5 @@
 <div class="sujet" title="Un tutoriel sur les signaux sonores"> 
+  <div class="margin">Voir aussi l'<l link="activite-unplug.htm" text="activité «unplug»"/> (sans programmation)</div>
   <div class="objectif">
     Le but de ce tutoriel est <div class="ul">
       <p>d'apprendre à programmer des sons, c'est à dire une séquence de signaux sonores périodiques, </p>
@@ -11,15 +12,53 @@
     ansi que les <l link="../../ingredients/doc-files/sujet-about-functions.htm" text="fonctions"/>..
   </div>
   <div class="intros">
-    <div title="La notion de signal périodique"> Une note est une vibration . . [résumer le tete de Cécile] 
-    comme <l link="http://javascool.gforge.inria.fr/v3/sketchbook/ExplorationSonore/OndeSonore.pdf" text="détaillé ici"/> (bien lire le document avant de commencer).</div>
-   </div>
-
+    <div title="La notion de signal périodique"> Une note est une vibration de l'air 
+    comme <l link="http://javascool.gforge.inria.fr/v3/sketchbook/ExplorationSonore/OndeSonore.pdf" text="détaillé ici"/> (bien lire le document avant de commencer).
+    Les sons les plus graves correspondent à une vibration de 20Hz (20 fois par seconde), les plus aigus de 20000Hz, notre voix humaine vibre principalement entre 100 et 3000Hz.
+    </div>
+  </div>
   <div class="works">
     <div title="Construire un signal périodique de forme donnée">
-      sinus(t) + sinus(3 * t) / 3 + sinus(5 * t) / 5.
-
-      La figure ci-contre, la courbe (a) montre un signal f de fréquence fondamentale et d'amplitude 1 et un signal H3 de fréquence 3 fois plus élevé que la fréquence de f et d'amplitude 0,1.
+      <p>Tous les signaux périodiques peuvent se construire comme une somme de sinusoïdes. Par exemple, comme on peut l'observer sur la figure suivante:
+        <div class="center"><div class="table"><p><p><l class="icon" icon="sin2square1.png"/></p><p><l class="icon" icon="sin2square2.png"/></p></p></div></div>
+      où l'on voit, à gauche, la sinusoïde <c>sinus(t)</c> en marron, puis la sinusoïde "scpultée" en vert où en ajoutant <c>sinus(t) + sinus(3 t) / 3</c> on rabote un peu le 
+      haut de la sinusoïde, puis en rouge <c>sinus(t) + sinus(3 t) / 3 + sinus(5 t) / 5</c> et, à droite, on continue d'ajouter les sinusoïdes jusqu'à approcher un signal carré.
+      <!-- commande maple pour sin2square1: plot([sin(t) + sin(3 * t) / 3 + sin(5 * t) / 5, sin(t)  + sin(3 * t) / 3,  sin(t)], t = 0..4*Pi); -->
+      <!-- commande maple pour sin2square2: plot([Sum(sin((2*k+1) * t) / (2*k+1), k= 0..n)$n=1..20], t = 0..4*Pi); -->
+      </p>
+      <div class="ul">
+        <p>En utilisant la fonction <r>playSignal</r> décrite <l link="about-proglet.htm" text="ici"/> faire un petit programme qui va déclencher sur les
+        canaux 1, 2 et 3, des sinusoïdes de fréquence 100Hz puis 300Hz etc.. avec les bonnes amplitudes. Ecrire ce programme en mettant une instruction  <r>playSignal</r>
+        sur chaque ligne.</p>
+        <p>Observer le son (sa forme sur l'affichage de la proglet et écouter sa forme). 
+        Comparer avec un signal carré et sinusoïdal: le son ressemble t'il plus à un signal carré ?</p>
+        <p>Reprendre le programme en faisant une petite boucle <c><r>for</r>(<r>int</r>c = 0; c &lt; 3; c++) {</c> pour vous entraîner à utiliser des boucles.</p>
+        <p>Pour mieux observer ces différents signaux sonnores, utiliser la fonction <r>playStop</r> et la fonction:
+          <div class="center"><b><r>void</r> <c>sleep</c>(<r>int</r> duree)</b> Arrête l'exécution du programme pendant une durée fixée donnée en milli-secondes.</div>
+          pour faire produire, trois signaux de même fréquence: <div class="ol">
+          <p>Une sinusoïde pendant 4 secondes</p>
+          <p>La sommes des trois sinusoïdes pendant 4 secondes</p>
+          <p>Un signal carré pendant 4 secondes</p>
+        </div>ceci une vingtaine de fois. Entrainez vous à deviner lequel des trois signaux est produit.</p>
+      </div>
+    </div>
+    <div title="Créer un effet de porte fermée/porte ouveerte">
+      <p>Lorsque l'on ferme une porte les sons de la pièce attenante nous paraissent plus étouffés, 
+      en fait celà correspond au fait que les hautes fréquences sont atténuées tandis que les basses fréquences, traversent mieux la paroi de la porte. 
+      Nous allons recréer cet effet en programmant cette proglet.</p>
+      <div class="ul">
+        <p>Choisir une musique ou un son de votre choix (quelques secondes) et créer un programme d'une ligne avec l'instruction <r>playRecord</r> 
+        décrite <l link="about-proglet.htm" text="ici"/> pour le lancer.</p>
+        <p>Utiliser manuellement l'interface pour ajuster la fréquence de coupure des sons aigus et l'amplitude du signal afin de voir comment créer l'effet sonore 
+        de son complet ou assourdi.</p>
+        <p>Utiliser ensuite la fonction <r>playStop</r> et la fonction:
+          <div class="center"><b><r>void</r> <c>sleep</c>(<r>int</r> duree)</b> Arrête l'exécution du programme pendant une durée fixée donnée en milli-secondes.</div>
+          pour faire créer un petit programme qui va émettre votre son "porte ouverte" (sans fréquence de coupure ni atténuation) pendant 3-4 secondes puis 
+          comme si une porte était fermée entre le son et l'auditeur.</p>
+        <p>Faire un programme plus sophitiqué qui va progressivement (en 10 secondes, par exemple, par pas de 1 secondes) "ouvrir et fermer" la porte. 
+        Commentez dans le programme le résultat obtenu.</p>
+        <p>Ecoutez le <l link="http://QUELQUEPARTSURYOUTUBE" text="clip de Bjorg"/> et notez à quel endroit (quelle minute/seconde du clip) cet effet est utilisé.</p>
+      </div>      
     </div>
   </div>
 </div>

@@ -1,0 +1,18 @@
+<div class="sujet" title="Un tutoriel sur les signaux sonores (unplug)"> 
+  <div class="margin">Voir aussi l'<l link="sujet-creation-de-sons.htm" text="activité «proglet»"/> (découverte à travers la programmation)</div>
+  <div class="objectif">
+    Le but de ce tutoriel est d'expérimenter avec des sons, c'est à dire une séquence de signaux sonores périodiques.
+    Il suffit d'utiliser l'interface à partir des boutons.
+   </div>
+  <div class="intros">
+    <div title="La notion de signal périodique"> Une note est une vibration de l'air 
+    comme <l link="http://javascool.gforge.inria.fr/v3/sketchbook/ExplorationSonore/OndeSonore.pdf" text="détaillé ici"/> (bien lire le document avant de commencer).
+    Les sons les plus graves correspondent à une vibration de 20Hz (20 fois par seconde), les plus aigus de 20000Hz, notre voix humaine vibre principalement entre 100 et 3000Hz.
+    </div>
+  </div>
+  <div class="works">
+    <div title="Etudier la forme des sons">
+    </div>
+  </div>
+</div>
+

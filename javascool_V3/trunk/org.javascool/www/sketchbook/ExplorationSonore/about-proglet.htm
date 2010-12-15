@@ -29,7 +29,7 @@
                          
                      <p><tt><font color="#202080"><big>//</big>&nbsp;Lancer un signal pr&eacute;d&eacute;fini:</font></tt></p>
                          
-                     <div><font color="#990000"><b>ExplorationSonore.playSignal</b></font>(<font color="#990000"><b>String</b></font> type, <font color="#990000"><b>double</b></font> frequence, <font color="#990000"><b>double</b></font> amplitude)
+                     <div><font color="#990000"><b>ExplorationSonore.playSignal</b></font>(<font color="#990000"><b>int</b></font> canal, <font color="#990000"><b>String</b></font> type, <font color="#990000"><b>double</b></font> frequence, <font color="#990000"><b>double</b></font> amplitude)
                      </div>
                          
                   </div>
@@ -38,6 +38,9 @@
          </table>
       </p>o&ugrave;: 
       <ul class="ul">
+               
+         <li><tt>canal</tt> est le num&eacute;ro du canal &agrave; choisir parmi: 1, 2 ou 3.
+         </li>
                
          <li><tt>type</tt> est le type de signal &agrave; choisir parmi: "sine" (sinuso&iuml;de), "square" (signal carr&eacute;), "saw" (signal en dent de scie scie),
             "noise" (bruit, ici bruit blanc);

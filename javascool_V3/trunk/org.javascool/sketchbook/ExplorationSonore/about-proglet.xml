@@ -8,8 +8,9 @@
   Finalement on peut lancer des enregistrements (musicaux ou autres), et en visualiser les représentations temporelles et fréquentielles.</p>
   <p>Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: <div class="code">
     <m>Lancer un signal prédéfini:</m>
-    <p><r>ExplorationSonore.playSignal</r>(<r>String</r> type, <r>double</r> frequence, <r>double</r> amplitude)</p>
+    <p><r>ExplorationSonore.playSignal</r>(<r>int</r> canal, <r>String</r> type, <r>double</r> frequence, <r>double</r> amplitude)</p>
     </div>où: <div class="ul">
+      <p><c>canal</c> est le numéro du canal à choisir parmi: 1, 2 ou 3.</p>
       <p><c>type</c> est le type de signal à choisir parmi: "sine" (sinusoïde), "square" (signal carré), "saw" (signal en dent de scie scie), "noise" (bruit, ici bruit blanc);</p>
       <p><c>frequence</c> est la fréquence en Hz, à choisir entre 100 et 8000.</p>
       <p><c>amplitude</c> est l'amplitude, à choisir entre 0 (silence) et 1 (100% du volume sonore).</p>

@@ -1,0 +1,44 @@
+<div class="sujet" title="Un tutoriel sur les signaux sonores (unplug)"> 
+  <div class="margin">Voir aussi l'<l link="sujet-creation-de-sons.htm" text="activité «proglet»"/> (découverte à travers la programmation)</div>
+ <div title="Description de l'applete">
+    <l link="http://www.openprocessing.org/visuals/?visualID=16032" text="applete"/>
+    blabla
+  </div>
+  <div title="Utilisation comme outil">
+  </div>
+  <div class="objectif">
+    Le but de ce tutoriel est d'expérimenter avec des sons, c'est à dire une séquence de signaux sonores périodiques.
+    Il suffit d'utiliser l'interface à partir des boutons.
+   </div>
+  <div class="intros">
+    <div title="La notion de signal périodique"> Une note est une vibration de l'air 
+    comme <l link="http://javascool.gforge.inria.fr/v3/sketchbook/ExplorationSonore/OndeSonore.pdf" text="détaillé ici"/> (bien lire le document avant de commencer).
+    Les sons les plus graves correspondent à une vibration de 20Hz (20 fois par seconde), les plus aigus de 20000Hz, notre voix humaine vibre principalement entre 100 et 3000Hz.
+    </div>
+  </div>
+  <div class="works">
+    <div title="Etudier la forme des sons">
+      ???
+    </div>
+    <div title="Faire un audiogramme">
+      <p>Nous allons évaluer l'<l link="http://fr.wikipedia.org/wiki/Audiogramme" text="audiogramme"/> humain c'est à dire notre seuil de détection d'un son selon sa fréquence.</p>
+      <p>Se mettre à deux: le <i>sujet</i> dont on va mesurer l'audiogramme et l'<i>expérimentateur</i> qui va faire les mesures.</p>
+      <p>Se mettre dans un coin calme (le groupe devra faire silence le temps des mesures) et utiliser un casque audio.</p>
+      <p>Le sujet écoute les sons et lève la main quand il détecte un son audible, baisse la main quand il n'entend plus rien.</p>
+      <p>L'expérimentateur va utiliser l'interface pour proposé plusieurs sons</p>
+      <p>Pour les fréquences d'environ 100Hz, 250Hz, 500Hz, 1000Hz, 2000Hz, 4000Hz, 8000Hz, avec un sinusoïde, partir de l'amplitude la plus basse et monter doucement jusqu'à ce que le sujet lève la main, noter le niveau; refaire le test 4-5 fois pour chaque fréquence.</p>
+      <p>Porter les résultats sur une courbe. Comparer à des exemples d'audiogramme de personnes jeunes ou agées à trouver en 
+      utilisant <l link="http://google.fr" text="google"/> <!-- OU EN METTANT ICI DEUX FIGURES EXEMPLES -->. Quelles sont les fréquences que l'on entend mal en vieillissant ?</p>
+      <p>Il faut savoir que si on est exposé à des sons trop intenses . . on dégrade <i>définitivement</i> son système auditif !!! 
+      Les musiciens des groupes de Rock, par exemple, utilisent des "boules quiez" pour atténuer les sons quand ils répètent. 
+      De même, les jeunes des pays scandinaves glissent des atténuateurs sonores dans leurs oreilles lorsqu'ils assistent à des concerts.</p>
+    </div>
+    <div title="Tester les réverbérations des sons">
+      <p>Nous allons évaluer comment se réverbère le son selon l'environnement.</p>
+      <p>Avant l'activité, trouver une boite en carton, des cartons à oeufs ou quelque chose qui ressemble à du coton, une plaque métallique ou de plexiglas, etc.. 
+      bref des matériaux qui réverbèrent le son différemment.</p>
+      <p>En insérant le haut parleur de l'ordinateur dans ces differents volumes (boite en carton avec coton, salle d'eau avec carrelage, etc..) jouer des sons/musiques et 
+      écouter les différents rendus. Utiliser ensuite l'interface pour observer les différentes fréquences du son selon le milieu où il se propage.</p>
+    </div>
+  </div>
+</div>

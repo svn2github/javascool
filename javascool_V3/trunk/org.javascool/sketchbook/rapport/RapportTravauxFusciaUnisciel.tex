@@ -1,0 +1,113 @@
+
+\documentclass[a4paper,11pt, palatino]{article}
+\usepackage[french]{babel} \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+\usepackage[pdftex,colorlinks,citecolor=red,linkcolor=red,menucolor=black,urlcolor=blue,bookmarksopen=true,pagebackref]{hyperref}
+
+\usepackage{color}
+
+\usepackage[toc,page]{appendix} 
+
+
+\newcommand{\CP}[1]{{\color[rgb]{0,.65,0}{\textbf{#1}}}}
+\begin{document}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\textsc{Rapport d'Activit\'{e}s}}
+
+\maketitle
+
+
+Ce rapport vise \`{a} pr\'{e}senter les activit\'{e}s r\'{e}alis\'{e}es dans le cadre de \textit{Fuscia}\footnote{\href{http://fuscia.info/fr/projet.php}{Fuscia: http://fuscia.info/fr/projet.php}}, financ\'{e} par \textit{UNISCIEL}\footnote{\href{http://www.unisciel.fr/}{UNISCIEL: http://www.unisciel.fr/}}, en mati\`{e}re de cr\'{e}ations de contenus p\'{e}dagogiques en math\'{e}matiques appliqu\'{e}es et informatique, mais \'{e}galement en mati\`{e}re de formation des enseignants \`{a} ces nouveaux outils. \\
+Les diff\'{e}rents acteurs sont:
+\begin{itemize}
+\item INRIA/Fuscia: C\'{e}cile Picard-Limpens  et Thierry Vieville
+\item Enseignants en lyc\'{e}e: Philippe Lucaud (Antibes), Dominique Larrieu (Valbonne), Estelle Tassy (Grasse).
+\end{itemize} 
+
+\vspace{0.35cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Contexte]{Contexte}
+\vspace{-0.20cm}\hrule
+\vspace{0.35cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Avec l'arriv\'{e}e de l'enseignement de l'informatique au lyc\'{e}e (l'enseignement de l'algorithmique et programmation en 2nde depuis 2009, les options exploratoires de m\'{e}thodes et pratiques scientifiques en 2010, et le futur enseignement optionel \textit{Informatique et sciences du num\'{e}rique} de Terminale en 2012), le besoin de formation des professeurs de lyc\'{e}e aux sciences informatiques devient critique (plus de 2500 lyc\'{e}es donc un besoin de 5000 professeurs de sp\'{e}cialit\'{e} au del\`{a} des 16000 professeurs de math\'{e}matiques de lyc\'{e}e)\footnote{\href{http://www.education.gouv.fr/pid316/reperes-et-references-statistiques.html}{http://www.education.gouv.fr/pid316/reperes-et-references-statistiques.html}}. La Direction g\'{e}n\'{e}rale de l'enseignement scolaire (DGESCO) et l'Institut National de Recherche en Informatique et en Automatique (INRIA)\footnote{\href{http://www.inria.fr/}{INRIA: http://www.inria.fr/}} avec ses partenaires se mobilisent pour mettre en place une offre de formation en r\'{e}ponse \`{a} ce besoin. Mon activit\'{e} d'enseignement s'inscrit dans ce cadre.
+    
+En terme de culture scientifique, l'INRIA offre une large palette de contenus culturels et de ressources documentaires. 
+Lanc\'{e} \`{a} l'initiative de l'institut, \textit{Interstices}\footnote{\href{http://interstices.info}{Interstices: http://interstices.info}} est un site de culture scientifique cr\'{e}\'{e} par des chercheurs. Il s'agit du premier site d'information large public enti\`{e}rement d\'{e}di\'{e} aux sciences et technologies de l'information et de la communication. D'autre part, \textit{Fuscia}\footnote{\href{http://fuscia.info/fr/projet.php}{Fuscia: http://fuscia.info/fr/projet.php}} propose un grand nombre de ressources en ligne ainsi qu'un bureau d'accueil afin de r\'{e}pondre \`{a} une demande de recherche documentaire, mais d'\'{e}ventuellement aussi mettre en contact avec des chercheurs en sciences informatiques. \textit{Fuscia} est une initiative s'appuyant sur un partenariat avec l'\textit{UNIT} (Universit\'{e} num\'{e}rique ing\'{e}nierie et technologie)\footnote{\href{http://www.unit.eu/}{UNIT: http://www.unit.eu/}} et l'\textit{UNISCIEL} (Universit\'{e} des sciences en ligne)\footnote{\href{http://www.unisciel.fr/}{UNISCIEL: http://www.unisciel.fr/}}. 
+
+Sur ces sujets, les projets \textit{Interstices} et \textit{Fuscia} se sont rassembl\'{e}s avec l'\'{e}quipe multim\'{e}dia de l'INRIA dans le but de produire des outils interactifs didactiques et ludiques destin\'{e}s \`{a} la diss\'{e}mination des savoirs en math\'{e}matiques appliqu\'{e}s et informatique. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{D\'{e}veloppement de contenus p\'{e}dagogiques}
+\vspace{-0.28cm}\hrule
+\vspace{0.35cm}
+
+Dans cette d\'{e}marche de cr\'{e}ation de contenus, nous avons con\c{c}us une s\'{e}rie \textit{de grains didactiques interactifs} visant \`{a} introduire des \'{e}l\'{e}ments de math\'{e}matiques appliqu\'{e}es (par exemple, l'analyse du signal sonore ou les calculs sur les graphes), pour ensuite conduire un utilisateur novice vers la programmation et les concepts informatiques. Ces outils, d\'{e}nomm\'{e}s \textit{proglets}, litt\'{e}ralement des applets programmables, ont pour principale caract\'{e}ristique une participation active de l'utilisateur \`{a} la manipulation de l'objet num\'{e}rique, sans \^{e}tre confin\'{e} au simple usage du \textit{clic}. L'approche p\'{e}dagogique est ici de fournir les commandes cl\'{e}s qui r\'{e}gissent l'interface manipul\'{e}e et de faire saisir la structure d'un code informatique. D'une mani\`{e}re g\'{e}n\'{e}rale, ce projet p\'{e}dagogique vise \`{a} fournir les principes de la programmation \`{a} une double fin, celle de d\'{e}finir et construire ses propres outils, mais \'{e}galement celle de saisir la complexit\'{e} th\'{e}orique en arri\`{e}re plan des technologies manipul\'{e}es. 
+
+Ce travail a \'{e}t\'{e} d\'{e}but\'{e} par une analyse de l'existant en mati\`{e}re de contenus p\'{e}dagogiques similaires, des solutions propos\'{e}es et de leurs applications potentielles. L'objectif \'{e}tait d'\'{e}valuer de mani\`{e}re pr\'{e}cise les besoins du projet dans le domaine, et de d\'{e}finir avec clart\'{e} ses caract\'{e}ristiques propres, distinctives par rapport aux d\'{e}marches p\'{e}dagogiques d\'{e}j\`{a} mis en place. 
+A partir de ces donn\'{e}es, nous nous sommes pench\'{e}s sur les ingr\'{e}dients n\'{e}cessaires pour les \textit{proglets}. Autrement dit, il s'agissait de faire l'inventaire des ressources mises \`{a} disposition tant au niveau du contenu manipul\'{e} que de sa mise en forme. Pour ce dernier aspect, nous avons choisi \textit{processing}\footnote{\href{http://www.processing.org}{Processing: http://www.processing.org}} pour sa qualit\'{e} aboutie de rendu et sa forte communaut\'{e} (wiki, forum d'entraide, plateforme de partage \textit{openprocessing}..).\\
+A l'issue de ses actions, nous nous sommes investis dans la cr\'{e}ation d'une base d'exemples, parmi plusieurs sujets valid\'{e}s au sein d'une communaut\'{e} d'enseignants de lyc\'{e}e. Les sujets trait\'{e}s sont assez divers afin de ne pas confiner les contenus \`{a} un domaine particulier. Il s'agit de la cryptographie (m\'{e}thode RSA), de la th\'{e}orie des graphes (et en particulier, le concept de plus court chemin avec l'algorithme de Djistra), du son et du traitement du signal. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction d'un nouveau mat\'{e}riel p\'{e}dagogique}
+\vspace{-0.28cm}\hrule
+\vspace{0.35cm}
+
+Les contenus ainsi cr\'{e}\'{e}s ont \'{e}t\'{e} introduits aupr\`{e}s d'enseignants mais aussi de quelques \'{e}l\`{e}ves de classe de 2nde, dans le cadre des options mises en place depuis 2010 autour du num\'{e}rique. Nous nous sommes tout d'abord focalis\'{e}s sur un contenu p\'{e}dagogique ayant pour objectif l'introduction au son, sa perception, mais \'{e}galement la th\'{e}orie de traitement du signal sous-jacente, elle est intitul\'{e}e \textit{Exploration sonore}. Outre les concepts v\'{e}hicul\'{e}s par ce contenu, l'interface est l'objet d'une initiation aux notions de programmation. 
+Il ne s'agit pas de r\'{e}v\'{e}ler le code dans son int\'{e}gralit\'{e}, sa forme premi\`{e}re, mais d'introduire les principales commandes que r\'{e}gissent les boutons. Ainsi, ce sont quelques fonctions caract\'{e}ristiques, \`{a} arguments et param\`{e}tres modulables, qui permettent d'entrevoir la d\'{e}marche de la programmation informatique. Pour manipuler les commandes cl\'{e}s, \textit{Java's Cool}\footnote{\href{http://javascool.gforge.inria.fr/}{Javascool: http://javascool.gforge.inria.fr/}} a \'{e}t\'{e} utilis\'{e}. Ce logiciel manipule un macro-langage de programmation, bas\'{e} sur le langage Java, \`{a} travers une interface simple et permet une compatibilit\'{e} avec tous les syst\`{e}mes.
+
+
+ Afin d'introduire le mieux possible ce nouveau mat\'{e}riel p\'{e}dagogique, il \'{e}tait primordial d'assurer sa ma\^{i}trise et sa capitalisation par l'enseignant. Ainsi, nous avons t\^{a}ch\'{e} d'\'{e}tablir un dialogue continu avec des enseignants de trois lyc\'{e}es autour de Sophia-Antipolis, 06 (Antibes, Grasse et Valbonne), afin de garantir un accord sur les notions manipul\'{e}es. \'{E}galement dans ce cadre, nous leur avons propos\'{e} une formation sur ces nouveaux mediums. Nous sommes enfin intervenue devant les \'{e}l\`{e}ves pour valider les s\'{e}quences d'activit\'{e}s. 
+
+ 
+Une large diffusion des contenus  est faite sur le web\footnote{\href{http://www.openprocessing.org/portal/?userID=8553}{Interfaces mises en ligne sur Openprocessing: http://www.openprocessing.org/portal/?userID=8553}}. Il est primordial d'\'{e}valuer l'int\'{e}r\^{e}t des outils introduits et leur utilit\'{e} aupr\`{e}s de la communaut\'{e}, l'objectif \`{a} terme \'{e}tant d'avancer avec une analyse des usages et des besoins pour enrichir la plateforme de cr\'{e}ation de parcours pour la fomation. Cette plateforme est en cours de mise en place, mais on peut d\`{e}s \`{a} pr\'{e}sent utiliser au niveau atomique les diff\'{e}rents contenus pour illustrer des notions cl\'{e}s de math\'{e}matiques appliqu\'{e}es et informatique. 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[M\'{e}diation scientifique]{M\'{e}diation scientifique}
+\vspace{-0.28cm}\hrule
+\vspace{0.35cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Manifestations scientifiques}
+
+%%Les sciences informatiques jouent aujourd’hui un rôle essentiel pour notre économie et notre société. Il est important de les rendre compréhensibles. L’INRIA a mis en place une offre de contenus culturels et pédagogiques à destination de tous les curieux de sciences, mais aussi des élèves et des enseignants. Son objectif ? diffuser et permettre la compréhension et l'appropriation par tous des sciences informatiques. D'où son rôle actif dans des manifestations telles que la fête de la science.
+
+%Dans son souci de permettre la compr\'{e}hension et l'appropriation par tous des sciences informatiques, l'INRIA s'investit activement dans la F\^{e}te de la science. \`{A} cette occasion, je suis intervenue \`{a} plusieurs reprises et dans diff\'{e}rents  \'{e}tablissements, à Grenoble (38) et Sophia-Antipolis (06), pour introduire le m\'{e}tier de chercheur mais \'{e}galement mon domaine, la synth\`{e}se sonore. L'objectif principal de cette manifestation est de susciter des vocations, un enjeu primordial aujourd'hui o\`{u} les fili\`{e}res scientifiques sont d\'{e}laiss\'{e}es par les \'{e}tudiants. J'ai t\^{a}ch\'{e} dans ce cadre de montrer la richesse des activit\'{e}s entreprises, la pluralit\'{e} des m\'{e}tiers existants dans le domaine, et l'int\'{e}r\^{e}t d'un tel m\'{e}tier dans la soci\'{e}t\'{e}, qui plus est dans un monde du tout technologique. 
+
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Participation \`{a} la m\'{e}diation}
+
+Faire partager la culture scientifique et transmettre l'int\'{e}r\^{e}t des sciences au plus grand nombre n\'{e}cessite de cr\'{e}er des liens avec les collectivit\'{e}s locales, les \'{e}tablissements scolaires, les associations, etc... Dans ce cadre, nous avons pris contact avec des enseignants de lyc\'{e}e pour construire avec eux une structure et une r\'{e}flexion propices \`{a} l'introduction de notions cl\'{e}s en math\'{e}matiques appliqu\'{e}es et informatique~\cite{EliGueLacLucNesPicVie10}.  
+
+Le monde associatif est riche de ressources en mati\`{e}re scientifique. D\'{e}j\`{a}, \textit{Linux Azur}\footnote{\href{http://www.linux-azur.org/}{Linux Azur: http://www.linux-azur.org/}}, association qui a pour objectif la promotion de Linux et des Logiciels Libres sur la C\^{o}te d'Azur, soutient activement des initiatives telles que \textit{Java's Cool}. Les associations de robotique sont \'{e}galement nombreuses et nous avons pris contact avec l'une d'entre elles, \textit{Pobot}\footnote{\href{http://www.pobot.org/}{Pobot: http://www.pobot.org/}}, afin de construire un projet manipulant \`{a} la fois la robotique et le traitement du signal. L'int\'{e}r\^{e}t d'une telle d\'{e}marche est la richesse apport\'{e}e par la pluralit\'{e} des collaborations, l'\'{e}change des connaissances et pratiques, mais aussi la construction d'un lien entre ce milieu associatif emergeant et la culture scientifique acad\'{e}mique. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\bibliographystyle{plain}
+\bibliography{RapportTravauxFusciaUnisciel}
+
+
+
+\end{document}
