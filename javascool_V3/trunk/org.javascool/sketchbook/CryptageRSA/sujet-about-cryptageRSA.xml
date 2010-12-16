@@ -20,7 +20,8 @@
         <p>Il faut que cette fonction soit simple à appliquer à un quelconque message, mais qu'il soit difficile de retrouver le message original 
 	à partir du message codé. La cryptographie à clé publique permet de coder un message secret et aussi d'authentifier l'émetteur d'un message,
         par le protocole symmétrique.</p>
-        [AJOUTER DES LIENS VERS )i(]
+        <p> Pour une explication plus aprofondie du procédé de cryptologie par l'algorithme RSA, se référer à l'article 
+        <l link="http://interstices.info/jcms/c_30225/nombres-premiers-et-cryptologie-lalgorithme-rsa" text="interstices"/>.</p>
    </div>
 
   <div class="works">
