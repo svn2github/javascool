@@ -15,6 +15,7 @@
     <div title="La notion de signal périodique"> Une note est une vibration de l'air 
     comme <l link="http://javascool.gforge.inria.fr/v3/sketchbook/ExplorationSonore/OndeSonore.pdf" text="détaillé ici"/> (bien lire le document avant de commencer).
     Les sons les plus graves correspondent à une vibration de 20Hz (20 fois par seconde), les plus aigus de 20000Hz, notre voix humaine vibre principalement entre 100 et 3000Hz.
+    <div class="margin">Voir aussi un document sur la <l link="http://javascool.gforge.inria.fr/v3/sketchbook/ExplorationSonore/Numeriser-un-son.pdf" text="numérisation du son"/>.</div>
     </div>
   </div>
   <div class="works">
