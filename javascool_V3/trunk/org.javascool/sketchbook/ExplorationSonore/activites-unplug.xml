@@ -31,30 +31,32 @@
       La fenêtre qui s'affiche s'anime en fonction des sons/bruits qu'elle capture grâce au microphone de l'ordinateur. 
       Les sons sont retranscrits en terme d'amplitude en fonction du temps (partie haute de l'interface) mais aussi analysés 
       en terme de contenu fréquentiel, autrement dit, le système retranscrit la richesse des sons en terme de fréquences, ici contenus entre 20 et 8000Hz. 
-      On appelle aussi le contenu fréquentiel, le spectre des fréquences. 
-      <p>-	Parler, siffler, émetter un son en fermant la bouche, et observer le contenu temporel et fréquentiel qui s'affichent. 
+      On appelle aussi le contenu fréquentiel, le spectre des fréquences. <div class="ul">
+      <p>Parler, siffler, émetter un son en fermant la bouche, et observer le contenu temporel et fréquentiel qui s'affichent. 
       Noter les différences. A quoi cela est dû à votre avis? Réfléchir sur la notion de source sonore.</p>
-      <p>- L'interface permet également de générer des signaux numériques (sinusoïde, signaux carrés et scie, bruit). Observer le signal temporel et 
+      <p>L'interface permet également de générer des signaux numériques (sinusoïde, signaux carrés et scie, bruit). Observer le signal temporel et 
       le spectre qui s'affichent. Les comparer.</p>
-  	  <p>- Enfin, l'interface permet de jouer des enregistrements (musicaux ou autres). 
+  	  <p>Enfin, l'interface permet de jouer des enregistrements (musicaux ou autres). 
   	  Comparer les représentations temporelles et fréquentielles des enregistrements entre eux, puis par rapport aux signaux numériques. 
   	  Quelles sont les différences des signaux (fréquence(s), cadence, etc..)?</p>
-    </div>
+    </div></div>
     <div title="Faire un audiogramme">
       <p>Nous allons évaluer l'<l link="http://fr.wikipedia.org/wiki/Audiogramme" text="audiogramme"/> humain c'est à dire notre seuil de détection d'un son selon sa fréquence.</p>
-      <p>- Se mettre à deux: le <i>sujet</i> dont on va mesurer l'audiogramme et l'<i>expérimentateur</i> qui va faire les mesures.</p>
-      <p>Se mettre dans un coin calme (le groupe devra faire silence le temps des mesures) et utiliser un casque audio.</p>
-      <p>Le sujet écoute les sons et lève la main quand il détecte un son audible, baisse la main quand il n'entend plus rien.</p>
-      <p>L'expérimentateur va utiliser l'interface pour proposé plusieurs sons</p>
-      <p>Pour les fréquences d'environ 100Hz, 250Hz, 500Hz, 1000Hz, 2000Hz, 4000Hz, 8000Hz, avec un sinusoïde, partir de l'amplitude la plus basse et monter doucement jusqu'à ce que le sujet lève la main, noter le niveau; refaire le test 4-5 fois pour chaque fréquence.</p>
-      <p>Porter les résultats sur une courbe. Comparer à des exemples d'audiogramme de personnes jeunes ou agées à trouver en 
-      utilisant <l link="http://google.fr" text="google"/> <!-- OU EN METTANT ICI DEUX FIGURES EXEMPLES -->. Quelles sont les fréquences que l'on entend mal en vieillissant ?</p>
-      <p>- Avez vous ressenti des sensations différentes selon les fréquences perçues? Cela est relatif à la <l link="http://fr.wikipedia.org/wiki/Psychoacoustique" text="psycho-acoustique"/>:
+      <div class="ul">
+      <p>Se mettre à deux: le <i>sujet</i> dont on va mesurer l'audiogramme et l'<i>expérimentateur</i> qui va faire les mesures.</p>
+      Se mettre dans un coin calme (le groupe devra faire silence le temps des mesures) et utiliser un casque audio.
+      Le sujet écoute les sons et lève la main quand il détecte un son audible, baisse la main quand il n'entend plus rien.
+      L'expérimentateur va utiliser l'interface pour proposé plusieurs sons. 
+      Pour les fréquences d'environ 100Hz, 250Hz, 500Hz, 1000Hz, 2000Hz, 4000Hz, 8000Hz, avec un sinusoïde, partir de l'amplitude la plus basse et monter doucement jusqu'à ce que le sujet lève la main, noter le niveau; refaire le test 4-5 fois pour chaque fréquence.
+      Porter les résultats sur une courbe. Comparer à des exemples d'audiogramme de personnes jeunes ou agées à trouver en 
+      utilisant <l link="http://google.fr" text="google"/> <!-- OU EN METTANT ICI DEUX FIGURES EXEMPLES -->. Quelles sont les fréquences que l'on entend mal en vieillissant ?
+      <p>Avez vous ressenti des sensations différentes selon les fréquences perçues? Cela est relatif à la <l link="http://fr.wikipedia.org/wiki/Psychoacoustique" text="psycho-acoustique"/>:
       certaines fréquences nous semblent plus désagréables que d'autres, en particulier les sons très aigus.</p>
-      <p>- Il faut savoir que si on est exposé à des sons trop intenses . . on dégrade <i>définitivement</i> son système auditif !!! 
+      <p>Il faut savoir que si on est exposé à des sons trop intenses . . on dégrade <i>définitivement</i> son système auditif !!! 
       Les musiciens des groupes de Rock, par exemple, utilisent des "boules quiez" pour atténuer les sons quand ils répètent. 
-      Il faut savoir que les jeunes des pays scandinaves glissent souvent des atténuateurs sonores dans leurs oreilles lorsqu'ils assistent à des concerts.</p>
-    </div>
+      Par ailleurs, les jeunes des pays scandinaves glissent souvent des atténuateurs sonores dans leurs oreilles lorsqu'ils assistent à des concerts...sans 
+      perdre pour autant le plaisir de l'événement! Et d'aileurs, une petite question: quelles sont fréquences les plus atténuées par les boules quiez..?</p>
+    </div></div>
     <div title="Tester les réverbérations des sons">
       <p>Nous allons évaluer comment se réverbère le son selon l'environnement.</p>
       <p>Avant l'activité, trouver une boite en carton, des cartons à oeufs ou quelque chose qui ressemble à du coton, une plaque métallique ou de plexiglas, etc.. 

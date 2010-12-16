@@ -16,12 +16,11 @@
          et arcs dans un graphe orient&eacute;.
       </div>
           
-      <div>Le but est de s&#8217;approprier les diff&eacute;rents &eacute;l&eacute;ments caract&eacute;ristiques d&#8217;un graphe, 
+      <div>Le but est de cette applete est de s&#8217;approprier les diff&eacute;rents &eacute;l&eacute;ments caract&eacute;ristiques d&#8217;un graphe, 
              en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin.
       </div>
-           
           
-      <div>Si la premi&egrave;re partie de ce tutoriel<a href="../EnVoiture/activites-unplug.xml">En Voiture</a> visait uniquement &agrave; introduire la notion de graphe avec un cas concret de parcours d'une voiture,
+      <div>Si la premi&egrave;re partie de ce tutoriel <a href="../EnVoiture/activites-unplug.xml">En Voiture</a> visait uniquement &agrave; introduire la notion de graphe avec un cas concret de parcours d'une voiture,
              on manipulera ici les notions cl&eacute;s et on &eacute;laborera les outils n&eacute;cessaires pour la construction de l'algorithme du plus
          court chemin.
       </div>
@@ -35,10 +34,41 @@
              Un cas concret peut &ecirc;tre un r&eacute;seau d'amis o&ugrave; chaque sommet est une personne en particulier, 
            	et un lien entre deux personnes met en &eacute;vidence leur familiarit&eacute;.
              Ainsi, on peut se poser la question comment Alice peut entrer en relation avec Bob, et qui plus est de mani&egrave;re optimum,
-                 autrement dit en limitant le nombre de personnes interm&eacute;diaires.
+             autrement dit en limitant le nombre de personnes interm&eacute;diaires.
       </div>
-              
-        
+          
+      <div>Nous allons manipuler l'interface pour introduire la th&eacute;orie des graphes (pour avoir l'information sur toutes les fonctionnalit&eacute;s,
+         passer la souris sur "info&gt;&gt;&gt;"). 
+      </div>
+          
+      <ul class="ul">
+               
+         <li>Positionner un groupe d'amis, ou "r&eacute;seau", de 5 personnes. Vous pouvez placer un nom et l'effacer par commandes de clavier
+            et souris (se r&eacute;f&eacute;rer aux instructions fournies par l'aide), 
+                  bouger &eacute;galement la position des personnes sur l'interface.
+                  Nous allons symboliser les liens de familiarit&eacute; entre chacun par des traits reliant les uns aux autres ou non. 
+                  Prenez deux personnes non reli&eacute;es directement, et chercher &agrave; trouver le plus "court chemin" entre ces deux personnes
+            afin de se conna&icirc;tre, autrement dit, trouver la personne interm&eacute;diaire
+                  qui pourrait faire le "pont". Pour trouver ce plus court chemin, nous pouvons nous aider des informations de distance
+            ou de poids des liens.
+         </li>
+               
+         <li>G&eacute;n&eacute;rer de mani&egrave;re automatique tous les noeuds disponibles et quelques liens. 
+                  De la m&ecirc;me mani&egrave;re, prenez deux personnes non reli&eacute;es directement, et chercher &agrave; trouver le plus "court chemin" entre
+            ces deux personnes.
+                  Notons ainsi que ce plus court chemin peut &ecirc;tre rep&eacute;r&eacute; &agrave; l'oeil, tant que le graphe est de taille raisonnable. 
+                  V&eacute;rifier que le chemin trouv&eacute; est exacte avec l'algorithme de l'application 
+                  (pour lancer l'algotithme de calcul du plus court chemin entre 2 noeuds: clic gauche + 'b' pour le noeud de d&eacute;part,
+            clic gauche + 'e' pour le noeud d'arriv&eacute;e.)
+         </li>
+               
+         <li>Comme nous le disions, plus grand est le r&eacute;seau, plus difficile il est de d&eacute;duire de mani&egrave;re visuelle le plus court chemin.
+            
+                  Si le groupe d'amis est de 20 personnes, combien de liens doivent &ecirc;tre potentiellement consid&eacute;r&eacute;s? Et si le groupe est
+            de 30 personnes? 
+         </li>
+           
+      </ul>
    </div>
      
    <div>

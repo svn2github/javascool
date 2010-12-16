@@ -31,7 +31,7 @@
     </div>
     <div title="Découverte de l'interface">
       Essayer les différentes fonctions de l'interface pour vous familiariser avant de . . le programmer: <div class="ul">
-      <p>Pour avoir l'information sur toutes les fonctionnalités, touche 'i'.</p>
+      <p>Pour avoir l'information sur toutes les fonctionnalités, passer la souris sur "info>>>".</p>
       <p>Pour une manipulation rapide, 'a' génère tous les noeuds disponibles, 'r' génère quelques liens.</p>
       <p>Pour lancer l'algotithme de calcul du plus court chemin entre 2 noeuds: clic gauche + 'b' pour le noeud de départ, clic gauche + 'e' pour le noeud d'arrivée.</p>
     </div></div>
