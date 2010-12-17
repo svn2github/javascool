@@ -1,43 +1,39 @@
 <p class="table">
-  <p> <p></p>    <p></p>    <p></p>    <p></p> <p>Auteurs</p> <p></p> </p>
+  <p> <p></p> <p></p>    <p></p>    <p></p>    <p></p> <p>Auteurs</p> <p></p> </p>
   <p>
-    <p>«Exploration sonore»</p>
+    <p>«Exploration sonore»<p><l class="icon" icon="http://www.openprocessing.org/visuals/applets/visual6180d76415090d0cab6c96a6158f5db5/smallImage.jpg"/></p></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/ExplorationSonore/activites-unplug.htm" text="Usage"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/ExplorationSonore/about-proglet.htm" text="Description"/></p>
     <p><l link="http://www.openprocessing.org/visuals/?visualID=16032" text="Proglet"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/ExplorationSonore/sujet-creation-de-sons.htm" text="Activité"/></p>
-    <p>CP<l class="note" link="4"/>@<l link="http://www.openprocessing.org/portal/?userID=8553" text="openprocessing/fuscia"/> </p>
+    <p>CP<l class="note" link="4"/>@<l link="http://www.openprocessing.org/portal/?userID=8553" text="fuscia"/> </p>
     <p>permet de visualiser l'évolution temporelle et le contenu fréquentiel (le spectre) d'un son.</p>
   </p>
   <p>
-    <p>«Cryptage RSA»</p>
+    <p>«Cryptage RSA»<p><l class="icon" icon="http://www.openprocessing.org/visuals/applets/visual6c9d0503133b895ce41409fb3ecaa633/smallImage.jpg"/></p></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/CryptageRSA/activites-unplug.htm" text="Usage"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/CryptageRSA/about-proglet.htm" text="Description"/></p>
     <p><l link="http://www.openprocessing.org/visuals/?visualID=16149" text="Proglet"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/CryptageRSA/sujet-about-cryptageRSA.htm" text="Activité"/></p>
-    <p>CP<l class="note" link="4"/>@<l link="http://www.openprocessing.org/portal/?userID=8553" text="openprocessing/fuscia"/> </p>
+    <p>CP<l class="note" link="4"/>@<l link="http://www.openprocessing.org/portal/?userID=8553" text="fuscia"/> </p>
     <p>permet de manipuler les concepts liés à l'encryptage/décryptage par clés publique et privée.</p>
   </p>
   <p>
-    <p>«En Voiture»</p>
+    <p>«En Voiture»<p><l class="icon" icon="http://www.openprocessing.org/visuals/applets/visual94c8599e1208a9527bfd73582627f559/smallImage.jpg"/></p></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/EnVoiture/activites-unplug.htm" text="Usage"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/EnVoiture/about-proglet.htm" text="Description"/></p>
     <p><l link="http://www.openprocessing.org/visuals/?visualID=16153" text="Proglet"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/EnVoiture/sujet-about-voiture.htm" text="Activité"/></p>
-    <p>CP<l class="note" link="4"/>@<l link="http://www.openprocessing.org/portal/?userID=8553" text="openprocessing/fuscia"/> </p>
+    <p>CP<l class="note" link="4"/>@<l link="http://www.openprocessing.org/portal/?userID=8553" text="fuscia"/> </p>
     <p>vise à s’approprier les différents éléments caractéristiques d’un graphe, en vue de saisir les algorithmes qui en font usage 1/2.</p>
   </p>
   <p>
-    <p>«Un graphe des chemins»</p>
+    <p>«Un graphe des chemins»<p><l class="icon" icon="http://www.openprocessing.org/visuals/applets/visualb66bc496d328a7a31d76e74a3fc3f724/smallImage.jpg"/></p></p>
+    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/UnGrapheDesChemins/activites-unplug.htm" text="Usage"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/UnGrapheDesChemins/about-proglet.htm" text="Description"/></p>
     <p><l link="http://www.openprocessing.org/visuals/?visualID=16148" text="Proglet"/></p>
     <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/UnGrapheDesChemins/sujet-about-chemins.htm" text="Activité"/></p>
-    <p>CP<l class="note" link="4"/> @<l link="http://www.openprocessing.org/portal/?userID=8553" text="openprocessing/fuscia"/></p>
+    <p>CP<l class="note" link="4"/> @<l link="http://www.openprocessing.org/portal/?userID=8553" text="fuscia"/></p>
     <p>vise à s’approprier les différents éléments caractéristiques d’un graphe, en vue de saisir les algorithmes qui en font usage 2/2.</p>
   </p>
-  <!--p>
-    <p>«Boite à Musique»</p>
-    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/BoiteAMusique/about-proglet.htm" text="Description"/></p>
-    <p><l link="http://www.openprocessing.org/visuals/?visualID=16253" text="Proglet"/></p>
-    <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/BoiteAMusique/sujet-about-chemins.htm" text="Activité"/></p>
-    <p>CP<l class="note" link="4"/>@<l link="http://www.openprocessing.org/portal/?userID=8553" text="openprocessing/fuscia"/> </p>
-    <p>vise à entrevoir quelques éléments de la programmation temps-réel à travers un séquenceur de sons.</p>
-  </p-->
 </p>
