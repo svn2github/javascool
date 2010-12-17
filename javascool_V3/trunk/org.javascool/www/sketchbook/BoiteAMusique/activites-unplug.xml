@@ -1,6 +1,5 @@
 <div class="sujet" title="Utiliser l'«educlet» BoiteAMusique">
   <div title="Description de l'applete">
-    <l link="http://www.openprocessing.org/visuals/?visualID=16253" text="applete"/>
     <p>Cette applete permet de se familiariser à la notion de composition sonore. Elle présente un radar dont le signal de balayage 
     dans son mouvement actionne des sources sonores.</p>
     <p>Elle donne à disposition des sources sonores, dites
