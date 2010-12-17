@@ -22,7 +22,6 @@ class Potar
     rect(x, yp, 45, 22);
     strokeWeight(3);
     line(x + 23, yp, x - 23, yp);
-    // stroke(0);
   }
   boolean check(float x_, float y_) {
     if((x_ > x - 22) && (x_ < x + 22) && (y_ > y - 100) && (y_ < y + 100))

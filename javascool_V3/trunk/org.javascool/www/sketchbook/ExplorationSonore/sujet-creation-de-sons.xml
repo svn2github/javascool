@@ -15,6 +15,7 @@
     <div title="La notion de signal périodique"> Une note est une vibration de l'air 
     comme <l link="http://javascool.gforge.inria.fr/v3/sketchbook/ExplorationSonore/OndeSonore.pdf" text="détaillé ici"/> (bien lire le document avant de commencer).
     Les sons les plus graves correspondent à une vibration de 20Hz (20 fois par seconde), les plus aigus de 20000Hz, notre voix humaine vibre principalement entre 100 et 3000Hz.
+    <div class="margin">Voir aussi un document sur la <l link="http://javascool.gforge.inria.fr/v3/sketchbook/ExplorationSonore/Numeriser-un-son.pdf" text="numérisation du son"/>.</div>
     </div>
   </div>
   <div class="works">
@@ -42,22 +43,23 @@
         </div>ceci une vingtaine de fois. Entrainez vous à deviner lequel des trois signaux est produit.</p>
       </div>
     </div>
-    <div title="Créer un effet de porte fermée/porte ouveerte">
-      <p>Lorsque l'on ferme une porte les sons de la pièce attenante nous paraissent plus étouffés, 
-      en fait celà correspond au fait que les hautes fréquences sont atténuées tandis que les basses fréquences, traversent mieux la paroi de la porte. 
+    <div title="L'effet du son lorsque la porte est fermée/ouverte">
+      <p>Lorsque l'on ferme une porte les sons de la pièce attenante nous paraissent plus étouffés. 
+      Cette sensation provient du fait que les hautes fréquences sont atténuées tandis que les basses fréquences, traversent mieux la paroi de la porte 
+      car elles ont davantage d'énergie. 
       Nous allons recréer cet effet en programmant cette proglet.</p>
       <div class="ul">
         <p>Choisir une musique ou un son de votre choix (quelques secondes) et créer un programme d'une ligne avec l'instruction <r>playRecord</r> 
         décrite <l link="about-proglet.htm" text="ici"/> pour le lancer.</p>
         <p>Utiliser manuellement l'interface pour ajuster la fréquence de coupure des sons aigus et l'amplitude du signal afin de voir comment créer l'effet sonore 
-        de son complet ou assourdi.</p>
+        du son original ou assourdi.</p>
         <p>Utiliser ensuite la fonction <r>playStop</r> et la fonction:
           <div class="center"><b><r>void</r> <c>sleep</c>(<r>int</r> duree)</b> Arrête l'exécution du programme pendant une durée fixée donnée en milli-secondes.</div>
-          pour faire créer un petit programme qui va émettre votre son "porte ouverte" (sans fréquence de coupure ni atténuation) pendant 3-4 secondes puis 
+          pour créer un petit programme qui va émettre votre son "porte ouverte" (sans fréquence de coupure ni atténuation) pendant 3-4 secondes puis 
           comme si une porte était fermée entre le son et l'auditeur.</p>
-        <p>Faire un programme plus sophitiqué qui va progressivement (en 10 secondes, par exemple, par pas de 1 secondes) "ouvrir et fermer" la porte. 
+        <p>Faire un programme plus sophistiqué qui va progressivement (en 10 secondes, par exemple, par pas de 1 secondes) "ouvrir et fermer" la porte. 
         Commentez dans le programme le résultat obtenu.</p>
-        <p>Ecoutez le <l link="http://QUELQUEPARTSURYOUTUBE" text="clip de Bjorg"/> et notez à quel endroit (quelle minute/seconde du clip) cet effet est utilisé.</p>
+        <p>Ecoutez le <l link="http://www.youtube.com/watch?v=PF_k6mIw9w0" text="clip de Bjorg"/> et notez à quel endroit (quelle minute/seconde du clip) cet effet est utilisé.</p>
       </div>      
     </div>
   </div>

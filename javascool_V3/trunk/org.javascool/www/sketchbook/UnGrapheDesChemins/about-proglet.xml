@@ -1,5 +1,5 @@
 <div title="La «proglet» UnGrapheDesChemins">
-  <p class="margin">Autres <l link="../../api/org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+  <p class="margin">Autres <l link="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>Cette proglet<l class="note" link="1"/> permet de s’approprier les différents éléments caractéristiques d’un graphe, 
   en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin.</p>
   <p>Un graphe est un ensemble de points, dont certaines paires sont directement reliées par un lien. 

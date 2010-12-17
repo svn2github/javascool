@@ -1,5 +1,5 @@
 <div title="La «proglet» Exploration sonore">
-  <p class="margin">Autres <l link="../../api/org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+  <p class="margin">Autres <l link="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
   <p>Cette proglet<l class="note" link="1"/> permet de visualiser l'évolution temporelle et le contenu fréquentiel des graves aux aigues (le spectre) d'un son, 
   d'une parole, d'un extrait musical ou d'un signal sonore numérique.</p>
   <p>L'analyse s'effectue en temps réel. 
