@@ -1,10 +1,21 @@
 <div class="sujet" title="Utiliser l'«educlet» mettre-le-nom">
   <div title="Description de l'applete">
-    blabla
+    <p>Cette applete permet d'enregistrer ses propres sons. </p>
+    
   </div>
   <div title="Utilisation comme outil">
+  	<p>L'interface capture les sons via le microphone de l'ordinateur. 
+  	Une représentation temporelle du signal capté est dessiné en tant réel. Il s'agit d'un signal stéréo, 
+  	d'où les deux évolutions au court du temps.</p>
+  	<div class="ul">
+    <p>Pour débuter et stopper l'enregistrement, taper 'r'.</p> 
+    <p>Pour sauver la capture du signal, taper 's'. L'enregistrement sera alors stocké dans dans le dossier "out". 
+    Vous pouvez le renommer au besoin.</p>
+    </div>
   </div>
   <div title="Utilisation dans une activité">
+  <p>Cette applete peut être utilisée en préambule de BoiteAMusique, afin 
+    de constituer sa bibliothèque de grains sonores avant composition. </p>
   </div>
 </div>
 

@@ -39,7 +39,7 @@
   Veillez à ce qu'il soient assez courts, à la manière de ceux utiliser initialement, l'idée étant qu'ils s'enchainent sans se recouvrir. 
   Ils peuvent être de divers type: mot, bruit, etc... On pourrait aussi essayer de se rapprocher de l'effet de l'annonce de la gare.</p>
   <p> Apprès enregistrement de l'ensemble des grains, placer les enregistrements initiaux dans "/data/effectsOld "
-  et les votres "/data/effects". </p>
+  et les votres "/data/effects". Composer avec vos propres grains.</p>
     <!-- En utilisant cette <l link="http://www.openprocessing.org/visuals/?visualID=16253" text="boite à musique"/> nous allons comprendre la notion d'«édition de grains sonores» . . 
     -->
   </div>

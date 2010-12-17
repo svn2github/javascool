@@ -1,10 +1,31 @@
 <div class="sujet" title="Utiliser l'«educlet» mettre-le-nom">
   <div title="Description de l'applete">
-    blabla
+    Cette applet permet de visualiser le contenu fréquentiel des graves aux aigus (le spectre) d'un son produit dans l'environnement
+    ou d'un extrait musical. 
   </div>
   <div title="Utilisation comme outil">
+  <p>L'intérêt de cet outil est qu'il permet:</p>
+  <div class="ul">
+  	<p>d'ajuster la résolution de l'analyse fréquentielle: on diminue/augmente le nombre de bandes de fréquences par clic 
+  centre à gauche/droite de l'interface. Le nombre de bande de fréquences peut être: 32, 64 ou 128. </p>
+  	<p>de repérer par la position de la souris, dans quelle plage de fréquence du spectre on se situe. </p>
+  	<p>de visualiser l'ensemble du contenu fréquentiel qui a été joué par un extrait sonore, 
+  	car la représentation fige en arrière plan ce qui a été émis.</p>
+  </div>
+  <p>Pour retrouver toutes ces informations, passer la souris sur "info". </p>
+  <div class="ul">
+  <p>Essayer d'émettre des sons de différents contenus fréquentiels. 
+  On notera les limites de la voix humaine, on comparera sa propre voix à celle des autres. 
+  A votre avis, quelles sont les raisons des différences entre les voix de chacun (caractéristiques morphologiques..?)? </p>
+  <p>L'interface permet de lancer un enregistrement sonore. Comparer le contenu fréquentiel de cet extrait avec celui des sons que vous 
+  avez émis. Quelles sont les différences?</p>
+  <p>Reprendre les questions en ajustant la résolution de l'analyse fréquentielle. Noter les différences sur la représentation. 
+  Quelle résolution apporte davantage d'informations? Cependant, sachez que le choix de la résolution peut être également en fonction de 
+  la rapidité de calcul. En effet, une résolution plus fine implique un temps de calcul plus important.</p>
+  </div>
   </div>
   <div title="Utilisation dans une activité">
+  On pourra continuer avec l'applete <l link="http://www.openprocessing.org/visuals/?visualID=16032" text="ExplorationSonore"/>.
   </div>
 </div>
 

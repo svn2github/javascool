@@ -2,7 +2,7 @@
   <div class="margin">Voir aussi l'<l link="sujet-creation-de-sons.htm" text="activité «proglet»"/> (découverte à travers la programmation)</div>
  <div title="Description de l'applete">
     <l link="http://www.openprocessing.org/visuals/?visualID=16032" text="applete"/>
-    <p>Cette applete permet de visualiser l'évolution temporelle et le contenu fréquentiel des graves aux aigues (le spectre) d'un son, 
+    <p>Cette applete permet de visualiser l'évolution temporelle et le contenu fréquentiel des graves aux aigus (le spectre) d'un son, 
   	d'une parole, d'un extrait musical ou d'un signal sonore numérique.</p>
   	<p>L'analyse s'effectue en temps réel. 
   	Dès l'ouverture de l'application on peut visualiser les sons émis par soi-même ou dans l'environnement grâce à la captation par microphone. 
