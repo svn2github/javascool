@@ -1,9 +1,8 @@
-<div class="sujet" title="Utiliser l'«educlet» Magnetophone">
+<div class="sujet" title="Utiliser l'«educlet» mettre-le-nom">
   <div title="Description de l'applete">
     <p>Cette applete permet d'enregistrer ses propres sons. </p>
     
   </div>
-  <div class="center"><l class="icon" icon="Magnetophone_xml.png"/></div>  
   <div title="Utilisation comme outil">
   	<p>L'interface capture les sons via le microphone de l'ordinateur. 
   	Une représentation temporelle du signal capté est dessiné en tant réel. Il s'agit d'un signal stéréo, 

@@ -1,4 +1,4 @@
-<div class="sujet" title="Utiliser l'«educlet» BoiteAMusique">
+<div class="sujet" title="Utiliser l'«educlet» mettre-le-nom">
   <div title="Description de l'applete">
     <l link="http://www.openprocessing.org/visuals/?visualID=16253" text="applete"/>
     <p>Cette applete permet de se familiariser à la notion de composition sonore. Elle présente un radar dont le signal de balayage 
@@ -12,7 +12,6 @@
     nous pouvions construire une phrase logique. Cette technique est utilisé par example en gare "Le/train/de .. ", et permet, à partir d'un vocabulaire pré-enregistré, 
     de construire la multitude de phrases informatives possibles dans ce contexte.</p>
   </div>
-  <div class="center"><l class="icon" icon="BoiteAMusique_xml.png"/></div>  
   <div title="Utilisation comme outil">
   <p>Nous allons utiliser l'outil afin de saisir quelques ingrédients de la composition sonore. </p>
   <p>Des grains sonores sont mis à disposition 

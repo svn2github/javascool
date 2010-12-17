@@ -9,7 +9,8 @@
   	L'application permet également de générer des signaux numériques (sinusoïde, signaux carrés et scie, bruit), pour en observer le spectre.
   	Finalement on peut lancer des enregistrements (musicaux ou autres), et en visualiser les représentations temporelles et fréquentielles. </p>
   </div>
-  <div class="center"><l class="icon" icon="ExplorationSonore_xml.png"/></div>  
+  <div title="Utilisation comme outil">
+  </div>
   <div class="objectif">
     Le but de ce tutoriel est d'expérimenter avec des sons. Le son est une somme de signaux périodiques, des sinusoides.
     Nous allons les observer et en manipuler. Il suffit d'utiliser l'interface à partir des boutons.

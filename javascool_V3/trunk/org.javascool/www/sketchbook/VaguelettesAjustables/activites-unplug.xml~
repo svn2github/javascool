@@ -1,4 +1,4 @@
-<div class="sujet" title="Utiliser l'«educlet» VaguelettesAjustables">
+<div class="sujet" title="Utiliser l'«educlet» mettre-le-nom">
   <div title="Description de l'applete">
     Cette applete a pour objectif d'illustrer qu'est-ce qu'une onde, comment elle naît et se propage. 
     Le phénomène d'onde se retrouve dans divers domaines de la physique: on parle d'onde en acoustique (l'onde sonore), en magnétisme 
@@ -8,7 +8,6 @@
     propage dans une direction, elle avance dans l'espace. 
     Pour davantage de détails sur le sujet, voir la référence <l link="http://fr.wikipedia.org/wiki/Propagation_des_ondes#Ondes_progressives_et_ondes_stationnaires" text="la propagation des ondes"/> sur Wikipedia.
   </div>
-  <div class="center"><l class="icon" icon="VaguelettesAjustables_xml.png"/></div>
   <div title="Utilisation comme outil">
   Une onde naît d'une excitation. L'interface mis à disposition symbolise l'excitation apportée par clic de souris. 
   Une onde naît alors, centrée sur cette position particulière. Les paramètres d'amplitude, de longeur d'onde et de taux d'amortissement 

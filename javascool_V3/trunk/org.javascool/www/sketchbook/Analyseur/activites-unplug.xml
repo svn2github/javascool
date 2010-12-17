@@ -1,4 +1,4 @@
-<div class="sujet" title="Utiliser l'«educlet» mettre-le-nom">
+<div class="sujet" title="Utiliser l'«educlet» Analyseur">
   <div title="Description de l'applete">
     Cette applet permet de visualiser le contenu fréquentiel des graves aux aigus (le spectre) d'un son produit dans l'environnement
     ou d'un extrait musical. 
@@ -24,8 +24,9 @@
   la rapidité de calcul. En effet, une résolution plus fine implique un temps de calcul plus important.</p>
   </div>
   </div>
-  <div title="Utilisation dans une activité">
-  On pourra continuer avec l'applete <l link="http://www.openprocessing.org/visuals/?visualID=16032" text="ExplorationSonore"/>.
+ <div class="center"><l class="icon" icon="Analyseur_xml.png"/></div>  
+ <div title="Utilisation dans une activité">
+  On pourra continuer avec l'applete <l link="http://javascool.gforge.inria.fr/v3/?page=doc:sketchbook/index.html" text="ExplorationSonore"/>.
   </div>
 </div>
 

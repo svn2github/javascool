@@ -16,7 +16,6 @@
     L'intérêt de la manipulation est de faire passer la non-symétrie du processus: autrement dit, tout le monde peut encrypter (par la clé publique),
     mais seule une personne pourra décrypter (possédant la clé privée)..</p>
   </div>
-  <div class="center"><l class="icon" icon="CryptageRSA_xml.png"/></div>  
   <div title="Utilisation comme outil">
     Voir le <l link="sujet-about-cryptageRSA.htm" text="sujet d'activité"/> proposé, partie "Manipuler l'interface: cryptage de données".
   </div>
