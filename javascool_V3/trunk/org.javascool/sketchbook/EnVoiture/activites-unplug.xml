@@ -12,7 +12,7 @@
   il faut copier les librairies dynamiques <l link="http://javascool.gforge.inria.fr/v3/sketchbook/EnVoiture/opengl-windows.zip" text="disponibles ici"/>
   dans le répertoire <i>Java</i> de la machine, c'est à dire, normallement <c>Program Files/java/jre6/bin</c>. Se faire aider du responsable informatique si besoin.
   </div>
-  <div class="center"><l class="icon" icon="EnVoiture_xml.png"/></div>  
+  <div class="center"><l class="icon" link="http://www.openprocessing.org/visuals/?visualID=16153" icon="EnVoiture_xml.png"/></div>  
   <div title="Utilisation comme outil">
     <p>Un graphe peut être créé à partir du cas concret d'une carte de villes: 
     les noeuds ou sommets sont représentés par les villes, et les liens correspondent aux routes construites pour les relier. 
