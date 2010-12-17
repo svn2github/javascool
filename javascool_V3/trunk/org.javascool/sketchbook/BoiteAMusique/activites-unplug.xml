@@ -1,12 +1,47 @@
 <div class="sujet" title="Utiliser l'«educlet» mettre-le-nom">
   <div title="Description de l'applete">
     <l link="http://www.openprocessing.org/visuals/?visualID=16253" text="applete"/>
-    blabla
+    <p>Cette applete permet de se familiariser à la notion de composition sonore. Elle présente un radar dont le signal de balayage 
+    dans son mouvement actionne des sources sonores.</p>
+    <p>Elle donne à disposition des sources sonores, dites
+    "discrètes", c'est à dire de courte durée, de moins d'1 seconde, qu'on appellera aussi "grains sonores". 
+    Ce peut être des notes de piano, une cymbale, un clap de mains, ou encore un clac de langue, etc.. 
+    L'intérêt est d'avoir un large éventail de sources, de types différents, du musical à l'anecdotique. 
+    De cet ensemble de grains sonores, nous allons construire une compositon sonore cohérente, voire un phrasé musical, en arrangeant 
+    les grains de manière à créer une cadence. On parlera de phrasé, comme si à partir d'un ensemble de syllable sans sens, 
+    nous pouvions construire une phrase logique. Cette technique est utilisé par example en gare "Le/train/de .. ", et permet, à partir d'un vocabulaire pré-enregistré, 
+    de construire la multitude de phrases informatives possibles dans ce contexte.</p>
   </div>
   <div title="Utilisation comme outil">
+  <p>Nous allons utiliser l'outil afin de saisir quelques ingrédients de la composition sonore. </p>
+  <p>Des grains sonores sont mis à disposition 
+  à gauche de l'interface, selon trois types: notes de piano, bips numériques et extraits musicaux. On selectionne les grains à la souris, 
+  puis on peut les positionner sur le radar, en cliquant un cercle en particulier qui devient alors actif et apparait en vert. 
+  Lorsque le signal du radar balaye la source active, cette dernière devient rouge et sonne.</p>
+  <p>Notez que placer différentes sources sur un même rayon ne fait sonner qu'une seule source, 
+  mais la position sur ce rayon détermine l'amplitude de la source placée. On disposera donc les sources sur la circonférence du radar 
+  à des positions particulières du centre de manière à faire varier ou non l'amplitude. </p>
+  <p>Avec les flèches &lt; > du clavier, on pourra ralentir/accélérer la vitesse du radar, donc agir sur la vitesse de jeu. 
+  Enfin, en haut à droite on pourra faire varier le niveau globale de la composition sonore. </p>
+  <p>Pour retrouver toutes ces informations, selectionner "info". </p>
+  <div class="ul">
+  <p>Construire un phrasé en utilisant une seule note de piano avec la même amplitude. 
+  L'idée est ici de se focaliser sur comment disposer le grain sonore en temporel.</p>
+  <p>Reprendre le phrasé construit ci-dessus, et utiliser à présent différentes amplitudes. Quel effet a-t-on apporter?
+  Ralentir/accélérer le phrasé pour observer les différences de style/rendu créées.</p>
+  <p>Enrichir le phrasé avec d'autres sources. Est-ce difficile de composer avec des sources "musicales" et "non-musicales"? 
+  Agir sur la vitesse de jeu et noter les différences de style créées.</p>
+  </div>
   </div>
   <div title="Utilisation dans une activité">
-    En utilisant cette <l link="http://www.openprocessing.org/visuals/?visualID=16253" text="boite à musique"/> nous allons comprendre la notion d'«édition de grains sonores» . . 
+  <p>Nous allons ici créer une composition sonore complètement personnalisée, depuis les sources jusque leur arrangement. </p>
+  <p>Prendre l'applete "Magnetophone" et enregistrer ces propres grains sonores (pour cela, se référer à la documentation). 
+  Veillez à ce qu'il soient assez courts, à la manière de ceux utiliser initialement, l'idée étant qu'ils s'enchainent sans se recouvrir. 
+  Ils peuvent être de divers type: mot, bruit, etc... On pourrait aussi essayer de se rapprocher de l'effet de l'annonce de la gare.</p>
+  <p> Apprès enregistrement de l'ensemble des grains, placer les enregistrements initiaux dans "/data/effectsOld "
+  et les votres "/data/effects". </p>
+    <!-- En utilisant cette <l link="http://www.openprocessing.org/visuals/?visualID=16253" text="boite à musique"/> nous allons comprendre la notion d'«édition de grains sonores» . . 
+    -->
   </div>
 </div>
 

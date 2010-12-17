@@ -1,5 +1,5 @@
 class Radar {
-  PFont f = createFont("Arial Bold", 12, true);
+  
 
   int bx, by;        // positionnement
   int nb;         // nombre de sources à enchainer dans la boucle: de 8 à 24
@@ -8,7 +8,7 @@ class Radar {
   int pia;
 
   Radar(int nb_, int nl_) {
-    bx = width / 2 + 100;
+    bx = width / 2 + 120;
     by = height / 2;
     nb = nb_;
     nl = nl_;
@@ -103,6 +103,8 @@ class Radar {
   }
   // Visualise l'ensemble des sources à disposition
   void displayLib() {
+   
+  
     sources = new Source[3][freqs.tab[0].length];
 
     fill(255, 0, 0);
@@ -155,6 +157,22 @@ class Radar {
           text(" " + freqs.tabE[i] + " ", sources[2][i].x, sources[2][i].y);
       }
     }
+    textAlign(LEFT);
+    fill(50);
+    rect(0, 0, width/2-50, height/3);
+    fill(153);
+    textFont(f, 11);
+    text(" - I  N  S  T  R  U  C  T  I  O  N  S - \n " +
+         ". Composer une séquence sonore en deux actions: \n" +
+         " 1) Sélectionner votre source sonore parmi les trois catégories: \n" +
+         "  notes de piano, bips, enregistrements\n " +
+         " 2) Sélectionner une postion temporelle sur le radar \n " +
+         ". Pour accélérer/ralentir la vitesse de jeu: flèches '>/<' \n " +
+         ". Pour augmenter/diminuer le volume globale, agir sur le curseur noir \n " +
+         ". Pour remettre à zéro le radar: barre espace \n " +
+         ". Fermer l'application: ESC ", topPos * 2, 40); 
+    hs1.update();
+    hs1.display();
   }
   /** Créer les sources sonores
    */
