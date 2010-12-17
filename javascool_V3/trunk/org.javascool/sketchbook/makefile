@@ -78,7 +78,8 @@ gui :
 	@cd $(P_HOME) ; java processing.app.Base
 
 wui :
-	echo "fermer firefox avant de le lancer ici"
+	echo 'Fermer firefox avant de le lancer ici (bien s assurer d utiliser le java SUN plugin)'
+	echo 'Ref: http://wiki.inria.fr/sciencinfolycee/JavaScool:ProcessingLinux'
 	firefox ../www/sketchbook/index.html
 
 #################################################################################################################
