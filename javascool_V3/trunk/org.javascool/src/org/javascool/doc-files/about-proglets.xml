@@ -5,7 +5,7 @@
     <p> <p></p>    <p></p>    <p></p>    <p></p> <p>Auteurs</p> <p></p> </p>
     <p>
       <p>«ingredients»</p>
-      <p><l link="../../../proglet/ingredients/doc-files/about-proglet.htm" text="Description"/></p>
+      <p><l link="../../../proglet/ingredients/doc-files/about-proglet.htm" text="Usage"/></p>
       <p><l link="http://javascool.gforge.inria.fr/?page=api:proglet/ingredients/doc-files/the-proglet.htm" text="Proglet"/></p>
       <p><l link="../../../proglet/ingredients/doc-files/index.htm" text="Activité"/></p>
       <p>HbA<l class="note" link="4"/>, AA<l class="note" link="4"/>, GD<l class="note" link="4"/> et al. </p>
@@ -15,7 +15,7 @@
     </p>
     <p>
       <p>«exosdemaths»</p>
-      <p><l link="../../../proglet/exosdemaths/doc-files/about-proglet.htm" text="Description"/></p>
+      <p><l link="../../../proglet/exosdemaths/doc-files/about-proglet.htm" text="Usage"/></p>
       <p><l link="http://javascool.gforge.inria.fr/?page=api:proglet/exosdemaths/doc-files/the-proglet.htm" text="Proglet"/></p>
       <p><l link="../../../proglet/exosdemaths/doc-files/index.htm" text="Activité"/></p>
       <p>Jw1<l class="note" link="4"/> </p>
@@ -23,7 +23,7 @@
     </p>
     <p>
       <p>«pixelsetcie»</p>
-      <p><l link="../../../proglet/pixelsetcie/doc-files/about-proglet.htm" text="Description"/></p>
+      <p><l link="../../../proglet/pixelsetcie/doc-files/about-proglet.htm" text="Usage"/></p>
       <p><l link="http://javascool.gforge.inria.fr/?page=api:proglet/pixelsetcie/doc-files/the-proglet.htm" text="Proglet"/></p>
       <p><l link="../../../proglet/pixelsetcie/doc-files/index.htm" text="Activité"/></p>
       <p>GD<l class="note" link="4"/> et al. </p>
@@ -31,7 +31,7 @@
     </p>
     <p>
       <p>«dichotomie»</p>
-      <p><l link="../../../proglet/dichotomie/doc-files/about-proglet.htm" text="Description"/></p>
+      <p><l link="../../../proglet/dichotomie/doc-files/about-proglet.htm" text="Usage"/></p>
       <p><l link="http://javascool.gforge.inria.fr/?page=api:proglet/dichotomie/doc-files/the-proglet.htm" text="Proglet"/></p>
       <p><l link="../../../proglet/dichotomie/doc-files/index.htm" text="Activité"/></p>
       <p>JPA<l class="note" link="4"/> et al.</p>
@@ -39,7 +39,7 @@
     </p>
     <p>
       <p>«convanalogique»</p>
-      <p><l link="../../../proglet/convanalogique/doc-files/about-proglet.htm" text="Description"/></p>
+      <p><l link="../../../proglet/convanalogique/doc-files/about-proglet.htm" text="Usage"/></p>
       <p><l link="http://javascool.gforge.inria.fr/?page=api:proglet/convanalogique/doc-files/the-proglet.htm" text="Proglet"/></p>
       <p><l link="../../../proglet/convanalogique/doc-files/index.htm" text="Activité"/></p>
       <p>JPA<l class="note" link="4"/> et al.</p>
@@ -47,7 +47,7 @@
     </p>
     <p>
       <p>«javaprog»</p>
-      <p><l link="../../../proglet/javaprog/doc-files/about-proglet.htm" text="Description"/></p>
+      <p><l link="../../../proglet/javaprog/doc-files/about-proglet.htm" text="Usage"/></p>
       <p><l link="http://javascool.gforge.inria.fr/?page=api:proglet/javaprog/doc-files/the-proglet.htm" text="Proglet"/></p>
       <p><!--l link="../../../proglet/javaprog/doc-files/index.htm" text="Activité"/--></p>
       <p>Jv3<l class="note" link="4"/> </p>
@@ -55,7 +55,7 @@
     </p>
     <p>
       <p>«synthesons»</p>
-      <p><l link="../../../proglet/synthesons/doc-files/about-proglet.htm" text="Description"/></p>
+      <p><l link="../../../proglet/synthesons/doc-files/about-proglet.htm" text="Usage"/></p>
       <p><l link="http://javascool.gforge.inria.fr/?page=api:proglet/synthesons/doc-files/the-proglet.htm" text="Proglet"/></p>
       <p><!--l link="../../../proglet/synthesons/doc-files/index.htm" text="Activité"/--></p>
       <p>Jw1<l class="note" link="4"/> </p>
@@ -63,7 +63,7 @@
     </p>
     <p>
       <p>«tortuelogo»</p>
-      <p><l link="../../../proglet/tortuelogo/doc-files/about-proglet.htm" text="Description"/></p>
+      <p><l link="../../../proglet/tortuelogo/doc-files/about-proglet.htm" text="Usage"/></p>
       <p><l link="http://javascool.gforge.inria.fr/?page=api:proglet/tortuelogo/doc-files/the-proglet.htm" text="Proglet"/></p>
       <p><!--l link="../../../proglet/tortuelogo/doc-files/index.htm" text="Activité"/--></p>
       <p>Jw1<l class="note" link="4"/> </p>

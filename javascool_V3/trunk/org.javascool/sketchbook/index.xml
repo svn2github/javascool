@@ -5,33 +5,38 @@
 
   <l class="include" link="../src/org/javascool/doc-files/about-pro-proglets.xml"/>
 
-  <div title="Autres «educlets» non «proglets»">
+  <div title="Autres «educlets»">
+    <p>Ces «educlets» ne sont pas des «proglets» (on les utilisent en "cliquant", mais ne sont pas programmable).</p>
     <p class="table">
-      <p> <p></p>    <p></p>   <p></p> <p>Auteurs</p> <p></p> </p>
+      <p> <p></p>    <p></p>  <p></p>   <p></p> <p>Auteurs</p> <p></p> </p>
       <p>
         <p>«Boite à Musique»<p><l class="icon" icon="http://www.openprocessing.org/visuals/applets/visual235c7f829178c523f2d7b45063ebd88d/smallImage.jpg"/></p></p>
-        <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/BoiteAMusique/activites-unplug.htm" text="Usage"/></p>
+        <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/BoiteAMusique/activites-unplug.htm" text="Description"/></p>
+        <p><l link="http://vimeo.com/17928229" text ="Demo"/></p>
         <p><l link="http://www.openprocessing.org/visuals/?visualID=16253" text="Proglet"/></p>
         <p>CP<l class="note" link="4"/>@<l link="http://www.openprocessing.org/portal/?userID=8553" text="fuscia"/> </p>
         <p>permet de se familiariser à la notion de composition sonore et l'assemblage de sons.</p>
       </p>
       <p>
         <p>«Analyseur»<p><l class="icon" icon="http://www.openprocessing.org/visuals/applets/visual59d3cb11c7ce5a4522ef6fd9ec595f5b/smallImage.jpg"/></p></p>
-        <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/Analyseur/activites-unplug.htm" text="Usage"/></p>
+        <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/Analyseur/activites-unplug.htm" text="Description"/></p>
+        <p></p>
         <p><l link="http://www.openprocessing.org/visuals/?visualID=16155" text="Proglet"/></p>
         <p>CP<l class="note" link="4"/>@<l link="http://www.openprocessing.org/portal/?userID=8553" text="fuscia"/> </p>
         <p>permet de visualiser le contenu fréquentiel des graves aux aigus (le spectre) d'un son produit dans l'environnement.</p>
       </p>
       <p>
         <p>«Vaguelettes ajustables»<p><l class="icon" icon="http://www.openprocessing.org/visuals/applets/visual5862a71037c2762504bbd8d1978e9c8e/smallImage.jpg"/></p></p>
-        <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/VaguelettesAjustables/activites-unplug.htm" text="Usage"/></p>
+        <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/VaguelettesAjustables/activites-unplug.htm" text="Description"/></p>
+        <p></p>
         <p><l link="http://www.openprocessing.org/visuals/?visualID=16159" text="Proglet"/></p>
         <p>CP<l class="note" link="4"/>@<l link="http://www.openprocessing.org/portal/?userID=8553" text="fuscia"/> </p>
         <p>permet d'illustrer qu'est-ce qu'une onde, comment elle naît et se propage.</p>
       </p>
       <p>
         <p>«Magnetophone»<p><l class="icon" icon="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/Magnetophone/smallImage.jpg"/></p></p>
-        <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/Magnetophone/activites-unplug.htm" text="Usage"/></p>
+        <p><l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/Magnetophone/activites-unplug.htm" text="Description"/></p>
+        <p></p>
         <p>(utilisable localement uniquement)</p>
         <p>CP<l class="note" link="4"/>@<l link="http://www.openprocessing.org/portal/?userID=8553" text="fuscia"/> </p>
         <p>permet permet d'enregistrer ses propres sons.</p>
