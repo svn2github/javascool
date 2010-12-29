@@ -69,7 +69,7 @@
     </div>
     <div title="Appliquer une fonction à un tableau"> Créer la fonction:
       <div class="code">
-        <p><r>void</r> incremente(<r>int</r> tab[]) {</p>
+        <p><r>void</r> double_les_elements(<r>int</r> tab[]) {</p>
         <p><T/>../..</p>
         <p>}</p>
       </div>
