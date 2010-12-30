@@ -211,9 +211,9 @@ aps:
 
 # Web site files publication
 
-wpub: api wraz
+wpub: jar spub api wraz
 	@php -l www/index.php ; rm -f www/*~
-	@$(MAKE) jpub wsync
+	@$(MAKE) wsync
 
 wsync :
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php --exclude javascool.jar www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
@@ -221,7 +221,12 @@ wsync :
 	@-rsync --rsh='ssh -C' www/index.php scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/.htindex.php
 	@ssh scm.gforge.inria.fr 'sh -c "cd /home/groups/javascool/htdocs/v3 ; cat .htindex.php > index.php ; rm .htindex.php"'
 
-# Jat file publication: WARNING this disseminates your new release all around the world !!!
+# Sketchbook publication
+
+spub: 
+	@$(MAKE) -C sketchbook publish
+
+# Jar file publication: WARNING this disseminates your new release all around the world !!!
 
 jpub: jar
 #	@echo 'Ok to change the official javascool-beta.jar ? CTRL+C to cancel, Enter to confirm: ' ; read cont

@@ -17,8 +17,6 @@ publish : htm
 	@cp index.htm ../www/sketchbook/index.html
 # add new files to svn
 	@cd ../www/sketchbook ; svn -q add * */*.*
-# commit in the svn
-	@$(MAKE) -C .. svn
 
 # Beautifies a source code
 
