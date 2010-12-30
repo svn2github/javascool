@@ -1,3 +1,4 @@
+// Ce programme est proposé par Philippe Lucaud <philucpro@yahoo.fr>, professeur de mathématiques au lycée Audiberti d'Antibes, classe de 2nd option informatique
 
 void main() {
    int c = 0;
