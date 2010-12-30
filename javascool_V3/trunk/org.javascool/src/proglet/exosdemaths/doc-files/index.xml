@@ -26,6 +26,14 @@
 
   </div></div>
 
+  <div title="Quelques exemples de programmes réalisés en classe:"><div class="ul">
+
+  <p>Expérimenter la différence entre <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/doc-files/QuotientEntierEtFlottant.jvs.html" text="calcul en nombre entiers et flottants"/></p>
+
+  <p>Effectuer le <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/doc-files/TirageAleatoireSurSegment.jvs.html" text="calcul d'une surface par tirages aléatoires de points"/></p>
+
+  </div></div>
+     
   <div title="Quelques sujets «unplugged» (sans ordinateur):"><div class="ul">
      
     <p><l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/dageville-exos-base-deux.html" text="Découvrir le codage binaire"/></p>

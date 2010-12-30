@@ -65,6 +65,17 @@ public class CurveDisplay implements org.javascool.Proglet {
       inputY.setScale(-Yscale, Yscale, 0.001);
       scope.reset(Xscale, Yscale);
     }
+    /** Resets the scope display and set scales.
+     * @param Xmin Horizontal scale.
+     * @param Xmin Horizontal scale.
+     * @param Ymin Vertical scale.
+     * @param Ymax Vertical scale.
+     */
+    public void reset(double Xmin, double Xmax, double Ymin, double Ymax) {
+      inputX.setScale(Xmin, Xmax, 0.001);
+      inputY.setScale(Ymin, Ymax, 0.001);
+      //scope.reset(Xscale, Yscale);
+    }
   }
 
   //

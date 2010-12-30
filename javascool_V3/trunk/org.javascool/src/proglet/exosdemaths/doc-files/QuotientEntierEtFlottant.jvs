@@ -1,0 +1,46 @@
+
+void main() {
+  // Présentation et mise en place
+   println("Bonjour, ce programme vous permet de calculer le quotient exact ou approché de deux nombres entiers.\n");
+   sleep(1500);
+   println("Quel est votre prénom ?");
+   String prenom = readString();
+   println("\nEnchanté, " + prenom + ", nous allons commencer notre travail.");
+   sleep(1500);
+
+   for (boolean loop = true; loop;) {
+   clear();
+    println("Entrez l'entier à diviser : ");
+     int nombre = readInteger(); 
+     println("\nEntrez le diviseur :");
+     int diviseur = readInteger();
+     clear(); 
+     println("Le nombre à diviser est donc "+nombre+" et le diviseur est "+diviseur);       
+     println("\nVoulez vous faire une division euclidienne  (tapez 1) ?"); 
+     println("\nOu une division avec un quotient approché (tapez 2) ?"); 
+     int choix = readInteger(); 
+     clear(); 
+     if(choix == 1) {
+       println("Bien "+prenom+", vous avez choisi une division euclidienne."); 
+       int quotient = nombre / diviseur; 
+       int reste = nombre % diviseur; 
+       sleep(1500); 
+       println("\nLe quotient est  : " + quotient); 
+       println("\nLe reste est : " + reste); 
+       println("\nOn peut donc écrire :" + nombre + " = " + diviseur + " * " + quotient + " + " + reste); 
+     } else if(choix == 2) {
+       println("Combien de chiffres après la virgule souhaitez-vous ?"); 
+       int precision = readInteger(); 
+       double quotient = (double) nombre / diviseur; 
+       System.out.printf("Le resultat approché est : %."+precision+"f", quotient);
+     }
+     else {
+       println("\nVous n'avez pas fait le bon choix: il fallait taper soit 1 soit 2 !");
+     }
+     println("\nVoulez-vous faire une nouvelle division? (Oui/Non)"); 
+     String reponse = readString().toLowerCase(); 
+     loop = reponse.startsWith("o");
+   }
+   clear();
+   println("\nA bientôt...");
+}
