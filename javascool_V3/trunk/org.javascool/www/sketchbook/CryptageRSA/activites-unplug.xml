@@ -23,7 +23,13 @@
   <div title="Utilisation dans une activité">
     Voir le <l link="sujet-about-cryptageRSA.htm" text="sujet d'activité"/> proposé, partie "Utiliser les clés pour s'authentifier", 
     puis "Utiliser les fonctions dans votre propre programme".
-  </div>
+  </div>  
+  <div title="Autres activités liées à la cryptograohie"><div class="ul">
+   <p>Un <l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/CryptageRSA/a-propos-de-crypto.pdf" text="texte de présentation de la cryptographie"/></p>
+   <p>Une activité pour <l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/CryptageRSA/a-propos-de-carte-de-credit.pdf" text="calculer comment marche le code d'une carte de crédit"/></p>
+   <p>Une activité pour <l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/CryptageRSA/a-propos-de-code-carre.pdf" text="comprendre le cryptage"/> en utilisant les équations du 2ème degré.</p> 
+  <p>Une activité pour <l link="http://javascool.gforge.inria.fr/v3/?page=doc:/sketchbook/CryptageRSA/a-propos-de-cadenas.pdf" text="comprendre le cryptage"/> en utilisant de vrais cadenas.</p>
+  </div></div>
 </div>
 
 
