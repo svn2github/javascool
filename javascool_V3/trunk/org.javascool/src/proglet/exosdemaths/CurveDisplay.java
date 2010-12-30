@@ -63,7 +63,7 @@ public class CurveDisplay implements org.javascool.Proglet {
     public void reset(double Xscale, double Yscale) {
       inputX.setScale(-Xscale, Xscale, 0.001);
       inputY.setScale(-Yscale, Yscale, 0.001);
-      scope.reset(Xscale, Yscale);
+      scope.reset(0, 0, Xscale, Yscale);
     }
     /** Resets the scope display and set scales.
      * @param Xmin Horizontal scale.
@@ -74,7 +74,7 @@ public class CurveDisplay implements org.javascool.Proglet {
     public void reset(double Xmin, double Xmax, double Ymin, double Ymax) {
       inputX.setScale(Xmin, Xmax, 0.001);
       inputY.setScale(Ymin, Ymax, 0.001);
-      //scope.reset(Xscale, Yscale);
+      scope.reset((Xmin + Xmax) / 2, (Ymin + Ymax) / 2, (Xmax - Xmin) / 2, (Ymax - Ymin) / 2);
     }
   }
 
@@ -106,6 +106,15 @@ public class CurveDisplay implements org.javascool.Proglet {
    */
   public static void scopeReset(double X, double Y) {
     panel.reset(X, Y);
+  }
+  /** Initialise le tracé.
+   * @param Xmin Echelle minimale horizontale, l'abscisse sera tracée dans [-Xmin, Xmax], par défaut [-1, 1].
+   * @param Xmax Echelle maximale horizontale, l'abscisse sera tracée dans [-Xmin, Xmax], par défaut [-1, 1].
+   * @param Ymin Echelle minimale verticale, l'abscisse sera tracée dans [-Ymin, Ymay], par défaut [-1, 1].
+   * @param Ymax Echelle maximale verticale, l'abscisse sera tracée dans [-Ymin, Ymax], par défaut [-1, 1].
+   */
+  public static void scopeReset(double Xmin, double Xmax, double Ymin, double Ymax) {
+    panel.reset(Xmin, Xmax, Ymin, Ymax);
   }
   /**/public static void scopeReset() {
     panel.reset(1, 1);

@@ -213,7 +213,7 @@ aps:
 
 wpub: api wraz
 	@php -l www/index.php ; rm -f www/*~
-	@$(MAKE) wsync
+	@$(MAKE) jpub wsync
 
 wsync :
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php --exclude javascool.jar www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
@@ -224,7 +224,7 @@ wsync :
 # Jat file publication: WARNING this disseminates your new release all around the world !!!
 
 jpub: jar
-	@echo 'Ok to change the official javascool-beta.jar ? CTRL+C to cancel, Enter to confirm: ' ; read cont
+#	@echo 'Ok to change the official javascool-beta.jar ? CTRL+C to cancel, Enter to confirm: ' ; read cont
 	@-rsync --rsh='ssh -C' www/javascool.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/javascool-beta.jar
 
 # Check the web site links 

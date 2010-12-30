@@ -54,7 +54,7 @@ public class CurveOutput extends JPanel implements Widget {
     ReticuleMouseListener l = new ReticuleMouseListener();
     addMouseMotionListener(l);
     addMouseListener(l);
-    reset(1, 1);
+    reset(0, 0, 1, 1);
   }
 
   /** Internal routine: do not use.
@@ -155,10 +155,14 @@ public class CurveOutput extends JPanel implements Widget {
   }
 
   /** Resets the display.
+   * @param Xoffset Horizontal offset.
+   * @param Yoffset Vertical offset.
    * @param Xscale Horizontal scale.
    * @param Yscale Vertical scale.
    */
-  public void reset(double Xscale, double Yscale) {
+  public void reset(double Xoffset, double Yoffset, double Xscale, double Yscale) {
+    this.Xoffset = Xoffset;
+    this.Yoffset = Yoffset;
     this.Xscale = Xscale;
     this.Yscale = Yscale;
     curves = new Vector < Vector < point >> ();
@@ -169,80 +173,82 @@ public class CurveOutput extends JPanel implements Widget {
     labels = new Vector<label>();
     repaint(0, 0, getWidth(), getHeight());
   }
-  private double Xscale = 1, Yscale = 1;
+  private double Xoffset = 0, Yoffset = 0, Xscale = 1, Yscale = 1;
 
   /** Adds a curve value.
-   * @param x Point abscissa, in [-Xscale..Xscale].
-   * @param y Point Ordinate, in [-Yscale..Yscale].
+   * @param x Point abscissa, in [-Xscale+Xoffset..Xscale+Xoffset].
+   * @param y Point Ordinate, in [-Yscale+Yoffset..Yscale+Yoffset].
    * @param c Channel, in {0, 9}.
    */
   public void add(double x, double y, int c) {
     point p = new point();
-    p.x = x / Xscale;
-    p.y = y / Yscale;
+    p.x = (x - Xoffset) / Xscale;
+    p.y = (y - Yoffset) / Yscale;
     if((0 <= c) && (c < 10))
       curves.get(c).add(p);
     repaint(0, 0, getWidth(), getHeight());
   }
   /** Adds a line.
-   * @param x1 Point abscissa, in [-Xscale..Xscale].
-   * @param y1 Point Ordinate, in [-Yscale..Yscale].
-   * @param x2 Point abscissa, in [-Xscale..Xscale].
-   * @param y2 Point Ordinate, in [-Yscale..Yscale].
+   * @param x1 Point abscissa, in [-Xscale+Xoffset..Xscale+Xoffset].
+   * @param y1 Point Ordinate, in [-Yscale+Yoffset..Yscale+Yoffset].
+   * @param x2 Point abscissa, in [-Xscale+Xoffset..Xscale+Xoffset].
+   * @param y2 Point Ordinate, in [-Yscale+Yoffset..Yscale+Yoffset].
    * @param c Channel, in {0, 9}.
    */
   public void add(double x1, double y1, double x2, double y2, int c) {
     line l = new line();
-    l.x1 = x1 / Xscale;
-    l.y1 = y1 / Yscale;
-    l.x2 = x2 / Xscale;
-    l.y2 = y2 / Yscale;
+    l.x1 = (x1 - Xoffset) / Xscale;
+    l.y1 = (y1 - Yoffset) / Yscale;
+    l.x2 = (x2 - Xoffset) / Xscale;
+    l.y2 = (y2 - Yoffset) / Yscale;
     l.c = 0 <= c && c < 10 ? colors[c] : Color.BLACK;
     lines.add(l);
   }
   /** Adds a circle.
-   * @param x Center abscissa, in [-Xscale..Xscale].
-   * @param y Center Ordinate, in [-Yscale..Yscale].
+   * @param x Center abscissa, in [-Xscale+Xoffset..Xscale+Xoffset].
+   * @param y Center Ordinate, in [-Yscale+Yoffset..Yscale+Yoffset].
    * @param r Center radius.
    * @param c Channel, in {0, 9}.
    */
   public void add(double x, double y, double r, int c) {
     oval l = new oval();
-    l.x = (x - r) / Xscale;
-    l.y = (y + r) / Yscale;
+    l.x = (x - Xoffset - r) / Xscale;
+    l.y = (y - Yoffset + r) / Yscale;
     l.w = 2 * r / Xscale;
     l.h = 2 * r / Yscale;
     l.c = 0 <= c && c < 10 ? colors[c] : Color.BLACK;
     ovals.add(l);
   }
   /** Adds a label.
-   * @param x Label left-bottom abscissa, in [-Xscale..Xscale].
-   * @param y Label left-bottom ordinate, in [-Yscale..Yscale].
+   * @param x Label left-bottom abscissa, in [-Xscale+Xoffset..Xscale+Xoffset].
+   * @param y Label left-bottom ordinate, in [-Yscale+Yoffset..Yscale+Yoffset].
    * @param s Label value.
    * @param c Channel, in {0, 9}.
    */
   public void add(double x, double y, String s, int c) {
     label l = new label();
-    l.x = x / Xscale;
-    l.y = y / Yscale;
+    l.x = (x - Xoffset) / Xscale;
+    l.y = (y - Yoffset) / Yscale;
     l.s = s;
     l.c = 0 <= c && c < 10 ? colors[c] : Color.BLACK;
     labels.add(l);
   }
   /** Gets the horizontal reticule position. */
   public double getReticuleX() {
-    return Xscale * reticuleX;
+    return Xoffset + Xscale * reticuleX;
   }
   /** Gets the vertical reticule position. */
   public double getReticuleY() {
-    return Yscale * reticuleY;
+    return Yoffset + Yscale * reticuleY;
   }
   /** Sets the reticule position.
-   * @param x Reticule abscissa, in [-Xscale..Xscale].
-   * @param y Reticule ordinate, in [-Yscale..Yscale].
+   * @param x Reticule abscissa, in [-Xscale+Xoffset..Xscale+Xoffset].
+   * @param y Reticule ordinate, in [-Yscale+Yoffset..Yscale+Yoffset].
    */
   public void setReticule(double x, double y) {
+    x -= Xoffset;
     x /= Xscale;
+    y -= Yoffset;
     y /= Yscale;
     reticuleX = x < -1 ? -1 : x > 1 ? 1 : x;
     reticuleY = y < -1 ? -1 : y > 1 ? 1 : y;
