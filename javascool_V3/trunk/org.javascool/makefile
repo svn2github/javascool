@@ -374,8 +374,8 @@ done :
 #: 
 #: [1.4] Other files
 #: ./tst/*                    : contains local test files
-#: ./J                        : convenient link to ./src/org/javascool
-#: ./P                        : convenient link to ./src/proglet.
+#: ./javascool                : convenient link to ./src/org/javascool
+#: ./proglet                  : convenient link to ./src/proglet.
 #: ./jdoc                     : convenient Java and JavaScool doc bundle for local use (make jdoc to generate it).
 #:
 #: [2] Makefile usage.
