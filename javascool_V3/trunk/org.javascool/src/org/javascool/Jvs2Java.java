@@ -51,7 +51,7 @@ public class Jvs2Java {
     "clear", "println", "readString", "readInt", "readInteger", "readDouble", "readFloat", "readBoolean",
     "dichoLength", "dichoCompare",
     "smileyReset", "smileyLoad", "smileySet", "smileyGet",
-    "scopeReset", "scopeSet", "scopeAdd", "scopeAddLine", "scopeAddRectangle", "scopeAddCircle", "scopeX", "scopeY",
+    "scopeReset", "scopeSet", "scopeAdd", "scopeAddString", "scopeAddLine", "scopeAddRectangle", "scopeAddCircle", "scopeX", "scopeY",
     "convaOut", "convaCompare",
     "synthePlay", "syntheSet", "@tone",
     "String", "main"

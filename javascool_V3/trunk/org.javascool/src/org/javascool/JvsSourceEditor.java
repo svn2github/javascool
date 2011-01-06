@@ -51,6 +51,7 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
       addInsertion("scopeAddLine", "  scopeAddLine( , , , );", 16);
       addInsertion("scopeAddCircle", "  scopeAddCircle( , , );", 18);
       addInsertion("scopeAddRectangle", "  scopeAddRectangle( , , , );", 21);
+      addInsertion("scopeAddString", "  scopeAddString( , , , );", 18);
       addInsertion("scopeX", "  scopeX();", 0);
       addInsertion("scopeY", "  scopeY();", 0);
     }
