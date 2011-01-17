@@ -26,6 +26,7 @@
   </div>  
   <div title="Autres activités liées à la cryptographie"><div class="ul">
    <p>Un <l link="http://javascool.gforge.inria.fr/v3/sketchbook/CryptageRSA/a-propos-de-crypto.pdf" text="texte de présentation de la cryptographie"/></p>
+   <p>A propos de <l link="http://interstices.info/rsa" text="nombres premiers et cryptologie : l’algorithme RSA"/></p>
    <p>Une activité pour <l link="http://javascool.gforge.inria.fr/v3/sketchbook/CryptageRSA/a-propos-de-carte-de-credit.pdf" text="calculer comment marche le code d'une carte de crédit"/></p>
    <p>Une activité pour <l link="http://javascool.gforge.inria.fr/v3/sketchbook/CryptageRSA/a-propos-de-code-carre.pdf" text="comprendre le cryptage"/> en utilisant les équations du 2ème degré.</p> 
   <p>Une activité pour <l link="http://javascool.gforge.inria.fr/v3/sketchbook/CryptageRSA/a-propos-de-cadenas.pdf" text="comprendre le cryptage"/> en utilisant de vrais cadenas.</p>

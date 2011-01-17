@@ -42,8 +42,8 @@ function get_page_contents($name) {
       if (!file_exists($file)) return $notfound;
       $page = file_get_contents($file);
       // Remplace tous les liens entre pages par des pages vues du site
-      $page = ereg_replace('(href=|HREF=|location.replace[(])"([^/#][^:"]*)"', '\\1"?page='.$ext.':'.$base.'/\\2"', $page);
-      $page = ereg_replace('(src|SRC)="([^/#][^:"]*)"', '\\1="'.$pfx.'/'.$base.'/\\2"', $page);
+      $page = ereg_replace('(href=|HREF=|location.replace[(])"([^/#\'][^:"]*)"', '\\1"?page='.$ext.':'.$base.'/\\2"', $page);
+      $page = ereg_replace('(src|SRC)="([^/#\'][^:"]*)"', '\\1="'.$pfx.'/'.$base.'/\\2"', $page);
       // Passe en <pre></pre> les pages de source
       if (ereg("\.java$", $name)) $page = "<pre>".$page."</pre>";
       $page = $page;

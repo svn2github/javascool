@@ -33,7 +33,7 @@ function quizzOpen(quizz) {
 
   /* add close window icon */
   winClose = document.createElement('img');
-  winClose.src = 'http://www-sop.inria.fr/science-participative/speed-dating-09/close.gif';
+  winClose.src = 'http://javascool.gforge.inria.fr/v3/documents/speed-dating-09/close.gif';
   winClose.className = 'questionWinClose';
   winClose.border = 0;
   winCloseLink.appendChild(winClose);
@@ -87,11 +87,11 @@ function quizzAnswer(answer, response, door) {
     winResult.innerHTML = 'Mauvaise r&eacute;ponse';
     win.appendChild(winResult);
   }
-  setTimeout('document.location.href="'+door+'"', 500);
+  setTimeout('document.location.replace("'+door+'")', 500);
 
   /* show clock */
   winTimeImage = document.createElement('img');
-  winTimeImage.src = 'http://www-sop.inria.fr/science-participative/speed-dating-09/clock.gif';
+  winTimeImage.src = 'http://javascool.gforge.inria.fr/v3/documents/speed-dating-09/clock.gif';
   winTimeImage.className = 'questionWinClock';
   winTimeImage.border= 0;
   winResult.appendChild(winTimeImage);
