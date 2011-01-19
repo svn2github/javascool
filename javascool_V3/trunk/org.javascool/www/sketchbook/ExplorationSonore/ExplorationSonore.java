@@ -69,7 +69,7 @@ String sig = "null";
 
 // Param\u00e8tres pour la sinusoide, et l'enregistrement charg\u00e9
 int count = 0;
-signal signal1, signal2;
+signal signal1, signal2, signal3;
 record record1;
 PFont f;
 
@@ -78,6 +78,7 @@ int c = 0;
 // Ce qui est lanc\u00e9 une fois, au d\u00e9part
 public void setup() {
   frameRate(60);
+  
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();
@@ -95,6 +96,7 @@ public void setup() {
 
   signal1 = new signal();
   signal2 = new signal();
+  signal3 = new signal();
   record1 = new record();
 
   // FFT: Transformation de Fourier pour l'analyse fr\u00e9quentielle en temps r\u00e9el
@@ -414,26 +416,32 @@ public void drawSignal(String n) {
 }
 /* Fonctions pour javascool. */
 
-/** Joue un signal de type choisi
+/** Joue un signal de type choisi.
+ * @param c : numero du canal \u00e0 lancer: 1, 2 ou 3.
  * @param n nom du type: sinus, square, triangle, saw, white noise.
  * @param f fr\u00e9quence du signal.
  * @param a amplitude du signal.
  */
-public static void playSignal(String n, double f, double a) {
-  proglet.signal1.setSignal(n, (float) f, (float) a);
+public static void playSignal(int c, String n, double f, double a) {
+  switch(c) {
+  case 1:
+    proglet.signal1.setSignal(n, (float) f, (float) a);
+    break;
+  case 2:
+    proglet.signal2.setSignal(n, (float) f, (float) a);
+    break;
+  case 3:
+    proglet.signal3.setSignal(n, (float) f, (float) a);
+    break;
+  }
 }
-/** Joue un enregistrement de son choix
+/** Joue un enregistrement de son choix.
  * @param path Nom de l'extrait
+ * @param f fr\u00e9quence de coupure du signal.
  */
-public static void playRecord(String path) {
+public static void playRecord(String path, double frequence) {  
   proglet.record1.setRecord(path);
-}
-/** Applique un filtre avec une fr\u00e9quence de coupure ajustable sur l'enregistrement de son choix
- * @param path Nom de l'extrait
- * @param f fr\u00e9quence de coupure du filtre (entre 100 et 10000, sinon rien)
- */
-public static void setFilter(String path, double fc) {
-  proglet.record1.setFilter(path, (float) fc);
+  proglet.record1.setFilter(path, (float) frequence);
 }
 /** Arr\u00eate l'\u00e9mission sonore. */
 public static void playStop() {
@@ -628,6 +636,6 @@ class signal {
   }
 }
   static public void main(String args[]) {
-    PApplet.main(new String[] { "--bgcolor=#FFFFFF", "ExplorationSonore" });
+    PApplet.main(new String[] { "--bgcolor=#DFDFDF", "ExplorationSonore" });
   }
 }

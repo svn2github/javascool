@@ -56,7 +56,7 @@ XSL = \
  $(shell find src -name '*.xslt')
 
 DOC = \
- $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(patsubst %.xml,%.htm,$(shell find src -name '*.xml')) $(patsubst %.xml,%.htm,$(shell find sketchbook -name '*.xml'))
+ $(patsubst %.fig,%.png,$(shell find src -name '*.fig')) $(patsubst %.xml,%.htm,$(shell find src -name '*.xml' \( \! -name 'about-pro-proglets.xml' \))) $(patsubst %.xml,%.htm,$(shell find sketchbook -name '*.xml'))
 
 JVS = \
   src/proglet/javaprog/FleurEnRythme.jvs
@@ -107,6 +107,8 @@ htm : $(DOC)
 
 %.htm : %.xml src/org/javascool/hdoc2htm.xslt
 	@java -jar lib/saxon.jar -o $@ $^
+
+
 
 src/org/javascool/hdoc2htm.xslt : src/org/javascool/hml2htm.xslt
 	@touch $@
@@ -213,9 +215,6 @@ aps:
 
 wpub: jar spub api wraz
 	@php -l www/index.php ; rm -f www/*~
-	@$(MAKE) wsync
-
-wsync :
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php --exclude javascool.jar www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
 	 2>&1 | grep -v '^rsync: failed to set'
 	@-rsync --rsh='ssh -C' www/index.php scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/.htindex.php
@@ -396,7 +395,7 @@ done :
 #:: make htm          : Build the documentation files
 #:: make jar          : Build the java jar
 #:: make api          : Build the java doc
-#:: make api          : Rebuild source files after a java doc build failure
+#:: make aps          : Rebuild source files after a java doc build failure
 #:: make wpub         : Publish the present document release on the web site
 #:: make jpub         : Publish the present javascool.jar release on the web site
 #:: make wraz         , Clears the web site cache

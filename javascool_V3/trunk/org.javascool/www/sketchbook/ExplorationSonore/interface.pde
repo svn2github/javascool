@@ -128,16 +128,11 @@ public static void playSignal(int c, String n, double f, double a) {
 }
 /** Joue un enregistrement de son choix.
  * @param path Nom de l'extrait
+ * @param f fréquence de coupure du signal.
  */
-public static void playRecord(String path) {
+public static void playRecord(String path, double frequence) {  
   proglet.record1.setRecord(path);
-}
-/** Applique un filtre avec une fréquence de coupure ajustable sur l'enregistrement de son choix.
- * @param path Nom de l'extrait
- * @param f fréquence de coupure du filtre (entre 100 et 10000, sinon rien)
- */
-public static void setFilter(String path, double fc) {
-  proglet.record1.setFilter(path, (float) fc);
+  proglet.record1.setFilter(path, (float) frequence);
 }
 /** Arrête l'émission sonore. */
 public static void playStop() {

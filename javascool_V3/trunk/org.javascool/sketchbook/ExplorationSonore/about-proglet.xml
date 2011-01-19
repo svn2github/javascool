@@ -16,11 +16,10 @@
       <p><c>amplitude</c> est l'amplitude, à choisir entre 0 (silence) et 1 (100% du volume sonore).</p>
     </div><div class="code">
     <m>Lancer un signal enregistré:</m>
-    <p><r>ExplorationSonore.playRecord</r>(<r>String</r> location, <r>double</r> frequence, <r>double</r> amplitude)</p>
+    <p><r>ExplorationSonore.playRecord</r>(<r>String</r> location, <r>double</r> frequence)</p>
     </div>où: <div class="ul">
       <p><c>location</c> désigne le chemin de l'enregistrement sonore (par exemple: <c>../data/music/Ahmed_Ex2.wav</c>).</p>
       <p><c>frequence</c> est la fréquence de coupure en Hz, qui élimine les aigues, à choisir entre 100 et 8000.</p>
-      <p><c>amplitude</c> est l'amplitude, à choisir entre 0 (silence) et 1 (100% du volume sonore).</p>
     </div>Si l'argument <c>location</c> n'est pas spécifié un sélecteur de fichier s'ouvre.<div class="code">
     <m>Arrêter une émission sonore:</m>
     <p><r>ExplorationSonore.playStop</r>()</p>

@@ -1,5 +1,5 @@
 <div class="sujet" title="Un tutoriel sur les signaux sonores"> 
-  <div class="margin">Voir aussi l'<l link="activite-unplug.htm" text="activité «unplug»"/> (sans programmation)</div>
+  <div class="margin">Voir aussi l'<l link="activites-unplug.htm" text="activité «unplug»"/> (sans programmation)</div>
   <div class="objectif">
     Le but de ce tutoriel est <div class="ul">
       <p>d'apprendre à programmer des sons, c'est à dire une séquence de signaux sonores périodiques, </p>
@@ -52,7 +52,7 @@
         <p>Choisir une musique ou un son de votre choix (quelques secondes) et créer un programme d'une ligne avec l'instruction <r>playRecord</r> 
         décrite <l link="about-proglet.htm" text="ici"/> pour le lancer.</p>
         <p>Utiliser manuellement l'interface pour ajuster la fréquence de coupure des sons aigus et l'amplitude du signal afin de voir comment créer l'effet sonore 
-        du son original ou assourdi.</p>
+/        du son original ou assourdi.</p>
         <p>Utiliser ensuite la fonction <r>playStop</r> et la fonction:
           <div class="center"><b><r>void</r> <c>sleep</c>(<r>int</r> duree)</b> Arrête l'exécution du programme pendant une durée fixée donnée en milli-secondes.</div>
           pour créer un petit programme qui va émettre votre son "porte ouverte" (sans fréquence de coupure ni atténuation) pendant 3-4 secondes puis 
