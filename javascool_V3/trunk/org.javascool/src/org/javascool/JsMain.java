@@ -58,7 +58,7 @@ public class JsMain extends JApplet {
   /**/public JsMain() {}
   private static final long serialVersionUID = 1L;
 
-  static final String title = "Java'Scool 3.2-beta";
+  static final String title = "Java'Scool 3.2";
 
   // [0] Defines the look and field.
   static {

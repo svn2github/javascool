@@ -32,6 +32,12 @@
 
   <p>Effectuer le <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/doc-files/TirageAleatoireSurSegment.jvs.html" text="calcul d'une surface par tirages aléatoires de points"/></p>
 
+  <p>Découvrir les algorithmes de tri avec un sujet «unplugged» de préparation sur les 
+     <l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/lucaud-algo-tri.odt" text="algorithmes de tri et la gestion des variables"/> 
+    (<l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/lucaud-algo-tri.pdf" text="pdf"/>) et des exemples de programme de tri 
+     de <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/dichotomie/doc-files/Tri_trois_nombres.jvs.html" text="trois valeurs"/> et de 
+     <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/dichotomie/doc-files/Tri_plusieurs_nombres.jvs.html" text="plusieurs valeurs"/>.</p>
+
   </div></div>
      
   <div title="Quelques sujets «unplugged» (sans ordinateur):"><div class="ul">
@@ -54,6 +60,8 @@
     (<l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/larrieu-devoir-maison-1.pdf" text="pdf"/>)</p>
 
   </div></div>
+
+
 
   <p>Avec le <l link="../../ingredients/doc-files/index.htm" text="parcours"/>  pour s'initier à la programmation, 
   elles permettent de couvrir le programme de 2nd en algorithmique.</p>

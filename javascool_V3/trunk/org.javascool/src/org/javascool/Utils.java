@@ -130,7 +130,7 @@ public class Utils {
     try {
       if(location.matches("(file|ftp|http|https|jar|mailto|stdout):.*"))
         return new URL(location);
-      URL url = Main.class .getClassLoader().getResource(location);
+      URL url = JsMain.class .getClassLoader().getResource(location);
       if(url != null)
         return url;
       File file = new File(location);
@@ -242,7 +242,7 @@ public class Utils {
         clip = null;
       }
       if(location != null) {
-        clip = Main.newAudioClip(new URL(location));
+        clip = JsMain.newAudioClip(new URL(location));
         clip.play();
       }
     } catch(IOException e) { throw new RuntimeException(e + " when playing: " + location);
