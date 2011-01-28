@@ -1,3 +1,4 @@
+// Ce programme est proposé par Philippe Lucaud <philucpro@yahoo.fr>, professeur de mathématiques au lycée Audiberti d'Antibes, classe de 2nd option informatique
 
 void main() {
    println ("Ce programme va vous permettre de trier une liste de nombres entiers et de les ranger par ordre croissant");
@@ -6,7 +7,7 @@ void main() {
    println("Entrez le nombre de valeurs contenues dans votre liste :");
    int n = readInteger();
    println("");
-   println ("Vous allez maintenant rentrer les valeurs une � une.");
+   println ("Vous allez maintenant rentrer les valeurs une à une.");
    sleep(2500);
    int X[ ] = new int[n];
    for(int i = 0; i < X.length; i++) {

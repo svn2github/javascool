@@ -1,8 +1,9 @@
+// Ce programme est proposé par Philippe Lucaud <philucpro@yahoo.fr>, professeur de mathématiques au lycée Audiberti d'Antibes, classe de 2nd option informatique
 
 void main() {
    int c = 0;
    println("Ce programme choisit au hasard deux points A et B sur le segment [0,1] et calcule la distance AB.");
-   println(" Sicelle-ci est supérieure à 0,5, on place un point vert, sinon on place un point violet.");
+   println("Si celle-ci est supérieure à 0,5, on place un point vert, sinon on place un point violet.");
    sleep(2000);
    clear();
    //Définition de la fenètre, tracé du carré

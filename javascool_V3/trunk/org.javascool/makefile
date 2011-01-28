@@ -213,7 +213,7 @@ aps:
 
 # Web site files publication
 
-wpub: jar spub api wraz
+wpub: jar api wraz
 	@php -l www/index.php ; rm -f www/*~
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php --exclude javascool.jar www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
 	 2>&1 | grep -v '^rsync: failed to set'
