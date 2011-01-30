@@ -38,10 +38,9 @@ void main() {
        int res2  = (int) res1; 
        double resultat = res1 / Math.pow(10, precision); 
        println("Le resultat approché  est : " + resultat);
-       /* Le langage permet aussi de dire directement
-	  double quotient = (double) nombre / diviseur; 
-	  System.out.printf("Le resultat approché est : %."+precision+"f", quotient);
-       */
+       // Le langage permet aussi d'écrire directement:
+       // - double quotient = (double) nombre / diviseur; 
+       // - System.out.printf("Le resultat approché est : %."+precision+"f", quotient);
      }
      else {
        println("\nVous n'avez pas fait le bon choix: il fallait taper soit 1 soit 2 !");

@@ -83,7 +83,7 @@ wui :
 
 # Exports the applets without using the GUI (NOT YET AVAILABLE)
 
-export :
+aexport :
 	@rm -rf */applet
 	@for f in $(PROGLETS) ; do cd $(P_HOME) ; java processing.app.Commander --build --sketch=$(PWD)/$$f --output=$(PWD)/$$f/applet ; done
 

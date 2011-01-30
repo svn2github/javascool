@@ -108,8 +108,6 @@ htm : $(DOC)
 %.htm : %.xml src/org/javascool/hdoc2htm.xslt
 	@java -jar lib/saxon.jar -o $@ $^
 
-
-
 src/org/javascool/hdoc2htm.xslt : src/org/javascool/hml2htm.xslt
 	@touch $@
 
@@ -213,7 +211,7 @@ aps:
 
 # Web site files publication
 
-wpub: jar api wraz
+wpub: jar spub api wraz
 	@php -l www/index.php ; rm -f www/*~
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php --exclude javascool.jar www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
 	 2>&1 | grep -v '^rsync: failed to set'
