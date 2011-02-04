@@ -1,4 +1,0 @@
-
-void main() {
- ExplorationSonore.playRecord("/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/sketchbook/ExplorationSonore/data/music/Ahmed_Ex1.wav", 8000);
-}

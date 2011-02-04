@@ -25,7 +25,7 @@ void main() {
       B = F;
       C = G;
    }
-   else if (A < C && C < B){
+   else if (C < B){
       double D = B;
       B = C;
       C = D;

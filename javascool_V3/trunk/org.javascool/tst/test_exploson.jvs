@@ -1,5 +1,0 @@
-
-void main() {
-   ExplorationSonore.playSignal("square", 1000, 0.8);
-   sleep(10);
-}

@@ -32,7 +32,7 @@
   </p>
 
   <div class="notes">
-    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/dichotomie/doc-files/Dichotomie.html" text="documentée"/> pour sa libre redistribution, l'accès <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/dichotomie/doc-files/Dichotomie.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/dichotomie/Dichotomie.html" text="documentée"/> pour sa libre redistribution, l'accès <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/dichotomie/Dichotomie.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
     <div id="2">La liste de tous les pays est stockée dans le tableau <c><r>String</r> proglet.dichotomie.pays[]</c>, à disposition du programmeur, 
     qui souhaite travailler à partir d'un tableur.</div>
   </div>

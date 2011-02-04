@@ -27,7 +27,7 @@
       <p><c>x</c> est l'abscisse du spot.</p>
       <p><c>y</c> est l'ordonnée du spot.</p>
       <p><c>d1</c> est la dimension1 à la base du spot.</p>
-      <p><c>d2</c> est la dimension2 à la base du spot.</p>
+      <p><c>d2</c> est la dimension2 à la baseau sommet du spot.</p>
       <p><c>h</c> est la hauteur du spot.</p>
     </div><div class="code">
     <m>Obtenir un spot à partir d'une position 2D:</m>
@@ -60,13 +60,6 @@
       <p><c>nA</c> est le nom du premier spot du lien considéré.</p>
       <p><c>nB</c> est le nom du second spot du lien considéré.</p>
       <p><c>a</c> est la réponse à la question "Les spots nA et nB sont-ils en lien?", soit "vrai" soit "faux", qui est renvoyée.</p>
-      </div><div class="code">
-      <m>Obtenir le poids d'un lien entre deux spots:</m>
-    <p><r>double</r> p = <r>EnVoiture.getLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
-    </div>où: <div class="ul">
-      <p><c>nA</c> est le nom du premier spot du lien considéré.</p>
-      <p><c>nB</c> est le nom du second spot du lien considéré.</p>
-      <p><c>p</c> est le poids du lien entre les spots nA et nB, qui est renvoyé.</p>
       </div>
   </p>
       

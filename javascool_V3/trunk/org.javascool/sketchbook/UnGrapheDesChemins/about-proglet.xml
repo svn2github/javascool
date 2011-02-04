@@ -41,10 +41,11 @@
       <p><c>Listn_</c> est le tableau des noms des noeuds en lien avec le noeud spécifique n, qui est renvoyé.</p>
       </div><div class="code">
     <m>Ajouter ou modifier un lien existant entre deux noeuds:</m>
-    <p><r>UnGrapheDesChemins.addLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
+    <p><r>UnGrapheDesChemins.addLink</r>(<r>String</r> nA, <r>String</r> nB, <r>double</r> p)</p>
     </div>où: <div class="ul">
       <p><c>nA</c> est le nom du premier noeud.</p>
       <p><c>nB</c> est le nom du second noeud.</p>
+      <p><c>p</c> est le poids du lien.</p>
       </div><div class="code">
       <m>Détruire un lien existant entre deux noeuds:</m>
     <p><r>UnGrapheDesChemins.removeLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
@@ -75,7 +76,6 @@
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/UnGrapheDesChemins.pde.html" text="UnGrapheDesChemins"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Graph.pde.html" text="Graph"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Node.pde.html" text="Node"/></p>
-      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Link.pde.html" text="Link"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Link.pde.html" text="Link"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/HScrollbar.pde.html" text="HScrollbar"/></p>
     </p></div>

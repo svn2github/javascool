@@ -46,7 +46,7 @@
   </p>
 
   <div class="notes">
-    <div id="1">Cette proglet un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/doc-files/CurveDisplay.html" text="documenté"/> 
-    pour sa libre redistribution, l'accès <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/doc-files/CurveDisplay.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/CurveDisplay.html" text="documenté"/> 
+    pour sa libre redistribution, l'accès <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/CurveDisplay.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>

@@ -52,7 +52,7 @@
   </p>
 
   <div class="notes">
-    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/pixelsetcie/doc-files/ImageDisplay.html" text="documentée"/> 
-    pour sa libre redistribution, l'accès <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/pixelsetcie/doc-file/ImageDisplay.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/pixelsetcie/ImageDisplay.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/pixelsetcie/ImageDisplay.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
   </div>
 </div>
