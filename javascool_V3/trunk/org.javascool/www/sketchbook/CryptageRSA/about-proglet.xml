@@ -39,7 +39,6 @@
     programmée en <l link="http://processing.org" text="Processing"/> et disponible sous forme de code documenté:
     <div class="table"><p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/CryptageRSA/CryptageRSA.pde.html" text="CryptageRSA"/></p>
-      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/CryptageRSA/interface.pde.html" text="interface"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/CryptageRSA/fonctions.pde.html" text="fonctions"/></p>
     </p></div>
     pour permettre des développements dérivés.</div>

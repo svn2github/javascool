@@ -1,0 +1,41 @@
+// Programme exemple d'usage de la proglet
+
+// Génération d'un parterre de cinq nodes Nord Sud Est Ouest Centre
+String nodes[] = {"Nord", "Sud",  "Est", "Ouest", "Centre"};
+
+void build() {
+  UnGrapheDesChemins.addNode("Nord",  0, 100);
+  UnGrapheDesChemins.addNode("Est",   100, 0);
+  UnGrapheDesChemins.addNode("Ouest", 0, 100);
+  UnGrapheDesChemins.addNode("Sud",   100, 0);
+  UnGrapheDesChemins.addNode("Centre", 0, 0);
+  UnGrapheDesChemins.addLink("Nord", "Est", 1);
+  UnGrapheDesChemins.addLink("Sud", "Est", 2);
+  UnGrapheDesChemins.addLink("Nord", "Ouest", 3);
+  UnGrapheDesChemins.addLink("Sud", "Ouest", 4);
+  UnGrapheDesChemins.addLink("Sud", "Centre", 5);
+  UnGrapheDesChemins.addLink("Nord", "Centre", 6);
+}
+
+// Affichage des connections
+
+void dump(String what) {
+  println("Etat du graphe "+what);
+  for (String node1 : nodes) 
+    for (String node2 : nodes)
+      if (UnGrapheDesChemins.isLink(node1, node2))
+	println("Les nodes "+node1+" et "+node2+" sont connectés avec un poids de "+UnGrapheDesChemins.getLink(node1, node2));
+}
+
+void main() {
+  // Parterre initial
+  build();
+  dump("initial");
+  println("Le node le plus prêt de (10, 10) est le "+UnGrapheDesChemins.getClosestNode(10, 10));
+  println("Le node le plus prêt de (50, 50) est le "+UnGrapheDesChemins.getClosestNode(50, 50));
+  // On détruit un node et un lien
+  UnGrapheDesChemins.removeNode("Centre");
+  UnGrapheDesChemins.removeLink("Nord", "Ouest")String nA, String nB) 
+  dump("amputé");
+}
+

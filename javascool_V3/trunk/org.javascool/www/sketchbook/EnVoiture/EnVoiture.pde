@@ -451,7 +451,7 @@ void keyPressed() {
  * @param x Abcisse du spot.
  * @param y Ordonnée du spot.
  * @param d1 dimension1 à la base du spot.
- * @param d2 dimension2 à la base du spot.
+ * @param d2 dimension2 au sommet du spot.
  * @param h hauteur du spot.
  */
 
