@@ -1,0 +1,145 @@
+h2{
+	font-family: Georgia,'Times New Roman',serif;
+	line-height: normal;
+	font-weight: bold;
+	font-size:20px;
+	text-align:left;
+	border-bottom: groove 2px;
+}
+
+
+a{
+	text-decoration:none;
+}
+
+a.img{
+	text-decoration:none;
+}
+
+
+/*style for the menu*/
+
+div.menu{
+	height:33px;
+	margin:0px;
+	padding:5px;	
+}
+
+div.menu a{
+	background:transparent url("./images/nav_divider.gif") no-repeat scroll left center;
+	border-color:#FFFFFF;
+	border-width:0px;
+	color:#2E2C51;
+	padding:0pt 5px 0pt 10px;
+	text-decoration:none;
+	font-weight:bold;
+	font-size:12px;
+	text-transform:uppercase;
+}
+
+div.menu ul{
+	margin:0px;
+	padding:0px;
+	float:left;
+}
+
+div.menu ul li{
+	float:left;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	padding:0pt 15px 0pt 20px;
+	margin-top:6px;
+}
+
+/*******************************/
+/*** style for content page ****/
+div.content{
+	text-align:justify;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+
+/*style for foot page*/
+div.footer {
+	font-family: Verdana, arial, sans-serif;
+	font-size: 10px;
+	font-weight: normal;	
+	line-height: normal;
+	
+}
+
+
+
+/*********************************the style of boxs************************************************/
+
+/****************************/
+/*   Style for black box    */
+/****************************/
+div.blackbox_left{background: transparent url("./images/black_left.png") repeat-y left;}
+div.blackbox_right{background: transparent url("./images/black_right.png") repeat-y right;}
+div.blackbox_top {background: transparent url("./images/black_top.png") repeat-x left top}
+div.blackbox_top_r {background: transparent url("./images/black_top_left.png") no-repeat left top;}
+div.blackbox_top_l{background: transparent url("./images/black_top_right.png") no-repeat right top;}
+div.blackbox_bottom{background: transparent url("./images/black_bottom.png") repeat-x left bottom;}
+div.blackbox_bottom_r {background: transparent url("./images/black_bottom_left.png") no-repeat left bottom;}
+div.blackbox_bottom_l{background: transparent url("./images/black_bottom_right.png") no-repeat right bottom;}
+
+div.blackbox_bottom_l div {
+	padding:5px;
+	padding-left:20px;
+	padding-right:20px;
+	color:#FFFFFF;
+}
+
+
+
+/****************************/
+/*   Style for white box    */
+/****************************/
+div.whitebox_left{background: transparent url("./images/white_left.png") repeat-y left;}
+div.whitebox_right{background: transparent url("./images/white_right.png") repeat-y right;}
+div.whitebox_top {background: transparent url("./images/white_top.png") repeat-x left top}
+div.whitebox_top_r {background: transparent url("./images/white_top_left.png") no-repeat left top;}
+div.whitebox_top_l{background: transparent url("./images/white_top_right.png") no-repeat right top;}
+div.whitebox_bottom{background: transparent url("./images/white_bottom.png") repeat-x left bottom;}
+div.whitebox_bottom_r {background: transparent url("./images/white_bottom_left.png") no-repeat left bottom;}
+div.whitebox_bottom_l{background: transparent url("./images/white_bottom_right.png") no-repeat right bottom;}
+
+
+div.whitebox_bottom_l div {
+	font-family: Verdana, arial, sans-serif;
+	font-size: 10px;
+	font-weight: normal;	
+	line-height: normal;
+	padding:5px;
+	padding-left:20px;
+	padding-right:10px;
+}
+
+/****************************/
+/*   Style for grey box    */
+/****************************/
+div.greybox_left{background: transparent url("./images/grey_left.png") repeat-y left;}
+div.greybox_right{background: transparent url("./images/grey_right.png") repeat-y right;}
+div.greybox_top {background: transparent url("./images/grey_top.png") repeat-x left top}
+div.greybox_top_r {background: transparent url("./images/grey_top_left.png") no-repeat left top;}
+div.greybox_top_l{background: transparent url("./images/grey_top_right.png") no-repeat right top;}
+div.greybox_bottom{background: transparent url("./images/grey_bottom.png") repeat-x left bottom;}
+div.greybox_bottom_r {background: transparent url("./images/grey_bottom_left.png") no-repeat left bottom;}
+div.greybox_bottom_l{background: transparent url("./images/grey_bottom_right.png") no-repeat right bottom;}
+
+
+div.greybox_bottom_l div {
+	font-family: Verdana, arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;	
+	line-height: normal;
+	padding:5px;
+	padding-left:20px;
+	padding-right:20px;
+}
+div.greybox_bottom_r center {
+	padding-bottom:20px;
+}

@@ -79,9 +79,9 @@ if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { passthru("rm
 <meta http-equiv="Content-Script-Type" content="text/javascript" /> 
 <meta http-equiv="Content-Language" content="fr" /> 
 <meta name="robots" content="index,follow" /> 
-<link rel="shortcut icon" href="images/icon_js.png"/>
-<link href="styles/style.css" type="text/css" rel="stylesheet" /> 
-<link href="styles/style_menu_right.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="index/images/icon_js.png"/>
+<link href="index/style.css" type="text/css" rel="stylesheet" /> 
+<link href="index/style_menu_right.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -105,8 +105,8 @@ if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { passthru("rm
             <div class="greybox_bottom">
               <div class="greybox_bottom_l">
                 <div class="greybox_bottom_r"><div align="center">
-                  <a href="index.php"><img src="images/logo.gif" width="50%" align="center" alt="logo java's Cool" border="0"></a>
-                   <img src="images/logo_lycees.jpg" width="30%" align="right" alt="Avec les lycées de PACA" border="0"></a>
+                  <a href="index.php"><img src="index/images/logo.gif" width="50%" align="center" alt="logo java's Cool" border="0"></a>
+                   <img src="index/images/logo_lycees.jpg" width="30%" align="right" alt="Avec les lycées de PACA" border="0"></a>
                 </div></div> 
               </div>
             </div>
@@ -185,15 +185,15 @@ if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { passthru("rm
               <div class="greybox_bottom_r">
                   <table class="" width="100%"><tr>
                     <td width="20%" align="center" valign="middle">
-                      <a href="http://www.unisciel.fr"><img width="90%" src="images/logo_unisciel.png" alt="logo UNISCIEL" border="0"></a></td>
+                      <a href="http://www.unisciel.fr"><img width="90%" src="index/images/logo_unisciel.png" alt="logo UNISCIEL" border="0"></a></td>
                     <td width="20%" align="center" valign="middle">
-                      <a href="http://www.fuscia.info"><img width="90%" src="images/logo_fuscia.gif" alt="logo FUSCIA" border="0"></a></td>
+                      <a href="http://www.fuscia.info"><img width="90%" src="index/images/logo_fuscia.gif" alt="logo FUSCIA" border="0"></a></td>
                     <td width="20%" align="center" valign="middle">
-                      <a href="http://www.linux-azur.org"><img width="90%" src="images/logo_linuxazur.png" alt="logo LINUXAZUR" border="0"></a></td>
+                      <a href="http://www.linux-azur.org"><img width="90%" src="index/images/logo_linuxazur.png" alt="logo LINUXAZUR" border="0"></a></td>
                     <td width="20%" align="center" valign="middle">
-                      <a href="http://unice.fr"><img width="90%" src="images/logo_unice.gif" alt="logo UNS" border="0"></a></td>
+                      <a href="http://unice.fr"><img width="90%" src="index/images/logo_unice.gif" alt="logo UNS" border="0"></a></td>
                     <td width="20%" align="center" valign="middle">
-                      <a href="http://www.inria.fr/sophia"><img width="90%" src="images/logo_inria.gif" alt="logo INRIA" border="0"></a></td>
+                      <a href="http://www.inria.fr/sophia"><img width="90%" src="index/images/logo_inria.gif" alt="logo INRIA" border="0"></a></td>
 		    <td></td><td></td>
                   </tr></table>
                   <center>&nbsp;&copy;&nbsp; Java's Cool 2008 - 2010.</center>

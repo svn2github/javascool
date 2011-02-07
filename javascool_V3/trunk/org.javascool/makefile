@@ -30,11 +30,11 @@ svn: clean
 	@svn up ; svn ci -m '' ; svn status
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java .http.root www/.htcache lib/js-manifest.mf www/api www/javascool.jar www/sources.zip sketchbook/*/applet
+	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java lib/js-manifest.mf www/api www/javascool.jar www/sources.zip sketchbook/*/applet
 
 #####################################################################################################################################
 
-# Creation of a signed jar for standalone applications integrating the jdk5 classes
+# Creation of a signed jar for standalone applications integrating the jdk classes
 
 jar : htm www/javascool.jar
 
@@ -63,7 +63,7 @@ JVS = \
 
 CP=src:lib/tools.zip:lib/saxon.jar
 
-# Compiles the java classes using the default jdk5 and builds the certified jar
+# Compiles the java classes using the default jdk and builds the certified jar
 
 www/javascool.jar : makefile lib/tools.zip lib/saxon.jar lib/sketchbook.zip lib/js-manifest.mf $(SRC) $(JVS) htm
 	@echo "make $@"
@@ -73,7 +73,7 @@ www/javascool.jar : makefile lib/tools.zip lib/saxon.jar lib/sketchbook.zip lib/
 	@rm -rf tmp ; svn -q export src tmp 
 	@for f in `find src -name '*.class'` ; do cp $$f `echo $$f | sed 's/^src/tmp/'` ; done
 	@cp lib/js-manifest.mf tmp/org/javascool
-	@# + The jdk5 compiler classes
+	@# + The jdk compiler classes
 	@unzip -qod tmp lib/tools.zip 
 	@# + The saxon transformer classes
 	@unzip -qod tmp lib/saxon.jar
@@ -275,32 +275,7 @@ jinstall :
 wlog:
 	@firefox http://javascool.gforge.inria.fr/log
 
-ifeq ($(USER), philien)
-
-# Install the jdk 5 for philien
-
-jdk5deb:
-	@wget http://www.philien.fr/jdoc/jdk-1_5_0_22-linux-i586.bin -O jdk5install.bin -q
-	@sudo chmod +x ./jdk5install.bin
-	@sudo ./jdk5install.bin
-	@sudo mkdir -p /usr/java/
-	@sudo cp -r ./jdk1.5.0_22 /usr/java/
-	@sudo rm ./jdk1.5.0_22/ -r
-	@sudo rm ./jdk5install.bin
-
-endif
-
 ifeq ($(USER), vthierry)
-
-# This is used in case of emergency
-
-all : jpub wpub svn
-
-# This is used to test www/index.php in local mode
-
-php:
-	@php -l www/index.php
-	@make -f /home/vthierry/Work/enas/src/yava/makefile.http ROOT=`pwd`/www PAGE=index.php?page=api:org/javascool/package-summary.html show
 
 # This is a remainder about what has been used to set the web site on v3
 
@@ -418,9 +393,5 @@ done :
 #:
 #: [3.2] Java development tools: java javac jarsigner javadoc keytool
 #: > (apt-get|yum) java-1.6.0-openjdk-devel java-1.6.0-openjdk-javadoc
-#: while we still need the JDK5, i.e.:
-#: > cd /usr/java ; ./jdk-1_5_0_22-linux-i586.bin
-#: or (to be validated):
-#: > (apt-get|yum) install java-1.5.0-gcj-devel
 #:
 #####################################################################################################################################

@@ -21,7 +21,7 @@ import java.net.URLClassLoader;
 
 /** This factory defines how a Jvs code is translated into a Java code and compiled.
  * The goal of the Jvs syntax is to ease the syntax when starting to program in an imperative language, like Java.
- * <p>- This factory calls the java compiler as in the jdk5 (and earlier) case. It is designed to be used in standalone mode.</p>
+ * <p>- This factory calls the java compiler as in the jdk5 (and earlier) case, but still works with jdk6. It is designed to be used in standalone mode.</p>
  * @see <a href="Jvs2Java.java.html">source code</a>
  * @serial exclude
  */
@@ -204,7 +204,7 @@ public class Jvs2Java {
   private static String jpath, jclass;
 
   /** Compiles a Java code source.
-   * <div>The jdk5 <tt>tool.jar</tt> must be in the path.</div>
+   * <div>The jdk <tt>tool.jar</tt> must be in the path.</div>
    * @param path The file path to compile.
    * @return An empty string if the compilation succeeds, else the error message's text.
    *
