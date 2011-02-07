@@ -104,7 +104,7 @@
    </div>
 
    <div title="Le problème mathématique sous-jacent: trouver le zéro d'une fonction monotone dans un intervalle">
-     <p>Tous ces problèmes sont reliés au problème mathématique suivant: résoudre une équation de la forme <c>f(x) = 0, min &lt; x &lt; xmax</c>,
+     <p>Tous ces problèmes sont reliés au problème mathématique suivant: résoudre une équation de la forme <c>f(x) = 0, min &lt; x &lt; max</c>,
      où <c>f()</c> est une fonction continue monotone dans l'intervalle <c>[min, max]</c> donc a au plus une solution, puisque bijection vers un intervalle réel.</p>
      <p>Si elle change de signe dans cet intervalle <c>f(min) f(max) &lt; 0</c> et elle a une solution unique.</p>
      <p>C'est le cas par exemple de la fonction <c>sin(x)</c> dans l'intervalle <c>[2, 4]</c> où elle s'annule en Pi, comme le montre la figure ci-dessous:
