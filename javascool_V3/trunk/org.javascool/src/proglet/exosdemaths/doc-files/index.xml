@@ -30,7 +30,14 @@
 
   <p>Expérimenter la différence entre <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/doc-files/QuotientEntierEtFlottant.jvs.html" text="calcul en nombre entiers et flottants"/></p>
 
+  <p>Effectuer le <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/doc-files/Parallelogramme.jvs.html" text="calcul du 4ème point d'un parallélogramme"/>avec 
+     <l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/lucaud-parallelogramme.odt" text="un sujet «unplugged» de préparation"/> 
+    (<l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/lucaud-parallelogramme.pdf" text="pdf"/>)</p>
+
   <p>Effectuer le <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/exosdemaths/doc-files/TirageAleatoireSurSegment.jvs.html" text="calcul d'une surface par tirages aléatoires de points"/></p>
+
+  <p>Découvrir les méthodes de   <l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/lucaud-montecarlo.odt" text="calcul par tirage aléatoire (dites de Monte-Carlo)"/> 
+    (<l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/lucaud-montecarlo.pdf" text="pdf"/>)</p>
 
   <p>Découvrir les algorithmes de tri avec un sujet «unplugged» de préparation sur les 
      <l link="http://javascool.gforge.inria.fr/v3/documents/sujets-mathinfo/lucaud-algo-tri.odt" text="algorithmes de tri et la gestion des variables"/> 

@@ -4,7 +4,6 @@
   	Ces liens peuvent être orientés, d'un point vers un autre ou vice versa. Dans le cas contraire, les liens sont symétriques, et le graphe est non-orienté. 
   	Généralement, les points sont appelés les sommets ou les nœuds. Les liens sont appelés arêtes dans les graphes non-orienté 
     et arcs dans un graphe orienté.</p>
-        <p>Voir les notes d'<l link="http://javascool.gforge.inria.fr/v3/sketchbook/UnGrapheDesChemins/Introduction-aux-graphes.pdf" text="introduction aux graphes"/> pour permettre de comprendre le contexte historique.</p>
     <p>Le but est de cette applete est de s’approprier les différents éléments caractéristiques d’un graphe, 
     en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin.</p>
     <p>Si la première partie de ce tutoriel <l link="../EnVoiture/activites-unplug.xml" text="En Voiture"/> visait uniquement à introduire la notion de graphe avec un cas concret de parcours d'une voiture,
