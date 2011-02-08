@@ -292,6 +292,12 @@ wv3 :
 	@rsync --rsh='ssh -C' tmp.php facets.inria.fr:javascool/index.php ; rm tmp.php
 	@firefox http://facets.inria.fr/javascool
 
+
+wlocal : 
+	@/bin/rm -rf /usr/local/javascool/www
+	@echo wget -q -nH -r -l 0 -k -p -P /usr/local/javascool/www http://javascool.gforge.inria.fr
+
+
 endif
 
 # Useful insuperable commands (to be used with MUCH care):
