@@ -1,4 +1,7 @@
+
 // Programme exemple d'usage de la proglet
+
+import java.math.BigInteger;
 
 void main() {
   // Alice crée une clé privée et une clé publique pour le codage et décodage de message

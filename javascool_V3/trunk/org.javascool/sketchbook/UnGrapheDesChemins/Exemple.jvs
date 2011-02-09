@@ -1,3 +1,4 @@
+
 // Programme exemple d'usage de la proglet
 
 // Génération d'un parterre de cinq nodes Nord Sud Est Ouest Centre
@@ -35,7 +36,6 @@ void main() {
   println("Le node le plus prêt de (50, 50) est le "+UnGrapheDesChemins.getClosestNode(50, 50));
   // On détruit un node et un lien
   UnGrapheDesChemins.removeNode("Centre");
-  UnGrapheDesChemins.removeLink("Nord", "Ouest")String nA, String nB) 
+  UnGrapheDesChemins.removeLink("Nord", "Ouest");
   dump("amputé");
 }
-

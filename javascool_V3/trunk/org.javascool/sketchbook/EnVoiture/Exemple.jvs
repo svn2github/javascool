@@ -1,3 +1,4 @@
+
 // Programme exemple d'usage de la proglet
 
 // Génération d'un parterre de cinq spots Nord Sud Est Ouest Centre
@@ -35,7 +36,6 @@ void main() {
   println("Le spot le plus prêt de (50, 50) est le "+EnVoiture.getClosestSpot(50, 50));
   // On détruit un spot et un lien
   EnVoiture.removeSpot("Centre");
-  EnVoiture.removeLink("Nord", "Ouest")String nA, String nB) 
+  EnVoiture.removeLink("Nord", "Ouest");
   dump("amputé");
 }
-

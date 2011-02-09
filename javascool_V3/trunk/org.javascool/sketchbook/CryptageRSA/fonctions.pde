@@ -108,7 +108,7 @@ static BigInteger decrypt(BigInteger c, BigInteger d, BigInteger n) {
 /** Créer une clé privée D et le couple de clé publiques (E, N).
  * @return Un tableau de 3 entiers avec les clés keys[] = {D, E, N};
  */
-static BigInteger[] createKeys() {
+public static BigInteger[] createKeys() {
   BigInteger[] Keys = new BigInteger[3];
 
   int pqSize = (int) (4 + 6 * Math.random());
@@ -134,7 +134,7 @@ static BigInteger[] createKeys() {
  * @param N clé publique.
  * @return Le message encrypté sous forme d'une suite de chiffres.
  */
-static BigInteger encrypt(String m, BigInteger E, BigInteger N) {
+public static BigInteger encrypt(String m, BigInteger E, BigInteger N) {
   BigInteger EncMessBits = null;
 
   BigInteger MessBits = new BigInteger(m.getBytes());
@@ -147,7 +147,7 @@ static BigInteger encrypt(String m, BigInteger E, BigInteger N) {
  * @param k clés, publique et privée.
  * @return Le message décrypté.
  */
-static String decrypt(BigInteger m, BigInteger[] k) {
+public static String decrypt(BigInteger m, BigInteger[] k) {
   String decryptedMessage = null;
 
   BigInteger DecMessBits = decrypt(m, k[0], k[2]);
