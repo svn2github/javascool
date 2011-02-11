@@ -5,11 +5,11 @@
 String spots[] = {"Nord", "Sud",  "Est", "Ouest", "Centre"};
 
 void build() {
-  EnVoiture.addSpot("Nord",   0x000000, 'B', 0, 100, 20, 20, 20);
-  EnVoiture.addSpot("Est",    0xff00ff, 'P', 100, 0, 20, 10, 20);
-  EnVoiture.addSpot("Ouest",  0xffff00, 'O', 0, 100, 20, 20, 20);
-  EnVoiture.addSpot("Sud",    0x00ffff, 'C', 100, 0, 20, 30, 20);
-  EnVoiture.addSpot("Centre", 0xffffff, 'C', 0, 0, 20, 10, 20);
+  EnVoiture.addSpot("Nord",   0x000000, 'B', 0, 1000,  20, 20, 20);
+  EnVoiture.addSpot("Est",    0xff00ff, 'P', 1000, 0,  20, 10, 20);
+  EnVoiture.addSpot("Ouest",  0xffff00, 'O', -1000, 0, 20, 20, 20);
+  EnVoiture.addSpot("Sud",    0x00ffff, 'C', 0, 1000,  20, 30, 20);
+  EnVoiture.addSpot("Centre", 0xffffff, 'C', 0, 0,     20, 10, 20);
   EnVoiture.addLink("Nord", "Est");
   EnVoiture.addLink("Sud", "Est");
   EnVoiture.addLink("Nord", "Ouest");
@@ -17,6 +17,15 @@ void build() {
   EnVoiture.addLink("Sud", "Centre");
   EnVoiture.addLink("Nord", "Centre");
 }
+
+void unbuild() { 
+  UnVoiture.removeNode("Nord");
+  EnVoiture.removeNode("Sud");
+  EnVoiture.removeNode("Est");
+  EnVoiture.removeNode("Ouest");
+  EnVoiture.removeNode("Centre");
+}
+
 
 // Affichage des connections
 
@@ -29,13 +38,19 @@ void dump(String what) {
 }
 
 void main() {
+  unbuild();
+  sleep(2000);
   // Parterre initial
   build();
   dump("initial");
   println("Le spot le plus prêt de (10, 10) est le "+EnVoiture.getClosestSpot(10, 10));
   println("Le spot le plus prêt de (50, 50) est le "+EnVoiture.getClosestSpot(50, 50));
+  sleep(3000);
   // On détruit un spot et un lien
   EnVoiture.removeSpot("Centre");
   EnVoiture.removeLink("Nord", "Ouest");
   dump("amputé");
+  // On nettoie avant de finir
+  sleep(5000);
+  unbuild();
 }

@@ -28,7 +28,6 @@ class Trip {
    */
   Spot getSpot(String n) {
     Spot S_ = (Spot) spots.get(n);
-
     return S_;
   }
   /** Cherche spot plus proche d'une position.
@@ -61,11 +60,13 @@ class Trip {
    */
   void removeSpot(String n) {
     Spot S_ = (Spot) spots.get(n);
-    // retire tous les liens en relation avec le noeud
-    for(String ni_ : (Iterable<String> )spots.keySet())
-      removeLink(n, ni_);
-       // retire le noeud en question
-    spots.remove(n);
+    if (S_ != null) {
+      // retire tous les liens en relation avec le noeud
+      for(String ni_ : (Iterable<String> )spots.keySet())
+	removeLink(n, ni_);
+      // retire le noeud en question
+      spots.remove(n);
+    }
   }
   /** Ajoute ou modifie un lien entre deux spots
    * @param nA Premier spot du lien.
@@ -75,9 +76,11 @@ class Trip {
   void addLink(String nA, String nB) {
     Spot SA_ = (Spot) spots.get(nA);
     Spot SB_ = (Spot) spots.get(nB);
-    double p_ = dist(SA_.x, SA_.y, SB_.x, SB_.y) / 100;
-    SA_.links.put(nB, new Link(nA, nB, p_));
-    SB_.links.put(nA, new Link(nB, nA, p_));
+    if (SA_ != null && SB_ != null) {
+      double p_ = dist(SA_.x, SA_.y, SB_.x, SB_.y) / 100;
+      SA_.links.put(nB, new Link(nA, nB, p_));
+      SB_.links.put(nA, new Link(nB, nA, p_));
+    }
   }
   /** Détruit un lien entre deux spots si il existe.
    * @param nA Premier spot du lien.
@@ -98,12 +101,15 @@ class Trip {
    */
   boolean isLink(String nA, String nB) {
     Spot SA_ = (Spot) spots.get(nA);
-    // String ni_;
-    boolean link_ = false;
-    for(String ni_ : (Iterable<String> )SA_.links.keySet())
-      if(ni_.equals(nB))    // test si les deux string sont équivalents
-        link_ = true;
-    return link_;
+    if (SA_ != null) {
+      // String ni_;
+      boolean link_ = false;
+      for(String ni_ : (Iterable<String> )SA_.links.keySet())
+	if(ni_.equals(nB))    // test si les deux string sont équivalents
+	  link_ = true;
+      return link_;
+    } else
+      return false;
   }
   /** Donne le poids d'un lien entre deux spots.
    * @param nA Premier spot du lien.
@@ -111,11 +117,10 @@ class Trip {
    * @return Le poids du lien où 0 si il n'y a pas de lien.
    */
   double getLink(String nA, String nB) {
-    Spot SA_ = (Spot) spots.get(nA);
-    Link li_;
     double p_ = 0;
     if(isLink(nA, nB)) {
-      li_ = (Link) SA_.links.get(nB);
+      Spot SA_ = (Spot) spots.get(nA);
+      Link li_ = (Link) SA_.links.get(nB);
       p_ = li_.p;
     }
     return p_;
@@ -128,10 +133,12 @@ class Trip {
   double getDistance(String nA, String nB) {
     Spot SA_ = (Spot) spots.get(nA);
     Spot SB_ = (Spot) spots.get(nB);
-    double p_ = 0.0;
-    p_ = dist(SA_.x, SA_.y, SB_.x, SB_.y) / 100;
-
-    return p_;
+    if (SA_ != null && SB_ != null) {
+      double p_ = 0.0;
+      p_ = dist(SA_.x, SA_.y, SB_.x, SB_.y) / 100;
+      return p_;
+    } else 
+      return -1;
   }
   /**  Cherche spot intermédiaire entre sInit et sTarget tel que la distance entre sInit et sTarget soit minimal.
    * @param nInit Spot initial.
@@ -210,6 +217,8 @@ class Trip {
    * @param sEnd Spot final.
    */
   void dijkstra(String sStart, String sEnd) {
+    if (spots.get(sStart) == null || spots.get(sEnd) == null)
+      return;
     path.clear();
     println(" " + sStart + " à " + sEnd);
     for(String ni_ : (Iterable<String> )spots.keySet()) {

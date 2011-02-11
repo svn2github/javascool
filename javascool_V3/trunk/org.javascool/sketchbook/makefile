@@ -14,13 +14,6 @@ publish : htm
 	@cd ../www/sketchbook ; find . -name '@~' -exec rm {} \; ; for d in * ; do if [ -f $$d/$$d.jar ] ; then rsync --archive --exclude .svn/ ../../sketchbook/$$d . ; fi ; done
 # generates an index
 	@cp index.htm ../www/sketchbook/index.html
-# add new files to svn
-	@cd ../www/sketchbook ; svn -q add * */*.*
-
-# Beautifies a source code
-
-uncrust :
-	for f in `find . -name '*.pde'` ; do uncrustify -q -c ../lib/uncrustify.cfg --replace $$f ; done
 
 # Generates the javasccol processing.zip 
 
@@ -32,9 +25,10 @@ JARS = \
  /usr/java/processing-1.2.1/libraries/opengl/library/jogl.jar \
  $(patsubst %,../www/sketchbook/%/*.jar, $(PROGLETS))
 
-jar : ../lib/processing.zip
+jar : publish ../lib/processing.zip
 
 ../lib/processing.zip : $(JARS)
+	@echo 'build $@'
 	@rm -rf $@ tmp ; mkdir tmp 
 	@for j in $^ ; do unzip -qo $$j -d tmp ; done ; rm -rf tmp/META-INF
 	@cd tmp ; zip -9qr ../$@ *
@@ -46,6 +40,11 @@ htm : $(patsubst %.xml,%.htm,$(shell find . -name '*.xml'))
 
 %.htm : %.xml ../src/org/javascool/hdoc2htm.xslt
 	@java -jar ../lib/saxon.jar -o $@ $^
+
+# Beautifies all source codes
+
+uncrust :
+	for f in `find . -name '*.pde'` ; do uncrustify -q -c ../lib/uncrustify.cfg --replace $$f ; done
 
 # Signs a jar
 
@@ -70,14 +69,11 @@ J_HOME=$(P_HOME)/java
 export PATH:=$(J_HOME)/bin:$(PATH)
 export CLASSPATH=$(shell echo '$(J_HOME)/lib/tools.jar $(J_HOME)/jre/lib/rt.jar $(wildcard $(P_HOME)/lib/*.jar)' | sed 's/ /:/g')
 
-gui :
-	@rm -rf */applet
+gui : clean
 	@cd $(P_HOME) ; java processing.app.Base
 
-wui :
-	echo 'Fermer firefox avant de le lancer ici (bien s assurer d utiliser le java SUN plugin)'
-	echo 'Ref: http://wiki.inria.fr/sciencinfolycee/JavaScool:ProcessingLinux'
-	firefox ../www/sketchbook/index.html
+clean :
+	@rm -rf libraries */applet */Exemple.java
 
 #################################################################################################################
 
@@ -87,4 +83,4 @@ aexport :
 	@rm -rf */applet
 	@for f in $(PROGLETS) ; do cd $(P_HOME) ; java processing.app.Commander --build --sketch=$(PWD)/$$f --output=$(PWD)/$$f/applet ; done
 
-#See http://wiki.inria.fr/sciencinfolycee/JavaScool:ProcessingLinux for more infos
+# See: http://wiki.inria.fr/sciencinfolycee/JavaScool:ProcessingLinux for more infos

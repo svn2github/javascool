@@ -114,6 +114,7 @@ void drawSignal(String n) {
  * @param a amplitude du signal.
  */
 public static void playSignal(int c, String n, double f, double a) {
+  if (proglet == null) return;
   switch(c) {
   case 1:
     proglet.signal1.setSignal(n, (float) f, (float) a);
@@ -131,11 +132,13 @@ public static void playSignal(int c, String n, double f, double a) {
  * @param f fréquence de coupure du signal.
  */
 public static void playRecord(String path, double frequence) {  
+  if (proglet == null) return;
   proglet.record1.setRecord(path);
   proglet.record1.setFilter(path, (float) frequence);
 }
 /** Arrête l'émission sonore. */
 public static void playStop() {
+  if (proglet == null) return;
   proglet.StopAnySound();
 }
 static ExplorationSonore proglet;

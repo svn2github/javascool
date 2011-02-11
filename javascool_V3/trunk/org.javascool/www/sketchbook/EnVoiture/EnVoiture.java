@@ -58,7 +58,7 @@ Trip myTrip;
 Vec3D camOffset = new Vec3D(0, 100, 300);
 Vec3D eyePos = new Vec3D(0, 1000, 0);
 
-PFont Verdana, Arial;
+PFont ArialB;
 int gX, gY;
 int indN = 0;
 boolean mouseDown = false, info = false;
@@ -73,12 +73,13 @@ char[] form = { 'B', 'P', 'O', 'C' };
 
 public void setup() {
   size(900, 500, OPENGL);  // 1024, 576, OPENGL);
+  
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();
 
-  Verdana = loadFont("Verdana-48.vlw");
-  Arial = loadFont("ArialMT-48.vlw");
+  
+  ArialB = createFont("Arial Bold", 14, true);
 
   // Pour cr\u00e9er les 2 vues
   pgl = (PGraphicsOpenGL) g;
@@ -175,22 +176,22 @@ public void draw() {
 
   rotateY(-PI);
   if((distance != 0) && (abs((float) (distance - distanceC)) < 0.01f)) {
-    textFont(Arial, 10.0f);
+    textFont(ArialB, 10.0f);
     fill(255, 0, 0);
     text("BRAVO!", -100, 10);
   }
   if(info) {
     textAlign(LEFT);
     fill(255, 70, 0);
-    textFont(Arial, 2.5f);
+    textFont(ArialB, 2.5f);
     text(" - I  N  S  T  R  U  C  T  I  O  N  S - \n " +
          "> Navigation: \n" + "    . voiture = les 4 fleches \n" + "    . camera: '+/-' pour zoom/d\u00e9zoom \n" +
          "> Noeud: \n" + "    . ajout = clic droit \n" +
-         "> Lien: \n" + "    . ajout/suppression: clic centre + glisse \n " +
+         "> Lien: \n" + "    . ajout/suppression: clic centre maintenu entre deux spots \n " +
          "> G\u00e9n\u00e9rer tous les noeuds = 'a' \n" +
-         "> Jouer \u00e0 trouver le plus court chemin entre 2 villes tir\u00e9es au hasard: \n" + "    . 'p' pour une seul escale \n" + "    . 'q' pour deux escales\n " +
+         "> Jouer \u00e0 trouver le plus court chemin entre 2 stations tir\u00e9es au hasard: \n" + "    . 'p' pour une seul escale \n" + "    . 'q' pour deux escales\n " +
          "> Afficher/cacher les instructions: 'i' \n " +
-         "> Fermer l'application: ESC ", -100, -10);
+         "> Fermer l'application: ESC ", -100, 0);
   }
   _gl.glClear(GL.GL_DEPTH_BUFFER_BIT);
   _gl.glLoadIdentity();
@@ -232,7 +233,7 @@ public void draw() {
     strokeWeight(1.1f);
     stroke(0);
 
-    // textFont(Arial, 5.0);
+    // textFont(ArialB, 5.0);
 
     /*String n = S_.n.substring(0, 1);
      *  translate(0,0,-1);
@@ -250,7 +251,7 @@ public void draw() {
         line(S_.y2D, S_.x2D, S2_.y2D, S2_.x2D);
 
         /*if (info) {
-         *  s.textFont(Arial, 10.0);
+         *  s.textFont(ArialB, 10.0);
          *  s.fill(180);
          *  s.text(" " + (float) p_, abs((S_.x2D+S2_.x2D)/2), abs((S_.y2D+S2_.y2D)/2));
          *  }*/
@@ -373,11 +374,8 @@ public void keyPressed() {
       myTrip.removeLink(start, end);
 
       ArrayList pathTemp = new ArrayList();
-      // intermediate = myTrip.findPath(start,end, pathTemp);
       myTrip.dijkstra(start, end);
-      // distanceC += myTrip.getDistance(start, intermediate) + myTrip.getDistance(intermediate, end);
       distanceC += myTrip.getDistance((String) path.get(0), (String) path.get(1)) + myTrip.getDistance((String) path.get(1), (String) path.get(2));
-      // println("Ville interm\u00e9diaire: " + intermediate + " - Distance parcourue: " + distanceC);
       for(int i = 0; i < path.size(); i++) {
         String p = (String) path.get(i);
         println(p);
@@ -412,10 +410,8 @@ public void keyPressed() {
         }
         myTrip.removeLink(start, (String) pathTemp.get(1));
         myTrip.removeLink((String) pathTemp.get(1), end);
-        // interm1 = myTrip.findPath(start, (String) pathTemp.get(1), pathTemp);
         myTrip.dijkstra(start, (String) pathTemp.get(1));
         interm1 = (String) path.get(1);
-        // interm2 = myTrip.findPath((String) pathTemp.get(1), end, pathTemp);
         myTrip.dijkstra((String) pathTemp.get(1), end);
         interm2 = (String) path.get(1);
         if((myTrip.getDistance((String) pathTemp.get(1), interm2) + myTrip.getDistance(interm2, end))
@@ -456,7 +452,6 @@ public void keyPressed() {
       info = true;
   }
   // G\u00e9n\u00e8re tous les liens possibles entre les noeuds
-
   /*if( key == 'l' ) {
    *
    *  for(String ni_ : (Iterable<String>) myTrip.spots.keySet())
@@ -471,6 +466,10 @@ public void keyPressed() {
    *  }
    *  } */
 }
+
+
+
+
 class Car extends Vec2D {
   Vec3D currNormal = Vec3D.Y_AXIS.copy();
   Vec3D pos;
@@ -533,7 +532,6 @@ class Car extends Vec2D {
   }
 }
 
-static EnVoiture proglet;
 
 class Link {
   String n0;
@@ -659,15 +657,20 @@ class Trip {
 
   /** Ajoute ou modifie un spot au graphe (modifie dans le cas ou meme nom employ\u00e9 et diff\u00e9rentes coordonn\u00e9es).
    * @param n Nom du spot.
+   * @param col Couleur du spot.
+   * @param f forme du spot: 'B' = Box, 'P' = Pentagone, 'O' = Octogone, 'C' = Cylindre.
    * @param x Abcisse du spot.
    * @param y Ordonn\u00e9e du spot.
+   * @param d1 dimension1 \u00e0 la base du spot.
+   * @param d2 dimension2 \u00e0 la base du spot.
+   * @param h hauteur du spot.
    */
-  public void addSpot(String n, int col, char f, int x, int y, float d1_, float d2_, float h_) {
+  public void addSpot(String n, int col, char f, int x, int y, float d1, float d2, float h) {
     if(spots.containsKey(n)) {
       Spot S_ = (Spot) spots.get(n);
-      S_.moveTo(x, y, d1_, d2_, h_);
+      S_.moveTo(x, y, d1, d2, h);
     } else
-      spots.put(n, new Spot(n, col, f, x, y, d1_, d2_, h_));
+      spots.put(n, new Spot(n, col, f, x, y, d1, d2, h));
   }
   /** Renvoie l'objet Spot \u00e0 partir de son nom.
    * @param n Nom du spot.
@@ -675,12 +678,11 @@ class Trip {
    */
   public Spot getSpot(String n) {
     Spot S_ = (Spot) spots.get(n);
-
     return S_;
   }
   /** Cherche spot plus proche d'une position.
-   * @param x Abcisse position souris.
-   * @param y Ordonn\u00e9e position souris.
+   * @param x Abcisse position.
+   * @param y Ordonn\u00e9e position.
    * @return Nom du spot.
    */
   public String getClosestSpot(float x, float y) {
@@ -708,24 +710,27 @@ class Trip {
    */
   public void removeSpot(String n) {
     Spot S_ = (Spot) spots.get(n);
-    // retire tous les liens en relation avec le noeud
-    for(String ni_ : (Iterable<String> )spots.keySet())
-      removeLink(n, ni_);
-       // retire le noeud en question
-    spots.remove(n);
+    if (S_ != null) {
+      // retire tous les liens en relation avec le noeud
+      for(String ni_ : (Iterable<String> )spots.keySet())
+	removeLink(n, ni_);
+      // retire le noeud en question
+      spots.remove(n);
+    }
   }
   /** Ajoute ou modifie un lien entre deux spots
    * @param nA Premier spot du lien.
    * @param nB Deuxi\u00e8me spot du lien.
-   * @param p Poids du lien. // no?? poids=distance??
+   * ici poids du lien = distance euclidienne entre les deux spots.
    */
-  // void addLink(String nA, String nB, double p) {
   public void addLink(String nA, String nB) {
     Spot SA_ = (Spot) spots.get(nA);
     Spot SB_ = (Spot) spots.get(nB);
-    double p_ = dist(SA_.x, SA_.y, SB_.x, SB_.y) / 100;
-    SA_.links.put(nB, new Link(nA, nB, p_));
-    SB_.links.put(nA, new Link(nB, nA, p_));
+    if (SA_ != null && SB_ != null) {
+      double p_ = dist(SA_.x, SA_.y, SB_.x, SB_.y) / 100;
+      SA_.links.put(nB, new Link(nA, nB, p_));
+      SB_.links.put(nA, new Link(nB, nA, p_));
+    }
   }
   /** D\u00e9truit un lien entre deux spots si il existe.
    * @param nA Premier spot du lien.
@@ -746,12 +751,15 @@ class Trip {
    */
   public boolean isLink(String nA, String nB) {
     Spot SA_ = (Spot) spots.get(nA);
-    // String ni_;
-    boolean link_ = false;
-    for(String ni_ : (Iterable<String> )SA_.links.keySet())
-      if(ni_.equals(nB))    // test si les deux string sont \u00e9quivalents
-        link_ = true;
-    return link_;
+    if (SA_ != null) {
+      // String ni_;
+      boolean link_ = false;
+      for(String ni_ : (Iterable<String> )SA_.links.keySet())
+	if(ni_.equals(nB))    // test si les deux string sont \u00e9quivalents
+	  link_ = true;
+      return link_;
+    } else
+      return false;
   }
   /** Donne le poids d'un lien entre deux spots.
    * @param nA Premier spot du lien.
@@ -759,11 +767,10 @@ class Trip {
    * @return Le poids du lien o\u00f9 0 si il n'y a pas de lien.
    */
   public double getLink(String nA, String nB) {
-    Spot SA_ = (Spot) spots.get(nA);
-    Link li_;
     double p_ = 0;
     if(isLink(nA, nB)) {
-      li_ = (Link) SA_.links.get(nB);
+      Spot SA_ = (Spot) spots.get(nA);
+      Link li_ = (Link) SA_.links.get(nB);
       p_ = li_.p;
     }
     return p_;
@@ -776,17 +783,19 @@ class Trip {
   public double getDistance(String nA, String nB) {
     Spot SA_ = (Spot) spots.get(nA);
     Spot SB_ = (Spot) spots.get(nB);
-    double p_ = 0.0f;
-    p_ = dist(SA_.x, SA_.y, SB_.x, SB_.y) / 100;
-
-    return p_;
+    if (SA_ != null && SB_ != null) {
+      double p_ = 0.0f;
+      p_ = dist(SA_.x, SA_.y, SB_.x, SB_.y) / 100;
+      return p_;
+    } else 
+      return -1;
   }
   /**  Cherche spot interm\u00e9diaire entre sInit et sTarget tel que la distance entre sInit et sTarget soit minimal.
    * @param nInit Spot initial.
    * @param nTarget Spot cible.
    * @return Spot interm\u00e9diaire.
    */
-  public String exploreSpot(String sO, String sInit, String sTarget, ArrayList Visited) {
+  /*String exploreSpot(String sO, String sInit, String sTarget, ArrayList Visited) {
     if(sInit == sTarget)
       return sTarget;
     String next = sInit; // initialization
@@ -819,12 +828,12 @@ class Trip {
     path.add(sInit);
     // println(next);
     return next;
-  }
+  }*/
   /**   Construit le trajet avec tous les spots - appel \u00e0 exploreSpot
    * @param sStart Spot d\u00e9part.
    * @param sEnd Spot final.
    */
-  public String findPath(String sStart, String sEnd, ArrayList VisitedSpots) {
+  /*String findPath(String sStart, String sEnd, ArrayList VisitedSpots) {
     path.clear();
     restricted.clear();
     println(" " + sStart + " \u00e0 " + sEnd);
@@ -852,12 +861,14 @@ class Trip {
     }
     println("interm: " + interm);
     return interm;
-  }
+  }*/
   /**   Algorithme de Dijkstra
    * @param sStart Spot d\u00e9part.
    * @param sEnd Spot final.
    */
   public void dijkstra(String sStart, String sEnd) {
+    if (spots.get(sStart) == null || spots.get(sEnd) == null)
+      return;
     path.clear();
     println(" " + sStart + " \u00e0 " + sEnd);
     for(String ni_ : (Iterable<String> )spots.keySet()) {
@@ -932,9 +943,94 @@ class Trip {
 }
 
 // Taille pour l'insertion dans JavaScool
-public static final int WIDTH = 1024, HEIGHT = 700;
+public static final int WIDTH = 900, HEIGHT = 500;
+
+
+
+/* Fonctions pour javascool. */
+
+ /** Ajoute ou modifie un spot au graphe (modifie dans le cas ou meme nom employ\u00e9 et diff\u00e9rentes coordonn\u00e9es).
+ * @param n Nom du spot.
+ * @param col Couleur du spot.
+ * @param f forme du spot: 'B' = Box, 'P' = Pentagone, 'O' = Octogone, 'C' = Cylindre.
+ * @param x Abcisse du spot.
+ * @param y Ordonn\u00e9e du spot.
+ * @param d1 dimension1 \u00e0 la base du spot.
+ * @param d2 dimension2 au sommet du spot.
+ * @param h hauteur du spot.
+ */
+
+public static void addSpot(String n, int col, char f, int x, int y, float d1, float d2, float h) {
+  if (proglet == null) return;
+  proglet.myTrip.addSpot(n, col, f, x, y, d1, d2, h);
+}
+
+/** Cherche spot plus proche d'une position.
+ * @param x Abcisse position.
+ * @param y Ordonn\u00e9e position.
+ * @return Nom du spot.
+ */
+public static String getClosestSpot(float x, float y) {
+  if (proglet == null) return null;
+  String S_;
+  S_ = proglet.myTrip.getClosestSpot(x, y);
+  return S_;
+}
+
+/** D\u00e9truit un spot au graphe si il existe.
+ * @param n Nom du spot.
+ */
+public static void removeSpot(String n) {
+  if (proglet == null) return;
+  proglet.myTrip.removeSpot(n);  
+}
+
+/** Ajoute ou modifie un lien entre deux spots
+ * @param nA Premier spot du lien.
+ * @param nB Deuxi\u00e8me spot du lien.
+ * ici poids du lien = distance euclidienne entre les deux spots.
+ */
+public static void addLink(String nA, String nB) {
+  if (proglet == null) return;
+  proglet.myTrip.addLink(nA, nB);  
+}
+
+/** D\u00e9truit un lien entre deux spots si il existe.
+   * @param nA Premier spot du lien.
+   * @param nB Deuxi\u00e8me spot du lien.
+   */
+public static void removeLink(String nA, String nB) {
+  if (proglet == null) return;
+  proglet.myTrip.removeLink(nA, nB);
+}
+
+/** Affirme si il y a lien entre 2 spots.
+ * @param nA Premier spot du lien.
+ * @param nB Deuxi\u00e8me spot du lien.
+ * @return oui ou non.
+ */
+public static boolean isLink(String nA, String nB) {
+  if (proglet == null) return false;
+  boolean link_ = false;
+  link_ = proglet.myTrip.isLink(nA, nB);
+  return link_;
+}
+
+ /** Donne le poids d'un lien entre deux spots.
+ * @param nA Premier spot du lien.
+ * @param nB Deuxi\u00e8me spot du lien.
+ * @return Le poids du lien o\u00f9 0 si il n'y a pas de lien.
+ */
+public static double getLink(String nA, String nB) {
+  if (proglet == null) return 0;
+  double p_ = 0;
+  p_ = proglet.myTrip.getLink(nA, nB);
+  return p_;
+}
+
+ static EnVoiture proglet; 
 
   static public void main(String args[]) {
-    PApplet.main(new String[] { "--bgcolor=#FFFFFF", "EnVoiture" });
+    PApplet.main(new String[] { "--bgcolor=#DFDFDF", "EnVoiture" });
   }
 }

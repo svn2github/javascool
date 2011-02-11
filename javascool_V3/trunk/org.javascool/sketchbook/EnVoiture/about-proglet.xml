@@ -24,8 +24,8 @@
       <p><c>n</c> est le nom du spot.</p>
       <p><c>col</c> est la couleur du spot.</p>
       <p><c>f</c> est la forme du spot: 'B' = Box, 'P' = Pentagone, 'O' = Octogone, 'C' = Cylindre.</p>
-      <p><c>x</c> est l'abscisse du spot.</p>
-      <p><c>y</c> est l'ordonnée du spot.</p>
+      <p><c>x</c> est l'abscisse du spot entre -1000 et 1000.</p>
+      <p><c>y</c> est l'ordonnée du spot entre -1000 et 1000.</p>
       <p><c>d1</c> est la dimension1 à la base du spot.</p>
       <p><c>d2</c> est la dimension2 à la baseau sommet du spot.</p>
       <p><c>h</c> est la hauteur du spot.</p>
@@ -33,8 +33,8 @@
     <m>Obtenir un spot à partir d'une position 2D:</m>
     <p><r>String</r> n = <r>EnVoiture.getClosestSpot</r>(<r>int</r> x, <r>int</r> y)</p>
     </div>où: <div class="ul">
-      <p><c>x</c> est l'abscisse de la position.</p>
-      <p><c>y</c> est l'ordonnée de la position.</p>
+      <p><c>x</c> est l'abscisse de la position entre -1000 et 1000.</p>
+      <p><c>y</c> est l'ordonnée de la position entre -1000 et 1000.</p>
       <p><c>n</c> est le nom du spot, qui est renvoyé.</p>
       </div><div class="code">
     <m>Détruire un spot:</m>

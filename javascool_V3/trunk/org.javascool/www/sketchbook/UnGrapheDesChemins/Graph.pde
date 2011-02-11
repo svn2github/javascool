@@ -25,7 +25,8 @@ class Graph {
       // removeNode(n);
       // nodes.put(n, new Node(n, x, y));
       Node N_ = (Node) nodes.get(n);
-      N_.moveTo(x, y);
+      if (N_ != null)
+	N_.moveTo(x, y);
     } else
 
       nodes.put(n, new Node(n, x, y));
@@ -69,11 +70,13 @@ class Graph {
    */
   void removeNode(String n) {
     Node N_ = (Node) nodes.get(n);
-    // retire tous les liens en relation avec le noeud
-    for(String ni_ : (Iterable<String> )nodes.keySet())
-      removeLink(n, ni_);
-       // retire le noeud en question
-    nodes.remove(n);
+    if (N_ != null) {
+      // retire tous les liens en relation avec le noeud
+      for(String ni_ : (Iterable<String> )nodes.keySet())
+	removeLink(n, ni_);
+      // retire le noeud en question
+      nodes.remove(n);
+    }
   }
   /** Donne la liste de tous les noeuds.
    * @return La liste des noms des noeuds.
@@ -94,12 +97,14 @@ class Graph {
   String[] getNodes(String n) {
     String[] ListNodes = new String[10];
     Node N_ = (Node) nodes.get(n);
-    int count = 0;
-    for(String ni_ : (Iterable<String> )nodes.keySet())
-      if(isLink(n, ni_)) {
-        ListNodes[count] = ni_;
-        count++;
-      }
+    if (N_ != null) {
+      int count = 0;
+      for(String ni_ : (Iterable<String> )nodes.keySet())
+	if(isLink(n, ni_)) {
+	  ListNodes[count] = ni_;
+	  count++;
+	}
+    }
     return ListNodes;
   }
   /** Ajoute ou modifie un lien entre deux noeuds (modifie dans le cas ou memes noeuds et différent poids attribué).
@@ -111,9 +116,10 @@ class Graph {
     if(!(nA.equals(nB))) {   // pas de lien de et vers un meme noeud
       Node NA_ = (Node) nodes.get(nA);
       Node NB_ = (Node) nodes.get(nB);
-
-      NA_.links.put(nB, new Link(nA, nB, p));
-      NB_.links.put(nA, new Link(nB, nA, p));
+      if (NA_ != null && NB_ != null) {
+	NA_.links.put(nB, new Link(nA, nB, p));
+	NB_.links.put(nA, new Link(nB, nA, p));
+      }
     }
   }
   /** Ajoute ou modifie un lien entre deux noeuds (modifie dans le cas ou memes noeuds et différent poids attribué).
@@ -125,11 +131,12 @@ class Graph {
     if(!(nA.equals(nB))) {   // pas de lien de et vers un meme noeud
       Node NA_ = (Node) nodes.get(nA);
       Node NB_ = (Node) nodes.get(nB);
-      // ici le poids = distance euclidienne entre les deux noeuds
-      double p_ = (PVector.dist(NA_.position, NB_.position)) / 100;
-
-      NA_.links.put(nB, new Link(nA, nB, p_));
-      NB_.links.put(nA, new Link(nB, nA, p_));
+      if (NA_ != null && NB_ != null) {
+	// ici le poids = distance euclidienne entre les deux noeuds
+	double p_ = (PVector.dist(NA_.position, NB_.position)) / 100;
+	NA_.links.put(nB, new Link(nA, nB, p_));
+	NB_.links.put(nA, new Link(nB, nA, p_));
+      }
     }
   }
   /** Détruit un lien entre deux noeuds si il existe.
@@ -139,9 +146,11 @@ class Graph {
   void removeLink(String nA, String nB) {
     Node NA_ = (Node) nodes.get(nA);
     Node NB_ = (Node) nodes.get(nB);
-    if(isLink(nA, nB)) {
-      NA_.links.remove(nB);
-      NB_.links.remove(nA);
+    if (NA_ != null && NB_ != null) {
+      if(isLink(nA, nB)) {
+	NA_.links.remove(nB);
+	NB_.links.remove(nA);
+      }
     }
   }
   /** Affirme si il y a lien entre 2 noeuds.
@@ -152,15 +161,18 @@ class Graph {
   boolean isLink(String nA, String nB) {
     Node NA_ = (Node) nodes.get(nA);
     Node NB_ = (Node) nodes.get(nB);
-    boolean link_ = false;
-    for(String ni_ : (Iterable<String> )NA_.links.keySet())
-      if(ni_.equals(nB))    // test si les deux string sont équivalents
+    if (NA_ != null && NB_ != null) {
+      boolean link_ = false;
+      for(String ni_ : (Iterable<String> )NA_.links.keySet())
+	if(ni_.equals(nB))    // test si les deux string sont équivalents
+	  link_ = true;
+      // et inverse aussi!
+      for(String ni_ : (Iterable<String> )NB_.links.keySet())
+	if(ni_.equals(nA))    // test si les deux string sont équivalents
         link_ = true;
-       // et inverse aussi!
-    for(String ni_ : (Iterable<String> )NB_.links.keySet())
-      if(ni_.equals(nA))    // test si les deux string sont équivalents
-        link_ = true;
-    return link_;
+      return link_;
+    } else
+      return false;
   }
   /** Donne le poids d'un lien entre deux noeuds.
    * @param nA Premier noeud du lien.
@@ -168,11 +180,10 @@ class Graph {
    * @return Le poids du lien où 0 si il n'y a pas de lien.
    */
   double getLink(String nA, String nB) {
-    Node NA_ = (Node) nodes.get(nA);
-    Link li_;
     double p_ = 0;
     if(isLink(nA, nB)) {
-      li_ = (Link) NA_.links.get(nB);
+      Node NA_ = (Node) nodes.get(nA);
+      Link li_ = (Link) NA_.links.get(nB);
       p_ = li_.p;
     }
     return p_;
@@ -242,6 +253,8 @@ class Graph {
    * @param nEnd Noeud final.
    */
   void dijkstra(String nStart, String nEnd) {
+    if (nodes.get(nStart) == null || nodes.get(nEnd) == null)
+      return;
     path.clear();
     for(String ni_ : (Iterable<String> )nodes.keySet()) {
       Node N_ = (Node) nodes.get(ni_);

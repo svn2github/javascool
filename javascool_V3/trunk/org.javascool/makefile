@@ -15,13 +15,12 @@ usage :
 what :
 	@grep '^#:' makefile | sed 's/^#://'
 
-j3-1: jar
-	@cd tst ; ../lib/run.sh org.javascool.Main
-	@make clean
+j3-1:
+	@cd tst ; java -jar ../www/javascool-3-1.jar
 
 j3-2: jar
-	@cd tst ; java -jar ../www/javascool.jar
-	@make clean
+	@cd sketchbook ; java -jar ../www/javascool.jar
+#	@make clean
 
 doc: api
 	firefox file:www/api/org/javascool/package-summary.html

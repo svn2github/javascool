@@ -39,7 +39,11 @@ HScrollbar hs1;
 int topWidth;  // width of text
 
 public void setup() {
-  size(1000, 500); // screen.width,screen.height);//1200,800);
+  // Ces deux lignes permettent l'interface avec JavaScool
+  proglet = this;
+  frame = new Frame();
+  
+  size(900, 500); // screen.width,screen.height);//1200,800);
   smooth();
   myGraph = new Graph();
 
@@ -64,13 +68,7 @@ public void draw() {
        "> G\u00e9n\u00e9rer: \n" + "    . tous les noeuds = 'a': \n" + "    . tous les liens = 'l': \n" + "    . quelques liens = 'r' \n " +
        "> Afficher la pond\u00e9ration des liens: 'i' \n " +
        "> Trouver le plus court chemin entre 2 noeuds: \n" + "    . clic gauche + 'b' pour le noeud de d\u00e9part \n" + "    . clic gauche + 'e' pour le noeud d'arriv\u00e9e\n " +
-       "> Fermer l'application: ESC ", topPos * 2, 40); // 10 ,20);
-
-  /*". Ajouter un noeud: clic gauche // Tracer des liens ou effacer des liens existants: clic centre // Effacer un noeud:  'd' // Bouger un noeud via la souris: 'm' \n " +
-   *  ". G\u00e9nerer un placement de noeuds al\u00e9atoire: 'a' // G\u00e9n\u00e9rer tous les liens possibles entre les noeuds: 'l' \n " +
-   *  ". Faire apparaitre la pond\u00e9ration des liens: 'i' \n " +
-   *  ". Trouver le plus court chemin entre 2 noeuds: clic + 'p' \n " +
-   *  ". Arreter l'application: ESC " , topPos*2, 40);//10 ,20);*/
+       "> Fermer l'application: ESC ", topPos * 2, 40); 
   hs1.update();
   hs1.display();
   if(!pathSelect)
@@ -174,28 +172,7 @@ public void mousePressed() {
 
       end = null;
     }
-    /*if(key == 'p' && myGraph.nodes.size() > 1)
-     *  {
-     *  pathSelect = true;
-     *  if(start == null) {
-     *   //path.clear();
-     *   start = myGraph.getClosestNode(mouseX,mouseY);
-     *  } else {
-     *   end = myGraph.getClosestNode(mouseX,mouseY);
-     *   println("start: " + start + " // end: " + end);
-     *   if(end != start)
-     *   {
-     *     //myGraph.findPath(start,end);
-     *     myGraph.dijkstra(start, end);
-     *     //for(int i=0; i<path.size(); i++) {
-     *       //String n = (String) path.get(i);
-     *       //println("___" + n);
-     *     //}
-     *   }
-     *   start = null;
-     *  }
-     *  end = null;
-     *  }*/
+   
     // Efface un noeud (le plus proche du curseur de la souris)
     if(key == 'd') {
       path.clear();
@@ -222,17 +199,7 @@ public void mouseReleased() {                                                  /
   secondSelect = null;
 }
 public void keyPressed() {
-  // Efface un noeud (le plus proche du curseur de la souris)
 
-  /*if( key == 'd' ) {
-   *
-   *  path.clear();
-   *  if(myGraph.nodes.size() != 0) {
-   *   String n_ = myGraph.getClosestNode(mouseX,mouseY);
-   *   myGraph.removeNode(n_);
-   *  }
-   *
-   *  }*/
   // Efface tous les liens trac\u00e9s
   if(key == 's') {
     path.clear();
@@ -241,6 +208,7 @@ public void keyPressed() {
         if(myGraph.isLink(ni_, nj_) && !(ni_.equals(nj_)))
           myGraph.removeLink(ni_, nj_);
   }
+  
   // D\u00e9place un noeud existant
   if(key == 'm') {
     path.clear();
@@ -252,6 +220,7 @@ public void keyPressed() {
         myGraph.addLink(n_, ni_);
       }
   }
+  
   // G\u00e9n\u00e8re les noeuds de mani\u00e8re al\u00e9atoire
   if(key == 'a') {
     path.clear();
@@ -262,13 +231,20 @@ public void keyPressed() {
       myGraph.addNode(listN[i], x_, y_);
     }
   }
+  /*if(key == 'b') {
+    String[] myList;
+    myList = myGraph.getAllNodes();
+    println(myList[0]);
+  }*/
+  
   // G\u00e9n\u00e8re tous les liens possibles entre les noeuds
   if(key == 'l')
     for(String ni_ : (Iterable<String> )myGraph.nodes.keySet())
       for(String nj_ : (Iterable<String> )myGraph.nodes.keySet())
         if(myGraph.isLink(ni_, nj_) == false)
           myGraph.addLink(ni_, nj_);
-         // G\u00e9n\u00e8re des liens possibles entre les noeuds de mani\u00e8re al\u00e9atoire
+  
+  // G\u00e9n\u00e8re des liens possibles entre les noeuds de mani\u00e8re al\u00e9atoire
   if(key == 'r')
     if(myGraph.nodes.size() == listN.length) {
       for(String ni_ : (Iterable<String> )myGraph.nodes.keySet())
@@ -288,51 +264,9 @@ public void keyPressed() {
           // println(nk_);
         }
       }
-      /*for(String ni_ : (Iterable<String>) myGraph.nodes.keySet())
-       *  {
-       *  for(String nj_ : (Iterable<String>) myGraph.nodes.keySet())
-       *  {
-       *   if(myGraph.isLink(ni_,nj_) && !(ni_.equals(nj_))) {
-       *     myGraph.removeLink(ni_, nj_);
-       *   }
-       *  }
-       *
-       *  boolean done = false;
-       *  String nk_ = null;
-       *  while(!done) {
-       *   int k = (int) random(listN.length);
-       *   nk_ = listN[k];
-       *   if(!(myGraph.isLink(ni_,nk_))) done = true;
-       *   //println(nk_);
-       *  }
-       *  for(String nj_ : (Iterable<String>) myGraph.nodes.keySet())
-       *  {
-       *   if(!(nj_.equals(nk_)) && (myGraph.isLink(ni_,nj_) == false)) {
-       *     myGraph.addLink(ni_,nj_);
-       *
-       *   }
-       *
-       *  }
-       *
-       *  }*/
+      
     }
-   /*if(key == 'p' && myGraph.nodes.size() > 1)                               // cherche trajet entre noeuds depart et fin
-    *  {
-    *   pathSelect = true;
-    *
-    *   if(start == null)
-    *     start = myGraph.getClosestNode(mouseX,mouseY);
-    *   else
-    *   {
-    *     end = myGraph.getClosestNode(mouseX,mouseY);
-    *     if(end != start)
-    *     {
-    *       println("trajet? " + pathSelect);
-    *       myGraph.findPath(start,end);
-    *     }
-    *     start = null;
-    *   }
-    *  }*/
+  
   // Montrer ou non les pond\u00e9rations
   if(key == 'i') {
     if(info)
@@ -344,6 +278,7 @@ public void keyPressed() {
       info = true;
   }
 }
+
 public void keyReleased() {                                                   // appel\u00e9 a chaque moment qu'une touche est relachee
   if(key == 'p')
     pathSelect = false;
@@ -375,7 +310,8 @@ class Graph {
       // removeNode(n);
       // nodes.put(n, new Node(n, x, y));
       Node N_ = (Node) nodes.get(n);
-      N_.moveTo(x, y);
+      if (N_ != null)
+	N_.moveTo(x, y);
     } else
 
       nodes.put(n, new Node(n, x, y));
@@ -390,8 +326,8 @@ class Graph {
     return N_;
   }
   /** Cherche noeud plus proche d'une position.
-   * @param x Abcisse position souris.
-   * @param y Ordonn\u00e9e position souris.
+   * @param x Abcisse position.
+   * @param y Ordonn\u00e9e position.
    * @return Nom du noeud.
    */
   public String getClosestNode(float x, float y) {
@@ -419,11 +355,25 @@ class Graph {
    */
   public void removeNode(String n) {
     Node N_ = (Node) nodes.get(n);
-    // retire tous les liens en relation avec le noeud
-    for(String ni_ : (Iterable<String> )nodes.keySet())
-      removeLink(n, ni_);
-       // retire le noeud en question
-    nodes.remove(n);
+    if (N_ != null) {
+      // retire tous les liens en relation avec le noeud
+      for(String ni_ : (Iterable<String> )nodes.keySet())
+	removeLink(n, ni_);
+      // retire le noeud en question
+      nodes.remove(n);
+    }
+  }
+  /** Donne la liste de tous les noeuds.
+   * @return La liste des noms des noeuds.
+   */
+  public String[] getAllNodes() {
+    String[] ListNodes = new String[50];
+    int count = 0;
+    for(String ni_ : (Iterable<String> )nodes.keySet()) {
+        ListNodes[count] = ni_;
+        count++;
+    }
+    return ListNodes;
   }
   /** Donne la liste des noeuds en lien avec un noeud donn\u00e9.
    * @param n Nom du noeud dont on veut les noeuds en lien.
@@ -432,28 +382,46 @@ class Graph {
   public String[] getNodes(String n) {
     String[] ListNodes = new String[10];
     Node N_ = (Node) nodes.get(n);
-    int count = 0;
-    for(String ni_ : (Iterable<String> )nodes.keySet())
-      if(isLink(n, ni_)) {
-        ListNodes[count] = ni_;
-        count++;
-      }
+    if (N_ != null) {
+      int count = 0;
+      for(String ni_ : (Iterable<String> )nodes.keySet())
+	if(isLink(n, ni_)) {
+	  ListNodes[count] = ni_;
+	  count++;
+	}
+    }
     return ListNodes;
   }
   /** Ajoute ou modifie un lien entre deux noeuds (modifie dans le cas ou memes noeuds et diff\u00e9rent poids attribu\u00e9).
    * @param nA Premier noeud du lien.
    * @param nB Deuxi\u00e8me noeud du lien.
-   * @param p Poids du lien. // no?? poids=distance??
+   * @param p Poids du lien. 
    */
-  // void addLink(String nA, String nB, double p) {
+  public void addLink(String nA, String nB, double p) {
+    if(!(nA.equals(nB))) {   // pas de lien de et vers un meme noeud
+      Node NA_ = (Node) nodes.get(nA);
+      Node NB_ = (Node) nodes.get(nB);
+      if (NA_ != null && NB_ != null) {
+	NA_.links.put(nB, new Link(nA, nB, p));
+	NB_.links.put(nA, new Link(nB, nA, p));
+      }
+    }
+  }
+  /** Ajoute ou modifie un lien entre deux noeuds (modifie dans le cas ou memes noeuds et diff\u00e9rent poids attribu\u00e9).
+   * @param nA Premier noeud du lien.
+   * @param nB Deuxi\u00e8me noeud du lien.
+   * ici poids du lien = distance euclidienne entre les deux noeuds
+   */
   public void addLink(String nA, String nB) {
     if(!(nA.equals(nB))) {   // pas de lien de et vers un meme noeud
       Node NA_ = (Node) nodes.get(nA);
       Node NB_ = (Node) nodes.get(nB);
-      double p_ = (PVector.dist(NA_.position, NB_.position)) / 100;
-
-      NA_.links.put(nB, new Link(nA, nB, p_));
-      NB_.links.put(nA, new Link(nB, nA, p_));
+      if (NA_ != null && NB_ != null) {
+	// ici le poids = distance euclidienne entre les deux noeuds
+	double p_ = (PVector.dist(NA_.position, NB_.position)) / 100;
+	NA_.links.put(nB, new Link(nA, nB, p_));
+	NB_.links.put(nA, new Link(nB, nA, p_));
+      }
     }
   }
   /** D\u00e9truit un lien entre deux noeuds si il existe.
@@ -463,9 +431,11 @@ class Graph {
   public void removeLink(String nA, String nB) {
     Node NA_ = (Node) nodes.get(nA);
     Node NB_ = (Node) nodes.get(nB);
-    if(isLink(nA, nB)) {
-      NA_.links.remove(nB);
-      NB_.links.remove(nA);
+    if (NA_ != null && NB_ != null) {
+      if(isLink(nA, nB)) {
+	NA_.links.remove(nB);
+	NB_.links.remove(nA);
+      }
     }
   }
   /** Affirme si il y a lien entre 2 noeuds.
@@ -476,15 +446,18 @@ class Graph {
   public boolean isLink(String nA, String nB) {
     Node NA_ = (Node) nodes.get(nA);
     Node NB_ = (Node) nodes.get(nB);
-    boolean link_ = false;
-    for(String ni_ : (Iterable<String> )NA_.links.keySet())
-      if(ni_.equals(nB))    // test si les deux string sont \u00e9quivalents
+    if (NA_ != null && NB_ != null) {
+      boolean link_ = false;
+      for(String ni_ : (Iterable<String> )NA_.links.keySet())
+	if(ni_.equals(nB))    // test si les deux string sont \u00e9quivalents
+	  link_ = true;
+      // et inverse aussi!
+      for(String ni_ : (Iterable<String> )NB_.links.keySet())
+	if(ni_.equals(nA))    // test si les deux string sont \u00e9quivalents
         link_ = true;
-       // et inverse aussi!
-    for(String ni_ : (Iterable<String> )NB_.links.keySet())
-      if(ni_.equals(nA))    // test si les deux string sont \u00e9quivalents
-        link_ = true;
-    return link_;
+      return link_;
+    } else
+      return false;
   }
   /** Donne le poids d'un lien entre deux noeuds.
    * @param nA Premier noeud du lien.
@@ -492,11 +465,10 @@ class Graph {
    * @return Le poids du lien o\u00f9 0 si il n'y a pas de lien.
    */
   public double getLink(String nA, String nB) {
-    Node NA_ = (Node) nodes.get(nA);
-    Link li_;
     double p_ = 0;
     if(isLink(nA, nB)) {
-      li_ = (Link) NA_.links.get(nB);
+      Node NA_ = (Node) nodes.get(nA);
+      Link li_ = (Link) NA_.links.get(nB);
       p_ = li_.p;
     }
     return p_;
@@ -506,7 +478,7 @@ class Graph {
    * @param nTarget Noeud cible.
    * @return Noeud interm\u00e9diaire.
    */
-  public String exploreNode(String nInit, String nTarget) {
+  /*String exploreNode(String nInit, String nTarget) {
     if(nInit == nTarget)
       return nTarget;
     String next = nInit; // initialization
@@ -528,48 +500,14 @@ class Graph {
      // println("Distance parcourue par le trajet: " + p );
     path.add(nInit);
     return next;
-  }
-  /*String exploreNode(String nO, String nInit, String nTarget)
-   *  {
-   *  if(nInit == nTarget)
-   *   return nTarget;
-   *  String next = nInit; // initialization
-   *  Node Ninit = (Node) nodes.get(nInit);
-   *  Node Ntarget = (Node) nodes.get(nTarget);
-   *  double p = 999999;
-   *  //for(String ni_ : (Iterable<String>) Ninit.links.keySet())
-   *  //{
-   *  for(String ni_ : (Iterable<String>) nodes.keySet())
-   *  {
-   *
-   *   if((!(nInit.equals(nO) && ni_.equals(nTarget)) && !ni_.equals(nInit))) {
-   *     if(isLink(nInit, ni_)) {
-   *       Node Ni_ = (Node) nodes.get(ni_);
-   *       if(path.indexOf(ni_) == -1 && restricted.indexOf(ni_) == -1) // si le noeud n'a pas \u00e9t\u00e9 parcouru
-   *       {
-   *         //double di = PVector.dist(Ni_.position, Ninit.position)+PVector.dist(Ntarget.position,Ni_.position);
-   *         double pi = getLink(nInit, ni_) + getLink(ni_, nTarget);
-   *         if(pi < p )
-   *         {
-   *           p = pi;
-   *           next = ni_;
-   *         }
-   *
-   *        }
-   *     }
-   *   }
-   *  }
-   *  //println("Distance parcourue par le trajet: " + p );
-   *  path.add(nInit);
-   *  return next;
-   *
-   *  }*/
+  }*/
+ 
 
   /**   Construit le trajet avec tous les noeuds - appel \u00e0 exploreNode
    * @param nStart Noeud d\u00e9part.
    * @param nEnd Noeud final.
    */
-  public void findPath(String nStart, String nEnd) {
+  /*void findPath(String nStart, String nEnd) {
     path.clear();
     restricted.clear();
     println(" " + nStart + " \u00e0 " + nEnd);
@@ -593,12 +531,15 @@ class Graph {
       path.add(nEnd);
     else
       background(255, 0, 0);
-  }
+  }*/
+  
   /**   Algorithme de Dijkstra
    * @param nStart Noeud d\u00e9part.
    * @param nEnd Noeud final.
    */
   public void dijkstra(String nStart, String nEnd) {
+    if (nodes.get(nStart) == null || nodes.get(nEnd) == null)
+      return;
     path.clear();
     for(String ni_ : (Iterable<String> )nodes.keySet()) {
       Node N_ = (Node) nodes.get(ni_);
@@ -665,7 +606,10 @@ class Graph {
 }
 
 // Taille pour l'insertion dans JavaScool
-public static final int WIDTH = 1024, HEIGHT = 700;
+public static final int WIDTH = 900, HEIGHT = 500;
+
+
+
 class HScrollbar
 {
   int swidth, sheight;    // width and height of bar
@@ -735,13 +679,6 @@ class Link {
     n1 = n1_;
     p = p_;
   }
-
-  /*Link(String n1_, double p_) { // cas d'un lien consid\u00e9r\u00e9 dans un ensemble de liens d'un noeud
-   *
-   *  n1 = n1_;
-   *  p = p_;
-   *
-   *  }*/
 }
 class Node {
   int x;
@@ -779,7 +716,133 @@ class Node {
     g = parent.g + o.p;
   }
 }
+/* Fonctions pour javascool. */
+
+/** Ajoute ou modifie un noeud au graphe (modifie dans le cas ou meme nom employ\u00e9 et diff\u00e9rentes coordonn\u00e9es).
+ * @param n Nom du noeud.
+ * @param x Abcisse du noeud.
+ * @param y Ordonn\u00e9e du noeud.
+ */
+public static void addNode(String n, int x, int y) {
+  if (proglet == null) return;
+  proglet.myGraph.addNode(n, x, y); 
+}
+
+/** Renvoie l'objet Noeud \u00e0 partir de son nom.
+ * @param n Nom du noeud.
+ * @return objet Node.
+ */
+public static Node getNode(String n) {
+  if (proglet == null) return null;
+  Node N_;
+  N_ = proglet.myGraph.getNode(n);
+  return N_;
+}
+
+/** Cherche noeud plus proche d'une position.
+ * @param x Abcisse position.
+ * @param y Ordonn\u00e9e position.
+ * @return Nom du noeud.
+ */
+public static String getClosestNode(float x, float y) {
+  if (proglet == null) return null;
+  String n_ = null;
+  n_ = proglet.myGraph.getClosestNode(x, y);
+  return n_;
+}
+
+/** D\u00e9truit un noeud au graphe si il existe.
+ * @param n Nom du noeud.
+ */
+public static void removeNode(String n) {
+  if (proglet == null) return;
+  proglet.myGraph.removeNode(n);
+}
+
+/** Donne la liste de tous les noeuds.
+   * @return La liste des noms des noeuds.
+   */
+public static String[] getAllNodes() {
+  if (proglet == null) return null;
+  String[] ListN_ = new String[50];
+  ListN_ = proglet.myGraph.getAllNodes();
+  return ListN_;
+}
+
+/** Donne la liste des noeuds en lien avec un noeud donn\u00e9.
+ * @param n Nom du noeud dont on veut les noeuds en lien.
+ * @return La liste des noms des noeuds en lien avec le noeud donn\u00e9.
+ */
+public static String[] getNodes(String n) {
+  if (proglet == null) return null;
+  String[] ListN_ = new String[50];
+  ListN_ = proglet.myGraph.getNodes(n);
+  return ListN_;
+}
+
+/** Ajoute ou modifie un lien entre deux noeuds (modifie dans le cas ou memes noeuds et diff\u00e9rent poids attribu\u00e9).
+ * @param nA Premier noeud du lien.
+ * @param nB Deuxi\u00e8me noeud du lien.
+ * @param p Poids du lien. 
+ */
+public static void addLink(String nA, String nB, double p) {
+  if (proglet == null) return;
+  proglet.myGraph.addLink(nA, nB, p);
+}
+
+/** Ajoute ou modifie un lien entre deux noeuds (modifie dans le cas ou memes noeuds et diff\u00e9rent poids attribu\u00e9).
+ * @param nA Premier noeud du lien.
+ * @param nB Deuxi\u00e8me noeud du lien.
+ * ici poids du lien = distance euclidienne entre les deux noeuds.
+ */
+public static void addLink(String nA, String nB) {
+  if (proglet == null) return;
+  proglet.myGraph.addLink(nA, nB);    
+}
+
+/** D\u00e9truit un lien entre deux noeuds si il existe.
+ * @param nA Premier noeud du lien.
+ * @param nB Deuxi\u00e8me noeud du lien.
+ */
+public static void removeLink(String nA, String nB) {
+  if (proglet == null) return;
+  proglet.myGraph.removeLink(nA, nB);
+}
+
+/** Affirme si il y a lien entre 2 noeuds.
+ * @param nA Premier noeud du lien.
+ * @param nB Deuxi\u00e8me noeud du lien.
+ * @return "vrai" ou "faux".
+ */
+public static boolean isLink(String nA, String nB) {
+  if (proglet == null) return false;
+  boolean a_ = false;
+  a_ = proglet.myGraph.isLink(nA, nB);
+  return a_;
+}
+
+/** Donne le poids d'un lien entre deux noeuds.
+   * @param nA Premier noeud du lien.
+   * @param nB Deuxi\u00e8me noeud du lien.
+   * @return Le poids du lien o\u00f9 0 si il n'y a pas de lien.
+   */
+public static double getLink(String nA, String nB) {
+  double p_ = 0;
+  p_ = proglet.myGraph.getLink(nA, nB);
+  return p_;
+}
+
+/**   Algorithme de Dijkstra
+ * @param nStart Noeud d\u00e9part.
+ * @param nEnd Noeud final.
+ */
+public static void dijkstra(String nStart, String nEnd) {
+  if (proglet == null) return;
+  proglet.myGraph.dijkstra(nStart, nEnd);
+}
+
+static UnGrapheDesChemins proglet;
   static public void main(String args[]) {
-    PApplet.main(new String[] { "--bgcolor=#FFFFFF", "UnGrapheDesChemins" });
+    PApplet.main(new String[] { "--bgcolor=#DFDFDF", "UnGrapheDesChemins" });
   }
 }

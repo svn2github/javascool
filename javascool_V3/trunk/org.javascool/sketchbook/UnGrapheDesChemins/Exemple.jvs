@@ -5,17 +5,26 @@
 String nodes[] = {"Nord", "Sud",  "Est", "Ouest", "Centre"};
 
 void build() {
-  UnGrapheDesChemins.addNode("Nord",  0, 100);
-  UnGrapheDesChemins.addNode("Est",   100, 0);
-  UnGrapheDesChemins.addNode("Ouest", 0, 100);
-  UnGrapheDesChemins.addNode("Sud",   100, 0);
-  UnGrapheDesChemins.addNode("Centre", 0, 0);
+  int x0 = 450, y0 = 250;
+  UnGrapheDesChemins.addNode("Nord",  x0, y0 - 100);
+  UnGrapheDesChemins.addNode("Est",   x0 + 300, y0);
+  UnGrapheDesChemins.addNode("Ouest",  x0 - 300, y0);
+  UnGrapheDesChemins.addNode("Sud", x0, y0 + 100);
+  UnGrapheDesChemins.addNode("Centre", x0, y0);
   UnGrapheDesChemins.addLink("Nord", "Est", 1);
   UnGrapheDesChemins.addLink("Sud", "Est", 2);
   UnGrapheDesChemins.addLink("Nord", "Ouest", 3);
   UnGrapheDesChemins.addLink("Sud", "Ouest", 4);
   UnGrapheDesChemins.addLink("Sud", "Centre", 5);
   UnGrapheDesChemins.addLink("Nord", "Centre", 6);
+}
+
+void unbuild() { 
+  UnGrapheDesChemins.removeNode("Nord");
+  UnGrapheDesChemins.removeNode("Sud");
+  UnGrapheDesChemins.removeNode("Est");
+  UnGrapheDesChemins.removeNode("Ouest");
+  UnGrapheDesChemins.removeNode("Centre");
 }
 
 // Affichage des connections
@@ -29,13 +38,19 @@ void dump(String what) {
 }
 
 void main() {
+  unbuild();
+  sleep(5000);
   // Parterre initial
   build();
   dump("initial");
   println("Le node le plus prêt de (10, 10) est le "+UnGrapheDesChemins.getClosestNode(10, 10));
   println("Le node le plus prêt de (50, 50) est le "+UnGrapheDesChemins.getClosestNode(50, 50));
+  sleep(5000);
   // On détruit un node et un lien
   UnGrapheDesChemins.removeNode("Centre");
   UnGrapheDesChemins.removeLink("Nord", "Ouest");
   dump("amputé");
+  // On nettoie avant de finir
+  sleep(5000);
+  unbuild();
 }

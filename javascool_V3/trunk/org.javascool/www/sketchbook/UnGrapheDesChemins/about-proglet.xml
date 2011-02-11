@@ -14,14 +14,14 @@
     <p><r>UnGrapheDesChemins.addNode</r>(<r>String</r> n, <r>int</r> x, <r>int</r> y)</p>
     </div>où: <div class="ul">
       <p><c>n</c> est le nom du noeud.</p>
-      <p><c>x</c> est l'abscisse du noeud.</p>
-      <p><c>y</c> est l'ordonnée du noeud.</p>
+      <p><c>x</c> est l'abscisse du noeud (entre 0 et 900).</p>
+      <p><c>y</c> est l'ordonnée du noeud (entre 0 et 500).</p>
     </div><div class="code">
     <m>Obtenir un noeud à partir d'une position:</m>
     <p><r>String</r> n =<r>UnGrapheDesChemins.getClosestNode</r>(<r>int</r> x, <r>int</r> y)</p>
     </div>où: <div class="ul">
-      <p><c>x</c> est l'abscisse de la position de souris.</p>
-      <p><c>y</c> est l'ordonnée de la position de souris.</p>
+      <p><c>x</c> est l'abscisse de la position (entre 0 et 900).</p>
+      <p><c>y</c> est l'ordonnée de la position (entre 0 et 500).</p>
       <p><c>n</c> est le nom du noeud, qui est renvoyé.</p>
       </div><div class="code">
     <m>Détruire un noeud:</m>
