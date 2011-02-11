@@ -49,7 +49,7 @@ uncrust :
 # Signs a jar
 
 vendor=cecile.picard@inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
-public-key=hello-world
+qpublic-key=hello-world
 private-key=mer,d,azof
 
 %.key : %.jar

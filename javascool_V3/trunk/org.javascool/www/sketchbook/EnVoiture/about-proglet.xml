@@ -61,18 +61,19 @@
       <p><c>nB</c> est le nom du second spot du lien considéré.</p>
       <p><c>a</c> est la réponse à la question "Les spots nA et nB sont-ils en lien?", soit "vrai" soit "faux", qui est renvoyée.</p>
       </div>
-  </p>
-      
+  </p>      
    <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
+   <div>Un exemple de programme d'utilisation est <l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Exemple.jvs.html" text="disponible ici"/>.</div>
    <div class="notes">
     <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, 
     programmée en <l link="http://processing.org" text="Processing"/> et disponible sous forme de code documenté:
     <div class="table"><p>
-      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/CryptageRSA/EnVoiture.pde.html" text="EnVoiture"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/EnVoiture.pde.html" text="EnVoiture"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Car.pde.html" text="Car"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Spot.pde.html" text="Spot"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Trip.pde.html" text="Trip"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/EnVoiture/Link.pde.html" text="Link"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/ExplorationSonore/interface.pde.html" text="interface"/></p>
     </p></div>
     pour permettre des développements dérivés.</div>
   </div>

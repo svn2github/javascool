@@ -29,7 +29,8 @@ svn: clean
 	@svn up ; svn ci -m '' ; svn status
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java lib/js-manifest.mf www/api www/javascool.jar www/sources.zip sketchbook/*/applet
+	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java lib/js-manifest.mf lib/sketchbook.zip www/api www/javascool.jar www/sources.zip
+	@$(MAKE) -C sketchbook clean
 
 #####################################################################################################################################
 
@@ -111,7 +112,7 @@ src/org/javascool/hdoc2htm.xslt : src/org/javascool/hml2htm.xslt
 	@touch $@
 
 lib/sketchbook.zip : $(DOC)
-	@rm -f $@; zip -9qr $@ `find sketchbook -name '*.htm' -o -name '*.xml' -o -name '*.pde' -o -name '*.png'`
+	@rm -f $@; zip -9qr $@ `find sketchbook -name '*.htm' -o -name '*.xml' -o -name '*.pde' -o -name '*.png' -o -name '*.jvs'`
 
 %.png : %.fig
 	@fig2dev -L png $^ > $@
@@ -192,15 +193,20 @@ www/api : $(JDOC_DEP)
 endif
 	@rm -rf $@ ; mkdir -p $@
 	@echo "make $@"
+	@# Generates the javadoc
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*\*\/ *public/\/\*public\*\//g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; done
 	@javadoc $(JDOC_OPTION) $(SRC) -d $@
 	@$(MAKE) aps
-	@for f in $(SRC) $(JVS) $(XSL) $(shell find src -name doc-files) ; do d=`echo $$f | sed 's/^src/$(subst /,\\/,$@)/'` ; mkdir -p `dirname $$d` ; cp -r $$f $$d ; done
+	@# Copies all complementary files
+	@cd src ; cp --parents $(patsubst src/%,%,$(shell find src -name '*.java') $(JVS) $(XSL)) ../$@
+	@for d in $(shell find src -name doc-files) ; do svn -q --force export $$d www/api/`echo $$d | sed 's/src\///'` ; done
 	@unzip -qod $@ lib/sketchbook.zip
-	@for f in `find $@ -name '*.java' -o -name '*.pde' -o -name '*.jvs'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
-	@rm -rf `find $@ -name .svn`
-	@cd www ; rm -f sources.zip ; zip -9qr sources.zip api
 	@cp lib/js-manifest.mf $@/js-manifest.txt
+	@#Generates the html files from the source files
+	@for f in `find $@ -name '*.java' -o -name '*.pde' -o -name '*.jvs'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
+	@#Generates the source archive
+	@cd www ; rm -f sources.zip ; zip -9qr sources.zip api
+	@#Concludes
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
 aps:

@@ -34,6 +34,7 @@
       <p>est retourné le message decrypté en caractères.</p>
     </div><div class="code">
    <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
+   <div>Un exemple de programme d'utilisation est <l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/CryptageRSA/Exemple.jvs.html" text="disponible ici"/>.</div>
    <div class="notes">
     <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, 
     programmée en <l link="http://processing.org" text="Processing"/> et disponible sous forme de code documenté:

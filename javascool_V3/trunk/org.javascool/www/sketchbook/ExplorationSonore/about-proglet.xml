@@ -11,7 +11,7 @@
     <p><r>ExplorationSonore.playSignal</r>(<r>int</r> canal, <r>String</r> type, <r>double</r> frequence, <r>double</r> amplitude)</p>
     </div>où: <div class="ul">
       <p><c>canal</c> est le numéro du canal à choisir parmi: 1, 2 ou 3.</p>
-      <p><c>type</c> est le type de signal à choisir parmi: "sine" (sinusoïde), "square" (signal carré), "saw" (signal en dent de scie scie), "noise" (bruit, ici bruit blanc);</p>
+      <p><c>type</c> est le type de signal à choisir parmi: "sinus" (sinusoïde), "carré" (signal carré), "scie" (signal en dent de scie), "bruit" (bruit, ici bruit blanc);</p>
       <p><c>frequence</c> est la fréquence en Hz, à choisir entre 100 et 8000.</p>
       <p><c>amplitude</c> est l'amplitude, à choisir entre 0 (silence) et 1 (100% du volume sonore).</p>
     </div><div class="code">
@@ -26,6 +26,7 @@
   </div>arrêtera l'émission sonore et remettra la visualisation des sons captés par le microphone.
   </p>
    <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
+   <div>Un exemple de programme d'utilisation est <l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/ExplorationSonore/Exemple.jvs.html" text="disponible ici"/>.</div>
    <div class="notes">
     <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, 
     programmée en <l link="http://processing.org" text="Processing"/> et disponible sous forme de code documenté:

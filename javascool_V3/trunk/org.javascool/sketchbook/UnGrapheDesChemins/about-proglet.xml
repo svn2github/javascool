@@ -68,7 +68,8 @@
       <p><c>p</c> est le poids du lien entre les neouds nA et nB, qui est renvoyé.</p>
       </div>
   </p>
-   <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
+  <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
+  <div>Un exemple de programme d'utilisation est <l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Exemple.jvs.html" text="disponible ici"/>.</div>
    <div class="notes">
     <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, 
     programmée en <l link="http://processing.org" text="Processing"/> et disponible sous forme de code documenté:
@@ -77,6 +78,7 @@
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Graph.pde.html" text="Graph"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Node.pde.html" text="Node"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/Link.pde.html" text="Link"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/ExplorationSonore/interface.pde.html" text="interface"/></p>
       <p><l link="http://javascool.gforge.inria.fr/v3/?page=api:/sketchbook/UnGrapheDesChemins/HScrollbar.pde.html" text="HScrollbar"/></p>
     </p></div>
     pour permettre des développements dérivés.</div>
