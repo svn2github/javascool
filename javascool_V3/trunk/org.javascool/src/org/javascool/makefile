@@ -2,7 +2,7 @@
 ifeq ($(USER), vthierry)
 
 all : 
-	@cd ../sketchbook ; ../../lib/run.sh org.javascool.JsMain
+	@cd ../sketchbook ; ../lib/run.sh org.javascool.JsMain
 #	@$(MAKE) j3-2
 #	@cd ../tst ; ../lib/run.sh org.javascool.JsMain
 #	@cd ../tst ; ../lib/run.sh org.javascool.Eml exp.jvs
