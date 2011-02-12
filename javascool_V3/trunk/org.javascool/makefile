@@ -216,18 +216,13 @@ aps:
 
 # Web site files publication
 
-wpub: jar spub api wraz
+wpub: jar api wraz
+	@$(MAKE) -C sketchbook publish
 	@php -l www/index.php ; rm -f www/*~
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php --exclude javascool.jar www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
 	 2>&1 | grep -v '^rsync: failed to set'
 	@-rsync --rsh='ssh -C' www/index.php scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/.htindex.php
 	@ssh scm.gforge.inria.fr 'sh -c "cd /home/groups/javascool/htdocs/v3 ; cat .htindex.php > index.php ; rm .htindex.php"'
-
-# Sketchbook publication
-
-spub: 
-	@$(MAKE) -C sketchbook publish
-	@$(MAKE) wpub
 
 # Jar file publication: WARNING this disseminates your new release all around the world !!!
 
@@ -382,7 +377,6 @@ done :
 #:: make api          : Build the java doc
 #:: make aps          : Rebuild source files after a java doc build failure
 #:: make wpub         : Publish the present document release on the web site
-#:: make spub         : Publish the sketchbook elements on the web site
 #:: make jpub         : Publish the present javascool.jar release on the web site
 #:: make wraz         , Clears the web site cache
 #:: make wref         : Checks the web site broken links

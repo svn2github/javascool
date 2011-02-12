@@ -1,9 +1,0 @@
-
-// DEBUT_PROGRAMME
-void main() {
-   // CHAINE_DE_CARACTERE x <- "name" + 12;  
-   String x = "name" + 12;
-   // AFFICHER (x);  
-   println (x);
-   // FIN_PROGRAMME 
-}

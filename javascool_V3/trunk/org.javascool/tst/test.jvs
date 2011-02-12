@@ -1,7 +1,0 @@
-
-// DEBUT_PROGRAMME
-void main() {
-   // AFFICHER ("OK");  
-   println ("OK");
-   // FIN_PROGRAMME 
-}
