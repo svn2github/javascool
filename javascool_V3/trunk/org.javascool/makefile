@@ -227,6 +227,7 @@ wpub: jar spub api wraz
 
 spub: 
 	@$(MAKE) -C sketchbook publish
+	@$(MAKE) wpub
 
 # Jar file publication: WARNING this disseminates your new release all around the world !!!
 
@@ -381,6 +382,7 @@ done :
 #:: make api          : Build the java doc
 #:: make aps          : Rebuild source files after a java doc build failure
 #:: make wpub         : Publish the present document release on the web site
+#:: make spub         : Publish the sketchbook elements on the web site
 #:: make jpub         : Publish the present javascool.jar release on the web site
 #:: make wraz         , Clears the web site cache
 #:: make wref         : Checks the web site broken links
