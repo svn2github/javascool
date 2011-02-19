@@ -58,10 +58,13 @@ public class JsProcessingActivities {
     public ProcessingActivity(String n, String c, String t, int w, int h) {
       name = n;
       type = c;
+      // This sets the type to null if the processing class is not loadable
+      try { Class.forName(name); }  catch(Throwable e) { type = null; }
       title = t;
       width = w + 20;
       height = h + 20;
     }
+    // Checks that the processing class is buildable
     private String name, type, title;
     public String getType() {
       return type;

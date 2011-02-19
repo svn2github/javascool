@@ -170,8 +170,11 @@ public class JsProgletActivities {
       this.proglet = proglet;
     }
     public void init(JsMain main) {
+      jvsEditor.reset(true);
       main.getFrame().addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false, true);
       jvsEditor.setProglet(proglet);
+      if(!"ingredients".equals(proglet))
+	main.getFrame().addTool("Démo..", "org/javascool/doc-files/icones16/globe.png", demo);
       init1(main);
       if(!"ingredients".equals(proglet)) {
         String name = "exosdemaths".equals(proglet) ? "Tracé" : proglet;
@@ -184,5 +187,11 @@ public class JsProgletActivities {
     }
     // Proglet specific pannels
     protected void init2(JsFrame frame) {}
+    // Demo button
+    private Runnable demo = new Runnable() {
+      public void run() {
+        Jvs2Java.run(proglet);
+      }
+    };
   }
 }

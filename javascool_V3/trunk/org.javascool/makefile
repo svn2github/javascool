@@ -20,7 +20,7 @@ j3-1:
 
 j3-2: jar
 	@cd sketchbook ; java -jar ../www/javascool.jar
-#	@make clean
+	@make clean
 
 doc: api
 	firefox file:www/api/org/javascool/package-summary.html

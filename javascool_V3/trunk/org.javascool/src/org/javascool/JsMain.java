@@ -212,7 +212,9 @@ public class JsMain extends JApplet {
 
   /** Defines a JavaScool interactive activity. */
   public interface Activity {
-    /** Returns the activity category. */
+    /** Returns the activity category.
+     * @return The string type as a non empty string or null if the activity is undefined in this context.
+     */
     public String getType();
     /** Returns the activity title. */
     public String getTitle();
@@ -222,7 +224,6 @@ public class JsMain extends JApplet {
     public void stop(JsMain main);
     /** Returns the activity editor. */
     public Editor getEditor();
-
     /** Returns the required file extension.
      * e.g., ".jvs" or ".pml"
      */
@@ -246,11 +247,13 @@ public class JsMain extends JApplet {
   }
   /** Adds an activity to the application list. */
   public void addActivity(Activity activity) {
-    activities.add(activity);
-    if (activity.getType().length() > 0) {
-      if (!types.containsKey(activity.getType()))
-	types.put(activity.getType(), new ArrayList<String>());
-      types.get(activity.getType()).add(activity.getTitle());
+    if (activity.getType() != null) {
+      activities.add(activity);
+      if (activity.getType().length() > 0) {
+	if (!types.containsKey(activity.getType()))
+	  types.put(activity.getType(), new ArrayList<String>());
+	types.get(activity.getType()).add(activity.getTitle());
+      }
     }
   }
   // Register all activities

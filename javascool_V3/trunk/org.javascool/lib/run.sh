@@ -9,7 +9,7 @@ then cat <<EOD
 Usage: $0 <main> [arguments]
  Runs one of the main (ex: org.javascool.Main)
 Usage: $0 sax -o <out-file> <xml-file> <xsl-file>
- Runs a XML to XML translation usng a XSL
+ Runs a XML to XML translation using a XSL
 - This scripts simplifies the local use of saxon and javascool
 EOD
 exit 0
@@ -17,17 +17,12 @@ fi
 
 # Retrieve javascool root directory and main class
 if echo $0 | grep '^/' ; then root="$0" ; else root="`pwd`/$0" ; fi ; root=`echo $root | sed 's/\/lib\/run.sh$//' | sed 's/\/lib\/\.\/run.sh$//'`
-main="$1" ; shift
 
 # Running the saxon translator
-if [ "$main" = sax ] ; then java -jar $root/lib/saxon.jar $* ; exit $? ; fi
+if [ "$1" = sax ] ; then shift ; java -jar $root/lib/saxon.jar $* ; exit $? ; fi
 
-# Running the class after compilation
-make -s -f - <<EOF
-all :
-	\$(MAKE) -C $root jar
-	java -cp $root/www/javascool.jar $main $*
-EOF
+# Running the class fromn the main jar
+java -cp $root/www/javascool.jar $*
 
 
 
