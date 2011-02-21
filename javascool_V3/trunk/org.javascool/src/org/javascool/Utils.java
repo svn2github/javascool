@@ -343,7 +343,8 @@ public class Utils {
     try {
       if(!tranformers.containsKey(xsl))
         tranformers.put(xsl, tfactory.newTemplates(new StreamSource(new StringReader(xsl))).newTransformer());
-    } catch(TransformerConfigurationException e) { throw new RuntimeException(e + " when compiling: " + xsl);
+    } catch(TransformerConfigurationException e) {
+      throw new RuntimeException(e + " when compiling: " + xsl);
     }
     // Apply the transformation
     try {
@@ -352,7 +353,8 @@ public class Utils {
       StringWriter writer = new StringWriter();
       tranformers.get(xsl).transform(new StreamSource(new StringReader(xml)), new StreamResult(writer));
       return writer.toString();
-    } catch(TransformerException e) { throw new IllegalArgumentException(e.getMessageAndLocation());
+    } catch(TransformerException e) {
+      throw new IllegalArgumentException(e.getMessageAndLocation());
     }
   }
   // Cash mechanism
