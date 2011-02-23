@@ -378,7 +378,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     return null;
   }
   /** Predefined coolorization style. */
-  public final Style NormalStyle, CodeStyle, OperatorStyle, NameStyle, StringStyle, CommentStyle;
+  public final Style NormalStyle, CodeStyle, OperatorStyle, BracketStyle, NameStyle, StringStyle, CommentStyle;
   // Defines the colorization styles
   {
     pane.setCaretColor(Color.BLUE);
@@ -402,6 +402,12 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     OperatorStyle = doc.addStyle("Operateur", null);
     StyleConstants.setForeground(OperatorStyle, Color.BLACK);
     StyleConstants.setBold(OperatorStyle, true);
+
+    // Style Bracket: for operators chars
+    BracketStyle = doc.addStyle("Bracket", null);
+    StyleConstants.setForeground(BracketStyle, new Color(0x220022));
+    StyleConstants.setFontSize(BracketStyle, 24);
+    StyleConstants.setBold(BracketStyle, true);
 
     // Style Name: for identificator of declared variables (used in BML)
     NameStyle = doc.addStyle("Name", null);
@@ -450,7 +456,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
   /** Sets the content element attributes in the document.
    * @param offset The start index of the change.
    * @param count The length of the change.
-   * @param style The predefined style: <tt>SourceEditor.(NormalStyle|CodeStyle|OperatorStyle|NameStyle|StringStyle|CommentStyle)</tt>
+   * @param style The predefined style: <tt>SourceEditor.(NormalStyle|CodeStyle|OperatorStyle|BracketStyle|NameStyle|StringStyle|CommentStyle)</tt>
    */
   public void setCharacterAttributes(int offset, int count, Style style) {
     doc.setCharacterAttributes(offset, count, style, true);

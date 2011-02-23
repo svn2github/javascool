@@ -115,14 +115,23 @@ public class Jvs2Java {
           if(c0 == '{')
             tab += TAB;
           if(c0 == '}')
-            tab -= TAB;                        // Cleans spaces after symbol
+            tab -= TAB;                        
+	  if (tab == 0)
+	    text1 += "\n";
+	  // Cleans spaces after symbol
           for(; i < text0.length() - 1 && Character.isWhitespace(text0.charAt(i + 1)); i++) ;
           // Decides ln
           ln = tab;
         }
       }
     }
-    return "\n" + text1.replaceAll("\\}\\s*else\\s*\\{", "} else {");
+    return "\n" + text1.
+      replaceAll("\\}\\s*else\\s*\\{", "} else {").
+      replaceAll("\\}\\s*else \\s*if", "} else if").
+      replaceAll("\\(\\s*", "(").
+      replaceAll("\\s*\\)", ")").
+      replaceAll("\\)\\s*\\{", ") {").
+      replaceAll("(while|if|for|//)\\s*", "$1 ");
   }
   /** Translates a Jvs code source.
    * @param path The file path to translate: A <tt>.jvs</tt> file is read and the corresponding <tt>.java</tt> file is written.
@@ -220,7 +229,15 @@ public class Jvs2Java {
     } catch(Throwable e) {
       Utils.report(e); throw new RuntimeException("Erreur: impossible de compiler, il y a une erreur d'installation (" + e + "), contacter http://javascool.gforge.inria.fr");
     }
-    return out.toString().trim().replaceAll(path.replaceAll("\\\\", "\\\\\\\\"), new File(path).getName());
+    return error2output(out.toString().trim().replaceAll(path.replaceAll("\\\\", "\\\\\\\\"), new File(path).getName()));
+  }
+  // Filters the compiler error to return only one error.
+  public static String error2output(String out) {
+    System.err.println(out);
+    int i = out.indexOf("^"); 
+    if (i != -1) out = out.substring(0, i+1);
+    out = out.replaceAll(jpath, jclass);
+    return out;
   }
   /** Dynamically loads a Java class to be used during this session.
    * @param path The path to the java class to load. The java class is supposed to belong to the "default" package, i.e. not to belong to a package.
@@ -291,9 +308,7 @@ public class Jvs2Java {
                              public void run() {
                                try { runnable.run();
                                } catch(Throwable e) {
-                                 if("Programme arrêté !".equals(e.getMessage()))
-                                   System.out.println(e);
-                                 else
+                                 if(!"Programme arrêté !".equals(e.getMessage()))
                                    Utils.report(e);
                                }
                              }

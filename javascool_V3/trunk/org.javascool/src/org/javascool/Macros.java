@@ -29,25 +29,21 @@ public class Macros {
   public static void echo(boolean string) {
     echo("" + string);
   }
-  /*
-   *
-   *  /** Renvoie x à la puissance y.
+  /* Fonctions accessibles via Math.*;
+   * 
+   * Renvoie x à la puissance y.
    * @param x 1er argument.
    * @param y 2eme argument.
-   * /
-   *  public static double pow(double x, double y) { return Math.pow(x, y); }
+   * public static double pow(double x, double y) { return Math.pow(x, y); }
    *
-   *  /** Renvoie la racine carrée de x.
+   * Renvoie la racine carrée de x.
    * @param x argument.
-   * /
-   *  public static double sqrt(double x) { return Math.sqrt(x); }
+   * public static double sqrt(double x) { return Math.sqrt(x); }
    *
-   *  /** Renvoie un nombre aléatoire uniformément distribué entre 0 et 1.
-   * /
-   *  public static double random() { return Math.random(); }
+   * Renvoie un nombre aléatoire uniformément distribué entre 0 et 1.
+   * public static double random() { return Math.random(); }
    *
    */
-
   /** Renvoie un nombre entier aléatoire uniformément distribué entre deux valeurs (maximum inclus).
    */
   public static int random(int min, int max) {
@@ -72,17 +68,18 @@ public class Macros {
     ref.set(2000, 0, 1, 0, 0, 0);
     offset = ref.getTimeInMillis();
   }
-
   /** Temporise une durée fixée.
    * Cela permet aussi de mettre à jour l'affichage.
    * @param delay Durée d'attente en milli-secondes.
    */
   public static void sleep(int delay) {
-    try { if(delay > 0)
-            Thread.sleep(delay);
-          else
-            Thread.sleep(0, 10000);
-    } catch(Exception e) { throw new RuntimeException("Programme arrêté !");
+    try {
+      if(delay > 0)
+	Thread.sleep(delay);
+      else
+	Thread.sleep(0, 10000);
+    } catch(Exception e) { 
+      throw new RuntimeException("Programme arrêté !");
     }
   }
 }

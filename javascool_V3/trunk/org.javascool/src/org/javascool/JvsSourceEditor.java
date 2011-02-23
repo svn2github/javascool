@@ -127,11 +127,14 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
       case '=':
       case '(':
       case ')':
-      case '{':
-      case '}':
       case '[':
       case ']':
         setCharacterAttributes(i, 1, OperatorStyle);
+	break;
+      case '{':
+      case '}':
+        setCharacterAttributes(i, 1, BracketStyle);
+	break;
       }
     }
   }

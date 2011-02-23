@@ -84,7 +84,7 @@ public class Console implements org.javascool.Proglet {
      */
     public void writeString(String string, boolean html) {
       output += (html ? string : quote(string));
-      out.setText("<html><body>" + output + "</body></html>");
+      out.setText("<html><body> " + output + " </body></html>");
       // Select the end of the text
       out.selectAll();
       int i = out.getSelectionEnd();
@@ -115,7 +115,7 @@ public class Console implements org.javascool.Proglet {
       } catch(Exception e) {
         in.setText("");
         in.setEditable(false);
-        prompt.setText(label); throw new RuntimeException("Programme arreté !");
+        prompt.setText(label); throw new RuntimeException("Programme arrêté !");
       }
       prompt.setText(label);
       return input == null ? "" : input;
