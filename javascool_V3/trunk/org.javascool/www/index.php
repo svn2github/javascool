@@ -126,10 +126,10 @@ if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { passthru("rm
                   <div class="menu">
                     <ul>
                     <li><a href="?page=Accueil">Accueil</a></li>
-                    <li><a href="http://javascool.gforge.inria.fr/v3/javascool.jar">Lancement</a></li> 
+                    <li><a href="http://javascool.gforge.inria.fr/v3/javascool.jar">Lancement</a> <span class="menuright_bottom"><a target="_blank" href="?page=Lancement">(aide)</a></span></li> 
                     <li><a href="?page=Activites">Activit&eacute;s</a></li> 
                     <li><a href="?page=Ressources">Ressources</a></li> 
-                    <li><a href="?page=Developpement">D&eacute;veloppement</a></li> 
+                    <!--li><a href="?page=Developpement">D&eacute;veloppement</a></li--> 
                     <li><a href="?page=Contacts">Contacts</a></li> 
                   </ul>
                 </div>
