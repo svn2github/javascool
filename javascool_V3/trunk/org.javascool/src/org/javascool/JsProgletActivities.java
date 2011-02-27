@@ -80,10 +80,12 @@ public class JsProgletActivities {
         main.getFrame().showTab("Console");
         Console.clear();
         if(getEditor().getText().trim().length() > 0) {
+	  System.out.println("Sauvegarde de "+new java.io.File(main.getFileChooser().getFile()).getName()+" ..");
           main.getFileChooser().doSave(getEditor(), getExtension());
           if(main.getFileChooser().getFile() != null) {
-            if(getEditor() instanceof AlgoEditor)
+            if(getEditor() instanceof AlgoEditor) {
               main.getFileChooser().doSave(jvsEditor, Jvs2Java.reformat(((AlgoEditor) getEditor()).getJavaSource()), ".jvs");
+	    }
             Jvs2Java.translate(main.getFileChooser().getFile());
             String out = Jvs2Java.compile(main.getFileChooser().getFile());
             System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
@@ -98,7 +100,7 @@ public class JsProgletActivities {
           System.out.println("Rien à compiler: il n'y pas de code dans l'éditeur !");
       }
     };
-    private Runnable execute = new Runnable() {
+    protected Runnable execute = new Runnable() {
       public void run() {
         Console.clear();
         CurveDisplay.scopeReset();
@@ -184,12 +186,24 @@ public class JsProgletActivities {
       main.getFrame().addTab("Document de la proglet", "proglet/" + proglet + "/doc-files/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true, false);
       main.getFrame().addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/help.png", true, false);
       main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
+    } 
+    // Enrich the execute action
+    private Runnable execute2;
+    {
+      execute2 = execute;
+      execute = new Runnable() {
+	  public void run() {
+	    main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
+	    execute2.run();
+	  }
+	};
     }
     // Proglet specific pannels
     protected void init2(JsFrame frame) {}
     // Demo button
     private Runnable demo = new Runnable() {
       public void run() {
+	main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
         Jvs2Java.run(proglet);
       }
     };

@@ -21,6 +21,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Used to load/save 
+import org.javascool.Utils;
+
 // Used to redirect System.out
 import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
@@ -97,6 +100,7 @@ public class Console implements org.javascool.Proglet {
 
     /** Clears the output. */
     public void clear() {
+      inputs = "";
       out.setText(output = "");
       prompt.setText(label);
       in.setText("");
@@ -105,25 +109,46 @@ public class Console implements org.javascool.Proglet {
      * @return The read string.
      */
     public String readString() {
-      // Interaction loop with in action listener
-      in.setText("");
-      in.setEditable(true);
-      in.requestFocus();
-      try {
-        while(in.isEditable())
-          Thread.sleep(100);
-      } catch(Exception e) {
-        in.setText("");
-        in.setEditable(false);
-        prompt.setText(label); throw new RuntimeException("Programme arrêté !");
+      if (inputs.length() == 0) {
+	// Interaction loop with in action listener
+	in.setText("");
+	in.setEditable(true);
+	in.requestFocus();
+	try {
+	  while(in.isEditable())
+	    Thread.sleep(100);
+	} catch(Exception e) {
+	  in.setText("");
+	  in.setEditable(false);
+	  prompt.setText(label); throw new RuntimeException("Programme arrêté !");
+	}
+	prompt.setText(label);
+	return input == null ? "" : input;
+      } else {
+	// Input from batch data
+	int i = inputs.indexOf("\n");
+	input = inputs.substring(0, i);
+	in.setText(input);
+	org.javascool.Macros.sleep(500);
+	inputs = inputs.substring(i+1);
+	return input;
       }
-      prompt.setText(label);
-      return input == null ? "" : input;
     }
     private JLabel prompt;
     private String label = "Entrée au clavier > ";
     private JTextField in;
-    private String input, output = "";
+    private String inputs = "", input, output = "";
+
+    /** Returns the present state of the console output. */
+    public String getStdout() {
+      return output;
+    }
+    /** Adds a string to feed the next input.
+     * @param string The string to add.
+     */
+    public void addStdin(String string) {
+      inputs += string.trim() + "\n";
+    }
   }
 
   // Redirect the System.out to the console
@@ -215,9 +240,27 @@ public class Console implements org.javascool.Proglet {
   public static void printHtml(String string) {
     panel.writeString(string, true);
   }
-  /** Efface tout ce qui est déjà écrit dans la console. */
+  /** Efface tout ce qui est écrit ou à lire dans la console. */
   public static void clear() {
     panel.clear();
+  }
+  /** Sauve ce qui est présentement écrit dans la console dans un fichier au format HTML.
+   * @param location La localisation (chemin du fichier ou localisation internet) où sauver le texte.
+   */
+  public static void saveConsoleOutput(String location) {
+    Utils.saveString(location, panel.getStdout());
+  }
+  /** Charge le contenu d'un fichier pour que son contenu serve d'entrée à la console.
+   * @param location La localisation (chemin du fichier ou localisation internet) d'où charger le texte.
+   */
+  public static void loadConsoleInput(String location) {
+    panel.addStdin(Utils.loadString(location));
+  }
+  /** Charge une chaine de caractère pour que son contenu serve d'entrée à la console.
+   * @param string La chaine de caractère à ajouter.
+   */
+  public static void addConsoleInput(String string) {
+    panel.addStdin(string);
   }
   /** Lit une chaîne de caractère dans la fenêtre d'entrée (input).
    * @return La chaîne lue.

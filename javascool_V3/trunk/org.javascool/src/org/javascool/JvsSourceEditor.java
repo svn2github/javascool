@@ -84,10 +84,12 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
   public void doReformat() {
     setText(Jvs2Java.reformat(getText()));
   }
-  public void doColorize(Segment text) {
+  public void doColorize(int position, Segment text) {
     String string = new String(text.array, text.offset, text.count);
     // Resets the colorization
     setCharacterAttributes(text.offset, text.count, NormalStyle);
+    // Colorizes active block
+    doColorizeActiveBlock(position, text);
     // Colorizes names : put 1st to make reserved/declared words overwrite it
     doColorizeNames(text);
     // Colorizes all reserved and declared words
@@ -97,10 +99,10 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
       doColorizeWord(word, text, string);
     // Colorizes operators
     doColorizeOperators(text);
-    // Colorizes strings : put at last, to cover other colorization
-    doColorizeStrings(text);
-    // Colorizes comments : put at last of the last, to cover other colorization
+    // Colorizes comments : put at last, to cover other colorization
     doColorizeComments(text);
+    // Colorizes strings : put at last of the last, to cover other colorization
+    doColorizeStrings(text);
   }
   // Colorizes reserved/declared words
   private void doColorizeWord(String word, Segment text, String string) {
@@ -197,12 +199,22 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
   private static boolean isWordChar(char c) {
     return Character.isLetterOrDigit(c) || c == '_';
   }
+  // Colorizes the active block
+  private void doColorizeActiveBlock(int position, Segment text) {
+    int ileft, iright, level;
+    for(ileft = position, level = 0; 0 <= ileft && 0 <= level; ileft--)
+      level = text.array[ileft] == '}' ? level+1 : text.array[ileft] == '{' ? level-1 : level;
+    for(iright = position, level = 0; iright < text.array.length && 0 <= level; iright++)
+      level = text.array[iright] == '{' ? level+1 : text.array[iright] == '}' ? level-1 : level;
+    if (ileft > 0)
+      setCharacterAttributes(ileft+1, iright-ileft-1, ActiveBlockStyle);
+  }
   /** Shows a Jvs source file.
    * @param usage <tt>java org.javascool.JvsSourceEditor location</tt>
    */
   public static void main(String[] usage) {
     if(usage.length > 0)
-      Utils.show((SourceEditor) new JvsSourceEditor().reset(false).setText(Utils.loadString(usage[0])), "Jvs Source File Shower", 1024, 800);
+      Utils.show((SourceEditor) new JvsSourceEditor().reset(true).setText(Utils.loadString(usage[0])), "Jvs Source File Shower", 1024, 800);
   }
 }
 

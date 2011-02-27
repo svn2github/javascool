@@ -6,10 +6,13 @@ export PATH=/usr/java/jdk1.6.0_22/bin:$PATH
 # Usage of this script
 if [ -z "$1" -o "$1" = "-h" -o "$1" = "--help" ] 
 then cat <<EOD
-Usage: $0 <main> [arguments]
- Runs one of the main (ex: org.javascool.Main)
+Usage: $0 [-rejar] <main> [arguments]
+ Runs one of the main (ex: org.javascool.JsMain)
+  -rejar Recompile the jar before running.
+
 Usage: $0 sax -o <out-file> <xml-file> <xsl-file>
  Runs a XML to XML translation using a XSL
+
 - This scripts simplifies the local use of saxon and javascool
 EOD
 exit 0
@@ -21,8 +24,13 @@ if echo $0 | grep '^/' ; then root="$0" ; else root="`pwd`/$0" ; fi ; root=`echo
 # Running the saxon translator
 if [ "$1" = sax ] ; then shift ; java -jar $root/lib/saxon.jar $* ; exit $? ; fi
 
-# Running the class fromn the main jar
-java -cp $root/www/javascool.jar $*
+# Recompile if required
+if [ "$1" = -rejar ] ; then shift ; make -C $root jar ; if [ $? != 0 ] ; then exit $? ; fi ; fi
 
+# Running the class fromn the main jar
+if [ -z "$1" ] 
+then java -jar $root/www/javascool.jar
+else java -cp $root/www/javascool.jar $*
+fi
 
 

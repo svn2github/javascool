@@ -67,8 +67,7 @@ import java.util.HashMap;
 
 // Used to manage the colorization
 import javax.swing.text.Segment;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.KeyAdapter;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.DocumentEvent;
 
@@ -85,9 +84,10 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     return pane.getText();
   }
   public Editor setText(String text) {
+    int c = pane.getCaretPosition(); if (c >= text.length()) c = text.length() - 1;
     pane.setText(text);
-    pane.setCaretPosition(0);
-    doColorize(0, 0);
+    pane.setCaretPosition(c);
+    doColorize(-1);
     modified = false;
     return this;
   }
@@ -122,11 +122,20 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     doc = pane.getStyledDocument();
     scroll = new JScrollPane(pane, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
     add(scroll, BorderLayout.CENTER);
+    // Adds the listener which is going to colorize after a key is entered
+    {
+      pane.addKeyListener(new KeyAdapter() {
+	  public void keyTyped(KeyEvent e) {
+	    modified = true;
+	    doColorize(pane.getCaretPosition());
+	  }
+	});
+    }
     // Defines the line number tracker
     {
       bar.add(line = new JLabel("ligne :   0 | "));
       pane.addCaretListener(new CaretListener() {
-                              public void caretUpdate(CaretEvent e) {
+	  public void caretUpdate(CaretEvent e) {
                                 try {
                                   int l = pane.getDocument().getRootElements()[0].getElementIndex(pane.getCaretPosition()) + 1;
                                   if(l != iline) {
@@ -139,6 +148,23 @@ public class SourceEditor extends JPanel implements Widget, Editor {
                               }
                             }
                             );
+    }
+    // Adds the listener which is going to colorize after the document is modified
+    {
+      doc.addDocumentListener(new DocumentListener() {
+	  public void changedUpdate(DocumentEvent e) {
+	    modified = true;
+	  }
+	  // Here colorization must be postponed and globalized to avoid write lock and offset/length incoherence
+	  public void insertUpdate(DocumentEvent e) {
+	    modified = true;
+	    recolorize = true;
+	  }
+	  public void removeUpdate(DocumentEvent e) {
+	    modified = true;
+	    recolorize = true;
+	  }
+	});
     }
     // Defines the Edit menu
     {
@@ -378,7 +404,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     return null;
   }
   /** Predefined coolorization style. */
-  public final Style NormalStyle, CodeStyle, OperatorStyle, BracketStyle, NameStyle, StringStyle, CommentStyle;
+  public final Style NormalStyle, CodeStyle, OperatorStyle, BracketStyle, NameStyle, StringStyle, CommentStyle, ActiveBlockStyle;
   // Defines the colorization styles
   {
     pane.setCaretColor(Color.BLUE);
@@ -419,72 +445,49 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     StyleConstants.setForeground(CommentStyle, new Color(0x0000ee)); // Blue
     StyleConstants.setBold(CommentStyle, true);
 
-    // Adds the listener which is going to colorize after a key is entered
-    pane.addKeyListener(new KeyListener() {
-                          public void keyPressed(KeyEvent e) {}
-                          public void keyTyped(KeyEvent e) {}
-                          // Here colorization is required in a window {-50 .. 50} around the caret position
-                          public void keyReleased(KeyEvent e) {
-                            modified = true;
-                            doColorize(pane.getCaretPosition() - 50, 100);
-                          }
-                        }
-                        );
-    // Adds the listener which is going to colorize after the document is modified
-    doc.addDocumentListener(new DocumentListener() {
-                              public void changedUpdate(DocumentEvent e) {
-                                modified = true;
-                              }
-                              // Here colorization must be postponed and globalized to avoid write lock and offset/length incoherence
-                              public void insertUpdate(DocumentEvent e) {
-                                modified = true;
-                                recolorize = true;
-                              }
-                              public void removeUpdate(DocumentEvent e) {
-                                modified = true;
-                                recolorize = true;
-                              }
-                            }
-                            );
+    // ActiveBlockStyle: used to highlight where we are in the code
+    ActiveBlockStyle = doc.addStyle("ActiveBlock", null);
+    StyleConstants.setBackground(ActiveBlockStyle, new Color(0xeeeeee)); // Light-Gray
   }
 
   /** Colorizes a text's segment
+   * @param position Current position in the text.
    * @param text The text segment to [re]colorize.
    */
-  public void doColorize(Segment text) {}
+  public void doColorize(int position, Segment text) {}
 
   /** Sets the content element attributes in the document.
    * @param offset The start index of the change.
    * @param count The length of the change.
-   * @param style The predefined style: <tt>SourceEditor.(NormalStyle|CodeStyle|OperatorStyle|BracketStyle|NameStyle|StringStyle|CommentStyle)</tt>
+   * @param style The predefined style: <tt>SourceEditor.(NormalStyle|CodeStyle|OperatorStyle|BracketStyle|NameStyle|StringStyle|CommentStyle|ActiveBlockStyle)</tt>
    */
   public void setCharacterAttributes(int offset, int count, Style style) {
-    doc.setCharacterAttributes(offset, count, style, true);
+    doc.setCharacterAttributes(offset, count, style, style == NormalStyle);
   }
   // Colorizes a part of the text
-  private void doColorize(int offset, int length) {
+  private void doColorize(int position) {
     // Manages a global recolorization
     if(recolorize) {
-      offset = length = 0;
+      position = -1;
       recolorize = false;
     }
-    // Gets the text to colorize and adjust the bounds to the closest beginning/end of lines
+    // Gets the text to colorize and adjust the bounds to the whole text or the closest beginning/end of lines
     Segment text = new Segment();
-    try { doc.getText(0, doc.getLength(), text);
+    try {
+      doc.getText(0, doc.getLength(), text);
     } catch(Exception e) {}
-    if(offset < 0)
-      offset = 0;
-    while(offset > 0 && text.array[offset] != '\n')
-      offset--;
-    if(length == 0)
-      length = text.count;
-    if(offset + length > text.count)
-      length = text.count - offset;
-    while(offset + length < text.count && text.array[offset + length - 1] != '\n')
-      length++;
-    text.offset = offset;
-    text.count = length;
-    doColorize(text);
+    if (position < 0 || position >= doc.getLength()) {
+      text.offset = position = 0;
+      text.count = text.array.length;
+    } else {
+      text.offset = position;
+      while(text.offset > 0 && text.array[text.offset] != '\n')
+	text.offset--;
+      text.count = 1;
+      while(text.offset + text.count < text.array.length && text.array[text.offset + text.count - 1] != '\n')
+	text.count++;
+    }
+    doColorize(pane.getCaretPosition(), text);
   }
   // Global recolorization flag
   private boolean recolorize = true;

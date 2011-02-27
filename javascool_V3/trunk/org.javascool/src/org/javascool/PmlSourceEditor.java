@@ -18,7 +18,7 @@ public class PmlSourceEditor extends SourceEditor implements Widget {
   public void doReformat() {
     // A definir
   }
-  public void doColorize(Segment text) {
+  public void doColorize(int position, Segment text) {
     String string = new String(text.array, text.offset, text.count);
     // Resets the colorization
     setCharacterAttributes(text.offset, text.count, NormalStyle);
