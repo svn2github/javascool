@@ -80,8 +80,7 @@ public class JsProgletActivities {
         main.getFrame().showTab("Console");
         Console.clear();
         if(getEditor().getText().trim().length() > 0) {
-	  System.out.println("Sauvegarde de "+new java.io.File(main.getFileChooser().getFile()).getName()+" ..");
-          main.getFileChooser().doSave(getEditor(), getExtension());
+	  main.getFileChooser().doSync(getEditor(), getExtension());
           if(main.getFileChooser().getFile() != null) {
             if(getEditor() instanceof AlgoEditor) {
               main.getFileChooser().doSave(jvsEditor, Jvs2Java.reformat(((AlgoEditor) getEditor()).getJavaSource()), ".jvs");

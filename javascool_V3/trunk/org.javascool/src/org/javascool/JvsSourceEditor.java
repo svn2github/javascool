@@ -162,8 +162,19 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
     for(int i = text.offset, n = 0; n < text.count; i++, n++) {
       if(comment == 0) {
         if((i > 0) && (text.array[i - 1] == '/') && (text.array[i] == '/')) {
-          j = i - 1;
-          comment = 1;
+	  // Test that the // is not in a string
+	  boolean string = false; 
+	  for(int k = i - 1; k >= 0 && text.array[k] != '\n'; k--)
+	    if (text.array[k] == '"') {
+	      if (string && k > 0 && text.array[k] != '\\')
+		string = false;
+	      else if (!string)
+		string = true;
+	    }
+	  if (!string) {
+	    j = i - 1;
+	    comment = 1;
+	  }
         } else if((i > 0) && (text.array[i - 1] == '/') && (text.array[i] == '*')) {
           j = i - 1;
           comment = -1;

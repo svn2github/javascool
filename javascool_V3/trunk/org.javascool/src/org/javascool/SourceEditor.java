@@ -109,14 +109,14 @@ public class SourceEditor extends JPanel implements Widget, Editor {
    * @param editable True to edit the text. False to view it.
    * @return This, allowing to use the <tt>new SourceEditor().reset(..)</tt> construct.
    */
-  public SourceEditor reset(boolean editable) {
+  public Editor reset(boolean editable) {
     removeAll();
     // Builds the widget
     setLayout(new BorderLayout());
     bar = new JMenuBar();
     add(bar, BorderLayout.NORTH);
     pane = new JTextPane();
-    pane.setBackground(Color.WHITE);
+    pane.setBackground(editable ? Color.WHITE : new Color(0xeeeeee));
     pane.setEditable(editable);
     pane.setFont(new Font("Dialog", Font.PLAIN, 16));
     doc = pane.getStyledDocument();
@@ -204,16 +204,16 @@ public class SourceEditor extends JPanel implements Widget, Editor {
       JMenu menu = new JMenu();
       menu.setText("Reformate/Zoom");
       bar.add(menu);
-      if(editable) {
+      menu.add(new JMenuItem(redraw_action));
+      if(editable)
         menu.add(new JMenuItem(new AbstractAction("Reformate le code") {
-                                 private static final long serialVersionUID = 1L;
-                                 public void actionPerformed(ActionEvent evt) {
+	    private static final long serialVersionUID = 1L;
+	    public void actionPerformed(ActionEvent evt) {
                                    doReformat();
                                  }
                                }
                                ));
-        menu.addSeparator();
-      }
+      menu.addSeparator();
       menu.add(new JMenuItem(new AbstractAction("Zoom -") {
                                private static final long serialVersionUID = 1L;
                                public void actionPerformed(ActionEvent evt) {
@@ -238,6 +238,9 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     }
     revalidate();
     return this;
+  }
+  public boolean isEditable() {
+    return pane.isEditable();
   }
   // Initial reset is editable
   {
@@ -463,6 +466,16 @@ public class SourceEditor extends JPanel implements Widget, Editor {
    */
   public void setCharacterAttributes(int offset, int count, Style style) {
     doc.setCharacterAttributes(offset, count, style, style == NormalStyle);
+  }
+  // Colorizes action
+  private AbstractAction redraw_action = new AbstractAction("Recolorie le code") {
+      private static final long serialVersionUID = 1L;
+      public void actionPerformed(ActionEvent evt) {
+	doColorize(-1);
+      }
+    };
+  {
+    addBinding(pane, KeyEvent.VK_L, redraw_action);
   }
   // Colorizes a part of the text
   private void doColorize(int position) {

@@ -131,7 +131,7 @@ public class Jvs2Java {
       replaceAll("\\(\\s*", "(").
       replaceAll("\\s*\\)", ")").
       replaceAll("\\)\\s*\\{", ") {").
-      replaceAll("(while|if|for|//)\\s*", "$1 ");
+      replaceAll("(while|if|for)\\s*", "$1 ");
   }
   /** Translates a Jvs code source.
    * @param path The file path to translate: A <tt>.jvs</tt> file is read and the corresponding <tt>.java</tt> file is written.

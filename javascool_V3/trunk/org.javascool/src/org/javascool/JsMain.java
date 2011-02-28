@@ -42,7 +42,7 @@ import java.awt.event.ActionEvent;
 // Used to test if a file exists in main()
 import java.io.File;
 
-/** Defines the JavaScool v3-2 launcher (warning not yet validated).
+/** Defines the JavaScool v3-2 launcher.
  * JavaScool 3.2 graphic user interface components: <ul>
  * <li>The frame with buttons and panels is defined in <a href="JsFrame.html">JsFrame</a>.</li>
  * <li>The file load/save namagement defined in <a href="JsFileChooser.html">JsFileChooser</a>.</li>
@@ -93,6 +93,11 @@ public class JsMain extends JApplet {
   private Runnable fileSave = new Runnable() {
     public void run() {
       fileChooser.doSaveAs(activity.getEditor(), activity.getExtension());
+    }
+  };
+  private Runnable fileLock = new Runnable() {
+    public void run() {
+      fileChooser.doLockUnlockAs(activity.getEditor(), activity.getExtension());
     }
   };
   private Runnable helpShow = new Runnable() {
@@ -164,6 +169,14 @@ public class JsMain extends JApplet {
                                        private static final long serialVersionUID = 1L;
                                        public void actionPerformed(ActionEvent e) {
                                          fileSave.run();
+                                       }
+                                     }
+                                     );
+    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_E, KeyEvent.CTRL_MASK), "lock");
+    getRootPane().getActionMap().put("lock", new AbstractAction("lock") {
+                                       private static final long serialVersionUID = 1L;
+                                       public void actionPerformed(ActionEvent e) {
+                                         fileLock.run();
                                        }
                                      }
                                      );

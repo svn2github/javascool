@@ -57,9 +57,11 @@ public class JsFileChooser extends JFileChooser {
     return file;
   }
   private String file;
+  private long lastModified = 0;
   /** Resets the selected file. */
   public void resetFile() {
     file = null;
+    lastModified = 0;
   }
   /** Manages an open dialog action after saving the file.
    * @param editor The editor where to load the file.
@@ -69,7 +71,7 @@ public class JsFileChooser extends JFileChooser {
     switch(!editor.isModified() ? 1 : new JOptionPane().
            showConfirmDialog(parent,
                              "Voulez-vous enregistrer avant d'ouvrir un nouveau fichier ?",
-                             "Sauvgarder avant d'ouvrir",
+                             "Sauvegarder avant d'ouvrir",
                              JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE))
     {
     case 0: // Yes save
@@ -86,7 +88,7 @@ public class JsFileChooser extends JFileChooser {
     switch((editor == null) || !editor.isModified() ? 1 : new JOptionPane().
            showConfirmDialog(parent,
                              "Voulez-vous enregistrer avant de fermer ?",
-                             "Sauvgarder avant de fermer",
+                             "Sauvegarder avant de fermer",
                              JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE))
     {
     case 0: // Yes save and return true if and only if the save is validated
@@ -97,6 +99,63 @@ public class JsFileChooser extends JFileChooser {
     default: // Ah ! Cancel
       return false;
     }
+  }
+  /** Manages synchronization between the editor and the stored file, in lock/unlock mode.
+   * @param editor The editor where to load the file.
+   * @param extension The required file extension, if any (else null).
+   */
+  public void doSync(Editor editor, String extension) {
+    // Editable mode
+    if (editor.isEditable()) {
+      System.out.println("Sauvegarde de "+new java.io.File(getFile()).getName()+" ..");
+      doSave(editor, extension);
+    }
+    // Lock mode
+    if (!editor.isEditable()) {
+      if (file == null)
+	doOpenAs(editor, extension);
+      else
+	doOpen(editor, file);
+    }
+  }
+  /** Manages a lock/unlock action in order to use an external/internal editor.
+   * @param editor The editor from where the file is saved.
+   * @param extension The required file extension, if any (else null).
+   * @return True if the dialog is validated, else false.
+   */
+  public boolean doLockUnlockAs(Editor editor, String extension) {
+    // Lock the editor for an external edition mechanism
+    if (editor.isEditable()) {
+      switch((editor == null) || !editor.isModified() ? 1 : new JOptionPane().
+	     showConfirmDialog(parent,
+			       "Voulez-vous enregistrer avant de le vérouiller ?",
+			       "Sauvegarder avant de vérouiller",
+			       JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE))
+	{
+	case 0: // Yes save and proceed
+	  setSaveDialogTitle("Enregistrer votre fichier avant de passer à la suite");
+	  if (doSaveAs(editor, extension))
+	    break;
+	  else
+	    return doLockUnlockAs(editor, extension);
+	case 1: // No need to save
+	  break;
+	default: // Ah ! Cancel
+	  return false;
+	}
+      String text = editor.getText();
+      editor.reset(false).setText(text);
+      return true;
+    } 
+    // Unlock the editor from an external edition mechanism
+    if (!editor.isEditable()) {
+      editor.reset(true);
+      if (file == null)
+	doOpenAs(editor, extension);
+      else
+	doOpen(editor, file); 
+    }
+    return true;
   }
   /** Manages an open dialog action.
    * @param editor The editor where to load the file.
@@ -111,15 +170,6 @@ public class JsFileChooser extends JFileChooser {
     setApproveButtonText("Ouvrir");
     if(showOpenDialog(parent) == 0)
       doOpen(editor, getSelectedFile().getPath());
-  }
-  /** Manages an open action (no dialog). */
-  public void doOpen(Editor editor, String file) {
-    setSelectedFile(new File(file));
-    String text = "";
-    try { this.file = file;
-          text = Utils.loadString(file);
-    } catch(Exception e) {}
-    editor.setText(text);
   }
   /** Manages a save dialog action.
    * @param editor The editor from where the file is saved.
@@ -142,6 +192,17 @@ public class JsFileChooser extends JFileChooser {
       return true;
     } else
       return false;
+  }
+  /** Manages an open action (no dialog). */
+  public void doOpen(Editor editor, String file) {
+    setSelectedFile(new File(file));
+    String text = "";
+    try { 
+      text = Utils.loadString(file);
+      lastModified = new File(file).lastModified();
+      this.file = file;
+    } catch(Exception e) {}
+    editor.setText(text);
   }
   /** Manages a save action (no dialog).
    * @param editor The editor from where the file is saved.
@@ -169,7 +230,22 @@ public class JsFileChooser extends JFileChooser {
     // Reload in editor the clean text
     if(editor != null)
       editor.setText(text);
+    // Check if no conflict
+    if (lastModified  > 0 && new File(file).lastModified() > lastModified) {
+      switch(new JOptionPane().
+	     showConfirmDialog(parent,
+			       "Le fichier semble avoir été modifié par un éditeur externe, voulez-vous écraser la version externe ?",
+			       "Sauvegarder sur un autre fichier",
+			       JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE))
+	{
+	case 0: // Yes do it
+	  break;
+	case 1: // No plase
+	  return;
+	}
+    }
     Utils.saveString(file, text);
+    lastModified = new File(file).lastModified();
   }
   /** Sets the next save dialog title.
    * @param title Optional title for a specific dialog

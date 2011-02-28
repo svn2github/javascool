@@ -4,6 +4,8 @@
     <p><p></p><p></p><p></p></p>
     <p><p>Control O</p><p>(open)</p><p>Ouvrir un fichier pour l'éditer</p></p>
     <p><p>Control S</p><p>(save)</p><p>Sauvegarder le contenu édité dans un fichier</p></p>
+    <p><p>Control E</p><p></p><p>Vérouille/Dévérouille l'éditeur interne (pour édition externe)</p></p>
+    <p><p>Control L</p><p></p><p>Recolorie le code en cours d'édition</p></p>
     <p><p>Control H</p><p>(help)</p><p>Montre la page d'aide</p></p>
     <p><p>Control Q</p><p>(quit)</p><p>Quitter le logiciel</p></p>
     <p><p></p><p></p><p></p></p>

@@ -43,7 +43,7 @@ jar : htm www/javascool.jar
 J6=/usr/java/jdk1.6.0_22
 
 vendor=thierry.vieville@inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
-version=3.0
+version=3.2
 revision=$(shell svn info | grep '^R.vision *:' | sed 's/^R.vision *: *//')
 public-key=hello-world
 private-key=mer,d,azof
@@ -93,8 +93,8 @@ www/javascool.jar : makefile lib/tools.zip lib/saxon.jar lib/sketchbook.zip lib/
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes revision = `grep REVISION lib/js-manifest.mf | sed 's/.*REVISION//'`"
 
 lib/js-manifest.mf : .svn makefile
-	@echo 'Summary: javascool v3.0' > $@
-	@echo "Manifest-version: 3.0 on `date '+%Y:%m:%d'` REVISION #$(revision)" >> $@
+	@echo 'Summary: javascool v$(version)' > $@
+	@echo "Manifest-version: $(version) on `date '+%Y:%m:%d'` REVISION #$(revision)" >> $@
 	@echo 'Created-By: inria.fr (javascool.gforge.inria.fr) ©INRIA: CeCILL V2 + CreativeCommons BY-NC-ND V2' >> $@
 	@echo 'Implementation-URL: http://javascool.gforge.inria.fr'  >> $@
 	@echo 'Implementation-Vendor: $(vendor)' >> $@
