@@ -63,75 +63,113 @@ public class Jvs2Java {
    * @return The reformated text.
    */
   public static String reformat(String text) {
-    int TAB = 3;
-    // Gets the text and reduce all spaces
-    String text0 = text.trim(), text1 = "";
-    for(int i = 0, tab = 0, par = 0, esc = 0, ln = -1; i < text0.length(); i++) {
-      char c0 = text0.charAt(i), c1 = i == 0 ? ' ' : text0.charAt(i - 1);
-      // Writeln if required
-      if(ln >= 0) {
-        if(c0 == '}')
-          ln -= TAB;
-        text1 += "\n";
-        for(int n = 0; n < ln; n++)
-          text1 += " ";
-        ln = -1;
-      }
+    char f[] = text.trim().toCharArray();
+    String g = "", ln = "\n";
+    int par = 0;
+    for(int i = 0, j; i < f.length;) {
       // Escapes /* comments
-      if((c1 == '/') && (c0 == '*') && (esc == 0))
-        esc = 3;
-      if((c1 == '*') && (c0 == '/') && (esc == 3))
-        esc = -3;
-      // Escapes // comments
-      if((c1 == '/') && (c0 == '/') && (esc == 0))
-        esc = 2;
-      if((c0 == '\n') && (esc == 2))
-        esc = -2;
-      // Escapes "strings" until end-of-line
-      if((c0 == '"') && (c1 != '\\') && (esc == 0))
-        esc = 1;
-      else if((((c0 == '"') && (c1 != '\\')) || (c0 == '\n')) && (esc == 1))
-        esc = -1;
-      // Mirrors char if escaping
-      if(esc != 0) {
-        if(esc != -2)
-          text1 += c0;
-        if(esc < -1)
-          ln = tab;
-        if(esc < 0)
-          esc = 0;
-        // Normalizes spaces
-      } else if(!(Character.isWhitespace(c0) && Character.isWhitespace(c1))) {
-        if(Character.isWhitespace(c0))
-          c0 = ' ';
-        text1 += c0;
-        // Counts (parenthesies)
-        if(c0 == '(')
-          par++;
-        if(c0 == ')')
-          par--;
-        // Reformats {blocks}
-        if((c0 == '{') || (c0 == '}') || ((c0 == ';') && (par == 0))) {
-          if(c0 == '{')
-            tab += TAB;
-          if(c0 == '}')
-            tab -= TAB;                        
-	  if (tab == 0)
-	    text1 += "\n";
-	  // Cleans spaces after symbol
-          for(; i < text0.length() - 1 && Character.isWhitespace(text0.charAt(i + 1)); i++) ;
-          // Decides ln
-          ln = tab;
-        }
+      if (f[i] == '/' && i < f.length - 1 && f[i+1] == '*') {
+	g += f[i++];
+	while(i < f.length && !(f[i-1] == '*' && f[i] == '/'))
+	  g += f[i++];
+	if (i < f.length)
+	  g += f[i++] + ln;
+	// Escapes // comments
+      } else if (f[i] == '/' && i < f.length - 1 && f[i+1] == '/') {
+	while(i < f.length && f[i] != '\n')
+	  g += f[i++];
+	g += ln;
+	i++;
+	// Escapes " chars
+      } else if (f[i] == '"') {
+	g += f[i++];
+	while(i < f.length && (f[i-1] == '\\' || f[i] != '"') &&  f[i] != '\n')
+	  g += f[i++];
+	if (i < f.length)
+	  g += f[i++];
+	// Normalizes spaces
+      } else if (Character.isWhitespace(f[i])) {
+	g += ' ';
+	i++;
+	while (i < f.length && Character.isWhitespace(f[i]))
+	  i++;
+      } else {
+	char c0 = g.length() == 0 ? ' ' : g.charAt(g.length()-1);
+	// Counts (parenthesies)
+	if(f[i] == '(')
+	  par++;
+	if(f[i] == ')')
+	  par--;
+	// Normalize spaces around operators
+	if (isOperator(f[i])) {
+	  if (!(Character.isWhitespace(c0) || isOperator(c0)))
+	    g += ' ';
+	  g += f[i];
+	  if (i < f.length - 1 && !(Character.isWhitespace(f[i+1]) || isOperator(f[i+1])))
+	    g += ' ';
+	// Normalize spaces around punctuation
+	} else if (f[i] == ',' || f[i] == ';' || f[i] == ')') {
+	  if (g.length() > 0 && Character.isWhitespace(c0))
+	    g = g.substring(0, g.length()-1);
+	  g += f[i];
+	  if (par > 0 && f[i] != ')')
+	    if (i < f.length - 1 && !Character.isWhitespace(f[i+1]))
+	      g += ' ';
+	  if (f[i] == ')' && i < f.length - 1 && f[i+1] == '{')
+	      g += ' ';
+	} else if (f[i] == '(') {
+	  if (g.length() > 0 && Character.isWhitespace(c0) && g.length() > 1 && Character.isLetterOrDigit(g.charAt(g.length()-2)))
+	    g = g.substring(0, g.length()-1);
+	  g += f[i];
+	  if (i < f.length - 1 && Character.isWhitespace(f[i+1]))
+	    i++;
+	} else if(f[i] == '}') {
+	  for(int n = 0; n < 3; n++)
+	    if (g.length() > 0 && Character.isWhitespace(g.charAt(g.length()-1)))
+	      g = g.substring(0, g.length()-1);
+	  g += f[i];
+	} else
+	  g += f[i];
+	// Reformats {blocks}
+	if((f[i] == '{') || (f[i] == '}') || (f[i] == ';' && par == 0)) {
+	  if(f[i] == '{')
+	    ln += "   ";
+	  if(f[i] == '}')
+	    ln = ln.substring(0, ln.length() - 3);
+	  g += ln;
+	  if (ln.length() == 1)
+	    g += "\n";
+	  i++;
+	  while (i < f.length && Character.isWhitespace(f[i]))
+	    i++;
+	} else
+	  i++;
       }
     }
-    return "\n" + text1.
-      replaceAll("\\}\\s*else\\s*\\{", "} else {").
-      replaceAll("\\}\\s*else \\s*if", "} else if").
-      replaceAll("\\(\\s*", "(").
-      replaceAll("\\s*\\)", ")").
-      replaceAll("\\)\\s*\\{", ") {").
-      replaceAll("(while|if|for)\\s*", "$1 ");
+    return "\n"+g.
+      replaceAll("\\}\\s*else\\s*(\\{|if)", "} else $1").
+      replaceAll("(while|if|for|return)\\s*", "$1 ");
+  }
+  private static boolean isOperator(char c) {
+    switch(c) {
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+    case '%':
+    case '&':
+    case '|':
+    case '^':
+    case '=':
+    case '!':
+    case '<':
+    case '>':
+    case '.':
+    case ':':
+      return true;
+    default:
+      return false;
+    }
   }
   /** Translates a Jvs code source.
    * @param path The file path to translate: A <tt>.jvs</tt> file is read and the corresponding <tt>.java</tt> file is written.

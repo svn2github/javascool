@@ -1,0 +1,7 @@
+<p title="Utilisation d'un éditeur externe">
+  L'utilisateur peut bien évidemment préférer son éditeur externe favori à l'éditeur intégré à la plateforme JavaScool.
+<div class="ul">
+  <p>Il suffit de définir la variable standard d'environnement <c>$EDITOR</c> <p>(par exemple "<c>export EDITOR=nedit</c>" ou tout autre nom de programme d'édition déjà installé).</p></p>
+  <p>Lors du lancement du programme, il faut taper <c>CTRL+E</c> dans la fenêtre d'édition pour que celle-ci se transforme en fenêtre d'affichage et que l'éditeur externe se lance.</p>
+  <p>Sous Windows ou si la variable <c>$EDITOR</c> n'est pas définie, le mécanisme fonctionne. Mais c'est à l'utilisateur de lancer manuellement l'éditeur externe sur le fichier sauvegardé lors du vérouillage de l'éditeur interne.</p>
+</div></p>

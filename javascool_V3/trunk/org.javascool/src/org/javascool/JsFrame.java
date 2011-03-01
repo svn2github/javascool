@@ -36,20 +36,26 @@ public class JsFrame extends JPanel {
 
   // Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar(JToolBar.HORIZONTAL);
-  private JTabbedPane westPane = new JTabbedPane(), eastPane = new JTabbedPane();
-  private JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, westPane, eastPane);
+  private JTabbedPane westPane = new JTabbedPane(), eastPane = new JTabbedPane(), eastPane0 = eastPane;
+  private JSplitPane splitPane= null;
 
   /** Builds the GUI. */
   {
     setLayout(new BorderLayout());
     add(toolBar, BorderLayout.NORTH);
+    resetSplitPane();
+  }
+  private  void resetSplitPane() {
+    if (splitPane != null) 
+      remove(splitPane);
+    splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, westPane, eastPane);
     westPane.setMinimumSize(new Dimension(100, 100));
     eastPane.setMinimumSize(new Dimension(100, 100));
     splitPane.setResizeWeight(0.4);
     splitPane.setContinuousLayout(true);
     splitPane.setOneTouchExpandable(false);
     add(splitPane, BorderLayout.CENTER);
-  }
+  }     
 
   /** Resets the GUI.
    * @param logoFile If not null, displays a logo to label the interface.
@@ -61,6 +67,15 @@ public class JsFrame extends JPanel {
     add(toolBar, BorderLayout.NORTH);
     westPane.removeAll();
     eastPane.removeAll();
+    // Avoid using split pane on small screens
+    if (getWidth() < 800) {
+      remove(splitPane);
+      add(westPane);
+      eastPane = westPane;
+    } else {
+      eastPane = eastPane0;
+      resetSplitPane();
+    }
     if(logoFile != null)
       toolBar.add(new JLabel(Utils.getIcon(logoFile)));
     revalidate();

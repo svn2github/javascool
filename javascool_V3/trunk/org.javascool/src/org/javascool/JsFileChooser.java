@@ -107,15 +107,20 @@ public class JsFileChooser extends JFileChooser {
   public void doSync(Editor editor, String extension) {
     // Editable mode
     if (editor.isEditable()) {
-      System.out.println("Sauvegarde de "+new java.io.File(getFile()).getName()+" ..");
-      doSave(editor, extension);
+      if (file == null) {
+	doOpenAs(editor, extension);
+      } else {
+	System.out.println("Sauvegarde de "+new File(getFile()).getName()+" ..");
+	doSave(editor, extension);
+      }
     }
     // Lock mode
     if (!editor.isEditable()) {
-      if (file == null)
+      if (file == null) {
 	doOpenAs(editor, extension);
-      else
+      } else {
 	doOpen(editor, file);
+      }
     }
   }
   /** Manages a lock/unlock action in order to use an external/internal editor.
@@ -145,6 +150,11 @@ public class JsFileChooser extends JFileChooser {
 	}
       String text = editor.getText();
       editor.reset(false).setText(text);
+      // Runs an external editor if well defined
+      if (!System.getProperty("os.name").startsWith("Windows"))
+	new Thread(new Runnable() { public void run() {
+	  System.err.println(Utils.exec("sh\t-c\t$EDITOR "+file));
+	}}).start();
       return true;
     } 
     // Unlock the editor from an external edition mechanism

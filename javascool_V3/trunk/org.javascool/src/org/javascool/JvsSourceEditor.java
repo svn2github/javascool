@@ -213,12 +213,15 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
   // Colorizes the active block
   private void doColorizeActiveBlock(int position, Segment text) {
     int ileft, iright, level;
+    if (position > 0 && text.array[position-1] == '}') position -= 2;
     for(ileft = position, level = 0; 0 <= ileft && 0 <= level; ileft--)
       level = text.array[ileft] == '}' ? level+1 : text.array[ileft] == '{' ? level-1 : level;
     for(iright = position, level = 0; iright < text.array.length && 0 <= level; iright++)
       level = text.array[iright] == '{' ? level+1 : text.array[iright] == '}' ? level-1 : level;
-    if (ileft > 0)
-      setCharacterAttributes(ileft+1, iright-ileft-1, ActiveBlockStyle);
+    if (ileft > 0) {
+      setCharacterAttributes(ileft+1, 2, ActiveBlockStyle);
+      setCharacterAttributes(iright-1, 2, ActiveBlockStyle);
+    }
   }
   /** Shows a Jvs source file.
    * @param usage <tt>java org.javascool.JvsSourceEditor location</tt>

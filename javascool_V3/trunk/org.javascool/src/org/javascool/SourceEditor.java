@@ -66,6 +66,7 @@ import java.awt.Font;
 import java.util.HashMap;
 
 // Used to manage the colorization
+import javax.swing.SwingUtilities;
 import javax.swing.text.Segment;
 import java.awt.event.KeyAdapter;
 import javax.swing.event.DocumentListener;
@@ -87,7 +88,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     int c = pane.getCaretPosition(); if (c >= text.length()) c = text.length() - 1;
     pane.setText(text);
     pane.setCaretPosition(c);
-    doColorize(-1);
+    doColorize(true);
     modified = false;
     return this;
   }
@@ -127,7 +128,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
       pane.addKeyListener(new KeyAdapter() {
 	  public void keyTyped(KeyEvent e) {
 	    modified = true;
-	    doColorize(pane.getCaretPosition());
+	    doColorize(e.getModifiers() != 0);
 	  }
 	});
     }
@@ -149,20 +150,17 @@ public class SourceEditor extends JPanel implements Widget, Editor {
                             }
                             );
     }
-    // Adds the listener which is going to colorize after the document is modified
+    // Adds the listener to set when the document is modified
     {
       doc.addDocumentListener(new DocumentListener() {
 	  public void changedUpdate(DocumentEvent e) {
 	    modified = true;
 	  }
-	  // Here colorization must be postponed and globalized to avoid write lock and offset/length incoherence
 	  public void insertUpdate(DocumentEvent e) {
 	    modified = true;
-	    recolorize = true;
 	  }
 	  public void removeUpdate(DocumentEvent e) {
 	    modified = true;
-	    recolorize = true;
 	  }
 	});
     }
@@ -204,7 +202,6 @@ public class SourceEditor extends JPanel implements Widget, Editor {
       JMenu menu = new JMenu();
       menu.setText("Reformate/Zoom");
       bar.add(menu);
-      menu.add(new JMenuItem(redraw_action));
       if(editable)
         menu.add(new JMenuItem(new AbstractAction("Reformate le code") {
 	    private static final long serialVersionUID = 1L;
@@ -467,41 +464,23 @@ public class SourceEditor extends JPanel implements Widget, Editor {
   public void setCharacterAttributes(int offset, int count, Style style) {
     doc.setCharacterAttributes(offset, count, style, style == NormalStyle);
   }
-  // Colorizes action
-  private AbstractAction redraw_action = new AbstractAction("Recolorie le code") {
-      private static final long serialVersionUID = 1L;
-      public void actionPerformed(ActionEvent evt) {
-	doColorize(-1);
-      }
-    };
-  {
-    addBinding(pane, KeyEvent.VK_L, redraw_action);
-  }
   // Colorizes a part of the text
-  private void doColorize(int position) {
-    // Manages a global recolorization
-    if(recolorize) {
-      position = -1;
-      recolorize = false;
-    }
+  private void doColorize(boolean all) {
     // Gets the text to colorize and adjust the bounds to the whole text or the closest beginning/end of lines
     Segment text = new Segment();
     try {
       doc.getText(0, doc.getLength(), text);
-    } catch(Exception e) {}
-    if (position < 0 || position >= doc.getLength()) {
-      text.offset = position = 0;
-      text.count = text.array.length;
-    } else {
-      text.offset = position;
-      while(text.offset > 0 && text.array[text.offset] != '\n')
-	text.offset--;
-      text.count = 1;
-      while(text.offset + text.count < text.array.length && text.array[text.offset + text.count - 1] != '\n')
-	text.count++;
+    } catch(Exception e) { }
+    //-System.err.println("["+text.offset+" + "+text.count+" < "+text.array.length+"] "+pane.getCaretPosition());
+    if (pane.getCaretPosition() < text.count && !all) {
+      int offset = text.offset + pane.getCaretPosition() - 1, count = 3;
+      while(offset > 0 && text.array[offset] != '\n')
+	offset--;
+      while(offset + count < text.offset + text.count && text.array[offset + count - 1] != '\n')
+	count++;
+      text.offset = offset; text.count = count;
+      //-System.err.println("   ["+text.offset+" + "+text.count+" < "+text.array.length+"] "+pane.getCaretPosition());
     }
     doColorize(pane.getCaretPosition(), text);
   }
-  // Global recolorization flag
-  private boolean recolorize = true;
 }
