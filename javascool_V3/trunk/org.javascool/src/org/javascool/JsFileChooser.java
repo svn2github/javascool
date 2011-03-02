@@ -108,7 +108,7 @@ public class JsFileChooser extends JFileChooser {
     // Editable mode
     if (editor.isEditable()) {
       if (file == null) {
-	doOpenAs(editor, extension);
+	doSaveAs(editor, extension);
       } else {
 	System.out.println("Sauvegarde de "+new File(getFile()).getName()+" ..");
 	doSave(editor, extension);
@@ -148,8 +148,7 @@ public class JsFileChooser extends JFileChooser {
 	default: // Ah ! Cancel
 	  return false;
 	}
-      String text = editor.getText();
-      editor.reset(false).setText(text);
+      editor.reset(false);
       // Runs an external editor if well defined
       if (!System.getProperty("os.name").startsWith("Windows"))
 	new Thread(new Runnable() { public void run() {

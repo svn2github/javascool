@@ -85,9 +85,8 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     return pane.getText();
   }
   public Editor setText(String text) {
-    int c = pane.getCaretPosition(); if (c >= text.length()) c = text.length() - 1;
     pane.setText(text);
-    pane.setCaretPosition(c);
+    pane.setCaretPosition(0);
     doColorize(true);
     modified = false;
     return this;
@@ -116,10 +115,12 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     setLayout(new BorderLayout());
     bar = new JMenuBar();
     add(bar, BorderLayout.NORTH);
+    String text = pane == null ? "" : pane.getText();
     pane = new JTextPane();
     pane.setBackground(editable ? Color.WHITE : new Color(0xeeeeee));
     pane.setEditable(editable);
     pane.setFont(new Font("Dialog", Font.PLAIN, 16));
+    pane.setText(text);
     doc = pane.getStyledDocument();
     scroll = new JScrollPane(pane, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
     add(scroll, BorderLayout.CENTER);
@@ -298,9 +299,11 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     private int offset;
     public void actionPerformed(ActionEvent evt) {
       try {
+	modified = true;
         int offset = pane.getCaretPosition();
         pane.getDocument().insertString(offset, string, null);
         pane.setCaretPosition(offset + this.offset);
+	doColorize(true);
       } catch(Exception e) {
         System.err.println(e);
       }
