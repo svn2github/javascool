@@ -447,7 +447,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
 
     // ActiveBlockStyle: used to highlight where we are in the code
     ActiveBlockStyle = doc.addStyle("ActiveBlock", null);
-    StyleConstants.setBackground(ActiveBlockStyle, new Color(0xeeeeee)); // Light-Gray
+    StyleConstants.setBackground(ActiveBlockStyle, new Color(0xff88ff)); // Light-magenta
   }
 
   /** Colorizes a text's segment
@@ -462,7 +462,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
    * @param style The predefined style: <tt>SourceEditor.(NormalStyle|CodeStyle|OperatorStyle|BracketStyle|NameStyle|StringStyle|CommentStyle|ActiveBlockStyle)</tt>
    */
   public void setCharacterAttributes(int offset, int count, Style style) {
-    doc.setCharacterAttributes(offset, count, style, style == NormalStyle);
+    doc.setCharacterAttributes(offset, count, style, style == NormalStyle || style == BracketStyle);
   }
   // Colorizes a part of the text
   private void doColorize(boolean all) {
@@ -471,15 +471,22 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     try {
       doc.getText(0, doc.getLength(), text);
     } catch(Exception e) { }
-    //-System.err.println("["+text.offset+" + "+text.count+" < "+text.array.length+"] "+pane.getCaretPosition());
+    //- System.err.println("Notice: styling ["+text.offset+" + "+text.count+" < "+text.array.length+"] "+pane.getCaretPosition());
     if (pane.getCaretPosition() < text.count && !all) {
       int offset = text.offset + pane.getCaretPosition() - 1, count = 3;
-      while(offset > 0 && text.array[offset] != '\n')
-	offset--;
-      while(offset + count < text.offset + text.count && text.array[offset + count - 1] != '\n')
+      if (offset > 0 ) {
+	while(offset > 0 && text.array[offset] != '\n')
+	  offset--;
+      } else
+	offset = 0;
+      if (offset + count < text.offset + text.count) {
+	while(offset + count < text.offset + text.count && text.array[offset + count - 1] != '\n')
 	count++;
+      } else {
+	count = text.offset + text.count - offset;
+      }
       text.offset = offset; text.count = count;
-      //-System.err.println("   ["+text.offset+" + "+text.count+" < "+text.array.length+"] "+pane.getCaretPosition());
+      //- System.err.println("Notice: styling -> ["+text.offset+" + "+text.count+" < "+text.array.length+"] "+pane.getCaretPosition());
     }
     doColorize(pane.getCaretPosition(), text);
   }

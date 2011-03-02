@@ -28,9 +28,10 @@ if [ "$1" = sax ] ; then shift ; java -jar $root/lib/saxon.jar $* ; exit $? ; fi
 if [ "$1" = -rejar ] ; then shift ; make -C $root jar ; if [ $? != 0 ] ; then exit $? ; fi ; fi
 
 # Running the class fromn the main jar
+JAR=`grep 'JAR *= *' $root/makefile | sed 's/.*= *\([^ ]*\) */\1/'`
 if [ -z "$1" ] 
-then java -jar $root/www/javascool.jar
-else java -cp $root/www/javascool.jar $*
+then java -jar $root/www/javascool$JAR.jar
+else java -cp $root/www/javascool$JAR.jar $*
 fi
 
 

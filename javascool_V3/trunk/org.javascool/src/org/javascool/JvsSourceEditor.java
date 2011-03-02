@@ -88,8 +88,7 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
     String string = new String(text.array, text.offset, text.count);
     // Resets the colorization
     setCharacterAttributes(text.offset, text.count, NormalStyle);
-    // Colorizes active block
-    doColorizeActiveBlock(position, text);
+    doDeColorizeActiveBlock(text);
     // Colorizes names : put 1st to make reserved/declared words overwrite it
     doColorizeNames(text);
     // Colorizes all reserved and declared words
@@ -99,6 +98,7 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
       doColorizeWord(word, text, string);
     // Colorizes operators
     doColorizeOperators(text);
+    doColorizeActiveBlock(position, text);
     // Colorizes comments : put at last, to cover other colorization
     doColorizeComments(text);
     // Colorizes strings : put at last of the last, to cover other colorization
@@ -213,16 +213,32 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
   // Colorizes the active block
   private void doColorizeActiveBlock(int position, Segment text) {
     int ileft, iright, level;
-    if (position > 0 && text.array[position-1] == '}') position -= 2;
+    if (position <= 0 || position >= text.array.length) return;
+    if (position > 0 && text.array[position-1] == '}') 
+      position--;
     for(ileft = position, level = 0; 0 <= ileft && 0 <= level; ileft--)
       level = text.array[ileft] == '}' ? level+1 : text.array[ileft] == '{' ? level-1 : level;
+    ileft++;
     for(iright = position, level = 0; iright < text.array.length && 0 <= level; iright++)
       level = text.array[iright] == '{' ? level+1 : text.array[iright] == '}' ? level-1 : level;
+    iright--;
+    //- try { System.err.println("Notice : at "+position+" '"+text.array[position]+"' styling block ["+ileft0+", "+iright0+"]'"+text.array[ileft0]+text.array[iright0]+"' -> ["+ileft+", "+iright+"]'"+text.array[ileft]+text.array[iright]+"'"); } catch(Throwable tt) { }
     if (ileft > 0) {
-      setCharacterAttributes(ileft+1, 2, ActiveBlockStyle);
-      setCharacterAttributes(iright-1, 2, ActiveBlockStyle);
+      if (ileft >= 0 && ileft < text.array.length &&  text.array[ileft] == '{')
+	setCharacterAttributes(ileft0 = ileft, 1, ActiveBlockStyle);
+      if (iright >= 0 && iright < text.array.length &&  text.array[iright] == '}')
+	setCharacterAttributes(iright0 = iright, 1, ActiveBlockStyle);
+    } else {
+      ileft0 = iright0 = -1;
     }
   }
+  private void doDeColorizeActiveBlock(Segment text) {
+    if (ileft0 >= 0 && ileft0 < text.array.length)
+      setCharacterAttributes(ileft0, 1, NormalStyle);
+    if (iright0 >= 0 && iright0 < text.array.length)
+      setCharacterAttributes(iright0, 1, NormalStyle);
+  }
+  private int ileft0 = -1, iright0 = -1;
   /** Shows a Jvs source file.
    * @param usage <tt>java org.javascool.JvsSourceEditor location</tt>
    */

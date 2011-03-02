@@ -2,10 +2,13 @@
 ##  Philoumailabo@gmail.com and Thierry.Vieville@sophia.inria.fr, Copyright (C) 2010.  All rights reserved.                        ##
 #####################################################################################################################################
 
-# Used to use sun jdk instead of open jdk
+# Used to use sun sun-jdk instead of open-jdk because of processing and windows platforms
 export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
 
-default : j3-2
+# Defines the beta-relase jar temporary suffix under development
+JAR = -3-2
+
+default : j$(JAR)
 
 # General commands
 
@@ -18,8 +21,8 @@ what :
 j3-1:
 	@cd tst ; java -jar ../www/javascool-3-1.jar
 
-j3-2: jar
-	@cd sketchbook ; java -jar ../www/javascool.jar
+j$(JAR): jar
+	@cd sketchbook ; java -jar ../www/javascool$(JAR).jar
 	@make clean
 
 doc: api
@@ -29,14 +32,14 @@ svn: clean
 	@svn up ; svn ci -m '' ; svn status
 
 clean:
-	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java lib/js-manifest.mf lib/sketchbook.zip www/api www/javascool.jar www/sources.zip
+	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java lib/js-manifest.mf lib/sketchbook.zip www/api www/javascool$(JAR).jar www/sources.zip
 	@$(MAKE) -C sketchbook clean
 
 #####################################################################################################################################
 
 # Creation of a signed jar for standalone applications integrating the jdk classes
 
-jar : htm www/javascool.jar
+jar : htm www/javascool$(JAR).jar
 
 # Jar parameters, files and meta-data
 
@@ -65,7 +68,7 @@ CP=src:lib/tools.zip:lib/saxon.jar
 
 # Compiles the java classes using the default jdk and builds the certified jar
 
-www/javascool.jar : makefile lib/tools.zip lib/saxon.jar lib/sketchbook.zip lib/js-manifest.mf $(SRC) $(JVS) htm
+www/javascool$(JAR).jar : makefile lib/tools.zip lib/saxon.jar lib/sketchbook.zip lib/js-manifest.mf $(SRC) $(JVS) htm
 	@echo "make $@"
 	@#[1] Compile the java classes
 	@$(J6)/bin/javac -Xlint -cp $(CP) $(SRC)
@@ -344,7 +347,7 @@ done :
 #: www/styles/*.css           : contains the web site CSS styles
 #: www/documents              : contains extra documents for the web site and/or not included in the JAR file
 #: www/api                    : is the makefile generated javadoc files, deleted on clean: do NOT edit
-#: www/javascool.jar          : is the makefile generated javascool JAR, deleted on clean: do NOT edit
+#: www/javascool*.jar         : is the makefile generated javascool JAR, deleted on clean: do NOT edit
 #:
 #: [1.3] Lib files:
 #: ./lib/run.sh               : simplifies the local use of saxon and javascool (Java main + performs xml2xml translation)
