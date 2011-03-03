@@ -243,6 +243,18 @@ wref: wpub
 wraz: 
 	@wget -q -O - http://javascool.gforge.inria.fr?kezako=niquelekacheux
 
+# Copy the files on a USB key of name /media/javascool
+
+USBROOT=/media/javascool
+
+wusb : jar
+	@cp lib/javascool.bat www/javascool*.jar $(USBROOT)
+	@rm -rf $(USBROOT)/javascool.dir ; mkdir $(USBROOT)/javascool.dir ;\
+	 for d in www/documents www/sketchbook ; do rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ $$d $(USBROOT)/javascool.dir ; done
+	@unzip -d $(USBROOT)/opengl.dir www/sketchbook/EnVoiture/opengl-windows.zip ; cp sketchbook/EnVoiture/about-opengl.htm $(USBROOT)/opengl.dir
+	@du -s $(USBROOT)/javascool*.*
+	@umount $(USBROOT)
+
 #####################################################################################################################################
 
 # Useful links
@@ -383,6 +395,7 @@ done :
 #:: make jpub         : Publish the present javascool.jar release on the web site
 #:: make wraz         , Clears the web site cache
 #:: make wref         : Checks the web site broken links
+#:: make wusb	      : Copy the files on a USB key of name /media/javascool
 #::Useful links:
 #:: make jdoc         , Opens the Java and JavaScool doc bundle
 #:: make jweb         , Opens the JavaScool web site
