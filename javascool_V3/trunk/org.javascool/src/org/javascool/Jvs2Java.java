@@ -274,7 +274,7 @@ public class Jvs2Java {
     System.err.println(out);
     int i = out.indexOf("^"); 
     if (i != -1) out = out.substring(0, i+1);
-    out = out.replaceAll(jpath, jclass);
+    out = out.replaceAll(jpath.replaceAll("\\\\", "\\\\\\\\"), jclass);
     return out;
   }
   /** Dynamically loads a Java class to be used during this session.
