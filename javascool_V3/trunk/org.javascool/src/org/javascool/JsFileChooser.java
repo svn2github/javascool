@@ -152,7 +152,7 @@ public class JsFileChooser extends JFileChooser {
       // Runs an external editor if well defined
       if (!System.getProperty("os.name").startsWith("Windows"))
 	new Thread(new Runnable() { public void run() {
-	  System.err.println(Utils.exec("sh\t-c\t$EDITOR "+file));
+	  System.out.println(Utils.exec("sh\t-c\t$EDITOR "+file));
 	}}).start();
       return true;
     } 

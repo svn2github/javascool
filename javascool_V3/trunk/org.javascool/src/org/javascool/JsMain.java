@@ -42,8 +42,9 @@ import java.awt.event.ActionEvent;
 // Used to test if a file exists in main()
 import java.io.File;
 
-// Used for alert report
+// Used to show a text in a frame
 import javax.swing.JEditorPane;
+import javax.swing.JScrollPane;
 
 /** Defines the JavaScool v3-2 launcher.
  * JavaScool 3.2 graphic user interface components: <ul>
@@ -331,24 +332,11 @@ public class JsMain extends JApplet {
     public void stop(JsMain main) {}
   }
 
-  /** Alerts on JavaScool uncaught exception. */
-  private static void jsAlert() {
-    Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-	public void uncaughtException(Thread t, Throwable e) {
-	  String s = "Votre configuration a un problème de compatibilité avec "+title+"!\nPour vous aider:\n -1- copier tout ce message et \n -2- envoyer le à science-participative@sophia.inria.fr :\n -3- nous essayerons de vous dépanner au plus vite.\n";
-	  for(String p : new String[] { "java.version", "os.name", "os.arch", "os.version"}) 
-	    s += ">"+p+" = " +System.getProperty(p)+"\n";
-	  s += "thread = "+t.getName()+"\n";
-	  s += e+"\n";
-	  for(int i = 0; i < 4 && i < t.getStackTrace().length; i++)
-	    s += e.getStackTrace()[i]+"\n";
-	  s += "\"\n";   
-	  JEditorPane p = new JEditorPane();
-	  p.setEditable(false);
-	  p.setText(s);
-	  Utils.show(p, "Problème de configuration détecté!", 800, 600);
-	}
-      });
+  // Sets the javascool version from the manifest file
+  private static void setJavascoolVersion() {
+    try { 
+      System.setProperty("javascool.version", Utils.loadString("org/javascool/js-manifest.mf").replaceFirst("(.|\n)*Manifest-version:(.*)(.|\n)*", "$2")); 
+    } catch(Throwable z) { }
   }
 
   /** Used to run a JavaScool 3.2 as a standalone program.
@@ -359,8 +347,9 @@ public class JsMain extends JApplet {
    * </ul>
    */
   public static void main(String[] usage) {
-    jsAlert();
     System.out.println("---------------------\n" + title + "\n---------------------\nstarting..");
+    setJavascoolVersion();
+    Utils.setUncaughtExceptionAlert("Problème de configuration détecté!", "Oh: il y a un problème de compatibilité avec "+title+"!\n\nPour vous aider:\n -1- copier tout ce message et \n -2- envoyer le à science-participative@sophia.inria.fr :\n -3- nous essayerons de vous dépanner au plus vite.\n");
     JsMain main = new JsMain();
     if(usage.length > 0)
       main.setActivity(usage[0]);

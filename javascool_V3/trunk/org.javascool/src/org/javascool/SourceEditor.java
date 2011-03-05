@@ -10,7 +10,6 @@ import java.awt.BorderLayout;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 
@@ -122,7 +121,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     pane.setFont(new Font("Dialog", Font.PLAIN, 16));
     pane.setText(text);
     doc = pane.getStyledDocument();
-    scroll = new JScrollPane(pane, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+    scroll = new JScrollPane(pane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
     add(scroll, BorderLayout.CENTER);
     // Adds the listener which is going to colorize after a key is entered
     {
@@ -305,7 +304,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
         pane.setCaretPosition(offset + this.offset);
 	doColorize(true);
       } catch(Exception e) {
-        System.err.println(e);
+        Utils.report(e);
       }
     }
   }
@@ -474,7 +473,6 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     try {
       doc.getText(0, doc.getLength(), text);
     } catch(Exception e) { }
-    //- System.err.println("Notice: styling ["+text.offset+" + "+text.count+" < "+text.array.length+"] "+pane.getCaretPosition());
     if (pane.getCaretPosition() < text.count && !all) {
       int offset = text.offset + pane.getCaretPosition() - 1, count = 3;
       if (offset > 0 ) {
@@ -489,7 +487,6 @@ public class SourceEditor extends JPanel implements Widget, Editor {
 	count = text.offset + text.count - offset;
       }
       text.offset = offset; text.count = count;
-      //- System.err.println("Notice: styling -> ["+text.offset+" + "+text.count+" < "+text.array.length+"] "+pane.getCaretPosition());
     }
     doColorize(pane.getCaretPosition(), text);
   }

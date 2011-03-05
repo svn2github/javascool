@@ -104,9 +104,11 @@ public class JsFrame extends JPanel {
       toolBar.remove(buttons.get(label));
       buttons.remove(label);
       actions.remove(label);
-      toolBar.revalidate();
+      toolBar.setVisible(false);
+      revalidate();
+      toolBar.setVisible(true);
+      revalidate();
     }
-    revalidate();
   }
   /** Adds a separator on the toolbar. */
   public void addToolSeparator() {

@@ -303,7 +303,7 @@ public class SoundBit implements Widget {
       else
         nthres++;
     // Verboses results
-    System.err.println("events(" + frequence + ", " + period + ", " + cut + ") = " + moy + " +- " + var + " < " + max + ", " + nthres + "/" + size + " = " + (100.0 * nthres / size) + "% < " + thres);
+    System.out.println("events(" + frequence + ", " + period + ", " + cut + ") = " + moy + " +- " + var + " < " + max + ", " + nthres + "/" + size + " = " + (100.0 * nthres / size) + "% < " + thres);
     return events;
   }
 }

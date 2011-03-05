@@ -159,7 +159,6 @@ public class Console implements org.javascool.Proglet {
                                       String string = toString();
                                       reset();
                                       panel.writeString(string, false);
-                                      // - System.err.println(string);
                                     }
                                   }
                                   ));

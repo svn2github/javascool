@@ -61,6 +61,9 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+// Used to show a text in a frame
+import javax.swing.JEditorPane;
+import javax.swing.JScrollPane;
 
 /** This factory contains useful methods to interface javascool with the environment.
  * @see <a href="Utils.java.html">source code</a>
@@ -411,8 +414,32 @@ public class Utils {
       System.err.println(error.getStackTrace()[i]);
     return error instanceof RuntimeException ? (RuntimeException) error : new RuntimeException(error);
   }
+  /** Alerts on uncaught exception. 
+   * - Installs a default uncaught exception handler that collects JavaScool, Java and operating system versions, thread name and stack trace and 
+   * displays it in a separate window in order to be collected and reported by the user.
+   * @param title The alert window title.
+   * @param header The alert window text header explaining to the user what to do with the exception output.
+   */
+  public static void setUncaughtExceptionAlert(String title, String header) {
+    uncaughtExceptionAlertTitle = title; uncaughtExceptionAlertHeader = header;
+    Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+	public void uncaughtException(Thread t, Throwable e) {
+	  String s = uncaughtExceptionAlertHeader+"\n";
+	  for(String p : new String[] { "javascool.version", "java.version", "os.name", "os.arch", "os.version"}) 
+	    s += "> "+p+" = " +System.getProperty(p)+"\n";
+	  s += "> thread.name = "+t.getName()+"\n";
+	  s += "> throwable = "+e+"\n";
+	  s += "> stack-trace = «\n";
+	  for(int i = 0; i < t.getStackTrace().length; i++)
+	    s += e.getStackTrace()[i]+"\n";
+	  s += "»\n";   
+	  Utils.show(s, uncaughtExceptionAlertTitle);
+	}
+      });
+  }
+  private static String uncaughtExceptionAlertTitle, uncaughtExceptionAlertHeader;
   /** Opens an applet or panel in a standalone frame.
-   * @param applet The applet or panel to display.
+   * @param applet The applet, panel or text to display.
    * @param title  Frame title. If null, no title.
    * @param icon   Frame icon.  If null, no icon.
    * @param width  Applet width. Default is 80% of the screen size. If 0 set to 800.
@@ -439,13 +466,34 @@ public class Utils {
     return show(applet, title, null, width, height, true);
   }
   /**/public static JFrame show(Component applet, String title) {
-    return show(applet, title, null, true);
+    return show(applet, title, (ImageIcon) null, true);
   }
   /**/public static JFrame show(Component applet, int width, int height) {
-    return show(applet, null, null, width, height, true);
+    return show(applet, (String) null, (ImageIcon) null, width, height, true);
   }
   /**/public static JFrame show(Component applet) {
-    return show(applet, null, null, true);
+    return show(applet, (String) null, (ImageIcon) null, true);
+  }
+  /**/public static JFrame show(String applet, String title, ImageIcon icon, int width, int height, boolean quit) {
+    JEditorPane p = new JEditorPane();
+    p.setEditable(false);
+    p.setText(applet);
+   return show(new JScrollPane(p, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), title, icon, width, height, quit);
+  }
+  /**/public static JFrame show(String applet, String title, ImageIcon icon, boolean quit) {
+    return show(applet, title, icon, 800, 600, true);
+  }
+  /**/public static JFrame show(String applet, String title, int width, int height) {
+    return show(applet, title, (ImageIcon) null, width, height, true);
+  }
+  /**/public static JFrame show(String applet, String title) {
+    return show(applet, title, (ImageIcon) null, true);
+  }
+  /**/public static JFrame show(String applet, int width, int height) {
+    return show(applet, (String) null, (ImageIcon) null, width, height, true);
+  }
+  /**/public static JFrame show(String applet) {
+    return show(applet, (String) null, (ImageIcon) null, true);
   }
   // Encapsulates an applet in a frame
   private static class Frame extends JFrame {

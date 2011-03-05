@@ -222,7 +222,6 @@ public class JvsSourceEditor extends SourceEditor implements Widget {
     for(iright = position, level = 0; iright < text.array.length && 0 <= level; iright++)
       level = text.array[iright] == '{' ? level+1 : text.array[iright] == '}' ? level-1 : level;
     iright--;
-    //- try { System.err.println("Notice : at "+position+" '"+text.array[position]+"' styling block ["+ileft0+", "+iright0+"]'"+text.array[ileft0]+text.array[iright0]+"' -> ["+ileft+", "+iright+"]'"+text.array[ileft]+text.array[iright]+"'"); } catch(Throwable tt) { }
     if (ileft > 0) {
       if (ileft >= 0 && ileft < text.array.length &&  text.array[ileft] == '{')
 	setCharacterAttributes(ileft0 = ileft, 1, ActiveBlockStyle);

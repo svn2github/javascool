@@ -22,7 +22,7 @@ j3-1:
 	@cd tst ; java -jar ../www/javascool-3-1.jar
 
 j$(JAR): jar
-	@cd sketchbook ; java -jar ../www/javascool$(JAR).jar
+	@cd tst ; java -jar ../www/javascool$(JAR).jar
 	@make clean
 
 doc: api

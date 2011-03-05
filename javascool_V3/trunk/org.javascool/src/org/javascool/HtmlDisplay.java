@@ -196,12 +196,6 @@ public class HtmlDisplay extends JPanel implements Widget {
         current++;
       return current();
     }
-    /** Dumps the stack (for debug) */
-    private void dump() {
-      for(int i = 0; i < size(); i++)
-        System.err.println((i == current ? "*" : " ") + " " + get(i));
-      System.err.println();
-    }
   }
   /** The URL stack. */
   private Stack urls = new Stack();
