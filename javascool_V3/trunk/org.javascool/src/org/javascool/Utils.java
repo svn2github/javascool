@@ -424,20 +424,31 @@ public class Utils {
     uncaughtExceptionAlertTitle = title; uncaughtExceptionAlertHeader = header;
     Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
 	public void uncaughtException(Thread t, Throwable e) {
-	  String s = uncaughtExceptionAlertHeader+"\n";
-	  for(String p : new String[] { "javascool.version", "java.version", "os.name", "os.arch", "os.version"}) 
-	    s += "> "+p+" = " +System.getProperty(p)+"\n";
+	  String s = "";
+	  if (uncaughtExceptionAlertOnce <= 1) {
+	    s += uncaughtExceptionAlertHeader+"\n";
+	    for(String p : new String[] { "javascool.version", "java.version", "os.name", "os.arch", "os.version"}) 
+	      s += "> "+p+" = " +System.getProperty(p)+"\n";
+	  }
 	  s += "> thread.name = "+t.getName()+"\n";
 	  s += "> throwable = "+e+"\n";
+	  if (0 < uncaughtExceptionAlertOnce)
+	    s += "> count = "+uncaughtExceptionAlertOnce+"\n";
 	  s += "> stack-trace = «\n";
 	  for(int i = 0; i < t.getStackTrace().length; i++)
 	    s += e.getStackTrace()[i]+"\n";
 	  s += "»\n";   
-	  Utils.show(s, uncaughtExceptionAlertTitle);
+	  if (uncaughtExceptionAlertOnce == 0) {
+	    Utils.show(s, uncaughtExceptionAlertTitle);
+	  } else {
+	    System.err.println(s);
+	  }
+	  uncaughtExceptionAlertOnce++;
 	}
       });
   }
   private static String uncaughtExceptionAlertTitle, uncaughtExceptionAlertHeader;
+  private static int uncaughtExceptionAlertOnce = 0;
   /** Opens an applet or panel in a standalone frame.
    * @param applet The applet, panel or text to display.
    * @param title  Frame title. If null, no title.
