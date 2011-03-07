@@ -1,5 +1,5 @@
 // Un programme proposé par Ariane Delrocq, Collège d'Antibes
-//  qui détourne la métphore des "ingrédients des algoritmes"
+//  qui détourne la métaphore des "ingrédients des algoritmes"
 void main() {
    println("Bonjour, à quel parfum désirez vous faire votre quatre quart ?");
    String texte1 = readString();
