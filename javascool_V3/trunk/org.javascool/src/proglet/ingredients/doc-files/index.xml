@@ -24,7 +24,8 @@
   </div>
 
   <div id="1" title="Des documents (sur le web) pour apprendre et se cultiver sur le sujet"><div class="ul">
-    <div>Le poly de cours pour <l link="http://interstices.info/ingredients-algorithmes" text="découvrir les ingrédients des algorithmes"/>.</div>
+    <div>Le poly de cours pour <l link="http://interstices.info/ingredients-algorithmes" text="découvrir les ingrédients des algorithmes"/>
+    avec un <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/ingredients/doc-files/LaRecetteDAriane.jvs.html" text="exemple de programme"/> qui s'amuse à détourner la métaphore des "ingrédients des algoritmes".</div>
     <div>Les documents <l link="http://interstices.info/algo-mode-emploi" text="Algorithme mode d'emploi"/> et 
       <l link="http://interstices.info/demandez-le-programme" text="Demandez le programme"/> offrent une introduction à l'élève ce sujet.</div>
     <div>Pour le professeur: Une <l link="rtsp://stream-serv.inrialpes.fr/Roc/SeminaireInformatiqueObjetsNumeriques/G_Dowek.rm" text="présentation vidéo"/> 

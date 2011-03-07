@@ -1,0 +1,18 @@
+// Un programme proposé par Ariane Delrocq, Collège d'Antibes
+//  qui détourne la métphore des "ingrédients des algoritmes"
+void main() {
+   println("Bonjour, à quel parfum désirez vous faire votre quatre quart ?");
+   String texte1 = readString();
+   println("\n Mélangez oeuf sans coquille, sucre, beurre et farine en quantités égales. \n Ajoutez un peu de " + texte1 + ".");
+   sleep(2000);
+   println("\n Mettez le tout dans le four allumé pendant 10 minutes puis trempez un couteau dans le gateau. \n Le couteau sort-il propre ?");
+   while (true) {
+      String texte2 = readString();
+      if (equal(texte2, "Oui") || equal(texte2, "oui")) {
+         println("\n Sortez le gateau du four et éteignez-le. Le gateau est prêt.");
+         break;
+      } else  {
+         println(" Laissez le gateau dans le four pendant encore 10 minutes puis trempez un couteau dans le gateau. \n Le couteau sort-il propre ?");
+      }
+   }
+}
