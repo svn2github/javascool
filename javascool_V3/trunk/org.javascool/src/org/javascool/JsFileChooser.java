@@ -224,7 +224,7 @@ public class JsFileChooser extends JFileChooser {
     } catch(Exception e) {
       new JOptionPane().
 	showMessageDialog(parent,
-			  "L'ouverture du fichier a échouée: il y a probablement un problème avec ce fichier ou le répertoire.",
+			  "L'ouverture du fichier a échouée: ce fichier n'existe pas ou ne peut être lu.",
 			  "Problème à l'ouverture du fichier",
 			  JOptionPane.ERROR_MESSAGE);
       return false;

@@ -341,13 +341,13 @@ public class JsMain extends JApplet {
   // Sets the javascool version from the manifest file.
   private static void setJavascoolVersion() {
     try { 
-      System.setProperty("javascool.version", Utils.loadString("org/javascool/js-manifest.mf").replaceFirst("(.|\n)*Manifest-version:(.*)(.|\n)*", "$2")); 
+      System.setProperty("javascool.version", Utils.loadString("org/javascool/js-manifest.mf").replaceFirst("(.|\n)*Manifest-version: *(.*)(.|\n)*", "$2")); 
     } catch(Throwable z) { }
   }
   
   // Sets the javascool uncaught exception alert.
   private static void setUncaughtExceptionAlert() {
-    String m = "Notice : Mécanisme de problème de compatibilité mis en place";
+    String m = "Notice : Mécanisme de détection problème de compatibilité mis en place\n   pour " +title+ " ("+System.getProperty("javascool.version")+")";
     System.out.println(m);
     System.err.println(m);
     Utils.setUncaughtExceptionAlert("Problème de configuration détecté!", "Oh: il y a un problème de compatibilité avec "+title+"!\n\nPour vous aider:\n -1- copier tout ce message et \n -2- envoyer le à science-participative@sophia.inria.fr :\n -3- nous essayerons de vous dépanner au plus vite.\n");
