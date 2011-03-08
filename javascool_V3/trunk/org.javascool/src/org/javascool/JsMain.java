@@ -223,6 +223,12 @@ public class JsMain extends JApplet {
                                        }
                                      }
                                      );
+     getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_MASK), "trace");
+     getRootPane().getActionMap().put("trace", new AbstractAction("trace") {
+	 private static final long serialVersionUID = 1L;
+	 public void actionPerformed(ActionEvent e) {
+	   setUncaughtExceptionAlert();
+	 }});
   }
 
   // [2] Activity interface
@@ -291,7 +297,7 @@ public class JsMain extends JApplet {
     public void init(JsMain main) {
       this.main = main;
       JPanel panel = new JPanel();
-      panel.setBackground(new Color(20,255,20));
+      panel.setBackground(new Color(100,255,100));
       panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.yellow, 4), BorderFactory.createEmptyBorder(30, 50, 0, 0)));
       panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
       for(String type : types.keySet()) {
@@ -332,11 +338,19 @@ public class JsMain extends JApplet {
     public void stop(JsMain main) {}
   }
 
-  // Sets the javascool version from the manifest file
+  // Sets the javascool version from the manifest file.
   private static void setJavascoolVersion() {
     try { 
       System.setProperty("javascool.version", Utils.loadString("org/javascool/js-manifest.mf").replaceFirst("(.|\n)*Manifest-version:(.*)(.|\n)*", "$2")); 
     } catch(Throwable z) { }
+  }
+  
+  // Sets the javascool uncaught exception alert.
+  private static void setUncaughtExceptionAlert() {
+    String m = "Notice : Mécanisme de problème de compatibilité mis en place";
+    System.out.println(m);
+    System.err.println(m);
+    Utils.setUncaughtExceptionAlert("Problème de configuration détecté!", "Oh: il y a un problème de compatibilité avec "+title+"!\n\nPour vous aider:\n -1- copier tout ce message et \n -2- envoyer le à science-participative@sophia.inria.fr :\n -3- nous essayerons de vous dépanner au plus vite.\n");
   }
 
   /** Used to run a JavaScool 3.2 as a standalone program.
@@ -349,7 +363,6 @@ public class JsMain extends JApplet {
   public static void main(String[] usage) {
     System.out.println("---------------------\n" + title + "\n---------------------\nstarting..");
     setJavascoolVersion();
-    Utils.setUncaughtExceptionAlert("Problème de configuration détecté!", "Oh: il y a un problème de compatibilité avec "+title+"!\n\nPour vous aider:\n -1- copier tout ce message et \n -2- envoyer le à science-participative@sophia.inria.fr :\n -3- nous essayerons de vous dépanner au plus vite.\n");
     JsMain main = new JsMain();
     if(usage.length > 0)
       main.setActivity(usage[0]);

@@ -66,8 +66,9 @@ public class JsFileChooser extends JFileChooser {
   /** Manages an open dialog action after saving the file.
    * @param editor The editor where to load the file.
    * @param extension The required file extension, if any (else null).
+   * @return True if the operation has succeeded else false.
    */
-  public void doSaveOpenAs(Editor editor, String extension) {
+  public boolean doSaveOpenAs(Editor editor, String extension) {
     switch(!editor.isModified() ? 1 : new JOptionPane().
            showConfirmDialog(parent,
                              "Voulez-vous enregistrer avant d'ouvrir un nouveau fichier ?",
@@ -76,11 +77,13 @@ public class JsFileChooser extends JFileChooser {
     {
     case 0: // Yes save
       if(doSaveAs(editor, extension))
-        doOpenAs(editor, extension);
-      break;
+        return doOpenAs(editor, extension);
+      else
+	return false;
     case 1: // No need to save
-      doOpenAs(editor, extension);
-      break;
+      return doOpenAs(editor, extension);
+    default:
+      return false;
     }
   }
   /** Saves a file, before exiting or activity change. */
@@ -103,23 +106,23 @@ public class JsFileChooser extends JFileChooser {
   /** Manages synchronization between the editor and the stored file, in lock/unlock mode.
    * @param editor The editor where to load the file.
    * @param extension The required file extension, if any (else null).
+   * @return True if the operation has succeeded else false.
    */
-  public void doSync(Editor editor, String extension) {
+  public boolean doSync(Editor editor, String extension) {
     // Editable mode
     if (editor.isEditable()) {
       if (file == null) {
-	doSaveAs(editor, extension);
+	return doSaveAs(editor, extension);
       } else {
 	System.out.println("Sauvegarde de "+new File(getFile()).getName()+" ..");
-	doSave(editor, extension);
+	return doSave(editor, extension);
       }
-    }
+    } else {
     // Lock mode
-    if (!editor.isEditable()) {
       if (file == null) {
-	doOpenAs(editor, extension);
+	return	doOpenAs(editor, extension);
       } else {
-	doOpen(editor, file);
+	return doOpen(editor, file);
       }
     }
   }
@@ -169,8 +172,9 @@ public class JsFileChooser extends JFileChooser {
   /** Manages an open dialog action.
    * @param editor The editor where to load the file.
    * @param extension The required file extension, if any (else null).
+   * @return True if the operation has succeeded else false.
    */
-  private void doOpenAs(Editor editor, String extension) {
+  private boolean doOpenAs(Editor editor, String extension) {
     if(this.extension != extension)
       setSelectedFile(null);
     this.extension = extension;
@@ -178,7 +182,9 @@ public class JsFileChooser extends JFileChooser {
     setDialogType(JFileChooser.OPEN_DIALOG);
     setApproveButtonText("Ouvrir");
     if(showOpenDialog(parent) == 0)
-      doOpen(editor, getSelectedFile().getPath());
+      return doOpen(editor, getSelectedFile().getPath());
+    else
+      return false;
   }
   /** Manages a save dialog action.
    * @param editor The editor from where the file is saved.
@@ -197,38 +203,51 @@ public class JsFileChooser extends JFileChooser {
     setApproveButtonText("Enregister");
     if(showSaveDialog(parent) == 0) {
       file = getSelectedFile().getPath();
-      doSave(editor, extension);
-      return true;
+      return doSave(editor, extension);
     } else
       return false;
   }
-  /** Manages an open action (no dialog). */
-  public void doOpen(Editor editor, String file) {
+  /** Manages an open action (no dialog). 
+   * @param editor The editor from where the file is saved.
+   * @param file The file to load.
+   * @return True if the operation has succeeded else false.
+   */
+  public boolean doOpen(Editor editor, String file) {
     setSelectedFile(new File(file));
     String text = "";
     try { 
       text = Utils.loadString(file);
       lastModified = new File(file).lastModified();
       this.file = file;
-    } catch(Exception e) {}
-    editor.setText(text);
+      editor.setText(text);
+      return true;
+    } catch(Exception e) {
+      new JOptionPane().
+	showMessageDialog(parent,
+			  "L'ouverture du fichier a échouée: il y a probablement un problème avec ce fichier ou le répertoire.",
+			  "Problème à l'ouverture du fichier",
+			  JOptionPane.ERROR_MESSAGE);
+      return false;
+    }
   }
   /** Manages a save action (no dialog).
    * @param editor The editor from where the file is saved.
    * @param extension The required file extension, if any (else null).
+   * @return True if the operation has succeeded else false.
    */
-  public void doSave(Editor editor, String extension) {
+  public boolean doSave(Editor editor, String extension) {
     if(file == null)
-      doSaveAs(editor, extension);
+      return doSaveAs(editor, extension);
     else
-      doSave(editor, editor.getText(), extension);
+      return doSave(editor, editor.getText(), extension);
   }
   /** Manages a save action (no dialog).
    * @param editor The editor where the text comes from.
    * @param text The text to save.
    * @param extension The required file extension, if any (else null).
+   * @return True if the operation has succeeded else false.
    */
-  public void doSave(Editor editor, String text, String extension) {
+  public boolean doSave(Editor editor, String text, String extension) {
     // Normalizes the file name and extension
     file = toJavaName(file, extension);
     setSelectedFile(new File(file));
@@ -249,12 +268,22 @@ public class JsFileChooser extends JFileChooser {
 	{
 	case 0: // Yes do it
 	  break;
-	case 1: // No plase
-	  return;
+	case 1: // No please
+	  return false;
 	}
     }
-    Utils.saveString(file, text);
-    lastModified = new File(file).lastModified();
+    try {
+      Utils.saveString(file, text);
+      lastModified = new File(file).lastModified();
+      return true;
+    } catch(Exception e) {
+      new JOptionPane().
+	showMessageDialog(parent,
+			  "L'enregistrement du fichier a échouée: probablement car il n'y a pas le droit d'écrire dans ce répertoire.\n Changer de répertoire (ex: aller dans MesDocuments)",
+			  "Problème à la sauvegarde du fichier",
+			  JOptionPane.ERROR_MESSAGE);
+      return false;
+     }
   }
   /** Sets the next save dialog title.
    * @param title Optional title for a specific dialog
