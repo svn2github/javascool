@@ -105,6 +105,7 @@ public class CurveDisplay implements org.javascool.Proglet {
    * @param Y Echelle maximale verticale, l'ordonnée sera tracée dans [-Y, Y], par défaut [-1, 1].
    */
   public static void scopeReset(double X, double Y) {
+    org.javascool.JsMain.getMain().getFrame().showTab("Tracé");
     panel.reset(X, Y);
   }
   /** Initialise le tracé.

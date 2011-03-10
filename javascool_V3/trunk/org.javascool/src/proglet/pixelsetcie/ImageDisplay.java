@@ -78,6 +78,7 @@ public class ImageDisplay implements org.javascool.Proglet {
    * @param height Demi hauteur de l'image de taille {-height, height}.
    */
   static public void smileyReset(int width, int height) {
+    org.javascool.JsMain.getMain().getFrame().showTab("pixelsetcie");
     panel.icon.reset(2 * (ImageDisplay.width = width) + 1, 2 * (ImageDisplay.height = height) + 1);
   }
   static private int width, height;

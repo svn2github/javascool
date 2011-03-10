@@ -353,6 +353,12 @@ public class JsMain extends JApplet {
     Utils.setUncaughtExceptionAlert("Problème de configuration détecté!", "Oh: il y a un problème de compatibilité avec "+title+"!\n\nPour vous aider:\n -1- copier tout ce message et \n -2- envoyer le à science-participative@sophia.inria.fr :\n -3- nous essayerons de vous dépanner au plus vite.\n");
   }
 
+  /** Gets the instance of the main program. */
+  public static JsMain getMain() {
+    return theMain == null ? (theMain = new JsMain()) : theMain;
+  }
+  private static JsMain theMain = null;
+
   /** Used to run a JavaScool 3.2 as a standalone program.
    * <p>- Starts a JavaScool "activity" which result is to be stored in a "file-name".</p>
    * @param usage <tt>java org.javascool.Main [activity [file-name]]</tt><ul>
@@ -363,7 +369,7 @@ public class JsMain extends JApplet {
   public static void main(String[] usage) {
     System.out.println("---------------------\n" + title + "\n---------------------\nstarting..");
     setJavascoolVersion();
-    JsMain main = new JsMain();
+    JsMain main = getMain();
     if(usage.length > 0)
       main.setActivity(usage[0]);
     if((usage.length > 0) && new File(usage[usage.length - 1]).exists() && (main.activity.getEditor() != null))

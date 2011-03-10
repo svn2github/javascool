@@ -241,6 +241,7 @@ public class Console implements org.javascool.Proglet {
   }
   /** Efface tout ce qui est écrit ou à lire dans la console. */
   public static void clear() {
+    org.javascool.JsMain.getMain().getFrame().showTab("Console");
     panel.clear();
   }
   /** Sauve ce qui est présentement écrit dans la console dans un fichier au format HTML.

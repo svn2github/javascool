@@ -1,3 +1,46 @@
 
-void main() {   println("Hi !"); kk
+// Trace une trajectoire et retourne sa longueur
+int trace() {
+   // Initialisation du compteur
+    int i = 0;
+   // Définition de la perte a  et le gain b (des valeurs typiquement entre 0 et 100)
+    int a = random(0, 100);
+   int b = random(0, 100);
+   // Tracé de la trajectoire
+    smileyReset(20, 20);
+   // Position Initiale
+    int x = 0;
+   int y = 0;
+   double s = 0;
+   // On boucle tant que les bords ne sont pas atteints
+    while ( - 20 <= x && x <= 20 && - 20 <= y && y <= 20) {
+      if (s >= 0) {
+         x = x + random( - 1, 1);
+         s = s - a;
+         i = i + 1;
+      } else {
+         y = y + random( - 1, 1);
+         s = s + b;
+         i = i + 1;
+      }
+      smileySet(x, y, "magenta");
+   }
+   return i;
+}
+
+void main() {
+   // Trace des trajectoires et calcule le chemin minimal
+    clear();
+   println("\nCombien de trajectoires simuler ?");
+   int N = readInt(), lMin = 1000000000;
+   for (int n = 0; n < N; n ++) {
+      int l = trace();
+      sleep(1500);
+      clear();
+      println("\nLe bord est atteint en " + l + " coups.");
+      if (l < lMin) lMin = l;
+      sleep(1500);
+   }
+   clear();
+   println("\nLe bord a été atteint en au moins " + lMin + " coups.");
 }
