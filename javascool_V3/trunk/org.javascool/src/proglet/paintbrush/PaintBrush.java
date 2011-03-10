@@ -12,7 +12,7 @@ import proglet.ingredients.Console;
 /** Définit une proglet javascool qui permet de faire des tracés dans une image.
  * @see <a href="doc-files/about-proglet.htm">Description</a>
  * @see <a href="doc-files/the-proglet.htm">La proglet</a>
- * @see <a href="Console.java.html">code source</a>
+ * @see <a href="PaintBrush.java.html">code source</a> (<a href="PaintMain.java.html">PaintMain.java</a>, <a href="Image.java.html">Image.java</a>,  <a href="ManipImage.java.html">ManipImage.java</a>).
  * @serial exclude
  */
 public class PaintBrush implements org.javascool.Proglet {
