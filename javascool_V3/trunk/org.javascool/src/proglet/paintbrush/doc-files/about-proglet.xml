@@ -20,6 +20,22 @@
      <p>});</p>
    </div></div>
 
+   <div>Les images <r>proglet.paintbrush.Image</r> peuvent être manipulées avec les méthodes suivantes:
+   <p>Pour définir lire/écrire un point les fonctions <r>set/get</r> sont à disposition: <div class="code">
+      <p><r>int</r> couleur = <r>image.get</r>(x, y);</p>
+      <p><r>image.set</r>(x, y, couleur);</p>
+     </div><div class="ul">
+       <div>où <b>x</b> est un <r>int</r>, entre <b>[0, image.maxX()]</b>, abscisse du point;</div>
+       <div>où <b>y</b> est un <r>int</r>, entre <b>[0, image.maxY()]</b>, ordonnée du point;</div>
+       <div>où <b>couleur</b> est un entier entre <c>0</c> (pour le "noir") et <c>15</c> (pour le "blanc"), les autres valeurs correspondant à la palette de couleur.</div>
+     </div>Elles permettren de lire/écrire un pixel du dessin.</p>
+     <p>De plus:    <div class="code">
+     <p><r>int</r> width = <r>image.maxX()</r>();</p>
+     <p><r>int</r> height = <r>image.maxY()</r>();</p>
+   </div> renvoient la largeur (width) et hauteur (height) du dessin.</p>
+   <p>Ce sont ces méthodes qu'il faut utiliser pour implémenter les méthodes ci-dessus.</p>
+ </div>
+
    <div>On pourra partir du programme <l link="http://javascool.gforge.inria.fr/v3/?page=api:proglet/paintbrush/doc-files/Exemple.jvs.html" text="exemple donné ici"/>.</div>
 
   </p>

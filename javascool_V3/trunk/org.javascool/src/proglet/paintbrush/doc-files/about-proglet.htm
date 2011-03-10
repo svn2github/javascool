@@ -69,6 +69,65 @@
       </div>
       
          
+      <div>Les images <font color="#990000"><b>proglet.paintbrush.Image</b></font> peuvent &ecirc;tre manipul&eacute;es avec les m&eacute;thodes suivantes:
+            
+         <div>Pour d&eacute;finir lire/&eacute;crire un point les fonctions <font color="#990000"><b>set/get</b></font> sont &agrave; disposition: 
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                 
+                           <div><font color="#990000"><b>int</b></font> couleur = <font color="#990000"><b>image.get</b></font>(x, y);
+                           </div>
+                                 
+                           <div><font color="#990000"><b>image.set</b></font>(x, y, couleur);
+                           </div>
+                                
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </p>
+            <ul class="ul">
+                      
+               <li>o&ugrave; <b>x</b> est un <font color="#990000"><b>int</b></font>, entre <b>[0, image.maxX()]</b>, abscisse du point;
+               </li>
+                      
+               <li>o&ugrave; <b>y</b> est un <font color="#990000"><b>int</b></font>, entre <b>[0, image.maxY()]</b>, ordonn&eacute;e du point;
+               </li>
+                      
+               <li>o&ugrave; <b>couleur</b> est un entier entre <tt>0</tt> (pour le "noir") et <tt>15</tt> (pour le "blanc"), les autres valeurs correspondant &agrave; la palette de couleur.
+               </li>
+                    
+            </ul>Elles permettren de lire/&eacute;crire un pixel du dessin.
+         </div>
+              
+         <div>De plus:    
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                
+                           <div><font color="#990000"><b>int</b></font> width = <font color="#990000"><b>image.maxX()</b></font>();
+                           </div>
+                                
+                           <div><font color="#990000"><b>int</b></font> height = <font color="#990000"><b>image.maxY()</b></font>();
+                           </div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </p> renvoient la largeur (width) et hauteur (height) du dessin.
+         </div>
+            
+         <div>Ce sont ces m&eacute;thodes qu'il faut utiliser pour impl&eacute;menter les m&eacute;thodes ci-dessus.</div>
+          
+      </div>
+      
+         
       <div>On pourra partir du programme <a href="http://javascool.gforge.inria.fr/v3/?page=api:proglet/paintbrush/doc-files/Exemple.jvs.html">exemple donn&eacute; ici</a>.
       </div>
       
