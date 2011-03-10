@@ -370,6 +370,7 @@ public class JsMain extends JApplet {
     System.out.println("---------------------\n" + title + "\n---------------------\nstarting..");
     setJavascoolVersion();
     JsMain main = getMain();
+    setUncaughtExceptionAlert(); // Version perfusée
     if(usage.length > 0)
       main.setActivity(usage[0]);
     if((usage.length > 0) && new File(usage[usage.length - 1]).exists() && (main.activity.getEditor() != null))

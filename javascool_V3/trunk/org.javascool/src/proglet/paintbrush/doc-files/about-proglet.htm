@@ -1,0 +1,89 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div>
+   <h2>La &laquo;proglet&raquo; paintbrush.</h2>
+   
+   <div align="right" class="margin">Autres <a href="../../../org/javascool/doc-files/about-proglets.htm">&laquo;proglets&raquo;</a>.
+   </div>
+     
+   <div>
+       Cette proglet<sup><a href="#1">1</a></sup> permet de dessiner dans une petite image de r&eacute;solution minimale pour comprendre le codage 
+      
+        
+      <div><b>[&agrave; compl&eacute;ter]</b></div>
+        
+           
+      <div>La construction suivante permet de d&eacute;finir une nouvelle impl&eacute;mentation des m&eacute;thodes permettant de dessiner:
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                             
+                        <div><font color="#990000"><b>proglet.paintbrush.PaintBrush.setManipImage</b></font>(<font color="#990000"><b>new proglet.paintbrush.ManipImage</b></font>() {
+                        </div>
+                             
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Affiche un point de coordonn&eacute;es (x,y)</font></tt></p>
+                             
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>void affichePoint</b></font>(<font color="#990000"><b>proglet.paintbrush.Image</b></font> <b>image</b>, <font color="#990000"><b>int</b></font> <b>x</b>, <font color="#990000"><b>int</b></font> <b>y</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) {  }
+                        </div>
+                             
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Supprime les points sur une zone carr&eacute; de largeur 3 pixels et centr&eacute;e en (x,y)</font></tt></p>
+                             
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>void supprimePoint</b></font>(<font color="#990000"><b>proglet.paintbrush.Image</b></font> <b>image</b>, <font color="#990000"><b>int</b></font> <b>x</b>, <font color="#990000"><b>int</b></font> <b>y</b>) { } 
+                        </div>
+                             
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Trace une ligne de diagonale (x0,y0) -- (x1,y1)</font></tt></p>
+                             
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>void afficheLigne</b></font>(<font color="#990000"><b>proglet.paintbrush.Image</b></font> <b>image</b>, <font color="#990000"><b>int</b></font> <b>x0</b>, <font color="#990000"><b>int</b></font> <b>y0</b>, <font color="#990000"><b>int</b></font> <b>x1</b>, <font color="#990000"><b>int</b></font> <b>y1</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) { } 
+                        </div>
+                             
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Trace un rectangle de diagonale (x1,y1) -- (x2,y2)</font></tt></p>
+                             
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>void afficheRectangle</b></font>(<font color="#990000"><b>proglet.paintbrush.Image</b></font> <b>image</b>, <font color="#990000"><b>int</b></font> <b>x0</b>, <font color="#990000"><b>int</b></font> <b>y0</b>, <font color="#990000"><b>int</b></font> <b>x1</b>, <font color="#990000"><b>int</b></font> <b>y1</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) { } 
+                        </div>
+                             
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Pot de peinture : remplir avec la couleur sp&eacute;cifi&eacute;e tous les pixels voisins de (x,y) et ayant la m&ecirc;me couleur</font></tt></p>
+                             
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>void remplir</b></font>(<font color="#990000"><b>proglet.paintbrush.Image</b></font> <b>image</b>, <font color="#990000"><b>int</b></font> <b>x</b>, <font color="#990000"><b>int</b></font> <b>y</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) { } 
+                        </div>
+                             
+                        <div>});</div>
+                           
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+      </div>
+      
+         
+      <div>On pourra partir du programme <a href="http://javascool.gforge.inria.fr/v3/?page=api:proglet/paintbrush/doc-files/Exemple.jvs.html">exemple donn&eacute; ici</a>.
+      </div>
+      
+        
+   </div>
+     
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programm&eacute;e en Java et <a href="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/paintbrush/ImageDisplay.html">document&eacute;e</a> 
+                   pour sa libre redistribution, l'acc&egrave;s <a href="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/paintbrush/PaintBrush.java.html">au code source</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+</div>

@@ -109,7 +109,7 @@
       <p><p><r>{ c</r></p><p>(code) Mot ou texte appartenant à un langage informatique ou formel</p></p>
       <p><p><r>{ S</r></p><p>(sup) Mot ou texte en exposant (comme dans «x au carré» <c>x{S 2}</c> </p></p>
       <p><p><r>{ I</r></p><p>(sub) Mot ou texte en indexe (inverse de l'exposant) pour décrire des objets paramétrés</p></p>
-    </div> cette liste n'étant pas limitative. Ces constructions sont des synonymes de <r>{ s class="boldb</r>, etc..</p>
+    </div> cette liste n'étant pas limitative. Ces constructions sont des synonymes de <r>{ s class="bold"</r>, etc..</p>
     <div title="Discussion">
       Cette construction correspond à l'élément HTML <c>&lt;span>..&lt;/span></c> et à tous les éléments dérivés.
       L'introduction de raccourci allège la lecture et l'édition du texte source, que l'on veut rester lisible ici 

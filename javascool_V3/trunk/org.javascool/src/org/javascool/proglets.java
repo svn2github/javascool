@@ -7,4 +7,5 @@
 "proglet.javaprog.JavaPanel",
 "proglet.dichotomie.Dichotomie",
 "proglet.exosdemaths.CurveDisplay",
+"proglet.paintbrush.PaintBrush",
 ""}; }

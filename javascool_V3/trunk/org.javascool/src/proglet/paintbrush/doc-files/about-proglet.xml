@@ -1,0 +1,30 @@
+<div title="La «proglet» paintbrush">
+  <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+  <p>
+    Cette proglet<l class="note" link="1"/> permet de dessiner dans une petite image de résolution minimale pour comprendre le codage 
+
+  <p><b>[à compléter]</b></p>
+  
+     <div>La construction suivante permet de définir une nouvelle implémentation des méthodes permettant de dessiner:<div class="code">
+     <p><r>proglet.paintbrush.PaintBrush.setManipImage</r>(<r>new proglet.paintbrush.ManipImage</r>() {</p>
+     <m>Affiche un point de coordonnées (x,y)</m>
+     <p><T/><r>void affichePoint</r>(<r>proglet.paintbrush.Image</r> <b>image</b>, <r>int</r> <b>x</b>, <r>int</r> <b>y</b>, <r>int</r> <b>couleur</b>) {  }</p>
+     <m>Supprime les points sur une zone carré de largeur 3 pixels et centrée en (x,y)</m>
+     <p><T/><r>void supprimePoint</r>(<r>proglet.paintbrush.Image</r> <b>image</b>, <r>int</r> <b>x</b>, <r>int</r> <b>y</b>) { } </p>
+     <m>Trace une ligne de diagonale (x0,y0) -- (x1,y1)</m>
+     <p><T/><r>void afficheLigne</r>(<r>proglet.paintbrush.Image</r> <b>image</b>, <r>int</r> <b>x0</b>, <r>int</r> <b>y0</b>, <r>int</r> <b>x1</b>, <r>int</r> <b>y1</b>, <r>int</r> <b>couleur</b>) { } </p>
+     <m>Trace un rectangle de diagonale (x1,y1) -- (x2,y2)</m>
+     <p><T/><r>void afficheRectangle</r>(<r>proglet.paintbrush.Image</r> <b>image</b>, <r>int</r> <b>x0</b>, <r>int</r> <b>y0</b>, <r>int</r> <b>x1</b>, <r>int</r> <b>y1</b>, <r>int</r> <b>couleur</b>) { } </p>
+     <m>Pot de peinture : remplir avec la couleur spécifiée tous les pixels voisins de (x,y) et ayant la même couleur</m>
+     <p><T/><r>void remplir</r>(<r>proglet.paintbrush.Image</r> <b>image</b>, <r>int</r> <b>x</b>, <r>int</r> <b>y</b>, <r>int</r> <b>couleur</b>) { } </p>
+     <p>});</p>
+   </div></div>
+
+   <div>On pourra partir du programme <l link="http://javascool.gforge.inria.fr/v3/?page=api:proglet/paintbrush/doc-files/Exemple.jvs.html" text="exemple donné ici"/>.</div>
+
+  </p>
+  <div class="notes">
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/paintbrush/ImageDisplay.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/paintbrush/PaintBrush.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+  </div>
+</div>

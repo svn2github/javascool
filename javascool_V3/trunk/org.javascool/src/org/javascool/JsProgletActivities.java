@@ -50,6 +50,12 @@ public class JsProgletActivities {
                        }
                      }
                      );
+    main.addActivity(new ProgletActivity("paintbrush", "Objet numérique: les images", "Dessiner sur une image (version préliminaire)") {
+                       public void init2(JsFrame frame) {
+                         frame.addTab("Enoncé de l'exercice", "proglet/paintbrush/doc-files/sujet-appli-image.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
+                       }
+                     }
+                     );
     main.addActivity(new ProgletActivity("convanalogique", "Algorithmes dichotomiques", "Programmer la conversion analogique-digitale") {
                        public void init2(JsFrame frame) {
                          frame.addTab("Enoncé de l'exercice", "proglet/convanalogique/doc-files/sujet-appli-conva.htm", "org/javascool/doc-files/icones16/globe.png", true, false);

@@ -6,7 +6,7 @@
 export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
 
 # Defines the beta-relase jar temporary suffix under development
-JAR =
+JAR = -3-2-2
 
 default : j$(JAR)
 

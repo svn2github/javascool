@@ -107,6 +107,12 @@ public class Jvs2Java {
 	  g += f[i];
 	  if (i < f.length - 1 && !(Character.isWhitespace(f[i+1]) || isOperator(f[i+1])))
 	    g += ' ';
+	} else if (f[i] == '.') {
+	  if (g.length() > 0 && Character.isWhitespace(c0))
+	    g = g.substring(0, g.length()-1);
+	  g += f[i];
+	  if (i < f.length - 1 && Character.isWhitespace(f[i+1]))
+	    i++;
 	// Normalize spaces around punctuation
 	} else if (f[i] == ',' || f[i] == ';' || f[i] == ')') {
 	  if (g.length() > 0 && Character.isWhitespace(c0))
@@ -164,7 +170,6 @@ public class Jvs2Java {
     case '!':
     case '<':
     case '>':
-    case '.':
     case ':':
       return true;
     default:
@@ -200,6 +205,9 @@ public class Jvs2Java {
         if(line.matches("^\\s*(import|package)[^;]*;\\s*$")) {
           head.append(line);
           body.append("//" + line + "\n");
+	  if(line.matches("^\\s*package[^;]*;\\s*$")) {
+	    System.out.println("Attention: on ne peut normallement pas définir de package Java en JavaScool\n le programme risque de ne pas s'exécuter correctement");
+	  }
         } else
           body.append(translateOnce(line) + "\n");
       }
