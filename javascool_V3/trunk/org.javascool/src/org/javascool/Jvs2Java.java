@@ -47,7 +47,7 @@ public class Jvs2Java {
   };
   /** The list of all JavaScool declared words. */
   public static final String Declared[] = {
-    "echo", "equal", "sqrt", "pow", "random", "now", "sleep", "show",
+    "echo", "equal", "sqrt", "pow", "random", "now", "sleep", "check",
     "clear", "println", "readString", "readInt", "readInteger", "readDouble", "readFloat", "readBoolean",
     "dichoLength", "dichoCompare",
     "smileyReset", "smileyLoad", "smileySet", "smileyGet",
@@ -87,6 +87,12 @@ public class Jvs2Java {
 	  g += f[i++];
 	if (i < f.length)
 	  g += f[i++];
+	// Escapes @ pragma
+      } else if (f[i] == '@') {
+	while(i < f.length && f[i] != '\n')
+	  g += f[i++];
+	g += ln;
+	i++;
 	// Normalizes spaces
       } else if (Character.isWhitespace(f[i])) {
 	g += ' ';
@@ -111,7 +117,7 @@ public class Jvs2Java {
 	  if (g.length() > 0 && Character.isWhitespace(c0))
 	    g = g.substring(0, g.length()-1);
 	  g += f[i];
-	  if (i < f.length - 1 && Character.isWhitespace(f[i+1]))
+	  while (i < f.length - 1 && Character.isWhitespace(f[i+1]))
 	    i++;
 	// Normalize spaces around punctuation
 	} else if (f[i] == ',' || f[i] == ';' || f[i] == ')') {
@@ -127,7 +133,7 @@ public class Jvs2Java {
 	  if (g.length() > 0 && Character.isWhitespace(c0) && g.length() > 1 && Character.isLetterOrDigit(g.charAt(g.length()-2)))
 	    g = g.substring(0, g.length()-1);
 	  g += f[i];
-	  if (i < f.length - 1 && Character.isWhitespace(f[i+1]))
+	  while (i < f.length - 1 && Character.isWhitespace(f[i+1]))
 	    i++;
 	} else if(f[i] == '}') {
 	  for(int n = 0; n < 3; n++)

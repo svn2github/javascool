@@ -1,24 +1,8 @@
 
-import proglet.paintbrush.*;
-
-// Exemple d'implémentation qui se connecte à la proglet paintbrush
 void main() {
-   PaintBrush.setManipImage(new ManipImage() {
-      //Affiche un point de coordonnées (x,y)
-       public void affichePoint(Image image, int x, int y, int couleur) {
-         println("affichePoint(" + x + ",  " + y + ",  " + couleur + ")");}
-      //Supprime les points sur une zone carré de largeur 3 pixels et centrée en (x,y)
-       public void supprimePoint(Image image, int x, int y) {
-         println("supprimePoint(" + x + ", " + y + ")");}
-      //Trace une ligne de diagonale (x0,y0) -- (x1,y1)
-       public void afficheLigne(Image image, int x0, int y0, int x1, int y1, int couleur) {
-         println("afficheLigne(" + x0 + ", " + y0 + ",  " + x1 + ", " + y1 + ",  " + couleur + ")");}
-      //Trace un rectangle de diagonale (x1,y1) -- (x2,y2)
-       public void afficheRectangle(Image image, int x0, int y0, int x1, int y1, int couleur) {
-         println("afficheRectangle(" + x0 + ", " + y0 + ",  " + x1 + ", " + y1 + ",  " + couleur + ")");}
-      //Pot de peinture : remplir tous les pixels voisins de (x,y) et ayant la même couleur avec la couleur spécif iée
-       public void remplir(Image image, int x, int y, int couleur) {
-         println("remplir(" + x + ",  " + y + ",  " + couleur + ")");}
-   }
-  );
+   println("Voilà un message qui va s'imprimer");
+   check(3 > 2, "tout va bien");
+   println("Ce message aussi va s'imprimer");
+   check(3 < 2, "Ah ben non alors quoi !");
+   println("Ce message va vachement pas s'imprimer");
 }

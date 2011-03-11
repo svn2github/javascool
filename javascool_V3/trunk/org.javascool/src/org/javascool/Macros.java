@@ -82,4 +82,16 @@ public class Macros {
       throw new RuntimeException("Programme arrêté !");
     }
   }
+  /** Vérifie une assertion et arrête le code si elle est fausse.
+   * @param condition Si la condition n'est pas vérifiée, le code JavaScool va s'arrêter.
+   * @param message Un message s'imprime sur la console pour signaler l'erreur.
+   */
+  public static void check(boolean condition, String message) {     
+    System.err.println("#"+condition+" : "+message);
+    if (!condition) {
+      System.out.println(message);
+      Jvs2Java.run(false);
+      sleep(500);
+    }
+  }
 }

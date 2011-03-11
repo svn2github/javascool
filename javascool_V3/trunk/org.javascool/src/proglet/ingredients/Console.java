@@ -199,6 +199,9 @@ public class Console implements org.javascool.Proglet {
   /**/public static void println(double string) {
     println("" + string);
   }
+  /**/public static void println(char string) {
+    println("" + string);
+  }
   /**/public static void println(boolean string) {
     println("" + string);
   }
@@ -215,6 +218,9 @@ public class Console implements org.javascool.Proglet {
     print("" + string);
   }
   /**/public static void print(double string) {
+    print("" + string);
+  }
+  /**/public static void print(char string) {
     print("" + string);
   }
   /**/public static void print(boolean string) {
