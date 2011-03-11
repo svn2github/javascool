@@ -86,7 +86,7 @@ public class Macros {
    * @param condition Si la condition n'est pas vérifiée, le code JavaScool va s'arrêter.
    * @param message Un message s'imprime sur la console pour signaler l'erreur.
    */
-  public static void check(boolean condition, String message) {     
+  public static void assertion(boolean condition, String message) {     
     System.err.println("#"+condition+" : "+message);
     if (!condition) {
       System.out.println(message);
