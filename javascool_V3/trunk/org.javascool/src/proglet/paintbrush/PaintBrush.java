@@ -8,12 +8,11 @@ package proglet.paintbrush;
 import javax.swing.JPanel;
 import proglet.ingredients.Console;
 
-
 /** Définit une proglet javascool qui permet de faire des tracés dans une image.
  * @see <a href="doc-files/about-proglet.htm">Description</a>
  * @see <a href="doc-files/the-proglet.htm">La proglet</a>
  * @see <a href="PaintBrush.java.html">code source</a> 
- * @see <a href="PaintMain.java.html">PaintMain.java</a>, <a href="Image.java.html">Image.java</a>,  <a href="ManipImage.java.html">ManipImage.java</a>
+ * @see <a href="PaintBrushMain.java.html">PaintBrushMain.java</a>, <a href="PaintBrushImage.java.html">PaintBrushImage.java</a>,  <a href="PaintBrushManipImage.java.html">PaintBrushManipImage.java</a>
  * @serial exclude
  */
 public class PaintBrush implements org.javascool.Proglet {
@@ -26,7 +25,7 @@ public class PaintBrush implements org.javascool.Proglet {
       add(mainPanel = new MainPanel());
     }
     /** Registers a new ManipImage implementation. */
-    void setManipImage(ManipImage manipImage) {
+    void setManipImage(PaintBrushManipImage manipImage) {
       System.out.println("L'implémentation de la proglet paintbrush a été changée");
       mainPanel.myPanel.progletManipImage = manipImage;
     }
@@ -39,14 +38,14 @@ public class PaintBrush implements org.javascool.Proglet {
   /** Définit le mécanisme de dessin de l'image à partir d'un codage de l'utilisateur.
    * @param manipImage L'implémentation de dessin à utiliser.
    */
-  public static void setManipImage(ManipImage manipImage) {
+  public static void setManipImage(PaintBrushManipImage manipImage) {
     panel.setManipImage(manipImage);
   }
 
   //
   // This defines the tests on the panel
   //
-  /**/public static void test() {
+  /*public*/ static void test() {
     Console.clear();
     Console.println("Pour la démo . . à vous de manipuler l'interface\n .. en \"mode démo\", tout simplement !");
   }

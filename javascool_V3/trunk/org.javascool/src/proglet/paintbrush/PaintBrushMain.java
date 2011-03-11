@@ -28,7 +28,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseMotionAdapter; 
 import java.util.*;
 
-public class PaintMain {
+public class PaintBrushMain {
   
   public static void main(String[] args) {
     SwingUtilities.invokeLater(new Runnable() {
@@ -143,7 +143,7 @@ class MainPanel extends JPanel implements ActionListener {
     radioPanel.add(buttonVersion2);
     
     cPanel = new ColorPanel();
-    Image image = new Image(MyPanel.width,MyPanel.height);    
+    PaintBrushImage image = new PaintBrushImage(MyPanel.width,MyPanel.height);    
     myPanel = new MyPanel(cPanel,image);
     myPanel.updateMode(Mode.DRAW);
         
@@ -264,7 +264,7 @@ class ColorPanel extends JPanel implements MouseMotionListener {
       g.fillRect(x, y,square,square);
       if (MyPanel.showCode) {
         g.setColor(c.getTextColor().getColor());
-        g.drawString(Image.byteToString(i), x+square/3-2, y+2*square/3+2);
+        g.drawString(PaintBrushImage.byteToString(i), x+square/3-2, y+2*square/3+2);
       }
     }      
   }  
@@ -288,7 +288,7 @@ class MyPanel extends JPanel implements MouseMotionListener {
   private static final long serialVersionUID = 1L;
 
   // Mécanisme de switch entre demo et proglet mode.
-  static public ManipImage demoManipImage = new ManipImageFinal(), progletManipImage = new ManipImageVide(), manipImage = demoManipImage;
+  static public PaintBrushManipImage demoManipImage = new ManipImageFinal(), progletManipImage = new ManipImageVide(), manipImage = demoManipImage;
 
   static int square = 16;
   static int height = 32;
@@ -298,7 +298,7 @@ class MyPanel extends JPanel implements MouseMotionListener {
   private static Cursor eraser_cursor;
   private ColorPanel cPanel;
   private Mode mode;
-  public Image image;
+  public PaintBrushImage image;
   private Point start_point_rectangle;
   private Point end_point_rectangle;
   private Point previous_point;
@@ -341,7 +341,7 @@ class MyPanel extends JPanel implements MouseMotionListener {
    
   public void mouseMoved(MouseEvent evt) {}
 
-  public MyPanel(ColorPanel _cPanel, Image _image) {
+  public MyPanel(ColorPanel _cPanel, PaintBrushImage _image) {
     
     Toolkit toolkit = Toolkit.getDefaultToolkit();  
     //java.awt.Image image1 = toolkit.getImage(getClass().getResource("img/cursor_paint.png"));  
@@ -437,7 +437,7 @@ class MyPanel extends JPanel implements MouseMotionListener {
   }
 
   //Bresenham's line algorithm
-  private void fillHole(Image image, int x0, int y0, int x1, int y1) {
+  private void fillHole(PaintBrushImage image, int x0, int y0, int x1, int y1) {
     int dx = Math.abs(x1-x0);
     int dy = Math.abs(y1-y0);
     int sx = (x0 < x1) ? 1 : -1;
@@ -459,7 +459,7 @@ class MyPanel extends JPanel implements MouseMotionListener {
   }
   
   //Bresenham's line algorithm
-  private void eraseHole(Image image, int x0, int y0, int x1, int y1) {
+  private void eraseHole(PaintBrushImage image, int x0, int y0, int x1, int y1) {
     int dx = Math.abs(x1-x0);
     int dy = Math.abs(y1-y0);
     int sx = (x0 < x1) ? 1 : -1;

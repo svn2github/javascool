@@ -4,52 +4,52 @@
 
 package proglet.paintbrush;
 
-public interface ManipImage {
+public interface PaintBrushManipImage {
   
   // Affiche un point de coordonnées (x,y)
-  public void affichePoint(Image image, int x, int y, int couleur);
+  public void affichePoint(PaintBrushImage image, int x, int y, int couleur);
 
   // Supprime les points sur une zone carr de largeur 3 pixels et centrée en (x,y)
-  public void supprimePoint(Image image, int x, int y);
+  public void supprimePoint(PaintBrushImage image, int x, int y);
 
   // Trace une ligne de diagonale (x0,y0) -- (x1,y1)
-  public void afficheLigne(Image image, int x0, int y0, int x1, int y1, int couleur);
+  public void afficheLigne(PaintBrushImage image, int x0, int y0, int x1, int y1, int couleur);
     
   // Trace un rectangle de diagonale (x1,y1) -- (x2,y2)
-  public void afficheRectangle(Image image, int x1, int y1, int x2, int y2, int couleur);
+  public void afficheRectangle(PaintBrushImage image, int x1, int y1, int x2, int y2, int couleur);
 
   // Pot de peinture : remplir tous les pixels voisins de (x,y) et ayant la même couleur avec la couleur spécifiée
-  public void remplir(Image image, int x, int y, int nouvelle_couleur);
+  public void remplir(PaintBrushImage image, int x, int y, int nouvelle_couleur);
 }
 
-class ManipImageVide implements ManipImage {
+class ManipImageVide implements PaintBrushManipImage {
   
   // Affiche un point de coordonnées (x,y)
-  public void affichePoint(Image image, int x, int y, int couleur) { }
+  public void affichePoint(PaintBrushImage image, int x, int y, int couleur) { }
 
   // Supprime les points sur une zone carr de largeur 3 pixels et centrée en (x,y)
-  public void supprimePoint(Image image, int x, int y) {  }
+  public void supprimePoint(PaintBrushImage image, int x, int y) {  }
 
   // Trace une ligne de diagonale (x0,y0) -- (x1,y1)
-  public void afficheLigne(Image image, int x0, int y0, int x1, int y1, int couleur) {  }
+  public void afficheLigne(PaintBrushImage image, int x0, int y0, int x1, int y1, int couleur) {  }
     
   // Trace un rectangle de diagonale (x1,y1) -- (x2,y2)
-  public void afficheRectangle(Image image, int x1, int y1, int x2, int y2, int couleur) {  }
+  public void afficheRectangle(PaintBrushImage image, int x1, int y1, int x2, int y2, int couleur) {  }
 
   // Pot de peinture : remplir tous les pixels voisins de (x,y) et ayant la même couleur avec la couleur spécifiée
-  public void remplir(Image image, int x, int y, int nouvelle_couleur) {  }
+  public void remplir(PaintBrushImage image, int x, int y, int nouvelle_couleur) {  }
 }
 
-class ManipImageFinal implements ManipImage {
+class ManipImageFinal implements PaintBrushManipImage {
   
   // affiche un point de coordonnes  (x,y)
-   public void affichePoint(Image image, int x, int y, int couleur) {
+   public void affichePoint(PaintBrushImage image, int x, int y, int couleur) {
     //System.out.println("affichePoint(image,"+x+","+y+")");
     image.set(x,y,couleur);
   }
 
   // supprime les points sur une zone carre de largeur 3 pixels et centre en (x,y)
-   public void supprimePoint(Image image, int x, int y) {
+   public void supprimePoint(PaintBrushImage image, int x, int y) {
     //System.out.println("supprimePoint(image,"+x+","+y+")");
     for (int i=x-1; i<=x+1 && i<image.maxX(); i++)
       for (int j=y-1; j<=y+1 && j<image.maxY(); j++)
@@ -57,7 +57,7 @@ class ManipImageFinal implements ManipImage {
   }
 
    // trace une ligne de diagonale (x0,y0) -- (x1,y1)
-   public void afficheLigne(Image image, int x0, int y0, int x1, int y1, int couleur) {
+   public void afficheLigne(PaintBrushImage image, int x0, int y0, int x1, int y1, int couleur) {
     int dx = Math.abs(x1-x0);
     int dy = Math.abs(y1-y0);
     int sx = (x0 < x1) ? 1 : -1;
@@ -80,7 +80,7 @@ class ManipImageFinal implements ManipImage {
 
     
  // trace un rectangle de diagonale (x1,y1) -- (x2,y2)
-   public void afficheRectangle(Image image, int x1, int y1, int x2, int y2, int couleur) {
+   public void afficheRectangle(PaintBrushImage image, int x1, int y1, int x2, int y2, int couleur) {
     //System.out.println("afficheRectangle(image,"+x1+","+y1+","+x2+","+y2+")");
     int xmin = Math.min(x1,x2);
     int xmax = Math.max(x1,x2);
@@ -96,7 +96,7 @@ class ManipImageFinal implements ManipImage {
     }
   }
 
-   public void remplir_aux(Image image, int x, int y, int ancienne_couleur, int nouvelle_couleur) {
+   public void remplir_aux(PaintBrushImage image, int x, int y, int ancienne_couleur, int nouvelle_couleur) {
     if (image.get(x,y)==ancienne_couleur) {
       image.set(x,y,nouvelle_couleur);
       if (x>0) remplir_aux(image,x-1,y,ancienne_couleur,nouvelle_couleur);
@@ -107,7 +107,7 @@ class ManipImageFinal implements ManipImage {
   }
   
  // pot de peinture : remplir tous les pixels voisins de (x,y) et ayant la mme couleur avec la couleur 128
-   public void remplir(Image image, int x, int y, int nouvelle_couleur) {
+   public void remplir(PaintBrushImage image, int x, int y, int nouvelle_couleur) {
     //System.out.println("remplir(image,"+x+","+y+")");
     int ancienne_couleur = image.get(x,y);
     if (ancienne_couleur!=nouvelle_couleur) 

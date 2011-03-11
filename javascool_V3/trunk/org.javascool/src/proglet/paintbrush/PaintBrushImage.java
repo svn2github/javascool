@@ -12,7 +12,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Font;
 
-public class Image {
+public class PaintBrushImage {
 
   
   private int[][] image;
@@ -20,7 +20,7 @@ public class Image {
   private int height;
   private int width;
   
-  Image(int _width, int _height) {
+  PaintBrushImage(int _width, int _height) {
     width = _width;
     height = _height;
     image = new int[_width][_height];

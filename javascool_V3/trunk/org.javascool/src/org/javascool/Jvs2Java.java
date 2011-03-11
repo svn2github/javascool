@@ -220,14 +220,16 @@ public class Jvs2Java {
       // Imports proglet's static methods
       head.append("import static org.javascool.Macros.*;");
       head.append("import static java.lang.Math.*;");
-      if(proglet.length() == 0)
+      if(proglet.length() == 0) {
         for(String p : proglets.keySet())
           head.append("import static " + proglets.get(p) + ".*;");
-      else {
+      } else {
         head.append("import static " + proglets.get("ingredients") + ".*;");
-        if(!"ingredients".equals(proglet))
+        if(!"ingredients".equals(proglet)) {
           head.append("import static " + proglets.get(proglet) + ".*;");
+	} 
       }
+      head.append("import proglet.paintbrush.*;");
       // Declares the proglet's core as a Runnable in the Applet
       // - defined as a ProgletApplet in order to be loaded as an executable applet.
       head.append("public class " + jclass + " extends org.javascool.ProgletApplet implements Runnable {");
@@ -389,7 +391,7 @@ public class Jvs2Java {
     }
   }
   // This is the entry point to run  the proglet pupil's program: do not change directly !
-  /**/public static Runnable runnable = null;
+  /*public*/ static Runnable runnable = null;
   private static String proglet = null;
   private static Thread thread = null;
 
