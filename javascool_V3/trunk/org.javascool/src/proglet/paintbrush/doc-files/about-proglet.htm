@@ -8,13 +8,10 @@
    </div>
      
    <div>
-       Cette proglet<sup><a href="#1">1</a></sup> permet de dessiner dans une petite image de r&eacute;solution minimale pour comprendre le codage 
-      
-        
-      <div><b>[&agrave; compl&eacute;ter]</b></div>
-        
+       Cette proglet<sup><a href="#1">1</a></sup> permet de dessiner dans une petite image de r&eacute;solution minimale pour comprendre le codage matriciel pixels par pixels. 
            
-      <div>La construction suivante permet de d&eacute;finir une nouvelle impl&eacute;mentation des m&eacute;thodes permettant de dessiner:
+      <div>       Au d&eacute;marrage de la proglet, le mode proglet utilise les fonctions suivantes qu'il faudra modifier pour reproduire le comportement du mode d&eacute;mo.               
+
          <p>
             <table witdh="90%" border="1" align="center">
                <tr>
@@ -28,35 +25,36 @@
                              
                         <div>
                            &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>void affichePoint</b></font>(<font color="#990000"><b>PaintBrushImage</b></font> <b>image</b>, <font color="#990000"><b>int</b></font> <b>x</b>, <font color="#990000"><b>int</b></font> <b>y</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) {  }
+                           <font color="#990000"><b>void affichePoint</b></font>(<font color="#990000"><b>int</b></font> <b>x</b>, <font color="#990000"><b>int</b></font> <b>y</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) {  }
                         </div>
                              
                         <p><tt><font color="#202080"><big>//</big>&nbsp;Supprime les points sur une zone carr&eacute; de largeur 3 pixels et centr&eacute;e en (x,y)</font></tt></p>
                              
                         <div>
                            &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>void supprimePoint</b></font>(<font color="#990000"><b>PaintBrushImage</b></font> <b>image</b>, <font color="#990000"><b>int</b></font> <b>x</b>, <font color="#990000"><b>int</b></font> <b>y</b>) { } 
+                           <font color="#990000"><b>void supprimePoint</b></font>(<font color="#990000"><b>int</b></font> <b>x</b>, <font color="#990000"><b>int</b></font> <b>y</b>) { } 
                         </div>
                              
                         <p><tt><font color="#202080"><big>//</big>&nbsp;Trace une ligne de diagonale (x0,y0) -- (x1,y1)</font></tt></p>
                              
                         <div>
                            &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>void afficheLigne</b></font>(<font color="#990000"><b>PaintBrushImage</b></font> <b>image</b>, <font color="#990000"><b>int</b></font> <b>x0</b>, <font color="#990000"><b>int</b></font> <b>y0</b>, <font color="#990000"><b>int</b></font> <b>x1</b>, <font color="#990000"><b>int</b></font> <b>y1</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) { } 
+                           <font color="#990000"><b>void afficheLigne</b></font>(<font color="#990000"><b>int</b></font> <b>x0</b>, <font color="#990000"><b>int</b></font> <b>y0</b>, <font color="#990000"><b>int</b></font> <b>x1</b>, <font color="#990000"><b>int</b></font> <b>y1</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) { } 
                         </div>
                              
-                        <p><tt><font color="#202080"><big>//</big>&nbsp;Trace un rectangle de diagonale (x1,y1) -- (x2,y2)</font></tt></p>
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Trace un rectangle de diagonale (x0,y0) -- (x1,y1)</font></tt></p>
                              
                         <div>
                            &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>void afficheRectangle</b></font>(<font color="#990000"><b>PaintBrushImage</b></font> <b>image</b>, <font color="#990000"><b>int</b></font> <b>x0</b>, <font color="#990000"><b>int</b></font> <b>y0</b>, <font color="#990000"><b>int</b></font> <b>x1</b>, <font color="#990000"><b>int</b></font> <b>y1</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) { } 
+                           <font color="#990000"><b>void afficheRectangle</b></font>(<font color="#990000"><b>int</b></font> <b>x0</b>, <font color="#990000"><b>int</b></font> <b>y0</b>, <font color="#990000"><b>int</b></font> <b>x1</b>, <font color="#990000"><b>int</b></font> <b>y1</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) { } 
                         </div>
                              
-                        <p><tt><font color="#202080"><big>//</big>&nbsp;Pot de peinture : remplir avec la couleur sp&eacute;cifi&eacute;e tous les pixels voisins de (x,y) et ayant la m&ecirc;me couleur</font></tt></p>
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Pot de peinture : remplir avec la couleur sp&eacute;cifi&eacute;e tous les pixels voisins<br>
+			      <big>//</big> de (x,y) et ayant la m&ecirc;me couleur</font></tt></p>
                              
                         <div>
                            &nbsp;&nbsp;&nbsp;
-                           <font color="#990000"><b>void remplir</b></font>(<font color="#990000"><b>PaintBrushImage</b></font> <b>image</b>, <font color="#990000"><b>int</b></font> <b>x</b>, <font color="#990000"><b>int</b></font> <b>y</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) { } 
+                           <font color="#990000"><b>void remplir</b></font>(<font color="#990000"><b>int</b></font> <b>x</b>, <font color="#990000"><b>int</b></font> <b>y</b>, <font color="#990000"><b>int</b></font> <b>couleur</b>) { } 
                         </div>
                              
                         <div>});</div>
@@ -69,19 +67,19 @@
       </div>
       
          
-      <div>Les images <font color="#990000"><b>PaintBrushImage</b></font> peuvent &ecirc;tre manipul&eacute;es avec les m&eacute;thodes suivantes:
-            
-         <div>Pour d&eacute;finir lire/&eacute;crire un point les fonctions <font color="#990000"><b>set/get</b></font> sont &agrave; disposition: 
+      <div>La proglet s'appuie sur un tableau de 32x32 pixels que l'on peut &eacute;crire/modifier avec les m&eacute;thodes suivantes:
+
+        <div>
             <p>
                <table witdh="90%" border="1" align="center">
                   <tr>
                      <td>
                         <div class="code">
                                  
-                           <div><font color="#990000"><b>int</b></font> couleur = <font color="#990000"><b>image.get</b></font>(x, y);
+                           <div><font color="#990000"><b>int</b></font> couleur = <font color="#990000"><b>getPixel</b></font>(x, y);
                            </div>
                                  
-                           <div><font color="#990000"><b>image.set</b></font>(x, y, couleur);
+                           <div><font color="#990000"><b>setPixel</b></font>(x, y, couleur);
                            </div>
                                 
                         </div>
@@ -91,38 +89,18 @@
             </p>
             <ul class="ul">
                       
-               <li>o&ugrave; <b>x</b> est un <font color="#990000"><b>int</b></font>, entre <b>[0, image.maxX()]</b>, abscisse du point;
+               <li>o&ugrave; <b>x</b> est un <font color="#990000"><b>int</b></font>, entre <b>[0, 31]</b>, abscisse du point;
                </li>
                       
-               <li>o&ugrave; <b>y</b> est un <font color="#990000"><b>int</b></font>, entre <b>[0, image.maxY()]</b>, ordonn&eacute;e du point;
+               <li>o&ugrave; <b>y</b> est un <font color="#990000"><b>int</b></font>, entre <b>[0, 31]</b>, ordonn&eacute;e du point;
                </li>
                       
-               <li>o&ugrave; <b>couleur</b> est un entier entre <tt>0</tt> (pour le "noir") et <tt>15</tt> (pour le "blanc"), les autres valeurs correspondant &agrave; la palette de couleur.
+               <li>o&ugrave; <b>couleur</b> est un entier entre <tt>0</tt> pour la couleur noire et <tt>15</tt> pour la couleur blanche (<tt>F</tt> en format hexad&eacute;cimal), les autres valeurs correspondant &agrave; la palette de couleur.
                </li>
                     
-            </ul>Elles permettent de lire/&eacute;crire un pixel du dessin.
+            </ul>
          </div>
               
-         <div>De plus:    
-            <p>
-               <table witdh="90%" border="1" align="center">
-                  <tr>
-                     <td>
-                        <div class="code">
-                                
-                           <div><font color="#990000"><b>int</b></font> width = <font color="#990000"><b>image.maxX()</b></font>();
-                           </div>
-                                
-                           <div><font color="#990000"><b>int</b></font> height = <font color="#990000"><b>image.maxY()</b></font>();
-                           </div>
-                              
-                        </div>
-                     </td>
-                  </tr>
-               </table>
-            </p> renvoient la largeur (width) et hauteur (height) du dessin.
-         </div>
-            
          <div>Ce sont ces m&eacute;thodes qu'il faut utiliser pour impl&eacute;menter les m&eacute;thodes ci-dessus.</div>
           
       </div>

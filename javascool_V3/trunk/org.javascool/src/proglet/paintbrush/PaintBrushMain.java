@@ -290,9 +290,11 @@ class MyPanel extends JPanel implements MouseMotionListener {
   // Mécanisme de switch entre demo et proglet mode.
   static public PaintBrushManipImage demoManipImage = new ManipImageFinal(), progletManipImage = new ManipImageVide(), manipImage = demoManipImage;
 
-  static int square = 16;
-  static int height = 32;
-  static int width = 32;
+  static final boolean showBase = false;
+  static final int square = 16;
+  static final int height = 32;
+  static final int width = 32;
+  static final int totalheight = square*height;
   static boolean showCode = false;
   private static Cursor paint_cursor;
   private static Cursor eraser_cursor;
@@ -315,6 +317,10 @@ class MyPanel extends JPanel implements MouseMotionListener {
     return (y<=0) ? 0 : (y>=max_y) ? max_y-1 : y;
   }
 
+  int inverseY(int y) {
+	    return totalheight - y;
+	  }	
+
   public void updateMode(Mode m) {
     mode = m;
     Cursor c;
@@ -330,11 +336,13 @@ class MyPanel extends JPanel implements MouseMotionListener {
   }
   
   public void mouseDragged(MouseEvent e) {
+	  int x = e.getX();
+	  int y = inverseY(e.getY());	  
     switch (mode) {
-      case DRAW : addOtherSquare(sanitizeX(e.getX()),sanitizeY(e.getY())); break;
-      case ERASE : removeOtherSquare(sanitizeX(e.getX()),sanitizeY(e.getY())); break;
-      case LINE : showLine(sanitizeX(e.getX()),sanitizeY(e.getY())); break;
-      case RECTANGLE : showRect(sanitizeX(e.getX()),sanitizeY(e.getY())); break;
+      case DRAW : addOtherSquare(sanitizeX(x),sanitizeY(y)); break;
+      case ERASE : removeOtherSquare(sanitizeX(x),sanitizeY(y)); break;
+      case LINE : showLine(sanitizeX(x),sanitizeY(y)); break;
+      case RECTANGLE : showRect(sanitizeX(x),sanitizeY(y)); break;
       default : break;
     }
   }
@@ -357,21 +365,25 @@ class MyPanel extends JPanel implements MouseMotionListener {
     
     addMouseListener(new MouseAdapter() {
       public void mousePressed(MouseEvent e) {
+    	  int x = e.getX();
+    	  int y = inverseY(e.getY());	  
         switch (mode) {
-          case DRAW : addSquare(e.getX(),e.getY()); break;
-          case FILL : fill(e.getX(),e.getY()); break;
-          case ERASE : removeSquare(e.getX(),e.getY()); break;
-          case RECTANGLE : startRect(e.getX(),e.getY()); break;
-          case LINE : startLine(e.getX(),e.getY()); break;
+          case DRAW : addSquare(x,y); break;
+          case FILL : fill(x,y); break;
+          case ERASE : removeSquare(x,y); break;
+          case RECTANGLE : startRect(x,y); break;
+          case LINE : startLine(x,y); break;
         }
       }
     });
     
     addMouseListener(new MouseAdapter() {
       public void mouseReleased(MouseEvent e) {
+    	  int x = e.getX();
+    	  int y = inverseY(e.getY());	  
         switch (mode) {
-          case RECTANGLE : endRect(sanitizeX(e.getX()),sanitizeY(e.getY())); break;
-          case LINE : endLine(sanitizeX(e.getX()),sanitizeY(e.getY())); break;
+          case RECTANGLE : endRect(sanitizeX(x),sanitizeY(y)); break;
+          case LINE : endLine(sanitizeX(x),sanitizeY(y)); break;
           case ERASE : 
           case DRAW : addSquareEnd(); break;
           default : break;
@@ -384,9 +396,9 @@ class MyPanel extends JPanel implements MouseMotionListener {
 //    addMouseMotionListener(new MouseAdapter() {
 //      public void mouseDragged(MouseEvent e) {
 //        switch (mode) {
-//          case DRAW : addOtherSquare(sanitizeX(e.getX()),sanitizeY(e.getY())); break;
-//          case ERASE : removeOtherSquare(sanitizeX(e.getX()),sanitizeY(e.getY())); break;
-//          case RECTANGLE : showRect(sanitizeX(e.getX()),sanitizeY(e.getY())); break;
+//          case DRAW : addOtherSquare(sanitizeX(x),sanitizeY(y)); break;
+//          case ERASE : removeOtherSquare(sanitizeX(x),sanitizeY(e.getY())); break;
+//          case RECTANGLE : showRect(sanitizeX(x),sanitizeY(e.getY())); break;
 //          default : break;
 //        }
 //      }
@@ -396,10 +408,10 @@ class MyPanel extends JPanel implements MouseMotionListener {
   }
   
   void drawPoint(Graphics g, Point p) {
-    int col_int = image.get(p.x,p.y);
+    int col_int = image.getPixel(p.x,p.y);
     ColorPaint col = ColorPaint.colors[col_int];
     g.setColor(col.getColor());
-    g.fillRect(square*p.x,square*p.y,square,square);
+    g.fillRect(square*p.x,inverseY(square*p.y)-square,square,square);
   }    
   
   void repaintPoint(Point p) {
@@ -415,7 +427,7 @@ class MyPanel extends JPanel implements MouseMotionListener {
       
   private void addSquare(int x, int y) {
     Point p = new Point(x/square,y/square);
-    manipImage.affichePoint(image,p.x,p.y,cPanel.current.getIndex());
+    manipImage.affichePoint(p.x,p.y,cPanel.current.getIndex());
     previous_point = p;
     repaint();     
   }
@@ -428,23 +440,23 @@ class MyPanel extends JPanel implements MouseMotionListener {
     
   private void addOtherSquare(int x, int y) {
     Point p = new Point(x/square,y/square);
-    manipImage.affichePoint(image,p.x,p.y,cPanel.current.getIndex());    
+    manipImage.affichePoint(p.x,p.y,cPanel.current.getIndex());    
     if (!p.isClosed(previous_point)) {
-      fillHole(image,previous_point.x,previous_point.y,p.x,p.y);
+      fillHole(previous_point.x,previous_point.y,p.x,p.y);
     }
     previous_point = p;
     repaint();     
   }
 
   //Bresenham's line algorithm
-  private void fillHole(PaintBrushImage image, int x0, int y0, int x1, int y1) {
+  private void fillHole(int x0, int y0, int x1, int y1) {
     int dx = Math.abs(x1-x0);
     int dy = Math.abs(y1-y0);
     int sx = (x0 < x1) ? 1 : -1;
     int sy = (y0 < y1) ? 1 : -1;
     int err = dx-dy;
     while (true) {
-      manipImage.affichePoint(image,x0,y0,cPanel.current.getIndex());
+      manipImage.affichePoint(x0,y0,cPanel.current.getIndex());
       if (x0 == x1 && y0 == y1) return;
       int e2 = 2*err;
       if (e2 > -dy) {
@@ -459,14 +471,14 @@ class MyPanel extends JPanel implements MouseMotionListener {
   }
   
   //Bresenham's line algorithm
-  private void eraseHole(PaintBrushImage image, int x0, int y0, int x1, int y1) {
+  private void eraseHole(int x0, int y0, int x1, int y1) {
     int dx = Math.abs(x1-x0);
     int dy = Math.abs(y1-y0);
     int sx = (x0 < x1) ? 1 : -1;
     int sy = (y0 < y1) ? 1 : -1;
     int err = dx-dy;
     while (true) {
-      manipImage.supprimePoint(image,x0,y0);
+      manipImage.supprimePoint(x0,y0);
       if (x0 == x1 && y0 == y1) return;
       int e2 = 2*err;
       if (e2 > -dy) {
@@ -482,23 +494,23 @@ class MyPanel extends JPanel implements MouseMotionListener {
   
   private void removeSquare(int x, int y) {
     Point p = new Point(x/square,y/square);
-    manipImage.supprimePoint(image,p.x,p.y);
+    manipImage.supprimePoint(p.x,p.y);
     previous_point = p;
     repaint();
   }
   
    private void removeOtherSquare(int x, int y) {
     Point p = new Point(x/square,y/square);
-    manipImage.supprimePoint(image,p.x,p.y);   
+    manipImage.supprimePoint(p.x,p.y);   
     if (!p.isClosed(previous_point)) {
-      eraseHole(image,previous_point.x,previous_point.y,p.x,p.y);
+      eraseHole(previous_point.x,previous_point.y,p.x,p.y);
     }
     previous_point = p;
     repaint();     
   }
    
   private void fill(int x, int y) {
-    manipImage.remplir(image,x/square,y/square,cPanel.current.getIndex());
+    manipImage.remplir(x/square,y/square,cPanel.current.getIndex());
     repaint();
   }
   
@@ -513,7 +525,7 @@ class MyPanel extends JPanel implements MouseMotionListener {
   }
 
   private void endRect(int x, int y) {
-    manipImage.afficheRectangle(image,start_point_rectangle.x,start_point_rectangle.y,x/square,y/square,cPanel.current.getIndex());
+    manipImage.afficheRectangle(start_point_rectangle.x,start_point_rectangle.y,x/square,y/square,cPanel.current.getIndex());
     end_point_rectangle = null;
     repaint();
   }
@@ -529,7 +541,7 @@ class MyPanel extends JPanel implements MouseMotionListener {
   }
 
   private void endLine(int x, int y) {
-    manipImage.afficheLigne(image,line_start.x,line_start.y,x/square,y/square,cPanel.current.getIndex());
+    manipImage.afficheLigne(line_start.x,line_start.y,x/square,y/square,cPanel.current.getIndex());
     line_end = line_start = null;
     repaint();
   }
@@ -548,14 +560,18 @@ class MyPanel extends JPanel implements MouseMotionListener {
   }
 
   void lighterSquare(Graphics g, int x, int y) {
-    ColorPaint cp = ColorPaint.colors[image.get(x,y)];
+    ColorPaint cp = ColorPaint.colors[image.getPixel(x,y)];
     if (cp.getIndex()!=15) {
       Color c = cp.getColor();
       g.setColor(Color.WHITE);
-      g.fillRect(square*x,square*y,square,square);
+      g.fillRect(square*x,inverseY(square*y)-square,square,square);
       g.setColor(lighter(c,128));
     } else g.setColor(Color.LIGHT_GRAY);
-    g.fillRect(square*x,square*y,square,square);
+    g.fillRect(square*x,inverseY(square*y)-square,square,square);
+    if (showBase) {
+    	g.setColor(Color.BLACK);
+    	g.fillRect(square*x-1,inverseY(square*y)-1,3,3);
+    }
   }
   
     //Bresenham's line algorithm

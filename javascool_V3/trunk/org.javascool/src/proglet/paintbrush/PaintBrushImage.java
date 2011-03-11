@@ -15,13 +15,13 @@ import java.awt.Font;
 public class PaintBrushImage {
 
   
-  private int[][] image;
-  public Set<Point> points = new TreeSet<Point>();
-  private int height;
-  private int width;
+  private static int[][] image;
+  public static Set<Point> points = new TreeSet<Point>();
+  private static int height;
+  private static int width;
   
   PaintBrushImage(int _width, int _height) {
-    width = _width;
+	width = _width;
     height = _height;
     image = new int[_width][_height];
     for (int i=0; i<width; i++)
@@ -29,18 +29,18 @@ public class PaintBrushImage {
       image[i][j] = 15;
   }
   
-  public int get(int x, int y) {
+  static int getPixel(int x, int y) {
     return image[x][y];
   };
   
-  public void set(int x, int y, int col) {
+  static void setPixel(int x, int y, int col) {
     image[x][y] = col;
     if (col==15) points.remove(new Point(x,y));
     else points.add(new Point(x,y));
   }
 
-   public int maxX() {return width;}
-   public int maxY() {return height;}
+  static public int maxX() {return width;}
+  static public int maxY() {return height;}
   
    public void clear() {
     for (int i=0; i<width; i++) Arrays.fill(image[i],15);
@@ -70,9 +70,10 @@ public class PaintBrushImage {
 
     for (int i=0; i<width; i++) {
       for (int j=0; j<height; j++) {
-        int col = get(i,j);
+        int col = getPixel(i,j);
         g.setColor(ColorPaint.colors[col].getTextColor().getColor());
-        g2d.drawString(byteToString(image[i][j]), i*MyPanel.square+MyPanel.square/3, j*MyPanel.square+2*MyPanel.square/3);
+        g2d.drawString(byteToString(image[i][j]), i*MyPanel.square+MyPanel.square/3, 
+        		height*MyPanel.square - (j*MyPanel.square) - MyPanel.square/3 ) ;
       }
     }
   }
