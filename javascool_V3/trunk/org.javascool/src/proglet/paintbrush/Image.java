@@ -29,11 +29,11 @@ public class Image {
       image[i][j] = 15;
   }
   
-  int get(int x, int y) {
+  public int get(int x, int y) {
     return image[x][y];
   };
   
-  void set(int x, int y, int col) {
+  public void set(int x, int y, int col) {
     image[x][y] = col;
     if (col==15) points.remove(new Point(x,y));
     else points.add(new Point(x,y));
