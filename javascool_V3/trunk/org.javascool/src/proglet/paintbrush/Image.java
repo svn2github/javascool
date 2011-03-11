@@ -39,10 +39,10 @@ public class Image {
     else points.add(new Point(x,y));
   }
 
-  int maxX() {return width;}
-  int maxY() {return height;}
+   public int maxX() {return width;}
+   public int maxY() {return height;}
   
-  void clear() {
+   public void clear() {
     for (int i=0; i<width; i++) Arrays.fill(image[i],15);
     points.clear();
   }
