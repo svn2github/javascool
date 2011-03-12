@@ -1,0 +1,59 @@
+<div title="La «proglet» paintbrush">
+  <p class="margin">Autres <l link="../../../org/javascool/doc-files/about-proglets.htm" text="«proglets»"/>.</p>
+  <p>
+    Cette proglet<l class="note" link="1"/> permet de dessiner dans une petite image de résolution minimale pour comprendre le codage 
+    matriciel pixels par pixels. 
+  </p>
+
+  <p>
+    Au démarrage de la proglet, le mode proglet utilise les
+    fonctions suivantes qu'il faudra modifier pour reproduire le
+    comportement du mode démo.
+    <div class="code">
+     <p><r>void main</r>() {</p>
+     <p><T/><r>PaintBrush.setManipImage</r>(<r>new PaintBrushManipImage</r>() {</p>
+     <m>Affiche un point de coordonnées (x,y)</m>
+     <p><T/><T/><r>public void affichePoint</r>(<r>int</r> <b>x</b>, <r>int</r> <b>y</b>, <r>int</r> <b>couleur</b>) {  }</p>
+     <m>Supprime les points sur une zone carré de largeur 3 pixels et centrée en (x,y)</m>
+     <p><T/><T/><r>public void supprimePoint</r>(<r>int</r> <b>x</b>, <r>int</r> <b>y</b>) { } </p>
+     <m>Trace une ligne de diagonale (x0,y0) -- (x1,y1)</m>
+     <p><T/><T/><r>public void afficheLigne</r>(<r>int</r> <b>x0</b>, <r>int</r> <b>y0</b>, <r>int</r> <b>x1</b>, <r>int</r> <b>y1</b>, <r>int</r> <b>couleur</b>) { } </p>
+     <m>Trace un rectangle de diagonale (x0,y0) -- (x1,y1)</m>
+     <p><T/><T/><r>public void afficheRectangle</r>(<r>int</r> <b>x0</b>, <r>int</r> <b>y0</b>, <r>int</r> <b>x1</b>, <r>int</r> <b>y1</b>, <r>int</r> <b>couleur</b>) { } </p>
+     <m>Pot de peinture : remplir avec la couleur spécifiée tous les pixels
+      voisins de (x,y) et ayant la même couleur</m>
+     <p><T/><T/><r>public void remplir</r>(<r>int</r> <b>x</b>, <r>int</r> <b>y</b>, <r>int</r> <b>couleur</b>) { } </p>
+     <p><T/>});</p>
+     <p>}</p>
+   </div>
+  </p>
+
+  <p>La proglet s'appuie sur un tableau de 32x32 pixels que l'on
+    peut écrire/modifier avec les méthodes suivantes:
+
+    <div class="code">
+      <p><r>int</r> couleur = <r>getPixel</r>(x, y);</p>
+      <p><r>setPixel</r>(x, y, couleur);</p>
+    </div>
+
+    où <div class="ul">
+       <div><b>x</b> est un <r>int</r>, entre <b>[0, 31]</b>, abscisse du point;</div>
+       <div><b>y</b> est un <r>int</r>, entre <b>[0, 31]</b>, ordonnée du point;</div>
+       <div><b>couleur</b> est un entier entre <c>0</c> pour la couleur noire
+	 et <c>15</c> pour la couleur blanche (notée <c>F</c> en format hexadécimal),
+	 les autres valeurs correspondant à la palette de couleur.</div>
+
+ </div>
+
+   <p>Ce sont ces méthodes qu'il faut utiliser pour compléter les méthodes 
+     <r>affichePoint</r>, <r>supprimePoint</r>, <r>remplir</r>, 
+     <r>afficheLigne</r> et <r>afficheRectangle</r>.</p>
+
+   <div>On pourra partir du programme <l link="http://javascool.gforge.inria.fr/v3/?page=api:proglet/paintbrush/doc-files/Exemple.jvs.html" text="exemple donné ici"/>.</div>
+
+  </p>
+  <div class="notes">
+    <div id="1">Cette proglet est un <l link="http://fr.wikipedia.org/wiki/Open_source" text="code source libre"/>, programmée en Java et <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/paintbrush/ImageDisplay.html" text="documentée"/> 
+    pour sa libre redistribution, l'accès <l link="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/paintbrush/PaintBrush.java.html" text="au code source"/>, et permettre des développements dérivés.</div>
+  </div>
+</div>
