@@ -26,8 +26,7 @@ public class PaintBrush implements org.javascool.Proglet {
     }
     /** Registers a new ManipImage implementation. */
     void setManipImage(PaintBrushManipImage manipImage) {
-      System.out.println("L'implémentation de la proglet paintbrush a été changée.");
-      System.out.println("Vous pouvez maintenant tester votre implémentation en mode proglet");
+      System.out.println("Le mode proglet a été mis à jour pour prendre en compte vos modifications");
       mainPanel.myPanel.progletManipImage = manipImage;
       if (mainPanel.myPanel.manipImage != mainPanel.myPanel.demoManipImage) 
     	  mainPanel.myPanel.manipImage = manipImage; 

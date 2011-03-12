@@ -306,6 +306,7 @@ class MyPanel extends JPanel implements MouseMotionListener {
   private Point previous_point;
   private Point line_start;
   private Point line_end;
+  private static JPanel me;
   
   int sanitizeX(int x) {
     int max_x = image.maxX()*square;
@@ -349,6 +350,14 @@ class MyPanel extends JPanel implements MouseMotionListener {
    
   public void mouseMoved(MouseEvent evt) {}
 
+  public static void warning(String msg) {
+	  JOptionPane.showMessageDialog(me,
+			    msg,
+			    "Erreur",
+			    JOptionPane.WARNING_MESSAGE);
+  
+  }
+  
   public MyPanel(ColorPanel _cPanel, PaintBrushImage _image) {
     
     Toolkit toolkit = Toolkit.getDefaultToolkit();  
@@ -405,6 +414,7 @@ class MyPanel extends JPanel implements MouseMotionListener {
 //    });
     
     image = _image;
+    me = this;	
   }
   
   void drawPoint(Graphics g, Point p) {

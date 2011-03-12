@@ -30,13 +30,25 @@ public class PaintBrushImage {
   }
   
   static int getPixel(int x, int y) {
-    return image[x][y];
+	  if (!inRange(x,y)) {
+		  MyPanel.warning("Vous essayer de lire hors du tableau (coordonnées ("+x+","+y+")) !");
+		  return 0;
+		  }
+	  else
+		  return image[x][y];
   };
   
+  static boolean inRange(int x, int y) {
+	return (0 <= x && x < MyPanel.width && 0 <= y && y < MyPanel.height);   
+  }
+  
   static void setPixel(int x, int y, int col) {
-    image[x][y] = col;
-    if (col==15) points.remove(new Point(x,y));
-    else points.add(new Point(x,y));
+	if (!inRange(x,y)) MyPanel.warning("Vous essayer d'écrire hors du tableau (coordonnées ("+x+","+y+")) !");
+	else {
+		image[x][y] = col;
+		if (col==15) points.remove(new Point(x,y));
+		else points.add(new Point(x,y));
+	}
   }
 
   static public int maxX() {return width;}
