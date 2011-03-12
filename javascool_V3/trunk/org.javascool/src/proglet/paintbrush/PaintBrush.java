@@ -29,7 +29,8 @@ public class PaintBrush implements org.javascool.Proglet {
       System.out.println("L'implémentation de la proglet paintbrush a été changée.");
       System.out.println("Vous pouvez maintenant tester votre implémentation en mode proglet");
       mainPanel.myPanel.progletManipImage = manipImage;
-      mainPanel.myPanel.manipImage = manipImage; 
+      if (mainPanel.myPanel.manipImage != mainPanel.myPanel.demoManipImage) 
+    	  mainPanel.myPanel.manipImage = manipImage; 
     }
     private MainPanel mainPanel;
   }

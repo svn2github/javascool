@@ -63,7 +63,7 @@ class ManipImageFinal implements PaintBrushManipImage {
     int sx = (x0 < x1) ? 1 : -1;
     int sy = (y0 < y1) ? 1 : -1;
     int err = dx-dy;
-    while (true) {
+    while (true) { 
       PaintBrush.setPixel(x0,y0,couleur);
       if (x0 == x1 && y0 == y1) return;
       int e2 = 2*err;
