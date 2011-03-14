@@ -74,6 +74,11 @@ public class JsProgletActivities {
 	public void init2(JsFrame frame) {}
                      }
                      );
+    main.addActivity(new ProgletActivity("ingredients", "Aller plus loin en programmation", "Jouer avec les chiffres (version provisoire)") {
+	public void init2(JsFrame frame) {
+	  frame.addTab("Sujet proposé", "proglet/joueravecleschiffres/doc-files/sujet-td1.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
+	}
+      });
   }
   /** Defines a compilation activity. */
   public static abstract class JavaActivity implements JsMain.Activity {
