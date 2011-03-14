@@ -1,11 +1,13 @@
-class NombreA2Chiffres {
+package proglet.joueravecleschiffres;
+
+public class NombreA2Chiffres {
   private Chiffre unit;
   private Chiffre ten;
   private NombreA2Chiffres(Chiffre _ten, Chiffre _unit) {
     unit = _unit;
     ten = _ten;
   }
-  static NombreA2Chiffres nb(Chiffre dizaine, Chiffre unite) {
+  static NombreA2Chiffres nombre(Chiffre dizaine, Chiffre unite) {
     return new NombreA2Chiffres(dizaine,unite);
   }
   static Chiffre unite(NombreA2Chiffres n) 

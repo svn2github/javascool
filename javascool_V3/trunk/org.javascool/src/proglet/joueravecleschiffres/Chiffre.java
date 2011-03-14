@@ -1,4 +1,6 @@
-enum Chiffre { 
+package proglet.joueravecleschiffres;
+
+public enum Chiffre { 
   ZERO   (0), 
   UN     (1), 
   DEUX   (2),
@@ -15,7 +17,7 @@ enum Chiffre {
   
   static public Chiffre ofInt(int i) {
     int j = (i % 10);
-    int k = (i<0) ? i+10 : i;
+    int k = (j<0) ? j+10 : j	;
     switch (k) {
       case 0: return ZERO; 
       case 1: return UN; 

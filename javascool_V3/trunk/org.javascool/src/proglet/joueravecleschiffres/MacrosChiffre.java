@@ -1,4 +1,6 @@
-class MacrosChiffre implements org.javascool.Proglet {
+package proglet.joueravecleschiffres;
+
+public class MacrosChiffre implements org.javascool.Proglet {
   private  MacrosChiffre () {}
 
 
@@ -16,7 +18,7 @@ class MacrosChiffre implements org.javascool.Proglet {
     for (Chiffre c:n) res = res + c;
     return res;
   }
-  public static Chiffre ZERO = Chiffre.UN; 
+  public static Chiffre ZERO = Chiffre.ZERO; 
   public static Chiffre UN = Chiffre.UN; 
   public static Chiffre DEUX = Chiffre.DEUX; 
   public static Chiffre TROIS = Chiffre.TROIS; 
@@ -31,6 +33,9 @@ class MacrosChiffre implements org.javascool.Proglet {
   public static boolean estPlusPetit(NombreA2Chiffres x, NombreA2Chiffres y) {
     return NombreA2Chiffres.estPlusPetit(x,y);
   }
+  public static NombreA2Chiffres nombre(Chiffre x, Chiffre y) {
+	    return NombreA2Chiffres.nombre(x,y);
+	  }
   public static NombreA2Chiffres plus(NombreA2Chiffres x, NombreA2Chiffres y) {
     return NombreA2Chiffres.plus(x,y);
   }
