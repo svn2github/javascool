@@ -1,6 +1,7 @@
 
 void main() {
-  sleep(1000);
-  System.err.println("OK");
-  println("OK");
+   for (int i = 0; i < 300000; i ++) {
+      println("okkkkkkkkkk  "+i) ;
+      System.err.println("okkkkkkkkkk"+i);
+   }
 }
