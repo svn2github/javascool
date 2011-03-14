@@ -362,7 +362,6 @@ public class Jvs2Java {
                              public void run() {
                                try { 
 				 runnable.run();
-				 thread = null;
                                } catch(Throwable e) {
                                  if(!"Programme arrêté !".equals(e.getMessage()))
                                    Utils.report(e);
@@ -385,7 +384,6 @@ public class Jvs2Java {
                              public void run() {
                                try { 
 				 Class.forName(Jvs2Java.proglet).getDeclaredMethod("test").invoke(null);
-				 thread = null;
                                } catch(Throwable e) {
                                  Utils.report(e);
                                }
