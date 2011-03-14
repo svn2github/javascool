@@ -230,6 +230,9 @@ public class Jvs2Java {
 	} 
       }
       head.append("import proglet.paintbrush.*;");
+      head.append("import proglet.joueravecleschiffres.Chiffre;");
+      head.append("import proglet.joueravecleschiffres.NombreA2Chiffres;");
+      head.append("import static proglet.joueravecleschiffres.MacrosChiffres.*;");
       // Declares the proglet's core as a Runnable in the Applet
       // - defined as a ProgletApplet in order to be loaded as an executable applet.
       head.append("public class " + jclass + " extends org.javascool.ProgletApplet implements Runnable {");

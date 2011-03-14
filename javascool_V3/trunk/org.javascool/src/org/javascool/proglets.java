@@ -7,5 +7,6 @@
 "proglet.javaprog.JavaPanel",
 "proglet.dichotomie.Dichotomie",
 "proglet.exosdemaths.CurveDisplay",
+"proglet.joueravecleschiffres.MacrosChiffre",
 "proglet.paintbrush.PaintBrush",
 ""}; }
