@@ -1,8 +1,6 @@
 
 void main() {
-   println("Voilà un message qui va s'imprimer");
-   check(3 > 2, "tout va bien");
-   println("Ce message aussi va s'imprimer");
-   check(3 < 2, "Ah ben non alors quoi !");
-   println("Ce message va vachement pas s'imprimer");
+  sleep(1000);
+  System.err.println("OK");
+  println("OK");
 }

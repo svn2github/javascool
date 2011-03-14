@@ -360,7 +360,9 @@ public class Jvs2Java {
     if(start && (runnable != null))
       (thread = new Thread(new Runnable() {
                              public void run() {
-                               try { runnable.run();
+                               try { 
+				 runnable.run();
+				 thread = null;
                                } catch(Throwable e) {
                                  if(!"Programme arrêté !".equals(e.getMessage()))
                                    Utils.report(e);
@@ -381,7 +383,9 @@ public class Jvs2Java {
       Jvs2Java.proglet = proglets.get(proglet);
       (thread = new Thread(new Runnable() {
                              public void run() {
-                               try { Class.forName(Jvs2Java.proglet).getDeclaredMethod("test").invoke(null);
+                               try { 
+				 Class.forName(Jvs2Java.proglet).getDeclaredMethod("test").invoke(null);
+				 thread = null;
                                } catch(Throwable e) {
                                  Utils.report(e);
                                }
@@ -391,7 +395,7 @@ public class Jvs2Java {
     }
   }
   // This is the entry point to run  the proglet pupil's program: do not change directly !
-  /*public*/ static Runnable runnable = null;
+  /**/public static Runnable runnable = null;
   private static String proglet = null;
   private static Thread thread = null;
 
