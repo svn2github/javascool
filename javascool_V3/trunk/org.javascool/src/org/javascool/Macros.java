@@ -29,6 +29,12 @@ public class Macros {
   public static void echo(boolean string) {
     echo("" + string);
   }
+  public static <A,B> void echo(java.util.Map<A,B> map) {
+	    echo("" + map);
+	  }
+  public static <A> void echo(java.util.List<A> list) {
+	    echo("" + list);
+	  }
   /* Fonctions accessibles via Math.*;
    * 
    * Renvoie x à la puissance y.
@@ -56,6 +62,8 @@ public class Macros {
   public static boolean equal(String string1, String string2) {
     return string1.equals(string2);
   }
+
+  public final static int maxInteger = Integer.MAX_VALUE;
   /** Renvoie le temps actuel en milli-secondes.
    * @return Renvoie la différence, en millisecondes, entre le temps actuel et celui du 1 Janvier 2000, minuit, en utilisant le temps universel coordonné.
    */
