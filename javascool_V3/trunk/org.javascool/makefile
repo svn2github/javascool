@@ -8,7 +8,7 @@ export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
 # Defines the beta-relase jar temporary suffix under development
 JAR = -3-2-2
 
-default : jnlp # j$(JAR)
+default : j$(JAR)
 
 # General commands
 
@@ -18,22 +18,19 @@ usage :
 what :
 	@grep '^#:' makefile | sed 's/^#://'
 
-j3-1:
-	@cd tst ; java -jar ../www/javascool-3-1.jar
-
-j$(JAR): jar
+j$(JAR) : jar
 	@cd tst ; java -jar ../www/javascool$(JAR).jar
 
-jnlp :
-	@javaws www/javascool.jnlp
+j3-1 :
+	@cd tst ; java -jar ../www/javascool-3-1.jar
 
-doc: api
+doc : api
 	firefox file:www/api/org/javascool/package-summary.html
 
-svn: clean
+svn : clean
 	@svn up ; svn ci -m '' ; svn status
 
-clean:
+clean :
 	@rm -rf `find . -name '*.class'` tmp tmp.* tst/tmp.* tst/*.java lib/js-manifest.mf lib/sketchbook.zip www/api www/javascool$(JAR).jar www/sources.zip
 	@$(MAKE) -C sketchbook clean
 
@@ -192,7 +189,7 @@ $(JDOC)/APIJVS : $(JDOC_DEP)
 else
 JDOC_OPTION+= -public -link http://download.oracle.com/javase/6/docs/api
 
-api: htm www/api 
+api : htm www/api 
 
 www/api : $(JDOC_DEP)
 endif
@@ -214,14 +211,14 @@ endif
 	@#Concludes
 	@echo ".. done: size = `du -s -B 1024 $@ | awk '{print $$1}'`Kbytes"
 
-aps:
+aps :
 	@for f in $(SRC) ; do mv $$f $$f.bak ; sed 's/\/\*public\*\//\/\*\*\/public/g' < $$f.bak > $$f ; touch -r $$f.bak $$f ; rm $$f.bak ; done
 
 #####################################################################################################################################
 
 # Web site files publication
 
-wpub: jar api wraz
+wpub : jar api wraz
 	@$(MAKE) -C sketchbook publish
 	@php -l www/index.php ; rm -f www/*~
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php --exclude javascool.jar www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
@@ -231,18 +228,18 @@ wpub: jar api wraz
 
 # Jar file publication: WARNING this disseminates your new release all around the world !!!
 
-jpub: jar
+jpub : jar
 	@echo 'Ok to change the official javascool.jar ? CTRL+C to cancel, Enter to confirm: ' ; read cont
 	@-rsync --rsh='ssh -C' www/javascool.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/javascool.jar
 
 # Check the web site links 
 
-wref: wpub
+wref : wpub
 	@lib/run.sh org.javascool.LinkCheck -recursive http://javascool.gforge.inria.fr/v3/ | tee brokenlinks.txt
 
 # Clean the web cache
 
-wraz: 
+wraz : 
 	@wget -q -O - http://javascool.gforge.inria.fr?kezako=niquelekacheux
 
 # Copy the files on a USB key of name /media/javascool
@@ -261,10 +258,10 @@ wusb : jar
 
 # Useful links
 
-jweb:
+jweb :
 	@firefox http://javascool.gforge.inria.fr/v3
 
-wiki:
+wiki :
 	@firefox http://wiki.inria.fr/sciencinfolycee/JavaScool:ToDoList
 
 glog :
@@ -290,7 +287,7 @@ jinstall :
 
 # Check the site apache log
 
-wlog:
+wlog :
 	@firefox http://javascool.gforge.inria.fr/log
 
 ifeq ($(USER), vthierry)

@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<jnlp spec="1.0+"
-      codebase="http://javascool.gforge.inria.fr/v3" 
-      href="javascool.jnlp">
-   <information>
-      <title>Java's Cool (and Java is so cool)</title>
-      <vendor>INRIA (http://javascool.gforge.inria.fr)</vendor>
-      <homepage href="http://javascool.gforge.inria.fr"/>
-      <description>Plateforme de «proglets» et «educlets» pour l'apprentisage des sciences du numérique</description>
-      <icon href="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/icones16/logo_jvs.gif"/>
-      <offline-allowed/>
-   </information>
-   <security>
-                <all-permissions/>
-        </security> 
- 
-   <resources>     
-	<j2se version="1.4+" href="http://java.sun.com/products/autodl/j2se"/>
-   	<jar href="javascool.jar"/>   
-   </resources>
-   <application-desc main-class="org.javascool.JsMain">
-	 <argument></argument>
-   </application-desc>	
-
+<jnlp spec="1.0+" codebase="http://javascool.gforge.inria.fr/v3" href="javascool.jnlp">
+  <information>
+    <title>Java's Cool (and Java is so cool)</title>
+    <vendor>INRIA (http://javascool.gforge.inria.fr)</vendor>
+    <homepage href="http://javascool.gforge.inria.fr"/>
+    <description>Plateforme de «proglets» et «educlets» pour l'apprentisage des sciences du numérique</description>
+    <icon href="http://javascool.gforge.inria.fr/v3/api/org/javascool/doc-files/icones16/logo_jvs.gif"/>
+    <offline-allowed/>
+  </information>
+  <security>
+    <all-permissions/>
+  </security> 
+  <resources>     
+    <j2se version="1.4+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="javascool.jar"/>   
+  </resources>
+  <application-desc main-class="org.javascool.JsMain">
+    <argument></argument>
+  </application-desc>	
 </jnlp>
 
