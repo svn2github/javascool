@@ -296,7 +296,7 @@ public class JsMain extends JApplet {
   private static class HomeActivity implements Activity {
     public void init(JsMain main) {
       this.main = main;
-      JPanel panel = new JPanel();
+      JPanel panel = new JPanel();   
       panel.setBackground(new Color(100,255,100));
       panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.yellow, 4), BorderFactory.createEmptyBorder(30, 50, 0, 0)));
       panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -314,7 +314,7 @@ public class JsMain extends JApplet {
 	  panel.add(button);
 	}
       }
-      this.main.getFrame().addTab("Choisir (cliquer sur le titre) son activité", panel, "org/javascool/doc-files/icones16/new.png", false, true);
+      this.main.getFrame().addTab("Choisir (cliquer sur le titre) son activité", new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), "org/javascool/doc-files/icones16/new.png", false, true);
     }
     ActionListener listener = new ActionListener() {
 	public void actionPerformed(ActionEvent e) {
