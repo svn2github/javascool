@@ -367,7 +367,6 @@ public class JsMain extends JApplet {
   public static void main(String[] usage) {
     System.out.println("---------------------\n" + title + "\n---------------------\nstarting..");
     setJavascoolVersion();
-    Jvs2Java.loadJavaScoolJar();
     JsMain main = getMain();
     setUncaughtExceptionAlert(); // Version perfusée
     if(usage.length > 0)
