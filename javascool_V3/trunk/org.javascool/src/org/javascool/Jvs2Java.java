@@ -346,8 +346,7 @@ public class Jvs2Java {
   public static JPanel getPanel(String proglet) {
     if(Jvs2Java.proglets.containsKey(proglet)) {
       try { 
-	JPanel p = (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null);
-	return p;
+	return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null);
       } catch(Exception e) {
         return null;
       }
