@@ -1,0 +1,141 @@
+
+void main() {
+    List<String> la_marseillaise = lireGrandTexte("La_Marseillaise.txt");
+    List<String> les_miserables = lireGrandTexte("Les_Miserables.txt");
+    echo("fichiers chargés");
+
+    afficheLaMarseillaise();
+    echo("");
+    echo("Le nombre de mots dans Les Misérables est " + nombreDeMots(les_miserables));
+
+    echo("");
+    echo("Le nombre de pages dans Les Misérables est " + nombreDePages(les_miserables));
+
+    echo("");
+    echo("Table des fréquence de La Marseillaise");
+    echo(tableDesFrequences(la_marseillaise));
+
+    echo("");
+    echo("Le nombre de mots distincts dans Les Misérables est " + nombreDeMotsDistincts(les_miserables));
+
+    echo("");
+    echo("Portrait de Cosette");
+    portraitDeCosette();
+
+    echo("");
+    echo("Les 30 mots les plus fréquents des Miserables");
+    lesPlusFrequents(les_miserables,30);
+
+    echo("");
+    echo("Index des 30 mots les plus fréquents des Miserables");
+    premiersIndex(les_miserables,30);
+}
+
+// affiche le teste de la Marseillaise mots par mots
+void afficheLaMarseillaise() {
+    List<String> la_marseillaise = lireGrandTexte("La_Marseillaise.txt");
+    for (String s : la_marseillaise) echo(s);
+}
+
+// compte le nombre de mots (comme liste.size())
+int nombreDeMots(List<String> liste) {
+    int res = 0;
+    for (String s : liste) res ++;
+    return res;
+}
+
+// calcule la table des fréquences de chaque mot
+Map<String,Integer> tableDesFrequences(List<String> liste) {
+    Map<String,Integer> table = new HashMap<String,Integer>();
+    for (String mot : liste) {
+	if (table.containsKey(mot)) {
+	    int frequence = table.get(mot);
+	    table.put(mot, frequence + 1);
+	} else {
+	    table.put(mot, 1);
+	}
+    }
+    return table;
+}
+
+// compte le nombre de page
+int nombreDePages(List<String> liste) {
+    int res = 0;
+    for (String s : liste) if (equal(s, "<NOUVELLE PAGE>")) res ++;
+    return res;
+}
+
+// compte le nombre de mots distincts
+int nombreDeMotsDistincts(List<String> liste) {
+    Map<String,Integer> table = tableDesFrequences(liste);
+    return table.keySet().size();
+}
+
+// fonction auxiliaire pour calculer l'indice de la premiere
+// occurence d'un mot
+int premiereOccurrence(String mot0, List<String> liste) {
+    int i=0;
+    for (String mot: liste) {
+	if (equal(mot,mot0)) return i;
+	else i++;
+    };
+    assertion(false,"le mot "+mot0+" n'est pas dans la liste");
+    return -1;
+}
+
+// recherche du mot "cosette" puis affichage des 100 mots 
+// qui suivent  
+void portraitDeCosette() {
+    List<String> les_miserables =lireGrandTexte("Les_Miserables.txt"); 
+    int i = premiereOccurrence("cosette",les_miserables);
+    for (int j=0; j<100; j++) 
+	echo(les_miserables.get(i+j));
+}
+
+// tri d'une table de frequence pour afficher les N plus frequents
+void lesPlusFrequents(List<String> liste, int N) {
+    Map<String,Integer> table = tableDesFrequences(liste);
+    Map<String,Integer> tableTriee = trierMapParValeursDecroissantes(table);
+    int i=0;
+    for (String s:tableTriee.keySet()) {
+	if (i>=N) break;
+	if (s.length()>=4) {
+	    echo(s+" : "+table.get(s));
+	    i++;
+	}
+    }
+}
+
+// construction de la table des indexes 
+Map<String,List<Integer>> tableIndex(List<String> liste) {    
+    Map<String,List<Integer>> table = new HashMap<String,List<Integer>>();
+    int page = 1;
+    for (String mot : liste) {
+	if (equal(mot,"<NOUVELLE PAGE>")) page++;
+	else if (table.containsKey(mot)) {
+	    List<Integer> indexes = table.get(mot);
+	    if (!indexes.contains(page)) indexes.add(page);
+	} else {
+	    List<Integer> indexes = new ArrayList<Integer>();
+	    indexes.add(page);
+	    table.put(mot,indexes);
+	}
+    };
+    return table;
+}
+
+// construction de la table des indexes puis affichage
+// des entrées des N mots les plus fréquents
+void premiersIndex(List<String> liste, int N) {
+    Map<String,Integer> table = tableDesFrequences(liste);
+    Map<String,Integer> tableTriee = trierMapParValeursDecroissantes(table);
+    Map<String,List<Integer>> index = tableIndex(liste);
+    int i=0;
+    for (String s:tableTriee.keySet()) {
+	if (i>=N) break;
+	if (s.length()>=4) {
+	    System.out.println(s+" : "+index.get(s));
+	    i++;
+	}
+    }
+}
