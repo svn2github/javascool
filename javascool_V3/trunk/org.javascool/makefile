@@ -8,7 +8,7 @@ export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
 # Defines the beta-relase jar temporary suffix under development
 JAR = -3-2-2
 
-default : j$(JAR)
+default : jnlp # j$(JAR)
 
 # General commands
 
@@ -23,6 +23,9 @@ j3-1:
 
 j$(JAR): jar
 	@cd tst ; java -jar ../www/javascool$(JAR).jar
+
+jnlp :
+	@javaws www/javascool.jnlp
 
 doc: api
 	firefox file:www/api/org/javascool/package-summary.html

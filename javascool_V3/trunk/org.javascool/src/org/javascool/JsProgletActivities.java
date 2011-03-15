@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 import proglet.ingredients.Console;
 import proglet.exosdemaths.CurveDisplay;
 
+// Used to scroll the proglet
+import javax.swing.JScrollPane;
+
 /** This factory defines the different JavaScool v3-2 proglet activities.
  * @see <a href="JsProgletActivities.java.html">source code</a>
  * @serial exclude
@@ -190,7 +193,9 @@ public class JsProgletActivities {
       init1(main);
       if(!"ingredients".equals(proglet)) {
         String name = "exosdemaths".equals(proglet) ? "Tracé" : proglet;
-        main.getFrame().addTab(name, Jvs2Java.getPanel(proglet), "org/javascool/doc-files/icones16/compile.png", true, true);
+        main.getFrame().addTab(name, 
+			       new JScrollPane(Jvs2Java.getPanel(proglet), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), 
+			       "org/javascool/doc-files/icones16/compile.png", true, true);
       }
       init2(main.getFrame());
       main.getFrame().addTab("Document de la proglet", "proglet/" + proglet + "/doc-files/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true, false);
