@@ -218,21 +218,21 @@ public class Jvs2Java {
           body.append(translateOnce(line) + "\n");
       }
       // Imports proglet's static methods
-      head.append("import static org.javascool.Macros.*;");
-      head.append("import static java.lang.Math.*;");
+      head.append("import static org.javascool.Macros.*;\n");
+      head.append("import static java.lang.Math.*;\n");
       if(proglet.length() == 0) {
         for(String p : proglets.keySet())
-          head.append("import static " + proglets.get(p) + ".*;");
+          head.append("import static " + proglets.get(p) + ".*;\n");
       } else {
-        head.append("import static " + proglets.get("ingredients") + ".*;");
+        head.append("import static " + proglets.get("ingredients") + ".*;\n");
         if(!"ingredients".equals(proglet)) {
-          head.append("import static " + proglets.get(proglet) + ".*;");
+          head.append("import static " + proglets.get(proglet) + ".*;\n");
 	} 
       }
-      head.append("import proglet.paintbrush.*;");
-      head.append("import proglet.joueravecleschiffres.Chiffre;");
-      head.append("import proglet.joueravecleschiffres.NombreA2Chiffres;");
-      head.append("import static proglet.joueravecleschiffres.MacrosChiffre.*;");
+      head.append("import proglet.paintbrush.*;\n");
+      head.append("import proglet.joueravecleschiffres.Chiffre;\n");
+      head.append("import proglet.joueravecleschiffres.NombreA2Chiffres;\n");
+      head.append("import static proglet.joueravecleschiffres.MacrosChiffre.*;\n");
       // Declares the proglet's core as a Runnable in the Applet
       // - defined as a ProgletApplet in order to be loaded as an executable applet.
       head.append("public class " + jclass + " extends org.javascool.ProgletApplet implements Runnable {");
@@ -309,8 +309,35 @@ public class Jvs2Java {
       URL[] urls = new URL[] { new URL("file:" + new File(jpath).getParent() + File.separator) };
       Class< ? > j_class = new URLClassLoader(urls).loadClass(jclass);
       return j_class.newInstance();
-    } catch(Throwable e) { throw Utils.report(new RuntimeException("Erreur: impossible de charger " + jpath + " / " + jclass + " (" + e + ") \n . . le package est il mal défini ?"));
+    } catch(Throwable e) {
+      throw Utils.report(new RuntimeException("Erreur: impossible de charger " + jpath + " / " + jclass + " (" + e + ") \n . . le package est il mal défini ?"));
     }
+  }
+  /** Enforce the load of javascool.jar in the class-path. 
+   * DISCLAIMER: DO NOT USE, TO BE VALIDATED . . TO BE VALIDATED FOR JNLP USAGE
+   */
+  public static void loadJavaScoolJar() {
+    try {
+      for(Package p : Package.getPackages())
+	if (p.getName().matches(".*(proglet|javascool).*"))
+	  System.err.println(p.getName() + " : " + p);
+      System.err.println("----------------------------------------------------------------------------");
+      URL[] urls = new URL[] { new URL("file:/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www/javascool-3-2-2.jar") };
+      URLClassLoader loader = new URLClassLoader(urls);
+      for (String p : new String[] { "org.javascool.Macros", "org.javascool.Jvs2Java", "org.javascool.Proglet", "org.javascool.ProgletApplet" })
+	try { System.err.println(Class.forName(p, true, loader)); } catch(Throwable e) { System.err.println(e+" :: "+p); }
+      for (String p : org.javascool.proglets.proglets) if (p.length() > 0) {
+	try { System.err.println(Class.forName(p, true, loader)); } catch(Throwable e) { System.err.println(e+" :: "+p); }
+      }
+      System.err.println("----------------------------------------------------------------------------");
+      for(Package p : Package.getPackages())
+	if (p.getName().matches(".*(proglet|javascool).*"))
+	  System.err.println(p.getName() + " : " + p);
+    } catch(Throwable e) {
+      System.err.println("Erreur: impossible de charger le javascool.jar: "+e);
+    }
+    System.setProperty("java.class.path", System.getProperty("java.class.path")+System.getProperty("path.separator")+"/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www/javascool-3-2-2.jar");
+    System.err.println("CP = "+System.getProperty("java.class.path"));
   }
   /** Compiles and saves a HTML launcher page in order to run the compile proglet as an applet.
    * DISCLAIMER: DO NOT USE, TO BE VALIDATED + SEE HOW TO USE JAVASCRIPT TO AVOID RELOAD

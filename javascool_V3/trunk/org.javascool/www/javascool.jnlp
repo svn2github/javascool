@@ -12,12 +12,12 @@
   <security>
     <all-permissions/>
   </security> 
-  <resources>     
-    <j2se version="1.4+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="javascool.jar"/>   
+  <resources>
+    <j2se version="1.4+"/>
+    <jar href="javascool-3-2-2.jar"/>   
   </resources>
   <application-desc main-class="org.javascool.JsMain">
-    <argument></argument>
+    <!--argument></argument-->
   </application-desc>	
 </jnlp>
 

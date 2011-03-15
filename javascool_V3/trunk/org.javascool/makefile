@@ -3,7 +3,7 @@
 #####################################################################################################################################
 
 # Used to use sun sun-jdk instead of open-jdk because of processing and windows platforms
-export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
+#export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
 
 # Defines the beta-relase jar temporary suffix under development
 JAR = -3-2-2
@@ -23,6 +23,9 @@ j$(JAR) : jar
 
 j3-1 :
 	@cd tst ; java -jar ../www/javascool-3-1.jar
+
+wjar : jar
+	@-rsync --rsh='ssh -C' www/javascool-3-2-2.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/javascool-3-2-2.jar
 
 doc : api
 	firefox file:www/api/org/javascool/package-summary.html

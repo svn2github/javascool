@@ -1,9 +1,9 @@
 /********************************************************************************
-*      ______________________________________________
+* ______________________________________________
 | By Philippe Vienne <philoumailabo@gmail.com> |
 | Distributed on GNU General Public Licence    |
 | © 2010 INRIA, All rights reserved            |
-|||______________________________________________|
+|______________________________________________|
 |
 ********************************************************************************/
 
@@ -348,11 +348,9 @@ public class JsMain extends JApplet {
   // Sets the javascool uncaught exception alert.
   private static void setUncaughtExceptionAlert() {
     String m = "Notice : Mécanisme de détection problème de compatibilité mis en place\n   pour " +title+ " ("+System.getProperty("javascool.version")+")";
-    //System.out.println(m);
     System.err.println(m);
-    Utils.setUncaughtExceptionAlert("Problème de configuration détecté!", "Oh: il y a un problème de compatibilité avec "+title+"!\n\nPour vous aider:\n -1- copier tout ce message et \n -2- envoyer le à science-participative@sophia.inria.fr :\n -3- nous essayerons de vous dépanner au plus vite.\n");
+    //-System.err.println(System.getProperties().toString().replaceAll("([{},])", "$1\n"));
   }
-
   /** Gets the instance of the main program. */
   public static JsMain getMain() {
     return theMain == null ? (theMain = new JsMain()) : theMain;
@@ -369,6 +367,7 @@ public class JsMain extends JApplet {
   public static void main(String[] usage) {
     System.out.println("---------------------\n" + title + "\n---------------------\nstarting..");
     setJavascoolVersion();
+    Jvs2Java.loadJavaScoolJar();
     JsMain main = getMain();
     setUncaughtExceptionAlert(); // Version perfusée
     if(usage.length > 0)
