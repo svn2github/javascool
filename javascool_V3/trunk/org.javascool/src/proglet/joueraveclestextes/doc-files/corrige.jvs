@@ -2,32 +2,32 @@
 void main() {
     List<String> la_marseillaise = lireGrandTexte("La_Marseillaise.txt");
     List<String> les_miserables = lireGrandTexte("Les_Miserables.txt");
-    echo("fichiers charg√©s");
+    echo("fichiers chargés");
 
     afficheLaMarseillaise();
     echo("");
-    echo("Le nombre de mots dans Les Mis√©rables est " + nombreDeMots(les_miserables));
+    echo("Le nombre de mots dans Les Misérables est " + nombreDeMots(les_miserables));
 
     echo("");
-    echo("Le nombre de pages dans Les Mis√©rables est " + nombreDePages(les_miserables));
+    echo("Le nombre de pages dans Les Misérables est " + nombreDePages(les_miserables));
 
     echo("");
-    echo("Table des fr√©quence de La Marseillaise");
+    echo("Table des fréquence de La Marseillaise");
     echo(tableDesFrequences(la_marseillaise));
 
     echo("");
-    echo("Le nombre de mots distincts dans Les Mis√©rables est " + nombreDeMotsDistincts(les_miserables));
+    echo("Le nombre de mots distincts dans Les Misérables est " + nombreDeMotsDistincts(les_miserables));
 
     echo("");
     echo("Portrait de Cosette");
     portraitDeCosette();
 
     echo("");
-    echo("Les 30 mots les plus fr√©quents des Miserables");
+    echo("Les 30 mots les plus fréquents des Miserables");
     lesPlusFrequents(les_miserables,30);
 
     echo("");
-    echo("Index des 30 mots les plus fr√©quents des Miserables");
+    echo("Index des 30 mots les plus fréquents des Miserables");
     premiersIndex(les_miserables,30);
 }
 
@@ -44,7 +44,7 @@ int nombreDeMots(List<String> liste) {
     return res;
 }
 
-// calcule la table des fr√©quences de chaque mot
+// calcule la table des fréquences de chaque mot
 Map<String,Integer> tableDesFrequences(List<String> liste) {
     Map<String,Integer> table = new HashMap<String,Integer>();
     for (String mot : liste) {
@@ -125,7 +125,7 @@ Map<String,List<Integer>> tableIndex(List<String> liste) {
 }
 
 // construction de la table des indexes puis affichage
-// des entr√©es des N mots les plus fr√©quents
+// des entrées des N mots les plus fréquents
 void premiersIndex(List<String> liste, int N) {
     Map<String,Integer> table = tableDesFrequences(liste);
     Map<String,Integer> tableTriee = trierMapParValeursDecroissantes(table);
