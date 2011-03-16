@@ -114,10 +114,10 @@ forme.
        
        Pour réaliser la conversion inverse (de <r>double</r>
        vers <r>int</r>), il faut prendre la partie entière d'un nombre réel
-       avec la fonction Java <r>Math.round(double x)</r>.
+       avec la fonction Java <r>floor(double x)</r>.
 
        <div class="code">
-         <p><r>int</r> x = (<r>int</r>) <r>Math.round</r>(x);</p>
+         <p><r>int</r> x = (<r>int</r>) <r>floor</r>(x);</p>
        </div>
      </div>
       </div>
