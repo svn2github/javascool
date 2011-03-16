@@ -140,6 +140,64 @@
                </tr>
             </table>
          </p>
+             Nous associons ainsi chaque nom de ville de la base de donn&eacute;e &agrave; une latitude (un nombre au format <font color="#990000"><b>Double</b></font>) ainsi qu'&agrave; une longitude. 
+             Par exemple, l'expression <b>latitudes</b>.<font color="#990000"><b>get</b></font>("Paris") renvoie la latitude de Paris et  <b>longitudes</b>.<font color="#990000"><b>get</b></font>("Paris") sa longitude.
+             L'ensemble des villes r&eacute;pertori&eacute;es peux &ecirc;tre obtenu par l'expression <b>latitudes</b>.<font color="#990000"><b>keySet</b></font>() de type <font color="#990000"><b>Set&lt;String&gt;</b></font>. 
+         
+      </div>
+          
+      
+      
+      
+      <div>
+             Les routes entre villes sont donn&eacute;es par une table.
+             
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                              
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Table des voisins de chaque ville.</font></tt></p>
+                              
+                        <div><font color="#990000"><b>Map&lt;String,List&lt;String&gt;&gt;</b></font> <b>voisins</b>;
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+             Chaque ville se voit ainsi associer une liste de voisins. Par exemple, la ville
+             de Bordeaux est reli&eacute;e dans notre r&eacute;seau &agrave; Angoul&ecirc;me, Bayonne et Toulouse. Ceci se v&eacute;rifie
+             avec la commande
+             
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                               echo(voisins.get("Bordeaux"));
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+             qui provoque l'affichage suivant.
+             
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                               [Angoul&ecirc;me,&nbsp;Bayonne,&nbsp;Toulouse]
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
          
       </div>
       

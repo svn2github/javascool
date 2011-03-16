@@ -54,6 +54,29 @@ chemin dans ce réseau de routes est aussi fournie.
     <div class="code">
 [Troyes, Lens, Nantes, La Rochelle, Angoulême, Le Havre, Bayonne, Saint-Nazaire, Amiens, Brest, Béthune, Montbéliard, Nîmes, Grenoble, Chambéry, Dijon, Tours, Nice, Lille, Strasbourg, Toulouse, Paris, Annecy, Avigon, Caen, Montpellier, Rennes, Perpignan, Valence, Besançon, Saint-Etienne, Thionville, Orléans, Clermont-Ferrand, Annemasse, Reims, Toulon, Dunkerque, Valenciennes, Metz, Limoges, Calais, Bordeaux, Lorient, Lyon, Angers, Marseille, Pau, Le Mans, Poitiers, Nancy, Rouen, Mulhouse] 
     </div>
+    Nous associons ainsi chaque nom de ville de la base de donnée à une latitude (un nombre au format <r>Double</r>) ainsi qu'à une longitude. 
+    Par exemple, l'expression <b>latitudes</b>.<r>get</r>("Paris") renvoie la latitude de Paris et  <b>longitudes</b>.<r>get</r>("Paris") sa longitude.
+    L'ensemble des villes répertoriées peux être obtenu par l'expression <b>latitudes</b>.<r>keySet</r>() de type <r>Set&lt;String></r>. 
+</div>
+    
+
+
+<div>
+    Les routes entre villes sont données par une table.
+    <div class="code">
+      <m>Table des voisins de chaque ville.</m>
+      <p><r>Map&lt;String,List&lt;String>></r> <b>voisins</b>;</p>
+    </div>
+    Chaque ville se voit ainsi associer une liste de voisins. Par exemple, la ville
+    de Bordeaux est reliée dans notre réseau à Angoulême, Bayonne et Toulouse. Ceci se vérifie
+    avec la commande
+    <div class="code">
+       echo(voisins.get("Bordeaux"));
+    </div>
+    qui provoque l'affichage suivant.
+    <div class="code">
+       [Angoulême, Bayonne, Toulouse]
+    </div>
 </div>
 </div>
 

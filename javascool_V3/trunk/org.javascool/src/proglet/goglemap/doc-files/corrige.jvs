@@ -129,7 +129,8 @@ List<String> plusCourtChemin(String depart, String arrivee) {
 }
 
 void main() {
-echo(latitudes.keySet());
+echo(voisins.get("Bordeaux"));
+//echo(latitudes.keySet());
     effaceCarte(); 
   afficheToutesRoutesDirectes();
 afficherCheminAvecNumeros(plusCourtChemin("Calais","Nice"));
