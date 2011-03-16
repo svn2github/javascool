@@ -2,6 +2,7 @@
 // Exemple d'implémentation qui se connecte à la proglet paintbrush
 void main() {
    PaintBrush.setManipImage(new PaintBrushManipImage() {
+      //NE RIEN ECRIRE AU DESSUS DE CETTE ZONE
       //Affiche un point de coordonnées (x,y)
        public void affichePoint(int x, int y, int couleur) {
          println("affichePoint(" + x + ",  " 
@@ -26,6 +27,7 @@ void main() {
       // et ayant la même couleur avec la couleur spécifiée
        public void remplir(int x, int y, int couleur) {
          println("remplir(" + x + ",  " + y + ",  " + couleur + ")");}
+      //NE RIEN ECRIRE EN DESSOUS DE CETTE ZONE
    }   
  );
 }
