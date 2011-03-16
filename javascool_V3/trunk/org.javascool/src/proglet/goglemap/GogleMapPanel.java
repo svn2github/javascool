@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Dimension;
 import java.awt.Color;
+import java.awt.Image;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JFrame;
@@ -38,8 +39,8 @@ class GogleMapPanel extends JPanel {
   Map<String,List<String>> arcs;
   Map<String,Double> latitudes;
   Map<String,Double> longitudes;
-  private BufferedImage ici;
-  private BufferedImage france;
+  private Image ici;
+  private Image france;
   private Set<PointAAfficher> pointsAffiche;
   private Set<ArcAAfficher> arcsAffiche;
     
@@ -185,8 +186,8 @@ class GogleMapPanel extends JPanel {
     super(new BorderLayout());
     setPreferredSize(new Dimension(640, 640));
     try {
-      ici = (BufferedImage) Utils.getIcon("proglet/goglemap/doc-files/ici.png").getImage();
-      france = (BufferedImage) Utils.getIcon("proglet/goglemap/doc-files/carteDeFrance.png").getImage();
+      ici = Utils.getIcon("proglet/goglemap/doc-files/ici.png").getImage();
+      france = Utils.getIcon("proglet/goglemap/doc-files/carteDeFrance.png").getImage();
     } catch (Exception e) {
       System.out.println("Erreur au read : "+ e);
     }
