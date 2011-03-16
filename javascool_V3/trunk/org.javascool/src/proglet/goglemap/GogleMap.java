@@ -78,8 +78,8 @@ public class GogleMap implements org.javascool.Proglet {
   //
   // This defines the tests on the panel
   //
-  /*public*/ static void test() {
-    Console.clear();
+  public static void test() {
+
   }
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();

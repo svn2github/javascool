@@ -123,8 +123,8 @@ public class JsProgletActivities {
     };
     protected Runnable execute = new Runnable() {
       public void run() {
-        Console.clear();
-        CurveDisplay.scopeReset();
+        //-Console.clear();
+        //-CurveDisplay.scopeReset();
         Jvs2Java.load(main.getFileChooser().getFile());
         Jvs2Java.run(true);
       }
@@ -218,6 +218,7 @@ public class JsProgletActivities {
 	  public void run() {
 	    main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
 	    execute2.run();
+	    //-main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
 	  }
 	};
     }

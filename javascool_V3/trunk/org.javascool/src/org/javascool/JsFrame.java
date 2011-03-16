@@ -198,6 +198,8 @@ public class JsFrame extends JPanel {
       westPane.setSelectedComponent(wtabs.get(label));
       westPane.revalidate();
     }
+    revalidate();
+    Thread.yield();
   }
   /** HashMap for west and east tab list.
    * The map associate a String to a JPanel
