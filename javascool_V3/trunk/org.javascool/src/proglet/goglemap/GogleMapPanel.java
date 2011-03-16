@@ -91,7 +91,7 @@ class GogleMapPanel extends JPanel {
     super.paintComponent(g);   
     g.drawImage(france, 0, 0, null);
  
-    g.setColor(new Color(1.f,0.f,0.f,.3f));
+    g.setColor(new Color(1.f,0.f,0.f,.5f));
     for (ArcAAfficher a:arcsAffiche)
       drawRoad(g,a.longitude1,a.latitude1,a.longitude2,a.latitude2);
 

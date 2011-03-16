@@ -132,6 +132,6 @@ List<String> plusCourtChemin(String depart, String arrivee) {
 
 void main() {
     efface(); 
-    afficherCheminAvecNumeros(plusCourtChemin("Calais","Nice"));
-    //afficheToutesRoutesDirectes();
+    //afficherCheminAvecNumeros(plusCourtChemin("Calais","Nice"));
+    afficheToutesRoutesDirectes();
 }
