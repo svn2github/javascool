@@ -82,18 +82,25 @@ class GogleMapPanel extends JPanel {
     repaint();
   }
 
-  public void afficheRoute(double longitude1, double latitude1, double longitude2, double latitude2) {
-    arcsAffiche.add(new ArcAAfficher(longitude1,latitude1,longitude2,latitude2));
+  // @param intensite: entier entre 1 et 5 pour l'intensite du tracé 
+  public void afficheRoute(double longitude1, double latitude1, double longitude2, double latitude2, int intensite) {
+    arcsAffiche.add(new ArcAAfficher(longitude1,latitude1,longitude2,latitude2,intensite));
     repaint();
   }
   
+  public void afficheRoute(double longitude1, double latitude1, double longitude2, double latitude2) {
+	    arcsAffiche.add(new ArcAAfficher(longitude1,latitude1,longitude2,latitude2,2));
+	    repaint();
+	  }
+
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);   
     g.drawImage(france, 0, 0, null);
  
-    g.setColor(new Color(1.f,0.f,0.f,.5f));
-    for (ArcAAfficher a:arcsAffiche)
-      drawRoad(g,a.longitude1,a.latitude1,a.longitude2,a.latitude2);
+    for (ArcAAfficher a:arcsAffiche) {
+    	g.setColor(new Color(1.f,0.f,0.f,a.intensite * .2f));
+    	drawRoad(g,a.longitude1,a.latitude1,a.longitude2,a.latitude2);
+    }
 
 
     int screenRes = Toolkit.getDefaultToolkit().getScreenResolution();
@@ -374,11 +381,13 @@ class ArcAAfficher {
   double latitude1;
   double longitude2;
   double latitude2;
-  ArcAAfficher(double _longitude1, double _latitude1, double _longitude2, double _latitude2) {
+  int intensite;
+  ArcAAfficher(double _longitude1, double _latitude1, double _longitude2, double _latitude2, int _intensite) {
     longitude1 = _longitude1;
     latitude1 = _latitude1;
     longitude2 = _longitude2;
     latitude2 = _latitude2;
+    intensite = _intensite;
   }
 }
 

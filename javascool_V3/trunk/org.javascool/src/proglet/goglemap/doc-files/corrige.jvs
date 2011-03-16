@@ -20,18 +20,18 @@ void afficheToutesVilles() {
 }
 
 //affiche une route directe entre deux villes
-void afficheRouteDirecte(String ville1, String ville2) {
+void afficheRouteDirecte(String ville1, String ville2, Intensite intensite) {
     assertion(latitudes.containsKey(ville1),ville1 + " n'est pas une ville connue");
     assertion(latitudes.containsKey(ville2),ville2 + " n'est pas une ville connue");
     afficheRoute(longitudes.get(ville1), latitudes.get(ville1),
-                 longitudes.get(ville2), latitudes.get(ville2));    
+                 longitudes.get(ville2), latitudes.get(ville2),intensite);    
 }
  
 //affiche toutes les routes directes
 void afficheToutesRoutesDirectes() {
     for (String depart: voisins.keySet()) 
 	for (String arrivee: voisins.get(depart))
-	  if (depart.compareTo(arrivee)>0) afficheRouteDirecte(depart,arrivee);
+	  if (depart.compareTo(arrivee)>0) afficheRouteDirecte(depart,arrivee,LEGER);
 }    
 
 int distance(String ville1, String ville2) {
@@ -49,7 +49,7 @@ int distance(String ville1, String ville2) {
 void afficherChemin(List<String> chemin) {
     int longueur = chemin.size();
     for (int j=1; j<longueur; j++) {
-	afficheRouteDirecte(chemin.get(j-1),chemin.get(j));    
+	afficheRouteDirecte(chemin.get(j-1),chemin.get(j),MOYEN);    
     }
 }
 
@@ -58,7 +58,7 @@ void afficherCheminAvecNumeros(List<String> chemin) {
     int longueur = chemin.size();
     afficheVilleAvecNumero(chemin.get(0),1);
     for (int j=1; j<longueur; j++) {
-	afficheRouteDirecte(chemin.get(j-1),chemin.get(j));    
+	afficheRouteDirecte(chemin.get(j-1),chemin.get(j),MOYEN);    
 	afficheVilleAvecNumero(chemin.get(j),j+1);
     }
 }
@@ -132,6 +132,7 @@ List<String> plusCourtChemin(String depart, String arrivee) {
 
 void main() {
     efface(); 
-    //afficherCheminAvecNumeros(plusCourtChemin("Calais","Nice"));
-    afficheToutesRoutesDirectes();
+  afficheToutesRoutesDirectes();
+afficherCheminAvecNumeros(plusCourtChemin("Calais","Nice"));
+afficherCheminAvecNumeros(plusCourtChemin("Brest","Perpignan"));
 }

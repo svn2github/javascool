@@ -38,13 +38,25 @@ public class GogleMap implements org.javascool.Proglet {
   //
   // This defines the javascool interface
   //
-
+  public enum Intensite { LEGER (1), MOYEN (2), FORT (3);
+  	private int value;	
+  	Intensite(int i) { value = i; } 
+  }
+  
+  public final static Intensite LEGER = Intensite.LEGER;
+  public final static Intensite MOYEN = Intensite.MOYEN;
+  public final static Intensite FORT = Intensite.FORT;
+  
   public static void affichePoint(double longitude, double latitude, int idx) {
 	  panel.main.affichePoint(longitude,latitude,idx);
   };
   
   public static void affichePoint(double longitude, double latitude) {
 	  panel.main.affichePoint(longitude,latitude);
+  }
+
+  public static void afficheRoute(double longitude1, double latitude1, double longitude2, double latitude2, Intensite intensite) {
+	  panel.main.afficheRoute(longitude1,latitude1,longitude2,latitude2,intensite.value);
   }
 
   public static void afficheRoute(double longitude1, double latitude1, double longitude2, double latitude2) {
