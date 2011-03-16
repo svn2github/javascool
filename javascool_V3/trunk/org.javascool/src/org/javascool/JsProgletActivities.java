@@ -86,10 +86,10 @@ public class JsProgletActivities {
     	public void init2(JsFrame frame) {
     	}
           });
-//    main.addActivity(new ProgletActivity("goglemap", "Aller plus loin en programmation", "Jouer avec les grands textes (version provisoire)") {
-//    	public void init2(JsFrame frame) {
-//    	}
-//          });
+    main.addActivity(new ProgletActivity("goglemap", "Aller plus loin en programmation", "Jouer avec une carte de France (version provisoire)") {
+    	public void init2(JsFrame frame) {
+    	}
+          });
   }
   /** Defines a compilation activity. */
   public static abstract class JavaActivity implements JsMain.Activity {

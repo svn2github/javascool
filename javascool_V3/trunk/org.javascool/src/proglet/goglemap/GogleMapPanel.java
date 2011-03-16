@@ -31,6 +31,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 class GogleMapPanel extends JPanel {
+  private static final long serialVersionUID = 1L;
   
     Map<String,List<String>> arcs;
     Map<String,Double> latitudes;

@@ -5,8 +5,10 @@
 "proglet.ingredients.Console",
 "proglet.pixelsetcie.ImageDisplay",
 "proglet.javaprog.JavaPanel",
+"proglet.joueraveclestextes.GrandsTextes",
 "proglet.dichotomie.Dichotomie",
 "proglet.exosdemaths.CurveDisplay",
 "proglet.joueravecleschiffres.MacrosChiffre",
+"proglet.goglemap.GogleMap",
 "proglet.paintbrush.PaintBrush",
 ""}; }
