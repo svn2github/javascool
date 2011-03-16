@@ -159,7 +159,7 @@ public class Utils {
    */
   public static String loadString(String location) {
     try {
-      BufferedReader reader = new BufferedReader(new InputStreamReader(toUrl(location).openStream(), "UTF8"), 10240);
+      BufferedReader reader = new BufferedReader(new InputStreamReader(toUrl(location).openStream()), 10240);
       StringBuilder buffer = new StringBuilder();
       char chars[] = new char[10240];
       while(true) {
@@ -204,7 +204,7 @@ public class Utils {
     URL url = new URL(location);
     URLConnection connection = url.openConnection();
     connection.setDoOutput(true);
-    OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(), "UTF8");
+    OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
     if(url.getProtocol().equals("mailto")) {
       int i = url.toString().indexOf("?subject=");
       if(i != -1)
