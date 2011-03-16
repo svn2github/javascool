@@ -36,7 +36,8 @@ public class GrandsTextes implements org.javascool.Proglet {
     int compteur = 0;
     try {
       //BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("proglet/joueraveclestextes/doc-files/"+filename), encoding));
-      BufferedReader bufferedReader = new BufferedReader(new java.io.StringReader(org.javascool.Utils.loadString("proglet/joueraveclestextes/doc-files/"+filename)));
+      //BufferedReader bufferedReader = new BufferedReader(new java.io.StringReader(org.javascool.Utils.loadString("proglet/joueraveclestextes/doc-files/"+filename)));
+      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(org.javascool.Utils.toUrl("proglet/joueraveclestextes/doc-files/"+filename).openStream(), encoding));
       while ((line = bufferedReader.readLine()) != null) {
         compteur++;
         String[] words = line . split("[[\\s+]\\p{Punct}]");
