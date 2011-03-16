@@ -1,6 +1,6 @@
 /*******************************************************************************
-* David.Pichardie@inria.fr, Copyright (C) 2011.           All rights reserved. *
-*******************************************************************************/
+ * David.Pichardie@inria.fr, Copyright (C) 2011.           All rights reserved. *
+ *******************************************************************************/
 
 package proglet.goglemap;
 import java.util.*;
@@ -30,22 +30,24 @@ import java.io.IOException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import org.javascool.Utils;
+
 class GogleMapPanel extends JPanel {
   private static final long serialVersionUID = 1L;
   
-    Map<String,List<String>> arcs;
-    Map<String,Double> latitudes;
-    Map<String,Double> longitudes;
-    private BufferedImage ici;
-    private BufferedImage france;
-    private Set<PointAAfficher> pointsAffiche;
-    private Set<ArcAAfficher> arcsAffiche;
+  Map<String,List<String>> arcs;
+  Map<String,Double> latitudes;
+  Map<String,Double> longitudes;
+  private BufferedImage ici;
+  private BufferedImage france;
+  private Set<PointAAfficher> pointsAffiche;
+  private Set<ArcAAfficher> arcsAffiche;
     
-    void clearMap () {
-     pointsAffiche.clear();
-     arcsAffiche.clear();
-     repaint();
-    }
+  void clearMap () {
+    pointsAffiche.clear();
+    arcsAffiche.clear();
+    repaint();
+  }
   
   private void drawRoad(Graphics g, double longitude1, double latitude1, double longitude2, double latitude2) {
     int xi = getX(longitude1)+9;
@@ -61,12 +63,12 @@ class GogleMapPanel extends JPanel {
   }
   
   void drawPoint(Graphics2D g, int x, int y, int indice) {
-//    System.out.println("x ="+x+" y="+y+" i="+indice);
+    //    System.out.println("x ="+x+" y="+y+" i="+indice);
     g.drawImage(ici, x, y, null);
     if (indice!=-1 && indice<10) g.drawString(""+indice,x+7,y+13);
     else if (indice!=-1) g.drawString(""+indice,x+4,y+13);
-//    g.setColor(Color.BLACK);
-//    g.fillRect(x+5, y+25, 12,12);
+    //    g.setColor(Color.BLACK);
+    //    g.fillRect(x+5, y+25, 12,12);
   }
   
   public void affichePoint(double longitude, double latitude, int idx) {
@@ -90,34 +92,34 @@ class GogleMapPanel extends JPanel {
  
     g.setColor(new Color(1.f,0.f,0.f,.3f));
     for (ArcAAfficher a:arcsAffiche)
-       drawRoad(g,a.longitude1,a.latitude1,a.longitude2,a.latitude2);
+      drawRoad(g,a.longitude1,a.latitude1,a.longitude2,a.latitude2);
 
 
-     int screenRes = Toolkit.getDefaultToolkit().getScreenResolution();
-     int fontSize = (int)Math.round(10.0 * screenRes / 72.0);
-     Font font = new Font("Arial", Font.BOLD, fontSize);
-     Graphics2D g2d = (Graphics2D)g;
-     g2d.setFont(font);
-     g2d.setColor(Color.WHITE);
-     g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    int screenRes = Toolkit.getDefaultToolkit().getScreenResolution();
+    int fontSize = (int)Math.round(10.0 * screenRes / 72.0);
+    Font font = new Font("Arial", Font.BOLD, fontSize);
+    Graphics2D g2d = (Graphics2D)g;
+    g2d.setFont(font);
+    g2d.setColor(Color.WHITE);
+    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
      
     for (PointAAfficher p:pointsAffiche)
-       drawPoint(g2d, getX(p.x), getY(p.y),p.idx);
+      drawPoint(g2d, getX(p.x), getY(p.y),p.idx);
      
             
-   }
+  }
    
-   static int getX_Icon(double d) {
-     return getX(d);
-   }
-   static int getX(double d) {
+  static int getX_Icon(double d) {
+    return getX(d);
+  }
+  static int getX(double d) {
     return
       inv_lin_x(d);
   }
-   static int getY_Icon(double d) {
-     return getY(d);
-   }
+  static int getY_Icon(double d) {
+    return getY(d);
+  }
   static int getY(double d) {
     return
       inv_lin_y(d);
@@ -147,34 +149,34 @@ class GogleMapPanel extends JPanel {
   }
 
   static double lin_y (int latitude) {
-     return linTransf(latitude,192,179,48.392168,48.586601);
+    return linTransf(latitude,192,179,48.392168,48.586601);
   }
   static double lin_x (int longitude) {
-     return linTransf(longitude,6,546,-4.486885,7.745018);
+    return linTransf(longitude,6,546,-4.486885,7.745018);
   }
   static double err_y (int err) {
-     return linTransf(err,192,179,48.392168,48.586601);
+    return linTransf(err,192,179,48.392168,48.586601);
   }
   static double err_x (int err) {
-     return linTransf(err,6,546,-4.486885,7.745018);
+    return linTransf(err,6,546,-4.486885,7.745018);
   }
   static int inv_lin_y (double latitude) {
-     return invLinTransf(latitude,48.392168,48.586601,192,179);
+    return invLinTransf(latitude,48.392168,48.586601,192,179);
   }
   static int inv_lin_x (double longitude) {
-     return invLinTransf(longitude,-4.486885,7.745018,6,546);
+    return invLinTransf(longitude,-4.486885,7.745018,6,546);
   }
   
   static double square (double x) { return x*x; }
   
   int distanceEuclidienne(double longitude1, double latitude1, double longitude2, double latitude2) {
-      double longitude = (longitude1 - longitude2) * Math.PI / 180;
-      double aux = Math.cos(latitude1* Math.PI / 180) * Math.cos(latitude2* Math.PI / 180) * Math.cos(longitude);
-      aux = aux + Math.sin(latitude1* Math.PI / 180)*Math.sin(latitude2* Math.PI / 180);
-      return (int) Math.round(6378 * Math.acos(aux)); 
+    double longitude = (longitude1 - longitude2) * Math.PI / 180;
+    double aux = Math.cos(latitude1* Math.PI / 180) * Math.cos(latitude2* Math.PI / 180) * Math.cos(longitude);
+    aux = aux + Math.sin(latitude1* Math.PI / 180)*Math.sin(latitude2* Math.PI / 180);
+    return (int) Math.round(6378 * Math.acos(aux)); 
   }
   
-    void ajoute(int i, String ville, double _latitude, double _longitude) {
+  void ajoute(int i, String ville, double _latitude, double _longitude) {
     latitudes.put(ville,_latitude);
     longitudes.put(ville,_longitude);
   }
@@ -182,158 +184,159 @@ class GogleMapPanel extends JPanel {
   GogleMapPanel () {
     super(new BorderLayout());
     setPreferredSize(new Dimension(640, 640));
-        
     try {
-      ici = ImageIO.read(new File("proglet/goglemap/doc-files/ici.png"));
-      france = ImageIO.read(new File("proglet/goglemap/doc-files/carteDeFrance.png"));
-    } catch (IOException e) {}
+      ici = (BufferedImage) Utils.getIcon("proglet/goglemap/doc-files/ici.png").getImage();
+      france = (BufferedImage) Utils.getIcon("proglet/goglemap/doc-files/carteDeFrance.png").getImage();
+    } catch (Exception e) {
+      System.out.println("Erreur au read : "+ e);
+    }
     
     latitudes = new HashMap<String,Double>();
     longitudes = new HashMap<String,Double>();
     
 
-ajoute(0, "Dunkerque",         51.069360,  2.376571);
-ajoute(1, "Calais",            50.979622,  1.855583);
-ajoute(2, "Lille",             50.650582,  3.056121);
-ajoute(3, "B√©thune",           50.545887,  2.648391);
-ajoute(4, "Lens",              50.381367,  3.056121);
-ajoute(5, "Valenciennes",      50.366410,  3.531806);
-ajoute(6, "Amiens",            49.887806,  2.308616);
-ajoute(7, "Le Havre",          49.483984,  0.134056);
-ajoute(8, "Rouen",             49.439114,  1.108078);
-ajoute(9, "Reims",             49.259638,  4.007492);
-ajoute(10, "Thionville",       49.364333,  6.182052);
-ajoute(11, "Metz",             49.110074,  6.182052);
-ajoute(12, "Strasbourg",       48.586601,  7.745017);
-ajoute(13, "Nancy",            48.691295,  6.204704);
-ajoute(14, "Paris",            48.855815,  2.353920);
-ajoute(15, "Caen",             49.169900, -0.386932);
-ajoute(16, "Troyes",           48.287473,  4.052795);
-ajoute(17, "Brest",            48.392168, -4.486885);
-ajoute(18, "Lorient",          47.749043, -3.376953);
-ajoute(19, "Rennes",           48.107996, -1.678077);
-ajoute(20, "Le Mans",          48.003301,  0.202011);
-ajoute(21, "Orl√©ans",          47.913563,  1.900886);
-ajoute(22, "Tours",            47.405046,  0.700347);
-ajoute(23, "Anger",            47.479828, -0.568145);
-ajoute(24, "Nantes",           47.240526, -1.564819);
-ajoute(25, "Saint-Nazaire",    47.285395, -2.199066);
-ajoute(26, "Dijon",            47.330264,  5.049469);
-ajoute(27, "Mulhouse",         47.763999,  7.337287);
-ajoute(28, "Montb√©liard",      47.509741,  6.793647);
-ajoute(29, "Besan√ßon",         47.270439,  6.023490);
-ajoute(30, "Annemasse",        46.268361,  6.227355);
-ajoute(31, "Annecy",           45.969233,  6.159400);
-ajoute(32, "Chamb√©ry",         45.670105,  5.932884);
-ajoute(33, "Grenoble",         45.296196,  5.706367);
-ajoute(34, "Lyon",             45.834626,  4.800300);
-ajoute(35, "Saint-Etienne",    45.550454,  4.369918);
-ajoute(36, "Valence",          45.071850,  4.890907);
-ajoute(37, "Nice",             43.950121,  7.269332);
-ajoute(38, "Toulon",           43.426648,  5.932884);
-ajoute(39, "Marseille",        43.591168,  5.343940);
-ajoute(40, "Avigon",           44.174467,  4.822952);
-ajoute(41, "N√Æmes",            44.084729,  4.347267);
-ajoute(42, "Montpellier",      43.860383,  3.871582);
-ajoute(43, "Perpignan",        43.037782,  2.874908);
-ajoute(44, "Toulouse",         43.860383,  1.425201);
-ajoute(45, "Pau",              43.591168, -0.364280);
-ajoute(46, "Bayonne",          43.755688, -1.496864);
-ajoute(47, "Bordeaux",         44.997068, -0.593449);
-ajoute(48, "Clermont-Ferrand", 45.879495,  3.078773);
-ajoute(49, "Limoges",          45.909408,  1.243988);
-ajoute(50, "Angoul√™me",        45.744887,  0.156707);
-ajoute(51, "La Rochelle",      46.238448, -1.157089);
-ajoute(52, "Poitiers",         46.627314,  0.315269);    
+    ajoute(0, "Dunkerque",         51.069360,  2.376571);
+    ajoute(1, "Calais",            50.979622,  1.855583);
+    ajoute(2, "Lille",             50.650582,  3.056121);
+    ajoute(3, "B√©thune",           50.545887,  2.648391);
+    ajoute(4, "Lens",              50.381367,  3.056121);
+    ajoute(5, "Valenciennes",      50.366410,  3.531806);
+    ajoute(6, "Amiens",            49.887806,  2.308616);
+    ajoute(7, "Le Havre",          49.483984,  0.134056);
+    ajoute(8, "Rouen",             49.439114,  1.108078);
+    ajoute(9, "Reims",             49.259638,  4.007492);
+    ajoute(10, "Thionville",       49.364333,  6.182052);
+    ajoute(11, "Metz",             49.110074,  6.182052);
+    ajoute(12, "Strasbourg",       48.586601,  7.745017);
+    ajoute(13, "Nancy",            48.691295,  6.204704);
+    ajoute(14, "Paris",            48.855815,  2.353920);
+    ajoute(15, "Caen",             49.169900, -0.386932);
+    ajoute(16, "Troyes",           48.287473,  4.052795);
+    ajoute(17, "Brest",            48.392168, -4.486885);
+    ajoute(18, "Lorient",          47.749043, -3.376953);
+    ajoute(19, "Rennes",           48.107996, -1.678077);
+    ajoute(20, "Le Mans",          48.003301,  0.202011);
+    ajoute(21, "Orl√©ans",          47.913563,  1.900886);
+    ajoute(22, "Tours",            47.405046,  0.700347);
+    ajoute(23, "Anger",            47.479828, -0.568145);
+    ajoute(24, "Nantes",           47.240526, -1.564819);
+    ajoute(25, "Saint-Nazaire",    47.285395, -2.199066);
+    ajoute(26, "Dijon",            47.330264,  5.049469);
+    ajoute(27, "Mulhouse",         47.763999,  7.337287);
+    ajoute(28, "Montb√©liard",      47.509741,  6.793647);
+    ajoute(29, "Besan√ßon",         47.270439,  6.023490);
+    ajoute(30, "Annemasse",        46.268361,  6.227355);
+    ajoute(31, "Annecy",           45.969233,  6.159400);
+    ajoute(32, "Chamb√©ry",         45.670105,  5.932884);
+    ajoute(33, "Grenoble",         45.296196,  5.706367);
+    ajoute(34, "Lyon",             45.834626,  4.800300);
+    ajoute(35, "Saint-Etienne",    45.550454,  4.369918);
+    ajoute(36, "Valence",          45.071850,  4.890907);
+    ajoute(37, "Nice",             43.950121,  7.269332);
+    ajoute(38, "Toulon",           43.426648,  5.932884);
+    ajoute(39, "Marseille",        43.591168,  5.343940);
+    ajoute(40, "Avigon",           44.174467,  4.822952);
+    ajoute(41, "N√Æmes",            44.084729,  4.347267);
+    ajoute(42, "Montpellier",      43.860383,  3.871582);
+    ajoute(43, "Perpignan",        43.037782,  2.874908);
+    ajoute(44, "Toulouse",         43.860383,  1.425201);
+    ajoute(45, "Pau",              43.591168, -0.364280);
+    ajoute(46, "Bayonne",          43.755688, -1.496864);
+    ajoute(47, "Bordeaux",         44.997068, -0.593449);
+    ajoute(48, "Clermont-Ferrand", 45.879495,  3.078773);
+    ajoute(49, "Limoges",          45.909408,  1.243988);
+    ajoute(50, "Angoul√™me",        45.744887,  0.156707);
+    ajoute(51, "La Rochelle",      46.238448, -1.157089);
+    ajoute(52, "Poitiers",         46.627314,  0.315269);    
     
 
 
-arcs = new HashMap<String,List<String>>();
+    arcs = new HashMap<String,List<String>>();
     for (String ville: latitudes.keySet())
-       arcs.put(ville,new ArrayList<String>());
+      arcs.put(ville,new ArrayList<String>());
     
-ajouteArc("Brest","Lorient");
-ajouteArc("Brest","Rennes");
-ajouteArc("Lorient","Rennes");
-ajouteArc("Rennes","Nantes");
-ajouteArc("Nantes","Saint-Nazaire");
-ajouteArc("Rennes","Le Mans");
-ajouteArc("Le Mans","Paris");
-ajouteArc("Paris","Orl√©ans");
-ajouteArc("Le Mans","Tours");
-ajouteArc("Orl√©ans","Limoges");
-ajouteArc("Le Mans","Anger");
-ajouteArc("Nantes","La Rochelle");
-ajouteArc("La Rochelle","Angoul√™me");
-ajouteArc("Nantes","Angoul√™me");
-ajouteArc("Anger","Nantes");
-ajouteArc("Poitiers","Angoul√™me");
-ajouteArc("Tours","Poitiers");
-ajouteArc("Angoul√™me","Bordeaux");
-ajouteArc("Bordeaux","Bayonne");
-ajouteArc("Bayonne","Pau");
-ajouteArc("Pau","Toulouse");
-ajouteArc("Bordeaux","Toulouse");
-ajouteArc("Toulouse","Perpignan");
-ajouteArc("Toulouse","Montpellier");
-ajouteArc("Montpellier","N√Æmes");
-ajouteArc("N√Æmes","Avigon");
-ajouteArc("Avigon","Marseille");
-ajouteArc("Marseille","Toulon");
-ajouteArc("Toulon","Nice");
-ajouteArc("Avigon","Valence");
-ajouteArc("Valence","Grenoble");
-ajouteArc("Grenoble","Chamb√©ry");
-ajouteArc("Chamb√©ry","Annecy");
-ajouteArc("Annecy","Annemasse");
-ajouteArc("Valence","Saint-Etienne");
-ajouteArc("Lyon","Saint-Etienne");
-ajouteArc("Lyon","Grenoble");
-ajouteArc("Clermont-Ferrand","Saint-Etienne");
-ajouteArc("Clermont-Ferrand","Limoges");
-ajouteArc("Limoges","Angoul√™me");
-ajouteArc("Paris","Troyes");
-ajouteArc("Troyes","Dijon");
-ajouteArc("Dijon","Besan√ßon");
-ajouteArc("Dijon","Lyon");
-ajouteArc("Besan√ßon","Montb√©liard");
-ajouteArc("Montb√©liard","Mulhouse");
-ajouteArc("Mulhouse","Strasbourg");
-ajouteArc("Strasbourg","Nancy");
-ajouteArc("Nancy","Paris");
-ajouteArc("Troyes","Nancy");
-ajouteArc("Nancy","Metz");
-ajouteArc("Metz","Thionville");
-ajouteArc("Metz","Reims");
-ajouteArc("Reims","Paris");
-ajouteArc("Paris","Rouen");
-ajouteArc("Rouen","Le Havre");
-ajouteArc("Caen","Rennes");
-ajouteArc("Rouen","Caen");
-ajouteArc("Calais","Dunkerque");
-ajouteArc("Dunkerque","B√©thune");
-ajouteArc("Lille","B√©thune");
-ajouteArc("B√©thune","Lens");
-ajouteArc("Lens","Valenciennes");
-ajouteArc("Lens","Lille");
-ajouteArc("Lens","Paris");
-ajouteArc("Amiens","Paris");
-ajouteArc("Amiens","Lens");
-ajouteArc("Reims","Lens");
-ajouteArc("Lens","Lille");
+    ajouteArc("Brest","Lorient");
+    ajouteArc("Brest","Rennes");
+    ajouteArc("Lorient","Rennes");
+    ajouteArc("Rennes","Nantes");
+    ajouteArc("Nantes","Saint-Nazaire");
+    ajouteArc("Rennes","Le Mans");
+    ajouteArc("Le Mans","Paris");
+    ajouteArc("Paris","Orl√©ans");
+    ajouteArc("Le Mans","Tours");
+    ajouteArc("Orl√©ans","Limoges");
+    ajouteArc("Le Mans","Anger");
+    ajouteArc("Nantes","La Rochelle");
+    ajouteArc("La Rochelle","Angoul√™me");
+    ajouteArc("Nantes","Angoul√™me");
+    ajouteArc("Anger","Nantes");
+    ajouteArc("Poitiers","Angoul√™me");
+    ajouteArc("Tours","Poitiers");
+    ajouteArc("Angoul√™me","Bordeaux");
+    ajouteArc("Bordeaux","Bayonne");
+    ajouteArc("Bayonne","Pau");
+    ajouteArc("Pau","Toulouse");
+    ajouteArc("Bordeaux","Toulouse");
+    ajouteArc("Toulouse","Perpignan");
+    ajouteArc("Toulouse","Montpellier");
+    ajouteArc("Montpellier","N√Æmes");
+    ajouteArc("N√Æmes","Avigon");
+    ajouteArc("Avigon","Marseille");
+    ajouteArc("Marseille","Toulon");
+    ajouteArc("Toulon","Nice");
+    ajouteArc("Avigon","Valence");
+    ajouteArc("Valence","Grenoble");
+    ajouteArc("Grenoble","Chamb√©ry");
+    ajouteArc("Chamb√©ry","Annecy");
+    ajouteArc("Annecy","Annemasse");
+    ajouteArc("Valence","Saint-Etienne");
+    ajouteArc("Lyon","Saint-Etienne");
+    ajouteArc("Lyon","Grenoble");
+    ajouteArc("Clermont-Ferrand","Saint-Etienne");
+    ajouteArc("Clermont-Ferrand","Limoges");
+    ajouteArc("Limoges","Angoul√™me");
+    ajouteArc("Paris","Troyes");
+    ajouteArc("Troyes","Dijon");
+    ajouteArc("Dijon","Besan√ßon");
+    ajouteArc("Dijon","Lyon");
+    ajouteArc("Besan√ßon","Montb√©liard");
+    ajouteArc("Montb√©liard","Mulhouse");
+    ajouteArc("Mulhouse","Strasbourg");
+    ajouteArc("Strasbourg","Nancy");
+    ajouteArc("Nancy","Paris");
+    ajouteArc("Troyes","Nancy");
+    ajouteArc("Nancy","Metz");
+    ajouteArc("Metz","Thionville");
+    ajouteArc("Metz","Reims");
+    ajouteArc("Reims","Paris");
+    ajouteArc("Paris","Rouen");
+    ajouteArc("Rouen","Le Havre");
+    ajouteArc("Caen","Rennes");
+    ajouteArc("Rouen","Caen");
+    ajouteArc("Calais","Dunkerque");
+    ajouteArc("Dunkerque","B√©thune");
+    ajouteArc("Lille","B√©thune");
+    ajouteArc("B√©thune","Lens");
+    ajouteArc("Lens","Valenciennes");
+    ajouteArc("Lens","Lille");
+    ajouteArc("Lens","Paris");
+    ajouteArc("Amiens","Paris");
+    ajouteArc("Amiens","Lens");
+    ajouteArc("Reims","Lens");
+    ajouteArc("Lens","Lille");
 
-   pointsAffiche = new TreeSet<PointAAfficher>();
-   arcsAffiche = new HashSet<ArcAAfficher>();
+    pointsAffiche = new TreeSet<PointAAfficher>();
+    arcsAffiche = new HashSet<ArcAAfficher>();
 
-      }
+  }
   
-//  int searchPoint(double x, double y) {
-//    int error = 6;
-//    for (int i=0; i<nb_villes; i++)
-//      if (Math.abs(inv_lin_x(longitude[i])-x)<=error && Math.abs(inv_lin_y(latitude[i])-y)<=error)
-//        return i;
-//    return -1;
-//  }
+  //  int searchPoint(double x, double y) {
+  //    int error = 6;
+  //    for (int i=0; i<nb_villes; i++)
+  //      if (Math.abs(inv_lin_x(longitude[i])-x)<=error && Math.abs(inv_lin_y(latitude[i])-y)<=error)
+  //        return i;
+  //    return -1;
+  //  }
   
   void ajouteArc(String depart, String arrivee) {    
     ajouteArcAux(depart,arrivee);
