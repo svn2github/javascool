@@ -35,6 +35,9 @@ public class Macros {
   public static <A> void echo(java.util.List<A> list) {
 	    echo("" + list);
 	  }
+  public static <A> void echo(java.util.Set<A> set) {
+	    echo("" + set);
+	  }
   /* Fonctions accessibles via Math.*;
    * 
    * Renvoie x à la puissance y.

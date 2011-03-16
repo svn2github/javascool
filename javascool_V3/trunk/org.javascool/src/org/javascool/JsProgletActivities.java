@@ -84,6 +84,7 @@ public class JsProgletActivities {
           });
     main.addActivity(new ProgletActivity("ingredients", "Aller plus loin en programmation", "Jouer avec les grands textes (version provisoire)") {
     	public void init2(JsFrame frame) {
+            frame.addTab("Enoncé de l'exercice", "proglet/joueraveclestextes/doc-files/sujet-grandstextes.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
     	}
           });
     main.addActivity(new ProgletActivity("goglemap", "Aller plus loin en programmation", "Jouer avec une carte de France (version provisoire)") {
