@@ -4,14 +4,14 @@ void afficheVille(String s) {
    assertion(latitudes.containsKey(s), s + " n'est pas une ville connue");
    double latitude = latitudes.get(s);
    double longitude = longitudes.get(s);
-   affichePoint(longitude, latitude);
+   affichePointSurCarte(longitude, latitude);
 }
 
 //affiche une ville de nom s en indiquant le numéro num
 void afficheVilleAvecNumero(String s, int num) {
    assertion(longitudes.containsKey(s),s + " n'est pas une ville connue");
    double latitude = latitudes.get(s);
-   double longitude = longitudes.get(s); affichePoint(longitude, latitude, num);
+   double longitude = longitudes.get(s); affichePointSurCarte(longitude, latitude, num);
 }
 
 //affiche toutes les villes
@@ -20,10 +20,10 @@ void afficheToutesVilles() {
 }
 
 //affiche une route directe entre deux villes
-void afficheRouteDirecte(String ville1, String ville2, Intensite intensite) {
+void afficheRouteDirecte(String ville1, String ville2, IntensiteRoute intensite) {
     assertion(latitudes.containsKey(ville1),ville1 + " n'est pas une ville connue");
     assertion(latitudes.containsKey(ville2),ville2 + " n'est pas une ville connue");
-    afficheRoute(longitudes.get(ville1), latitudes.get(ville1),
+    afficheRouteSurCarte(longitudes.get(ville1), latitudes.get(ville1),
                  longitudes.get(ville2), latitudes.get(ville2),intensite);    
 }
  
@@ -36,10 +36,8 @@ void afficheToutesRoutesDirectes() {
 
 int distance(String ville1, String ville2) {
     if (voisins.get(ville1).contains(ville2)) {
-	assert(latitudes.containsKey(ville1));
-	assert(longitudes.containsKey(ville1));
-	assert(latitudes.containsKey(ville2));
-	assert(longitudes.containsKey(ville2));
+	assertion(latitudes.containsKey(ville1),ville1 + " n'est pas une ville connue");
+	assertion(latitudes.containsKey(ville2),ville2 + " n'est pas une ville connue");
 	return distanceEuclidienne(longitudes.get(ville1), latitudes.get(ville1),
 				   longitudes.get(ville2), latitudes.get(ville2));    
     } else return maxInteger;
@@ -131,8 +129,9 @@ List<String> plusCourtChemin(String depart, String arrivee) {
 }
 
 void main() {
-    efface(); 
+echo(latitudes.keySet());
+    effaceCarte(); 
   afficheToutesRoutesDirectes();
 afficherCheminAvecNumeros(plusCourtChemin("Calais","Nice"));
-afficherCheminAvecNumeros(plusCourtChemin("Brest","Perpignan"));
+afficherCheminAvecNumeros(plusCourtCheminGogleMap("Brest","Perpignan"));
 }

@@ -8,9 +8,182 @@
    </div>
      
    <div>
-      A compl&eacute;ter...
+       Cette proglet<sup><a href="#1">1</a></sup> permet d'afficher des
+      villes et des routes sur une carte de France &agrave; partir de coordonn&eacute;es
+      g&eacute;ographiques (longitude,latitude). La proglet fournie aussi une base
+      de donn&eacute;e constitu&eacute;e des coordonn&eacute;es g&eacute;ographiques des grandes villes
+      fran&ccedil;aises et de certaines routes entre ces villes. Pour simplifier,
+      ces routes sont de simples lignes droites. Un calcul de plus court
+      chemin dans ce r&eacute;seau de routes est aussi fournie.
+        
+   </div>
+   
+     
+   <div>
+      <h2>Affichage sur la carte.</h2>
+          La carte de France de la proglet peut &ecirc;tre modifi&eacute;e &agrave; l'aides des fonctionnalit&eacute;s suivantes.
+          
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                          
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Efface la carte pour faire dispara&icirc;tre les routes et les symboles d&eacute;signant les villes.</font></tt></p>
+                          
+                     <div><font color="#990000"><b>void</b></font> <font color="#990000"><b>effaceCarte</b></font>()
+                     </div>
+                          
+                     <div></div>
+                          
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Met en &eacute;vidence un point de la carte d&eacute;sign&eacute; par ses coordonn&eacute;es g&eacute;ographiques (longitude,latitude).</font></tt></p>
+                          
+                     <div><font color="#990000"><b>void</b></font> <font color="#990000"><b>affichePointSurCarte</b></font>(<font color="#990000"><b>double</b></font> <b>longitude</b>, <font color="#990000"><b>double</b></font> <b>latitude</b>)
+                     </div>
+                          
+                     <div></div>
+                          
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Met en &eacute;vidence un point de la carte d&eacute;sign&eacute; par ses coordonn&eacute;es g&eacute;ographiques (<b>longitude</b>,<b>latitude</b>) en num&eacute;rotant ce point avec le nombre <b>index</b>.</font></tt></p>
+                          
+                     <div><font color="#990000"><b>void</b></font> <font color="#990000"><b>affichePointSurCarte</b></font>(<font color="#990000"><b>double</b></font> <b>longitude</b>, <font color="#990000"><b>double</b></font> <b>latitude</b>, <font color="#990000"><b>int</b></font> <b>index</b>)
+                     </div>
+                          
+                     <div></div>
+                          
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Trace une ligne droite entre un point de coordonn&eacute;es g&eacute;ographiques (<b>longitude1</b>,<b>latitude1</b>) et un autre de coordonn&eacute;es g&eacute;ographiques (<b>longitude2</b>,<b>latitude2</b>).</font></tt></p> 
+                          
+                     <div><font color="#990000"><b>void</b></font> <font color="#990000"><b>afficheRouteSurCarte</b></font>(<font color="#990000"><b>double</b></font> <b>longitude1</b>, <font color="#990000"><b>double</b></font> <b>latitude1</b>, <font color="#990000"><b>double</b></font> <b>longitude2</b>, <font color="#990000"><b>double</b></font> <b>latitude2</b>)
+                     </div>
+                          
+                     <div></div>
+                          
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Trace une ligne droite entre un point de coordonn&eacute;es g&eacute;ographiques (<b>longitude1</b>,<b>latitude1</b>) et un autre de coordonn&eacute;es g&eacute;ographiques (<b>longitude2</b>,<b>latitude2</b>) en prenant une couleur d'intensit&eacute; <b>intensite</b>.</font></tt></p>
+                          
+                     <div><font color="#990000"><b>void</b></font> <font color="#990000"><b>afficheRouteSurCarte</b></font>(<font color="#990000"><b>double</b></font> <b>longitude1</b>, <font color="#990000"><b>double</b></font> <b>latitude1</b>, <font color="#990000"><b>double</b></font> <b>longitude2</b>, <font color="#990000"><b>double</b></font> <b>latitude2</b>, <font color="#990000"><b>IntensiteRoute</b></font> <b>intensite</b>)
+                     </div>
+                          
+                     <div></div>
+                       }
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>
+          Pour l'affichage des routes, il est possible de pr&eacute;ciser l'intensit&eacute; d'affichage pour r&eacute;aliser des effets de transparence.
+      Une intensit&eacute; est une valeur de type
+          <font color="#990000"><b>IntensiteRoute</b></font> &agrave; choisir parmis <font color="#990000"><b>{ LEGER, MOYEN, FORT }</b></font>.
         
    </div>
      
+     
+   <div>
+      <h2>Donn&eacute;es g&eacute;ographiques.</h2>
+          La proglet fournie une base de coordonn&eacute;es g&eacute;ographiques pour les grandes villes de France gr&acirc;ce tables suivantes.
+          
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                           
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Table des latitudes associ&eacute;e &agrave; chaque nom de ville.</font></tt></p>
+                           
+                     <div><font color="#990000"><b>Map&lt;String,Double&gt;</b></font> <b>latitudes</b>;
+                     </div>
+                           
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Table des longitudes associ&eacute;e &agrave; chaque nom de ville.</font></tt></p>
+                           
+                     <div><font color="#990000"><b>Map&lt;String,Double&gt;</b></font> <b>longitudes</b>;
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>
+          Nous associons ainsi chaque nom de ville de la base de donn&eacute;e &agrave; une latitude (un nombre au format <font color="#990000"><b>Double</b></font>) ainsi qu'&agrave; une longitude. 
+          Par exemple, l'expression <b>latitudes</b>.<font color="#990000"><b>get</b></font>("Paris") renvoie la latitude de Paris et  <b>longitudes</b>.<font color="#990000"><b>get</b></font>("Paris") sa longitude.
+          L'ensemble des villes r&eacute;pertori&eacute;es peux &ecirc;tre obtenu par l'expression <b>latitudes</b>.<font color="#990000"><b>keySet</b></font>() de type <font color="#990000"><b>Set&lt;String&gt;</b></font>. 
+          
+      
+      <div>Exemple:
+             
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                              
+                        <div><font color="#990000"><b>echo</b></font>(<b>latitudes</b>.<font color="#990000"><b>keySet</b></font>());
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+             provoque l'affichage suivant:
+             
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                        [Troyes, Lens, Nantes, La Rochelle, Angoul&ecirc;me, Le Havre, Bayonne, Saint-Nazaire, Amiens, Brest, B&eacute;thune, Montb&eacute;liard, N&icirc;mes,
+                        Grenoble, Chamb&eacute;ry, Dijon, Tours, Nice, Lille, Strasbourg, Toulouse, Paris, Annecy, Avigon, Caen, Montpellier, Rennes, Perpignan,
+                        Valence, Besan&ccedil;on, Saint-Etienne, Thionville, Orl&eacute;ans, Clermont-Ferrand, Annemasse, Reims, Toulon, Dunkerque, Valenciennes,
+                        Metz, Limoges, Calais, Bordeaux, Lorient, Lyon, Angers, Marseille, Pau, Le Mans, Poitiers, Nancy, Rouen, Mulhouse] 
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+         
+      </div>
+      
+   </div>
+   
+     
+   <div>
+      <h2>Manipulations g&eacute;ographiques.</h2>
+          La proglet fournit enfin deux fonctions qui peuvent s'av&eacute;rer utiles pour des calculs d'itin&eacute;raires.
+          
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                           
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Calcule la distance (en km) sur la sph&egrave;re terrestre entre un point de coordonn&eacute;es g&eacute;ographiques (<b>longitude1</b>,<b>latitude1</b>) et un autre de coordonn&eacute;es g&eacute;ographiques (<b>longitude2</b>,<b>latitude2</b>).</font></tt></p> 
+                           
+                     <div><font color="#990000"><b>int</b></font> <font color="#990000"><b>distanceEuclidienne</b></font>(<font color="#990000"><b>double</b></font> <b>longitude1</b>, <font color="#990000"><b>double</b></font> <b>latitude1</b>, <font color="#990000"><b>double</b></font> <b>longitude2</b>, <font color="#990000"><b>double</b></font> <b>latitude2</b>)
+                     </div>
+                           
+                     <p><tt><font color="#202080"><big>//</big>&nbsp;Calcule un chemin sous forme d'une liste de noms de ville afin de relier la ville de nom <b>depart</b> &agrave; celle de nom <b>arrivee</b> en suivant uniquement des routes de la table
+                              <b>voisins</b> de la proglet.</font></tt></p>
+                           
+                     <div><font color="#990000"><b>List&lt;String&gt;</b></font> <font color="#990000"><b>plusCourtCheminGogleMap</b></font>(<font color="#990000"><b>Map&lt;String,List&lt;String&gt;&gt;</b></font> voisinages, <font color="#990000"><b>String</b></font> <b>depart</b>, <font color="#990000"><b>String</b></font> <b>arrivee</b>)
+                     </div>
+                         
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>
+        
+   </div>
+     
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programm&eacute;e en Java et <a href="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/paintbrush/ImageDisplay.html">document&eacute;e</a> 
+                   pour sa libre redistribution, l'acc&egrave;s <a href="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/paintbrush/PaintBrush.java.html">au code source</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
+            </div>
+         </li>
+      </ol>
+   </div>
    
 </div>

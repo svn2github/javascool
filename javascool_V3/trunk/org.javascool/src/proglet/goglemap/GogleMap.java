@@ -38,28 +38,28 @@ public class GogleMap implements org.javascool.Proglet {
   //
   // This defines the javascool interface
   //
-  public enum Intensite { LEGER (1), MOYEN (2), FORT (3);
+  public enum IntensiteRoute { LEGER (1), MOYEN (2), FORT (3);
   	private int value;	
-  	Intensite(int i) { value = i; } 
+  	IntensiteRoute(int i) { value = i; } 
   }
   
-  public final static Intensite LEGER = Intensite.LEGER;
-  public final static Intensite MOYEN = Intensite.MOYEN;
-  public final static Intensite FORT = Intensite.FORT;
+  public final static IntensiteRoute LEGER = IntensiteRoute.LEGER;
+  public final static IntensiteRoute MOYEN = IntensiteRoute.MOYEN;
+  public final static IntensiteRoute FORT = IntensiteRoute.FORT;
   
-  public static void affichePoint(double longitude, double latitude, int idx) {
+  public static void affichePointSurCarte(double longitude, double latitude, int idx) {
 	  panel.main.affichePoint(longitude,latitude,idx);
   };
   
-  public static void affichePoint(double longitude, double latitude) {
+  public static void affichePointSurCarte(double longitude, double latitude) {
 	  panel.main.affichePoint(longitude,latitude);
   }
 
-  public static void afficheRoute(double longitude1, double latitude1, double longitude2, double latitude2, Intensite intensite) {
+  public static void afficheRouteSurCarte(double longitude1, double latitude1, double longitude2, double latitude2, IntensiteRoute intensite) {
 	  panel.main.afficheRoute(longitude1,latitude1,longitude2,latitude2,intensite.value);
   }
 
-  public static void afficheRoute(double longitude1, double latitude1, double longitude2, double latitude2) {
+  public static void afficheRouteSurCarte(double longitude1, double latitude1, double longitude2, double latitude2) {
 	  panel.main.afficheRoute(longitude1,latitude1,longitude2,latitude2);
   }
 
@@ -67,13 +67,17 @@ public class GogleMap implements org.javascool.Proglet {
 	  return panel.main.distanceEuclidienne(longitude1,latitude1,longitude2,latitude2); 
   }
   
-  public static void efface() {
+  public static void effaceCarte() {
 	  panel.main.clearMap();	
   }
 	  
   public static Map<String,Double> latitudes;
   public static Map<String,Double> longitudes;
   public static Map<String,List<String>> voisins;
+
+  public static List<String> plusCourtCheminGogleMap(String depart, String arrivee) {     
+	  return GogleMapCalculChemins.plusCourtChemin(panel.main,depart,arrivee);
+  }
 
   //
   // This defines the tests on the panel
