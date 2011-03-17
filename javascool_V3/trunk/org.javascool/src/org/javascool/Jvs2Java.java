@@ -160,7 +160,7 @@ public class Jvs2Java {
     }
     return "\n"+g.
       replaceAll("\\}\\s*else\\s*(\\{|if)", "} else $1").
-      replaceAll("(while|if|for|return)\\s*", "$1 ");
+      replaceAll("(while|if|for|return)\\s*[^a-z_0-9_]", "$1 ");
   }
   private static boolean isOperator(char c) {
     switch(c) {
