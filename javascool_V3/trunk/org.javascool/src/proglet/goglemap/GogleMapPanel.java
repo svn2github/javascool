@@ -10,13 +10,19 @@ import java.awt.Graphics2D;
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Image;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+
 import java.awt.image.BufferedImage;
+import java.awt.GridLayout;
 import java.awt.RenderingHints;
 import java.awt.BasicStroke;
 import java.awt.Toolkit;
@@ -28,26 +34,39 @@ import java.awt.geom.Line2D;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import org.javascool.Macros;
 import org.javascool.Utils;
 
-class GogleMapPanel extends JPanel {
+
+class GogleMapPanel extends JPanel implements ActionListener {
   private static final long serialVersionUID = 1L;
   
   Map<String,List<String>> arcs;
   Map<String,Double> latitudes;
   Map<String,Double> longitudes;
-  private Image ici;
+  private Image ici_bleu;
+  private Image ici_rouge;
   private Image france;
-  private Set<PointAAfficher> pointsAffiche;
+  private Set<PointAAfficher> pointsAfficheAvecNumero;
+  private Set<PointAAfficher> pointsAfficheSansNumero;
   private Set<ArcAAfficher> arcsAffiche;
-    
+  private CartePanel carte;
+  static private String buttonDFSString = "Parcours en profondeur";
+  static private String buttonBFSString = "Parcours en largeur";
+  private JButton buttonDFS;
+  private JButton buttonBFS;
+  private GogleMapPanel me = this;
+      
   void clearMap () {
-    pointsAffiche.clear();
-    arcsAffiche.clear();
-    repaint();
+	  pointsAfficheAvecNumero.clear();
+	  pointsAfficheSansNumero.clear();
+	  arcsAffiche.clear();
+	  carte.repaint();
   }
   
   private void drawRoad(Graphics g, double longitude1, double latitude1, double longitude2, double latitude2) {
@@ -65,7 +84,7 @@ class GogleMapPanel extends JPanel {
   
   void drawPoint(Graphics2D g, int x, int y, int indice) {
     //    System.out.println("x ="+x+" y="+y+" i="+indice);
-    g.drawImage(ici, x, y, null);
+    g.drawImage((indice!=-1) ? ici_bleu : ici_rouge, x, y, null);
     if (indice!=-1 && indice<10) g.drawString(""+indice,x+7,y+13);
     else if (indice!=-1) g.drawString(""+indice,x+4,y+13);
     //    g.setColor(Color.BLACK);
@@ -73,51 +92,27 @@ class GogleMapPanel extends JPanel {
   }
   
   public void affichePoint(double longitude, double latitude, int idx) {
-    pointsAffiche.add(new PointAAfficher(longitude,latitude,idx));
-    repaint();
+    pointsAfficheAvecNumero.add(new PointAAfficher(longitude,latitude,idx));
+    carte.repaint();
   }
   
   public void affichePoint(double longitude, double latitude) {
-    pointsAffiche.add(new PointAAfficher(longitude,latitude,-1));
-    repaint();
+    pointsAfficheSansNumero.add(new PointAAfficher(longitude,latitude,-1));
+    carte.repaint();
   }
 
   // @param intensite: entier entre 1 et 5 pour l'intensite du tracé 
   public void afficheRoute(double longitude1, double latitude1, double longitude2, double latitude2, int intensite) {
     arcsAffiche.add(new ArcAAfficher(longitude1,latitude1,longitude2,latitude2,intensite));
-    repaint();
+    carte.repaint();
   }
   
   public void afficheRoute(double longitude1, double latitude1, double longitude2, double latitude2) {
 	    arcsAffiche.add(new ArcAAfficher(longitude1,latitude1,longitude2,latitude2,2));
-	    repaint();
+	    carte.repaint();
 	  }
 
-  protected void paintComponent(Graphics g) {
-    super.paintComponent(g);   
-    g.drawImage(france, 0, 0, null);
- 
-    for (ArcAAfficher a:arcsAffiche) {
-    	g.setColor(new Color(1.f,0.f,0.f,a.intensite * .3f));
-    	drawRoad(g,a.longitude1,a.latitude1,a.longitude2,a.latitude2);
-    }
-
-
-    int screenRes = Toolkit.getDefaultToolkit().getScreenResolution();
-    int fontSize = (int)Math.round(10.0 * screenRes / 72.0);
-    Font font = new Font("Arial", Font.BOLD, fontSize);
-    Graphics2D g2d = (Graphics2D)g;
-    g2d.setFont(font);
-    g2d.setColor(Color.WHITE);
-    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-     
-    for (PointAAfficher p:pointsAffiche)
-      drawPoint(g2d, getX(p.x), getY(p.y),p.idx);
-     
-            
-  }
-   
+    
   static int getX_Icon(double d) {
     return getX(d);
   }
@@ -188,12 +183,62 @@ class GogleMapPanel extends JPanel {
     latitudes.put(ville,_latitude);
     longitudes.put(ville,_longitude);
   }
-    
+  
+  private class ParcoursEnLargeur extends SwingWorker<Void,Void> {
+	  protected Void doInBackground() {
+		  me.clearMap();
+		  GogleMapParcours.afficheToutesRoutesDirectes(me);
+		  GogleMapParcours.parcoursLargeur(me,"Paris");
+		  me.buttonBFS.setEnabled(true);
+		  me.buttonDFS.setEnabled(true);
+		  return null;
+	  }
+  }
+ 
+  private class ParcoursEnProfondeur extends SwingWorker<Void,Void> {
+	  protected Void doInBackground() {
+		  me.clearMap();
+		  GogleMapParcours.afficheToutesRoutesDirectes(me);
+		  GogleMapParcours.parcoursProfondeur(me,"Paris");
+		  me.buttonBFS.setEnabled(true);
+		  me.buttonDFS.setEnabled(true);
+		  return null;
+	  }
+  }
+ 
+  public void actionPerformed(ActionEvent e) {
+	  String action = e.getActionCommand();
+	  final GogleMapPanel me = this;
+	  if (action.equals(buttonBFSString)) {
+		  buttonBFS.setEnabled(false);
+		  buttonDFS.setEnabled(false);
+          (new ParcoursEnLargeur()).execute();
+	  }
+	  else if (action.equals(buttonDFSString)) {
+		  buttonBFS.setEnabled(false);
+		  buttonDFS.setEnabled(false);
+		  (new ParcoursEnProfondeur()).execute();
+	  }
+  }		
+
   GogleMapPanel () {
     super(new BorderLayout());
-    setPreferredSize(new Dimension(640, 640));
+
+    buttonDFS = new JButton(buttonDFSString);
+    buttonBFS = new JButton(buttonBFSString);
+    buttonDFS.setActionCommand(buttonDFSString);
+    buttonBFS.setActionCommand(buttonBFSString);
+    buttonDFS.addActionListener(this);
+    buttonBFS.addActionListener(this);
+    JPanel groupBoutons = new JPanel(new GridLayout(1, 0));
+    groupBoutons.add(buttonDFS);
+    groupBoutons.add(buttonBFS);
+    add(carte = new CartePanel(), BorderLayout.CENTER);
+    add(groupBoutons, BorderLayout.SOUTH);
+    
     try {
-      ici = Utils.getIcon("proglet/goglemap/doc-files/ici.png").getImage();
+      ici_bleu = Utils.getIcon("proglet/goglemap/doc-files/ici_bleu.png").getImage();
+      ici_rouge = Utils.getIcon("proglet/goglemap/doc-files/ici_rouge.png").getImage();
       france = Utils.getIcon("proglet/goglemap/doc-files/carteDeFrance.png").getImage();
     } catch (Exception e) {
       System.out.println("Erreur au read : "+ e);
@@ -333,8 +378,10 @@ class GogleMapPanel extends JPanel {
     ajouteArc("Reims","Lens");
     ajouteArc("Lens","Lille");
 
-    pointsAffiche = new TreeSet<PointAAfficher>();
+    pointsAfficheAvecNumero = new TreeSet<PointAAfficher>();
+    pointsAfficheSansNumero = new TreeSet<PointAAfficher>();
     arcsAffiche = new HashSet<ArcAAfficher>();
+
 
   }
   
@@ -355,7 +402,43 @@ class GogleMapPanel extends JPanel {
     arcs.get(depart).add(arrivee);
   }
   
-  
+  class CartePanel extends JPanel {
+
+		
+		CartePanel() {
+		    setPreferredSize(new Dimension(640, 640));
+		}
+
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);   
+			g.drawImage(france, 0, 0, null);
+
+			for (ArcAAfficher a:arcsAffiche) {
+				g.setColor(new Color(1.f,0.f,0.f,a.intensite * .3f));
+				drawRoad(g,a.longitude1,a.latitude1,a.longitude2,a.latitude2);
+			}
+
+
+			int screenRes = Toolkit.getDefaultToolkit().getScreenResolution();
+			int fontSize = (int)Math.round(10.0 * screenRes / 72.0);
+			Font font = new Font("Arial", Font.BOLD, fontSize);
+			Graphics2D g2d = (Graphics2D)g;
+			g2d.setFont(font);
+			g2d.setColor(Color.WHITE);
+			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+
+			for (PointAAfficher p:pointsAfficheSansNumero)
+				drawPoint(g2d, GogleMapPanel.getX(p.x), GogleMapPanel.getY(p.y),p.idx);
+			for (PointAAfficher p:pointsAfficheAvecNumero)
+				drawPoint(g2d, GogleMapPanel.getX(p.x), GogleMapPanel.getY(p.y),p.idx);
+
+
+		}
+
+
+	}
+
   
 }
 

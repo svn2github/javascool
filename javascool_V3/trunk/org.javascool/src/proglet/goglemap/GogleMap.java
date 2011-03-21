@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.List;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import org.javascool.Jvs2Java;
 
@@ -77,6 +78,16 @@ public class GogleMap implements org.javascool.Proglet {
 
   public static List<String> plusCourtCheminGogleMap(String depart, String arrivee) {     
 	  return GogleMapCalculChemins.plusCourtChemin(panel.main,depart,arrivee);
+  }
+
+  public static void parcoursEnLargeur(final String depart) {     
+	  SwingUtilities.invokeLater(new Runnable() {
+	      public void run() {
+	    	  panel.main.clearMap();
+	    	  GogleMapParcours.afficheToutesRoutesDirectes(panel.main);
+	    	  GogleMapParcours.parcoursLargeur(panel.main,depart);
+	      }
+	  });
   }
 
   //

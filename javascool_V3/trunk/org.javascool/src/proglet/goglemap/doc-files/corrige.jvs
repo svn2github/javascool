@@ -1,138 +1,96 @@
+void verifierVille(String s) {
+  assertion(latitudes.containsKey(s), s + " n'est pas une ville connue");
+}
 
-//affiche une ville de nom s
+// Affiche une ville de nom s
 void afficheVille(String s) {
-   assertion(latitudes.containsKey(s), s + " n'est pas une ville connue");
-   double latitude = latitudes.get(s);
-   double longitude = longitudes.get(s);
-   affichePointSurCarte(longitude, latitude);
+  verifierVille(s);
+  double latitude = latitudes.get(s);
+  double longitude = longitudes.get(s);
+  affichePointSurCarte(longitude, latitude);
 }
 
-//affiche une ville de nom s en indiquant le numéro num
+// Affiche une ville de nom s en indiquant le num�ro num
 void afficheVilleAvecNumero(String s, int num) {
-   assertion(longitudes.containsKey(s),s + " n'est pas une ville connue");
-   double latitude = latitudes.get(s);
-   double longitude = longitudes.get(s); affichePointSurCarte(longitude, latitude, num);
+  verifierVille(s);
+  double latitude = latitudes.get(s);
+  double longitude = longitudes.get(s);
+  affichePointSurCarte(longitude, latitude, num);
 }
 
-//affiche toutes les villes
+// Affiche toutes les villes
 void afficheToutesVilles() {
-    for (String ville : latitudes.keySet()) afficheVille(ville);
+  for (String ville : latitudes.keySet()) 
+    afficheVille(ville);
 }
 
-//affiche une route directe entre deux villes
+// Affiche une route directe entre deux villes
 void afficheRouteDirecte(String ville1, String ville2, IntensiteRoute intensite) {
-    assertion(latitudes.containsKey(ville1),ville1 + " n'est pas une ville connue");
-    assertion(latitudes.containsKey(ville2),ville2 + " n'est pas une ville connue");
-    afficheRouteSurCarte(longitudes.get(ville1), latitudes.get(ville1),
-                 longitudes.get(ville2), latitudes.get(ville2),intensite);    
+  verifierVille(ville1);
+  verifierVille(ville2);
+  afficheRouteSurCarte(longitudes.get(ville1), 
+                       latitudes.get(ville1), 
+                       longitudes.get(ville2), 
+                       latitudes.get(ville2), 
+                       intensite);
 }
- 
-//affiche toutes les routes directes
-void afficheToutesRoutesDirectes() {
-    for (String depart: voisins.keySet()) 
-	for (String arrivee: voisins.get(depart))
-	  if (depart.compareTo(arrivee)>0) afficheRouteDirecte(depart,arrivee,LEGER);
-}    
 
-int distance(String ville1, String ville2) {
-    if (voisins.get(ville1).contains(ville2)) {
-	assertion(latitudes.containsKey(ville1),ville1 + " n'est pas une ville connue");
-	assertion(latitudes.containsKey(ville2),ville2 + " n'est pas une ville connue");
-	return distanceEuclidienne(longitudes.get(ville1), latitudes.get(ville1),
-				   longitudes.get(ville2), latitudes.get(ville2));    
-    } else return maxInteger;
+// Affiche toutes les routes directes
+void afficheToutesRoutesDirectes() {
+  for (String depart : voisins.keySet()) 
+  for (String arrivee : voisins.get(depart))
+    // Pour �viter de tracer deux fois la m�me route
+    if (depart.compareTo(arrivee) > 0) 
+    afficheRouteDirecte(depart, arrivee, LEGER);
 }
-  
+
+// Calcule la distance entre deux villes
+int distance(String ville1, String ville2) {
+  verifierVille(ville1);
+  verifierVille(ville2);
+  if (voisins.get(ville1).contains(ville2)) {
+    return distanceEuclidienne(longitudes.get(ville1), 
+                               latitudes.get(ville1), 
+                               longitudes.get(ville2), 
+                               latitudes.get(ville2));
+  }
+  else return maxInteger;
+}
+
 // afficher un chemin sur la carte
 void afficherChemin(List<String> chemin) {
-    int longueur = chemin.size();
-    for (int j=1; j<longueur; j++) {
-	afficheRouteDirecte(chemin.get(j-1),chemin.get(j),MOYEN);    
-    }
+  int longueur = chemin.size();
+  for (int j = 1; j < longueur; j ++) {
+    afficheRouteDirecte(chemin.get(j - 1), 
+                        chemin.get(j), 
+                        MOYEN);
+  }
 }
 
-// afficher un chemin avec les numéros d'ordre de passage
+// afficher un chemin avec les num�os d'ordre de passage
 void afficherCheminAvecNumeros(List<String> chemin) {
-    int longueur = chemin.size();
-    afficheVilleAvecNumero(chemin.get(0),1);
-    for (int j=1; j<longueur; j++) {
-	afficheRouteDirecte(chemin.get(j-1),chemin.get(j),MOYEN);    
-	afficheVilleAvecNumero(chemin.get(j),j+1);
-    }
+  int longueur = chemin.size();
+  afficheVilleAvecNumero(chemin.get(0), 1);
+  for (int j = 1; j < longueur; j ++) {
+    afficheRouteDirecte(chemin.get(j - 1), 
+                        chemin.get(j), 
+                        MOYEN);
+    afficheVilleAvecNumero(chemin.get(j), j + 1);
+  }
 }
-  
+
 // Calculer la longueur d'un chemin.
-int longueurChemin(List<String> chemin) {
-    int cardinal = chemin.size();
-    int longueur = 0;
-    for (int j=1; j<cardinal; j++) {
-	longueur += distance(chemin.get(j-1),chemin.get(j));    
-    }
-    return longueur;
-}
-  
-String PlusProche(List<String> groupe, Map<String,Integer> distMap) {
-    String res = null;
-    int distMin = Integer.MAX_VALUE;
-    for (String ville: groupe) {
-	int distance = distMap.get(ville);
-	if (distance < distMin) {
-	    distMin = distance;
-	    res = ville;
-	}
-    }
-    return res;
-}
-
-void MiseAjourDistance(String ville0, Map<String,Integer> distMap,  Map<String,String> pred) {
-    int distance_ville0 = distMap.get(ville0);
-    for (String ville: voisins.get(ville0)) {
-	int nouvelle_distance = distance_ville0 + distance(ville0,ville);
-	if (nouvelle_distance < distMap.get(ville)) {
-	    distMap.put(ville,nouvelle_distance);
-	    pred.put(ville,ville0);
-	}
-    }
-}
-
-List<String> plusCourtChemin(String depart, String arrivee) {
-    Map<String,Integer> distanceAuDepart = new HashMap<String,Integer>();
-    List<String> aTraite = new ArrayList<String>(latitudes.keySet());
-    Map<String,String> predecesseur = new HashMap<String,String>();
-    int nb_ville = aTraite.size();
-
-    for (String ville: aTraite) {
-	if (ville.equals(depart)) distanceAuDepart.put(ville,0);
-	else if (voisins.get(ville).contains(depart)) {
-	    distanceAuDepart.put(ville,distance(ville,depart));
-	    predecesseur.put(ville,depart);
-	} else
-	    distanceAuDepart.put(ville,Integer.MAX_VALUE);  
-    }
-    aTraite.remove(depart);
-    
-    for (int i=1; i<nb_ville; i++) {
-	String prochain = PlusProche(aTraite,distanceAuDepart);
-	MiseAjourDistance(prochain,distanceAuDepart,predecesseur);
-	aTraite.remove(prochain);
-    }
-    
-    // construction du plus court chemin
-    List<String> chemin = new ArrayList<String>();
-    String finDuChemin = arrivee;
-    while (!finDuChemin.equals(depart)) {
-	chemin.add(0,finDuChemin);
-	finDuChemin = predecesseur.get(finDuChemin);
-    }
-    chemin.add(0,depart);
-    return chemin;
+int longueurChemin(List < String > chemin) {
+  int cardinal = chemin.size();
+  int longueur = 0;
+  for (int j = 1; j < cardinal; j ++) {
+    int dist = distance(chemin.get(j - 1), chemin.get(j));
+    assertion(dist < maxInteger, "Le chemin passe par une route inexistante");
+    longueur += dist;
+  }
+  return longueur;
 }
 
 void main() {
-echo(voisins.get("Bordeaux"));
-//echo(latitudes.keySet());
-    effaceCarte(); 
-  afficheToutesRoutesDirectes();
-afficherCheminAvecNumeros(plusCourtChemin("Calais","Nice"));
-afficherCheminAvecNumeros(plusCourtCheminGogleMap("Brest","Perpignan"));
+  afficherCheminAvecNumeros(plusCourtCheminGogleMap("Brest","Nice"));
 }
