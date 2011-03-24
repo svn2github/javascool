@@ -404,7 +404,7 @@ class GogleMapPanel extends JPanel implements ActionListener {
   
   class CartePanel extends JPanel {
 
-		
+		  private static final long serialVersionUID = 1L;
 		CartePanel() {
 		    setPreferredSize(new Dimension(640, 640));
 		}
