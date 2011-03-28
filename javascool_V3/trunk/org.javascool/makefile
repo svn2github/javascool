@@ -27,6 +27,9 @@ j3-1 :
 wjar : jar
 	@-rsync --rsh='ssh -C' www/javascool-3-2-2.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/javascool-3-2-2.jar
 
+wapp :
+	@firefox http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-proglets.htm
+
 doc : api
 	firefox file:www/api/org/javascool/package-summary.html
 
