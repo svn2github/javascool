@@ -1,0 +1,42 @@
+
+void main() {
+  String[] choixAnagrammes = {
+    "marion", "aimer", "badinage", "niche", "aspirine", "chine", "aspirine", "aube", "baignade", "chien", "manoir", "beau", "romain","imagine","parisien", "migraine", "marie"};
+  
+  echo("Proposez-moi un mot !");
+  String mot1 = readString();
+  int nb = 0;
+  for (String mot2 : choixAnagrammes) 
+    if (testAnagramme(mot1, mot2)) {
+    echo(mot2 + " est une anagramme de " + mot1);
+    nb ++;
+  }
+  echo("Nombre d'anagrammes : " + nb);
+}
+
+String normalise(String s) {
+  char[] t = chaineVersLettres(s);
+  //   java . util . Arrays . sort(t);
+  triSelection(t);
+  return lettresVersChaine(t);
+}
+
+boolean testAnagramme(String s1, String s2) {
+  return equal(normalise(s1), normalise(s2));
+}
+
+void permute(char[] t, int i, int j) {
+  char temp = t[i];
+  t[i] = t[j];
+  t[j] = temp;
+}
+
+int indexMin(char[] t, int i) {
+  int idx = i;
+  for (int k = i + 1; k < t.length; k++) if (t[k] < t[idx]) idx = k;
+  return idx;
+}
+
+void triSelection(char[] t) {
+  for (int i = 0; i < t.length - 1; i++) permute(t, i, indexMin(t, i));
+}
