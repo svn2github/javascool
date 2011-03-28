@@ -126,17 +126,18 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     // Adds the listener which is going to colorize after a key is entered
     {
       pane.addKeyListener(new KeyAdapter() {
-	  public void keyTyped(KeyEvent e) {
-	    modified = true;
-	    doColorize(e.getModifiers() != 0);
-	  }
-	});
+                            public void keyTyped(KeyEvent e) {
+                              modified = true;
+                              doColorize(e.getModifiers() != 0);
+                            }
+                          }
+                          );
     }
     // Defines the line number tracker
     {
       bar.add(line = new JLabel("ligne :   0 | "));
       pane.addCaretListener(new CaretListener() {
-	  public void caretUpdate(CaretEvent e) {
+                              public void caretUpdate(CaretEvent e) {
                                 try {
                                   int l = pane.getDocument().getRootElements()[0].getElementIndex(pane.getCaretPosition()) + 1;
                                   if(l != iline) {
@@ -153,16 +154,17 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     // Adds the listener to set when the document is modified
     {
       doc.addDocumentListener(new DocumentListener() {
-	  public void changedUpdate(DocumentEvent e) {
-	    modified = true;
-	  }
-	  public void insertUpdate(DocumentEvent e) {
-	    modified = true;
-	  }
-	  public void removeUpdate(DocumentEvent e) {
-	    modified = true;
-	  }
-	});
+                                public void changedUpdate(DocumentEvent e) {
+                                  modified = true;
+                                }
+                                public void insertUpdate(DocumentEvent e) {
+                                  modified = true;
+                                }
+                                public void removeUpdate(DocumentEvent e) {
+                                  modified = true;
+                                }
+                              }
+                              );
     }
     // Defines the Edit menu
     {
@@ -204,8 +206,8 @@ public class SourceEditor extends JPanel implements Widget, Editor {
       bar.add(menu);
       if(editable)
         menu.add(new JMenuItem(new AbstractAction("Reformate le code") {
-	    private static final long serialVersionUID = 1L;
-	    public void actionPerformed(ActionEvent evt) {
+                                 private static final long serialVersionUID = 1L;
+                                 public void actionPerformed(ActionEvent evt) {
                                    doReformat();
                                  }
                                }
@@ -298,11 +300,11 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     private int offset;
     public void actionPerformed(ActionEvent evt) {
       try {
-	modified = true;
+        modified = true;
         int offset = pane.getCaretPosition();
         pane.getDocument().insertString(offset, string, null);
         pane.setCaretPosition(offset + this.offset);
-	doColorize(true);
+        doColorize(true);
       } catch(Exception e) {
         Utils.report(e);
       }
@@ -472,21 +474,21 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     Segment text = new Segment();
     try {
       doc.getText(0, doc.getLength(), text);
-    } catch(Exception e) { }
-    if (pane.getCaretPosition() < text.count && !all) {
+    } catch(Exception e) {}
+    if((pane.getCaretPosition() < text.count) && !all) {
       int offset = text.offset + pane.getCaretPosition() - 1, count = 3;
-      if (offset > 0 ) {
-	while(offset > 0 && text.array[offset] != '\n')
-	  offset--;
-      } else
-	offset = 0;
-      if (offset + count < text.offset + text.count) {
-	while(offset + count < text.offset + text.count && text.array[offset + count - 1] != '\n')
-	count++;
-      } else {
-	count = text.offset + text.count - offset;
-      }
-      text.offset = offset; text.count = count;
+      if(offset > 0)
+        while(offset > 0 && text.array[offset] != '\n')
+          offset--;
+      else
+        offset = 0;
+      if(offset + count < text.offset + text.count)
+        while(offset + count < text.offset + text.count && text.array[offset + count - 1] != '\n')
+          count++;
+      else
+        count = text.offset + text.count - offset;
+      text.offset = offset;
+      text.count = count;
     }
     doColorize(pane.getCaretPosition(), text);
   }

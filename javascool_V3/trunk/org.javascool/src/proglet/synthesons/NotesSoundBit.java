@@ -72,7 +72,7 @@ public class NotesSoundBit extends SoundBit {
   public AudioInputStream getStream() {
     return sound.getStream();
   }
-  /**/public void setLength(double length) { throw new IllegalStateException("Cannot adjust length of buffered sound-bit of name " + getName());
+  /**/ public void setLength(double length) { throw new IllegalStateException("Cannot adjust length of buffered sound-bit of name " + getName());
   }
   // Gets the low-level tempo of a given note sequence.
   private static double getTempo(String notes) {

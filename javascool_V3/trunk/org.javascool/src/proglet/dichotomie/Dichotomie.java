@@ -102,7 +102,7 @@ public class Dichotomie implements org.javascool.Proglet {
   // This defines the tests on the panel
   //
 
-  /**/public static void test() {
+  /**/ public static void test() {
     /*
      *  // Tests if the dicho is sorted
      *  for(int i = 1; i < dichoLength(); i++)

@@ -34,7 +34,7 @@ public class JsProcessingActivities {
                        }
                      }
                      );
-    main.addActivity(new ProcessingActivity("EnVoiture", "Objet numérique: les graphes",  "Découvrir les graphes et les chemins", 1200, 700) {
+    main.addActivity(new ProcessingActivity("EnVoiture", "Objet numérique: les graphes", "Découvrir les graphes et les chemins", 1200, 700) {
                        public void init2(JsFrame frame) {
                          frame.addTab("Un tutoriel sur les graphes (1ère partie)", "sketchbook/EnVoiture/sujet-about-voiture.htm",
                                       "org/javascool/doc-files/icones16/globe.png", true, false);
@@ -59,7 +59,10 @@ public class JsProcessingActivities {
       name = n;
       type = c;
       // This sets the type to null if the processing class is not loadable
-      try { Class.forName(name); }  catch(Throwable e) { type = null; }
+      try { Class.forName(name);
+      } catch(Throwable e) {
+        type = null;
+      }
       title = t;
       width = w + 20;
       height = h + 20;

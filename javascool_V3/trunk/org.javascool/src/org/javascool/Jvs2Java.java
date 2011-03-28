@@ -68,99 +68,99 @@ public class Jvs2Java {
     int par = 0;
     for(int i = 0, j; i < f.length;) {
       // Escapes /* comments
-      if (f[i] == '/' && i < f.length - 1 && f[i+1] == '*') {
-	g += f[i++];
-	while(i < f.length && !(f[i-1] == '*' && f[i] == '/'))
-	  g += f[i++];
-	if (i < f.length)
-	  g += f[i++] + ln;
-	// Escapes // comments
-      } else if (f[i] == '/' && i < f.length - 1 && f[i+1] == '/') {
-	while(i < f.length && f[i] != '\n')
-	  g += f[i++];
-	g += ln;
-	i++;
-	// Escapes " chars
-      } else if (f[i] == '"') {
-	g += f[i++];
-	while(i < f.length && (f[i-1] == '\\' || f[i] != '"') &&  f[i] != '\n')
-	  g += f[i++];
-	if (i < f.length)
-	  g += f[i++];
-	// Escapes @ pragma
-      } else if (f[i] == '@') {
-	while(i < f.length && f[i] != '\n')
-	  g += f[i++];
-	g += ln;
-	i++;
-	// Normalizes spaces
-      } else if (Character.isWhitespace(f[i])) {
-	g += ' ';
-	i++;
-	while (i < f.length && Character.isWhitespace(f[i]))
-	  i++;
+      if((f[i] == '/') && (i < f.length - 1) && (f[i + 1] == '*')) {
+        g += f[i++];
+        while(i < f.length && !(f[i - 1] == '*' && f[i] == '/'))
+          g += f[i++];
+        if(i < f.length)
+          g += f[i++] + ln;
+        // Escapes // comments
+      } else if((f[i] == '/') && (i < f.length - 1) && (f[i + 1] == '/')) {
+        while(i < f.length && f[i] != '\n')
+          g += f[i++];
+        g += ln;
+        i++;
+        // Escapes " chars
+      } else if(f[i] == '"') {
+        g += f[i++];
+        while(i < f.length && (f[i - 1] == '\\' || f[i] != '"') && f[i] != '\n')
+          g += f[i++];
+        if(i < f.length)
+          g += f[i++];
+        // Escapes @ pragma
+      } else if(f[i] == '@') {
+        while(i < f.length && f[i] != '\n')
+          g += f[i++];
+        g += ln;
+        i++;
+        // Normalizes spaces
+      } else if(Character.isWhitespace(f[i])) {
+        g += ' ';
+        i++;
+        while(i < f.length && Character.isWhitespace(f[i]))
+          i++;
       } else {
-	char c0 = g.length() == 0 ? ' ' : g.charAt(g.length()-1);
-	// Counts (parenthesies)
-	if(f[i] == '(')
-	  par++;
-	if(f[i] == ')')
-	  par--;
-	// Normalize spaces around operators
-	if (isOperator(f[i])) {
-	  if (!(Character.isWhitespace(c0) || isOperator(c0)))
-	    g += ' ';
-	  g += f[i];
-	  if (i < f.length - 1 && !(Character.isWhitespace(f[i+1]) || isOperator(f[i+1])))
-	    g += ' ';
-	} else if (f[i] == '.') {
-	  if (g.length() > 0 && Character.isWhitespace(c0))
-	    g = g.substring(0, g.length()-1);
-	  g += f[i];
-	  while (i < f.length - 1 && Character.isWhitespace(f[i+1]))
-	    i++;
-	// Normalize spaces around punctuation
-	} else if (f[i] == ',' || f[i] == ';' || f[i] == ')') {
-	  if (g.length() > 0 && Character.isWhitespace(c0))
-	    g = g.substring(0, g.length()-1);
-	  g += f[i];
-	  if (par > 0 && f[i] != ')')
-	    if (i < f.length - 1 && !Character.isWhitespace(f[i+1]))
-	      g += ' ';
-	  if (f[i] == ')' && i < f.length - 1 && f[i+1] == '{')
-	      g += ' ';
-	} else if (f[i] == '(') {
-	  if (g.length() > 0 && Character.isWhitespace(c0) && g.length() > 1 && Character.isLetterOrDigit(g.charAt(g.length()-2)))
-	    g = g.substring(0, g.length()-1);
-	  g += f[i];
-	  while (i < f.length - 1 && Character.isWhitespace(f[i+1]))
-	    i++;
-	} else if(f[i] == '}') {
-	  for(int n = 0; n < 3; n++)
-	    if (g.length() > 0 && Character.isWhitespace(g.charAt(g.length()-1)))
-	      g = g.substring(0, g.length()-1);
-	  g += f[i];
-	} else
-	  g += f[i];
-	// Reformats {blocks}
-	if((f[i] == '{') || (f[i] == '}') || (f[i] == ';' && par == 0)) {
-	  if(f[i] == '{')
-	    ln += "   ";
-	  if(f[i] == '}')
-	    ln = ln.substring(0, ln.length() - 3);
-	  g += ln;
-	  if (ln.length() == 1)
-	    g += "\n";
-	  i++;
-	  while (i < f.length && Character.isWhitespace(f[i]))
-	    i++;
-	} else
-	  i++;
+        char c0 = g.length() == 0 ? ' ' : g.charAt(g.length() - 1);
+        // Counts (parenthesies)
+        if(f[i] == '(')
+          par++;
+        if(f[i] == ')')
+          par--;
+        // Normalize spaces around operators
+        if(isOperator(f[i])) {
+          if(!(Character.isWhitespace(c0) || isOperator(c0)))
+            g += ' ';
+          g += f[i];
+          if((i < f.length - 1) && !(Character.isWhitespace(f[i + 1]) || isOperator(f[i + 1])))
+            g += ' ';
+        } else if(f[i] == '.') {
+          if((g.length() > 0) && Character.isWhitespace(c0))
+            g = g.substring(0, g.length() - 1);
+          g += f[i];
+          while(i < f.length - 1 && Character.isWhitespace(f[i + 1]))
+            i++;
+          // Normalize spaces around punctuation
+        } else if((f[i] == ',') || (f[i] == ';') || (f[i] == ')')) {
+          if((g.length() > 0) && Character.isWhitespace(c0))
+            g = g.substring(0, g.length() - 1);
+          g += f[i];
+          if((par > 0) && (f[i] != ')'))
+            if((i < f.length - 1) && !Character.isWhitespace(f[i + 1]))
+              g += ' ';
+          if((f[i] == ')') && (i < f.length - 1) && (f[i + 1] == '{'))
+            g += ' ';
+        } else if(f[i] == '(') {
+          if((g.length() > 0) && Character.isWhitespace(c0) && (g.length() > 1) && Character.isLetterOrDigit(g.charAt(g.length() - 2)))
+            g = g.substring(0, g.length() - 1);
+          g += f[i];
+          while(i < f.length - 1 && Character.isWhitespace(f[i + 1]))
+            i++;
+        } else if(f[i] == '}') {
+          for(int n = 0; n < 3; n++)
+            if((g.length() > 0) && Character.isWhitespace(g.charAt(g.length() - 1)))
+              g = g.substring(0, g.length() - 1);
+          g += f[i];
+        } else
+          g += f[i];
+        // Reformats {blocks}
+        if((f[i] == '{') || (f[i] == '}') || ((f[i] == ';') && (par == 0))) {
+          if(f[i] == '{')
+            ln += "   ";
+          if(f[i] == '}')
+            ln = ln.substring(0, ln.length() - 3);
+          g += ln;
+          if(ln.length() == 1)
+            g += "\n";
+          i++;
+          while(i < f.length && Character.isWhitespace(f[i]))
+            i++;
+        } else
+          i++;
       }
     }
-    return "\n"+g.
-      replaceAll("\\}\\s*else\\s*(\\{|if)", "} else $1").
-      replaceAll("(while|if|for|return)\\s*[^a-z_0-9_]", "$1 ");
+    return "\n" + g.
+           replaceAll("\\}\\s*else\\s*(\\{|if)", "} else $1").
+           replaceAll("(while|if|for|return)\\s*[^a-z_0-9_]", "$1 ");
   }
   private static boolean isOperator(char c) {
     switch(c) {
@@ -211,9 +211,8 @@ public class Jvs2Java {
         if(line.matches("^\\s*(import|package)[^;]*;\\s*$")) {
           head.append(line);
           body.append("//" + line + "\n");
-	  if(line.matches("^\\s*package[^;]*;\\s*$")) {
-	    System.out.println("Attention: on ne peut normallement pas définir de package Java en JavaScool\n le programme risque de ne pas s'exécuter correctement");
-	  }
+          if(line.matches("^\\s*package[^;]*;\\s*$"))
+            System.out.println("Attention: on ne peut normallement pas définir de package Java en JavaScool\n le programme risque de ne pas s'exécuter correctement");
         } else
           body.append(translateOnce(line) + "\n");
       }
@@ -224,14 +223,13 @@ public class Jvs2Java {
       head.append("import java.util.Map;");
       head.append("import java.util.HashMap;");
       head.append("import static org.javascool.Macros.*;");
-      if(proglet.length() == 0) {
+      if(proglet.length() == 0)
         for(String p : proglets.keySet())
           head.append("import static " + proglets.get(p) + ".*;");
-      } else {
+      else {
         head.append("import static " + proglets.get("ingredients") + ".*;");
-        if(!"ingredients".equals(proglet)) {
+        if(!"ingredients".equals(proglet))
           head.append("import static " + proglets.get(proglet) + ".*;");
-	} 
       }
       head.append("import proglet.paintbrush.*;");
       // Declares the proglet's core as a Runnable in the Applet
@@ -292,8 +290,9 @@ public class Jvs2Java {
   // Filters the compiler error to return only one error.
   public static String error2output(String out) {
     System.err.println(out);
-    int i = out.indexOf("^"); 
-    if (i != -1) out = out.substring(0, i+1);
+    int i = out.indexOf("^");
+    if(i != -1)
+      out = out.substring(0, i + 1);
     out = out.replaceAll(jpath.replaceAll("\\\\", "\\\\\\\\"), jclass);
     return out;
   }
@@ -310,8 +309,7 @@ public class Jvs2Java {
       URL[] urls = new URL[] { new URL("file:" + new File(jpath).getParent() + File.separator) };
       Class< ? > j_class = new URLClassLoader(urls).loadClass(jclass);
       return j_class.newInstance();
-    } catch(Throwable e) {
-      throw Utils.report(new RuntimeException("Erreur: impossible de charger " + jpath + " / " + jclass + " (" + e + ") \n . . le package est il mal défini ?"));
+    } catch(Throwable e) { throw Utils.report(new RuntimeException("Erreur: impossible de charger " + jpath + " / " + jclass + " (" + e + ") \n . . le package est il mal défini ?"));
     }
   }
   /** Registered proglets. */
@@ -328,8 +326,8 @@ public class Jvs2Java {
    */
   public static JPanel getPanel(String proglet) {
     if(Jvs2Java.proglets.containsKey(proglet)) {
-      try { 
-	return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null);
+      try {
+        return (JPanel) Class.forName(Jvs2Java.proglets.get(proglet)).getField("panel").get(null);
       } catch(Exception e) {
         return null;
       }
@@ -347,8 +345,8 @@ public class Jvs2Java {
     if(start && (runnable != null))
       (thread = new Thread(new Runnable() {
                              public void run() {
-                               try { 
-				 runnable.run();
+                               try {
+                                 runnable.run();
                                } catch(Throwable e) {
                                  if(!"Programme arrêté !".equals(e.getMessage()))
                                    Utils.report(e);
@@ -369,8 +367,8 @@ public class Jvs2Java {
       Jvs2Java.proglet = proglets.get(proglet);
       (thread = new Thread(new Runnable() {
                              public void run() {
-                               try { 
-				 Class.forName(Jvs2Java.proglet).getDeclaredMethod("test").invoke(null);
+                               try {
+                                 Class.forName(Jvs2Java.proglet).getDeclaredMethod("test").invoke(null);
                                } catch(Throwable e) {
                                  Utils.report(e);
                                }
@@ -380,7 +378,7 @@ public class Jvs2Java {
     }
   }
   // This is the entry point to run  the proglet pupil's program: do not change directly !
-  /**/public static Runnable runnable = null;
+  /**/ public static Runnable runnable = null;
   private static String proglet = null;
   private static Thread thread = null;
 

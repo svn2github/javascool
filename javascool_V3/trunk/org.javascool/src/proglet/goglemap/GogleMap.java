@@ -18,7 +18,7 @@ import proglet.ingredients.Console;
 /** Définit une proglet javascool qui permet de tracer des chemins sur une carte de France.
  * @see <a href="doc-files/about-proglet.htm">Description</a>
  * @see <a href="doc-files/the-proglet.htm">La proglet</a>
- * @see <a href="GogleMap.java.html">code source</a> 
+ * @see <a href="GogleMap.java.html">code source</a>
  * @serial exclude
  */
 public class GogleMap implements org.javascool.Proglet {
@@ -39,63 +39,57 @@ public class GogleMap implements org.javascool.Proglet {
   //
   // This defines the javascool interface
   //
-  public enum IntensiteRoute { LEGER (1), MOYEN (2), FORT (3);
-  	private int value;	
-  	IntensiteRoute(int i) { value = i; } 
+  public enum IntensiteRoute { LEGER(1), MOYEN(2), FORT(3);
+                               private int value;
+                               IntensiteRoute(int i) {
+                                 value = i;
+                               }
   }
-  
+
   public final static IntensiteRoute LEGER = IntensiteRoute.LEGER;
   public final static IntensiteRoute MOYEN = IntensiteRoute.MOYEN;
   public final static IntensiteRoute FORT = IntensiteRoute.FORT;
-  
+
   public static void affichePointSurCarte(double longitude, double latitude, int idx) {
-	  panel.main.affichePoint(longitude,latitude,idx);
+    panel.main.affichePoint(longitude, latitude, idx);
   };
-  
+
   public static void affichePointSurCarte(double longitude, double latitude) {
-	  panel.main.affichePoint(longitude,latitude);
+    panel.main.affichePoint(longitude, latitude);
   }
-
   public static void afficheRouteSurCarte(double longitude1, double latitude1, double longitude2, double latitude2, IntensiteRoute intensite) {
-	  panel.main.afficheRoute(longitude1,latitude1,longitude2,latitude2,intensite.value);
+    panel.main.afficheRoute(longitude1, latitude1, longitude2, latitude2, intensite.value);
   }
-
   public static void afficheRouteSurCarte(double longitude1, double latitude1, double longitude2, double latitude2) {
-	  panel.main.afficheRoute(longitude1,latitude1,longitude2,latitude2);
+    panel.main.afficheRoute(longitude1, latitude1, longitude2, latitude2);
   }
-
   public static int distanceEuclidienne(double longitude1, double latitude1, double longitude2, double latitude2) {
-	  return panel.main.distanceEuclidienne(longitude1,latitude1,longitude2,latitude2); 
+    return panel.main.distanceEuclidienne(longitude1, latitude1, longitude2, latitude2);
   }
-  
   public static void effaceCarte() {
-	  panel.main.clearMap();	
+    panel.main.clearMap();
   }
-	  
-  public static Map<String,Double> latitudes;
-  public static Map<String,Double> longitudes;
-  public static Map<String,List<String>> voisins;
+  public static Map<String, Double> latitudes;
+  public static Map<String, Double> longitudes;
+  public static Map < String, List < String >> voisins;
 
-  public static List<String> plusCourtCheminGogleMap(String depart, String arrivee) {     
-	  return GogleMapCalculChemins.plusCourtChemin(panel.main,depart,arrivee);
+  public static List<String> plusCourtCheminGogleMap(String depart, String arrivee) {
+    return GogleMapCalculChemins.plusCourtChemin(panel.main, depart, arrivee);
   }
-
-  public static void parcoursEnLargeur(final String depart) {     
-	  SwingUtilities.invokeLater(new Runnable() {
-	      public void run() {
-	    	  panel.main.clearMap();
-	    	  GogleMapParcours.afficheToutesRoutesDirectes(panel.main);
-	    	  GogleMapParcours.parcoursLargeur(panel.main,depart);
-	      }
-	  });
+  public static void parcoursEnLargeur(final String depart) {
+    SwingUtilities.invokeLater(new Runnable() {
+                                 public void run() {
+                                   panel.main.clearMap();
+                                   GogleMapParcours.afficheToutesRoutesDirectes(panel.main);
+                                   GogleMapParcours.parcoursLargeur(panel.main, depart);
+                                 }
+                               }
+                               );
   }
-
   //
   // This defines the tests on the panel
   //
-  public static void test() {
-
-  }
+  public static void test() {}
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
 }

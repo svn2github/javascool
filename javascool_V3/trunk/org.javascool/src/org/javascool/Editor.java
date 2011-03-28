@@ -6,7 +6,6 @@ package org.javascool;
 
 /** Indicates that this class is a graphic editor that get/set text. */
 public interface Editor {
-
   /** Resets the editor.
    * @param editable True to edit the text. False to view it.
    * @return This, allowing to use the <tt>new Editor().reset(..)</tt> construct.

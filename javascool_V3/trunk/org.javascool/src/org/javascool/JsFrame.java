@@ -3,7 +3,7 @@
 | By Philippe Vienne <philoumailabo@gmail.com> |
 | Distributed on GNU General Public Licence    |
 | © 2010 INRIA, All rights reserved            |
-|______________________________________________|
+||______________________________________________|
 |
 ********************************************************************************/
 
@@ -31,13 +31,13 @@ import java.util.HashMap;
  * @serial exclude
  */
 public class JsFrame extends JPanel {
-  /**/public JsFrame() {}
+  /**/ public JsFrame() {}
   private static final long serialVersionUID = 1L;
 
   // Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
   private JToolBar toolBar = new JToolBar(JToolBar.HORIZONTAL);
   private JTabbedPane westPane = new JTabbedPane(), eastPane = new JTabbedPane(), eastPane0 = eastPane;
-  private JSplitPane splitPane= null;
+  private JSplitPane splitPane = null;
 
   /** Builds the GUI. */
   {
@@ -45,8 +45,8 @@ public class JsFrame extends JPanel {
     add(toolBar, BorderLayout.NORTH);
     resetSplitPane();
   }
-  private  void resetSplitPane() {
-    if (splitPane != null) 
+  private void resetSplitPane() {
+    if(splitPane != null)
       remove(splitPane);
     splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, westPane, eastPane);
     westPane.setMinimumSize(new Dimension(100, 100));
@@ -55,8 +55,7 @@ public class JsFrame extends JPanel {
     splitPane.setContinuousLayout(true);
     splitPane.setOneTouchExpandable(false);
     add(splitPane, BorderLayout.CENTER);
-  }     
-
+  }
   /** Resets the GUI.
    * @param logoFile If not null, displays a logo to label the interface.
    */
@@ -68,7 +67,7 @@ public class JsFrame extends JPanel {
     westPane.removeAll();
     eastPane.removeAll();
     // Avoid using split pane on small screens
-    if (getWidth() < 800) {
+    if(getWidth() < 800) {
       remove(splitPane);
       add(westPane);
       eastPane = westPane;

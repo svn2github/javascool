@@ -29,13 +29,13 @@ public class JsProgletActivities {
                      }
                      );
     main.addActivity(new ProgletActivity("exosdemaths", "Apprendre à programmer", "Programmer des calculs numériques et géométrique") {
-	               public void init2(JsFrame frame) {
+                       public void init2(JsFrame frame) {
                          frame.addTab("Propositions d'exercices", "proglet/exosdemaths/doc-files/index.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
     main.addActivity(new ProgletActivity("ingredients", "Apprendre à programmer", "Apprendre à programmer avec des tableaux") {
-	               public void init2(JsFrame frame) {
+                       public void init2(JsFrame frame) {
                          frame.addTab("Propositions d'exercices", "proglet/exosdemaths/doc-files/sujet-about-tableaux.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
@@ -54,11 +54,11 @@ public class JsProgletActivities {
                      }
                      );
     main.addActivity(new ProgletActivity("paintbrush", "Objet numérique: les images", "Dessiner sur une image (version préliminaire)") {
-        public void init2(JsFrame frame) {
-          frame.addTab("Enoncé de l'exercice", "proglet/paintbrush/doc-files/sujet-appli-image.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
-        }
-      }
-      );
+                       public void init2(JsFrame frame) {
+                         frame.addTab("Enoncé de l'exercice", "proglet/paintbrush/doc-files/sujet-appli-image.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
+                       }
+                     }
+                     );
     main.addActivity(new ProgletActivity("convanalogique", "Algorithmes dichotomiques", "Programmer la conversion analogique-digitale") {
                        public void init2(JsFrame frame) {
                          frame.addTab("Enoncé de l'exercice", "proglet/convanalogique/doc-files/sujet-appli-conva.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
@@ -66,21 +66,21 @@ public class JsProgletActivities {
                      }
                      );
     main.addActivity(new ProgletActivity("synthesons", "Objet numérique: le son", "Manipuler un signal sonore") {
-	              public void init2(JsFrame frame) {}
+                       public void init2(JsFrame frame) {}
                      }
                      );
     main.addActivity(new ProgletActivity("javaprog", "Aller plus loin en programmation", "Programmer directement en Java") {
-	public void init2(JsFrame frame) {}
+                       public void init2(JsFrame frame) {}
                      }
                      );
     main.addActivity(new ProgletActivity("tortuelogo", "Aller plus loin en programmation", "Programmer avec la «tortue logo»") {
-	public void init2(JsFrame frame) {}
+                       public void init2(JsFrame frame) {}
                      }
                      );
     main.addActivity(new ProgletActivity("goglemap", "Objet numérique: les graphes", "Jouer avec une carte de France (version provisoire)") {
-    	public void init2(JsFrame frame) {
-    	}
-          });
+                       public void init2(JsFrame frame) {}
+                     }
+                     );
   }
   /** Defines a compilation activity. */
   public static abstract class JavaActivity implements JsMain.Activity {
@@ -93,11 +93,10 @@ public class JsProgletActivities {
         main.getFrame().showTab("Console");
         Console.clear();
         if(getEditor().getText().trim().length() > 0) {
-	  main.getFileChooser().doSync(getEditor(), getExtension());
+          main.getFileChooser().doSync(getEditor(), getExtension());
           if(main.getFileChooser().getFile() != null) {
-            if(getEditor() instanceof AlgoEditor) {
+            if(getEditor() instanceof AlgoEditor)
               main.getFileChooser().doSave(jvsEditor, Jvs2Java.reformat(((AlgoEditor) getEditor()).getJavaSource()), ".jvs");
-	    }
             Jvs2Java.translate(main.getFileChooser().getFile());
             String out = Jvs2Java.compile(main.getFileChooser().getFile());
             System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
@@ -114,8 +113,8 @@ public class JsProgletActivities {
     };
     protected Runnable execute = new Runnable() {
       public void run() {
-        //-Console.clear();
-        //-CurveDisplay.scopeReset();
+        // -Console.clear();
+        // -CurveDisplay.scopeReset();
         Jvs2Java.load(main.getFileChooser().getFile());
         Jvs2Java.run(true);
       }
@@ -179,7 +178,7 @@ public class JsProgletActivities {
      */
     public ProgletActivity(String proglet, String type, String title) {
       if(Jvs2Java.getPanel(proglet) == null) throw new IllegalArgumentException("Undefined proglet : " + proglet);
-      this.type= type;
+      this.type = type;
       this.title = title;
       this.proglet = proglet;
     }
@@ -188,37 +187,37 @@ public class JsProgletActivities {
       main.getFrame().addTab("Editeur", (JPanel) jvsEditor, "org/javascool/doc-files/icones16/edit.png", false, true);
       jvsEditor.setProglet(proglet);
       if(!"ingredients".equals(proglet))
-	main.getFrame().addTool("Démo..", "org/javascool/doc-files/icones16/globe.png", demo);
+        main.getFrame().addTool("Démo..", "org/javascool/doc-files/icones16/globe.png", demo);
       init1(main);
       if(!"ingredients".equals(proglet)) {
         String name = "exosdemaths".equals(proglet) ? "Tracé" : proglet;
-        main.getFrame().addTab(name, 
-			       new JScrollPane(Jvs2Java.getPanel(proglet), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), 
-			       "org/javascool/doc-files/icones16/compile.png", true, true);
+        main.getFrame().addTab(name,
+                               new JScrollPane(Jvs2Java.getPanel(proglet), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER),
+                               "org/javascool/doc-files/icones16/compile.png", true, true);
       }
       init2(main.getFrame());
       main.getFrame().addTab("Document de la proglet", "proglet/" + proglet + "/doc-files/about-proglet.htm", "org/javascool/doc-files/icones16/help.png", true, false);
       main.getFrame().addTab("Mémo des instructions", "proglet/ingredients/doc-files/about-memo.htm", "org/javascool/doc-files/icones16/help.png", true, false);
       main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
-    } 
+    }
     // Enrich the execute action
     private Runnable execute2;
     {
       execute2 = execute;
       execute = new Runnable() {
-	  public void run() {
-	    main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
-	    execute2.run();
-	    //-main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
-	  }
-	};
+        public void run() {
+          main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
+          execute2.run();
+          // -main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
+        }
+      };
     }
     // Proglet specific pannels
     protected void init2(JsFrame frame) {}
     // Demo button
     private Runnable demo = new Runnable() {
       public void run() {
-	main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
+        main.getFrame().showTab("ingredients".equals(proglet) ? "Console" : "exosdemaths".equals(proglet) ? "Tracé" : proglet);
         Jvs2Java.run(proglet);
       }
     };

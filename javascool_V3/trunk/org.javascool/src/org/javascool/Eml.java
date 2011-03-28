@@ -83,7 +83,7 @@ package org.javascool;
  * @serial exclude
  */
 public class Eml extends Pml {
-  /**/public Eml() {}
+  /**/ public Eml() {}
   private static final long serialVersionUID = 1L;
 
   /** Resets the logical-structure, parsing the given string.
@@ -383,7 +383,7 @@ public class Eml extends Pml {
     } else if((length == 2) && name.equals("while"))
       b.append(" while (").append(toString(value.getChild(0), 0)).
       append(") ").append(toString(value.getChild(1), 0));
-      // Write a functional term
+    // Write a functional term
     else {
       b.append(name);
       if(value.getCount() < value.getSize()) {

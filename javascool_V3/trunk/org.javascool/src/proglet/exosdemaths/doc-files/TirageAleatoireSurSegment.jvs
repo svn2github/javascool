@@ -1,31 +1,30 @@
 // Ce programme est proposé par Philippe Lucaud <philucpro@yahoo.fr>, professeur de mathématiques au lycée Audiberti d'Antibes, classe de 2nd option informatique
 
 void main() {
-   int c = 0;
-   println("Ce programme choisit au hasard deux points A et B sur le segment [0,1] et calcule la distance AB.");
-   println("Si celle-ci est supérieure à 0,5, on place un point vert, sinon on place un point violet.");
-   sleep(2000);
-   clear();
-   //Définition de la fenètre, tracé du carré
-   scopeReset(0, 1.5, 0, 1);
-   scopeAddLine(0, 0, 1, 0, 6);
-   scopeAddLine(1, 0, 1, 1, 6);
-   scopeAddLine(1, 1, 0, 1, 6);
-   scopeAddLine(0, 1, 0, 0, 6);
-   //Entrée du nombre d'expériences
-   println("Combien d'expériences voulez-vous faire?");
-   int N = readInteger();
-   for(int n = 1; n <= N; n = n + 1) {
-      double xA = random();
-      double xB = random();
-      double d = abs(xA - xB);
-      if(d>0.5) {
-         scopeAddString(xA,xB, " ", 5);
-         c = c + 1;
-      } else {
-         scopeAddString( xA, xB, " ", 7);
-      }
-   }
-   double freq = c/Math.pow(N, 1)*100;
-   println ("La fréquence en pourcentage de distances AB supérieures à 0,5 sur "+N+" expériences est : \n"+freq+" %");
+  int c = 0;
+  println("Ce programme choisit au hasard deux points A et B sur le segment [0,1] et calcule la distance AB.");
+  println("Si celle-ci est supérieure à 0,5, on place un point vert, sinon on place un point violet.");
+  sleep(2000);
+  clear();
+  // Définition de la fenètre, tracé du carré
+  scopeReset(0, 1.5, 0, 1);
+  scopeAddLine(0, 0, 1, 0, 6);
+  scopeAddLine(1, 0, 1, 1, 6);
+  scopeAddLine(1, 1, 0, 1, 6);
+  scopeAddLine(0, 1, 0, 0, 6);
+  // Entrée du nombre d'expériences
+  println("Combien d'expériences voulez-vous faire?");
+  int N = readInteger();
+  for(int n = 1; n <= N; n = n + 1) {
+    double xA = random();
+    double xB = random();
+    double d = abs(xA - xB);
+    if(d > 0.5) {
+      scopeAddString(xA, xB, " ", 5);
+      c = c + 1;
+    } else
+      scopeAddString(xA, xB, " ", 7);
+  }
+  double freq = c / Math.pow(N, 1) * 100;
+  println("La fréquence en pourcentage de distances AB supérieures à 0,5 sur " + N + " expériences est : \n" + freq + " %");
 }

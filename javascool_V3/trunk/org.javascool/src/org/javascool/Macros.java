@@ -29,17 +29,17 @@ public class Macros {
   public static void echo(boolean string) {
     echo("" + string);
   }
-  public static <A,B> void echo(java.util.Map<A,B> map) {
-	    echo("" + map);
-	  }
-  public static <A> void echo(java.util.List<A> list) {
-	    echo("" + list);
-	  }
-  public static <A> void echo(java.util.Set<A> set) {
-	    echo("" + set);
-	  }
+  public static < A, B > void echo(java.util.Map<A, B> map) {
+    echo("" + map);
+  }
+  public static < A > void echo(java.util.List<A> list) {
+    echo("" + list);
+  }
+  public static < A > void echo(java.util.Set<A> set) {
+    echo("" + set);
+  }
   /* Fonctions accessibles via Math.*;
-   * 
+   *
    * Renvoie x à la puissance y.
    * @param x 1er argument.
    * @param y 2eme argument.
@@ -53,6 +53,7 @@ public class Macros {
    * public static double random() { return Math.random(); }
    *
    */
+
   /** Renvoie un nombre entier aléatoire uniformément distribué entre deux valeurs (maximum inclus).
    */
   public static int random(int min, int max) {
@@ -65,8 +66,8 @@ public class Macros {
   public static boolean equal(String string1, String string2) {
     return string1.equals(string2);
   }
-
   public final static int maxInteger = Integer.MAX_VALUE;
+
   /** Renvoie le temps actuel en milli-secondes.
    * @return Renvoie la différence, en millisecondes, entre le temps actuel et celui du 1 Janvier 2000, minuit, en utilisant le temps universel coordonné.
    */
@@ -79,6 +80,7 @@ public class Macros {
     ref.set(2000, 0, 1, 0, 0, 0);
     offset = ref.getTimeInMillis();
   }
+
   /** Temporise une durée fixée.
    * Cela permet aussi de mettre à jour l'affichage.
    * @param delay Durée d'attente en milli-secondes.
@@ -86,20 +88,19 @@ public class Macros {
   public static void sleep(int delay) {
     try {
       if(delay > 0)
-	Thread.sleep(delay);
+        Thread.sleep(delay);
       else
-	Thread.sleep(0, 10000);
-    } catch(Exception e) { 
-      throw new RuntimeException("Programme arrêté !");
+        Thread.sleep(0, 10000);
+    } catch(Exception e) { throw new RuntimeException("Programme arrêté !");
     }
   }
   /** Vérifie une assertion et arrête le code si elle est fausse.
    * @param condition Si la condition n'est pas vérifiée, le code JavaScool va s'arrêter.
    * @param message Un message s'imprime sur la console pour signaler l'erreur.
    */
-  public static void assertion(boolean condition, String message) {     
-    System.err.println("#"+condition+" : "+message);
-    if (!condition) {
+  public static void assertion(boolean condition, String message) {
+    System.err.println("#" + condition + " : " + message);
+    if(!condition) {
       System.out.println(message);
       Jvs2Java.run(false);
       sleep(500);

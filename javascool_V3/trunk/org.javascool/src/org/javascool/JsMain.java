@@ -3,7 +3,7 @@
 | By Philippe Vienne <philoumailabo@gmail.com> |
 | Distributed on GNU General Public Licence    |
 | © 2010 INRIA, All rights reserved            |
-|______________________________________________|
+||______________________________________________|
 |
 ********************************************************************************/
 
@@ -59,7 +59,7 @@ import javax.swing.JScrollPane;
  * @serial exclude
  */
 public class JsMain extends JApplet {
-  /**/public JsMain() {}
+  /**/ public JsMain() {}
   private static final long serialVersionUID = 1L;
 
   static final String title = "Java'Scool 3.2bis";
@@ -223,12 +223,14 @@ public class JsMain extends JApplet {
                                        }
                                      }
                                      );
-     getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_MASK), "trace");
-     getRootPane().getActionMap().put("trace", new AbstractAction("trace") {
-	 private static final long serialVersionUID = 1L;
-	 public void actionPerformed(ActionEvent e) {
-	   setUncaughtExceptionAlert();
-	 }});
+    getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_MASK), "trace");
+    getRootPane().getActionMap().put("trace", new AbstractAction("trace") {
+                                       private static final long serialVersionUID = 1L;
+                                       public void actionPerformed(ActionEvent e) {
+                                         setUncaughtExceptionAlert();
+                                       }
+                                     }
+                                     );
   }
 
   // [2] Activity interface
@@ -247,6 +249,7 @@ public class JsMain extends JApplet {
     public void stop(JsMain main);
     /** Returns the activity editor. */
     public Editor getEditor();
+
     /** Returns the required file extension.
      * e.g., ".jvs" or ".pml"
      */
@@ -270,12 +273,12 @@ public class JsMain extends JApplet {
   }
   /** Adds an activity to the application list. */
   public void addActivity(Activity activity) {
-    if (activity.getType() != null) {
+    if(activity.getType() != null) {
       activities.add(activity);
-      if (activity.getType().length() > 0) {
-	if (!types.containsKey(activity.getType()))
-	  types.put(activity.getType(), new ArrayList<String>());
-	types.get(activity.getType()).add(activity.getTitle());
+      if(activity.getType().length() > 0) {
+        if(!types.containsKey(activity.getType()))
+          types.put(activity.getType(), new ArrayList<String>());
+        types.get(activity.getType()).add(activity.getTitle());
       }
     }
   }
@@ -288,7 +291,7 @@ public class JsMain extends JApplet {
     setActivity("");
   }
   static private ArrayList<Activity> activities = new ArrayList<Activity>();
-  static private LinkedHashMap<String, ArrayList<String>> types = new LinkedHashMap<String, ArrayList<String>>();
+  static private LinkedHashMap < String, ArrayList < String >> types = new LinkedHashMap < String, ArrayList < String >> ();
 
   // [2.2] JsHome activity (activity chooser)
 
@@ -296,31 +299,31 @@ public class JsMain extends JApplet {
   private static class HomeActivity implements Activity {
     public void init(JsMain main) {
       this.main = main;
-      JPanel panel = new JPanel();   
-      panel.setBackground(new Color(100,255,100));
+      JPanel panel = new JPanel();
+      panel.setBackground(new Color(100, 255, 100));
       panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.yellow, 4), BorderFactory.createEmptyBorder(30, 50, 0, 0)));
       panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
       for(String type : types.keySet()) {
-	JLabel label = new JLabel(" " +type+" :");
-	label.setAlignmentX(JPanel.LEFT_ALIGNMENT);
-	panel.add(label);
-	for(String title : types.get(type)) {
-	  JButton button = new JButton(title, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"));
-	  button.setAlignmentX(JPanel.LEFT_ALIGNMENT);
-	  button.setContentAreaFilled(false);
-	  button.setRolloverEnabled(true);
-	  button.setRolloverIcon(Utils.getIcon("org/javascool/doc-files/icones16/open.png"));
-	  button.addActionListener(listener);
-	  panel.add(button);
-	}
+        JLabel label = new JLabel(" " + type + " :");
+        label.setAlignmentX(JPanel.LEFT_ALIGNMENT);
+        panel.add(label);
+        for(String title : types.get(type)) {
+          JButton button = new JButton(title, Utils.getIcon("org/javascool/doc-files/icones16/compile.png"));
+          button.setAlignmentX(JPanel.LEFT_ALIGNMENT);
+          button.setContentAreaFilled(false);
+          button.setRolloverEnabled(true);
+          button.setRolloverIcon(Utils.getIcon("org/javascool/doc-files/icones16/open.png"));
+          button.addActionListener(listener);
+          panel.add(button);
+        }
       }
       this.main.getFrame().addTab("Choisir (cliquer sur le titre) son activité", new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), "org/javascool/doc-files/icones16/new.png", false, true);
     }
     ActionListener listener = new ActionListener() {
-	public void actionPerformed(ActionEvent e) {
-	  main.setActivity(((JButton) e.getSource()).getText());
-	}
-      };
+      public void actionPerformed(ActionEvent e) {
+        main.setActivity(((JButton) e.getSource()).getText());
+      }
+    };
     private JsMain main;
     // The "home" activity is recognized by JsFrame as being the only one with an empty name.
     public String getTitle() {
@@ -340,16 +343,15 @@ public class JsMain extends JApplet {
 
   // Sets the javascool version from the manifest file.
   private static void setJavascoolVersion() {
-    try { 
-      System.setProperty("javascool.version", Utils.loadString("org/javascool/js-manifest.mf").replaceFirst("(.|\n)*Manifest-version: *(.*)(.|\n)*", "$2")); 
-    } catch(Throwable z) { }
+    try {
+      System.setProperty("javascool.version", Utils.loadString("org/javascool/js-manifest.mf").replaceFirst("(.|\n)*Manifest-version: *(.*)(.|\n)*", "$2"));
+    } catch(Throwable z) {}
   }
-  
   // Sets the javascool uncaught exception alert.
   private static void setUncaughtExceptionAlert() {
-    String m = "Notice : Mécanisme de détection problème de compatibilité mis en place\n   pour " +title+ " ("+System.getProperty("javascool.version")+")";
+    String m = "Notice : Mécanisme de détection problème de compatibilité mis en place\n   pour " + title + " (" + System.getProperty("javascool.version") + ")";
     System.err.println(m);
-    //-System.err.println(System.getProperties().toString().replaceAll("([{},])", "$1\n"));
+    // -System.err.println(System.getProperties().toString().replaceAll("([{},])", "$1\n"));
   }
   /** Gets the instance of the main program. */
   public static JsMain getMain() {

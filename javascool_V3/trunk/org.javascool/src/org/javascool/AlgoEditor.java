@@ -39,8 +39,14 @@ import java.awt.event.KeyEvent;
 public class AlgoEditor extends JPanel implements Widget, Editor {
   private static final long serialVersionUID = 1L;
 
-  public Editor reset(boolean editable) { if (editable) return this; else throw new IllegalStateException("An AlgoEditor is always in editable mode, it can not be locked"); }
-  public boolean isEditable() { return true; }
+  public Editor reset(boolean editable) {
+    if(editable)
+      return this;
+    else throw new IllegalStateException("An AlgoEditor is always in editable mode, it can not be locked");
+  }
+  public boolean isEditable() {
+    return true;
+  }
 
   //
   // [1] Builds the button bar

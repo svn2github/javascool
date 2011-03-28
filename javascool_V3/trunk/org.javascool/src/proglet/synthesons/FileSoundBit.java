@@ -76,7 +76,7 @@ public class FileSoundBit extends SoundBit {
   }
   private int c, s;
   private byte[] buffer;
-  /**/public void setLength(double length) { throw new IllegalStateException("Cannot adjust length of buffered sound-bit of name " + getName());
+  /**/ public void setLength(double length) { throw new IllegalStateException("Cannot adjust length of buffered sound-bit of name " + getName());
   }
   /** Gets available midi sound names.
    * @return Available midi sound name. Usually "bass2", "bass_drum", "bass", "brass_section", "clarinet", "closed_hi-hat", "crash_cymbal", "distorted_guitar", "epiano", "flute", "grand_piano", "guitar_noise", "guitar", "horn", "melodic_toms", "oboe", "och_strings", "open_hi-hat", "organ", "piano_hammer", "reverse_cymbal", "sax", "side_stick", "snare_drum", "strings", "timpani", "tom", "trombone", "trumpet".

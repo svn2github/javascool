@@ -121,7 +121,7 @@ public class Utils {
     } catch(IOException e) { throw new RuntimeException(e + " when executing: " + command);
     }
   }
-  /**/public static String exec(String command) {
+  /**/ public static String exec(String command) {
     return exec(command, 10);
   }
   /** Converts a location to a well-formed URL.
@@ -346,8 +346,7 @@ public class Utils {
     try {
       if(!tranformers.containsKey(xsl))
         tranformers.put(xsl, tfactory.newTemplates(new StreamSource(new StringReader(xsl))).newTransformer());
-    } catch(TransformerConfigurationException e) {
-      throw new RuntimeException(e + " when compiling: " + xsl);
+    } catch(TransformerConfigurationException e) { throw new RuntimeException(e + " when compiling: " + xsl);
     }
     // Apply the transformation
     try {
@@ -356,8 +355,7 @@ public class Utils {
       StringWriter writer = new StringWriter();
       tranformers.get(xsl).transform(new StreamSource(new StringReader(xml)), new StreamResult(writer));
       return writer.toString();
-    } catch(TransformerException e) {
-      throw new IllegalArgumentException(e.getMessageAndLocation());
+    } catch(TransformerException e) { throw new IllegalArgumentException(e.getMessageAndLocation());
     }
   }
   // Cash mechanism
@@ -414,41 +412,44 @@ public class Utils {
       System.err.println(error.getStackTrace()[i]);
     return error instanceof RuntimeException ? (RuntimeException) error : new RuntimeException(error);
   }
-  /** Alerts on uncaught exception. 
-   * - Installs a default uncaught exception handler that collects JavaScool, Java and operating system versions, thread name and stack trace and 
+  /** Alerts on uncaught exception.
+   * - Installs a default uncaught exception handler that collects JavaScool, Java and operating system versions, thread name and stack trace and
    * displays it in a separate window in order to be collected and reported by the user.
    * @param title The alert window title.
    * @param header The alert window text header explaining to the user what to do with the exception output.
    */
   public static void setUncaughtExceptionAlert(String title, String header) {
-    uncaughtExceptionAlertTitle = title; uncaughtExceptionAlertHeader = header;
+    uncaughtExceptionAlertTitle = title;
+    uncaughtExceptionAlertHeader = header;
     Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-	public void uncaughtException(Thread t, Throwable e) {
-	  String s = "";
-	  if (uncaughtExceptionAlertOnce <= 1) {
-	    s += uncaughtExceptionAlertHeader+"\n";
-	    for(String p : new String[] { "javascool.version", "java.version", "os.name", "os.arch", "os.version"}) 
-	      s += "> "+p+" = " +System.getProperty(p)+"\n";
-	  }
-	  s += "> thread.name = "+t.getName()+"\n";
-	  s += "> throwable = "+e+"\n";
-	  if (0 < uncaughtExceptionAlertOnce)
-	    s += "> count = "+uncaughtExceptionAlertOnce+"\n";
-	  s += "> stack-trace = «\n";
-	  for(int i = 0; i < t.getStackTrace().length; i++)
-	    s += e.getStackTrace()[i]+"\n";
-	  s += "»\n";   
-	  if (uncaughtExceptionAlertOnce == 0) {
-	    Utils.show(s, uncaughtExceptionAlertTitle);
-	  } else {
-	    System.err.println(s);
-	  }
-	  uncaughtExceptionAlertOnce++;
-	}
-      });
+                                                public void uncaughtException(Thread t, Throwable e) {
+                                                  String s = "";
+                                                  if(uncaughtExceptionAlertOnce <= 1) {
+                                                    s += uncaughtExceptionAlertHeader + "\n";
+                                                    for(String p : new String[] { "javascool.version", "java.version", "os.name", "os.arch", "os.version" }
+                                                        )
+                                                      s += "> " + p + " = " + System.getProperty(p) + "\n";
+                                                  }
+                                                  s += "> thread.name = " + t.getName() + "\n";
+                                                  s += "> throwable = " + e + "\n";
+                                                  if(0 < uncaughtExceptionAlertOnce)
+                                                    s += "> count = " + uncaughtExceptionAlertOnce + "\n";
+                                                  s += "> stack-trace = «\n";
+                                                  for(int i = 0; i < t.getStackTrace().length; i++)
+                                                    s += e.getStackTrace()[i] + "\n";
+                                                  s += "»\n";
+                                                  if(uncaughtExceptionAlertOnce == 0)
+                                                    Utils.show(s, uncaughtExceptionAlertTitle);
+                                                  else
+                                                    System.err.println(s);
+                                                  uncaughtExceptionAlertOnce++;
+                                                }
+                                              }
+                                              );
   }
   private static String uncaughtExceptionAlertTitle, uncaughtExceptionAlertHeader;
   private static int uncaughtExceptionAlertOnce = 0;
+
   /** Opens an applet or panel in a standalone frame.
    * @param applet The applet, panel or text to display.
    * @param title  Frame title. If null, no title.
@@ -464,7 +465,7 @@ public class Utils {
     f.open(applet, title, icon, width, height, quit);
     return f;
   }
-  /**/public static JFrame show(Component applet, String title, ImageIcon icon, boolean quit) {
+  /**/ public static JFrame show(Component applet, String title, ImageIcon icon, boolean quit) {
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     int width = (int) (1 * dim.getWidth()), height = (int) (1 * dim.getHeight());
     if(width > 1600)
@@ -473,37 +474,37 @@ public class Utils {
       height = 1000;
     return show(applet, title, icon, width, height, quit);
   }
-  /**/public static JFrame show(Component applet, String title, int width, int height) {
+  /**/ public static JFrame show(Component applet, String title, int width, int height) {
     return show(applet, title, null, width, height, true);
   }
-  /**/public static JFrame show(Component applet, String title) {
+  /**/ public static JFrame show(Component applet, String title) {
     return show(applet, title, (ImageIcon) null, true);
   }
-  /**/public static JFrame show(Component applet, int width, int height) {
+  /**/ public static JFrame show(Component applet, int width, int height) {
     return show(applet, (String) null, (ImageIcon) null, width, height, true);
   }
-  /**/public static JFrame show(Component applet) {
+  /**/ public static JFrame show(Component applet) {
     return show(applet, (String) null, (ImageIcon) null, true);
   }
-  /**/public static JFrame show(String applet, String title, ImageIcon icon, int width, int height, boolean quit) {
+  /**/ public static JFrame show(String applet, String title, ImageIcon icon, int width, int height, boolean quit) {
     JEditorPane p = new JEditorPane();
     p.setEditable(false);
     p.setText(applet);
-   return show(new JScrollPane(p, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), title, icon, width, height, quit);
+    return show(new JScrollPane(p, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), title, icon, width, height, quit);
   }
-  /**/public static JFrame show(String applet, String title, ImageIcon icon, boolean quit) {
+  /**/ public static JFrame show(String applet, String title, ImageIcon icon, boolean quit) {
     return show(applet, title, icon, 800, 600, true);
   }
-  /**/public static JFrame show(String applet, String title, int width, int height) {
+  /**/ public static JFrame show(String applet, String title, int width, int height) {
     return show(applet, title, (ImageIcon) null, width, height, true);
   }
-  /**/public static JFrame show(String applet, String title) {
+  /**/ public static JFrame show(String applet, String title) {
     return show(applet, title, (ImageIcon) null, true);
   }
-  /**/public static JFrame show(String applet, int width, int height) {
+  /**/ public static JFrame show(String applet, int width, int height) {
     return show(applet, (String) null, (ImageIcon) null, width, height, true);
   }
-  /**/public static JFrame show(String applet) {
+  /**/ public static JFrame show(String applet) {
     return show(applet, (String) null, (ImageIcon) null, true);
   }
   // Encapsulates an applet in a frame
