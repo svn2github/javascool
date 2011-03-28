@@ -378,7 +378,7 @@ public class Jvs2Java {
     }
   }
   // This is the entry point to run  the proglet pupil's program: do not change directly !
-  /**/ public static Runnable runnable = null;
+  /**/public static Runnable runnable = null;
   private static String proglet = null;
   private static Thread thread = null;
 

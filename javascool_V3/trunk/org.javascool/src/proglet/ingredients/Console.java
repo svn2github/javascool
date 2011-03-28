@@ -172,7 +172,7 @@ public class Console implements org.javascool.Proglet {
   // This defines the tests on the panel
   //
 
-  /**/ public static void test() {
+  /**/public static void test() {
     clear();
     // System.out.println(new org.javascool.Pml().reset("<p>This is translated from <tt>XML</tt> !</p>", "xml"));
     println("Bonjour, qui es tu ?");
@@ -193,19 +193,19 @@ public class Console implements org.javascool.Proglet {
     panel.writeString(string, false);
     panel.writeString("<br/>\n", true);
   }
-  /**/ public static void println(long string) {
+  /**/public static void println(long string) {
     println("" + string);
   }
-  /**/ public static void println(double string) {
+  /**/public static void println(double string) {
     println("" + string);
   }
-  /**/ public static void println(char string) {
+  /**/public static void println(char string) {
     println("" + string);
   }
-  /**/ public static void println(boolean string) {
+  /**/public static void println(boolean string) {
     println("" + string);
   }
-  /**/ public static void println(Object string) {
+  /**/public static void println(Object string) {
     println("" + string);
   }
   /** Ecrit une chaine de caractères dans la fenêtre de sortie (output) et sans passer à la ligne.
@@ -214,19 +214,19 @@ public class Console implements org.javascool.Proglet {
   public static void print(String string) {
     panel.writeString(string, false);
   }
-  /**/ public static void print(long string) {
+  /**/public static void print(long string) {
     print("" + string);
   }
-  /**/ public static void print(double string) {
+  /**/public static void print(double string) {
     print("" + string);
   }
-  /**/ public static void print(char string) {
+  /**/public static void print(char string) {
     print("" + string);
   }
-  /**/ public static void print(boolean string) {
+  /**/public static void print(boolean string) {
     print("" + string);
   }
-  /**/ public static void print(Object string) {
+  /**/public static void print(Object string) {
     print("" + string);
   }
   /** Ecrit une chaine de caractères colorée dans la fenêtre de sortie (output) et passe à la ligne.

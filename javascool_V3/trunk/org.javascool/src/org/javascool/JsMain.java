@@ -59,7 +59,7 @@ import javax.swing.JScrollPane;
  * @serial exclude
  */
 public class JsMain extends JApplet {
-  /**/ public JsMain() {}
+  /**/public JsMain() {}
   private static final long serialVersionUID = 1L;
 
   static final String title = "Java'Scool 3.2bis";
@@ -300,7 +300,7 @@ public class JsMain extends JApplet {
     public void init(JsMain main) {
       this.main = main;
       JPanel panel = new JPanel();
-      panel.setBackground(new Color(100, 255, 100));
+      panel.setBackground(new Color(160, 220, 160));
       panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.yellow, 4), BorderFactory.createEmptyBorder(30, 50, 0, 0)));
       panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
       for(String type : types.keySet()) {
@@ -349,9 +349,10 @@ public class JsMain extends JApplet {
   }
   // Sets the javascool uncaught exception alert.
   private static void setUncaughtExceptionAlert() {
-    String m = "Notice : Mécanisme de détection problème de compatibilité mis en place\n   pour " + title + " (" + System.getProperty("javascool.version") + ")";
+    String m = "Notice : Mécanisme de détection problème de compatibilité mis en place\n   pour " + 
+      title + " (" + System.getProperty("javascool.version") + " @ " + System.getProperty("java.home") + ")";
     System.err.println(m);
-    // -System.err.println(System.getProperties().toString().replaceAll("([{},])", "$1\n"));
+    //-System.err.println(System.getProperties().toString().replaceAll("([{},])", "$1\n"));
   }
   /** Gets the instance of the main program. */
   public static JsMain getMain() {

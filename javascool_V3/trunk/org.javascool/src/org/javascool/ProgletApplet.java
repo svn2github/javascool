@@ -41,19 +41,24 @@ public class ProgletApplet extends JApplet {
   }
   private String proglet = "";
   private boolean demo = true;
-  /**/ public void init() {
+  /**/public void init() {
     // Init the parameters from the HTML tags
-    try { String p = getParameter("proglet");
-          if(p != null)
-            proglet = p;
+    try { 
+      String p = getParameter("proglet");
+      if(p != null)
+	proglet = p;
     } catch(Exception e) {}
-    try { String p = getParameter("demo");
-          if(p != null)
-            demo = p.toLowerCase().equals("true");
+    try {
+      String p = getParameter("demo");
+      if(p != null)
+	demo = p.toLowerCase().equals("true");
     } catch(Exception e) {}
     JPanel panel = Jvs2Java.getPanel(proglet);
-    if(panel == null)
+    if(panel == null) {
+      panel = new JPanel();
+      panel.add(new JLabel("\n\n\t\tThe proglet «" + proglet + "» is undefined."));
       demo = false;
+    }
     // Builds the GUI
     JToolBar bar = new JToolBar();
     bar.setRollover(false);

@@ -39,11 +39,12 @@ public class GogleMap implements org.javascool.Proglet {
   //
   // This defines the javascool interface
   //
-  public enum IntensiteRoute { LEGER(1), MOYEN(2), FORT(3);
-                               private int value;
-                               IntensiteRoute(int i) {
-                                 value = i;
-                               }
+  public enum IntensiteRoute { 
+    LEGER(1), MOYEN(2), FORT(3);
+    private int value;
+    IntensiteRoute(int i) {
+      value = i;
+    }
   }
 
   public final static IntensiteRoute LEGER = IntensiteRoute.LEGER;
@@ -89,7 +90,10 @@ public class GogleMap implements org.javascool.Proglet {
   //
   // This defines the tests on the panel
   //
-  public static void test() {}
+  public static void test() {
+    Console.clear();
+    Console.println("Pour la démo . . utiliser les boutons \"Parcours en profondeur\" +  \"Parcours en largeur\" !");
+  }
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
 }

@@ -32,7 +32,7 @@ import java.util.Vector;
  * @serial exclude
  */
 public class Pml {
-  /**/ public Pml() {}
+  /**/public Pml() {}
   private static final long serialVersionUID = 1L;
 
   private HashMap<String, Pml> data = new  HashMap<String, Pml>();
@@ -62,7 +62,7 @@ public class Pml {
       return this;
     }
   }
-  /**/ public final Pml reset(String value) {
+  /**/public final Pml reset(String value) {
     return reset(value, "pml");
   }
   /** Copies one logical-structure in this.
@@ -99,7 +99,7 @@ public class Pml {
   public final Pml load(String location, String format) {
     return reset(Utils.loadString(location), format);
   }
-  /**/ public final Pml load(String location) {
+  /**/public final Pml load(String location) {
     return load(location, location.replaceAll("^.*\\.([A-Za-z]+)$", "$1"));
   }
   /** Defines a token reader, reading a string word by word, normalizing spaces and quoting string with the '"' char. */
@@ -206,7 +206,7 @@ public class Pml {
       String current = itoken + next < tokens.size() ? tokens.get(itoken + next).string : "}";
       return current;
     }
-    /**/ public String current() {
+    /**/public String current() {
       return current(0);
     }
     /** Tests if there is more tokens. */
@@ -217,7 +217,7 @@ public class Pml {
     public void next(int next) {
       itoken += next;
     }
-    /**/ public void next() {
+    /**/public void next() {
       next(1);
     }
     /** Returns the string trailer. */
@@ -305,7 +305,7 @@ public class Pml {
            "raw".equals(format) ? new PlainWriter().toString(this, 0) :
            new PlainWriter().toString(this, 180);
   }
-  /**/ public final String toString() {
+  /**/public final String toString() {
     return toString("raw");
   }
   /** Saves this logical-structure structure into a location.
@@ -323,7 +323,7 @@ public class Pml {
     Utils.saveString(location, toString(format));
     return this;
   }
-  /**/ public final Pml save(String location) {
+  /**/public final Pml save(String location) {
     return save(location, location.replaceAll("^.*\\.([A-Za-z]+)$", "$1"));
   }
   /** Defines a PML writer. */
@@ -482,7 +482,7 @@ public class Pml {
   public final boolean isDefined(String name) {
     return data.containsKey(name);
   }
-  /**/ public final boolean isDefined(int index) {
+  /**/public final boolean isDefined(int index) {
     return isDefined(Integer.toString(index));
   }
   /** Gets a parameter as a logical-structure.
@@ -492,7 +492,7 @@ public class Pml {
   public Pml getChild(String name) {
     return data.get(name);
   }
-  /**/ public final Pml getChild(int index) {
+  /**/public final Pml getChild(int index) {
     return getChild(Integer.toString(index));
   }
   /** Gets a parameter value as a string.
@@ -504,13 +504,13 @@ public class Pml {
     String v = data.get(name).toString();
     return v != null ? v : value != null ? value : "";
   }
-  /**/ public final String getString(int index, String value) {
+  /**/public final String getString(int index, String value) {
     return getString(Integer.toString(index), value);
   }
-  /**/ public final String getString(String name) {
+  /**/public final String getString(String name) {
     return getString(name, null);
   }
-  /**/ public final String getString(int index) {
+  /**/public final String getString(int index) {
     return getString(index, null);
   }
   /** Gets a parameter value as a decimal.
@@ -524,13 +524,13 @@ public class Pml {
       return value;
     }
   }
-  /**/ public final double getDecimal(int index, double value) {
+  /**/public final double getDecimal(int index, double value) {
     return getDecimal(Integer.toString(index), value);
   }
-  /**/ public final double getDecimal(String name) {
+  /**/public final double getDecimal(String name) {
     return getDecimal(name, 0);
   }
-  /**/ public final double getDecimal(int index) {
+  /**/public final double getDecimal(int index) {
     return getDecimal(index, 0);
   }
   /** Gets a parameter value as an integer.
@@ -544,13 +544,13 @@ public class Pml {
       return value;
     }
   }
-  /**/ public final int getInteger(int index, int value) {
+  /**/public final int getInteger(int index, int value) {
     return getInteger(Integer.toString(index), value);
   }
-  /**/ public final int getInteger(String name) {
+  /**/public final int getInteger(String name) {
     return getInteger(name, 0);
   }
-  /**/ public final int getInteger(int index) {
+  /**/public final int getInteger(int index) {
     return getInteger(index, 0);
   }
   /** Sets a parameter value.
@@ -581,27 +581,27 @@ public class Pml {
     count = -1;
     return this;
   }
-  /**/ public final Pml set(int index, Pml value) {
+  /**/public final Pml set(int index, Pml value) {
     return set(Integer.toString(index), value);
   }
-  /**/ public final Pml set(String name, String value) {
+  /**/public final Pml set(String name, String value) {
     Pml v = new Pml();
     v.reset(value);
     return set(name, v);
   }
-  /**/ public final Pml set(int index, String value) {
+  /**/public final Pml set(int index, String value) {
     return set(Integer.toString(index), value);
   }
-  /**/ public final Pml set(String name, double value) {
+  /**/public final Pml set(String name, double value) {
     return set(name, Double.toString(value));
   }
-  /**/ public final Pml set(int index, double value) {
+  /**/public final Pml set(int index, double value) {
     return set(Integer.toString(index), value);
   }
-  /**/ public final Pml set(String name, int value) {
+  /**/public final Pml set(String name, int value) {
     return set(name, Integer.toString(value));
   }
-  /**/ public final Pml set(int index, int value) {
+  /**/public final Pml set(int index, int value) {
     return set(Integer.toString(index), value);
   }
   /** Unsets a parameter value.
@@ -611,7 +611,7 @@ public class Pml {
   public Pml del(String name) {
     return set(name, (Pml) null);
   }
-  /**/ public final Pml del(int index) {
+  /**/public final Pml del(int index) {
     return set(Integer.toString(index), (Pml) null);
   }
   /** Adds an element's value.
@@ -624,15 +624,15 @@ public class Pml {
     count = ++c;
     return this;
   }
-  /**/ public final Pml add(String value) {
+  /**/public final Pml add(String value) {
     Pml v = new Pml();
     v.reset(value);
     return add(v);
   }
-  /**/ public final Pml add(double value) {
+  /**/public final Pml add(double value) {
     return add(Double.toString(value));
   }
-  /**/ public final Pml add(int value) {
+  /**/public final Pml add(int value) {
     return add(Integer.toString(value));
   }
   /** Returns the number of elements. */

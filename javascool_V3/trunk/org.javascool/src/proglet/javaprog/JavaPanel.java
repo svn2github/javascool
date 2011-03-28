@@ -38,7 +38,7 @@ public class JavaPanel implements org.javascool.Proglet {
   // This defines the tests on the panel
   //
 
-  /**/ public static void test() {
+  /**/public static void test() {
     new FleurEnRythme().run();
   }
   //

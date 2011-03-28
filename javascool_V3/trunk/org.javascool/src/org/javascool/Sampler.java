@@ -38,7 +38,7 @@ import java.lang.InterruptedException;
  *
  */
 public abstract class Sampler {
-  /**/ public Sampler() {}
+  /**/public Sampler() {}
 
   /** Periodically called when the sampler is started. */
   public abstract void run();
@@ -51,7 +51,7 @@ public abstract class Sampler {
       this.samplingPeriod = samplingPeriod;
     start();
   }
-  /**/ public void start() {
+  /**/public void start() {
     error = null;
     (new Thread(new Runnable() {
                   // Loop with a time-period of samplingPeriod

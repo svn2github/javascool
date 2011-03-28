@@ -224,7 +224,7 @@ public class SoundBit implements Widget {
     } catch(LineUnavailableException e) { throw new RuntimeException(e.toString());
     }
   }
-  /**/ public void play() {
+  /**/public void play() {
     play(0);
   }
   /** Called at each sampling during a play.
@@ -253,7 +253,7 @@ public class SoundBit implements Widget {
       return (index < 0 || index >= left.length) ? 0 : channel == 'r' ? right[(int) index] : left[(int) index];
     }
     private double left[], right[];
-    /**/ public void setLength(double length) { throw new IllegalStateException("Cannot adjust length of buffered sound-bit of name " + getName());
+    /**/public void setLength(double length) { throw new IllegalStateException("Cannot adjust length of buffered sound-bit of name " + getName());
     }
   }
 

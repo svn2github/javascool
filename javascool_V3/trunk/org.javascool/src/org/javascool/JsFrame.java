@@ -31,7 +31,7 @@ import java.util.HashMap;
  * @serial exclude
  */
 public class JsFrame extends JPanel {
-  /**/ public JsFrame() {}
+  /**/public JsFrame() {}
   private static final long serialVersionUID = 1L;
 
   // Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane

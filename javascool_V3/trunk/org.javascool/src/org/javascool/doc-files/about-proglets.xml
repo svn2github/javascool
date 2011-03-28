@@ -30,6 +30,14 @@
       <p>utilisée pour les exercices qui nécessitent de manipuler des images ou des graphismes 2D.</p>
     </p>
     <p>
+      <p>«paintbrush»</p>
+      <p><l link="../../../proglet/paintbrush/doc-files/about-proglet.htm" text="Usage"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/?page=api:proglet/paintbrush/doc-files/the-proglet.htm" text="Proglet"/></p>
+      <p><l link="../../../proglet/paintbrush/doc-files/index.htm" text="Activité"/></p>
+      <p>DP<l class="note" link="4"/> et al. </p>
+      <p>utilisée pour les exercices qui nécessitent de manipuler un dessin et pour découvrir la notion de méthode.</p>
+    </p>
+    <p>
       <p>«dichotomie»</p>
       <p><l link="../../../proglet/dichotomie/doc-files/about-proglet.htm" text="Usage"/></p>
       <p><l link="http://javascool.gforge.inria.fr/?page=api:proglet/dichotomie/doc-files/the-proglet.htm" text="Proglet"/></p>
@@ -60,6 +68,14 @@
       <p><!--l link="../../../proglet/synthesons/doc-files/index.htm" text="Activité"/--></p>
       <p>Jw1<l class="note" link="4"/> </p>
       <p>utilisée pour des activités (plutôt d'un club de maths ou de science, ou lors d'un TPE) de découverte du signal sonore.</p>
+    </p>
+    <p>
+      <p>«goglemap»</p>
+      <p><l link="../../../proglet/goglemap/doc-files/about-proglet.htm" text="Usage"/></p>
+      <p><l link="http://javascool.gforge.inria.fr/?page=api:proglet/goglemap/doc-files/the-proglet.htm" text="Proglet"/></p>
+      <p><l link="../../../proglet/goglemap/doc-files/index.htm" text="Activité"/></p>
+      <p>DP<l class="note" link="4"/> et al. </p>
+      <p>utilisée pour les exercices qui nécessitent de manipuler un dessin et pour découvrir la notion de méthode.</p>
     </p>
     <p>
       <p>«tortuelogo»</p>
@@ -99,6 +115,7 @@
     des <l link="http://interstices.info/ingredients-algorithmes" text="«ingrédients des algorithmes»"/> et 
     du <l link="http://interstices.info/reflet-numerique" text="«reflet numérique des objets»"/>;
     CP : <l link="http://www-sop.inria.fr/members/Cecile.Picard" text="Cécile Picard-Limpens"/>;
+    DP : <l link="http://www.irisa.fr/celtique/pichardie" text="David Pichardie"/>;
     JPA et al. :  collectif d'auteurs des activités de
     <l link="http://tdc.cndp.fr/archives-des-numeros/linformatique.html" text="Textes et documents pour la classe l'«informatique»"/>;
     Jw1 et Jv3 : développeur de <l class="javascool"/> web_v1 et v3.
