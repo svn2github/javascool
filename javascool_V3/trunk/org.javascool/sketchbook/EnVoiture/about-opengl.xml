@@ -1,5 +1,5 @@
  <div title="Utilisation du 3D">Attention, sous <i>windows</i>, pour utiliser cette proglet (qui utilise OpenGL)
  il faut copier les librairies dynamiques <l link="http://javascool.gforge.inria.fr/v3/sketchbook/EnVoiture/opengl-windows.zip" text="disponibles ici"/>
- dans le répertoire <i>Java</i> de la machine, c'est à dire, normallement <c>Program Files/java/jre6/bin</c>. Se faire aider du responsable informatique si besoin.
+ dans le répertoire <i>Java</i> de la machine, c'est à dire, normalement <c>Program Files/java/jre6/bin</c>. Se faire aider du responsable informatique si besoin.
 </div>
 
