@@ -3,7 +3,7 @@
 #####################################################################################################################################
 
 # Used to use sun sun-jdk instead of open-jdk because of processing and windows platforms
-#export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
+export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
 
 # Defines the beta-relase jar temporary suffix under development
 JAR = -3-2-2

@@ -218,8 +218,12 @@ public class Jvs2Java {
           body.append(translateOnce(line) + "\n");
       }
       // Imports proglet's static methods
-      head.append("import static org.javascool.Macros.*;");
       head.append("import static java.lang.Math.*;");
+      head.append("import java.util.List;");
+      head.append("import java.util.ArrayList;");
+      head.append("import java.util.Map;");
+      head.append("import java.util.HashMap;");
+      head.append("import static org.javascool.Macros.*;");
       if(proglet.length() == 0) {
         for(String p : proglets.keySet())
           head.append("import static " + proglets.get(p) + ".*;");
@@ -230,14 +234,6 @@ public class Jvs2Java {
 	} 
       }
       head.append("import proglet.paintbrush.*;");
-      head.append("import proglet.joueravecleschiffres.Chiffre;");
-      head.append("import proglet.joueravecleschiffres.NombreA2Chiffres;");
-      head.append("import static proglet.joueravecleschiffres.MacrosChiffre.*;");
-//       head.append("import static proglet.joueraveclestextes.GrandsTextes.*;");
-      head.append("import java.util.List;");
-      head.append("import java.util.ArrayList;");
-      head.append("import java.util.Map;");
-      head.append("import java.util.HashMap;");
       // Declares the proglet's core as a Runnable in the Applet
       // - defined as a ProgletApplet in order to be loaded as an executable applet.
       head.append("public class " + jclass + " extends org.javascool.ProgletApplet implements Runnable {");
@@ -318,49 +314,6 @@ public class Jvs2Java {
       throw Utils.report(new RuntimeException("Erreur: impossible de charger " + jpath + " / " + jclass + " (" + e + ") \n . . le package est il mal défini ?"));
     }
   }
-  /** Enforce the load of javascool.jar in the class-path. 
-   * DISCLAIMER: DO NOT USE, TO BE VALIDATED . . TO BE VALIDATED FOR JNLP USAGE
-  public static void loadJavaScoolJar() {
-    try {
-      for(Package p : Package.getPackages())
-	if (p.getName().matches(".*(proglet|javascool).*"))
-	  System.err.println(p.getName() + " : " + p);
-      System.err.println("----------------------------------------------------------------------------");
-      URL[] urls = new URL[] { new URL("file:/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www/javascool-3-2-2.jar") };
-      URLClassLoader loader = new URLClassLoader(urls);
-      for (String p : new String[] { "org.javascool.Macros", "org.javascool.Jvs2Java", "org.javascool.Proglet", "org.javascool.ProgletApplet" })
-	try { System.err.println(Class.forName(p, true, loader)); } catch(Throwable e) { System.err.println(e+" :: "+p); }
-      for (String p : org.javascool.proglets.proglets) if (p.length() > 0) {
-	try { System.err.println(Class.forName(p, true, loader)); } catch(Throwable e) { System.err.println(e+" :: "+p); }
-      }
-      System.err.println("----------------------------------------------------------------------------");
-      for(Package p : Package.getPackages())
-	if (p.getName().matches(".*(proglet|javascool).*"))
-	  System.err.println(p.getName() + " : " + p);
-    } catch(Throwable e) {
-      System.err.println("Erreur: impossible de charger le javascool.jar: "+e);
-    }
-  }
-   */
-  /** Compiles and saves a HTML launcher page in order to run the compile proglet as an applet.
-   * DISCLAIMER: DO NOT USE, TO BE VALIDATED + SEE HOW TO USE JAVASCRIPT TO AVOID RELOAD
-   * @param activity The activity name or index.
-   * @param path The file path of the proglet code.
-   *
-   * @throws RuntimeException if an I/O exception occurs during command execution.
-   * @throws IllegalArgumentException If the Java class name is not valid.
-   * /
-   *  public static void saveHtmlLauncher(String activity, String path) {
-   *  setJpathclass(path);
-   *  Utils.saveString(path + ".html",
-   *   "<html><head><meta http-equiv='pragma' content='no-cache'/></head><body><table><tr><td><div id='js-exec-bar'>\n" +
-   *   "</div></td></tr><tr><td>\n" +
-   *   "<p><applet code='org.javascool.Main' archive='http://javascool.gforge.inria.fr/v3/javascool.jar' width='800' height='600'>" +
-   *   "  <param name='activity' value='"+activity+"'/><!--param name='file' value='"+jpath+"'/--></applet></p>\n" +
-   *   "</td></tr></table></body></html>\n");
-   *  }
-   */
-
   /** Registered proglets. */
   static final HashMap<String, String> proglets = new HashMap<String, String>();
   static {
