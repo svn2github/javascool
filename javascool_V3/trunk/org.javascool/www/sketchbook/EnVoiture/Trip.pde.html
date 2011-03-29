@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#7f0055"><b>class&nbsp;</b></font><font color="#000000">Trip&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">HashMap&nbsp;spots;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Trip</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">spots&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">HashMap</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Ajoute&nbsp;ou&nbsp;modifie&nbsp;un&nbsp;spot&nbsp;au&nbsp;graphe&nbsp;(modifie&nbsp;dans&nbsp;le&nbsp;cas&nbsp;ou&nbsp;meme&nbsp;nom&nbsp;employ&eacute;&nbsp;et&nbsp;diff&eacute;rentes&nbsp;coordonn&eacute;es).</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">n&nbsp;Nom&nbsp;du&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">col&nbsp;Couleur&nbsp;du&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">f&nbsp;forme&nbsp;du&nbsp;spot:&nbsp;'B'&nbsp;=&nbsp;Box,&nbsp;'P'&nbsp;=&nbsp;Pentagone,&nbsp;'O'&nbsp;=&nbsp;Octogone,&nbsp;'C'&nbsp;=&nbsp;Cylindre.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">x&nbsp;Abcisse&nbsp;du&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">y&nbsp;Ordonn&eacute;e&nbsp;du&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">d1&nbsp;dimension1&nbsp;&agrave;&nbsp;la&nbsp;base&nbsp;du&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">d2&nbsp;dimension2&nbsp;&agrave;&nbsp;la&nbsp;base&nbsp;du&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">h&nbsp;hauteur&nbsp;du&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">addSpot</font><font color="#000000">(</font><font color="#000000">String&nbsp;n,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">col,&nbsp;</font><font color="#7f0055"><b>char&nbsp;</b></font><font color="#000000">f,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y,&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">d1,&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">d2,&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">h</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">spots.containsKey</font><font color="#000000">(</font><font color="#000000">n</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;S_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">n</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">S_.moveTo</font><font color="#000000">(</font><font color="#000000">x,&nbsp;y,&nbsp;d1,&nbsp;d2,&nbsp;h</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">spots.put</font><font color="#000000">(</font><font color="#000000">n,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Spot</font><font color="#000000">(</font><font color="#000000">n,&nbsp;col,&nbsp;f,&nbsp;x,&nbsp;y,&nbsp;d1,&nbsp;d2,&nbsp;h</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Renvoie&nbsp;l'objet&nbsp;Spot&nbsp;&agrave;&nbsp;partir&nbsp;de&nbsp;son&nbsp;nom.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">n&nbsp;Nom&nbsp;du&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">objet&nbsp;Spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;getSpot</font><font color="#000000">(</font><font color="#000000">String&nbsp;n</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;S_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">n</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">S_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Cherche&nbsp;spot&nbsp;plus&nbsp;proche&nbsp;d'une&nbsp;position.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">x&nbsp;Abcisse&nbsp;position.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">y&nbsp;Ordonn&eacute;e&nbsp;position.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">Nom&nbsp;du&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String&nbsp;getClosestSpot</font><font color="#000000">(</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">x,&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">y</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(&#34;x&nbsp;&#34;&nbsp;+&nbsp;x&nbsp;+&nbsp;&#34;&nbsp;//&nbsp;y&nbsp;&#34;&nbsp;+&nbsp;y);</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">curBest&nbsp;=&nbsp;</font><font color="#990000">9999</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;best&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">listN</font><font color="#000000">[</font><font color="#990000">0</font><font color="#000000">])</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;n_&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">spots.size</font><font color="#000000">()&nbsp;</font><font color="#000000">!=&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;ni_&nbsp;:&nbsp;</font><font color="#000000">(</font><font color="#000000">Iterable&lt;String&gt;&nbsp;</font><font color="#000000">)</font><font color="#000000">spots.keySet</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;S_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">ni_</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">d&nbsp;=&nbsp;dist</font><font color="#000000">(</font><font color="#000000">x,&nbsp;y,&nbsp;S_.x,&nbsp;S_.y</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">d&nbsp;&lt;&nbsp;curBest</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">curBest&nbsp;=&nbsp;d;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">best&nbsp;=&nbsp;S_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">n_&nbsp;=&nbsp;ni_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(&#34;&nbsp;nom:&nbsp;&#34;&nbsp;+&nbsp;best.n&nbsp;+&nbsp;&#34;&nbsp;x&nbsp;&#34;&nbsp;+&nbsp;best.x&nbsp;+&nbsp;&#34;&nbsp;//&nbsp;y&nbsp;&#34;&nbsp;+&nbsp;best.y);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">n_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;D&eacute;truit&nbsp;un&nbsp;spot&nbsp;au&nbsp;graphe&nbsp;si&nbsp;il&nbsp;existe.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">n&nbsp;Nom&nbsp;du&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">removeSpot</font><font color="#000000">(</font><font color="#000000">String&nbsp;n</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;S_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">n</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">S_&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;retire&nbsp;tous&nbsp;les&nbsp;liens&nbsp;en&nbsp;relation&nbsp;avec&nbsp;le&nbsp;noeud</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;ni_&nbsp;:&nbsp;</font><font color="#000000">(</font><font color="#000000">Iterable&lt;String&gt;&nbsp;</font><font color="#000000">)</font><font color="#000000">spots.keySet</font><font color="#000000">())</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">removeLink</font><font color="#000000">(</font><font color="#000000">n,&nbsp;ni_</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;retire&nbsp;le&nbsp;noeud&nbsp;en&nbsp;question</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">spots.remove</font><font color="#000000">(</font><font color="#000000">n</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Ajoute&nbsp;ou&nbsp;modifie&nbsp;un&nbsp;lien&nbsp;entre&nbsp;deux&nbsp;spots</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nA&nbsp;Premier&nbsp;spot&nbsp;du&nbsp;lien.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nB&nbsp;Deuxi&egrave;me&nbsp;spot&nbsp;du&nbsp;lien.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;ici&nbsp;poids&nbsp;du&nbsp;lien&nbsp;=&nbsp;distance&nbsp;euclidienne&nbsp;entre&nbsp;les&nbsp;deux&nbsp;spots.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">addLink</font><font color="#000000">(</font><font color="#000000">String&nbsp;nA,&nbsp;String&nbsp;nB</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;SA_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">nA</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;SB_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">nB</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">SA_&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">&amp;&amp;&nbsp;SB_&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">p_&nbsp;=&nbsp;dist</font><font color="#000000">(</font><font color="#000000">SA_.x,&nbsp;SA_.y,&nbsp;SB_.x,&nbsp;SB_.y</font><font color="#000000">)&nbsp;</font><font color="#000000">/&nbsp;</font><font color="#990000">100</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">SA_.links.put</font><font color="#000000">(</font><font color="#000000">nB,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Link</font><font color="#000000">(</font><font color="#000000">nA,&nbsp;nB,&nbsp;p_</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">SB_.links.put</font><font color="#000000">(</font><font color="#000000">nA,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Link</font><font color="#000000">(</font><font color="#000000">nB,&nbsp;nA,&nbsp;p_</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;D&eacute;truit&nbsp;un&nbsp;lien&nbsp;entre&nbsp;deux&nbsp;spots&nbsp;si&nbsp;il&nbsp;existe.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nA&nbsp;Premier&nbsp;spot&nbsp;du&nbsp;lien.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nB&nbsp;Deuxi&egrave;me&nbsp;spot&nbsp;du&nbsp;lien.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">removeLink</font><font color="#000000">(</font><font color="#000000">String&nbsp;nA,&nbsp;String&nbsp;nB</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;SA_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">nA</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;SB_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">nB</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">isLink</font><font color="#000000">(</font><font color="#000000">nA,&nbsp;nB</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">SA_.links.remove</font><font color="#000000">(</font><font color="#000000">nB</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">SB_.links.remove</font><font color="#000000">(</font><font color="#000000">nA</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Affirme&nbsp;si&nbsp;il&nbsp;y&nbsp;a&nbsp;lien&nbsp;entre&nbsp;2&nbsp;spots.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nA&nbsp;Premier&nbsp;spot&nbsp;du&nbsp;lien.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nB&nbsp;Deuxi&egrave;me&nbsp;spot&nbsp;du&nbsp;lien.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">oui&nbsp;ou&nbsp;non.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">isLink</font><font color="#000000">(</font><font color="#000000">String&nbsp;nA,&nbsp;String&nbsp;nB</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;SA_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">nA</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">SA_&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;String&nbsp;ni_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">link_&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;ni_&nbsp;:&nbsp;</font><font color="#000000">(</font><font color="#000000">Iterable&lt;String&gt;&nbsp;</font><font color="#000000">)</font><font color="#000000">SA_.links.keySet</font><font color="#000000">())</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">ni_.equals</font><font color="#000000">(</font><font color="#000000">nB</font><font color="#000000">))&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;test&nbsp;si&nbsp;les&nbsp;deux&nbsp;string&nbsp;sont&nbsp;&eacute;quivalents</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">link_&nbsp;=&nbsp;</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">link_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Donne&nbsp;le&nbsp;poids&nbsp;d'un&nbsp;lien&nbsp;entre&nbsp;deux&nbsp;spots.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nA&nbsp;Premier&nbsp;spot&nbsp;du&nbsp;lien.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nB&nbsp;Deuxi&egrave;me&nbsp;spot&nbsp;du&nbsp;lien.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">Le&nbsp;poids&nbsp;du&nbsp;lien&nbsp;o&ugrave;&nbsp;0&nbsp;si&nbsp;il&nbsp;n'y&nbsp;a&nbsp;pas&nbsp;de&nbsp;lien.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">getLink</font><font color="#000000">(</font><font color="#000000">String&nbsp;nA,&nbsp;String&nbsp;nB</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">p_&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">isLink</font><font color="#000000">(</font><font color="#000000">nA,&nbsp;nB</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;SA_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">nA</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Link&nbsp;li_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Link</font><font color="#000000">)&nbsp;</font><font color="#000000">SA_.links.get</font><font color="#000000">(</font><font color="#000000">nB</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">p_&nbsp;=&nbsp;li_.p;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">p_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Donne&nbsp;la&nbsp;distance&nbsp;entre&nbsp;deux&nbsp;spots.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nA&nbsp;Premier&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nB&nbsp;Deuxi&egrave;me&nbsp;spot.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">La&nbsp;distance.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">getDistance</font><font color="#000000">(</font><font color="#000000">String&nbsp;nA,&nbsp;String&nbsp;nB</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;SA_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">nA</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;SB_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">nB</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">SA_&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">&amp;&amp;&nbsp;SB_&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">p_&nbsp;=&nbsp;</font><font color="#990000">0.0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">p_&nbsp;=&nbsp;dist</font><font color="#000000">(</font><font color="#000000">SA_.x,&nbsp;SA_.y,&nbsp;SB_.x,&nbsp;SB_.y</font><font color="#000000">)&nbsp;</font><font color="#000000">/&nbsp;</font><font color="#990000">100</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">p_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">-</font><font color="#990000">1</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;&nbsp;Cherche&nbsp;spot&nbsp;interm&eacute;diaire&nbsp;entre&nbsp;sInit&nbsp;et&nbsp;sTarget&nbsp;tel&nbsp;que&nbsp;la&nbsp;distance&nbsp;entre&nbsp;sInit&nbsp;et&nbsp;sTarget&nbsp;soit&nbsp;minimal.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nInit&nbsp;Spot&nbsp;initial.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">nTarget&nbsp;Spot&nbsp;cible.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">Spot&nbsp;interm&eacute;diaire.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">/*String&nbsp;exploreSpot(String&nbsp;sO,&nbsp;String&nbsp;sInit,&nbsp;String&nbsp;sTarget,&nbsp;ArrayList&nbsp;Visited)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if(sInit&nbsp;==&nbsp;sTarget)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">return&nbsp;sTarget;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">String&nbsp;next&nbsp;=&nbsp;sInit;&nbsp;//&nbsp;initialization</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">Spot&nbsp;Sinit&nbsp;=&nbsp;(Spot)&nbsp;spots.get(sInit);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">Spot&nbsp;Starget&nbsp;=&nbsp;(Spot)&nbsp;spots.get(sTarget);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">double&nbsp;p&nbsp;=&nbsp;99999999;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">ArrayList&nbsp;Visited_&nbsp;=&nbsp;new&nbsp;ArrayList();</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;Visited.size();&nbsp;i++)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">Visited_.add((String)&nbsp;Visited.get(i));</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">HashMap&nbsp;spotsN&nbsp;=&nbsp;new&nbsp;HashMap();</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">for(String&nbsp;ni_&nbsp;:&nbsp;(Iterable&lt;String&gt;&nbsp;)spots.keySet())</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if(!(Visited_.contains(ni_)))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">spotsN.put(ni_,&nbsp;(Spot)&nbsp;spots.get(ni_));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;contraindre&nbsp;&agrave;&nbsp;chercher&nbsp;parmi&nbsp;les&nbsp;spots&nbsp;non&nbsp;visit&eacute;s!</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">for(String&nbsp;ni_&nbsp;:&nbsp;(Iterable&lt;String&gt;&nbsp;)spots.keySet())</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if((!(sInit.equals(sO)&nbsp;&amp;&amp;&nbsp;ni_.equals(sTarget))&nbsp;&amp;&amp;&nbsp;!ni_.equals(sInit)))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">Spot&nbsp;Si_&nbsp;=&nbsp;(Spot)&nbsp;spots.get(ni_);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if((path.indexOf(ni_)&nbsp;==&nbsp;-1)&nbsp;&amp;&amp;&nbsp;(restricted.indexOf(ni_)&nbsp;==&nbsp;-1))&nbsp;{&nbsp;//&nbsp;si&nbsp;le&nbsp;spot&nbsp;n'a&nbsp;pas&nbsp;&eacute;t&eacute;&nbsp;parcouru</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">double&nbsp;pi&nbsp;=&nbsp;PVector.dist(Si_.position,&nbsp;Sinit.position)&nbsp;+&nbsp;PVector.dist(Starget.position,&nbsp;Si_.position);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(pi);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;double&nbsp;pi&nbsp;=&nbsp;getLink(ni_,sInit)&nbsp;+&nbsp;getLink(sTarget,ni_);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if(pi&nbsp;&lt;&nbsp;p)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">p&nbsp;=&nbsp;pi;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">next&nbsp;=&nbsp;ni_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if(sInit.equals(sO))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">println(&#34;Distance&nbsp;parcourue&nbsp;par&nbsp;le&nbsp;trajet:&nbsp;&#34;&nbsp;+&nbsp;p&nbsp;/&nbsp;100);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;comp&nbsp;=&nbsp;p/100;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">path.add(sInit);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(next);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">return&nbsp;next;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">}*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;&nbsp;&nbsp;Construit&nbsp;le&nbsp;trajet&nbsp;avec&nbsp;tous&nbsp;les&nbsp;spots&nbsp;-&nbsp;appel&nbsp;&agrave;&nbsp;exploreSpot</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">sStart&nbsp;Spot&nbsp;d&eacute;part.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">sEnd&nbsp;Spot&nbsp;final.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">/*String&nbsp;findPath(String&nbsp;sStart,&nbsp;String&nbsp;sEnd,&nbsp;ArrayList&nbsp;VisitedSpots)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">path.clear();</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">restricted.clear();</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">println(&#34;&nbsp;&#34;&nbsp;+&nbsp;sStart&nbsp;+&nbsp;&#34;&nbsp;&agrave;&nbsp;&#34;&nbsp;+&nbsp;sEnd);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">String&nbsp;next&nbsp;=&nbsp;sStart,&nbsp;interm&nbsp;=&nbsp;null;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">int&nbsp;its&nbsp;=&nbsp;0;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">int&nbsp;tests&nbsp;=&nbsp;0;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">while(next&nbsp;!=&nbsp;sEnd&nbsp;&amp;&amp;&nbsp;tests&nbsp;&lt;&nbsp;100)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">next&nbsp;=&nbsp;exploreSpot(sStart,&nbsp;next,&nbsp;sEnd,&nbsp;VisitedSpots);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">its++;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if(its&nbsp;&gt;&nbsp;500)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">its&nbsp;=&nbsp;0;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">tests++;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">restricted.add(path.get(path.size()&nbsp;-&nbsp;1));</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">next&nbsp;=&nbsp;(String)&nbsp;path.get(0);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">path.clear();</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">println(tests);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if(tests&nbsp;&lt;&nbsp;100)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">path.add(sEnd);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;path.size();&nbsp;i++)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">String&nbsp;p&nbsp;=&nbsp;(String)&nbsp;path.get(i);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if(!(p.equals(sStart))&nbsp;&amp;&amp;&nbsp;!(p.equals(sEnd)))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">interm&nbsp;=&nbsp;p;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">println(&#34;interm:&nbsp;&#34;&nbsp;+&nbsp;interm);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">return&nbsp;interm;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">}*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;&nbsp;&nbsp;Algorithme&nbsp;de&nbsp;Dijkstra</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">sStart&nbsp;Spot&nbsp;d&eacute;part.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">sEnd&nbsp;Spot&nbsp;final.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">dijkstra</font><font color="#000000">(</font><font color="#000000">String&nbsp;sStart,&nbsp;String&nbsp;sEnd</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">sStart</font><font color="#000000">)&nbsp;</font><font color="#000000">==&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">||&nbsp;spots.get</font><font color="#000000">(</font><font color="#000000">sEnd</font><font color="#000000">)&nbsp;</font><font color="#000000">==&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">path.clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">println</font><font color="#000000">(</font><font color="#2a00ff">&#34;&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;sStart&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;&agrave;&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;sEnd</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;ni_&nbsp;:&nbsp;</font><font color="#000000">(</font><font color="#000000">Iterable&lt;String&gt;&nbsp;</font><font color="#000000">)</font><font color="#000000">spots.keySet</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;S_&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">ni_</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">S_.init</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">opened.clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">closed.clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">opened.add</font><font color="#000000">(</font><font color="#000000">sStart</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;Ss&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">sStart</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Ss.g&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>while</b></font><font color="#000000">(</font><font color="#000000">opened.size</font><font color="#000000">()&nbsp;</font><font color="#000000">&gt;&nbsp;</font><font color="#990000">0</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;nCurrent&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">String</font><font color="#000000">)&nbsp;</font><font color="#000000">opened.remove</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(&#34;nCurrent:&nbsp;&#34;&nbsp;+&nbsp;nCurrent);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">closed.add</font><font color="#000000">(</font><font color="#000000">nCurrent</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">nCurrent&nbsp;==&nbsp;sEnd</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>break</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;Sc&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">nCurrent</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;ni_&nbsp;:&nbsp;</font><font color="#000000">(</font><font color="#000000">Iterable&lt;String&gt;&nbsp;</font><font color="#000000">)</font><font color="#000000">Sc.links.keySet</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;for(String&nbsp;ni_&nbsp;:&nbsp;(Iterable&lt;String&gt;)&nbsp;spots.keySet())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;if(!ni_.equals(sEnd)&nbsp;&amp;&amp;&nbsp;!ni_.equals(sStart))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(&#34;ni_:&nbsp;&#34;&nbsp;+&nbsp;ni_);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;adjacent&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">ni_</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Link&nbsp;a&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Link</font><font color="#000000">)&nbsp;</font><font color="#000000">Sc.links.get</font><font color="#000000">(</font><font color="#000000">ni_</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">adjacent.walkable&nbsp;&amp;&amp;&nbsp;!arrayListContains</font><font color="#000000">(</font><font color="#000000">closed,&nbsp;ni_</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">!arrayListContains</font><font color="#000000">(</font><font color="#000000">opened,&nbsp;ni_</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">opened.add</font><font color="#000000">(</font><font color="#000000">ni_</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">adjacent.parent&nbsp;=&nbsp;Sc;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">adjacent.setG</font><font color="#000000">(</font><font color="#000000">a</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(&#34;g&nbsp;ds&nbsp;open:&nbsp;&#34;&nbsp;+&nbsp;adjacent.g);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;if</b></font><font color="#000000">(</font><font color="#000000">adjacent.g&nbsp;&gt;&nbsp;Sc.g&nbsp;+&nbsp;a.p</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">adjacent.parent&nbsp;=&nbsp;Sc;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">adjacent.setG</font><font color="#000000">(</font><font color="#000000">a</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(&#34;g&nbsp;hors&nbsp;open:&nbsp;&#34;&nbsp;+&nbsp;adjacent.g);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Path&nbsp;generation</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;pathSpot&nbsp;=&nbsp;sEnd;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(pathSpot);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">di&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">closed.size</font><font color="#000000">()&nbsp;</font><font color="#000000">&gt;&nbsp;</font><font color="#990000">1</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>while</b></font><font color="#000000">(</font><font color="#000000">!</font><font color="#000000">(</font><font color="#000000">pathSpot.equals</font><font color="#000000">(</font><font color="#000000">sStart</font><font color="#000000">)))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">path.add</font><font color="#000000">(</font><font color="#000000">pathSpot</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;Sp&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">pathSpot</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">di&nbsp;+=&nbsp;Sp.g;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(di);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Sp&nbsp;=&nbsp;Sp.parent;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pathSpot&nbsp;=&nbsp;Sp.n;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(pathSpot);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">path.add</font><font color="#000000">(</font><font color="#000000">sStart</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;Sp&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Spot</font><font color="#000000">)&nbsp;</font><font color="#000000">spots.get</font><font color="#000000">(</font><font color="#000000">sStart</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">di&nbsp;+=&nbsp;Sp.g;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(di);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Utilities</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">arrayListContains</font><font color="#000000">(</font><font color="#000000">ArrayList&nbsp;c,&nbsp;String&nbsp;nA</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&nbsp;&lt;&nbsp;c.size</font><font color="#000000">()</font><font color="#000000">;&nbsp;i++</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;o&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">String</font><font color="#000000">)&nbsp;</font><font color="#000000">c.get</font><font color="#000000">(</font><font color="#000000">i</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">o&nbsp;==&nbsp;nA</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f7f5f">//&nbsp;Taille&nbsp;pour&nbsp;l'insertion&nbsp;dans&nbsp;JavaScool</font><br />
+<font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">WIDTH&nbsp;=&nbsp;</font><font color="#990000">900</font><font color="#000000">,&nbsp;HEIGHT&nbsp;=&nbsp;</font><font color="#990000">500</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff"></font><font color="#ffffff">
+</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

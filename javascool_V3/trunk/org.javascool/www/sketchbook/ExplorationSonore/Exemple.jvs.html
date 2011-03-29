@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f7f5f">//&nbsp;Programme&nbsp;exemple&nbsp;d'usage&nbsp;de&nbsp;la&nbsp;proglet</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">main</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Lancement&nbsp;d'un&nbsp;signal&nbsp;pr&eacute;d&eacute;fini</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">ExplorationSonore.playSignal</font><font color="#000000">(</font><font color="#990000">1</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;sinus&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">500</font><font color="#000000">,&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;une&nbsp;seconde&nbsp;d'attente</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">sleep</font><font color="#000000">(</font><font color="#990000">2000</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Lancement&nbsp;d'un&nbsp;autre&nbsp;signal&nbsp;pr&eacute;d&eacute;fini,&nbsp;sur&nbsp;un&nbsp;autre&nbsp;canal</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">ExplorationSonore.playSignal</font><font color="#000000">(</font><font color="#990000">2</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;carr&eacute;&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">1500</font><font color="#000000">,&nbsp;</font><font color="#990000">0.333</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;une&nbsp;seconde&nbsp;d'attente</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">sleep</font><font color="#000000">(</font><font color="#990000">2000</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Lancement&nbsp;d'un&nbsp;3eme&nbsp;signal&nbsp;pr&eacute;d&eacute;fini,&nbsp;sur&nbsp;le&nbsp;3eme&nbsp;canal</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">ExplorationSonore.playSignal</font><font color="#000000">(</font><font color="#990000">3</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;scie&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">2500</font><font color="#000000">,&nbsp;</font><font color="#990000">0.2</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;une&nbsp;seconde&nbsp;d'attente</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">sleep</font><font color="#000000">(</font><font color="#990000">2000</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;et&nbsp;on&nbsp;arrete&nbsp;tout</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">ExplorationSonore.playStop</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;une&nbsp;seconde&nbsp;d'attente</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">sleep</font><font color="#000000">(</font><font color="#990000">3000</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Et&nbsp;on&nbsp;joue&nbsp;un&nbsp;sone&nbsp;pr&eacute;d&eacute;fini&nbsp;en&nbsp;&eacute;touffant&nbsp;le&nbsp;son</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;-&nbsp;Attention&nbsp;&agrave;&nbsp;ce&nbsp;que&nbsp;le&nbsp;chemin&nbsp;vers&nbsp;le&nbsp;fichier&nbsp;soit&nbsp;bien&nbsp;accessible.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">ExplorationSonore.playRecord</font><font color="#000000">(</font><font color="#2a00ff">&#34;../sketchbook/ExplorationSonore/data/music/Ahmed_Ex1.wav&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">400</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;deux&nbsp;secondes&nbsp;d'attente</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">sleep</font><font color="#000000">(</font><font color="#990000">4000</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;et&nbsp;on&nbsp;arrete&nbsp;tout</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">ExplorationSonore.playStop</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

@@ -1,4 +1,7 @@
 
-void main() {
-    println("ooo");
+void main() {  
+clear();
+   println("titi");
+   sleep(8000);
+   println("toto");
 }

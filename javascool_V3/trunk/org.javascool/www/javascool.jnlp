@@ -14,7 +14,7 @@
   </security> 
   <resources>
     <j2se version="1.4+"/>
-    <jar href="javascool-3-2-2.jar"/>   
+    <jar href="javascool.jar"/>   
   </resources>
   <application-desc main-class="org.javascool.JsMain">
     <!--argument></argument-->

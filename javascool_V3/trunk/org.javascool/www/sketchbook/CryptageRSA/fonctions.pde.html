@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Fonctions&nbsp;g&eacute;n&eacute;rales&nbsp;de&nbsp;l'application</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f7f5f">//&nbsp;//////////////////////////////////////////////////</font><br />
+<font color="#3f7f5f">//&nbsp;/&nbsp;Actions&nbsp;des&nbsp;controlleurs</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">reset</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">pq_size&nbsp;=&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">(</font><font color="#000000">random</font><font color="#000000">(</font><font color="#990000">4</font><font color="#000000">,&nbsp;</font><font color="#990000">10</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">p&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">pq_size&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;prime_certainty,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Random</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">q&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">pq_size&nbsp;-&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;prime_certainty,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Random</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">p&nbsp;==&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">p&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">pq_size&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;prime_certainty,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Random</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">q&nbsp;==&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">q&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">pq_size&nbsp;-&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;prime_certainty,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Random</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">calculate_n</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Calculer&nbsp;n&nbsp;=&nbsp;p×q</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">n&nbsp;=&nbsp;p.multiply</font><font color="#000000">(</font><font color="#000000">q</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">launch_e</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">e&nbsp;=&nbsp;generate_e</font><font color="#000000">(</font><font color="#000000">p,&nbsp;q,&nbsp;</font><font color="#990000">16</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">launch_d</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Calculer&nbsp;d&nbsp;selon:</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Il&nbsp;existe&nbsp;un&nbsp;relatif&nbsp;entier&nbsp;m,&nbsp;tel&nbsp;que&nbsp;e&nbsp;×&nbsp;d&nbsp;+&nbsp;m&nbsp;×&nbsp;(p&nbsp;-&nbsp;1)(q&nbsp;-&nbsp;1)&nbsp;=&nbsp;1</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;d&nbsp;est&nbsp;la&nbsp;cl&eacute;&nbsp;priv&eacute;e</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">d&nbsp;=&nbsp;calculate_d</font><font color="#000000">(</font><font color="#000000">p,&nbsp;q,&nbsp;e</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">translate_m</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;MessBits&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">lastInput.getBytes</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#990000">1</font><font color="#000000">]</font><font color="#000000">.setText</font><font color="#000000">(</font><font color="#000000">MessBits&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">encrypt_m</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;MessBits&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">lastInput.getBytes</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">EncMessBits&nbsp;=&nbsp;encrypt</font><font color="#000000">(</font><font color="#000000">MessBits,&nbsp;e,&nbsp;n</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#990000">2</font><font color="#000000">]</font><font color="#000000">.setText</font><font color="#000000">(</font><font color="#000000">EncMessBits&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">decrypt_m</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;DecMessBits&nbsp;=&nbsp;decrypt</font><font color="#000000">(</font><font color="#000000">EncMessBits,&nbsp;d,&nbsp;n</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String&nbsp;decryptedMessage&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">String</font><font color="#000000">(</font><font color="#000000">DecMessBits.toByteArray</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#990000">4</font><font color="#000000">]</font><font color="#000000">.setText</font><font color="#000000">(</font><font color="#000000">decryptedMessage&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">send_m</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#990000">3</font><font color="#000000">]</font><font color="#000000">.setText</font><font color="#000000">(</font><font color="#000000">EncMessBits&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;//////////////////////////////////////////////////</font><br />
+<font color="#3f7f5f">//&nbsp;Fonctions&nbsp;pour&nbsp;la&nbsp;m&eacute;thode&nbsp;RSA</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>static&nbsp;</b></font><font color="#000000">BigInteger&nbsp;generate_e</font><font color="#000000">(</font><font color="#000000">BigInteger&nbsp;p,&nbsp;BigInteger&nbsp;q,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">bitsize</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;e,&nbsp;phi_pq;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">e&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;0&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">phi_pq&nbsp;=&nbsp;q.subtract</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;1&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">phi_pq&nbsp;=&nbsp;phi_pq.multiply</font><font color="#000000">(</font><font color="#000000">p.subtract</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;1&#34;</font><font color="#000000">)))</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>do&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">e&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">bitsize,&nbsp;</font><font color="#990000">0</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Random</font><font color="#000000">()))</font><font color="#000000">.setBit</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">i&nbsp;=&nbsp;i&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>while</b></font><font color="#000000">(</font><font color="#000000">i&nbsp;&lt;&nbsp;</font><font color="#990000">100&nbsp;</font><font color="#000000">&amp;&amp;&nbsp;</font><font color="#000000">(</font><font color="#000000">e.gcd</font><font color="#000000">(</font><font color="#000000">phi_pq</font><font color="#000000">)</font><font color="#000000">.compareTo</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;1&#34;</font><font color="#000000">))&nbsp;</font><font color="#000000">!=&nbsp;</font><font color="#990000">0</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">e;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>static&nbsp;</b></font><font color="#000000">BigInteger&nbsp;calculate_d</font><font color="#000000">(</font><font color="#000000">BigInteger&nbsp;p,&nbsp;BigInteger&nbsp;q,&nbsp;BigInteger&nbsp;e</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;d,&nbsp;phi_pq;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">phi_pq&nbsp;=&nbsp;q.subtract</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;1&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">phi_pq&nbsp;=&nbsp;phi_pq.multiply</font><font color="#000000">(</font><font color="#000000">p.subtract</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;1&#34;</font><font color="#000000">)))</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">d&nbsp;=&nbsp;e.modInverse</font><font color="#000000">(</font><font color="#000000">phi_pq</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">d;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>static&nbsp;</b></font><font color="#000000">BigInteger&nbsp;encrypt</font><font color="#000000">(</font><font color="#000000">BigInteger&nbsp;m,&nbsp;BigInteger&nbsp;e,&nbsp;BigInteger&nbsp;n</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;c,&nbsp;bitmask;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">c&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;0&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">bitmask&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;2&#34;</font><font color="#000000">))</font><font color="#000000">.pow</font><font color="#000000">(</font><font color="#000000">n.bitLength</font><font color="#000000">()&nbsp;</font><font color="#000000">-&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">.subtract</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;1&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>while</b></font><font color="#000000">(</font><font color="#000000">m.compareTo</font><font color="#000000">(</font><font color="#000000">bitmask</font><font color="#000000">)&nbsp;</font><font color="#000000">==&nbsp;</font><font color="#990000">1</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">c&nbsp;=&nbsp;m.and&nbsp;</font><font color="#000000">(</font><font color="#000000">bitmask</font><font color="#000000">)</font><font color="#000000">.modPow</font><font color="#000000">(</font><font color="#000000">e,&nbsp;n</font><font color="#000000">)</font><font color="#000000">.shiftLeft</font><font color="#000000">(</font><font color="#000000">i&nbsp;*&nbsp;n.bitLength</font><font color="#000000">())</font><font color="#000000">.or&nbsp;</font><font color="#000000">(</font><font color="#000000">c</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">m&nbsp;=&nbsp;m.shiftRight</font><font color="#000000">(</font><font color="#000000">n.bitLength</font><font color="#000000">()&nbsp;</font><font color="#000000">-&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">i&nbsp;=&nbsp;i&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">c&nbsp;=&nbsp;m.modPow</font><font color="#000000">(</font><font color="#000000">e,&nbsp;n</font><font color="#000000">)</font><font color="#000000">.shiftLeft</font><font color="#000000">(</font><font color="#000000">i&nbsp;*&nbsp;n.bitLength</font><font color="#000000">())</font><font color="#000000">.or&nbsp;</font><font color="#000000">(</font><font color="#000000">c</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">c;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>static&nbsp;</b></font><font color="#000000">BigInteger&nbsp;decrypt</font><font color="#000000">(</font><font color="#000000">BigInteger&nbsp;c,&nbsp;BigInteger&nbsp;d,&nbsp;BigInteger&nbsp;n</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;m,&nbsp;bitmask;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">m&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;0&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">bitmask&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;2&#34;</font><font color="#000000">))</font><font color="#000000">.pow</font><font color="#000000">(</font><font color="#000000">n.bitLength</font><font color="#000000">())</font><font color="#000000">.subtract</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#2a00ff">&#34;1&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>while</b></font><font color="#000000">(</font><font color="#000000">c.compareTo</font><font color="#000000">(</font><font color="#000000">bitmask</font><font color="#000000">)&nbsp;</font><font color="#000000">==&nbsp;</font><font color="#990000">1</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">m&nbsp;=&nbsp;c.and&nbsp;</font><font color="#000000">(</font><font color="#000000">bitmask</font><font color="#000000">)</font><font color="#000000">.modPow</font><font color="#000000">(</font><font color="#000000">d,&nbsp;n</font><font color="#000000">)</font><font color="#000000">.shiftLeft</font><font color="#000000">(</font><font color="#000000">i&nbsp;*&nbsp;</font><font color="#000000">(</font><font color="#000000">n.bitLength</font><font color="#000000">()&nbsp;</font><font color="#000000">-&nbsp;</font><font color="#990000">1</font><font color="#000000">))</font><font color="#000000">.or&nbsp;</font><font color="#000000">(</font><font color="#000000">m</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">c&nbsp;=&nbsp;c.shiftRight</font><font color="#000000">(</font><font color="#000000">n.bitLength</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">i&nbsp;=&nbsp;i&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">m&nbsp;=&nbsp;c.modPow</font><font color="#000000">(</font><font color="#000000">d,&nbsp;n</font><font color="#000000">)</font><font color="#000000">.shiftLeft</font><font color="#000000">(</font><font color="#000000">i&nbsp;*&nbsp;</font><font color="#000000">(</font><font color="#000000">n.bitLength</font><font color="#000000">()&nbsp;</font><font color="#000000">-&nbsp;</font><font color="#990000">1</font><font color="#000000">))</font><font color="#000000">.or&nbsp;</font><font color="#000000">(</font><font color="#000000">m</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">m;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f7f5f">//&nbsp;//////////////////////////////////////////////////</font><br />
+<font color="#3f7f5f">//&nbsp;Fonctions&nbsp;pour&nbsp;API</font><br />
+<font color="#3f7f5f">//&nbsp;//////////////////////////////////////////////////</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f5fbf">/**&nbsp;Cr&eacute;er&nbsp;une&nbsp;cl&eacute;&nbsp;priv&eacute;e&nbsp;D&nbsp;et&nbsp;le&nbsp;couple&nbsp;de&nbsp;cl&eacute;&nbsp;publiques&nbsp;(E,&nbsp;N).</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">Un&nbsp;tableau&nbsp;de&nbsp;3&nbsp;entiers&nbsp;avec&nbsp;les&nbsp;cl&eacute;s&nbsp;keys[]&nbsp;=&nbsp;{D,&nbsp;E,&nbsp;N};</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">[]&nbsp;</font><font color="#000000">createKeys</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger</font><font color="#000000">[]&nbsp;</font><font color="#000000">Keys&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">[</font><font color="#990000">3</font><font color="#000000">]</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">pqSize&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>int</b></font><font color="#000000">)&nbsp;(</font><font color="#990000">4&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#990000">6&nbsp;</font><font color="#000000">*&nbsp;Math.random</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;p_&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">pqSize&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;prime_certainty,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Random</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;q_&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">pqSize&nbsp;-&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;prime_certainty,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Random</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">p_&nbsp;==&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">p_&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">pqSize&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;prime_certainty,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Random</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">q_&nbsp;==&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">q_&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">pqSize&nbsp;-&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;prime_certainty,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Random</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;n_&nbsp;=&nbsp;p_.multiply</font><font color="#000000">(</font><font color="#000000">q_</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;e_&nbsp;=&nbsp;generate_e</font><font color="#000000">(</font><font color="#000000">p_,&nbsp;q_,&nbsp;</font><font color="#990000">16</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;d_&nbsp;=&nbsp;calculate_d</font><font color="#000000">(</font><font color="#000000">p_,&nbsp;q_,&nbsp;e_</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Keys</font><font color="#000000">[</font><font color="#990000">0</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;d_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Keys</font><font color="#000000">[</font><font color="#990000">1</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;e_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Keys</font><font color="#000000">[</font><font color="#990000">2</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;n_;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">Keys;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f5fbf">/**&nbsp;Encrypte&nbsp;un&nbsp;message&nbsp;&agrave;&nbsp;l'aide&nbsp;de&nbsp;cl&eacute;s.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">m&nbsp;Le&nbsp;message&nbsp;&agrave;&nbsp;encrypter.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">E&nbsp;cl&eacute;&nbsp;publique.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">N&nbsp;cl&eacute;&nbsp;publique.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">Le&nbsp;message&nbsp;encrypt&eacute;&nbsp;sous&nbsp;forme&nbsp;d'une&nbsp;suite&nbsp;de&nbsp;chiffres.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#000000">BigInteger&nbsp;encrypt</font><font color="#000000">(</font><font color="#000000">String&nbsp;m,&nbsp;BigInteger&nbsp;E,&nbsp;BigInteger&nbsp;N</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;EncMessBits&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;MessBits&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigInteger</font><font color="#000000">(</font><font color="#000000">m.getBytes</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">EncMessBits&nbsp;=&nbsp;encrypt</font><font color="#000000">(</font><font color="#000000">MessBits,&nbsp;E,&nbsp;N</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">EncMessBits;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f5fbf">/**&nbsp;D&eacute;crypte&nbsp;un&nbsp;message&nbsp;&agrave;&nbsp;l'aide&nbsp;de&nbsp;cl&eacute;s.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">m&nbsp;Le&nbsp;message&nbsp;encrypt&eacute;&nbsp;sous&nbsp;forme&nbsp;de&nbsp;chiffres.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">k&nbsp;cl&eacute;s,&nbsp;publique&nbsp;et&nbsp;priv&eacute;e.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">Le&nbsp;message&nbsp;d&eacute;crypt&eacute;.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#000000">String&nbsp;decrypt</font><font color="#000000">(</font><font color="#000000">BigInteger&nbsp;m,&nbsp;BigInteger</font><font color="#000000">[]&nbsp;</font><font color="#000000">k</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String&nbsp;decryptedMessage&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigInteger&nbsp;DecMessBits&nbsp;=&nbsp;decrypt</font><font color="#000000">(</font><font color="#000000">m,&nbsp;k</font><font color="#000000">[</font><font color="#990000">0</font><font color="#000000">]</font><font color="#000000">,&nbsp;k</font><font color="#000000">[</font><font color="#990000">2</font><font color="#000000">])</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">decryptedMessage&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">String</font><font color="#000000">(</font><font color="#000000">DecMessBits.toByteArray</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">decryptedMessage;</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

@@ -1,0 +1,67 @@
+void main() {
+  echo("Bonjour ! Quel est votre nom ?");
+  String nom = readString();
+  echo("C'est noté. Et votre prénom ?");
+  String prenom = readString();
+  echo("ÃŠtes-vous un homme ou une femme ?");
+  String quelSexe = readString();
+  while(!equal(quelSexe, "un homme") && !equal(quelSexe, "une femme")) {
+    echo("Désolé je n'ai pas compris votre réponse. ÃŠtes-vous un homme ou une femme ?");
+    quelSexe = readString();
+  }
+  String sexe;
+  if(equal(quelSexe, "un homme"))
+    sexe = "M.";
+  else
+    sexe = "Mme.";
+  echo("Parfait. Je suis enchanté de faire votre connaissance " + sexe + " " + prenom + " " + nom + ".");
+  echo("");
+  echo("Est-ce indiscret de vous demander votre âge ?");
+  String indiscret = readString();
+  while(!equal(indiscret, "oui") && !equal(indiscret, "non")) {
+    echo("Désolé je n'ai pas compris votre réponse. Est-ce indiscret de vous demander votre âge ?");
+    indiscret = readString();
+  }
+  if(equal(indiscret, "non")) {
+    echo("Dans ce cas, quel âge avez-vous " + sexe + " " + nom + " ?");
+    int age = readInt();
+    if(age <= 30)
+      echo("Comme j'aimerais être si jeune !");
+    else if(age <= 60)
+      echo("Félicitations, vous êtes dans la force de l'âge !");
+    else
+      echo("J'aimerais avoir votre expérience !");
+  } else
+    echo("Dommage. Passons à chose dans ce cas.");
+  echo("");
+
+  echo("Savez-vous que je suis excellent en calcul mental ?");
+  echo("Proposez-moi un grand nombre s'il vous plaît.");
+  int nombre1 = unGrandNombre();
+  echo("Je le note. Proposez-moi un autre grand nombre s'il vous plaît.");
+  int nombre2 = unGrandNombre();
+  echo("C'est noté bien... " + nombre1 + " fois " + nombre2 + " font " + (nombre1 * nombre2) + " !");
+  echo("Je vous sens impressionné...");
+
+  echo("");
+  echo("Je suis aussi capable de compter très vite !");
+  echo("Jusqu'à combien voulez-vous que je compte ?");
+  int max = readInt();
+  for(int i = 1; i <= max; i++)
+    echo(i);
+  echo("");
+
+  echo("Merci pour ce bon moment. A bientôt, " + prenom + ".");
+}
+int unGrandNombre() {
+  int res = readInt();
+  boolean premierEssai = true;
+  while(res < 100) {
+    premierEssai = false;
+    echo("Ah, " + res + " c'est bien petit ! Ne pouvez-vous pas me proposer un nombre un peu plus grand ?");
+    res = readInt();
+  }
+  if(!premierEssai)
+    echo("C'est mieux");
+  return res;
+}

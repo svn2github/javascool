@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f7f5f">/*////////////////////////////////////////////////////////////////////////////</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;11.2010&nbsp;C&eacute;cile&nbsp;P-L&nbsp;for&nbsp;Fuscia&nbsp;-&nbsp;ccl.picard@gmail.com&nbsp;-&nbsp;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Inspired&nbsp;from&nbsp;'WaveRipples'&nbsp;by&nbsp;Steven&nbsp;Kay&nbsp;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*/</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">RIPPLES&nbsp;=&nbsp;</font><font color="#990000">3</font><font color="#000000">;</font><font color="#3f7f5f">//=3;</font><br />
+<font color="#000000">color&nbsp;to=color</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;&nbsp;</font><font color="#3f7f5f">//&nbsp;bg&nbsp;color&nbsp;cycling&nbsp;extreme&nbsp;colours</font><br />
+<font color="#000000">color&nbsp;from=color</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><font color="#3f7f5f">//(77,0,77);</font><br />
+<font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">CYCLEPERIOD=</font><font color="#990000">255.0</font><font color="#000000">;&nbsp;</font><font color="#3f7f5f">//&nbsp;bg&nbsp;color&nbsp;cycling&nbsp;speed</font><br />
+<font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">DAMPING=</font><font color="#990000">1.0</font><font color="#000000">;</font><font color="#3f7f5f">//0.998;&nbsp;//&nbsp;speed&nbsp;ripples&nbsp;fade&nbsp;at,&nbsp;low&nbsp;value=faster</font><br />
+<font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">nbW&nbsp;=&nbsp;</font><font color="#990000">5</font><font color="#000000">;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">ampW&nbsp;=&nbsp;</font><font color="#990000">5</font><font color="#000000">;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">rotA&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#000000">ArrayList&nbsp;ripples;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f7f5f">//&nbsp;Interface</font><br />
+<font color="#000000">color&nbsp;currentcolor;&nbsp;</font><br />
+<font color="#000000">TextButton</font><font color="#000000">[]&nbsp;</font><font color="#000000">T1&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">TextButton</font><font color="#000000">[</font><font color="#990000">8</font><font color="#000000">]</font><font color="#000000">;</font><br />
+<font color="#000000">TextButton</font><font color="#000000">[]&nbsp;</font><font color="#000000">T2&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">TextButton</font><font color="#000000">[</font><font color="#990000">20</font><font color="#000000">]</font><font color="#000000">;</font><br />
+<font color="#000000">TextButton</font><font color="#000000">[]&nbsp;</font><font color="#000000">T3&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">TextButton</font><font color="#000000">[</font><font color="#990000">4</font><font color="#000000">]</font><font color="#000000">;</font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">dim;</font><br />
+<font color="#000000">PFont&nbsp;myFont;</font><br />
+<font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">locked&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setup</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">size</font><font color="#000000">(</font><font color="#990000">600</font><font color="#000000">,</font><font color="#990000">400</font><font color="#000000">,P3D</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">dim&nbsp;=&nbsp;</font><font color="#990000">400</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">myFont&nbsp;=&nbsp;createFont</font><font color="#000000">(</font><font color="#2a00ff">&#34;Arial&nbsp;Bold&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">15</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">color&nbsp;baseColor&nbsp;=&nbsp;color</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">,</font><font color="#990000">150</font><font color="#000000">,</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">currentcolor&nbsp;=&nbsp;baseColor;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Define&nbsp;and&nbsp;create&nbsp;buttons</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#000000">baseColor</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">rect</font><font color="#000000">(</font><font color="#000000">dim,</font><font color="#990000">0</font><font color="#000000">,</font><font color="#990000">200</font><font color="#000000">,height</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">color&nbsp;selected&nbsp;=&nbsp;color</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">,</font><font color="#990000">0</font><font color="#000000">,</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">color&nbsp;buttoncolor;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">color&nbsp;highlight;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;&nbsp;T1.length;&nbsp;i++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">buttoncolor&nbsp;=&nbsp;color</font><font color="#000000">(</font><font color="#990000">50</font><font color="#000000">)</font><font color="#000000">;</font><font color="#3f7f5f">//(5+i*250/T1.length);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">highlight&nbsp;=&nbsp;color</font><font color="#000000">(</font><font color="#990000">150</font><font color="#000000">)</font><font color="#000000">;</font><font color="#3f7f5f">//(50+i*200/T1.length);&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T1</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">TextButton</font><font color="#000000">(</font><font color="#000000">dim+</font><font color="#990000">5</font><font color="#000000">+</font><font color="#000000">(</font><font color="#000000">i%</font><font color="#990000">4</font><font color="#000000">)</font><font color="#000000">*dim/</font><font color="#990000">2</font><font color="#000000">/</font><font color="#990000">4</font><font color="#000000">,&nbsp;</font><font color="#990000">50</font><font color="#000000">+</font><font color="#7f0055"><b>int</b></font><font color="#000000">(</font><font color="#000000">i/</font><font color="#990000">4</font><font color="#000000">)</font><font color="#000000">*height/</font><font color="#990000">12</font><font color="#000000">,&nbsp;</font><font color="#990000">100</font><font color="#000000">,&nbsp;buttoncolor,&nbsp;highlight,&nbsp;selected,&nbsp;i+</font><font color="#990000">5</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">((</font><font color="#000000">i+</font><font color="#990000">5</font><font color="#000000">)</font><font color="#000000">==nbW</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T1</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.select=</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T1</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.select=</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;&nbsp;T2.length;&nbsp;i++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">buttoncolor&nbsp;=&nbsp;color</font><font color="#000000">(</font><font color="#990000">50</font><font color="#000000">)</font><font color="#000000">;</font><font color="#3f7f5f">//color(5+i*250/T2.length);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">highlight&nbsp;=&nbsp;color</font><font color="#000000">(</font><font color="#990000">150</font><font color="#000000">)</font><font color="#000000">;</font><font color="#3f7f5f">//color(50+i*200/T2.length);&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T2</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">TextButton</font><font color="#000000">(</font><font color="#000000">dim+</font><font color="#990000">5</font><font color="#000000">+</font><font color="#000000">(</font><font color="#000000">i%</font><font color="#990000">4</font><font color="#000000">)</font><font color="#000000">*dim/</font><font color="#990000">2</font><font color="#000000">/</font><font color="#990000">4</font><font color="#000000">,&nbsp;</font><font color="#990000">155</font><font color="#000000">+</font><font color="#7f0055"><b>int</b></font><font color="#000000">(</font><font color="#000000">i/</font><font color="#990000">4</font><font color="#000000">)</font><font color="#000000">*height/</font><font color="#990000">12</font><font color="#000000">,&nbsp;</font><font color="#990000">100</font><font color="#000000">,&nbsp;buttoncolor,&nbsp;highlight,&nbsp;selected,&nbsp;i+</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">((</font><font color="#000000">i+</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">==ampW</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T2</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.select=</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T2</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.select=</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;&nbsp;T3.length;&nbsp;i++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">buttoncolor&nbsp;=&nbsp;color</font><font color="#000000">(</font><font color="#990000">50</font><font color="#000000">)</font><font color="#000000">;</font><font color="#3f7f5f">//color(5+i*250/T2.length);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">highlight&nbsp;=&nbsp;color</font><font color="#000000">(</font><font color="#990000">150</font><font color="#000000">)</font><font color="#000000">;</font><font color="#3f7f5f">//color(50+i*200/T2.length);&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">TextButton</font><font color="#000000">(</font><font color="#000000">dim+</font><font color="#990000">5</font><font color="#000000">+</font><font color="#000000">(</font><font color="#000000">i%</font><font color="#990000">4</font><font color="#000000">)</font><font color="#000000">*dim/</font><font color="#990000">2</font><font color="#000000">/</font><font color="#990000">4</font><font color="#000000">,&nbsp;</font><font color="#000000">(</font><font color="#000000">height-</font><font color="#990000">40</font><font color="#000000">)</font><font color="#000000">+</font><font color="#7f0055"><b>int</b></font><font color="#000000">(</font><font color="#000000">i/</font><font color="#990000">4</font><font color="#000000">)</font><font color="#000000">*height/</font><font color="#990000">12</font><font color="#000000">,&nbsp;</font><font color="#990000">10</font><font color="#000000">,&nbsp;buttoncolor,&nbsp;highlight,&nbsp;selected,&nbsp;</font><font color="#990000">0.91</font><font color="#000000">+i*</font><font color="#990000">0.03</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//println((float)(i*0.1));</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">((</font><font color="#7f0055"><b>float</b></font><font color="#000000">)(</font><font color="#990000">0.91</font><font color="#000000">+i*</font><font color="#990000">0.03</font><font color="#000000">)</font><font color="#000000">==DAMPING</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.select=</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.select=</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">reset</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">draw</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//if&nbsp;(frameCount%10==0)&nbsp;print(&#34;&#34;+frameRate+&#34;fps\n&#34;);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">background</font><font color="#000000">(</font><font color="#000000">lerpColor</font><font color="#000000">(</font><font color="#000000">from,to,</font><font color="#990000">.5</font><font color="#000000">+</font><font color="#990000">.5</font><font color="#000000">*</font><font color="#000000">(</font><font color="#7f0055"><b>float</b></font><font color="#000000">)</font><font color="#000000">Math.cos</font><font color="#000000">(</font><font color="#000000">frameCount/CYCLEPERIOD</font><font color="#000000">)))</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#000000">color</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">,</font><font color="#990000">150</font><font color="#000000">,</font><font color="#990000">0</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">rect</font><font color="#000000">(</font><font color="#000000">dim,</font><font color="#990000">0</font><font color="#000000">,</font><font color="#990000">200</font><font color="#000000">,height</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">update</font><font color="#000000">(</font><font color="#000000">mouseX,&nbsp;mouseY</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;T1.length;&nbsp;i++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T1</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.display</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;T2.length;&nbsp;i++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T2</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.display</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;T3.length;&nbsp;i++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.display</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//stroke(255);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//strokeWeight(10);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">textFont</font><font color="#000000">(</font><font color="#000000">myFont</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">text</font><font color="#000000">(</font><font color="#2a00ff">&#34;LONGUEUR&nbsp;D'ONDE&nbsp;&#34;</font><font color="#000000">,&nbsp;dim+</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">20</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">text</font><font color="#000000">(</font><font color="#2a00ff">&#34;AMPLITUDE&nbsp;&#34;</font><font color="#000000">,&nbsp;dim+</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">130</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">text</font><font color="#000000">(</font><font color="#2a00ff">&#34;AMORTISSEMENT&nbsp;&#34;</font><font color="#000000">,&nbsp;dim+</font><font color="#990000">10</font><font color="#000000">,&nbsp;height-</font><font color="#990000">65</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">noStroke</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;fade&nbsp;waves&nbsp;out&nbsp;over&nbsp;time</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;i&lt;ripples.size</font><font color="#000000">()</font><font color="#000000">;i++</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Source&nbsp;s=</font><font color="#000000">(</font><font color="#000000">Source</font><font color="#000000">)</font><font color="#000000">ripples.get</font><font color="#000000">(</font><font color="#000000">i</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">s.fade</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">translate</font><font color="#000000">((</font><font color="#000000">width-dim</font><font color="#000000">)</font><font color="#000000">/</font><font color="#990000">2</font><font color="#000000">,dim/</font><font color="#990000">2</font><font color="#000000">,-</font><font color="#990000">400</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">rotateX</font><font color="#000000">(</font><font color="#000000">rotA/</font><font color="#990000">300.0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">totalAmp=</font><font color="#990000">0.0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">y=-</font><font color="#990000">100.0</font><font color="#000000">;y&lt;</font><font color="#990000">100.0</font><font color="#000000">;y+=</font><font color="#990000">3.0</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">x=-</font><font color="#990000">100.0</font><font color="#000000">;x&lt;</font><font color="#990000">100.0</font><font color="#000000">;x+=</font><font color="#990000">3.0</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;sum&nbsp;of&nbsp;waves&nbsp;from&nbsp;different&nbsp;sources&nbsp;at&nbsp;this&nbsp;point</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">hite=</font><font color="#990000">0.0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;i&lt;ripples.size</font><font color="#000000">()</font><font color="#000000">;i++</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Source&nbsp;s=</font><font color="#000000">(</font><font color="#000000">Source</font><font color="#000000">)</font><font color="#000000">ripples.get</font><font color="#000000">(</font><font color="#000000">i</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">hite+=s.getPart</font><font color="#000000">(</font><font color="#000000">x,y,</font><font color="#000000">(</font><font color="#7f0055"><b>float</b></font><font color="#000000">)</font><font color="#000000">frameCount</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">totalAmp+=Math.abs</font><font color="#000000">(</font><font color="#000000">hite</font><font color="#000000">)</font><font color="#000000">;&nbsp;</font><font color="#3f7f5f">//&nbsp;has&nbsp;to&nbsp;be&nbsp;abs()&nbsp;or&nbsp;settles&nbsp;far&nbsp;too&nbsp;fast&nbsp;;-)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;brightness&nbsp;level</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">h=</font><font color="#990000">128</font><font color="#000000">+</font><font color="#000000">(</font><font color="#990000">5</font><font color="#000000">*hite</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#000000">h</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">h&gt;</font><font color="#990000">100</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;don't&nbsp;bother&nbsp;unless&nbsp;cube&nbsp;bright&nbsp;enough&nbsp;to&nbsp;see&nbsp;:)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pushMatrix</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">translate</font><font color="#000000">(</font><font color="#000000">x*</font><font color="#990000">4</font><font color="#000000">,y*</font><font color="#990000">4</font><font color="#000000">,hite</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">box</font><font color="#000000">(</font><font color="#990000">8</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">popMatrix</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;once&nbsp;settled&nbsp;down&nbsp;to&nbsp;a&nbsp;calm&nbsp;sea,&nbsp;start&nbsp;again</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//if&nbsp;(totalAmp&lt;2000.0)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;&nbsp;print&nbsp;(&#34;Settled&nbsp;down,&nbsp;start&nbsp;again&#34;);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;&nbsp;reset();</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//}&nbsp;else&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//if&nbsp;(frameCount%10==0)&nbsp;print&nbsp;(&#34;TotalAmp=&#34;+totalAmp+&#34;\n&#34;);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//}</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f7f5f">/*</font><br />
+<font color="#3f7f5f">*&nbsp;Functions</font><br />
+<font color="#3f7f5f">*/</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">reset</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">ripples=</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ArrayList</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//RIPPLES&nbsp;=&nbsp;int(random(2,10));</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;i&lt;RIPPLES;i++</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addNewRipple</font><font color="#000000">()</font><font color="#000000">;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">keyPressed</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">keyCode&nbsp;==&nbsp;UP</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">rotA&lt;</font><font color="#990000">360</font><font color="#000000">)&nbsp;</font><font color="#000000">rotA&nbsp;+=</font><font color="#990000">10</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">keyCode&nbsp;==&nbsp;DOWN</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">rotA&gt;</font><font color="#990000">0</font><font color="#000000">)&nbsp;</font><font color="#000000">rotA&nbsp;-=</font><font color="#990000">10</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//ajout&nbsp;d'ondes</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">key&nbsp;==&nbsp;</font><font color="#990000">'&nbsp;'</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addNewRipple</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//joue&nbsp;sur&nbsp;l'amorti</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">key&nbsp;==&nbsp;</font><font color="#990000">'+'</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">DAMPING&lt;</font><font color="#990000">1</font><font color="#000000">)&nbsp;</font><font color="#000000">DAMPING&nbsp;+=&nbsp;</font><font color="#990000">0.001</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">key&nbsp;==&nbsp;</font><font color="#990000">'-'</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">DAMPING&gt;</font><font color="#990000">0</font><font color="#000000">)&nbsp;</font><font color="#000000">DAMPING&nbsp;-=&nbsp;</font><font color="#990000">0.001</font><font color="#000000">;&nbsp;</font><font color="#3f7f5f">//une&nbsp;tr&egrave;s&nbsp;basse&nbsp;valeur&nbsp;-&gt;&nbsp;les&nbsp;ondes&nbsp;se&nbsp;meurent&nbsp;rapidement</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">addNewRipple</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ripples.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Source</font><font color="#000000">(</font><font color="#000000">mouseX-dim/</font><font color="#990000">2</font><font color="#000000">,mouseY-dim/</font><font color="#990000">2</font><font color="#000000">,ampW,nbW</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">update</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y</font><font color="#000000">)</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">locked&nbsp;==&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;T1.length;&nbsp;i++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T1</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.update</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;T2.length;&nbsp;i++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T2</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.update</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;T3.length;&nbsp;i++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.update</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">locked&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">mousePressed</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;T1.length;&nbsp;i++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">T1</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.pressed</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">currentcolor&nbsp;=&nbsp;T1</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.basecolor;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T1</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.select&nbsp;=&nbsp;</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nbW&nbsp;=&nbsp;T1</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.value;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">j=</font><font color="#990000">0</font><font color="#000000">;&nbsp;j&lt;T1.length;&nbsp;j++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">!</font><font color="#000000">(</font><font color="#000000">j==i</font><font color="#000000">))&nbsp;</font><font color="#000000">T1</font><font color="#000000">[</font><font color="#000000">j</font><font color="#000000">]</font><font color="#000000">.select&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;T2.length;&nbsp;i++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">T2</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.pressed</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">currentcolor&nbsp;=&nbsp;T2</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.basecolor;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T2</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.select&nbsp;=&nbsp;</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ampW&nbsp;=&nbsp;T2</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.value;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">j=</font><font color="#990000">0</font><font color="#000000">;&nbsp;j&lt;T2.length;&nbsp;j++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">!</font><font color="#000000">(</font><font color="#000000">j==i</font><font color="#000000">))&nbsp;</font><font color="#000000">T2</font><font color="#000000">[</font><font color="#000000">j</font><font color="#000000">]</font><font color="#000000">.select&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;T3.length;&nbsp;i++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.pressed</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">currentcolor&nbsp;=&nbsp;T3</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.basecolor;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.select&nbsp;=&nbsp;</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">DAMPING&nbsp;=&nbsp;T3</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.value;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">j=</font><font color="#990000">0</font><font color="#000000">;&nbsp;j&lt;T3.length;&nbsp;j++</font><font color="#000000">)&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">!</font><font color="#000000">(</font><font color="#000000">j==i</font><font color="#000000">))&nbsp;</font><font color="#000000">T3</font><font color="#000000">[</font><font color="#000000">j</font><font color="#000000">]</font><font color="#000000">.select&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">mouseX&lt;dim</font><font color="#000000">)&nbsp;</font><font color="#000000">reset</font><font color="#000000">()</font><font color="#000000">;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><font color="#ffffff">
+</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

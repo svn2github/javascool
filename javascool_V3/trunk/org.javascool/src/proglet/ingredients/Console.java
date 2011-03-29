@@ -7,6 +7,7 @@ package proglet.ingredients;
 // Used to define the gui
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
@@ -49,6 +50,7 @@ public class Console implements org.javascool.Proglet {
       out.setEditable(false);
       out.setContentType("text/html; charset=UTF-8");
       out.setBackground(Color.WHITE);
+      out.setFont(new Font("Liberation Mono", Font.PLAIN, 18));
       pane = new JScrollPane();
       pane.setViewportView(out);
       pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

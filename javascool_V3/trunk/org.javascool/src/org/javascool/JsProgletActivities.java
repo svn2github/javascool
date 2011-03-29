@@ -53,7 +53,7 @@ public class JsProgletActivities {
                        }
                      }
                      );
-    main.addActivity(new ProgletActivity("paintbrush", "Objet numérique: les images", "Dessiner sur une image (version préliminaire)") {
+    main.addActivity(new ProgletActivity("paintbrush", "Objet numérique: les images", "Dessiner sur une image") {
                        public void init2(JsFrame frame) {
                          frame.addTab("Enoncé de l'exercice", "proglet/paintbrush/doc-files/sujet-appli-image.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
@@ -77,7 +77,7 @@ public class JsProgletActivities {
                        public void init2(JsFrame frame) {}
                      }
                      );
-    main.addActivity(new ProgletActivity("goglemap", "Objet numérique: les graphes", "Jouer avec une carte de France (version provisoire)") {
+    main.addActivity(new ProgletActivity("goglemap", "Objet numérique: les graphes", "Jouer avec une carte de France") {
                        public void init2(JsFrame frame) {}
                      }
                      );
@@ -103,7 +103,6 @@ public class JsProgletActivities {
             Console.printHtml("<hr>\n");
             if(out.length() == 0) {
               main.getFrame().addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
-              main.getFrame().addTool("Arrêter", "org/javascool/doc-files/icones16/stop.png", stop);
             }
           } else
             System.out.println("Impossible de compiler: le fichier n'est pas sauvegardé !");
@@ -113,10 +112,14 @@ public class JsProgletActivities {
     };
     protected Runnable execute = new Runnable() {
       public void run() {
-        // -Console.clear();
-        // -CurveDisplay.scopeReset();
+	main.getFrame().addTool("Arrêter", "org/javascool/doc-files/icones16/processing.gif", stop);
         Jvs2Java.load(main.getFileChooser().getFile());
         Jvs2Java.run(true);
+	new Thread(new Runnable() { public void run() {
+	  while(Jvs2Java.isRunning())
+	    Macros.sleep(500);
+	  main.getFrame().delTool("Arrêter");
+	}}).start();
       }
     };
     private Runnable stop = new Runnable() {

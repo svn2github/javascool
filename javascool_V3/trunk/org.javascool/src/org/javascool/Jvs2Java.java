@@ -351,6 +351,7 @@ public class Jvs2Java {
                                  if(!"Programme arrêté !".equals(e.getMessage()))
                                    Utils.report(e);
                                }
+			       thread = null;
                              }
                            }
                            )).start();
@@ -372,10 +373,15 @@ public class Jvs2Java {
                                } catch(Throwable e) {
                                  Utils.report(e);
                                }
+			       thread = null;
                              }
-                           }
+	}
                            )).start();
     }
+  }
+  /** Tests if the proglet run is done. */
+  public static boolean isRunning() {
+    return thread != null;
   }
   // This is the entry point to run  the proglet pupil's program: do not change directly !
   /**/public static Runnable runnable = null;

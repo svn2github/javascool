@@ -68,12 +68,15 @@ public class JsMain extends JApplet {
   static {
     String os = System.getProperty("os.name");
     if(os.startsWith("Windows")) {
-      try { UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+      try {
+	UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
       } catch(Exception e) {}
     } else {
-      try { System.setProperty("com.apple.mrj.application.apple.menu.about.name", title);
+      try { 
+	System.setProperty("com.apple.mrj.application.apple.menu.about.name", title);
       } catch(Exception e) {}
-      try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      try { 
+	UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
       } catch(Exception e) {
         System.err.println("Note: Utilisaton du thème Java (et non du système)");
       }
@@ -371,7 +374,7 @@ public class JsMain extends JApplet {
     System.out.println("---------------------\n" + title + "\n---------------------\nstarting..");
     setJavascoolVersion();
     JsMain main = getMain();
-    setUncaughtExceptionAlert(); // Version perfusée
+    //- setUncaughtExceptionAlert(); // Version perfusée
     if(usage.length > 0)
       main.setActivity(usage[0]);
     if((usage.length > 0) && new File(usage[usage.length - 1]).exists() && (main.activity.getEditor() != null))

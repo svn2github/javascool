@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#7f0055"><b>class&nbsp;</b></font><font color="#000000">Spot&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">Vec2D&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Vec3D&nbsp;currNormal&nbsp;=&nbsp;Vec3D.Y_AXIS.copy</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Vec3D&nbsp;pos;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">PVector&nbsp;position;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String&nbsp;n;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Spot&nbsp;parent&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;&nbsp;</font><font color="#3f7f5f">//&nbsp;Parent&nbsp;Node&nbsp;setting</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">g&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;&nbsp;</font><font color="#3f7f5f">//&nbsp;Cost&nbsp;of&nbsp;reaching&nbsp;goal</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">walkable&nbsp;=&nbsp;</font><font color="#7f0055"><b>true</b></font><font color="#000000">;&nbsp;</font><font color="#3f7f5f">//&nbsp;Is&nbsp;this&nbsp;Node&nbsp;to&nbsp;be&nbsp;ignored?</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">col;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>char&nbsp;</b></font><font color="#000000">f;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">h;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">d1,&nbsp;d2;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">x2D,&nbsp;y2D;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">HashMap&nbsp;links;&nbsp;</font><font color="#3f7f5f">//&nbsp;tous&nbsp;les&nbsp;liens&nbsp;qui&nbsp;sont&nbsp;accol&eacute;s&nbsp;au&nbsp;spot</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">IsectData3D&nbsp;isec;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Spot</font><font color="#000000">(</font><font color="#000000">String&nbsp;n_,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">col_,&nbsp;</font><font color="#7f0055"><b>char&nbsp;</b></font><font color="#000000">f_,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x_,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y_,&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">d1_,&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">d2_,&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">h_</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">x&nbsp;=&nbsp;x_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">y&nbsp;=&nbsp;y_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">d1&nbsp;=&nbsp;d1_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">d2&nbsp;=&nbsp;d2_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">h&nbsp;=&nbsp;h_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">n&nbsp;=&nbsp;n_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">col&nbsp;=&nbsp;col_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">f&nbsp;=&nbsp;f_;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pos&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">(</font><font color="#000000">x,&nbsp;h,&nbsp;y</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">position&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">PVector</font><font color="#000000">(</font><font color="#000000">x,&nbsp;y</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">x2D&nbsp;=&nbsp;</font><font color="#000000">(((</font><font color="#000000">x_&nbsp;+&nbsp;b.getMax</font><font color="#000000">()</font><font color="#000000">.to2DXZ</font><font color="#000000">()</font><font color="#000000">.x</font><font color="#000000">)&nbsp;</font><font color="#000000">/&nbsp;</font><font color="#000000">(</font><font color="#990000">2&nbsp;</font><font color="#000000">*&nbsp;b.getMax</font><font color="#000000">()</font><font color="#000000">.to2DXZ</font><font color="#000000">()</font><font color="#000000">.x</font><font color="#000000">))&nbsp;</font><font color="#000000">*&nbsp;</font><font color="#990000">100</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">y2D&nbsp;=&nbsp;</font><font color="#000000">(((</font><font color="#000000">y_&nbsp;+&nbsp;b.getMax</font><font color="#000000">()</font><font color="#000000">.to2DXZ</font><font color="#000000">()</font><font color="#000000">.x</font><font color="#000000">)&nbsp;</font><font color="#000000">/&nbsp;</font><font color="#000000">(</font><font color="#990000">2&nbsp;</font><font color="#000000">*&nbsp;b.getMax</font><font color="#000000">()</font><font color="#000000">.to2DXZ</font><font color="#000000">()</font><font color="#000000">.x</font><font color="#000000">))&nbsp;</font><font color="#000000">*&nbsp;</font><font color="#990000">100</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">links&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">HashMap</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">moveTo</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x_,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y_,&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">d1_,&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">d2_,&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">h_</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">x&nbsp;=&nbsp;x_;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">y&nbsp;=&nbsp;y_;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pos&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">(</font><font color="#000000">x,&nbsp;h,&nbsp;y</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">position&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">PVector</font><font color="#000000">(</font><font color="#000000">x,&nbsp;y</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">x2D&nbsp;=&nbsp;</font><font color="#000000">(((</font><font color="#000000">x_&nbsp;+&nbsp;b.getMax</font><font color="#000000">()</font><font color="#000000">.to2DXZ</font><font color="#000000">()</font><font color="#000000">.x</font><font color="#000000">)&nbsp;</font><font color="#000000">/&nbsp;</font><font color="#000000">(</font><font color="#990000">2&nbsp;</font><font color="#000000">*&nbsp;b.getMax</font><font color="#000000">()</font><font color="#000000">.to2DXZ</font><font color="#000000">()</font><font color="#000000">.x</font><font color="#000000">))&nbsp;</font><font color="#000000">*&nbsp;</font><font color="#990000">100</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">y2D&nbsp;=&nbsp;</font><font color="#000000">(((</font><font color="#000000">y_&nbsp;+&nbsp;b.getMax</font><font color="#000000">()</font><font color="#000000">.to2DXZ</font><font color="#000000">()</font><font color="#000000">.x</font><font color="#000000">)&nbsp;</font><font color="#000000">/&nbsp;</font><font color="#000000">(</font><font color="#990000">2&nbsp;</font><font color="#000000">*&nbsp;b.getMax</font><font color="#000000">()</font><font color="#000000">.to2DXZ</font><font color="#000000">()</font><font color="#000000">.x</font><font color="#000000">))&nbsp;</font><font color="#000000">*&nbsp;</font><font color="#990000">100</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">init</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">parent&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">g&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Calculate&nbsp;G</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setG</font><font color="#000000">(</font><font color="#000000">Link&nbsp;o</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">g&nbsp;=&nbsp;parent.g&nbsp;+&nbsp;o.p;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">draw</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;create&nbsp;an&nbsp;axis&nbsp;aligned&nbsp;box&nbsp;and&nbsp;convert&nbsp;to&nbsp;mesh</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">TriangleMesh&nbsp;building&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">AABB</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">()</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">(</font><font color="#000000">d1,&nbsp;d2,&nbsp;h</font><font color="#000000">))</font><font color="#000000">.toMesh</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">f&nbsp;==&nbsp;form</font><font color="#000000">[</font><font color="#990000">0</font><font color="#000000">])</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">building&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">AABB</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">()</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">(</font><font color="#000000">d1,&nbsp;d2,&nbsp;h</font><font color="#000000">))</font><font color="#000000">.toMesh</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;if</b></font><font color="#000000">(</font><font color="#000000">f&nbsp;==&nbsp;form</font><font color="#000000">[</font><font color="#990000">1</font><font color="#000000">])</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">building&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Cone</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">()</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">(</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">150</font><font color="#000000">)</font><font color="#000000">,&nbsp;d1,&nbsp;d2,&nbsp;h</font><font color="#000000">)</font><font color="#000000">.toMesh</font><font color="#000000">(</font><font color="#990000">10</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;if</b></font><font color="#000000">(</font><font color="#000000">f&nbsp;==&nbsp;form</font><font color="#000000">[</font><font color="#990000">2</font><font color="#000000">])</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">building&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Cone</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">()</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">(</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">150</font><font color="#000000">)</font><font color="#000000">,&nbsp;d1,&nbsp;d2,&nbsp;h</font><font color="#000000">)</font><font color="#000000">.toMesh</font><font color="#000000">(</font><font color="#990000">30</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;if</b></font><font color="#000000">(</font><font color="#000000">f&nbsp;==&nbsp;form</font><font color="#000000">[</font><font color="#990000">3</font><font color="#000000">])</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">building&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Cone</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">()</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vec3D</font><font color="#000000">(</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">150</font><font color="#000000">)</font><font color="#000000">,&nbsp;d1,&nbsp;d2,&nbsp;h</font><font color="#000000">)</font><font color="#000000">.toMesh</font><font color="#000000">(</font><font color="#990000">100</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">/*if(n==listN[0]&nbsp;||&nbsp;n==listN[1])&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;building&nbsp;=&nbsp;new&nbsp;AABB(new&nbsp;Vec3D(),&nbsp;new&nbsp;Vec3D(d1,&nbsp;d2,&nbsp;h)).toMesh();</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;}&nbsp;else&nbsp;if(n==listN[2])&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;building&nbsp;=&nbsp;new&nbsp;Cone(new&nbsp;Vec3D(),&nbsp;new&nbsp;Vec3D(10,&nbsp;10,&nbsp;150),&nbsp;d1,&nbsp;d2,&nbsp;h).toMesh(10);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;}&nbsp;else&nbsp;if(n==listN[3])&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;building&nbsp;=&nbsp;new&nbsp;Cone(new&nbsp;Vec3D(),&nbsp;new&nbsp;Vec3D(10,&nbsp;10,&nbsp;150),&nbsp;d1,&nbsp;d2,&nbsp;h).toMesh(50);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;}&nbsp;else&nbsp;if(n==listN[4])&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;building&nbsp;=&nbsp;new&nbsp;Cone(new&nbsp;Vec3D(),&nbsp;new&nbsp;Vec3D(10,&nbsp;10,&nbsp;150),&nbsp;d1,&nbsp;d2,&nbsp;h).toMesh(100);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;}*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;align&nbsp;to&nbsp;terrain&nbsp;normal</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">building.pointTowards</font><font color="#000000">(</font><font color="#000000">currNormal</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;move&nbsp;to&nbsp;correct&nbsp;position</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">building.translate</font><font color="#000000">(</font><font color="#000000">pos</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;and&nbsp;draw</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;fill(255,100,0);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#000000">col</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">gfx.mesh</font><font color="#000000">(</font><font color="#000000">building</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">/*textFont(Arial,&nbsp;100.0);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;String&nbsp;n_&nbsp;=&nbsp;n.substring(0,&nbsp;1);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;//rotateX(PI);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;text(n_,&nbsp;y-50,&nbsp;x-50);*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">update</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">AABB&nbsp;b&nbsp;=&nbsp;mesh.getBoundingBox</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">constrain</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Rect</font><font color="#000000">(</font><font color="#000000">b.getMin</font><font color="#000000">()</font><font color="#000000">.to2DXZ</font><font color="#000000">()</font><font color="#000000">,&nbsp;b.getMax</font><font color="#000000">()</font><font color="#000000">.to2DXZ</font><font color="#000000">())</font><font color="#000000">.scale</font><font color="#000000">(</font><font color="#990000">0.99f</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;compute&nbsp;intersection&nbsp;point&nbsp;on&nbsp;terrain&nbsp;surface</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">isec&nbsp;=&nbsp;terrain.intersectAtPoint</font><font color="#000000">(</font><font color="#000000">x,&nbsp;y</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;println(isec);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">isec.isIntersection</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;move&nbsp;slightly&nbsp;above&nbsp;terrain</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Vec3D&nbsp;newPos&nbsp;=&nbsp;isec.pos.add</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">,&nbsp;</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pos.interpolateToSelf</font><font color="#000000">(</font><font color="#000000">newPos,&nbsp;</font><font color="#990000">0.25f</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><font color="#ffffff">
+</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

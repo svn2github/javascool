@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#7f0055"><b>class&nbsp;</b></font><font color="#000000">HScrollbar</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">swidth,&nbsp;sheight;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;width&nbsp;and&nbsp;height&nbsp;of&nbsp;bar</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">xpos,&nbsp;ypos;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;x&nbsp;and&nbsp;y&nbsp;position&nbsp;of&nbsp;bar</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">spos,&nbsp;newspos;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;x&nbsp;position&nbsp;of&nbsp;slider</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">sposMin,&nbsp;sposMax;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;max&nbsp;and&nbsp;min&nbsp;values&nbsp;of&nbsp;slider</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">loose;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;how&nbsp;loose/heavy</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">over;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;is&nbsp;the&nbsp;mouse&nbsp;over&nbsp;the&nbsp;slider?</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">locked;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">show&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">ratio;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">HScrollbar</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">xp,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">yp,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">sw,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">sh,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">l</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">swidth&nbsp;=&nbsp;sw;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">sheight&nbsp;=&nbsp;sh;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">widthtoheight&nbsp;=&nbsp;sw&nbsp;-&nbsp;sh;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ratio&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>float</b></font><font color="#000000">)&nbsp;</font><font color="#000000">sw&nbsp;/&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>float</b></font><font color="#000000">)&nbsp;</font><font color="#000000">widthtoheight;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">xpos&nbsp;=&nbsp;xp&nbsp;-&nbsp;</font><font color="#990000">3&nbsp;</font><font color="#000000">*&nbsp;swidth&nbsp;/&nbsp;</font><font color="#990000">4</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ypos&nbsp;=&nbsp;yp&nbsp;-&nbsp;sheight&nbsp;/&nbsp;</font><font color="#990000">2</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">spos&nbsp;=&nbsp;xpos;&nbsp;</font><font color="#3f7f5f">//&nbsp;+&nbsp;swidth/2&nbsp;-&nbsp;sheight/2;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">newspos&nbsp;=&nbsp;spos;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">sposMin&nbsp;=&nbsp;xpos;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">sposMax&nbsp;=&nbsp;xpos&nbsp;+&nbsp;swidth&nbsp;-&nbsp;sheight;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">loose&nbsp;=&nbsp;l;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">update</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">over</font><font color="#000000">())</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">newspos&nbsp;=&nbsp;width&nbsp;/&nbsp;</font><font color="#990000">2</font><font color="#000000">;&nbsp;</font><font color="#3f7f5f">//&nbsp;constrain(mouseX-sheight/2,&nbsp;sposMin,&nbsp;sposMax);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">newspos&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">abs</font><font color="#000000">(</font><font color="#000000">newspos&nbsp;-&nbsp;spos</font><font color="#000000">)&nbsp;</font><font color="#000000">&gt;&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">spos&nbsp;=&nbsp;spos&nbsp;+&nbsp;</font><font color="#000000">(</font><font color="#000000">newspos&nbsp;-&nbsp;spos</font><font color="#000000">)&nbsp;</font><font color="#000000">/&nbsp;loose;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">over</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">((</font><font color="#000000">mouseX&nbsp;&gt;&nbsp;xpos</font><font color="#000000">)&nbsp;</font><font color="#000000">&amp;&amp;&nbsp;</font><font color="#000000">(</font><font color="#000000">mouseX&nbsp;&lt;&nbsp;xpos&nbsp;+&nbsp;swidth</font><font color="#000000">)&nbsp;</font><font color="#000000">&amp;&amp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">(</font><font color="#000000">mouseY&nbsp;&gt;&nbsp;ypos</font><font color="#000000">)&nbsp;</font><font color="#000000">&amp;&amp;&nbsp;</font><font color="#000000">(</font><font color="#000000">mouseY&nbsp;&lt;&nbsp;ypos&nbsp;+&nbsp;sheight</font><font color="#000000">))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">display</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">strokeWeight</font><font color="#000000">(</font><font color="#990000">0.1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">over</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">50</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">stroke</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">stroke</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">,</font><font color="#990000">0</font><font color="#000000">,</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">strokeWeight</font><font color="#000000">(</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">rect</font><font color="#000000">(</font><font color="#000000">sheight&nbsp;/&nbsp;</font><font color="#990000">2</font><font color="#000000">,&nbsp;ypos,&nbsp;sheight&nbsp;*&nbsp;</font><font color="#990000">5</font><font color="#000000">,&nbsp;sheight</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">130</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFont</font><font color="#000000">(</font><font color="#000000">f,&nbsp;</font><font color="#990000">11</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">text</font><font color="#000000">(</font><font color="#2a00ff">&#34;I&nbsp;N&nbsp;F&nbsp;O&nbsp;&gt;&gt;&gt;&#34;</font><font color="#000000">,&nbsp;sheight&nbsp;/&nbsp;</font><font color="#990000">2&nbsp;</font><font color="#000000">+&nbsp;sheight&nbsp;/&nbsp;</font><font color="#990000">5</font><font color="#000000">,&nbsp;ypos&nbsp;+&nbsp;</font><font color="#990000">4&nbsp;</font><font color="#000000">*&nbsp;sheight&nbsp;/&nbsp;</font><font color="#990000">5</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">getPos</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Convert&nbsp;spos&nbsp;to&nbsp;be&nbsp;values&nbsp;between</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;0&nbsp;and&nbsp;the&nbsp;total&nbsp;width&nbsp;of&nbsp;the&nbsp;scrollbar</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">spos&nbsp;*&nbsp;ratio;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

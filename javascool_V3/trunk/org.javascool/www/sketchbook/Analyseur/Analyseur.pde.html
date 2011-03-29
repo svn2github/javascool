@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f7f5f">/*////////////////////////////////////////////////////////////////////////////</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;08.2010&nbsp;C&eacute;cile&nbsp;P-L&nbsp;for&nbsp;Fuscia&nbsp;-&nbsp;ccl.picard@gmail.com&nbsp;-&nbsp;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Analyseur&nbsp;FFT&nbsp;avec&nbsp;bandes&nbsp;de&nbsp;fr&eacute;quences&nbsp;ajustables&nbsp;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;pour&nbsp;noter&nbsp;l'influence&nbsp;de&nbsp;la&nbsp;r&eacute;solution&nbsp;des&nbsp;bandes&nbsp;sur&nbsp;le&nbsp;spectre</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Inspired&nbsp;from&nbsp;Linear&nbsp;Averages</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;by&nbsp;Damien&nbsp;Di&nbsp;Fede.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*/</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">ddf.minim.analysis.*;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">ddf.minim.*;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">ddf.minim.signals.*;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#000000">Minim&nbsp;minim;</font><br />
+<font color="#000000">AudioInput&nbsp;in;</font><br />
+<font color="#000000">AudioPlayer&nbsp;jingle;</font><br />
+<font color="#000000">FFT&nbsp;fft,fftS;</font><br />
+<font color="#000000">AudioOutput&nbsp;out;</font><br />
+<font color="#000000">SineWave&nbsp;sine;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">nb;</font><br />
+<font color="#000000">String&nbsp;path&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br />
+<font color="#000000">PFont&nbsp;f;</font><br />
+<font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">info&nbsp;=&nbsp;false,&nbsp;sounding&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#7f0055"><b>float&nbsp;</b></font><font color="#000000">fs&nbsp;=&nbsp;</font><font color="#990000">44100</font><font color="#000000">;</font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">k&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setup</font><font color="#000000">()</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">size</font><font color="#000000">(</font><font color="#990000">700</font><font color="#000000">,&nbsp;</font><font color="#990000">270</font><font color="#000000">,&nbsp;P2D</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">background</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">f&nbsp;=&nbsp;createFont</font><font color="#000000">(</font><font color="#2a00ff">&#34;Arial&nbsp;Bold&#34;</font><font color="#000000">,</font><font color="#990000">14</font><font color="#000000">,true</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">minim&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Minim</font><font color="#000000">(</font><font color="#7f0055"><b>this</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">in&nbsp;=&nbsp;minim.getLineIn</font><font color="#000000">(</font><font color="#000000">Minim.STEREO,&nbsp;</font><font color="#990000">512</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//fft&nbsp;=&nbsp;new&nbsp;FFT(in.bufferSize(),&nbsp;in.sampleRate());</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">nb&nbsp;=&nbsp;</font><font color="#990000">128</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//fft.linAverages(nb);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">/*//TEST&nbsp;Sine</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;get&nbsp;a&nbsp;line&nbsp;out&nbsp;from&nbsp;Minim,&nbsp;default&nbsp;bufferSize&nbsp;is&nbsp;1024,&nbsp;default&nbsp;sample&nbsp;rate&nbsp;is&nbsp;44100,&nbsp;bit&nbsp;depth&nbsp;is&nbsp;16</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">out&nbsp;=&nbsp;minim.getLineOut(Minim.STEREO,2048);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;create&nbsp;a&nbsp;sine&nbsp;wave&nbsp;Oscillator,&nbsp;set&nbsp;to&nbsp;440&nbsp;Hz,&nbsp;at&nbsp;0.5&nbsp;amplitude,&nbsp;sample&nbsp;rate&nbsp;from&nbsp;line&nbsp;out</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">sine&nbsp;=&nbsp;new&nbsp;SineWave(440,&nbsp;0.5,&nbsp;out.sampleRate());</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;set&nbsp;the&nbsp;portamento&nbsp;speed&nbsp;on&nbsp;the&nbsp;oscillator&nbsp;to&nbsp;200&nbsp;milliseconds</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">sine.portamento(200);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;add&nbsp;the&nbsp;oscillator&nbsp;to&nbsp;the&nbsp;line&nbsp;out</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">out.addSignal(sine);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">fftS&nbsp;=&nbsp;new&nbsp;FFT(out.bufferSize(),&nbsp;out.sampleRate());</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;use&nbsp;'nb'&nbsp;averages&nbsp;(between&nbsp;64&nbsp;and&nbsp;1024).</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;the&nbsp;maximum&nbsp;number&nbsp;of&nbsp;averages&nbsp;we&nbsp;could&nbsp;ask&nbsp;for&nbsp;is&nbsp;half&nbsp;the&nbsp;spectrum&nbsp;size.&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">fftS.linAverages(nb);*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">rectMode</font><font color="#000000">(</font><font color="#000000">CORNERS</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">draw</font><font color="#000000">()</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">/*fft&nbsp;=&nbsp;new&nbsp;FFT(in.bufferSize(),&nbsp;in.sampleRate());</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">fft.linAverages(nb);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">fft.forward(in.mix);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">int&nbsp;w&nbsp;=&nbsp;int(fft.specSize()/nb);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">strokeWeight(w);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">strokeCap(SQUARE);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">stroke(255);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;fft.avgSize();&nbsp;i++)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if(i==k)&nbsp;stroke(255,&nbsp;0,&nbsp;0);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">else&nbsp;stroke(255);&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">line((i*w)&nbsp;&nbsp;+&nbsp;w,&nbsp;height-5,&nbsp;(i*w)&nbsp;&nbsp;+&nbsp;w,&nbsp;height-5&nbsp;-&nbsp;fft.getAvg(i)&nbsp;&nbsp;);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">noStroke();*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">update</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">/*//TEST&nbsp;Sine</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">fftS.forward(out.mix);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">int&nbsp;w&nbsp;=&nbsp;int(fftS.specSize()/nb);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">strokeWeight(w);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">strokeCap(SQUARE);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">stroke(255);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;fftS.avgSize();&nbsp;i++)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if(i==k)&nbsp;stroke(255,&nbsp;0,&nbsp;0);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">else&nbsp;stroke(255);&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">line((i*w)&nbsp;&nbsp;+&nbsp;w,&nbsp;height-5,&nbsp;(i*w)&nbsp;&nbsp;+&nbsp;w,&nbsp;height-5&nbsp;-&nbsp;fftS.getAvg(i)&nbsp;&nbsp;);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">noStroke();*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">printInfo</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">printInfo</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">info</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">rect</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">,&nbsp;</font><font color="#990000">100</font><font color="#000000">,&nbsp;width,&nbsp;-</font><font color="#990000">10</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFont</font><font color="#000000">(</font><font color="#000000">f</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textAlign</font><font color="#000000">(</font><font color="#000000">LEFT</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">,&nbsp;</font><font color="#990000">150</font><font color="#000000">,&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">text</font><font color="#000000">(</font><font color="#2a00ff">&#34;\n&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;.&nbsp;&nbsp;Clic&nbsp;Gauche&nbsp;:&nbsp;joue&nbsp;enregistrement&nbsp;(Nina&nbsp;Hagen,&nbsp;''Born&nbsp;in&nbsp;Xixas'')&nbsp;\n&nbsp;&#34;&nbsp;</font><font color="#000000">+</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;.&nbsp;&nbsp;Clic&nbsp;Droit&nbsp;:&nbsp;stop&nbsp;la&nbsp;lecture,&nbsp;analyse&nbsp;de&nbsp;l'entr&eacute;e&nbsp;micro&nbsp;\n&nbsp;&#34;&nbsp;</font><font color="#000000">+</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;.&nbsp;&nbsp;Clic&nbsp;Centre&nbsp;+&nbsp;souris&nbsp;&agrave;&nbsp;droite/gauche:&nbsp;&eacute;largit/rafine&nbsp;les&nbsp;bandes&nbsp;de&nbsp;fr&eacute;quences&nbsp;(entre&nbsp;32&nbsp;et&nbsp;128)&nbsp;\n&nbsp;&#34;&nbsp;</font><font color="#000000">+</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;.&nbsp;&nbsp;Pointe&nbsp;une&nbsp;bande&nbsp;de&nbsp;fr&eacute;quence&nbsp;pour&nbsp;savoir&nbsp;ses&nbsp;valeurs.&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">15</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">rect</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">,&nbsp;</font><font color="#990000">100</font><font color="#000000">,&nbsp;width,&nbsp;-</font><font color="#990000">10</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFont</font><font color="#000000">(</font><font color="#000000">f</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textAlign</font><font color="#000000">(</font><font color="#000000">LEFT</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">,&nbsp;</font><font color="#990000">150</font><font color="#000000">,&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">text</font><font color="#000000">(</font><font color="#2a00ff">&#34;-&nbsp;INFO&nbsp;-&nbsp;&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">15</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">update</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">coeff;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">path&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fft&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">FFT</font><font color="#000000">(</font><font color="#000000">jingle.bufferSize</font><font color="#000000">()</font><font color="#000000">,&nbsp;jingle.sampleRate</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fs&nbsp;=&nbsp;jingle.sampleRate</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fft.linAverages</font><font color="#000000">(</font><font color="#000000">nb</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fft.forward</font><font color="#000000">(</font><font color="#000000">jingle.mix</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">coeff&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fft&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">FFT</font><font color="#000000">(</font><font color="#000000">in.bufferSize</font><font color="#000000">()</font><font color="#000000">,&nbsp;in.sampleRate</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fft.linAverages</font><font color="#000000">(</font><font color="#000000">nb</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fft.forward</font><font color="#000000">(</font><font color="#000000">in.mix</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">coeff&nbsp;=&nbsp;</font><font color="#990000">5</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//fft.linAverages(nb);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">w&nbsp;=&nbsp;</font><font color="#7f0055"><b>int</b></font><font color="#000000">(</font><font color="#000000">fft.specSize</font><font color="#000000">()</font><font color="#000000">/nb</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//strokeWeight(w);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//strokeCap(SQUARE);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&nbsp;&lt;&nbsp;fft.avgSize</font><font color="#000000">()</font><font color="#000000">;&nbsp;i++</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">/*if(i==k)&nbsp;fill(100);&nbsp;//stroke(255,&nbsp;0,&nbsp;0);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">else&nbsp;fill(255);&nbsp;//stroke(255);&nbsp;&nbsp;&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">mouseX&lt;width/</font><font color="#990000">2</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;&nbsp;rect</font><font color="#000000">(</font><font color="#990000">0&nbsp;</font><font color="#000000">,&nbsp;height-</font><font color="#990000">5</font><font color="#000000">+</font><font color="#990000">10</font><font color="#000000">,&nbsp;width/</font><font color="#990000">2</font><font color="#000000">,&nbsp;height-</font><font color="#990000">10</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">,&nbsp;</font><font color="#990000">0</font><font color="#000000">,&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;&nbsp;ellipse</font><font color="#000000">(</font><font color="#000000">k*w&nbsp;,&nbsp;height-</font><font color="#990000">5</font><font color="#000000">,&nbsp;</font><font color="#990000">5</font><font color="#000000">,&nbsp;</font><font color="#990000">5</font><font color="#000000">)</font><font color="#000000">;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//line((i*w)&nbsp;&nbsp;+&nbsp;w,&nbsp;height-5,&nbsp;(i*w)&nbsp;&nbsp;+&nbsp;w,&nbsp;height-5&nbsp;-&nbsp;fft.getAvg(i)&nbsp;&nbsp;);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">rect</font><font color="#000000">(</font><font color="#000000">i*w&nbsp;,&nbsp;height-</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#000000">(</font><font color="#000000">i*w</font><font color="#000000">)&nbsp;&nbsp;</font><font color="#000000">+&nbsp;w,&nbsp;height-</font><font color="#990000">10&nbsp;</font><font color="#000000">-&nbsp;fft.getAvg</font><font color="#000000">(</font><font color="#000000">i</font><font color="#000000">)</font><font color="#000000">*coeff</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//noStroke();</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">/*//TEST&nbsp;Sine</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">fftS.linAverages(nb);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">int&nbsp;w&nbsp;=&nbsp;int(fftS.specSize()/nb);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">strokeWeight(w);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">strokeCap(SQUARE);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;fftS.avgSize();&nbsp;i++)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">if(i==k)&nbsp;stroke(255,&nbsp;0,&nbsp;0);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">else&nbsp;stroke(255);&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">line((i*w)&nbsp;&nbsp;+&nbsp;w,&nbsp;height-5,&nbsp;(i*w)&nbsp;&nbsp;+&nbsp;w,&nbsp;height-5&nbsp;-&nbsp;fftS.getAvg(i)&nbsp;&nbsp;);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">noStroke();&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">mouseMoved</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Print&nbsp;info</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">mouseX&lt;</font><font color="#990000">50&nbsp;</font><font color="#000000">&amp;&amp;&nbsp;mouseY&lt;</font><font color="#990000">20</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">info&nbsp;=&nbsp;</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">info&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFont</font><font color="#000000">(</font><font color="#000000">f,</font><font color="#990000">12</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">rect</font><font color="#000000">(</font><font color="#000000">width,&nbsp;</font><font color="#990000">150</font><font color="#000000">,&nbsp;width/</font><font color="#990000">2</font><font color="#000000">+</font><font color="#990000">80</font><font color="#000000">,&nbsp;height/</font><font color="#990000">3</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">255</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">text</font><font color="#000000">(</font><font color="#2a00ff">&#34;nombre&nbsp;de&nbsp;bandes&nbsp;=&nbsp;&#34;</font><font color="#000000">+&nbsp;nb&nbsp;,&nbsp;width-</font><font color="#990000">170</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>int</b></font><font color="#000000">(</font><font color="#000000">height/</font><font color="#990000">2</font><font color="#000000">)</font><font color="#000000">-</font><font color="#990000">20</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">mouseY&gt;height/</font><font color="#990000">2</font><font color="#000000">)&nbsp;</font><font color="#000000">k&nbsp;=&nbsp;getClosestBand</font><font color="#000000">(</font><font color="#000000">mouseX</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">text</font><font color="#000000">(</font><font color="#2a00ff">&#34;&nbsp;Fr&eacute;quences&nbsp;=&nbsp;[&#34;&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>int</b></font><font color="#000000">)</font><font color="#000000">getClosestBand</font><font color="#000000">(</font><font color="#000000">mouseX</font><font color="#000000">)</font><font color="#000000">*</font><font color="#000000">(</font><font color="#000000">fs/</font><font color="#990000">2</font><font color="#000000">/nb</font><font color="#000000">)&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;-&nbsp;&#34;</font><font color="#000000">+&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>int</b></font><font color="#000000">)(</font><font color="#000000">getClosestBand</font><font color="#000000">(</font><font color="#000000">mouseX</font><font color="#000000">)</font><font color="#000000">+</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">*</font><font color="#000000">(</font><font color="#000000">fs/</font><font color="#990000">2</font><font color="#000000">/</font><font color="#000000">(</font><font color="#000000">nb</font><font color="#000000">))&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;Hz]&#34;</font><font color="#000000">,&nbsp;width-</font><font color="#990000">270</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>int</b></font><font color="#000000">(</font><font color="#000000">height/</font><font color="#990000">2</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">getClosestBand</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">mx</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">ix&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">ix&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">mx/</font><font color="#7f0055"><b>int</b></font><font color="#000000">(</font><font color="#000000">fft.specSize</font><font color="#000000">()</font><font color="#000000">/nb</font><font color="#000000">))</font><font color="#000000">;</font><font color="#3f7f5f">//ix&nbsp;=&nbsp;(mx/int(fftS.specSize()/nb));</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">ix;&nbsp;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">mouseReleased</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Load&nbsp;file</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">mouseButton&nbsp;==&nbsp;LEFT</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">background</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;pathN;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//pathN&nbsp;=&nbsp;selectInput();</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pathN&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;NinaHagen_BornInXixas_ext.mp3&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">!</font><font color="#000000">(</font><font color="#000000">pathN==path</font><font color="#000000">)&nbsp;</font><font color="#000000">&amp;&amp;&nbsp;pathN&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">&amp;&amp;&nbsp;!</font><font color="#000000">(</font><font color="#000000">sounding</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">path&nbsp;=&nbsp;pathN;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">jingle&nbsp;=&nbsp;minim.loadFile</font><font color="#000000">(</font><font color="#000000">path</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">sounding&nbsp;=&nbsp;</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;loop&nbsp;the&nbsp;file</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">jingle.loop</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Micro&nbsp;in</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">mouseButton&nbsp;==&nbsp;RIGHT</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">sounding</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">jingle.pause</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">sounding&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">path&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fill</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">rect</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">,&nbsp;height,&nbsp;width/</font><font color="#990000">2</font><font color="#000000">+</font><font color="#990000">200</font><font color="#000000">,&nbsp;-</font><font color="#990000">10</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">update</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Change&nbsp;width&nbsp;of&nbsp;frequency&nbsp;band</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">mouseButton&nbsp;==&nbsp;CENTER</font><font color="#000000">)&nbsp;{&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">mouseX&gt;width/</font><font color="#990000">2</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">nb&lt;</font><font color="#990000">128</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">background</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nb*=</font><font color="#990000">2</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">update</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">nb&gt;</font><font color="#990000">32</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">background</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nb/=</font><font color="#990000">2</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">update</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">stop</font><font color="#000000">()</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">path&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">jingle.close</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">minim.stop</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>super</b></font><font color="#000000">.stop</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><font color="#ffffff">
+</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

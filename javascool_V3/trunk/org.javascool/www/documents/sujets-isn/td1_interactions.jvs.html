@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">main</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Bonjour&nbsp;!&nbsp;Quel&nbsp;est&nbsp;votre&nbsp;nom&nbsp;?&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String&nbsp;nom&nbsp;=&nbsp;readString</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;C'est&nbsp;not&eacute;.&nbsp;Et&nbsp;votre&nbsp;pr&eacute;nom&nbsp;?&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String&nbsp;prenom&nbsp;=&nbsp;readString</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;ÃŠtes-vous&nbsp;un&nbsp;homme&nbsp;ou&nbsp;une&nbsp;femme&nbsp;?&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String&nbsp;quelSexe&nbsp;=&nbsp;readString</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>while</b></font><font color="#000000">(</font><font color="#000000">!equal</font><font color="#000000">(</font><font color="#000000">quelSexe,&nbsp;</font><font color="#2a00ff">&#34;un&nbsp;homme&#34;</font><font color="#000000">)&nbsp;</font><font color="#000000">&amp;&amp;&nbsp;!equal</font><font color="#000000">(</font><font color="#000000">quelSexe,&nbsp;</font><font color="#2a00ff">&#34;une&nbsp;femme&#34;</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;D&eacute;sol&eacute;&nbsp;je&nbsp;n'ai&nbsp;pas&nbsp;compris&nbsp;votre&nbsp;r&eacute;ponse.&nbsp;ÃŠtes-vous&nbsp;un&nbsp;homme&nbsp;ou&nbsp;une&nbsp;femme&nbsp;?&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">quelSexe&nbsp;=&nbsp;readString</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String&nbsp;sexe;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">equal</font><font color="#000000">(</font><font color="#000000">quelSexe,&nbsp;</font><font color="#2a00ff">&#34;un&nbsp;homme&#34;</font><font color="#000000">))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">sexe&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;M.&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>else</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">sexe&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Mme.&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Parfait.&nbsp;Je&nbsp;suis&nbsp;enchant&eacute;&nbsp;de&nbsp;faire&nbsp;votre&nbsp;connaissance&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;sexe&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;prenom&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;nom&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;.&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Est-ce&nbsp;indiscret&nbsp;de&nbsp;vous&nbsp;demander&nbsp;votre&nbsp;&acirc;ge&nbsp;?&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String&nbsp;indiscret&nbsp;=&nbsp;readString</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>while</b></font><font color="#000000">(</font><font color="#000000">!equal</font><font color="#000000">(</font><font color="#000000">indiscret,&nbsp;</font><font color="#2a00ff">&#34;oui&#34;</font><font color="#000000">)&nbsp;</font><font color="#000000">&amp;&amp;&nbsp;!equal</font><font color="#000000">(</font><font color="#000000">indiscret,&nbsp;</font><font color="#2a00ff">&#34;non&#34;</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;D&eacute;sol&eacute;&nbsp;je&nbsp;n'ai&nbsp;pas&nbsp;compris&nbsp;votre&nbsp;r&eacute;ponse.&nbsp;Est-ce&nbsp;indiscret&nbsp;de&nbsp;vous&nbsp;demander&nbsp;votre&nbsp;&acirc;ge&nbsp;?&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">indiscret&nbsp;=&nbsp;readString</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">equal</font><font color="#000000">(</font><font color="#000000">indiscret,&nbsp;</font><font color="#2a00ff">&#34;non&#34;</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Dans&nbsp;ce&nbsp;cas,&nbsp;quel&nbsp;&acirc;ge&nbsp;avez-vous&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;sexe&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;nom&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;?&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">age&nbsp;=&nbsp;readInt</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">age&nbsp;&lt;=&nbsp;</font><font color="#990000">30</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Comme&nbsp;j'aimerais&nbsp;&ecirc;tre&nbsp;si&nbsp;jeune&nbsp;!&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;if</b></font><font color="#000000">(</font><font color="#000000">age&nbsp;&lt;=&nbsp;</font><font color="#990000">60</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;F&eacute;licitations,&nbsp;vous&nbsp;&ecirc;tes&nbsp;dans&nbsp;la&nbsp;force&nbsp;de&nbsp;l'&acirc;ge&nbsp;!&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;J'aimerais&nbsp;avoir&nbsp;votre&nbsp;exp&eacute;rience&nbsp;!&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Dommage.&nbsp;Passons&nbsp;&agrave;&nbsp;chose&nbsp;dans&nbsp;ce&nbsp;cas.&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Savez-vous&nbsp;que&nbsp;je&nbsp;suis&nbsp;excellent&nbsp;en&nbsp;calcul&nbsp;mental&nbsp;?&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Proposez-moi&nbsp;un&nbsp;grand&nbsp;nombre&nbsp;s'il&nbsp;vous&nbsp;pla&icirc;t.&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">nombre1&nbsp;=&nbsp;unGrandNombre</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Je&nbsp;le&nbsp;note.&nbsp;Proposez-moi&nbsp;un&nbsp;autre&nbsp;grand&nbsp;nombre&nbsp;s'il&nbsp;vous&nbsp;pla&icirc;t.&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">nombre2&nbsp;=&nbsp;unGrandNombre</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;C'est&nbsp;not&eacute;&nbsp;bien...&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;nombre1&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;fois&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;nombre2&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;font&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#000000">(</font><font color="#000000">nombre1&nbsp;*&nbsp;nombre2</font><font color="#000000">)&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;!&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Je&nbsp;vous&nbsp;sens&nbsp;impressionn&eacute;...&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Je&nbsp;suis&nbsp;aussi&nbsp;capable&nbsp;de&nbsp;compter&nbsp;tr&egrave;s&nbsp;vite&nbsp;!&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Jusqu'&agrave;&nbsp;combien&nbsp;voulez-vous&nbsp;que&nbsp;je&nbsp;compte&nbsp;?&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">max&nbsp;=&nbsp;readInt</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;&nbsp;i&nbsp;&lt;=&nbsp;max;&nbsp;i++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#000000">i</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Merci&nbsp;pour&nbsp;ce&nbsp;bon&nbsp;moment.&nbsp;A&nbsp;bient&ocirc;t,&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;prenom&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;.&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">unGrandNombre</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">res&nbsp;=&nbsp;readInt</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">premierEssai&nbsp;=&nbsp;</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>while</b></font><font color="#000000">(</font><font color="#000000">res&nbsp;&lt;&nbsp;</font><font color="#990000">100</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">premierEssai&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Ah,&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;res&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;c'est&nbsp;bien&nbsp;petit&nbsp;!&nbsp;Ne&nbsp;pouvez-vous&nbsp;pas&nbsp;me&nbsp;proposer&nbsp;un&nbsp;nombre&nbsp;un&nbsp;peu&nbsp;plus&nbsp;grand&nbsp;?&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">res&nbsp;=&nbsp;readInt</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">!premierEssai</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;C'est&nbsp;mieux&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">res;</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

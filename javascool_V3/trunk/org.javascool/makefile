@@ -5,10 +5,14 @@
 # Used to use sun sun-jdk instead of open-jdk because of processing and windows platforms
 export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
 
-# Defines the beta-relase jar temporary suffix under development
-JAR = -3-2-2
+# Defines the beta-relase jar temporary suffix under development (e.g., = -3-3)
+JAR =
 
-default : j$(JAR)
+default : wjar #run
+
+# puis virer
+wapp :
+	@firefox http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-proglets.htm
 
 # General commands
 
@@ -18,17 +22,8 @@ usage :
 what :
 	@grep '^#:' makefile | sed 's/^#://'
 
-j$(JAR) : jar
+run : jar
 	@cd tst ; java -jar ../www/javascool$(JAR).jar
-
-j3-1 :
-	@cd tst ; java -jar ../www/javascool-3-1.jar
-
-wjar : jar
-	@-rsync --rsh='ssh -C' www/javascool-3-2-2.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3/javascool-3-2-2.jar
-
-wapp :
-	@firefox http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-proglets.htm
 
 doc : api
 	firefox file:www/api/org/javascool/package-summary.html
@@ -174,13 +169,11 @@ endif
 
 bty :
 	for f in `find src -name '*.java' -o -name '*.jvs'` ; do uncrustify -q -c lib/uncrustify.cfg --replace $$f ; done
+	for f in `find www -name '*.java' -o -name '*.jvs'` ; do uncrustify -q -c lib/uncrustify.cfg --replace $$f ; done
 
 #####################################################################################################################################
 
 # JavaScool doc generation
-
-jdoc :
-	@lib/jdoc.sh
 
 JDOC_OPTION = -quiet -nohelp -nodeprecated -nonavbar -nosince -notree -noindex -author -use -charset "UTF-8" -windowtitle "Java's Cool v3" 
 
@@ -211,7 +204,7 @@ endif
 	@unzip -qod $@ lib/sketchbook.zip
 	@cp lib/js-manifest.mf $@/js-manifest.txt
 	@#Generates the html files from the source files
-	@for f in `find $@ -name '*.java' -o -name '*.pde' -o -name '*.jvs'` ; do mv $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
+	@for f in `find www -name '*.java' -o -name '*.pde' -o -name '*.jvs'` ; do cp $$f $$f.java ; java -jar lib/java2html.jar -srcfile $$f.java ; rm $$f.java ; done
 	@#Generates the source archive
 	@cd www ; rm -f sources.zip ; zip -9qr sources.zip api
 	@#Concludes
@@ -381,8 +374,7 @@ done :
 #:
 #::Usage:
 #::Development commands:
-#:: make v3           : Run javascool'v3 from locally compiled clases
-#:: make j3           : Run javascool'v3 from the constructed jar
+#:: make run          : Run javascool'v3 from the constructed jar
 #:: make doc          : Show the javadoc local bundle
 #:: make bty          : Beautify all source files (requires the uncrustify) software
 #:: make svn          : Synchronize with the svn repository (update + commit)
@@ -402,7 +394,6 @@ done :
 #:: make wref         : Checks the web site broken links
 #:: make wusb	      : Copy the files on a USB key of name /media/javascool
 #::Useful links:
-#:: make jdoc         , Opens the Java and JavaScool doc bundle
 #:: make jweb         , Opens the JavaScool web site
 #:: make wiki         , Opens the JavaScool wiki
 #:: make glog         , Connects to google analytics

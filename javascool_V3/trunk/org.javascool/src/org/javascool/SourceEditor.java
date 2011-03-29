@@ -84,6 +84,8 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     return pane.getText();
   }
   public Editor setText(String text) {
+    pane.selectAll();
+    pane.cut();
     pane.setText(text);
     pane.setCaretPosition(0);
     doColorize(true);
@@ -118,7 +120,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     pane = new JTextPane();
     pane.setBackground(editable ? Color.WHITE : new Color(0xeeeeee));
     pane.setEditable(editable);
-    pane.setFont(new Font("Dialog", Font.PLAIN, 16));
+    pane.setFont(new Font("Liberation Mono", Font.PLAIN, 18));
     pane.setText(text);
     doc = pane.getStyledDocument();
     scroll = new JScrollPane(pane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -170,7 +172,17 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     {
       JMenu menu = new JMenu();
       menu.setText("Edition");
-      bar.add(menu);
+      bar.add(menu);    
+      if(editable) {
+        menu.add(new JMenuItem(new AbstractAction("Tout effacer") {
+	    private static final long serialVersionUID = 1L;
+	    public void actionPerformed(ActionEvent evt) {
+	      pane.selectAll();
+	      pane.cut();
+	    }
+	  }));
+        menu.addSeparator();
+      }
       if(editable) {
         TextUndoManager undo = new TextUndoManager(pane);
         menu.add(undo.getUndoItem());
@@ -216,21 +228,21 @@ public class SourceEditor extends JPanel implements Widget, Editor {
       menu.add(new JMenuItem(new AbstractAction("Zoom -") {
                                private static final long serialVersionUID = 1L;
                                public void actionPerformed(ActionEvent evt) {
-                                 pane.setFont(new Font("Dialog", Font.PLAIN, 12));
+				 pane.setFont(new Font("Liberation Mono", Font.PLAIN, 16));
                                }
                              }
                              ));
       menu.add(new JMenuItem(new AbstractAction("Zoom 0") {
                                private static final long serialVersionUID = 1L;
                                public void actionPerformed(ActionEvent evt) {
-                                 pane.setFont(new Font("Dialog", Font.PLAIN, 16));
+				 pane.setFont(new Font("Liberation Mono", Font.PLAIN, 18));
                                }
                              }
                              ));
       menu.add(new JMenuItem(new AbstractAction("Zoom +") {
                                private static final long serialVersionUID = 1L;
                                public void actionPerformed(ActionEvent evt) {
-                                 pane.setFont(new Font("Dialog", Font.PLAIN, 22));
+				 pane.setFont(new Font("Liberation Mono", Font.PLAIN, 22));
                                }
                              }
                              ));

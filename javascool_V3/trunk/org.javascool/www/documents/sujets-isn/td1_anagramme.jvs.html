@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">main</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String</font><font color="#000000">[]&nbsp;</font><font color="#000000">choixAnagrammes&nbsp;=&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;marion&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;aimer&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;badinage&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;niche&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;aspirine&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;chine&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;aspirine&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;aube&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;baignade&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;chien&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;manoir&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;beau&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;romain&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;imagine&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;parisien&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;migraine&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;marie&#34;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Proposez-moi&nbsp;un&nbsp;mot&nbsp;!&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">String&nbsp;mot1&nbsp;=&nbsp;readString</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">nb&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;mot2&nbsp;:&nbsp;choixAnagrammes</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">testAnagramme</font><font color="#000000">(</font><font color="#000000">mot1,&nbsp;mot2</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#000000">mot2&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;est&nbsp;une&nbsp;anagramme&nbsp;de&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;mot1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nb++;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Nombre&nbsp;d'anagrammes&nbsp;:&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;nb</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#000000">String&nbsp;normalise</font><font color="#000000">(</font><font color="#000000">String&nbsp;s</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>char</b></font><font color="#000000">[]&nbsp;</font><font color="#000000">t&nbsp;=&nbsp;chaineVersLettres</font><font color="#000000">(</font><font color="#000000">s</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;java&nbsp;.&nbsp;util&nbsp;.&nbsp;Arrays&nbsp;.&nbsp;sort(t);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">triSelection</font><font color="#000000">(</font><font color="#000000">t</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">lettresVersChaine</font><font color="#000000">(</font><font color="#000000">t</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">testAnagramme</font><font color="#000000">(</font><font color="#000000">String&nbsp;s1,&nbsp;String&nbsp;s2</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">equal</font><font color="#000000">(</font><font color="#000000">normalise</font><font color="#000000">(</font><font color="#000000">s1</font><font color="#000000">)</font><font color="#000000">,&nbsp;normalise</font><font color="#000000">(</font><font color="#000000">s2</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">permute</font><font color="#000000">(</font><font color="#7f0055"><b>char</b></font><font color="#000000">[]&nbsp;</font><font color="#000000">t,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">j</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>char&nbsp;</b></font><font color="#000000">temp&nbsp;=&nbsp;t</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">t</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;t</font><font color="#000000">[</font><font color="#000000">j</font><font color="#000000">]</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">t</font><font color="#000000">[</font><font color="#000000">j</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;temp;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">indexMin</font><font color="#000000">(</font><font color="#7f0055"><b>char</b></font><font color="#000000">[]&nbsp;</font><font color="#000000">t,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">idx&nbsp;=&nbsp;i;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">k&nbsp;=&nbsp;i&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">;&nbsp;k&nbsp;&lt;&nbsp;t.length;&nbsp;k++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">t</font><font color="#000000">[</font><font color="#000000">k</font><font color="#000000">]&nbsp;</font><font color="#000000">&lt;&nbsp;t</font><font color="#000000">[</font><font color="#000000">idx</font><font color="#000000">])</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">idx&nbsp;=&nbsp;k;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">idx;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">triSelection</font><font color="#000000">(</font><font color="#7f0055"><b>char</b></font><font color="#000000">[]&nbsp;</font><font color="#000000">t</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&nbsp;&lt;&nbsp;t.length&nbsp;-&nbsp;</font><font color="#990000">1</font><font color="#000000">;&nbsp;i++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">permute</font><font color="#000000">(</font><font color="#000000">t,&nbsp;i,&nbsp;indexMin</font><font color="#000000">(</font><font color="#000000">t,&nbsp;i</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

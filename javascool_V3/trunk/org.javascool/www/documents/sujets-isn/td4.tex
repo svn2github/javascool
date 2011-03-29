@@ -1,0 +1,190 @@
+\documentclass[a4paper,11pt]{article}
+
+%% \LoadClass[a4paper,11pt]{article}
+
+\usepackage{a4wide,graphicx}%
+
+%\usepackage[francais]{babel}%
+\usepackage[utf8]{inputenc}%
+\usepackage[T1]{fontenc}%
+
+\usepackage{url} \urlstyle{sf}%
+
+\usepackage{mathpazo}%
+\let\bfseriesaux=\bfseries%
+\renewcommand{\bfseries}{\sffamily\bfseriesaux}
+
+\newcounter{probleme} \newcounter{question}[probleme]
+\setcounter{probleme}{0} \def\theprobleme{\Roman{probleme}}
+\def\thequestion{\theprobleme.\arabic{question}}
+
+\newenvironment{probleme}[1]%
+{\refstepcounter{probleme}
+\subsection*{Activité \theprobleme. #1}}%
+{}
+
+\newenvironment{question}%
+{\refstepcounter{question} \description%
+\item[Exercice \thequestion.] \bgroup}%
+{\egroup\enddescription}
+
+\newenvironment{remarque}%
+{\description\item[Remarque.]\sl}%
+{\enddescription}
+
+\newenvironment{exemple}%
+{\description\item[Exemple.]\sl}%
+{\enddescription}
+
+\newenvironment{programme}%
+{\verbatim}{\endverbatim}%
+
+\usepackage{listings}%
+
+\lstset{%
+  basicstyle=\sffamily,%
+  columns=fullflexible,%
+   language=java,%
+   frame=lb,%
+   frameround=fftf,%
+}%
+
+\def\|{\lstinline|}%
+
+\lstnewenvironment{lstlistingtt}%
+{\lstset{%
+    basicstyle=\tt,%
+    columns=flexible,%
+  }}%
+{}
+
+\lstnewenvironment{lstlistingsh}%
+{\lstset{%
+  language=sh,%
+  }}%
+{}
+
+%% \lstMakeShortInline{|}
+
+\parskip=0.3\baselineskip%
+\sloppy%
+
+\begin{document}
+
+\title{Enseignement de spécialité\\
+Informatique et sciences du numérique\\
+Formation des IA-IPR et chargés de mission\\
+Atelier de programmation 5}
+
+\date{Jeudi 17 mars}
+
+\author{David Pichardie, Luc Bougé}
+\maketitle
+
+Dans cette activité, nous allons manipuler un réseau de villes françaises 
+reliées par des routes pour effectuer des calculs d'itinéraires. 
+
+Prendre connaissance des fonctionnalités de la \emph{proglet}
+Javascool "Jouer avec une carte de France" (onglet "Document de la
+proglet").
+
+\begin{question}
+Ecrire une fonction
+\begin{lstlisting}
+void afficheVille(String ville) 
+\end{lstlisting}
+qui affiche la ville de nom \|ville| sur la carte. La fonction doit
+lancer une erreur (avec la fonction Javascool \|assertion|) si cette
+ville n'appartient pas à la base de donnée.
+
+Proposer une variante
+\begin{lstlisting}
+void afficheVilleAvecNumero(String ville, int num) 
+\end{lstlisting}
+qui affiche un numéro \|num| au dessus de cette ville.
+\end{question}
+
+\begin{question}
+Utiliser les fonctions précédentes pour afficher  toutes les villes de la base de donnée.
+\begin{lstlisting}
+void afficheToutesVilles() 
+\end{lstlisting}
+\end{question}
+
+\begin{question}
+Ecrire une fonction  
+\begin{lstlisting}
+void afficheRouteDirecte(String ville1, String ville2, IntensiteRoute intensite) 
+\end{lstlisting}
+qui relie avec un segment d'intensité \|intensite| les deux villes de
+noms \|ville1| et \|ville2|. Là encore, la fonction est suceptible de
+lancer une erreur.
+\end{question}
+
+\begin{question}
+Utiliser la fonction précédente pour afficher  toutes les routes de la base de donnée.
+\begin{lstlisting}
+void afficheToutesRoutesDirectes() {
+\end{lstlisting}
+\end{question}
+
+\begin{question}
+Ecrire une fonction
+\begin{lstlisting}
+void afficherChemin(List<String> chemin) 
+\end{lstlisting}
+qui affiche sur la carte le chemin représenté par la séquence de noms
+de ville \|chemin|. 
+
+Proposer une variante
+\begin{lstlisting}
+void afficherCheminAvecNumeros(List<String> chemin) 
+\end{lstlisting}
+qui affiche aussi l'ordre de passage dans chaque ville.
+
+Utiliser cette fonction avec la fonction fournie dans Javascool
+\begin{lstlisting}
+List<String> plusCourtCheminGogleMap(String depart, String arrivee)   
+\end{lstlisting}
+qui calcule un chemin sous forme d'une liste de noms de ville afin de relier
+la ville de nom \|depart| à celle de nom \|arrivee| en suivant uniquement
+des routes existantes dans la base de donnée.
+\end{question}
+
+\begin{question}
+Ecrire une fonction
+\begin{lstlisting}
+int distance(String ville1, String ville2) 
+\end{lstlisting}
+qui calcule la distance en km entre deux ville reliées par une route
+directe. Si une route directe n'existe pas, la fonction doit renvoyer
+le plus grand entier du type \|int| (nommé \|maxInteger|).
+\end{question}
+
+\begin{question}
+Ecrire une fonction
+\begin{lstlisting}
+int longueurChemin(List<String> chemin) 
+\end{lstlisting}  
+qui calcule la longueur totale d'un chemin représenté par la séquence
+de noms de ville \|chemin|. Que se passe-t-il si ce chemin ne passe
+pas par une route directe ?
+\end{question}
+
+
+% \begin{lstlisting}
+% String PlusProche(List<String> groupe, Map<String,Integer> distMap)
+% \end{lstlisting}
+
+% \begin{lstlisting}
+% void MiseAjourDistance(String ville0, Map<String,Integer> distMap,  Map<String,String> pred) 
+% \end{lstlisting}
+
+% \begin{lstlisting}
+% List<String> plusCourtChemin(String depart, String arrivee) 
+% \end{lstlisting}
+
+%\url{http://commons.wikimedia.org/wiki/Image:France_cities.pdf?uselang=fr}
+
+
+\end{document}
