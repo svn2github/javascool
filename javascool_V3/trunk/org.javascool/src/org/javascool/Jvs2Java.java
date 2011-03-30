@@ -276,7 +276,7 @@ public class Jvs2Java {
   public static String compile(String path) {
     setJpathclass(path);
     String args[] = { 
-      "-cp", "/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www/javascool.jar", // jnlp
+      // "-cp", "/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www/javascool.jar", // jnlp
       jpath + ".java" 
     };
     StringWriter out = new StringWriter();
@@ -308,7 +308,7 @@ public class Jvs2Java {
     setJpathclass(path);
     try {
       URL[] urls = new URL[] { 
-	new URL("file:/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www/javascool.jar"), // jnlp
+	// new URL("file:/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www/javascool.jar"), // jnlp
 	new URL("file:" + new File(jpath).getParent() + File.separator) 
       };
       Class< ? > j_class = new URLClassLoader(urls).loadClass(jclass);

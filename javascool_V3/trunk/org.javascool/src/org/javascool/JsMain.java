@@ -307,7 +307,7 @@ public class JsMain extends JApplet {
       panel.setBackground(new Color(160, 220, 160));
       panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.yellow, 4), BorderFactory.createEmptyBorder(30, 50, 0, 0)));
       panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-      panel.setMinimamSize(new Dimension(600, 600));
+      panel.setPreferredSize(new Dimension(500, 700));
       for(String type : types.keySet()) {
         JLabel label = new JLabel(" " + type + " :");
         label.setAlignmentX(JPanel.LEFT_ALIGNMENT);
@@ -323,6 +323,7 @@ public class JsMain extends JApplet {
         }
       }
       this.main.getFrame().addTab("Choisir (cliquer sur le titre) son activité", new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), "org/javascool/doc-files/icones16/new.png", false, true);
+      this.main.getFrame().addTab("...", new JLabel(" "), "", true, false);
      }
     ActionListener listener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
