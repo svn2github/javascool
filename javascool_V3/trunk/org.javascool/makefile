@@ -8,11 +8,7 @@ export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
 # Defines the beta-relase jar temporary suffix under development (e.g., = -3-3)
 JAR =
 
-default : wjar #run
-
-# puis virer
-wapp :
-	@firefox http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-proglets.htm
+default : run
 
 # General commands
 

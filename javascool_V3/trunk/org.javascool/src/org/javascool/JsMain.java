@@ -31,6 +31,7 @@ import java.util.LinkedHashMap;
 
 // Used for the JsHome activity chooser
 import javax.swing.JPanel;
+import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.BoxLayout;
 import javax.swing.BorderFactory;
@@ -306,6 +307,7 @@ public class JsMain extends JApplet {
       panel.setBackground(new Color(160, 220, 160));
       panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.yellow, 4), BorderFactory.createEmptyBorder(30, 50, 0, 0)));
       panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+      panel.setMinimamSize(new Dimension(600, 600));
       for(String type : types.keySet()) {
         JLabel label = new JLabel(" " + type + " :");
         label.setAlignmentX(JPanel.LEFT_ALIGNMENT);
@@ -321,7 +323,7 @@ public class JsMain extends JApplet {
         }
       }
       this.main.getFrame().addTab("Choisir (cliquer sur le titre) son activité", new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), "org/javascool/doc-files/icones16/new.png", false, true);
-    }
+     }
     ActionListener listener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         main.setActivity(((JButton) e.getSource()).getText());
@@ -355,7 +357,6 @@ public class JsMain extends JApplet {
     String m = "Notice : Mécanisme de détection problème de compatibilité mis en place\n   pour " + 
       title + " (" + System.getProperty("javascool.version") + " @ " + System.getProperty("java.home") + ")";
     System.err.println(m);
-    //-System.err.println(System.getProperties().toString().replaceAll("([{},])", "$1\n"));
   }
   /** Gets the instance of the main program. */
   public static JsMain getMain() {
@@ -375,6 +376,7 @@ public class JsMain extends JApplet {
     setJavascoolVersion();
     JsMain main = getMain();
     //- setUncaughtExceptionAlert(); // Version perfusée
+    //-System.err.println(System.getProperties().toString().replaceAll("([{},])", "$1\n"));
     if(usage.length > 0)
       main.setActivity(usage[0]);
     if((usage.length > 0) && new File(usage[usage.length - 1]).exists() && (main.activity.getEditor() != null))

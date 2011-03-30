@@ -51,7 +51,7 @@ public class JsFrame extends JPanel {
     splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, westPane, eastPane);
     westPane.setMinimumSize(new Dimension(100, 100));
     eastPane.setMinimumSize(new Dimension(100, 100));
-    splitPane.setResizeWeight(0.4);
+    splitPane.setResizeWeight(0.5);
     splitPane.setContinuousLayout(true);
     splitPane.setOneTouchExpandable(false);
     add(splitPane, BorderLayout.CENTER);

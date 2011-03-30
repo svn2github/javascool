@@ -233,10 +233,8 @@ public class Jvs2Java {
       }
       head.append("import proglet.paintbrush.*;");
       // Declares the proglet's core as a Runnable in the Applet
-      // - defined as a ProgletApplet in order to be loaded as an executable applet.
-      head.append("public class " + jclass + " extends org.javascool.ProgletApplet implements Runnable {");
+      head.append("public class " + jclass + " implements Runnable {");
       head.append("  private static final long serialVersionUID = " + (uid++) + "L;");
-      head.append("  static { org.javascool.Jvs2Java.runnable = new " + jclass + "(); }");
       head.append("  public void run() { main(); }");
       body.append("}\n");
     }
@@ -277,7 +275,10 @@ public class Jvs2Java {
    */
   public static String compile(String path) {
     setJpathclass(path);
-    String args[] = { jpath + ".java" };
+    String args[] = { 
+      "-cp", "/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www/javascool.jar", // jnlp
+      jpath + ".java" 
+    };
     StringWriter out = new StringWriter();
     try {
       Class.forName("com.sun.tools.javac.Main").getDeclaredMethod("compile", Class.forName("[Ljava.lang.String;"), Class.forName("java.io.PrintWriter")).
@@ -298,7 +299,7 @@ public class Jvs2Java {
   }
   /** Dynamically loads a Java class to be used during this session.
    * @param path The path to the java class to load. The java class is supposed to belong to the "default" package, i.e. not to belong to a package.
-   * @return An instantiation of this Java class.
+   * @return An instantiation of this Java class. If the object is a runnable, the current runnable is set.
    *
    * @throws RuntimeException if an I/O exception occurs during command execution.
    * @throws IllegalArgumentException If the Java class name is not valid.
@@ -306,9 +307,15 @@ public class Jvs2Java {
   public static Object load(String path) {
     setJpathclass(path);
     try {
-      URL[] urls = new URL[] { new URL("file:" + new File(jpath).getParent() + File.separator) };
+      URL[] urls = new URL[] { 
+	new URL("file:/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www/javascool.jar"), // jnlp
+	new URL("file:" + new File(jpath).getParent() + File.separator) 
+      };
       Class< ? > j_class = new URLClassLoader(urls).loadClass(jclass);
-      return j_class.newInstance();
+      Object o = j_class.newInstance();
+      if (o instanceof Runnable)
+	runnable = (Runnable) o;
+      return o;
     } catch(Throwable e) { throw Utils.report(new RuntimeException("Erreur: impossible de charger " + jpath + " / " + jclass + " (" + e + ") \n . . le package est il mal défini ?"));
     }
   }
@@ -342,8 +349,9 @@ public class Jvs2Java {
       thread.interrupt();
       thread = null;
     }
-    if(start && (runnable != null))
-      (thread = new Thread(new Runnable() {
+    if(start) {
+      if (runnable != null) {
+	(thread = new Thread(new Runnable() {
                              public void run() {
                                try {
                                  runnable.run();
@@ -355,6 +363,10 @@ public class Jvs2Java {
                              }
                            }
                            )).start();
+      } else {
+	System.err.println("Undefined runnable");
+      }
+    }
   }
   /** Runs/Stops a proglet demo..
    * @param proglet The proglet name.
