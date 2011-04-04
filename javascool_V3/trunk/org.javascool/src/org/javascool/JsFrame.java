@@ -85,6 +85,7 @@ public class JsFrame extends JPanel {
    * @param action Button action.
    */
   public void addTool(String label, String icon, Runnable action) {
+    delTool(label);
     JButton button = icon == null ? new JButton(label) : new JButton(label, Utils.getIcon(icon));
     button.addActionListener(new ActionListener() {
                                public void actionPerformed(ActionEvent e) {
@@ -131,6 +132,7 @@ public class JsFrame extends JPanel {
    * @param show If true show the panel when adding it.
    */
   public void addTab(String label, Container pane, String icon, boolean east, boolean show) {
+    delTab(label);
     if(east) {
       eastPane.addTab(label, icon == null ? null : Utils.getIcon(icon), pane, label);
       eastPane.setPreferredSize(pane.getMinimumSize());
