@@ -14,7 +14,9 @@
   </security> 
   <resources>
     <j2se version="1.4+"/>
-    <jar href="javascool.jar" main="true"/>   
+    <jar href="javascool.jar" main="true"/>
+    <package name="org.javascool.*" part=""/>
+    <package name="proglet.*" part="" recursive="true"/>
   </resources>
   <application-desc main-class="org.javascool.JsMain">
     <!--argument></argument-->
