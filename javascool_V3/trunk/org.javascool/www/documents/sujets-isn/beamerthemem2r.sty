@@ -1,0 +1,74 @@
+\mode<presentation>
+{
+\usecolortheme{rose}
+\useinnertheme[shadow]{rounded}
+\usecolortheme{dolphin}
+\setbeamercolor*{author in head/foot}{parent=palette tertiary}
+\setbeamercolor*{title in head/foot}{parent=palette secondary}
+\setbeamercolor*{date in head/foot}{parent=palette primary}
+
+\setbeamercolor*{section in head/foot}{parent=palette tertiary}
+\setbeamercolor*{subsection in head/foot}{parent=palette primary}
+
+\beamerboxesdeclarecolorscheme{normalbox}{author in head/foot}{date in head/foot}
+
+\defbeamertemplate*{footline}{infolines theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}%\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\defbeamertemplate*{headline}{infolines theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{section in head/foot}%
+    \usebeamerfont{section in head/foot}\insertsectionhead\hspace*{2ex}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsection in head/foot}%
+    \usebeamerfont{subsection in head/foot}\hspace*{2ex}\insertsubsectionhead
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\setbeamersize{text margin left=1em,text margin right=1em}
+%\useoutertheme{perso}
+\setbeamercolor{subsection in toc}{parent=structure}
+\setbeamertemplate{itemize items}[triangle]
+
+
+\setbeamersize{text margin left=1em,text margin right=1em}
+\setbeamertemplate{navigation symbols}{%
+\insertframenavigationsymbol}
+}
+
+\colorlet{lightcolor}{structure!40!white}
+\colorlet{middlecolor}{structure!60!white}
+\colorlet{strongcolor}{structure!90!white}
+
+\beamerboxesdeclarecolorscheme{mybox}{middlecolor}{lightcolor}
+\newenvironment{shadowbox}[1]{\begin{center}\begin{minipage}[c]{#1}\begin{beamerboxesrounded}[scheme=mybox,shadow=true]{}\center}{\end{beamerboxesrounded}\end{minipage}\end{center}}
+
+
+
+\usepackage{colortbl,tikz}
+
+\newcommand{\plancourant}{%
+\begin{frame}{Plan}
+ \tableofcontents[currentsection,currentsubsection]%hideallsubsections]%[currentsection,hideothersubsections]
+\end{frame}}
+\newcommand{\plan}{%
+\begin{frame}{Plan}
+ \tableofcontents[pausesections,pausesubsections]%hideallsubsections]%[currentsection,hideothersubsections]
+\end{frame}}

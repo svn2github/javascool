@@ -1,0 +1,462 @@
+\documentclass[a4paper,11pt]{article}
+
+%% \LoadClass[a4paper,11pt]{article}
+
+\usepackage{a4wide}%
+
+\usepackage[francais]{babel}%
+\usepackage[utf8]{inputenc}%
+\usepackage[T1]{fontenc}%
+
+\usepackage{url} \urlstyle{sf}%
+
+\usepackage{mathpazo}%
+\let\bfseriesaux=\bfseries%
+\renewcommand{\bfseries}{\sffamily\bfseriesaux}
+
+\newcounter{activite}%
+\newcounter{question}[activite]%
+\setcounter{activite}{0}% 
+\def\theactivite{\Roman{activite}}%
+\def\thequestion{\theactivite.\arabic{question}}%
+
+\newenvironment{activite}[1]%
+{\refstepcounter{activite}
+\subsection*{Activité \theactivite. #1}}%
+{}
+
+\newenvironment{question}%
+{\refstepcounter{question} \description%
+\item[Exercice \thequestion.] \bgroup}%
+{\egroup\enddescription}
+
+\newenvironment{remarque}%
+{\description\item[Remarque.]\sl}%
+{\enddescription}
+
+\newenvironment{exemple}%
+{\description\item[Exemple.]\sl}%
+{\enddescription}
+
+\newenvironment{programme}%
+{\verbatim}{\endverbatim}%
+
+\usepackage{listings}%
+
+\lstset{%
+  basicstyle=\sffamily,%
+  columns=fullflexible,%
+   language=java,%
+   frame=lb,%
+   frameround=fftf,%
+}%
+
+\def\|{\lstinline|}%
+
+\lstnewenvironment{lstlistingtt}%
+{\lstset{%
+    basicstyle=\tt,%
+    columns=flexible,%
+  }}%
+{}
+
+\lstnewenvironment{lstlistingsh}%
+{\lstset{%
+  language=sh,%
+  }}%
+{}
+
+%% \lstMakeShortInline{|}
+
+\parskip=0.3\baselineskip%
+\sloppy%
+
+\begin{document}
+
+\title{Enseignement de spécialité\\
+Informatique et sciences du numérique\\
+Formation des IA-IPR et chargés de mission\\
+Atelier de programmation 2}
+
+\date{Mardi 15 mars}
+
+\author{David Pichardie, Luc Bougé}
+
+\maketitle
+
+Nous utiliserons pour cet atelier l'environnement Javascool. Dans un
+premier temps, il convient de vous familiariser avec cet
+environnement.
+\begin{enumerate}
+\item Télécharger et lancer l'application Javascool
+  (\url{http://javascool.gforge.inria.fr/}, onglet \emph{lancement}).
+\item Choisir l'activité \emph{Découvrir les ingrédients des algorithmes}.
+\item Réaliser les exercices qui suivent, ou bien commencer par suivre le parcours d'initiation proposé par Javascool.
+\end{enumerate}
+Ce premier atelier vous propose 3~niveaux d'activités de difficulté croissante. Choisissez un niveau
+en fonction de votre familiarité avec la programmation.
+
+\begin{activite}{Premiers pas en programmation}
+
+  Nous allons programmer un système expert rudimentaire qui dialoguera
+  avec l'utilisateur et adaptera son discours aux réponses de
+  l'utilisateur. Voici un exemple de conversation entre le système et
+  l'utilisateur. Dans l'exemple suivant, chaque entrée de
+  l'utilisateur est précédée du texte \verb|[Entrée :]|.
+\begin{verbatim}
+Bonjour ! Quel est votre nom ?
+[Entrée :] Haddock
+C'est noté. Et votre prénom ?
+[Entrée :] Archibald
+Êtes-vous un homme ou une femme ?
+[Entrée :] homme
+Désolé, je n'ai pas compris votre réponse. Êtes-vous un homme ou une femme ?
+[Entrée :] un homme
+Parfait. Je suis enchanté de faire votre connaissance M. Archibald Haddock.
+
+Est-ce indiscret de vous demander votre âge ?
+[Entrée :] non
+Dans ce cas, quel âge avez-vous M. Haddock ?
+[Entrée :] 45
+Félicitations vous êtes dans la force de l'âge !
+
+Savez-vous que je suis excellent en calcul mental ? 
+Proposez-moi un grand nombre s'il vous plaît.
+[Entrée:] 3
+Ah, c'est bien petit 3 ! Ne pouvez-vous pas me proposer 
+un nombre un peu plus grand ?
+[Entrée:] 337
+C'est mieux. 
+Je le note. Proposez-moi un autre grand nombre s'il vous plaît.
+[Entrée:] 3456
+C'est noté. Et bien... 337 fois 3456 font 1164672 ! 
+Je vous sens impressionné...
+
+Je suis aussi capable de compter très vite ! 
+Jusqu'à combien voulez-vous que je compte ? 
+[Entrée:] 14
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+
+Merci pour ce bon moment. A bientôt Archibald.
+\end{verbatim}
+
+\begin{question}
+  Proposez un programme Javascool permettant d'obtenir ce type de
+  conversation en tenant compte des différentes réponses de
+  l'utilisateur (sexe, âge, etc.), et en validant le format des
+  réponses données. Par exemple, lorsqu'on attend une réponse oui ou
+  non, toute autre réponse doit être refusée.
+\end{question}
+
+\begin{remarque}
+  Attention! Pour tester l'égalité de deux chaînes, il ne faut pas
+  utiliser l'opération \|==|. En effet, celle-ci teste
+  \emph{l'identité} des deux chaînes et non le fait qu'elles soient
+  formées des mêmes caractères. Il faut utiliser une fonction appelée
+  \|equal|.
+\begin{lstlisting}
+String s = readString();
+if (equal(s, "Haddock")) ...
+\end{lstlisting}
+\end{remarque}
+
+\begin{question}
+  Pour le produit de deux nombres, ne peut-on pas pousser le système à
+  la faute en lui proposant des nombres trop grands à multiplier?
+  Comment filtrer les entrées de l'utilisateur pour remédier à ce
+  problème?
+\end{question}
+
+Pour éviter une saisie fastidieuse des phrases précédentes, vous
+pouvez copier-coller les phrases placées dans la version Javascool de
+cet énoncé.
+\end{activite}
+
+\begin{activite}{Premiers pas en programmation des tableaux}
+
+Nous nous intéressons maintenant à la manipulation des anagrammes de
+mots. Étant donné une collection de mots donnée sous forme d'un
+tableaux de chaînes de caractères, nous laissons l'utilisateur
+proposer un mot et nous l'informons des différents anagrammes de ce
+mot qui sont présents dans la collection.
+
+
+\begin{exemple}
+Supposons que le tableau initial soit le suivant\footnote{Il vous
+    sera nécessaire de recopier cette déclaration de tableau pour faire
+    l'exercice. Un copier-coller à partir de l'énoncé fourni dans Javascool
+    sera certainement la façon la plus rapide de le faire.}:
+\begin{lstlisting}
+String[] choixAnagrammes = 
+  { "marion", "aimer", "badinage", "niche", "aspirine", "chine",
+     "aspirine", "aube", "baignade", "chien", "manoir", "beau", 
+     "romain", "imaginer", "parisien", "migraine", "marie"}
+\end{lstlisting}
+L'utilisateur est invité à saisir un mot.
+\begin{verbatim}
+Proposez-moi un mot !
+[Entrée :] beau
+aube est un anagramme de beau
+beau est un anagramme de beau
+nombre d'anagrammes : 2 
+\end{verbatim}
+\end{exemple}
+
+Afin de réaliser un tel programme, nous allons devoir tester si un mot
+est un anagramme d'un autre.  Pour ce faire, nous vous proposons de
+manipuler les chaînes de caractères comme des tableaux de
+caractères. La fonction
+\begin{lstlisting}
+char[] chaineVersLettres(String s)
+\end{lstlisting}
+vous permet d'obtenir le tableau de caractères correspondant à une
+chaîne de caractère.  Le type \|char| est un type Java primitif
+qui représente les caractères. Contrairement aux chaînes, on peut
+utiliser les opérateurs de comparaisons arithmétiques usuels pour
+comparer deux caractères selon leur position dans l'alphabet.
+
+Nous vous proposons une deuxième fonction
+\begin{lstlisting}
+String lettresVersChaine(char[] t)
+\end{lstlisting}
+qui permet de reformer une chaîne à partir d'un tableau de caractères
+pour pouvoir l'imprimer.
+
+Pour tester si un mot est un anagramme d'un autre nous allons
+\emph{trier} chacun des deux mots en utilisant l'ordre alphabétique
+puis vérifier si nous obtenons la même séquence de lettres.  Par
+exemple, si nous trions \|"beau"| et \|"aube"| nous
+obtenons dans les deux cas \|"abeu"| ce qui nous assure que ce
+sont des anagrammes.
+
+Dans un premier temps, nous vous proposons d'utiliser les fonctions de
+la bibliothèque standard de Java pour faire ce tri. On peut par
+exemple utiliser:
+\begin{lstlisting}
+void java.utils.Arrays.sort(char[] t)
+\end{lstlisting}
+
+\begin{exemple}
+Le programme suivant affiche \|"abeu"|.
+  \begin{lstlisting}
+char[] t = chaineVersLettres("beau");
+java.util.Arrays.sort(t);
+echo(lettresVersChaine(t));
+  \end{lstlisting}
+\end{exemple}
+
+\begin{question}
+  Écrire une fonction
+\begin{lstlisting}
+String normalise(String s)
+\end{lstlisting}
+qui prend en entrée une chaîne \|s| et renvoie une nouvelle
+chaîne obtenue en triant par ordre alphabétique les lettres de
+\|s|.
+\end{question}
+
+\begin{question}
+  Écrire une fonction
+\begin{lstlisting}
+boolean testAnagramme(String s1, String s2)
+\end{lstlisting}
+  qui teste si deux chaîne \|s1| et \|s2| sont anagrammes
+  l'une de l'autre grâce à un tri.
+\end{question}
+
+\begin{question}
+  Proposer un programme pour interagir avec l'utilisateur selon le
+  scénario proposé plus haut.
+\end{question}
+
+Nous allons maintenant tenter d'écrire notre propre fonction de tri.
+\begin{lstlisting}
+void triSelection(char[] t)
+\end{lstlisting}
+
+\begin{question}
+  Écrire tout d'abord une fonction
+\begin{lstlisting}
+void permute(char[] t, int i, int j)
+\end{lstlisting}
+  qui échange les caractères à la position \|i| et \|j|
+  dans le tableau \|t|. On suppose que \|i| et \|j|
+  sont des indices valides dans \|t|.
+\end{question}
+
+\begin{question}
+  Écrire une fonction
+\begin{lstlisting}
+int indexMin(char[] t, int i)
+\end{lstlisting}
+  qui calcule l'indice de la plus petite lettre (pour l'ordre
+  alphabétique) de \|t|, entre les indices \|i| et
+  \|t.length-1|.
+\end{question}
+
+\begin{question}
+  Écrire une fonction
+\begin{lstlisting}
+void triSelection(char[] t) 
+\end{lstlisting}
+  qui échange les lettres du tableau \|t| pour les mettre dans
+  l'ordre alphabétique.
+\end{question}
+
+\end{activite}
+
+\begin{activite}{Réapprendre à compter comme à l'école}
+
+  Dans cette activité, nous vous proposons de réapprendre à compter en
+  expliquant à l'ordinateur comment poser et résoudre les opérations
+  arithmétiques élémentaires: addition, multiplication, soustraction,
+  division. Nous allons pour cela manipuler les nombres comme des
+  tableaux de chiffres décimaux. Dans un deuxième temps nous vous
+  proposons d'adapter ces programmes à l'arithmétique binaire en
+  manipulant cette fois des tableaux de bits.
+
+  Nous manipulerons pour cette activité le type \|Chiffre| suivant.
+\begin{lstlisting}
+  enum Chiffre { ZERO, UN, DEUX, TROIS, QUATRE, CINQ, SIX, SEPT, HUIT, NEUF }
+\end{lstlisting}
+Un nombre sera manipulé sous la forme d'un tableau de valeurs de type
+\|Chiffre|.
+
+Pour résoudre les opérations arithmétiques élémentaires, il faut
+connaître ses tables d'addition et de multiplication.  Ces tables vous
+sont fournis sous la forme du type \|NombreA2Chiffres| qui
+encapsule un chiffre des dizaines et un chiffre des unités. Ce type
+abstrait est munis des opérations suivantes:
+\begin{itemize}
+
+\item \|Chiffre unite(NombreA2Chiffres n)| renvoie le chiffe des
+  unités d'un nombre \|n|.
+
+\item \|Chiffre dizaine(NombreA2Chiffres n)| renvoie le chiffe des
+  dizaines d'un nombre \|n|.
+
+\item \|NombreA2Chiffres nb(Chiffre dizaine, Chiffre unite)| fabrique
+  un nombre à partir d'un chiffre \|dizaine| des dizaines et \|unite|
+  des unités.
+
+\item \|NombreA2Chiffres plus(NombreA2Chiffres x, NombreA2Chiffres y)|
+  renvoie le nombre obtenu en faisant la somme des deux nombres \|x|
+  et \|y|.
+
+\item \|NombreA2Chiffres moins(NombreA2Chiffres x, NombreA2Chiffres y)| 
+  renvoie le nombre obtenu en faisant la différence des deux
+  nombres \|x| et \|y| si \|x| est plus grand que \|y| et renvoie une
+  erreur sinon.
+
+\item \|NombreA2Chiffres plus(NombreA2Chiffres x, NombreA2Chiffres y)|
+  renvoie le nombre obtenu en faisant le produit des deux nombres
+  \|x| et \|y|.
+
+\end{itemize}
+Ces trois dernières opérations ignorent le chiffre des centaines.
+
+Les valeurs de types \|Chiffre| et \|NombreA2Chiffres| peuvent être
+affichées avec les fonctions \|println| et \|echo| habituelles sous
+Javascool. 
+
+Nous fournissons de plus une fonction
+\begin{lstlisting}
+  String nombreVersChaine(Chiffre[] nombre)
+\end{lstlisting}
+qui permet d'afficher un nombre représenté par un tableau de chiffre.
+
+\begin{exemple}
+\|echo(plus(nb(UN,TROIS),nb(DEUX,QUATRE)));| provoque l'affichage
+\|37|
+\end{exemple}
+
+\begin{exemple}
+  Le tableau \|nombre| suivant peut être affiché avec les
+  instructions:
+\begin{lstlisting}
+Chiffre[] nombre = { ZERO, TROIS, HUIT };
+System.out.println(nombreVersChaine(nombre));
+\end{lstlisting}
+pour produire l'affichage \|038|.
+\end{exemple}
+
+\begin{question}
+  Écrire une fonction
+\begin{lstlisting}
+Chiffre[] addition(int taille, Chiffre[] n1, Chiffre[] n2)
+\end{lstlisting}
+qui construit le tableau de chiffre résultant de l'addition des
+nombres \|n1| et \|n2|, ces nombres étant représentés par des tableaux
+de taille \|taille|. Le résultat de l'addition devra être exprimé dans
+un tableau de même taille et une erreur devra être lancée si cela n'est
+pas possible.
+
+Pour réaliser un test et lancer une erreur en cas d'échec, javascool
+propose une fonction particulière
+\begin{lstlisting}
+void assertion(boolean test, String message) 
+\end{lstlisting}
+Si l'argument \|test| est vrai, l'exécution continue sans afficher de
+message particulier, sinon toute l'exécution courante se termine avec
+le message d'erreur proposé en argument.
+\end{question}
+
+\begin{question}
+  Écrire une fonction
+\begin{lstlisting}
+Chiffre[] multiplication(int taille, Chiffre[] n1, Chiffre[] n2)
+\end{lstlisting}
+qui calcule le tableau de chiffres résultant de la multiplication des
+nombres \|n1| et \|n2|. Ces nombres sont représentés par des tableaux
+de taille \|taille|. Le résultat de la multiplication devra être
+exprimé dans un tableau de même taille et une erreur devra être lancée
+si cela n'est pas possible.
+\end{question}
+
+\begin{question}
+  Écrire une fonction
+\begin{lstlisting}
+Chiffre[] soustraction(int taille, Chiffre[] n1, Chiffre[] n2)
+\end{lstlisting}
+  qui calcule le tableau de chiffre résultant de la soustraction des
+  nombres \|n1| et \|n2|. Ces nombres sont représentés par des
+  tableaux de taille \|taille|. Le résultat de la soustraction devra
+  être exprimé dans un tableau de même taille et une erreur devra être
+  lancée si \|n1| n'est pas supérieur ou égal à \|n2|.
+
+  Pour cette fonction, il sera utile d'utiliser la fonction
+\begin{lstlisting}
+boolean estPlusPetit(NombreA2Chiffres x, NombreA2Chiffres y) 
+\end{lstlisting}
+pour tester si un nombre à deux chiffres \|x| est inférieur ou égal à un autre
+nombre à deux chiffres \|y|.
+\end{question}
+
+\begin{question}[Pour les programmeurs Java]
+  Reprendre les questions précédentes en manipulant cette fois des
+  tableaux de bits. Un bit pourra être représenté par un simple
+  booléen.
+\end{question}
+
+\end{activite}
+
+\end{document}
+
+% LocalWords:  IA-IPR David Pichardie Luc Javascool Télécharger equal peut-on
+% LocalWords:  readString copier-coller marion chaineVersLettres abeu void int
+% LocalWords:  lettresVersChaine indexMin t.length triSelection boolean enum nb
+% LocalWords:  testAnagramme ZERO NombreA encapsule unite println echo
+% LocalWords:  nombreVersChaine

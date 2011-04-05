@@ -2,7 +2,7 @@ all : $(patsubst %.tex,%.pdf,$(wildcard *.tex)) ls.html
 	firefox ls.html
 
 %.pdf : %.tex
-	pdflatex $*
+	-pdflatex $*
 
 ls.html : $(shell ls -1 | egrep -v ls.html)
 	@echo '<h4>David ISN extra files</h4><ul>' > $@

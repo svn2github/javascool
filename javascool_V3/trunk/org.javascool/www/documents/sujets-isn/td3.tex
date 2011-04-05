@@ -1,0 +1,203 @@
+\documentclass[a4paper,11pt]{article}
+
+%% \LoadClass[a4paper,11pt]{article}
+
+\usepackage{a4wide,graphicx}%
+
+%\usepackage[francais]{babel}%
+\usepackage[utf8]{inputenc}%
+\usepackage[T1]{fontenc}%
+
+\usepackage{url} \urlstyle{sf}%
+
+\usepackage{mathpazo}%
+\let\bfseriesaux=\bfseries%
+\renewcommand{\bfseries}{\sffamily\bfseriesaux}
+
+\newcounter{probleme} \newcounter{question}[probleme]
+\setcounter{probleme}{0} \def\theprobleme{\Roman{probleme}}
+\def\thequestion{\theprobleme.\arabic{question}}
+
+\newenvironment{probleme}[1]%
+{\refstepcounter{probleme}
+\subsection*{Activité \theprobleme. #1}}%
+{}
+
+\newenvironment{question}%
+{\refstepcounter{question} \description%
+\item[Exercice \thequestion.] \bgroup}%
+{\egroup\enddescription}
+
+\newenvironment{remarque}%
+{\description\item[Remarque.]\sl}%
+{\enddescription}
+
+\newenvironment{exemple}%
+{\description\item[Exemple.]\sl}%
+{\enddescription}
+
+\newenvironment{programme}%
+{\verbatim}{\endverbatim}%
+
+\usepackage{listings}%
+
+\lstset{%
+  basicstyle=\sffamily,%
+  columns=fullflexible,%
+   language=java,%
+   frame=lb,%
+   frameround=fftf,%
+}%
+
+\def\|{\lstinline|}%
+
+\lstnewenvironment{lstlistingtt}%
+{\lstset{%
+    basicstyle=\tt,%
+    columns=flexible,%
+  }}%
+{}
+
+\lstnewenvironment{lstlistingsh}%
+{\lstset{%
+  language=sh,%
+  }}%
+{}
+
+%% \lstMakeShortInline{|}
+
+\parskip=0.3\baselineskip%
+\sloppy%
+
+\begin{document}
+
+\title{Enseignement de spécialité\\
+Informatique et sciences du numérique\\
+Formation des IA-IPR et chargés de mission\\
+Atelier de programmation 4}
+
+\date{Jeudi 17 mars}
+
+\author{David Pichardie, Luc Bougé}
+\maketitle
+
+Dans cette activité, nous allons manipuler des grands textes sous
+forme de listes de mots. Nous utiliserons des structures de données
+plus avancées que les tableaux~: les collections qui vous seront
+présentées en séance.
+  
+La fonction 
+\begin{lstlisting}
+List<String> lireGrandTexte(String nomDefichier)
+\end{lstlisting}
+vous permet de
+charger un texte sous la forme d'une liste de chaînes de
+caractères. Nous travaillerons plus spécialement sur deux textes:
+\emph{La Marseillaise} et \emph{Les Misérables}. Le premier est obtenu
+par la commande
+\begin{lstlisting}
+List<String> la_marseillaise = lireGrandTexte("La_Marseillaise.txt")  ;
+\end{lstlisting}
+et le deuxième par 
+\begin{lstlisting}
+List<String> les_miserables = lireGrandTexte("Les_Miserables.txt");
+\end{lstlisting}
+Ces deux textes sont libres de droit et consultable en ligne. Pour
+simplifier, nous enlevons toutes les majuscules et supprimons la ponctuation
+de ces textes.
+
+\begin{question}
+  Écrire un programme 
+  \begin{lstlisting}
+    void afficheLaMarseillaise()
+  \end{lstlisting}
+qui charge le texte de la \emph{Marseillaise} et affiche tous les mots qui le
+  compose a l'aide d'une itération. 
+\end{question}
+
+\begin{remarque}
+  Attention, ne tenter pas la même opération avec \emph{Les
+    Misérables} car le document est beaucoup trop gros pour les
+  capacités d'affichage de Javascool (plus de trois millions de
+  caractères)~!
+\end{remarque}
+
+\begin{question}
+  Écrire un programme 
+  \begin{lstlisting}
+    int nombreDeMots(List<String> liste)
+  \end{lstlisting}
+  qui compte le nombre de mots dans une liste de mots. Tester sur le
+  texte des \emph{Misérables}.  Remarquer que cette
+  fonctionnalité existe déjà avec l'opération \|l.size();| sur une
+  liste \|l| mais nous vous demandons de réaliser vous-même ce calcul
+  à l'aide d'une itération.
+\end{question}
+
+\begin{question}
+  La liste calculée par la fonction \|lireGrandTexte| contient une chaîne
+  de caractères spéciale "$<$NOUVELLE PAGE$>$" qui est insérée dans la
+  liste à chaque changement de page. Utiliser ce mot pour calculer le
+  nombre de page avec une fonction
+\begin{lstlisting} 
+int nombreDePages(List<String> liste)  
+\end{lstlisting}
+Compter ainsi le nombre de pages dans \emph{Les Misérables}.
+\end{question}
+
+
+\begin{question}
+  Écrire un programme 
+  \begin{lstlisting}
+    Map<String,Integer> tableDesFrequences(List<String> liste)
+  \end{lstlisting}
+  qui calcule la table d'association reliant chaque mot à sa fréquence
+  d'apparition (nombre d'occurrence) dans la liste.
+Tester sur le
+  texte de  \emph{La Marseillaise}.
+\end{question}
+
+\begin{question}
+  Écrire un programme 
+  \begin{lstlisting}
+    int nombreDeMotsDistincts(List<String> liste)
+  \end{lstlisting}
+  qui compte le nombre de mots distincts dans une liste de mots. Tester sur le
+  texte des \emph{Misérables}.  
+\end{question}
+
+\begin{question}
+  Écrire un programme 
+  \begin{lstlisting}
+    void portraitDeCosette()
+  \end{lstlisting}
+  qui affiche  les 100 premiers mots rencontrés après la première apparition du mot "cosette" (sans majuscules).
+\end{question}
+
+\begin{question}
+Nous vous fournissons la fonction
+\begin{lstlisting}
+  Map<String,Integer> triMapParValeursDecroissantes(Map<String,Integer> table)
+\end{lstlisting}
+qui renvoie une version tri\'ee d'un table en triant les fr\'equences par ordre croissant. Utiliser cette fonction pour \'ecrire un programme
+  \begin{lstlisting}
+    void lesPlusFrequents(List<String> liste, int N)
+  \end{lstlisting}
+  qui affiche les \|N| mots les plus fréquents de la liste \|liste| en ignorant les mots de moins de 4 lettres.
+  Utiliser cette opération avec \|N| égal à 30 pour voir citer les personnages principaux des \emph{Misérables}.
+\end{question}
+
+\begin{question}
+Utiliser le mot spécial
+"$<$NOUVELLE PAGE$>$" pour calculer une table d'index pour chaque mot d'au moins 4 lettres 
+du texte avec une fonction
+\begin{lstlisting} 
+Map<String,List<String>> tableIndex(List<String> liste)  
+\end{lstlisting}
+Afficher la table d'index des 30 mots les plus fréquents.
+\end{question}
+
+
+
+%\noindent\textbf{Remerciements :} Les textes proposés dans ce sujet sont libres de droit est disponibles à l'adresse suivante \url{http://www.gutenberg.org}.
+\end{document}
