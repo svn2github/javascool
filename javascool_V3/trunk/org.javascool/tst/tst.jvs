@@ -1,5 +1,8 @@
 
 void main() {
-   sleep(2000);
-   println("done");
+   scopeReset();
+   for (double x = - 1; x <= 1; x += 0.001) {
+      scopeSet(x, 0.5 * Math.sin(10 * x) + 0.5, 6);
+      scopeSet(x, - Math.exp( - (x + 1)), 7);
+   }
 }

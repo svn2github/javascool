@@ -160,7 +160,7 @@ public class Jvs2Java {
     }
     return "\n" + g.
            replaceAll("\\}\\s*else\\s*(\\{|if)", "} else $1").
-           replaceAll("(while|if|for|return)\\s*[^a-z_0-9_]", "$1 ");
+           replaceAll("(while|if|for|return)\\s*([^a-z_0-9_])", "$1 $2");
   }
   private static boolean isOperator(char c) {
     switch(c) {
@@ -275,10 +275,7 @@ public class Jvs2Java {
    */
   public static String compile(String path) {
     setJpathclass(path);
-    String args[] = { 
-      // "-cp", "/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www/javascool.jar", // jnlp
-      jpath + ".java" 
-    };
+    String args[] = { "-cp", getJavaScoolJar(), jpath + ".java" };
     StringWriter out = new StringWriter();
     try {
       Class.forName("com.sun.tools.javac.Main").getDeclaredMethod("compile", Class.forName("[Ljava.lang.String;"), Class.forName("java.io.PrintWriter")).
@@ -308,7 +305,7 @@ public class Jvs2Java {
     setJpathclass(path);
     try {
       URL[] urls = new URL[] { 
-	// new URL("file:/home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www/javascool.jar"), // jnlp
+	new URL(getJavaScoolJar()),
 	new URL("file:" + new File(jpath).getParent() + File.separator) 
       };
       Class< ? > j_class = new URLClassLoader(urls).loadClass(jclass);
@@ -319,6 +316,10 @@ public class Jvs2Java {
     } catch(Throwable e) { throw Utils.report(new RuntimeException("Erreur: impossible de charger " + jpath + " / " + jclass + " (" + e + ") \n . . le package est il mal défini ?"));
     }
   }
+  // Gets the javascool.jar local location
+  private static String getJavaScoolJar() {
+    return Thread.currentThread().getContextClassLoader().getResource("org/javascool/js-manifest.mf").toString().replaceFirst("jar:([^!]*)!.*", "$1");
+  }
   /** Registered proglets. */
   static final HashMap<String, String> proglets = new HashMap<String, String>();
   static {
@@ -326,7 +327,6 @@ public class Jvs2Java {
       if(proglet.length() > 0)
         proglets.put(proglet.replaceFirst("^proglet\\.([^\\.]+)\\..*$", "$1"), proglet);
   }
-
   /** Returns the proglet panel.
    * @param proglet The proglet class name.
    * @return The panel corresponding to the proglet, if any, else null;

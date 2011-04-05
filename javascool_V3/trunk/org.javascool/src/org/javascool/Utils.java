@@ -133,7 +133,7 @@ public class Utils {
     try {
       if(location.matches("(file|ftp|http|https|jar|mailto|stdout):.*"))
         return new URL(location);
-      URL url = JsMain.class .getClassLoader().getResource(location);
+      URL url = Thread.currentThread().getContextClassLoader().getResource(location);
       if(url != null)
         return url;
       File file = new File(location);

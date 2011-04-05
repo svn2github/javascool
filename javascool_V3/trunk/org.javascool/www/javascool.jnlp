@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<jnlp spec="1.0+" codebase2="http://javascool.gforge.inria.fr/v3" codebase="file:///home/vthierry/Work/culsci/javascool/javascool_V3/trunk/org.javascool/www" href="javascool.jnlp">
+<jnlp spec="1.0+" codebase="http://javascool.gforge.inria.fr/v3" href="javascool.jnlp">
   <information>
     <title>Java's Cool (and Java is so cool)</title>
     <vendor>INRIA (http://javascool.gforge.inria.fr)</vendor>
@@ -13,8 +13,8 @@
     <all-permissions/>
   </security> 
   <resources>
-    <j2se version="1.4+" href="http://java.sun.com/products/autodl/j2se" java-vm-args="-Xnoclassgc"/>
-    <jar href="javascool.jar"/>
+    <j2se version="1.4+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="javascool-3-3.jar"/>
   </resources>
   <application-desc main-class="org.javascool.JsMain">
     <!--argument></argument-->

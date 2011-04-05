@@ -358,8 +358,8 @@ public class JsMain extends JApplet {
     String m = "Notice : Mécanisme de détection problème de compatibilité mis en place\n   pour " + 
       title + " (" + System.getProperty("javascool.version") + " @ " + System.getProperty("java.home") + ")";
     System.err.println(m);
-  }
-  /** Gets the instance of the main program. */
+  }  
+ /** Gets the instance of the main program. */
   public static JsMain getMain() {
     return theMain == null ? (theMain = new JsMain()) : theMain;
   }
