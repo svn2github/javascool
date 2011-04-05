@@ -13,10 +13,8 @@
     <all-permissions/>
   </security> 
   <resources>
-    <j2se version="1.4+"/>
-    <jar href="javascool.jar" part="jvs" main="true"/>
-    <package name="org.javascool.*" part="jvs"/>
-    <package name="proglet.*" part="jvs" recursive="true"/>
+    <j2se version="1.4+" href="http://java.sun.com/products/autodl/j2se" java-vm-args="-Xnoclassgc"/>
+    <jar href="javascool.jar"/>
   </resources>
   <application-desc main-class="org.javascool.JsMain">
     <!--argument></argument-->
