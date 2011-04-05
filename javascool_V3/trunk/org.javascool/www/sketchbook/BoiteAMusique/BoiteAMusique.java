@@ -35,6 +35,7 @@ Pixel[][] pix;
 Radar Radar_;
 Potar potarVol;
 Source[][] sources;
+HScrollbar hs1;float topPos;
 
 int w; // depending on the width of the interface
 int vit = 10;
@@ -43,25 +44,32 @@ int bs;
 int[] mySource = new int[2];
 boolean hasChanged = false;
 
+// Comment this for an automatic search
+//String[] filenames = {"plink.aif", "hats.wav", "kick.wav", "SD.wav", "snare.wav", "rec0.wav", "rec1.wav", "rec2.wav", "rec3.wav"};
+// Uncomment this for an automatic search
 String[] filenames;
 String path;
 
+PFont f;
+
 public void setup() {
-  size(1000, 600); // (screen.width-50,screen.height-50);//900,616);
+  size(900, 700); // (screen.width-50,screen.height-50);//900,616);
   background(50);
   frameRate(30);
+  f = createFont("Arial Bold", 12, true);
   mySource[0] = 0;
   mySource[1] = 0;
 
   in = minim.getLineIn(Minim.STEREO, 1648);
   out = minim.getLineOut(Minim.STEREO);
+  // Uncomment this for an automatic search
   path = sketchPath + "/data/effects";
   filenames = listFileNames(path);
   freqs = new Freq();
 
   smooth();
 
-  potarVol = new Potar(40, 170);
+  potarVol = new Potar(width-width/20, height/5);
   w = width / 100;
   bs = 4 * width / 9; // 2*screen.height/3;
 
@@ -70,8 +78,23 @@ public void setup() {
   Radar_.drawBody();
   // Initialise sources
   Radar_.addSources(Radar_.nb, Radar_.nl);
+  
+  hs1 = new HScrollbar(0, 15, width, 15, 3 + 1);
 }
+
 public void draw() {
+  topPos = hs1.getPos() - width / 2;
+  /*textAlign(LEFT);
+  fill(0, 40, 63);
+  textFont(f, 13);
+  text(" - I  N  S  T  R  U  C  T  I  O  N  S - \n " +
+       "> 1) S\u00e9lectionner votre source sonore parmi les trois cat\u00e9gories: notes de piano, bips, enregistrements\n " +
+       "> 2) S\u00e9lectionner une postion temporelle sur le radar \n " +
+       "> Pour acc\u00e9l\u00e9rer/ralentir la vitesse de jeu: fl\u00e8ches '>/<' \n " +
+       "> Pour remettre \u00e0 z\u00e9ro le radar: barre espace \n " +
+       "> Fermer l'application: ESC ", topPos * 2, 40); 
+  hs1.update();
+  hs1.display();*/
   fill(153);
   strokeWeight(1);
   ellipse(Radar_.bx, height / 2, 50, 50);
@@ -97,6 +120,8 @@ public void draw() {
           pix[i][j].setMyAmp((Radar_.nl - j + 1) * 10 * potarVol.getValue());
       }
   }
+  
+  
 }
 public void mousePressed() {
   for(int i = 0; i < Radar_.nb; i++)
@@ -217,6 +242,68 @@ class Freq
   }
 }
 
+class HScrollbar
+{
+  int swidth, sheight;    // width and height of bar
+  int xpos, ypos;         // x and y position of bar
+  float spos, newspos;    // x position of slider
+  int sposMin, sposMax;   // max and min values of slider
+  int loose;              // how loose/heavy
+  boolean over;           // is the mouse over the slider?
+  boolean locked;
+  boolean show = false;
+  float ratio;
+
+  HScrollbar(int xp, int yp, int sw, int sh, int l) {
+    swidth = sw;
+    sheight = sh;
+    int widthtoheight = sw - sh;
+    ratio = (float) sw / (float) widthtoheight;
+    xpos = xp - 3 * swidth / 4;
+    ypos = yp - sheight / 2;
+    spos = xpos; // + swidth/2 - sheight/2;
+    newspos = spos;
+    sposMin = xpos;
+    sposMax = xpos + swidth - sheight;
+    loose = l;
+  }
+
+  public void update() {
+    if(over())
+      newspos = width / 2; // constrain(mouseX-sheight/2, sposMin, sposMax);
+    else
+      newspos = 0;
+    if(abs(newspos - spos) > 1)
+      spos = spos + (newspos - spos) / loose;
+  }
+  public boolean over() {
+    if((mouseX > xpos) && (mouseX < xpos + swidth) &&
+       (mouseY > ypos) && (mouseY < ypos + sheight))
+      return true;
+    else
+      return false;
+  }
+  public void display() {
+    fill(255);
+    strokeWeight(0.1f);
+    if(over()) {
+      fill(50);
+      stroke(255);
+    } else {
+      stroke(255,0,0);
+      strokeWeight(1);
+    }
+    rect(sheight / 2, ypos, sheight * 5, sheight);
+    fill(130);
+    textFont(f, 11);
+    text("I N F O >>>", sheight / 2 + sheight / 5, ypos + 4 * sheight / 5);
+  }
+  public float getPos() {
+    // Convert spos to be values between
+    // 0 and the total width of the scrollbar
+    return spos * ratio;
+  }
+}
 class Pixel
 {
   float x, y;
@@ -316,6 +403,7 @@ class Pixel
         activate();                 // et sonne
       } else
         c = color(255, 170, 0);       // une source non activ\u00e9e mais balay\u00e9e s'allume en orange
+        stroke(255);
     }
   }
 }
@@ -343,7 +431,6 @@ class Potar
     rect(x, yp, 45, 22);
     strokeWeight(3);
     line(x + 23, yp, x - 23, yp);
-    // stroke(0);
   }
   public boolean check(float x_, float y_) {
     if((x_ > x - 22) && (x_ < x + 22) && (y_ > y - 100) && (y_ < y + 100))
@@ -364,7 +451,7 @@ class Potar
 }
 
 class Radar {
-  PFont f = createFont("Arial Bold", 12, true);
+  
 
   int bx, by;        // positionnement
   int nb;         // nombre de sources \u00e0 enchainer dans la boucle: de 8 \u00e0 24
@@ -373,7 +460,7 @@ class Radar {
   int pia;
 
   Radar(int nb_, int nl_) {
-    bx = width / 2 + 100;
+    bx = width / 2 + 120;
     by = height / 2;
     nb = nb_;
     nl = nl_;
@@ -468,6 +555,8 @@ class Radar {
   }
   // Visualise l'ensemble des sources \u00e0 disposition
   public void displayLib() {
+   
+  
     sources = new Source[3][freqs.tab[0].length];
 
     fill(255, 0, 0);
@@ -475,21 +564,21 @@ class Radar {
     stroke(255);
     rectMode(CORNER);
     for(int i = 0; i < 3; i++)
-      rect(10, by - 15 + i * 120, 210, 20);
+      rect(10, by -35 + i * 120, 210, 20);
     textAlign(LEFT);
     fill(255);
-    text(" - " + freqs.tab[0].length + " notes de piano -\n", 10, by);
-    text(" - " + freqs.tab[1].length + " bips digitaux (Hz) -\n", 10, by + 120);
-    text(" - " + freqs.tabE.length + " enregistrements -\n", 10, by + 240);
+    text(" - " + freqs.tab[0].length + " notes de piano -\n", 10, by-20);
+    text(" - " + freqs.tab[1].length + " bips digitaux (Hz) -\n", 10, by + 100);
+    text(" - " + freqs.tabE.length + " enregistrements -\n", 10, by + 220);
     fill(50);
     noStroke();
     for(int i = 0; i < 3; i++)
-      rect(10, by - 15 + 25 + i * (120), 220, 90);
+      rect(10, by - 35 + 25 + i * (120), 220, 90);
      // A simplifier!!
     for(int i = 0; i < freqs.tab[0].length; i++) {
-      sources[0][i] = new Source(10 + (i % 7) *30, by + 30 + ((i - (i % 7)) / 7) *20, 0, i);
-      sources[1][i] = new Source(10 + (i % 7) *30, by + 120 + 30 + ((i - (i % 7)) / 7) *20, 1, i);
-      sources[2][i] = new Source(10 + (i % 3) *70, by + 240 + 30 + ((i - (i % 3)) / 3) *20, 2, i);
+      sources[0][i] = new Source(10 + (i % 7) *30, by + 10 + ((i - (i % 7)) / 7) *20, 0, i);
+      sources[1][i] = new Source(10 + (i % 7) *30, by + 100 + 30 + ((i - (i % 7)) / 7) *20, 1, i);
+      sources[2][i] = new Source(10 + (i % 3) *70, by + 220 + 30 + ((i - (i % 3)) / 3) *20, 2, i);
       if(mySource[1] == i) {
         fill(0, 190, 0);
         if(mySource[0] == 0) {
@@ -501,7 +590,7 @@ class Radar {
         } else if(mySource[0] == 1) {
           text(" " + PApplet.parseInt (freqs.tab[1][i]) + " ", sources[1][i].x, sources[1][i].y);
           fill(255);
-          text(" " + freqs.tabN[i] + " ", sources[0][i].x, sources[0][i].y);
+          text(" " + freqs.tabN[i] + " ", sources[0][i].x, sources[0][i].y);  
           if(i < freqs.tabE.length)
             text(" " + freqs.tabE[i] + " ", sources[2][i].x, sources[2][i].y);
         } else {
@@ -520,6 +609,22 @@ class Radar {
           text(" " + freqs.tabE[i] + " ", sources[2][i].x, sources[2][i].y);
       }
     }
+    textAlign(LEFT);
+    fill(50);
+    rect(0, 0, width/2-50, height/3);
+    fill(153);
+    textFont(f, 11);
+    text(" - I  N  S  T  R  U  C  T  I  O  N  S - \n " +
+         ". Composer une s\u00e9quence sonore en deux actions: \n" +
+         " 1) S\u00e9lectionner votre source sonore parmi les trois cat\u00e9gories: \n" +
+         "  notes de piano, bips, enregistrements\n " +
+         " 2) S\u00e9lectionner une postion temporelle sur le radar \n " +
+         ". Pour acc\u00e9l\u00e9rer/ralentir la vitesse de jeu: fl\u00e8ches '>/<' \n " +
+         ". Pour augmenter/diminuer le volume globale, agir sur le curseur noir \n " +
+         ". Pour remettre \u00e0 z\u00e9ro le radar: barre espace \n " +
+         ". Fermer l'application: ESC ", topPos * 2, 40); 
+    hs1.update();
+    hs1.display();
   }
   /** Cr\u00e9er les sources sonores
    */
@@ -614,6 +719,6 @@ class Source {
   }
 }
   static public void main(String args[]) {
-    PApplet.main(new String[] { "--bgcolor=#FFFFFF", "BoiteAMusique" });
+    PApplet.main(new String[] { "--bgcolor=#DFDFDF", "BoiteAMusique" });
   }
 }

@@ -5,11 +5,11 @@
 String spots[] = {"Nord", "Sud",  "Est", "Ouest", "Centre"};
 
 void build() {
-  EnVoiture.addSpot("Nord",   0x000000, 'B', 0, 1000,  20, 20, 20);
-  EnVoiture.addSpot("Est",    0xff00ff, 'P', 1000, 0,  20, 10, 20);
-  EnVoiture.addSpot("Ouest",  0xffff00, 'O', -1000, 0, 20, 20, 20);
-  EnVoiture.addSpot("Sud",    0x00ffff, 'C', 0, 1000,  20, 30, 20);
-  EnVoiture.addSpot("Centre", 0xffffff, 'C', 0, 0,     20, 10, 20);
+  EnVoiture.addSpot("Nord",   0x000000, "B", 0, 1000,  20, 20, 20);
+  EnVoiture.addSpot("Est",    0xff00ff, "P", 1000, 0,  20, 10, 20);
+  EnVoiture.addSpot("Ouest",  0xffff00, "O", -1000, 0, 20, 20, 20);
+  EnVoiture.addSpot("Sud",    0x00ffff, "C", 0, 1000,  20, 30, 20);
+  EnVoiture.addSpot("Centre", 0xffffff, "C", 0, 0,     20, 10, 20);
   EnVoiture.addLink("Nord", "Est");
   EnVoiture.addLink("Sud", "Est");
   EnVoiture.addLink("Nord", "Ouest");
@@ -19,11 +19,11 @@ void build() {
 }
 
 void unbuild() { 
-  UnVoiture.removeNode("Nord");
-  EnVoiture.removeNode("Sud");
-  EnVoiture.removeNode("Est");
-  EnVoiture.removeNode("Ouest");
-  EnVoiture.removeNode("Centre");
+  EnVoiture.removeSpot("Nord");
+  EnVoiture.removeSpot("Sud");
+  EnVoiture.removeSpot("Est");
+  EnVoiture.removeSpot("Ouest");
+  EnVoiture.removeSpot("Centre");
 }
 
 

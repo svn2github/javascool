@@ -40,7 +40,7 @@
       Utiliser les fonctions ci dessous pour définir à partir d'un petit bout de code votre propre réseau:<div class="ul">
         <p>Ajout d'un noeud: <p><r>UnGrapheDesChemins.addNode</r>(<r>String</r> n, <r>int</r> x, <r>int</r> y)</p></p>
         <p>Destruction d'un noeud: <p><r>UnGrapheDesChemins.removeNode</r>(<r>String</r> n)</p></p>
-        <p>Ajout/modification d'un lien entre deux noeuds: <p><r>UnGrapheDesChemins.addLink</r>(<r>String</r> nA, <r>String</r> nB)</p></p>
+        <p>Ajout/modification d'un lien entre deux noeuds: <p><r>UnGrapheDesChemins.addLink</r>(<r>String</r> nA, <r>String</r> nB, <r>double</r> poids)</p></p>
         <p>Destruction d'un lien existant entre deux noeuds: <p><r>UnGrapheDesChemins.removeLink</r>(<r>String</r> nA, <r>String</r> nB)</p></p>
       </div>
     </div>
@@ -49,7 +49,7 @@
       pour calculer le nombre de sommets et de liens, ainsi que la somme des poids des chemins.
     </div>
     <div title="Prémisse à un algorithme de plus court chemin">
-      <p>Soit un graphe à 4 noeuds, avec un noeud de départ et un noeud d'arrivée (que vous aurez programmé à votre convenance).</p>
+      <p>Soit un graphe à 4 noeuds, avec un noeud de départ et un noeud d'arrivée (que vous aurez programmé à votre convenance ou pris ci-dessous).</p>
       <p>Depuis le noeud de départ, si le noeud est en lien avec le noeud d'arrivée, c'est fini; 
       sinon choisir le noeud dont le lien a le poids le plus faible.
       Si la boucle n'est pas fini, repartir du noeud précédent, et refaire le raisonnement.
@@ -66,5 +66,32 @@
       <p>Ecrire au crayon l'ébauche de l'algorithme . . l'exploration des cas possibles est-elle plus simple dans ce cas ?</p>
       <p>Qu'en déduire alors ? </p>
     </div>
+  </div>
+  <div class="notes">
+    <div>Un exemple de graphe:
+    <div class="code">
+      <p><r>void</r> build() {</p>
+      <p><T/>  int x0 = 450, y0 = 250;</p>
+      <p><T/>  UnGrapheDesChemins.addNode("Nord", x0, y0 - 100);</p>
+      <p><T/>  UnGrapheDesChemins.addNode("Est", x0 + 300, y0);</p>
+      <p><T/>  UnGrapheDesChemins.addNode("Ouest", x0 - 300, y0);</p>
+      <p><T/>  UnGrapheDesChemins.addNode("Sud", x0, y0 + 100);</p>
+      <p><T/>  UnGrapheDesChemins.addNode("Centre", x0, y0);</p>
+      <p><T/>  UnGrapheDesChemins.addLink("Nord", "Est", 1);</p>
+      <p><T/>  UnGrapheDesChemins.addLink("Sud", "Est", 2);</p>
+      <p><T/>  UnGrapheDesChemins.addLink("Centre", "Ouest", 3);</p>
+      <p><T/>  UnGrapheDesChemins.addLink("Sud", "Ouest", 4);</p>
+      <p><T/>  UnGrapheDesChemins.addLink("Sud", "Centre", 5);</p>
+      <p><T/>  UnGrapheDesChemins.addLink("Nord", "Centre", 1);</p>
+      <p>}</p>
+      <p></p>
+      <p><r>void</r> unbuild() {</p>
+      <p><T/>  UnGrapheDesChemins.removeNode("Nord");</p>
+      <p><T/>  UnGrapheDesChemins.removeNode("Sud");</p>
+      <p><T/>  UnGrapheDesChemins.removeNode("Est");</p>
+      <p><T/>  UnGrapheDesChemins.removeNode("Ouest");</p>
+      <p><T/>  UnGrapheDesChemins.removeNode("Centre");</p>
+      <p>}</p>
+    </div></div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import static org.javascool.Macros.*;import static java.lang.Math.*;import static proglet.ingredients.Console.*;import static proglet.synthesons.SoundDisplay.*;import static proglet.exosdemaths.CurveDisplay.*;import static proglet.pixelsetcie.ImageDisplay.*;import static proglet.tortuelogo.TortueLogo.*;import static proglet.javaprog.JavaPanel.*;import static proglet.convanalogique.ConvAnalogique.*;import static proglet.dichotomie.Dichotomie.*;public class Exemple extends org.javascool.ProgletApplet implements Runnable {  private static final long serialVersionUID = 4L;  static { org.javascool.Jvs2Java.runnable = new Exemple(); }  public void run() { main(); }    
+import static java.lang.Math.*;import java.util.List;import java.util.ArrayList;import java.util.Map;import java.util.HashMap;import static org.javascool.Macros.*;import static proglet.ingredients.Console.*;import static proglet.synthesons.SoundDisplay.*;import static proglet.goglemap.GogleMap.*;import static proglet.exosdemaths.CurveDisplay.*;import static proglet.pixelsetcie.ImageDisplay.*;import static proglet.tortuelogo.TortueLogo.*;import static proglet.paintbrush.PaintBrush.*;import static proglet.javaprog.JavaPanel.*;import static proglet.convanalogique.ConvAnalogique.*;import static proglet.dichotomie.Dichotomie.*;import proglet.paintbrush.*;public class Exemple implements Runnable {  private static final long serialVersionUID = 1L;  public void run() { main(); }    
     // Programme exemple d'usage de la proglet
     
     // Génération d'un parterre de cinq nodes Nord Sud Est Ouest Centre
@@ -19,11 +19,12 @@ import static org.javascool.Macros.*;import static java.lang.Math.*;import stati
       UnGrapheDesChemins.addLink("Nord", "Centre", 6);
     }
     
-    void unbuild() { 	UnGrapheDesChemins.removeNode("Nord");
-    UnGrapheDesChemins.removeNode("Sud");
-    UnGrapheDesChemins.removeNode("Est");
-    UnGrapheDesChemins.removeNode("Ouest");
-    UnGrapheDesChemins.removeNode("Centre");
+    void unbuild() { 
+      UnGrapheDesChemins.removeNode("Nord");
+      UnGrapheDesChemins.removeNode("Sud");
+      UnGrapheDesChemins.removeNode("Est");
+      UnGrapheDesChemins.removeNode("Ouest");
+      UnGrapheDesChemins.removeNode("Centre");
     }
     
     // Affichage des connections
@@ -37,8 +38,8 @@ import static org.javascool.Macros.*;import static java.lang.Math.*;import stati
     }
     
     void main() {
-       unbuild();
-       sleep(5000);
+      unbuild();
+      sleep(5000);
       // Parterre initial
       build();
       dump("initial");
@@ -49,8 +50,8 @@ import static org.javascool.Macros.*;import static java.lang.Math.*;import stati
       UnGrapheDesChemins.removeNode("Centre");
       UnGrapheDesChemins.removeLink("Nord", "Ouest");
       dump("amputé");
-     // On nettoie avant de finir
-       sleep(5000);
+      // On nettoie avant de finir
+      sleep(5000);
       unbuild();
     }
 }

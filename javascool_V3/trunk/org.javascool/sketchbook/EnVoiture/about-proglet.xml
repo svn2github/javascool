@@ -14,16 +14,16 @@
   <p>Pour construire et manipuler un graphe, ici un ensemble de villes dénommées "spots", il faut utiliser la construction javascool. 
   Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: <div class="code">
     <m>Ajouter ou modifier un spot:</m>
-    <p><r>EnVoiture.addSpot</r>(<r>String</r> n, <r>int</r> col, <r>char</r> f, <r>int</r> x, <r>int</r> y, <r>float</r> d1, <r>float</r> d2, <r>float</r> h)</p>
+    <p><r>EnVoiture.addSpot</r>(<r>String</r> n, <r>int</r> col, <r>String</r> f, <r>int</r> x, <r>int</r> y, <r>float</r> d1, <r>float</r> d2, <r>float</r> h)</p>
     </div>où: <div class="ul">
       <p><c>n</c> est le nom du spot.</p>
-      <p><c>col</c> est la couleur du spot.</p>
-      <p><c>f</c> est la forme du spot: 'B' = Box, 'P' = Pentagone, 'O' = Octogone, 'C' = Cylindre.</p>
+      <p><c>col</c> est la couleur du spot: le codage est <c>0xRRVVBB</c> où <c>RR</c>, <c>VV</c>, <c>BB</c> sont les intensités rouge, verte et bleue, codées en héxadécimal de <c>00</c> à <c>FF</c>.</p>
+      <p><c>f</c> est la forme du spot: "B" = Box, "P" = Pentagone, "O" = Octogone, "C" = Cylindre.</p>
       <p><c>x</c> est l'abscisse du spot entre -1000 et 1000.</p>
       <p><c>y</c> est l'ordonnée du spot entre -1000 et 1000.</p>
-      <p><c>d1</c> est la dimension1 à la base du spot.</p>
-      <p><c>d2</c> est la dimension2 à la baseau sommet du spot.</p>
-      <p><c>h</c> est la hauteur du spot.</p>
+      <p><c>d1</c> est la dimension1 à la base du spot, typiquement 10 à 100.</p>
+      <p><c>d2</c> est la dimension2 au sommet du spot, typiquement 10 à 100.</p>
+      <p><c>h</c> est la hauteur du spot, typiquement 10 à 100.</p>
     </div><div class="code">
     <m>Obtenir un spot à partir d'une position 2D:</m>
     <p><r>String</r> n = <r>EnVoiture.getClosestSpot</r>(<r>int</r> x, <r>int</r> y)</p>

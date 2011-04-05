@@ -97,7 +97,7 @@
                   </li>
                           
                   <li>Ajout/modification d'un lien entre deux noeuds: 
-                     <div><font color="#990000"><b>UnGrapheDesChemins.addLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     <div><font color="#990000"><b>UnGrapheDesChemins.addLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB, <font color="#990000"><b>double</b></font> poids)
                      </div>
                   </li>
                           
@@ -122,7 +122,9 @@
             <div>
                <h3>Pr&eacute;misse &agrave; un algorithme de plus court chemin.</h3>
                      
-               <div>Soit un graphe &agrave; 4 noeuds, avec un noeud de d&eacute;part et un noeud d'arriv&eacute;e (que vous aurez programm&eacute; &agrave; votre convenance).</div>
+               <div>Soit un graphe &agrave; 4 noeuds, avec un noeud de d&eacute;part et un noeud d'arriv&eacute;e (que vous aurez programm&eacute; &agrave; votre convenance ou pris
+                  ci-dessous).
+               </div>
                      
                <div>Depuis le noeud de d&eacute;part, si le noeud est en lien avec le noeud d'arriv&eacute;e, c'est fini; 
                         sinon choisir le noeud dont le lien a le poids le plus faible.
@@ -158,6 +160,125 @@
                      
                <div>Qu'en d&eacute;duire alors ? </div>
                    
+            </div>
+         </li>
+      </ol>
+   </div>
+     
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div>Un exemple de graphe:
+                   
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>void</b></font> build() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   int x0 = 450, y0 = 250;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.addNode("Nord", x0, y0 - 100);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.addNode("Est", x0 + 300, y0);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.addNode("Ouest", x0 - 300, y0);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.addNode("Sud", x0, y0 + 100);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.addNode("Centre", x0, y0);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.addLink("Nord", "Est", 1);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.addLink("Sud", "Est", 2);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.addLink("Centre", "Ouest", 3);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.addLink("Sud", "Ouest", 4);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.addLink("Sud", "Centre", 5);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.addLink("Nord", "Centre", 1);
+                              </div>
+                                    
+                              <div>}</div>
+                                    
+                              <div></div>
+                                    
+                              <div><font color="#990000"><b>void</b></font> unbuild() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.removeNode("Nord");
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.removeNode("Sud");
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.removeNode("Est");
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.removeNode("Ouest");
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   UnGrapheDesChemins.removeNode("Centre");
+                              </div>
+                                    
+                              <div>}</div>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
             </div>
          </li>
       </ol>

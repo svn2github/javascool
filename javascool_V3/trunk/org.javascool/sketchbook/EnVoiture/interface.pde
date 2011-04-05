@@ -12,9 +12,9 @@
  * @param h hauteur du spot.
  */
 
-public static void addSpot(String n, int col, char f, int x, int y, float d1, float d2, float h) {
+public static void addSpot(String n, int col, String f, int x, int y, float d1, float d2, float h) {
   if (proglet == null) return;
-  proglet.myTrip.addSpot(n, col, f, x, y, d1, d2, h);
+  proglet.myTrip.addSpot(n, col, f.charAt(0), x, y, d1, d2, h);
 }
 
 /** Cherche spot plus proche d'une position.

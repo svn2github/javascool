@@ -143,6 +143,6 @@ public void stop() {
   super.stop();
 }
   static public void main(String args[]) {
-    PApplet.main(new String[] { "--bgcolor=#FFFFFF", "Magnetophone" });
+    PApplet.main(new String[] { "--bgcolor=#DFDFDF", "Magnetophone" });
   }
 }

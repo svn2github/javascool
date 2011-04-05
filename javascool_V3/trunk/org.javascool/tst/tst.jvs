@@ -1,9 +1,5 @@
 
 void main() {
-  EnVoiture.addSpot("A", 0xff00ff, 'B', 100, 100, 10, 10, 20);
-  EnVoiture.addSpot("B", 0x0000ff, 'C', 200, 100, 10, 10, 20);
-
-  EnVoiture.addSpot("C", 0xff0000, 'P', 100, 200, 10, 10, 20);
-
-  EnVoiture.addLink("C", "A");
+   sleep(2000);
+   println("done");
 }
