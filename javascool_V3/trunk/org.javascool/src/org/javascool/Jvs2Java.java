@@ -275,7 +275,7 @@ public class Jvs2Java {
    */
   public static String compile(String path) {
     setJpathclass(path);
-    String args[] = { "-cp", getJavaScoolJar(), jpath + ".java" };
+    String args[] = { /*"-cp", getJavaScoolJar(),*/ jpath + ".java" };
     StringWriter out = new StringWriter();
     try {
       Class.forName("com.sun.tools.javac.Main").getDeclaredMethod("compile", Class.forName("[Ljava.lang.String;"), Class.forName("java.io.PrintWriter")).
@@ -304,10 +304,7 @@ public class Jvs2Java {
   public static Object load(String path) {
     setJpathclass(path);
     try {
-      URL[] urls = new URL[] { 
-	new URL(getJavaScoolJar()),
-	new URL("file:" + new File(jpath).getParent() + File.separator) 
-      };
+      URL[] urls = new URL[] { /* new URL(getJavaScoolJar()), */ new URL("file:" + new File(jpath).getParent() + File.separator) };
       Class< ? > j_class = new URLClassLoader(urls).loadClass(jclass);
       Object o = j_class.newInstance();
       if (o instanceof Runnable)
