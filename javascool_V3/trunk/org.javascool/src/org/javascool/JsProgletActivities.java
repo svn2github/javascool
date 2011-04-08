@@ -13,6 +13,9 @@ import proglet.exosdemaths.CurveDisplay;
 // Used to scroll the proglet
 import javax.swing.JScrollPane;
 
+// Used for the computation time counter
+import javax.swing.JButton;
+
 /** This factory defines the different JavaScool v3-2 proglet activities.
  * @see <a href="JsProgletActivities.java.html">source code</a>
  * @serial exclude
@@ -102,7 +105,7 @@ public class JsProgletActivities {
             System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
             Console.printHtml("<hr>\n");
             if(out.length() == 0) {
-              main.getFrame().addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
+              running = main.getFrame().addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
             }
           } else
             System.out.println("Impossible de compiler: le fichier n'est pas sauvegardé !");
@@ -116,15 +119,20 @@ public class JsProgletActivities {
         Jvs2Java.load(main.getFileChooser().getFile());
         Jvs2Java.run(true);
 	new Thread(new Runnable() { public void run() {
-	  while(Jvs2Java.isRunning())
-	    Macros.sleep(500);
+	  for(int t = 0; Jvs2Java.isRunning(); t++) {
+	    if (running != null) 
+	      running.setText(""+(t / 60)+":"+(t % 60)+" Exécuter");
+	    Macros.sleep(1000);
+	  }
 	  main.getFrame().delTool("Arrêter");
 	}}).start();
       }
     };
+    private JButton running = null;
     private Runnable stop = new Runnable() {
       public void run() {
         Jvs2Java.run(false);
+	main.getFrame().delTool("Arrêter");
       }
     };
     protected void init1(JsMain main) {

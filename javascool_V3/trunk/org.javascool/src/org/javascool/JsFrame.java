@@ -83,27 +83,29 @@ public class JsFrame extends JPanel {
    * @param label Button label.
    * @param icon Button icon. If null do not show icon.
    * @param action Button action.
+   * @return The added button.
    */
-  public void addTool(String label, String icon, Runnable action) {
+  public JButton addTool(String label, String icon, Runnable action) {
     delTool(label);
     JButton button = icon == null ? new JButton(label) : new JButton(label, Utils.getIcon(icon));
     button.addActionListener(new ActionListener() {
                                public void actionPerformed(ActionEvent e) {
-                                 actions.get(((JButton) e.getSource()).getText()).run();
+                                 actions.get((JButton) e.getSource()).run();
                                }
                              }
                              );
     toolBar.add(button);
     buttons.put(label, button);
-    actions.put(label, action);
+    actions.put(button, action);
     revalidate();
+    return button;
   }
   /** Removes a button from the tool bar. */
   public void delTool(String label) {
     if(buttons.containsKey(label)) {
       toolBar.remove(buttons.get(label));
+      actions.remove(buttons.get(label));
       buttons.remove(label);
-      actions.remove(label);
       toolBar.setVisible(false);
       revalidate();
       toolBar.setVisible(true);
@@ -114,15 +116,14 @@ public class JsFrame extends JPanel {
   public void addToolSeparator() {
     toolBar.addSeparator();
   }
-  /** HashMap for action list.
-   * The map associate a String to a Runnable
-   */
-  private HashMap<String, Runnable> actions = new HashMap<String, Runnable>();
-
   /** HashMap for button list.
    * The map associate a String to a JButton
    */
   private HashMap<String, JButton> buttons = new HashMap<String, JButton>();
+  /** HashMap for action list.
+   * The map associate a String to a Runnable
+   */
+  private HashMap<JButton, Runnable> actions = new HashMap<JButton, Runnable>();
 
   /** Adds a tab to the tabbed panel.
    * @param label Tab label.
@@ -153,9 +154,12 @@ public class JsFrame extends JPanel {
    * @param icon Location of the icon for the tab. If null, no icon.
    * @param east If true use the east pane, else the west pane.
    * @param show If true show the panel when adding it.
+   * @return The added display panel.
    */
-  public void addTab(String label, String location, String icon, boolean east, boolean show) {
-    addTab(label, new HelpDisplay().load(location), icon, east, show);
+  public HtmlDisplay addTab(String label, String location, String icon, boolean east, boolean show) {
+    HtmlDisplay help = new HelpDisplay().load(location);
+    addTab(label, help, icon, east, show);
+    return help;
   }
   /** A display with external links canceled. */
   private class HelpDisplay extends HtmlDisplay {
