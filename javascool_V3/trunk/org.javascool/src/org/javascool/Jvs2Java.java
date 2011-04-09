@@ -63,7 +63,7 @@ public class Jvs2Java {
    * @return The reformated text.
    */
   public static String reformat(String text) {
-    char f[] = text.trim().toCharArray();
+    char f[] = text.trim().replace((char) 160, ' ').toCharArray();
     String g = "", ln = "\n";
     int par = 0;
     for(int i = 0, j; i < f.length;) {

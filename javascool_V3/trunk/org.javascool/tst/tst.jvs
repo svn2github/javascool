@@ -2,11 +2,5 @@
 void main() {
    sleep(3000);
    println("ok");
-   sleep(3000);
-   println("ok");
-   println("Hello world");
-   println("Valeur = " + valeur);
-    println("Hello world");
-    println("Valeur = " + valeur);
-   ok();
+    println("Hello World !");
 }
