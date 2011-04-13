@@ -34,14 +34,14 @@ public class JsProcessingActivities {
                        }
                      }
                      );
-    main.addActivity(new ProcessingActivity("EnVoiture", "Objet numérique: les graphes", "Découvrir les graphes et les chemins", 1200, 700) {
+    main.addActivity(new ProcessingActivity("EnVoiture", "Objet numérique: le graphe", "Découvrir les graphes et les chemins", 1200, 700) {
                        public void init2(JsFrame frame) {
                          frame.addTab("Un tutoriel sur les graphes (1ère partie)", "sketchbook/EnVoiture/sujet-about-voiture.htm",
                                       "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
-    main.addActivity(new ProcessingActivity("UnGrapheDesChemins", "Objet numérique: les graphes", "Explorer les graphes et les chemins", 1024, 700) {
+    main.addActivity(new ProcessingActivity("UnGrapheDesChemins", "Objet numérique: le graphe", "Explorer les graphes et les chemins", 1024, 700) {
                        public void init2(JsFrame frame) {
                          frame.addTab("Un tutoriel sur les graphes (2ème partie)", "sketchbook/UnGrapheDesChemins/sujet-about-chemins.htm",
                                       "org/javascool/doc-files/icones16/globe.png", true, false);

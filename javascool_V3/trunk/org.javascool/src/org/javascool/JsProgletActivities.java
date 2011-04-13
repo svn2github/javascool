@@ -50,13 +50,13 @@ public class JsProgletActivities {
                        }
                      }
                      );
-    main.addActivity(new ProgletActivity("pixelsetcie", "Objet numérique: les images", "Comprendre la manipulation d'images") {
+    main.addActivity(new ProgletActivity("pixelsetcie", "Objet numérique: l'image", "Comprendre la manipulation d'images") {
                        public void init2(JsFrame frame) {
                          frame.addTab("Enoncé de l'exercice", "proglet/pixelsetcie/doc-files/sujet-appli-image.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
                      }
                      );
-    main.addActivity(new ProgletActivity("paintbrush", "Objet numérique: les images", "Dessiner sur une image") {
+    main.addActivity(new ProgletActivity("paintbrush", "Objet numérique: l'image", "Dessiner sur une image") {
                        public void init2(JsFrame frame) {
                          frame.addTab("Enoncé de l'exercice", "proglet/paintbrush/doc-files/sujet-appli-image.htm", "org/javascool/doc-files/icones16/globe.png", true, false);
                        }
@@ -80,7 +80,7 @@ public class JsProgletActivities {
                        public void init2(JsFrame frame) {}
                      }
                      );
-    main.addActivity(new ProgletActivity("goglemap", "Objet numérique: les graphes", "Jouer avec une carte de France") {
+    main.addActivity(new ProgletActivity("goglemap", "Objet numérique: le graphe", "Jouer avec une carte de France") {
                        public void init2(JsFrame frame) {}
                      }
                      );

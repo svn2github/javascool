@@ -140,7 +140,6 @@ public class Console implements org.javascool.Proglet {
     private String label = "Entrée au clavier > ";
     private JTextField in;
     private String inputs = "", input, output = "";
-
     /** Returns the present state of the console output. */
     public String getStdout() {
       return output;
