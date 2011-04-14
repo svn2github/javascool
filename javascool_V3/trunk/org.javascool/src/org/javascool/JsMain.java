@@ -1,7 +1,7 @@
 /********************************************************************************
 * ______________________________________________
 | By Philippe Vienne <philoumailabo@gmail.com> |
-| Distributed on GNU General Public Licence    |
+| Distributed on GNU Leaser General Public Licence    |
 | © 2010 INRIA, All rights reserved            |
 ||______________________________________________|
 |
