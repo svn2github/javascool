@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- JNLP File for JavaScool -->
+<jnlp spec="1.0+" codebase="http://www.starmatique.eu/javascool/webstart/" href="javascool.jnlp">
+  <information>
+    <title>Java's cool</title>
+    <vendor>INRIA</vendor>
+    <homepage href="http://www.javascool.fr/"/>
+    <description>... and java is so cool</description>
+    <icon href="jvs32.png" width="32" height="32"/>
+    <icon href="jvs48.png" width="48" height="48"/>
+    <icon href="jvs64.png" width="64" height="64"/>
+    <offline-allowed/>
+    <shortcut online="true">
+      <desktop/>
+      <menu submenu="Java's Cool"/>
+    </shortcut>
+	
+    <association mime-type="application/vnd.javascool.file" extensions="jvs" description="Java's cool Files"/>
+  </information>
+  <security>
+    <all-permissions/>
+  </security>
+  <update check="timeout" policy="always"/>
+  <resources>
+    <j2se version="1.4.2+" max-heap-size="512m" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="javascool.jar" main="true"/> 
+  </resources>
+  <application-desc main-class="org.javascool.JSMain"/>
+</jnlp>
