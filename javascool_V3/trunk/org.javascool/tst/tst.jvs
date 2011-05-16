@@ -1,5 +1,4 @@
 
 void main() {
-   echo("Hello");
-   assertion(false,"Hello");
+    println("yoyo");
 }
