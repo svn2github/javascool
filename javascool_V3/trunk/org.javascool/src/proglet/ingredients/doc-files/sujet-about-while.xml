@@ -34,8 +34,8 @@
       <div>nous avons défini un compteur <b>n</b> qui initialisé à la valeur zéro (<b><r>int</r> n = 0;</b>),</div>
       <div>puis, tant qu'il est plus petit que 10 (<b><r>while</r>( n &lt;  10)</b>),</div>
       <div>nous imprimons <v>Hello world</v>,</div>
-      <div>et incrémentons (c'est à dire lui ajoutons 1) sa valeur (<b>n = n + 1;</b>).</div>
-    </div>Non sans bien noter le jeu d'accolades { } pour ouvrir est fermer <b><r>void main</r>()</b> et <b><r>while</r>( n &lt; 10)</b>.
+      <div>et incrémentons (c'est-à-dire lui ajoutons 1) sa valeur (<b>n = n + 1;</b>).</div>
+    </div>Non sans bien noter le jeu d'accolades { } pour ouvrir et fermer <b><r>void main</r>()</b> et <b><r>while</r>( n &lt; 10)</b>.
     Nous voilà avec un mécanisme qui va nous permettre de répéter autant de fois que nécessaire une action.
    </div>
    <div title="Tous les ingrédients des algorithmes"> Il y a quelque chose de formidable ici : 
@@ -53,7 +53,7 @@
   <div class="works">
     <div title="A nous de jouer">Recopier le 2ème programme proposé ci-dessus et :<div class="ul">
       <div>Le modifier pour imprimer 11 fois le <v>Hello World !</v>.</div>
-      <div>Puis partir de n = 1 (donc écrire <b><r>int</r> n = 1;</b>) et le modifier pour écrire 8 fois <v>Hello World !</v>.</div>
+      <div>Puis partir de <b>n = 1</b> (donc écrire <b><r>int</r> n = 1;</b>) et le modifier pour écrire 8 fois <v>Hello World !</v>.</div>
       <div>Retirer la ligne <b>n = n + 1;</b>: que se passe t'il<l class="note" link="3"/>?</div>
       <div>Remplacer la ligne <b>n = n + 1;</b> par <b>n = n - 1;</b> et expliquer ce qui se passe.</div>
     </div></div>
@@ -90,7 +90,7 @@
       <div>Programmer une boucle qui imprime tous les nombres impairs de 1 à 39 inclus, avec l'instruction <b><r>println</r>(<v>n = </v> + n);</b></div>
       <div>Le <l link="http://fr.wikipedia.org/wiki/Nombre_d'or" text="nombre d'or"/> est défini par une suite 
       (qui n'est pas celle de <l link="http://fr.wikipedia.org/wiki/Nombre_d'or#Suite_de_Fibonacci" text="Fibonacci"/>) de la forme :
-      <b>r = 1 + 1 / r</b> initialisée avec <b>r = 1</b>. Ecrire une boucle qui calcule part de <b>r = 1</b> et calcule 30 fois <b>r = 1 + 1 / r</b> en imprimant
+      <b>r = 1 + 1 / r</b> initialisée avec <b>r = 1</b>. Ecrire une boucle qui part de <b>r = 1</b> et calcule 30 fois <b>r = 1 + 1 / r</b> en imprimant
       à chaque fois <b>r</b> (par exemple avec l'instruction <b><r>println</r>(<v>r = </v> + r);</b> et commenter le résultat. 
       Comparer avec les valeurs du nombre d'or connues par ailleurs.</div>
       <div>Avec votre professeur (ou quelqu'un pour vous aider si besoin) calculer les 100 premières décimales de <l link="http://fr.wikipedia.org/wiki/Pi#M.C3.A9thode_d.E2.80.99Archim.C3.A8de" text="PI"/> par la méthode d'Archimède.</div>

@@ -3,7 +3,7 @@
 #####################################################################################################################################
 
 # Used to use sun sun-jdk instead of open-jdk because of processing and windows platforms
-export PATH:=/usr/java/jdk1.6.0_25/bin:$(PATH)
+export PATH:=/usr/java/jdk1.6.0_22/bin:$(PATH)
 
 # Defines the beta-relase jar temporary suffix under development (e.g., = -3-3)
 JAR =
@@ -39,7 +39,7 @@ jar : htm www/javascool$(JAR).jar
 
 # Jar parameters, files and meta-data
 
-J6=/usr/java/jdk1.6.0_25
+J6=/usr/java/jdk1.6.0_22
 
 vendor=thierry.vieville@inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr
 version=3.2
