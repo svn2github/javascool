@@ -1,0 +1,88 @@
+// Ce code est une implémentation partielle d'un petit "piano à une touche" proposée par
+// Frederic.Ferre@ac-rennes.fr Professeur de Mathématiques au lycée Jean Macé, Académie de Rennes. http://www.infx.info propose ce code.
+// A charge aux élèves:
+// - corriger la position de l'affichage desnote spour qu'elles s'affichent en bas de stouches
+// - définir les bonnes fréquences des notes
+// - puis proposer toute sorte d'amélioration
+// ../..
+
+// Pour l'utiliser: choisir l'activité "Programmer directement en Java"
+// Charger le code et le modifier à loisir.
+
+import javax.swing.JLayeredPane;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import org.javascool.SoundBit;
+
+// Nombre de notes, nom desnotyyes et fréquences des notes
+
+String notes[] = {"do", "ré", "mi", "fa", "sol", "la", "si", "do2", "do#", "ré#", "_", "fa#", "sol#", "la#"};
+double frequences[] = {440, 440, 440, 440, 440, 440, 440, 440, 440, 440, 440, 440, 440, 440, 440, 440, 440, 440, 440, 440};
+
+// Création des touches de piano
+void drawFingerBoard() {    
+  JLayeredPane pane = getSwingPane();
+  pane.removeAll();
+  int pospiano = 20;
+  // création des bécares
+  for (int i = 0; i < 8; i++) {
+    JButton touchepiano = new JButton(notes[i]);
+    touchepiano.setVerticalTextPosition(SwingConstants.BOTTOM);
+    touchepiano.setToolTipText(notes[i]);
+    pospiano=20+i*50;
+    touchepiano.setBounds(pospiano,20,50,150);
+    pane.add(touchepiano, new Integer(i)); 
+    touchepiano.addActionListener(player);
+  }
+  // création des dièses
+  for (int j = 0; j < 7; j++) {
+    if (j != 2) {             
+      JButton touchepiano = new JButton(notes[j+8]);
+      pospiano=45+j*50;
+      touchepiano.setVerticalTextPosition(SwingConstants.BOTTOM);
+      touchepiano.setToolTipText(notes[j+8]);
+      touchepiano.setBounds(pospiano,20,50,100);
+      int k=9+j;
+      pane.add(touchepiano, new Integer(k));
+    touchepiano.addActionListener(player);
+    }    
+  }
+}
+
+// Définition du gestionnaire d'évènement 
+ActionListener player = new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+      for(int i = 0; i < notes.length; i++) 
+	if (notes[i].equals(e.getActionCommand())) {
+	  println("Oh oh vous jouez un «"+notes[i]+"» à la fréquence de "+frequences[i]+"Hz !");
+	  // Ici on utilise un http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/SoundBit.html
+	  sound.play(frequences[i]);
+	}
+    }
+  };
+
+// Définition de la note à jouer
+public SoundBit sound = new SoundBit() {
+    // Joue une note à une fréquence donnée
+    public void play(double frequence) {
+      freq = frequence;
+      super.play(0);
+    }
+    // Une note dure une seconde
+    public double getLength() { 
+      return 1; 
+    }
+    // Une note est une sinusoide (un "piccolo") à la frequence choisie
+    public double get(char channel, double time) {
+      return Math.sin(2 * Math.PI * time / freq);
+    }
+    private double freq;
+  };
+
+
+// Mise en place du clavier
+void main() {
+  drawFingerBoard();
+}
