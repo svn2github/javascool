@@ -1,4 +1,8 @@
 
 void main() {
-  
+   //Lancer un signal prédéﬁni: 
+    ExplorationSonore.playSignal(1, "sinus", 440, 2);
+   sleep(2000);
+   //Arrêter une émission sonore: 
+    ExplorationSonore.playStop();
 }
