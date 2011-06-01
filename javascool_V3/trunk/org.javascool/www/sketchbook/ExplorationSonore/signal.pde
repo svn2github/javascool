@@ -19,7 +19,7 @@ class signal {
    * @param f fréquence du signal.
    * @param a amplitude du signal.
    */
-  public void setSignal(String n, float f, float a) {
+  public void setSignal(String n, float f, float a, boolean change) {
     type = n;
     if(sounding)
       switchOff();
@@ -28,21 +28,25 @@ class signal {
     // Créer un oscillateur sinusoidale avec une fréquence de 1000Hz, une amplitude de 1.0, et une fréquence d'échantillonage callée sur la ligne out
     if(n.equals("sinus")) {
       sinus_ = new SineWave(f, a, out.sampleRate());
-      sinus_.portamento(20);
+      sinus_.portamento(2000);
+      if (change)
       changeValue();
       out.addSignal(sinus_);
     } else if(n.equals("carré")) {
       square_ = new SquareWave(f, a, out.sampleRate());
-      square_.portamento(20);
+      square_.portamento(2000);
+      if (change)
       changeValue();
       out.addSignal(square_);
     } else if(n.equals("scie")) {
       saw_ = new SawWave(f, a, out.sampleRate());
-      saw_.portamento(20);
+      saw_.portamento(2000);
+      if (change)
       changeValue();
       out.addSignal(saw_);
     } else if(n.equals("bruit")) {
       wnoise_ = new WhiteNoise(a);
+      if (change)
       changeValue();
       out.addSignal(wnoise_);
     }

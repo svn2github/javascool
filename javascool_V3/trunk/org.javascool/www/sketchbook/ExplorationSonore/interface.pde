@@ -117,13 +117,13 @@ public static void playSignal(int c, String n, double f, double a) {
   if (proglet == null) return;
   switch(c) {
   case 1:
-    proglet.signal1.setSignal(n, (float) f, (float) a);
+    proglet.signal1.setSignal(n, (float) f, (float) a, false);
     break;
   case 2:
-    proglet.signal2.setSignal(n, (float) f, (float) a);
+    proglet.signal2.setSignal(n, (float) f, (float) a, false);
     break;
   case 3:
-    proglet.signal3.setSignal(n, (float) f, (float) a);
+    proglet.signal3.setSignal(n, (float) f, (float) a, false);
     break;
   }
 }

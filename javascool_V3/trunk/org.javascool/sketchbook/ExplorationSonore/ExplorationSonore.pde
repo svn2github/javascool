@@ -138,17 +138,17 @@ void draw() {
 // Un accès rapide aux fonctions via le clavier
 void keyPressed() {
   if(key == '0')
-    signal1.setSignal("sinus", 1000, 0.2);
+    signal1.setSignal("sinus", 1000, 0.0, true );
   if(key == '1') {
-    signal1.setSignal("sinus", 1000, 0.2);
-    signal2.setSignal("sinus", 4000, 0.2);
+    signal1.setSignal("sinus", 1000, 0.0, true );
+    signal2.setSignal("sinus", 4000, 0.0, true );
   }
   if(key == '2')
-    signal1.setSignal("carré", 1000, 0.2);
+    signal1.setSignal("carré", 1000, 0.0, true );
   if(key == '3')
-    signal1.setSignal("scie", 1000, 0.2);
+    signal1.setSignal("scie", 1000, 0.0, true );
   if(key == '4')
-    signal1.setSignal("bruit", 1000, 0.2);
+    signal1.setSignal("bruit", 1000, 0.0, true );
   if(key == 'e')
     record1.setRecord("../data/music/Ahmed_Ex2.wav");
   if(key == 'f')
@@ -168,7 +168,7 @@ void update(int x, int y) {
       if(T1[i].pressed() && !(T1[i].select)) {
         T1[i].select = true;
         if(i < 4)
-          signal1.setSignal(T1[i].value, 1000, 0.2);
+          signal1.setSignal(T1[i].value, 1000, 0.0, true );
         else if(i == 4)
           record1.setRecord("data/music/Ahmed_Ex2.wav");
         else if(i == 5) {
