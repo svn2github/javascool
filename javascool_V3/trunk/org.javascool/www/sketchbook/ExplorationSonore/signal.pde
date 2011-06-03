@@ -13,6 +13,7 @@ class signal {
 
   String type;
   boolean sounding = false;
+  boolean change = true;
 
   /** Joue un signal de type choisi
    * @param n nom du type: sinus, square, triangle, saw, white noise.
@@ -25,28 +26,25 @@ class signal {
       switchOff();
     else if(record1.sounding)
       record1.switchOff();
+    this.change = change;
     // Créer un oscillateur sinusoidale avec une fréquence de 1000Hz, une amplitude de 1.0, et une fréquence d'échantillonage callée sur la ligne out
     if(n.equals("sinus")) {
       sinus_ = new SineWave(f, a, out.sampleRate());
       sinus_.portamento(2000);
-      if (change)
-      changeValue();
+       changeValue();
       out.addSignal(sinus_);
     } else if(n.equals("carré")) {
       square_ = new SquareWave(f, a, out.sampleRate());
       square_.portamento(2000);
-      if (change)
       changeValue();
       out.addSignal(square_);
     } else if(n.equals("scie")) {
       saw_ = new SawWave(f, a, out.sampleRate());
       saw_.portamento(2000);
-      if (change)
       changeValue();
       out.addSignal(saw_);
     } else if(n.equals("bruit")) {
       wnoise_ = new WhiteNoise(a);
-      if (change)
       changeValue();
       out.addSignal(wnoise_);
     }
@@ -54,6 +52,7 @@ class signal {
   }
   /** Mise à jour des valeurs lors du déplacement de la souris. */
   void changeValue() {
+    if (change) {
     frequence = map(mouseX, 0, width, 100, 4000);
     // constrain(mouseX, 0, width-500);
 
@@ -69,6 +68,7 @@ class signal {
       saw_.setAmp(volume);
     } else if(type.equals("bruit"))
       wnoise_.setAmp(volume);
+    }
   }
   /** Affichage de la valeur dans l'interface. */
   void printV() {
@@ -86,5 +86,6 @@ class signal {
     out.noSound();
     out.clearSignals();
     sounding = false;
+    change = true;
   }
 }

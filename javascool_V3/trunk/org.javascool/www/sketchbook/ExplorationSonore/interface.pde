@@ -14,10 +14,13 @@ void StopAnySound() {
   if(signal1.sounding) {
     signal1.switchOff();
     sig = "null";
-  } else if(record1.sounding)
-    record1.switchOff();
+  } 
+  if(record1.sounding)
+        record1.switchOff();
   if(signal2.sounding)
     signal2.switchOff();
+  if(signal3.sounding)
+    signal3.switchOff();
 }
 // Lance l'analyse spectrale
 void launchFFT() {

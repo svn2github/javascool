@@ -164,17 +164,17 @@ public void draw() {
 // Un acc\u00e8s rapide aux fonctions via le clavier
 public void keyPressed() {
   if(key == '0')
-    signal1.setSignal("sinus", 1000, 0.2f);
+    signal1.setSignal("sinus", 1000, 0.0f, true );
   if(key == '1') {
-    signal1.setSignal("sinus", 1000, 0.2f);
-    signal2.setSignal("sinus", 4000, 0.2f);
+    signal1.setSignal("sinus", 1000, 0.0f, true );
+    signal2.setSignal("sinus", 4000, 0.0f, true );
   }
   if(key == '2')
-    signal1.setSignal("carr\u00e9", 1000, 0.2f);
+    signal1.setSignal("carr\u00e9", 1000, 0.0f, true );
   if(key == '3')
-    signal1.setSignal("scie", 1000, 0.2f);
+    signal1.setSignal("scie", 1000, 0.0f, true );
   if(key == '4')
-    signal1.setSignal("bruit", 1000, 0.2f);
+    signal1.setSignal("bruit", 1000, 0.0f, true );
   if(key == 'e')
     record1.setRecord("../data/music/Ahmed_Ex2.wav");
   if(key == 'f')
@@ -194,7 +194,7 @@ public void update(int x, int y) {
       if(T1[i].pressed() && !(T1[i].select)) {
         T1[i].select = true;
         if(i < 4)
-          signal1.setSignal(T1[i].value, 1000, 0.2f);
+          signal1.setSignal(T1[i].value, 1000, 0.0f, true );
         else if(i == 4)
           record1.setRecord("data/music/Ahmed_Ex2.wav");
         else if(i == 5) {
@@ -323,10 +323,13 @@ public void StopAnySound() {
   if(signal1.sounding) {
     signal1.switchOff();
     sig = "null";
-  } else if(record1.sounding)
-    record1.switchOff();
+  } 
+  if(record1.sounding)
+        record1.switchOff();
   if(signal2.sounding)
     signal2.switchOff();
+  if(signal3.sounding)
+    signal3.switchOff();
 }
 // Lance l'analyse spectrale
 public void launchFFT() {
@@ -426,13 +429,13 @@ public static void playSignal(int c, String n, double f, double a) {
   if (proglet == null) return;
   switch(c) {
   case 1:
-    proglet.signal1.setSignal(n, (float) f, (float) a);
+    proglet.signal1.setSignal(n, (float) f, (float) a, false);
     break;
   case 2:
-    proglet.signal2.setSignal(n, (float) f, (float) a);
+    proglet.signal2.setSignal(n, (float) f, (float) a, false);
     break;
   case 3:
-    proglet.signal3.setSignal(n, (float) f, (float) a);
+    proglet.signal3.setSignal(n, (float) f, (float) a, false);
     break;
   }
 }
@@ -567,32 +570,34 @@ class signal {
 
   String type;
   boolean sounding = false;
+  boolean change = true;
 
   /** Joue un signal de type choisi
    * @param n nom du type: sinus, square, triangle, saw, white noise.
    * @param f fr\u00e9quence du signal.
    * @param a amplitude du signal.
    */
-  public void setSignal(String n, float f, float a) {
+  public void setSignal(String n, float f, float a, boolean change) {
     type = n;
     if(sounding)
       switchOff();
     else if(record1.sounding)
       record1.switchOff();
+    this.change = change;
     // Cr\u00e9er un oscillateur sinusoidale avec une fr\u00e9quence de 1000Hz, une amplitude de 1.0, et une fr\u00e9quence d'\u00e9chantillonage call\u00e9e sur la ligne out
     if(n.equals("sinus")) {
       sinus_ = new SineWave(f, a, out.sampleRate());
-      sinus_.portamento(20);
-      changeValue();
+      sinus_.portamento(2000);
+       changeValue();
       out.addSignal(sinus_);
     } else if(n.equals("carr\u00e9")) {
       square_ = new SquareWave(f, a, out.sampleRate());
-      square_.portamento(20);
+      square_.portamento(2000);
       changeValue();
       out.addSignal(square_);
     } else if(n.equals("scie")) {
       saw_ = new SawWave(f, a, out.sampleRate());
-      saw_.portamento(20);
+      saw_.portamento(2000);
       changeValue();
       out.addSignal(saw_);
     } else if(n.equals("bruit")) {
@@ -604,6 +609,7 @@ class signal {
   }
   /** Mise \u00e0 jour des valeurs lors du d\u00e9placement de la souris. */
   public void changeValue() {
+    if (change) {
     frequence = map(mouseX, 0, width, 100, 4000);
     // constrain(mouseX, 0, width-500);
 
@@ -619,6 +625,7 @@ class signal {
       saw_.setAmp(volume);
     } else if(type.equals("bruit"))
       wnoise_.setAmp(volume);
+    }
   }
   /** Affichage de la valeur dans l'interface. */
   public void printV() {
@@ -636,6 +643,7 @@ class signal {
     out.noSound();
     out.clearSignals();
     sounding = false;
+    change = true;
   }
 }
   static public void main(String args[]) {

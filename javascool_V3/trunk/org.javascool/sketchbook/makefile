@@ -72,6 +72,9 @@ export CLASSPATH=$(shell echo '$(J_HOME)/lib/tools.jar $(J_HOME)/jre/lib/rt.jar 
 gui : clean
 	@cd $(P_HOME) ; java processing.app.Base
 
+run : jar
+	@$(MAKE) -C .. run
+
 clean :
 	@rm -rf libraries */applet */Exemple.java
 
