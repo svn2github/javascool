@@ -4,20 +4,18 @@ import java.awt.event. *;
 import javax.swing. *;
 
 void main() {
-
    // Afficher une icone dans la fenêtre
     showIcon("http://javascool.gforge.inria.fr/api/proglet/javaprog/doc-files/fleur-move.png", 150, 200, 100, 100, 2);
-   
-
-// Recupérer les évennements de la souris
+   // Recupérer les évennements de la souris
     getSwingPane().addMouseListener(new MouseAdapter() {
       public void mouseClicked(MouseEvent e) {
          println("Oh tu as cliqué en (" + e.getX() + ", " + e.getY() + ")");}
    }
   );
-
-
    // Jouer un son 
     new proglet.synthesons.FileSoundBit().play("http://javascool.gforge.inria.fr/documents/black-dog.wav");
 
+   // Apres 3 secondes d attente on efface
+    sleep(3000);
+   getSwingPane().removeAll();
 }
