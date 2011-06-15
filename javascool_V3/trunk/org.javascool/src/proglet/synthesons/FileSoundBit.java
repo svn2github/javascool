@@ -103,4 +103,15 @@ public class FileSoundBit extends SoundBit {
     return midis.keySet().toArray(new String[midis.size()]);
   }
   private static HashMap<String, AudioInputStream> midis = null;
+
+  /** Plays a sound.
+   * @param location Audio file path: either a file-name or an URL-name or an URI of the form <tt>midi:<i>name</i></tt> allowing to load a midi sound.
+   */
+  public static void play(String  location) {
+    play_location = location;
+    new Thread(new Runnable() { public void run() {
+      new FileSoundBit().reset(play_location).play();
+    }}).start();
+  }
+  private static String play_location;
 }

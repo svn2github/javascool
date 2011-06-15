@@ -8,7 +8,10 @@ package proglet.javaprog;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLayeredPane;
+import javax.swing.JLabel;
 import java.awt.Dimension;
+
+import org.javascool.Utils;
 
 /** Définit une proglet javascool qui permet d'utiliser toute les classes des swings.
  * @see <a href="doc-files/about-proglet.htm">Description</a>
@@ -49,6 +52,16 @@ public class JavaPanel implements org.javascool.Proglet {
   public static JLayeredPane getSwingPane() {
     return panel.pane;
   }
+
+  /** Crée et montre une icone sur le display en (x,y) de taille (w, h) à la profondeur p. */
+  public static JLabel showIcon(String image, int x, int y, int w, int h, int p) {
+    JLabel icon = new JLabel();
+    icon.setIcon(Utils.getIcon(image));
+    icon.setBounds(x, y, w, h);
+    panel.pane.add(icon, new Integer(p), 0);
+    return icon;
+  }
+
   /** Définition de l'interface graphique de la proglet. */
   public static final Panel panel = new Panel();
 }
