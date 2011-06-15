@@ -232,9 +232,8 @@ public class Jvs2Java {
           head.append("import static " + proglets.get(proglet) + ".*;");
       }
       head.append("import proglet.exosdemaths.Chiffre;");
-      head.append("import static proglet.exosdemaths.Chiffre.*;");
       head.append("import static proglet.exosdemaths.MacrosChiffre.*;");
-      head.append("import static proglet.exosdemaths.NombreA2Chiffres.*;");
+      head.append("import proglet.exosdemaths.NombreA2Chiffres;");
       head.append("import proglet.paintbrush.*;");
       // Declares the proglet's core as a Runnable in the Applet
       head.append("public class " + jclass + " implements Runnable {");
