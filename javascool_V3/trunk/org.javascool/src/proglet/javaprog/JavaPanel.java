@@ -57,7 +57,8 @@ public class JavaPanel implements org.javascool.Proglet {
   public static JLabel showIcon(String image, int x, int y, int w, int h, int p) {
     JLabel icon = new JLabel();
     icon.setIcon(Utils.getIcon(image));
-    icon.setBounds(x, y, w, h);
+    icon.setLocation(x, y);
+    icon.setSize(w, h);
     panel.pane.add(icon, new Integer(p), 0);
     return icon;
   }
