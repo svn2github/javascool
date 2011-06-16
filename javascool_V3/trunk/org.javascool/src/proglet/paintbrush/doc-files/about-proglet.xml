@@ -21,6 +21,8 @@
      <p><T/><T/><r>public void afficheLigne</r>(<r>int</r> <b>x0</b>, <r>int</r> <b>y0</b>, <r>int</r> <b>x1</b>, <r>int</r> <b>y1</b>, <r>int</r> <b>couleur</b>) { } </p>
      <m>Trace un rectangle de diagonale (x0,y0) -- (x1,y1)</m>
      <p><T/><T/><r>public void afficheRectangle</r>(<r>int</r> <b>x0</b>, <r>int</r> <b>y0</b>, <r>int</r> <b>x1</b>, <r>int</r> <b>y1</b>, <r>int</r> <b>couleur</b>) { } </p>
+     <m>Rotation de 90° vers la gauche de l'image</m>
+  	 <p><T/><T/><r>public void rotationGauche</r>() {}</p>
      <m>Pot de peinture : remplir avec la couleur spécifiée tous les pixels
       voisins de (x,y) et ayant la même couleur</m>
      <p><T/><T/><r>public void remplir</r>(<r>int</r> <b>x</b>, <r>int</r> <b>y</b>, <r>int</r> <b>couleur</b>) { } </p>

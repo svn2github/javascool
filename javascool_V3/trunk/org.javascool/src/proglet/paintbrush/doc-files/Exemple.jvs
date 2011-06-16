@@ -26,6 +26,11 @@ void main() {
                                        + ",  " + x1 + ", " + y1 + ",  " + couleur + ")");
                              }
 
+                             // Rotation de 90° vers la gauche de l'image
+                             public void rotationGauche() {
+                               println("rotation gauche");
+                             }
+                             
                              // Pot de peinture : remplir tous les pixels voisins de (x,y)
                              // et ayant la même couleur avec la couleur spécifiée
                              public void remplir(int x, int y, int couleur) {
