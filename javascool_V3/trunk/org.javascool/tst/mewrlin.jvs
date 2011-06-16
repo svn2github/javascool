@@ -1,0 +1,48 @@
+
+//j'utilise la fonction valeur absolue
+int abs(int x) {
+   if (x > 0) {
+      return  x;
+   } else {
+      return - x;
+   }
+}
+
+void main() {
+   // je remplis un tableau 3x3 avec des 0 et des 1 et je l'affiche 
+    int table[][] = new int[3][3];
+   for (int i = 0; i < 3; i ++) {
+      for (int j = 0; j < 3; j ++) {
+         table[i][j] = random(0, 1);
+      }
+   }
+   for (int i = 0; i < 3; i ++) {
+      println(table[i][0] + "" + table[i][1] + "" + table[i][2]);
+   }
+   int nombre = 1;
+   int k =- 5;
+   int l =- 8;
+   //je fais jouer tant que la croix n'a pas pour somme 0 ou 5 c a dire que des 1 ou que des 0
+    while (nombre != 5 || nombre != 0) {
+      //je demande la ligne et colonne de  la case à modifier
+       println("Donner ligne 0 1 ou 2");
+      k = readInteger();
+      println("Donner colonne 0 1 ou 2");
+      l = readInteger();
+      table[k][l] = abs(table[k][l] - 1);
+      //je change tous les nombres de la colonne
+      for (int i = 0; i < 3; i ++) {
+         table[i][l] = abs(table[i][l] - 1);
+      }
+      //je change tous les nombres de la ligne
+      for (int j = 0; j < 3; j ++) {
+         table[k][j] = abs(table[k][j] - 1);
+      }
+      //j'affiche le nouveau tableau
+      for (int i = 0; i < 3; i ++) {
+         println(table[i][0] + "" + table[i][1] + "" + table[i][2]);
+      }
+      nombre = table[0][1] + table[1][1] + table[2][1] + table[1][0] + table[1][2];
+   }
+   println("gagné");
+}

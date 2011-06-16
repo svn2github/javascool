@@ -1,0 +1,162 @@
+
+import java.awt. *;
+
+import javax.swing. *;
+
+import java.awt.event. *;
+
+int[][]carte = new int[12][12];
+
+int posx = 0;
+
+int posy = 0;
+
+int a = 0;
+
+int continuer = 1;
+
+void bouger(int carte[][], int direction, int posx, int posy) {
+  if (direction == 1) {
+    println("kaboummmmmm");
+  }
+  if (direction == 2) {
+  }
+  if (direction == 3) {
+  }
+  if (direction == 4) {
+  }
+}
+
+void main() {
+  String niveau = "111110011111111114000001111100011001033101011011000002001211100101000011111100011211111111111001111130000001111111111111111111111111111111111111";
+  int curseur = 0;
+  getSwingPane().removeAll();
+  int x = 0;
+  int y = 0;
+  for (int i = 0; i < 12; i ++) {
+    for (int j = 0; j < 12; j ++) {
+      if (niveau.charAt(curseur) == '0') {
+	carte[i][j] = 0;
+      }
+      if (niveau.charAt(curseur) == '1') {
+	carte[i][j] = 1;
+      }
+      if (niveau.charAt(curseur) == '2') {
+	carte[i][j] = 2;
+      }
+      if (niveau.charAt(curseur) == '3') {
+	carte[i][j] = 3;
+      }
+      if (niveau.charAt(curseur) == '4') {
+	carte[i][j] = 4;
+      }
+      curseur ++;
+    }
+  }
+  getSwingPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_D,
+											   0), "actionD");
+  getSwingPane().getActionMap().put("actionD", new
+				    AbstractAction("actionD") {
+
+      public static final long
+	serialVersionUID = 1L;
+      public void
+	actionPerformed(ActionEvent e) {
+	println("test D");
+	bouger(carte, 1, posx, posy);
+
+
+      }
+    }
+				    );
+  getSwingPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_S,
+											   0), "actionS");
+  getSwingPane().getActionMap().put("actionS", new
+				    AbstractAction("actionS") {
+      public static final long
+	serialVersionUID = 1L;
+      public void
+	actionPerformed(ActionEvent e) {
+	println("test S");
+	bouger(carte, 2, posx, posy);
+
+
+      }
+    }
+				    );
+
+  getSwingPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Q,
+											   0), "actionQ");
+  getSwingPane().getActionMap().put("actionQ", new
+				    AbstractAction("actionQ") {
+      public static final long
+	serialVersionUID = 1L;
+      public void
+	actionPerformed(ActionEvent e) {
+	println("test Q");
+	bouger(carte, 3, posx, posy);
+
+
+      }
+    }
+				    );
+
+  getSwingPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_Z,
+											   0), "actionZ");
+  getSwingPane().getActionMap().put("actionZ", new
+				    AbstractAction("actionZ") {
+      public static final long
+	serialVersionUID = 1L;
+      public void
+	actionPerformed(ActionEvent e) {
+	println("test Z");
+	bouger(carte, 4, posx, posy);
+
+
+      }
+    }
+				    );
+
+ 
+  for (int i = 0; i < 12; i ++) {
+    for (int j = 0; j < 12; j ++) {
+      x = j * 34;
+      y = i * 34;
+      if (carte[i][j] == 0) {
+	a ++;
+      }
+      if (carte[i][j] == 1) {
+	showIcon("C:\\Users\\David\\Documents\\projet inria\\mur.jpg", x, y, 34, 34, 2);
+	a ++;
+      }
+      if (carte[i][j] == 2) {
+	showIcon("C:\\Users\\David\\Documents\\projet inria\\caisse.jpg", x, y, 34, 34, 2);
+	a ++;
+      }
+      if (carte[i][j] == 3) {
+	showIcon("C:\\Users\\David\\Documents\\projet inria\\objectif.gif ", x, y, 34, 34, 2);
+	a ++;
+      }
+      if (carte[i][j] == 4) {
+	showIcon("C:\\Users\\David\\Documents\\projet inria\\mario_bas.gif ", x, y, 34, 34, 2);
+	a ++;
+      }
+      if (carte[i][j] == 5) {
+	showIcon("C:\\Users\\David\\Documents\\projet inria\\caisse_ok.png", x, y, 34, 34, 2);
+      }
+    }
+  }
+  for (int i = 0; i < 12; i ++) {
+    for (int j = 0; j < 12; j ++) {
+      if (carte[i][j] == 4) {
+	posx = i;
+	posy = j;
+      }
+    }
+  }
+  while(true){
+    sleep(1000);
+  }
+
+
+}

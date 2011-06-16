@@ -1,0 +1,77 @@
+
+import java.awt.event. *;
+
+import javax.swing. *;
+
+// Ici on declare la variable elephant pour que la souris l utilise
+JLabel e1;
+
+JLabel e2;
+
+JLabel e3;
+
+JLabel e4;
+
+JLabel ch1;
+
+JLabel cv1;
+
+JLabel c1;
+
+JLabel c2;
+
+JLabel c3;
+
+JLabel c4;
+
+void main() {
+   // Efface tout
+    getSwingPane().removeAll();
+   // Cree l'elephant
+    e1 = showIcon("./elephant1.gif ", 200, 300, 100, 100, 2);
+   e2 = showIcon("./elephant2.gif ", 350, 300, 100, 100, 2);
+   e3 = showIcon("./elephant3.gif ", 500, 300, 100, 100, 2);
+   e4 = showIcon("./elephant4.gif ", 650, 300, 100, 100, 2);
+   // La souris change l'elephant
+    getSwingPane().addMouseListener(new MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
+         println("(" + e.getX() + "," + e.getY() + ")"); if (e.getX() > 650 && e.getX() < 750 && e.getY() > 300 && e.getY() < 400) {
+            println("bingo"); e4.setIcon(org.javascool.Utils.getIcon("./elephant3.gif "));}
+      }
+   }
+  );
+   getSwingPane().addMouseListener(new MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
+         println("(" + e.getX() + "," + e.getY() + ")"); if (e.getX() > 500 && e.getX() < 600 && e.getY() > 300 && e.getY() < 400) {
+            println("bingo"); e3.setIcon(org.javascool.Utils.getIcon("./elephant2.gif "));}
+      }
+   }
+  );
+   getSwingPane().addMouseListener(new MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
+         println("(" + e.getX() + "," + e.getY() + ")"); if (e.getX() > 350 && e.getX() < 450 && e.getY() > 300 && e.getY() < 400) {
+            println("bingo"); e2.setIcon(org.javascool.Utils.getIcon("./elephant1.gif "));}
+      }
+   }
+  );
+   getSwingPane().addMouseListener(new MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
+         println("(" + e.getX() + "," + e.getY() + ")"); if (e.getX() > 200 && e.getX() < 300 && e.getY() > 300 && e.getY() < 400) {
+            println("bingo"); getSwingPane().remove(e1); 
+c1 = showIcon("./ch1.gif ", 200, 300, 100, 100, 2); 
+c2 = showIcon("./ch1.gif ", 300, 300, 100, 100, 2); 
+c3 = showIcon("./cv1.gif ", 250, 250, 100, 100, 2); 
+c4 = showIcon("./cv1.gif ", 250, 350, 100, 100, 2);
+// Balade l'éléphant en diagonale
+new Thread(new Runnable() { public void run() {
+    for (int i = 0; i < 20 ; i ++ ) {
+      c1.setLocation(15 * i, 30 * i);
+    println("kkouette "+i);
+      sleep(1000);
+}
+}}).start();
+}
+      }
+}
+     );
+   }
