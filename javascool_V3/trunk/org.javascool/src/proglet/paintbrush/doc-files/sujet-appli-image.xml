@@ -5,7 +5,7 @@
 Ce projet vous propose de compléter ce logiciel de dessin
 bien connu avec différentes fonctionnalités basiques comme le tracé de
 courbes, de lignes droites, de rectangles ou encore le remplissage de
-forme.
+forme et la rotation d'images.
 
     Le but de ce tutoriel est de comprendre comment un code dessine dans une image.
     Il faut déja savoir <l link="../../ingredients/doc-files/sujet-hello-world.htm" text="utiliser l'interface"/>,
@@ -87,6 +87,15 @@ forme.
        peu de réflexion pour éviter de faire boucler la procédure de
        remplissage mais il existe une solution relativement simple et
        concise (penser récursif...)!
+     </div>
+     <div>
+       Compléter la fonction <r>rotationGauche</r> qui est utilisée par le
+	   logiciel lorque l'utilisateur presse le bouton <i>Rotation gauche</i>.
+	    Dans un premier temps, il est conseillé d'employer un tableau
+    	intermédiaire de dimension 32x32.  Dans un deuxième temps, essayer
+    	de se passer d'un tableau intermédiaire en employant uniquement
+    	une variable intermédiaire (de type <r>int</r>) dans la boucle interne
+    	de votre programme.	  
      </div>
      <div>
        Compléter la fonction <r>afficheLigne</r> qui est utilisée

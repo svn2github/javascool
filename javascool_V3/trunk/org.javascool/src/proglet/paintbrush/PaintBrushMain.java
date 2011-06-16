@@ -78,6 +78,7 @@ class MainPanel extends JPanel implements ActionListener {
   private static String button3String = "Gomme";
   private static String button4String = "Remplir";
   private static String button5String = "Ligne";
+  private static String buttonRotateString = "Rotation gauche";
   private static String showCodeBoxString = "hexa code";
   private static String buttonClearString = "Effacer tout";
   MyPanel myPanel;
@@ -128,6 +129,10 @@ class MainPanel extends JPanel implements ActionListener {
 
     radioPanel.add(showCodeBox);
 
+    JButton buttonRotate = new JButton(buttonRotateString);
+    buttonRotate.setActionCommand(buttonRotateString);
+    radioPanel.add(buttonRotate);
+
     JButton buttonClear = new JButton(buttonClearString);
     buttonClear.setActionCommand(buttonClearString);
     radioPanel.add(buttonClear);
@@ -159,6 +164,7 @@ class MainPanel extends JPanel implements ActionListener {
     button3.addActionListener(this);
     button4.addActionListener(this);
     button5.addActionListener(this);
+    buttonRotate.addActionListener(this);
     showCodeBox.addActionListener(this);
     buttonClear.addActionListener(this);
   }
@@ -182,6 +188,9 @@ class MainPanel extends JPanel implements ActionListener {
       MyPanel.showCode = !MyPanel.showCode;
       myPanel.repaint();
       cPanel.repaint();
+    } else if(action.equals(buttonRotateString)) {
+    	myPanel.manipImage.rotationGauche();
+        myPanel.repaint();
     } else if(action.equals(buttonClearString))
       myPanel.clear();
   }
