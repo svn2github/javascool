@@ -34,6 +34,12 @@ public class JavaPanel implements org.javascool.Proglet {
       pane = new JLayeredPane();
       add(pane, BorderLayout.CENTER);
     }
+    public void reset() {
+      remove(pane);
+      pane = new JLayeredPane();
+      add(pane, BorderLayout.CENTER);
+    }
+
     JLayeredPane pane;
   }
 
@@ -47,6 +53,11 @@ public class JavaPanel implements org.javascool.Proglet {
   //
   // This defines the javascool interface
   //
+
+  /** Nettoie le panneau d'affichage  la proglet. */
+  public static void resetSwingPane() {
+    panel.reset();
+  }
 
   /** Renvoie le panneau d'affichage de la proglet. */
   public static JLayeredPane getSwingPane() {
