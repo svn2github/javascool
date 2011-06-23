@@ -20,20 +20,21 @@ void cliqueElephant(int n) {
   } else if (c[n] == 2) {
     e[n].setIcon(org.javascool.Utils.getIcon("./elephant1.gif ")); c[n] = 3;
   } else if (c[n] == 3) {
+    c[n] = 4; // ca veut dire plus-d-elephant
     getSwingPane().remove(e[n]); 
-    showCacaouettes(n);
-    c[n] = 4; // veut dire plus-d-elephant
+    // On lance les cacaouettes
+    new Cacaouette(n);
   }
 }
 
-// Les 4 cacaouettes
-JLabel ch1, ch2, cv1, cv2;
-// Position des cacaouettes
-int n_ch;
-
-// Cree des cacaouettes pour l'elephant de numero n et les fait deplacer
-void showCacaouettes(int n) {
-  if (c[n] < 4) { // pas de cacaouettes si plus d'elephant !
+// Ici on definit les cacouette souss forme d'objet pour que chaque paquet de cacaouette soit independant 
+class Cacaouette {
+  // Les 4 cacaouettes
+  JLabel ch1, ch2, cv1, cv2;
+  // Position des cacaouettes
+  int n_ch;
+  // Cree des cacaouettes pour l'elephant de numero n et les fait deplacer
+  Cacaouette(int n) {
     n_ch = n;
     // Cree les cacaouettes
     ch1 = showIcon("./ch1.gif ", x[n_ch], 300, 100, 100, 2); 
@@ -41,37 +42,46 @@ void showCacaouettes(int n) {
     cv1 = showIcon("./cv1.gif ", x[n_ch] + 50, 250, 100, 100, 2); 
     cv2 = showIcon("./cv1.gif ", x[n_ch] + 50, 250, 100, 100, 2);
     new Thread(new Runnable() { public void run() {
+      // Ces variables deviennent fausses si une cacaouette touche un elephant
+      boolean toucher_gauche = true, toucher_droit = true;
       // Deplace les cacaouettes
-      for (int i = 0; i < 8; i ++ ) {
-	ch1.setLocation(x[n_ch] - 15 * i, 300);
-	ch2.setLocation(x[n_ch] + 100 + 15 * i, 300);
+      for (int i = 0; i < 8 && (toucher_gauche || toucher_droit); i ++ ) {
+	// Position des cacaouettes gauche et droite
+	int x_gauche = x[n_ch] - 15 * i, x_droite = x[n_ch] + 100 + 15 * i;
+	// On deplace les cacouettes
+	ch1.setLocation(x_gauche, 300);
+	ch2.setLocation(x_droite, 300);
 	cv1.setLocation(x[n_ch] + 50, 350 + 15 * i);
 	cv2.setLocation(x[n_ch] + 50, 250 - 15 * i);
 	sleep(200);
+	// Si y a un elephant juste a gauche && qu'on l'a pas encore touche && qu'il est pas explosé && que la cacaouette le touche: on clique
+	if (n_ch > 0 && toucher_gauche && c[n_ch-1] < 4 && x_gauche <= x[n_ch-1] + 100) {
+	  toucher_gauche = false;
+	  cliqueElephant(n_ch-1);
+	}
+	// Si y a un elephant juste a droite && qu'on l'a pas encore touche && qu'il est pas explosé && que la cacaouette le touche: on clique
+	if (n_ch < 3 && toucher_droit && c[n_ch+1] < 4 && x_droite >= x[n_ch+1]) {
+	  toucher_droit = false;
+	  cliqueElephant(n_ch+1);
+	}
       }
-      // Vire les cacaouettes
+      // On tue les cacaouettes
       ch1.setLocation(-100, -100);
       ch2.setLocation(-100, -100);
       cv1.setLocation(-100, -100);
       cv2.setLocation(-100, -100);
-      sleep(100);
       getSwingPane().remove(ch1);
       getSwingPane().remove(ch2);
       getSwingPane().remove(cv1);
       getSwingPane().remove(cv2);
-      // Clique les deux elephants d'a cote si ils existent
-      if (n_ch > 0)
-	cliqueElephant(n_ch-1);
-      if (n_ch < 3)
-	cliqueElephant(n_ch+1);
     }}).start();
   }
 }
 
 void main() {
   // Efface tout
- getSwingPane().removeAll();
- getSwingPane().setOpaque(true);   getSwingPane().setBackground(java.awt.Color.WHITE);
+  getSwingPane().removeAll();
+  getSwingPane().setOpaque(true);    getSwingPane().setBackground(java.awt.Color.WHITE);
   // Cree les elephants
   for(int n = 0; n < 4; n++) {
     e[n] = showIcon("./elephant"+(n+1)+".gif ", x[n], 300, 100, 100, 3);
