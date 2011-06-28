@@ -1,0 +1,133 @@
+
+import javax.swing.JLayeredPane;
+import javax.swing.JButton;
+import javax.swing.*;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import org.javascool.SoundBit;
+
+// Noms des pieces disposées sur le damier
+ String Pieces[] = {
+   "Tour", "Cheval", "Fou", "Roi", "Dame", "Fou", "Cheval", "Tour", 
+"Pion", "Pion", "Pion", "Pion", "Pion", "Pion","Pion", "Pion",
+"","","","","","","","",
+"","","","","","","","",
+"","","","","","","","",
+"","","","","","","","",
+"Pion", "Pion", "Pion", "Pion", "Pion", "Pion","Pion","Pion",
+"Tour", "Cheval", "Fou", "Roi", "Dame", "Fou", "Cheval", "Tour"
+}
+;
+ String Cases_damier[] = {
+   "0", "1", "2", "3", "4", "5", "6", "7", 
+"8", "9", "10", "11", "12", "13","14", "15",
+"16","17","18","19","20","21","22","23",
+"24","25","26","27","28","29","30","31",
+"32","33","34","35","36","37","38","39",
+"40","41","42","43","44","45","46","47",
+ "48", "49", "50", "51", "52","53","54", "55",
+ "56", "57", "58", "59", "60", "61", "62", "63"
+}
+;
+
+// Table des icones des pièces
+String imageNames[] = { "null", "Pion", "Cheval", "Tour", "Dame", "Roi", "Fou" };
+Icon images[] = { new ImageIcon("null.gif"), new ImageIcon("pion.gif"), new ImageIcon("cheval.gif"), new ImageIcon("tour.gif"), new ImageIcon("dame.gif"), new ImageIcon("roi.gif"), new ImageIcon("fou.gif") };
+// Renvoie l'icone de nom donnée
+Icon getIcon(String name) { 
+ for(int k = 0; k < images.length; k++)
+	if(name.equals(imageNames[k]))
+	   return images[k];
+return images[0];
+}
+//note : une autre solution plus elegante introduit des java.utils.HashMap, en cas
+
+Icon image_p = new ImageIcon("null.gif");
+
+// Add or change the icon; it will appear to the left of the text
+// button.setIcon(icon);
+
+// Set to null to remove icon
+// button.setIcon(null);
+
+ String Piece_precedente ="";
+ int pos_piece_precedente=0;
+
+// Cr�ation des touches du damier
+void drawFingerBoard() {
+   JLayeredPane pane = getSwingPane();
+   pane.removeAll();
+ String Piece_precedente ="";
+ int pos_piece_precedente=-1;
+// cr�ation des colonnes
+ for (int j = 0; j < 8; j ++) {
+   int posdamier_hor=20;
+   posdamier_hor = 20 + j * 55;
+   int posdamier = 20;
+   // cr�ation des lignes
+    for (int i = 0; i < 8; i ++) {
+ 	 image_p = getIcon(Pieces[i+j*8]);
+
+      JButton case_d = new JButton(Cases_damier[i+j*8], image_p);
+      case_d.setVerticalTextPosition(SwingConstants.BOTTOM);
+      case_d.setToolTipText(Pieces[i+j*8]);
+      posdamier = 20 + i * 55;
+      case_d.setBounds(posdamier, posdamier_hor, 55, 55);
+      pane.add(case_d, new Integer(i+j*8));
+      case_d.addActionListener(player);
+   }
+}
+}
+// D�finition du gestionnaire d'�v�nements 
+ActionListener player = new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+      for (int i = 0; i < Pieces.length; i ++) 
+ if (Cases_damier[i].equals(e.getActionCommand())) {
+ if (Piece_precedente.equals("")) {
+         println("Oh oh vous jouez un " + Pieces[i] +" sur la case " + i );
+         Piece_precedente=Pieces[i];
+         pos_piece_precedente =i;
+	}
+         // Permettre ici le d�placement des pi�ces
+      
+   else
+
+ // Gestion du d�placement d'un pion
+ if (Piece_precedente.equals("Pion")&&(pos_piece_precedente!=-1)) {
+
+	// ecrire le test pour que le d�placement soit valid�
+
+	// Puis on valide le d�placement 
+	Pieces[pos_piece_precedente]="";
+	Pieces[i]="Pion";
+	Piece_precedente="";
+	pos_piece_precedente=-1;
+       drawFingerBoard();	
+	} else
+// Gestion du d�placement d'un cheval
+ if (Piece_precedente.equals("Cheval")&&(pos_piece_precedente!=-1)) {
+	
+	// �crire le test pour que le d�placement soit valid�
+	
+
+	Pieces[pos_piece_precedente]="";
+	Pieces[i]="Cheval";
+	Piece_precedente="";
+	pos_piece_precedente=-1;
+       drawFingerBoard();	
+	}
+
+ else
+// Si on clique ailleurs donc sur une case vide 
+ {Piece_precedente="";
+	pos_piece_precedente=-1;}
+  	 }
+	}
+}
+;
+
+// Mise en place du clavier
+void main() {
+   drawFingerBoard();
+}
