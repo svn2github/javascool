@@ -120,6 +120,7 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     pane = new JTextPane();
     pane.setBackground(editable ? Color.WHITE : new Color(0xeeeeee));
     pane.setEditable(editable);
+    pane.setContentType("text/plain charset=EUC-JP tenc=UTF-8");
     pane.setFont(new Font("Liberation Mono", Font.PLAIN, 18));
     pane.setText(text);
     doc = pane.getStyledDocument();
