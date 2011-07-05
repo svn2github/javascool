@@ -112,6 +112,7 @@ public class Pml {
         string = s.substring(i0, i1);
         line = l;
       }
+      public String toString() { return "#"+line+" \""+string+"\" "; }
     }
     Vector<token> tokens;
     int itoken;
@@ -177,7 +178,6 @@ public class Pml {
         }
       }
       itoken = 0;
-      // used to test: for(token t : tokens) System.out.println(t.line+"> \""+t.string+"\""); System.out.println("..");
       return this;
     }
     private static boolean isOperator(char c) {
@@ -224,13 +224,19 @@ public class Pml {
     public String trailer() {
       String t = "";
       while(itoken < tokens.size())
-        t += " " + tokens.get(itoken).string;
+        t += " " + tokens.get(itoken++).string;
       return t.trim();
     }
     /** Checks a syntax condition. */
     public void check(boolean ok, String message) {
       if(!ok)
         System.out.println("Erreur de syntaxe \"" + message + "\", ligne " + (itoken < tokens.size() ? "" + tokens.get(itoken).line + " vers \"" + current() + "\"" : "finale"));
+    }
+    public String toString() {
+      String s = "[";
+      for(int i = 0; i < tokens.size(); i++) 
+        s +=( i == itoken ? " ! " : " ") + "\"" + tokens.get(i).string+"\"#"+tokens.get(i).line;
+      return s +" ]";
     }
   }
   /** Defines a PML reader. */
@@ -245,7 +251,7 @@ public class Pml {
       if(trailer.length() > 0) {
         Pml p = new Pml();
         p.setTag(trailer);
-        pml.set("string_trailer", p);
+	pml.set("string_trailer", p);
       }
     }
     /** Parses recursively the string. */
@@ -259,20 +265,31 @@ public class Pml {
           if("}".equals(t)) {
             next();
             break;
+          // Adds an element
           } else if("{".equals(t)) {
             Pml p = new Pml();
             parse(p);
             pml.add(p);
+           // Adds an attribute
           } else if("=".equals(current(1))) {
             next(2);
-            Pml p = new Pml();
-            parse(p);
-            pml.set(t, p);
+            if ("}".equals(current())) 
+              pml.set(t, "true");
+	    else {
+	      Pml p = new Pml();
+	      parse(p);
+	      pml.set(t, p);
+	    }
+          // Adds an attribute tag
           } else if(start) {
             next();
             pml.setTag(t);
-          } else
-            pml.add(t);
+           // Adds an atomic element
+	  } else {
+	    Pml p = new Pml();
+	    parse(p);
+	    pml.add(p);
+          }
         }
         // Considers the Pml as a simple string
       } else {

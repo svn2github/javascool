@@ -10,6 +10,10 @@ JAR =
 
 default : run
 
+dft : jar
+	javac  -cp ./www/javascool$(JAR).jar Tst.java
+	java -cp ./www/javascool$(JAR).jar:. Tst
+
 # General commands
 
 usage :

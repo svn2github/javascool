@@ -18,7 +18,7 @@ import java.net.URLEncoder;
 // Used for URL write
 import java.net.URLConnection;
 import java.io.OutputStreamWriter;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.lang.System;
 
 // Used to load icon
@@ -204,7 +204,7 @@ public class Utils {
     URL url = new URL(location);
     URLConnection connection = url.openConnection();
     connection.setDoOutput(true);
-    OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+    OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
     if(url.getProtocol().equals("mailto")) {
       int i = url.toString().indexOf("?subject=");
       if(i != -1)
@@ -216,7 +216,7 @@ public class Utils {
     File file = new File(location), parent = file.getParentFile();
     if((parent != null) && (!parent.isDirectory()))
       parent.mkdirs();
-    return new FileWriter(location);
+    return new OutputStreamWriter(new FileOutputStream(location), "UTF-8");
   }
   /** Returns an icon loaded from the applet context.
    * @param location The icon file name, in the context directory (directory on the server or on the client side or in the jar) or as a URL.
