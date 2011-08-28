@@ -5,8 +5,7 @@
  * Interface pédagogique sur le codage/décodage de messages avec clés RSA
  * Interface réalisée avec ControlP5 (basée sur l'example ControlP5TextfieldAdvanced)
  *
- */                                                                                                                                                                                                                                                                                                                                                   // /////////////////////////////////////////////////////////////////////////////////
-
+ */                                                                                                                                                                                                                                                                                                                                            // /////////////////////////////////////////////////////////////////////////////////
 
 import java.awt.*;
 import java.applet.*;
@@ -51,14 +50,15 @@ String[] ListN4 = { "Tu es Alice et tu es chargé de générer deux 'clés', \n"
                     "Tu es Bob. Tu vas recevoir une 'clé', dite 'publique', \n" +
                     "qui te permettra d'encrypter un message secret.\n" +
                     "Transmet ton message encrypté à Alice qui essayera de le décrypter! " };
-                    /*"Tu es Alice. Nous te proposons d'expérimenter le CODAGE et le DECODAGE de messages.\n" +
-                    "Tout d'abord, tu dois générer une 'clé publique' et 'une clé privée'.\n" +
-                    "Tu divulgueras ensuite la clé publique à Bob, et tu garderas la clé privée précieusement. \n" +
-                    "Bob encryptera son message secret à l'aide de la clé publique.\n" +
-                    "Seul toi pourras décrypter le message au moyen de la clé privée!",
-                    "Tu es Bob. Nous te proposons d'expérimenter le CODAGE et le DECODAGE de messages.\n" +
-                    "Tu vas recevoir une 'clé', dite 'publique', qui te permettra d'encrypter un message secret.\n" +
-                    "Apres encryptage du message, transmet-le à Alice qui essayera de le décrypter! " };*/
+
+/*"Tu es Alice. Nous te proposons d'expérimenter le CODAGE et le DECODAGE de messages.\n" +
+ *  "Tout d'abord, tu dois générer une 'clé publique' et 'une clé privée'.\n" +
+ *  "Tu divulgueras ensuite la clé publique à Bob, et tu garderas la clé privée précieusement. \n" +
+ *  "Bob encryptera son message secret à l'aide de la clé publique.\n" +
+ *  "Seul toi pourras décrypter le message au moyen de la clé privée!",
+ *  "Tu es Bob. Nous te proposons d'expérimenter le CODAGE et le DECODAGE de messages.\n" +
+ *  "Tu vas recevoir une 'clé', dite 'publique', qui te permettra d'encrypter un message secret.\n" +
+ *  "Apres encryptage du message, transmet-le à Alice qui essayera de le décrypter! " };*/
 String lastInput = new String();
 
 // Ce qui est lancé une fois, au départ

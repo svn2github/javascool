@@ -31,7 +31,7 @@ class signal {
     if(n.equals("sinus")) {
       sinus_ = new SineWave(f, a, out.sampleRate());
       sinus_.portamento(2000);
-       changeValue();
+      changeValue();
       out.addSignal(sinus_);
     } else if(n.equals("carré")) {
       square_ = new SquareWave(f, a, out.sampleRate());
@@ -52,22 +52,22 @@ class signal {
   }
   /** Mise à jour des valeurs lors du déplacement de la souris. */
   void changeValue() {
-    if (change) {
-    frequence = map(mouseX, 0, width, 100, 4000);
-    // constrain(mouseX, 0, width-500);
+    if(change) {
+      frequence = map(mouseX, 0, width, 100, 4000);
+      // constrain(mouseX, 0, width-500);
 
-    volume = map(mouseY, 0, height, 0.2, 0);
-    if(type.equals("sinus")) {
-      sinus_.setFreq(frequence);
-      sinus_.setAmp(volume);
-    } else if(type.equals("carré")) {
-      square_.setFreq(frequence);
-      square_.setAmp(volume);
-    } else if(type.equals("scie")) {
-      saw_.setFreq(frequence);
-      saw_.setAmp(volume);
-    } else if(type.equals("bruit"))
-      wnoise_.setAmp(volume);
+      volume = map(mouseY, 0, height, 0.2, 0);
+      if(type.equals("sinus")) {
+        sinus_.setFreq(frequence);
+        sinus_.setAmp(volume);
+      } else if(type.equals("carré")) {
+        square_.setFreq(frequence);
+        square_.setAmp(volume);
+      } else if(type.equals("scie")) {
+        saw_.setFreq(frequence);
+        saw_.setAmp(volume);
+      } else if(type.equals("bruit"))
+        wnoise_.setAmp(volume);
     }
   }
   /** Affichage de la valeur dans l'interface. */

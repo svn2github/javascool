@@ -1,0 +1,34 @@
+<p><br />
+</p>
+<div align="right">Une version améliorée de la 3.2 avec <i><a href="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-proglets.htm" class="external text" rel="nofollow">«proglets»</a></i> et les <i>«<a href="http://javascool.gforge.inria.fr/v3/?page=doc:sketchbook/index.html" class="external text" rel="nofollow">educlets</a>»</i> est <b><a href="http://javascool.gforge.inria.fr/v3/javascool.jar" class="external text" rel="nofollow">disponible</a></b><img width="50" align="middle" src="http://javascool.gforge.inria.fr/index/images/new-icon.jpg"/>&nbsp;! </div>
+<hr />
+<div id="javasccol">Java's Cool (alias Javascool) est un logiciel conçu pour l'apprentissage des bases de la programmation. Il a été conçu à la demande de professeurs de lycées et de <a href="http://www.fuscia.info" class="external text" rel="nofollow">fuscia</a> avec <a href="http://www.unisciel.fr" class="external text" rel="nofollow">UNICIEL</a>. Il permet de manipuler un Macro-Langage de programmation, basé sur le langage Java. Pour plus de détails  . . <a href="http://javascool.gforge.inria.fr/v3/javascool.jar" class="external text" rel="nofollow">essayez le</a>&nbsp;! Créé pour apprendre aux personnes qui savent juste allumer leur ordinateur à programmer, par exemple des jeux (en 2D) ou des minis-logiciels, son interface est simple ainsi que son langage dit de "balisage". Ce programme est écrit en Java, il est donc compatible avec tous les systèmes.</div>
+<div align="right">Le <a href="http://javascool.gforge.inria.fr/documents/poster-atelier-js-proglet.pdf" class="external text" rel="nofollow">poster</a> de présentation</div>
+<hr />
+<p><b>Qu'est ce que c'est&nbsp;?</b> Un recueil de ressources (documents et logiciels) pour aider les professeur(e)s des lycées et du début du supérieur au niveau de l'enseignement de l'algorithmique, donc de l'informatique en seconde. La démarche est expliquée dans le <a href="?page=Manifeste" title="JavaScool:Manifeste">manifeste</a> et se base sur un <a href="?page=Cadrage" title="JavaScool:Cadrage">cadrage</a> précis.
+</p><p>On y trouve des textes de base sur ce qu'est l'information, comment sont codés les objets numériques et sur les ingrédients des algorithmes. Un parcours de formation, pour s'approprier les cinq ingrédients des algorithmes y est proposé (outil logiciel libre et ouvert, cours et exercices, applications). On peut s'initier à la programmation de manière ludique, puisque les petits programmes créés (dits «proglets») animent un élément visuel ou sonore, à la fois pour mieux comprendre ces objets numériques et pour offrir une démarche expérimentale concrète, vers la compréhension des notions abstraites qui forment le fondement des sciences de l'information.
+</p><p>Ces éléments, ont été conçus par des <a href="?page=Cr%C3%A9dits" title="JavaScool:Crédits">chercheurs et des enseignants</a> du supérieur et des lycées, et sont utilisés "pour de vrai" en classe&nbsp;: c'est ce qui fait leur valeur.
+</p><p>N'hésitez pas à nous <a href="?page=Contacts" title="JavaScool:Contacts">proposer avis et critiques</a>, nous en profiterons tous.
+</p><p>Logiciels et document sont soumis à un <a href="?page=Licence" title="JavaScool:Licence">couple de licences</a> qui les rend utilisables par tous. 
+</p>
+<hr />
+<p><b>Pour qui est-ce&nbsp;?</b> 
+</p>
+<ul><li> Pour les enseignants, puisque l'<a href="?page=Cadrage" title="JavaScool:Cadrage">enseignement actuel</a> inclut l'apprentissage de l'algorithmique au lycée.
+</li><li> Pour les clubs de maths ou les autres initiatives périscolaires de découverte scientifique, ainsi que pour faire des <a href="http://www-sop.inria.fr/science-participative/index.php?page=quelques-t-p-e" class="external text" rel="nofollow">TPE</a>.
+</li><li> Et, avec notre aide internet, pour qui veut développer aprendre des bases d'informatique en développant un logiciel jouet, un petit site ou un petit jeu facilement et apprenant des bases . . en 1/2 journée top chrono.
+<ul><li> ... si vous le souhaitez et si vous pouvez dialoguer avec quelqu'un de votre entourage qui sait programmer (afin de ne pas être bloqué sur des détails de syntaxe ou d'implémentation) alors oui&nbsp;: n'hésitez pas à suivre le <a href="http://javascool.gforge.inria.fr/v3?page=api:proglet/ingredients/doc-files/index.htm" class="external text" rel="nofollow">parcours</a> pour s'initier à la programmation&nbsp;: vous allez vite épater ceux qui pensent être les seuls à savoir programmer&nbsp;! 
+</li></ul>
+</li></ul>
+<ul><li> Et si besoin <a href="http://javascool.gforge.inria.fr/v3?page=Contact" class="external text" rel="nofollow">contactez nous</a> <img src='http://javascool.gforge.inria.fr/v3/images/smiley-cool.png'/> .
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 10/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:36-1!1!0!!fr!2!edit=0!printable=1 and timestamp 20110812100804 -->

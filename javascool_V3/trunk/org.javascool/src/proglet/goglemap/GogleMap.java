@@ -39,7 +39,7 @@ public class GogleMap implements org.javascool.Proglet {
   //
   // This defines the javascool interface
   //
-  public enum IntensiteRoute { 
+  public enum IntensiteRoute {
     LEGER(1), MOYEN(2), FORT(3);
     private int value;
     IntensiteRoute(int i) {
@@ -72,7 +72,7 @@ public class GogleMap implements org.javascool.Proglet {
   }
   public static Map<String, Double> latitudes;
   public static Map<String, Double> longitudes;
-  public static Map < String, List < String >> voisins;
+  public static Map<String, List<String> > voisins;
 
   public static List<String> plusCourtCheminGogleMap(String depart, String arrivee) {
     return GogleMapCalculChemins.plusCourtChemin(panel.main, depart, arrivee);

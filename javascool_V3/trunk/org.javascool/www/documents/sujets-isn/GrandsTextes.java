@@ -53,8 +53,8 @@ public class GrandsTextes {
     return records;
   }
   public static Map<String, Integer> trierMapParValeursDecroissantes(Map<String, Integer> table) {
-    List < Map.Entry < String, Integer >> entries = new ArrayList < Map.Entry < String, Integer >> (table.entrySet());
-    Collections.sort(entries, new Comparator < Map.Entry < String, Integer >> () {
+    List<Map.Entry<String, Integer> > entries = new ArrayList<Map.Entry<String, Integer> >(table.entrySet());
+    Collections.sort(entries, new Comparator<Map.Entry<String, Integer> >() {
                        public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                          return o2.getValue() - o1.getValue();
                        }

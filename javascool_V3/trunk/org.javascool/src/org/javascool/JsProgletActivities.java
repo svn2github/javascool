@@ -104,9 +104,8 @@ public class JsProgletActivities {
             String out = Jvs2Java.compile(main.getFileChooser().getFile());
             System.out.println(out.length() == 0 ? "Compilation réussie !" : out);
             Console.printHtml("<hr>\n");
-            if(out.length() == 0) {
+            if(out.length() == 0)
               running = main.getFrame().addTool("Exécuter", "org/javascool/doc-files/icones16/play.png", execute);
-            }
           } else
             System.out.println("Impossible de compiler: le fichier n'est pas sauvegardé !");
         } else
@@ -115,24 +114,27 @@ public class JsProgletActivities {
     };
     protected Runnable execute = new Runnable() {
       public void run() {
-	main.getFrame().addTool("Arrêter", "org/javascool/doc-files/icones16/processing.gif", stop);
+        main.getFrame().addTool("Arrêter", "org/javascool/doc-files/icones16/processing.gif", stop);
         Jvs2Java.load(main.getFileChooser().getFile());
         Jvs2Java.run(true);
-	new Thread(new Runnable() { public void run() {
-	  for(int t = 0; Jvs2Java.isRunning(); t++) {
-	    if (running != null) 
-	      running.setText(""+(t / 60)+":"+(t % 60)+" Exécuter");
-	    Macros.sleep(1000);
-	  }
-	  main.getFrame().delTool("Arrêter");
-	}}).start();
+        new Thread(new Runnable() {
+                     public void run() {
+                       for(int t = 0; Jvs2Java.isRunning(); t++) {
+                         if(running != null)
+                           running.setText("" + (t / 60) + ":" + (t % 60) + " Exécuter");
+                         Macros.sleep(1000);
+                       }
+                       main.getFrame().delTool("Arrêter");
+                     }
+                   }
+                   ).start();
       }
     };
     private JButton running = null;
     private Runnable stop = new Runnable() {
       public void run() {
         Jvs2Java.run(false);
-	main.getFrame().delTool("Arrêter");
+        main.getFrame().delTool("Arrêter");
       }
     };
     protected void init1(JsMain main) {

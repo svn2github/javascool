@@ -62,7 +62,8 @@ function get_page_contents($name) {
   return $page;
 }
 // Usage: http://javascool.gforge.inria.fr/?kezako=niquelekacheux
-if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { passthru("rm -rf v3/.htcache .htcache", &$status); echo "wraz.status = $status\n"; exit; }
+//NE PLUS UTILISER
+//if(isset($_GET['kezako']) && $_GET['kezako'] == 'niquelekacheux') { passthru("rm -rf v3/.htcache .htcache", &$status); echo "wraz.status = $status\n"; exit; }
 
 // Usage: http://javascool.gforge.inria.fr/?page=<page>
   $name = isset($_GET['page']) ? $_GET['page'] : "Accueil";

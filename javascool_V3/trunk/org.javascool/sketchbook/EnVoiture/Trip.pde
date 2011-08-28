@@ -42,7 +42,7 @@ class Trip {
     Spot best = (Spot) spots.get(listN[0]);
     String n_ = null;
     if(spots.size() != 0)
-      for(String ni_ : (Iterable<String> )spots.keySet()) {
+      for(String ni_ : (Iterable<String>)spots.keySet()) {
         Spot S_ = (Spot) spots.get(ni_);
 
         float d = dist(x, y, S_.x, S_.y);
@@ -52,7 +52,7 @@ class Trip {
           n_ = ni_;
         }
       }
-     // println(" nom: " + best.n + " x " + best.x + " // y " + best.y);
+    // println(" nom: " + best.n + " x " + best.x + " // y " + best.y);
     return n_;
   }
   /** Détruit un spot au graphe si il existe.
@@ -60,10 +60,10 @@ class Trip {
    */
   void removeSpot(String n) {
     Spot S_ = (Spot) spots.get(n);
-    if (S_ != null) {
+    if(S_ != null) {
       // retire tous les liens en relation avec le noeud
-      for(String ni_ : (Iterable<String> )spots.keySet())
-	removeLink(n, ni_);
+      for(String ni_ : (Iterable<String>)spots.keySet())
+        removeLink(n, ni_);
       // retire le noeud en question
       spots.remove(n);
     }
@@ -76,7 +76,7 @@ class Trip {
   void addLink(String nA, String nB) {
     Spot SA_ = (Spot) spots.get(nA);
     Spot SB_ = (Spot) spots.get(nB);
-    if (SA_ != null && SB_ != null) {
+    if((SA_ != null) && (SB_ != null)) {
       double p_ = dist(SA_.x, SA_.y, SB_.x, SB_.y) / 100;
       SA_.links.put(nB, new Link(nA, nB, p_));
       SB_.links.put(nA, new Link(nB, nA, p_));
@@ -101,12 +101,12 @@ class Trip {
    */
   boolean isLink(String nA, String nB) {
     Spot SA_ = (Spot) spots.get(nA);
-    if (SA_ != null) {
+    if(SA_ != null) {
       // String ni_;
       boolean link_ = false;
-      for(String ni_ : (Iterable<String> )SA_.links.keySet())
-	if(ni_.equals(nB))    // test si les deux string sont équivalents
-	  link_ = true;
+      for(String ni_ : (Iterable<String>)SA_.links.keySet())
+        if(ni_.equals(nB)) // test si les deux string sont équivalents
+          link_ = true;
       return link_;
     } else
       return false;
@@ -133,11 +133,11 @@ class Trip {
   double getDistance(String nA, String nB) {
     Spot SA_ = (Spot) spots.get(nA);
     Spot SB_ = (Spot) spots.get(nB);
-    if (SA_ != null && SB_ != null) {
+    if((SA_ != null) && (SB_ != null)) {
       double p_ = 0.0;
       p_ = dist(SA_.x, SA_.y, SB_.x, SB_.y) / 100;
       return p_;
-    } else 
+    } else
       return -1;
   }
   /**  Cherche spot intermédiaire entre sInit et sTarget tel que la distance entre sInit et sTarget soit minimal.
@@ -145,83 +145,87 @@ class Trip {
    * @param nTarget Spot cible.
    * @return Spot intermédiaire.
    */
+
   /*String exploreSpot(String sO, String sInit, String sTarget, ArrayList Visited) {
-    if(sInit == sTarget)
-      return sTarget;
-    String next = sInit; // initialization
-    Spot Sinit = (Spot) spots.get(sInit);
-    Spot Starget = (Spot) spots.get(sTarget);
-    double p = 99999999;
-    ArrayList Visited_ = new ArrayList();
-    for(int i = 0; i < Visited.size(); i++)
-      Visited_.add((String) Visited.get(i));
-    HashMap spotsN = new HashMap();
-    for(String ni_ : (Iterable<String> )spots.keySet())
-      if(!(Visited_.contains(ni_)))
-        spotsN.put(ni_, (Spot) spots.get(ni_));                             // contraindre à chercher parmi les spots non visités!
-    for(String ni_ : (Iterable<String> )spots.keySet())
-      if((!(sInit.equals(sO) && ni_.equals(sTarget)) && !ni_.equals(sInit))) {
-        Spot Si_ = (Spot) spots.get(ni_);
-        if((path.indexOf(ni_) == -1) && (restricted.indexOf(ni_) == -1)) { // si le spot n'a pas été parcouru
-          double pi = PVector.dist(Si_.position, Sinit.position) + PVector.dist(Starget.position, Si_.position);
-          // println(pi);
-          // double pi = getLink(ni_,sInit) + getLink(sTarget,ni_);
-          if(pi < p) {
-            p = pi;
-            next = ni_;
-          }
-        }
-      }
-    if(sInit.equals(sO))
-      println("Distance parcourue par le trajet: " + p / 100);
-      // comp = p/100;
-    path.add(sInit);
-    // println(next);
-    return next;
-  }*/
+   *  if(sInit == sTarget)
+   *   return sTarget;
+   *  String next = sInit; // initialization
+   *  Spot Sinit = (Spot) spots.get(sInit);
+   *  Spot Starget = (Spot) spots.get(sTarget);
+   *  double p = 99999999;
+   *  ArrayList Visited_ = new ArrayList();
+   *  for(int i = 0; i < Visited.size(); i++)
+   *   Visited_.add((String) Visited.get(i));
+   *  HashMap spotsN = new HashMap();
+   *  for(String ni_ : (Iterable<String> )spots.keySet())
+   *   if(!(Visited_.contains(ni_)))
+   *     spotsN.put(ni_, (Spot) spots.get(ni_));                             // contraindre à chercher parmi les spots non visités!
+   *  for(String ni_ : (Iterable<String> )spots.keySet())
+   *   if((!(sInit.equals(sO) && ni_.equals(sTarget)) && !ni_.equals(sInit))) {
+   *     Spot Si_ = (Spot) spots.get(ni_);
+   *     if((path.indexOf(ni_) == -1) && (restricted.indexOf(ni_) == -1)) { // si le spot n'a pas été parcouru
+   *       double pi = PVector.dist(Si_.position, Sinit.position) + PVector.dist(Starget.position, Si_.position);
+   *       // println(pi);
+   *       // double pi = getLink(ni_,sInit) + getLink(sTarget,ni_);
+   *       if(pi < p) {
+   *         p = pi;
+   *         next = ni_;
+   *       }
+   *     }
+   *   }
+   *  if(sInit.equals(sO))
+   *   println("Distance parcourue par le trajet: " + p / 100);
+   *   // comp = p/100;
+   *  path.add(sInit);
+   *  // println(next);
+   *  return next;
+   *  }*/
+
   /**   Construit le trajet avec tous les spots - appel à exploreSpot
    * @param sStart Spot départ.
    * @param sEnd Spot final.
    */
+
   /*String findPath(String sStart, String sEnd, ArrayList VisitedSpots) {
-    path.clear();
-    restricted.clear();
-    println(" " + sStart + " à " + sEnd);
-    String next = sStart, interm = null;
-    int its = 0;
-    int tests = 0;
-    while(next != sEnd && tests < 100) {
-      next = exploreSpot(sStart, next, sEnd, VisitedSpots);
-      its++;
-      if(its > 500) {
-        its = 0;
-        tests++;
-        restricted.add(path.get(path.size() - 1));
-        next = (String) path.get(0);
-        path.clear();
-        println(tests);
-      }
-    }
-    if(tests < 100)
-      path.add(sEnd);
-    for(int i = 0; i < path.size(); i++) {
-      String p = (String) path.get(i);
-      if(!(p.equals(sStart)) && !(p.equals(sEnd)))
-        interm = p;
-    }
-    println("interm: " + interm);
-    return interm;
-  }*/
+   *  path.clear();
+   *  restricted.clear();
+   *  println(" " + sStart + " à " + sEnd);
+   *  String next = sStart, interm = null;
+   *  int its = 0;
+   *  int tests = 0;
+   *  while(next != sEnd && tests < 100) {
+   *   next = exploreSpot(sStart, next, sEnd, VisitedSpots);
+   *   its++;
+   *   if(its > 500) {
+   *     its = 0;
+   *     tests++;
+   *     restricted.add(path.get(path.size() - 1));
+   *     next = (String) path.get(0);
+   *     path.clear();
+   *     println(tests);
+   *   }
+   *  }
+   *  if(tests < 100)
+   *   path.add(sEnd);
+   *  for(int i = 0; i < path.size(); i++) {
+   *   String p = (String) path.get(i);
+   *   if(!(p.equals(sStart)) && !(p.equals(sEnd)))
+   *     interm = p;
+   *  }
+   *  println("interm: " + interm);
+   *  return interm;
+   *  }*/
+
   /**   Algorithme de Dijkstra
    * @param sStart Spot départ.
    * @param sEnd Spot final.
    */
   void dijkstra(String sStart, String sEnd) {
-    if (spots.get(sStart) == null || spots.get(sEnd) == null)
+    if((spots.get(sStart) == null) || (spots.get(sEnd) == null))
       return;
     path.clear();
     println(" " + sStart + " à " + sEnd);
-    for(String ni_ : (Iterable<String> )spots.keySet()) {
+    for(String ni_ : (Iterable<String>)spots.keySet()) {
       Spot S_ = (Spot) spots.get(ni_);
       S_.init();
     }
@@ -237,7 +241,7 @@ class Trip {
       if(nCurrent == sEnd)
         break;
       Spot Sc = (Spot) spots.get(nCurrent);
-      for(String ni_ : (Iterable<String> )Sc.links.keySet()) {
+      for(String ni_ : (Iterable<String>)Sc.links.keySet()) {
         // for(String ni_ : (Iterable<String>) spots.keySet()) {
         // if(!ni_.equals(sEnd) && !ni_.equals(sStart)) {
         // println("ni_: " + ni_);
@@ -294,5 +298,4 @@ class Trip {
 
 // Taille pour l'insertion dans JavaScool
 public static final int WIDTH = 900, HEIGHT = 500;
-
 

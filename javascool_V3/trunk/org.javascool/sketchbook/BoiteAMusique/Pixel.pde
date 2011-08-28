@@ -97,7 +97,7 @@ class Pixel
         activate();                 // et sonne
       } else
         c = color(255, 170, 0);       // une source non activée mais balayée s'allume en orange
-        stroke(255);
+      stroke(255);
     }
   }
 }

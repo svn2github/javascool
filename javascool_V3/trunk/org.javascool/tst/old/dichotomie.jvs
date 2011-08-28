@@ -1,15 +1,13 @@
-
 int getPage(String pays) {
- int debut = 0, fin = dichoLength();
- while(true) {
-  int c = dichoCompare(pays, debut);
-  if (c == 0) {
-   return debut;
-  } else{
-   debut = debut +1;
+  int debut = 0, fin = dichoLength();
+  while(true) {
+    int c = dichoCompare(pays, debut);
+    if(c == 0)
+      return debut;
+    else
+      debut = debut + 1;
   }
- }
 }
-void main(){
-getPage("France");
+void main() {
+  getPage("France");
 }

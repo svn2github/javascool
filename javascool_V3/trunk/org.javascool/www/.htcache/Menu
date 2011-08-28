@@ -1,0 +1,57 @@
+<p><!--<form action="http://www.google.com/search" method="get" style="font-size:10px;">
+  <input name="ie" type="hidden" value="UTF-8"></input>
+  <input name="oe" type="hidden" value="UTF-8"></input>
+  <input maxlength="255" name="q" size="10" type="text" value=""></input>
+  <input class="buttonSearch" name="btnG" type="submit" value="Rechercher" ></input>
+  <input name="domains" type="hidden" value="http://javascool.gforge.inria.fr"></input>
+  <input name="sitesearch" type="hidden" value="http://javascool.gforge.inria.fr"></input>
+</form>-->
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load('search', '1');
+  google.setOnLoadCallback(function() {
+    google.search.CustomSearchControl.attachAutoCompletion(
+      '000567687519946432762:unyqz7x9tiu',
+      document.getElementById('q'),
+      'cse-search-box');
+  });
+</script>
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="000567687519946432762:unyqz7x9tiu" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="text" name="q" id="q" autocomplete="off" size="10" />
+    <input type="submit" name="sa" value="Rechercher" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=fr"></script>
+
+</p>
+<h3> <span class="mw-headline" id="Activit.C3.A9s"> <a href="?page=Activites" title="JavaScool:Activites">Activités</a> </span></h3>
+<ul><li> <a href="?page=Telechargement" title="JavaScool:Telechargement">Démarrage</a>
+</li></ul>
+<h3> <span class="mw-headline" id="Ressources"> <a href="?page=Ressources" title="JavaScool:Ressources">Ressources</a> </span></h3>
+<ul><li> <a href="?page=TPE-Accueil" title="JavaScool:TPE-Accueil">Aide au TPE</a>
+</li><li> <a href="http://interstices.info"><img height="20" src="http://javascool.gforge.inria.fr/v3/index/images/logo_interstices.jpg"/</a>
+</li></ul>
+<h3> <span class="mw-headline" id="Contacts"> <a href="?page=Contacts" title="JavaScool:Contacts">Contacts</a> </span></h3>
+<ul><li> <a href="?page=Faq" title="JavaScool:Faq">F.A.Q.</a>
+</li><li> <a href="http://www.fuscia.info/accueil" class="external text" rel="nofollow">Bureau d'accueil</a>
+</li></ul>
+<h3> <span class="mw-headline" id="D.C3.A9veloppement"> <a href="?page=Developpement" title="JavaScool:Developpement">Développement</a> </span></h3>
+<ul><li> <a href="?page=Manifeste" title="JavaScool:Manifeste">Manifeste</a> 
+</li><li> <a href="http://wiki.inria.fr/sciencinfolycee" class="external text" rel="nofollow">Wiki de travail</a>
+</li><li> <a href="http://javascool.gforge.inria.fr/v3/?page=api:org/javascool/package-summary.html" class="external text" rel="nofollow">Doc Java</a>
+</li><li> <a href="?page=Licence" title="JavaScool:Licence">Licence</a> 
+</li><li> <a href="?page=Cr%C3%A9dits" title="JavaScool:Crédits">Crédits</a>
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 33/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:79-1!1!0!!fr!2!edit=0!printable=1 and timestamp 20110812091735 -->

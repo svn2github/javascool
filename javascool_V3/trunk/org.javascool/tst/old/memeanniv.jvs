@@ -1,30 +1,24 @@
-
 // Effectue un tirage
-//  et renvoie le nombre de dates d'anniversaire identiques
+// et renvoie le nombre de dates d'anniversaire identiques
 int tirage() {
   // Tirage de 30 dates entre 1 et 365
   int dates[] = new int[1200];
-  for(int i = 0; i < dates.length; i++) {
-     dates[i] = random(1, 365);
-  }
-  // Comptage des dates identiques
+  for(int i = 0; i < dates.length; i++)
+    dates[i] = random(1, 365);
+   // Comptage des dates identiques
   int doublons = 0;
-  for(int i = 0; i < dates.length; i++) {
-    for(int j = i + 1; j < dates.length; j++) {
-      if(dates[i] == dates[j]) {
+  for(int i = 0; i < dates.length; i++)
+    for(int j = i + 1; j < dates.length; j++)
+      if(dates[i] == dates[j])
         doublons = doublons + 1;
-      }
-    }
-  }
   return doublons;
 }
 // Calcule la moyenne sur un grand nombre de tirages
 void main() {
   double N = 10;
   double M = 0;
-  for(int n = 0; n < N; n++) {
+  for(int n = 0; n < N; n++)
     M = M + tirage();
-  }
   M = M / N;
   println(" Nombre de dates identiques en moyenne: " + M);
 }

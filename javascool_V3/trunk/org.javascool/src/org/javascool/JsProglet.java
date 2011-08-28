@@ -12,7 +12,7 @@ import javax.swing.JPanel;
  * <li><b>Spécification d'une «proglet».</b><ul>
  *   <li>Chaque «proglet» doit avoir un <i>nom</i> différent: <ol>
  *     <li>c'est celui du répertoire qui contient les éléments qui constituent la «proglet».</li>
- *     <li>c'est aussi celui du fichier de configuration de <tt><i>nom</i>.pml</i></tt> qui définit la «proglet».</li> 
+ *     <li>c'est aussi celui du fichier de configuration de <tt><i>nom</i>.pml</i></tt> qui définit la «proglet».</li>
  *     <li>c'est encore celui de la classe Java <tt><i>nom</i>.java</i></tt>, <tt><i>nom</i>.jvs</i></tt> ou <tt><i>nom</i>.pde</i></tt> qui implémente la «proglet».</li>
  * </ul><ol>
  *    <li>Le fichier de configuration qui définit la «proglet» spécifie les <a href="#pml">méta-données</a> permettant de l'intégrer.<ul>
@@ -59,7 +59,7 @@ import javax.swing.JPanel;
  * <li><a name="java"><b>Manipulation de l'objet numérique programmable.</b></a><ul>
  *  <li>Toutes les méthodes accessibles à l'utilisateur pour manipuler l'objet numérique sont définies par des méthodes <tt>public static</tt>,
  *    qui seront appellés en les préfixant  du nom de la «proglet» (par exemple <tt>Scope.clear();</tt> pour effacer l'oscilloscope).</li>
- *  <li>Il ne faut jamais [re]définir de méthodes accessibles à l'utilisateur de nom: 
+ *  <li>Il ne faut jamais [re]définir de méthodes accessibles à l'utilisateur de nom:
  *     <tt>clone</tt>, <tt>equals</tt>, <tt>finalize</tt>, <tt>getClass</tt>, <tt>hashCode</tt>, <tt>notify</tt>, <tt>run</tt>, <tt>toString</tt>, ou <tt>wait</tt>.</li>
  *  <li>Une bonne méthode pour écrire une proglet est de partir d'un exemple et de l'adapter aux nouvelles fonctionnalités souhaitées (<tt>on fournira une «proglet» "témoin" bien annotée, avec des fonctionnalités très simples</tt>)</li>
  * </ul><hr></li>
@@ -73,7 +73,7 @@ import javax.swing.JPanel;
  *   <li>tandis qu'il charge ensuite toutes les  «proglet» visibles dans son environnement.</li>
  * </ul>On a donc un mécanisme unique pour créer ou utiliser des «proglets».<hr></li>
  * </ul>
- * 
+ *
  *
  */
 public class JsProglet {
@@ -81,5 +81,5 @@ public class JsProglet {
   /** Référence le panel correspondant à l'interface graphique de la «proglet», si il existe (si seule la console est utilisée, le champ peut rester indéfini). */
   public static final JPanel panel = null;
   /** Lance un test/demo sur l'interface graphique de la «proglet», si définit (si il n'y a pas de démo, la méthode peut rester indéfinie). */
-  public static final void test() { }
+  public static final void test() {}
 }

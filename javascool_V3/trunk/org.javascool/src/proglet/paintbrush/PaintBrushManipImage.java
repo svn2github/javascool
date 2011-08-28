@@ -19,7 +19,7 @@ public interface PaintBrushManipImage {
 
   // Pot de peinture : remplir tous les pixels voisins de (x,y) et ayant la même couleur avec la couleur spécifiée
   public void remplir(int x, int y, int nouvelle_couleur);
-  
+
   // Rotation de 90° vers la gauche de l'image
   public void rotationGauche();
 }
@@ -39,7 +39,7 @@ class ManipImageVide implements PaintBrushManipImage {
 
   // Pot de peinture : remplir tous les pixels voisins de (x,y) et ayant la même couleur avec la couleur spécifiée
   public void remplir(int x, int y, int nouvelle_couleur) {}
-  
+
   public void rotationGauche() {}
 }
 
@@ -115,26 +115,23 @@ class ManipImageFinal implements PaintBrushManipImage {
     if(ancienne_couleur != nouvelle_couleur)
       remplir_aux(x, y, ancienne_couleur, nouvelle_couleur);
   }
-  
   public void rotationGauche() {
-	  for (int i=0; i<16; i++)
-		  for (int j=0; j<16; j++) {
-			  	int temp = PaintBrush.getPixel(i, j);
-			  	PaintBrush.setPixel(i, j, PaintBrush.getPixel(j,31-i));
-			  	PaintBrush.setPixel(j, 31-i, PaintBrush.getPixel(31-i,31-j));
-			  	PaintBrush.setPixel(31-i, 31-j, PaintBrush.getPixel(31-j,i));
-			  	PaintBrush.setPixel(31-j, i, temp);
-		  }	  
+    for(int i = 0; i < 16; i++)
+      for(int j = 0; j < 16; j++) {
+        int temp = PaintBrush.getPixel(i, j);
+        PaintBrush.setPixel(i, j, PaintBrush.getPixel(j, 31 - i));
+        PaintBrush.setPixel(j, 31 - i, PaintBrush.getPixel(31 - i, 31 - j));
+        PaintBrush.setPixel(31 - i, 31 - j, PaintBrush.getPixel(31 - j, i));
+        PaintBrush.setPixel(31 - j, i, temp);
+      }
   }
-
   public void rotationGauche2() {
-	  int[][] temp = new int[32][32];
-	  for (int i=0; i<32; i++)
-		  for (int j=0; j<32; j++)
-			  	temp[i][j] = PaintBrush.getPixel(i, j);
-	  for (int i=0; i<32; i++)
-		  for (int j=0; j<32; j++)
-			  	PaintBrush.setPixel(i, j, temp[j][31-i]);
-	  
+    int[][] temp = new int[32][32];
+    for(int i = 0; i < 32; i++)
+      for(int j = 0; j < 32; j++)
+        temp[i][j] = PaintBrush.getPixel(i, j);
+    for(int i = 0; i < 32; i++)
+      for(int j = 0; j < 32; j++)
+        PaintBrush.setPixel(i, j, temp[j][31 - i]);
   }
 }

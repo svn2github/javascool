@@ -26,7 +26,7 @@ class HScrollbar
 
   void update() {
     if(over())
-      newspos = width / 2; // constrain(mouseX-sheight/2, sposMin, sposMax);
+      newspos = width / 2;  // constrain(mouseX-sheight/2, sposMin, sposMax);
     else
       newspos = 0;
     if(abs(newspos - spos) > 1)

@@ -1,6 +1,5 @@
-
-void main(){
-   @tone: sqr(t) + noi(t);
-   syntheSet("c4 c4 c4 c4");
-   synthePlay();
+void main() {
+@tone: sqr(t) + noi(t);
+  syntheSet("c4 c4 c4 c4");
+  synthePlay();
 }

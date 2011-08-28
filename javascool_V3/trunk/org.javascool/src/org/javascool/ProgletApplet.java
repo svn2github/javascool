@@ -41,17 +41,17 @@ public class ProgletApplet extends JApplet {
   }
   private String proglet = "";
   private boolean demo = true;
-  /**/public void init() {
+  /**/ public void init() {
     // Init the parameters from the HTML tags
-    try { 
+    try {
       String p = getParameter("proglet");
       if(p != null)
-	proglet = p;
+        proglet = p;
     } catch(Exception e) {}
     try {
       String p = getParameter("demo");
       if(p != null)
-	demo = p.toLowerCase().equals("true");
+        demo = p.toLowerCase().equals("true");
     } catch(Exception e) {}
     JPanel panel = Jvs2Java.getPanel(proglet);
     if(panel == null) {

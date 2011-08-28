@@ -45,7 +45,7 @@ public class SoundDisplay implements org.javascool.Proglet {
   // This defines the tests on the panel
   //
 
-  /**/public static void test() {
+  /**/ public static void test() {
     // - for(String name : FileSoundBit.getMidiNames()) { SoundBit s = new FileSoundBit().reset("midi:"+name); System.out.println(s); s.play(); }
     test(new SoundBit() {
            public double get(char c, double t) {

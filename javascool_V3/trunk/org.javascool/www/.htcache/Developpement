@@ -1,0 +1,41 @@
+<p><br />
+</p>
+<h1> <span class="mw-headline" id="D.C3.A9veloppement_de_contenus_.C3.A0_partir_de_JavaScool"> Développement de contenus à partir de JavaScool </span></h1>
+<div align="right">Cliquer ici pour le chargement de l'ancienne <i><a href="http://javascool.gforge.inria.fr/v3/javascool-3-1.jar" class="external text" rel="nofollow">version 3.1</a></i> ou <i><a href="http://javascool.gforge.inria.fr/v3/javascool-3-2.jar" class="external text" rel="nofollow">version 3.2.0</a></i></div>
+<h2> <span class="mw-headline" id="D.C3.A9veloppement_d.27activit.C3.A9s_.C3.A0_partir_de_proglets_existants."> Développement d'activités à partir de proglets existants. </span></h2>
+<ul><li> Il suffit de <a href="mailto:Thierry.Vieville@inria.fr,Philoumailabo@gmail.com?subject=Participer%20au%20Wiki%20JavaScool&amp;body=Bonjour,%0a,%20%20Je%20suis%20un%20enseignant%20du%20lycée%20de%20??%20à%20??%20et%20souhaite%20accéder%20à%20http://wiki.inria.fr/wikis/sciencinfolycee.%0a,%20%20%20Voici%20un%20élément%20qui%20prouve%20que%20je%20ne%20suis%20pas%20élève%20!%20:%20??%0a,%20%20Signature%20:%20??" class="external text" rel="nofollow">demander un accès au wiki</a> au <a href="http://wiki.inria.fr/wikis/sciencinfolycee" class="external text" rel="nofollow">wiki</a>
+</li><li> <form action="http://wiki.inria.fr/wikis/sciencinfolycee"><input type="hidden" name="action" value="edit"/>Puis de créer une nouvelle page de nom: <input name="title" value="Activite:"/></form>
+<ul><li> bien référencées les pages dans la <a href="http://wiki.inria.fr/sciencinfolycee/Cat%C3%A9gorie:JavaScool" class="external text" rel="nofollow">Catégorie:Activite</a> , aucune page ne doit être <a href="http://wiki.inria.fr/sciencinfolycee/Sp%C3%A9cial:Pages_non_cat%C3%A9goris%C3%A9es" title="Spécial:Pages non catégorisées">sans catégorie</a>. <br /> Ceci en ajoutant <i>[[Catégorie:Activite]]</i> en tête de page.
+</li><li> renudes publiques, lorsque validées, en ajoutant leur nom à la <a href="http://wiki.inria.fr/sciencinfolycee/MediaWiki:Whitelist?action=edit" class="external text" rel="nofollow">MediaWiki:Whitelist</a>
+</li></ul>
+</li></ul>
+<h2> <span class="mw-headline" id="D.C3.A9veloppement_de_nouvelles_proglets"> Développement de nouvelles proglets </span></h2>
+<ul><li> Il suffit d'installer la <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" class="external text" rel="nofollow">JDK</a> (Java Development Toolkit)
+</li><li> De télécharger <a href="http://javascool.gforge.inria.fr/v3/javascool.jar" class="external text" rel="nofollow">javascool.jar</a> et d'accéder à sa <a href="http://javascool.gforge.inria.fr/v3/?page=api:org/javascool/package-summary.html" class="external text" rel="nofollow">documentation</a>.
+<ul><li> Et, par exemple, de l'installer dans le répertoire <i>jre/lib/ext</i> de la JDK pour l'avoir toujours disponible.
+</li></ul>
+</li><li> Puis de l'utiliser avec votre environnement de programmation favori (ex: <a href="http://openprocessing.org" class="external text" rel="nofollow">processing.org</a>, <a href="http://www.eclipse.org" class="external text" rel="nofollow">eclipse</a> ou <a href="http://netbeans.org" class="external text" rel="nofollow">netbeans</a>)
+</li></ul>
+<ul><li> La documentation s'écrit en <a href="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-hml.htm" class="external text" rel="nofollow">HML</a> qui est un langage XML/HTML simplifiė.
+</li><li> Le code se formate sous forme de «<a href="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/Proglet.html" class="external text" rel="nofollow">proglet</a>» qui est un mécanisme d'interface minimal avec la plateforme JavaScool.
+</li></ul>
+<h2> <span class="mw-headline" id="Devenir_d.C3.A9veloppeur_de_JavaScool"> Devenir développeur de JavaScool </span></h2>
+<ul><li> Il faut nous contacter pour obtenir la possibilité:
+<ul><li> de s'inscrire sur la <a href="https://gforge.inria.fr" class="external text" rel="nofollow">forge inria</a>
+</li><li> de devenir développeur du  <a href="https://gforge.inria.fr/projects/javascool" class="external text" rel="nofollow">projet javascool</a>
+</li></ul>
+</li><li> Afin d'installer le paquet de fichier avec la commande:
+<ul><li> <i>svn co svn+ssh://$USER@scm.gforge.inria.fr/svn/javascool/javascool_V3</i>
+</li></ul>
+</li><li> Toute l'information étant présente dans le makefile
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 37/1000000
+Post-expand include size: 56/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:88-1!1!0!!fr!2!edit=0!printable=1 and timestamp 20110812121156 -->

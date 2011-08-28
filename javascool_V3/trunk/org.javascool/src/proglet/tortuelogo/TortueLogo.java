@@ -84,7 +84,7 @@ public class TortueLogo implements org.javascool.Proglet {
   // This defines the tests on the panel
   //
 
-  /**/public static void test() {
+  /**/ public static void test() {
     clear_all();
     pen_up();
     int t = 0;

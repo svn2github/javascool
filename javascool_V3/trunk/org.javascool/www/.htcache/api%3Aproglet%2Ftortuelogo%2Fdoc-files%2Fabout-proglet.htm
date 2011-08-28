@@ -1,0 +1,134 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div>
+   <h2>La &laquo;proglet&raquo; tortuelogo.</h2>
+   
+   <div align="right" class="margin">Autres <a href="?page=api:/proglet/tortuelogo/doc-files/../../../org/javascool/doc-files/about-proglets.htm">&laquo;proglets&raquo;</a>.
+   </div>
+     
+   <div>
+       Cette proglet<sup><a href="#1">1</a></sup> permet de simuler la c&eacute;l&egrave;bre <a href="http://fr.wikipedia.org/wiki/Logo_(langage)">tortue logo</a>.
+      
+        
+      <div>Dans ce contexte les instructions &agrave; utiliser sont celles de <tt><a href="http://javascool.gforge.inria.fr" style="padding:0;margin:0;text-decoration:none">Java'sCool</a></tt>, la tortue &eacute;volue dans un carr&eacute; de salade de taille <tt>[512 x 512]</tt>
+           tandis que les <a href="http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_graphiques">primitives graphiques usuelles</a> de la tortue logo sont disponibles:
+           
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           Primitives de la tortue logo disponibles
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+           La tortue est toujours visible et ne peut sortir du jardin et dispara&icirc;tre de l'&eacute;cran graphique.
+           
+      </div>
+      
+        
+      <div>Que les nostalgiques de cette ancienne fa&ccedil;on d'apprendre &agrave; programmer en profite, la tortue est de retour:
+           
+         <div align="center" class="center"><img src="/api//proglet/tortuelogo/doc-files/turtle.gif" alt="" class="icon"></div>
+           
+      </div>
+      
+        
+      <div>Un exemple d'utilisation: lors de la <a href="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/tortuelogo/doc-files/the-proglet.htm">d&eacute;monstration</a>,
+           la tortue trace de belles <a href="http://fr.wikipedia.org/wiki/Courbe_de_Lissajous">courbes de Lissajous</a> en changeant la couleur:
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Initialisation du trac&eacute;</font></tt></p>
+                            
+                        <div><font color="#990000"><b>clear_all</b></font>();
+                        </div>
+                            
+                        <div><font color="#990000"><b>pen_up</b></font>();
+                        </div>
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Boucle de trac&eacute;</font></tt></p>
+                            
+                        <div><font color="#990000"><b>int</b></font> t = 0; <font color="#990000"><b>while</b></font>(t &lt; 9000) {
+                        </div>
+                            
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>set_color</b></font>((t / 1000) % 10);
+                        </div>
+                            
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>set_position</b></font>(
+                        </div>
+                            
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           256 + 250 * <font color="#990000"><b>Math.cos</b></font>(0.0015 * t),
+                        </div>
+                            
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           256 + 250 * <font color="#990000"><b>Math.sin</b></font>(0.0045 * t)
+                        </div>
+                            
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           );
+                        </div>
+                            
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>pen_down</b></font>();
+                        </div>
+                            
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           t = t + 1;
+                        </div>
+                            
+                        <div>}</div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+           
+      </div>
+      
+        
+   </div>
+   
+     
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programm&eacute;e en Java et <a href="http://javascool.gforge.inria.fr/v3/api/proglet/tortuelogo/TortueLogo.html">document&eacute;e</a> 
+                   pour sa libre redistribution, l'acc&egrave;s <a href="http://javascool.gforge.inria.fr/v3/api/proglet/tortuelogo/TortueLogo.java.html">au code source</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+</div>

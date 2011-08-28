@@ -60,4 +60,3 @@ class Car extends Vec2D {
   }
 }
 
-

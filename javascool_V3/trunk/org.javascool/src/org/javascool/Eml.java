@@ -83,7 +83,7 @@ package org.javascool;
  * @serial exclude
  */
 public class Eml extends Pml {
-  /**/public Eml() {}
+  /**/ public Eml() {}
   private static final long serialVersionUID = 1L;
 
   /** Resets the logical-structure, parsing the given string.

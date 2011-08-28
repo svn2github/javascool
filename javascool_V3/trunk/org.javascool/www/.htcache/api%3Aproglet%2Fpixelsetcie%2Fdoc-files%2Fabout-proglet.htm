@@ -1,0 +1,191 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div>
+   <h2>La &laquo;proglet&raquo; pixelsetcie.</h2>
+   
+   <div align="right" class="margin">Autres <a href="?page=api:/proglet/pixelsetcie/doc-files/../../../org/javascool/doc-files/about-proglets.htm">&laquo;proglets&raquo;</a>.
+   </div>
+     
+   <div>
+       Cette proglet<sup><a href="#1">1</a></sup> permet de manipuler une petite image de r&eacute;solution variable, dont les coordonn&eacute;es se d&eacute;finissent ainsi:
+           
+      <div align="center" class="center"><img src="/api//proglet/pixelsetcie/doc-files/smiley.png" alt="" class="icon"></div>
+           c'est &agrave; dire que l'abscisse (la position horizontale ou largeur, width en anglais) va de <tt>-width</tt> &agrave; <tt>+width</tt> 
+           et l'ordonn&eacute;e (la position verticale ou hauteur, height en anglais) va de <tt>-height</tt> &agrave; <tt>+height</tt>.
+           
+      <div>La fonction:
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                               
+                        <div><font color="#990000"><b>smileyReset</b></font>(width, height);
+                        </div>
+                             
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>o&ugrave; <b>width</b> et <b>height</b> sont des <font color="#990000"><b>int</b></font> permet d'afficher une nouvelle image de largeur et hauteur donn&eacute;es tandis que la fonction
+               
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                               
+                        <div><font color="#990000"><b>smileyLoad</b></font>(image);
+                        </div>
+                             
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>o&ugrave; <b>image</b> est le lien &laquo;url&raquo; de l'image, permet d'afficher image disponible sur internet (attention sa taille doit rester modeste inf&eacute;rieur
+         &agrave; 500<sup>2</sup>)
+              tandis que
+               
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                                
+                        <div><font color="#990000"><b>int</b></font> width = <font color="#990000"><b>smileyWidth</b></font>();
+                        </div>
+                                
+                        <div><font color="#990000"><b>int</b></font> height = <font color="#990000"><b>smileyHeight</b></font>();
+                        </div>
+                             
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p> renvoient la largeur (width) et hauteur (height) de l'image qui a &eacute;t&eacute; charg&eacute;e.
+              
+      </div>
+           
+      <div>Pour d&eacute;finir un point de couleur dans cette image la fonction <font color="#990000"><b>smileySet</b></font>: 
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                               
+                        <div><font color="#990000"><b>smileySet</b></font>(x, y, color);
+                        </div>
+                              
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+         <ul class="ul">
+                    
+            <li>o&ugrave; <b>x</b> est un <font color="#990000"><b>int</b></font>, entre <b>[-width, +width]</b>, abscisse du point;
+            </li>
+                    
+            <li>o&ugrave; <b>y</b> est un <font color="#990000"><b>int</b></font>, entre <b>[-height, +height]</b>, ordonn&eacute;e du point;
+            </li>
+                    
+            <li>o&ugrave; <b>color</b> est un <font color="#990000"><b>String</b></font> qui donne la couleur du point, ses valeurs &eacute;tant
+                       <font color="#008000">"black"</font>, <font color="#008000">"blue"</font>, <font color="#008000">"cyan"</font>, <font color="#008000">"gray"</font>, <font color="#008000">"green"</font>, <font color="#008000">"magenta"</font>, <font color="#008000">"orange"</font>, <font color="#008000">"pink"</font>, <font color="#008000">"red"</font>, <font color="#008000">"white"</font>, <font color="#008000">"yellow"</font>.
+            </li>
+                  
+         </ul>permettre d'&eacute;crire un pixel couleur dans cette image.
+             
+      </div>
+          
+      <div>Pour d&eacute;finir lire/&eacute;crire un point monochrome les fonctions <font color="#990000"><b>smileySet/smileyGet</b></font>: 
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                              
+                        <div><font color="#990000"><b>int</b></font> valeur = <font color="#990000"><b>smileyGet</b></font>(x, y);
+                        </div>
+                              
+                        <div><font color="#990000"><b>smileySet</b></font>(x, y, valeur);
+                        </div>
+                             
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+         <ul class="ul">
+                   
+            <li>o&ugrave; <b>x</b> est un <font color="#990000"><b>int</b></font>, entre <b>[-width, +width]</b>, abscisse du point;
+            </li>
+                   
+            <li>o&ugrave; <b>y</b> est un <font color="#990000"><b>int</b></font>, entre <b>[-height, +height]</b>, ordonn&eacute;e du point;
+            </li>
+                   
+            <li>o&ugrave; <b>valeur</b> est un entier entre <tt>0</tt> (pour le "noir") et <tt>255</tt> (pour le "blanc"),
+                      toutes les valeurs entre <tt>0</tt> et <tt>255</tt> d&eacute;finissant les valeurs de gris,
+            </li>
+                 
+         </ul>permettre de lire/&eacute;crire un pixel monochrome dans cette image.
+             
+      </div>
+          
+      <div>Un exemple d'utilisation: lors de la <a href="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/pixelsetcie/doc-files/the-proglet.htm">d&eacute;monstration</a>, 
+               le signe de la paix va s'afficher:
+               
+         <div align="center" class="center"><img src="/api//proglet/pixelsetcie/doc-files/smiley2.jpg" alt="" class="icon"></div>
+               ceci, &agrave; diff&eacute;rentes r&eacute;solutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne r&eacute;solution il sera tr&egrave;s lisible, puis
+         petit &agrave; petit il se r&eacute;duira &agrave; quelques pixels,
+               selon le programme suivant:
+               
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                                
+                        <div><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> size = 256; size &gt; 0; size /= 2) {
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>smileyReset</b></font>(size, size);
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>peace</b></font>();
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>sleep</b></font>(1000 - size);
+                        </div>
+                                
+                        <div>}</div>
+                              
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p> o&ugrave; la routine <font color="#990000"><b>peace</b></font> trace le signe de la paix et correspond &agrave; une fonction &agrave; d&eacute;finir.
+             
+      </div>
+        
+   </div>
+   
+     
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div id="1">Cette proglet est un <a href="http://fr.wikipedia.org/wiki/Open_source">code source libre</a>, programm&eacute;e en Java et <a href="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/pixelsetcie/ImageDisplay.html">document&eacute;e</a> 
+                   pour sa libre redistribution, l'acc&egrave;s <a href="http://javascool.gforge.inria.fr/v3/?page=api:/proglet/pixelsetcie/ImageDisplay.java.html">au code source</a>, et permettre des d&eacute;veloppements d&eacute;riv&eacute;s.
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+</div>

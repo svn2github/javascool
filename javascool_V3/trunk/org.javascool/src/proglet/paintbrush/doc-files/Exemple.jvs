@@ -30,7 +30,7 @@ void main() {
                              public void rotationGauche() {
                                println("rotation gauche");
                              }
-                             
+
                              // Pot de peinture : remplir tous les pixels voisins de (x,y)
                              // et ayant la même couleur avec la couleur spécifiée
                              public void remplir(int x, int y, int couleur) {

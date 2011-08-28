@@ -1,0 +1,44 @@
+<p><br />
+</p>
+<h1> <span class="mw-headline" id="Autres_initiatives_.28extra-scolaires.29_de_popularisation_de_l.27Informatique"> Autres initiatives (extra-scolaires) de popularisation de l'Informatique </span></h1>
+<center>«Faites bien avec rien, faites mieux avec peu, faites le maintenant&nbsp;!» (credo emprunté au mouvement <a href="http://www.kino00.com/" class="external text" rel="nofollow">KINO</a>, une communauté de cinéastes indépendants)</center>
+<h2> <span class="mw-headline" id="Apprendre_l.27informatique"> Apprendre l'informatique </span></h2>
+<ul><li> Le <a href="http://www.siteduzero.com" class="external free" rel="nofollow">http://www.siteduzero.com</a> propose des tutoriels dans tous la majorité des langages informatiques . . dans le domaine du libre.
+</li></ul>
+<ul><li> FLOSS = "Free Libre Open Source Software", expression désignant les diférentes manières de désigner le logiciel libre. Le site <a href="http://en.flossmanuals.net/about" class="external free" rel="nofollow">http://en.flossmanuals.net/about</a> regroupe une collection de tutoriaux sur les logiciels libres, ainsi que des outils et des informations sur les communautés qui les manipulent.
+</li></ul>
+<h2> <span class="mw-headline" id="Plateforme_de_d.C3.A9veloppement"> Plateforme de développement </span></h2>
+<ul><li> La plateforme <a href="http://processing.org" class="external free" rel="nofollow">http://processing.org</a> propose dans une version simplifiée de Java très proche de JavaScool une large gamme de très beaux développements réutilisable et une communauté qui se «sert les coudes» pour aider chacun à avancer. Nombreuses librairies disponibles, tutoriaux en libre service. Voir examples sur <a href="http://openprocessing.org" class="external free" rel="nofollow">http://openprocessing.org</a>. Nota, il existe une plateforme dédiée pour le developpement sur mobile: <a href="http://mobile.processing.org/download/index.php" class="external free" rel="nofollow">http://mobile.processing.org/download/index.php</a>
+</li></ul>
+<p>Tutorial en anglais assez complet, qui aborde également OpenFramework (plateforme de libraries en graphiques, video, audio etc en langage C++) [www.anonimocolectivo.org/.../Oreilly.Programming.Interactivity.Jul.2009.pdf Programming Interactivity]
+</p>
+<ul><li> <a href="http://www.arduino.cc/" class="external text" rel="nofollow">L'Arduino</a> permet la création d'objets intéractifs. Il permet de revevoir des données d'environnements par l'intermédiaire de capteurs de tous types et peut en réponse agir sur des lumières, des moteurs etc. L'usage d'une arduino implique la programmation du microcontroller, avec un langage simple. L'intérêt de l'arduino est ce qu'il constitue un cas pratique de l'informatique.
+</li></ul>
+<ul><li> <a href="http://training.oreilly.com/arduino/" class="external text" rel="nofollow">Processing and Arduino in tandem</a>
+</li></ul>
+<h2> <span class="mw-headline" id="Acc.C3.A8s_aux_outils_et_mat.C3.A9riel_informatique.2C_relatif_.C3.A0_la_p.C3.A9dagogie"> Accès aux outils et matériel informatique, relatif à la pédagogie </span></h2>
+<ul><li> Le projet <a href="http://laptop.org/en" class="external free" rel="nofollow">http://laptop.org/en</a> vise à une démocratisation de l'informatique dans les pays en voie de développement, <a href="http://www.planete-sciences.org" class="external free" rel="nofollow">http://www.planete-sciences.org</a> l'utilise pour des ateliers pédagogiques
+</li></ul>
+<ul><li> La <a href="http://lamiam.fr" class="external text" rel="nofollow">Malette Interactive Artistique Multimedia</a> propose un ordinateur et ses instruments interactifs (capteurs divers, webcam, joystick, wiimote, carte arduino, …): outil pédagogique qu’un instrument/système à vocation artistique
+</li></ul>
+<h2> <span class="mw-headline" id="Communaut.C3.A9s_de_pratiques_et_initiatives"> Communautés de pratiques et initiatives</span></h2>
+<ul><li> De nombreux <i>Hackerspaces</i> en France: Région parisienne <a href="http://www.tmplab.org/" class="external text" rel="nofollow">Tmplab</a>, Toulouse <a href="http://tetalab.org/" class="external text" rel="nofollow">TetaLab</a>, Nantes <a href="http://home.crealab.info/" class="external text" rel="nofollow">Crealab</a> etc..!
+</li></ul>
+<ul><li> <a href="http://usinette.org/spip.php?article6" class="external text" rel="nofollow">Le projet usinette</a> (axé robotique/électronique), projet soutenu par le hackerspace de Nantes Crealab est une machine à construire n'importe quel objet, il suffit de lui en fournir les plans. Cette initiative est un modèle de <a href="http://reprap.org/wiki/Main_Page" class="external text" rel="nofollow">reprap</a> en plus 'cheap' et moins médiatisé.
+</li></ul>
+<ul><li> Des rencontres du type <a href="http://www.estivenumerique.org" class="external text" rel="nofollow">Estive Numérique</a> propose une autre vision de l'Âge Numérique réconciliée avec des valeurs de démocratie participative, avec bien-sûr l'accès à tout-te-s usages et fondements des sciences du numérique, en lien aussi avec <a href="http://www.hackerspace.net" class="external free" rel="nofollow">http://www.hackerspace.net</a>
+</li></ul>
+<ul><li> Des groupes de pratiques en robotique qui manipulent également l'informatique: a Sophia Antipolis, ils sont plusieurs; parmi eux <a href="http://www.pobot.org/" class="external text" rel="nofollow">Pobot</a>.
+</li></ul>
+<ul><li> Une initiative de la <a href="http://www.reseaufing.org/" class="external text" rel="nofollow">Fing</a>: <a href="http://www.reseaufing.org/pg/groups/22910/open-paca/" class="external text" rel="nofollow">Open PACA</a>
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 19/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:80-1!1!0!!fr!2!edit=0!printable=1 and timestamp 20110812161923 -->

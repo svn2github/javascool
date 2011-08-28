@@ -310,8 +310,8 @@ public class Jvs2Java {
       URL[] urls = new URL[] { /* new URL(getJavaScoolJar()), */ new URL("file:" + new File(jpath).getParent() + File.separator) };
       Class< ? > j_class = new URLClassLoader(urls).loadClass(jclass);
       Object o = j_class.newInstance();
-      if (o instanceof Runnable)
-	runnable = (Runnable) o;
+      if(o instanceof Runnable)
+        runnable = (Runnable) o;
       return o;
     } catch(Throwable e) { throw Utils.report(new RuntimeException("Erreur: impossible de charger " + jpath + " / " + jclass + " (" + e + ") \n . . le package est il mal défini ?"));
     }
@@ -327,6 +327,7 @@ public class Jvs2Java {
       if(proglet.length() > 0)
         proglets.put(proglet.replaceFirst("^proglet\\.([^\\.]+)\\..*$", "$1"), proglet);
   }
+
   /** Returns the proglet panel.
    * @param proglet The proglet class name.
    * @return The panel corresponding to the proglet, if any, else null;
@@ -350,22 +351,21 @@ public class Jvs2Java {
       thread = null;
     }
     if(start) {
-      if (runnable != null) {
-	(thread = new Thread(new Runnable() {
-                             public void run() {
-                               try {
-                                 runnable.run();
-				 thread = null;
-                               } catch(Throwable e) {
-                                 if(!"Programme arrêté !".equals(e.getMessage()))
-                                   Utils.report(e);
+      if(runnable != null) {
+        (thread = new Thread(new Runnable() {
+                               public void run() {
+                                 try {
+                                   runnable.run();
+                                   thread = null;
+                                 } catch(Throwable e) {
+                                   if(!"Programme arrêté !".equals(e.getMessage()))
+                                     Utils.report(e);
+                                 }
                                }
                              }
-                           }
-                           )).start();
-      } else {
-	System.err.println("Undefined runnable");
-      }
+                             )).start();
+      } else
+        System.err.println("Undefined runnable");
     }
   }
   /** Runs/Stops a proglet demo..
@@ -382,12 +382,12 @@ public class Jvs2Java {
                              public void run() {
                                try {
                                  Class.forName(Jvs2Java.proglet).getDeclaredMethod("test").invoke(null);
-				 thread = null;
+                                 thread = null;
                                } catch(Throwable e) {
                                  Utils.report(e);
                                }
                              }
-	}
+                           }
                            )).start();
     }
   }
@@ -396,7 +396,7 @@ public class Jvs2Java {
     return thread != null;
   }
   // This is the entry point to run  the proglet pupil's program: do not change directly !
-  /**/public static Runnable runnable = null;
+  /**/ public static Runnable runnable = null;
   private static String proglet = null;
   private static Thread thread = null;
 

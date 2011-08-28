@@ -1,0 +1,796 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div align="right"></div>
+<div class="sujet">
+   <h2>Un tutoriel pour se familiariser avec les fonctions.</h2>
+   
+   
+   <h2>Objectif.</h2>
+   <div class="objectif">
+      Le but de ce tutoriel est de se familiariser avec les fonctions. Il faut d&eacute;ja savoir <a href="?page=api:/proglet/ingredients/doc-files/sujet-hello-world.htm">utiliser l'interface</a>,
+        se servir de <a href="?page=api:/proglet/ingredients/doc-files/sujet-about-variables.htm">variables</a> et avoir d&eacute;couvert l'instruction <a href="?page=api:/proglet/ingredients/doc-files/sujet-about-if.htm">conditionnelle</a>.
+        
+   </div>
+     
+     
+   <h2>Introduction.</h2>
+   <div id="intros">
+      <ol>
+         <li>
+            <div>
+               <h3>D&eacute;cortiquer un exemple de fonction.</h3> Voici un exemple de fonction qui se nomme &laquo;valeur absolue<sup><a href="#1">1</a></sup>&raquo; et qui se d&eacute;finit ainsi: 
+               <ul class="ul">
+                        
+                  <li>Si la variable <tt>x</tt> a une valeur est positive alors on retourne cette valeur positive.
+                  </li>
+                        
+                  <li>Si la variable <tt>x</tt> a une valeur est n&eacute;gative alors on retourne l'oppos&eacute; de cette valeur (not&eacute; <tt>-x</tt>), donc une valeur encore positive.
+                  </li>
+                      
+               </ul>
+                   
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition de la fonction valeur absolue</font></tt></p>
+                                    
+                              <div><font color="#990000"><b>int</b></font> abs(<font color="#990000"><b>int</b></font> x) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font> (x <font color="#990000"><b>&gt;</b></font> 0) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>return</b></font> x;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>return</b></font> -x;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>}</div>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                    Regardons plus en d&eacute;tail cette fonction : 
+               <ul class="ul">
+                        
+                  <li>La ligne de commentaire "D&eacute;finition de la fonction valeur absolue" explique &agrave; tous ceux qui vont utiliser le code, ce que
+                     fait cette fonction :
+                           c'est bien utile !
+                  </li>
+                        
+                  <li>La ligne <b><font color="#990000"><b>int</b></font> abs(<font color="#990000"><b>int</b></font> x)</b> nous dit, de gauche &agrave; droite, que : 
+                     <ul class="ul">
+                                
+                        <li>la fonction renvoie, en sortie, un r&eacute;sultat qui est un entier, donc un <font color="#990000"><b>int</b></font> ;
+                        </li>
+                                
+                        <li>le nom de la fonction est <font color="#990000"><b>abs</b></font> ;
+                        </li>
+                                
+                        <li>la fonction re&ccedil;oit, en entr&eacute;e, un argument <b>x</b> qui est un entier ;
+                        </li>
+                              
+                     </ul>Cette ligne <i>d&eacute;finit donc la fonction</i>, c'est son <i>interface</i> ou sa <i>signature</i>. 
+                           Nous avons besoin de conna&icirc;tre cette ligne pour savoir comment appeler cette fonction.
+                  </li>
+                        
+                  <li>Les 4 lignes suivantes forment le <i>corps</i> de la fonction : 
+                           on y lit que si <b>x</b> est plus grand que <b>0</b>, le r&eacute;sultat est <b>x</b>, sinon le r&eacute;sultat est  <b>-x</b>. 
+                           En effet :
+                     <ul class="ul">
+                                
+                        <li>l'instruction <b><font color="#990000"><b>return</b></font> x;</b> signifie <i>renvoyer le r&eacute;sulat</i> : le calcul est fini et la fonction retourne la valeur calcul&eacute;e.
+                        </li>
+                                
+                        <li>On note aussi les accolades { } qui permettent de d&eacute;limiter le corps de la fonction : ce sont comme des parenth&egrave;ses qui encapsulent
+                           les instructions.
+                        </li>
+                              
+                     </ul>
+                         
+                  </li>
+               </ul>
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Faire en sorte de r&eacute;utiliser des portions de code.</h3> Prenons un exemple.
+                   Voici un bout de code, s&ucirc;rement fort utile, qui calcule <i>la plus grande des valeurs absolues<sup><a href="#1">1</a></sup></i> de deux variables <b>x</b> et <b>y</b>.
+                   Si nous notons <b><font color="#990000"><b>abs</b></font>(x)</b> la valeur absolue<sup><a href="#1">1</a></sup> de <b>x</b>, et <b><font color="#990000"><b>max</b></font>(x, y)</b> la plus grande valeur entre <b>x</b> et <b>y</b>.
+                   Eh bien nous cherchons &agrave; calculer <b><font color="#990000"><b>max</b></font>(<font color="#990000"><b>abs</b></font>(x), <font color="#990000"><b>abs</b></font>(y))</b>, c'est &agrave; dire le maximum des deux valeurs absolues. Voici ... le code
+                   (jeter un coup d'oeil et passer &agrave; la suite !):
+                   
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> x = 12;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> y = -14;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> z;
+                              </div>
+                                    
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Calcul selon que x ou y soit positif ou n&eacute;gatif, de la plus grande valeur positive entre x et -x, y et -y</font></tt></p>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font> (x <font color="#990000"><b>&gt;</b></font> 0) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font> (y <font color="#990000"><b>&gt;</b></font> 0) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font> (x <font color="#990000"><b>&gt;</b></font> y) { 
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 z = x;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 z = y;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font> (x <font color="#990000"><b>&gt;</b></font> -y) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 z = x;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 z = -y;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font> (y <font color="#990000"><b>&gt;</b></font> 0) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font> (-x <font color="#990000"><b>&gt;</b></font> y) { 
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 z = -x;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 z = y;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font> (-x <font color="#990000"><b>&gt;</b></font> -y) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 z = -x;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 z = -y;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"z = "</font> + z);
+                              </div>
+                                    
+                              <div>}</div>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                   Mmmm ... et bien oui, il est un peu long, un peu lourd et s'il faut le recopier chaque fois que nous avons besoin de calculer
+               la plus petite des valeurs absolues,
+                   cel&agrave; va vite devenir ing&eacute;rable de fait. En plus, on m&eacute;lange calcul de la valeur absolue et calcul du maximum et tout cela
+               semble redondant et bien inutilement complexe.
+                   Nous avons une fa&ccedil;on bien plus &eacute;l&eacute;gante de d&eacute;finir le m&ecirc;me calcul en utilisant des fonctions:
+                   
+               <p>
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition de la fonction maximum de deux valeurs</font></tt></p>
+                                    
+                              <div><font color="#990000"><b>int</b></font> max(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font> (x <font color="#990000"><b>&gt;</b></font> y) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>return</b></font> x;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>return</b></font> y;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>}</div>
+                                    
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition de la fonction valeur absolue</font></tt></p>
+                                    
+                              <div><font color="#990000"><b>int</b></font> abs(<font color="#990000"><b>int</b></font> x) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>if</b></font> (x <font color="#990000"><b>&gt;</b></font> 0) {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>return</b></font> x;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 } <font color="#990000"><b>else</b></font> {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>return</b></font> -x;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                    
+                              <div>}</div>
+                                    
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> x = 12;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> y = -14;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> z = <font color="#990000"><b>max</b></font>(<font color="#990000"><b>abs</b></font>(x), <font color="#990000"><b>abs</b></font>(y));
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"z = "</font> + z);
+                              </div>
+                                    
+                              <div>}</div>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </p>
+                   Ouf ! Ici tout a chang&eacute; :
+               <ul class="ul">
+                        
+                  <li>Le code est beaucoup plus court et plus lisible, beaucoup plus facile &agrave; v&eacute;rifier aussi.</li>
+                        
+                  <li>Le programme principal <font color="#990000"><b>void main</b></font> ne contient que ce que nous voulons faire, et la fa&ccedil;on de le faire est d&eacute;l&eacute;gu&eacute;e aux fonctions.
+                  </li>
+                        
+                  <li>Chaque fonction est d&eacute;finie de mani&egrave;re modulaire et pourra &ecirc;tre facilement r&eacute;utilis&eacute;e : nous cr&eacute;ons ici <i>nos propres instructions</i>,
+                           en plus de celles disponibles dans le langage<sup><a href="#2">2</a></sup>.
+                  </li>
+                      
+               </ul>
+                   Regardons plus en d&eacute;tail la fonction <font color="#990000"><b>max</b></font> : 
+               <ul class="ul">
+                        
+                  <li>La ligne de commentaire "D&eacute;finition de la fonction maximum de deux valeurs" explique &agrave; tous ceux qui vont utiliser le code,
+                     ce que fait cette fonction :
+                           c'est indispensable !
+                  </li>
+                        
+                  <li>La ligne <b><font color="#990000"><b>int</b></font> max(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)</b> nous dit, de gauche &agrave; droite, que : 
+                     <ul class="ul">
+                                
+                        <li>la fonction renvoie, en sortie, un r&eacute;sultat qui est un entier, donc un <font color="#990000"><b>int</b></font> ;
+                        </li>
+                                
+                        <li>le nom de la fonction est <font color="#990000"><b>max</b></font> ;
+                        </li>
+                                
+                        <li>la fonction re&ccedil;oit, en entr&eacute;e, deux arguments qui sont les entiers <b>x</b> et <b>y</b>;
+                        </li>
+                              
+                     </ul>Cette ligne <i>d&eacute;finit donc la fonction</i>, c'est son <i>interface</i> ou sa <i>signature</i>. 
+                           Nous avons besoin de conna&icirc;tre cette ligne pour savoir comment appeler cette fonction.
+                  </li>
+                        
+                  <li>Les 4 lignes suivantes forment le <i>corps</i> de la fonction : 
+                           on y lit que si <b>x</b> est plus grand que <b>y</b>, le r&eacute;sultat est <b>x</b>, sinon le r&eacute;sultat est  <b>y</b>. 
+                           En effet :
+                     <ul class="ul">
+                                
+                        <li>l'instruction <b><font color="#990000"><b>return</b></font> x;</b> ou <b><font color="#990000"><b>return</b></font> y;</b> signifie <i>renvoyer le r&eacute;sulat</i> : 
+                                   le calcul est fini et la fonction retourne la valeur calcul&eacute;e.
+                        </li>
+                                
+                        <li>On note aussi les accolades { } qui permettent de d&eacute;limiter le corps de la fonction : ce sont comme des parenth&egrave;ses qui encapsulent
+                           les instructions.
+                        </li>
+                              
+                     </ul>
+                  </li>
+                        
+                  <li>Dans la partie principale du programme &agrave; la ligne <b><font color="#990000"><b>int</b></font> z = <font color="#990000"><b>max</b></font>(<font color="#990000"><b>abs</b></font>(x), <font color="#990000"><b>abs</b></font>(y));</b> on utilise la fonction, de la mani&egrave;re suivante:
+                     <ul class="ul">
+                                
+                        <li>Les valeurs d'entr&eacute;e sont <b><font color="#990000"><b>abs</b></font>(x)</b> (la valeur absolue de <b>x</b> elle m&ecirc;me calcul&eacute;e en appelant la fonction <font color="#990000"><b>abs</b></font>) et <b><font color="#990000"><b>abs</b></font>(y)</b>.
+                        </li>
+                                
+                        <li>Le calcul du maximum s'effectue &agrave; l'int&eacute;rieur de la fonction <font color="#990000"><b>max</b></font> et le r&eacute;sultat est renvoy&eacute; dans <b>z</b>,
+                                   puisque le <font color="#990000"><b>=</b></font> affecte la valeur &agrave; <b>z</b>.
+                        </li>
+                              
+                     </ul>
+                  </li>
+                      
+               </ul>Nous avons ainsi <i>structur&eacute;</i> notre code.    
+                 
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>A propos des fonctions que nous connaissons d&eacute;ja.</h3> Nous connaissons d&eacute;j&agrave; : 
+               <ul class="ul">
+                      
+                  <li>La fonction <b><font color="#990000"><b>String</b></font> <font color="#990000"><b>readString</b></font>() ;</b> qui renvoie une chaine de caract&egrave;re entr&eacute;e au clavier par l'utilisateur : 
+                     <ul class="ul">
+                              
+                        <li>Cette fonction n'a pas d'argument en entr&eacute;e (donc il n'y a rien entre les parenth&egrave;ses), puisque nous n'avons besoin de lui
+                           passer aucun param&egrave;tre,
+                                 tandis que l'entr&eacute;e (par l'utilisateur) est <i>externe</i> au programme.
+                        </li>
+                              
+                        <li>Cette fonction renvoie une valeur : la chaine lue sur le clavier.</li>
+                            
+                     </ul>
+                  </li>
+                      
+                  <li>La fonction <b><font color="#990000"><b>void</b></font> <font color="#990000"><b>println</b></font>(<font color="#990000"><b>String</b></font> s);</b> 
+                           qui imprime une chaine de caract&egrave;re en sortie pour l'utilisateur : 
+                     <ul class="ul"> 
+                              
+                        <li>Cette fonction a un argument en entr&eacute;e, la chaine de carat&egrave;res, not&eacute;e ici <b>s</b>, qui doit &ecirc;tre imprim&eacute;e.
+                        </li>
+                              
+                        <li>Cette fonction ne renvoie aucun r&eacute;sultat en sortie, puisque la sortie est <i>externe</i> au programme (en affichant &agrave; l'&eacute;cran). C'est le mot <font color="#990000"><b>void</b></font>, 
+                                 vide, qui signifie "rien" pas de r&eacute;sultat. Voil&agrave; le sens de ce mot du langage : l'instruction est "imprime et c'est
+                           tout".
+                        </li>
+                            
+                     </ul>
+                  </li>
+                      
+                  <li>La fonction <b><font color="#990000"><b>void</b></font> <font color="#990000"><b>main</b></font>();</b> ... c'est nous qui la d&eacute;finissons &agrave; chaque fois. 
+                         Elle n'a (dans notre contexte) ni entr&eacute;e ni sortie (donc rien entre les parenth&egrave;ses, et le mot <font color="#990000"><b>void</b></font> pour signifier l'absence de r&eacute;sultat).
+                         Elle correspond juste au lancement du programme, &agrave; la fonction par laquelle le programme doit commencer.
+                  </li>
+                    
+               </ul>
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Les fonctions peuvent elle s'appeler elle-m&ecirc;me ?.</h3> Imaginons une fonction <font color="#990000"><b>A</b></font> qui appelle, selon ses entr&eacute;es, une fonction <font color="#990000"><b>B</b></font> 
+                 qui appelle elle-m&ecirc;me la fonction <font color="#990000"><b>A</b></font> ou tout autre combinaison telle que, finalement et selon ses entr&eacute;es, la fonction <font color="#990000"><b>A</b></font> se rappelle elle-m&ecirc;me. 
+                 On dit qu'elle est <i><a href="http://fr.wikipedia.org/wiki/Algorithme_r%C3%A9cursif">r&eacute;cursive</a></i> : 
+                 cela peut donner des boucles infinies (donc des bugs !), ou des calculs tr&egrave;s complexes et tr&egrave;s int&eacute;ressants ... et 
+                 c'est plus compliqu&eacute; que ce que nous pouvons d&eacute;couvrir ici, alors retenons juste deux choses : 
+               <ul class="ul">
+                      
+                  <li>Il faut &eacute;viter de d&eacute;finir des fonctions r&eacute;cursives, sauf dans les cas indispensables.</li>
+                      
+                  <li>Il faut &ecirc;tre prudent si c'est le cas, et bien comprendre la notion de <a href="?page=api:/proglet/ingredients/doc-files/sujet-about-while.htm">boucle</a> avant.
+                  </li>
+                    
+               </ul>
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+     
+   <h2>Travail propos&eacute;.</h2>
+   <div id="works">
+      <ol>
+         <li>
+            <div>
+               <h3>A nous de jouer.</h3>
+               <ul class="ul">
+                        
+                  <li>Recopier les deux portions de code dans deux fichiers diff&eacute;rents et v&eacute;rifier si les deux donnent le bon r&eacute;sulat.</li>
+                        
+                  <li>A partir du 2&egrave;me exemple de code, ajouter la fonction "min" (qui renvoie la plus petite des valeurs x ou y),
+                           pour calculer <i>la plus <b>petite</b> des valeurs absolues</i>, et non la plus grande. V&eacute;rifier le r&eacute;sultat.
+                  </li>
+                        
+                  <li>A partir du 2&egrave;me exemple de code, puisque la valeur absolue<sup><a href="#1">1</a></sup> de x est aussi la plus grande entre x et -x, reprogrammer la fonction valeur absolue en une ligne, sans utiliser de <font color="#990000"><b>if</b></font>, mais en utilisant la fonction <font color="#990000"><b>max</b></font>.
+                  </li>
+                      
+               </ul>
+            </div>
+         </li>
+         <li>
+            <div>
+               <h3>Programmer d'autres fonctions.</h3>Programmer les fonctions suivantes et faire un petit <font color="#990000"><b>main</b></font> pour un programme de test :
+               <ul class="ul">
+                        
+                  <li>Programmer la fonction "division sans b&ecirc;tise" <b><font color="#990000"><b>double</b></font> div(<font color="#990000"><b>double</b></font> x, <font color="#990000"><b>double</b></font> y)</b>, 
+                           qui renvoie 
+                     <ul class="ul">
+                                
+                        <li><b>x</b> divis&eacute; par <b>y</b> (cela se note comme sur les calculettes <b>x / y</b>), si <b>y</b> n'est pas z&eacute;ro,
+                        </li>
+                                
+                        <li>imprime un message d'erreur, puis renvoie la valeur <b>Double.NaN</b>, si <b>y</b> est nul (<b>y == 0</b>) .
+                        </li>
+                              
+                     </ul>(la valeur <b>Double.NaN</b> qui se lie "Not-a-Number" signifie que le r&eacute;sulat n'est pas un nombre, mais est ind&eacute;fini.
+                  </li>
+                        
+                  <li>Programmer la fonction "ou exclusif" <b><font color="#990000"><b>boolean</b></font> xor(<font color="#990000"><b>boolean</b></font> x, <font color="#990000"><b>boolean</b></font> y)</b>,
+                           d&eacute;couverte avec l'<a href="?page=api:/proglet/ingredients/doc-files/sujet-about-if.htm">instruction conditionnelle</a>, 
+                           qui renvoie <font color="#990000"><b>true</b></font> (vrai) si soit <b>x</b>, soit <b>y</b> est <font color="#990000"><b>true</b></font> mais pas les deux &agrave; la fois.
+                  </li> 
+                        
+                  <li>Programmer la fonction "maximum de trois entiers" <b><font color="#990000"><b>int</b></font> max(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y, <font color="#990000"><b>int</b></font> z)</b>, 
+                           soit en utilisant la fonction <b><font color="#990000"><b>int</b></font> max(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)</b>, soit des <font color="#990000"><b>if</b></font>, comme vous voulez.
+                  </li>
+                        
+                  <li>Programmer une fonction "info ou intox" <b><font color="#990000"><b>void</b></font> <font color="#990000"><b>infox</b></font>(<font color="#990000"><b>String</b></font> question, <font color="#990000"><b>boolean</b></font> reponse);</b> qui :
+                     <ul class="ul">
+                                
+                        <li>pose une question Vrai/Faux &agrave; l'utilisateur (voir des exemples ci dessous),</li>
+                                
+                        <li>lit sa r&eacute;ponse avec un <b><font color="#990000"><b>readBoolean</b></font>();</b>,
+                        </li>
+                                
+                        <li>le f&eacute;licite s'il a raison et lui dit gentiment s'il s'est tromp&eacute;.</li>
+                              
+                     </ul>L'utiliser par exemple avec le <font color="#990000"><b>main</b></font> suivant.
+                           
+                     <p>
+                        <table witdh="90%" border="1" align="center">
+                           <tr>
+                              <td>
+                                 <div class="code">
+                                            
+                                    <div><font color="#990000"><b>void main</b></font>() {
+                                    </div>
+                                            
+                                    <div>
+                                       &nbsp;&nbsp;&nbsp;
+                                       <font color="#990000"><b>infox</b></font>(<font color="#008000">"Il y a environ 100 millions d'ordinateurs dans le monde"</font>, <font color="#990000"><b>false</b></font>);
+                                    </div>
+                                    <p><tt><font color="#202080"><big>//</big>&nbsp; ... il y en plus de 1 milliard!</font></tt></p>
+                                            
+                                    <div>
+                                       &nbsp;&nbsp;&nbsp;
+                                       <font color="#990000"><b>infox</b></font>(<font color="#008000">"Ada Byron-Lovelace &eacute;tait, d&egrave;s le XIX&egrave;me si&egrave;cle, la 1&egrave;re femme informaticienne"</font>, <font color="#990000"><b>true</b></font>);
+                                    </div>
+                                    <p><tt><font color="#202080"><big>//</big>&nbsp; ... oui elle fut la premi&egrave;re &agrave; formaliser la notion de programme que nous apprenons ici.</font></tt></p>
+                                            
+                                    <div>
+                                       &nbsp;&nbsp;&nbsp;
+                                       <font color="#990000"><b>infox</b></font>(<font color="#008000">"Toutes les fonctions math&eacute;matiques peuvent &ecirc;tre calcul&eacute;es par un ordinateur"</font>, <font color="#990000"><b>false</b></font>);
+                                    </div>
+                                    <p><tt><font color="#202080"><big>//</big>&nbsp; ... il y a beaucoup de fonctions dont le temps de calcul est ... infini ! (donc impossible &agrave; calculer)</font></tt></p>
+                                            
+                                    <div>
+                                       &nbsp;&nbsp;&nbsp;
+                                       <font color="#990000"><b>infox</b></font>(<font color="#008000">"Le cours de la 2nd guerre mondiale a chang&eacute; plus vite gr&acirc;ce &agrave; ... un calcul informatique"</font>, <font color="#990000"><b>true</b></font>);
+                                    </div>
+                                    <p><tt><font color="#202080"><big>//</big>&nbsp; ... Alan-Turing a pu "craquer" le code de la machine Enigma qui codait les messages nazis grace &agrave; un calcul m&eacute;canique.</font></tt></p>
+                                          
+                                    <div>}</div>
+                                        
+                                 </div>
+                              </td>
+                           </tr>
+                        </table>
+                     </p> ... non sans vous amuser &agrave; ajouter vos propres questions !
+                  </li>
+                      
+               </ul>
+            </div>
+         </li>
+      </ol>
+   </div>
+     
+     
+   <h2>Remarques.</h2>
+   <div id="notes">
+      <ol>
+         <li>
+            <div id="1">
+               <h3>A propos la valeur absolue.</h3> Si x est n&eacute;gatif sa valeur, par exemple -12 ou -14, la valeur absolue est le nombre positif correspondant sans le signe "-",
+                   autrement dit l'oppos&eacute; de x, donc 12 ou 14 pour nos exemples. 
+                   Si x est positif sa valeur absolue est le nombre lui m&ecirc;me, autrement dit x. On note |x| la valeur absolue de x. 
+                   Comme un nombre positif est toujours plus grand qu'un nombre n&eacute;gatif, c'est aussi la valeur la plus grande entre x et
+               -x.
+            </div>
+         </li>
+         <li>
+            <div id="2">
+               <h3>Les fonctions &laquo;abs&raquo; et &laquo;max&raquo; en Java.</h3> Bien entendu les fonctions valeur-absolue, maximum-de-deux-valeurs existent <i>d&eacute;ja</i> dans tous les langages
+                   usuels dont Java ! Nous les avons "cach&eacute;" en Javascool pour vous apprendre comment les programmer.
+            </div>
+         </li>
+      </ol>
+   </div>
+   
+</div>

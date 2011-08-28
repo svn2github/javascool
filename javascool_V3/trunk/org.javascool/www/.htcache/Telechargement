@@ -1,0 +1,44 @@
+<table border="0" cellspacing="0" cellpadding="0" align="center" width="100%">
+<tr>
+<td width="50%" valign="top">
+<p>Bienvenue sur la page de lancement de la version 3 de Java's Cool. 
+</p><p><br />
+</p>
+<ul><li> Lancer la version <a href="http://fr.wikipedia.org/wiki/Version_d%27un_logiciel#Version_admissible_ou_pre-release" class="external text" rel="nofollow">«RC»</a> en cliquant sur l'image:
+</li><li> Voici la <a href="http://javascool.gforge.inria.fr/v3/?page=api:/org/javascool/doc-files/about-main.htm" class="external text" rel="nofollow">documentation de l'utilisateur</a>, très facile.
+</li><li> Pour tout avis/conseil/critique nous <a href="?page=Contacts" title="JavaScool:Contacts">contacter</a>.
+</li><li> Aller vite découvrir les <a href="?page=Activites" title="JavaScool:Activites">activitées</a> proposées et les «<a href="http://javascool.gforge.inria.fr/?page=api:/org/javascool/doc-files/about-proglets.htm" class="external text" rel="nofollow">proglets</a>» disponibles.
+</li></ul>
+<ul><li> Nous détaillons quelques éléments d'<a href="http://wiki.inria.fr/wikis/sciencinfolycee/index.php?title=JavaScool:Aide_aide&amp;action=edit&amp;redlink=1" class="new" title="JavaScool:Aide aide (page inexistante)">JavaScool:Aide aide</a> pour vous.
+</li></ul>
+<p>A très bientôt &nbsp;!
+</p>
+</td><td width="50%" valign="top">
+<p><center> <a href="http://javascool.gforge.inria.fr/v3/javascool.jar" title="Pour télécharger JavaScool cliquer ici" style="padding:0;margin:0;text-decoration:none"><img width="50%" src="http://javascool.gforge.inria.fr/v3/images/view_main.png" alt="Pour télécharger JavaScool cliquer ici"/></a></center>
+</p>
+</td></tr></table>
+<div align="right">Versions anciennes (web_v1 et v2) accessibles <a href="?page=Cr%C3%A9dits" title="JavaScool:Crédits">ici</a>. </div>
+<hr />
+<h1> <span class="mw-headline" id="Utiliser_JavaScool"> Utiliser JavaScool </span></h1>
+<ul><li> <i>En un clic</i>: Le logiciel et les documents des activités se chargent en <a href="http://javascool.gforge.inria.fr/v3/javascool.jar" class="external text" rel="nofollow">un click</a>, il suffit que ``Java soit installé´´ sur l'ordinateur.
+<ul><li> Si Java n'est pas installé ou la version est trop ancienne cliquer <a href="http://www.java.com/fr" class="external text" rel="nofollow">ici</a>. N'importe quelle version relativement récente: <i>Java 1.5</i>, ou <i>Java 1.6</i>, .. suffit. Pas besoin de ``Jdk´´ (Java Developpement Kit). 
+</li></ul>
+</li></ul>
+<ul><li> <i>Sans réseau</i>&nbsp;: Si les ordinateurs de travail ne sont pas sur le réseau il suffit de copier <a href="http://javascool.gforge.inria.fr/v3/javascool.jar" class="external text" rel="nofollow">javascool.jar</a> sur une clé USB puis de la faire passer sur chaque ordinateur de travail (par exemple en le copiant sur le "bureau").
+</li></ul>
+<ul><li> <i>Sauver les fichiers</i>&nbsp;: Attention à bien sauvegarder les fichiers <i>dans un dossier de l'utilisateur</i> (sur le "bureau" ou dans le dossier "documents") sinon le système risque de se plaindre d'une tentative d'écriture illicite.
+</li></ul>
+<p>Surtout <a href="?page=Contacts" title="JavaScool:Contacts">contactez nous</a> si le moindre problème est expérimenté.
+</p>
+<hr />
+<p>Accès aux sources: <a href="http://javascool.gforge.inria.fr/v3/sources.zip" class="external text" rel="nofollow">ici</a>.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 13/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:97-1!1!0!!fr!2!edit=0!printable=1 and timestamp 20110812114459 -->

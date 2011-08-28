@@ -33,7 +33,7 @@ public class CurveOutput extends JPanel implements Widget {
   private static class point {
     double x, y;
   };
-  private Vector < Vector < point >> curves = new Vector < Vector < point >> ();
+  private Vector<Vector<point> > curves = new Vector<Vector<point> >();
   private static class line {
     double x1, y1, x2, y2;
     Color c;
@@ -165,7 +165,7 @@ public class CurveOutput extends JPanel implements Widget {
     this.Yoffset = Yoffset;
     this.Xscale = Xscale;
     this.Yscale = Yscale;
-    curves = new Vector < Vector < point >> ();
+    curves = new Vector<Vector<point> >();
     for(int c = 0; c < 10; c++)
       curves.add(new Vector<point>());
     lines = new Vector<line>();

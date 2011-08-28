@@ -6,56 +6,41 @@ class Button
   color currentcolor;
   float value;
   boolean over = false;
-  boolean pressed = false;   
+  boolean pressed = false;
   boolean select = false;
 
-  void update() 
-  {
-    if(over()) {
+  void update() {
+    if(over())
       currentcolor = highlightcolor;
-    } else if(select) {
+    else if(select)
       currentcolor = selectcolor;
-    }
-    else {
+    else
       currentcolor = basecolor;
-    }
   }
-
-  boolean pressed() 
-  {
+  boolean pressed() {
     if(over) {
       locked = true;
       return true;
-    } 
-    else {
+    } else {
       locked = false;
-      return false;
-    }    
-  }
-
-  boolean over() 
-  { 
-    return true; 
-  }
-
-  boolean overText(int x, int y, int width, int height) 
-  {
-    if (mouseX >= x && mouseX <= x+30 && 
-      mouseY >= y-15 && mouseY <= y+15) {
-      return true;
-    } 
-    else {
       return false;
     }
   }
-
-
+  boolean over() {
+    return true;
+  }
+  boolean overText(int x, int y, int width, int height) {
+    if((mouseX >= x) && (mouseX <= x + 30) &&
+       (mouseY >= y - 15) && (mouseY <= y + 15))
+      return true;
+    else
+      return false;
+  }
 }
 
 class TextButton extends Button
 {
-  TextButton(int ix, int iy, int isize, color icolor, color ihighlight, color iselect, float itext) 
-  {
+  TextButton(int ix, int iy, int isize, color icolor, color ihighlight, color iselect, float itext) {
     x = ix;
     y = iy;
     size = isize;
@@ -67,27 +52,25 @@ class TextButton extends Button
     value = itext;
   }
 
-  boolean over() 
-  {
-    if( overText(x, y, size, size) ) {
+  boolean over() {
+    if(overText(x, y, size, size)) {
       over = true;
       return true;
-    } 
-    else {
+    } else {
       over = false;
       return false;
     }
   }
-
-  void display() 
-  {
+  void display() {
     stroke(255);
     strokeWeight(2);
     fill(currentcolor);
 
     textFont(myFont);
-    if(size==100) text(" "+ (int)value, x, y);
-    else text(" "+ value, x, y);
+    if(size == 100)
+      text(" " + (int) value, x, y);
+    else
+      text(" " + value, x, y);
     noStroke();
   }
 }

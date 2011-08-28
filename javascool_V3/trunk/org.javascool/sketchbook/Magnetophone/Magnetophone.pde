@@ -1,7 +1,7 @@
 /*////////////////////////////////////////////////////////////////////////////
  *
- * 11.2010 Cécile P-L for Fuscia - ccl.picard@gmail.com - 
- * 
+ * 11.2010 Cécile P-L for Fuscia - ccl.picard@gmail.com -
+ *
  * Inspired by Record Line In
  * by Damien Di Fede.
  *

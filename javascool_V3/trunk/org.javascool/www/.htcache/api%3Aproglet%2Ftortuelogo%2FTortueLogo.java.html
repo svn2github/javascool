@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f5fbf">/*******************************************************************************</font><br />
+<font color="#3f5fbf">*&nbsp;Thierry.Vieville@sophia.inria.fr,&nbsp;Copyright&nbsp;(C)&nbsp;2009.&nbsp;&nbsp;All&nbsp;rights&nbsp;reserved.&nbsp;*</font><br />
+<font color="#3f5fbf">*******************************************************************************/</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">proglet.tortuelogo;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.javascool.Utils;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.javascool.Macros;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f7f5f">//&nbsp;Used&nbsp;to&nbsp;define&nbsp;the&nbsp;gui</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.swing.JPanel;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.swing.JLabel;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Dimension;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Color;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Graphics;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f5fbf">/**&nbsp;D&eacute;finit&nbsp;une&nbsp;proglet&nbsp;javascool&nbsp;qui&nbsp;permet&nbsp;de&nbsp;simuler&nbsp;la&nbsp;tortue&nbsp;``logo´´.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;doc-files/about-proglet.htm&#34;&gt;Description</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;doc-files/the-proglet.htm&#34;&gt;La&nbsp;proglet</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;http://fr.wikipedia.org/wiki/Logo_(langage)#Primitives_graphiques&#34;&gt;La&nbsp;r&eacute;f&eacute;rence&nbsp;du&nbsp;langage&nbsp;logo</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;TortueLogo.java.html&#34;&gt;code&nbsp;source</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@serial&nbsp;</font><font color="#3f5fbf">exclude</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">TortueLogo&nbsp;</font><font color="#7f0055"><b>implements&nbsp;</b></font><font color="#000000">org.javascool.Proglet&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">TortueLogo</font><font color="#000000">()&nbsp;{}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>long&nbsp;</b></font><font color="#000000">serialVersionUID&nbsp;=&nbsp;</font><font color="#990000">1L</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;defines&nbsp;the&nbsp;panel&nbsp;to&nbsp;display</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;class&nbsp;</b></font><font color="#000000">Panel&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">JPanel&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>long&nbsp;</b></font><font color="#000000">serialVersionUID&nbsp;=&nbsp;</font><font color="#990000">1L</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Panel</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">setPreferredSize</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Dimension</font><font color="#000000">(</font><font color="#000000">width,&nbsp;height</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">setBackground</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Color</font><font color="#000000">(</font><font color="#990000">10</font><font color="#000000">,&nbsp;</font><font color="#990000">100</font><font color="#000000">,&nbsp;</font><font color="#990000">10</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Adds&nbsp;the&nbsp;garden</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Adds&nbsp;the&nbsp;turtle</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">turtle&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">JLabel</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">turtle.setIcon</font><font color="#000000">(</font><font color="#000000">Utils.getIcon</font><font color="#000000">(</font><font color="#2a00ff">&#34;proglet/tortuelogo/doc-files/turtle.gif&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">turtle.setBounds</font><font color="#000000">(</font><font color="#000000">width&nbsp;/&nbsp;</font><font color="#990000">2</font><font color="#000000">,&nbsp;height&nbsp;/&nbsp;</font><font color="#990000">2</font><font color="#000000">,&nbsp;</font><font color="#990000">42</font><font color="#000000">,&nbsp;</font><font color="#990000">35</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">add</font><font color="#000000">(</font><font color="#000000">turtle</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Internal&nbsp;routine:&nbsp;do&nbsp;not&nbsp;use.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">paint</font><font color="#000000">(</font><font color="#000000">Graphics&nbsp;g</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>super</b></font><font color="#000000">.paint</font><font color="#000000">(</font><font color="#000000">g</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">j&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;&nbsp;j&nbsp;&lt;&nbsp;height;&nbsp;j++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&nbsp;&lt;&nbsp;width;&nbsp;i++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">garden</font><font color="#000000">[</font><font color="#000000">i&nbsp;+&nbsp;j&nbsp;*&nbsp;width</font><font color="#000000">]&nbsp;</font><font color="#000000">!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">g.setColor</font><font color="#000000">(</font><font color="#000000">garden</font><font color="#000000">[</font><font color="#000000">i&nbsp;+&nbsp;j&nbsp;*&nbsp;width</font><font color="#000000">])</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">g.fillRect</font><font color="#000000">(</font><font color="#000000">i,&nbsp;j,&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Color&nbsp;garden</font><font color="#000000">[]</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">JLabel&nbsp;turtle;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>static&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">width&nbsp;=&nbsp;</font><font color="#990000">512</font><font color="#000000">,&nbsp;height&nbsp;=&nbsp;</font><font color="#990000">512</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Clears&nbsp;the&nbsp;garden.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">clear</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">garden&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Color</font><font color="#000000">[</font><font color="#000000">width&nbsp;*&nbsp;height</font><font color="#000000">]</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Shows&nbsp;the&nbsp;turtle&nbsp;at&nbsp;a&nbsp;given&nbsp;location.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">x&nbsp;Turtle&nbsp;horizontal&nbsp;position,&nbsp;not&nbsp;shown&nbsp;if&nbsp;&amp;lt;&nbsp;0.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">y&nbsp;Turtle&nbsp;vertical&nbsp;position,&nbsp;not&nbsp;shown&nbsp;if&nbsp;&amp;lt;&nbsp;0.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">show</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">((</font><font color="#000000">x&nbsp;&lt;&nbsp;</font><font color="#990000">0</font><font color="#000000">)&nbsp;</font><font color="#000000">||&nbsp;</font><font color="#000000">(</font><font color="#000000">y&nbsp;&lt;&nbsp;</font><font color="#990000">0</font><font color="#000000">))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">turtle.setVisible</font><font color="#000000">(</font><font color="#7f0055"><b>false</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">turtle.setBounds</font><font color="#000000">(</font><font color="#000000">x,&nbsp;y,&nbsp;</font><font color="#990000">42</font><font color="#000000">,&nbsp;</font><font color="#990000">35</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">turtle.setVisible</font><font color="#000000">(</font><font color="#7f0055"><b>true</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Adds&nbsp;a&nbsp;trace&nbsp;value.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">x&nbsp;Pixel&nbsp;abscissa,&nbsp;in&nbsp;[-1..1].</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">y&nbsp;Pixel&nbsp;Ordinate,&nbsp;in&nbsp;[-1..1].</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">c&nbsp;Color&nbsp;in&nbsp;{0,&nbsp;9}.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">add</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y,&nbsp;Color&nbsp;c</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">garden</font><font color="#000000">[</font><font color="#000000">x&nbsp;+&nbsp;y&nbsp;*&nbsp;width</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;c;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;defines&nbsp;the&nbsp;tests&nbsp;on&nbsp;the&nbsp;panel</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">/**/</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">test</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">clear_all</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pen_up</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">t&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>while</b></font><font color="#000000">(</font><font color="#000000">t&nbsp;&lt;&nbsp;</font><font color="#990000">9000</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">set_color</font><font color="#000000">((</font><font color="#000000">t&nbsp;/&nbsp;</font><font color="#990000">1000</font><font color="#000000">)&nbsp;</font><font color="#000000">%&nbsp;</font><font color="#990000">10</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">set_position</font><font color="#000000">(</font><font color="#990000">256&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#990000">250&nbsp;</font><font color="#000000">*&nbsp;Math.cos</font><font color="#000000">(</font><font color="#990000">0.0015&nbsp;</font><font color="#000000">*&nbsp;t</font><font color="#000000">)</font><font color="#000000">,&nbsp;</font><font color="#990000">256&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#990000">250&nbsp;</font><font color="#000000">*&nbsp;Math.sin</font><font color="#000000">(</font><font color="#990000">0.0045&nbsp;</font><font color="#000000">*&nbsp;t</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pen_down</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">t&nbsp;=&nbsp;t&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;defines&nbsp;the&nbsp;javascool&nbsp;interface</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Updates&nbsp;the&nbsp;turtle&nbsp;position&nbsp;and&nbsp;draw&nbsp;if&nbsp;required</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">update</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">x&nbsp;&lt;&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">x&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">x&nbsp;&gt;&nbsp;</font><font color="#990000">511</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">x&nbsp;=&nbsp;</font><font color="#990000">511</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">y&nbsp;&lt;&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">y&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">y&nbsp;&gt;&nbsp;</font><font color="#990000">511</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">y&nbsp;=&nbsp;</font><font color="#990000">511</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">pen</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">draw</font><font color="#000000">(</font><font color="#000000">TortueLogo.x,&nbsp;x,&nbsp;TortueLogo.y,&nbsp;y</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">TortueLogo.x&nbsp;=&nbsp;x;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">TortueLogo.y&nbsp;=&nbsp;y;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.show</font><font color="#000000">(</font><font color="#000000">x,&nbsp;y</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Macros.sleep</font><font color="#000000">(</font><font color="#990000">3</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">draw</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x1,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x2,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y1,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y2</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">Math.abs</font><font color="#000000">(</font><font color="#000000">x1&nbsp;-&nbsp;x2</font><font color="#000000">)&nbsp;</font><font color="#000000">&gt;&nbsp;Math.abs</font><font color="#000000">(</font><font color="#000000">y1&nbsp;-&nbsp;y2</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">x1&nbsp;&lt;&nbsp;x2</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">draw_x</font><font color="#000000">(</font><font color="#000000">x1,&nbsp;x2,&nbsp;y1,&nbsp;y2</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;if</b></font><font color="#000000">(</font><font color="#000000">x1&nbsp;&gt;&nbsp;x2</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">draw_x</font><font color="#000000">(</font><font color="#000000">x2,&nbsp;x1,&nbsp;y2,&nbsp;y1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">y1&nbsp;&lt;&nbsp;y2</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">draw_y</font><font color="#000000">(</font><font color="#000000">x1,&nbsp;x2,&nbsp;y1,&nbsp;y2</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;if</b></font><font color="#000000">(</font><font color="#000000">y1&nbsp;&gt;&nbsp;y2</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">draw_y</font><font color="#000000">(</font><font color="#000000">x2,&nbsp;x1,&nbsp;y2,&nbsp;y1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">draw_x</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x1,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x2,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y1,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y2</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x&nbsp;=&nbsp;x1;&nbsp;x&nbsp;&lt;=&nbsp;x2;&nbsp;x++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.add</font><font color="#000000">(</font><font color="#000000">x,&nbsp;y1&nbsp;+&nbsp;</font><font color="#000000">((</font><font color="#000000">y2&nbsp;-&nbsp;y1</font><font color="#000000">)&nbsp;</font><font color="#000000">*&nbsp;</font><font color="#000000">(</font><font color="#000000">x&nbsp;-&nbsp;x1</font><font color="#000000">))&nbsp;</font><font color="#000000">/&nbsp;</font><font color="#000000">(</font><font color="#000000">x2&nbsp;-&nbsp;x1</font><font color="#000000">)</font><font color="#000000">,&nbsp;pen_color</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">draw_y</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x1,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x2,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y1,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y2</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y&nbsp;=&nbsp;y1;&nbsp;y&nbsp;&lt;=&nbsp;y2;&nbsp;y++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.add</font><font color="#000000">(</font><font color="#000000">x1&nbsp;+&nbsp;</font><font color="#000000">((</font><font color="#000000">x2&nbsp;-&nbsp;x1</font><font color="#000000">)&nbsp;</font><font color="#000000">*&nbsp;</font><font color="#000000">(</font><font color="#000000">y&nbsp;-&nbsp;y1</font><font color="#000000">))&nbsp;</font><font color="#000000">/&nbsp;</font><font color="#000000">(</font><font color="#000000">y2&nbsp;-&nbsp;y1</font><font color="#000000">)</font><font color="#000000">,&nbsp;y,&nbsp;pen_color</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">,&nbsp;y&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">a&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#000000">Color&nbsp;pen_color&nbsp;=&nbsp;Color.BLACK;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">pen&nbsp;=&nbsp;</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Efface&nbsp;toutes&nbsp;traces&nbsp;du&nbsp;carr&eacute;&nbsp;de&nbsp;salade&nbsp;de&nbsp;taille&nbsp;(512,&nbsp;512).&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">clear_all</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Retour&nbsp;au&nbsp;milieu&nbsp;du&nbsp;carr&eacute;&nbsp;de&nbsp;salade,&nbsp;au&nbsp;point&nbsp;(256,&nbsp;256).&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">home</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">update</font><font color="#000000">(</font><font color="#000000">panel.width&nbsp;/&nbsp;</font><font color="#990000">2</font><font color="#000000">,&nbsp;panel.height&nbsp;/&nbsp;</font><font color="#990000">2</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;La&nbsp;tortue&nbsp;avance&nbsp;de&nbsp;n&nbsp;pas.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">forward</font><font color="#000000">(</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">n</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">set_position</font><font color="#000000">(</font><font color="#000000">x&nbsp;+&nbsp;n&nbsp;*&nbsp;Math.cos</font><font color="#000000">(</font><font color="#000000">a</font><font color="#000000">)</font><font color="#000000">,&nbsp;y&nbsp;+&nbsp;n&nbsp;*&nbsp;Math.sin</font><font color="#000000">(</font><font color="#000000">a</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;La&nbsp;tortue&nbsp;recule&nbsp;de&nbsp;n&nbsp;pas.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">backward</font><font color="#000000">(</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">n</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">forward</font><font color="#000000">(</font><font color="#000000">-n</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;La&nbsp;tortue&nbsp;tourne&nbsp;de&nbsp;n&nbsp;degr&eacute;s&nbsp;d'angle&nbsp;vers&nbsp;la&nbsp;gauche.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">leftward</font><font color="#000000">(</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">n</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">a&nbsp;+=&nbsp;Math.PI&nbsp;/&nbsp;</font><font color="#990000">180.0&nbsp;</font><font color="#000000">*&nbsp;n;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;La&nbsp;tortue&nbsp;tourne&nbsp;de&nbsp;n&nbsp;degr&eacute;s&nbsp;d'angle&nbsp;vers&nbsp;la&nbsp;droite.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">rightward</font><font color="#000000">(</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">n</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">leftward</font><font color="#000000">(</font><font color="#000000">-n</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Fixe&nbsp;la&nbsp;position&nbsp;absolue&nbsp;de&nbsp;la&nbsp;tortue&nbsp;dans&nbsp;le&nbsp;carr&eacute;&nbsp;de&nbsp;salade.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">set_position</font><font color="#000000">(</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">x,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">y</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">update</font><font color="#000000">((</font><font color="#7f0055"><b>int</b></font><font color="#000000">)&nbsp;</font><font color="#000000">x,&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>int</b></font><font color="#000000">)&nbsp;</font><font color="#000000">y</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Fixe&nbsp;le&nbsp;cap&nbsp;de&nbsp;la&nbsp;tortue&nbsp;de&nbsp;maniere&nbsp;absolue,&nbsp;selon&nbsp;l'angle&nbsp;de&nbsp;a&nbsp;degr&eacute;s.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">set_heading</font><font color="#000000">(</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">a</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">TortueLogo.a&nbsp;=&nbsp;Math.PI&nbsp;/&nbsp;</font><font color="#990000">180.0&nbsp;</font><font color="#000000">*&nbsp;a;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;La&nbsp;tortue&nbsp;ne&nbsp;laisse&nbsp;pas&nbsp;de&nbsp;trace.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">pen_up</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pen&nbsp;=&nbsp;</font><font color="#7f0055"><b>false</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;La&nbsp;tortue&nbsp;laisse&nbsp;sa&nbsp;trace&nbsp;(par&nbsp;d&eacute;faut).&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">pen_down</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pen&nbsp;=&nbsp;</font><font color="#7f0055"><b>true</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Change&nbsp;la&nbsp;couleur&nbsp;du&nbsp;fond,&nbsp;n&nbsp;est&nbsp;un&nbsp;entier&nbsp;positif&nbsp;entre&nbsp;0&nbsp;et&nbsp;9.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">n&nbsp;:&nbsp;0&nbsp;(noir),&nbsp;1&nbsp;(brun),&nbsp;2&nbsp;(rouge),&nbsp;3&nbsp;(orange),&nbsp;4&nbsp;(jaune),&nbsp;5&nbsp;(vert),&nbsp;6&nbsp;(bleu),&nbsp;7&nbsp;(violet),&nbsp;8&nbsp;(gris),&nbsp;9&nbsp;(blanc).</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">set_background</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">n</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.setBackground</font><font color="#000000">(</font><font color="#000000">colors</font><font color="#000000">[</font><font color="#000000">n&nbsp;&lt;&nbsp;</font><font color="#990000">0&nbsp;</font><font color="#000000">||&nbsp;n&nbsp;&gt;&nbsp;</font><font color="#990000">9&nbsp;</font><font color="#000000">?&nbsp;</font><font color="#990000">0&nbsp;</font><font color="#000000">:&nbsp;n</font><font color="#000000">])</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Change&nbsp;la&nbsp;couleur&nbsp;du&nbsp;crayon,&nbsp;n&nbsp;est&nbsp;un&nbsp;entier&nbsp;positif&nbsp;entre&nbsp;0&nbsp;et&nbsp;9.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">n&nbsp;:&nbsp;0&nbsp;(noir),&nbsp;1&nbsp;(brun),&nbsp;2&nbsp;(rouge),&nbsp;3&nbsp;(orange),&nbsp;4&nbsp;(jaune),&nbsp;5&nbsp;(vert),&nbsp;6&nbsp;(bleu),&nbsp;7&nbsp;(violet),&nbsp;8&nbsp;(gris),&nbsp;9&nbsp;(blanc).</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">set_color</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">n</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pen_color&nbsp;=&nbsp;colors</font><font color="#000000">[</font><font color="#000000">n&nbsp;&lt;&nbsp;</font><font color="#990000">0&nbsp;</font><font color="#000000">||&nbsp;n&nbsp;&gt;&nbsp;</font><font color="#990000">9&nbsp;</font><font color="#000000">?&nbsp;</font><font color="#990000">0&nbsp;</font><font color="#000000">:&nbsp;n</font><font color="#000000">]</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#000000">Color&nbsp;colors</font><font color="#000000">[]&nbsp;</font><font color="#000000">=&nbsp;</font><font color="#000000">{&nbsp;</font><font color="#000000">Color.BLACK,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Color</font><font color="#000000">(</font><font color="#990000">150</font><font color="#000000">,&nbsp;</font><font color="#990000">75</font><font color="#000000">,&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">,&nbsp;Color.RED,&nbsp;Color.ORANGE,&nbsp;Color.YELLOW,&nbsp;Color.GREEN,&nbsp;Color.BLUE,&nbsp;Color.MAGENTA,&nbsp;Color.GRAY,&nbsp;Color.WHITE&nbsp;</font><font color="#000000">}</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;D&eacute;finition&nbsp;de&nbsp;l'interface&nbsp;graphique&nbsp;de&nbsp;la&nbsp;proglet.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">Panel&nbsp;panel&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Panel</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

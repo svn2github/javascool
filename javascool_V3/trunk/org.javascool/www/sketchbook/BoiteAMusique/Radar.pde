@@ -1,6 +1,4 @@
 class Radar {
-  
-
   int bx, by;        // positionnement
   int nb;         // nombre de sources à enchainer dans la boucle: de 8 à 24
   int nl;            // nombre de niveaux sonores à disposition: de 2 à 10
@@ -103,8 +101,6 @@ class Radar {
   }
   // Visualise l'ensemble des sources à disposition
   void displayLib() {
-   
-  
     sources = new Source[3][freqs.tab[0].length];
 
     fill(255, 0, 0);
@@ -112,17 +108,17 @@ class Radar {
     stroke(255);
     rectMode(CORNER);
     for(int i = 0; i < 3; i++)
-      rect(10, by -35 + i * 120, 210, 20);
+      rect(10, by - 35 + i * 120, 210, 20);
     textAlign(LEFT);
     fill(255);
-    text(" - " + freqs.tab[0].length + " notes de piano -\n", 10, by-20);
+    text(" - " + freqs.tab[0].length + " notes de piano -\n", 10, by - 20);
     text(" - " + freqs.tab[1].length + " bips digitaux (Hz) -\n", 10, by + 100);
     text(" - " + freqs.tabE.length + " enregistrements -\n", 10, by + 220);
     fill(50);
     noStroke();
     for(int i = 0; i < 3; i++)
       rect(10, by - 35 + 25 + i * (120), 220, 90);
-     // A simplifier!!
+    // A simplifier!!
     for(int i = 0; i < freqs.tab[0].length; i++) {
       sources[0][i] = new Source(10 + (i % 7) *30, by + 10 + ((i - (i % 7)) / 7) *20, 0, i);
       sources[1][i] = new Source(10 + (i % 7) *30, by + 100 + 30 + ((i - (i % 7)) / 7) *20, 1, i);
@@ -138,7 +134,7 @@ class Radar {
         } else if(mySource[0] == 1) {
           text(" " + int (freqs.tab[1][i]) + " ", sources[1][i].x, sources[1][i].y);
           fill(255);
-          text(" " + freqs.tabN[i] + " ", sources[0][i].x, sources[0][i].y);  
+          text(" " + freqs.tabN[i] + " ", sources[0][i].x, sources[0][i].y);
           if(i < freqs.tabE.length)
             text(" " + freqs.tabE[i] + " ", sources[2][i].x, sources[2][i].y);
         } else {
@@ -159,7 +155,7 @@ class Radar {
     }
     textAlign(LEFT);
     fill(50);
-    rect(0, 0, width/2-50, height/3);
+    rect(0, 0, width / 2 - 50, height / 3);
     fill(153);
     textFont(f, 11);
     text(" - I  N  S  T  R  U  C  T  I  O  N  S - \n " +
@@ -170,7 +166,7 @@ class Radar {
          ". Pour accélérer/ralentir la vitesse de jeu: flèches '>/<' \n " +
          ". Pour augmenter/diminuer le volume globale, agir sur le curseur noir \n " +
          ". Pour remettre à zéro le radar: barre espace \n " +
-         ". Fermer l'application: ESC ", topPos * 2, 40); 
+         ". Fermer l'application: ESC ", topPos * 2, 40);
     hs1.update();
     hs1.display();
   }

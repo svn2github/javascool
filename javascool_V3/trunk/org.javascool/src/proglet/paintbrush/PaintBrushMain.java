@@ -189,8 +189,8 @@ class MainPanel extends JPanel implements ActionListener {
       myPanel.repaint();
       cPanel.repaint();
     } else if(action.equals(buttonRotateString)) {
-    	myPanel.manipImage.rotationGauche();
-        myPanel.repaint();
+      myPanel.manipImage.rotationGauche();
+      myPanel.repaint();
     } else if(action.equals(buttonClearString))
       myPanel.clear();
   }

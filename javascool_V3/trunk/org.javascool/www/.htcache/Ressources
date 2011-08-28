@@ -1,0 +1,50 @@
+<p><br />
+</p>
+<h1> <span class="mw-headline" id="Ressources_p.C3.A9dagogiques_et_culturelles"> Ressources pédagogiques et culturelles </span></h1>
+<div align="center">Les <b>«<a href="http://javascool.gforge.inria.fr/?page=api:/org/javascool/doc-files/about-proglets.htm" class="external text" rel="nofollow">proglets</a>»</b> et les <b>«<a href="http://javascool.gforge.inria.fr/v3/?page=doc:sketchbook/index.html" class="external text" rel="nofollow">educlets</a>»</b></div>
+<p><br />
+</p>
+<table border="0" cellspacing="20" cellpadding="10" align="center" width="90%">
+<tr>
+<td width="50%" valign="top">
+<p><a href="http://interstices.info" class="external text" rel="nofollow">Contenus culturels sur </a><a href="http://interstices.info"><img align="middle" width="100" src="http://javascool.gforge.inria.fr/v3/index/images/logo_interstices.jpg" alt=")i(nterstices"/><a>
+</p>
+</td><td width="50%" valign="top">
+<p><a href="http://www.fuscia.info/fr/ressources.php" class="external text" rel="nofollow">Ressources Pédagogiques sur </a><a href="http://www.fuscia.info/fr/ressources.php"><img align="middle" width="100" src="http://javascool.gforge.inria.fr/v3/index/images/logo_fuscia.gif" alt="fuscia.info"/></a>
+</p>
+</td></tr></table>
+<p>Des <a href="?page=Revues" title="JavaScool:Revues">revues</a> papier à votre disposition.
+</p>
+<div align="right">et quelques <a href="?page=Pepites" title="JavaScool:Pepites">pépites</a> de science, en libre service.</div>
+<h4> <span class="mw-headline" id="Document_de_r.C3.A9f.C3.A9rence."> Document de référence. </span></h4>
+<p>Le document de <a href="http://javascool.gforge.inria.fr/v3/documents/Algo_Doc_Ress.pdf" class="external text" rel="nofollow">ressources pour la classe de seconde au niveau de l'algorithmique</a> publié par <a href="http://eduscol.education.fr" class="external text" rel="nofollow">ÉduSCOL</a>.
+</p>
+<ul><li> Toutes les activités de ce document ont été instanciées en <tt><a href="http://javascool.gforge.inria.fr/" class="external text" rel="nofollow">Java'sCool</a></tt>: les ``<a href="http://wiki.inria.fr/sciencinfolycee/ProgletSoluce" class="external text" rel="nofollow">soluces</a>´´ (aide syntaxique) sont proposées ici (nous <a href="mailto:thierry.vieville@sophia.inria.fr?subject=%20A%20propos%20des%20algos%20EduSCOL:%20acc%C3%A8s%20aux%20soluces%20&amp;body=Bonjour,%0a,%20%20Je%20suis%20un%20enseignant%20du%20lyc%C3%A9e%20de%20??%20%C3%A0%20??%20et%20souhaite%20acc%C3%A9der%20aux%20soluces%20des%20proglets%20(http://wiki.inria.fr/sciencinfolycee/Profs2009:ProgletSoluce).%0a,%20%20%20Voici%20un%20%C3%A9l%C3%A9ment%20qui%20prouve%20que%20je%20ne%20suis%20pas%20%C3%A9l%C3%A8ve%20%21%20:%20??%0a,%20%20Signature:%20??" class="external text" rel="nofollow">contacter</a> pour l'accès).
+</li></ul>
+<h4> <span class="mw-headline" id="Cours_d.27algorithmique."> Cours d'algorithmique. </span></h4>
+<p>Un cours d' <a href="http://www.pise.info/algo/codage.htm" class="external text" rel="nofollow">``informatique non matheux´´</a> du niveau correspondant aux présents objectifs.
+</p>
+<h4> <span class="mw-headline" id="Dossier_sur_l.27algorithmique."> Dossier sur l'algorithmique. </span></h4>
+<p>La revue en ligne <a href="http://revue.sesamath.net/" class="external text" rel="nofollow">MathemaTICE</a> de <a href="http://sesamath.net/" class="external text" rel="nofollow">Sesamath</a> a publié en septembre un <a href="http://revue.sesamath.net/spip.php?rubrique60" class="external text" rel="nofollow">dossier sur l'algorithmique</a>.
+</p>
+<h4> <span class="mw-headline" id="Enseigner_et_apprendre_les_sciences_informatiques_.C3.A0_l.27.C3.A9cole."> Enseigner et apprendre les sciences informatiques à l'école. </span></h4>
+<p>Un <a href="http://interstices.info/upload/csunplugged/CSUnplugged_fr.pdf" class="external text" rel="nofollow">document de référence</a> présenté par un <a href="http://interstices.info/informatique-ecole" class="external text" rel="nofollow">collègue informaticien</a>. 
+</p>
+<h4> <span class="mw-headline" id="Sciences_au_lyc.C3.A9e."> Sciences au lycée. </span></h4>
+<p>Le site du <a href="http://www2.cnrs.fr/multimedia/44.html" class="external text" rel="nofollow">Sciences au lycée</a> ou le site <a href="http://www.cnrs.fr/cw/dossiers/saga.htm" class="external text" rel="nofollow">Saga Science</a> du CNRS présentent des contenus qui utlisent beaucoup d'informatique.
+</p>
+<h4> <span class="mw-headline" id="Autres_initiatives"> Autres initiatives </span></h4>
+<ul><li> Voir aussi <a href="?page=AutresInitiatives" title="JavaScool:AutresInitiatives">initiatives (extra-scolaires) de popularisation de l'Informatique</a>.
+</li></ul>
+<ul><li> Voir aussi <a href="?page=Ailleurs" title="JavaScool:Ailleurs">autres outils pédagogiques pour apprendre l'Informatique</a>.
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 56/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:96-1!1!0!!fr!2!edit=0!printable=1 and timestamp 20110812101929 -->

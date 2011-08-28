@@ -3,7 +3,7 @@
 | By Philippe Vienne <philoumailabo@gmail.com> |
 | Distributed on GNU General Public Licence    |
 | © 2010 INRIA, All rights reserved            |
-||______________________________________________|
+||||______________________________________________|
 |
 ********************************************************************************/
 
@@ -31,7 +31,7 @@ import java.util.HashMap;
  * @serial exclude
  */
 public class JsFrame extends JPanel {
-  /**/public JsFrame() {}
+  /**/ public JsFrame() {}
   private static final long serialVersionUID = 1L;
 
   // Defines the main panel and defines how to edit the toolbar, activityList and tabbedpane
@@ -120,6 +120,7 @@ public class JsFrame extends JPanel {
    * The map associate a String to a JButton
    */
   private HashMap<String, JButton> buttons = new HashMap<String, JButton>();
+
   /** HashMap for action list.
    * The map associate a String to a Runnable
    */

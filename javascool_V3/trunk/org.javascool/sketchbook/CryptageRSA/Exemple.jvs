@@ -1,27 +1,26 @@
-
 // Programme exemple d'usage de la proglet
 import java.math.BigInteger;
 
 void main() {
-	double p = pow(2, 3);
-   // Alice crée une clé privée et une clé publique pour le codage et décodage de message
-   // - keys[0] est la clé privée D, et (keys[1],keys[2]) sont les clés publiques (E, N). 
-   BigInteger keys[] = CryptageRSA.createKeys();
-   //
-   // Alice envoie sûrement (keys[1],keys[2]) à Bob et garde secrètement keys[0]
-   //
-   // Bob a message secret à envoyer à Alice
-   String messageDeBob = "Salut à toi, humaine, que le meilleur soit à vec toi";
-   // Bob encryptpe ce message à l'aide d'une clé (publique):
-   BigInteger crypt = CryptageRSA.encrypt(messageDeBob, keys[1],keys[2]);
-   //
-   // - Ce message encrypté est sûrement diffusé de Alice à Bob
-   //
-   // Alice décrypte ce message à l'aide de la clé privée du jeu de clés
-   String messageChezAlice = CryptageRSA.decrypt(crypt, keys);
-   //
-   // - Et on peut alors vérifier que le message est correct
-   println("Réception :"+equal(messageChezAlice, messageDeBob));
-   // - Même si il était indéchiffrable
-   println("Message envoyé: '"+crypt+"'");
+  double p = pow(2, 3);
+  // Alice crée une clé privée et une clé publique pour le codage et décodage de message
+  // - keys[0] est la clé privée D, et (keys[1],keys[2]) sont les clés publiques (E, N).
+  BigInteger keys[] = CryptageRSA.createKeys();
+  //
+  // Alice envoie sûrement (keys[1],keys[2]) à Bob et garde secrètement keys[0]
+  //
+  // Bob a message secret à envoyer à Alice
+  String messageDeBob = "Salut à toi, humaine, que le meilleur soit à vec toi";
+  // Bob encryptpe ce message à l'aide d'une clé (publique):
+  BigInteger crypt = CryptageRSA.encrypt(messageDeBob, keys[1], keys[2]);
+  //
+  // - Ce message encrypté est sûrement diffusé de Alice à Bob
+  //
+  // Alice décrypte ce message à l'aide de la clé privée du jeu de clés
+  String messageChezAlice = CryptageRSA.decrypt(crypt, keys);
+  //
+  // - Et on peut alors vérifier que le message est correct
+  println("Réception :" + equal(messageChezAlice, messageDeBob));
+  // - Même si il était indéchiffrable
+  println("Message envoyé: '" + crypt + "'");
 }

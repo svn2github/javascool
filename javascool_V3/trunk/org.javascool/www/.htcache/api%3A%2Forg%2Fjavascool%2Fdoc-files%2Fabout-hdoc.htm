@@ -1,0 +1,141 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div>
+   <h2>Documentation des proglets.</h2>
+   
+   
+   <div>
+      <h2>Introduction.</h2>
+          
+      <div>Les documentations des &laquo;<a href="?page=api:/org/javascool/doc-files/about-proglets.htm">proglets</a>&raquo; JavaScool sont &eacute;crites en syntaxe XML (voir en PML si souhait&eacute;) et 
+              utilisent les <a href="?page=api:/org/javascool/doc-files/about-hml.htm">structures logiques HML</a>.
+      </div>
+          
+      <div>Les d&eacute;finitions sp&eacute;cifiques suivantes sont introduites.</div>
+        
+   </div>
+   
+     
+   <div>
+      <h2>D&eacute;crire une page HML.</h2>
+          
+      <div>Les fichiers de documentation de JavaScool ne sont pas des pages mais des textes ins&eacute;r&eacute;s dans des pages: 
+             ils ne sont pas encapsul&eacute;s par le tag <font color="#990000"><b>page</b></font> mais <font color="#990000"><b>div</b></font>.
+      </div>
+        
+   </div>
+     
+     
+   <div>
+      <h2>Structurer le texte en divisions.</h2>
+          
+      <div>Les sections  (<font color="#990000"><b>{div class='..' </b></font>) de classes pr&eacute;d&eacute;finies suivantes sont disposnibles:
+             
+         <p>
+            <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{div class=sujet</b></font></td>
+                  <td valign="top">Encapsule un sujet avec, selon le besoin, les sections "objectif", "intro", "works", "notes" dans cet ordre.</td>
+               </tr>
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{div class=objectif</b></font></td>
+                  <td valign="top">Section "Objectif"</td>
+               </tr>
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{div class=intro</b></font></td>
+                  <td valign="top">Section "Introduction"</td>
+               </tr>
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{div class=works</b></font></td>
+                  <td valign="top">Section "Travail propos&eacute;"</td>
+               </tr>
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{div class=notes</b></font></td>
+                  <td valign="top">Section "Remarques"</td>
+               </tr> 
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{div class=code</b></font></td>
+                  <td valign="top">Qui encapsule les portions de code montr&eacute;es en exemple</td>
+               </tr>
+                   
+            </table><br></p>
+      </div>
+        
+   </div>
+   
+     
+   <div>
+      <h2>Enrichir le texte en modifiant son aspect.</h2>
+          
+      <div>Les constructions suivantes sont pr&eacute;d&eacute;finies et permettent d'&eacute;diter des portions de code de mani&egrave;re color&eacute;e:
+             
+         <p>
+            <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{r</b></font></td>
+                  <td valign="top">Mot pr&eacute;d&eacute;fini dans le langage ou dans la construction, il est &agrave; recopier pour utiliser l'&eacute;l&eacute;ment.</td>
+               </tr>
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{n</b></font></td>
+                  <td valign="top">Nom d'une construction logique ou d'un de ses attributs</td>
+               </tr>
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{v</b></font></td>
+                  <td valign="top">Valeur textuelle d'une variable ou d'un attribut mise entre "<font color="#008000">".."</font></td>
+               </tr>
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{m</b></font></td>
+                  <td valign="top">Ligne de commentaire qui documente le source </td>
+               </tr>
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{T} </b></font></td>
+                  <td valign="top">Force une tabulation pour la mise en page du code</td>
+               </tr>
+                   
+            </table><br></p>
+      </div>
+        
+   </div>
+   
+     
+   <div>
+      <h2>Cr&eacute;er de l'&laquo;hyper-texte&raquo; en ajoutant des objets et des liens.</h2>
+          
+      <div>Les constructions suivantes sont pr&eacute;d&eacute;finies:
+             
+         <p>
+            <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{l class=javascool}</b></font></td>
+                  <td valign="top">Entit&eacute;e permettant de citer  avec un lien vers le site.</td>
+               </tr>
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{l class=proglet link=<i>proglet-name</i>}</b></font></td>
+                  <td valign="top">Insertion d'une applete de d&eacute;monstration de la proglet dans la page, taille [560x720]</td>
+               </tr>
+                     
+               <tr>
+                  <td valign="top"><font color="#990000"><b>{l class=note link=<i>number</i>}</b></font></td>
+                  <td valign="top">Liens vers une note qui &agrave; un id num&eacute;rique fix&eacute; par l'utilisateur.</td>
+               </tr>
+                   
+            </table><br></p>
+      </div>
+        
+   </div>
+   
+</div>

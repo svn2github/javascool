@@ -47,7 +47,6 @@ public class AlgoEditor extends JPanel implements Widget, Editor {
   public boolean isEditable() {
     return true;
   }
-
   //
   // [1] Builds the button bar
   //
@@ -143,7 +142,7 @@ public class AlgoEditor extends JPanel implements Widget, Editor {
     node_index = -1;
     DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
     if(unleaf)
-      while(node != null && !node.toString().matches(blockPattern)) {
+      while(node != null&& !node.toString().matches(blockPattern)) {
         node_index = node.getParent() != null ? node.getParent().getIndex(node) + 1 : -1;
         node = (DefaultMutableTreeNode) node.getParent();
       }

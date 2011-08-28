@@ -3,7 +3,7 @@
 | By Philippe Vienne <philoumailabo@gmail.com> |
 | Distributed on GNU Leaser General Public Licence    |
 | © 2010 INRIA, All rights reserved            |
-||______________________________________________|
+||||______________________________________________|
 |
 ********************************************************************************/
 
@@ -60,7 +60,7 @@ import javax.swing.JScrollPane;
  * @serial exclude
  */
 public class JsMain extends JApplet {
-  /**/public JsMain() {}
+  /**/ public JsMain() {}
   private static final long serialVersionUID = 1L;
 
   static final String title = "Java'Scool 3.2bis2";
@@ -70,14 +70,14 @@ public class JsMain extends JApplet {
     String os = System.getProperty("os.name");
     if(os.startsWith("Windows")) {
       try {
-	UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
       } catch(Exception e) {}
     } else {
-      try { 
-	System.setProperty("com.apple.mrj.application.apple.menu.about.name", title);
+      try {
+        System.setProperty("com.apple.mrj.application.apple.menu.about.name", title);
       } catch(Exception e) {}
-      try { 
-	UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      try {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
       } catch(Exception e) {
         System.err.println("Note: Utilisaton du thème Java (et non du système)");
       }
@@ -295,7 +295,7 @@ public class JsMain extends JApplet {
     setActivity("");
   }
   static private ArrayList<Activity> activities = new ArrayList<Activity>();
-  static private LinkedHashMap < String, ArrayList < String >> types = new LinkedHashMap < String, ArrayList < String >> ();
+  static private LinkedHashMap<String, ArrayList<String> > types = new LinkedHashMap<String, ArrayList<String> >();
 
   // [2.2] JsHome activity (activity chooser)
 
@@ -324,7 +324,7 @@ public class JsMain extends JApplet {
       }
       this.main.getFrame().addTab("Choisir (cliquer sur le titre) son activité", new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), "org/javascool/doc-files/icones16/new.png", false, true);
       this.main.getFrame().addTab("...", new JLabel(" "), "", true, false);
-     }
+    }
     ActionListener listener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         main.setActivity(((JButton) e.getSource()).getText());
@@ -355,11 +355,11 @@ public class JsMain extends JApplet {
   }
   // Sets the javascool uncaught exception alert.
   private static void setUncaughtExceptionAlert() {
-    String m = "Notice : Mécanisme de détection problème de compatibilité mis en place\n   pour " + 
-      title + " (" + System.getProperty("javascool.version") + " @ " + System.getProperty("java.home") + ")";
+    String m = "Notice : Mécanisme de détection problème de compatibilité mis en place\n   pour " +
+               title + " (" + System.getProperty("javascool.version") + " @ " + System.getProperty("java.home") + ")";
     System.err.println(m);
-  }  
- /** Gets the instance of the main program. */
+  }
+  /** Gets the instance of the main program. */
   public static JsMain getMain() {
     return theMain == null ? (theMain = new JsMain()) : theMain;
   }
@@ -376,8 +376,8 @@ public class JsMain extends JApplet {
     System.out.println("---------------------\n" + title + "\n---------------------\nstarting..");
     setJavascoolVersion();
     JsMain main = getMain();
-    //- setUncaughtExceptionAlert(); // Version perfusée
-    //-System.err.println(System.getProperties().toString().replaceAll("([{},])", "$1\n"));
+    // - setUncaughtExceptionAlert(); // Version perfusée
+    // -System.err.println(System.getProperties().toString().replaceAll("([{},])", "$1\n"));
     if(usage.length > 0)
       main.setActivity(usage[0]);
     if((usage.length > 0) && new File(usage[usage.length - 1]).exists() && (main.activity.getEditor() != null))

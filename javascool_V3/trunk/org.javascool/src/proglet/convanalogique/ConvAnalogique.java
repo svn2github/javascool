@@ -62,7 +62,7 @@ public class ConvAnalogique implements org.javascool.Proglet {
   // This defines the tests on the panel
   //
 
-  /**/public static void test() {
+  /**/ public static void test() {
     /* Méthode brute
      *  {
      *  int v = 1023; while(v >= 0) {

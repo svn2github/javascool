@@ -45,7 +45,7 @@ public class LinkCheck {
   public static void check(String location, boolean recursive) {
     echoBroken("LINKCHECK: " + getRoot(location));
     links = new HashSet<String>();
-    anchors = new HashMap < String, HashSet < String >> ();
+    anchors = new HashMap<String, HashSet<String> >();
     root = getRoot(location);
     loop = recursive;
     npages = nlinks = nbrokens = 0;
@@ -55,7 +55,7 @@ public class LinkCheck {
     anchors = null;
   }
   private static HashSet<String> links;
-  private static HashMap < String, HashSet < String >> anchors;
+  private static HashMap<String, HashSet<String> > anchors;
   private static String root;
   private static boolean loop;
   private static int npages, nlinks, nbrokens;

@@ -173,15 +173,16 @@ public class SourceEditor extends JPanel implements Widget, Editor {
     {
       JMenu menu = new JMenu();
       menu.setText("Edition");
-      bar.add(menu);    
+      bar.add(menu);
       if(editable) {
         menu.add(new JMenuItem(new AbstractAction("Tout effacer") {
-	    private static final long serialVersionUID = 1L;
-	    public void actionPerformed(ActionEvent evt) {
-	      pane.selectAll();
-	      pane.cut();
-	    }
-	  }));
+                                 private static final long serialVersionUID = 1L;
+                                 public void actionPerformed(ActionEvent evt) {
+                                   pane.selectAll();
+                                   pane.cut();
+                                 }
+                               }
+                               ));
         menu.addSeparator();
       }
       if(editable) {
@@ -229,21 +230,21 @@ public class SourceEditor extends JPanel implements Widget, Editor {
       menu.add(new JMenuItem(new AbstractAction("Zoom -") {
                                private static final long serialVersionUID = 1L;
                                public void actionPerformed(ActionEvent evt) {
-				 pane.setFont(new Font("Liberation Mono", Font.PLAIN, 16));
+                                 pane.setFont(new Font("Liberation Mono", Font.PLAIN, 16));
                                }
                              }
                              ));
       menu.add(new JMenuItem(new AbstractAction("Zoom 0") {
                                private static final long serialVersionUID = 1L;
                                public void actionPerformed(ActionEvent evt) {
-				 pane.setFont(new Font("Liberation Mono", Font.PLAIN, 18));
+                                 pane.setFont(new Font("Liberation Mono", Font.PLAIN, 18));
                                }
                              }
                              ));
       menu.add(new JMenuItem(new AbstractAction("Zoom +") {
                                private static final long serialVersionUID = 1L;
                                public void actionPerformed(ActionEvent evt) {
-				 pane.setFont(new Font("Liberation Mono", Font.PLAIN, 22));
+                                 pane.setFont(new Font("Liberation Mono", Font.PLAIN, 22));
                                }
                              }
                              ));

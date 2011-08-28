@@ -55,7 +55,7 @@ public class PaintBrush implements org.javascool.Proglet {
   //
   // This defines the tests on the panel
   //
-  /**/public static void test() {
+  /**/ public static void test() {
     Console.clear();
     Console.println("Pour la démo . . à vous de manipuler l'interface\n .. en \"mode démo\", tout simplement !");
   }

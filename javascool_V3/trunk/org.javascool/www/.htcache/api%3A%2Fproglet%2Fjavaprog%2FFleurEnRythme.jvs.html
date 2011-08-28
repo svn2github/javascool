@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f7f5f">//&nbsp;Impl&eacute;ment&nbsp;l'id&eacute;e&nbsp;originale&nbsp;de&nbsp;Thomas&nbsp;Giraudon&nbsp;&lt;ptiroccodu06@hotmail.fr&gt;&nbsp;et&nbsp;Victor&nbsp;Granet&nbsp;&lt;victor.granet@hotmail.com&gt;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">proglet.javaprog;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.swing.*;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.javascool.Utils;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">proglet.synthesons.FileSoundBit;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#000000">JLayeredPane&nbsp;pane&nbsp;=&nbsp;getSwingPane</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f7f5f">//&nbsp;Ajoute&nbsp;une&nbsp;image&nbsp;sur&nbsp;le&nbsp;display&nbsp;en&nbsp;(x,y)&nbsp;de&nbsp;taille&nbsp;(w,&nbsp;h)&nbsp;&agrave;&nbsp;la&nbsp;profondeur&nbsp;p</font><br />
+<font color="#000000">JLabel&nbsp;icon</font><font color="#000000">(</font><font color="#000000">String&nbsp;image,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">w,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">h,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">p</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">JLabel&nbsp;icon&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">JLabel</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">icon.setIcon</font><font color="#000000">(</font><font color="#000000">Utils.getIcon</font><font color="#000000">(</font><font color="#000000">image</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">icon.setBounds</font><font color="#000000">(</font><font color="#000000">x,&nbsp;y,&nbsp;w,&nbsp;h</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">pane.add</font><font color="#000000">(</font><font color="#000000">icon,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Integer</font><font color="#000000">(</font><font color="#000000">p</font><font color="#000000">)</font><font color="#000000">,&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">icon;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;D&eacute;fini&nbsp;l'affichage&nbsp;des&nbsp;icones&nbsp;lors&nbsp;d'&eacute;v&egrave;nements&nbsp;sonores</font><br />
+<font color="#7f0055"><b>class&nbsp;</b></font><font color="#000000">FlowerSoundBit&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">FileSoundBit&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">events</font><font color="#000000">[]</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">sample</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">n</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">events</font><font color="#000000">[</font><font color="#000000">n</font><font color="#000000">]&nbsp;</font><font color="#000000">&gt;&nbsp;</font><font color="#990000">0</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">icon</font><font color="#000000">(</font><font color="#2a00ff">&#34;http://javascool.gforge.inria.fr/api/proglet/javaprog/doc-files/fleur-move.png&#34;</font><font color="#000000">,&nbsp;random</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">,&nbsp;pane.getWidth</font><font color="#000000">())</font><font color="#000000">,&nbsp;random</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">,&nbsp;pane.getHeight</font><font color="#000000">())</font><font color="#000000">,&nbsp;</font><font color="#990000">100</font><font color="#000000">,&nbsp;</font><font color="#990000">100</font><font color="#000000">,&nbsp;</font><font color="#990000">2</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&gt;&nbsp;event&nbsp;at&nbsp;sample&nbsp;#&#34;&nbsp;</font><font color="#000000">+&nbsp;n</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f7f5f">//&nbsp;Programme&nbsp;principal</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">main</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;On&nbsp;efface&nbsp;tout</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">pane.removeAll</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;On&nbsp;affiche&nbsp;une&nbsp;image&nbsp;de&nbsp;fond</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">icon</font><font color="#000000">(</font><font color="#2a00ff">&#34;http://javascool.gforge.inria.fr/api/proglet/javaprog/doc-files/fleur-fond.jpg&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">0</font><font color="#000000">,&nbsp;</font><font color="#990000">0</font><font color="#000000">,&nbsp;pane.getWidth</font><font color="#000000">()</font><font color="#000000">,&nbsp;pane.getHeight</font><font color="#000000">()</font><font color="#000000">,&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;On&nbsp;&nbsp;charge&nbsp;le&nbsp;son</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">FlowerSoundBit&nbsp;sound&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">FlowerSoundBit</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">sound.reset</font><font color="#000000">(</font><font color="#2a00ff">&#34;http://javascool.gforge.inria.fr/documents/black-dog.wav&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;On&nbsp;calcule&nbsp;les&nbsp;&eacute;v&egrave;nements&nbsp;qui&nbsp;d&eacute;clenchent&nbsp;des&nbsp;fleurs</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">frequence&nbsp;=&nbsp;</font><font color="#990000">100</font><font color="#000000">,&nbsp;period&nbsp;=&nbsp;</font><font color="#990000">0.2</font><font color="#000000">,&nbsp;cut&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">sound.events&nbsp;=&nbsp;sound.events</font><font color="#000000">(</font><font color="#000000">frequence,&nbsp;period,&nbsp;cut</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Envoyez&nbsp;la&nbsp;musique&nbsp;!!</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">sound.play</font><font color="#000000">(</font><font color="#000000">period</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

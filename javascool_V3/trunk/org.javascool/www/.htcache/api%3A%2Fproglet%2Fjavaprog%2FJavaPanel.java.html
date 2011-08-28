@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f5fbf">/*******************************************************************************</font><br />
+<font color="#3f5fbf">*&nbsp;Thievery.Vieville@sophia.inria.fr,&nbsp;Copyright&nbsp;(C)&nbsp;2009.&nbsp;&nbsp;All&nbsp;rights&nbsp;reserved.&nbsp;*</font><br />
+<font color="#3f5fbf">*******************************************************************************/</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">proglet.javaprog;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f7f5f">//&nbsp;Used&nbsp;to&nbsp;define&nbsp;the&nbsp;gui</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.swing.JPanel;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.BorderLayout;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.swing.JLayeredPane;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.swing.JLabel;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Dimension;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.javascool.Utils;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f5fbf">/**&nbsp;D&eacute;finit&nbsp;une&nbsp;proglet&nbsp;javascool&nbsp;qui&nbsp;permet&nbsp;d'utiliser&nbsp;toute&nbsp;les&nbsp;classes&nbsp;des&nbsp;swings.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;doc-files/about-proglet.htm&#34;&gt;Description</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;doc-files/the-proglet.htm&#34;&gt;La&nbsp;proglet</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;JavaPanel.java.html&#34;&gt;code&nbsp;source</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;http://java.sun.com/docs/books/tutorial/uiswing&#34;&gt;Java&nbsp;Swing&nbsp;tutorial</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;http://java.sun.com/javase/6/docs/api/javax/swing/package-summary.html&#34;&gt;Java&nbsp;Swing&nbsp;API</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@serial&nbsp;</font><font color="#3f5fbf">exclude</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">JavaPanel&nbsp;</font><font color="#7f0055"><b>implements&nbsp;</b></font><font color="#000000">org.javascool.Proglet&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">JavaPanel</font><font color="#000000">()&nbsp;{}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>long&nbsp;</b></font><font color="#000000">serialVersionUID&nbsp;=&nbsp;</font><font color="#990000">1L</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;defines&nbsp;the&nbsp;panel&nbsp;to&nbsp;display</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;class&nbsp;</b></font><font color="#000000">Panel&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">JPanel&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>long&nbsp;</b></font><font color="#000000">serialVersionUID&nbsp;=&nbsp;</font><font color="#990000">1L</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Panel</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">setLayout</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BorderLayout</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pane&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">JLayeredPane</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">add</font><font color="#000000">(</font><font color="#000000">pane,&nbsp;BorderLayout.CENTER</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">reset</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">remove</font><font color="#000000">(</font><font color="#000000">pane</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pane&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">JLayeredPane</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">add</font><font color="#000000">(</font><font color="#000000">pane,&nbsp;BorderLayout.CENTER</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">JLayeredPane&nbsp;pane;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;defines&nbsp;the&nbsp;tests&nbsp;on&nbsp;the&nbsp;panel</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">/**/</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">test</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">FleurEnRythme</font><font color="#000000">()</font><font color="#000000">.run</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;defines&nbsp;the&nbsp;javascool&nbsp;interface</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Nettoie&nbsp;le&nbsp;panneau&nbsp;d'affichage&nbsp;&nbsp;la&nbsp;proglet.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">resetSwingPane</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.reset</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Renvoie&nbsp;le&nbsp;panneau&nbsp;d'affichage&nbsp;de&nbsp;la&nbsp;proglet.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#000000">JLayeredPane&nbsp;getSwingPane</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">panel.pane;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Cr&eacute;e&nbsp;et&nbsp;montre&nbsp;une&nbsp;icone&nbsp;sur&nbsp;le&nbsp;display&nbsp;en&nbsp;(x,y)&nbsp;de&nbsp;taille&nbsp;(w,&nbsp;h)&nbsp;&agrave;&nbsp;la&nbsp;profondeur&nbsp;p.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#000000">JLabel&nbsp;showIcon</font><font color="#000000">(</font><font color="#000000">String&nbsp;image,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">y,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">w,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">h,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">p</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">JLabel&nbsp;icon&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">JLabel</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">icon.setIcon</font><font color="#000000">(</font><font color="#000000">Utils.getIcon</font><font color="#000000">(</font><font color="#000000">image</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">icon.setLocation</font><font color="#000000">(</font><font color="#000000">x,&nbsp;y</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">icon.setSize</font><font color="#000000">(</font><font color="#000000">w,&nbsp;h</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.pane.add</font><font color="#000000">(</font><font color="#000000">icon,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Integer</font><font color="#000000">(</font><font color="#000000">p</font><font color="#000000">)</font><font color="#000000">,&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">icon;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;D&eacute;finition&nbsp;de&nbsp;l'interface&nbsp;graphique&nbsp;de&nbsp;la&nbsp;proglet.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">Panel&nbsp;panel&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Panel</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

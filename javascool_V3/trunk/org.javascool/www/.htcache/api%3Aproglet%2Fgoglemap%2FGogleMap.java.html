@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f5fbf">/*******************************************************************************</font><br />
+<font color="#3f5fbf">*&nbsp;David.Pichardie@inria.fr,&nbsp;Copyright&nbsp;(C)&nbsp;2011.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;rights&nbsp;reserved.&nbsp;*</font><br />
+<font color="#3f5fbf">*******************************************************************************/</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">proglet.goglemap;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f7f5f">//&nbsp;Used&nbsp;to&nbsp;define&nbsp;the&nbsp;gui</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.Map;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.swing.JPanel;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.swing.SwingUtilities;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.javascool.Jvs2Java;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">proglet.ingredients.Console;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f5fbf">/**&nbsp;D&eacute;finit&nbsp;une&nbsp;proglet&nbsp;javascool&nbsp;qui&nbsp;permet&nbsp;de&nbsp;tracer&nbsp;des&nbsp;chemins&nbsp;sur&nbsp;une&nbsp;carte&nbsp;de&nbsp;France.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;doc-files/about-proglet.htm&#34;&gt;Description</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;doc-files/the-proglet.htm&#34;&gt;La&nbsp;proglet</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">&lt;a&nbsp;href=&#34;GogleMap.java.html&#34;&gt;code&nbsp;source</font><font color="#7f7f9f">&lt;/a&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@serial&nbsp;</font><font color="#3f5fbf">exclude</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">GogleMap&nbsp;</font><font color="#7f0055"><b>implements&nbsp;</b></font><font color="#000000">org.javascool.Proglet&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">GogleMap</font><font color="#000000">()&nbsp;{}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>long&nbsp;</b></font><font color="#000000">serialVersionUID&nbsp;=&nbsp;</font><font color="#990000">1L</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;defines&nbsp;the&nbsp;panel&nbsp;to&nbsp;display</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;class&nbsp;</b></font><font color="#000000">Panel&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">JPanel&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>long&nbsp;</b></font><font color="#000000">serialVersionUID&nbsp;=&nbsp;</font><font color="#990000">1L</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Panel</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">add</font><font color="#000000">(</font><font color="#000000">main&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">GogleMapPanel</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">voisins&nbsp;=&nbsp;main.arcs;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">latitudes&nbsp;=&nbsp;main.latitudes;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">longitudes&nbsp;=&nbsp;main.longitudes;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">GogleMapPanel&nbsp;main;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;defines&nbsp;the&nbsp;javascool&nbsp;interface</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;enum&nbsp;</b></font><font color="#000000">IntensiteRoute&nbsp;</font><font color="#000000">{&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">LEGER</font><font color="#000000">(</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">,&nbsp;MOYEN</font><font color="#000000">(</font><font color="#990000">2</font><font color="#000000">)</font><font color="#000000">,&nbsp;FORT</font><font color="#000000">(</font><font color="#990000">3</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">value;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">IntensiteRoute</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">value&nbsp;=&nbsp;i;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;final&nbsp;static&nbsp;</b></font><font color="#000000">IntensiteRoute&nbsp;LEGER&nbsp;=&nbsp;IntensiteRoute.LEGER;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;final&nbsp;static&nbsp;</b></font><font color="#000000">IntensiteRoute&nbsp;MOYEN&nbsp;=&nbsp;IntensiteRoute.MOYEN;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;final&nbsp;static&nbsp;</b></font><font color="#000000">IntensiteRoute&nbsp;FORT&nbsp;=&nbsp;IntensiteRoute.FORT;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">affichePointSurCarte</font><font color="#000000">(</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">longitude,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">latitude,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">idx</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.main.affichePoint</font><font color="#000000">(</font><font color="#000000">longitude,&nbsp;latitude,&nbsp;idx</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">affichePointSurCarte</font><font color="#000000">(</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">longitude,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">latitude</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.main.affichePoint</font><font color="#000000">(</font><font color="#000000">longitude,&nbsp;latitude</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">afficheRouteSurCarte</font><font color="#000000">(</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">longitude1,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">latitude1,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">longitude2,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">latitude2,&nbsp;IntensiteRoute&nbsp;intensite</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.main.afficheRoute</font><font color="#000000">(</font><font color="#000000">longitude1,&nbsp;latitude1,&nbsp;longitude2,&nbsp;latitude2,&nbsp;intensite.value</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">afficheRouteSurCarte</font><font color="#000000">(</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">longitude1,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">latitude1,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">longitude2,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">latitude2</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.main.afficheRoute</font><font color="#000000">(</font><font color="#000000">longitude1,&nbsp;latitude1,&nbsp;longitude2,&nbsp;latitude2</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">distanceEuclidienne</font><font color="#000000">(</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">longitude1,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">latitude1,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">longitude2,&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">latitude2</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">panel.main.distanceEuclidienne</font><font color="#000000">(</font><font color="#000000">longitude1,&nbsp;latitude1,&nbsp;longitude2,&nbsp;latitude2</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">effaceCarte</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.main.clearMap</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#000000">Map&lt;String,&nbsp;Double&gt;&nbsp;latitudes;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#000000">Map&lt;String,&nbsp;Double&gt;&nbsp;longitudes;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#000000">Map&nbsp;&lt;&nbsp;String,&nbsp;List&nbsp;&lt;&nbsp;String&nbsp;&gt;&gt;&nbsp;voisins;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#000000">List&lt;String&gt;&nbsp;plusCourtCheminGogleMap</font><font color="#000000">(</font><font color="#000000">String&nbsp;depart,&nbsp;String&nbsp;arrivee</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">GogleMapCalculChemins.plusCourtChemin</font><font color="#000000">(</font><font color="#000000">panel.main,&nbsp;depart,&nbsp;arrivee</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">parcoursEnLargeur</font><font color="#000000">(</font><font color="#7f0055"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;depart</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">SwingUtilities.invokeLater</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Runnable</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">run</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">panel.main.clearMap</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GogleMapParcours.afficheToutesRoutesDirectes</font><font color="#000000">(</font><font color="#000000">panel.main</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GogleMapParcours.parcoursLargeur</font><font color="#000000">(</font><font color="#000000">panel.main,&nbsp;depart</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;defines&nbsp;the&nbsp;tests&nbsp;on&nbsp;the&nbsp;panel</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">test</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Console.clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Console.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;Pour&nbsp;la&nbsp;d&eacute;mo&nbsp;.&nbsp;.&nbsp;utiliser&nbsp;les&nbsp;boutons&nbsp;\&#34;Parcours&nbsp;en&nbsp;profondeur\&#34;&nbsp;+&nbsp;&nbsp;\&#34;Parcours&nbsp;en&nbsp;largeur\&#34;&nbsp;!&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;D&eacute;finition&nbsp;de&nbsp;l'interface&nbsp;graphique&nbsp;de&nbsp;la&nbsp;proglet.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">Panel&nbsp;panel&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Panel</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><font color="#ffffff">
+</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

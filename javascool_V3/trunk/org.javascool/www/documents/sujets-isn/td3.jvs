@@ -103,8 +103,8 @@ void lesPlusFrequents(List<String> liste, int N) {
   }
 }
 // Construction de l'index
-Map < String, List < Integer >> tableIndex(List<String> liste) {
-  Map < String, List < Integer >> table = new HashMap < String, List < Integer >> ();
+Map<String, List<Integer> > tableIndex(List<String> liste) {
+  Map<String, List<Integer> > table = new HashMap<String, List<Integer> >();
   int page = 1;
   for(String mot : liste) {
     if(equal(mot, "<NOUVELLE PAGE>"))
@@ -123,13 +123,12 @@ Map < String, List < Integer >> tableIndex(List<String> liste) {
   ;
   return table;
 }
-
 // Construction de l'index puis affichage
 // des entrÃ‚ÂŽes des N mots les plus frÃ‚ÂŽquents
 void premiersIndex(List<String> liste, int N) {
   Map<String, Integer> table = tableDesFrequences(liste);
   Map<String, Integer> tableTriee = trierMapParValeursDecroissantes(table);
-  Map < String, List < Integer >> index = tableIndex(liste);
+  Map<String, List<Integer> > index = tableIndex(liste);
   int i = 0;
   for(String s : tableTriee.keySet()) {
     if(i >= N)

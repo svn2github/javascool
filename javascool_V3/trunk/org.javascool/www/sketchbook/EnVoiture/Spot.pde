@@ -65,15 +65,15 @@ class Spot extends Vec2D {
       building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(30);
     else if(f == form[3])
       building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(100);
-     /*if(n==listN[0] || n==listN[1]) {
-      *  building = new AABB(new Vec3D(), new Vec3D(d1, d2, h)).toMesh();
-      *  } else if(n==listN[2]) {
-      *  building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(10);
-      *  } else if(n==listN[3]) {
-      *  building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(50);
-      *  } else if(n==listN[4]) {
-      *  building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(100);
-      *  }*/
+    /*if(n==listN[0] || n==listN[1]) {
+     *  building = new AABB(new Vec3D(), new Vec3D(d1, d2, h)).toMesh();
+     *  } else if(n==listN[2]) {
+     *  building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(10);
+     *  } else if(n==listN[3]) {
+     *  building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(50);
+     *  } else if(n==listN[4]) {
+     *  building = new Cone(new Vec3D(), new Vec3D(10, 10, 150), d1, d2, h).toMesh(100);
+     *  }*/
     // align to terrain normal
     building.pointTowards(currNormal);
     // move to correct position

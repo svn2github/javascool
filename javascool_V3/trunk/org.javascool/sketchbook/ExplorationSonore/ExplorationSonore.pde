@@ -1,12 +1,12 @@
 /*////////////////////////////////////////////////////////////////////////////
  *
- * 08.2010 Cécile P-L for Fuscia - ccl.picard@gmail.com - 
+ * 08.2010 Cécile P-L for Fuscia - ccl.picard@gmail.com -
  * PERCEPTION SONORE:
- * Interface pédagogique sur les notions de contenu sonore et perception; 
- * Utilisation de Minim pour le son -  
+ * Interface pédagogique sur les notions de contenu sonore et perception;
+ * Utilisation de Minim pour le son -
  *
  * Inspired from a tutorial of Andy Best http://andybest.net/
- **/                                                                                                                                                                                                                                                                                                                    // /////////////////////////////////////////////////////////////////////////////////
+ **/                                                                                                                                                                                                                                                                                                                                                          // /////////////////////////////////////////////////////////////////////////////////
 
 import processing.opengl.*;
 import javax.media.opengl.*;
@@ -52,7 +52,7 @@ int c = 0;
 // Ce qui est lancé une fois, au départ
 void setup() {
   frameRate(60);
-  
+
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();
@@ -132,23 +132,23 @@ void draw() {
   update(mouseX, mouseY);
   for(int i = 0; i < T1.length; i++)
     T1[i].display();
-     // Fenetre informative
+  // Fenetre informative
   myInfo();
 }
 // Un accès rapide aux fonctions via le clavier
 void keyPressed() {
   if(key == '0')
-    signal1.setSignal("sinus", 1000, 0.0, true );
+    signal1.setSignal("sinus", 1000, 0.0, true);
   if(key == '1') {
-    signal1.setSignal("sinus", 1000, 0.0, true );
-    signal2.setSignal("sinus", 4000, 0.0, true );
+    signal1.setSignal("sinus", 1000, 0.0, true);
+    signal2.setSignal("sinus", 4000, 0.0, true);
   }
   if(key == '2')
-    signal1.setSignal("carré", 1000, 0.0, true );
+    signal1.setSignal("carré", 1000, 0.0, true);
   if(key == '3')
-    signal1.setSignal("scie", 1000, 0.0, true );
+    signal1.setSignal("scie", 1000, 0.0, true);
   if(key == '4')
-    signal1.setSignal("bruit", 1000, 0.0, true );
+    signal1.setSignal("bruit", 1000, 0.0, true);
   if(key == 'e')
     record1.setRecord("../data/music/Ahmed_Ex2.wav");
   if(key == 'f')
@@ -168,7 +168,7 @@ void update(int x, int y) {
       if(T1[i].pressed() && !(T1[i].select)) {
         T1[i].select = true;
         if(i < 4)
-          signal1.setSignal(T1[i].value, 1000, 0.0, true );
+          signal1.setSignal(T1[i].value, 1000, 0.0, true);
         else if(i == 4)
           record1.setRecord("data/music/Ahmed_Ex2.wav");
         else if(i == 5) {

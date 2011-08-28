@@ -1,4 +1,3 @@
-
 // Calcul de PI au compte-goutte
 // http://www.pi314.net/fr/goutte.php
 // en utilisant:
@@ -6,18 +5,18 @@
 import java.math.BigDecimal;
 
 void main() {
-   int NombreDecimales = 100;
-   // On initialise les numerateur/denominateur
-   int TailleSuite = 1 + (int) Math.floor(NombreDecimales * 3.32);
-   BigDecimal Numerateur = new BigDecimal(TailleSuite);
-   BigDecimal Denominateur =  new BigDecimal(2 * TailleSuite + 1);
-   BigDecimal Pi = new BigDecimal(1);
-   // et on fait le calcul de la forme d'Horner de droite à gauche
-   for (int n = TailleSuite; n > 0; n--) {
-      Pi = Numerateur.divide(Denominateur, NombreDecimales, java.math.RoundingMode.HALF_EVEN).multiply(Pi).add(new BigDecimal(2));
-      Numerateur = Numerateur.subtract(new BigDecimal(1));
-      Denominateur = Denominateur.subtract(new BigDecimal(2));
-   }
-   // et on imprime
-   println("pi = " + Pi);
+  int NombreDecimales = 100;
+  // On initialise les numerateur/denominateur
+  int TailleSuite = 1 + (int) Math.floor(NombreDecimales * 3.32);
+  BigDecimal Numerateur = new BigDecimal(TailleSuite);
+  BigDecimal Denominateur = new BigDecimal(2 *TailleSuite + 1);
+  BigDecimal Pi = new BigDecimal(1);
+  // et on fait le calcul de la forme d'Horner de droite à gauche
+  for(int n = TailleSuite; n > 0; n--) {
+    Pi = Numerateur.divide(Denominateur, NombreDecimales, java.math.RoundingMode.HALF_EVEN).multiply(Pi).add(new BigDecimal(2));
+    Numerateur = Numerateur.subtract(new BigDecimal(1));
+    Denominateur = Denominateur.subtract(new BigDecimal(2));
+  }
+  // et on imprime
+  println("pi = " + Pi);
 }

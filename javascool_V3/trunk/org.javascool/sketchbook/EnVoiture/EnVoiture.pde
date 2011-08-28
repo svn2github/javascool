@@ -1,12 +1,12 @@
- /*////////////////////////////////////////////////////////////////////////////
-   *
-   * 10.2010 Cécile P-L for Fuscia, ccl.picard@gmail.com
-   * GRAPHES Part 1
-   * Interface pédagogique sur la manipulation des concepts liés aux graphes
-   *
-   * Inspired from 'TerrainSteering', toxiclibs from Karsten Schmidt http://www.openprocessing.org/portal/?userID=4530
-   *
-   **/
+/*////////////////////////////////////////////////////////////////////////////
+ *
+ * 10.2010 Cécile P-L for Fuscia, ccl.picard@gmail.com
+ * GRAPHES Part 1
+ * Interface pédagogique sur la manipulation des concepts liés aux graphes
+ *
+ * Inspired from 'TerrainSteering', toxiclibs from Karsten Schmidt http://www.openprocessing.org/portal/?userID=4530
+ *
+ **/
 
 import toxi.geom.*;
 import toxi.geom.mesh.*;
@@ -47,28 +47,27 @@ char[] form = { 'B', 'P', 'O', 'C' };
 
 void setup() {
   size(900, 500, OPENGL);  // 1024, 576, OPENGL);
-  
+
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();
 
-  
   ArialB = createFont("Arial Bold", 14, true);
 
   // Pour créer les 2 vues
   pgl = (PGraphicsOpenGL) g;
   _gl = pgl.gl;
 
-  colors[0] = color(#FF9900);
+  colors[0] = color(# FF9900);
   colors[1] = color(100, 200, 0);
-  colors[2] = color(#FFFF00);
+  colors[2] = color(# FFFF00);
   colors[3] = color(200);
   colors[4] = color(150);
   colors[5] = color(100);
-  colors[6] = color(#0000FF);
+  colors[6] = color(# 0000FF);
   colors[7] = color(0, 0, 100);
-  colors[8] = color(#00FFFF);
-  colors[9] = color(#FF00FF);
+  colors[8] = color(# 00FFFF);
+  colors[9] = color(# FF00FF);
   colors[10] = color(100, 0, 100);
   colors[11] = color(0, 70, 75);
 
@@ -105,7 +104,7 @@ void draw() {
   // in 3D
   // Met à jour voiture et les spots
   car.update();
-  for(String ni_ : (Iterable<String> )myTrip.spots.keySet()) {
+  for(String ni_ : (Iterable<String>)myTrip.spots.keySet()) {
     Spot S_ = (Spot) myTrip.spots.get(ni_);
     S_.update();
   }
@@ -131,7 +130,7 @@ void draw() {
   gfx.mesh(mesh, false);
   directionalLight(255, 255, 255, 0.05f, -0.005f, 0.05f);
   car.draw();
-  for(String ni_ : (Iterable<String> )myTrip.spots.keySet()) {
+  for(String ni_ : (Iterable<String>)myTrip.spots.keySet()) {
     Spot S_ = (Spot) myTrip.spots.get(ni_);
     if(ni_.equals(start) || ni_.equals(end)) {
       strokeWeight(3);
@@ -184,7 +183,7 @@ void draw() {
   stroke(0);
   translate(0, 0, -1);
   ellipse(car.y2D, car.x2D, 2, 2);
-  for(String ni_ : (Iterable<String> )myTrip.spots.keySet()) {
+  for(String ni_ : (Iterable<String>)myTrip.spots.keySet()) {
     Spot S_ = (Spot) myTrip.spots.get(ni_);
     fill(S_.col);
     strokeWeight(1.1);
@@ -208,13 +207,12 @@ void draw() {
     stroke(0);
 
     // textFont(ArialB, 5.0);
-
     /*String n = S_.n.substring(0, 1);
      *  translate(0,0,-1);
      *  if(S_.y2D+10<100 && S_.y2D+10>0 && S_.x2D+10<100 && S_.x2D+10>0 )  text(n, S_.y2D+10, S_.x2D+10);
      *  else  text(n, S_.y2D-10, S_.x2D-10);*/
     // Pour chaque spot, les liens sont détectés pour les tracer en noir
-    for(String nj_ : (Iterable<String> )myTrip.spots.keySet())
+    for(String nj_ : (Iterable<String>)myTrip.spots.keySet())
       if(myTrip.isLink(ni_, nj_) && !(ni_.equals(nj_))) {
         Spot S2_ = (Spot) myTrip.spots.get(nj_);
         double p_ = myTrip.getLink(ni_, nj_);
@@ -292,7 +290,7 @@ void keyPressed() {
     car.steer(0.1f);
   if(keyCode == RIGHT)
     car.steer(-0.1f);
-    // Zoom +/-
+  // Zoom +/-
   Vec3D addOn = new Vec3D(0, 10, 10);
   Vec3D subStract = new Vec3D(0, -10, -10);
   Vec3D newCam;
@@ -320,18 +318,18 @@ void keyPressed() {
 
       myTrip.addSpot(listN[i], colors[i], form[(i % 4)], x_, y_, d1_, d2_, h_);
     }
-    // Remise à zero de la distance parcourue, élimine tout lien créé
+  // Remise à zero de la distance parcourue, élimine tout lien créé
   if(key == 'd') {
     distance = 0;
-    for(String ni_ : (Iterable<String> )myTrip.spots.keySet())
-      for(String nj_ : (Iterable<String> )myTrip.spots.keySet())
+    for(String ni_ : (Iterable<String>)myTrip.spots.keySet())
+      for(String nj_ : (Iterable<String>)myTrip.spots.keySet())
         if(myTrip.isLink(ni_, nj_) && !(ni_.equals(nj_)))
           myTrip.removeLink(ni_, nj_);
   }
   // Joue à trouver le plus court chemin entre 2 villes, hors chemin direct évidemment
   if(key == 'p') {
-    for(String ni_ : (Iterable<String> )myTrip.spots.keySet())
-      for(String nj_ : (Iterable<String> )myTrip.spots.keySet())
+    for(String ni_ : (Iterable<String>)myTrip.spots.keySet())
+      for(String nj_ : (Iterable<String>)myTrip.spots.keySet())
         if(myTrip.isLink(ni_, nj_) == false)
           myTrip.addLink(ni_, nj_);
     distanceC = 0;
@@ -356,15 +354,15 @@ void keyPressed() {
       }
       println(distanceC);
     }
-    for(String ni_ : (Iterable<String> )myTrip.spots.keySet())
-      for(String nj_ : (Iterable<String> )myTrip.spots.keySet())
+    for(String ni_ : (Iterable<String>)myTrip.spots.keySet())
+      for(String nj_ : (Iterable<String>)myTrip.spots.keySet())
         if(myTrip.isLink(ni_, nj_) == true)
           myTrip.removeLink(ni_, nj_);
   }
   // Joue à trouver le plus court chemin entre 2 stations, en visitant obligatoirement 2 stations, sachant une déja donnée
   if(key == 'q') {
-    for(String ni_ : (Iterable<String> )myTrip.spots.keySet())
-      for(String nj_ : (Iterable<String> )myTrip.spots.keySet())
+    for(String ni_ : (Iterable<String>)myTrip.spots.keySet())
+      for(String nj_ : (Iterable<String>)myTrip.spots.keySet())
         if(myTrip.isLink(ni_, nj_) == false)
           myTrip.addLink(ni_, nj_);
     if(myTrip.spots.size() == listN.length) {
@@ -409,8 +407,8 @@ void keyPressed() {
         println(distanceC);
       }
     }
-    for(String ni_ : (Iterable<String> )myTrip.spots.keySet())
-      for(String nj_ : (Iterable<String> )myTrip.spots.keySet())
+    for(String ni_ : (Iterable<String>)myTrip.spots.keySet())
+      for(String nj_ : (Iterable<String>)myTrip.spots.keySet())
         if(myTrip.isLink(ni_, nj_) == true)
           myTrip.removeLink(ni_, nj_);
     path.clear();
@@ -426,6 +424,7 @@ void keyPressed() {
       info = true;
   }
   // Génère tous les liens possibles entre les noeuds
+
   /*if( key == 'l' ) {
    *
    *  for(String ni_ : (Iterable<String>) myTrip.spots.keySet())
@@ -440,7 +439,3 @@ void keyPressed() {
    *  }
    *  } */
 }
-
-
-
-

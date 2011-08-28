@@ -217,7 +217,7 @@ aps :
 
 # Web site files publication
 
-wpub : jar api wraz
+wpub : jar api 
 	@$(MAKE) -C sketchbook publish
 	@php -l www/index.php ; rm -f www/*~
 	@-rsync --rsh='ssh -C' --archive --delete-excluded --exclude .svn/ --exclude index.php --exclude javascool.jar www/* scm.gforge.inria.fr:/home/groups/javascool/htdocs/v3 \
@@ -237,9 +237,9 @@ wref : wpub
 	@lib/run.sh org.javascool.LinkCheck -recursive http://javascool.gforge.inria.fr/v3/ | tee brokenlinks.txt
 
 # Clean the web cache
-
-wraz : 
-	@wget -q -O - http://javascool.gforge.inria.fr?kezako=niquelekacheux
+# NE PLUS UTILISER !!!
+#wraz : 
+#	@wget -q -O - http://javascool.gforge.inria.fr?kezako=niquelekacheux
 
 # Copy the files on a USB key of name /media/javascool
 
@@ -390,7 +390,6 @@ done :
 #:: make aps          : Rebuild source files after a java doc build failure
 #:: make wpub         : Publish the present document release on the web site
 #:: make jpub         : Publish the present javascool.jar release on the web site
-#:: make wraz         , Clears the web site cache
 #:: make wref         : Checks the web site broken links
 #:: make wusb	      : Copy the files on a USB key of name /media/javascool
 #::Useful links:

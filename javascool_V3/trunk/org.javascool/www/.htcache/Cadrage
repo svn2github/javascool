@@ -1,0 +1,122 @@
+ <table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Sommaire</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Trois_.C3.A9tapes_dans_l.27apprentissage_de_l.27informatique."><span class="tocnumber">1</span> <span class="toctext">Trois étapes dans l'apprentissage de l'informatique.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Un_levier:_l.27apprentissage_de_la_programmation."><span class="tocnumber">1.1</span> <span class="toctext">Un levier: l'apprentissage de la programmation.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-3"><a href="#Informatique_et_programmation_au_lyc.C3.A9e_en_2010-2011"><span class="tocnumber">2</span> <span class="toctext">Informatique et programmation au lycée en 2010-2011</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Algorithmique_et_programmation_en_math.C3.A9matiques_.28depuis_la_rentr.C3.A9e_2009.29."><span class="tocnumber">2.1</span> <span class="toctext">Algorithmique et programmation en mathématiques (depuis la rentrée 2009).</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="#Objectifs_pour_le_lyc.C3.A9e."><span class="tocnumber">2.1.1</span> <span class="toctext">Objectifs pour le lycée.</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="#Contenu_du_programme."><span class="tocnumber">2.1.2</span> <span class="toctext">Contenu du programme.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-7"><a href="#Dans_l.27option_M.C3.A9thodes_et_Pratiques_Scientifiques_.28.C3.A0_la_rentr.C3.A9e_2010.29."><span class="tocnumber">2.2</span> <span class="toctext">Dans l'option Méthodes et Pratiques Scientifiques (à la rentrée 2010).</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Perspective:_Un_enseignement_de_sp.C3.A9cialit.C3.A9_optionnel_en_Terminale_S_.C2.AB_Informatique_et_sciences_du_num.C3.A9rique_.C2.BB."><span class="tocnumber">2.3</span> <span class="toctext">Perspective: Un enseignement de spécialité optionnel en Terminale S «&nbsp;Informatique et sciences du numérique&nbsp;».</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#De_quelques_perspectives_p.C3.A9dagogies."><span class="tocnumber">3</span> <span class="toctext">De quelques perspectives pédagogies.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="#L.27informatique_se_pr.C3.AAte_.C3.A0_une_p.C3.A9dagogie_participative."><span class="tocnumber">3.1</span> <span class="toctext">L'informatique se prête à une pédagogie participative.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-11"><a href="#Quand_le_professeur_apprend_avec_l.27.C3.A9l.C3.A8ve."><span class="tocnumber">3.1.1</span> <span class="toctext">Quand le professeur apprend avec l'élève.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-12"><a href="#L.27informatique_conduit_.C3.A0_un_apprentissage_de_la_rigueur."><span class="tocnumber">3.2</span> <span class="toctext">L'informatique conduit à un apprentissage de la rigueur.</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#L.27informatique_est_une_science_abstraite_..._incarn.C3.A9e."><span class="tocnumber">3.3</span> <span class="toctext">L'informatique est une science abstraite ... incarnée.</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "afficher"; var tocHideText = "masquer"; showTocToggle(); } </script>
+<p><br />
+</p>
+<h2> <span class="mw-headline" id="Trois_.C3.A9tapes_dans_l.27apprentissage_de_l.27informatique."> Trois étapes dans l'apprentissage de l'informatique. </span></h2>
+<p>Il faut être clair&nbsp;: à l'ère numérique dans laquelle nous vivons, les fondements de l'informatique constituent un savoir indispensable comme peut l'être la lecture ou l'écriture, et tôt ou tard (et plutôt <i> <a href="?page=Manifeste" title="JavaScool:Manifeste">tantôt que trop tard</a></i>&nbsp;!), c'est une discipline à part entière qu'il faut pouvoir enseigner à nos jeunes, probablement en trois étapes&nbsp;:
+</p>
+<ol><li> [<i>primaire-collège</i>] <b>Apprentissage de l'usage des outils</b>&nbsp;: apprendre à utiliser les outils&nbsp;: édition, communication, (et un clavier&nbsp;!),... profiter des ressources de l'internet, etc.
+</li><li> [<i>collège-lycée</i>] <b>Apprentissage des méthodes par la pratique expérimentale</b>&nbsp;: c'est à dire ici apprentissage des algorithmes et de la programmation. 
+<ul><li> Il est indispensable d'apprendre l' «&nbsp;algorithmique&nbsp;» (et les fondements théoriques qui y conduisent), c'est le levier pour pouvoir comprendre et maîtriser, voire adapter les logiciels que nous utilisons (et pas uniquement les subir&nbsp;!).
+</li><li> Il est impossible de s'approprier ce savoir sans une vraie pratique, une démarche expérimentale, il faut donc incarner cette algorithmique en faisant de la programmation.
+</li></ul>
+</li><li> [<i>fin de lycée-et au delà</i>] commence la <i>Formation Scientifique</i> dans le domaine&nbsp;: par exemple la théorie de l'information, de la compilation, traitement des données, etc.
+</li></ol>
+<p>Sans oublier, à tous les niveaux, le développement de la réflexion et de la culture&nbsp;: comprendre d'où vient l'informatique, ce qu'elle change au niveau de notre société, etc..
+</p>
+<h3> <span class="mw-headline" id="Un_levier:_l.27apprentissage_de_la_programmation."> Un levier: l'apprentissage de la programmation. </span></h3>
+<p>On peut dire, comme l'enseigne <a href="http://www.lix.polytechnique.fr/%7Edowek" class="external text" rel="nofollow">Gilles Dowek</a>, que, au confluent des quatre clés de voûte de l'informatique (Algorithme, Langage, Information, Machine), il y a la programmation. Apprendre à programmer permet de devenir autonome et de découvrir expérimentalement les fondements des sciences de l'information de ce 3ème millénaire. 
+</p><p>Il s'agit bien d'apprendre un savoir faire&nbsp;: écrire un programme, pour réussir à conceptualiser ce que l'intelligence mécanique, la "machine" peut réaliser.
+Dans cette situation encore transitoire, l'usage des outils commence à être enseigné de manière structurée et systématique à travers les B2I et, à plus haut niveau, C2I. Mais l'enseignement des fondements de l'informatique, c'est à dire, pour ce qui est du lycée: l'apprentissage des méthodes par la pratique expérimentale, reste encore très parcelaire et se retrouve à ce jour incluse dans deux matières, comme détaillé ici.
+</p><p>Une <a href="rtsp://stream-serv.inrialpes.fr/Roc/SeminaireInformatiqueObjetsNumeriques/T_Vieville.rm">présentation vidéo</a> accompagnée de ses <a href="http://www.loria.fr/%7Evthierry/cours/slides-ue-stflour.pdf" class="external text" rel="nofollow">supports</a> complète cette petite analyse.
+</p>
+<h2> <span class="mw-headline" id="Informatique_et_programmation_au_lyc.C3.A9e_en_2010-2011"> Informatique et programmation au lycée en 2010-2011 </span></h2>
+<h3> <span class="mw-headline" id="Algorithmique_et_programmation_en_math.C3.A9matiques_.28depuis_la_rentr.C3.A9e_2009.29."> Algorithmique et programmation en mathématiques (depuis la rentrée 2009). </span></h3>
+<p>Référence: <a href="http://www.eduscol.education.fr/cid45768/programmes%A0en-vigueur.html" class="external text" rel="nofollow">programme en vigueur</a>
+</p>
+<h4> <span class="mw-headline" id="Objectifs_pour_le_lyc.C3.A9e."> Objectifs pour le lycée. </span></h4>
+<p>«La démarche algorithmique est, depuis les origines, une composante essentielle de l’activité mathématique. Au collège, les élèves ont rencontré des algorithmes (algorithmes opératoires, algorithme des différences, algorithme d’Euclide, algorithmes de construction en géométrie). Ce qui est proposé dans le programme est une formalisation en langage naturel propre à donner lieu à traduction sur une calculatrice ou à l’aide d’un logiciel. Il s’agit de familiariser les élèves avec les grands principes d’organisation d’un algorithme&nbsp;: gestion des entrées-sorties, affectation d’une valeur et mise en forme d’un calcul, en opérant essentiellement sur des nombres entiers. 
+</p><p>Dans le cadre de cette activité algorithmique, les élèves sont entraînés&nbsp;:
+</p>
+<ul><li> à décrire certains algorithmes en langage naturel ou dans un langage symbolique&nbsp;;
+</li><li> à en réaliser quelques uns à l’aide d’un tableur ou d’un petit programme réalisé sur une calculatrice ou avec un logiciel adapté&nbsp;;
+</li><li> à interpréter des algorithmes plus complexes.
+</li></ul>
+<p>Aucun langage, aucun logiciel n’est imposé.L’algorithmique a une place naturelle dans tous les champs des mathématiques et les problèmes posés doivent être en relation avec les autres parties du programme (fonctions, géométrie, statistiques et probabilité, logique) mais aussi avec les autres disciplines ou la vie courante. À l’occasion de l’écriture d’algorithmes et de petits programmes, il convient de donner aux élèves de bonnes habitudes de rigueur et de les entraîner aux pratiques systématiques de vérification et de contrôle.» (extrait des documents officiels).
+</p>
+<h4> <span class="mw-headline" id="Contenu_du_programme."> Contenu du programme. </span></h4>
+<ul><li> <b>Instructions élémentaires (affectation, calcul, entrée, sortie).</b> Les élèves, dans le cadre d’une résolution de problèmes, doivent être capables&nbsp;:
+<ul><li> d’écrire une formule permettant un calcul&nbsp;;
+</li><li> d’écrire un programme calculant et donnant la valeur d’une fonction&nbsp;;ainsi que les instructions d’entrées et sorties nécessaires au traitement.
+</li></ul>
+</li><li> <b>Boucle et itérateur, instruction conditionnelle</b> Les élèves, dans le cadre d’une résolution de problèmes, doivent être capables&nbsp;:
+<ul><li> de programmer un calcul itératif, le nombre d’itérations étant donné&nbsp;;
+</li><li> de programmer une instruction conditionnelle, un calcul itératif, avec une fin de boucle conditionnelle.
+</li></ul>
+</li></ul>
+<p>Exemples de mise en œuvre de l'algorithmique dans chacune des trois parties du programme:
+</p>
+<ul><li> <i>Etude des Fonctions</i> Même si les logiciels traceurs de courbes permettent d’obtenir rapidement la représentation graphique d’une fonction définie par une formule algébrique, il est intéressant, notamment pour les fonctions définies par morceaux, de faire écrire aux élèves un algorithme de tracé de courbe.
+</li><li> <i>En Géométrie</i> Le cadre de la géométrie repérée offre la possibilité de traduire numériquement des propriétés géométriques et permet de résoudre certains problèmes par la mise en oeuvre d’algorithmes simples.
+</li><li> <i>Statistiques et probabilités</i> On pourra facilement programmer l'étude d'une série statistique (moyenne, dispersion), tandis que la répétition d’expériences aléatoires peut donner lieu à l’écriture d’algorithmes (marches aléatoires). À l’occasion de la mise en place d’une simulation, on peut utiliser les fonctions et mettre en place des instructions conditionnelles dans un algorithme.
+</li></ul>
+<h3> <span class="mw-headline" id="Dans_l.27option_M.C3.A9thodes_et_Pratiques_Scientifiques_.28.C3.A0_la_rentr.C3.A9e_2010.29."> Dans l'option Méthodes et Pratiques Scientifiques (à la rentrée 2010). </span></h3>
+<p>L'enseignement dispensé dans cette option transdisciplinaire «permet aux élèves de découvrir différents domaines [scientifiques..], pour trouver des réponses aux questions scientifiques que soulève une société moderne, d’en faire percevoir différents grands enjeux, et de donner les moyens de les aborder de façon objective. [..] Il initie les élèves à la démarche scientifique dans le cadre d’un projet» ([<a href="http://media.eduscol.education.fr/file/MPS/69/0/LyceeGT_Ressources_2_Exploration_Methodes-Pratiques-Scientifiques_149690.pdf" class="external free" rel="nofollow">http://media.eduscol.education.fr/file/MPS/69/0/LyceeGT_Ressources_2_Exploration_Methodes-Pratiques-Scientifiques_149690.pdf</a> extrait du BO dur le sujet). Les sciences informatiques étant sont au coeur de cette transdisciplinarité et des impacts sociétaux des sciences du 21ème siècle.
+</p><p>Au delà de champs applicatifs assez divers (aliments, cosmétologie, investigation policière, création d'oeuvres d’art, prévention des risques et environnement, perception visuelle et images) est laissée à la liberté de l'enseignant et de l'équipe pédagogique le choix des différents concepts et contenus scientifiques à proposer. L’évaluation peut prendre des formes variées, par exemple de remise projet. La travail informatique est donc un levier pour suivre un tel cadrage: à la fois car il est présent dans tous les thèmes applicatifs et parce qu'il est au coeur de «l’acquisition de compétences et de qualités telles que l’autonomie, l’initiative, l’engagement dans une démarche scientifique, ..» pronées ici.
+</p><p>L'enseignement optionnel en 2nd pourra être explicitement intitulé <b>Option "informatique et société du numérique"</b> comme c'est le cas dans plusieurs lycées, dès cette rentrée, pour acquérir et mettre en oeuvre quelques notions de programmation (algorithme élémentaire, abstractions informatiques) ou liée aux objets numériques (objets multimédia et images, logiciels d'analyse de données et de simulation).Ce sont des contenus résolument tournés vers ce dont les futurs ingénieurs ou scientifiques auront vraiment besoin, ce qui inclut la programmation. Il faut y ajouter des indispensables éléments de culture scientifique et technique («éléments d'histoire de la numération [du calcul], éléments de l'histoire de l'informatique, l'architecture d'un ordinateur»)&nbsp;;
+</p><p>Cet enseignement fait suite aux <a href="http://www.education.gouv.fr/bo/2000/hs6/info.htm" class="external text" rel="nofollow">options MPS</a> option transdisciplinaire  de sciences expérimentales.
+</p>
+<h3> <span class="mw-headline" id="Perspective:_Un_enseignement_de_sp.C3.A9cialit.C3.A9_optionnel_en_Terminale_S_.C2.AB_Informatique_et_sciences_du_num.C3.A9rique_.C2.BB."> Perspective: Un enseignement de spécialité optionnel en Terminale S «&nbsp;Informatique et sciences du numérique&nbsp;». </span></h3>
+<p>Comme <a href="http://www.epi.asso.fr/revue/articles/a0912a.htm" class="external text" rel="nofollow">détaillé ici</a> ces éléments sont clairement les 1ères étapes vers l'introduction progressive, massive et pérenne des sciences informatiques dans l'enseignement secondaire.
+</p>
+<h2> <span class="mw-headline" id="De_quelques_perspectives_p.C3.A9dagogies."> De quelques perspectives pédagogies. </span></h2>
+<p>Sans aucune autre prétention que de collecter ici quelques clés pédagogiques mises en relief par des professeurs du secondaire ayant déjà pratiqué l'enseignement de l'informatique lors d'enseignements optionnels, nous pouvons noter les points suivants.
+</p>
+<h3> <span class="mw-headline" id="L.27informatique_se_pr.C3.AAte_.C3.A0_une_p.C3.A9dagogie_participative."> L'informatique se prête à une pédagogie participative. </span></h3>
+<p>Elle est de ces matières qui se prêtent bien à un enseignement par mini-projets, orienté vers le travail en binôme ou petit groupe. A une pratique où cours magistral et travaux-pratiques expérimental sont indissociables. On apprend <i>ensemble</i> savoir et pratique.
+</p><p>Apprendre à programmer un petit logiciel, c'est donner à l'élève des clés, mais aussi la liberté de s'approprier ces clés et de les mettre en pratique de manière diverse (il y a plusieurs possibles dans la manière de mettre en oeuvre la solution). 
+</p><p>L'informatique favorise ainsi l'apprentissage par l'utilisation, ce qui correspond bien à l'esprit humain. Très précisément ici, il s'agit de découvrir un algorithme en le programmant en observant son fonctionnement, avant d'en abstraire la notion sous-jacente. 
+</p>
+<h4> <span class="mw-headline" id="Quand_le_professeur_apprend_avec_l.27.C3.A9l.C3.A8ve."> Quand le professeur apprend avec l'élève. </span></h4>
+<p>Dans cette période transitoire, l'informatique se prête à une expérience pédagogie des plus intéressantes pour l'élève (et enrichissante pour l'enseignant). Le Professeur de Mathématiques ou de Sciences Physiques se lève devant sa classe et dit&nbsp;: «&nbsp;je ne sais (que peu ou) pas encore programmer moi-même, mais je sais comment vous apprendre à le faire, et comment apprendre avec vous&nbsp;». 
+Cette position pédagogique a été vécue plusieurs fois en 2007-2009 avec un succès complet et récurrent&nbsp;: élèves responsabilisés, co-apprentissage coopératif entre élèves, professeur partageant une démarche de recherche au delà de la simple transmission de savoir, plaisir partagé de la réussite, etc. Que personne ne se trompe&nbsp;: il ne s'agit pas de "niveler les rôles"&nbsp;! Le professeur reste le référent, détenteur non pas d'un simple lot de connaissances, mais de quelque chose de plus profond&nbsp;: une démarche méthodologique. 
+</p><p>En pratique, les "profs" que nous connaissons ont joué ce rôle très simplement, de manière (au sens propre du terme) magistrale (... et aussi au sens figuré, de fait  <img src='http://javascool.gforge.inria.fr/v3/images/smiley-cool.png'/> ), en tout cas avec la même discipline que tout autre cours. Les élèves ont profondément apprécié cette démarche, sans être dérouté par son aspect singulier. L'une d'elle en tirera cette belle conclusion «&nbsp;Oh, il est possible de <i>tout</i> apprendre alors&nbsp;!&nbsp;». C'était pour le Professeur, un des plus beaux remerciements.
+</p>
+<h3> <span class="mw-headline" id="L.27informatique_conduit_.C3.A0_un_apprentissage_de_la_rigueur."> L'informatique conduit à un apprentissage de la rigueur. </span></h3>
+<p>Cet apprentissage s'effectue par un mécanisme spécifique&nbsp;: celui des essais-erreurs avec une machine «&nbsp;neutre&nbsp;». La programmation ne donnera un résultat que si tout est correct, mais donnera indéfiniment une chance de corriger, de reprendre, de re-tester. 
+</p><p>La machine est donc un outil qui permet d'apprendre de manière incrémentale, sans jamais porter de jugement de valeur. On a vu quelque élève un peu "rebelle" regagner de l'intérêt pour cette approche nouvelle et y réussir mieux qu'en moyenne. Hélas, il faut être lucide&nbsp;: l'apprentissage de l'infomatique n'est <b>pas</b> simple, et les concepts ne sont pas simplistes&nbsp;: tel élève qui aurait de profondes lacunes en matière d'abstraction ne pourra qu'aprendre à reproduire le savoir et la pratique, sans forcément accéder aux concepts sous-jacents. Mais ce sera déjà un succès, à la fois pour l'aider à maîtriser le mode numérique et pour lui-même y gagner en rigueur. 
+</p><p>Pour ce qui est de la rigueur, les lycéennees qui ont déjà profité de cet apprentissage, ont permis de vérifier cette règle attendue, à savoir que la rigueur se conjugue bien souvent au féminin. L'idée que <a href="http://interstices.info/idee-recue-informatique-5" class="external text" rel="nofollow">l'informatique ne serait pas pour les filles</a> ne les a jamais effleurée, qu'elle ne nous effleure pas non plus.
+</p>
+<h3> <span class="mw-headline" id="L.27informatique_est_une_science_abstraite_..._incarn.C3.A9e."> L'informatique est une science abstraite ... incarnée. </span></h3>
+<p>L'informatique fait entrevoir l'intérêt des sciences théoriques, car on peut «&nbsp;toucher&nbsp;» (opérer avec, visualiser...) des objets abstraits, si l'informatique est mathématiques, alors il s'agit de mathématiques «&nbsp;incarnées&nbsp;».
+</p><p>L'informatique est un levier pour les sciences, car elle permet de mieux comprendre des notions universelles (par exemple la notion d'information) ou fondamentales (par exemple le calcul «mécaniste&nbsp;» par opposition à d'autres formes de raisonnement). Elle offre aussi la découverte de notions nouvelles (par exemple: suites aléatoires, fonctions récursives, ...) omniprésentes en ingéniérie. Nous en offrons quelques aspects ici.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 69/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:93-1!1!0!!fr!2!edit=0!printable=1 and timestamp 20110812185648 -->

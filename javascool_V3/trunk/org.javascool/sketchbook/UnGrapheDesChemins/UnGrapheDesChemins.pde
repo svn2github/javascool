@@ -23,7 +23,7 @@ void setup() {
   // Ces deux lignes permettent l'interface avec JavaScool
   proglet = this;
   frame = new Frame();
-  
+
   size(900, 500); // screen.width,screen.height);//1200,800);
   smooth();
   myGraph = new Graph();
@@ -49,7 +49,7 @@ void draw() {
        "> Générer: \n" + "    . tous les noeuds = 'a': \n" + "    . tous les liens = 'l': \n" + "    . quelques liens = 'r' \n " +
        "> Afficher la pondération des liens: 'i' \n " +
        "> Trouver le plus court chemin entre 2 noeuds: \n" + "    . clic gauche + 'b' pour le noeud de départ \n" + "    . clic gauche + 'e' pour le noeud d'arrivée\n " +
-       "> Fermer l'application: ESC ", topPos * 2, 40); 
+       "> Fermer l'application: ESC ", topPos * 2, 40);
   hs1.update();
   hs1.display();
   if(!pathSelect)
@@ -77,7 +77,7 @@ void draw() {
     Node pN = (Node) myGraph.nodes.get(p);
     fill(pathC);
     ellipse(pN.x, pN.y, 30, 30);
-    for(String ni_ : (Iterable<String> )myGraph.nodes.keySet()) {
+    for(String ni_ : (Iterable<String>)myGraph.nodes.keySet()) {
       Node t2 = (Node) myGraph.nodes.get(ni_);
       if(myGraph.isLink(p, ni_))
         if(path.indexOf(ni_) > -1) {
@@ -90,7 +90,7 @@ void draw() {
     }
   }
   // Pour chaque noeud, les liens sont détectés pour les tracer en noir
-  for(String ni_ : (Iterable<String> )myGraph.nodes.keySet()) {
+  for(String ni_ : (Iterable<String>)myGraph.nodes.keySet()) {
     Node N_ = (Node) myGraph.nodes.get(ni_);
     fill(255, 150, 0);
     stroke(0);
@@ -99,7 +99,7 @@ void draw() {
     noStroke();
     textFont(font, width * 14 / 800);
     text(N_.n, N_.x + 12, N_.y);
-    for(String nj_ : (Iterable<String> )myGraph.nodes.keySet())
+    for(String nj_ : (Iterable<String>)myGraph.nodes.keySet())
       if(myGraph.isLink(ni_, nj_) && !(ni_.equals(nj_))) {
         Node N2_ = (Node) myGraph.nodes.get(nj_);
         double p_ = myGraph.getLink(ni_, nj_);
@@ -153,7 +153,6 @@ void mousePressed() {
 
       end = null;
     }
-   
     // Efface un noeud (le plus proche du curseur de la souris)
     if(key == 'd') {
       path.clear();
@@ -180,28 +179,25 @@ void mouseReleased() {                                                  // appel
   secondSelect = null;
 }
 void keyPressed() {
-
   // Efface tous les liens tracés
   if(key == 's') {
     path.clear();
-    for(String ni_ : (Iterable<String> )myGraph.nodes.keySet())
-      for(String nj_ : (Iterable<String> )myGraph.nodes.keySet())
+    for(String ni_ : (Iterable<String>)myGraph.nodes.keySet())
+      for(String nj_ : (Iterable<String>)myGraph.nodes.keySet())
         if(myGraph.isLink(ni_, nj_) && !(ni_.equals(nj_)))
           myGraph.removeLink(ni_, nj_);
   }
-  
   // Déplace un noeud existant
   if(key == 'm') {
     path.clear();
     String n_ = myGraph.getClosestNode(mouseX, mouseY);
     myGraph.addNode(n_, mouseX, mouseY);
-    for(String ni_ : (Iterable<String> )myGraph.nodes.keySet())
+    for(String ni_ : (Iterable<String>)myGraph.nodes.keySet())
       if(myGraph.isLink(n_, ni_) && !(n_.equals(ni_))) {
         myGraph.removeLink(n_, ni_);
         myGraph.addLink(n_, ni_);
       }
   }
-  
   // Génère les noeuds de manière aléatoire
   if(key == 'a') {
     path.clear();
@@ -213,26 +209,24 @@ void keyPressed() {
     }
   }
   /*if(key == 'b') {
-    String[] myList;
-    myList = myGraph.getAllNodes();
-    println(myList[0]);
-  }*/
-  
+   *  String[] myList;
+   *  myList = myGraph.getAllNodes();
+   *  println(myList[0]);
+   *  }*/
   // Génère tous les liens possibles entre les noeuds
   if(key == 'l')
-    for(String ni_ : (Iterable<String> )myGraph.nodes.keySet())
-      for(String nj_ : (Iterable<String> )myGraph.nodes.keySet())
+    for(String ni_ : (Iterable<String>)myGraph.nodes.keySet())
+      for(String nj_ : (Iterable<String>)myGraph.nodes.keySet())
         if(myGraph.isLink(ni_, nj_) == false)
           myGraph.addLink(ni_, nj_);
-  
   // Génère des liens possibles entre les noeuds de manière aléatoire
   if(key == 'r')
     if(myGraph.nodes.size() == listN.length) {
-      for(String ni_ : (Iterable<String> )myGraph.nodes.keySet())
-        for(String nj_ : (Iterable<String> )myGraph.nodes.keySet())
+      for(String ni_ : (Iterable<String>)myGraph.nodes.keySet())
+        for(String nj_ : (Iterable<String>)myGraph.nodes.keySet())
           if(myGraph.isLink(ni_, nj_) && !(ni_.equals(nj_)))
             myGraph.removeLink(ni_, nj_);
-      for(String ni_ : (Iterable<String> )myGraph.nodes.keySet()) {
+      for(String ni_ : (Iterable<String>)myGraph.nodes.keySet()) {
         int done = 0;
         String nk_ = null;
         while(done < (listN.length / 4)) {
@@ -245,9 +239,7 @@ void keyPressed() {
           // println(nk_);
         }
       }
-      
     }
-  
   // Montrer ou non les pondérations
   if(key == 'i') {
     if(info)
@@ -259,7 +251,6 @@ void keyPressed() {
       info = true;
   }
 }
-
 void keyReleased() {                                                   // appelé a chaque moment qu'une touche est relachee
   if(key == 'p')
     pathSelect = false;
