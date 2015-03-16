@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<keywords title="Fonctions usuelles">
+    <keyword name="random" title="Génère un entier aléatoirement">
+        <doc>Renvoie un nombre entier aléatoire uniformément distribué entre deux valeurs entières (maximum inclus).
+        Ici: entre 0 et 100.</doc>
+        <code>random(0, 100);</code>
+    </keyword>
+    <keyword name="equal" title="Vérifie si deux Strings sont égales">
+        <doc>Renvoie true si deux chaînes de caratères sont égales, faux sinon.</doc>
+        <code>equal("","")</code>
+    </keyword>
+    <keyword name="sleep" title="Fait faire une pause au programme">
+        <doc>Temporise une durée fixée. Il prend un paramètre optionnel qui est la durée de pause en milli-secondes.
+        Ici: 1000 milli-secondes, docn 1 seconde.</doc>
+        <code>sleep(1000);</code>
+    </keyword>
+    <!--keyword name="assertion" title="Assert l'execution de Java's cool">
+        <doc>Vérifie une assertion et arrête le code si elle est fausse. Il prend un paramètre booléen obligatoire qui est la condition.
+Si elle est fausse, le programme s'arrête.</doc>
+        <code>assertion(true);</code>
+    </keyword-->
+    <!--keyword name="getIcon" title="Charge une image">
+        <doc>Renvoie une icone stockée dans le JAR de l'application. Il prend un paramètre obligatoire qui est l'emplacement de l'icone.
+        Ici: une des icônes de JavaScool.</doc>
+        <code>getIcon("org/javascool/widget/icons/play.png");</code>
+    </keyword-->
+    <!--keyword name="openUrl" title="Ouvre le navigateur du système">
+        <doc>Ouvre une URL (Universal Resource Location) dans un navigateur extérieur. Il prend un paramètre obligatoire qui est L'URL à afficher.</doc>
+        <code>openUrl("http://www.google.fr");</code>
+    </keyword-->
+</keywords>

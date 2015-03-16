@@ -1,0 +1,7 @@
+// Tracé d'une sinusoide
+void main() {
+   reset(4, 1);
+   for (double x = -4; x <= 4; x += 0.1) {
+   	setPoint(x, sin(x), 4);
+   }
+}

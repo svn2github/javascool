@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<keywords>
+    <keyword name="left" 
+       title="Clockwise left face turn">
+       <code>left();</code>  
+        <doc>Calls the function which turns the left face clockwise.</doc>
+    </keyword>
+    <keyword name="antileft" 
+       title="Anti-clockwise left face turn">
+       <code>antileft();</code>  
+        <doc>Calls the function which turns the left face anti-clockwise.</doc>
+    </keyword>
+    
+    <keyword name="right" 
+       title="Clockwise right face turn">
+       <code>right();</code>  
+        <doc>Calls the function which turns the right face clockwise.</doc>
+    </keyword>
+    <keyword name="antiright" 
+       title="Anti-clockwise right face turn">
+       <code>antiright();</code>  
+        <doc>Calls the function which turns the right face anti-clockwise.</doc>
+    </keyword>
+    
+    <keyword name="down" 
+       title="Clockwise down face turn">
+       <code>down();</code>  
+        <doc>Calls the function which turns the down face clockwise.</doc>
+    </keyword>
+    <keyword name="antidown" 
+       title="Anti-clockwise down face turn">
+       <code>antidown();</code>  
+        <doc>Calls the function which turns the down face anti-clockwise.</doc>
+    </keyword>
+    
+    <keyword name="up" 
+       title="Clockwise upper face turn">
+       <code>up();</code>  
+        <doc>Calls the function which turns the upper face clockwise.</doc>
+    </keyword>
+    <keyword name="antiup" 
+       title="Anti-clockwise upper face turn">
+       <code>antiup();</code>  
+        <doc>Calls the function which turns the upper face anti-clockwise.</doc>
+    </keyword>
+    
+    <keyword name="back" 
+       title="Clockwise back face turn">
+       <code>back();</code>  
+        <doc>Calls the function which turns the back face clockwise.</doc>
+    </keyword>
+    <keyword name="antiback" 
+       title="Anti-clockwise back face turn">
+       <code>antiback();</code>  
+        <doc>Calls the function which turns the back face anti-clockwise.</doc>
+    </keyword>
+    
+    <keyword name="front" 
+       title="Clockwise front face turn">
+       <code>front();</code>  
+        <doc>Calls the function which turns the front face clockwise.</doc>
+    </keyword>
+    <keyword name="antifront" 
+       title="Anti-clockwise front face turn">
+       <code>antifront();</code>  
+        <doc>Calls the function which turns the front face anti-clockwise.</doc>
+    </keyword>
+    
+    <keyword name="randomturn" 
+       title="Random turn">
+       <code>randomturn();</code>  
+        <doc>Turns a random face of the cube.</doc>
+    </keyword>
+    
+    <keyword name="movedown" 
+       title="Downward move of  the cube">
+       <code>movedown();</code>  
+        <doc>Turn the view of the cube to display its upper face.</doc>
+    </keyword>
+    <keyword name="moveup" 
+       title="Upward move of the cube">
+       <code>moveup();</code>  
+        <doc>Turn the view of the cube to display its down face.</doc>
+    </keyword>
+    <keyword name="moveleft" 
+       title="Leftward move of the cube">
+       <code>moveleft();</code>  
+        <doc>Turn the view of the cube to display its right face.</doc>
+    </keyword>
+    <keyword name="moveright" 
+       title="Rightward move of the cube">
+       <code>moveright();</code>  
+        <doc>Turn the view of the cube to display its left face.</doc>
+    </keyword>    
+    
+    <keyword name="rotate" 
+       title="Clockwise rotation of the cube">
+       <code>rotate();</code>  
+        <doc>Rotate the view of the cube clockwise.</doc>
+    </keyword> 
+    <keyword name="antirotate" 
+       title="Anti-clockwise rotation of the cube">
+       <code>antirotate();</code>  
+        <doc>Rotate the view of the cube anti-clockwise.</doc>
+    </keyword> 
+</keywords>

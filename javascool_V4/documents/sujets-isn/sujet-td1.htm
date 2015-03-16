@@ -1,0 +1,770 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<div>
+   <h2>Atelier de programmation 2.</h2>
+   
+   
+   <div>
+      Ce premier atelier vous propose 3 niveaux d'activit&eacute;s de difficult&eacute; croissante. Choisissez un niveau
+      en fonction de votre familiarit&eacute; avec la programmation.
+      
+   </div>
+   
+   
+   <div>
+      <h2>Premiers pas en programmation.</h2>
+      Nous allons programmer un syst&egrave;me expert rudimentaire qui dialoguera
+      avec l'utilisateur et adaptera son discours aux r&eacute;ponses de
+      l'utilisateur. Voici un exemple de conversation entre le syst&egrave;me et
+        l'utilisateur. Dans l'exemple suivant, chaque entr&eacute;e de
+        l'utilisateur est pr&eacute;c&eacute;d&eacute;e du texte <font color="#990000"><b>[Entr&eacute;e :]</b></font>.
+        
+        
+      <p>
+         <table witdh="90%" border="1" align="center">
+            <tr>
+               <td>
+                  <div class="code">
+                     
+                     <div>Bonjour ! Quel est votre nom ?</div>
+                     
+                     <div>[Entr&eacute;e :] Haddock</div>
+                     
+                     <div>C'est not&eacute;. Et votre pr&eacute;nom ?</div>
+                     
+                     <div>[Entr&eacute;e :] Archibald</div>
+                     
+                     <div>&Ecirc;tes-vous un homme ou une femme ?</div>
+                     
+                     <div>[Entr&eacute;e :] homme</div>
+                     
+                     <div>D&eacute;sol&eacute;, je n'ai pas compris votre r&eacute;ponse. &Ecirc;tes-vous un homme ou une femme ?</div>
+                     
+                     <div>[Entr&eacute;e :] un homme</div>
+                     
+                     <div>Parfait. Je suis enchant&eacute; de faire votre connaissance M. Archibald Haddock.</div>
+                     
+                     <div></div>
+                     
+                     <div>Est-ce indiscret de vous demander votre &acirc;ge ?</div>
+                     
+                     <div>[Entr&eacute;e :] non</div>
+                     
+                     <div>Dans ce cas, quel &acirc;ge avez-vous M. Haddock ?</div>
+                     
+                     <div>[Entr&eacute;e :] 45</div>
+                     
+                     <div>F&eacute;licitations vous &ecirc;tes dans la force de l'&acirc;ge !</div>
+                     
+                     <div></div>
+                     
+                     <div>Savez-vous que je suis excellent en calcul mental ? </div>
+                     
+                     <div>Proposez-moi un grand nombre s'il vous pla&icirc;t.</div>
+                     
+                     <div>[Entr&eacute;e:] 3</div>
+                     
+                     <div>Ah, c'est bien petit 3 ! Ne pouvez-vous pas me proposer </div>
+                     
+                     <div>un nombre un peu plus grand ?</div>
+                     
+                     <div>[Entr&eacute;e:] 337</div>
+                     
+                     <div>C'est mieux. </div>
+                     
+                     <div>Je le note. Proposez-moi un autre grand nombre s'il vous pla&icirc;t.</div>
+                     
+                     <div>[Entr&eacute;e:] 3456</div>
+                     
+                     <div>C'est not&eacute;. Et bien... 337 fois 3456 font 1164672 ! </div>
+                     
+                     <div>Je vous sens impressionn&eacute;...</div>
+                     
+                     <div></div>
+                     
+                     <div>Je suis aussi capable de compter tr&egrave;s vite ! </div>
+                     
+                     <div>Jusqu'&agrave; combien voulez-vous que je compte ? </div>
+                     
+                     <div>[Entr&eacute;e:] 14</div>
+                     
+                     <div>1</div>
+                     
+                     <div>2</div>
+                     
+                     <div>3</div>
+                     
+                     <div>4</div>
+                     
+                     <div>5</div>
+                     
+                     <div>6</div>
+                     
+                     <div>7</div>
+                     
+                     <div>8</div>
+                     
+                     <div>9</div>
+                     
+                     <div>10</div>
+                     
+                     <div>11</div>
+                     
+                     <div>12</div>
+                     
+                     <div>13</div>
+                     
+                     <div>14</div>
+                     
+                     <div></div>
+                     
+                     <div>Merci pour ce bon moment. A bient&ocirc;t Archibald.</div>
+                     
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </p>
+      
+      
+      <div>
+           Proposez un programme Javascool permettant d'obtenir ce type de
+           conversation en tenant compte des diff&eacute;rentes r&eacute;ponses de
+           l'utilisateur (sexe, &acirc;ge, etc.), et en validant le format des
+           r&eacute;ponses donn&eacute;es. Par exemple, lorsqu'on attend une r&eacute;ponse oui ou
+           non, toute autre r&eacute;ponse doit &ecirc;tre refus&eacute;e.
+         
+      </div>
+      
+      
+      <div>
+           Attention! Pour tester l'&eacute;galit&eacute; de deux cha&icirc;nes, il ne faut pas
+           utiliser l'op&eacute;ration <font color="#990000"><b>==</b></font>. En effet, celle-ci teste
+           \emph{l'identit&eacute;} des deux cha&icirc;nes et non le fait qu'elles soient
+           form&eacute;es des m&ecirc;mes caract&egrave;res. Il faut utiliser une fonction appel&eacute;e
+           <font color="#990000"><b>equal</b></font>.
+         
+           
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <div>String s = readString();</div>
+                            
+                        <div>if (equal(s, "Haddock")) ...</div>
+                          
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+         
+      </div>
+      
+      
+      <div>
+           Pour le produit de deux nombres, ne peut-on pas pousser le syst&egrave;me &agrave;
+           la faute en lui proposant des nombres trop grands &agrave; multiplier?
+           Comment filtrer les entr&eacute;es de l'utilisateur pour rem&eacute;dier &agrave; ce
+           probl&egrave;me?
+         
+      </div>
+      
+      
+   </div>
+   
+   
+   <div>
+      <h2>Premiers pas en programmation des tableaux.</h2>
+      
+      
+      <div>
+         Nous nous int&eacute;ressons maintenant &agrave; la manipulation des anagrammes de
+         mots. &Eacute;tant donn&eacute; une collection de mots donn&eacute;e sous forme d'un
+         tableaux de cha&icirc;nes de caract&egrave;res, nous laissons l'utilisateur
+         proposer un mot et nous l'informons des diff&eacute;rents anagrammes de ce
+         mot qui sont pr&eacute;sents dans la collection.
+         
+      </div>
+      
+      
+      <div>
+         Supposons que le tableau initial soit le suivant :
+         
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                        
+                        <div>String[] choixAnagrammes = </div>
+                        
+                        <div>  { "marion", "aimer", "badinage", "niche", "aspirine", "chine", </div>
+                        
+                        <div>     "aspirine", "aube", "baignade", "chien", "manoir", "beau", </div>
+                        
+                        <div>     "romain", "imaginer", "parisien", "migraine", "marie" } </div>
+                        
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+         Il vous
+             sera n&eacute;cessaire de recopier cette d&eacute;claration de tableau dans votre programme pour faire
+             l'exercice. 
+         
+      </div>
+      
+      
+      <div>
+         L'utilisateur est invit&eacute; &agrave; saisir un mot.
+         
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                        
+                        <div>Proposez-moi un mot !</div>
+                        
+                        <div>[Entr&eacute;e :] beau</div>
+                        
+                        <div>aube est un anagramme de beau</div>
+                        
+                        <div>beau est un anagramme de beau</div>
+                        
+                        <div>nombre d'anagrammes : 2 </div>
+                        
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+         
+         
+         <div>
+            Afin de r&eacute;aliser un tel programme, nous allons devoir tester si un mot est un anagramme d'un autre. 
+            Pour ce faire, nous vous proposons de manipuler les cha&icirc;nes de caract&egrave;res comme des tableaux de
+            caract&egrave;res. La fonction 
+            
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           
+                           <div>char[] chaineVersLettres(String s)</div>
+                           
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </p>
+            vous permet d'obtenir le tableau de caract&egrave;res correspondant &agrave; une
+            cha&icirc;ne de caract&egrave;re.  Le type <font color="#990000"><b>char</b></font> est un type Java primitif
+            qui repr&eacute;sente les caract&egrave;res. Contrairement aux cha&icirc;nes, on peut
+            utiliser les op&eacute;rateurs de comparaisons arithm&eacute;tiques usuels pour
+            comparer deux caract&egrave;res selon leur position dans l'alphabet.
+            
+         </div>
+         
+         
+         <div>
+            Nous vous proposons une deuxi&egrave;me fonction
+            
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           String lettresVersChaine(char[] t)
+                           
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </p>
+            qui permet de reformer une cha&icirc;ne &agrave; partir d'un tableau de caract&egrave;res
+            pour pouvoir l'imprimer.
+            
+         </div>
+         
+         
+         <div>
+            Pour tester si un mot est un anagramme d'un autre nous allons
+            <i>trier</i> chacun des deux mots en utilisant l'ordre alphab&eacute;tique
+            puis v&eacute;rifier si nous obtenons la m&ecirc;me s&eacute;quence de lettres.  Par
+            exemple, si nous trions <font color="#990000"><b>"beau"</b></font> et <font color="#990000"><b>"aube"</b></font> nous
+            obtenons dans les deux cas <font color="#990000"><b>"abeu"</b></font> ce qui nous assure que ce
+            sont des anagrammes.
+            
+         </div>
+         
+         
+         <div>
+            Dans un premier temps, nous vous proposons d'utiliser les fonctions de
+            la biblioth&egrave;que standard de Java pour faire ce tri. On peut par
+            exemple utiliser:
+            
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           void java.utils.Arrays.sort(char[] t)
+                           
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </p>
+            
+            
+            Le programme suivant affiche <font color="#990000"><b>"abeu"</b></font>.
+              
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           
+                           <div>char[] t = chaineVersLettres("beau");</div>
+                           
+                           <div>java.util.Arrays.sort(t);</div>
+                           
+                           <div>echo(lettresVersChaine(t));</div>
+                             
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </p>
+            
+            
+            <ol class="ol">
+               
+               <li>
+                    &Eacute;crire une fonction
+                  
+                  <p>
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code">
+                                 
+                                 <div>String normalise(String s)</div>
+                                 
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </p>
+                  qui prend en entr&eacute;e une cha&icirc;ne <font color="#990000"><b>s</b></font> et renvoie une nouvelle
+                  cha&icirc;ne obtenue en triant par ordre alphab&eacute;tique les lettres de
+                  <font color="#990000"><b>s</b></font>.
+                  
+               </li>
+               
+               
+               <li>
+                    &Eacute;crire une fonction
+                  
+                  <p>
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code">
+                                 
+                                 <div>boolean testAnagramme(String s1, String s2)</div>
+                                 
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </p>
+                    qui teste si deux cha&icirc;ne <font color="#990000"><b>s1</b></font> et <font color="#990000"><b>s2</b></font> sont anagrammes
+                    l'une de l'autre gr&acirc;ce &agrave; un tri.
+                  
+               </li>
+               
+               
+               <li>
+                    Proposer un programme pour interagir avec l'utilisateur selon le
+                    sc&eacute;nario propos&eacute; plus haut.
+                  
+               </li>
+               
+               
+               <li>
+                  Nous allons maintenant tenter d'&eacute;crire notre propre fonction de tri.
+                  
+                  <p>
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code">
+                                 
+                                 <div>void triSelection(char[] t)</div>
+                                 
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </p>
+                  
+                    &Eacute;crire tout d'abord une fonction
+                  
+                  <p>
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code">
+                                 
+                                 <div>void permute(char[] t, int i, int j)</div>
+                                 
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </p>
+                    qui &eacute;change les caract&egrave;res &agrave; la position <font color="#990000"><b>i</b></font> et <font color="#990000"><b>j</b></font>
+                    dans le tableau <font color="#990000"><b>t</b></font>. On suppose que <font color="#990000"><b>i</b></font> et <font color="#990000"><b>j</b></font>
+                    sont des indices valides dans <font color="#990000"><b>t</b></font>.
+                  
+               </li>
+               
+               
+               
+               <li>
+                    &Eacute;crire une fonction
+                  
+                  <p>
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code">
+                                 
+                                 <div>int indexMin(char[] t, int i)</div>
+                                 
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </p>
+                    qui calcule l'indice de la plus petite lettre (pour l'ordre
+                    alphab&eacute;tique) de <font color="#990000"><b>t</b></font>, entre les indices <font color="#990000"><b>i</b></font> et
+                    <font color="#990000"><b>t.length-1</b></font>.
+                  
+               </li>
+               
+               
+               
+               <li>
+                    &Eacute;crire une fonction
+                  
+                  <p>
+                     <table witdh="90%" border="1" align="center">
+                        <tr>
+                           <td>
+                              <div class="code">
+                                 
+                                 <div>void triSelection(char[] t) </div>
+                                 
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </p>
+                    qui &eacute;change les lettres du tableau <font color="#990000"><b>t</b></font> pour les mettre dans
+                    l'ordre alphab&eacute;tique.
+                  
+               </li>
+               
+               
+            </ol>
+            
+         </div>
+         
+      </div>
+      
+   </div>
+   
+   
+   
+   <div>
+      <h2>R&eacute;apprendre &agrave; compter comme &agrave; l'&eacute;cole.</h2>
+      
+      
+      <div>
+           Dans cette activit&eacute;, nous vous proposons de r&eacute;apprendre &agrave; compter en
+           expliquant &agrave; l'ordinateur comment poser et r&eacute;soudre les op&eacute;rations
+           arithm&eacute;tiques &eacute;l&eacute;mentaires: addition, multiplication, soustraction,
+           division. Nous allons pour cela manipuler les nombres comme des
+           tableaux de chiffres d&eacute;cimaux. Dans un deuxi&egrave;me temps nous vous
+           proposons d'adapter ces programmes &agrave; l'arithm&eacute;tique binaire en
+           manipulant cette fois des tableaux de bits.
+         
+      </div>
+      
+      
+      <div>
+           Nous manipulerons pour cette activit&eacute; le type <font color="#990000"><b>Chiffre</b></font> suivant.
+           
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <div>  enum Chiffre { ZERO, UN, DEUX, TROIS, QUATRE, CINQ, SIX, SEPT, HUIT, NEUF }</div>
+                          
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+           Un nombre sera manipul&eacute; sous la forme d'un tableau de valeurs de type
+           <font color="#990000"><b>Chiffre</b></font>.
+         
+      </div>
+      
+      
+      <div>
+         Pour r&eacute;soudre les op&eacute;rations arithm&eacute;tiques &eacute;l&eacute;mentaires, il faut
+         conna&icirc;tre ses tables d'addition et de multiplication.  Ces tables vous
+         sont fournis sous la forme du type <font color="#990000"><b>NombreA2Chiffres</b></font> qui
+         encapsule un chiffre des dizaines et un chiffre des unit&eacute;s. Ce type
+         abstrait est munis des op&eacute;rations suivantes:
+         
+         <ul class="ul">
+            
+            <li> <font color="#990000"><b>Chiffre unite(NombreA2Chiffres n)</b></font> renvoie le chiffe des
+                 unit&eacute;s d'un nombre <font color="#990000"><b>n</b></font>.
+            </li>
+            
+            
+            <li> <font color="#990000"><b>Chiffre dizaine(NombreA2Chiffres n)</b></font> renvoie le chiffe des
+                 dizaines d'un nombre <font color="#990000"><b>n</b></font>.
+            </li>
+            
+            
+            <li> <font color="#990000"><b>NombreA2Chiffres nombre(Chiffre dizaine, Chiffre unite)</b></font> fabrique
+                 un nombre &agrave; partir d'un chiffre <font color="#990000"><b>dizaine</b></font> des dizaines et <font color="#990000"><b>unite</b></font>
+                 des unit&eacute;s.
+            </li>
+            
+            
+            <li> <font color="#990000"><b>NombreA2Chiffres plus(NombreA2Chiffres x, NombreA2Chiffres y)</b></font>
+                 renvoie le nombre obtenu en faisant la somme des deux nombres <font color="#990000"><b>x</b></font>
+                 et <font color="#990000"><b>y</b></font>.
+            </li>
+            
+            
+            <li> <font color="#990000"><b>NombreA2Chiffres moins(NombreA2Chiffres x, NombreA2Chiffres y)</b></font> 
+                 renvoie le nombre obtenu en faisant la diff&eacute;rence des deux
+                 nombres <font color="#990000"><b>x</b></font> et <font color="#990000"><b>y</b></font> si <font color="#990000"><b>x</b></font> est plus grand que <font color="#990000"><b>y</b></font> et renvoie une
+                 erreur sinon.
+            </li>
+            
+            
+            <li> <font color="#990000"><b>NombreA2Chiffres plus(NombreA2Chiffres x, NombreA2Chiffres y)</b></font>
+                 renvoie le nombre obtenu en faisant le produit des deux nombres
+                 <font color="#990000"><b>x</b></font> et <font color="#990000"><b>y</b></font>.
+            </li>
+            
+         </ul>
+         
+         Ces trois derni&egrave;res op&eacute;rations ignorent le chiffre des centaines.
+         
+      </div>
+      
+      
+      <div>
+         Les valeurs de types <font color="#990000"><b>Chiffre</b></font> et <font color="#990000"><b>NombreA2Chiffres</b></font> peuvent &ecirc;tre
+         affich&eacute;es avec les fonctions <font color="#990000"><b>println</b></font> et <font color="#990000"><b>echo</b></font> habituelles sous
+         Javascool. 
+         
+      </div>
+      
+      
+      <div>
+         Nous fournissons de plus une fonction
+         
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                        
+                        <div>  String nombreVersChaine(Chiffre[] nombre)</div>
+                        
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+         qui permet d'afficher un nombre repr&eacute;sent&eacute; par un tableau de chiffre.
+         
+      </div>
+      
+      
+      <div>Exemple:
+         <font color="#990000"><b>echo(plus(nb(UN,TROIS),nb(DEUX,QUATRE)));</b></font> provoque l'affichage
+         <font color="#990000"><b>37</b></font>
+         
+      </div>
+      
+      
+      <div>Exemple:
+           Le tableau <font color="#990000"><b>nombre</b></font> suivant peut &ecirc;tre affich&eacute; avec les
+           instructions:
+         
+         <p>
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                        
+                        <div>Chiffre[] nombre = { ZERO, TROIS, HUIT };</div>
+                        
+                        <div>System.out.println(nombreVersChaine(nombre));</div>
+                        
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </p>
+         pour produire l'affichage <font color="#990000"><b>038</b></font>.
+         
+      </div>
+      
+      
+      <ol class="ol">
+         
+         <li>
+              &Eacute;crire une fonction
+            
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           Chiffre[] addition(int taille, Chiffre[] n1, Chiffre[] n2)
+                           
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </p>
+            qui construit le tableau de chiffre r&eacute;sultant de l'addition des
+            nombres <font color="#990000"><b>n1</b></font> et <font color="#990000"><b>n2</b></font>, ces nombres &eacute;tant repr&eacute;sent&eacute;s par des tableaux
+            de taille <font color="#990000"><b>taille</b></font>. Le r&eacute;sultat de l'addition devra &ecirc;tre exprim&eacute; dans
+            un tableau de m&ecirc;me taille et une erreur devra &ecirc;tre lanc&eacute;e si cela n'est
+            pas possible.
+            
+            Pour r&eacute;aliser un test et lancer une erreur en cas d'&eacute;chec, javascool propose une fonction particuli&egrave;re
+            
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           void assertion(boolean test, String message) 
+                           
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </p>
+            Si l'argument <font color="#990000"><b>test</b></font> est vraie, l'ex&eacute;cution continue sans afficher de
+            message particulier, sinon toute l'ex&eacute;cution courante se termine avec
+            le message d'erreur propos&eacute; en argument.
+            
+         </li>
+         
+         
+         <li>
+              &Eacute;crire une fonction
+            
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           Chiffre[] multiplication(int taille, Chiffre[] n1, Chiffre[] n2)
+                           
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </p>
+            qui calcule le tableau de chiffre r&eacute;sultant de la multiplication des
+            nombres <font color="#990000"><b>n1</b></font> et <font color="#990000"><b>n2</b></font>. Ces nombres sont repr&eacute;sent&eacute;s par des tableaux
+            de taille <font color="#990000"><b>taille</b></font>. Le r&eacute;sultat de la multiplication devra &ecirc;tre exprim&eacute;
+            dans un tableau de m&ecirc;me taille et une erreur devra &ecirc;tre lanc&eacute;e si cela
+            n'est pas possible.
+            
+         </li>
+         
+         
+         <li>
+              &Eacute;crire une fonction
+            
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           Chiffre[] soustraction(int taille, Chiffre[] n1, Chiffre[] n2)
+                           
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </p>
+              qui calcule le tableau de chiffre r&eacute;sultant de la soustraction des
+              nombres <font color="#990000"><b>n1</b></font> et <font color="#990000"><b>n2</b></font>. Ces nombres sont repr&eacute;sent&eacute;s par des
+              tableaux de taille <font color="#990000"><b>taille</b></font>. Le r&eacute;sultat de la soustraction devra
+              &ecirc;tre exprim&eacute; dans un tableau de m&ecirc;me taille et une erreur devra &ecirc;tre
+              lanc&eacute;e si <font color="#990000"><b>n1</b></font> n'est pas sup&eacute;rieur ou &eacute;gal &agrave; <font color="#990000"><b>n2</b></font>.
+            
+            Pour cette fonction, il sera utile d'utiliser la fonction
+            
+            <p>
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           boolean estPlusPetit(NombreA2Chiffres x, NombreA2Chiffres y) 
+                           
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </p>
+            pour tester si un nombre &agrave; deux chiffres <font color="#990000"><b>x</b></font> est inf&eacute;rieur ou &eacute;gal &agrave; un autre
+            nombre &agrave; deux chiffres <font color="#990000"><b>y</b></font>.
+            
+         </li>
+         
+         
+         <li>[Pour les programmeurs Java]
+              Reprendre les questions pr&eacute;c&eacute;dentes en manipulant cette fois des
+              tableaux de bits. Un bit pourra &ecirc;tre repr&eacute;sent&eacute; par un simple
+              bool&eacute;en.
+            
+         </li>
+         
+         
+      </ol>
+      
+      
+   </div>
+   
+   
+   
+</div>

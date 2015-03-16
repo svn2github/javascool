@@ -1,0 +1,198 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="class" content="sujet">
+      <title>Une activit&eacute; sur l'algorithme du plus court chemin</title>
+   </head>
+   <body>
+      <h1>Une activit&eacute; sur l'algorithme du plus court chemin.</h1>
+      
+      
+      <h2>Objectif.</h2>
+      <div class="objectif">
+         Le but de ce tutoriel est de comprendre l'algorithme du plus court chemin.
+           
+      </div>
+      
+        
+      <div>
+         <h2>Apprendre &agrave; manipuler des tables associatives.</h2>
+             
+         <div>Un dictionnaire ou un r&eacute;pertoire t&eacute;l&eacute;phonique est une structure de donn&eacute;e o&ugrave; une cl&eacute; (le mot dont on cherche une d&eacute;finition
+            ou le nom de la personne dont on cherche le num&eacute;ro de t&eacute;lephone) est associ&eacute;e &agrave; une valeur. Cel&agrave; diff&egrave;re d'un tableau qui
+            est uniquement index&eacute; par des nombres entiers 0, 1, etc.
+         </div>
+             
+         <div>Il existe un objet Java, la <tt>HashMap</tt> qui impl&eacute;mente un tel container et il se manipule assez facilement:
+                
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                 
+                           <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;claration de la structure de table associative</font></tt></p>
+                                 
+                           <div><font color="#990000"><b>import java.util.HashMap;</b></font></div>
+                                 
+                           <div>../..</div>
+                                 
+                           <div>{</div>
+                                 
+                           <p><tt><font color="#202080"><big>//</big>&nbsp;Ici on construit une table (vide) qui associe &agrave; des String une valeur enti&egrave;re.</font></tt></p>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>HashMap&lt;String,Integer&gt;</b></font> ages = <font color="#990000"><b>new</b></font> <font color="#990000"><b>HashMap&lt;String,Integer&gt;</b></font>();
+                           </div>
+                                 
+                           <p><tt><font color="#202080"><big>//</big>&nbsp;Ici on ajoute deux valeurs dans cette table.</font></tt></p>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              ages.put("Toto", 12);
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              ages.put("Tata", 23);
+                           </div>
+                                 
+                           <p><tt><font color="#202080"><big>//</big>&nbsp;Ici on r&eacute;cup&egrave;re une des valeurs (pr&eacute;sentement 23).</font></tt></p>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>int</b></font> a = ages.get("Tata");
+                           </div>
+                                 
+                           <p><tt><font color="#202080"><big>//</big>&nbsp;Ici on teste si une valeur existe parmi les cl&eacute;s de la table (pr&eacute;sentement true pour b et false pour d).</font></tt></p>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>boolean</b></font> b = ages.keySet().contains("Tata"), d = ages.keySet().contains("Titi");
+                           </div>
+                                 
+                           <p><tt><font color="#202080"><big>//</big>&nbsp;Ici on &eacute;num&egrave;re toutes les cl&eacute;s de la table et imprime les valeurs correspondantets.</font></tt></p>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>for</b></font> (<font color="#990000"><b>String</b></font> n : ages.keySet())
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              
+                              &nbsp;&nbsp;&nbsp;
+                              
+                              
+                              <t></t><font color="#990000"><b>println</b></font>(<font color="#008000">"Salut "</font> + n + <font color="#008000">", tu as "</font> + ages.get(n) + <font color="#008000">" ans"</font>);
+                           </div>
+                                 
+                           <div>}</div>
+                               
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+             
+         <div>On utilise donc les fonctions: 
+            <ul class="ul">
+                     
+               <li><tt>table.put(key, value)</tt> pour &eacute;crire une valeur.
+               </li>
+                     
+               <li><tt>table.get(key)</tt> pour lire une valeur.
+               </li>
+                     
+               <li><tt>table.keySet()</tt> pour r&eacute;cup&eacute;rer l'ensemble des cl&eacute;s (c'est un objet Java <tt>Set()</tt>)
+               </li>
+                     
+               <li><tt>set.contains(key)</tt> pour tester si un ensemble contient une cl&eacute;.
+               </li>
+                   
+            </ul>
+         </div>
+             
+         <div><i>&Agrave; faire:</i> En construisant une table des &acirc;ges ou tout autre petite table de donn&eacute;e se familiariser avec ces fonctions.
+         </div>
+           
+      </div>
+      
+        
+      <div>
+         <h2>Pr&eacute;sentation de l'algorithem.</h2>
+             
+         <div>L'algorithme de Roy-Warshall-Floyd est un algorithme tr&egrave;s efficace pour calculer le plus court chemin entre toutes les paires
+            de sommets d'un graphe. Calculant tous les plus courts chemins, cet algorithme d&eacute;termine aussi s'il existe un chemin entre
+            deux sommets ou non.
+         </div>
+             
+         <div>Plus pr&eacute;cis&eacute;ment, cet algorithme calcule deux tableaux&nbsp;: un tableau L tel que L[x][y] soit la longueur du plus court chemin
+            qui relie le sommet x et le sommet y et un tableau R tel que R[x][y] soit le premier successeur du sommet x qui permet de
+            connaitre le plus court chemin menant vers le sommet y..
+         </div>
+             
+         <div>Au d&eacute;part, on initialise le tableau L&nbsp;pour les chemins de longueur 0, L[x][x] prend la valeur 0 et pour les chemins de longueur
+            1 L[x][y] prend la valeur 1 s'il y a une arr&ecirc;te entre x et y et la valeur &#8734; sinon. On initialise de m&ecirc;me le tableau R&nbsp;: R[x][x]prend
+            la valeur x, et R[x][y] prend la valeur y.
+         </div>
+             
+         <div>Ensuite on imbrique trois boucles&nbsp;: Pour tous les sommets interm&eacute;diaires z, Pour tous les sommets de d&eacute;part x, Pour tous les
+            sommets d'arriv&eacute;e y, Si L[x][z] + L[z][y] &lt; L[x][y] (c'est &agrave; dire si aller de x &agrave; y en passant par z est plus court que le
+            plus court chemin connu) on remplace L[x][y] par L[x][z] + L[z][y] et  R[x][y] par la valeur de  R[x][z].On a donc stock&eacute;
+            dans R[x][y] la valeur du successeur de x qui permet de connaitre, &agrave; ce stade, le plus court chemin vers le sommet y.
+         </div>
+             
+         <div>
+            <h3>Etude de l'algorithme.</h3>
+            <ul class="ul">
+                     
+               <li>On pourra montrer que apr&egrave;s avoir effectu&eacute; les tours de la boucle la plus externe correspondant aux sommets z1, &#8230;, zk, la
+                  case L[x][y] du tableau L contient la longueur du plus court chemin qui passe par z1, &#8230;, zk mais pas par les autres sommets
+                  du graphe et qui relie x &agrave; y.
+               </li>
+                     
+               <li>On pourra montrer que R[x][y] permet r&eacute;cursivement de calculer l'int&eacute;gralit&eacute; du court de chemin entre deux sommets et programmer
+                  la fonction qui donne le sommet suivant sur un tel plus court chemin.
+               </li>
+                     
+               <li>Quel est le nombre d'op&eacute;rations effectu&eacute;es par cet algorithme en fonction du nombre de sommets du graphe&nbsp;?</li>
+                   
+            </ul>
+         </div>
+           
+      </div>
+      
+        
+      <div>
+         <h2>&Agrave; vous : compl&eacute;ter l'algorithme de calcul du plus court chemin.</h2>
+             En utilisant la description de l'algorithme de Roy-Floyd-Warshall donn&eacute; dans 
+             <a href="http://javascool.gforge.inria.fr/documents/sketchbook/gogleMaps/presentation-des-graphes.pdf"> ce document</a>
+             utiliser le code propos&eacute; ici <a href="http://editor?Roy_Floyd_Warshall.jvs">ici</a> 
+             pour 
+             
+         <ul class="ul">
+                  
+            <li>compl&eacute;ter l'impl&eacute;mentation l'algorithme de calcul du plus court chemin propos&eacute;;</li>
+                  
+            <li>expliquer en d&eacute;tail comment marche la routine <tt>getPathNextNode()</tt>;
+            </li>
+                  
+            <li>ajouter une routine qui imprime et affiche l'itin&eacute;raire d'une ville de d&eacute;part &agrave; une ville d'arriv&eacute;e.</li>
+                
+         </ul>
+             
+         <div>Pour d&eacute;bugger le code, on pourra enrichir la routine <tt>test()</tt> de d&eacute;tails sur o&ugrave; l'algorithme a &eacute;chou&eacute;.
+         </div>
+           
+      </div>
+      
+   </body>
+</html>

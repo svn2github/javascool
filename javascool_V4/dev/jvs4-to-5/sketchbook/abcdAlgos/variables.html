@@ -1,0 +1,284 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="class" content="sujet">
+      <title>Un tutoriel sur les variables</title>
+   </head>
+   <body>
+      <h1>Un tutoriel sur les variables.</h1>
+      
+      
+      <h2>Objectif.</h2>
+      <div class="objectif">
+         Le but de ce tutoriel est de comprendre comment utiliser des variables. Il faut d&eacute;j&agrave; savoir <a href="tutoriel.html">utiliser l'interface</a>.
+           
+      </div>
+        
+        
+      <h2>Introduction.</h2>
+      <div id="intros">
+         <ol>
+            <li>
+               <h3>Dialoguer avec un utilisateur.</h3> Voici un exemple de programme qui "dialogue" avec un utilisateur :
+                     
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"Bonjour, quel est ton nom ?"</font>);
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>String</b></font> texte = <font color="#990000"><b>readString</b></font>();
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"Enchant&eacute; "</font> + texte + <font color="#008000">", et ... &agrave; bient&ocirc;t !"</font>);
+                              </div>
+                                      
+                              <div>}</div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+                     Analysons ces quelques lignes :
+               <ul class="ul">
+                          
+                  <li>Nous retrouvons le bloc <b><font color="#990000"><b>void main</b></font>() { .. }</b> qui permet de sp&eacute;cifier un bloc d'instructions &agrave; faire ex&eacute;cuter, 
+                             comme lors du <a href="tutoriel.html">1er tutoriel</a>.
+                  </li>
+                          
+                  <li>Nous retrouvons un <font color="#990000"><b>println</b></font> qui permet d'imprimer une ligne pour saluer l'utilisateur.
+                  </li>
+                          
+                  <li>Mais voici quelque chose de nouveau : il va entrer son <i>nom</i>. Or chaque utilisateur a un nom probablement diff&eacute;rent, il faut donc pr&eacute;voir une "boite", 
+                             une <i>variable</i> o&ugrave; m&eacute;moriser le nom que l'utilisateur va entrer au clavier. 
+                     <ul class="ul">
+                                  
+                        <li>Cette boite est une <i>variable</i>, nous lui avons donn&eacute; le nom "texte" <i>(who_is_it, c'est &agrave; dire "qui est-ce")</i>, 
+                                     mais nous aurions pu choisir un autre nom simple.
+                        </li>
+                                  
+                        <li>La <i>valeur</i> de cette variable est une cha&icirc;ne de caract&egrave;res, on parle de <font color="#990000"><b>String</b></font> en anglais et ... en <tt><a href="http://javascool.gforge.inria.fr" style="padding:0;margin:0;text-decoration:none">Java'sCool</a></tt>.
+                        </li>
+                                  
+                        <li>La fonction <font color="#990000"><b>readString()</b></font> lit un <font color="#990000"><b>String</b></font>.
+                        </li>
+                                
+                     </ul> La ligne <b><font color="#990000"><b>String</b></font> texte = <font color="#990000"><b>readString</b></font>();</b> signifie donc, de droite &agrave; gauche, 
+                     <ol class="ol">
+                                  
+                        <li><b><font color="#990000"><b>readString()</b></font>;</b> Lire une chaine de carat&egrave;re ... 
+                        </li>
+                                  
+                        <li><b>texte = <font color="#990000"><b>readString()</b></font>;</b> Et mettre le r&eacute;sultat dans la variable de nom <b>texte</b> ... 
+                        </li>
+                                  
+                        <li><b><font color="#990000"><b>String</b></font> texte = <font color="#990000"><b>readString()</b></font>;</b> Cette variable &eacute;tant de type <font color="#990000"><b>String</b></font>, une chaine de carat&egrave;res donc.
+                        </li>
+                                
+                     </ol>On voit donc ici que le symbole <b>=</b> signifie <i>affecter une valeur &agrave; une variable</i> 
+                             (ici affecter la valeur lue gr&acirc;ce &agrave; <font color="#990000"><b>readString</b></font> &agrave; la variable <b>texte</b>.
+                  </li>
+                          
+                  <li>La derni&egrave;re ligne met bout &agrave; bout <font color="#008000">"Enchant&eacute; "</font>, <b>texte</b> (dont la valeur est le nom entr&eacute; par l'utilisateur) et <font color="#008000">", et ... &agrave; bient&ocirc;t !"</font> pour imprimer un message de salutation o&ugrave; le nom de l'utilisateur est employ&eacute;.
+                  </li>
+                        
+               </ul>
+                   
+            </li>
+            <li>
+               <h3>Trois couleurs pour trois sortes de mots.</h3> Regardons ces lignes, il y a des mots en ocre, en vert et en noir : 
+               <ul class="ul">
+                        
+                  <li>Les mots en ocre (<font color="#990000"><b>String</b></font>, <font color="#990000"><b>println</b></font>, ..) sont les mots de base du langage et ceux des fonctions pr&eacute;d&eacute;finies. Ils sont fix&eacute;s &agrave; l'avance 
+                           (ce sont les mots du langage <tt><a href="http://javascool.gforge.inria.fr" style="padding:0;margin:0;text-decoration:none">Java'sCool</a></tt>), et doivent &ecirc;tre utilis&eacute;s tels quels.  Chaque mot a un sens pr&eacute;cis que nous d&eacute;couvrons au fur et &agrave; mesure.
+                  </li>
+                        
+                  <li>Les mots en noir (ici <b>texte</b>) sont les identificateurs de nos variables, <i>nous</i> les choisissons et nous donnons &agrave; ces variables des <i>valeurs</i>, 
+                           un peu comme les "x" et les "y" en math&eacute;matiques.
+                     <ul class="ul">
+                              
+                        <li><i>Attention<sup><a href="#1">1</a></sup>:</i> Les identificateurs en <tt><a href="http://javascool.gforge.inria.fr" style="padding:0;margin:0;text-decoration:none">Java'sCool</a></tt> sont uniquement compos&eacute;s de lettres minuscules sans accent 
+                                   et du signe "_", par exemple vous pouvez &eacute;crire <tt>leprenom</tt> ou <tt>le_prenom</tt> mais PAS 
+                                   <tt>le-prenom</tt> (on ne peut utiliser le tiret "-") ou <tt>lepr&eacute;nom</tt> (on ne peut utiliser d'accent).
+                        </li>
+                              
+                     </ul>
+                  </li>
+                        
+                  <li>Les mots en vert sont des chaines de caract&egrave;res, constantes, que nous utilisons "telles quelles".</li>
+                      
+               </ul>Apprenons &agrave; bien distinguer ces trois sortes de mots.
+                 
+            </li>
+            <li>
+               <h3>Les verbes et les adjectifs du langage.</h3>Parmi les mots en ocre qui forment la base du langage, nous d&eacute;couvrons qu'ils sont de deux sortes :
+               <ol class="ol">
+                      
+                  <li>Les <b>verbes</b> comme <font color="#990000"><b>println</b></font> (imprimer) ou <font color="#990000"><b>readString()</b></font> (lire un ``<font color="#990000"><b>String</b></font>&acute;&acute; c'est &agrave; dire une chaine de caract&egrave;res) 
+                         d&eacute;signent des fonctions &agrave; r&eacute;aliser, 
+                         certaines de ces actions retournent le r&eacute;sultat de leurs op&eacute;rations (par exemple <font color="#990000"><b>readString()</b></font> renvoie la chaine de caract&egrave;res lue au clavier), 
+                         d'autres font une action sans retourner de r&eacute;sultat (par exemple <font color="#990000"><b>println</b></font> imprime une chaine de caract&egrave;res et voil&agrave;).
+                         Nous d&eacute;couvrirons plus en d&eacute;tail ces <a href="fonctions.html">fonctions</a>: nous pourrons m&ecirc;me d&eacute;finir <i>nous m&ecirc;me</i> de nouvelles fonctions.
+                  </li>
+                      
+                  <li>Les <b>adjectifs</b> comme <font color="#990000"><b>String</b></font> qui permet de sp&eacute;cifier que la variable <b>texte</b> est une chaine de caract&egrave;res 
+                         (et pas un nombre ou un autre objet num&eacute;rique). Il est bien s&ucirc;r essentiel de bien pr&eacute;ciser quel est le <i>type</i> de chaque variable gr&acirc;ce &agrave; ces adjectifs. 
+                         Voici les premiers adjectifs que nous devons conna&icirc;tre : 
+                     <ul class="ul">
+                              
+                        <li><font color="#990000"><b>String</b></font> qui d&eacute;signe les chaines de caract&egrave;res, nous les utilisons d&eacute;ja !
+                        </li>
+                              
+                        <li><font color="#990000"><b>int</b></font> qui d&eacute;signe les nombres entiers (<tt>int</tt> est l'abr&eacute;viation de "integer number"&acute;, nombre entier) positifs ou n&eacute;gatifs 
+                                 (entre environ -2 millards et 2 milliards, cela permet de manipuler de tr&egrave;s grands nombres entiers ... mais pas jusqu'&agrave;
+                           l'infini !).
+                        </li>
+                              
+                        <li><font color="#990000"><b>double</b></font> qui d&eacute;signe les nombres d&eacute;cimaux (<tt>double</tt> est l'abr&eacute;viation de "double precision floating point number", 
+                                 nombres d&eacute;cimaux &agrave; double pr&eacute;cision) comme sur une calculette.
+                                 Bien entendu ces nombres sont <i>approximatifs</i> : il y a forc&eacute;ment des erreurs d'arrondis lorsque l'on calcule avec.
+                                 A l'inverse les <font color="#990000"><b>int</b></font> permettent de faire des calculs exacts (sauf erreur de programmation !).
+                        </li>
+                              
+                        <li>... ensuite chaque <i>objet num&eacute;rique</i> (texte, image, liste de valeurs, tableau de chiffres, ..) aura un <i>type</i>, que nous d&eacute;couvrirons au fur et &agrave; mesure, 
+                                 et nous d&eacute;signerons tous les objets qui seront dans la m&ecirc;me classe, autrement dit qui auront le m&ecirc;me type, 
+                                 avec des adjectifs comme <font color="#990000"><b>String</b></font>, <font color="#990000"><b>int</b></font> ou <font color="#990000"><b>double</b></font>.
+                        </li>
+                            
+                     </ul>
+                  </li>
+               </ol>
+            </li>
+         </ol>
+      </div>
+      
+        
+      <h2>Travail propos&eacute;.</h2>
+      <div id="works">
+         <ol>
+            <li>
+               <h3>A nous de jouer.</h3> Taper sans se tromper les cinq lignes du programme, puis  essayer (c'est &agrave; dire: sauver<sup><a href="#2">2</a></sup>, compiler et ... ex&eacute;cuter).
+               <ul class="ul">
+                        
+                  <li>V&eacute;rifier que si l'utilisateur entre des noms diff&eacute;rents, alors le programme va bien stocker le nom dans la variable, le r&eacute;utiliser
+                     pour dire <font color="#008000">"Enchant&eacute; .."</font>.
+                  </li>
+                        
+                  <li>V&eacute;rifier que si nous changeons l'identificateur de la variable (par exemple remplacer <b>texte</b> par <b>son_nom</b>),
+                           cela ne change pas le fonctionnement du programme.
+                  </li>
+                        
+                  <li>Constatez bien que l'<i>identificateur</i> (le nom de la variable ici, <b>texte</b>)  n'a rien &agrave; voir avec la <i>valeur</i> de la variable (ici le nom entr&eacute; par
+                           l'utilisateur).
+                  </li>
+                        
+                  <li>Modifier maintenant le programme (la forme de la question, l'utilisation de la r&eacute;ponse) pour le rendre un peu original, &agrave;
+                     vous de jouer.
+                  </li>
+                      
+               </ul>
+            </li>
+            <li>
+               <h3>Utilisons une variable num&eacute;rique.</h3> Modifions un peu le programme en utilisant au bon endroit les trois lignes suppl&eacute;mentaires suivantes :
+                     
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"Enchant&eacute; "</font> + texte + <font color="#008000">", quel est ton &acirc;ge ?"</font>);
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> age = <font color="#990000"><b>readInteger();</b></font></div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>println</b></font>(<font color="#008000">"Oh,"</font> + age + <font color="#008000">", est un bel &acirc;ge !"</font>);
+                              </div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+                     
+               <ul class="ul">
+                          
+                  <li>Essayer le code modifi&eacute; et v&eacute;rifier qu'il fonctionne de mani&egrave;re satisfaisante.</li>
+                          
+                  <li>Noter que maintenant nous avons une autre variable, qui n'est plus de type <font color="#990000"><b>String</b></font> mais de type num&eacute;rique.
+                  </li>
+                          
+                  <li>Remplacer le <font color="#990000"><b>int</b></font> par un <font color="#990000"><b>double</b></font> (c'est &agrave; dire avec la ligne <b><font color="#990000"><b>double</b></font> age = <font color="#990000"><b>readFloat()</b></font>;</b>, que constatons nous ?
+                  </li>
+                          
+                  <li>L'&acirc;ge de quelqu'un (son nombre d'ann&eacute;es de vie) est il plut&ocirc;t un nombre entier (un <font color="#990000"><b>int</b></font>) ou un nombre d&eacute;cimal (un <font color="#990000"><b>double</b></font>) ? Ou, mais, .. sa taille en m&egrave;tre ? Et le num&eacute;ro de sa classe au coll&egrave;ge ? Et sa note scolaire moyenne ? Voyez comment selon
+                     la valeur num&eacute;rique que l'on cherche &agrave; repr&eacute;senter num&eacute;riquement il faut utiliser soit un <font color="#990000"><b>int</b></font> soit un <font color="#990000"><b>double</b></font>.
+                  </li>
+                        
+               </ul>
+                   
+            </li>
+         </ol>
+      </div>
+        
+        
+      <h2>Remarques.</h2>
+      <div id="notes">
+         <ol>
+            <li id="1"><a name="1"></a><h3>A propos des identificateurs.</h3> Selon les langages informatiques et les r&egrave;gles de codage les identificateurs peuvent &ecirc;tre compos&eacute;s avec <i>autre chose</i>
+                   que des lettres minuscules sans accent et du signe "_" (par exemple on peut glisser des chiffres apr&egrave;s l'identificateur,
+               mettre des majuscules, etc..) mais ce n'est
+                   PAS une bonne habitude de le faire, car cela a tendance &agrave; embrouiller les choses, cela d&eacute;pend des langages, etc... En
+               programmation il faut non seulement respecter la syntaxe
+                   mais aussi choisir de bonnes habitudes pour sp&eacute;cifier ses programmes.
+            </li>
+            <li id="2"><a name="2"></a><h3>Comment garder une trace du travail r&eacute;alis&eacute;.</h3> Sauver le texte source du programme dans un fichier d'extension <tt>.jvs</tt>, 
+                   par exemple <tt>Var1.jvs</tt>, puis <tt>Var2.jvs</tt> pour la version suivante, etc.. De cette fa&ccedil;on chaque version du travail peut-&ecirc;tre gard&eacute;e, corrig&eacute;e, etc..
+                   De plus, on peut facilement ajouter des <i>lignes de commentaires</i> qui permettent de sauvegarder les r&eacute;ponses aux questions pos&eacute;es. 
+                   Ce sont des lignes qui commencent par <tt>//</tt> et sont donc de la forme
+                   
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Voici deux lignes de commentaire ignor&eacute;e par l'ordinateur ...</font></tt></p>
+                                    
+                              <p><tt><font color="#202080"><big>//</big>&nbsp; ... et qui permettent de donner des informations aux humains qui lisent ce code !</font></tt></p>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </li>
+         </ol>
+      </div>
+      
+   </body>
+</html>

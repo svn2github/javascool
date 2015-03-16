@@ -1,0 +1,33 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+// Dans cette fonction "lettre" est censé ne contenir
+// qu'un seul caractère.
+// On vérifie si ce caractère apparaît dans la chaîne "mot"
+
+boolean appartient(String lettre, String mot) {
+  int i;
+  boolean resultat;
+  resultat = false;
+  for(i = 0; i <= stringLength(mot) - 1; i = i + 1)
+    if(stringEqual(stringNth(mot, i), lettre)) {
+      resultat = true;
+    }
+  return resultat;
+}
+void main() {
+  String autorises, pseudo;
+  boolean pseudoOk;
+  int i;
+  autorises = "abcdefghijklmnopqrstuvwxyz";
+  pseudoOk = false;
+  // On redemande un pseudo tant qu'il n'est pas correct
+  while(!pseudoOk) {
+    println("Entrer votre pseudo :");
+    pseudo = readString();
+    pseudoOk = true;
+    // On vérifie que chaque caractère du pseudo est autorisé
+    for(i = 0; i <= stringLength(pseudo) - 1; i = i + 1)
+      if(!appartient(stringNth(pseudo, i), autorises)) {
+        pseudoOk = false;
+      }
+  }
+}

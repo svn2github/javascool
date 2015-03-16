@@ -1,0 +1,270 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="class" content="sujet">
+      <title>Un tutoriel sur les graphes (2nde partie)</title>
+   </head>
+   <body>
+      <h1>Un tutoriel sur les graphes (2nde partie).</h1> 
+      
+      <h2>Objectif.</h2>
+      <div class="objectif">
+         Le but est de s&#8217;approprier les diff&eacute;rents &eacute;l&eacute;ments caract&eacute;ristiques d&#8217;un graphe, 
+         en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin. 
+         Si la premi&egrave;re partie de ce tutoriel visait uniquement &agrave; introduire la notion de graphe avec un cas concret de parcours d'une
+         voiture,
+         on manipulera ici les notions cl&eacute;s et on &eacute;laborera les outils n&eacute;cessaires pour la construction de l'algorithme du plus court
+         chemin 
+         avec cette fois le cas du graphe appliqu&eacute; &agrave; un r&eacute;seau d'amis qui entre eux poss&egrave;dent ou non des liens de familiarit&eacute;.
+           
+      </div>
+        
+      <h2>Introduction.</h2>
+      <div id="intros">
+         <ol>
+            <li>Un graphe est un ensemble de points dont certaines paires sont directement reli&eacute;es par un lien. 
+                 	Ces liens peuvent &ecirc;tre orient&eacute;s, d'un point vers un autre ou vice versa. Dans le cas contraire, les liens sont sym&eacute;triques,
+               et le graphe est non-orient&eacute;. 
+                 	G&eacute;n&eacute;ralement, les points sont appel&eacute;s les sommets ou les n&#339;uds. Les liens sont appel&eacute;s ar&ecirc;tes dans les graphes non-orient&eacute;
+               
+                       et arcs dans un graphe orient&eacute;.
+            </li>
+            <li>Voir les notes d'<a href="http://javascool.gforge.inria.fr/documents/sketchbook/grapheEtChemins/Introduction-aux-graphes.pdf">introduction aux graphes</a> pour permettre de comprendre le contexte historique.
+            </li>
+            <li>Un cas concret peut &ecirc;tre un r&eacute;seau d'amis o&ugrave; chaque sommet est une personne en particulier, 
+                 	et un lien entre deux personnes met en &eacute;vidence leur familiarit&eacute;.
+                   Ainsi, on peut se poser la question comment Alice peut entrer en relation avec Bob, et qui plus est de mani&egrave;re optimum,
+                       autrement dit en limitant le nombre de personnes interm&eacute;diaires.
+            </li>
+         </ol>
+      </div>
+      
+        
+      <h2>Travail propos&eacute;.</h2>
+      <div id="works">
+         <ol>
+            <li>
+               <h3>Avant de commencer.</h3>
+               	La premi&egrave;re partie de ce tutoriel [METTRE UN LIEN (interface EnVoiture)] a &eacute;t&eacute; introductive &agrave; la notion de graphe, 
+               	partant d'un cas concret avec le parcours d'une voiture, de telle sorte &agrave; visiter des villes tout en limitant le chemin parcouru.
+               	Dans cette partie, on propose de programmer les concepts cl&eacute;s des graphes autour d'un r&eacute;seau d'amis symbolis&eacute;s par des noeuds
+               pour les
+               	personnes et des liens entre les noeuds pour les liens de familiarit&eacute;. 
+                   
+            </li>
+            <li>
+               <h3>D&eacute;couverte de l'interface.</h3>
+                     Essayer les diff&eacute;rentes fonctions de l'interface pour vous familiariser avant de . . le programmer: 
+               <ul class="ul">
+                        
+                  <li>Pour avoir l'information sur toutes les fonctionnalit&eacute;s, passer la souris sur "info&gt;&gt;&gt;".</li>
+                        
+                  <li>Pour une manipulation rapide, 'a' g&eacute;n&egrave;re tous les noeuds disponibles, 'r' g&eacute;n&egrave;re quelques liens.</li>
+                        
+                  <li>Pour lancer l'algotithme de calcul du plus court chemin entre 2 noeuds: clic gauche + 'b' pour le noeud de d&eacute;part, clic gauche
+                     + 'e' pour le noeud d'arriv&eacute;e.
+                  </li>
+                      
+               </ul>
+            </li>
+            <li>
+               <h3>Construire son propre r&eacute;seau.</h3>
+                     Utiliser les fonctions ci dessous pour d&eacute;finir &agrave; partir d'un petit bout de code votre propre r&eacute;seau:
+               <ul class="ul">
+                          
+                  <li>Ajout d'un noeud: 
+                     <div><font color="#990000"><b>addNode</b></font>(<font color="#990000"><b>String</b></font> n, <font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
+                     </div>
+                  </li>
+                          
+                  <li>Destruction d'un noeud: 
+                     <div><font color="#990000"><b>removeNode</b></font>(<font color="#990000"><b>String</b></font> n)
+                     </div>
+                  </li>
+                          
+                  <li>Ajout/modification d'un lien entre deux noeuds: 
+                     <div><font color="#990000"><b>addLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB, <font color="#990000"><b>double</b></font> poids)
+                     </div>
+                  </li>
+                          
+                  <li>Destruction d'un lien existant entre deux noeuds: 
+                     <div><font color="#990000"><b>removeLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                     </div>
+                  </li>
+                        
+               </ul>
+                   
+            </li>
+            <li>
+               <h3>R&eacute;cup&eacute;rer des informations du r&eacute;seau.</h3>
+                     Utiliser les <a href="help.html">fonctions</a> propos&eacute;es 
+                     pour calculer le nombre de sommets et de liens, ainsi que la somme des poids des chemins.
+                   
+            </li>
+            <li>
+               <h3>Pr&eacute;misse &agrave; un algorithme de plus court chemin.</h3>
+                     
+               <div>Soit un graphe &agrave; 4 noeuds, avec un noeud de d&eacute;part et un noeud d'arriv&eacute;e (que vous aurez programm&eacute; &agrave; votre convenance ou pris
+                  ci-dessous).
+               </div>
+                     
+               <div>Depuis le noeud de d&eacute;part, si le noeud est en lien avec le noeud d'arriv&eacute;e, c'est fini; 
+                        sinon choisir le noeud dont le lien a le poids le plus faible.
+                        Si la boucle n'est pas fini, repartir du noeud pr&eacute;c&eacute;dent, et refaire le raisonnement.
+                        Continuer jusqu'&agrave; aboutir au noeud d'arriv&eacute;e.
+               </div>
+                     
+               <ul class="ul">
+                          
+                  <li>Programmer cet algorithme et regarder son ex&eacute;cution</li>
+                          
+                  <li>Prendre conscience que l'algorithme ainsi construit aboutit &agrave; la solution, mais est non-optimis&eacute;.
+                     <ul class="ul">
+                                  
+                        <li>On imprimera le nom des noeuds parcourus, ici des personnes, et on se rendra compte de la redondance des chemins.</li>
+                                  
+                        <li>De plus, en ajoutant un noeud au graphe, on prendra conscience du temps de calcul exponentiel.</li>
+                              
+                     </ul>
+                  </li>
+                      
+               </ul>
+            </li>
+            <li>
+               <h3>S'attaquer &agrave; un probl&egrave;me peut-&ecirc;tre plus facile . . .</h3>
+                     
+               <div>On propose d'utiliser le graphe pour calculer le chemin entre deux personnes avec un <i>nombre minimum de personnes interm&eacute;diaires</i>.
+               </div>
+                     
+               <div>Ecrire au crayon l'&eacute;bauche de l'algorithme . . l'exploration des cas possibles est-elle plus simple dans ce cas ?</div>
+                     
+               <div>Qu'en d&eacute;duire alors ? </div>
+                   
+            </li>
+         </ol>
+      </div>
+        
+      <h2>Remarques.</h2>
+      <div id="notes">
+         <ol>
+            <li>Un exemple de graphe:
+                   
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>void</b></font> build() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   int x0 = 450, y0 = 250;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   addNode("Nord", x0, y0 - 100);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   addNode("Est", x0 + 300, y0);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   addNode("Ouest", x0 - 300, y0);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   addNode("Sud", x0, y0 + 100);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   addNode("Centre", x0, y0);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   addLink("Nord", "Est", 1);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   addLink("Sud", "Est", 2);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   addLink("Centre", "Ouest", 3);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   addLink("Sud", "Ouest", 4);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   addLink("Sud", "Centre", 5);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   addLink("Nord", "Centre", 1);
+                              </div>
+                                    
+                              <div>}</div>
+                                    
+                              <div></div>
+                                    
+                              <div><font color="#990000"><b>void</b></font> unbuild() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   removeNode("Nord");
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   removeNode("Sud");
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   removeNode("Est");
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   removeNode("Ouest");
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                   removeNode("Centre");
+                              </div>
+                                    
+                              <div>}</div>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </li>
+         </ol>
+      </div>
+      
+   </body>
+</html>

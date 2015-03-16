@@ -1,0 +1,141 @@
+<div class="sujet" title="Les méthodes">
+<div class="objectif">
+    Liste des différentes fonctions disponibles dans cette proglet.
+  </div>
+<div title="Produit de deux matrices">
+<div class="code">
+   Syntaxe : <font color="red">float[][] </font><font color="green">produit</font>(<font color="red">float[][] </font> matrice1, <font color="red">float[][] </font> matrice2)
+</div>
+Cette fonction utilise des tableaux de float ayant <u>obligatoirement</u> au moins deux colonnes.<BR></BR>
+Elle renvoie une matrice égale <l class="newtab" link="produit_matrice.htm" text="au produit de deux matrices" />.<BR></BR>
+Les deux matrices multipliées doivent être telles que  la matrice 1 doit avoir le même nombre de colonnes que le nombre de lignes de la matrice 2.
+
+</div>
+
+<BR></BR>
+<div title="Somme  de deux matrices">
+<div class="code">
+   Syntaxe : <font color="red">float[][] </font><font color="green">somme</font>(<font color="red">float[][] </font> matrice1, <font color="red">float[][] </font> matrice2)
+</div>
+Cette fonction utilise des tableaux de float ayant <u>obligatoirement</u> au moins deux colonnes.<BR></BR>
+Elle renvoie une matrice égale à la somme de deux <l link="http://fr.wikipedia.org/wiki/Matrice_%28math%C3%A9matiques%29" text="matrices" />.<BR></BR>
+Les deux matrices  doivent le même nombre de colonnes et de lignes.
+</div>
+
+<BR></BR>
+<div title="Transposée d'une matrices">
+<div class="code">
+Syntaxe : <font color="red">float[][] </font><font color="green">transposee</font>(<font color="red">float[][] </font> matrice1)
+</div>
+Cette fonction utilise des tableaux de float ayant <u>obligatoirement</u> au moins deux colonnes.<BR></BR>
+Elle renvoie une matrice égale à la transposée d'une <l link="http://fr.wikipedia.org/wiki/Matrice_%28math%C3%A9matiques%29" text="matrice" />.<BR></BR>
+
+</div>
+<BR></BR>
+<div title="Produit d'une matrice par une constante">
+<div class="code">
+Syntaxe : <font color="red">float[][] </font><font color="green">proportionnelle</font>(<font color="red">float[][] </font> matrice1, <font color="red">float </font> constante)
+</div>
+Cette fonction utilise des tableaux de float ayant <u>obligatoirement</u> au moins deux colonnes.<BR></BR>
+Elle renvoie une matrice égale au produit d'une <l link="http://fr.wikipedia.org/wiki/Matrice_%28math%C3%A9matiques%29" text="matrices" /> par une constante.<BR></BR>
+
+</div>
+<BR></BR>
+<div title="Somme  d'une matrice et d'une constante">
+<div class="code">
+Syntaxe : <font color="red">float[][] </font><font color="green"> somme_constante</font>(<font color="red">float[][] </font> matrice1, <font color="red">float </font>constante)
+</div>
+Cette fonction utilise des tableaux de float ayant <u>obligatoirement</u> au moins deux colonnes.<BR></BR>
+Elle renvoie une matrice dont les composantes sont égales à la somme des composantes d'une  <l link="http://fr.wikipedia.org/wiki/Matrice_%28math%C3%A9matiques%29" text="matrice" /> 
+avec une même constante .<BR></BR>
+
+</div>
+<BR></BR>
+<div title="Valeur absolue d'une matrice">
+<div class="code">
+Syntaxe : <font color="red">float[][] </font> <font color="green">valeur_absolue</font>(<font color="red">float[][] </font> matrice1)
+</div>
+Cette fonction utilise des tableaux de float ayant <u>obligatoirement</u> au moins deux colonnes.<BR></BR>
+Elle renvoie une <l link="http://fr.wikipedia.org/wiki/Matrice_%28math%C3%A9matiques%29" text="matrices" />
+ dont les composantes sont les valeurs absolues des composantes d'une <l link="http://fr.wikipedia.org/wiki/Matrice_%28math%C3%A9matiques%29" text="matrices" /> .<BR></BR>
+
+</div>
+<BR></BR>
+<div title="Racine carrée d'une matrice">
+<div class="code">
+Syntaxe : <font color="red">float[][] </font><font color="green">racine</font>(<font color="red">float[][] </font> matrice1)
+</div>
+Cette fonction utilise des tableaux de float ayant <u>obligatoirement</u> au moins deux colonnes.<BR></BR>
+Elle renvoie une <l link="http://fr.wikipedia.org/wiki/Matrice_%28math%C3%A9matiques%29" text="matrices" />
+ dont les composantes sont les racines carrées  des composantes d'une <l link="http://fr.wikipedia.org/wiki/Matrice_%28math%C3%A9matiques%29" text="matrices" /> .<BR></BR>
+Si la composante est négative, la fonction renvoie une valeur  nulle.
+</div>
+<BR></BR>
+<div title="Valeur moyenne des lignes d'une matrice">
+<div class="code">
+Syntaxe : <font color="red">float[] </font> <font color="green">moyenne</font>(<font color="red">float[][] </font> matrice,<font color="red">int </font> nblignes,<font color="red">int </font> nbcolonnes)
+</div>
+Cette fonction à pour argument un tableaux de float ayant <u>obligatoirement</u> au moins deux colonnes et renvoie un tableau unicolonne.<BR></BR>
+Elle calcule la moyenne des composantes situées sur chaque ligne d'une matrice de p colonnes  .<BR></BR>
+
+</div>
+
+
+<BR></BR>
+<div title="Calcul des vecteurs propres d'une matrice">
+<div class="code">
+Syntaxe :  <font color="green">calcul_vecteurs_propres</font>(float[][] matrice,  <font color="red">int </font> nbvecteurspropres )
+</div>
+Cette fonction utilise des tableaux de float ayant <u>obligatoirement</u> au moins deux colonnes.<BR></BR>
+Elle  calcule les "nbvecteurspropres" premiers <l link="http://fr.wikipedia.org/wiki/Valeur_propre,_vecteur_propre_et_espace_propre vecteurs propres et valeur propres d'une matrice" texte="vecteurs propres"/>. <BR></BR>
+Elle créee un fichier texte dans le répertoire de travail nommé "vecteurs_propres.txt"  contenant les composantes de ces vecteurs propres. 
+Ce fichier contient les composantes selon les lignes. Chaque colonne est un vecteur.<BR></BR>
+ Un autre fichier "valeurs_propres.txt" contenant les valeurs propres est également enregistré dans le repertoire de travail.
+</div>
+<BR></BR>
+
+<div title="Calcul du produit scalaire de deux vecteurs">
+<div class="code">
+Syntaxe : <font color="red">float </font> <font color="green">produit_scalaire</font>(<font color="red">float[] </font> vecteur1; <font color="red">float[] </font> vecteur2)
+</div>
+Cette fonction donne un nombre float égal au <l link="http://fr.wikipedia.org/wiki/Produit_scalaire" text="produit scalaire" />  de deux vecteurs. <BR></BR>
+Les deux vecteurs doivent être de même dimension.
+</div>
+
+<div title="Lecture d'une image jpg et sa transformation en vecteur-image unicolonne">
+<div class="code">
+Syntaxe : <font color="red">float[] </font> <font color="green">image_vers_vecteur_image</font>( <font color="red">String </font> nom,<font color="red">int </font> largeur,<font color="red">int </font> hauteur)
+</div>
+Cette fonction utilise un tableau de float ayant <u>obligatoirement</u> une colonne.<BR></BR>
+Elle transforme une image jpg avec le nom indiqué en un tableau de float unicolonne.
+</div>
+<BR></BR>
+<div title="Sauvegarde d'un vecteur image en une image jpg">
+<div class="code">
+Syntaxe :<font color="green">sauvegardejpg</font>(<font color="red">float[] </font>vecteur_image, <font color="red">String </font> nom, <font color="red">int </font> largeur, <font color="red">int </font> hauteur)
+</div>
+Cette fonction utilise un tableau de float ayant <u>obligatoirement</u> une colonne.<BR></BR>
+Elle transforme un vecteur image unicolonne en une image jpg avec le nom indiqué. Il faut indiquer la taille de l'image en donner sa hauteur er sa largeur en pixels. Elle peut être utile pour visualiser les images obtenues lors des diverses étapes du calcul.
+</div>
+<BR></BR>
+<div title="Lecture d'un tableau stocké dans un fichier texte ">
+<div class="code">
+Syntaxe : <font color="red">float[][] </font><font color="green">lecture_tableau</font>(<font color="red">int </font>lignes,<font color="red">int </font>colonnes,  <font color="red">String </font> nom_fichier)
+</div>
+Cette fonction utilise un tableau de float ayant <u>obligatoirement</u> au moins deux  colonnes.<BR></BR>
+Elle lit un fichier texte de nom "nom_fichier" comportant un tableau ayant n lignes et p colonnes et fournit un tableau de float de n ligne et p colonnes.
+</div>
+<BR></BR>
+
+<div title="Sauvegarde d'un tableau  dans un fichier texte ">
+<div class="code">
+Syntaxe : <font color="green">sauvegarde</font>(<font color="red">float[][] </font> tableau, <font color="red">String </font> nom_fichier)
+</div>
+Cette fonction utilise un tableau de float ayant <u>obligatoirement</u> au moins deux  colonnes.<BR></BR>
+Elle sauvegarde le tableau de n lignes et p colonnes dans un fichier texte de nom "nom_fichier"(l'extension .txt est recommandée)  comportant  n lignes et p colonnes.
+</div>
+<BR></BR>
+
+<BR></BR>
+</div>
+		

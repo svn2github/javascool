@@ -1,0 +1,14 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void main() {
+  int a, b, c, d;
+  a = readInt();
+  b = readInt();
+  c = readInt();
+  d = readInt();
+  if((b == 0) || (d == 0)) {
+    println("Dénominateur nul interdit !");
+  } else {
+    println(a * d + c * b);
+    println(b * d);
+  }
+}

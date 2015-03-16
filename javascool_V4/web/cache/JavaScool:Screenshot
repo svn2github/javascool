@@ -1,0 +1,45 @@
+ <div id="toc" class="toc"><div id="toctitle"><h2>Sommaire</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Description_de_l.27interface_javascool_pour_un_apprenant"><span class="tocnumber">1</span> <span class="toctext">Description de l'interface javascool pour un apprenant</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#La_fen.C3.AAtre_de_lancement"><span class="tocnumber">2</span> <span class="toctext">La fenêtre de lancement</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Description_du_travail_avec_l.27interface_javascool"><span class="tocnumber">3</span> <span class="toctext">Description du travail avec l'interface javascool</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Description_de_l.27interface_javascool_pour_un_apprenant">Description de l'interface javascool pour un apprenant</span></h2>
+<p>Au lancement choisissez dans la <a href="#La_fen.C3.AAtre_de_lancement">fenêtre de lancement</a> la proglet <i>abcdAlgos</i> si vous ne souhaitez pas faire d'activité particulière.
+</p><p>Voici les quelques points clés à comprendre pour manipuler l'interface
+</p><p><img src="http://javascool.gforge.inria.fr/v4/documents/javadoc/screenshot-javascool1.png" alt="Interface Javascool" width="100%"/>
+</p>
+<ul><li> Document et activité se lisent dans la fenêtre aide de la proglet</li>
+<li> Dans l'éditeur trois fonctions permettent de faciliter l'écriture du code
+<ol><li> Le code est colorisé (c'est automatique)</li>
+<li> Les fonctions disponibles peuvent être insérées avec le bouton droit: c'est la complétion automatique (elle peut être désactivée)</li>
+<li> La fonction de reformatage de code permet de s'assurer que la structure du code est correcte</li></ol></li>
+<li> Le bouton "compilation" permet de vérifier le code est de le transformer en code machine
+<ul><li> Si il n'y a pas d'erreur, le code pourra être exécuté.</li></ul></li></ul>
+<p>Ces mécanismes sont représentés dans le diagramme ci-dessous:
+</p>
+<h2><span class="mw-headline" id="La_fen.C3.AAtre_de_lancement">La fenêtre de lancement</span></h2>
+<p>Au départ choissez la proglet <i>abcdAlgos</i> si vous ne souhaitez pas faire d'activité particulière.
+</p><p>Voici une vue des <a class="internal" href="?page=resources&action=link-proglets" title="JavaScool:Activites">activités</a> usuellement disponibles.
+</p><p><img src="http://javascool.gforge.inria.fr/v4/documents/javadoc/screenshot-javascool10.png" alt="Interface Javascool" width="60%"/>
+</p><p>Attention, si la seule proglet "Interface" s'affiche c'est un problème de compatibilité avec java il faut nous le signaler.
+</p>
+<h2><span class="mw-headline" id="Description_du_travail_avec_l.27interface_javascool">Description du travail avec l'interface javascool</span></h2>
+<p><img src="http://javascool.gforge.inria.fr/v4/documents/javadoc/javascool-workflow.png" alt="Workflow Javascool" width="100%"/>
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.008 seconds
+Real time usage: 0.008 seconds
+Preprocessor visited node count: 32/1000000
+Preprocessor generated node count: 76/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:869-1!*!0!!fr!*!* and timestamp 20150313130633 and revision id 14439
+ -->

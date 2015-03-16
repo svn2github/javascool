@@ -1,0 +1,28 @@
+/** Calcul de PI au «compte-goutte».
+ * Ref: http://www.pi314.net/fr/goutte.php
+ * Cette classe utilise l'objet numérique:
+ *  http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html
+ * <p> On ne peut pas calculer au delà de la précision de 32 bits des entiers ou de 48 bits de mantisse des nombres flottants sur 64 bots.
+ * Mais il y a bien sûr un objet qui permet de calculer a n'importe quelle précision c'est un BigDecimal.
+ * Moralement c'est une chaine de bits de longueur variable, mais toutes les manipulations sont transparentes. </p>
+ * <p>Du coup il faut déclarer ces nombres comme des objets du langage (donc avec la construction new) et utiliser des appels de fonctions pour faire les opérations. Le point délicat est la division c'est un calcul qui modifie la précision du calcul: il faut savoir combien de décimales garder et comment tronquer le résultat.</p>
+ */
+import java.math.BigDecimal;
+void main() {
+  int NombreDecimales = 100;
+  // Formule empirique qui relie le nombre de décimales à l'ordre de la série d'Horner.
+  int TailleSuite = 1 + (int) Math.floor(NombreDecimales * 3.32);
+  // Déclaration et initialisation des variables utilisées.
+  BigDecimal Numerateur = new BigDecimal(TailleSuite);
+  BigDecimal Denominateur = new BigDecimal(2 *TailleSuite + 1);
+  BigDecimal Pi = new BigDecimal(1);
+  // Calcul itératif de droite à gauche de la formule d'Horner
+  // Ref: http://www.pi314.net/mathematiciens/goutte/goutte2.gif
+  for(int n = TailleSuite; n > 0; n--) {
+    Pi = Numerateur.divide(Denominateur, NombreDecimales, java.math.RoundingMode.HALF_EVEN).multiply(Pi).add(new BigDecimal(2));
+    Numerateur = Numerateur.subtract(new BigDecimal(1));
+    Denominateur = Denominateur.subtract(new BigDecimal(2));
+  }
+  // Impression du résultat.
+  println("pi = " + Pi);
+}

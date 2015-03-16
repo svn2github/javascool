@@ -1,0 +1,9 @@
+void main() {
+  // Accès aux fonctions d'écriture
+  writeString("toto");
+
+  // Simulation des fonctions de lecture
+  getSerialInterface().simulReading("ok");
+  for(int c : getChars())
+    print("'" + ((char) c) + "'");
+}

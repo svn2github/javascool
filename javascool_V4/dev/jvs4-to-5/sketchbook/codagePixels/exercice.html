@@ -1,0 +1,469 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="class" content="sujet">
+      <title>Comprendre quelques op&eacute;rations de manipulation d'images</title>
+   </head>
+   <body>
+      <h1>Comprendre quelques op&eacute;rations de manipulation d'images.</h1>
+      
+      
+      <h2>Objectif.</h2>
+      <div class="objectif">
+         Le but de ce tutoriel est de comprendre comment un code manipule une image pixellique.
+           
+      </div>
+        
+        
+      <h2>Introduction.</h2>
+      <div id="intros">
+         <ol>
+            <li>
+               Une image est un tableau &agrave; deux dimensions de points lumineux, c'est &agrave; dire de &laquo;pixels&raquo;. 
+                      Chaque pixel a une valeur entre <tt>0</tt> (pour le "noir") et <tt>255</tt> (pour le "blanc").
+                      Bien lire le document sur l'<a href="http://interstices.info/reflet-numerique">information</a> en particulier la section "D&eacute;crire tous les dessins du monde".
+                    
+            </li>
+         </ol>
+      </div>
+        
+      <h2>Travail propos&eacute;.</h2>
+      <div id="works">
+         <ol>
+            <li>
+               <h3>D&eacute;couvrir un code qui modifie chaque pixel de l'image.</h3>
+                     Consid&eacute;rons le code suivant : 
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>int</b></font> f(<font color="#990000"><b>int</b></font> x) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>return</b></font> 255 - x;
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Boucle sur tous les pixels</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>void</b></font> filtre() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>getHeight</b></font>(); j &lt;= <font color="#990000"><b>getHeight</b></font>(); j = j + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>getWidth</b></font>(); i &lt;= <font color="#990000"><b>getWidth</b></font>(); i = i + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>setPixel</b></font>(i, j, f(<font color="#990000"><b>getPixel</b></font>(i, j)));
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <div></div>
+                                      
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>load</b></font>("http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/doisneaubuffon.jpg");
+                              </div>
+                                      
+                              <div>}</div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+               <ul class="ul">
+                          
+                  <li>Le programme principal <font color="#990000"><b>main</b></font> charge une belle photo noir et blanc de <a href="http://fr.wikipedia.org/wiki/Doisneau">Doisneau</a>.
+                  </li>
+                          
+                  <li>Les deux premi&egrave;res lignes de la fonction <b>filtre</b> bouclent sur tous les pixels en vertical et en horizontal.
+                  </li>
+                          
+                  <li>Expliquez en quelques mots le r&ocirc;le des variables <b>i</b> et <b>j</b>.
+                  </li>
+                          
+                  <li>Que fait la construction <b><font color="#990000"><b>setPixel</b></font>(i, j, f(<font color="#990000"><b>getPixel</b></font>(i, j)));</b> pour un pixel de coordonn&eacute;e (<b>i, j</b>) ?.
+                  </li>
+                          
+                  <li>Essayez ce code, puis le code en ajoutant la fonction <b>filtre();</b> apr&egrave;s <b><font color="#990000"><b>load</b></font>()</b> dans le programme principal : que se passe t'il ?
+                  </li>
+                          
+                  <li>Expliquez en quelques mots ce ph&eacute;nom&egrave;ne d'&laquo;inversion vid&eacute;o&raquo;.</li>
+                          
+                  <li>A la place de la construction <b><font color="#990000"><b>return</b></font> 255 - x;</b>, mettre la construction <b><font color="#990000"><b>return</b></font>x;</b>: que se passe t'il et pourquoi ?
+                  </li>
+                          
+                  <li>Augmenter ou baisser la <i>luminosit&eacute;</i> d'une image revient &agrave; ajouter ou soustraire une valeur constante &agrave; la valeur de chaque pixel : 
+                             essayez en modifiant la fonction <b>f()</b>.
+                  </li>
+                          
+                  <li>Que se passe t'il si on choisit <b><font color="#990000"><b>return</b></font> x + 255;</b> et pourquoi ?.
+                  </li>
+                          
+                  <li>Que se passe t'il si on choisit <b><font color="#990000"><b>return</b></font> x - 255;</b> et pourquoi ?.
+                  </li>
+                          
+                  <li>Augmenter ou baisser le <i>contraste</i> d'une image revient &agrave; multiplier ou diviser par un gain constant la valeur de chaque pixel : 
+                             essayez en modifiant la fonction <b>f()</b>.
+                  </li>
+                          
+                  <li>Que se passe t'il si on choisit <b><font color="#990000"><b>return</b></font> 0.5 * x;</b> et pourquoi ?.
+                  </li>
+                          
+                  <li>Que se passe t'il si on choisit <b><font color="#990000"><b>return</b></font> 0 * x;</b> et pourquoi ?.
+                  </li>
+                          
+                  <li>Que se passe t'il si on choisit <b><font color="#990000"><b>return</b></font> 100 * (x - 128);</b> et pourquoi ?.
+                  </li>
+                        
+               </ul>
+                   
+            </li>
+            <li>
+               <h3>Ajouter deux images : l'effet de calque.</h3> 
+                     Cette partie se fera sans rien programmer. 
+                     Consid&eacute;rons les deux images issues d'une c&eacute;l&egrave;bre <a href="http://www.ri.cmu.edu/publication_view.html?pub_id=3904">base de donn&eacute;e</a>,
+                     mise &agrave; disposition de la communaut&eacute; scientifique internationale pour &eacute;tudier les logiciels de traitement des s&eacute;quences
+               d'images contenant des mouvements humains.
+               <ul class="ul">
+                          
+                  <li>Si l'on consid&egrave;re les deux images suivantes:
+                             
+                     <div align="center" class="center">
+                        <p>
+                           <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                              <tr>
+                                 <td valign="top"><img src="cmu-jump1.jpg" alt="" class="icon"></td>
+                                 <td valign="top"><img src="cmu-jump3.jpg" alt="" class="icon"></td>
+                              </tr>
+                           </table><br></p>
+                     </div>
+                             que se passera t'il si on ``additionne&acute;&acute; ces deux images ? 
+                             C'est &agrave; dire si l'on construit une nouvelle image dont la valeur de chaque pixel est la somme des valeurs des pixels
+                     de chaque image ? Expliquer en une phrase.
+                  </li>
+                          
+                  <li>Si chaque image &eacute;tait dessin&eacute;e sur une feuille de papier calque, &agrave; quoi correspondrait la valeur ``transparente&acute;&acute; par rapport
+                     &agrave; la couleur de ces images ?
+                  </li>
+                          
+                  <li>Quelle est la diff&eacute;rence entre poser une image dessin&eacute;e sur un calque et ajouter la valeur des pixels comme propos&eacute; ici ?</li>
+                          
+                  <li>Ecrire en langage naturel (avec vos mots &agrave; vous, sans vous soucier de le programmer) un algorithme qui simule le fait de poser
+                     une image dessin&eacute;e sur un calque sur une autre.
+                  </li>
+                        
+               </ul>
+                   
+            </li>
+            <li>
+               <h3>Soustraire deux images : d&eacute;tecter des changements.</h3>
+                     Cette partie se fera sans rien programmer, comme la pr&eacute;c&eacute;dente. 
+               <ul class="ul">
+                          
+                  <li>Si l'on consid&egrave;re les deux images suivantes (cliquer sur l'image de gauche pour visualiser la s&eacute;quence):
+                             
+                     <div align="center" class="center">
+                        <p>
+                           <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                              <tr>
+                                 <td valign="top"><a href="http://javascool.gforge.inria.fr/proglets/codagePixels/13_11.avi"><img src="cmu-jump1.jpg" alt=""> </a></td>
+                                 <td valign="top"><img src="cmu-jump2.jpg" alt="" class="icon"></td>
+                              </tr>
+                           </table><br></p>
+                     </div>
+                             que s'est il pass&eacute; entre les deux images ? Si l'on ``soustrait&acute;&acute; les deux images de mani&egrave;re similaire &agrave; ce qui a &eacute;t&eacute;
+                     fait pour les ``additionner&acute;&acute; que va t'il se passer,
+                             pour les pixels correspondants &agrave; des points immobiles entre les deux images ? Et les pixels correspondants &agrave; des points
+                     en mouvement ? 
+                             Expliquer en deux/trois phrases.
+                  </li>
+                          
+                  <li>A quoi correspondent les valeurs positives si l'on soustrait les pixels de l'image de gauche &agrave; ceux de l'image de droite ?
+                     Et les valeurs n&eacute;gatives ?
+                  </li>
+                          
+                  <li>Utiliser l'id&eacute;e de soustraire deux images pour d&eacute;crire en quelques lignes un syst&egrave;me qui permette de d&eacute;tecter les mouvements
+                     d'un objet avec une cam&eacute;ra.
+                  </li>
+                        
+               </ul>
+                   
+            </li>
+            <li>
+               <h3>D&eacute;couvrir un code qui filtre les pixels de l'image.</h3>
+                     Consid&eacute;rons le code suivant : 
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>int</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>return</b></font> (<font color="#990000"><b>getPixel</b></font>(i, j) + <font color="#990000"><b>getPixel</b></font>(i + 1, j)+ <font color="#990000"><b>getPixel</b></font>(i, j + 1)+ <font color="#990000"><b>getPixel</b></font>(i - 1, j)+ <font color="#990000"><b>getPixel</b></font>(i, j - 1)) / 5;
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Boucle sur tous les pixels</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>void</b></font> filtre() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>getHeight</b></font>() + 1; j &lt;= <font color="#990000"><b>getHeight</b></font>() - 1; j = j + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>getWidth</b></font>() + 1; i &lt;= <font color="#990000"><b>getWidth</b></font>() - 1; i = i + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 setPixel(i, j, filtrePixel(i, j));
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <div></div>
+                                      
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>load</b></font>("http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/doisneaubuffon.jpg");
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> n = 0; n &lt; 5; n = n + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 filtre();
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>}</div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+               <ul class="ul">
+                          
+                  <li>Le programme principal <font color="#990000"><b>main</b></font> charge la photo et appelle la nouvelle fonction <b>filtre</b> cinq fois de suite (pour <b>n = 0</b> et <b>n = 1</b>).
+                  </li>
+                          
+                  <li>La nouvelle fonction <b>filtre</b> appelle la fonction <b>filtrePixel</b> sur chaque pixel.
+                  </li>
+                          
+                  <li>Expliquez ce que fait cette fonction <b>filtrePixel</b> : entre quelles 5 valeurs calcule t'elle la moyenne (faire un dessin) ?
+                  </li>
+                          
+                  <li>Essayez le code : que se passe t'il visuellement ? Pourquoi ce filtre a t'il un tel effet ?</li>
+                          
+                  <li>Essayez le code en appliquant non pas le filtre <tt>5</tt> mais <tt>10</tt> fois, puis  <tt>20</tt> fois, dans le programme principal : que se passe t'il ?
+                  </li>
+                          
+                  <li>Essayez aussi avec d'autres images de votre choix vues sur internet.</li>
+                        
+               </ul>
+                   
+            </li>
+            <li>
+               <h3>D'autres filtres d'images.</h3>
+                     Consid&eacute;rons le code suivant, avec une autre fonction de filtre : 
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Fonction appliqu&eacute;e &agrave; chaque pixel</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>int</b></font> filtrePixel(<font color="#990000"><b>int</b></font> i, <font color="#990000"><b>int</b></font> j) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>return</b></font> 128 + (<font color="#990000"><b>getPixel</b></font>(i, j) - <font color="#990000"><b>getPixel</b></font>(i + 1, j));
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Boucle sur tous les pixels</font></tt></p>
+                                      
+                              <div><font color="#990000"><b>void</b></font> filtre() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> j = -<font color="#990000"><b>getHeight</b></font>() + 1; j &lt;= <font color="#990000"><b>getHeight</b></font>() - 1; j = j + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = -<font color="#990000"><b>getWidth</b></font>() + 1; i &lt;= <font color="#990000"><b>getWidth</b></font>() - 1; i = i + 1) {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 setPixel(i, j, filtrePixel(i, j));
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 }
+                              </div>
+                                      
+                              <div>}</div>
+                                      
+                              <div></div>
+                                      
+                              <div><font color="#990000"><b>void main</b></font>() {
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>load</b></font>("http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/doisneaubuffon.jpg");
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 filtre();
+                              </div>
+                                      
+                              <div>}</div>
+                                    
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+               <ul class="ul">
+                         
+                  <li>Que se passe t'il dans ce cas ? D&eacute;crivez ce que vous observez.</li>
+                         
+                  <li>Pourquoi avoir ajout&eacute; <tt>128</tt> ? Essayez avec les expressions <b><font color="#990000"><b>return</b></font> (<font color="#990000"><b>getPixel</b></font>(i, j) - <font color="#990000"><b>getPixel</b></font>(i + 1, j));</b> 
+                            puis <b><font color="#990000"><b>return</b></font> -(<font color="#990000"><b>getPixel</b></font>(i, j) - <font color="#990000"><b>getPixel</b></font>(i + 1, j));</b> pour bien comprendre ce qui se passe.
+                  </li>
+                         
+                  <li>En faisant la diff&eacute;rence entre deux pixels horizontaux <b><font color="#990000"><b>getPixel</b></font>(i, j) - <font color="#990000"><b>getPixel</b></font>(i + 1, j)</b> 
+                            va t'on plut&ocirc;t d&eacute;tecter les contours verticaux ou horizontaux de l'image ? Expliquer.
+                  </li>
+                         
+                  <li>Essayez la construction <b><font color="#990000"><b>return</b></font> (<font color="#990000"><b>getPixel</b></font>(i, j) - <font color="#990000"><b>getPixel</b></font>(i + 1, j) - <font color="#990000"><b>getPixel</b></font>(i, j + 1));</b> et commentez le r&eacute;sultat.
+                  </li>
+                         
+                  <li>Deux questions tr&egrave;s subtiles, pour les &laquo;cracks&raquo; : 
+                     <ul class="ul">
+                                 
+                        <li>Avez vous remarqu&eacute; que la boucle de la fonction <b>filtre()</b> n'a pas les m&ecirc;mes bornes d'it&eacute;ration pour ces filtres 
+                                    que lors du 1er cas o&ugrave; on tranformait juste l'intensit&eacute; d'un pixel ? Sauriez-vous dire pourqoi ?
+                        </li>
+                                 
+                        <li>Que se passerait-il si on utilisait <b><font color="#990000"><b>return</b></font> 128 + (<font color="#990000"><b>getPixel</b></font>(i, j) - <font color="#990000"><b>getPixel</b></font>(i - 1, j));</b> : essayez et tentez d'expliquer pourquoi.
+                        </li>
+                               
+                     </ul>
+                  </li>
+                        
+               </ul>
+                   
+            </li>
+         </ol>
+      </div>
+       
+   </body>
+</html>

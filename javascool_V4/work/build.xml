@@ -1,0 +1,355 @@
+<!-- Construction des éléments de javascool (core), javascoolbuilder, et des proglets -->
+<project name="Java's Cool v4" default="usage">
+
+    <target name="usage">
+        <echo level="info">
+      ant javascool-base.jar	construit dans ./dist la jarre Javas'Cool Core "apprenant" sans proglet
+      ant javascool-builder.jar	construit dans ./dist la jarre Javas'Cool Builder "formateur" pour genérer les progets
+      ant javascool-proglets.jar	construit dans ./dist la jarre Javas'Cool Core "apprenant" avec toutes les proglets listées validées
+      ant javascool-framework.jar	construit dans ./dist la jarre Javas'Cool Framework contenant les packages macros, tools et widgets (mais sans les icones) pour utiliser les classes javascool dans un autre projet
+      ant javadoc			construit dans ./dist/javadoc la javadoc des classes (avec java2html)
+      ant webproglets             construit dans ./dist/proglets les éléments pour la mise en ligne web des proglets
+      ant classes                 teste la compilation des classes
+      ant beautify                reformate tous les sources avec la commande uncrustify
+      ant clean                   nettoie les cibles non retenues dans le svn
+      ant prun			lance Javas'Cool Core "apprenant" avec les proglets
+      ant jrun			lance Javas'Cool Core "apprenant" sans les proglets
+      ant drun			lance l'affichage de la javadoc
+        </echo>
+    </target>
+
+    <target name="javascool-base.jar" depends="classes" >
+        <delete file="./dist/javascool-base.jar"/>
+        <unzip dest="./build/classes" src="./lib/RSyntaxTextArea.jar"/>
+        <unzip dest="./build/classes" src="./lib/autocomplete.jar"/>
+        <unzip dest="./build/classes" src="./lib/javac.jar"/>
+        <unzip dest="./build/classes" src="./lib/saxon.jar"/>
+        <jar destfile="./dist/javascool-base.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.javascool.gui.Core"/>
+                <attribute name="Java-Version" value="${ant.java.version}"/>
+            </manifest>
+            <fileset dir="./build/classes"/>
+            <fileset dir="./src" includes="org/javascool/widgets/icons/*"/>
+            <fileset dir="./src" includes="org/javascool/gui/*.xml"/>
+            <fileset dir="./src" includes="org/javascool/macros/completion-*.xml"/>
+            <fileset dir="./src" includes="org/javascool/macros/*.htm"/>
+        </jar>
+    </target>
+  
+    <target name="javascool-framework.jar" depends="classes" >
+        <delete file="./dist/javascool-framework.jar"/>
+        <jar destfile="./dist/javascool-framework.jar">
+            <manifest>
+                <attribute name="Created-By" value="inria.fr (javascool.gforge.inria.fr) ©INRIA: CeCILL V2 + CreativeCommons BY-NC-ND V2"/>
+                <attribute name="Implementation-URL" value="http://javascool.gforge.inria.fr"/>
+                <attribute name="Java-Version" value="${ant.java.version}"/>
+                <attribute name="Implementation-Vendor" value="fuscia-accueil@inria.fr, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr"/>
+                <attribute name="Implementation-Version" value="${svn.revision}"/>
+            </manifest>
+            <fileset dir="./build/classes">
+                <include name="org/javascool/macros/**"/>
+                <include name="org/javascool/tools/**"/>
+                <include name="org/javascool/widgets/**"/>
+                <exclude name="org/javascool/macros/icons"/>
+            </fileset>
+        </jar>
+    </target>
+
+  <target name="javascool-builder.jar" depends="classes,svn.revision">
+    <delete file="./dist/javascool-builder.jar"/>
+    <unzip dest="./build/classes" src="./lib/RSyntaxTextArea.jar"/>
+    <unzip dest="./build/classes" src="./lib/autocomplete.jar"/>
+    <unzip dest="./build/classes" src="./lib/json.jar"/>
+    <unzip dest="./build/classes" src="./lib/javadoc.jar"/>
+    <unzip dest="./build/classes" src="./lib/jarsigner.jar"/>    
+    <if>
+      <equals arg1="${ant.java.version}" arg2="1.8" />
+      <then>   
+        <echo message="using java ${ant.java.version}" />
+        <unzip dest="./build/classes" src="./lib/javac8.jar"/>
+      </then>
+      <elseif>
+        <equals arg1="${ant.java.version}" arg2="1.7" />
+        <then>   
+          <echo message="using java ${ant.java.version}" />
+          <unzip dest="./build/classes" src="./lib/javac7.jar"/>
+        </then>
+      </elseif>
+      <else>
+        <echo message="using java  ${ant.java.version}" />
+        <unzip dest="./build/classes" src="./lib/javac.jar"/>
+      </else>
+    </if>
+    <unzip dest="./build/classes" src="./lib/jvs2html.jar"/>
+    <unzip dest="./build/classes" src="./lib/saxon.jar"/>
+    <jar destfile="./dist/javascool-builder.jar">
+      <manifest>
+        <attribute name="Main-Class" value="org.javascool.builder.Build"/>
+        <attribute name="Created-By" value="inria.fr (javascool.gforge.inria.fr) ©INRIA: CeCILL V2 + CreativeCommons BY-NC-ND V2"/>
+        <attribute name="Implementation-URL" value="http://javascool.gforge.inria.fr"/>
+        <attribute name="Java-Version" value="${ant.java.version}"/>
+        <attribute name="Implementation-Vendor" value="javascool@googlegroups.com, ou=javascool.gforge.inria.fr, o=inria.fr, c=fr"/>
+        <attribute name="Implementation-Version" value="${svn.revision}"/>
+      </manifest>
+      <fileset dir="./build/classes"/>
+      <fileset dir="./src" includes="org/javascool/widgets/icons/*"/>
+      <fileset dir="./src" includes="org/javascool/gui/*.xml"/>
+      <fileset dir="./src" includes="org/javascool/macros/*.htm"/>
+      <fileset dir="./src" includes="org/javascool/builder/*.key"/>
+      <fileset dir="./src" includes="org/javascool/builder/*.xslt"/>
+    </jar>
+  </target>
+
+  <property name="proglets.validated" value="abcdAlgos abcdStat algoDeMaths analogNumerique codagePixels commSerie cryptageRSA detectionForme dichotomie exploSonore gogleMaps grapheEtChemins javaProg manuelIsn paintBrush plurialgo syntheSons ticTacToe tortueLogo txtCode visages wwwIOI"/>
+
+  <property name="proglets.validated.7" value="abcdAlgos algoDeMaths analogNumerique codagePixels commSerie cryptageRSA detectionForme dichotomie exploSonore gogleMaps grapheEtChemins javaProg manuelIsn syntheSons ticTacToe tortueLogo txtCode visages wwwIOI"/>
+
+  <target name="javascool-proglets.jar" depends="javascool-builder.jar">
+    <delete file="./dist/javascool-proglets.jar"/>
+    <if>
+      <or>
+        <equals arg1="${ant.java.version}" arg2="1.7" />
+        <equals arg1="${ant.java.version}" arg2="1.8" />
+      </or>
+      <then>   
+        <java jar="./dist/javascool-builder.jar" dir="./../sketchbook" fork="true">
+          <arg value="-q"/>
+          <arg value="-proglets"/>
+          <arg value="${proglets.validated.7}"/>
+        </java>
+      </then>
+      <else>
+        <java jar="./dist/javascool-builder.jar" dir="./../sketchbook" fork="true">
+          <arg value="-q"/>
+          <arg value="-proglets"/>
+          <arg value="${proglets.validated}"/>
+        </java>
+      </else>
+    </if>
+    <move file="./../sketchbook/javascool-proglets.jar" todir="./dist"/>
+  </target>
+
+  <target name="webproglets" depends="javascool-builder.jar">
+    <java jar="./dist/javascool-builder.jar" dir="./../sketchbook" fork="true">
+      <arg value="-w"/>
+      <arg line="-target ./../work/dist/proglets"/>
+    </java>
+    <move file="./../sketchbook/javascool-proglets.jar" todir="./dist"/>
+  </target>
+  
+  <target name="webproglets-light" depends="javascool-builder.jar">
+    <if>
+      <not>
+        <available file="./dist/javascool-proglets.jar"/>
+      </not>
+      <then>
+        <touch file="./dist/javascool-proglets.jar" datetime="09/10/1974 4:30 pm"/>
+      </then>
+    </if>
+    <outofdate>
+      <sourcefiles>
+        <fileset dir="./../sketchbook" includes="**/*"/>
+        <fileset dir="./src">
+          <include name="**/*"/>
+          <exclude name="org/javascool/gui/About.java"/>
+        </fileset>
+      </sourcefiles>
+      <targetfiles>
+        <fileset dir="./dist/" includes="javascool-proglets.jar"/>
+      </targetfiles>
+      <sequential>
+        <antcall target="webproglets"/>
+      </sequential>
+    </outofdate>
+  </target>
+
+  <property name="classpath" value="./lib/autocomplete.jar:./lib/RSyntaxTextArea.jar:./lib/json.jar:./lib/jvs2html.jar:./lib/javadoc.jar:./lib/jarsigner.jar"/>
+  
+  <target name="classes" depends="svn.revision">
+    <exec os="Linux" executable="which">
+      <arg value="javac"/>
+    </exec>
+    <mkdir dir="./build/classes"/>
+    <copy file="src/org/javascool/gui/About.java" tofile="src/org/javascool/gui/About.java.save" preservelastmodified="true"/>
+    <replaceregexp file="src/org/javascool/gui/About.java" match="[0-9]*(.; *// *@revision)" replace="${svn.revision}\1"/>
+    <trycatch>
+      <try>
+        <!--javac debug="true" debuglevel="lines,vars,source" includeantruntime="false" deprecation="on" encoding="UTF-8" classpath="${classpath}" srcdir="./src" destdir="./build/classes"/-->      
+        <exec os="Linux" executable="sh">
+          <arg line="./javac8.sh"/>
+        </exec>
+      </try>
+      <finally>
+        <move tofile="src/org/javascool/gui/About.java" file="src/org/javascool/gui/About.java.save" overwrite="true" preservelastmodified="true"/>
+      </finally>
+    </trycatch>
+    <java jar="lib/saxon.jar" dir="src/org/javascool/macros" fork="yes">
+      <arg line="-o memo-macros.htm memo-macros.xml ../builder/hdoc2htm.xslt"/>
+    </java>
+  </target>
+  
+  <target name="javascool.key">
+    <delete file="src/org/javascool/builder/javascool.key"/>
+    <exec os="Linux" executable="keytool">
+      <arg line="-genkey -alias javascool -validity 3000 -storepass javascool -keypass mer,d,azof -keystore src/org/javascool/builder/javascool.key"/>
+      <arg value="-dname"/>
+      <arg value="cn=fuscia-accueil@inria.fr,ou=javascool.gforge.inria.fr,o=inria.fr,c=fr"/>
+    </exec>
+  </target>
+  
+  <target name="javadoc">
+    <javadoc
+      verbose="false"
+      classpath="${classpath}"
+      access="public" 
+      destdir="./dist/javadoc"
+      windowtitle="Java's Cool v4"
+      doctitle="Java's Cool v4"
+      author="true"
+      version="true"
+      nodeprecated="true"
+      charset="UTF-8"
+      encoding="UTF-8"
+      docencoding="UTF-8"
+      >
+        <link href="http://download.oracle.com/javase/6/docs/api"/>
+        <link href="http://javadoc.fifesoft.com/rsyntaxtextarea"/>
+        <fileset dir="./src">
+          <include name="**/*.java"/>
+        </fileset>
+      </javadoc>
+      <copy todir="./dist/javadoc">        
+      <fileset dir="./src">
+        <include name="**/*.java"/>
+      </fileset>
+      <mapper type="glob" from="*" to="*.java"/>
+    </copy>
+    <java jar="./lib/java2html.jar" fork="true">
+      <arg value="-srcdir"/>
+      <arg value="./dist/javadoc"/>
+    </java>
+  </target>
+  
+  <target name="javadoc-light">
+    <mkdir dir="./dist/javadoc"/>
+    <outofdate>
+      <sourcefiles>
+        <fileset dir="./src" includes="org/javascool/**/*.java"/>
+      </sourcefiles>
+      <targetfiles>
+        <fileset dir="./dist/javadoc" includes="*"/>
+      </targetfiles>
+      <sequential>
+        <antcall target="javadoc"/>
+      </sequential>
+    </outofdate>
+  </target>
+
+  <taskdef resource="net/sf/antcontrib/antlib.xml"
+    classpath="lib/ant/ant-contrib-1.0b3.jar:lib/ant/bcel-5.1.jar:lib/ant/commons-httpclient-3.0.1.jar:lib/ant/commons-logging-1.0.4.jar:lib/ant/ivy-1.3.1.jar"/>
+
+  <target name="svn.revision">
+    <exec executable="svn" outputproperty="svn.info.stdout">
+      <arg value="info"/>
+    </exec>
+    <propertyregex property="svn.revision" input="${svn.info.stdout}" select="\1">
+      <regexp pattern=".*R.vision[^:]*: *([0-9]*).*"/>
+    </propertyregex>
+    <property name="svn.revision" value="0"/>
+  </target>
+  
+  <target name="beautify">
+    <for param="file">
+      <path>
+        <fileset dir="./../sketchbook">
+          <include name="**/*.java"/>
+          <include name="**/*.jvs"/>
+          <include name="**/*.pde"/>
+        </fileset>
+        <fileset dir="./../documents">
+          <include name="**/*.jvs"/>
+        </fileset>
+        <fileset dir="./src">
+          <include name="**/*.java"/>
+        </fileset>
+      </path>
+      <sequential>
+        <exec os="Linux" executable="uncrustify">
+          <arg line="-q -c lib/uncrustify.cfg --replace"/>
+          <arg value="@{file}"/>
+        </exec>
+      </sequential>
+    </for>
+  </target>
+  
+  <target name="processing"> 
+  <echo message="il n'est plus possible de mettre à jour les proglets processing en jvs4, la maintenance reprend en jvs5" />
+    <!--antcall target="run.processing"/-->
+    <!--delete dir="./../sketchbook/*/applet/org"/-->
+  </target>
+  
+  <!--target name="run.processing" depends="javascool-base.jar">
+    <property name="pHome" value="/usr/java/processing-2.0b8"/>
+    <java dir="${pHome}" jvm="${pHome}/java/bin/java" classname="processing.app.Base" fork="true">
+      <classpath>
+        <pathelement location="./dist/javascool-base.jar"/>
+        <pathelement location="${pHome}/java/lib/tools.jar"/>
+        <pathelement location="${pHome}/jre/lib/rt.jar"/>
+        <fileset dir="${pHome}/lib">
+          <include name="**/*.jar"/>
+        </fileset>
+      </classpath>
+    </java>
+  </target-->
+  
+  <target name="clean">  
+    <delete dir="./build/classes"/> 
+    <delete dir="./dist/proglets"/> 
+    <delete dir="./dist/javadoc"/>  
+    <delete dir="../sketchbook/.build"/>
+    <delete dir="./nbproject/private"/> 
+    <ant dir="./../web" target="clean"/>
+  </target>
+  
+  <target name="svn" depends="clean">  
+    <exec executable="svn" dir="..">
+      <arg value="cleanup"/>
+    </exec>
+    <echo level="info">Information sur les éléments à synchroniser:</echo>
+    <exec executable="svn" dir="..">
+      <arg value="status"/>
+      <arg value="-u"/>
+    </exec>
+    <echo level="info">Update des éléments distants:</echo>
+    <exec executable="svn" dir="..">
+      <arg value="up"/>
+    </exec>
+    <input message="Quelle est la raison de ce commit ?" addproperty="svn.commit.message" defaultvalue="une raison inconnue"/> 
+    <echo level="info">Commit des éléments locaux:</echo>
+    <exec executable="svn" dir="..">
+      <arg value="ci"/>
+      <arg value="-m"/>
+      <arg value="${svn.commit.message}"/>
+    </exec>
+  </target>
+  
+  <!--target name="jrun" depends="javascool-base.jar">
+    <java jar="./dist/javascool-base.jar" dir="./../sketchbook" fork="true"/>
+  </target-->
+  
+  <target name="prun" depends="javascool-proglets.jar">
+    <java jar="./dist/javascool-proglets.jar" fork="true"/>
+  </target>
+  
+  <target name="drun" depends="javadoc">
+    <exec os="Linux" executable="firefox">
+      <arg value="./dist/javadoc/index.html"/>
+    </exec>
+  </target>
+  
+  <target name="brun" depends="javascool-builder.jar">
+    <java jar="./dist/javascool-builder.jar" dir="./../sketchbook" fork="true"/>
+  </target>
+	
+</project>

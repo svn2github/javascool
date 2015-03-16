@@ -1,0 +1,565 @@
+
+<p title="La proglet 'game'">
+
+    <p title="Index">
+        <table>
+            <tr>
+                <td colspan="2"><l link="#I" text="I.&#160; La proglet 'game'" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><l link="#II" text="II.&#160; Coder un jeu : structure de votre programme" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#II.A" text="II.A.&#160; La boucle principale" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#II.B" text="II.B.&#160; Programmation procédurale ou évènementielle ?" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><l link="#III" text="III.&#160; Les nouveaux objets" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#III.A" text="III.A.&#160; L'objet 'Sprite'" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#III.B" text="III.B.&#160; L'objet 'Oval'" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#III.C" text="III.C.&#160; L'objet 'Rect'" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><l link="#IV" text="IV.&#160; Gestion intelligente des évènements" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#IV.A" text="IV.A.&#160; Les types d'évènements" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#IV.B" text="IV.B.&#160; La fonction de callback" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#IV.C" text="IV.C.&#160; Liste des évènements disponibles" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#IV.D" text="IV.D.&#160; Les évènements clavier" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#IV.E" text="IV.E.&#160; En règle générale" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><l link="#V" text="V.&#160; Gestion des groupes" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#V.A" text="V.A.&#160; Pouvoir stocker des éléments" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><l link="#VI" text="VI.&#160; Les évènements de groupe" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><l link="#VII" text="VII.&#160; Propriétés" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#VII.A" text="VII.A.&#160; addProperty" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#VII.B" text="VII.B.&#160; getProperty" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#VII.C" text="VII.C.&#160; setProperty" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><l link="#VIII" text="VIII.&#160; Collisions" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#VIII" text="VIII.A.&#160; Détection de collisions" /></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; </td>
+                <td><l link="#VIII" text="VIII.B.&#160; Réaction aux collisions" /></td>
+            </tr>
+        </table>
+    </p>
+
+
+    <p title="I. La proglet 'game'" id="I">
+Cette proglet permet de créer des petits jeux vidéo facilement pour s'initier à la programmation.
+Elle met à disposition plusieurs fonctionnalités principales : 
+La gestion intelligente des évènements
+La gestion du dessin d'images (“sprites”)
+La gestion des collections (Group – field – for...in)
+Les propriétés
+Les collisions
+    </p>
+
+    <p title="II. Coder un jeu : structure de votre programme" id="II">
+        <p title="II.A. La boucle principale" id="II.A">
+Contrairement à un programme normal, le temps d'exécution d'un jeu n'est pas fixé : il peut durer quelques secondes comme plusieurs heures. De plus, certaines actions doivent être répétées, mais pas forcément dans le même ordre. Par exemple, le joueur perd une vie, puis l'ennemi en perd deux, puis meurt, et enfin le joueur perd encore une vie. L'ordre de ces évènements dépend hautement des actions de l'utilisateur sur le clavier et la souris. Ceci oblige à faire ce qu'on appelle une boucle principale. Il s'agit d'une boucle infinie qui s'exécute tant que le jeu n'est pas terminé. Cette boucle vérifie tous les évènements et y réagit si nécessaire. Un des rôles de cette boucle est de dessiner l'écran. Une fois que la boucle se termine, l'affichage est mis à jour. Il faut donc que cette boucle tourne très rapidement pour avoir un affichage fluide. Par exemple, pour avoir une cadence de rafraîchissement de 30 fps (Frames Per Seconde, rafraîchissements par seconde), la boucle principale doit mettre moins de 1/30e de seconde à s'exécuter. Voici un exemple de jeu avec une boucle principale :
+            <div class="code"><pre>
+position=0
+vie=5
+En boucle : 
+	Si la touche droite est enfoncée
+		position=position+1
+	Sinon
+		Si la touche gauche est enfoncée
+			position=position-1
+	Si le joueur touche l'ennemi
+		vie=vie-1
+	Si le joueur a moins de 1 point de vie
+		Afficher l'écran de Game Over
+	Afficher l'image du joueur à la nouvelle position	
+            </pre></div>
+Aide sur les notations : l'opérateur d'affectation (=) est utilisé en programmation : 
+            <code>vie=0</code>
+Signifie qu'on affecte à la variable 'vie' la valeur 0. Après l'instruction, la variable 'vie' aura pour valeur 0 (si vous avez besoin d'un rappel sur les variables, voir la proglet 'Ingrédients des algorithmes'). L'instruction 
+            <code>vie=vie-1</code>
+Signifie donc qu'on affecte à la variable 'vie' la valeur 'vie-1'. On appelle cela une décrémentation : si 'vie' valait 4 avant l'instruction, elle vaut maintenant 3. l'opération inverse (ajouter 1) s'appelle l'incrémentation.
+        </p>
+
+        <p title="II.B. Programmation procédurale ou évènementielle ?" id="II.B">
+Il existe deux façons principales de programmer un jeu : l'approche procédurale et l'approche évènementielle. J'approche procédurale consiste à définir dans l'ordre logique les instructions à effectuer. Par exemple : 
+            <div class="code"><pre>0 -> position
+En boucle : 
+	Si la touche droite est enfoncée
+		position+1 -> position
+	Sinon
+		Si la touche gauche est enfoncée
+			position-1 -> position
+	Si le joueur touche l'ennemi
+		Retirer un point de vie au joueur
+	Si le joueur a moins de 1 point de vie
+		Afficher l'écran de Game Over
+	Afficher l'image du joueur à la nouvelle position
+            </pre></div>
+En général on préfère à l'approche procédurale l'approche évènementielle. En effet, cette approche prétend effectuer plusieurs actions en parallèle et simplifie l'ajout de modules au fur et à mesure de l'exécution du code. Exemple : 
+
+Afficher l'La proglet offre la possibilité d'associer des évènements à un groupe. Associer un évènement à un groupe revient à l'associer à chacun de ses membre : image du joueur
+            <div class="code"><pre>En boucle 10 fois :
+	Créer un ennemi
+	Définir 'ennemi touché' = appeler le bloc 'TouchéEnnemi'
+
+
+Bloc 'TouchéEnnemi' :
+	Retirer un point de vie à l'ennemi concerné
+            </pre></div>
+Avec une gestion procédurale, on aurait dû stocker la liste des ennemis en mémoire, puis tester à chaque boucle la position de chaque ennemi pour vérifier s'il est touché. Grâce à la programmation évènementielle, l'ordinateur se débrouille ! De plus, il peut traiter plusieurs évènements en même temps comme par exemple jouer un son, gérer la physique etc.
+
+Java's Cool permet d'utiliser les deux types de programmation mais l'accent sera mis dans ce document sur l'approche évènementielle car l'approche procédurale n'apporte rien de nouveau par rapport aux autres proglets.
+        </p>
+    </p>
+
+
+    <p title="III. Les nouveaux objets" id="III">
+La proglet 'game' simplifie l'affichage d'image, la lecture de sons et la gestion de la souris et du clavier en offrant des nouveaux types d'objets.
+        <p title="III.A. L'objet 'Sprite'" id="III.A">
+Un sprite est une image positionnable sur l'écran. Il possède donc une taille, une image et une position. On peut l'utiliser de la façon suivante : 
+            <code>//Les deux lignes suivantes peuvent être écrites : Sprite s=new Sprite(0,0,100,100);
+Sprite s;
+//On définit la position du sprite à (0,0) et sa taille à 100x100
+s=new Sprite(0,0,100,100);	
+/*Les coordonnées et tailles sont toujours comptées en pixels : Il y a en gros
+une qurantaine de pixels par centimètre sur votre écran. La position est comptée
+ à partir du coin supérieur gauche de votre écran : l'axe x est horizontal vers 
+ la droite et l'axe y vertical vers le bas.*/
+//On charge une image qui est maintenant affichée à l'écran
+s.load("monimage.png");
+//On déplace l'image
+s.position(20,20);
+//On modifie la taille de l'image
+s.scale(50,50);		
+int x=s.getX();
+int y=s.getY();
+//x et y contiennent maintenant la position du sprite
+int w=s.getWidth();		
+int h=s.getHeight();	
+//w et h contiennent maintenant la taille du sprite
+s.hide()
+/*Le sprite est maintenant invisible (mais il peut encore reçevoir des
+évènements (voir la section évènements pour plus d'infos)*/
+s.destroy()
+//Le sprite est invisible et ne reçoit plus d'évènements
+            </code>
+        </p>
+
+        <p title="III.B. L'objet 'Oval'" id="III.B">
+Cet objet représente un ovale positionnable sur l'écran. Il possède une taille et une position et peut être plein ou non. Voici un code d'exemple (seules les différences avec le type 'Sprite' sont commentées : 
+            <code>Oval o1;
+o1=new Oval(0,0,50,50);			//Crée un ovale non-rempli
+Oval o2=new Oval(0,0,50,50,false);	//Idem
+Oval o3=new Oval(0,0,50,50,true);	//Crée un ovale rempli
+o1.position(20,20);
+o1.scale(30,30);
+int x=o1.getX(); int y=o1.getY();
+int w=o1.getXidth(); int h=o1.getHeight();
+o1.hide();
+o1.destroy();
+            </code>
+La position d'un ovale n'est pas celle de son centre mais celle du coin supérieur-gauche du rectangle immaginaire dont tous les côtés touchent l'ovale en un point. Idem pour la taille.
+Remarque : un ovale dont la largeur est égale à la hauteur est un cercle ou un disque.
+        </p>
+
+        <p title="III.C. L'objet 'Rect'" id="III.C">
+Il se crée et s'utilise exactement comme l'objet 'Oval' mais représente un rectangle
+        </p>
+    </p>
+
+
+    <p title="IV. Gestion intelligente des évènements" id="IV">
+La proglet permet de définir une fonction à exécuter lorsqu'un évènement se produit. Par exemple, on pourrait appeler la fonction tirer lorsque le joueur clique. Pour cela, on utilisera la syntaxe : 
+        <code>onClick(“tirer”);
+// Cette instruction se place généralement en début de programme.
+// En effet, elle ne déclenche pas d'évènement, elle prévient juste l'ordinateur qu'il faudra
+// appeler telle fonction si l'utilisateur clique. La fonction tirer doit être définie : 
+void tirer() {
+	println(“x=”+mouseX()+” y=”+mouseY());
+}
+        </code>
+
+        <p title="IV.A. Les types d'évènements" id="IV.A">
+Un évènement est une action du joueur – clic, mouvement de souris, appui d'une touche clavier – qui provoque une action dans le programme. Par exemple, on peut faire en sorte de provoquer l'arrêt du programme lors de l'appui sur la touche Echap. Il y a deux types d'évènements : 
+
+            <p title="IV.A.1. Les évènements globaux" id="IV.A.1">
+Ils sont déclenchés lorsqu'une action a lieu n'importe où dans la zone de jeu. Par exemple, si le joueur doit se déplacer lorsque l'utilisateur bouge la souris, alors c'est un évènement global : peu importe où est la souris, il faut réagir si elle bouge. Pour déclarer un évènement global (dire qu'un faut y réagir), on utilise les fonctions d'évènement listées en annexe (par exemple onClick ou encore onMouseMove). Ces fonctions sont en général appelées au début du programme. Elles sont appellées avec un seul paramètre : le nom de la fonction de callback (voir section ci-dessous). C'est la fonction qui est exécutée lorsque l'évènement est déclenché.
+            </p>
+
+            <p title="IV.A.2. Les évènements spécifiques" id="IV.A.2">
+Les évènements spécifiques sont déclenchés lorsqu'une action a lieu à un endroit précis de la zone de jeu. Par exemple, si l'ennemi doit disparaître lorsque l'utilisateur clique dessus, alors c'est un évènement spécifique : l'évènement ne doit être déclenché que si le clic a lieu sur l'ennemi. De plus, seul l'ennemi sur lequel on a cliqué doit disparaître. Pour déclarer un évènement spécifique, on utilise les fonctions d'évènement listées en annexe (par exemple onClick ou encore onMouseMove) sur un objet (par exemple un Sprite (une image) ou sur un Oval (un ovale) ou un Rect (un rectangle)). Elles sont appelées avec un paramètre : le nom de la fonction de callback (voir section ci-dessous). C'est la fonction qui est exécutée lorsque l'évènement est déclenché.
+Un deuxième paramètre peut être spécifié : s'il vaut 'true' la fonction de callback sera exécutée même si l'évènement n'a pas lieu dans la zone de l'objet. L'utilité d'une telle fonctionnalité est détaillée dans la section 'callback'.
+            </p>
+        </p>
+
+        <p title="IV.B. La fonction de callback" id="IV.B">
+            <p title="IV.B.1. Dans le cas d'un évènement global" id="IV.B.1">
+La conftion de callback est une fonction définie par l'utilisateur qui est appelée automatiquement par le système lorsqu'un évènement se produit. Par exemple, le code : 
+                <code>onClick(“quitter”);</code>
+provoque l'appel de la fonction quitter() lorsque le joueur clique dans la zone de jeu. La fonction doit être déclarée 'public' (ou non spécifié)  : 
+                <code>void quitter() {		//OK
+}
+public void quitter() {	//OK
+}
+private void quitter() {	//ERREUR
+}
+protected void quitter() {	//ERREUR
+}
+                </code>
+et doit ne prendre aucun paramètre. Elle peut renvoyer une valeur mais cette dernière ne sera pas prise en compte.
+            </p>
+
+            <p title="IV.B.2. Dans le cas d'un évènenement spécifique" id="IV.B.2">
+La fonction de callback d'un évènement spécifique peut reçevoir un paramètre qui est l'objet sur lequel l'évènement a été créé. Ce paramètre doit être du même type que l'objet sur lequel l'évènement a été créé, et cette fonction de callback ne peut donc être utilisée que pour traiter des évènements sur un type d'objets.
+Note : Pour que la fonction main ne se termine pas tout de suite mais laisse le temps aux évènements de se déclencher, il faut bloquer l'exécution du programme indéfiniment. Pour cela on utilise une boucle infinie vide :
+                <code>while(true);
+Exemple : 
+void avancer(Sprite s) {
+	s.position(s.getX()+1,s.getY());
+}
+void main() {
+	for (int i=0; i&lt;100; i++) {
+		Sprite s=new Sprite(random(0,300),random(0,300),100,100);
+		s.load(“sprite.png”);
+		s.onClick(“avancer”);
+	}
+	while(true);
+}
+                </code>
+Ce programme affiche cent images au hasard sur l'écran et lorsqu'on clique sur une image, celle-ci avance de 1 pixel vers la droite.
+Noter qu'un évènement spécifique peut aussi ne pas reçevoir de paramètre : 
+                <code>void avancer(Sprite s) {
+	s.position(s.getX()+1,s.getY());
+}
+void commencer() {
+	for (int i=0; i&lt;100; i++) {
+		Sprite s=new Sprite(random(0,300),random(0,300),100,100);
+		s.load(“sprite.png”);
+		s.onClick(“avancer”);
+	}
+}
+void main() {
+	Sprite bouton=new Sprite(0,0,100,20);
+	bouton.load(“start.png”);
+	bonton.onClick(“commencer');
+	while(true);
+}
+                </code>
+Ce programme reprend le jeu précédent, mais le jeu ne démarre qu'après que le joueur ait cliqué sur le bouton affiché. Si on voulait maintenant cacher le bouton start lorsque je jeu a démarré, il faudrait y avoir accès depuis la fonction commencer(). Or, le sprite n'a été déclaré que dans le main. Pour cacher le bouton il y a deux solutions : 
+Placer le sprite du bouton dans une variable globale, c'est-à-dire définie à l'extérieur de la fonction main(). On y a donc accès dans la fonction commencer() : 
+                <code>void avancer(Sprite s) {
+	s.position(s.getX()+1,s.getY());
+}
+void commencer() {
+	bonton.hide();
+	for (int i=0; i&lt;100; i++) {
+		Sprite s=new Sprite(random(0,300),random(0,300),100,100);
+		s.load(“sprite.png”);
+		s.onClick(“avancer”);
+	}
+}
+Sprite bouton;
+void main() {
+	bouton=new Sprite(0,0,100,20);
+	bouton.load(“start.png”);
+	bonton.onClick(“commencer');
+	while(true);
+}
+                </code>
+Transmettre à la fonction commencer() le bouton cliqué :
+                <code>void avancer(Sprite s) {
+	s.position(s.getX()+1,s.getY());
+}
+void commencer(Sprite btn) {
+	btn.hide();
+	for (int i=0; i&lt;100; i++) {
+		Sprite s=new Sprite(random(0,300),random(0,300),100,100);
+		s.load(“sprite.png”);
+		s.onClick(“avancer”);
+	}
+}
+void main() {
+	Sprite bouton=new Sprite(0,0,100,20);
+	bouton.load(“start.png”);
+	bonton.onClick(“commencer');
+	while(true);
+}
+                </code>
+On privilégiera en règle générale cette deuxième méthode.
+            </p>
+        </p>
+
+        <p title="IV.C. Liste des évènements disponibles" id="IV.C">
+Les évènements disponibles sont : 
+onClick : Called whenever the user clicks within the game area
+onMouseEntered : Called whenever the mouse moves into the game area
+onMouseExited : Called whenever the mouse moves out of the game area
+onMousePressed : Called whenever a mouse button is pressed
+onMouseReleased : Called whenever a mouse button is released
+onMouseDown : Called once per frame if a mouse button is down (one signal will be sent per button)
+onMouseUp : Appelé une fois par frame si un bouton de la souris n'est pas enfoncé (un signal est envoyé pour chaque bouton non enfoncé)
+onMouseMove : Appelé à chaque fois que la souris bouge avec ou sans clic enfoncé
+onMouseDragged : Appelé à chaque fois que la souris bouge avec un clic enfoncé
+onKeyDown : Appelé une fois par frame si une touche du clavier est enfoncée (un signal est envoyé par touche enfoncée)
+onKeyUp : Appelé une fois par frame si une touche du clavier n'est pas enfoncée (un signal est envoyé pour chaque touche non enfoncée)
+onKeyPressed : Appelé lorsqu'une touche est pressée
+onKeyReleased : Appelé lorsqu'une touche est relâchée
+onFrame : Appelé à chaque frame
+
+Tous les évènements s'utilisent de la même façon. L'évènement onFrame est un peu particulier : il permet de faire un peu de code procédural dans une programme évènementiel. En effet, il est déclenché à toutes les frames, soit environ 30 fois par seconde. On peut l'utiliser par exemple pour tester si deux images sont en collision, ce qui serait impossible sinon car il n'existe pas d'évènement pour cela, ou encore pour déplacer tous les ennemis vers le joueur en permanence.
+        </p>
+
+        <p title="IV.D. Les évènements clavier" id="IV.D">
+Les évènements clavier sont un peu particuliers : déclarés sur un objet ou un groupe, ils ne sont activés que si une touche est enfoncée alors que le pointeur de la souris est sur l'objet ou un objet du groupe. Même si plusieurs touches sont enfoncées, l'évènement n'est déclenché qu'une fois. Cela permet de traiter l'évènement de cette façon : 
+            <code>void deplacement(Sprite s) {
+	if (keyDown("Z")) {
+		s.position(s.getX(),s.getY()-1);
+	}
+	if (keyDown("S")) {
+		s.position(s.getX(),s.getY()+1);
+	}
+	if (keyDown("Q")) {
+		s.position(g.getX()-1,s.getY());
+	}
+	if (keyDown("D")) {
+		s.position(g.getX()+1,s.getY());
+	}
+}
+void main() {
+	Sprite s=new Sprite();
+	s.load("elephant.png");
+	s.onKeyDown("deplacement");
+	while(true);
+}
+            </code>
+Si l'évènement est déclaré comme un événèment global, son comportement est le même : il n'est appelé qu'une fois par frame au maximum. En revanche, il est possible de déclarer un évènement clavier sur un objet de type 'Key' ('touche' en français). Exemple : 
+            <code>Sprite personnage;
+void avancer() {
+	personnage.position(personnage.getX()+1,personnage.getY());
+}
+void reculer() {
+	personnage.position(personnage.getX()-1,personnage.getY());
+}
+void main() {
+	Key k=new Key("D");
+	k.onKeyDown("avancer");
+	(new Key("Q")).onKeyDown("reculer");	//Ces deux écritures sont équivalentes
+}
+            </code>
+La façon dont vous programmerez vos évènements clavier a peu d'importance : elle dépend du type d'évènement et de vos préférences.
+        </p>
+
+        <p title="IV.E. En règle générale" id="IV.E">
+Une fonction de callback peut être appelée par plusieurs évènements
+N'oubliez pas que les fonction (y compris de callback peuvent s'inter-appeler)
+Attention ! L'exécution du programme est bloquée tant que la fonction de callback s'exécute (on parle de fonction modale). Il faut donc se limiter à des fonctions qui ne bloquent pas ou peu l'exécution (évier les sleep(), bannir les boucles infinies, etc.)
+        </p>
+    </p>
+
+
+    <p title="V. Gestion des groupes" id="V">
+Un groupe est une collection d'objets du même type. Par exemple, on pourrait faire un groupe contenant tous les ennemis et un groupe contenant tous les amis. La création de groupes offre plusieurs avantages : 
+        <p title="V.A. Pouvoir stocker des éléments" id="V.A">
+Par exemple, nous avons créé 50 'Sprite' ennemis mais comment tous les stocker ? On pourrait définir les évènements sur chaque ennemi mais ils seraient alors incapables d'interagir entre eux. En effet, lorsque la fonction de callback est appellée, elle reçoit en paramètre l'ennemi concerné, mais il est alors impossible de connaître la liste de tous les ennemis. La seule solution est d'utiliser une collection.
+Note : une variable definie (et non déclarée) directement dans le programme (à l'extérieur de la fonction main() et de toutes les fonctions) est une variable globale : elle accessible dans tout le programme. Il faut par contre veiller à la déclarer avant de l'utiliser (en général dans la fonction main()). Exemple : 
+            <code>Group poissons;		//Déclaration de la variable poissons
+void seRegrouper() {
+	for (Sprite poisson in poissons) {	//La variable poisson désignera à tour de rôle tous les poissons
+		int posX=200;
+		int posY=200;
+		if (poisson.getX()>posX) poisson.position(poisson.getX()-1, poisson.getY());
+		else poisson.position(poisson.getX()+1, poisson.getY());
+		if (poisson.getX()>posY) poisson.position(poisson.getX(), poisson.getY()-1);
+		else poisson.position(poisson.getX(), poisson.getY()+1);
+	}
+}
+void main() {
+	poissons=new Group();
+	for (int i=0; i&lt;20; i++) {
+		Sprite poisson=new Sprite(random(0,500),random(0,500),20,20);
+		poisson.load("poisson.png");
+		poissons.add(poisson);
+	}
+	onFrame(« seRegrouper »);
+}
+            </code>
+
+Syntaxe de la boucle for...in : 
+            <code>for (Type variable in collection) {
+}
+            </code>
+
+Les instructions entre les accolades sont répétées autant de fois qu'il y a d'éléments dans la collection spécifiée. La variable prendra tour à tour la valeur de chaque élément de la collection. Vérifier que le type spécifié correspond bien au type de variables que contient la collection.
+        </p>
+    </p>
+
+
+    <p title="VI. Les évènements de groupe" id="VI">
+La proglet offre la possibilité d'associer des évènements à un groupe. Associer un évènement à un groupe revient à l'associer à chacun de ses membre. Ces deux codes sont donc équivalents : 
+        <code>Group enemies=new Group();
+for (int i=0; i&lt;10; i++) {
+	Sprite enemy=new Sprite(0,0,50,50);
+	enemy.onClick(« mourir »);
+	enemies.add(enemy);
+}
+        </code>
+et
+        <code>Group enemies=new Group();
+for(int i=0; i&lt;10; i++) {
+	Sprite enemy=new Sprite(0,0,50,50);
+	enemies.add(enemy);
+}
+enemies.onClick(« mourir »);
+        </code>
+
+La fonction 'mourir' est définie de la même façon dans les deux cas : elle prend un Sprite en paramètre. La fonction de callback d'un évènement de groupe prend en paramètre le type d'objet stocké dans le groupe. La deuxième écriture est plus lisible, et on la préfèrera en général. L'avantage au niveau code peut paraître mince lorsque tous les éléments du groupe sont définis dans une boucle, mais il est beaucoup plus évident hors d'un groupe. Comparez : 
+        <code>Group enemies=new Group();
+
+Sprite enemy1=new Sprite(0,0,20,20);
+enemy1.onClick(« mourir »);
+enemies.add(enemy1);
+
+Sprite enemy2=new Sprite(60,60,20,20);
+enemy2.onClick(« mourir »);
+enemies.add(enemy2);
+
+Sprite enemy3=new Sprite(120,120,20,20);
+enemy3.onClick(« mourir »);
+enemies.add(enemy3);
+et
+Group enemies=new Group();
+
+Sprite enemy1=new Sprite(0,0,20,20);
+enemies.add(enemy1);
+
+Sprite enemy2=new Sprite(60,60,20,20);
+enemies.add(enemy2);
+
+Sprite enemy3=new Sprite(120,120,20,20);
+enemies.add(enemy3);
+
+enemies.onClick(« mourir »);
+        </code>
+
+Le second code est plus court et plus compréhensible. De plus, on peut modifier les fonctions de callback (ou en rajouter) sans modifier plusieurs lignes de code. En revanche, la fonction de callback n'est définie que pour les objets appartenant déjà à la collection. Elle ne s'applique pas aux objets rajoutés par la suite. 
+    </p>
+
+
+    <p title="VII. Propriétés" id="VII">
+La proglet vous propose de stocker des variables dans des variables, c'est-à-dire que vous pouvez stocker des nombres ou tout autre objet à l'intérieur d'un objet. Cela peut être utile par exemple pour stocker le nombre de points de vie d'un ennemi dans un sprite. Ainsi, quand la fonction de callback reçoit le sprite en argument, elle peut en extraire et modifier sa vie. Exemple : 
+        <code>void main(){
+	int i=5;
+	Sprite s=new Sprite(0,0,10,10);
+	s.addProperty("vie",i);
+	Integer in=s.getProperty(int,"vie");
+	in=in+1;
+	s.setProperty("vie",in);
+	echo(s.getProperty(int,"vie"));	//Affiche '6'
+}
+        </code>
+L'usage des variables personnalisées est fortement recommandé.
+
+        <p title="VII.A. addProperty" id="VII.A">
+            <code>addProperty(String s, Object o)</code>
+Cette fonction peut être appelée sur tout objet de cette proglet (voir section 'Les nouveaux objets'). Elle ajoute une variable personnalisée (propriété) sur l'objet spécifié. Elle prend deux paramètres : le nom de la propriété et sa valeur. Le nom doit être placé entre guillemets.
+        </p>
+
+        <p title="VII.B. getProperty" id="VII.B">
+            <code>getProperty(type, String s)</code>
+Cette fonction peut être appelée sur les mêmes objets que addProperty. Elle prend deux paramètres : le premier est le type d'objet stocké, sans guillemets, et le second est le nom de l'objet à charger. Vérifiez bien que le type spécifié correspond bien au type d'objet que vous avez stocké, ou le comportement de votre programme sera imprévisible.
+        </p>
+
+        <p title="VII.C. setProperty" id="VII.C">
+            <code>setProperty(String s, Object o)</code>
+Cette fonction peut être appelée sur les mêmes objets que addProperty. Elle permet de modifier la valeur d'une propriété.
+        </p>
+    </p>
+
+    <p title="VIII. Collisions" id="VIII">
+La proglet vous propose de détecter et réagir à une collision entre deux objets grâce à plusieurs fonctions statiques : 
+
+        <p title="VIII.A. Détection de collisions" id="VIII.A">
+            <p title="VIII.A.1. collisionRectToRect">
+Cette fonction statique prend huit paramètres et renvoie vrai si une collision existe entre deux rectangles, sinon faux : 
+                <code>collisionRectToRect(double x1, double y1, double w1, double h1, double x2, double y2, double w2, double h2)</code>
+x1 et y1 représentent la position du premier objet (coin haut-gauche), w1 et h1 sa largeur et hauteur.
+x2 et y2 représentent la position du second objet (coin haut-gauche), w2 et h2 sa largeur et hauteur.
+            </p>
+            <p title="VIII.A.2. collisionCircleToCircle" id="VIII.A.2">
+Cette fonction statique prend six paramètres et renvoie vrai si une collision existe entre deux cercles, sinon faux :
+                <code>collisionCircleToCircle(double x1, double y1, double r1, double x2, double y2, double r2)</code>
+x1 et y1 représentent la position du premier cercle (le coin haut-gauche du carré qui encadre le cercle), r1 représente son rayon. Idem pour le second cercle.
+            </p>
+            <p title="VIII.A.3. collisionCircleToRect" id="VIII.A.3">
+Cette fonction statique prend sept paramètres et renvoie vrai si une collision existe entre un cercle et un rectangle, sinon faux : 
+                <code>collisionCircleToRect(double x1, double y1,double r1, double x2, double y2, double w2, double h2)</code>
+x1 et y1 reésentent la position du cercle (coin haut-gauche du carré qui encadre le cercle), r1 son rayon, x2 et y2 la position du rectangle (coin haut-gauche), w2 et h2 sa taille.
+            </p>
+        </p>
+
+        <p title="VIII.B. Réaction aux collisions" id="VIII.B">
+            <p title="VIII.B.1. elasticCircleCollision" id="VIII.B.1">
+Cette fonction statique calcule le résultat d'un choc élastique (rechercher ce terme) entre deux cercles placés à leur point de contact, et possédant chacun deux variables personnalisées vx et vy représentant leurs vitesses respectives (voir le chapitre concernant les variables personnalisées). Avant le calcul de la collision la fonction reposisionCircles sera appelée pour garantir la fiabilité du résultat. Les cercles verront leur vitesses modifiées afin de simuler un choc élastique (sans rotation).
+Les Oval passés en paramètre doivent être des cercles pour que l'algorithme fonctionne, et les cercles doivent être placés en contact ou s'inter-pénétrant légèrement.
+                <code>elasticCircleCollision(Oval o1, Oval o2)</code>
+            </p>
+            <p title="VIII.B.2. replaceCircles" id="VIII.B.2">
+Cette fonction statique replace deux cercles se superposant légèrement de telle sorte qu'ils soient tangeants. Elle est très utile pour éviter les chevauchements.
+Les Oval passés en paramètre doivent être des cercles pour que l'algorithme fonctionne, et les cercles doivent être placés en contact ou s'inter-pénétrant légèrement.
+                <code>replaceCircles(Oval o1, Oval o2)</code>
+            </p>
+        </p>
+
+    </p>
+
+</p>

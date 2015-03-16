@@ -1,0 +1,33 @@
+// Implément l'idée originale de Thomas Giraudon <ptiroccodu06@hotmail.fr> et Victor Granet <victor.granet@hotmail.com>
+
+import javax.swing.*;
+import org.javascool.tools.sound.FileSoundBit;
+
+// Défini l'affichage des icones lors d'évènements sonores
+class FlowerSoundBit extends FileSoundBit {
+  double events[];
+  public void sample(int n) {
+    if(events[n] > 0) {
+      showIcon("http://javascool.gforge.inria.fr/documents/sketchbook/javaProg/fleur-move.png",
+               random(0, getPane().getWidth()), random(0, getPane().getHeight()), 100, 100, 2);
+      echo("> event at sample #" + n);
+    }
+  }
+}
+
+// Programme principal
+void main() {
+  // On efface tout
+  getPane().removeAll();
+  // On affiche une image de fond
+  showIcon("http://javascool.gforge.inria.fr/documents/sketchbook/javaProg/fleur-fond.jpg",
+           0, 0, getPane().getWidth(), getPane().getHeight(), 1);
+  // On  charge le son
+  FlowerSoundBit sound = new FlowerSoundBit();
+  sound.reset("http://javascool.gforge.inria.fr/documents/sketchbook/javaProg/black-dog.wav");
+  // On calcule les évènements qui déclenchent des fleurs
+  double frequence = 100, period = 0.2, cut = 0;
+  sound.events = sound.events(frequence, period, cut);
+  // Envoyez la musique !!
+  sound.play(period);
+}

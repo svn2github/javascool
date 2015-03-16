@@ -1,0 +1,33 @@
+// Ce programme est proposé par Philippe Lucaud <philucpro@yahoo.fr>, professeur de mathématiques au lycée Audiberti d'Antibes, classe de 2nd option informatique
+
+void main() {
+  println("Ce programme permet de trier trois nombres et de les ranger par ordre croissant en conservant l'ordre des lettres : A B C");
+  sleep(2000);
+  clear();
+  println("Entrez le nombre A :");
+  double A = readDouble();
+  clear();
+  println("Entrez le nombre B :");
+  double B = readDouble();
+  clear();
+  println("Entrez le nombre C");
+  double C = readDouble();
+  clear();
+  if(B < A) {
+    double D = A;
+    A = B;
+    B = D;
+  }
+  if(C <= A) {
+    double F = A;
+    double G = B;
+    A = C;
+    B = F;
+    C = G;
+  } else if(C < B) {
+    double D = B;
+    B = C;
+    C = D;
+  }
+  println("     A = " + A + "     B = " + B + "     C = " + C);
+}

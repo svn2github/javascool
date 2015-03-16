@@ -1,0 +1,47 @@
+<p><br />
+Javascoolbuilder est un programme écrit en Java permettant de générer une version de Java's Cool réunissant plusieurs proglets. Cela s'organise ainsi:
+</p>
+<h2><span class="mw-headline" id="Mise_en_place_du_.C2.ABsketchbook.C2.BB">Mise en place du «<tt>sketchbook</tt>»</span></h2>
+<ul><li> <i>Un proglet, un dossier</i>. Chaque proglet est définie un ensemble de fichiers Java, XML, images et son réunis dans un dossier unique portant le nom de la proglet comme <a class="internal" href="?page=developers&action=spec-proglets" title="JavaScool:DocCreationProglet">spécifié ici</a>. Nous verrons comment créer un nouvelle proglet ci-dessous.</li></ul>
+<ul><li> <i>Les dossiers de proglet dans un répertoire unique</i>. Tous les dossiers des proglets devant être compilées avec Java's Cool sont réunies dans un dossier qui peut avoir n'importe quel nom&#160;: c'est le <tt>sketchbook</tt>.</li></ul>
+<ul><li> Le <tt>sketchbook</tt> peut aussi contenir des fichiers <tt>javascool-*.jar</tt> avec des versions de javascool dotées d'autres proglets. Dans ce cas, les proglets contenues dans ces versions seront aussi ajoutées à la nouvelle version. </li></ul>
+<div class="spec">
+<p>Le «sketchbook» est un répertoire contenant:
+</p>
+<ul><li> des dossiers contenant chacun les fichiers d'une proglet à compiler. Le nom du dossier correspond au nom de la proglet.</li>
+<li> des fichiers <tt>javascool-*.jar</tt> contenant d'autres proglets à regrouper .</li></ul>
+</div>
+<h2><span class="mw-headline" id="Lancement_de_Javascoolbuilder_sur_le_.C2.ABsketchbook.C2.BB">Lancement de Javascoolbuilder sur le «<tt>sketchbook</tt>»</span></h2>
+<ul><li> Pour lancer javascoolbuilder, <a rel="nofollow" class="external text" href="/v4//javascool-builder.jar" class="internal">téléchargez le fichier JAR</a> et placez le dans votre répertoire sketchbook. 
+<ul><li> Copier <a rel="nofollow" class="external text" href="/v4//javascool-builder.jar" class="internal">javascool-builder.jar</a> dans le sketchbook permet de signifier où le sketchbook est localisé.</li></ul></li></ul>
+<ul><li> Lancer le comme vous lanceriez Java's Cool (voir les <a rel="nofollow" class="external text" href="/v4/?page=run" class="internal">instructions sur comment lancer un jar</a>).</li></ul>
+<ul><li> L'interface est minimal et intuitif:</li></ul>
+<p><img src="http://javascool.gforge.inria.fr/v4/documents/javadoc/javascoolbuilder1.png" alt="Interface Javascoolbuilder" width="100%"/>
+</p><p>Il offre deux mécanismes:
+</p>
+<ol><li> <i>Créer le canevas d'une nouvelle proglet</i>: on entre le nom et le répertoire de la proglet est créé avec des modèles de fichiers, selon les <a class="internal" href="?page=developers&action=spec-proglets" title="JavaScool:DocCreationProglet">spécification</a>, on peut alors facilement construire la nouvelle proglet en <a class="internal" href="?page=developers&action=doc-proglets" title="JavaScool:DocCreationProgletExemple">suivant un exemple</a>.</li>
+<li> <i>Compiler les proglet et construire la version de Java's Cool souhaitée</i>: On sélectionne les proglets à rassembler et lance la construction du jar de sortie qui se nommera <tt>javascool-proglets.jar</tt>.</li>
+<li> 'Lancer/Tester<i>&#160;: Il faut lancer <tt>javascool-proglets.jar</tt> pour tester/utiliser les proglets.</i></li></ol>
+<p><br />
+Si vous recevez des erreurs, elles s'afficheront dans le fenêtre de javascoolbuilder. 
+</p><p>Si vous avez besoin d'aide pour résoudre vos erreurs, n'hésitez pas à nous <a rel="nofollow" class="external text" href="/v4/?page=contact" class="internal">contacter</a>.
+</p>
+<h2><span class="mw-headline" id="Discussion">Discussion</span></h2>
+<p>Typiquement, chaque nouvelle proglet Java's Cool est disponible <a rel="nofollow" class="external text" href="/v4/?page=proglets" class="internal">sur le site de Java' Cool</a> au format .jar. Il s'agit en fait d'un Java's Cool ne contenant qu'une seule proglet. 
+</p><p>Pour créer une version de Java's Cool réunissant toutes proglets souhaitées il suffit de créer un dossier sketchbook, de télécharger les jar des  proglets depuis le site et de lancer javascoolbuilder. Le fichier produit sera une version de Java's Cool réunissant les proglets souhaitées. Il est également à noter qu'un jar peuvent contenir plusieurs proglets.
+</p><p>Ce que fait le Javascoolbuilder est spécifié très précisément dans ses <a class="internal" href="?page=developers&action=spec-javascoolbuilder" title="JavaScool:SpecJavaScoolBuilder">spécifications</a>.
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.012 seconds
+Real time usage: 0.011 seconds
+Preprocessor visited node count: 21/1000000
+Preprocessor generated node count: 38/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:857-1!*!0!!*!*!* and timestamp 20150313130630 and revision id 5993
+ -->

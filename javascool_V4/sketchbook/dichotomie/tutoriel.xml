@@ -1,0 +1,132 @@
+<div title="Comprendre un exemple de principe algorithmique: la dichotomie">
+  <p>Si l'est un mécanisme algorithmique général accessible aux lycéens et qui illustre parfaitement ce que peut être une notion abstraite d'informatique, c'est bien le principe de recherche dichotomie. Découvrons le sur trois exemples.</p>
+
+  <div title="Rechercher un mot dans un dictionnaire">Prenons par exemple ce dictionnaire des drapeaux des environ 200 (précisément 195) états du monde
+    et faisons rechercher à un algorithme le drapeau de l'Albanie ou de la Zambie. 
+    <p class="center"><l link="help.htm" icon="proglet-dicho.jpg" text="La «proglet» dichotomie"/></p>
+    <i>Attention :</i> impossible d'invoquer l'intelligence humaine ici, il s'agit uniquement d'intelligence mécanique. 
+    Pas facile donc de  profiter par exemple de notre connaissance naturelle du fait que les mots commençant par "A" sont plutôt au début, et "Z" à la fin. 
+    Ce serait intéressant de prendre en compte de tels éléments, 
+    mais nous présentons que c'est une méthode ad-hoc qui risque donc de manquer de généralité pour être réutilisée dans un autre contexte que celui d'un dictionnaire. 
+    Cherchons plutôt des méthodes ``brutes´´, par exemple . .
+    <div title="Tourner les pages une à une">Tourner les pages une à une jusqu'à trouver le pays si il existe, ce qui pourrait s'écrire facilement comme ceci:
+      <div class="code">
+        <p><r>trouver</r>(pays) { </p>
+        <p><T/>page = debut;</p>
+        <p><T/><r>tantque</r> page &lt;= fin; {</p>
+        <p><T/><T/><r>si</r> (dictionnaire(page) == pays) <r>alors</r> { <r>renvoyer</r> page; }</p>
+        <p><T/><T/>page = page + 1;</p>
+        <p><T/>}</p>
+        <p><T/><r>renvoyer</r> <v>pas trouvé</v>;</p>
+        <p>}</p>
+      </div>
+      c'est à dire énumérer les pages du début à la fin du dictionnaire, ce qui est implémenté à travers la boucle:
+      <div class="code">
+        <p><T/>page = debut;</p>
+        <p><T/><r>tantque</r> page &lt;= fin; {</p>
+        <p>../..</p>
+        <p><T/><T/>page = page + 1;</p>
+        <p><T/>}</p>
+      </div>
+      dont on sort en renvoyant la page du dictionnaire correspondant au pays si elle est trouvée, comme le spécifie ce test de comparaison:
+      <div class="code">
+        <p><T/><T/><r>si</r> (dictionnaire(page) == pays) <r>alors</r> { <r>renvoyer</r> page; }</p>
+      </div>
+      et dont on sort, sinon, à la fin en signalant ne pas avoir trouvé la page.
+      <p>Voilà un algorithme qui marche à coup sûr. 
+      Il coûtera une étape de calcul (ici: un test de comparaison) si le pays est au tout début du dictionnaire. 
+      Il va coûter 195 étapes de calcul si il est à la fin. 
+      Si le dictionnaire contient N items (ici N = 195), et si tout est réparti de manière uniforme, il est facile de se convaincre, 
+      que de 1 à N étapes de calcul, en moyenne, il y en aura environ C = N/2 étapes à prévoir</p>
+      <p>Nous aurions bien sûr pu énumérer les pages dans un autre ordre, par exemple de la fin au début, 
+      ou de manière plus loufoque (par exemple toutes les pages paires puis les impaires, ..) mais cela n'aurait rien changé: 
+      pourvu que nous énumérions toutes les pages nous sommes certain de trouver le pays recherché, et ce sera alors toujours avec un coût de l'ordre N étapes de calcul.</p>
+      <p>Si vous aimez les probabilités, vous serez amusé de calculer que si vous ouvrez le livre au hasard jusqu'à trouver la page recherchée, 
+      il vous en coûtera . . et bien environ N étapes de calcul aussi !! 
+      C'est à dire le même ordre de grandeur que si vous les ouvrez de manière déterminée, ce qui n'est pas forcément un résultat intuitif.</p>
+      <p>Posons nous maintenant une autre question:</p>
+    </div>
+    <div title="Peut on être plus efficace ?">
+      <p>Si le dictionnaire n'était pas trié par ordre alphabétique, c'est à dire tous les pays stockés en désordre, la réponse est non: 
+      nous serions de fait obligé de tourner toutes les pages pour être certain de trouver le pays recherché. 
+      Mais voilà que le dictionnaire est totalement ordonnée de "A jusqu'à Z" et c'est une propriété de cette structure de donnée que nous pourrions exploiter.</p>
+      <p>En effet: si j'ouvre le dictionnaire, disons, au milieu, sur la page de la France, par exemple, tandis que je cherche l'Albanie, 
+      je vois que ce n'est pas la bonne page mais j'apprends quelque chose de plus: puisque l'Albanie est <i>avant</i> la France sa page est donc forcément située 
+      dans la moitié gauche du dictionnaire, je n'ai donc plus à chercher dans toutes les pages de droite, mais uniquement dans la moitié des pages de gauche. 
+      J'ai en une opération <i>réduit mon espace de recherche de moitié</i>.</p>
+      <p>D'environ 200 pages, il ne me restera plus que 100 pages à explorer. 
+      Puis, en reprenant le même procédé, 50 pages, 25 pages, 12 ou 13 pages, 6 ou 7 pages, 3 ou 4 pages, 1ou 2 pages et le pays sera trouvé. 
+      Si nous recomptons nous voyons qu'il y a uniquement eu C = 7 ou 8 étapes de calcul  !!</p>
+      <p>On parle de <l link="http://fr.wikipedia.org/wiki/Dichotomie" text="dichotomie"/> (« couper en deux » en grec) ce processus de recherche où à chaque étape, 
+      on coupe en deux parties l'espace de recherche. 
+        <p>Intuitivement, on se rend compte que c'est bien en coupant en deux parties égales 
+        que nous sommes sûr d'avoir des deux côtés un espace de recherche minimal à l'étape suivante (en part inégales, 
+        la malchance pourrait nous conduire à rechercher dans un espace plus grand).</p></p>
+      <p>Il faut comprendre que le gain est immense: nous donnons dans le tableau ci dessous le nombre C d'étapes de calcul en fonction de quelques nombres N d'items:
+      <div class = "table">
+        <p><p>N = 2<S>C</S></p><p>1</p><p>2</p><p>4</p><p>8</p><p>16</p><p>..</p><p>256</p><p>..</p><p>1024</p><p>..</p><p>un million</p><p>..</p><p>un milliard</p></p>
+        <p><p>C = log<I>2</I>(N)</p><p>0</p><p>1</p><p>2</p><p>3</p><p>4</p><p>..</p><p>8</p><p>..</p><p>10</p><p>..</p><p>20</p><p>..</p><p>30</p></p>
+      </div>
+      le fait de diviser en deux de manière itérative, permet par exemple de rechercher en un maximum de 26 étapes, 
+      le nom de quelqu'un dans l'annuaire des 60 millions de français.</p>
+      <p>Pour les mathématiciens en herbe, voilà un très bel exemple des relations entre un nombre et son logarithme (ici en base 2), 
+      mais surtout un moyen concret, incarné, de montrer l'usage de cette fonction mathématique abstraite.</p>
+      <p>Il y a plusieurs manières de programmer ce mécanisme, en voici une où nous restreignons l'espace de recherche entre deux valeurs min et max:
+      <div class="code">
+       <p><r>trouver</r>(pays) { </p>
+       <p><T/>min = debut; max = fin;</p>
+       <p><T/><r>repeter {</r></p>
+       <p><T/><T/>milieu = (min + max) / 2;</p>
+       <p><T/><T/><r>si</r> (dictionnaire(milieu) == pays) <r>alors</r> <r>renvoyer</r> milieu;</p>
+       <p><T/><T/><r>si</r> (min == max) <r>alors</r> <r>renvoyer</r> <v>pas trouvé</v>;</p>
+       <p><T/><T/><r>si</r> (dictionnaire(milieu) &lt; pays) <r>alors</r> min = milieu;</p>
+       <p><T/><T/><r>si</r> (dictionnaire(milieu) > pays) <r>alors</r> max = milieu;</p>
+       <p><T/>}</p>
+       <p>}</p>
+     </div></p>
+     <p>On remarque que la quantité <c>max - min</c> vaut <c>fin - debut</c> au démarrage puis se divise par 2 à chaque étape, 
+     donc va forcément devenir plus petit que 1, donc égale à 0 puisque ce sont des nombres entiers. 
+     Par conséquent, l'algorithme va s'arrêter forcément au bout d'un nombre fini, logarithmique, d'étapes. 
+       <p>Finir en retournant la page si elle est trouvée, ou "pas trouvé" si l'intervalle de recherche est de longueur nulle sans avoir trouvé la page recherchée. 
+       Bref, fonctionner comme nous l'avions espéré.</p></p>
+       <p>Posons nous maintenant une autre question:  dans quelle mesure ce mécanisme algorithmique est il générique ? 
+       Regardons un tout ``autre´´ exemple pour s'en convaincre.</p>
+     </div>
+   </div>
+
+   <div title="Un tout ``autre´´ problème: convertir une tension électrique en valeur numérique">
+     Pour ``deviner´´ la valeur d'une tension électrique continue, 
+     un ordinateur numérique doit en général comparer cette valeur à une valeur de référence qu'il va produire en sortie, 
+     pour de proche en proche cerner cette valeur, comme le montre le diagramme ci-dessous:
+     <p class="center"><l link="http://javascool.gforge.inria.fr?page=proglets&amp;action=show&amp;id=analogNumerique&amp;helpFile=./help.htm" icon="proglet-conva.jpg" text="La «proglet» analogNumerique"/></p>
+     Là encore, la façon de fonctionner de ces convertisseurs à approximations successives est de procéder de manière dichotomique en divisant l'espace de recherche de 2 en 2. 
+     Cela permet d'atteindre très rapidement les précisions requises, le millème en 10 étapes, le millionième en 20, comme vu précédemment.
+   </div>
+
+   <div title="Le problème mathématique sous-jacent: trouver le zéro d'une fonction monotone dans un intervalle">
+     <p>Tous ces problèmes sont reliés au problème mathématique suivant: résoudre une équation de la forme <c>f(x) = 0, min &lt; x &lt; max</c>,
+     où <c>f()</c> est une fonction continue monotone dans l'intervalle <c>[min, max]</c> donc a au plus une solution, puisque bijection vers un intervalle réel.</p>
+     <p>Si elle change de signe dans cet intervalle <c>f(min) f(max) &lt; 0</c> et elle a une solution unique.</p>
+     <p>C'est le cas par exemple de la fonction <c>sin(x)</c> dans l'intervalle <c>[2, 4]</c> où elle s'annule en Pi, comme le montre la figure ci-dessous:
+     <p class="center"><l link="http://javascool.gforge.inria.fr?page=proglets&amp;action=show&amp;id=algoDeMaths&amp;helpFile=./help.htm" icon="dicho3.gif"/></p></p>
+     <p>Là encore le même mécanisme de dichotomie permet de résoudre le problème comme incarné dans l'algorithme suivant:
+      <div class="code">
+       <p><r>zero</r>(f) { </p>
+       <p><T/>min = debut; max = fin;</p>
+       <p><T/><r>si</r> (f(min) f(max) >= 0) <r>alors</r> <r>renvoyer</r> <v>pas de solution</v>;</p>
+       <p><T/><r>repeter {</r></p>
+       <p><T/><T/>milieu = (min + max) / 2;</p>
+       <p><T/><T/><r>si</r> (|max - min| &lt; epsilon) <r>alors</r> <r>renvoyer</r> milieu;</p>
+       <p><T/><T/><r>sinon si</r> (f(max) f(milieu) &lt; 0) <r>alors</r> min = milieu;</p>
+       <p><T/><T/><r>sinon si</r> (f(min) f(milieu) &lt; 0) <r>alors</r> max = milieu;</p>     
+       <p><T/><T/><r>sinon</r> <r>renvoyer</r> <v>pas de solution</v>;</p>
+       <p><T/>}</p>
+       <p>}</p>
+     </div></p>
+     <p>Il ne diffère du précédent que par la façon de détecter le fait qu'il n'y ait pas de solution et par la façon de faire les tests
+     (car l'espace de recherche n'est plus celui des nombres entiers mais des nombres réels).</p>
+     <p>C'est donc bien un principe algorithmique qui fonctionne à la fois pour «des opérations numériques et aussi symboliques» (de recherche de mots),
+     selon un principe déjà remarqué <l link="http://fr.wikipedia.org/wiki/Ada_Lovelace" text="Ada Lovelace"/> un siècle avant que ne fonctionne le 1er ordinateur. 
+     Et c'est un des <l link="http://fr.wikipedia.org/wiki/Dichotomie" text="mécanismes algorithmiques"/> les plus utilisés.</p>
+ </div>
+</div>

@@ -1,0 +1,89 @@
+import javax.swing.JToolBar;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.BorderFactory;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+void main() {
+  // Récupère le panel de la proglet
+  Panel panel = getPane();
+  // Affiche le panneau de contrôle.
+  panel.removeAll("C");
+
+  // Mise en place d'un panneau d'écriture et de lecture
+  panel.add("South", new JToolBar() {
+              {
+                // Bouton d'effacement
+                add(new JButton("Effacer") {
+                      {
+                        addActionListener(new ActionListener() {
+                                            public void actionPerformed(ActionEvent e) {
+                                              reader.setText("");
+                                              writer.setText("");
+                                            }
+                                          }
+                                          );
+                      }
+                    }
+                    );
+
+                addSeparator();
+
+                // Panneau pour écrire le texte à envoyer
+                add(writer = new JTextField() {
+                      {
+                        setBorder(BorderFactory.createTitledBorder("Texte à envoyer"));
+                        setPreferredSize(new Dimension(220, 70));
+                      }
+                    }
+                    );
+
+                // Bouton d'envoi
+                add(new JButton("Envoyer") {
+                      {
+                        addActionListener(new ActionListener() {
+                                            public void actionPerformed(ActionEvent e) {
+                                              writeString(writer.getText());
+                                            }
+                                          }
+                                          );
+                      }
+                    }
+                    );
+
+                addSeparator();
+
+                // Panneau pour lire le texte reçu
+                add(reader = new JTextField() {
+                      {
+                        setBorder(BorderFactory.createTitledBorder("Texte reçu"));
+                        setPreferredSize(new Dimension(220, 70));
+                        setEditable(false);
+                      }
+                    }
+                    );
+
+                // Bouton de réception
+                add(new JButton("Recevoir") {
+                      {
+                        addActionListener(new ActionListener() {
+                                            public void actionPerformed(ActionEvent e) {
+                                              for(int c: getChars())
+                                                reader.setText(reader.getText() + (char) c);
+                                            }
+                                          }
+                                          );
+                      }
+                    }
+                    );
+              }
+            }
+            );
+
+  // Mise à jour de l'affichage
+  panel.revalidate();
+}
+JTextField reader, writer;
+

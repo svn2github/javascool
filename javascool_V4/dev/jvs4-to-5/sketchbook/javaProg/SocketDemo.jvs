@@ -1,0 +1,114 @@
+
+import java.net.ServerSocket;
+import java.net.Socket; 
+
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.IOException; 
+
+// Choix d'un port pour la démo
+
+static final int port = 12345;
+
+// Implémentation d'un serveur minimal de requêtes
+static class Server extends Thread {
+  public void run() {
+    try {
+      // on crée le serveur,
+      server = new ServerSocket(port);
+      // on boucle sans fin sur les connections,
+      while(true) {
+	// . . en récupérant la socket et ses entrées-sorties
+	Socket socket = server.accept();
+	BufferedReader in = new BufferedReader(new java.io.InputStreamReader(socket.getInputStream()));
+	PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+	new Request(socket, in, out).start();
+      }
+    } catch(Exception e) { 
+      // . . et en ré-mettant les éventuelles erreurs, sauf celle de fermeture
+      if (!(e instanceof java.net.SocketException && "socket closed".equals(e.getMessage()))) {
+        println("Erreur du thread du serveur : "+e);
+	throw new RuntimeException(e); 
+      }
+    }
+  }
+  public void interrupt() {
+    // . . on ferme le serveur à l'interruption du processus
+    try { if (server != null) server.close(); } catch(Exception e) { }
+  }
+  ServerSocket server = null;
+}
+
+// Implémentation d'une requête de type question-réponse en une ligne:
+static class Request extends Thread {
+  public void run() {
+    try {
+      // .. implémentant l'entrée-sortie de la socket comme lecture-écriture de string en appelant la méthode doAnswer()
+      out.println(doAnswer(in.readLine()));
+      // . . et fermant la socket pour nettoyer les ressources du système
+      socket.close();
+    } catch(Exception e) { throw new RuntimeException(e); }
+  }
+  // Construction de la requête
+  Request(Socket socket, BufferedReader in, PrintWriter out) { 
+    this.socket = socket; this.in = in; this.out = out; 
+  } 
+  Socket socket; BufferedReader in; PrintWriter out;
+}
+
+// Implémentation d'un client minimal
+static String getAnswerFromServer(String question) throws IOException {
+  // . . récupération de la socket et de ses entrées-sorties
+  Socket request = new Socket(java.net.InetAddress.getLoopbackAddress(), port);
+  BufferedReader in = new BufferedReader(new java.io.InputStreamReader(request.getInputStream()));
+  PrintWriter out = new PrintWriter(request.getOutputStream(), true);
+  // . . lecture-écriture de la question-réponse
+  out.println(question);
+  String answer = in.readLine();
+  // . . et retour
+  request.close();
+  return answer;
+}
+
+// Implémentation d'une démo minimale où la question est convertie en marseillais 
+
+static String doAnswer(String question) {
+  // . . on introduit un délai aléatoire de 0 à 1 seconde
+  try { Thread.sleep((int) (1000 * Math.random())); } catch(Exception e) {}
+  // . . et on répond
+  return "¡ Ô peuchère, comment que tu me dis «"+question+"», bôneumère de fada !";
+}
+  
+void main() {
+  try {
+    for(int n = 0; n < 3; n++) {
+      println("On lance le serveur:");
+      Server server = new Server();
+      server.start();
+      // Simulation des clients
+      {
+	println("On lui passe trois requêtes:");
+	String questions[] = {
+	  "salut mec, tu , vas , bien ?",
+	  "eh ben ouais, mais, sinon, ça baigne , toi ",
+	  "bon, okay, laisse tomber"
+	};
+	for(String question : questions)
+	  println(getAnswerFromServer(question));
+      }
+      // Arrêt du serveur
+      println("On arrête le serveur:");
+      server.interrupt();
+      println("Et voilà !");
+    }
+  } catch(Exception e) {
+    println(e);
+    e.printStackTrace(System.out);
+  }
+}
+
+    
+      
+
+
+  

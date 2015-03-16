@@ -1,0 +1,51 @@
+[
+{
+ "tag" : "keyword"
+, "title" : "Ajoute ou modifie un noeud du graphe"
+, "name" : "addSpot"
+, "offset" : "9"
+, "code" : "addSpot(\\\"name\\\", x, y);"
+, "doc" : "Ajoute ou modifie les coordonnées (x, y) d'un noeud de nom \\\"name\\\" du graphe."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Renvoie le noeud le plus proche d'une position"
+, "name" : "getClosestSpot"
+, "offset" : "7"
+, "code" : "String name = getClosestSpot(x, y);"
+, "doc" : "Renvoie le nom du noeud le plus proche des coordonnées (x, y) ou null si il n'y a pas de noeud."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Détruit un noeud du graphe"
+, "name" : "removeSpot"
+, "offset" : "12"
+, "code" : "removeSpot(\\\"name\\\");"
+, "doc" : "Détruit le noeud de nom \\\"name\\\" si il existe."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Ajoute ou modifie un lien du graphe"
+, "name" : "addRoad"
+, "offset" : "9"
+, "code" : "addRoad(\\\"nameA\\\", \\\"nameB\\\", poids);"
+, "doc" : "Ajoute ou modifie le poids entre deux noeuds de nom \\\"nameA\\\" et \\\"nameB\\\" du graphe."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Détruit un lien du graphe"
+, "name" : "removeRoad"
+, "offset" : "12"
+, "code" : "removeRoad(\\\"nameA\\\", \\\"nameB\\\");"
+, "doc" : "Détruit le lien entre deux noeuds de nom \\\"nameA\\\" et \\\"nameB\\\" du graphe."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Teste si un lien existe"
+, "name" : "isRoad"
+, "offset" : "8"
+, "code" : "boolean c = isRoad(\\\"nameA\\\", \\\"nameB\\\");"
+, "doc" : "Renvoie true ou false selon qu'un lien existe ou pas entre deux noeuds de nom \\\"nameA\\\" et \\\"nameB\\\" du graphe."
+}
+]
+

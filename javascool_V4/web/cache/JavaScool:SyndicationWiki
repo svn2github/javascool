@@ -1,0 +1,86 @@
+  <div id="toc" class="toc"><div id="toctitle"><h2>Sommaire</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Syndication_de_pages_wiki_sur_un_site_externe"><span class="tocnumber">1</span> <span class="toctext">Syndication de pages wiki sur un site externe</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Mise_en_forme_des_liens"><span class="tocnumber">2</span> <span class="toctext">Mise en forme des liens</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#M.C3.A9canisme_de_cache"><span class="tocnumber">3</span> <span class="toctext">Mécanisme de cache</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Syndication_de_pages_wiki_sur_un_site_externe">Syndication de pages wiki sur un site externe</span></h2>
+<p>Les documentations de <a rel="nofollow" class="external text" href="/v4/" class="internal">«javascool»</a> ou de <a rel="nofollow" class="external text" href="http://www-sop.inria.fr/science-participative/film/pages.php">«pour quoi tu cherches»</a> sont éditées sur ce wiki collaboratif et syndiquée sur le site web idoine.
+</p><p>Le principe est de faire:
+</p>
+<ol><li> faire produire sur le site cible les pages du wiki sous forme brute avec le lien:
+<ul><li> <tt>http://wiki.inria.fr/sciencinfolycee/'.$name.'?printable=yes&amp;action=render</tt></li></ul></li>
+<li> puis de parser les liens avec des expressions régulières pour obtenir les bons liens.</li></ol>
+<h2><span class="mw-headline" id="Mise_en_forme_des_liens">Mise en forme des liens</span></h2>
+Le mécanisme suivant permet de mettre en forme les liens: <pre>
+function wiki_get_contents_load($name) {
+  global $wiki_get_contents_redirections;
+  // Recuperation de la page sur le wiki
+  $href = &quot;http://wiki.inria.fr/sciencinfolycee/$name?printable=yes&amp;action=render&quot;;
+  $text = file_get_contents($href);  
+  // Remplace tous les liens entre pages par des pages vues du site
+  foreach($wiki_get_contents_redirections as $wiki =&gt; $php) 
+    $text = ereg_replace(&quot;href=\&quot;http://wiki.inria.fr/sciencinfolycee/$wiki\&quot;&quot;,
+                         &quot;class=\&quot;internal\&quot; href=\&quot;$php\&quot;&quot;, $text);
+  // Remplace tous les liens wikis locaux pas des liens distants
+  $text = ereg_replace('src=&quot;/wikis/sciencinfolycee', 
+                       'src=&quot;http://wiki.inria.fr/wikis/sciencinfolycee', $text);
+  // Qualifie proprement les liens internes issus du wiki
+  $text = ereg_replace(&quot;href=\&quot;http://javascool.gforge.inria.fr/([^\&quot;]*)\&quot; *class=\&quot;external text\&quot;&quot;, 
+                       &quot;href=\&quot;\\1\&quot; class=\&quot;internal\&quot;&quot;, $text);
+  // Elimine la table de méta-donnée
+  $text = ereg_replace('&lt;table class=&quot;wikitable&quot;&gt;.*&lt;/table&gt;', '', $text);
+  // Détecte les erreurs
+  if (ereg(&quot;&lt;title&gt;(Erreur|Connexion nécessaire)&quot;, $text))
+    $text = &quot;Erreur: la page wiki $name est en erreur.\n&quot;;
+  return $text;
+}
+</pre>
+tandis que la table: <pre>
+$wiki_get_contents_redirections = 
+  array(&quot;JavaScool:Accueil&quot; =&gt; &quot;?page=home&quot;,
+        etc... );
+</pre>
+<p>donen la correspondance entre la page wiki et celle du site.
+</p>
+<h2><span class="mw-headline" id="M.C3.A9canisme_de_cache">Mécanisme de cache</span></h2>
+Le mécanisme suivant permet de filtrer les accès à travers un cache: <pre>
+function wiki_get_contents_cache_load($name) {
+  $name = rawurlencode($name);
+  // Utilisation d'un cache local
+  $cache = '.http.cache';
+  if (!file_exists($cache)) 
+    mkdir($cache, 0777);
+  if (!file_exists($cache.'/'.$name)) {
+    file_put_contents($cache.'/'.$name, wiki_get_contents_load($name));
+    chmod($cache.'/'.$name, 0666);
+  }
+  return file_get_contents($cache.'/'.$name);
+}
+</pre>
+<p>et de vider le cache pour prendre en compte de nouvelles modifs:
+</p>
+<pre>
+function wiki_get_contents_cache_clear() {
+  if(isset($_GET['kezako']) &amp;&amp; $_GET['kezako'] == 'niquelekacheux') { 
+    passthru(&quot;rm -rf .http.cache&quot;); exit; 
+  }
+}
+</pre>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.008 seconds
+Real time usage: 0.012 seconds
+Preprocessor visited node count: 44/1000000
+Preprocessor generated node count: 116/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:895-1!*!*!!fr!*!* and timestamp 20150313130628 and revision id 6004
+ -->

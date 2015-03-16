@@ -1,0 +1,31 @@
+import java.awt.Color;
+
+void main(){
+ // attention l'image fait 400x400
+ int [][] pixMap= new int[400][400];
+ int CodeBlack = codeCouleur(Color.black);
+ int posx = 0;
+ int posy = 0;
+ boolean find = false;
+ 	
+ createRandomShapeImage(1);
+ showImage(1);
+ sleep(800);
+ loadImageToPixMap(1,pixMap);
+
+ for (int x=0; ((x < 400) && (!find)); x++)
+   for (int y=0; ((y < 400) && (!find)); y++)
+      if (pixMap[x][y]==CodeBlack) {
+          posx = x;
+          posy = y;
+          find = true;
+      } 
+ System.out.println("posx : "+posx);
+ System.out.println("posy : "+posy); 
+ //On fait une copie de travail
+ copyImage(1,2);
+ drawRect(2,posx-3,posy-3,6,6,Color.green);
+ showImage(2); 
+ sleep(800);
+ showPipImage();        
+}

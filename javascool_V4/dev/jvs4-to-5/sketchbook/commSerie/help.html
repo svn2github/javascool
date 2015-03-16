@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Communication par port s&eacute;rie RS232</title>
+   </head>
+   <body>
+      <h1>Communication par port s&eacute;rie RS232.</h1>
+      
+      
+      <div>Cette proglet permettra la mise en &#339;uvre d'une interface utilisant une <a href="http://fr.wikipedia.org/wiki/RS-232">liaison s&eacute;rie de type RS232</a> dans le cadre de travaux pratiques puis de projet.
+      </div>
+      
+          
+      <div>Voir le  <a href="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/Fiche-ressource_communicationRS232.odt">document p&eacute;dagogique</a> (<a href="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/Fiche-ressource_communicationRS232.pdf">pdf</a>) pour plus son utilisation
+      </div>
+      
+         
+      <div>
+         <h2>Documentation technique.</h2>
+         <ul class="ul">
+            
+              
+            <li>Toutes les instructions disponibles sont document&eacute;es <a href="http://javascool.github.com/wproglets/javascool-proglet-commSerie-html/api/org/javascool/proglets/commSerie/SerialInterface.html">ici</a></li>
+            
+              
+            <li> Les primitives utilisateurs disponibles sont document&eacute;es <a href="http://javascool.github.com/wproglets/javascool-proglet-commSerie-html/api/org/javascool/proglets/commSerie/Functions.html">ici</a></li>
+            
+              
+            <li>Une interface de contr&ocirc;le est disponible <a href="http://javascool.github.com/wproglets/javascool-proglet-commSerie-html/api/org/javascool/proglets/commSerie/SerialInterfacePanel.html">ici</a></li>
+            
+              
+            <li>Un premier exemple <a href="http://editor?terminalSerie.jvs">programme exemple</a> propose un panneau de contr&ocirc;le (choix du port COM, configuration du d&eacute;bit ...ouvrir /fermer le port) et un panneau de dialogue
+               (&eacute;mission et r&eacute;ception de cha&icirc;nes de caract&egrave;res avec traduction en ASCII). Ne pas oublier de fermer le port COM avant de quitter
+               sinon cela n&eacute;cessite de relancer la Proglet commSerie. Ce programme permet d'&eacute;tablir une communication en RS232 entre deux
+               ordinateurs mais aussi, par exemple, de communiquer avec un GPS, un vid&eacute;oprojecteur, un lecteur de carte RFID ... autant d'id&eacute;es
+               de projets.
+            </li>
+            
+              
+            <li>Un deuxi&egrave;me <a href="http://editor?Exemple.jvs">programme de text</a> permet de tester l'&eacute;criture sur le port s&eacute;rie ou de simuler une lecture (&agrave; d&eacute;faut de pouvoir connecter un autre terminal
+               ...).
+            </li>
+            
+            
+         </ul>
+      </div>
+      
+        
+      <div>
+         <h2>Installation d'une interface s&eacute;rie RS2323C.</h2>
+         <ul class="ul">
+                
+            <li>Sous windows : installer le fichier <a href="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/lib/rxtxSerial.dll">rxtxSerial.dll</a> dans le r&eacute;pertoire <i>Java</i> de la machine, c'est &agrave; dire, normalement <tt>c:\Program Files\Java\jre6(ou &eacute;quivalent)\bin</tt>.
+            </li>
+                
+            <li>Sous LinuX 32bits : installer le fichier <a href="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/lib/librxtxSerial.so">librxtxSerial.so</a> 
+                   dans le r&eacute;pertoire <i>Java</i> de la machine, c'est &agrave; dire, normalement <tt>. /usr/local/java/default(ou &eacute;quivalent)/lib/i386</tt>.
+            </li>
+                
+            <li>Sous LinuX 64bits : installer le fichier <a href="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/lib/amd64/librxtxSerial.so">librxtxSerial.so</a> 
+                   dans le r&eacute;pertoire <i>Java</i> de la machine, c'est &agrave; dire, normalement <tt>. /usr/local/java/default(ou &eacute;quivalent)/lib/amd64</tt>.
+            </li>
+                
+            <li>Sous MacOS : installer le fichier <a href="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/lib/librxtxSerial.jnilib">librxtxSerial.jnilib</a> dans le r&eacute;pertoire <i>Java</i> de la machine, comme en LinuX.
+            </li>
+              
+         </ul> Se faire aider du responsable informatique si besoin. L'utilisation de <a href="http://www.jcontrol.org">RXTX</a> necc&eacute;ssite aussi une jarre Java <tt>RXTXcomm.jar</tt> qui est int&eacute;gr&eacute;e &agrave; Javasccool.
+      </div>
+      
+      
+        
+      <div>
+         <h2>Test d'une interface s&eacute;rie RS2323C.</h2>Le <a href="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/terminalSerie.jar">programme java</a> construit &agrave; partir de cette proglet permet de tester de mani&egrave;re autonome l'installation pr&eacute;c&eacute;dente et l'interface.
+      </div>
+      
+      
+   </body>
+</html>

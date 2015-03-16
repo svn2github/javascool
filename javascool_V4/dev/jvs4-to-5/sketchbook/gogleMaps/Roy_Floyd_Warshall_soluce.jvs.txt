@@ -1,0 +1,12 @@
+  for (String ville3 : villes) 
+    for (String ville1 : villes) 
+      for (String ville2 : villes) {
+	Double l12 = Longueurs.get(new StringPair(ville1, ville2)), l13 = Longueurs.get(new StringPair(ville1, ville3)), l32 = Longueurs.get(new StringPair(ville3, ville2));
+	if (l13 != null && l32 != null) {
+	  double l = l13 + l32;
+	  if (l12 == null || l < l12) {
+	    Longueurs.put(new StringPair(ville1, ville2), l);
+	    Routage.put(new StringPair(ville1, ville2), ville3);
+	  }
+	}
+      }

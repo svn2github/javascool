@@ -1,0 +1,43 @@
+<div title="La «proglet» cryptageRSA">
+  <p class="margin">
+    <p>Cliquer <l class="newtab" link="exercice.htm" text="ici"/> pour faire l'activité.</p>
+    <p>Cliquer <l class="newtab" link="tutoriel.htm" text="ici"/> pour lire le tutoriel.</p>
+  </p>
+  <p>Cette proglet permet de manipuler les concepts liés à l'encryptage/décryptage par clés publique et privée, RSA. </p>
+        <p>La cryptologie, science du secret, englobe la cryptographie — le codage secret d'un message — et la cryptanalyse — le décodage d'un message codé. 
+	<p>Le principe de la cryptographie consiste à définir une transformation des symboles d'un langage (les lettres ou les mots par exemple) 
+        qui soit difficilement inversible, 
+	de telle sorte que retrouver le mot original à partir du mot codé devienne une opération difficile à effectuer.</p>
+	<p>Il existe deux grandes familles d'algorithmes de cryptographie : les algorithmes symétriques (à clé secrète) 
+	et les algorithmes asymétriques (à clé publique). 
+	Le système RSA est un système de cryptographie à clé publique donc asymétrique.  </p>
+	<p>L'intérêt de cette manipulation est de faire passer la non-symétrie du processus: autrement dit, tout le monde peut encrypter (par la clé publique),
+        mais seule une personne pourra décrypter (à l'aide de la clé privée).  </p>
+  </p>
+  <div>Pour manipuler les notions et outils du cryptage, il faut utiliser la construction javascool. 
+  Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: <div class="code">
+    <m>Créer une clé privée et une clé publique pour le codage et décodage de messages:</m>
+    <p><r>BigInteger</r> keys[] = <r>createKeys</r>()</p>
+    </div>où: <div class="ul">
+      <p>est retourné les clés sous forme d'un tableau de 3 BigInteger, keys[0] est la clé privée D, et (keys[1],keys[2]) sont les clés publiques (E, N).</p>
+    </div><div class="code">
+    <m>Encrypter un message à l'aide d'une clé (publique):</m>
+    <p><r>BigInteger</r> crypt = <r>encrypt</r>(<r>String</r> message, <r>BigInteger</r> pk1, <r>BigInteger</r> pk2)</p>
+    </div>où: <div class="ul">
+      <p><c>message</c> est le message à encrypter, à inscrire entre "" puisque c'est une chaine de caractères.</p>
+      <p><c>pk1</c> est la clé publique, 1ere partie, c'est à dire E.</p>
+      <p><c>pk2</c> est la clé publique, 2nde partie, c'est à dire N.</p>
+      <p>est retourné le message encrypté sous forme de chiffres.</p>
+    </div><div class="code">
+    <m>Décrypter un message à l'aide de clés:</m>
+    <p><r>String</r> message = <r>decrypt</r>(<r>BigInteger</r> crypt, <r>BigInteger[]</r> keys)</p>
+    </div>où: <div class="ul">
+      <p><c>crypt</c> est le message encrypté sous forme de chiffres.</p>
+      <p><c>keys</c> sont les clés, publique et privées, sous forme de vecteur à 3 entrées, comme celui donné par <r>createKeys</r>().</p>
+      <p>est retourné le message decrypté en caractères.</p>
+    </div><div>
+   <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
+   <div>Un exemple de programme d'utilisation est <l class="editor" link="Exemple.jvs" text="disponible ici"/>.</div>
+</div></div>
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://www.openprocessing.org/portal/?userID=8553" text="ici"/></p>
+</div>

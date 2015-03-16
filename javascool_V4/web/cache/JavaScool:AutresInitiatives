@@ -1,0 +1,36 @@
+<p><br />
+</p>
+<h1><span class="mw-headline" id="Autres_initiatives_.28extra-scolaires.29_de_popularisation_de_l.27Informatique">Autres initiatives (extra-scolaires) de popularisation de l'Informatique</span></h1>
+<center>«Faites bien avec rien, faites mieux avec peu, faites le maintenant&#160;!» (credo emprunté au mouvement <a rel="nofollow" class="external text" href="http://www.kino00.com/">KINO</a>, une communauté de cinéastes indépendants)</center>
+<h2><span class="mw-headline" id="Apprendre_l.27informatique">Apprendre l'informatique</span></h2>
+<ul><li> Le <a rel="nofollow" class="external free" href="http://www.siteduzero.com">http://www.siteduzero.com</a> propose des tutoriels dans tous la majorité des langages informatiques . . dans le domaine du libre.</li></ul>
+<ul><li> FLOSS = "Free Libre Open Source Software", expression désignant les diférentes manières de désigner le logiciel libre. Le site <a rel="nofollow" class="external free" href="http://en.flossmanuals.net/about">http://en.flossmanuals.net/about</a> regroupe une collection de tutoriaux sur les logiciels libres, ainsi que des outils et des informations sur les communautés qui les manipulent.</li></ul>
+<h2><span class="mw-headline" id="Plateforme_de_d.C3.A9veloppement">Plateforme de développement</span></h2>
+<ul><li> La plateforme <a rel="nofollow" class="external free" href="http://processing.org">http://processing.org</a> propose dans une version simplifiée de Java très proche de JavaScool une large gamme de très beaux développements réutilisable et une communauté qui se «sert les coudes» pour aider chacun à avancer. Nombreuses librairies disponibles, tutoriaux en libre service. Voir examples sur <a rel="nofollow" class="external free" href="http://openprocessing.org">http://openprocessing.org</a>. Nota, il existe une plateforme dédiée pour le developpement sur mobile: <a rel="nofollow" class="external free" href="http://mobile.processing.org/download/index.php">http://mobile.processing.org/download/index.php</a></li>
+<li> Un livre en anglais assez complet, qui aborde également OpenFramework (plateforme de libraries en graphiques, video, audio etc en langage C++)&#160;: <a rel="nofollow" class="external text" href="http://shop.oreilly.com/product/9780596154158.do">Programming Interactivity by Joshua Noble (O'Reilly)</a></li>
+<li> <a rel="nofollow" class="external text" href="http://www.arduino.cc">L'Arduino</a> permet la création d'objets interactifs. Il permet de recevoir des données d'environnements par l'intermédiaire de capteurs de tous types et peut en réponse agir sur des lumières, des moteurs etc. L'usage d'une carte Arduino implique la programmation du microcontrôleur, avec un langage simple. L'intérêt de l'arduino est ce qu'il constitue un cas pratique de l'informatique.</li></ul>
+<ul><li> <a rel="nofollow" class="external text" href="http://training.oreilly.com/arduino">Processing and Arduino in tandem</a></li></ul>
+<h2><span class="mw-headline" id="Acc.C3.A8s_aux_outils_et_mat.C3.A9riel_informatique.2C_relatif_.C3.A0_la_p.C3.A9dagogie">Accès aux outils et matériel informatique, relatif à la pédagogie</span></h2>
+<ul><li> Le projet <a rel="nofollow" class="external free" href="http://laptop.org/en">http://laptop.org/en</a> vise à une démocratisation de l'informatique dans les pays en voie de développement, <a rel="nofollow" class="external free" href="http://www.planete-sciences.org">http://www.planete-sciences.org</a> l'utilise pour des ateliers pédagogiques</li></ul>
+<ul><li> La <a rel="nofollow" class="external text" href="http://lamiam.fr">Malette Interactive Artistique Multimedia</a> propose un ordinateur et ses instruments interactifs (capteurs divers, webcam, joystick, wiimote, carte arduino, …): outil pédagogique qu’un instrument/système à vocation artistique</li></ul>
+<h2><span class="mw-headline" id="Communaut.C3.A9s_de_pratiques_et_initiatives">Communautés de pratiques et initiatives</span></h2>
+<ul><li> De nombreux <i>Hackerspaces</i> en France: Région parisienne <a rel="nofollow" class="external text" href="http://www.tmplab.org/">Tmplab</a>, Toulouse <a rel="nofollow" class="external text" href="http://tetalab.org/">TetaLab</a>, Nantes <a rel="nofollow" class="external text" href="http://home.crealab.info/">Crealab</a> etc..!</li></ul>
+<ul><li> <a rel="nofollow" class="external text" href="http://usinette.org/spip.php?article6">Le projet usinette</a> (axé robotique/électronique), projet soutenu par le hackerspace de Nantes Crealab est une machine à construire n'importe quel objet, il suffit de lui en fournir les plans. Cette initiative est un modèle de <a rel="nofollow" class="external text" href="http://reprap.org">reprap</a> en plus 'cheap' et moins médiatisé.</li></ul>
+<ul><li> Des rencontres du type <a rel="nofollow" class="external text" href="http://www.estivenumerique.org">Estive Numérique</a> propose une autre vision de l'Âge Numérique réconciliée avec des valeurs de démocratie participative, avec bien-sûr l'accès à tout-te-s usages et fondements des sciences du numérique, en lien aussi avec <a rel="nofollow" class="external free" href="http://www.hackerspace.net">http://www.hackerspace.net</a></li></ul>
+<ul><li> Des groupes de pratiques en robotique qui manipulent également l'informatique: a Sophia Antipolis, ils sont plusieurs; parmi eux <a rel="nofollow" class="external text" href="http://www.pobot.org/">Pobot</a>.</li></ul>
+<ul><li> Une initiative de la <a rel="nofollow" class="external text" href="http://www.reseaufing.org/">Fing</a>: <a rel="nofollow" class="external text" href="http://www.reseaufing.org/pg/groups/22910/open-paca/">Open PACA</a></li></ul>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.080 seconds
+Real time usage: 0.082 seconds
+Preprocessor visited node count: 19/1000000
+Preprocessor generated node count: 24/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:80-1!*!*!!*!*!* and timestamp 20150313130631 and revision id 13616
+ -->

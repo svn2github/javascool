@@ -1,0 +1,45 @@
+<div title="Graphiques statistiques avec la proglet abcdStat">
+
+<div title="Contexte">
+	<div>
+		Cette proglet a été réalisée par des étudiants d'IUT 
+		(filière <l text="STID" link="http://iutpa.univ-pau.fr/live/statistique-informatique-decisionnelle"/> à Pau)
+		dans le cadre d'un projet tutoré d'informatique.
+	</div>
+	<br/>
+	<div class="center">
+		<l icon="Logostid.gif" link="http://iutpa.univ-pau.fr/live/statistique-informatique-decisionnelle"/>
+	</div>
+	<br/>
+	<div>
+		Elle complète la proglet 
+		<l link="http://javascool.gforge.inria.fr/index.php?page=proglets" text="algoDeMath"/>
+		en permettant de réaliser des graphiques statistiques
+		(voir <l link="aide.html" text="documentation"/>).
+	</div>
+</div>
+
+<div title="Réalisation">
+	<div>
+		Les principales étapes du travail demandé ont été :
+	</div>
+	<div class="ol">
+		<div>
+			l'écriture de programmes Javascool avec la proglet <l link="http://javascool.gforge.inria.fr/index.php?page=proglets" text="algoDeMath"/>
+			(voir <l class="editor" link="etape1_barres.jvs" text="exemple"/>).
+		</div>
+		<div>
+			l'adaptation de ces programmes pour qu'ils fonctionnent avec des données quelconques
+			(voir <l class="editor" link="etape2_barres.jvs" text="exemple"/>).
+		</div>
+		<div>
+			l'écriture de pages html de documentation.
+		</div>
+		<div>
+			le passage de Javascool à Java pour construire la proglet et, par conséquent, simplifier la réalisation de graphiques statistiques
+			(voir <l class="editor" link="etape3_barres.jvs" text="exemple"/>).
+		</div>
+	</div>
+</div>
+
+</div>

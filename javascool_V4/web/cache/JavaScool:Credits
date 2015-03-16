@@ -1,0 +1,49 @@
+<p><br />
+</p>
+<h1><span class="mw-headline" id="Histoire_de_l.27initiative_JavaScool">Histoire de l'initiative JavaScool</span></h1>
+<h2><span class="mw-headline" id="JavaScool_V5.2C_2012-2021_:_la_version_future">JavaScool V5, 2012-2021&#160;: la version future</span></h2>
+<ul><li> Java'sCool 5 sera l'ultime version de <a rel="nofollow" class="external free" href="http://javascool.fr">http://javascool.fr</a>&#160;: un ensemble de grains modulaires HTML5/JS du Web.</li></ul>
+<h2><span class="mw-headline" id="JavaScool_V4.2C_2011-2013_:_la_version_actuelle">JavaScool V4, 2011-2013&#160;: la version actuelle</span></h2>
+<ul><li> Deux jeunes lycéens s'emparent de JavaS'Cool en juillet 2011 et refondent le noyau, proposent un nouvel éditeur, un mécanisme de création de «proglets» et une «proglet» pour apprendre à programmer en créant des jeux 2D.
+<ul><li> Philippe Vienne &lt;philippe@vienne.fr&gt;</li>
+<li> Guillaume Matheron &lt;guillaumematheron06@gmail.com&gt;</li></ul></li></ul>
+<p>avec l'aide David Pichardie &lt;david.pichardie@inria.fr&gt;, Philippe Lucaud &lt;philippe.lucaud@ac-nice.fr&gt;, Thierry Viéville &lt;thierry@vieville.fr&gt;, et les encouragements et précieux conseils de Robert Cabane.
+</p>
+<h2><span class="mw-headline" id="JavaScool_V3.2C_2010-2011_:_la_version_industrialis.C3.A9e">JavaScool V3, 2010-2011&#160;: la version industrialisée</span></h2>
+<ul><li> Avec le soutien logistique de <i><a rel="nofollow" class="external text" href="http://www.fuscia.info">fuscia</a></i> et le soutien matériel d'<a rel="nofollow" class="external text" href="http://www.unisciel.fr">UNISCIEL</a> une version intégrée des différentes activités et ressources est proposée, enrichie de nouveaux éléments à destination des lycées et des étudiants qui s'initient à l'informatique, pour initier non seulement mais aux ingrédients des algorithmes, mais aussi au codage et manipulation des objets numériques.</li></ul>
+<ul><li> Contribuent actuellement à cette version: <i>Philippe Lucaud</i> (Professeur de mathématiques en lycée), <i><a rel="nofollow" class="external text" href="http://www-sop.inria.fr/members/Cecile.Picard">Cécile Picard</a></i> (Docteure en Science Informatique), <i><a rel="nofollow" class="external text" href="http://www.irisa.fr/celtique/pichardie">David Pichardie</a></i> (Enseignant-Chercheur en Informatique à l'INRIA). <i>Philippe Vienne</i> (Lycéen, membre de <a rel="nofollow" class="external text" href="http://www.linux-azur.org">linux-azur</a>), <i><a rel="nofollow" class="external text" href="http://www.loria.fr/~vthierry">Thierry Viéville</a></i> (Chercheur en Informatique à l'INRIA).</li></ul>
+<ul><li> JavaScool a été utilisé pour:
+<ul><li> depuis 2009&#160;: dans plus d'une 10zaine de classes de lycée (options scientifiques MPI puis MPS; apprentissage de l'algorithmique en 2nd) 
+<ul><li> 1372 visiteurs avec téléchargement en 2009</li></ul></li>
+<li> depuis 2010: utilisation en médiathèque pour des formations citoyennes aux sciences du numérique
+<ul><li> 878	visiteurs avec téléchargement en 2010</li></ul></li>
+<li> actions liées à la formation des enseignants
+<ul><li> en 2009-2010&#160;: une 12zaine de journées de formation de 300 professeurs de maths (Algo en 2nd) de l'académie de Nice</li>
+<li> en 2011&#160;: utilisation pour la formation des formateurs au <a rel="nofollow" class="external text" href="http://www.eduscol.education.fr/cid55274/informatique-sciences-numerique-seminaire-national.html">séminaire national</a> des IA-IPR en Informatique et sciences du numérique, et deux ateliers de sensibilisation aux premières rencontres éducation-recherche-industrie de Montpellier.</li></ul></li></ul></li></ul>
+<h2><span class="mw-headline" id="JavaScool_web_V1.2C_2009-2010_:_la_notion_de_proglet">JavaScool web V1, 2009-2010&#160;: la notion de proglet</span></h2>
+<ul><li> Afin de proposer des ressources documentaires et logicielles permettant aux enseignants de commencer à enseigner l'algorithmique en seconde, mais aussi d'initier les citoyen-ne-s aux fondements de l'informatique, une version ``light´´ de JavaScool est développée en mettant surtout l'accent sur les documents et ressources d'accompagnement.
+<ul><li> Elle a permis de réaliser 17 journées de formation d'une 15-25 taines de participants = 300 jours x profs de maths de l'académie de Nice = Alpes Maritimes + Var. </li>
+<li> Elle est utilisée dans quatre classes de 2nd MPI de lycées de la <a rel="nofollow" class="external text" href="http://www.agglo-sophia-antipolis.fr">CASA</a>.</li>
+<li> Elle a fait l'objet de plusieurs centaines de téléchargements.</li></ul></li></ul>
+<ul><li> Ont contribué à cette version: <i>Frédérique Ancel</i> (Professeure de Physique, lycée Léonard de Vinci, Antibes), <i>Jean-Pierre Archambault</i> (Professeur de mathématiques et Chargé de Mission «veille technologique»), <i>Aurélien Astroux</i> (Professeur de Physique, lycée Léonard de Vinci, Antibes), <i>Hamdi Ben Abdallah</i> (Ingénieur en Informatique et Enseignant en Informatique au lycée, INRIA), <i>Emmanuel Baccelli</i> (Chercheur en Informatique à l'INRIA), <i><a rel="nofollow" class="external text" href="http://fr.wikipedia.org/wiki/Gérard_Berry">Gérard Berry</a></i> (Chercheur en Informatique à l'INRIA et Professeur invité au Collège de France), <i>Laurent Brunetto</i> (Professeur de Physique, lycée Audiberti, Antibes),  <i>Sébastien Chalmeton</i> (Mastérien en Informatique, Université de Nice Sophia-Antipolis), <i><a rel="nofollow" class="external text" href="http://www.lix.polytechnique.fr/~dowek">Gilles Dowek</a></i> (Chercheur et Professeur en Informatique, Ecole Polytechnique), <i>Laurent Garbani</i> (Professeur de Physique, lycée Audiberti, Antibes), <i>Thierry Viéville</i> (Chercheur en Informatique à l'INRIA), <i>Benjamin Wack</i> (Professeur de mathématiques, collège Jean Prévost, Villard-de-Lans).
+<ul><li> Le travail pédagogique initial a été réalisé aux lycéees <i><a rel="nofollow" class="external text" href="http://leonarddevinci.net">Léonard de Vinci d'Antibes</a></i> et <i><a rel="nofollow" class="external text" href="http://www.ac-nice.fr/audiberti/guppy">Audiberti d'Antibes.</a></i></li>
+<li> Le développement logiciel et documentaire est un travail collaboratiif entre l'équipe <i><a rel="nofollow" class="external text" href="http://interstices.info">d')i(nterstices</a></i>, l'initiative <i><a rel="nofollow" class="external text" href="http://www.fuscia.info">fuscia</a></i>, porté par l'<i><a rel="nofollow" class="external text" href="http://www.inria.fr/sophia">INRIA</a></i>.</li></ul></li></ul>
+<h2><span class="mw-headline" id="JavaScool_V1_.2B_V2.2C_2008-2009_:_la_g.C3.A9n.C3.A8se">JavaScool V1 + V2, 2008-2009&#160;: la génèse</span></h2>
+<ul><li> Projet de <a rel="nofollow" class="external text" href="http://deptinfo.unice.fr/twiki/bin/view/Minfo/PresTER">Travail d'Etude et de Recherche</a> de l'<a rel="nofollow" class="external text" href="http://deptinfo.unice.fr">Université de Nice - Sophia Antipolis</a>, ce <a rel="nofollow" class="external text" href="http://deptinfo.unice.fr/~huet/M1INFO/07-08/TER/mongiat.html">travail d'étudiant</a> a permis de mettre en place une première plateforme utilisée en option Mesure Physique et Informatique au <a rel="nofollow" class="external text" href="http://www.ac-nice.fr/lycvalbonne">Lycée Régional de Valbonne</a> comprenant un <a rel="nofollow" class="external text" href="http://christian.rellier.free.fr/orphy/ORPHYGTS.htm">plugin Orphy</a>
+<ul><li> Il faut saluer le travail d'excellence des cinq étudiants: Chalmeton Sébastien (qui maintiendra JavaScool jusqu'à la V2 et sera aussi l'auteur d'une petite <a rel="nofollow" class="external text" href="http://www-sop.inria.fr/culture_scient/vitrine">vitrine numérique</a>) avec Ennabli Mohamed, Guillaume Jean-Michel, Lebrun Thomas, Richter Xavier, qui tiennent à </li>
+<li> «Remercier Monsieur Laurent Mongiat, professeur de Physique au <a rel="nofollow" class="external text" href="http://www.ac-nice.fr/lycvalbonne">Lycée Régional de Valbonne</a>, initiateur (avec <a rel="nofollow" class="external text" href="http://www.loria.fr/~vthierry">Thierry Viéville</a>) du projet, qui nous a permis de travailler sur ce logiciel, et a su nous aider tout au long du développement en nous apportant une vision pédagogique».</li></ul></li></ul>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.016 seconds
+Real time usage: 0.014 seconds
+Preprocessor visited node count: 23/1000000
+Preprocessor generated node count: 28/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:90-1!*!*!!*!*!* and timestamp 20150313130635 and revision id 15842
+ -->

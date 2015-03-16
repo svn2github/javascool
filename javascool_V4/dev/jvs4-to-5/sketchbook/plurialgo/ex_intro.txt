@@ -1,0 +1,13 @@
+﻿void main() {
+	// declaration et typage des variables
+	double prixUnitaire; 
+	int quantite; 
+	double prixTotal; 
+	// saisie des entrees
+	prixUnitaire = readDouble("Quel est le prix unitaire de l'article en euros ?"); 
+	quantite = readInt("Quelle est la quantite achetee ?"); 
+	// calcul du prix total
+	prixTotal = quantite * prixUnitaire;
+	// affichage de la sortie
+	println("Le prix total vaut " + prixTotal + " euros"); 
+} 

@@ -1,0 +1,25 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void main() {
+  String[] nom, tel;
+  int i;
+  String s;
+  java.util.Scanner f;
+  nom = new String[10];
+  tel = new String[10];
+  f = openIn("repertoire.txt");
+  for(i = 0; i <= 9; i = i + 1) {
+    nom[i] = readStringFromFile(f);
+    tel[i] = readStringFromFile(f);
+  }
+  closeIn(f);
+  s = readString();
+  i = 0;
+  while(i < 10 && !stringEqual(s, nom[i])) {
+    i = i + 1;
+  }
+  if(i < 10) {
+    println(tel[i]);
+  } else {
+    println("Inconnu");
+  }
+}

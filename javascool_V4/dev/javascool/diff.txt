@@ -1,0 +1,2135 @@
+-----------------------------------------
+diff ../../work/src/org/javascool/About.java src/org/javascool/About.java
+3,5d2
+< import javax.swing.ImageIcon;
+< import javax.swing.JLabel;
+< 
+8c5
+< 
+---
+> import javax.swing.JLabel;
+11,12c8
+< /**
+<  * Définit le panneau de "about" de javascool et son bouton d'ouverture.
+---
+> /** Définit le panneau de "about" de javascool et son bouton d'ouverture.
+16,54c12,42
+< 	/** Titre de l'application. */
+< 	public static final String title = "Java's Cool 4.2.β";
+< 	/** Logode l'application. */
+< 	public static final String logo = "org/javascool/widgets/icons/logo.png";
+< 
+< 	/** Numéro de révision de l'application. */
+< 	public static final String revision = "4.2.beta"; 
+< 
+< 	/**
+< 	 * Renvoie une bouton (sous forme de logo) qui affiche le panneau de about
+< 	 * lors de son clic.
+< 	 */
+< 	public static JLabel getAboutMessage() {
+< 		final JLabel logoLabel = new JLabel(new ImageIcon(Macros.getIcon(About.logo).getImage().getScaledInstance(26,26,  java.awt.Image.SCALE_SMOOTH)));
+< 		logoLabel.addMouseListener(new MouseAdapter() {
+< 			@Override
+< 			public void mouseClicked(MouseEvent e) {
+< 				About.showAboutMessage();
+< 			}
+< 		});
+< 		return logoLabel;
+< 	}
+< 
+< 	/** Affiche le message de "about". */
+< 	public static void showAboutMessage() {
+< 		Macros.message(
+< 				About.title
+< 						+ " ("
+< 						+ About.revision
+< 						+ ") est un logiciel conçu par : <br/><center>"
+< 						+ "Philippe VIENNE<br/>"
+< 						+ "Guillaume MATHERON<br/>"
+< 						+ " et Inria<br/>"
+< 						+ "</center>"
+< 						+ "en collaboration avec David Pichardie, Philippe Lucaud, etc.. et le conseil de Robert Cabane<br/><br/>"
+< 						+ "Il est distribué sous les conditions de la licence CeCILL et GNU GPL V3<br/>" +
+< 						"ATTENTION CETTE VERSION EST EN BETA TEST",
+< 				true);
+< 	}
+---
+>   /** Titre de l'application. */
+>   public static final String title = "Java's Cool 4";
+>   /** Logode l'application. */
+>   public static final String logo = "org/javascool/widgets/icons/logo.png";
+> 
+>   /** Numéro de révision de l'application.*/
+>   public static final String revision = "4.0.973"; // @revision automatiquement mis à jour par ant -f work/build.xml classes
+> 
+> 
+>   /** Affiche le message de "about". */
+>   public static void showAboutMessage() {
+>     Macros.message(title + " ("+revision+") est un logiciel conçu par : <br/><center>"
+>                    + "Philippe VIENNE<br/>"
+>                    + "Guillaume MATHERON<br/>"
+>                    + " et Inria<br/>"
+>                    + "</center>"
+> 		   + "en collaboration avec David Pichardie, Philippe Lucaud, etc.. et le conseil de Robert Cabane<br/><br/>"
+>                    + "Il est distribué sous les conditions de la licence CeCILL et GNU GPL V3<br/>", true);
+>   }
+> 
+>   /** Renvoie une bouton (sous forme de logo) qui affiche le panneau de about lors de son clic. */
+>   public static JLabel getAboutMessage()  {
+>         JLabel logoLabel = new JLabel(Macros.getIcon(logo));
+>         logoLabel.addMouseListener(new MouseAdapter() {
+>             @Override
+>             public void mouseClicked(MouseEvent e) {
+>                 showAboutMessage();
+>             }
+>         });
+>         return logoLabel;
+>   }
+-----------------------------------------
+diff ../../work/src/org/javascool/gui/JVSToolBar.java src/org/javascool/gui/JVSToolBar.java
+3c3
+< import javax.swing.JButton;
+---
+> import org.javascool.core.ProgletEngine;
+4a5,6
+> import org.javascool.widgets.ToolBar;
+> import javax.swing.JButton;
+7,8d8
+< import org.javascool.builder.ProgletsBuilder;
+< import org.javascool.core.ProgletEngine;
+10c10
+< import org.javascool.widgets.ToolBar;
+---
+> import org.javascool.builder.ProgletsBuilder;
+12,15c12,14
+< /**
+<  * La barre d'outils de Java's cool Elle est placée en haut de l'interface. Elle
+<  * contient les boutons de gestion des fichiers, de compilation et d'éxecution.
+<  * 
+---
+> /** La barre d'outils de Java's cool
+>  * Elle est placée en haut de l'interface. Elle contient les boutons de gestion
+>  * des fichiers, de compilation et d'éxecution.
+19c18
+< public class JVSToolBar extends ToolBar {
+---
+> class JVSToolBar extends ToolBar {
+21,178c20,159
+< 	private static final long serialVersionUID = 1L;
+< 	/** Boutons de l'interface. */
+< 	private JButton compileButton;
+< 	private JButton demoButton;
+< 	private StartStopButton runButton;
+< 	/** Instance de la classe */
+< 	private static JVSToolBar jvstb;
+< 
+< 	public static JVSToolBar getInstance() {
+< 		if (JVSToolBar.jvstb == null) {
+< 			JVSToolBar.jvstb = new JVSToolBar();
+< 		}
+< 		return JVSToolBar.jvstb;
+< 	}
+< 
+< 	// @ inner-class-variable
+< 	@SuppressWarnings("unused")
+< 	private JButton pbutton;
+< 
+< 	private JVSToolBar() {
+< 		setName("Java's cool ToolBar");
+< 		init();
+< 	}
+< 
+< 	public void disableCompileButton() {
+< 		compileButton.setVisible(false);
+< 		revalidate();
+< 	}
+< 
+< 	public void disableDemoButton() {
+< 		demoButton.setVisible(false);
+< 		revalidate();
+< 	}
+< 
+< 	public void disableStartStopButton() {
+< 		runButton.setVisible(false);
+< 		revalidate();
+< 	}
+< 
+< 	public void enableCompileButton() {
+< 		compileButton.setVisible(true);
+< 		revalidate();
+< 	}
+< 
+< 	public void enableDemoButton() {
+< 		demoButton.setVisible(true);
+< 		revalidate();
+< 	}
+< 
+< 	public void enableStartStopButton() {
+< 		runButton.setVisible(true);
+< 		revalidate();
+< 	}
+< 
+< 	/** Initialize la barre d'outils en créant les bouttons */
+< 	private void init() {
+< 		setOpaque(false);
+< 		setBorder(null);
+< 		addTool("Nouvelle activité", "org/javascool/widgets/icons/new.png",
+< 				new Runnable() {
+< 
+< 					@Override
+< 					public void run() {
+< 						Desktop.getInstance().closeProglet();
+< 					}
+< 				});
+< 		addTool("Nouveau fichier", "org/javascool/widgets/icons/new.png",
+< 				new Runnable() {
+< 
+< 					@Override
+< 					public void run() {
+< 						Desktop.getInstance().openNewFile();
+< 					}
+< 				});
+< 		addTool("Ouvrir un fichier", "org/javascool/widgets/icons/open.png",
+< 				new Runnable() {
+< 
+< 					@Override
+< 					public void run() {
+< 						Desktop.getInstance().openFile();
+< 					}
+< 				});
+< 		addTool("Sauver", "org/javascool/widgets/icons/save.png",
+< 				new Runnable() {
+< 
+< 					@Override
+< 					public void run() {
+< 						Desktop.getInstance().saveCurrentFile();
+< 					}
+< 				});
+< 		addTool("Sauver sous", "org/javascool/widgets/icons/saveas.png",
+< 				new Runnable() {
+< 
+< 					@Override
+< 					public void run() {
+< 						Desktop.getInstance().saveAsCurrentFile();
+< 					}
+< 				});
+< 
+< 		compileButton = addTool("Compiler",
+< 				"org/javascool/widgets/icons/compile.png", new Runnable() {
+< 
+< 					@Override
+< 					public void run() {
+< 						Desktop.getInstance().compileFile();
+< 					}
+< 				});
+< 
+< 		addTool("Executer", runButton = new StartStopButton() {
+< 
+< 			private static final long serialVersionUID = 1L;
+< 
+< 			@Override
+< 			public boolean isRunning() {
+< 				return ProgletEngine.getInstance().isRunning();
+< 			}
+< 
+< 			@Override
+< 			public void start() {
+< 				JVSWidgetPanel.getInstance().focusOnProgletPanel();
+< 				ProgletEngine.getInstance().doRun();
+< 			}
+< 
+< 			@Override
+< 			public void stop() {
+< 				ProgletEngine.getInstance().doStop();
+< 			}
+< 		});
+< 		runButton.setVisible(false);
+< 		demoButton = addTool("Demo", "org/javascool/widgets/icons/play.png",
+< 				new Runnable() {
+< 
+< 					@Override
+< 					public void run() {
+< 						JVSWidgetPanel.getInstance().focusOnProgletPanel();
+< 						ProgletEngine.getInstance().getProglet().doDemo();
+< 					}
+< 				});
+< 		demoButton.setVisible(false);
+< 		// Crée le menu de construction de proglets si pertinent
+< 		if (ProgletsBuilder.canBuildProglets()) {
+< 			pbutton = addRightTool("Proglet Builder", new Runnable() {
+< 
+< 				@Override
+< 				public void run() {
+< 					DialogFrame.startFrame();
+< 				}
+< 			});
+< 		}
+< 		// @todo ici on a mit un platrage car sous Windows XP un
+< 		// java.lang.NoClassDefFoundError: org/javascool/About incomprehensible
+< 		// apparait !!!
+< 		try {
+< 			this.add(About.getAboutMessage(), 0);
+< 		} catch (final Exception e) {
+< 			System.err.println("Dysfonctionnement bizarre:" + e);
+< 		}
+< 	}
+---
+>     private static final long serialVersionUID = 1L;
+>     /** Boutons de l'interface. */
+>     private JButton compileButton;
+>     private JButton demoButton;
+>     private StartStopButton runButton;
+>     /** Instance de la classe */
+>     private static JVSToolBar jvstb;
+> 
+>     public static JVSToolBar getInstance() {
+>         if (jvstb == null) {
+>             jvstb = new JVSToolBar();
+>         }
+>         return jvstb;
+>     }
+> 
+>     private JVSToolBar() {
+>         setName("Java's cool ToolBar");
+>         init();
+>     }
+> 
+>     /** Initialize la barre d'outils en créant les bouttons */
+>     private void init() {
+>         addTool("Nouvelle activité", "org/javascool/widgets/icons/new.png", new Runnable() {
+> 
+>             @Override
+>             public void run() {
+>                 JVSPanel.getInstance().closeProglet();
+>             }
+>         });
+>         addTool("Nouveau fichier", "org/javascool/widgets/icons/new.png", new Runnable() {
+> 
+>             @Override
+>             public void run() {
+>                 JVSPanel.getInstance().newFile();
+>             }
+>         });
+>         addTool("Ouvrir un fichier", "org/javascool/widgets/icons/open.png", new Runnable() {
+> 
+>             @Override
+>             public void run() {
+>                 JVSPanel.getInstance().openFile();
+>             }
+>         });
+>         addTool("Sauver", "org/javascool/widgets/icons/save.png", new Runnable() {
+> 
+>             @Override
+>             public void run() {
+>                 JVSPanel.getInstance().saveFile();
+>             }
+>         });
+>         addTool("Sauver sous", "org/javascool/widgets/icons/saveas.png", new Runnable() {
+> 
+>             @Override
+>             public void run() {
+>                 JVSPanel.getInstance().saveAsFile();
+>             }
+>         });
+> 
+>         compileButton = addTool("Compiler", "org/javascool/widgets/icons/compile.png", new Runnable() {
+> 
+>             @Override
+>             public void run() {
+>                 JVSPanel.getInstance().compileFile();
+>             }
+>         });
+> 
+>         addTool("Executer", runButton = new StartStopButton() {
+> 
+>             private static final long serialVersionUID = 1L;
+> 
+>             @Override
+>             public void start() {
+>                 JVSWidgetPanel.getInstance().focusOnProgletPanel();
+>                 ProgletEngine.getInstance().doRun();
+>             }
+> 
+>             @Override
+>             public void stop() {
+>                 ProgletEngine.getInstance().doStop();
+>             }
+> 
+>             @Override
+>             public boolean isRunning() {
+>                 return ProgletEngine.getInstance().isRunning();
+>             }
+>         });
+>         runButton.setVisible(false);
+>         this.demoButton=addTool("Demo", "org/javascool/widgets/icons/play.png", new Runnable() {
+> 
+>                 @Override
+>                 public void run() {
+>                     JVSWidgetPanel.getInstance().focusOnProgletPanel();
+>                     ProgletEngine.getInstance().getProglet().doDemo();
+>                 }
+>             });
+>         demoButton.setVisible(false);
+>         // Crée le menu de construction de proglets si pertinent
+>         if (ProgletsBuilder.canBuildProglets()) {
+>             pbutton = addRightTool("Proglet Builder", new Runnable() {
+> 
+>                 @Override
+>                 public void run() {
+>                     DialogFrame.startFrame();
+>                 }
+>             });
+>         }
+>         this.add(About.getAboutMessage(), 0);
+>     }
+>     // @ inner-class-variable
+>     private JButton pbutton;
+> 
+>     public void enableCompileButton() {
+>         compileButton.setVisible(true);
+>         revalidate();
+>     }
+> 
+>     public void disableCompileButton() {
+>         compileButton.setVisible(false);
+>         revalidate();
+>     }
+>     
+>     public void enableDemoButton() {
+>         demoButton.setVisible(true);
+>         revalidate();
+>     }
+> 
+>     public void disableDemoButton() {
+>         demoButton.setVisible(false);
+>         revalidate();
+>     }
+> 
+>     public void enableStartStopButton() {
+>         runButton.setVisible(true);
+>         revalidate();
+>     }
+> 
+>     public void disableStartStopButton() {
+>         runButton.setVisible(false);
+>         revalidate();
+>     }
+-----------------------------------------
+diff ../../work/src/org/javascool/gui/JVSWidgetPanel.java src/org/javascool/gui/JVSWidgetPanel.java
+9d8
+< import org.javascool.widgets.TabbedPane;
+11,15c10,12
+< /**
+<  * Le panneau contenant les widgets Les widgets de Java's cool sont disposés
+<  * dans des onglets. Certain onglets de navigation web peuvent être fermés par
+<  * une croix.
+<  * 
+---
+> /** Le panneau contenant les widgets
+>  * Les widgets de Java's cool sont disposés dans des onglets. Certain onglets de
+>  * navigation web peuvent être fermés par une croix.
+20c17
+< public class JVSWidgetPanel extends TabbedPane {
+---
+> class JVSWidgetPanel extends JVSTabs {
+22,97c19,86
+< 	private static final long serialVersionUID = 1L;
+< 	private String progletTabId;
+< 	/** Instance du JVSWidgetPanel */
+< 	private static JVSWidgetPanel jwp;
+< 
+< 	public static JVSWidgetPanel getInstance() {
+< 		if (JVSWidgetPanel.jwp == null) {
+< 			JVSWidgetPanel.jwp = new JVSWidgetPanel();
+< 		}
+< 		return JVSWidgetPanel.jwp;
+< 	}
+< 
+< 	private JVSWidgetPanel() {
+< 		super();
+< 		this.add("Console", "", Console.getInstance());
+< 	}
+< 
+< 	/** Affiche la console */
+< 	public void focusOnConsolePanel() {
+< 		setSelectedIndex(this.indexOfTab("Console"));
+< 	}
+< 
+< 	/** Affiche l'onglet de la Proglet si il existe */
+< 	public void focusOnProgletPanel() {
+< 		if (progletTabId != null) {
+< 			switchToTab(progletTabId);
+< 		}
+< 	}
+< 
+< 	/**
+< 	 * Ouvre un nouvel onglet web Ouvre un nouveau HTMLDisplay dans un onglet.
+< 	 * Cet onglet peut être fermer à l'aide de la croix qui se situe à droite du
+< 	 * titre de l'onglet.
+< 	 * 
+< 	 * @param url
+< 	 *            L'url de la page à charger
+< 	 * @param tabName
+< 	 *            Le titre du tab à ouvrir
+< 	 * @see org.javascool.widgets.HtmlDisplay
+< 	 * @see String
+< 	 */
+< 	public void openWebTab(String url, String tabName) {
+< 		if (this.indexOfTab(tabName) >= 0) {
+< 			switchToTab(tabName);
+< 			return;
+< 		}
+< 		final HtmlDisplay memo = new HtmlDisplay();
+< 		memo.setPage(url);
+< 		memo.putClientProperty("CLOSABLE", true);
+< 		this.add(tabName, "", memo);
+< 		setSelectedComponent(memo);
+< 	}
+< 
+< 	/**
+< 	 * Charge les tabs de la proglet Charge le tab de la proglet (Panel) et
+< 	 * l'HTMLDisplay avec le fichier d'aide.
+< 	 * 
+< 	 * @param name
+< 	 *            Le nom du package de la proglet
+< 	 */
+< 	public void setProglet(String name) {
+< 		removeAll();
+< 		this.add("Console", "", Console.getInstance());
+< 		final Proglet proglet = ProgletEngine.getInstance().setProglet(name);
+< 		if (proglet.getPane() != null) {
+< 			progletTabId = this.add("Proglet " + name, "", proglet.getPane());
+< 		}
+< 		if (proglet.getHelp() != null) {
+< 			this.add("Aide de la proglet", "", new HtmlDisplay().setPage(Macros
+< 					.getResourceURL(proglet.getHelp())));
+< 			switchToTab("Aide de la proglet");
+< 		}
+< 		final HtmlDisplay memo = new HtmlDisplay();
+< 		memo.setPage(ClassLoader.getSystemResource(Core.help));
+< 		this.add("Mémo", "", memo);
+< 	}
+---
+>     private static final long serialVersionUID = 1L;
+>     private String progletTabId;
+>     /** Instance du JVSWidgetPanel */
+>     private static JVSWidgetPanel jwp;
+> 
+>     public static JVSWidgetPanel getInstance() {
+>         if (jwp == null) {
+>             jwp = new JVSWidgetPanel();
+>         }
+>         return jwp;
+>     }
+> 
+>     private JVSWidgetPanel() {
+>         super();
+>         this.add("Console", "", Console.getInstance());
+>     }
+> 
+>     /** Charge les tabs de la proglet
+>      * Charge le tab de la proglet (Panel) et l'HTMLDisplay avec le fichier d'aide.
+>      * @param name Le nom du package de la proglet
+>      */
+>     public void setProglet(String name) {
+>         this.removeAll();
+>         this.add("Console", "", Console.getInstance());
+>         Proglet proglet = ProgletEngine.getInstance().setProglet(name);
+>         if (proglet.getPane() != null) {
+>             this.progletTabId = this.add("Proglet " + name, "", proglet.getPane());
+>         }
+>         if (proglet.getHelp() != null) {
+>             this.add("Aide de la proglet", "", new HtmlDisplay().setPage(Macros.getResourceURL(proglet.getHelp())));
+>             this.switchToTab("Aide de la proglet");
+>         }
+>         HtmlDisplay memo = new HtmlDisplay();
+>         memo.setPage(ClassLoader.getSystemResource(Core.help));
+>         this.add("Mémo", "", memo);
+>     }
+> 
+>     /** Affiche l'onglet de la Proglet si il existe */
+>     public void focusOnProgletPanel() {
+>         if (progletTabId != null) {
+>             this.switchToTab(progletTabId);
+>         }
+>     }
+> 
+>     /** Affiche la console */
+>     public void focusOnConsolePanel() {
+>         this.setSelectedIndex(this.indexOfTab("Console"));
+>     }
+> 
+>     /** Ouvre un nouvel onglet web
+>      * Ouvre un nouveau HTMLDisplay dans un onglet. Cet onglet peut être fermer à
+>      * l'aide de la croix qui se situe à droite du titre de l'onglet.
+>      * @param url L'url de la page à charger
+>      * @param tabName Le titre du tab à ouvrir
+>      * @see org.javascool.widgets.HtmlDisplay
+>      * @see String
+>      */
+>     public void openWebTab(String url, String tabName) {
+>         if(this.indexOfTab(tabName)>=0){
+>             this.switchToTab(tabName);
+>             return;
+>         }
+>         HtmlDisplay memo = new HtmlDisplay();
+>         memo.setPage(url);
+>         this.add(tabName, "", memo);
+>         this.setTabComponentAt(this.indexOfTab(tabName), new TabPanel(this));
+>         this.setSelectedComponent(memo);
+>     }
+-----------------------------------------
+diff ../../work/src/org/javascool/gui/JVSStartPanel.java src/org/javascool/gui/JVSStartPanel.java
+6a7,11
+> import java.awt.Component;
+> import java.awt.Dimension;
+> import java.awt.GridLayout;
+> import java.awt.event.MouseEvent;
+> import java.awt.event.MouseListener;
+10a16
+> import javax.swing.JLabel;
+13,14d18
+< import javax.swing.ScrollPaneConstants;
+< import javax.swing.SwingConstants;
+16,22d19
+< 
+< import java.awt.Component;
+< import java.awt.Dimension;
+< import java.awt.GridLayout;
+< import java.awt.event.MouseEvent;
+< import java.awt.event.MouseListener;
+< 
+26,30c23,25
+< /**
+<  * Ecran d'accueil de Java's cool Il présente toutes les activités présentes
+<  * dans le jar sous la forme d'un panneau d'icones avec le nom des proglets
+<  * respectives.
+<  * 
+---
+> /** Ecran d'accueil de Java's cool
+>  * Il présente toutes les activités présentes dans le jar sous la forme d'un
+>  * panneau d'icones avec le nom des proglets respectives.
+35,37c30,31
+< 	private static final long serialVersionUID = 1L;
+< 
+< 	private static JVSStartPanel jvssp;
+---
+>     private static final long serialVersionUID = 1L;
+>     private static JVSStartPanel jvssp;
+39,132c33,117
+< 	/** Créer un pannel avec un bouton capâble de lançer la Proglet */
+< 	private static JPanel createShortcut(ImageIcon icon, String name,
+< 			String title, final Runnable start) {
+< 		final JPanel panel = new JPanel();
+< 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+< 		panel.add(Box.createVerticalGlue());
+< 		final JButton label = new JButton(name, icon);
+< 		// Affichage du titre dans le charset de l'ordinateur
+< 		label.setToolTipText(title);
+< 		label.setPreferredSize(new Dimension(160, 160));
+< 		label.setVerticalTextPosition(SwingConstants.BOTTOM);
+< 		label.setHorizontalTextPosition(SwingConstants.CENTER);
+< 		label.setAlignmentX(Component.CENTER_ALIGNMENT);
+< 		label.setAlignmentY(Component.CENTER_ALIGNMENT);
+< 		panel.add(label);
+< 		panel.add(Box.createVerticalGlue());
+< 		label.addMouseListener(new MouseListener() {
+< 
+< 			@Override
+< 			public void mouseClicked(MouseEvent e) {
+< 				start.run();
+< 			}
+< 
+< 			@Override
+< 			public void mouseEntered(MouseEvent e) {
+< 			}
+< 
+< 			@Override
+< 			public void mouseExited(MouseEvent e) {
+< 			}
+< 
+< 			@Override
+< 			public void mousePressed(MouseEvent e) {
+< 			}
+< 
+< 			@Override
+< 			public void mouseReleased(MouseEvent e) {
+< 			}
+< 		});
+< 		return panel;
+< 	}
+< 
+< 	public static JVSStartPanel getInstance() {
+< 		if (JVSStartPanel.jvssp == null) {
+< 			JVSStartPanel.jvssp = new JVSStartPanel(
+< 					JVSStartPanel.shortcutPanel());
+< 		}
+< 		return JVSStartPanel.jvssp;
+< 	}
+< 
+< 	/**
+< 	 * Dessine le JPanel en listant les proglets
+< 	 * 
+< 	 * @see ProgletEngine
+< 	 * @return Le JPanel dessiné
+< 	 */
+< 	private static JPanel shortcutPanel() {
+< 		final JPanel shortcuts = new JPanel();
+< 		int i = 0;
+< 		for (@SuppressWarnings("unused")
+< 		final ProgletEngine.Proglet proglet : ProgletEngine.getInstance()
+< 				.getProglets()) {
+< 			i++;
+< 		}
+< 		shortcuts.setLayout(new GridLayout(0, i / 3 == 0 ? 1 : i / 3));
+< 		for (final ProgletEngine.Proglet proglet : ProgletEngine.getInstance()
+< 				.getProglets()) {
+< 			shortcuts.add(JVSStartPanel.createShortcut(
+< 					Macros.getIcon(proglet.getIcon()), proglet.getName(),
+< 					proglet.getTitle(), new ProgletLoader(proglet.getName())));
+< 		}
+< 		return shortcuts;
+< 	}
+< 
+< 	private JVSStartPanel(JPanel panel) {
+< 		super(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+< 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+< 		ToolTipManager.sharedInstance().setInitialDelay(75);
+< 	}
+< 
+< 	/** Cette classe permet de lançer une Proglet */
+< 	private static class ProgletLoader implements Runnable {
+< 
+< 		private final String proglet;
+< 
+< 		ProgletLoader(String proglet) {
+< 			this.proglet = proglet;
+< 		}
+< 
+< 		@Override
+< 		public void run() {
+< 			JVSPanel.getInstance().loadProglet(proglet);
+< 		}
+< 	}
+---
+>     public static JVSStartPanel getInstance() {
+>         if (jvssp == null) {
+>             jvssp = new JVSStartPanel(JVSStartPanel.shortcutPanel());
+>         }
+>         return jvssp;
+>     }
+> 
+>     private JVSStartPanel(JPanel panel) {
+>         super(panel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+>         ToolTipManager.sharedInstance().setInitialDelay(75);
+>     }
+> 
+>     /** Dessine le JPanel en listant les proglets
+>      * @see ProgletEngine
+>      * @return Le JPanel dessiné
+>      */
+>     private static JPanel shortcutPanel() {
+>         JPanel shortcuts = new JPanel();
+>         int i=0;
+>         for (ProgletEngine.Proglet proglet : ProgletEngine.getInstance().getProglets()) {
+>             i++;
+>         }
+>         shortcuts.setLayout(new GridLayout(0, (i/3)==0?1:(i/3)));
+>         for (ProgletEngine.Proglet proglet : ProgletEngine.getInstance().getProglets()) {
+>             shortcuts.add(JVSStartPanel.createShortcut(Macros.getIcon(proglet.getIcon()), proglet.getName(), proglet.getTitle(), new ProgletLoader(proglet.getName())));
+>         }
+>         return shortcuts;
+>     }
+> 
+>     /** Cette classe permet de lançer une Proglet */
+>     private static
+>             class ProgletLoader implements Runnable {
+> 
+>         private String proglet;
+> 
+>         ProgletLoader(String proglet) {
+>             this.proglet = proglet;
+>         }
+> 
+>         @Override
+>         public void run() {
+>             JVSPanel.getInstance().loadProglet(proglet);
+>         }
+>     }
+> 
+>     /** Créer un pannel avec un bouton capâble de lançer la Proglet */
+>     private static JPanel createShortcut(ImageIcon icon, String name, String title, final Runnable start) {
+>         JPanel panel = new JPanel();
+>         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+>         panel.add(Box.createVerticalGlue());
+>         JButton label = new JButton(name, icon);
+>         // Affichage du titre dans le charset de l'ordinateur
+>         label.setToolTipText(title);
+>         label.setPreferredSize(new Dimension(160, 160));
+>         label.setVerticalTextPosition(JLabel.BOTTOM);
+>         label.setHorizontalTextPosition(JLabel.CENTER);
+>         label.setAlignmentX(Component.CENTER_ALIGNMENT);
+>         label.setAlignmentY(Component.CENTER_ALIGNMENT);
+>         panel.add(label);
+>         panel.add(Box.createVerticalGlue());
+>         label.addMouseListener(new MouseListener() {
+> 
+>             @Override
+>             public void mouseClicked(MouseEvent e) {
+>                 start.run();
+>             }
+> 
+>             @Override
+>             public void mousePressed(MouseEvent e) {
+>             }
+> 
+>             @Override
+>             public void mouseReleased(MouseEvent e) {
+>             }
+> 
+>             @Override
+>             public void mouseEntered(MouseEvent e) {
+>             }
+> 
+>             @Override
+>             public void mouseExited(MouseEvent e) {
+>             }
+>         });
+>         return panel;
+>     }
+-----------------------------------------
+diff ../../work/src/org/javascool/gui/Desktop.java src/org/javascool/gui/Desktop.java
+10d9
+< 
+12d10
+< 
+15d12
+< import org.javascool.gui.editor.FileReference;
+22,24c19,20
+< /**
+<  * Définit les functions d'interaction avec l'interface graphique de JavaScool.
+<  * 
+---
+> /** Définit les functions d'interaction avec l'interface graphique de JavaScool.
+>  *
+29,31c25
+< 	// @static-instance
+< 
+< 	private static Desktop desktop = null;
+---
+>     // @static-instance
+33,243c27,196
+< 	/**
+< 	 * Crée et/ou renvoie l'unique instance du desktop.
+< 	 * <p>
+< 	 * Une application ne peut définir qu'un seul desktop.
+< 	 * </p>
+< 	 */
+< 	public static Desktop getInstance() {
+< 		if (Desktop.desktop == null) {
+< 			Desktop.desktop = new Desktop();
+< 		}
+< 		return Desktop.desktop;
+< 	}
+< 
+< 	private MainFrame frame;
+< 
+< 	private Desktop() {
+< 	}
+< 
+< 	/** Ferme le fichier en cours d'édition. */
+< 	public void closeFile() {
+< 		JVSPanel.getInstance().closeFile();
+< 	}
+< 
+< 	/** Ferme la proglet en cours d'édition. */
+< 	public void closeProglet() {
+< 		JVSPanel.getInstance().closeProglet();
+< 	}
+< 
+< 	/** Compile le fichier en cours d'édition. */
+< 	public void compileFile() {
+< 		JVSPanel.getInstance().compileFile();
+< 	}
+< 
+< 	/** Affiche la console. */
+< 	public void focusOnConsolePanel() {
+< 		JVSWidgetPanel.getInstance().focusOnConsolePanel();
+< 	}
+< 
+< 	/** Affiche la console. */
+< 	public void focusOnProgletPanel() {
+< 		JVSWidgetPanel.getInstance().focusOnProgletPanel();
+< 	}
+< 
+< 	/** Renvoie la fenêtre racine de l'interface graphique. */
+< 	public JFrame getFrame() {
+< 		if (frame == null) {
+< 			frame = new MainFrame() {
+< 
+< 				private static final long serialVersionUID = 1727893520791296658L;
+< 
+< 				@Override
+< 				public boolean isClosable() {
+< 					return org.javascool.gui.Desktop.getInstance().isClosable();
+< 				}
+< 			}.reset(About.title, About.logo, JVSPanel.getInstance());
+< 		}
+< 		return frame;
+< 	}
+< 
+< 	/** Retourne la bare d'outils de Java's cool */
+< 	public ToolBar getToolBar() {
+< 		return JVSToolBar.getInstance();
+< 	}
+< 
+< 	/**
+< 	 * Demande la fermeture du desktop à la fin du programme.
+< 	 * 
+< 	 * @return La valeur true si le desktop peut être fermé sans dommage pour
+< 	 *         l'utilisateur, sinon la valeur fausse.
+< 	 */
+< 	public boolean isClosable() {
+< 		final boolean close = JVSPanel.getInstance().close();
+< 		if (close && ProgletEngine.getInstance().getProglet() != null) {
+< 			ProgletEngine.getInstance().getProglet().stop();
+< 		}
+< 		return close;
+< 	}
+< 
+< 	/**
+< 	 * @see #openBrowserTab(URL, String)
+< 	 */
+< 	public void openBrowserTab(String url, String name) {
+< 		JVSWidgetPanel.getInstance().openWebTab(url, name);
+< 	}
+< 
+< 	/**
+< 	 * Ouvre un nouvel onglet de navigation Ouvre un onglet HTML3 dans le
+< 	 * JVSWidgetPanel, cet onglet peut être fermé
+< 	 * 
+< 	 * @param url
+< 	 *            L'adresse à ouvrir sous forme de chaîne de caractères ou
+< 	 *            d'URL.
+< 	 * @param name
+< 	 *            Le titre du nouvel onglet
+< 	 */
+< 	public void openBrowserTab(URL url, String name) {
+< 		openBrowserTab(url.toString(), name);
+< 	}
+< 
+< 	/**
+< 	 * @see #openFile(File)
+< 	 */
+< 	public boolean openFile() {
+< 		return openFile((File) null);
+< 	}
+< 
+< 	/**
+< 	 * Ouvre un fichier Demande à l'utilisateur de choisir un fichier et l'ouvre
+< 	 * 
+< 	 * @param file
+< 	 *            Le fichier à ouvrir.
+< 	 *            <p>
+< 	 *            -Avec la valeur null une boîte de dialogue le demandera à
+< 	 *            l'utilisateur.
+< 	 *            </p>
+< 	 *            <p>
+< 	 *            - Si le fichier est une URL, une copie locale du fichier (avec
+< 	 *            sauvegarde du fichier existant) est effectuée avant ouverture.
+< 	 *            </p>
+< 	 */
+< 	public boolean openFile(File file) {
+< 		try {
+< 			if (file == null) {
+< 				JVSPanel.getInstance().openFile();
+< 			} else {
+< 				JVSPanel.getInstance().openFile(new FileReference(file));
+< 			}
+< 			return true;
+< 		} catch (final Throwable th) {
+< 			System.out.println("Aie impossible d'ouvrir le fichier " + th);
+< 			return false;
+< 		}
+< 	}
+< 
+< 	/**
+< 	 * @see #openFile(File)
+< 	 */
+< 	public boolean openFile(String file) {
+< 		return openFile(Macros.getResourceURL(file));
+< 	}
+< 
+< 	/**
+< 	 * @see #openFile(File)
+< 	 */
+< 	public boolean openFile(URL url) {
+< 		try {
+< 			System.err.println(url.getProtocol());
+< 			if (url.getProtocol().equals("jar")) {
+< 				final FileReference tmpFile = new FileReference();
+< 				tmpFile.setContent(FileManager.load(url.toExternalForm()));
+< 				JVSPanel.getInstance().openFile(tmpFile);
+< 				return true;
+< 			}
+< 			return openFile(new File(url.toURI()));
+< 		} catch (final Exception ex) {
+< 			System.out.println("Aie impossible d'ouvrir le fichier " + ex);
+< 			System.err.println("Error : ");
+< 			ex.printStackTrace(System.err);
+< 			return false;
+< 		}
+< 	}
+< 
+< 	/**
+< 	 * Crée un nouveau fichier.
+< 	 * 
+< 	 * @return La valeur true si le fichier est bien créé.
+< 	 */
+< 	public boolean openNewFile() {
+< 		try {
+< 			JVSPanel.getInstance().newFile();
+< 			return true;
+< 		} catch (final Throwable th) {
+< 			System.out.println("Aie impossible de créer un nouveau fichier "
+< 					+ th);
+< 			return false;
+< 		}
+< 	}
+< 
+< 	/**
+< 	 * Ouvre une proglet
+< 	 * 
+< 	 * @param proglet
+< 	 *            Le nom de code de la Proglet
+< 	 * @return True si tous les fichier ont été sauvegardé et la proglet
+< 	 *         sauvegardé
+< 	 */
+< 	public boolean openProglet(String proglet) {
+< 		if (JVSPanel.getInstance().closeAllFiles()) {
+< 			JVSPanel.getInstance().loadProglet(proglet);
+< 			return true;
+< 		} else
+< 			return false;
+< 	}
+< 
+< 	/**
+< 	 * Demande à l'utilisateur de sauvegarder le fichier courant.
+< 	 * 
+< 	 * @return La valeur true si le fichier est bien sauvegardé.
+< 	 */
+< 	public boolean saveAsCurrentFile() {
+< 		return JVSPanel.getInstance().saveAsFile();
+< 	}
+< 
+< 	/**
+< 	 * Demande à l'utilisateur de sauvegarder le fichier courant.
+< 	 * 
+< 	 * @return La valeur true si le fichier est bien sauvegardé.
+< 	 */
+< 	public boolean saveCurrentFile() {
+< 		return JVSPanel.getInstance().saveFile();
+< 	}
+---
+>     /** Crée et/ou renvoie l'unique instance du desktop.
+>      * <p>Une application ne peut définir qu'un seul desktop.</p>
+>      */
+>     public static Desktop getInstance() {
+>         if (desktop == null) {
+>             desktop = new Desktop();
+>         }
+>         return desktop;
+>     }
+>     private static Desktop desktop = null;
+> 
+>     private Desktop() {
+>     }
+> 
+>     /** Renvoie la fenêtre racine de l'interface graphique. */
+>     public JFrame getFrame() {
+>         if (frame == null) {
+>             frame = (new MainFrame() {
+> 
+>                 @Override
+>                 public boolean isClosable() {
+>                     return org.javascool.gui.Desktop.getInstance().isClosable();
+>                 }
+>             }).reset(About.title, About.logo, JVSPanel.getInstance());
+>         }
+>         return frame;
+>     }
+>     private MainFrame frame;
+> 
+>     /** Retourne la bare d'outils de Java's cool */
+>     public ToolBar getToolBar() {
+>         return (ToolBar) JVSToolBar.getInstance();
+>     }
+> 
+>     /** Demande la fermeture du desktop à la fin du programme.
+>      * @return La valeur true si le desktop peut être fermé sans dommage pour l'utilisateur, sinon la valeur fausse.
+>      */
+>     public boolean isClosable() {
+>         boolean close = JVSPanel.getInstance().close();
+>             if (close && ProgletEngine.getInstance().getProglet() != null)
+>                 ProgletEngine.getInstance().getProglet().stop();
+>         return close;
+>     }
+> 
+>     /** Crée un nouveau fichier.
+>      * @return  La valeur true si le fichier est bien créé.
+>      */
+>     public boolean openNewFile() {
+>         try {
+>             JVSPanel.getInstance().newFile();
+>             return true;
+>         } catch (Throwable th) {
+> 	  System.out.println("Aie impossible de créer un nouveau fichier "+th);
+> 	  return false;
+>         }
+>     }
+> 
+>     /** Ouvre un fichier
+>      * Demande à l'utilisateur de choisir un fichier et l'ouvre
+>      * @param file Le fichier à ouvrir. 
+>      * <p>-Avec la valeur null une boîte de dialogue le demandera à l'utilisateur.</p>
+>      * <p>- Si le fichier est une URL, une copie locale du fichier (avec sauvegarde du fichier existant) est effectuée avant ouverture.</p>
+>      */
+>     public boolean openFile(File file) {
+>         try {
+>             if (file == null) {
+>                 JVSPanel.getInstance().openFile();
+>             } else {
+>                 JVSFileTabs.getInstance().open(file.getAbsolutePath());
+>             }
+>             return true;
+>         } catch (Throwable th) {
+> 	  System.out.println("Aie impossible d'ouvrir le fichier "+th);
+>             return false;
+>         }
+>     }
+> 
+>     /**
+>      * @see #openFile(File)
+>      */
+>     public boolean openFile(URL url) {
+>         try{
+>             System.err.println(url.getProtocol());
+>             if(url.getProtocol().equals("jar")){
+>                 JVSFileTabs.getInstance().openFile(new JVSFile(FileManager.load(url.toExternalForm())));
+>                 return true;
+>             }
+>             return openFile(new File(url.toURI()));
+>         }catch(Exception ex){
+>  	  System.out.println("Aie impossible d'ouvrir le fichier "+ex);
+>             System.err.println("Error : ");
+>             ex.printStackTrace(System.err);
+>             return false;
+>         }
+>     }
+> 
+>     /**
+>      * @see #openFile(File)
+>      */
+>     public boolean openFile(String file) {
+>         return openFile(Macros.getResourceURL(file));
+>     }
+> 
+>     /**
+>      * @see #openFile(File)
+>      */
+>     public boolean openFile() {
+>         return openFile((File) null);
+>     }
+> 
+>     /** Demande à l'utilisateur de sauvegarder le fichier courant.
+>      * @return La valeur true si le fichier est bien sauvegardé.
+>      */
+>     public boolean saveCurrentFile() {
+>         return JVSPanel.getInstance().saveFile();
+>     }
+> 
+>     /** Ferme le fichier en cours d'édition. */
+>     public void closeFile() {
+>         JVSPanel.getInstance().closeFile();
+>     }
+> 
+>     /** Compile le fichier en cours d'édition. */
+>     public void compileFile() {
+>         JVSPanel.getInstance().compileFile();
+>     }
+> 
+>     /** Ferme la proglet en cours d'édition. */
+>     public void closeProglet() {
+>         JVSPanel.getInstance().closeProglet();
+>     }
+> 
+>     /** Ouvre une proglet
+>      * @param proglet Le nom de code de la Proglet
+>      * @return True si tous les fichier ont été sauvegardé et la proglet sauvegardé
+>      */
+>     public boolean openProglet(String proglet) {
+>         if (JVSPanel.getInstance().closeAllFiles()) {
+>             JVSPanel.getInstance().loadProglet(proglet);
+>             return true;
+>         } else {
+>             return false;
+>         }
+>     }
+> 
+>     /** Ouvre un nouvel onglet de navigation
+>      * Ouvre un onglet HTML3 dans le JVSWidgetPanel, cet onglet peut être fermé
+>      * @param url L'adresse à ouvrir sous forme de chaîne de caractères ou d'URL.
+>      * @param name Le titre du nouvel onglet
+>      */
+>     public void openBrowserTab(URL url, String name) {
+>         openBrowserTab(url.toString(), name);
+>     }
+> 
+>     /**
+>      * @see #openBrowserTab(URL, String)
+>      */
+>     public void openBrowserTab(String url, String name) {
+>         JVSWidgetPanel.getInstance().openWebTab(url, name);
+>     }
+> 
+>     /** Affiche la console. */
+>     public void focusOnConsolePanel() {
+>       JVSWidgetPanel.getInstance().focusOnConsolePanel();
+>     }
+>     
+>     /** Affiche la console. */
+>     public void focusOnProgletPanel() {
+>        JVSWidgetPanel.getInstance().focusOnProgletPanel();
+>     }
+-----------------------------------------
+diff ../../work/src/org/javascool/gui/JVSCenterPanel.java src/org/javascool/gui/JVSCenterPanel.java
+5,11c5,8
+< import org.javascool.gui.editor.JVSEditorsPane;
+< 
+< /**
+<  * Le double pannau central de Java's cool Le JVSCenterPanel est utilisé pour
+<  * plaçer correctemment le JVSWidgetPanel à droite et le JVSFileTabs à gauche
+<  * 
+<  * @see org.javascool.gui.JVSEditorsPane
+---
+> /** Le double pannau central de Java's cool
+>  * Le JVSCenterPanel est utilisé pour plaçer correctemment le JVSWidgetPanel à
+>  * droite et le JVSFileTabs à gauche
+>  * @see org.javascool.gui.JVSFileTabs
+15,25c12,14
+< 	private static final long serialVersionUID = 1L;
+< 	/** L'instance en cour de cette classe */
+< 	private static JVSCenterPanel jvssplitpane;
+< 
+< 	/** Retourne l'instance actuelle de la classe */
+< 	public static JVSCenterPanel getInstance() {
+< 		if (JVSCenterPanel.jvssplitpane == null) {
+< 			JVSCenterPanel.jvssplitpane = new JVSCenterPanel();
+< 		}
+< 		return JVSCenterPanel.jvssplitpane;
+< 	}
+---
+>   private static final long serialVersionUID = 1L;
+>   /** L'instance en cour de cette classe */
+>   private static JVSCenterPanel jvssplitpane;
+27,34c16,29
+< 	/** Constructeur de la classe */
+< 	private JVSCenterPanel() {
+< 		super(JSplitPane.HORIZONTAL_SPLIT);
+< 		setLeftComponent(JVSEditorsPane.getInstance());
+< 		setRightComponent(JVSWidgetPanel.getInstance());
+< 		setVisible(true);
+< 		validate();
+< 	}
+---
+>   /** Retourne l'instance actuelle de la classe */
+>   public static JVSCenterPanel getInstance() {
+>     if(jvssplitpane == null)
+>       jvssplitpane = new JVSCenterPanel();
+>     return jvssplitpane;
+>   }
+>   /** Constructeur de la classe */
+>   private JVSCenterPanel() {
+>     super(JSplitPane.HORIZONTAL_SPLIT);
+>     this.setLeftComponent(JVSFileTabs.getInstance());
+>     this.setRightComponent(JVSWidgetPanel.getInstance());
+>     this.setVisible(true);
+>     this.validate();
+>   }
+-----------------------------------------
+diff ../../work/src/org/javascool/gui/JVSPanel.java src/org/javascool/gui/JVSPanel.java
+2a3
+> import java.awt.BorderLayout;
+5c6
+< 
+---
+> import java.util.HashMap;
+9,11c10
+< 
+< import java.awt.BorderLayout;
+< 
+---
+> import javax.swing.UIManager;
+13,15d11
+< import org.javascool.gui.editor.FileKit;
+< import org.javascool.gui.editor.FileReference;
+< import org.javascool.gui.editor.JVSEditorsPane;
+18,23c14,17
+< /**
+<  * The main panel for Java's cool This class wich is very static contain all
+<  * that we need to run Java's cool like save and open file command. This class
+<  * can only be called by JVSPanel on instance otherwise it can throw very big
+<  * errors
+<  * 
+---
+> /** The main panel for Java's cool
+>  * This class wich is very static contain all that we need to run Java's cool like save and open file command.
+>  * This class can only be called by JVSPanel on instance otherwise it can throw very big errors
+>  *
+27,300c21,404
+< 
+< 	private static final long serialVersionUID = -913356947524067017L;
+< 
+< 	private static JVSPanel desktop = null;
+< 
+< 	/** Access to the unique instance of the JVSPanel object. */
+< 	public static JVSPanel getInstance() {
+< 		if (JVSPanel.desktop == null) {
+< 			JVSPanel.desktop = new JVSPanel();
+< 		}
+< 		return JVSPanel.desktop;
+< 	}
+< 
+< 	/** Contain the current CompileAction. */
+< 	private final CompileAction ca = new CompileAction();
+< 
+< 	private JVSPanel() {
+< 		setVisible(true);
+< 		setLayout(new BorderLayout());
+< 		add(JVSStartPanel.getInstance());
+< 		revalidate();
+< 	}
+< 
+< 	/**
+< 	 * Handle the close application task Check if all files are saved and if the
+< 	 * user want to close the application
+< 	 * 
+< 	 * @return True mean that app can be close and false that app can NOT be
+< 	 *         closed
+< 	 */
+< 	public boolean close() {
+< 		return closeAllFiles("Voulez vous vraiment quitter Java's cool ?");
+< 	}
+< 
+< 	/**
+< 	 * Ask to user if he want to continue and save files Check if all files are
+< 	 * saved and if the user wants to continue
+< 	 * 
+< 	 * @return True mean that you can continue and false not
+< 	 */
+< 	public boolean closeAllFiles() {
+< 		return closeAllFiles("Voulez vous vraiment continuer ?");
+< 	}
+< 
+< 	/**
+< 	 * Ask to user if he want to save files Check if all files are saved and if
+< 	 * the user wants to continue
+< 	 * 
+< 	 * @param messageIfAllFilesAreSaved
+< 	 *            Message to ask to the user
+< 	 * @return True mean that you can continue and false not
+< 	 */
+< 	public boolean closeAllFiles(String messageIfAllFilesAreSaved) {
+< 		if (getEditorTabs().isAllFilesSaved()) {
+< 			final int n = JOptionPane.showConfirmDialog(Desktop.getInstance()
+< 					.getFrame(), messageIfAllFilesAreSaved, "Confirmation",
+< 					JOptionPane.YES_NO_OPTION);
+< 			if (n == JOptionPane.YES_OPTION)
+< 				return true;
+< 			else
+< 				return false;
+< 		}
+< 		return getEditorTabs().saveAllFiles();
+< 	}
+< 
+< 	public void closeFile() {
+< 		getEditorTabs().closeCurrentFile();
+< 	}
+< 
+< 	/**
+< 	 * Close the current proglet.
+< 	 * 
+< 	 */
+< 	public void closeProglet() {
+< 		if (closeAllFiles()) {
+< 			removeAll();
+< 			setOpaque(true);
+< 			this.repaint();
+< 			validate();
+< 			this.repaint();
+< 			add(JVSStartPanel.getInstance());
+< 			this.repaint();
+< 			revalidate();
+< 			this.repaint();
+< 			if (ProgletEngine.getInstance().getProglet() != null) {
+< 				ProgletEngine.getInstance().getProglet().stop();
+< 			}
+< 		}
+< 	}
+< 
+< 	/**
+< 	 * Compile edited file in the editor.
+< 	 */
+< 	public void compileFile() {
+< 		ca.actionPerformed(null);
+< 	}
+< 
+< 	/**
+< 	 * Get the current EditorTabs.
+< 	 * 
+< 	 * @return An EditorTabs
+< 	 * @throws IllegalStateException
+< 	 *             if no EditorTabs opened in the left part
+< 	 */
+< 	public FileKit getEditorTabs() throws IllegalStateException {
+< 		if (JVSCenterPanel.getInstance().getLeftComponent() instanceof FileKit)
+< 			return (FileKit) JVSCenterPanel.getInstance().getLeftComponent();
+< 		throw new IllegalStateException("Left component is not an EditorTabs");
+< 	}
+< 
+< 	/**
+< 	 * Charge une nouvelle proglet dans l'interface utilisateur.
+< 	 * 
+< 	 * @param name
+< 	 *            Le nom de code de la proglet (ex:abcdAlgos)
+< 	 * @see org.javascool.core.ProgletEngine
+< 	 */
+< 	public void loadProglet(String name) {
+< 		System.gc();
+< 		removeAll();
+< 		try {
+< 			JVSToolBar.getInstance().disableDemoButton();
+< 			revalidate();
+< 			this.add(JVSToolBar.getInstance(), BorderLayout.NORTH);
+< 			this.add(JVSCenterPanel.getInstance(), BorderLayout.CENTER);
+< 			revalidate();
+< 			JVSCenterPanel.getInstance().revalidate();
+< 			JVSCenterPanel.getInstance().setDividerLocation(getWidth() / 2);
+< 			JVSCenterPanel.getInstance().revalidate();
+< 			JVSWidgetPanel.getInstance().setProglet(name);
+< 			if (ProgletEngine.getInstance().getProglet().hasDemo()) {
+< 				JVSToolBar.getInstance().enableDemoButton();
+< 			} else {
+< 				JVSToolBar.getInstance().disableDemoButton();
+< 			}
+< 			Desktop.getInstance().openNewFile();
+< 		} catch (final Exception e) {
+< 			throw new RuntimeException("Unable to load proglet " + name, e);
+< 		}
+< 	}
+< 
+< 	/**
+< 	 * Open a new file in the editor
+< 	 * 
+< 	 * @see JVSEditorsPane
+< 	 */
+< 	public void newFile() {
+< 		getEditorTabs().openFile(new FileReference());
+< 	}
+< 
+< 	/**
+< 	 * Open a file. Start a file chooser and open selected file to the current
+< 	 * EditorTabs
+< 	 * 
+< 	 * @see JFileChooser
+< 	 * @see JVSEditorsPane
+< 	 */
+< 	public void openFile() {
+< 		final JFileChooser fc = new JFileChooser();
+< 		if (UserConfig.getInstance("javascool").getProperty("dir") != null) {
+< 			fc.setCurrentDirectory(new File(UserConfig.getInstance("javascool")
+< 					.getProperty("dir")));
+< 		} else if (System.getProperty("os.name").toLowerCase().contains("nix")
+< 				|| System.getProperty("os.name").toLowerCase().contains("nux")) {
+< 			fc.setCurrentDirectory(new File(System.getProperty("user.dir")));
+< 		} else if (System.getProperty("home.dir") != null) {
+< 			fc.setCurrentDirectory(new File(System.getProperty("home.dir")));
+< 		}
+< 		if (fc.showOpenDialog(Desktop.getInstance().getFrame()) == JFileChooser.APPROVE_OPTION) {
+< 			if (!fc.getSelectedFile().exists()) {
+< 				JOptionPane.showMessageDialog(Desktop.getInstance().getFrame(),
+< 						"Le fichier indiqué n'existe pas !!!", "Erreur",
+< 						JOptionPane.ERROR_MESSAGE);
+< 				return;
+< 			}
+< 			UserConfig.getInstance("javascool").setProperty("dir",
+< 					fc.getSelectedFile().getParentFile().getAbsolutePath());
+< 			openFile(new FileReference(fc.getSelectedFile()));
+< 		}
+< 	}
+< 
+< 	/** Open a specified file. */
+< 	public void openFile(FileReference jvsFileReference) {
+< 		getEditorTabs().openFile(jvsFileReference);
+< 	}
+< 
+< 	@Deprecated
+< 	public void reportApplicationBug(String ex) {
+< 		Dialog.error("Erreur dans Java's Cool", ex);
+< 	}
+< 
+< 	/**
+< 	 * Throw to the user a compile error. Show a compile error for an human Open
+< 	 * a dialog with compile error explains and hightlight the error line
+< 	 * 
+< 	 * @param line
+< 	 *            The line error
+< 	 * @param explication
+< 	 *            Human explain for that error
+< 	 * @see Console
+< 	 */
+< 	public void reportCompileError(int line, String explication) {
+< 		org.javascool.widgets.Console.getInstance().clear();
+< 		JVSWidgetPanel.getInstance().focusOnConsolePanel();
+< 		if (ca.getCompiledEditor() != null) {
+< 			ca.getCompiledEditor().signalLine(line);
+< 		}
+< 	}
+< 
+< 	/**
+< 	 * Report a runtime bug to user. Report a bug to the user without
+< 	 * ErrorCatcher. It is used by a proglet to report a bug while execute the
+< 	 * user code.
+< 	 * 
+< 	 * @param ex
+< 	 *            The bug to report
+< 	 */
+< 	public void reportRuntimeBug(String ex) {
+< 		final StackTraceElement[] stack = Thread.currentThread()
+< 				.getStackTrace();
+< 		int line = 0;
+< 		for (final StackTraceElement elem : stack) {
+< 			if (elem.getFileName().startsWith("JvsToJavaTranslated")) {
+< 				line = elem.getLineNumber();
+< 			} else {
+< 				System.err.println(elem.getClassName());
+< 			}
+< 		}
+< 		if (ca.getCompiledEditor() != null) {
+< 			ca.getCompiledEditor().signalLine(line);
+< 		}
+< 		ProgletEngine.getInstance().doStop();
+< 		JOptionPane.showMessageDialog(Desktop.getInstance().getFrame(), ex,
+< 				"Erreur du logiciel à la ligne " + line,
+< 				JOptionPane.ERROR_MESSAGE);
+< 	}
+< 
+< 	/**
+< 	 * @see saveFile()
+< 	 */
+< 	public boolean saveAsFile() {
+< 		if (getEditorTabs().saveAsCurrentFile())
+< 			return true;
+< 		return false;
+< 	}
+< 
+< 	/**
+< 	 * Save the current file. Ask to the user where save the file if is tmp or
+< 	 * simple save
+< 	 * 
+< 	 * @see JVSFile
+< 	 * @return true on success or false if the file could not be saved
+< 	 */
+< 	public boolean saveFile() {
+< 		if (getEditorTabs().saveCurrentFile())
+< 			return true;
+< 		return false;
+< 	}
+< 
+< 	@Deprecated
+< 	public static class Dialog {
+< 
+< 		/** Show an error dialog */
+< 		public static void error(String title, String message) {
+< 			JOptionPane.showMessageDialog(Desktop.getInstance().getFrame(),
+< 					message, title, JOptionPane.ERROR_MESSAGE);
+< 		}
+< 
+< 		/** Show a success dialog */
+< 		public static void success(String title, String message) {
+< 			JOptionPane.showMessageDialog(Desktop.getInstance().getFrame(),
+< 					message, title, JOptionPane.INFORMATION_MESSAGE);
+< 		}
+< 	}
+---
+>     // Empeche de pouvoir renommer itempestivement des folder
+>     static {
+>     UIManager.put("FileChooser.readOnly", Boolean.TRUE);
+>     }
+> 
+>     private static final long serialVersionUID = 1L;
+>     /** This HashMap say if a file has to be saved */
+>     HashMap<String, Boolean> haveToSave = new HashMap<String, Boolean>();
+>     private Boolean noFileEdited = true;
+> 
+>     /** Access to the unique instance of the JVSPanel object. */
+>     public static JVSPanel getInstance() {
+>         if (desktop == null) {
+>             desktop = new JVSPanel();
+>         }
+>         return desktop;
+>     }
+>     private static JVSPanel desktop = null;
+> 
+>     private JVSPanel() {
+>         setVisible(true);
+>         setLayout(new BorderLayout());
+>         add(JVSStartPanel.getInstance());
+>         this.revalidate();
+>     }
+> 
+>     public void closeProglet() {
+>         if (closeAllFiles()) {
+>             this.removeAll();
+>             this.setOpaque(true);
+>             this.repaint();
+>             this.validate();
+>             this.repaint();
+>             add(JVSStartPanel.getInstance());
+>             this.repaint();
+>             this.revalidate();
+>             this.repaint();
+>         if (ProgletEngine.getInstance().getProglet() != null)
+>            ProgletEngine.getInstance().getProglet().stop();
+>         }
+>     }
+> 
+>     /** Open a new file in the editor
+>      * @see JVSFileTabs
+>      */
+>     public void newFile() {
+>         String fileId = JVSFileTabs.getInstance().openNewFile();
+>         haveToSave.put(fileId, false);
+>     }
+> 
+>     /** Compile file in the editor
+>      * @see JVSFileTabs
+>      */
+>     public void compileFile() {
+>         JVSFileTabs.getInstance().getEditor(JVSFileTabs.getCurrentCompiledFile()).removeLineSignals();
+>         if (JVSFileTabs.getInstance().saveCurrentFile()) {
+>             JVSWidgetPanel.getInstance().focusOnConsolePanel();
+>             if (JVSFileTabs.getInstance().compileFile(JVSFileTabs.getInstance().getCurrentFileId())) {
+>                 JVSToolBar.getInstance().enableStartStopButton();
+>             } else {
+>                 JVSToolBar.getInstance().disableStartStopButton();
+>             }
+>         }
+>     }
+> 
+>     /** Open a file
+>      * Start a file chooser and open selected file
+>      * @see JFileChooser
+>      * @see JVSFileTabs
+>      */
+>     public void openFile() {
+>         final JFileChooser fc = new JFileChooser();
+>         if (UserConfig.getInstance("javascool").getProperty("dir") != null) {
+>             fc.setCurrentDirectory(new File(UserConfig.getInstance("javascool").getProperty("dir")));
+>         } else if (System.getProperty("os.name").toLowerCase().contains("nix") || System.getProperty("os.name").toLowerCase().contains("nux")) {
+>             fc.setCurrentDirectory(new File(System.getProperty("user.dir")));
+>         } else if (System.getProperty("home.dir") != null) {
+>             fc.setCurrentDirectory(new File(System.getProperty("home.dir")));
+>         }
+>         int returnVal = fc.showOpenDialog(Desktop.getInstance().getFrame());
+>         if (returnVal == JFileChooser.APPROVE_OPTION) {
+>             String path = fc.getSelectedFile().getAbsolutePath();
+>             if(!fc.getSelectedFile().exists()){
+>                 Dialog.error("Erreur", "Le fichier indiqué n'existe pas !!!");
+>                 return;
+>             }
+>             UserConfig.getInstance("javascool").setProperty("dir", fc.getSelectedFile().getParentFile().getAbsolutePath());
+>             if (noFileEdited) {
+>                 noFileEdited = false;
+>             }
+>             String fileId = JVSFileTabs.getInstance().open(path);
+>             haveToSave.put(fileId, false);
+>         } else {
+>         }
+>     }
+> 
+>     /** Save the current file
+>      * @see JVSFileTabs
+>      * @see JVSFile
+>      */
+>     public boolean saveFile() {
+>         if (JVSFileTabs.getInstance().saveCurrentFile()) {
+>             haveToSave.put(JVSFileTabs.getInstance().getCurrentFileId(), false);
+>             return true;
+>         }
+>         return false;
+>     }
+> 
+>     /** Save the current file
+>      * @see JVSFileTabs
+>      * @see JVSFile
+>      */
+>     public boolean saveAsFile() {
+>         if (JVSFileTabs.getInstance().saveAsCurrentFile()) {
+>             haveToSave.put(JVSFileTabs.getInstance().getCurrentFileId(), false);
+>             return true;
+>         }
+>         return false;
+>     }
+> 
+>     /** Close the current file
+>      * @see JVSFileTabs
+>      */
+>     public void closeFile() {
+>         if (haveToSave.get(JVSFileTabs.getInstance().getCurrentFileId())) {
+>             if (saveFileIdBeforeClose(JVSFileTabs.getInstance().getCurrentFileId()) == 1) {
+>                 JVSFileTabs.getInstance().closeFile(JVSFileTabs.getInstance().getCurrentFileId());
+>             }
+>         } else {
+>             JVSFileTabs.getInstance().closeFile(JVSFileTabs.getInstance().getCurrentFileId());
+>         }
+>         if (JVSFileTabs.getInstance().getOppenedFileCount() == 0) {
+>             newFile();
+>         }
+>     }
+> 
+>     /** Update haveToSave for a file
+>      * Set it to true
+>      * @param fileId The file id
+>      */
+>     public void mustSave(String fileId) {
+>         noFileEdited = false;
+>         haveToSave.put(fileId, true);
+>     }
+> 
+>     /** Update haveToSave for a file
+>      * Set it to true
+>      * @param fileId The file id
+>      */
+>     public void haveNotToSave(String fileId) {
+>         haveToSave.put(fileId, false);
+>     }
+> 
+>     public Boolean getHasToSave(String fileId) {
+>         return haveToSave.get(fileId);
+>     }
+> 
+>     /** Show a compile error for an human
+>      * Open a dialog with compile error explains and hightlight the error line
+>      * @param line The line error
+>      * @param explication Human explain for that error
+>      * @see Console
+>      */
+>     public void reportCompileError(int line, String explication) {
+>         org.javascool.widgets.Console.getInstance().clear();
+>         JVSWidgetPanel.getInstance().focusOnConsolePanel();
+>         if (JVSFileTabs.getInstance().getEditor(JVSFileTabs.getCurrentCompiledFile()) != null) {
+>             JVSFileTabs.getInstance().getEditor(JVSFileTabs.getCurrentCompiledFile()).signalLine(line);
+>         }
+>     }
+> 
+>     /** Handle the close application task
+>      * Check if all files are saved and if the user want to close the application
+>      * @return True mean that app can be close and false that app can NOT be closed
+>      */
+>     public Boolean close() {
+>         String id = "";
+>         Boolean[] can_close = new Boolean[haveToSave.keySet().toArray().length];
+>         int i = 0;
+>         int j = 0;
+>         for (Object fileId : haveToSave.keySet().toArray()) {
+>             if (haveToSave.get((String) fileId)) {
+>                 j++;
+>             }
+>         }
+>         // If user no have dialog to stop close, we create one
+>         if (j == 0) {
+>             final int n = JOptionPane.showConfirmDialog(
+>                     Desktop.getInstance().getFrame(),
+>                     "Voulez vous vraiment quitter Java's cool ?",
+>                     "Confirmation",
+>                     JOptionPane.YES_NO_OPTION);
+>             if (n == JOptionPane.YES_OPTION) {
+>                 return true;
+>             } else {
+>                 return false;
+>             }
+>         }
+>         j = 0;
+>         // Check save for each file
+>         for (Object fileId : haveToSave.keySet().toArray()) {
+>             id = (String) fileId;
+>             if (haveToSave.get(id)) {
+>                 // File has to be saved
+>                 // For number see saveFileIdBeforeClose() documentation about return
+>                 switch (saveFileIdBeforeClose(id)) {
+>                     case 1:
+>                         can_close[i] = true;
+>                         break;
+>                     case 0:
+>                         can_close[i] = false;
+>                         break;
+>                     case -1:
+>                         return false;
+>                 }
+>                 j++;
+>             } else // If file has not to be saved it's good
+>             {
+>                 can_close[i] = true;
+>             }
+>             if (can_close[i]) // If we can close this file, we close the tab
+>             {
+>                 JVSFileTabs.getInstance().closeFile(id);
+>             }
+>             i++;
+>         }
+>         // Check if a file is not save, if yes we can not close the application
+>         for (Boolean can_close_r : can_close) {
+>             if (can_close_r == false) {
+>                 return false;
+>             }
+>         }
+>         // We return true if all is good
+>         return true;
+>     }
+> 
+>     /** Handle the close file task
+>      * Check if all files are saved and if the user want to continue
+>      * @return True meen that app can be close and false that app can NOT be closed
+>      */
+>     public Boolean closeAllFiles() {
+>         String id = "";
+>         Boolean[] can_close = new Boolean[haveToSave.keySet().toArray().length];
+>         int i = 0;
+>         int j = 0;
+>         for (Object fileId : haveToSave.keySet().toArray()) {
+>             if (haveToSave.get((String) fileId)) {
+>                 j++;
+>             } else {
+>                 JVSFileTabs.getInstance().closeFile((String) fileId);
+>             }
+>         }
+>         // If user no have dialog to stop close, we create one
+>         if (j == 0) {
+>             final int n = JOptionPane.showConfirmDialog(
+>                     Desktop.getInstance().getFrame(),
+>                     "Voulez vous vraiment continuer ?",
+>                     "Confirmation",
+>                     JOptionPane.YES_NO_OPTION);
+>             if (n == JOptionPane.YES_OPTION) {
+>                 return true;
+>             } else {
+>                 return false;
+>             }
+>         }
+>         j = 0;
+>         // Check save for each file
+>         for (Object fileId : haveToSave.keySet().toArray()) {
+>             id = (String) fileId;
+>             if (haveToSave.get(id)) {
+>                 // File has to be saved
+>                 // For number see saveFileIdBeforeClose() documentation about return
+>                 switch (saveFileIdBeforeClose(id)) {
+>                     case 1:
+>                         can_close[i] = true;
+>                         break;
+>                     case 0:
+>                         can_close[i] = false;
+>                         break;
+>                     case -1:
+>                         return false;
+>                 }
+>                 j++;
+>             } else // If file has not to be saved it's good
+>             {
+>                 can_close[i] = true;
+>             }
+>             if (can_close[i]) // If we can close this file, we close the tab
+>             {
+>                 JVSFileTabs.getInstance().closeFile(id);
+>             }
+>             i++;
+>         }
+>         // Check if a file is not save, if yes we can not close the application
+>         for (Boolean can_close_r : can_close) {
+>             if (can_close_r == false) {
+>                 return false;
+>             }
+>         }
+>         // We return true if all is good
+>         return true;
+>     }
+> 
+>     /** Ask to user to save a file before it close
+>      * @param fileId The file id
+>      * @return 1 meen that file is saved or that user not want to save the file. 0 meen that there was an error during the save of file. -1 meen that user want to stop all that happend (Cancel option).
+>      */
+>     public int saveFileIdBeforeClose(String fileId) {
+>         JVSFile file = JVSFileTabs.getInstance().getFile(fileId);
+>         int result = JOptionPane.showConfirmDialog(
+>                 Desktop.getInstance().getFrame(),
+>                 "Voulez vous enregistrer " + file.getName() + " avant de continuer ?");
+>         if (result == JOptionPane.YES_OPTION) {
+>             if (JVSFileTabs.getInstance().saveFile(fileId)) {
+>                 haveToSave.put(fileId, false);
+>                 return 1;
+>             } else {
+>                 return 0;
+>             }
+>         } else if (result == JOptionPane.NO_OPTION) {
+>             return 1;
+>         } else {
+>             haveToSave.put(fileId, true);
+>             return -1;
+>         }
+>     }
+> 
+>     /** Charge une nouvelle proglet dans l'interface utilisateur.
+>      * @param name Le nom de code de la proglet (ex:abcdAlgos)
+>      * @see org.javascool.core.ProgletEngine
+>      */
+>     public void loadProglet(String name) {
+>         System.gc();
+>         this.removeAll();
+>         JVSToolBar.getInstance().disableDemoButton();
+>         this.revalidate();
+>         this.add(JVSToolBar.getInstance(), BorderLayout.NORTH);
+>         this.add(JVSCenterPanel.getInstance(), BorderLayout.CENTER);
+>         this.revalidate();
+>         JVSCenterPanel.getInstance().revalidate();
+>         JVSCenterPanel.getInstance().setDividerLocation(getWidth() / 2);
+>         JVSCenterPanel.getInstance().revalidate();
+>         JVSWidgetPanel.getInstance().setProglet(name);
+>         if (ProgletEngine.getInstance().getProglet().hasDemo()) {
+>             JVSToolBar.getInstance().enableDemoButton();
+>         } else {
+>             JVSToolBar.getInstance().disableDemoButton();
+>         }
+>         this.newFile();
+>     }
+> 
+>     public void reportRuntimeBug(String ex) {
+>         StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+>         int line = 0;
+>         for (StackTraceElement elem : stack) {
+>             if (elem.getFileName().startsWith("JvsToJavaTranslated")) {
+>                 line = elem.getLineNumber();
+>             } else {
+>                 System.err.println(elem.getClassName());
+>             }
+>         }
+>         if (JVSFileTabs.getInstance().getEditor(JVSFileTabs.getCurrentCompiledFile()) != null) {
+>             JVSFileTabs.getInstance().getEditor(JVSFileTabs.getCurrentCompiledFile()).signalLine(line);
+>         }
+>         ProgletEngine.getInstance().doStop();
+>         Dialog.error("Erreur du logiciel à la ligne " + line, ex);
+>     }
+> 
+>     public void reportApplicationBug(String ex) {
+>         Dialog.error("Erreur dans Java's Cool", ex);
+>     }
+> 
+>     public static class Dialog {
+> 
+>         /** Show a success dialog */
+>         public static void success(String title, String message) {
+>             JOptionPane.showMessageDialog(Desktop.getInstance().getFrame(), message, title, JOptionPane.INFORMATION_MESSAGE);
+>         }
+> 
+>         /** Show an error dialog */
+>         public static void error(String title, String message) {
+>             JOptionPane.showMessageDialog(Desktop.getInstance().getFrame(), message, title, JOptionPane.ERROR_MESSAGE);
+>         }
+>     }
+-----------------------------------------
+diff ../../work/src/org/javascool/Core.java src/org/javascool/Core.java
+2,3c2,3
+<  *           Philippe.Vienne, Copyright (C) 2011.  All rights reserved.         *
+<  *******************************************************************************/
+---
+> *           Philippe.Vienne, Copyright (C) 2011.  All rights reserved.         *
+> *******************************************************************************/
+6a7,8
+> import javax.swing.UIManager;
+> import org.javascool.macros.Macros;
+8d9
+< import java.io.UnsupportedEncodingException;
+11,14c12
+< 
+< import javax.swing.SwingUtilities;
+< import javax.swing.UIManager;
+< 
+---
+> import java.io.UnsupportedEncodingException;
+16d13
+< import org.javascool.macros.Macros;
+19,22c16,17
+< /**
+<  * Lanceur de l'application "apprenant" qui permet de manipuler des «proglets».
+<  * *
+<  * 
+---
+> /** Lanceur de l'application "apprenant" qui permet de manipuler des «proglets».  *
+>  *
+27,117c22,61
+< 	/** Aide de JVS */
+< 	public static final String help = "org/javascool/macros/memo-macros.htm";
+< 	private static String javascoolJar = null;
+< 
+< 	/**
+< 	 * Retrouve le chemin du jar courant.
+< 	 * 
+< 	 * @return Le chemin du jar
+< 	 * @throws RuntimeException
+< 	 *             lorsque l'application n'a pas été démarré depuis un jar
+< 	 */
+< 	public static String javascoolJar() {
+< 		if (Core.javascoolJar != null)
+< 			return Core.javascoolJar;
+< 		final String url = Macros.getResourceURL("org/javascool/Core.class")
+< 				.toString().replaceFirst("jar:file:([^!]*)!.*", "$1");
+< 		System.err.println("Notice: javascool url is " + url);
+< 		if (url.endsWith(".jar")) {
+< 			try {
+< 				String jar = URLDecoder.decode(url, "UTF-8");
+< 				if (new File(jar).exists())
+< 					return Core.javascoolJar = jar;
+< 				// Ici on essaye tous les encodages possibles pour essayer de
+< 				// détecter javascool
+< 				{
+< 					jar = URLDecoder.decode(url, Charset.defaultCharset()
+< 							.name());
+< 					if (new File(jar).exists())
+< 						return jar;
+< 					for (final String enc : Charset.availableCharsets()
+< 							.keySet()) {
+< 						jar = URLDecoder.decode(url, enc);
+< 						if (new File(jar).exists()) {
+< 							System.err.println("Notice: javascool file " + jar
+< 									+ " correct decoding as " + enc);
+< 							return Core.javascoolJar = jar;
+< 						} else {
+< 							System.err.println("Notice: javascool file " + jar
+< 									+ " wrong decoding as " + enc);
+< 						}
+< 					}
+< 					throw new RuntimeException(
+< 							"Il y a un bug d'encoding sur cette plate forme");
+< 				}
+< 			} catch (final UnsupportedEncodingException ex) {
+< 				throw new RuntimeException(
+< 						"Spurious defaultCharset: this is a caveat");
+< 			}
+< 		} else{return System.getProperty("user.dir");}
+< 			//throw new RuntimeException(
+< 				//	"Java's cool n'a pas été démarré depuis un Jar");
+< 	}
+< 
+< 	/**
+< 	 * Lanceur de l'application.
+< 	 * 
+< 	 * @param usage
+< 	 *            <tt>java -jar javascool.jar</tt>
+< 	 */
+< 	public static void main(String[] usage) {
+< 		if (usage.length > 0
+< 				&& (usage[0].equals("-h") || usage[0].equals("-help") || usage[0]
+< 						.equals("--help"))) {
+< 			System.out
+< 					.println("Java's Cool Core - lance l'interface pour travailler avec les proglets");
+< 			System.out.println("Usage : java -jar javascool.jar");
+< 			System.exit(0);
+< 		}
+< 		// Empeche de pouvoir renommer itempestivement des folder
+< 		UIManager.put("FileChooser.readOnly", Boolean.TRUE);
+< 		System.err.println("" + About.title + " is starting ...");
+< 		ErrorCatcher.checkJavaVersion(6);
+< 		Core.setUncaughtExceptionAlert();
+< 		SwingUtilities.invokeLater(new Runnable() {
+< 
+< 			@Override
+< 			public void run() {
+< 				Desktop.getInstance().getFrame();
+< 			}
+< 		});
+< 	}
+< 
+< 	/** Mets en place le système d'alerte en cas d'erreur non gérée. */
+< 	static void setUncaughtExceptionAlert() {
+< 		ErrorCatcher
+< 				.setUncaughtExceptionAlert(
+< 						"<h1>Détection d'une anomalie liée à Java:</h1>\n"
+< 								+ "Il y a un problème de compatibilité avec votre système, nous allons vous aider:<ul>\n"
+< 								+ "  <li>Copier/Coller tous les éléments de cette fenêtre et</li>\n"
+< 								+ "  <li>Envoyez les par mail à <b>javascool@googlegroups.com</b> avec toute information utile.</li>"
+< 								+ " </ul>", About.revision);
+---
+>   /** Aide de JVS */
+>   public static final String help = "org/javascool/macros/memo-macros.htm";
+>   /** Mets en place le système d'alerte en cas d'erreur non gérée. */
+>   static void setUncaughtExceptionAlert() {
+>     ErrorCatcher.setUncaughtExceptionAlert("<h1>Détection d'une anomalie liée à Java:</h1>\n" +
+>                                            "Il y a un problème de compatibilité avec votre système, nous allons vous aider:<ul>\n" +
+>                                            "  <li>Copier/Coller tous les éléments de cette fenêtre et</li>\n" +
+>                                            "  <li>Envoyez les par mail à <b>javascool@googlegroups.com</b> avec toute information utile.</li>" +
+>                                            " </ul>",
+>                                            About.revision);
+>   }
+>   /** Retrouve le chemin du jar courant.
+>    * @return Le chemin du jar
+>    * @throws RuntimeException lorsque l'application n'a pas été démarré depuis un jar
+>    */
+>   public static String javascoolJar()  {
+>     if (javascoolJar != null)
+>       return javascoolJar;
+>     String url = Macros.getResourceURL("org/javascool/Core.class").toString().replaceFirst("jar:file:([^!]*)!.*", "$1");
+>     System.err.println("Notice: javascool url is " + url);   
+>     if(url.endsWith(".jar")) {
+>       try {
+> 	String jar = URLDecoder.decode(url, "UTF-8");
+> 	if (new File(jar).exists())
+> 	  return javascoolJar = jar;
+> 	// Ici on essaye tous les encodages possibles pour essayer de détecter javascool
+> 	{
+> 	  jar = URLDecoder.decode(url, Charset.defaultCharset().name());
+> 	  if (new File(jar).exists())
+> 	    return jar;
+> 	  for(String enc : Charset.availableCharsets().keySet()) {
+> 	    jar = URLDecoder.decode(url, enc);
+> 	    if (new File(jar).exists()) {
+> 	      System.err.println("Notice: javascool file " + jar + " correct decoding as "+enc);   
+> 	      return javascoolJar = jar;
+> 	    } else {
+> 	      System.err.println("Notice: javascool file " + jar + " wrong decoding as "+enc);   
+> 	    }
+> 	  }
+> 	  throw new RuntimeException("Il y a un bug d'encoding sur cette plate forme");
+118a63,85
+>       } catch (UnsupportedEncodingException ex) {
+> 	throw new RuntimeException("Spurious defaultCharset: this is a caveat");
+>       }
+>     } else{return "";}
+>       //throw new RuntimeException("Java's cool n'a pas été démarré depuis un Jar");
+>   }
+>   private static String javascoolJar = null;
+>   /** Lanceur de l'application.
+>    * @param usage <tt>java -jar javascool.jar</tt>
+>    */
+>   public static void main(String[] usage) {
+>     if((usage.length > 0) && (usage[0].equals("-h") || usage[0].equals("-help") || usage[0].equals("--help"))) {
+>       System.out.println("Java's Cool Core - lance l'interface pour travailler avec les proglets");
+>       System.out.println("Usage : java -jar javascool.jar");
+>       System.exit(0);
+>     }
+>     // Empeche de pouvoir renommer itempestivement des folder
+>     UIManager.put("FileChooser.readOnly", Boolean.TRUE);
+>     System.err.println("" + About.title + " is starting ...");
+>     ErrorCatcher.checkJavaVersion(6);
+>     setUncaughtExceptionAlert();
+>     Desktop.getInstance().getFrame();
+>   }

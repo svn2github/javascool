@@ -1,0 +1,66 @@
+<p><br />
+</p>
+<h1><span class="mw-headline" id="Les_activit.C3.A9s_propos.C3.A9es_dans_JavaScool">Les activités proposées dans JavaScool</span></h1>
+<h3><span class="mw-headline" id="La_d.C3.A9couverte_de_l.27algorithmique">La découverte de l'algorithmique</span></h3>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/abcdAlgos/logo.png" alt="abcdAlgos" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=abcdAlgos" class="internal">Découvrir les ingrédients des algorithmes</a> 
+<ul><li> Permet de s'initier aux structures de contrôle de base de l'algorithmique en utilisant un vrai langage impératif (5 activités sur 2 à 4 séances).
+<ul><li> pour débutant(e)s</li></ul></li></ul></li></ul>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/algoDeMaths/maths.png" alt="algoDeMaths" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=algoDeMaths" class="internal">Programmer des calculs numériques et gémométriques</a> 
+<ul><li> Permet de réaliser toutes les activités d'initiation à l'algorithmique en mathématiques</li>
+<li> Un grand nombre de contenus et sujets sont <a rel="nofollow" class="external text" href="/v4//index.php?page=resources&amp;action=link-sujets-mathinfo" class="internal">disponibles</a> (manipuler des tableaux, faire des tris numériques, manipuler le hasard, ..).
+<ul><li> pour lycéen(ne)s (maths)</li></ul></li></ul></li></ul>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/dichotomie/logo.png" alt="dichotomie" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=dichotomie" class="internal">Programmer une recherche dichotomique</a>
+<ul><li> Permet de s'initier à l'abstraction algorithmique la plus simple: la recherche dichotomique sur trois objets numériques
+<ul><li> pour débutant(e)s</li></ul></li></ul></li></ul>
+<h3><span class="mw-headline" id="Objet_num.C3.A9rique_:_l.27image">Objet numérique&#160;: l'image</span></h3>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/codagePixels/logo.png" alt="codagePixels" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=codagePixels" class="internal">Comprendre la manipulation d'images</a>
+<ul><li> Permet de s'initier au codage pixelique des images et aux calculs de bases sur une image.
+<ul><li> pour initié(e)s à la programmation</li></ul></li></ul></li></ul>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/paintBrush/logo.png" alt="paintBrush" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=paintBrush" class="internal">Dessiner sur une image</a>
+<ul><li> Permet de s'initier au codage pixelique et aux opérations de dessin sur une image.
+<ul><li> pour initié(e)s à la programmation</li></ul></li></ul></li></ul>
+<h3><span class="mw-headline" id="Objet_num.C3.A9rique_:_le_son_.28et_les_signaux.29">Objet numérique&#160;: le son (et les signaux)</span></h3>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/exploSonore/logo.png" alt="exploSonore" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=exploSonore" class="internal">Exploration du signal sonore</a>
+<ul><li> Permet de comprendre l'évolution temporelle et le contenu fréquentiel (le spectre) d'un son.
+<ul><li> pour débutant(e)s</li></ul></li></ul></li></ul>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/syntheSons/logo.png" alt="syntheSons" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=syntheSons" class="internal">Manipuler un signal sonore</a>
+<ul><li> Permet de programmer la génération d'un ou d'une mélodie
+<ul><li> plutôt dans le cadre d'un club de maths ou de science, ou lors d'un TPE</li></ul></li></ul></li></ul>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/analogNumerique/logo.png" alt="analogNumerique" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=analogNumerique" class="internal">Programmer une conversion analogique-numérique</a>
+<ul><li> Permet de s'initier à la recherche dichotomique dans un cas concret
+<ul><li> pour lycéen(ne)s (physique)</li></ul></li></ul></li></ul>
+<h3><span class="mw-headline" id="Objet_num.C3.A9rique_:_le_graphe">Objet numérique&#160;: le graphe</span></h3>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/gogleMaps/logo.png" alt="gogleMaps" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=gogleMaps" class="internal">Jouer avec une carte de France</a>
+<ul><li> Permet de découvrir à travers l'objet numérique graphe et les algorithmes élémentaires qui s'y appliquent.
+<ul><li> pour lycéen(ne)s (sciences du numérique)</li></ul></li></ul></li></ul>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/enVoiture/logo.png" alt="enVoiture" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=enVoiture" class="internal">Découvrir les graphes et les chemins</a>
+<ul><li> Vise à s’approprier, à travers une animation 3D, les différents éléments caractéristiques d’un graphe, en vue de saisir les algorithmes qui en font usage 1/2
+<ul><li> pour initié(e)s à la programmation</li></ul></li></ul></li></ul>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/grapheEtChemins/logo.png" alt="grapheEtChemins" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=grapheEtChemins" class="internal">Explorer les graphes et les chemins</a>
+<ul><li> Vise à s’approprier, à la métaphore d'un réseau social,  les différents éléments caractéristiques d’un graphe, et l'algorithme du plus court chemin.
+<ul><li> pour initié(e)s à la programmation</li></ul></li></ul></li></ul>
+<h3><span class="mw-headline" id="Aller_plus_loin_en_programmation">Aller plus loin en programmation</span></h3>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/tortueLogo/logo.png" alt="tortueLogo" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=tortueLogo" class="internal">Programmer avec la tortue logo</a>
+<ul><li> Utiliser la métaphore d'une tortue dans un carré de jardin avec un pinceau pour découvrir les algorithmes.
+<ul><li> pour débutant(e)s</li></ul></li></ul></li></ul>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/cryptageRSA/logo.png" alt="cryptageRSA" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=cryptageRSA" class="internal">Expérimenter avec la cryptographie</a>
+<ul><li> Permet de manipuler les concepts liés à l'encryptage/décryptage par clés publique et privée.
+<ul><li> pour initié(e)s à la programmation</li></ul></li></ul></li></ul>
+<ul><li> <img src="http://javascool.gforge.inria.fr/v4/proglets/javaProg/logo.png" alt="javaProg" width="64"/> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=javaProg" class="internal">Programmer directement en Java</a>
+<ul><li> Permet d'utiliser la plateforme JavaScool pour programmer directement en java
+<ul><li> pour initié(e)s à la programmation</li></ul></li></ul></li></ul>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.012 seconds
+Real time usage: 0.016 seconds
+Preprocessor visited node count: 131/1000000
+Preprocessor generated node count: 308/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:100-1!*!*!!*!*!* and timestamp 20150313130634 and revision id 6132
+ -->

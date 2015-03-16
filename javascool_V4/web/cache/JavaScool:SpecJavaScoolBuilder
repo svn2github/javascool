@@ -1,0 +1,51 @@
+<p>JavaScoolBuilder effectue les actions suivantes&#160;:
+</p>
+<ol><li> Crée un répertoire de travail dit «cible»
+<ul><li> dont l'arborescence correspond au fichier jar final</li>
+<li> Ce fichier est de nom .build par défaut</li></ul></li>
+<li> Déploie dans la cible
+<ul><li> les classes Java de la plateforme Javas'Cool</li>
+<li> les classes et fichiers des proglets externes
+<ul><li> c'est à dire celles qui sont présentes dans les fichiers Jar du répertoire du sketchbook</li></ul></li>
+<li> les classes et fichiers des proglets à compiler
+<ul><li> y compris les classes présentes dans les fichiers Jar des répertoires des proglets</li></ul></li></ul></li>
+<li> Pour chaque proglet
+<ol><li> Teste que les fichiers de la proglet vérifient les <a class="internal" href="?page=developers&action=spec-proglets" title="JavaScool:DocCreationProglet">spécifications demandées</a>.</li>
+<li> Traduit tous les fichierscontenant de la <a class="internal" href="?page=developers&action=spec-hml" title="JavaScool:DocumentsHml">documentation Hml</a> en fichier HTML, selon les conventions suivantes:
+<ul><li> fichier d'extension <tt>.xml</tt> documentation en HML</li>
+<li> fichier d'extension <tt>.htm</tt> production en HTML3 de la documentation
+<ul><li><ul><li> fichier temporaire suceptible d'être détruit</li></ul></li></ul></li>
+<li> fichier d'extension <tt>.html</tt> autre fichier source HTML</li></ul></li>
+<li> Génère les doc Java et une version colorisée des sources Java (en option)</li></ol></li>
+<li> Compile tous les fichiers Java en fichier <tt>.class</tt></li>
+<li> Crée les fichiers jars de sortie
+<ul><li> les fichiers sources des proglets et les fichiers compilés et traduits</li>
+<li> les autres classes java permettant de les faire fonctionner.</li></ul>
+<ol><li> fichier <tt>javascool-proglets.jar</tt> avec tous ces éléments</li>
+<li> fichier <tt>javascool-proglet-xxx.jar</tt> pour chaque proglet.</li></ol></li>
+<li> Nettoie le dossier cible.</li></ol>
+<h2><span class="mw-headline" id="Discussion">Discussion</span></h2>
+<ul><li> Le dossier de la proglet dans le sketchbook ne doit pas contenir de sous-dossiers</li></ul>
+<ul><li> Les fichiers Panel.java et Functions.java sont optionnels, il est donc possible qu'aucune source java ne soit présente pour une proglet.</li></ul>
+<ul><li> Le jar final (dans le dossier de la proglet) contient pour chaque fichier <tt>*.java</tt>
+<ul><li> Les fichiers <tt>*.class</tt> de la compilations</li>
+<li> Un fichier <tt>*.html</tt> correspondant à la javadoc et un fichier <tt>*.java.html</tt> du fichier correspondant à une version colorisée du source.</li></ul></li></ul>
+<ul><li> Les dossiers et fichiers du sketchbook restent inchangés, tout est généré dans le dossier cible
+<ul><li> Ces dossiers ne doivent contenir que les sources <tt>*.java</tt> et <tt>.xml</tt> (à l'exclusion des <tt>*.class</tt>, <tt>.htm</tt>, ..).</li></ul></li></ul>
+<ul><li> Le fichier proglet.pml doit être présent
+<ul><li> Il est aussi converti en fichier .php pour son usage sur le site web</li></ul></li></ul>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.008 seconds
+Real time usage: 0.008 seconds
+Preprocessor visited node count: 3/1000000
+Preprocessor generated node count: 8/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:863-1!*!0!*!*!*!* and timestamp 20150313130629 and revision id 5557
+ -->

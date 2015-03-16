@@ -1,0 +1,11 @@
+
+void main() {
+	// jeu de donnees
+	String [] donnees = {"ES","S", "S", "ES", "STT", "S", "ES", "S", "STT", "ES", "S"};
+	// graphique 
+	barres(donnees);
+		// ou : camembert(donnees); 
+		// ou : anneaux(donnees);
+		// rq : l'effectif d'une barre peut etre connu en cliquant sur son bord superieur
+
+} 

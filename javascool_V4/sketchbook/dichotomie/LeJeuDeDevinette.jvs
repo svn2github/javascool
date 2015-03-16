@@ -1,0 +1,27 @@
+// Un programme proposé par le Pr. Claudine Noblet du Lycée International de Valbonne
+// qui permet de . . gagner vite quand on connait la dichotomie !!
+void main() {
+  println("Veux-tu jouer avec moi ?");
+  boolean rep = readBoolean("Veux-tu jouer avec moi ?");
+  while(rep) {
+    int nbPense = random(1, 100);
+    int nbPropose = readInteger("Je pense à un nombre entre 1 et 100, devine lequel :");
+    println("Tu proposes " + nbPropose);
+    int compteur = 1; // compte le nb de coups du joueur
+    while(nbPense != nbPropose) {
+      if(nbPropose > nbPense) {
+        println("Trop grand !");
+      } else {
+        println("Trop petit !");
+      }
+      nbPropose = readInteger("Essaie encore un nombre entre 1 et 100 :");
+      println(nbPropose);
+      compteur++;
+    }
+    println("Bravo !");
+    println("Tu as gagné en " + compteur + " coups");
+    println("En utilisant un algorithme optimal, on doit mettre moins de " + (int) (log(100) / log(2)) + " coups");
+    rep = readBoolean("Une autre partie ?");
+  }
+  println("Alors au revoir !");
+}

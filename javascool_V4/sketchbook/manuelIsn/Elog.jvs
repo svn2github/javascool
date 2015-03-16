@@ -1,0 +1,12 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void main() {
+  int n;
+  double x;
+  x = readDouble();
+  n = 0;
+  while(x > 1) {
+    x = x / 2;
+    n = n + 1;
+  }
+  println(n);
+}

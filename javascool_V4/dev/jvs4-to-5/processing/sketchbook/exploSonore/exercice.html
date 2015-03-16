@@ -1,0 +1,151 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="class" content="sujet">
+      <title>Un tutoriel sur les signaux sonores</title>
+   </head>
+   <body>
+      <h1>Un tutoriel sur les signaux sonores.</h1> 
+      
+      <div align="right" class="margin">Voir aussi l'<a href="tutoriel.html">activit&eacute; &laquo;unplug&raquo;</a> (sans programmation)
+      </div>
+        
+      <h2>Objectif.</h2>
+      <div class="objectif">
+             Le but de ce tutoriel est 
+         <ul class="ul">
+                  
+            <li>d'apprendre &agrave; programmer des sons, c'est &agrave; dire une s&eacute;quence de signaux sonores p&eacute;riodiques, </li>
+                  
+            <li>en appliquant les ingr&eacute;dients des algorithmes sur un objet num&eacute;rique non alpha-num&eacute;rique.</li>
+                
+         </ul>
+           
+      </div>
+        
+      <h2>Introduction.</h2>
+      <div id="intros">
+         <ol>
+            <li>
+               <h3>La notion de signal p&eacute;riodique.</h3> Une note est une vibration de l'air 
+                   comme <a href="http://javascool.gforge.inria.fr/documents/sketchbook/exploSonore/OndeSonore.pdf">d&eacute;taill&eacute; ici</a> (bien lire le document avant de commencer).
+                   Les sons les plus graves correspondent &agrave; une vibration de 20Hz (20 fois par seconde), les plus aigus de 20000Hz, notre
+               voix humaine vibre principalement entre 100 et 3000Hz.
+                  
+               <div align="right" class="margin">Voir aussi un document sur la <a href="http://javascool.gforge.inria.fr/documents/sketchbook/exploSonore/Numeriser-un-son.pdf">num&eacute;risation du son</a>.
+               </div>
+                   
+            </li>
+         </ol>
+      </div>
+        
+      <h2>Travail propos&eacute;.</h2>
+      <div id="works">
+         <ol>
+            <li>
+               <h3>Construire un signal p&eacute;riodique de forme donn&eacute;e.</h3>
+                     
+               <div>Tous les signaux p&eacute;riodiques peuvent se construire comme une somme de sinuso&iuml;des. Par exemple, comme on peut l'observer sur
+                  la figure suivante:
+                        
+                  <div align="center" class="center">
+                     <p>
+                        <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                           <tr>
+                              <td valign="top"><img src="sin2square1.png" alt="" class="icon"></td>
+                              <td valign="top"><img src="sin2square2.png" alt="" class="icon"></td>
+                           </tr>
+                        </table><br></p>
+                  </div>
+                        o&ugrave; l'on voit, &agrave; gauche, la sinuso&iuml;de <tt>sinus(t)</tt> en marron, puis la sinuso&iuml;de "scpult&eacute;e" en vert o&ugrave; en ajoutant <tt>sinus(t) + sinus(3 t) / 3</tt> on rabote un peu le 
+                        haut de la sinuso&iuml;de, puis en rouge <tt>sinus(t) + sinus(3 t) / 3 + sinus(5 t) / 5</tt> et, &agrave; droite, on continue d'ajouter les sinuso&iuml;des jusqu'&agrave; approcher un signal carr&eacute;.
+                        
+                        
+                        
+               </div>
+                     
+               <ul class="ul">
+                          
+                  <li>En utilisant la fonction <font color="#990000"><b>playSignal</b></font> d&eacute;crite <a href="help.html">ici</a> faire un petit programme qui va d&eacute;clencher sur les
+                             canaux 1, 2 et 3, des sinuso&iuml;des de fr&eacute;quence 100Hz puis 300Hz etc.. avec les bonnes amplitudes. Ecrire ce programme
+                     en mettant une instruction  <font color="#990000"><b>playSignal</b></font>
+                             sur chaque ligne.
+                  </li>
+                          
+                  <li>Observer le son (sa forme sur l'affichage de la proglet et &eacute;couter sa forme). 
+                             Comparer avec un signal carr&eacute; et sinuso&iuml;dal: le son ressemble t'il plus &agrave; un signal carr&eacute; ?
+                  </li>
+                          
+                  <li>Reprendre le programme en faisant une petite boucle <tt><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font>c = 0; c &lt; 3; c++) {</tt> pour vous entra&icirc;ner &agrave; utiliser des boucles.
+                  </li>
+                          
+                  <li>Pour mieux observer ces diff&eacute;rents signaux sonnores, utiliser la fonction <font color="#990000"><b>playStop</b></font> et la fonction:
+                               
+                     <div align="center" class="center"><b><font color="#990000"><b>void</b></font> <tt>sleep</tt>(<font color="#990000"><b>int</b></font> duree)</b> Arr&ecirc;te l'ex&eacute;cution du programme pendant une dur&eacute;e fix&eacute;e donn&eacute;e en milli-secondes.
+                     </div>
+                               pour faire produire, trois signaux de m&ecirc;me fr&eacute;quence: 
+                     <ol class="ol">
+                                  
+                        <li>Une sinuso&iuml;de pendant 4 secondes</li>
+                                  
+                        <li>La sommes des trois sinuso&iuml;des pendant 4 secondes</li>
+                                  
+                        <li>Un signal carr&eacute; pendant 4 secondes</li>
+                                
+                     </ol>ceci une vingtaine de fois. Entrainez vous &agrave; deviner lequel des trois signaux est produit.
+                  </li>
+                        
+               </ul>
+                   
+            </li>
+            <li>
+               <h3>L'effet du son lorsque la porte est ferm&eacute;e/ouverte.</h3>
+                     
+               <div>Lorsque l'on ferme une porte les sons de la pi&egrave;ce attenante nous paraissent plus &eacute;touff&eacute;s. 
+                        Cette sensation provient du fait que les hautes fr&eacute;quences sont att&eacute;nu&eacute;es tandis que les basses fr&eacute;quences, traversent
+                  mieux la paroi de la porte 
+                        car elles ont davantage d'&eacute;nergie. 
+                        Nous allons recr&eacute;er cet effet en programmant cette proglet.
+               </div>
+                     
+               <ul class="ul">
+                          
+                  <li>Choisir une musique ou un son de votre choix (quelques secondes) et cr&eacute;er un programme d'une ligne avec l'instruction <font color="#990000"><b>playRecord</b></font> 
+                             d&eacute;crite <a href="help.html">ici</a> pour le lancer.
+                  </li>
+                          
+                  <li>Utiliser manuellement l'interface pour ajuster la fr&eacute;quence de coupure des sons aigus et l'amplitude du signal afin de voir
+                     comment cr&eacute;er l'effet sonore 
+                     /        du son original ou assourdi.
+                  </li>
+                          
+                  <li>Utiliser ensuite la fonction <font color="#990000"><b>playStop</b></font> et la fonction:
+                               
+                     <div align="center" class="center"><b><font color="#990000"><b>void</b></font> <tt>sleep</tt>(<font color="#990000"><b>int</b></font> duree)</b> Arr&ecirc;te l'ex&eacute;cution du programme pendant une dur&eacute;e fix&eacute;e donn&eacute;e en milli-secondes.
+                     </div>
+                               pour cr&eacute;er un petit programme qui va &eacute;mettre votre son "porte ouverte" (sans fr&eacute;quence de coupure ni att&eacute;nuation)
+                     pendant 3-4 secondes puis 
+                               comme si une porte &eacute;tait ferm&eacute;e entre le son et l'auditeur.
+                  </li>
+                          
+                  <li>Faire un programme plus sophistiqu&eacute; qui va progressivement (en 10 secondes, par exemple, par pas de 1 secondes) "ouvrir et
+                     fermer" la porte. 
+                             Commentez dans le programme le r&eacute;sultat obtenu.
+                  </li>
+                          
+                  <li>Ecoutez le <a href="http://www.youtube.com/watch?v=PF_k6mIw9w0">clip de Bjorg</a> et notez &agrave; quel endroit (quelle minute/seconde du clip) cet effet est utilis&eacute;.
+                  </li>
+                        
+               </ul>      
+                   
+            </li>
+         </ol>
+      </div>
+      
+   </body>
+</html>

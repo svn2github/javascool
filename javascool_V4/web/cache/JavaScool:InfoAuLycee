@@ -1,0 +1,62 @@
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Sommaire</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Algorithmique_et_programmation_en_math.C3.A9matiques_.28depuis_la_rentr.C3.A9e_2009.29."><span class="tocnumber">1</span> <span class="toctext">Algorithmique et programmation en mathématiques (depuis la rentrée 2009).</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Objectifs_pour_le_lyc.C3.A9e."><span class="tocnumber">1.1</span> <span class="toctext">Objectifs pour le lycée.</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Contenu_du_programme."><span class="tocnumber">1.2</span> <span class="toctext">Contenu du programme.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#Dans_l.27option_M.C3.A9thodes_et_Pratiques_Scientifiques_.28.C3.A0_la_rentr.C3.A9e_2010.29."><span class="tocnumber">2</span> <span class="toctext">Dans l'option Méthodes et Pratiques Scientifiques (à la rentrée 2010).</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Perspective:_Un_enseignement_de_sp.C3.A9cialit.C3.A9_optionnel_en_Terminale_S_.C2.AB_Informatique_et_sciences_du_num.C3.A9rique_.C2.BB_en_2012."><span class="tocnumber">3</span> <span class="toctext">Perspective: Un enseignement de spécialité optionnel en Terminale S «&#160;Informatique et sciences du numérique&#160;» en 2012.</span></a></li>
+</ul>
+</div>
+
+<h3><span class="mw-headline" id="Algorithmique_et_programmation_en_math.C3.A9matiques_.28depuis_la_rentr.C3.A9e_2009.29.">Algorithmique et programmation en mathématiques (depuis la rentrée 2009).</span></h3>
+<p>Référence: <a rel="nofollow" class="external text" href="http://www.eduscol.education.fr/cid45768/programmes%A0en-vigueur.html">programme en vigueur</a>
+</p>
+<h4><span class="mw-headline" id="Objectifs_pour_le_lyc.C3.A9e.">Objectifs pour le lycée.</span></h4>
+<p>«La démarche algorithmique est, depuis les origines, une composante essentielle de l’activité mathématique. Au collège, les élèves ont rencontré des algorithmes (algorithmes opératoires, algorithme des différences, algorithme d’Euclide, algorithmes de construction en géométrie). Ce qui est proposé dans le programme est une formalisation en langage naturel propre à donner lieu à traduction sur une calculatrice ou à l’aide d’un logiciel. Il s’agit de familiariser les élèves avec les grands principes d’organisation d’un algorithme&#160;: gestion des entrées-sorties, affectation d’une valeur et mise en forme d’un calcul, en opérant essentiellement sur des nombres entiers. 
+</p><p>Dans le cadre de cette activité algorithmique, les élèves sont entraînés&#160;:
+</p>
+<ul><li> à décrire certains algorithmes en langage naturel ou dans un langage symbolique&#160;;</li>
+<li> à en réaliser quelques uns à l’aide d’un tableur ou d’un petit programme réalisé sur une calculatrice ou avec un logiciel adapté&#160;;</li>
+<li> à interpréter des algorithmes plus complexes.</li></ul>
+<p>Aucun langage, aucun logiciel n’est imposé.L’algorithmique a une place naturelle dans tous les champs des mathématiques et les problèmes posés doivent être en relation avec les autres parties du programme (fonctions, géométrie, statistiques et probabilité, logique) mais aussi avec les autres disciplines ou la vie courante. À l’occasion de l’écriture d’algorithmes et de petits programmes, il convient de donner aux élèves de bonnes habitudes de rigueur et de les entraîner aux pratiques systématiques de vérification et de contrôle.» (extrait des documents officiels).
+</p>
+<h4><span class="mw-headline" id="Contenu_du_programme.">Contenu du programme.</span></h4>
+<ul><li> <b>Instructions élémentaires (affectation, calcul, entrée, sortie).</b> Les élèves, dans le cadre d’une résolution de problèmes, doivent être capables&#160;:
+<ul><li> d’écrire une formule permettant un calcul&#160;;</li>
+<li> d’écrire un programme calculant et donnant la valeur d’une fonction&#160;;ainsi que les instructions d’entrées et sorties nécessaires au traitement.</li></ul></li>
+<li> <b>Boucle et itérateur, instruction conditionnelle</b> Les élèves, dans le cadre d’une résolution de problèmes, doivent être capables&#160;:
+<ul><li> de programmer un calcul itératif, le nombre d’itérations étant donné&#160;;</li>
+<li> de programmer une instruction conditionnelle, un calcul itératif, avec une fin de boucle conditionnelle.</li></ul></li></ul>
+<p>Exemples de mise en œuvre de l'algorithmique dans chacune des trois parties du programme:
+</p>
+<ul><li> <i>Etude des Fonctions</i> Même si les logiciels traceurs de courbes permettent d’obtenir rapidement la représentation graphique d’une fonction définie par une formule algébrique, il est intéressant, notamment pour les fonctions définies par morceaux, de faire écrire aux élèves un algorithme de tracé de courbe.</li>
+<li> <i>En Géométrie</i> Le cadre de la géométrie repérée offre la possibilité de traduire numériquement des propriétés géométriques et permet de résoudre certains problèmes par la mise en oeuvre d’algorithmes simples.</li>
+<li> <i>Statistiques et probabilités</i> On pourra facilement programmer l'étude d'une série statistique (moyenne, dispersion), tandis que la répétition d’expériences aléatoires peut donner lieu à l’écriture d’algorithmes (marches aléatoires). À l’occasion de la mise en place d’une simulation, on peut utiliser les fonctions et mettre en place des instructions conditionnelles dans un algorithme.</li></ul>
+<h3><span class="mw-headline" id="Dans_l.27option_M.C3.A9thodes_et_Pratiques_Scientifiques_.28.C3.A0_la_rentr.C3.A9e_2010.29.">Dans l'option Méthodes et Pratiques Scientifiques (à la rentrée 2010).</span></h3>
+<p>L'enseignement dispensé dans cette option transdisciplinaire «permet aux élèves de découvrir différents domaines [scientifiques..], pour trouver des réponses aux questions scientifiques que soulève une société moderne, d’en faire percevoir différents grands enjeux, et de donner les moyens de les aborder de façon objective. [..] Il initie les élèves à la démarche scientifique dans le cadre d’un projet» ([<a rel="nofollow" class="external free" href="http://media.eduscol.education.fr/file/MPS/69/0/LyceeGT_Ressources_2_Exploration_Methodes-Pratiques-Scientifiques_149690.pdf">http://media.eduscol.education.fr/file/MPS/69/0/LyceeGT_Ressources_2_Exploration_Methodes-Pratiques-Scientifiques_149690.pdf</a> extrait du BO dur le sujet). Les sciences informatiques étant sont au coeur de cette transdisciplinarité et des impacts sociétaux des sciences du 21ème siècle.
+</p><p>Au delà de champs applicatifs assez divers (aliments, cosmétologie, investigation policière, création d'oeuvres d’art, prévention des risques et environnement, perception visuelle et images) est laissée à la liberté de l'enseignant et de l'équipe pédagogique le choix des différents concepts et contenus scientifiques à proposer. L’évaluation peut prendre des formes variées, par exemple de remise projet. La travail informatique est donc un levier pour suivre un tel cadrage: à la fois car il est présent dans tous les thèmes applicatifs et parce qu'il est au coeur de «l’acquisition de compétences et de qualités telles que l’autonomie, l’initiative, l’engagement dans une démarche scientifique, ..» pronées ici.
+</p><p>L'enseignement optionnel en 2nd pourra être explicitement intitulé <b>Option "informatique et société du numérique"</b> comme c'est le cas dans plusieurs lycées, dès cette rentrée, pour acquérir et mettre en oeuvre quelques notions de programmation (algorithme élémentaire, abstractions informatiques) ou liée aux objets numériques (objets multimédia et images, logiciels d'analyse de données et de simulation).Ce sont des contenus résolument tournés vers ce dont les futurs ingénieurs ou scientifiques auront vraiment besoin, ce qui inclut la programmation. Il faut y ajouter des indispensables éléments de culture scientifique et technique («éléments d'histoire de la numération [du calcul], éléments de l'histoire de l'informatique, l'architecture d'un ordinateur»)&#160;;
+</p><p>Cet enseignement fait suite aux <a rel="nofollow" class="external text" href="http://www.education.gouv.fr/bo/2000/hs6/info.htm">options MPS</a> option transdisciplinaire  de sciences expérimentales.
+</p>
+<h3><span class="mw-headline" id="Perspective:_Un_enseignement_de_sp.C3.A9cialit.C3.A9_optionnel_en_Terminale_S_.C2.AB_Informatique_et_sciences_du_num.C3.A9rique_.C2.BB_en_2012.">Perspective: Un enseignement de spécialité optionnel en Terminale S «&#160;Informatique et sciences du numérique&#160;» en 2012.</span></h3>
+<p>Comme <a rel="nofollow" class="external text" href="http://www.epi.asso.fr/revue/articles/a0912a.htm">détaillé ici</a> ces éléments sont clairement les 1ères étapes vers l'introduction progressive, massive et pérenne des sciences informatiques dans l'enseignement secondaire.
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.008 seconds
+Real time usage: 0.011 seconds
+Preprocessor visited node count: 19/1000000
+Preprocessor generated node count: 24/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:890-1!*!*!!fr!*!* and timestamp 20150313130632 and revision id 5770
+ -->

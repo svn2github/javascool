@@ -1,0 +1,167 @@
+.KeyWords
+{
+	font-family: monospace; 
+	font-style: normal;
+	font-weight: normal;
+	color: rgb(0, 0, 255);
+}
+
+.SpecialNames
+{
+	font-family: monospace; 
+	font-style: normal;
+	font-weight: normal;
+	color: rgb(0, 128, 128);
+}
+
+
+.BasicTypes
+{
+	font-family: monospace; 
+	font-style: normal;
+	font-weight: normal;
+	color: rgb(128, 128, 0);
+}
+
+.Directives
+{
+	font-family: monospace; 
+	font-style: normal;
+	font-weight: normal;
+	color: rgb(255, 0, 0);
+}
+
+
+.Comment
+{
+	font-family: monospace; 
+	font-style: normal;
+	font-weight: normal;
+	color: rgb(0, 128, 0);
+}
+
+.Quotation
+{
+	font-family: monospace; 
+	font-style: normal;
+	font-weight: normal;
+	color: rgb(255, 0, 255);
+}
+
+.groupe {
+	position: relative;
+	font: arial;
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	margin-left: 1px;
+	top: 7px;
+	background-image: url(images/images_bonhommes/groupe.jpg);
+	height: 80px;
+	background-repeat: no-repeat;
+	padding         : 20px 2px 2px 65px;
+} 
+
+.seul {
+	position: relative;
+	font: arial;
+	font-size: 15px;
+	font-weight: bold;
+	color: #6A6A6A;
+	margin-left: 1px;
+	top: 7px;
+	background-image: url(images/images_bonhommes/b-seul.jpg);
+	height: 100px;
+	background-repeat: no-repeat;
+	padding         : 20px 2px 2px 65px;
+} 
+
+.exclamation {
+	position: relative;
+	font: arial;
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	margin-left: 1px;
+	top: 7px;
+	background-image: url(images/images_bonhommes/exclamation.jpg);
+	height: 80px;
+	background-repeat: no-repeat;
+	padding         : 20px 2px 2px 65px;
+} 
+
+.information {
+	position: relative;
+	font: arial;
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	margin-left: 1px;
+	top: 7px;
+	background-image: url(images/images_bonhommes/information.jpg);
+	height: 80px;
+	background-repeat: no-repeat;
+	padding         : 20px 2px 2px 65px;
+} 
+
+.main {
+	position: relative;
+	font: arial;
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	margin-left: 1px;
+	top: 7px;
+	background-image: url(images/images_bonhommes/main.jpg);
+	height: 80px;
+	background-repeat: no-repeat;
+	padding         : 20px 2px 2px 65px;
+} 
+
+.interrogation {
+	position: relative;
+	font: arial;
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	margin-left: 1px;
+	top: 7px;
+	background-image: url(images/images_bonhommes/interrogation.jpg);
+	height: 80px;
+	background-repeat: no-repeat;
+	padding         : 20px 2px 2px 65px;
+	text-align: left;
+} 
+
+
+.vrai {
+	position: relative;
+	font: arial;
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	margin-left: 1px;
+	top: 7px;
+	background-image: url(images/images_bonhommes/vrai.jpg);
+	height: 80px;
+	background-repeat: no-repeat;
+	padding         : 20px 2px 2px 65px;
+} 
+#pour les fichiers mp3
+#mp3 { 
+} 
+
+.audiotitre {
+
+	font: arial;
+	font-size: 15px;
+	font-weight: bold;
+	
+	padding         : 5px 2px 2px 35px;
+
+	height: 28px;
+	background-image: url(images/images_bonhommes/fond_audio_blanc.gif);
+	background-repeat: no-repeat;
+} 
+
+

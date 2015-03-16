@@ -1,0 +1,11 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void main() {
+  int jour;
+  double somme, temperature;
+  somme = 0;
+  for(jour = 1; jour <= 7; jour = jour + 1) {
+    temperature = readDouble();
+    somme = somme + temperature;
+  }
+  println(somme / 7.0);
+}

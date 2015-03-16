@@ -1,0 +1,119 @@
+[
+{
+ "tag" : "keyword"
+, "title" : "Initialise le tracé"
+, "name" : "reset"
+, "code" : "reset();"
+, "doc" : "Initialise le tracé dans une fenêtre de taille [-1,1] x [-1,1]"
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Initialise le tracé à une taille donnée"
+, "name" : "reset"
+, "offset" : "6"
+, "code" : "reset(Xscale, Yscale);"
+, "doc" : "Initialise le tracé dans une fenêtre de taille [-Xscale, Xscale] x [-Yscale, Yscale]"
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Initialise le tracé à une origine et taille donnée"
+, "name" : "reset"
+, "offset" : "6"
+, "code" : "reset(Xmin, Xmax, Ymin, Ymax);"
+, "doc" : "Initialise le tracé dans une fenêtre de taille [Xmin, Xmax] x [Ymin, Ymax]"
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Change la valeur d'un point de couleur du tracé"
+, "name" : "setPoint"
+, "offset" : "9"
+, "code" : "setPoint(x, y, c);"
+, "doc" : "Ajoute un point à la position (x, y) de couleur c (nombre entier).	Couleur du tracé: 0 (noir, défaut), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc)."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Change la valeur d'un point du tracé"
+, "name" : "setPoint"
+, "offset" : "9"
+, "code" : "setPoint(x, y);"
+, "doc" : "Ajoute un point noir à la position (x, y)."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Ajoute une chaîne de caractères de couleur au tracé"
+, "name" : "addString"
+, "offset" : "10"
+, "code" : "addString(x, y, string, c);"
+, "doc" : "Ajoute une chaîne de caractères string à la position (x, y), de couleur c (nombre entier).	Couleur du tracé: 0 (noir, défaut), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc)."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Ajoute une chaîne de caractères au tracé"
+, "name" : "addString"
+, "offset" : "10"
+, "code" : "addString(x, y, string);"
+, "doc" : "Ajoute une chaîne de caractères noire string à la position (x, y)."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Ajoute un rectangle de couleur au tracé"
+, "name" : "addRectangle"
+, "offset" : "13"
+, "code" : "addRectangle(xmin, ymin, xmax, ymax, c);"
+, "doc" : "Ajoute un rectangle de coordonnées [xmin, xmax] x [ymin, ymax], de couleur c (nombre entier).	Couleur du tracé: 0 (noir, défaut), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc)."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Ajoute un rectangle au tracé"
+, "name" : "addRectangle"
+, "offset" : "13"
+, "code" : "addRectangle(xmin, ymin, xmax, ymax);"
+, "doc" : "Ajoute un rectangle noir de coordonnées [xmin, xmax] x [ymin, ymax]."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Ajoute une ligne de couleur au tracé"
+, "name" : "addLine"
+, "code" : "addLine(x1, y1, x2, y2, c);"
+, "doc" : "Ajoute une ligne de (x1, y1) à (x2, y2), de couleur c (nombre entier).	Couleur du tracé: 0 (noir, défaut), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc)."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Ajoute une ligne au tracé"
+, "name" : "addLine"
+, "offset" : "8"
+, "code" : "addLine(x1, y1, x2, y2);"
+, "doc" : "Ajoute une ligne noire de e (x1, y1) à (x2, y2)."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Ajoute un cercle de couleur au tracé"
+, "name" : "addCircle"
+, "offset" : "10"
+, "code" : "addCircle(x, y, r, c);"
+, "doc" : "Ajoute un cercle de centre (x, y) et de rayon r, de couleur c (nombre entier).	Couleur du tracé: 0 (noir, défaut), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc)."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Ajoute un cercle au tracé"
+, "name" : "addCircle"
+, "offset" : "10"
+, "code" : "addCircle(x, y);"
+, "doc" : "Ajoute un cercle de centre (x, y) et de rayon r."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Renvoie la valeur horizontale du réticule"
+, "name" : "getX"
+, "code" : "double x = getX();"
+, "doc" : "Renvoie la valeur horizontale du réticule"
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Renvoie la valeur verticale du réticule"
+, "name" : "getY"
+, "code" : "double y = getY();"
+, "doc" : "Renvoie la valeur verticale du réticule"
+}
+]
+

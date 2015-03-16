@@ -1,0 +1,134 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>La &laquo;proglet&raquo; dichotomie</title>
+   </head>
+   <body>
+      <h1>La &laquo;proglet&raquo; dichotomie.</h1>
+      
+      <div align="right" class="margin">
+            
+         <div>Cliquer <a href="http://newtab?exercice.html">ici</a> pour faire l'activit&eacute;.
+         </div>
+             
+         <div>Cliquer <a href="http://newtab?tutoriel.html">ici</a> pour lire le tutoriel.
+         </div>
+           
+      </div>
+        
+      <div>
+         Cette proglet permet d'apprendre la notion algorithmique de &laquo;&nbsp;recherche dichotomie&nbsp;&raquo;. 
+         La proglet affiche un livre avec tous les drapeaux du monde 
+             (r&eacute;pertori&eacute;s gr&acirc;ce &agrave; <a href="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde">wikipedia</a>)
+             et permet d'ouvrir le livre &agrave; une page donn&eacute;e pour comparer le nom de pays avec le nom du pays recherch&eacute;. 
+             
+         <div>Plus pr&eacute;cis&eacute;ment la fonction <font color="#990000"><b>compare</b></font> ouvre le livre &agrave; une page et compare un nom au nom affich&eacute; sur cette page: 
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                 
+                           <div><font color="#990000"><b>int</b></font> r&eacute;sultat = <font color="#990000"><b>compare</b></font>(nom, page);
+                           </div>
+                               
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            <ul class="ul">
+                   
+               <li>o&ugrave; <b>nom</b> est un <font color="#990000"><b>String</b></font> dont la valeur est le nom du pays recherch&eacute;;
+               </li>
+                   
+               <li>o&ugrave; <b>page</b> est un <font color="#990000"><b>int</b></font>, le num&eacute;ro de la page de 0 &agrave; 192 (il y a 193 pays);
+               </li>
+                   
+               <li>le <b>r&eacute;sultat</b> &eacute;tant:
+                  <ul class="ul">
+                             
+                     <li><tt>-1</tt> si le nom se situe avant celui de la page,
+                     </li>
+                             
+                     <li><tt>+1</tt> si le nom se situe apr&egrave;s celui de la page,
+                     </li>
+                             
+                     <li><tt>0</tt> si il correspond &agrave; celui de la page.
+                     </li>
+                           
+                  </ul>
+               </li>
+                   
+            </ul> tandis que la fonction: 
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                 
+                           <div><font color="#990000"><b>int</b></font> l = <font color="#990000"><b>length</b></font>();
+                           </div>
+                               
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div> renvoie le nombre de pages, ici 193.
+         </div>
+             
+         <div>Un exemple d'utilisation: lors de la d&eacute;monstration, 
+                le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
+                secondes &agrave; une vingtaine de pages au hasard, selon le programme suivant:
+                
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                 
+                           <div><font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font> i = 0; i &lt; 26; i++) {
+                           </div>
+                                 
+                           <div><font color="#990000"><b>int</b></font> page = <font color="#990000"><b>random</b></font>(0, <font color="#990000"><b>length</b></font>());
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>compare</b></font>(<font color="#008000">"rien"</font>, page);
+                           </div>
+                                 
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>sleep</b></font>(400);
+                           </div>
+                                 
+                           <div>}</div>
+                               
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+             
+         <div>En appuyant sur les touches <tt>&lt;-</tt> et <tt>-&gt;</tt> nous pouvons tourner manuellement les pages &agrave; gauche ou &agrave; droite.
+         </div>
+           
+      </div>
+        
+      <div>Essaye ensuite de jouer &agrave; ce <a href="http://editor?LeJeuDeDevinette.jvs">jeu de devinette</a> . . facile &agrave; gagner, d&eacute;sormais !
+      </div>
+        
+      <div>Avec cette version du <a href="http://editor?LeJeuDeDevinette2.jvs">jeu de devinette</a> tu peux aussi faire jouer l'ordinateur !
+      </div>
+      
+      <div>Cette &laquo;proglet&raquo; est un composant logiciel ouvert dont documentation et code-source sont disponibles <a href="http://javascool.github.com/wproglets/javascool-proglet-dichotomie-html/api/org/javascool/proglets/dichotomie/package-summary.html">ici</a></div>
+      
+   </body>
+</html>

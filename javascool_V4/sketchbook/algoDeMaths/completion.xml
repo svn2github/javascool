@@ -1,0 +1,109 @@
+<keywords>
+  <keyword 
+    name="reset"
+    title="Initialise le tracé">
+    <code>reset();</code>
+    <doc>Initialise le tracé dans une fenêtre de taille [-1,1] x [-1,1]</doc>
+  </keyword>
+  <keyword 
+    name="reset"
+    offset="6"
+    title="Initialise le tracé à une taille donnée">
+    <code>reset(Xscale, Yscale);</code>
+    <doc>Initialise le tracé dans une fenêtre de taille [-Xscale, Xscale] x [-Yscale, Yscale]</doc>
+  </keyword>
+  <keyword 
+    name="reset"
+    offset="6"
+    title="Initialise le tracé à une origine et taille donnée">
+    <code>reset(Xmin, Xmax, Ymin, Ymax);</code>
+    <doc>Initialise le tracé dans une fenêtre de taille [Xmin, Xmax] x [Ymin, Ymax]</doc>
+  </keyword>
+  <keyword 
+    name="setPoint"
+    offset="9"
+    title="Change la valeur d'un point de couleur du tracé">
+    <code>setPoint(x, y, c);</code>
+    <doc>Ajoute un point à la position (x, y) de couleur c (nombre entier).
+Couleur du tracé: 0 (noir, défaut), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</doc>
+  </keyword>
+  <keyword 
+    name="setPoint"
+    offset="9"
+    title="Change la valeur d'un point du tracé">
+    <code>setPoint(x, y);</code>
+    <doc>Ajoute un point noir à la position (x, y).</doc>
+  </keyword>
+  <keyword 
+    name="addString"
+    offset="10"
+    title="Ajoute une chaîne de caractères de couleur au tracé">
+    <code>addString(x, y, string, c);</code>
+    <doc>Ajoute une chaîne de caractères string à la position (x, y), de couleur c (nombre entier).
+Couleur du tracé: 0 (noir, défaut), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</doc>
+  </keyword>
+  <keyword 
+    name="addString"
+    offset="10"
+    title="Ajoute une chaîne de caractères au tracé">
+    <code>addString(x, y, string);</code>
+    <doc>Ajoute une chaîne de caractères noire string à la position (x, y).</doc>
+  </keyword>
+  <keyword 
+    name="addRectangle"
+    offset="13"
+    title="Ajoute un rectangle de couleur au tracé">
+    <code>addRectangle(xmin, ymin, xmax, ymax, c);</code>
+    <doc>Ajoute un rectangle de coordonnées [xmin, xmax] x [ymin, ymax], de couleur c (nombre entier).
+Couleur du tracé: 0 (noir, défaut), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</doc>
+  </keyword>
+  <keyword 
+    name="addRectangle"
+    offset="13"
+    title="Ajoute un rectangle au tracé">
+    <code>addRectangle(xmin, ymin, xmax, ymax);</code>
+    <doc>Ajoute un rectangle noir de coordonnées [xmin, xmax] x [ymin, ymax].</doc>
+  </keyword>
+  <keyword 
+    name="addLine"
+    title="Ajoute une ligne de couleur au tracé">
+    <code>addLine(x1, y1, x2, y2, c);</code>
+    <doc>Ajoute une ligne de (x1, y1) à (x2, y2), de couleur c (nombre entier).
+Couleur du tracé: 0 (noir, défaut), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</doc>
+  </keyword>
+  <keyword 
+    name="addLine"
+    offset="8"
+    title="Ajoute une ligne au tracé">
+    <code>addLine(x1, y1, x2, y2);</code>
+    <doc>Ajoute une ligne noire de e (x1, y1) à (x2, y2).</doc>
+  </keyword>
+  <keyword 
+    name="addCircle"
+    offset="10"
+    title="Ajoute un cercle de couleur au tracé">
+    <code>addCircle(x, y, r, c);</code>
+    <doc>Ajoute un cercle de centre (x, y) et de rayon r, de couleur c (nombre entier).
+Couleur du tracé: 0 (noir, défaut), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</doc>
+  </keyword>
+  <keyword 
+    name="addCircle"
+    offset="10"
+    title="Ajoute un cercle au tracé">
+    <code>addCircle(x, y);</code>
+    <doc>Ajoute un cercle de centre (x, y) et de rayon r.</doc>
+  </keyword>
+  <keyword 
+    name="getX"
+    title = "Renvoie la valeur horizontale du réticule">
+    <code>double x = getX();</code>
+    <doc>Renvoie la valeur horizontale du réticule</doc>
+  </keyword>
+  <keyword 
+    name="getY"
+    title = "Renvoie la valeur verticale du réticule">
+    <code>double y = getY();</code>
+    <doc>Renvoie la valeur verticale du réticule</doc>
+  </keyword>
+</keywords>
+

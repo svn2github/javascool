@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>Java'sCool «@name»</title>
+  <meta charset="UTF-8">
+  <style type="text/css">
+     #main { margin-top: 80px;  }
+  </style>
+  <link href="@base-url/assets/pygments.css" rel="stylesheet">
+  <link href="@base-url/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="@base-url/assets/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="@base-url/assets/google-code-prettify/prettify.css" type="text/css" rel="stylesheet"/>
+  <script type="text/javascript" src="@base-url/assets/google-code-prettify/prettify.js"></script>
+</head><body style="background-color:#FFFFFF;" onload="prettyPrint()">
+

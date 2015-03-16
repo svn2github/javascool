@@ -1,0 +1,360 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>TFTP : Trivial File Transfert Program</title>
+   </head>
+   <body>
+      <h1>TFTP : Trivial File Transfert Program.</h1>
+      
+      
+      
+      
+      <div>
+         <h2>Pr&eacute;sentation.</h2>
+         
+         
+         <div> On propose ici de r&eacute;aliser un programme de transfert de fichier texte via le r&eacute;seau &agrave; l'aide d'une impl&eacute;mentation type client/serveur
+            utilisant les sockets. On dispose de deux postes (1 poste serveur en mode r&eacute;ception et 1 autre poste client en mode envoi.
+         </div>
+         
+         
+      </div>
+      
+      
+      <div>
+         <h2>Proglet exemple (version serveur et version client).</h2>
+             
+         <div>Voici un exemple minimal qui permet de tester cette proglet.
+            Attention, il faut lancer la version serveur en premier, puis la version client. Ici les deux proglets peuvent &ecirc;tre lanc&eacute;s
+            sur la m&ecirc;me machine.Dans ce cas, il vous faut lancer deux fois la proglet txtCode sur l'ordinateur en chargeant dans l'une
+            la version serveur ci-dessous et dans l'autre la version client.
+         </div>
+             
+                  
+         <div align="center" class="center"><img src="network.png" alt="" class="icon"></div>
+             
+         
+         <div>
+            <h3>Code source des programmes de test.</h3>
+                
+            <div>
+               <h4>Version serveur.</h4>
+                   
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>void</b></font> main() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 int i,j;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 String str;
+                              </div>      
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                  ....
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 openSocketServer(6000);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 str=getMessageViaSocketServer();
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 .... &eacute;criture dans le fichier de reception 
+                              </div>    
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 closeSocketServer();
+                              </div> 
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                  ....
+                              </div>       
+                                    
+                              <div>}</div>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+                   
+            </div>
+                
+                
+            <div>
+               <h4>Version client.</h4>
+                   
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>void</b></font> main() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 int i,j;
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 String str;
+                              </div>       
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 openSocketClient("127.0.0.1",6000);
+                              </div> 
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                  ....
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 sendMessageViaSocketClient(str);
+                              </div>
+                                      
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                  ....
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 closeSocketClient(); 
+                              </div>    
+                                    
+                              <div>}</div>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>    
+                   
+            </div>
+            
+         </div>    
+         
+         
+         <div>
+            <h3>Principes de fonctionnement.</h3>
+                
+            <ul class="ul">    
+               
+               <li>Une fois lanc&eacute;, le proglet serveur ouvre un socket sur le port 6000 (<tt>openSocketServer</tt>) puis il se met en attente d'un bloc de carat&egrave;re envoy&eacute; par le proglet client (<tt>getMessageViaSocketServer()</tt>).Il ne faut pas oublier de fermer le socket server (<tt>closeSocketServer()</tt>) pour lib&eacute;rer le port 6000 pour une future utilisation.
+               </li>
+               
+               <li>Une fois lanc&eacute;, le proglet client essaye d'ouvrir un socket (<tt>openSocketClient</tt>) communiquant via le port 6000 avec le serveur sp&eacute;cifi&eacute;, ici localhost/127.0.0.1 .Puis il envoie une partie du fichier (<tt>sendMessageViaSocketClient("3,3")</tt>). Il ne faut pas oublier de fermer le socket Client (<tt>closeSocketClient()</tt>) pour lib&eacute;rer le port ouvert par le client pour une future utilisation.
+               </li>
+               
+            </ul>
+            
+         </div>
+         
+         
+         <div>
+            <h3>remarques:.</h3> 
+                
+            <ul class="ul">
+                   
+               <li>Le port utilis&eacute; pour acc&eacute;der au serveur est le port 6000. (A changer si ce port est d&eacute;j&agrave; utilis&eacute;).</li>
+                   
+               <li> Dans cet exemple minimal aucun test n'est fait pour v&eacute;rifier que les ouvertures de sockets ce sont bien pass&eacute;es, etc. Tests
+                  qui seront bien s&ucirc;r &agrave; faire dans la version finale du jeu.
+               </li>
+                   
+               <li>En cas de probl&egrave;mes &eacute;ventuels de droits/Firewall sur le r&eacute;seau, on peut tr&egrave;s bien utiliser cette application client/serveur
+                  sur un m&ecirc;me poste (au moins pour les d&eacute;veloppements) en utilisant l'adresse de serveur localhost (127.0.0.1). On peut aussi
+                  raccorder les deux postes &agrave; l'aide d'un c&acirc;ble crois&eacute; ou d'un mini-switch.
+               </li>
+                   
+            </ul>
+            
+         </div>    
+         
+         
+      </div>    
+          
+      
+      <div>
+         <h2>Liste des fonctions &agrave; disposition.</h2> 
+         
+         
+         <div>
+            <h3>Gestion de la communication r&eacute;seau via les sockets.</h3>
+            
+            <div>Au niveau communication TCP/IP on dispose d'une fonction d'initialisation du port (via une "socket"), d'une fonction de lecture,
+               d'une fonction d'&eacute;criture et enfin d'une fonction de lib&eacute;ration de la connection. Chacune de ses fonctions est d&eacute;clin&eacute;e en
+               version serveur et en  version client.
+            </div>
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>openSocketServer</b></font>(int numport)
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Initialisation du socket server, il &eacute;coute sur le port sp&eacute;cifi&eacute;.Cette fonction tourne true si tout c'est bien pass&eacute; false
+               dans le cas contraire.
+            </div>
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>getMessageViaSocketServer</b></font>()
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Retourne un message (type String) lu sur le socket server. Message en provenance du client.</div>
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>sendMessageViaSocketServer</b></font>(String text)
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Permet d'&eacute;crire un message sur le socket server. Message &agrave; destination du client.</div>
+            
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>closeSocketServer</b></font>()
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Fermeture du socket server. Cette fonction retourne true si tout c'est bien pass&eacute; false dans le cas contraire.</div>
+                 
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>openSocketClient</b></font>(String serverName, int numport)
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Initialisation socket client vers server sp&eacute;cifi&eacute; (Nom et num&eacute;ro de port)
+               Cette fonction retourne true si tout c'est bien pass&eacute; false dans le cas contraire.
+            </div>
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>sendMessageViaSocketClient</b></font>(String text)
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Permet d'envoyer un message via le socket client vers le serveur.</div>
+            
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>getMessageViaSocketClient</b></font>()
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Retourne un message (type String) lu sur le socket client, message en provenance du serveur.</div>
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>closeSocketClient</b></font>()
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Fermeture du socket client. Cette fonction retourne true si tout c'est bien pass&eacute; false dans le cas contraire.</div>
+            
+         </div>
+         
+         
+      </div>
+      
+   </body>
+</html>

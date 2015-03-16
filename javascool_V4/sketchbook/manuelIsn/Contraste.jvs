@@ -1,0 +1,52 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void main() {
+  int i, j, l, h, max, a;
+  int[][] r, v, b, t, t1;
+  String s;
+  java.util.Scanner f1;
+  java.io.OutputStreamWriter f2;
+
+  f1 = openIn("joconde.ppm");
+  s = readStringFromFile(f1);
+  s = readStringFromFile(f1);
+  l = readIntFromFile(f1);
+  h = readIntFromFile(f1);
+  max = readIntFromFile(f1);
+  r = new int[l][h];
+  v = new int[l][h];
+  b = new int[l][h];
+  for(j = 0; j <= h - 1; j = j + 1)
+    for(i = 0; i <= l - 1; i = i + 1) {
+      r[i][j] = readIntFromFile(f1);
+      v[i][j] = readIntFromFile(f1);
+      b[i][j] = readIntFromFile(f1);
+    }
+  closeIn(f1);
+
+  t = new int[l][h];
+  for(i = 0; i <= l - 1; i = i + 1)
+    for(j = 0; j <= h - 1; j = j + 1)
+      t[i][j] = (r[i][j] + b[i][j] + v[i][j]) / 3;
+  t1 = new int[l][h];
+  for(i = 0; i <= l - 1; i = i + 1)
+    for(j = 0; j <= h - 1; j = j + 1) {
+      if(t[i][j] <= max / 5) {
+        t1[i][j] = 0;
+      } else {
+        t1[i][j] = max;
+      }
+    }
+  f2 = openOut("jocondenoiretblanc.pgm");
+  printlnToFile(f2, "P2");
+  printlnToFile(f2, "#");
+  printToFile(f2, l);
+  printToFile(f2, " ");
+  printlnToFile(f2, h);
+  printlnToFile(f2, max);
+  for(j = 0; j <= h - 1; j = j + 1)
+    for(i = 0; i <= l - 1; i = i + 1)
+      printlnToFile(f2, t1[i][j]);
+  closeOut(f2);
+
+  showImage("jocondenoiretblanc.pgm");
+}

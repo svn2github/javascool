@@ -1,0 +1,178 @@
+<div>
+  <h2>Des propositions d'interventions de scientifiques</h2> 
+
+  <items>
+    <item class="titre">
+      <mail>Adresse électronique de l'intervenant (avec prénom et nom)</mail>
+      <title>Thème</title>
+      <type>Type</type>
+      <target>Niveau</target>
+      <when>Dates possibles</when>
+      <where>Lieux possibles</where>
+      <what>Descriptif</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail>mohamed.khamla@obs-vlfr.fr, christian.gache@obs-vlfr.fr, christian.sardet@obs-vlfr.fr, christian.rouviere@obs-vlfr.fr</mail>
+      <!-- Christian Gache (directeur umr7009 CNRS), Christian Sardet (directeur de recherche), Christian Rouvière (ingénieur d'étude), Mohamed Khamla (porteur du projet ANATOCELL) -->
+      <title>NATOCELL: anatomie de la cellule</title>
+      <type>Fête de la science et toute manifestation à caractère scientifique auprès de la jeunesse</type>
+      <target>Collège et lycée, classe de SVT, ES, S</target>
+      <what>Notre corps compte plusieurs milliards de cellules qui nous aident à bouger, à respirer... à vivre! Cependant, le public connaît mal cet élément indispensable au bon fonctionnement de chaque être vivant. Il s'agit de mettre à la disposition du grand public <i>un objet «cellule»</i>, grossit des milliers de fois, réalisé en matériaux synthétiques qui permettra d'informer les publics scolaires sur l'organisation de la cellule, sa vie, ses dysfonctionnements, sa réparation quand elle est malade et surtout comment la recherche scientifique nourrit de formidables espoirs pour la soigner. Cet objet pédagogique pourra être utilisé comme support de cours en SVT ou présenté aux publics scolaires notamment lors de la «Fête de la Science». Il aura pour but de familiariser et sensibiliser le public à cette unité de base du vivant.</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail>Monique.Simonetti@sophia.inria.fr, Gerard.Giraudon@sophia.inria.fr, Stephane.Lanteri@sophia.inria.fr, etc..</mail>
+      <title>Tous les métiers de la recherche scientifique: du soigneur d'animaux à la mathématicienne</title>
+      <type>Conférence-débat</type>
+      <target>Lycée et Collège</target>
+      <when></when>
+      <where></where>
+      <what>La recherche et l'innovation seront sûrement les moteurs de notre société face au grands défis que nous connaissons: 
+      environnement, énergie, démographie, mondialisation. Cette recherche scientifique est un sujet bien trop sérieux pour être confiée au scientifiques . . sans 
+      le support de beaucoup d'autres métiers: administrateurs, juristes, techniciens et ingénieurs, philosophes, etc.. Il y a tellement à faire, ensemble, que 
+      les opérateurs qui font de la recherche scientifique dans le domaine public ou privé, offrent les plus innatendus des métiers: à découvrir !</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail>Pierre.Alliez@sophia.inria.fr</mail>
+      <title>Traitement numérique de la géométrie</title>
+      <type>Conférence avec démonstrations logicielles</type>
+      <target>Lycée</target>
+      <when></when>
+      <where></where>
+      <what>Après le texte, le son et les images, les modèles géométriques sont identifiés comme la «quatrième vague» du multimédia par
+      les acteurs de l'informatique graphique, et sont devenus un sujet d'étude central pour les acteurs de l'ingénierie numérique. Ce
+      succès n'a été possible que grâce à un travail théorique et algorithmique considérable effectué dans le domaine du traitement du
+      signal. D'un point de vue scientifique, le nouveau défi consiste à élaborer les fondements théoriques et algorithmiques pour
+      construire un ensemble de techniques similaires aux outils du traitement numérique du signal, mais pour la géométrie. Par
+      analogie avec les signaux sonores ou les images, on cherchera à mesurer, reconstruire, traiter, comprimer et transmettre des
+      formes complexes</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail>mascotte.permanents@sophia.inria.fr</mail>
+      <title>Le Sudoku: un très bel exercice de calcul pour un ordinateur !</title>
+      <type>Conférence avec démonstrations logicielles</type>
+      <target>Lycée</target>
+      <when></when>
+      <where></where>
+      <what>Exemples de problèmes d'algorithmique de théorie des graphes : construction d'un réseau de degré et diamètre donnés ou d'un
+      réseau embarqué tolérant aux pannes, comment trouver les plus courts chemins dans un réseau.
+      Et comment des mécanismes similaires permettent de se représenter les règles plus ou moins difficiles 
+      (les règles logiques et celles basées sur la théorie des graphes) pour résoudre un sudoku.</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail>mascotte.permanents@sophia.inria.fr</mail>
+      <title>Nos réseaux téléphoniques et informatiques marcheraient jamais sans les mathématiques</title>
+      <type>Conférence avec démonstrations logicielles</type>
+      <target>Lycée</target>
+      <when></when>
+      <where></where>
+      <what>Exemples de problèmes d'algorithmique de théorie des graphes : construction d'un réseau de degré et diamètre donnés ou d'un
+      réseau embarqué tolérant aux pannes, comment trouver les plus courts chemins dans un réseau.
+      Et comment des mécanismes similaires permettent de se représenter les règles plus ou moins difficiles en télécom.</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail>Denis.Talay@sophia.inria.fr</mail>
+      <title>Du rôle scientifique et industriel des mathématiques appliquées</title>
+      <type>Conférence débat</type>
+      <target>Lycée</target>
+      <when></when>
+      <where></where>
+      <what>Où l'on montrera que l'on peut devenir fort riche grâce aux mathématiques. Riche d'argent: ces ont en effet les plus belles mathématiques actuelles, 
+      celles liées à la théorie des probabilités, qui permettent de faire avancer la science au niveau des mathématiques financières, par exemple
+      calculer comment gérer au mieux des produits financiers malgré les aléats des marchés. Riche économiquement: car les grandes technologies industrielles
+      émergentes, celles qui nous feront aller de l'avant, utilisent les vraies mathématiques, celles que l'on peut appliquer.</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail>Romain.Fernandez@sophia.inria.fr</mail>
+      <title>Analyse d'images biomedicales par ordinateur: la simulation du fonctionnement du coeur en mouvement.</title>
+      <type>Démonstration sur stand ou lors d'une visite, sujet de débat</type>
+      <target>Lycée</target>
+      <when></when>
+      <where></where>
+      <what>L'objectif de ce projet est de fournir un modele anatomique et fonctionnel du coeur permettant l'assimilation de données des patients et 
+      la planification de thérapies assez critiques comme l'ablation de parties du coeur pour éviter les "crises cardiaques". Au delà de résultats fascinants,
+      il y a des enjeux vertigineux sur le confort medical de tout un chacun, sur le report éventuel de notre future mort et le coût qui peut-être sans limite aussi.</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail>Jean_Pierre.Merlet@sophia.inria.fr</mail>
+      <title>La robotique</title>
+      <type>Conférence avec démonstrations logicielles</type>
+      <target>Lycée</target>
+      <when></when>
+      <where></where>
+      <what>A découvrir comment la résolution d'équations s'applique à des techniques de résolution des problèmes quotidiens et à la robotique.</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail>Gerard.Giraudon@sophia.inria.fr</mail>
+      <title>La vision des robots (stéréovision artificielle, vision humaine, détection de mouvement)</title>
+      <type>Conférence avec démonstrations logicielles</type>
+      <target>Lycée</target>
+      <when></when>
+      <where></where>
+      <what>Découvrir ce que les calculs d'ordinateurs peuvent extraire d'une image, des informations sur la géométrie de la scène, les mouvements, etc.. 
+      En comprendre aussi les limites et les enjeux des recherches futures sur le sujet.</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail>Thierry.Vieville@sophia.inria.fr</mail>
+      <title>La moitié des exos de maths se fait automatiquement sur ordinateur: pourquoi diable se prendre la tête après ?</title>
+      <type>Conférence avec démonstrations logicielles</type>
+      <target>Lycée, 1ère S</target>
+      <when></when>
+      <where></where>
+      <what>Beaucoup de "calculs symboliques" (développer une expression, résoudre une équation, étudier une fonction, ..) sont tellement mécaniques . . que 
+      vous pouvez les faire automatiquement sur un logiciel comme Maple ou Mathematica. Ne vous en privez pas ! Car trois choses merveilleuses vont se produire:
+      (i) vous allez pouvoir consacrer votre temps à faire autre chose, (ii) vous serez "bons en maths" même si vous détestez ça, (iii) vous allez "comprendre" des
+      tas de choses qui parraissaient rébarbatives avant ! Fini d'être l'esclave des mathématiques, devenez le boss ! D'ailleurs quand les scientifiques en sont à
+      calculer un Airbus A380 ou ce que fait le cerveau d'un lapin, aucune chance de pouvoir faire ces quelques siècles de calcul à la main. Regardons ensemble
+      ce qui peut être mécanisé en mathématiques et ce que seul le cerveau peut appréhender.</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail>Thierry.Vieville@sophia.inria.fr</mail>
+      <title>La grenouille et le robot: qui est le moins sot ?</title>
+      <type>Conférence et débat avec les élèves</type>
+      <target>Lycée</target>
+      <when></when>
+      <where></where>
+      <what>Quand une grenouille gobe une mouche, c'est fascinant ! La grenouille gobe la mouche non pas où elle elle la voit, mais là où sera la mouche à la fin
+      du saut de la grenouille: détection du mouvement de la mouche, prédiction de sa position future, auto-calibration de la bio-mécanique de la grenouille, 
+      voilà un mécanisme des plus sophistiqué. Ok. Maintenant si un petit caillou est jeté devant la grenouille . . elle le gobe avec autant d'allant !!! 
+      Sophistiqué, mais très con. Le robot à ses chances, la vision des robots a beau ne pas être intelligente, elle leur permet de faire bien plus que vous ne 
+      pourriez penser.</what>
+    </item>
+
+    <item>
+      <name></name>
+      <mail></mail>
+      <title></title>
+      <type></type>
+      <target></target>
+      <when></when>
+      <where></where>
+      <what></what>
+    </item>
+
+ </items>
+</div>
+
+ 

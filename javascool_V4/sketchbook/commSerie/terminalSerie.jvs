@@ -1,0 +1,13 @@
+import javax.swing.*;
+import java.awt.*;
+
+void main() {
+  // Récupère le panel de la proglet
+  Panel panel = getPane();
+  // Affiche le panneau de contrôle "C" et le panneau de dialogue "D"
+  panel.removeAll("CD");
+
+  // votre programme
+
+  panel.revalidate();
+}

@@ -1,0 +1,7 @@
+
+	void main( ) {
+	// Mon second programme
+		@tone:sns(t) ;
+		setNotes("2 e5 | 1 b c5 | 2 d5 | 1 c5 b | 2 a | 1 a c5 | 2 e5 | 1 d5 c5 | 2 b | 1 b c5 | 2 d5 e5 c5 a a");
+		play() ;
+	}

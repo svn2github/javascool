@@ -1,0 +1,105 @@
+void main() {
+  Chiffre[] c1 = { ZERO, ZERO, UN, TROIS };
+  Chiffre[] c2 = { ZERO, ZERO, NEUF, HUIT };
+
+  operation(c1, c2, addition(4, c1, c2), "+");
+
+  operation(c1, c2, multiplication(4, c1, c2), "*");
+
+  operation(c2, c1, soustraction(4, c2, c1), "-");
+
+  Chiffre[] c3 = { UN, ZERO, ZERO };
+  Chiffre[] c4 = { ZERO, NEUF, NEUF };
+
+  operation(c3, c4, soustraction(3, c3, c4), "-");
+}
+void operation(Chiffre[] c1, Chiffre[] c2, Chiffre[] resultat, String signe) {
+  echo(nombreVersChaine(c1) + " " + signe + " " + nombreVersChaine(c2) + " = " + nombreVersChaine(resultat));
+}
+NombreA2Chiffres chiffre(Chiffre c) {
+  return nombre(ZERO, c);
+}
+Chiffre[] addition(int taille, Chiffre[] c1, Chiffre[] c2) {
+  Chiffre[] res = new Chiffre[taille];
+  Chiffre retenue = ZERO;
+  for(int i = taille - 1; i >= 0; i--) {
+    NombreA2Chiffres n = plus(plus(chiffre(c1[i]), chiffre(c2[i])), chiffre(retenue));
+    Chiffre unite = unite(n);
+    Chiffre dizaine = dizaine(n);
+    res[i] = unite;
+    if(i > 0) {
+      retenue = dizaine;
+    } else {
+      assertion(dizaine == ZERO, "Attention, débordement !");
+    }
+  }
+  ;
+  return res;
+}
+// multiplication de [c] par le chiffre [scal]
+Chiffre[] multiplicationScalaire(int taille, Chiffre scal, Chiffre[] c) {
+  NombreA2Chiffres numScal = chiffre(scal);
+  Chiffre[] res = new Chiffre[taille];
+  Chiffre retenue = ZERO;
+  for(int i = taille - 1; i >= 0; i--) {
+    NombreA2Chiffres n = plus(mult(numScal, chiffre(c[i])), chiffre(retenue));
+    Chiffre unite = unite(n);
+    Chiffre dizaine = dizaine(n);
+    res[i] = unite;
+    if(i > 0) {
+      retenue = dizaine;
+    } else {
+      assertion(dizaine == ZERO, "Attention, débordement !");
+    }
+  }
+  ;
+  return res;
+}
+// multiplication de [c] par 10 puissance [decalage]
+Chiffre[] decalage(int taille, int decalage, Chiffre[] c) {
+  for(int i = 0; i < decalage; i++)
+    assertion(c[i] == ZERO, "Attention, débordement !");
+  Chiffre[] res = new Chiffre[taille];
+  for(int i = 0; i < taille - decalage; i++)
+    res[i] = c[i + decalage];
+  for(int i = taille - decalage; i < taille; i++)
+    res[i] = ZERO;
+  return res;
+}
+Chiffre[] multiplication(int taille, Chiffre[] c1, Chiffre[] c2) {
+  Chiffre[] res = new Chiffre[taille];
+  for(int i = 0; i < taille; i++)
+    res[i] = ZERO;
+  for(int i = taille - 1; i >= 0; i--)
+    if(c2[i] != ZERO) {
+      Chiffre[] aux = multiplicationScalaire(taille, c2[i], c1);
+      aux = decalage(taille, taille - 1 - i, aux);
+      res = addition(taille, aux, res);
+    }
+  ;
+  return res;
+}
+Chiffre[] soustraction(int taille, Chiffre[] c1, Chiffre[] c2) {
+  Chiffre[] res = new Chiffre[taille];
+  boolean retenue = false;
+  for(int i = taille - 1; i >= 0; i--) {
+    NombreA2Chiffres n2;
+    if(retenue) {
+      n2 = plus(chiffre(c2[i]), chiffre(UN));
+    } else {
+      n2 = chiffre(c2[i]);
+    }
+    NombreA2Chiffres n1 = chiffre(c1[i]);
+    if(estPlusPetit(n2, n1)) {
+      retenue = false;
+      res[i] = unite(moins(n1, n2));
+    } else {
+      retenue = true;
+      n1 = nombre(UN, c1[i]);
+      res[i] = unite(moins(n1, n2));
+    }
+  }
+  ;
+  assertion(!retenue, "Attention, soustraction impossible !");
+  return res;
+}

@@ -1,0 +1,52 @@
+
+import javax.swing.JLayeredPane;
+import org.javascool.widgets.IconOutput;
+import java.awt.Color;
+
+// Le Panel de JavaProg
+JLayeredPane jpanel = getPane();
+
+// Le Panel de codagePixel
+IconOutput cpanel = new IconOutput();
+
+// Peint un rectangle de coin haut-gauche (x,y), de taille (w, h), et de couleur (r,g,b)
+void paintRect(int x, int y, int w, int h, int r, int g, int b) {
+   Color c = new Color(r, g, b);
+   for (int j = y; j < y + h; j ++) {
+      for (int i = x; i < x + w; i ++) {
+         cpanel.set(i, j, c);
+      }
+   }
+}
+
+// Peint en blanc
+void eponge() {
+   paintRect(0, 0, 600, 600, 255, 255, 255);
+}
+
+void main() {
+   // initDrawing(600, 600);
+    jpanel.setSize(600, 600);
+   cpanel.setSize(600, 600);
+   cpanel.reset(600, 600, false);
+   jpanel.add(cpanel);
+   eponge();
+   // carre rouge
+    paintRect(100, 200, 100, 100, 255, 0, 0);
+   sleep(1000);
+   eponge();
+   // carre bleu
+    paintRect(250, 200, 100, 100, 0, 0, 255);
+   sleep(1000);
+   eponge();
+   // carre vert
+    paintRect(400, 200, 100, 100, 0, 255, 0);
+   sleep(1000);
+   // lecture d'un pixel
+    int x = 410, y = 210;
+   Color rgb = cpanel.getPixelColor(x, y);
+   println("red   = " + rgb.getRed());
+   println("green = " + rgb.getGreen());
+   println("blue  = " + rgb.getBlue());
+}
+

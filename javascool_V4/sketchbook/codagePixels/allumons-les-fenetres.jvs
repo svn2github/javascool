@@ -1,0 +1,75 @@
+// Proglet codagePixels, Léon D'Aprile<leon.tuner@gmail.com> élève de 2nd MPS au CIV, a.b.s. Claudine Noblet, professeure
+
+// Affiche une fenêtre à une position et d'une couleur donnée
+void fenetre(int x, int y, String color) {
+   for (int i = 0; i <= 12; i ++) {
+      for (int j = 0; j <= 14; j ++) {
+         setPixel(x + i, y + j, color);
+      }
+   }
+}
+
+void main() {
+   reset(100, 100);
+   // Trace le fond de l'image en bleu
+   for (int x = -100; x <= 100; x ++) {
+      for (int y = -100; y <= 100; y ++) {
+         setPixel(x, y, "blue");
+      } }
+   // Trace le fond de l'immeuble
+   for (int x = -50; x <= 48; x ++) {
+     for (int y = -100; y <= 54; y ++) {
+       setPixel(x, y, "black");
+     }}
+   // Trace au hasard 50 fois une fenêtre
+   for (int i = 0; i < 50; i++) {
+     int num = (int)(Math.random() * 14 + 1);
+     if (num == 1) {
+       fenetre( -4, -5, "yellow");
+     }
+     if (num == 2) {
+       fenetre( -19, -25, "yellow");
+     }
+     if (num == 3) {
+       fenetre( -13, 12, "yellow");
+     }
+     if (num == 4) {
+       fenetre( -47, -30, "yellow");
+     }
+     if (num == 5) {
+       fenetre( -30, 30, "yellow");
+     }
+     if (num == 6) {
+       fenetre(3, 20, "yellow");
+     }
+     if (num == 7) {
+       fenetre(30, -50, "yellow");
+     }
+     if (num == 8) {
+       fenetre(25, -70, "yellow");
+     }
+     if (num == 9) {
+       fenetre(18, -3, "yellow");
+     }
+     if (num == 10) {
+       fenetre( -48, -2, "yellow");
+     }
+     if (num == 11) {
+       fenetre( -45, -70, "yellow");
+     }
+     if (num == 12) {
+       fenetre( -30, -93, "yellow");
+     }
+     if (num == 13) {
+       fenetre( -0, -93, "yellow");
+     }
+     if (num == 14) {
+       fenetre( -10, -65, "yellow"); 
+     }
+     if (num == 15) {
+       fenetre( -20, -57, "yellow");
+     }
+     // Petite minuterie entre deux allumages
+     sleep(1000);
+   }
+}

@@ -1,0 +1,96 @@
+<div class="sujet" title="Un tutoriel sur le cryptage RSA"> 
+  <div class="objectif">
+    Le but de ce tutoriel est de manipuler les concepts liés à l'encryptage/décryptage par clés publique et privée, RSA. 
+    L'intérêt de la manipulation est de faire passer la non-symétrie du processus: autrement dit, tout le monde peut encrypter (par la clé publique),
+    mais seule une personne pourra décrypter (possédant la clé privée).. 
+  </div>
+  <div class="intros">
+    La cryptologie, science du secret, englobe la cryptographie — le codage secret d'un message — et la cryptanalyse — le décodage d'un message codé. 
+	<p>Le principe de la cryptographie consiste à définir une transformation des symboles d'un langage (les lettres ou les mots par exemple) 
+        qui soit difficilement inversible, 
+        de telle sorte que retrouver le mot original à partir du mot codé devienne une opération difficile à effectuer.</p>
+        <p>Il existe deux grandes familles d'algorithmes de cryptographie : les algorithmes symétriques (à clé secrète) 
+	et les algorithmes asymétriques (à clé publique). 
+        En cryptographie asymétrique (ou à clé publique), il existe une fonction dite à sens unique, pour transformer un message en message codé.</p>
+        <p>Il faut que cette fonction soit simple à appliquer à un quelconque message, mais qu'il soit difficile de retrouver le message original 
+	à partir du message codé. La cryptographie à clé publique permet de coder un message secret et aussi d'authentifier l'émetteur d'un message,
+        par le protocole symmétrique.</p>
+        <p> Pour une explication plus aprofondie du procédé de cryptologie par l'algorithme RSA, se référer à l'article 
+        <l link="http://interstices.info/jcms/c_30225/nombres-premiers-et-cryptologie-lalgorithme-rsa" text="interstices"/>.</p>
+   </div>
+
+  <div class="works">
+    <div title="Manipuler l'interface: cryptage de données.">
+      Scénario: Deux élèves sont "Alice" et "Bob" et vont se succéder à tour de rôle sur devant l'interface.
+      <div class="ol">
+        <p>Alice est chargée de générer les clés publique et privée en suivant les différentes étapes: <div class="ol">
+          <p>Génération de deux entiers premiers P et Q;</p>
+          <p>Calcul de N = P x Q;</p>
+          <p>Génération de E tel que E soit premier avec (P - 1) x (Q - 1);</p>
+          <p>Calcul de D tel qu'il existe un relatif entier M, tel que E × D + M × (P - 1) x (Q - 1) = 1</p>
+        </div>
+        Ainsi, (N,E) est la clé publique et D est la clé privée.
+        <p>Bien entendu nous n'avons pas à faire le calcul nous même . . juste à utiliser l'interface qui l'a programmé.</p>
+        <p>Alice divulgue la clé publique et garde précieusement la clé privée.</p>
+       </p>
+       <p>Bob reçoit alors la clé publique d'Alice.
+         <p>Il écrit son message secret, puis le traduit en chiffres, donc un nombre X, pour qu'il puisse se faire encrypter à l'aide d'un calcul arythmétique,
+         qui ne peut porter que sur des nombres et non une chaine de caratères.</p>
+         <p>Il encrypte ensuite le résultat grâce à la clé publique de la manière suivante: il élève le message chiffré X à la puissance E, 
+         et prend le reste de la division du nombre qu'il a obtenu par N que lui a également fourni Alice.</p>
+         <p>Il envoie alors le message encrypté Y à  Alice.</p>
+       </p>
+       <p>Alice reçoit le message encrypté Y.
+         <p>Elle le décrypte alors grâce à sa clé privée de la manière suivante: elle élève le nombre reçu de Bob à la puissance D, puis prend le reste de sa division par N.</p>
+         <p>Elle obtient alors une suite de chiffres Z qu'elle traduit en lettres et aboutit au message secret de Bob: c'est à dire que Z = X !</p>
+       </p>
+     </div>
+     essayer ce scénario par binôme de deux, pour bien vous familiariser avec l'interface.
+     <p>Puis refaire le scénario sans l'interface, mais sur papier, en essayant de se faire deviner un nombre X.</p>
+   </div>
+    <div title="Utiliser les clés pour s'authentifier.">
+      Scénario: "Alice" va maintenant prouver à "Bob" qu'elle est Alice. <div class="ol">
+        <p>Puis il encrypte avec la clé publique d'Alice un nombre secret (tiré au hasard) et l'envoie à Alice.</p>
+        <p>Alice le décrypte avec sa clé privée (elle seule peut le faire, car elle seule à la clé privée) et annonce à Bob le nombre secret.</p>
+        <p>Bob sait alors que ce ne peut être que Alice, la voilà authentifiée.</p>
+      </div>
+      <p>Jouer ce scénario sans l'interface, mais sur papier.</p>
+      <p>Proposer ensuite à Bob d'aller sur l'interface et de se calculer lui aussi des clés publiques et privées et 
+      rejouer le scénario de façon à ce que personne ne puisse jamais connaître le nombre secret.</p>
+   </div>
+   <div title ="Traiter à la main, un exemple numérique:">
+     <p>Un professeur envoie ses notes au secrétariat de l'école par mail. La clef publique du professeur est (55,3); celle du secrétariat est (33,3).</p>
+     <p>Vérifier, à l'aide des formules, que la clef privé du professeur (supposée connue de lui seul) est 27; et que celle du secrétariat est 7. 
+     Pour cela, reprise de la formule E x D + M x (P - 1) x (Q - 1) = 1, ce qui fait pour le professeur 3 x 27 - 2 x (5 - 1) x (11 - 1) = 1,
+                  et pour le secrétariat 3 x 7 - 1 x (3 - 1) x (11 - 1) = 1. <div class="ul">
+       <p>On voit bien que avec de si petit nombres un espion peut facilement essayer toutes les clés privées jusqu'à trouver la bonne !!!</p>
+       <p>Oui mais si clé est un mombre de plusieurs milliards de milliards (donc de 9 + 9 = une 20taine de chiffres) . . alors: <div class="ul">
+         <p>On pourra tout de même facilement faire les calculs de cryptage et de décrytage avec un ordinateur, en quelques dizaines d'opérations.</p>
+         <p>Mais le programme qui devra essayer lees milliards de milliards de clé privées avant de trouver la bonne . . 
+         même en faisant un milliard d'opérations par secondes en aura pour un milliard de secondes . c'est à dire . .</p>
+         <p>A vous: calculer combien cela fait en années . .</p>
+       </div></p>
+     </div></p>
+     <p>Pour assurer la confidentialité de ses messages, le professeur chiffre les notes avec la clef RSA du secrétariat. Quel message chiffre correspond à la note 12 ?
+     (convertit en nombre: 12594; regrouper en tranche de chiffres strictement plus petit que n=33: 12 5 9 4; élever chaque nombre à la puissance e=3 et en prendre le reste par la division par la division par n=33: 12 26 3 31. Mais si déjà converti en nombre: ce sera 12)</p>
+     <p>Pour assurer l'authenticité des messages contenant les notes, le professeur signe ses messages pour le secrétariat aprés les avoir chiffrés. 
+     Le secrétariat reçoit le message 23. Quelle est la note correspondante ? (élever 23 à la puissance 7, prenez le reste de sa division avec 33)</p>
+   </div>
+   <div title="Utiliser les fonctions dans votre propre programme.">  <div class="ul">
+     <p>Utiliser les fonctions de la proglet pour programmer une interface pour Bob qui demande un message au clavier et renvoie le message encrypté.
+     Vous mettrez les clés publiques dans le code à partir d'un jeu de clé déjà calculé. ce sont des clés publiques . . le code a pas besoin d'être caché.</p>
+     <p>Utiliser les fonctions de la proglet pour programmer une interface pour Alice qui demande le message crypté au clavier et renvoie le message encrypté.
+     Vous mettrez les clés publiques et privées dans le code (qui devra donc rester secret, lui !).</p>
+     <p>Rejouer un des deux scénarios en utilisant les deux bouts de programme.</p>
+     <p>Comment faire pour le code d'Alice ne risque pas d'être piraté . . pour y lire la clé privée ?</p>
+   </div></div>
+   <div title="Coder vous même les fonctions de cryptage et de décryptage">
+     <p>Ecrire la formule du cryptage de Bob et celle du décyptage d'Alice.</p>
+     <p>Reprendre alors les deux codes précédents en remplaçant les routines <r>encrypt</r>() et <r>decrypt</r>() par vos propres routines:<div class="ul">
+       <p>Pour passer du message à sa valeur en chiffres on utilise: <c><r>BigInteger</r> X = new <r>BigInteger</r>(message.<r>getBytes</r>());</c></p>
+       <p>Pour passer du message en chiffres à sa valeur en chaine de caractères on utilise: <c><r>String</r> message = new <r>String</r>(X.<r>totByteArray</r>());</c></p>
+       <p>Pour calculer <c>Y = X ^ E modulo N</c> on utilise: <c>modPow</c> [mettre un lien vers la doc] </p>
+     </div> Vous avez donc tous les ingrédients.</p>
+   </div>
+ </div>
+</div>

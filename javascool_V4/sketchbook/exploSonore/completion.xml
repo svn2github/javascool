@@ -1,0 +1,23 @@
+<keywords>
+  <keyword 
+    name="playSignal"
+    offset="11"
+    title="Joue un signal.">
+    <code>playSignal(canal, "sinus", frequence, amplitude);</code>
+    <doc>Joue un signal sur le canal 1, 2 ou 3 ; de type "sinus", "carré", "scie" ou "bruit" ; de fréquence donnée en Herz et d'amplitude donnée entre 0 et 1</doc>
+  </keyword>
+  <keyword 
+    name="playRecord"
+    offset="12"
+    title="Joue un enregistrement.">
+    <code>playRecord("sound-file", frequence);</code>
+    <doc>Joue un enregistrement sonore dans un fichier de nom "sound-file", avec une fréquence de coupure données en Herz.</doc>
+  </keyword>
+  <keyword 
+    name="playStop"
+    title="Arrête l'émission sonore.">
+    <code>playStop();</code>
+    <doc>Arrête toute émission sonore.</doc>
+  </keyword>
+</keywords>
+

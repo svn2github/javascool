@@ -1,0 +1,31 @@
+
+void main() {
+	// jeu de donnees
+	double [] quanti = {
+		52, 47, 51, 69, 83,
+		23, 44, 19, 67, 24,
+		83, 58, 63, 77, 85,
+		75, 51, 43, 85, 86,
+		4, 46, 25, 33, 27,
+		35, 56, 31, 47, 77,
+		67, 49, 27,75, 79,
+		92, 57, 73, 83, 87,
+		12, 42, 23, 59, 21,
+		46, 54, 48, 73, 29 
+	};
+	String [] quali = {
+		"AFR", "AME", "ASI", "EUR", "OCE",
+		"AFR", "AME", "ASI", "EUR", "OCE",
+		"AFR", "AME", "ASI", "EUR", "OCE",
+		"AFR", "AME", "ASI", "EUR", "OCE",
+		"AFR", "AME", "ASI", "EUR", "OCE",
+		"AFR", "AME", "ASI", "EUR", "OCE",
+		"AFR", "AME", "ASI", "EUR", "OCE",
+		"AFR", "AME", "ASI", "EUR", "OCE",
+		"AFR", "AME", "ASI", "EUR", "OCE",
+		"AFR", "AME", "ASI", "EUR", "OCE"
+	};
+	// boites a moustaches (une par modalite)
+	moustache(quanti, quali);
+		// rq : la valeur d'un quantile peut etre connu en cliquant dessus 
+} 

@@ -1,0 +1,77 @@
+<div title="La «proglet» grapheEtChemins">
+  <p class="margin">
+    <p>Cliquer <l class="newtab" link="exercice.htm" text="ici"/> pour faire l'activité.</p>
+    <p>Cliquer <l class="newtab" link="tutoriel.htm" text="ici"/> pour lire le tutoriel.</p>
+  </p>
+  <p>Cette proglet permet de s’approprier les différents éléments caractéristiques d’un graphe, 
+  en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin.</p>
+  <p>Un graphe est un ensemble de points, dont certaines paires sont directement reliées par un lien. 
+  Ces liens peuvent être orientés, d'un point vers un autre ou vice versa. 
+  Dans le cas contraire, les liens sont symétriques, et le graphe est non-orienté. 
+  Généralement, les points sont appelés les sommets ou les nœuds. Les liens sont appelés arêtes dans les graphes non-orienté 
+  et arcs dans un graphe orienté. (<l link="http://fr.wikipedia.org/wiki/Th%C3%A9orie_des_graphes" text="Wikipedia"/>)
+  </p>
+  <p>Pour construire et manipuler un graphe, il faut utiliser la construction javascool. 
+  Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: <div class="code">
+    <m>Ajouter ou modifier un noeud existant au graphe:</m>
+    <p><r>addNode</r>(<r>String</r> n, <r>int</r> x, <r>int</r> y)</p>
+    </div>où: <div class="ul">
+      <p><c>n</c> est le nom du noeud.</p>
+      <p><c>x</c> est l'abscisse du noeud (entre 0 et 900).</p>
+      <p><c>y</c> est l'ordonnée du noeud (entre 0 et 500).</p>
+    </div><div class="code">
+    <m>Obtenir un noeud à partir d'une position:</m>
+    <p><r>String</r> n =<r>getClosestNode</r>(<r>int</r> x, <r>int</r> y)</p>
+    </div>où: <div class="ul">
+      <p><c>x</c> est l'abscisse de la position (entre 0 et 900).</p>
+      <p><c>y</c> est l'ordonnée de la position (entre 0 et 500).</p>
+      <p><c>n</c> est le nom du noeud, qui est renvoyé.</p>
+      </div><div class="code">
+    <m>Détruire un noeud:</m>
+    <p><r>removeNode</r>(<r>String</r> n)</p>
+    </div>où: <div class="ul">
+      <p><c>n</c> est le nom du noeud.</p>
+      </div><div class="code">
+    <m>Obtenir la liste de tous les noeuds:</m>
+    <p><r>String[]</r> Listn_ = <r>getAllNodes</r>()</p>
+    </div>où: <div class="ul">
+      <p><c>Listn_</c> est le tableau des noms de tous les noeuds, qui est renvoyé.</p>
+      </div><div class="code">
+  	<m>Obtenir la liste des noeuds en lien avec un noeud spécifique:</m>
+    <p><r>String[]</r> Listn_ = <r>getNodes</r>(<r>String</r> n)</p>
+    </div>où: <div class="ul">
+      <p><c>n</c> est le nom du noeud spécifique.</p>
+      <p><c>Listn_</c> est le tableau des noms des noeuds en lien avec le noeud spécifique n, qui est renvoyé.</p>
+      </div><div class="code">
+    <m>Ajouter ou modifier un lien existant entre deux noeuds:</m>
+    <p><r>addLink</r>(<r>String</r> nA, <r>String</r> nB, <r>double</r> p)</p>
+    </div>où: <div class="ul">
+      <p><c>nA</c> est le nom du premier noeud.</p>
+      <p><c>nB</c> est le nom du second noeud.</p>
+      <p><c>p</c> est le poids du lien.</p>
+      </div><div class="code">
+      <m>Détruire un lien existant entre deux noeuds:</m>
+    <p><r>removeLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
+    </div>où: <div class="ul">
+      <p><c>nA</c> est le nom du premier noeud du lien à détruire.</p>
+      <p><c>nB</c> est le nom du second noeud du lien à détruire.</p>
+      </div><div class="code">
+      <m>Questionner si deux noeuds sont liés:</m>
+    <p><r>boolean</r> a = <r>isLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
+    </div>où: <div class="ul">
+      <p><c>nA</c> est le nom du premier noeud du lien considéré.</p>
+      <p><c>nB</c> est le nom du second noeud du lien considéré.</p>
+      <p><c>a</c> est la réponse à la question "Les noeuds nA et nB sont-ils en lien?", soit "vrai" soit "faux", qui est renvoyée.</p>
+      </div><div class="code">
+      <m>Obtenir le poids d'un lien entre deux noeud:</m>
+    <p><r>double</r> p = <r>getLink</r>(<r>String</r> nA, <r>String</r> nB)</p>
+    </div>où: <div class="ul">
+      <p><c>nA</c> est le nom du premier noeud du lien considéré.</p>
+      <p><c>nB</c> est le nom du second noeud du lien considéré.</p>
+      <p><c>p</c> est le poids du lien entre les neouds nA et nB, qui est renvoyé.</p>
+      </div>
+  </p>
+  <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
+  <div>Un exemple de programme d'utilisation est <l class="editor" link="Exemple.jvs" text="disponible ici"/>.</div>
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://www.openprocessing.org/portal/?userID=8553" text="ici"/></p>
+</div>

@@ -1,0 +1,71 @@
+<div title="Memorandum des constructions et instructions">
+  <div class="margin">Dominique Larrieu, lycée Simone Veil, Valbonne</div>
+  <div title="Programme principal">Il se note <b><r>void main</r>{ }</b> avec les instructions définies entre <b>{ }</b>.</div>
+  <div title="Type de données utilisées"><div class="ul">
+    <div><r>String</r> Chaîne de caractères (ex: <b><r>String</r> nom = <v>Dupond</v>;</b>).</div>
+    <div><r>int</r> Entier positif ou négatif, de environ -2 à +2 milliards (ex: <b><r>int</r> n = 8;</b>).</div>
+    <div><r>double</r> Nombre décimal, comme sur une calculette (ex:<b><r>double</r> pi = 3.1416;</b>).<div class="code">
+    <m>Les nombres décimaux se notent avec un "." point et non une virgule !</m>
+    <m>Les nombres en notation scientifique (par exemple 6.023 1023) se note avec un "e" (pour exposant) : ici <c>6.023e23</c></m>
+    </div></div>
+    <div><r>boolean</r> Valeur vraie ou fausse, utilisée dans les tests (ex:<b><r>boolean</r> b = x > 0;</b>).</div>
+  </div></div>
+  <div title="Quelques fonctions utilisées."><div class="ul">
+    <p><b>sleep(1000);</b> Arrête l'exécution du programme pendant 1000 milli-secondes.</p>
+    <p><b><r>double</r> x = random();</b> Renvoie dans la variable <b>x</b> un nombre aléatoire décimal compris entre 0 et 1.</p>
+    <p><b><r>int</r> n = random(1, 6);</b> Renvoie dans la variable <b>n</b> un nombre aléatoire entier entre 1 et 6, 6 exclu.</p>
+    <p><b><r>boolean</r> y = equal("Dupond", "Dupont");</b> Compare les deux chaînes de caratères « Dupond » et « Dupont » et renvoie dans la variable <b>y</b> la valeur <b>false</b>.</p>
+    <p><b><r>double</r> z = pow(x, 2);</b> Renvoie dans la variable <b>y</b> le carré <b>x²</b>.</p>
+    <p><b><r>double</r> x = sqrt(x);</b> Renvoie dans la variable <b>x</b> la racine de <b>x</b>.</p>
+  </div></div>
+  <div title="Fonctions de lecture/écriture:"><div class="ul">
+    <p><b>clear();</b> Efface l’affichage.</p>
+    <p><b><r>String</r> prenom = readString();</b> Lit une chaîne de caratères dans la ligne d'entrée au clavier.</p>
+    <p><b><r>int</r> age = readInteger();</b> Lit un nombre entier dans la ligne d'entrée au clavier.</p>
+    <p><b><r>double</r> taille = readDouble();</b> Lit un nombre décimal dans la ligne d'entrée au clavier.</p>
+    <p><b>println("Oh");</b> Ecrit «Oh» dans la fenêtre de sortie.</p>
+    <p><b>println("Oh," + age + " ans , est un bel âge !");</b> Ecrit « Oh, 20 ans, est un bel âge ! » (quand age=20).</p>
+  </div></div>
+  <div title="Bloc de séquences d'instructions"> Un bloc se note entre <b>{ }</b> et englobe un ensemble de déclarations et d'instructions séparées par un <b>;</b>.</div>
+  <div title="Opérateurs"><div class="table">
+    <div><div><c>=</c></div><div>Affectation d'une valeur à une variable (ex: <b>x = 0;</b>)</div></div>
+    <div><div><c>||</c> <c>&amp;&amp;</c> <c>!</c></div><div>Opérateur logique OU, ET et NON</div></div>
+    <div><div><c>==</c> <c>!=</c> <c>&lt;=</c> <c>&lt;</c> <c>&gt;=</c> <c>&gt;</c> </div><div>Opérateur égalité, différence et comparaison numérique</div></div>
+    <div><div><c>+</c> <c>-</c> <c>*</c> <c>/</c> <c>%</c> </div><div>Addition, soustraction, multiplication, division, reste (appelé aussi modulo).</div></div>
+  </div></div>
+  <div title="Instruction conditionnelle">
+    <p><b><r>if</r> (expressionBooleenne) { BlocD'InstructionsSiVrai } <r>else</r> { BlocD'InstructionsSiFaux }</b></p>
+    <div title="Exemple:"><div class="code">
+    <p><r>if</r>(température &lt; 15) {</p>
+    <p><T/><r>println</r>(<v>allumer chauffage</v>);</p>
+    <p>} <r>else</r> {</p>
+    <p><T/><r>println</r>(<v>ne rien faire</v>);</p>
+    <p>}</p>
+  </div></div></div>
+  <div title="Boucle">
+    <p><b><r>while</r> (expressionBooléenne) { BlocD'Instructions }</b></p>
+    <div title="Exemple:"><div class="code">
+       <p><r>while</r>( n &lt; 10) {</p>
+       <p><T/><r>println</r>(<v>Hello World !</v>);</p>
+       <p><T/>n = n + 1;</p>
+       <p>}</p>
+   </div></div>
+   <div><b>Attention:</b> La boucle while est "protégée" par une petite minuterie de 1 milli-seconde, 
+   qui permet au programme de ne pas être bloqué par une boucle infinie: 
+   la construction équivalente suivante pour ne pas avoir cette minuterie: <p><b><r>for</r> (;expressionBooléenne;) { BlocD'Instructions }</b></p>
+ </div></div>
+  <div title="Compteur">
+    <p><b><r>for</r> (<r>int</r> n = 0; n &lt; N; n++) { BlocD'Instructions }</b></p>
+    <div>permet de faire une boucle où la variable <c>n</c> va de 0 à <c>N</c> exclus.
+   </div></div>
+   <div title="Déclaration de fonction">
+     <p><b>TypeDuResultat NomDeLaFonction (TypeParametre1 NomParametre1, ...) { BlocD'Instructions }</b></p> 
+     <div title="Exemple:"><div class="code">
+       <p><r>int</r> max(int x, int y) {</p>
+       <p><r>if</r> (x > y) {</p>
+       <p><T/><r>return</r> x;</p> 
+       <p>} <r>else</r> {</p>      
+       <p><T/><r>return</r> y;</p> 
+       <p>} }</p>
+   </div></div></div>
+</div>

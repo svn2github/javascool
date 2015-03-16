@@ -1,0 +1,211 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>La &laquo;proglet&raquo; algoDeMaths</title>
+   </head>
+   <body>
+      <h1>La &laquo;proglet&raquo; algoDeMaths.</h1>
+      
+      <div align="right" class="margin">
+           
+         <div><a href="http://javascool.gforge.inria.fr/v4/documents/sujets-mathinfo/index.html">cliquer sur le lien</a> pour acc&eacute;der aux exercices.
+         </div>
+           
+      </div>
+        
+      <div>
+         Cette proglet permet d'afficher des trac&eacute;s de couleurs diff&eacute;rentes.
+             
+         <div>Pour tracer un des points de la courbe (qui sont <a href="http://newtab?aboutSetPoint.html">reli&eacute;s entre-eux pour le trac&eacute;</a>): 
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                 
+                           <div><font color="#990000"><b>setPoint</b></font>(x, y, c);
+                           </div>
+                               
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            <ul class="ul">
+                   
+               <li>o&ugrave; <b>x</b> est un <font color="#990000"><b>double</b></font>, entre <b>[-1, +1]</b>, abscisse du point de la courbe;
+               </li>
+                   
+               <li>o&ugrave; <b>y</b> est un <font color="#990000"><b>double</b></font>, entre <b>[-1, +1]</b>, ordonn&eacute;e du point de la courbe;
+               </li>
+                   
+               <li>o&ugrave; <b>c</b> est un <font color="#990000"><b>int</b></font> qui est le num&eacute;ro de la courbe: 
+                        <tt>0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</tt></li>
+                   
+            </ul>tandis que la fonction: 
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                 
+                           <div><font color="#990000"><b>reset</b></font>()
+                           </div>
+                               
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div> permet d'effacer la courbe. Le syst&egrave;me de coordonn&eacute;e est donc de la forme:
+                 
+            <div align="center" class="center"><img src="scope.png" alt="" class="icon"></div>
+                 
+            <div>Il est aussi possible de changer l'&eacute;chelle horizontale et verticale en utilisant la fonction: 
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>reset</b></font>(largeur, hauteur)
+                              </div>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div> o&ugrave; le trac&eacute; se fait alors avec les abcisses entre <b>[-largeur, largeur]</b> et les ordonn&eacute;es entre les valeurs <b>[-hauteur, hauteur]</b>.
+            </div>
+               
+         </div>
+            
+         <div>Pour ajouter une &eacute;tiquette <font color="#008000">"s"</font> de couleur <tt>c</tt> au point <b>x, y</b>:
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                              
+                           <div><font color="#990000"><b>addString</b></font>(x, y, <font color="#008000">"s"</font>, c);
+                           </div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+            
+         <div>Pour ajouter une ligne de couleur <tt>c</tt> du point <b>x1, y1</b> au point <b>x2, y2</b> :
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                              
+                           <div><font color="#990000"><b>addLine</b></font>(x1, y1, x2, y2, c);
+                           </div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+            
+         <div>Pour ajouter un cercle de couleur <tt>c</tt> de centre <b>x, y</b> et de rayon <b>r</b> :
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                              
+                           <div><font color="#990000"><b>addCircle</b></font>(x, y, r, c);
+                           </div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+            
+         <div>Par ailleurs les valeurs du r&eacute;ticule peuvent &ecirc;tre relues avec les fonctions: 
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                 
+                           <div><font color="#990000"><b>double</b></font> x = <font color="#990000"><b>getX()</b></font>;
+                           </div>
+                                 
+                           <div><font color="#990000"><b>double</b></font> y = <font color="#990000"><b>getY()</b></font>;
+                           </div>
+                               
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div> qui renvoie les valeurs horizontale et verticale du r&eacute;ticule. Le r&eacute;ticule est d&eacute;fini par les boutons en bas de l'&eacute;cran ou
+            en cliquant.
+                
+            <div><b>Note</b> : quand on clique sur la fen&ecirc;tre de trac&eacute;, manipule les glissoirs de <b>X</b> et <b>Y</b>, ou entre une valeur num&eacute;rique au clavier, 
+                   la fonction <font color="#990000"><b>main</b></font> est relanc&eacute;e pour mettre &agrave; jour le calcul avec ces nouvelles valeurs.
+            </div>
+               
+         </div>
+            
+         <div>Un <a href="http://editor?Exemple.jvs">exemple</a> d'utilisation,  o&ugrave; se tracent une sinuso&iuml;de bleue et une exponentielle violette, selon le programme suivant:
+               
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                
+                           <div><font color="#990000"><b>reset</b></font>();
+                           </div>
+                                
+                           <div><font color="#990000"><b>for</b></font>(<font color="#990000"><b>double</b></font> x = -1; x &lt;= 1; x += 0.001) {
+                           </div>
+                                
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>setPoint</b></font>(x, 0.5 * <font color="#990000"><b>Math.sin</b></font>(10 * x) + 0.5, 6);
+                           </div>
+                                
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>setPoint</b></font>(x, -<font color="#990000"><b>Math.exp</b></font>(-(x + 1)), 7);
+                           </div>
+                                
+                           <div>}</div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+            
+         <div>Un autre <a href="http://editor?JeuSimon.jvs">exemple</a> permet de montrer les fonctionnalit&eacute;s avanc&eacute;es (r&eacute;action&nbsp;&agrave; un clic utilisateur avec un <a href="aboutRunnable.html">Runnable</a>).
+         </div>
+           
+      </div>
+        
+      <div> Un autre <a href="http://editor?Triangle_de_sierpinsky.jvs">exemple de programme</a> permet de tracer des fractals.
+      </div>
+        
+      <div> Un autre <a href="http://editor?JeuDeMorpion.jvs">exemple de programme</a> impl&eacute;mente un jeu de morpion . . &agrave; am&eacute;liorer au niveau du jeu de l'ordinateut !.
+      </div>
+      
+      <div>Cette &laquo;proglet&raquo; est un composant logiciel ouvert dont documentation et code-source sont disponibles <a href="http://javascool.github.com/wproglets/javascool-proglet-algoDeMaths-html/api/org/javascool/proglets/algoDeMaths/package-summary.html">ici</a></div>
+      
+   </body>
+</html>

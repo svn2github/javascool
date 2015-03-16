@@ -1,0 +1,11 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void main() {
+  double alpha, principale, n;
+  alpha = readDouble();
+  n = Math.floor(alpha / (2 * Math.PI));
+  principale = alpha - 2 * n * Math.PI;
+  if(principale > Math.PI) {
+    principale = principale - 2 * Math.PI;
+  }
+  println(principale);
+}

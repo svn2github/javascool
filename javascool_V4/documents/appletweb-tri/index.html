@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Appletweb - tri</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+
+    <script type="text/javascript" src="EventHelpers.js"></script>
+    <script type="text/javascript" src="emailProtector.js"></script>
+    <script type="text/javascript" src="memorybricks.js"></script>
+    <script type="text/javascript" src="logger.js"></script>
+    <script type="text/javascript" src="deck.js"></script>
+		
+  </head>
+
+  <body>
+    <div class="hat">
+      <div class="tools shadow gradient_light rounded">
+        <div class="tool" id="restart">
+          Recommencer avec <input type="text" id="deck_size"> cartes
+        </div>
+        <div class="tool" id="toggle_cards">
+	  Révéler
+        </div>
+        <div class="tool" id="toggle_log">
+	  Algo
+        </div>
+        <div class="tool" id="toggle_help">
+	  Aide
+        </div>
+        <div class="tool" id="toggle_about">
+	  À propos
+        </div>
+      </div>
+      <div class="help shadow" id="help">
+        <h2> Objectif</h2>
+        <p>
+        Le but du jeu est de parvenir à trier les cartes dans l'ordre croissant 
+        sans les révéler, et le plus efficacement possible.
+        </p>
+        <h2> Outils </h2>
+        <h4> Cartes et cases </h4>
+        <div>
+        	<div class="spacer"></div>
+          <p></p>
+          <div class="c_fake"></div> 
+          <span class="vert_center">
+            représente une carte à trier. Ces cartes peuvent être déplacées de 
+            case en case.
+          </span>
+        	<div class="spacer"></div>
+          <p></p>
+          <div class="add_box_fake">+</div> 
+          <span class="vert_center">
+            permet d'ajouter de nouvelles cases dans un tableau. Ces cases 
+            pourront recevoir les cartes déplacées.
+          </span>
+        	<div class="spacer"></div>
+          <p></p>
+          <div class="add_array_fake">+</div> 
+          <span class="vert_center">
+            permet d'ajouter de nouveaux tableaux pour organiser vos cases.
+          </span>
+        </div>
+        <div class="spacer"></div>
+        <h4> Comparaison de cartes </h4>
+        <p>
+        Pour comparer deux cartes, il suffit de cliquer dessus. La carte 
+        la plus petite apparaîtra en vert, et la plus grande en rouge.
+        </p>
+        <h4> Mise en garde </h4>
+        <p>
+        Attention, lorsque vous déplacez une carte vers une case en contenant une 
+        autre, cette dernière carte sera écrasée, et vous n'y aurez plus accès. 
+        C'est ainsi que fonctionne un ordinateur. Si par erreur vous avez écrasé 
+        une carte et que vous voulez la récupérer, appuyez sur la touche "p" pour 
+        faire apparaître la poubelle.
+        </p>
+        <h2> Score </h2>
+        <p>
+        Pour évaluer l'efficacité de votre méthode, trois compteurs vous 
+        permettent de savoir le nombre de cases que vous avez utilisées, le nombre 
+        de déplacements effectués, ainsi que le nombre de comparaisons réalisées.
+        </p>
+        <h2> Algorithme </h2>
+        <p>
+        En cliquant sur le bouton Algo, vous pourrez obtenir la liste de
+        l'ensemble des opérations que vous avez effectuées jusqu'à présent. 
+        </p>
+      </div>
+      <div class="about shadow" id="about">
+        <h2> Conception de cette application </h2>
+        <p>
+        Cette page a été créée par Vincent Nivoliers, doctorant en informatique à
+        l'époque.  Référez vous aux remerciements pour la liste des organismes et
+        personnes impliquées. Elle a été utilisée dans le cadre d'un atelier 
+        <a href="http://mathenjeans.free.fr">MAth.en.JEANS</a> avec des élèves 
+        de la sixième à la quatrième du 
+        <a href="http://www.ac-nancy-metz.fr/pres-etab/collchepfervillers/">
+        Collège George Chepfer</a> encadrés par Louisette Hiriart et Christelle
+        Kunc pendant l'année scolaire 2010-2011. L'un de leurs sujets de
+        recherche était sur les algorithmes de tri. 
+        </p>
+        <h2> Objectifs pédagogiques </h2>
+        <p>
+        Cette page a pour but d'aider les élèves à mécaniser le processus qu'ils
+        suivent pour trier une liste de nombres, tout en évitant la mémorisation
+        des nombres car ils restent dissimulés.
+        </p>
+        <p>
+        L'organisation en cases vise également à donner une intuition de la
+        gestion de la mémoire, notamment du fait que l'écriture dans une case
+        écrase ce qui s'y trouvait précédemment. Attention cependant, pour des
+        raisons de simplicité, le déplacement d'une carte d'une case à l'autre
+        vide la case d'origine. Pour rester conforme à ce qui se passe réellement
+        dans un ordinateur, il faudrait au contraire que la case d'origine
+        conserve une copie de la carte déplacée.
+        </p>
+        <p>
+        Les compteurs permettent de donner une idée des différentes choses que
+        l'on peut mesurer lorsque l'on cherche à évaluer l'efficacité d'un
+        algorithme.
+        </p>
+        <p>
+        Enfin le bouton Algo a pour but de permettre l'étude a posteriori du
+        processus suivi pour trier les cartes, pour faciliter l'écriture d'un
+        algorithme.
+        </p>
+        <h2> Liens utiles </h2>
+        <ul>
+          <li> <a href="http://fr.wikipedia.org/wiki/Algorithme_de_tri">
+            Les algorithmes de tri sur Wikipedia</a>
+          </li>
+          <li> <a href="http://interstices.info/tri">
+            Les algorithmes de tri sur interstices</a>
+          </li>
+          <li> <a href="http://www.youtube.com/user/AlgoRythmics">
+            Les algorithmes de tri dancés par l'université de Sapientia
+            (Roumanie)</a>
+          </li>
+        </ul>
+        <h2>Remerciements</h2> 
+	<h4>Participants à l'atelier Math.en.JEA</h4>
+        <p>Je tiens à remercier tout particulièrement Louisette Hiriart et
+        Christelle Kunc de m'avoir accueilli au sein du collège et de leur
+        investissement passionné tout au long de l'année. Merci également à
+        l'ensemble des élèves ayant pris part volontairement à cette expérience:
+        <ul>
+          <li>Hugo Bastien (5ème)</li>
+          <li>Caroline Cognot (6ème)</li>
+          <li>Gabrielle Cognot (6ème)</li>
+          <li>Ulysse Demay (5ème)</li>
+          <li>Gaylor Guillard (6ème)</li>
+          <li>Bixente Grandjean (5ème)</li>
+          <li>Manon Herbrant (4ème)</li>
+          <li>Michel Ilahiane (6ème)</li>
+          <li>Marie Ilahiane (4ème)</li>
+          <li>Éric Macel (5ème)</li>
+          <li>Alice Marion (6éme)</li>
+          <li>Mélisse Martin (6ème)</li>
+          <li>Anaïs Moreau (6ème)</li>
+          <li>Jan Renauld (6ème)</li>
+          <li>Carl Schwan (5ème)</li>
+          <li>Emeline Thommes (6ème)</li>
+          <li>Léo Thommes (6ème)</li>
+          <li>Louise Wu (5ème)</li>
+        </ul>
+        Merci enfin à André Stef d'avoir orchestré la répartition des ateliers
+        et des chercheurs, et à toute l'équipe d'organisation du congrès.</p>
+        <h4>Tutelles</h4>
+        Pour vulgariser l'ensemble des organismes qui m'ont permis de travailler à
+        ce projet, il y a:
+        <ul>
+          <li>l'<acronym title="Institut National Polytechnique Lorrain">
+            <a href="http://www.inpl-nancy.fr">INPL</a></acronym>, mon employeur.
+          </li>
+          <li>l'équipe <a href="http://alice.loria.fr">ALICE</a>, qui représente
+            le groupe de personnes avec lequel je travaille.
+          </li>
+          <li><acronym 
+            title="Institut National de Recherche en Informatique et Automatique">
+            <a href="http://www.inria.fr">Inria</a></acronym> qui dirige les
+            activités de recherche de l'équipe, emploie la plupart de ses
+            membres et finance ses activités de recherche. C'est également cet
+            institut qui héberge la présente WebApplet, et vous permet donc de
+            l'utiliser.
+          </li>
+          <li>le <acronym 
+          title="Laboratoire Lorrain de Recherche en Informatique et ses Applications">
+          <a href="http://www.loria.fr">LORIA</a></acronym> qui héberge entre
+          autres l'équipe en lui fournissant des locaux.
+          </li>
+        </ul>
+        <h2> Contact </h2>
+        <p>
+        Pour toute information, suggestion, ou commentaire sur cette application,
+        n'hésitez pas à nous contacter par courrier électronique à l'adresse
+        suivante : <a href="javascript:decrypt_and_email(0)"><script
+        type="text/javascript">decrypt_and_echo(0)</script></a>
+        </p>
+      </div>
+      <div class="counters shadow gradient_light">
+        <div class="spacer"></div>
+        <div class="counter">
+          Déplacements : <span id="nbmove">0</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="counter">
+          Cases : <span id="nbbox">0</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="counter">
+          Comparaisons : <span id="nbcomp">0</span>
+        </div>
+        <div class="spacer"></div>
+      </div>
+    </div>
+    <div class="memory" id="memory"></div>
+    <div class="hat">
+      <div class="log shadow" id="log"></div>
+    </div>
+  </body>
+</html>

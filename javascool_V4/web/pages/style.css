@@ -1,0 +1,748 @@
+/*
+ * Animations
+ */
+
+div.spec {
+  border: 1px groove black;
+  width: 60%;
+  margin: 10px;
+  padding: 5px;
+}
+ 
+#plugleft {
+    position: absolute;
+    z-index: -100;
+    display:none;/*
+    width: 187px;
+    max-width: 187px;
+    height: 254px;
+    max-height: 254px;*/
+}
+
+#plugright {
+    position: absolute;
+    z-index: -100;
+    display:none;/*
+    width: 187px;
+    max-width: 187px;
+    height: 254px;
+    max-height: 254px;*/
+}
+
+a img {
+    border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*
+ * Globals
+ */
+table {
+    margin:auto;
+    border-collapse:collapse;
+}
+/*
+table td {
+    width: 15%;
+}
+*/
+.imagelink {
+    border: 0px;
+}
+
+/*
+ * Menu and spacers
+ */
+
+table.header {
+    position:relative;
+    top:10px;
+    z-index: 1000;
+}
+
+table.header td.logo img.logo {
+    border:none;
+    display:block;
+    position:relative;
+    top:3px;
+    width: 60px;
+    padding:0px;
+    margin:0px;
+    width: 60px;
+    height:60px;
+}
+
+table.header td.logo {
+    text-align:center;
+    padding:3px;
+    margin:0px;
+    background-image:url(images/menu-item.png);
+    background-repeat: repeat-x;
+}
+
+table.header td.menuitem {
+    height:70px;
+    max-height:70px;
+    margin:0px;
+    padding:0px;
+    text-align:center;
+    background-image:url(images/menu-item.png);
+    background-repeat: repeat-x;
+    cursor:pointer;
+}
+
+table.header td.menuitemselected {
+    background-color:#AAA;
+    margin:0px;
+    padding:0px;
+    text-align:center;
+    background-image:url(images/menu-active.png);
+    background-repeat: repeat-x;
+    height:70px;
+    max-height:70px;
+    margin:0px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-top:0px;
+    text-align:center;
+    cursor:pointer;
+}
+
+table.header td.menuselectedbegin {
+    background-color:#AAA;
+    margin:0px;
+    padding:0px;
+    text-align:center;
+    background-image:url(images/menu-active-left.png);
+    background-repeat: no-repeat;
+    width:33px;
+    min-width: 33px;
+    height:70px;
+    max-height:70px;
+    margin:0px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-top:0px;
+    text-align:center;
+    cursor:pointer;
+}
+
+table.header td.menubegin {
+    background-color:#AAA;
+    margin:0px;
+    padding:0px;
+    text-align:center;
+    background-image:url(images/menu-item.png);
+    background-repeat: repeat-x;
+    width:33px;
+    min-width: 33px;
+    height:70px;
+    max-height:70px;
+    margin:0px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-top:0px;
+    text-align:center;
+    cursor:pointer;
+}
+
+table.header td.menuselectedend {
+    background-color:#AAA;
+    margin:0px;
+    padding:0px;
+    text-align:center;
+    background-image:url(images/menu-active-right.png);
+    background-repeat: no-repeat;
+    width:33px;
+    min-width: 33px;
+    height:70px;
+    max-height:70px;
+    margin:0px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-top:0px;
+    text-align:center;
+    cursor:pointer;
+}
+
+table.header td.menuend {
+    background-color:#AAA;
+    margin:0px;
+    padding:0px;
+    text-align:center;
+    background-image:url(images/menu-item.png);
+    background-repeat: repeat-x;
+    width:33px;
+    min-width: 33px;
+    height:70px;
+    max-height:70px;
+    margin:0px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-top:0px;
+    text-align:center;
+    cursor:pointer;
+}
+
+table.header td.menu-left {
+    background-image:url(images/menu-left.png);
+    background-repeat: no-repeat;
+    width:27px;
+    min-width: 27px;
+    height:70px;
+    max-height:70px;
+    margin:0px;
+    padding:0px;
+}
+
+table.header td.menu-right {
+    background-image:url(images/menu-right.png);
+    background-repeat: no-repeat;
+    width:27px;
+    min-width: 27px;
+    height:70px;
+    max-height:70px;
+    margin:0px;
+    padding:0px;
+}
+
+table.header {
+}
+
+/*
+ * Main
+*/
+
+table.main2 {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top:0px;
+}
+
+div.main2 {
+    width: 100%;
+    min-height: 500px;
+}
+
+table.main2 tr.top td.topleft {
+    background-image: url(images/topleft.png);
+    background-repeat: no-repeat;
+    width: 27px;
+    min-width: 27px;
+    height: 29px;
+    padding:0px;
+}
+
+table.main2 tr.top td.topright {
+    background-image: url(images/topright.png);
+    background-repeat: no-repeat;
+    width: 29px;
+    min-width: 29px;
+    height: 29px;
+    padding:0px;
+}
+
+table.main2 tr.top td.top {
+    background-image: url(images/top.png);
+    background-repeat: repeat-x;
+    width: 29px;
+    min-width: 29px;
+    height: 29px;
+    padding:0px;
+}
+
+table.main2 tr.center td.left {
+    background-image: url(images/left.png);
+    background-repeat: repeat-y;
+    width: 27px;
+    min-width: 27px;
+    height: 29px;
+    padding:0px;
+}
+
+table.main2 tr.center td.center {
+    background-image: url(images/center.png);
+    background-repeat: repeat;
+    width: 1px;
+    height: 1px;
+    padding:0px;
+    min-width:976px;
+    max-width: 100%;
+    position:relative;
+    width: 100%;
+
+}
+
+table.main2 tr.center td.right {
+    background-image: url(images/right.png);
+    background-repeat: repeat-y;
+    width: 29px;
+    min-width: 29px;
+    height: 29px;
+    padding:0px;
+}
+
+table.main2 tr.bottom td.bottomleft {
+    background-image: url(images/bottomleft.png);
+    background-repeat: repeat-y;
+    width: 27px;
+    min-width: 27px;
+    height: 29px;
+    padding:0px;
+}
+
+table.main2 tr.bottom td.bottom {
+    background-image: url(images/bottom.png);
+    background-repeat: repeat-x;
+    width: 29px;
+    height: 29px;
+    padding:0px;
+}
+
+table.main2 tr.bottom td.bottomright {
+    background-image: url(images/bottomright.png);
+    background-repeat: no-repeat;
+    width: 29px;
+    min-width: 29px;
+    height: 29px;
+    padding:0px;
+}
+
+#mainPanel {
+    position: relative;
+}
+
+/*
+ * Contents
+*/
+
+#mainContent {
+    min-height: 350px;
+}
+
+div.home div.news ul.news:before {
+    content: "News : ";
+}
+
+div.home div.news {
+    width: 100%;
+    display:block;
+    margin: 0px;
+    padding: 0px;
+}
+
+td.news {
+    vertical-align: top;
+    width: 200px;
+    min-width: 200px;
+    margin: 0px;
+    padding: 0px;
+}
+
+td.main {
+    vertical-align: top;
+    width: 800px;
+    margin: 0px;
+    padding: 0px;
+}
+
+table.news {
+    width: 90%;
+    margin: 0px;
+    padding: 0px;
+}
+
+table.news td {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+table.news td.news-top {
+    background-image: url(images/borderh.png);
+    background-repeat: repeat-x;
+    height: 20px;
+}
+
+table.news td.news-bottom {
+    background-image: url(images/borderh.png);
+    background-repeat: repeat-x;
+    height: 20px;
+}
+
+table.news td.news-leftborder {
+    width: 10px;
+    min-width: 10px;
+    background-image: url(images/news-verticalborder.png);
+    background-repeat: repeat-y;
+}
+
+table.news td.news-rightborder {
+    width: 10px;
+    min-width: 10px;
+    background-image: url(images/news-verticalborder.png);
+    background-repeat: repeat-y;
+}
+
+table.news td.news-left {
+    width: 10px;
+    min-width: 10px;
+}
+
+table.news td.news-right {
+    width: 10px;
+    min-width: 10px;
+}
+
+table.news td.news-center {
+    background-color: #666;
+    max-width: 300px;
+}
+
+table.news td.news-trailer {
+    max-width: 150px;
+}
+
+table.home {
+    width: 100%;
+    height: 600px;
+}
+
+table.main {
+    width: 100%;
+}
+
+table.main td.main-topspacer {
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
+    min-height: 10px;
+}
+
+table.main td.main-topleft {
+    width: 13px;
+    height: 10px;
+    min-width: 13px;
+    min-height: 10px;
+    background-image: url(images/main-topleft.png);
+    background-repeat: no-repeat;
+}
+
+table.main td.main-topright {
+    width: 13px;
+    height: 10px;
+    min-width: 13px;
+    min-height: 10px;
+    background-image: url(images/main-topright.png);
+    background-repeat: no-repeat;
+}
+
+table.main td.main-bottomleft {
+    width: 13px;
+    height: 10px;
+    min-width: 13px;
+    min-height: 10px;
+    background-image: url(images/main-bottomleft.png);
+    background-repeat: no-repeat;
+}
+
+table.main td.main-bottomright {
+    width: 13px;
+    height: 10px;
+    min-width: 13px;
+    min-height: 10px;
+    background-image: url(images/main-bottomright.png);
+    background-repeat: no-repeat;
+}
+
+table.main td.main-leftborder {
+    width: 10px;
+    min-width: 10px;
+    background-image: url(images/main-leftborder.png);
+    background-repeat: repeat-y;
+}
+
+table.main td.main-top {
+    height: 3px;
+    min-height: 3px;
+    background-image: url(images/main-top.png);
+    background-repeat: repeat-x;
+}
+
+table.main td.main-bottom {
+    height: 3px;
+    min-height: 3px;
+    background-image: url(images/main-bottom.png);
+    background-repeat: repeat-x;
+}
+
+table.main td.main-center {
+}
+
+
+table.main td.main-rightborder {
+    width: 10px;
+    min-width: 10px;
+    background-image: url(images/main-rightborder.png);
+    background-repeat: repeat-y;
+}
+
+/*
+ * Labels
+*/
+span.label:before {
+}
+
+table.label {
+    display: block;
+    float:left;
+    cursor: default;
+}
+
+table.labelMain {
+    margin-left:0px;
+}
+
+table.labelclickable {
+    display: block;
+    float:left;
+    cursor:pointer;
+}
+
+span.labelclickable {
+    cursor:pointer;
+}
+
+
+td.label-left {
+    width: 10px;
+    min-width: 10px;
+    height: 25px;
+    min-height: 25px;
+    background-image: url(images/label-left.png);
+    background-repeat: no-repeat;
+}
+
+td.label-right {
+    width: 10px;
+    min-width: 10px;
+    height: 25px;
+    min-height: 25px;
+    background-image: url(images/label-right.png);
+    background-repeat: no-repeat;
+}
+
+table.label td.label-center {
+    height: 25px;
+    min-height: 25px;
+    background-image: url(images/label-center.png);
+    background-repeat: repeat-x;
+}
+
+table.labelclickable td.label-center:hover {
+    height: 25px;
+    min-height: 25px;
+    background-image: url(images/label-hover.png);
+    background-repeat: repeat-x;
+}
+
+table.labelclickable td.label-center {
+    height: 25px;
+    min-height: 25px;
+    background-image: url(images/label-center.png);
+    background-repeat: repeat-x;
+}
+
+span.label-arrow {
+    width: 25px;
+    min-width: 25px;
+    height: 25px;
+    min-height: 25px;
+    display:inline;
+    float:left;
+    background-image: url(images/label-separator.png);
+    background-repeat: no-repeat;
+}
+
+div.label2 {
+    display:block;
+    background-image: url(images/label2.png);
+    background-repeat: repeat-y;
+    font-weight: bold;
+    padding-left:25px;
+    font-size: 15px;
+}
+
+h1 {
+    display:block;
+    background-image: url(images/label2.png);
+    background-repeat: repeat-y;
+    font-weight: bold;
+    padding-left:25px;
+    font-size: 20px;
+}
+
+h2 {
+    display:block;
+    font-weight: bold;
+    padding-left:25px;
+    font-size: 15px;
+}
+h3 {
+    display:block;
+    font-weight: bold;
+    padding-left:25px;
+    font-size: 12px;
+}
+h4 {
+    display:block;
+    font-style: italic;
+    padding-left:25px;
+    font-size: 12px;
+}
+
+/*
+ * Proglets
+*/
+
+td.proglet {
+    display:block;
+    float:left;
+    width: 150px;
+    height: 153px;
+    max-width: 150px;
+    max-height: 153px;
+    background-image: url(images/proglet.png);
+    background-repeat: no-repeat;
+    margin: 10px;
+}
+
+td.proglet span {
+    position:relative;
+    top:  120px;
+    left: 0px;
+    display:block;
+    width:148px;
+    text-align: center;
+}
+
+td.progletclickable {
+    display:block;
+    float:left;
+    width: 150px;
+    height: 153px;
+    max-width: 150px;
+    max-height: 153px;
+    background-image: url(images/proglet.png);
+    background-repeat: no-repeat;
+    margin: 10px;
+    cursor: pointer;
+}
+
+td.progletclickable:hover {
+    display:block;
+    float:left;
+    width: 150px;
+    height: 153px;
+    max-width: 150px;
+    max-height: 153px;
+    background-image: url(images/proglet-activated.png);
+    background-repeat: no-repeat;
+    margin: 10px;
+    cursor: pointer;
+}
+
+td.progletclickable span {
+    position:relative;
+    top:  120px;
+    left: 0px;
+    display:block;
+    width:148px;
+    text-align: center;
+}
+
+td.progletclickable span.proglet-image {
+    position:relative;
+    top:  -10px;
+    left: 0px;
+    display:block;
+    width:148px;
+    text-align: center;
+}
+
+td.progletclickable span.proglet-image img {
+    margin:auto;
+
+    width: 100px;
+    height:auto;
+}
+
+
+td.proglet span.proglet-image {
+    position:relative;
+    top:  -10px;
+    left: 0px;
+    display:block;
+    width:148px;
+    text-align: center;
+}
+
+td.proglet span.proglet-image img {
+    margin:auto;
+
+    width: 100px;
+    height:auto;
+}
+
+/*
+ * Lists
+*/
+
+ul.developpers {
+    list-style-image: url(images/mail.png);
+    list-style-position: outside;
+}
+
+
+/* Javadoc style sheet */
+
+/* Define colors, fonts and other style attributes here to override the defaults */
+
+
+/* Headings 
+#javadoc h1 { font-size: 145% }
+*/
+
+/* Table colors */
+#javadoc .TableHeadingColor     { background: #CCCCFF; color:#000000 } /* Dark mauve */
+#javadoc .TableSubHeadingColor  { background: #EEEEFF; color:#000000 } /* Light mauve */
+#javadoc .TableRowColor         { background: #DDDDDD; color:#000000 } /* White */
+
+/* Font used in left-hand frame lists */
+#javadoc .FrameTitleFont   { font-size: 100%; font-family: Helvetica, Arial, sans-serif; color:#000000 }
+#javadoc .FrameHeadingFont { font-size:  90%; font-family: Helvetica, Arial, sans-serif; color:#000000 }
+#javadoc .FrameItemFont    { font-size:  90%; font-family: Helvetica, Arial, sans-serif; color:#000000 }
+
+/* Navigation bar fonts and colors */
+#javadoc .NavBarCell1    { background-color:#DDD; color:#000000} /* Light mauve */
+#javadoc .NavBarCell1Rev { background-color:#00008B; color:#FFFFFF} /* Dark Blue */
+#javadoc .NavBarFont1    { font-family: Arial, Helvetica, sans-serif; color:#000000;color:#000000;}
+#javadoc .NavBarFont1Rev { font-family: Arial, Helvetica, sans-serif; color:#DDD;color:#DDD;}
+
+#javadoc .NavBarCell2    { font-family: Arial, Helvetica, sans-serif; background-color:#ECECEC; color:#000000}
+#javadoc .NavBarCell3    { font-family: Arial, Helvetica, sans-serif; background-color:#DDD; color:#000000}
+
+
+
+
+table.wikitable {
+    border: 1px solid black;
+}
+
+table.wikitable td {
+    border: 1px solid black;
+}
+

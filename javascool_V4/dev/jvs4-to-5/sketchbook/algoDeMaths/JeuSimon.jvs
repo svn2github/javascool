@@ -1,0 +1,90 @@
+// Cet exemple propose une amorce de programmation du «jeu simon»
+// - Il est donné ici volontairement sous une forme à compléter et valider . . !
+// Auteur : David Abeijon <abeijon.david@gmail.com> Pr. de maths
+//
+// Note: Le jeu Simon est un jeu de mémoire dans lequel il faut répéter des chaines de lumières en appuyant sur des boutons qui s'allument.
+// Ref : http://www.jeu.fr/jeu/simon.html
+
+// Fait apparaitre un cercle dans un quadrant, selon l'index n
+// 0 : en haut à droite, rouge
+// 1 : en bas à droite, orangé
+// 2 : en haut à gauche, mauve
+// 3 : en bas à gauche, vert
+void marquer(int n) {
+  if(n == 0) {
+    marquer(0.5, 0.5, 800);
+  } else if(n == 1) {
+    marquer(0.5, -0.5, 800);
+  } else if(n == 2) {
+    marquer(-0.5, 0.5, 800);
+  } else if(n == 3) {
+    marquer(-0.5, -0.5, 800);
+  }
+}
+// Fait apparaitre un cercle sur le quadrant où se trouve le réticule
+int marquer() {
+  return marquer(getX(), getY(), 500);
+}
+// Fait apparaitre un cercle dans un des quadrant et retourne le quadrant
+int marquer(double x, double y, int delay) {
+  int q = -1;
+  reset();
+  if(x > 0) {
+    if(y > 0) {
+      addCircle(0.5, 0.5, 0.25, 2);
+      q = 0;
+    } else {
+      addCircle(0.5, -0.5, 0.25, 3);
+      q = 1;
+    }
+  } else {
+    if(y > 0) {
+      addCircle(-0.5, 0.5, 0.25, 7);
+      q = 2;
+    } else {
+      addCircle(-0.5, -0.5, 0.25, 5);
+      q = 3;
+    }
+  }
+  sleep(delay);
+  reset();
+  return q;
+}
+// Installe le mécanisme qui permet de réagir à un changement de réticule
+void demarrerToucher(boolean ouinon) {
+  toucher = ouinon;
+  // Ici on demande à ce que la méthode run() soit appellée à chaque changement de réticule
+  if(toucher) {
+    setRunnable(new Runnable() {
+                  public void run() {
+                    quadrand = marquer();
+                    //
+                    // Ici on implémente le mécanisme qui gère le clic.
+                    //
+                    // Attention: on doit redefinir
+                    demarrerToucher(toucher);
+                  }
+                }
+                );
+  } else {
+    setRunnable(null);
+  }
+}
+// Indicateur de la mise en place du mécanisme de détection de touché
+boolean toucher = false;
+// Indicateur du dernier quadrand sélectionné
+int quadrand = 0;
+
+void main() {
+  println("Bon : voici les quatre cercles");
+  sleep(500);
+  for(int j = 0; j < 4; j++)
+    marquer(j);
+  println("Allez : c'est ton tour");
+  sleep(500);
+  reset();
+  demarrerToucher(true);
+  sleep(5000);
+  demarrerToucher(false);
+  println("Bien entendu le vrai jeu de Simon est moins stupide . . mais il faut le programmer");
+}

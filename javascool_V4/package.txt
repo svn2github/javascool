@@ -1,0 +1,11 @@
+= Bienvenue dans la liasse SVN des fichiers de Javas'Cool =
+
+Description de la liasse:
+* ''work''       : contient le projet logiciel avec tous les fichiers sources;
+* ''sketchbook'' : contient les sources des proglets
+* ''web''        : contient les fichiers qui permettent de construire le site web.
+* ''documents''  : contient les documents en dépot sur le site à partir de http://javascool.gforge.inria.fr/documents
+tandis que 
+* ''build.xml''  : contient les commandes de gestion/maintenance du projet
+
+Pour en savoir plus voir la [http://javascool.gforge.inria.fr/v4/index.php?page=api documentation].

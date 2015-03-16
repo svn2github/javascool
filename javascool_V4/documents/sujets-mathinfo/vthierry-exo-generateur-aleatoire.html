@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>vthierry-exo-generateur-aleatoire</title>
+  </head>
+  <body>
+    <span style="font-weight: bold;">Jouer avec un
+      g&eacute;n&eacute;rateur al&eacute;atoire</span>.<br>
+    <div style="text-align: right;"><a
+        href="mailto:Thierry.Vieville@inria.fr">Thierry.Vieville@inria.fr</a><br>
+    </div>
+    <br>
+    Il est <a
+href="http://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_al%C3%A9atoires">facile</a>
+    de g&eacute;n&eacute;rer des nombre entiers qui ont l'air
+    al&eacute;atoires. Nous allons exp&eacute;rimenter ce
+    m&eacute;canisme ici en programmant un g&eacute;n&eacute;rateur
+    al&eacute;atoire de pile ou face et en v&eacute;rifiant que ses
+    tirages sont bien &eacute;quilibr&eacute;s.<br>
+    <br>
+    <span style="font-weight: bold;">1. Cr&eacute;ation d'un
+      g&eacute;n&eacute;rateur al&eacute;atoire de pile ou face.</span><br>
+    &nbsp;&nbsp;&nbsp; Utilisons la suite de valeur v[0] = 13, v[n] = (
+    <meta http-equiv="CONTENT-TYPE" content="text/html;
+      charset=ISO-8859-1">
+    <title></title>
+    <meta name="GENERATOR" content="LibreOffice 3.3 (Linux)">
+    <style type="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in }
+	-</style>16805
+    * v[n-1] + 1 ) % 32768 o&ugrave; <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; - on multiplie par un grand
+    nombre premier K= 16805 le nombre pr&eacute;c&eacute;dent <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; - en ne gardant que 15
+    premiers bits (c'est ce que fait l'op&eacute;ration <code>p % 2^15
+      = 32768).</code><br>
+    &nbsp;&nbsp; Dans notre exercice on a prit des nombres standards que
+    beaucoup d'essais num&eacute;riques ont permis d'exp&eacute;rimenter
+    comme donnant des r&eacute;sultats corrects.<br>
+    &nbsp;&nbsp; Pour le tirage &agrave; pile ou face on prendre
+    7&egrave;me bit de v[n] en disant<br>
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "pile" si il est
+    &eacute;gal &agrave; 1 ou "true" et <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "face" si il est
+    &eacute;gal &agrave; 0 ou "false", <br>
+    c'est &agrave; dire en langage java:<br>
+    &nbsp;tirage[n] = ( v[n] / 128 ) %2 == 1;<br>
+    o&ugrave; tirage est un tableau de bool&eacute;ns.<br>
+    <span style="font-style: italic;">Cr&eacute;er une boucle qui
+      calcule les 10000 premi&egrave;res valeurs de v[n] et du tirage
+      &agrave; pile ou face dans un tableau.</span><br>
+    <span style="font-style: italic;">Expliquer pourquoi </span>( v[n]
+    / 128 = 2^7 ) % 2 == 1 <span style="font-style: italic;">permet de
+      calculer le 7&egrave;me bit.</span><br>
+    <br>
+    <span style="font-weight: bold;">2. Observation du r&eacute;sultat</span>.<br>
+    <span style="font-style: italic;">Cr&eacute;er une boucle qui compte
+      le nombre de piles et de ou faces des 10, 100, 1000 et 10000
+      premi&egrave;res valeurs.</span><br style="font-style: italic;">
+    <span style="font-style: italic;">Observer et commenter.</span><br>
+    <br>
+    <span style="font-weight: bold;">3. Observation des valeurs
+      al&eacute;atoires. </span><br>
+    &nbsp;&nbsp; Regarder les 100 1ers tirages obtenus par ce calcul,
+    sur la figure ci-jointe:<br>
+    <span style="font-style: italic;">Ont-il l'air vraiment
+      al&eacute;atoires (donner une description en une phrase) ?</span><br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; En r&eacute;alit&eacute; la
+    r&eacute;ponse &agrave; cette question est double:<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; - notre
+    cerveau a tendance &agrave; voir de la r&eacute;gularit&eacute;
+    m&ecirc;me si il observe un ph&eacute;nom&egrave;ne
+    compl&egrave;tement al&eacute;atoire. Cette "capacit&eacute;
+    cognitive" &agrave; chercher &agrave; tout prix &agrave; des formes
+    aide &agrave; notre survie (par exemple pour le lapin
+    d&eacute;tecter la forme "renard" dans l'al&eacute;a du feuillage du
+    fourr&eacute;, quitte &agrave; fuir de temps en temps &agrave; cause
+    d'un feuillage qui a pu ressembler par hasard &agrave; un renard).<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; - un
+    g&eacute;n&eacute;rateur totalement al&eacute;atoire ne peut pas
+    g&eacute;n&eacute;rer toujours irr&eacute;guli&egrave;rement des
+    piles et des faces sans jamais cr&eacute;er aussi par hasard des
+    structures r&eacute;guli&egrave;res (sinon il ne serait <i>pas</i>
+    al&eacute;atoire !). Il va donc au fil du hasard
+    g&eacute;n&eacute;rer par exemple des "paquets" de pile ou de face
+    (ou pas), c'est la loi des s&eacute;ries. Un observateur peut
+    rigoureux peut alors sur-interpr&eacute;ter cette illusoire
+    r&eacute;gularit&eacute; et &eacute;noncer une "loi qui explique" .
+    . ben juste un &eacute;ph&eacute;m&egrave;re hasard.<br>
+    <br>
+    <span style="font-weight: bold;">&nbsp;4. Pour aller plus loin:
+      Jusqu'o&ugrave; va le hasard ?</span><br>
+    &nbsp; <span style="font-style: italic;">Que se passe t'il si "par
+      hasard" &agrave; un temps t, v[t] prend la valeur 13 qui avait
+      &eacute;t&eacute; utilis&eacute;e au d&eacute;but ? que vaudra
+      alors v[t+1], v[t+2], .. ?</span><br style="font-style: italic;">
+    <span style="font-style: italic;">&nbsp;Plus
+      g&eacute;n&eacute;ralement que se passe t'il si "par hasard" on
+      sort une valeur d&eacute;j&agrave; produite ? </span><br
+      style="font-style: italic;">
+    <span style="font-style: italic;">&nbsp; Au bout de 2^31 tirages
+      soit nous aurons au mieux tir&eacute; les 2^31 valeurs
+      diff&eacute;rentes possibles, qu'en d&eacute;duire ?</span><br>
+    &nbsp;&nbsp;&nbsp; C'est une propri&eacute;t&eacute; de tous les
+    g&eacute;n&eacute;rateurs pseudo-al&eacute;atoires de ne pouvoir
+    g&eacute;n&eacute;rer du hasard que pendant une p&eacute;riode
+    finie.<br>
+    <br>
+    &nbsp;<span style="font-weight: bold;">5. Pour aller plus loin:
+      pourquoi ne pas prendre le 1er bit pour le tirage &agrave; pile ou
+      face ?</span><br>
+    &nbsp;&nbsp;&nbsp; En souvenant des r&egrave;gles de multiplication
+    entre nombres pairs et impairs:<br>
+    <span style="font-style: italic;">Expliquer pourquoi prendre le bit
+      de poids faible qui donne la parit&eacute; (il vaut 0 sir le
+      nombre est pair et 1 si impair) ne marche pas (essayez avec votre
+      code si besoin).</span><br>
+    <span style="font-style: italic;">Essayer avec d'autres bits pour
+      observer pourquoi prendre le bit du milieu de ce nombre de 32 bits
+      est un bon choix.</span><br>
+    <br>
+    <span style="font-weight: bold;">6. Pour aller plus loin: un autre
+      algorithme possible.</span> D&eacute;tecter sur la <a
+href="http://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_al%C3%A9atoires">page
+
+      wikipedia</a> quel algorithme a &eacute;t&eacute; choisi et
+    comparer avec la g&eacute;n&eacute;ration al&eacute;atoire utilisant
+    l'algorithme de VonNeuman. <br>
+    <span style="font-style: italic;">Impl&eacute;menter la
+      m&eacute;thode de VonNeuman: quelle semble &ecirc;tre la meilleure
+      m&eacute;thode ?</span><br>
+    <span style="font-style: italic;">En une phrase quel est l'apport de
+      ce math&eacute;maticien &agrave; l'informatique ?</span><br>
+    <br style="font-weight: bold;">
+    <span style="font-weight: bold;"> 7. Hasard et
+      imp&eacute;dictibilit&eacute;.&nbsp;&nbsp;&nbsp; </span><br>
+    &nbsp;&nbsp;&nbsp; La suite de nombres que nous avons
+    g&eacute;n&eacute;r&eacute; n'est pas impr&eacute;dictible, puisque
+    la voil&agrave; g&eacute;n&eacute;r&eacute;e par un tout petit
+    programme. Une suite vraiment al&eacute;atoire est au contraire une
+    suite qui ne peut &ecirc;tre produite par aucun petit programme,
+    mais n&eacute;cessite de conna&icirc;tre toutes ces valeurs pour la
+    produire. C'est une id&eacute;e tr&egrave;s profonde qui se
+    formalise compl&egrave;tement en science informatique.<br>
+    &nbsp;&nbsp;&nbsp; De m&ecirc;me le jet d'une pi&egrave;ce de
+    monnaie est plus impr&eacute;dictible que vraiment al&eacute;atoire,
+    si nous connaissions tous les param&egrave;tres de la pi&egrave;ce
+    de monnaie, de la main qui le lance, les positions initiales, etc...
+    nous pourrions calculer la trajectoire du lancer et donc
+    pr&eacute;dire si pile ou face sera tir&eacute;.<br>
+    &nbsp;&nbsp;&nbsp; Le "vrai" hasard existe-il vraiment ? A
+    l'&eacute;chelle atomique, vraisemblablement.<br>
+    <span style="font-style: italic;">En une phrase quel est votre
+      position sur ce sujet ?</span><br>
+    <br>
+  </body>
+</html>

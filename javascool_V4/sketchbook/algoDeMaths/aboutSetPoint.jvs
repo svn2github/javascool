@@ -1,0 +1,16 @@
+// Code de démonstration proposé par Claudine Noblet, Lycée International de Valbonne
+void main() {
+  reset();
+  // Mise en place d'un code qui est appellé à chaque clic
+  setRunnable(new Runnable() {
+      public void run() {
+	// Lecture des coordonnées et tracé d'un point rouge au point correspondant
+	double x = getX(), y = getY();
+	setPoint(x, y, 2);
+      }
+    });
+  // Boucle d'attente . . 
+  while(!readBoolean("On arrête ?"));
+  // .. avant de déconnecter le runnable
+  setRunnable(null);
+}

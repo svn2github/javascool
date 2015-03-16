@@ -1,0 +1,18 @@
+[
+{
+ "tag" : "keyword"
+, "title" : "Définit les notes à jouer dans cet interface"
+, "name" : "setNotes"
+, "offset" : "9"
+, "code" : "setNotes(\\\"notes . . \\\");"
+, "doc" : "Spécifie les notes à jouer selon une syntaxe simplifiée."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Joue le son défini"
+, "name" : "length"
+, "code" : "play();"
+, "doc" : "Fait entendre le son à travers le système audio."
+}
+]
+

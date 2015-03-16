@@ -1,0 +1,429 @@
+ <div id="toc" class="toc"><div id="toctitle"><h2>Sommaire</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Structurer_le_texte_en_divisions."><span class="tocnumber">1</span> <span class="toctext">Structurer le texte en divisions.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Discussion."><span class="tocnumber">1.1</span> <span class="toctext">Discussion.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-3"><a href="#Enrichir_le_texte_en_qualifiant_son_contenu."><span class="tocnumber">2</span> <span class="toctext">Enrichir le texte en qualifiant son contenu.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Discussion._2"><span class="tocnumber">2.1</span> <span class="toctext">Discussion.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Cr.C3.A9er_de_l.27.C2.ABhyper-texte.C2.BB_en_ajoutant_des_objets_et_des_liens."><span class="tocnumber">3</span> <span class="toctext">Créer de l'«hyper-texte» en ajoutant des objets et des liens.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Discussion._3"><span class="tocnumber">3.1</span> <span class="toctext">Discussion.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#D.C3.A9crire_la_page_HML_elle-m.C3.AAme."><span class="tocnumber">4</span> <span class="toctext">Décrire la page HML elle-même.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="#Discussion._4"><span class="tocnumber">4.1</span> <span class="toctext">Discussion.</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+ 
+<div class="label1"><b>Des pages Web en «HTML minimal»&#160;: le HML</b></div>
+<p>Pour bien comprendre la structure logique et les principes fondamentaux des langages HTML, le «sous-langage» HML proposé ici permet de spécifier de manière minimale une page HTML complète. Il est en fait très proche des derniers langages (<tt>XHTML</tt> ou <tt>HTML5</tt>). 
+</p><p>Essentiellement un document HML est <a href="#Structurer_le_texte_en_divisions.">structuré en division</a>, le texte est <a href="#Enrichir_le_texte_en_modifiant_son_aspect."> enrichi pour qualifier son contenu</a>, tout en <a href="#Cr.C3.A9er_de_l.27.C2.ABhyper-texte.C2.BB_en_ajoutant_des_objets_et_des_liens.">intégrant des liens hyper-texte</a>: ici seul le contenu compte, la mise en page et le rendu doit être spécifié ailleurs, dans les feuilles de style. La page «HML» elle-même est <a href="#D.C3.A9crire_la_page_HML_elle-m.C3.AAme.">paramétrée par des méta-données</a>.
+</p>
+<h2><span class="mw-headline" id="Structurer_le_texte_en_divisions.">Structurer le texte en divisions.</span></h2>
+<p>Un texte est structuré de manière récursive en, par exemple, chapitre qui contiennent des sections, qui contiennent des paragraphes, etc. 
+La construction est de la forme:
+</p>
+<table border="1" align="center">
+<tr>
+<td>
+<p><font color="#990000"><b>&lt;div&gt;</b></font> <font color="#505000">title</font> <font color="#990000"><b>=</b></font> <font color="#008000">"titre"</font> .. (division) .. 
+&#160;&#160;<font color="#990000">'<b>&lt;div&gt;</b></font> .. (sous-division) .. 
+&#160;&#160; .. (etc.) .. 
+&#160;&#160;<font color="#990000">'<b>&lt;/div&gt;</b></font>
+<font color="#990000">'<b>&lt;/div&gt;</b></font>
+</p>
+</td></tr></table>
+<p>comme un arbre dont la racine et la section globale du texte et les branches ses divisions et sous divisions jusqu'au feuilles qui sont des paragraphes du texte. Les paramètres possibles sont: 
+</p>
+<table width="90%">
+
+<tr>
+<td align="center"> <b>name</b>
+</td>
+<td align="center"> <b>type</b>
+</td>
+<td align="center"> <b>default value</b>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <font color="#505000">title</font>
+</td>
+<td> <font color="#990000">string</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Titre de la division.
+</td></tr>
+<tr>
+<td> <font color="#505000">id</font>
+</td>
+<td> <font color="#990000">name</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Unique identificateur (étiquette) qui permet de référencer la division, chaque division doit avoir un identifiant différent.
+</td></tr>
+<tr>
+<td> <font color="#505000">class</font>
+</td>
+<td> <font color="#990000">name</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Définit de quelle type de division il s'agit.
+</td></tr>
+<tr>
+<td colspan="3"> Structure: "<font color="#202080">(div|s|l|text())*"</font>
+</td>
+<td> Cette construction contient du texte avec des sous-divisions, des blocks de texte et des liens.
+</td></tr></table>
+<p>Le paramètre <tt>class</tt> prend, par exemple, une valeur correspondant:
+</p>
+<table class="table" width="90%" cellpadding="5px" align="center">
+<tr>
+<td valign="top"> <font color="#990000"><b>class=ul</b></font>
+</td>
+<td valign="top"> Liste d'items non-numérotés
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>class=ol</b></font>
+</td>
+<td valign="top"> Liste d'items numérotés
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>class=table</b></font>
+</td>
+<td valign="top"> Table avec des lignes et des collones
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>class=margin</b></font>
+</td>
+<td valign="top"> Pour des notes en marge
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>class=center</b></font>
+</td>
+<td valign="top"> Pour des informations centrales
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>class='*'</b></font>
+</td>
+<td valign="top"> Autre type de structure, à la discrétion de l'utilisateur
+</td></tr></table>
+<p>qui correspondent à la façon dont le texte est structuré et à la façon dont le texte sera rendu sur la page. 
+</p><p>A titre de raccourci les paragraphes peuvent s'appeler <font color="#990000"><b>&lt;p&gt;</b></font> au lieu de <font color="#990000"><b>&lt;div&gt;</b></font>, les deux noms étant complètement équivalent à ce niveau.
+</p>
+<ul><li> Dans le cas d'une liste, les sous-divisions seront les <i>items</i> de la liste.</li>
+<li> Dans le cas d'une table, les sous-divisions seront les <i>lignes</i> de la table et leurs sous-divisions les <i>cellules</i> de la table (on les définit de gauche à droite puis de haut en bas).</li></ul>
+<p><br />
+La façon dont le texte sera rendu, le <i>style</i> est complètement séparé du contenu: on distingue complètement le fait d'écrire le texte de la façon de le mettre en page. Cette mise en page sera définie dans les fichier de style. 
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Discussion.">Discussion.</span></h3>
+<p>Cette construction correspond à tous les éléments HTML qui définissent des containers de texte. Elle force l'utilisateur à se concentrer sur le fond du contenu, pas sur sa forme. Le rendu peut en effet dépendre du support (grand écran, écran de balladeur, papier, ..).
+</p>
+<h2><span class="mw-headline" id="Enrichir_le_texte_en_qualifiant_son_contenu.">Enrichir le texte en qualifiant son contenu.</span></h2>
+<p>Dans un éditeur on peut modifier l'aspect d'un morceau de texte en changeant sa couleur ou son style, etc. Cela permet de montrer que l'importance ou le sens de ce morceau de texte est différent du reste. Une telle construction est de la forme:
+</p>
+<table border="1" align="center">
+<tr>
+<td>
+<p>(texte ordinaire) ..
+<font color="#990000"><b>&lt;s</b></font>
+<font color="#505000">class</font><font color="#990000">'<i>=<b></font><font color="#008000">"type-de-texte"</font><font color="#990000"></b></i><b>&gt;</b></font>
+.. (texte enrichi) ..
+<font color="#990000"><b>&lt;/s</b></font> 
+.. (suite du texte) ..
+</p>
+</td></tr></table>
+<p>où le texte enrichi est encapsulé dans un tag <font color="#990000"><b>&lt;s</b> <b>&lt;/s</b></font> en précisant la classe de texte en question. Le paramètre est: 
+</p>
+<table width="90%">
+
+<tr>
+<td align="center"> <b>name</b>
+</td>
+<td align="center"> <b>type</b>
+</td>
+<td align="center"> <b>default value</b>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <font color="#505000">class</font>
+</td>
+<td> <font color="#990000">name</font>
+</td>
+<td> <i>mandatory</i>
+</td>
+<td> Définit de quelle type de division il s'agit.
+</td></tr>
+<tr>
+<td colspan="3"> Structure: "<font color="#202080">(l|text())*"</font>
+</td>
+<td> Cette construction contient du texte avec des blocks de texte et des liens (mais pas de sous-divisions).
+</td></tr></table>
+<p>Le paramètre <font color="#990000"><b>class</b></font> prend comme précédemment une valeur sémantique (qui décrit le sens que donne à cet enrichissement), indépendemment de la forme avec laquelle il sera redu. 
+A titre de raccourci, les constructions suivantes sont définies:
+</p>
+<table class="table" width="90%" cellpadding="5px" align="center">
+<tr>
+<td valign="top"> <font color="#990000"><b>&lt;b&gt;</b></font>
+</td>
+<td valign="top"> (class = bold) Texte ou texte important à ne pas manquer lors de lecture rapide
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>&lt;i&gt;</b></font>
+</td>
+<td valign="top"> (class = idiom) Mot ou texte utilisé dans un sens particulier ou d'une autre langue, dont le sens est à bien calculer
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>&lt;c&gt;</b></font>
+</td>
+<td valign="top"> (class = code) Mot ou texte appartenant à un langage informatique ou formel
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>&lt;S&gt;</b></font>
+</td>
+<td valign="top"> (class = sup) Mot ou texte en exposant (comme dans «x au carré» <tt>x{S 2}</tt>
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>&lt;I&gt;</b></font>
+</td>
+<td valign="top"> (class = sub) Mot ou texte en indexe (inverse de l'exposant) pour décrire des objets paramétrés
+</td></tr></table>
+<p>cette liste n'étant pas limitative. Ces constructions sont des synonymes de <font color="#990000"><b>&lt;s class="bold"</b></font>, etc.. 
+</p>
+<h3><span class="mw-headline" id="Discussion._2">Discussion.</span></h3>
+<p>Cette construction correspond à l'élément HTML <tt><span>..</span></tt> et à tous les éléments dérivés. L'introduction de raccourci allège la lecture et l'édition du texte source, que l'on veut rester lisible ici (contrairement au XML ou HTML qui sont supposés cachés à l'utilisateur).
+</p>
+<h2><span class="mw-headline" id="Cr.C3.A9er_de_l.27.C2.ABhyper-texte.C2.BB_en_ajoutant_des_objets_et_des_liens.">Créer de l'«hyper-texte» en ajoutant des objets et des liens.</span></h2>
+<p>Dans un texte il est possible de référencer d'autres textes, images ou animations. Soit on accède ces éléments soit en cliquant, soit ces éléments sont insérés dans le texte.
+</p><p>Une telle construction est de la forme:
+</p>
+<table border="1" align="center">
+<tr>
+<td>
+<p><font color="#990000"><b>&lt;l</b></font>
+<font color="#505000">text</font><font color="#990000"><b>=</b></font><font color="#008000">"description-du-lien"</font>
+etc . . 
+<font color="#990000"><b>&lt;/&gt;</b></font>
+</p>
+</td></tr></table>
+<p>Les paramètres sont:
+</p>
+<table width="90%">
+
+<tr>
+<td align="center"> <b>name</b>
+</td>
+<td align="center"> <b>type</b>
+</td>
+<td align="center"> <b>default value</b>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <font color="#505000">text</font>
+</td>
+<td> <font color="#990000">string</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Texte décrivant le lien.
+</td></tr>
+<tr>
+<td> <font color="#505000">icon</font>
+</td>
+<td> <font color="#990000">location</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Image décrivant ce lien.
+</td></tr>
+<tr>
+<td> <font color="#505000">link</font>
+</td>
+<td> <font color="#990000">location</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Ressource décrite par ce lien.
+</td></tr>
+<tr>
+<td> <font color="#505000">class</font>
+</td>
+<td> <font color="#990000">name</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Définit de quelle type de lien il s'agit.
+</td></tr>
+<tr>
+<td colspan="3"> <i>pas de sous-élément</i>
+</td></tr></table>
+<p>Le paramètre <font color="#990000"><b>class</b></font> prend comme précédemment une valeur sémantique, qui décrit en partculier si l'élément est inséré dans la page ou accessible par un clic. Il prend, par exemple, une valeur correspondant:
+</p>
+<table class="table" width="90%" cellpadding="5px" align="center">
+<tr>
+<td valign="top"> <font color="#990000"><b>replace</b></font>
+</td>
+<td valign="top"> Pour fermer cette page et ouvrir une autre page à la place.
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>include</b></font>
+</td>
+<td valign="top"> Pour insérer le contenu d'un fichier <i>Hml</i> dans la présente page.
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>newtab</b></font>
+</td>
+<td valign="top"> Pour l'ouvrir dans une autre fenêtre.
+</td></tr>
+<tr>
+<td valign="top"> <font color="#990000"><b>*</b></font>
+</td>
+<td valign="top"> Pour un autre rendu, à définir par ailleurs.
+</td></tr></table>
+<p>Une construction de la forme <tt><font color="#990000"><b>&lt;l class="<i>name</i>&gt;</b></font></tt> désigne une entité de nom <i>name</i>, c'est à dire un mot du texte qui sera rendu de manière particulière. 
+</p><p>Dans le cas d'une image à insérer la construction de base est de la forme
+<font color="#990000"><b>&lt;l</b></font>
+<font color="#505000">icon</font><font color="#990000"><b>=</b></font><font color="#008000">"nom-du-fichier-image"</font>
+<font color="#990000"><b>/&gt;</b></font>
+donc la classe est <font color="#990000"><b>include</b></font> par défaut. On peut ajouter un lien avec l'attribut <font color="#505000">link</font> qui sera cliquable sur l'image, un titre à l'image avec l'attribut <font color="#505000">text</font> qui sera à la fois le texte de remplacement si l'image n'est pas visible et un titre si il est affichable.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Discussion._3">Discussion.</span></h3>
+<p>Cette construction correspond aux éléments HTML <tt>&lt;a href= ../..&gt;.</tt> et <tt>&lt;img src= ../..&gt;.</tt> et à tous les éléments (tel que <tt>&lt;object ...</tt>), qui incluent des contenus dans le texte. L'intégration des ces éléments étant considéré comme au-delà de la compétence d'un rédacteur de texte, la présente spécification se propose de les encapsuler, pour être utilisés sans se donner la peine de les programmer.
+</p>
+<h2><span class="mw-headline" id="D.C3.A9crire_la_page_HML_elle-m.C3.AAme.">Décrire la page HML elle-même.</span></h2>
+<p>Un fichier HML contient une page qui va s'afficher dans un navigateur.
+Cette page doit contenir des méta-données permettant de prendre connaissance immédiatement de son contexte, et de la référencer ensuite. 
+La construction est de la forme:
+</p>
+<table border="1" align="center">
+<tr>
+<td>
+<p><font color="#990000"><b>&lt;page</b></font>
+<font color="#505000">title</font> <font color="#990000"><b>=</b></font> <font color="#008000">"value"</font> .. (et autres méta-donnée) .. 
+<font color="#990000"><b>&gt;</b>
+.. (contenu de la page) .. 
+<font color="#990000"><b>&lt;/page&gt;</b></font>
+</p>
+</td></tr></table>
+<p>les espaces et retour à la ligne n'étant pas significatifs. Les paramètres possibles sont:
+</p>
+<table width="90%">
+
+<tr>
+<td align="center"> <b>name</b>
+</td>
+<td align="center"> <b>type</b>
+</td>
+<td align="center"> <b>default value</b>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <font color="#505000">title</font>
+</td>
+<td> <font color="#990000">string</font>
+</td>
+<td> <i>mandatory</i>
+</td>
+<td> Titre de la page.
+</td></tr>
+<tr>
+<td> <font color="#505000">icon</font>
+</td>
+<td> <font color="#990000">location</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Icone permettant de reconnaitre la page.
+</td></tr>
+<tr>
+<td> <font color="#505000">author</font>
+</td>
+<td> <font color="#990000">identity</font>
+</td>
+<td> <i>mandatory</i>
+</td>
+<td> Nom et email de l'auteur sous la forme <tt>Prenom Nom &lt;email&gt;</tt>.
+</td></tr>
+<tr>
+<td> <font color="#505000">tags</font>
+</td>
+<td> <font color="#990000">name*</font>
+</td>
+<td> <i>mandatory</i>
+</td>
+<td> Liste de mots-clé de la page, séparés par des espaces, un mot composé étant construit avec le titre <tt>-</tt>.
+</td></tr>
+<tr>
+<td> <font color="#505000">style</font>
+</td>
+<td> <font color="#990000">location</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Ficher de style CSS de la page.
+</td></tr>
+<tr>
+<td> <font color="#505000">script</font>
+</td>
+<td> <font color="#990000">location</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Fichier des fonctions JavaScript de la page.
+</td></tr>
+<tr>
+<td> <font color="#505000">abstract</font>
+</td>
+<td> <font color="#990000">string</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Description en quelques lignes du contenu de la page (utilisé par les moteurs d'indexation du web).
+</td></tr>
+<tr>
+<td> <font color="#505000">*</font>
+</td>
+<td> <font color="#990000">string</font>
+</td>
+<td> <font color="#008000">"null"</font>
+</td>
+<td> Autre(s) méta-donnée(s) éventuelle(s), à la discrétion de l'utilisateur.
+</td></tr>
+<tr>
+<td colspan="3"> Structure: "<font color="#202080">div*"</font>
+</td>
+<td> Cette construction contient une suite de division <font color="#990000"><b>div</b></font>.
+</td></tr></table>
+<h3><span class="mw-headline" id="Discussion._4">Discussion.</span></h3>
+<p>Cette construction correspond à l'entête d'une page HTML (la construction <tt><head>..</head>..</tt>). Elle force l'utilisateur à définir son identité (pas de page anonyme), un titre à la la page, et des mots-clé ou tag, de façon à ne pas générer de page sans aucun contexte permettant d'en comprendre la pertinence. Elle contraint les éléments de style et de script à être définis dans un unique fichier associé à la page (ce fichier pouvant lui-même en include d'autres), de façon à avoir une organisation de fichier bien organisée. L'encodage est forcément du <tt>UTF-8</tt>, le langage n'est pas spécifié en méta-donnée car le texte lui-même est potentiellement multilingue.</font>
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.060 seconds
+Real time usage: 0.058 seconds
+Preprocessor visited node count: 200/1000000
+Preprocessor generated node count: 402/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:859-1!*!*!!fr!*!* and timestamp 20150313130629 and revision id 8140
+ -->

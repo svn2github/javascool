@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<page title="Rubik proglet help" author="Julien Cervelle" tags="help rubik's-cube functions">
+<div>This proglet allows to learn bottom-up algorithm design: from basic tasks (turn one face of the cube), 
+the student has to build more complex function to allows to solve easily the rubik's 2x2 cube.</div>
+<div>The availables functions are divided into two categories. The first one turn one of the six face of the cube, clockwise or anticlockwise. The second category changes the view of the cube,
+as do the buttons above the view window</div>
+<div>Note that the difference between button and programatic actions is that pushing a button causes immediate turn of the cube while programmed actions are
+performed in the order the functions are called</div>
+<div>Note also that when a face (for instance front face) is programmed to be turned, moving the view with a button (for instance clicking the down arrow button)
+do not change the face programmed to be turned (if the front face was programmed to be turned, after the click, the new place of the front face i.e. the bottom face will turned).</div>
+<ul>
+ <li><c>left()</c>, <c>right()</c>, <c>up()</c>, <c>down()</c>, <c>back()</c> and <c>front()</c>
+ functions rotate the corresponding face clockwise;</li>
+ <li><c>antileft()</c>, <c>antiright()</c>, <c>antiup()</c>, <c>antidown()</c>, <c>antiback()</c> and
+ <c>antifront()</c> functions rotate the corresponding face anti-clockwise;</li>
+ <li><c>moveup()</c>, <c>movedown()</c>, <c>moveleft()</c> and <c>moveright()</c> functions move the view of the cube rotating
+ it in the direction of the function name. For instance, <c>moveup()</c> turns the cube upward in order to view the down face;</li>
+ <li><c>rotate()</c> and <c>antirotate</c> functions rotate the cube clockwise or anti-clockwise;</li>
+ <li><c>randomturn()</c> rotates a random face. The function can be used to scramble the cube.</li>
+</ul>
+<div>All these functions are available through completion.</div>
+</page>

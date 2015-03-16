@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div title="Proglet Tic-Tac-Toe version réseau">
+  <p class="margin"> Auteur : Christophe Béasse </p><p></p>
+
+  <p><l link="activity7.htm" text="..."/></p>
+
+<div title="Présentation: jeu du Tic-Tac-Toe et primitives réseau">
+
+<p> On propose ici de réaliser le jeu du "TicTacToe" (version anglaise du morpion qui se joue sur une grille de 3x3 cases) en version réseau à l'aide d'une implémentation type client/serveur utilisant les sockets. On dispose de deux postes (1 poste ou le jeu tourne en mode serveur et 1 autre poste ou le jeu tourne en mode client. Dans le film WarGames (1984), le jeu de Tic-Tac-Toe est utilisé pour apprendre à un ordinateur pris de folie destructrice qu'il existe des jeux auxquels on ne peut pas toujours gagner.</p>
+
+</div>
+
+<div title="Proglet exemple (version serveur et version client)">
+    <p>Voici un exemple minimal qui permet de tester cette proglet.
+    Attention, il faut lancer la version serveur en premier, puis la version client. Ici les deux proglets peuvent être lancés sur la même machine.Dans ce cas, il vous faut lancer deux fois la proglet ticTacToe sur l'ordinateur en chargeant dans l'une la version serveur ci-dessous et dans l'autre la version client.</p>
+    
+         <div class="center"><l class="icon" icon="jeu.png"/></div>
+
+<div title="Code source des programmes de test">
+    <div title="Version serveur">
+    <div class="code">
+      <p><r>void</r> main() {</p>
+      <p><T/>openSocketServer(6000);</p>
+      <p><T/><r>String</r> str = getMessageViaSocketServer();</p>
+      <p><T/><r>int</r> i = Integer.parseInt(str.substring(0,1));</p>
+      <p><T/><r>int</r> j = Integer.parseInt(str.substring(2,3));</p>
+      <p><T/>setGrille(i,j,'O');</p>
+      <p><T/>sendMessageViaSocketServer("1,3");</p>
+      <p><T/>setGrille(1,3,'X');</p>      
+      <p><T/>closeSocketServer();</p>  
+      <p>}</p>
+    </div>
+    </div>
+    
+    <div title="Version client">
+    <div class="code">
+      <p><r>void</r> main() {</p>
+      <p><T/>openSocketClient("127.0.0.1",6000);</p> 
+      <p><T/>setGrille(3,3,'O');</p>
+      <p><T/>sendMessageViaSocketClient("3,3");</p>
+      <p><T/><r>String</r> str = getMessageViaSocketClient();</p>
+      <p><T/><r>int</r> i = Integer.parseInt(str.substring(0,1));</p>
+      <p><T/><r>int</r> j = Integer.parseInt(str.substring(2,3));</p>
+      <p><T/>setGrille(i,j,'X');</p>
+      <p><T/>closeSocketClient(); </p>    
+      <p>}</p>
+    </div>    
+    </div>
+</div>    
+
+
+<div title="Principes de fonctionnement">
+    <div class="ul">    
+<p>Une fois lancé, le proglet serveur ouvre un socket sur le port 6000 (<c>openSocketServer</c>) puis il se met en attente d'un coup envoyé par le proglet client (<c>getMessageViaSocketServer()</c>). Il récupère les coordonnées de la case choisie (<c>Integer.parseInt</c>) met à jour la grille en conséquence (<c>setGrille(i,j,'O')</c>) puis joue à son tour en envoyant les coordonnées de la case choisie au client (<c>sendMessageViaSocketServer("1,3")</c>) tout en mettant à jour sa propre grille (<c>setGrille(1,3,'X')</c>). Il ne faut pas oublier de fermer le socket server (<c>closeSocketServer()</c>) pour libérer le port 6000 pour une future utilisation.</p>
+<p>Une fois lancé, le proglet client essaye d'ouvrir un socket (<c>openSocketClient</c>) communiquant via le port 6000 avec le serveur spécifié, ici localhost/127.0.0.1 .Puis il envoie le premier coup par le proglet client (<c>sendMessageViaSocketClient("3,3")</c>) tout en mettant à jour sa propre grille (<c>setGrille(3,3,'O')</c>).Puis, il se met en attente d'un coup envoyé par le proglet Server (<c>getMessageViaSocketClient()</c>). Il récupère les coordonnées de la case choisie (<c>Integer.parseInt</c>) met à jour la grille en conséquence (<c>setGrille(i,j,'X')</c>). Il ne faut pas oublier de fermer le socket Client (<c>closeSocketClient()</c>) pour libérer le port ouvert par le client pour une future utilisation.</p>
+</div>
+</div>
+
+  
+<div title="remarques:"> 
+    <div class="ul">
+    <p>Le port utilisé pour accéder au serveur est le port 6000. (A changer si ce port est déjà utilisé).</p>
+    <p>Le format d'un coup est une chaîne de 3 caractères correspondant aux coordonnées de la case choisie "numligne,numcolonne"  , par exemple "3,3".</p>
+    <p>Au niveau de la grille du jeu, la marque utilisée par le joueur/serveur est une croix 'X' alors que la marque utilisée par le joueur/client est un  rond 'O'.</p>
+    <p> Dans cet exemple minimal aucun test n'est fait pour vérifier que les ouvertures de sockets ce sont bien passées, etc. Tests qui seront bien sûr à faire dans la version finale du jeu.</p>
+    <p>Dans cet exemple le client joue en premier le coup (3,3) auquel le serveur répond par le coup (1,3).</p>
+    <p>En cas de problèmes éventuels de droits/Firewall sur le réseau, on peut très bien utiliser cette application client/serveur sur un même poste (au moins pour les développements) en utilisant l'adresse de serveur localhost (127.0.0.1). On peut aussi raccorder les deux postes à l'aide d'un câble croisé ou d'un mini-switch.</p>
+    </div>
+</div>    
+
+</div>    
+    
+<div title="Variantes au niveau de la mise en oeuvre">On peut prévoir deux versions:<div class="ul">
+    <p>Une version, comme celle présenté ici du type [1 client / 1 serveur] ou un joueur active la version serveur sur un poste et ou le deuxième active la version client.</p>
+    <p>Une version type [2 clients / 1 serveur]. Le serveur tournant sur un poste dédié sert à mettre en relation au début du jeu les deux versions clientes (voir le proglet Client/Serveur.</p>
+  </div>
+  
+
+</div>
+  
+  
+<div title="Liste des fonctions à disposition"> 
+<div title="Gestion de la grille de jeu">
+<p>Pour la gestion de la grille de jeu (taille 3x3) proposée au niveau de la console "graphique" vous disposez des fonctions suivantes :</p>
+
+<div class="code"><p><r>setGrille</r>(int i , int j ,char mark)</p></div>
+<p>Permet de positionner une marque (caractère 'X' ou 'O') sur la grille à la position spécifiée (coordonnées comprises entre 1 et 3). La marque ronde 'O' est Bleu, la croix 'X' est verte</p>
+<p> Exemple : setGrille(1,2,'X')</p>
+<p></p>
+<div class="code"><p><r>getGrille</r>(int i , int j )</p></div>
+<p>Cette fonction retourne la marque (caractère 'X' ou 'O' ou '.') (type char) présente sur la grille à la position spécifiée (coordonnées comprises entre 1 et 3).</p>
+<p>exemple : char mark = getGrille(3,3);</p>
+</div>
+
+<div title="Gestion de la communication réseau via les sockets">
+<p>Au niveau communication TCP/IP on dispose d'une fonction d'initialisation du port (via une "socket"), d'une fonction de lecture, d'une fonction d'écriture et enfin d'une fonction de libération de la connection. Chacune de ses fonctions est déclinée en version serveur et en  version client.</p>
+    
+
+
+<div class="code"><p><r>openSocketServer</r>(int numport)</p></div>
+<p>Initialisation du socket server, il écoute sur le port spécifié.Cette fonction tourne true si tout c'est bien passé false dans le cas contraire.</p>
+
+<div class="code"><p><r>getMessageViaSocketServer</r>()</p></div>
+<p>Retourne un message (type String) lu sur le socket server. Message en provenance du client.</p>
+
+<div class="code"><p><r>sendMessageViaSocketServer</r>(String text)</p></div>
+<p>Permet d'écrire un message sur le socket server. Message à destination du client.</p>
+
+
+<div class="code"><p><r>closeSocketServer</r>()</p></div>
+<p>Fermeture du socket server. Cette fonction retourne true si tout c'est bien passé false dans le cas contraire.</p>
+     
+<div class="code"><p><r>openSocketClient</r>(String serverName, int numport)</p></div>
+<p>Initialisation socket client vers server spécifié (Nom et numéro de port)
+Cette fonction retourne true si tout c'est bien passé false dans le cas contraire.</p>
+
+<div class="code"><p><r>sendMessageViaSocketClient</r>(String text)</p></div>
+<p>Permet d'envoyer un message via le socket client vers le serveur.</p>
+
+
+<div class="code"><p><r>getMessageViaSocketClient</r>()</p></div>
+<p>Retourne un message (type String) lu sur le socket client, message en provenance du serveur.</p>
+
+<div class="code"><p><r>closeSocketClient</r>()</p></div>
+<p>Fermeture du socket client. Cette fonction retourne true si tout c'est bien passé false dans le cas contraire.</p>
+    
+</div>
+</div>
+
+
+</div>
+

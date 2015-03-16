@@ -1,0 +1,50 @@
+<h1><span class="mw-headline" id="Comment_d.C3.A9finir_la_compl.C3.A9tion_automatique_dans_l.27.C3.A9diteur">Comment définir la complétion automatique dans l'éditeur</span></h1>
+<p>Il suffit de définir un fichier <tt>completion.xml</tt> de la forme 
+</p>
+<pre>
+&lt;keywords&gt;
+  &lt;keyword 
+    name=&quot;nom de la complétion&quot; 
+    title=&quot;description en ligne&quot;&gt;
+    &lt;code&gt;texte source de la complétion&lt;/code&gt;
+    &lt;doc&gt;Texte qui documente la fonction de l'on complète&lt;/doc&gt;
+  &lt;/keyword&gt;
+  &lt;!-- autres keyword --&gt;
+&lt;/keywords&gt;
+</pre>
+<ul><li> Le champ <tt>title</tt> permet, en autre, de distinguer deux complétions qui ont le même nom.</li>
+<li> Le texte qui documente la fonction est du texte ordinaire, il faut utiliser une construction <tt>&lt;![CDATA[texte-HTML]]&gt;</tt> pour insérer de l'HTML.</li></ul>
+<h3><span class="mw-headline" id="Exemple">Exemple</span></h3>
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;&#160;?&gt;
+&lt;keywords&gt;
+    &lt;keyword name=&quot;readString&quot; 
+       title=&quot;Stock dans une variable s une String&quot;&gt;
+       &lt;code&gt;String s=readString();&lt;/code&gt;  
+        &lt;doc&gt;Crée une variable s qui va contenir une chaîne de caractères demandée à l'utilisateur.&lt;/doc&gt;
+    &lt;/keyword&gt;
+    &lt;keyword name=&quot;readString&quot; 
+       title=&quot;Demande à l'utilisateur une chaîne&quot;&gt;
+       &lt;code&gt;readString()&lt;/code&gt;
+       &lt;doc&gt;Lit une chaîne de caractère dans une fenêtre présentée à l'utilisateur.&lt;/doc&gt;
+    &lt;/keyword&gt;
+&lt;/keywords&gt;
+</pre>
+<h3><span class="mw-headline" id="Notes:">Notes:</span></h3>
+<ul><li> Si les champs <tt>title</tt> et <tt>doc</tt> sont techniquement optionnels ils sont fortement recommandés.</li>
+<li> Si le champ <tt>name</tt> supplée au champ <tt>text</tt>, celui ci est fortement recommandé.</li></ul>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.008 seconds
+Real time usage: 0.007 seconds
+Preprocessor visited node count: 29/1000000
+Preprocessor generated node count: 56/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:873-1!*!*!!*!*!* and timestamp 20150313130628 and revision id 5665
+ -->

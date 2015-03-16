@@ -1,0 +1,27 @@
+<p><br />
+</p>
+<h2><span class="mw-headline" id="D.C3.A9velopper_des_proglets_.C3.A0_partir_de_netbeans">Développer des proglets à partir de netbeans</span></h2>
+<p>Pour utiliser des proglets avec <a rel="nofollow" class="external text" href="http://fr.netbeans.org">netbeans</a> il suffit d'installer la version gratuite de netbeans et de bien organiser ces fichiers, comme suit.
+</p>
+<ol><li> Créer un nouveau projet netbeans "vide"</li>
+<li> Dans le dossier de travail de netbeans créer le répertoire <tt>src/org/javascool/proglets</tt> qui va correspondre à la <a class="internal" href="?page=developers&action=doc-javascoolbuilder" title="JavaScool:DocJavaScoolBuilder">mise en place du sketchbook</a>.</li>
+<li> Copier la jarre <tt>javascool-builder.jar</tt> dans le répertoire <tt>src/org/javascool/proglets</tt>.</li>
+<li> Ajouter cette jarre aux librairies du projet netbeans.</li></ol>
+<p>Tout est prêt pour développer le code des proglets à travers netbeans.
+</p><p>Il suffira d'exécuter <tt>javascool-builder.jar</tt> dans le répertoire <tt>src/org/javascool/proglets</tt> pour générer la jarre <tt>javascool-proglets.jar</tt> qui intégrera les proglets souhaitées.
+</p><p>Si vous avez besoin d'aide, n'hésitez pas à nous <a rel="nofollow" class="external text" href="/v4/?page=contact" class="internal">contacter</a>.
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.004 seconds
+Real time usage: 0.006 seconds
+Preprocessor visited node count: 3/1000000
+Preprocessor generated node count: 8/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:893-1!*!0!*!*!*!* and timestamp 20150313130630 and revision id 5834
+ -->

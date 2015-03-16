@@ -1,0 +1,15 @@
+﻿void main() {
+	// declaration et typage des variables
+	double prixUnitaire; 
+	int quantite; 
+	double prixTotal; 
+	String nom; 
+	// saisie des entrees
+	nom = readString("Quel est le nom de l'article ?");
+	prixUnitaire = readDouble("Quel est son prix unitaire en euros ?"); 
+	quantite = readInt("Quelle est la quantite achetee ?"); 
+	// calcul du prix total
+	prixTotal = quantite * prixUnitaire;
+	// affichage de la sortie
+	println("Le prix total vaut " + prixTotal + " euros"); 
+} 

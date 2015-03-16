@@ -1,0 +1,29 @@
+<div class="sujet" title="Utiliser l'«educlet» cryptageRSA">
+  <div title="Description">
+    La cryptologie, science du secret, englobe la cryptographie — le codage secret d'un message — et la cryptanalyse — le décodage d'un message codé. 
+	<p>Le principe de la cryptographie consiste à définir une transformation des symboles d'un langage (les lettres ou les mots par exemple) 
+        qui soit difficilement inversible, 
+        de telle sorte que retrouver le mot original à partir du mot codé devienne une opération difficile à effectuer.</p>
+        <p>Il existe deux grandes familles d'algorithmes de cryptographie : les algorithmes symétriques (à clé secrète) 
+	et les algorithmes asymétriques (à clé publique). 
+        En cryptographie asymétrique (ou à clé publique), il existe une fonction dite à sens unique, pour transformer un message en message codé.</p>
+        <p>Il faut que cette fonction soit simple à appliquer à un quelconque message, mais qu'il soit difficile de retrouver le message original 
+	à partir du message codé. La cryptographie à clé publique permet de coder un message secret et aussi d'authentifier l'émetteur d'un message,
+        par le protocole symmétrique.</p>
+        <p> Pour une explication plus aprofondie du procédé de cryptologie par l'algorithme RSA, se référer à l'article 
+        <l link="http://interstices.info/jcms/c_30225/nombres-premiers-et-cryptologie-lalgorithme-rsa" text="interstices"/>.</p>
+        <p> Le but de cette applete est de manipuler les concepts liés à l'encryptage/décryptage par clés publique et privée, RSA. 
+    L'intérêt de la manipulation est de faire passer la non-symétrie du processus: autrement dit, tout le monde peut encrypter (par la clé publique),
+    mais seule une personne pourra décrypter (possédant la clé privée)..</p>
+  </div>
+  <div class="center"><l class="icon" link="http://www.openprocessing.org/visuals/?visualID=16149" icon="CryptageRSA_xml.png"/></div>  
+  <div title="Autres activités liées à la cryptographie"><div class="ul">
+   <p>Un <l link="http://javascool.gforge.inria.fr/documents/sketchbook/cryptageRSA/a-propos-de-crypto.pdf" text="texte de présentation de la cryptographie"/></p>
+   <p>A propos de <l link="http://interstices.info/rsa" text="nombres premiers et cryptologie : l’algorithme RSA"/></p>
+   <p>Une activité pour <l link="http://javascool.gforge.inria.fr/documents/sketchbook/cryptageRSA/a-propos-de-carte-de-credit.pdf" text="calculer comment marche le code d'une carte de crédit"/></p>
+   <p>Une activité pour <l link="http://javascool.gforge.inria.fr/documents/sketchbook/cryptageRSA/a-propos-de-code-carre.pdf" text="comprendre le cryptage"/> en utilisant les équations du 2ème degré.</p> 
+  <p>Une activité pour <l link="http://javascool.gforge.inria.fr/documents/sketchbook/cryptageRSA/a-propos-de-cadenas.pdf" text="comprendre le cryptage"/> en utilisant de vrais cadenas.</p>
+  </div></div>
+</div>
+
+

@@ -1,0 +1,82 @@
+<div title="Faire des exercices d'application: les algorithmes mathématiques en 2nd">
+
+  <p><l class="javascool"/> permet de programmer la 20taine d'exercices et activités du document de <l link="/documents/Algo_Doc_Ress.pdf" text="ressources"/> publié par <l link="http://eduscol.education.fr" text="ÉduSCOL"/>, dont les solutions ont été instanciées en <l class="javascool"/>.</p>
+
+  <p>Les "<l link="http://wiki.inria.fr/sciencinfolycee/Private:ProgletSoluce" text="soluces"/>" (aide syntaxique) sont proposées ici (nous <l link="mailto:thierry.vieville@sophia.inria.fr?subject=[javascool] A propos de qq proglet : accès aux soluce sur [scienceinfolycee]&amp;body=Bonjour,%0a,%20%20Je%20suis%20un%20enseignant%20du%20lycée%20de%20??%20à%20??%20et%20souhaite%20accéder%20aux%20soluces%20des%20proglets.%0a,%20%20%20Voici%20un%20élément%20qui%20prouve%20que%20je%20ne%20suis%20pas%20élève%20!%20:%20??%0a,%20%20Signature%20:%20??" text="contacter"/> pour l'accès).</p>
+
+  <div class="margin"><l link="memo-macros.htm" text="mémorandum des instructions"/></div>
+
+  <div title="Apprentissage de l'utilisation des tableaux:"><div class="table">
+    <p><p>Une <l link="/documents/sujets-mathinfo/noblet-presentation-tableaux.ppt" text="présentation"/> (<l link="/documents/sujets-mathinfo/noblet-presentation-tableaux.pdf" text="pdf"/>) pour introduire le sujet en classe.</p></p>
+    <p><p>Une activité <l link="/documents/sujets-mathinfo/sujet-about-tableaux.htm" text="javascool"/>.</p></p>
+    <p><p>Une meilleure <l link="/documents/sujets-mathinfo/noblet-sujet-tableaux.doc" text="présentation"/> plus travaillée (<l link="/documents/sujets-mathinfo/noblet-sujet-tableaux.pdf" text="pdf"/>) de l'activité.</p></p>
+  </div></div>
+
+  <div title="Quelques sujets:"><div class="table">
+
+    <p><p>Réaliser une <l link="/documents/sujets-mathinfo/sujet-appli-imc.htm" text="calculette d'indice de masse corporelle"/> pour appliquer les notions d'algorithmique.</p></p>
+
+    <p><p>Programmer quelques <l link="/documents/sujets-mathinfo/sujet-appli-geometry.htm" text="calculs géométriques"/>.</p></p>
+  
+    <p><p>Un travail sur la <l link="/documents/sujets-mathinfo/sujet-conversion-binaire.htm" text="conversion binaire/décimale"/>.</p></p>
+
+    <p><p>Un approfondissement <l link="/documents/sujets-mathinfo/sujet-appli-booleen.htm" text="découvrir quelques notions de logique"/>.</p></p>
+
+    <p><p>Un travail sur <l link="/documents/sujets-mathinfo/Repondre-a-un-QCM.doc" text="«est-il judicieux de répondre au hasard a un QCM»"/> (<l link="/documents/sujets-mathinfo/Repondre-a-un-QCM.pdf" text="pdf"/>, <l link="/documents/sujets-mathinfo/Repondre-a-un-QCM.java.pdf" text="code exemple"/>).</p></p>
+
+  </div></div>
+
+  <div title="Quelques exemples de programmes réalisés en classe:"><div class="ul">
+
+  <p>Expérimenter la différence entre <l link="/documents/sujets-mathinfo/QuotientEntierEtFlottant.htm" text="calcul en nombre entiers et flottants"/></p>
+
+  <p>Effectuer le <l link="/documents/sujets-mathinfo/Parallelogramme.htm" text="calcul du 4ème point d'un parallélogramme"/>avec 
+     <l link="/documents/sujets-mathinfo/lucaud-parallelogramme.odt" text="un sujet «unplugged» de préparation"/> 
+    (<l link="/documents/sujets-mathinfo/lucaud-parallelogramme.pdf" text="pdf"/>)</p>
+
+  <p>Effectuer le <l link="/documents/sujets-mathinfo/TirageAleatoireSurSegment.htm" text="calcul d'une surface par tirages aléatoires de points"/></p>
+
+  <p>Découvrir les méthodes de   <l link="/documents/sujets-mathinfo/lucaud-montecarlo.odt" text="calcul par tirage aléatoire (dites de Monte-Carlo)"/> 
+    (<l link="/documents/sujets-mathinfo/lucaud-montecarlo.pdf" text="pdf"/>)</p>
+
+  <p>Découvrir les algorithmes de tri avec un sujet «unplugged» de préparation sur les 
+     <l link="/documents/sujets-mathinfo/lucaud-algo-tri.odt" text="algorithmes de tri et la gestion des variables"/> 
+    (<l link="/documents/sujets-mathinfo/lucaud-algo-tri.pdf" text="pdf"/>) et des exemples de programme de tri 
+     de <l link="/documents/sujets-mathinfo/Tri_trois_nombres.htm" text="trois valeurs"/> et de 
+     <l link="/documents/sujets-mathinfo/Tri_plusieurs_nombres.htm" text="plusieurs valeurs"/>.</p>
+
+  </div></div>
+     
+  <div title="Quelques sujets «unplugged» (sans ordinateur):"><div class="ul">
+     
+    <p><l link="/documents/sujets-mathinfo/Base_2_Codage_Entiers.doc" text="Découvrir le codage binaire"/>
+    (<l link="/documents/sujets-mathinfo/Base_2_Codage_Entiers.pdf" text="pdf"/>)</p>
+
+    <p><l link="/documents/sujets-mathinfo/Codage_Binaire.doc" text="Activité sur le codage binaire"/> 
+    (<l link="/documents/sujets-mathinfo/Codage_Binaire.pdf" text="pdf"/>)</p>
+
+    <p><l link="/documents/sujets-mathinfo/larrieu-codage-binaire.odt" text="Fabriquer un reflet numérique d'un objet"/> 
+    (<l link="/documents/sujets-mathinfo/larrieu-codage-binaire.pdf" text="pdf"/>)</p>
+
+    <p><l link="/documents/sujets-mathinfo/Codage_Texte.doc" text="Le codage ASCII"/> 
+    (<l link="/documents/sujets-mathinfo/Codage_Texte.pdf" text="pdf"/>)</p>
+
+    <p><l link="/documents/sujets-mathinfo/larrieu-codage-nombres.odt" text="Codage des nombres"/>
+    (<l link="/documents/sujets-mathinfo/larrieu-codage-nombres.pdf" text="pdf"/>)</p>
+
+    <p><l link="/documents/sujets-mathinfo/larrieu-sujet-image.odt" text="Codage des images"/>
+    (<l link="/documents/sujets-mathinfo/larrieu-sujet-image.pdf" text="pdf"/>)</p>
+
+    <p><l link="/documents/sujets-mathinfo/vthierry-exo-generateur-aleatoire.html" text="Expérimenter avec les tirages aléatoires"/></p>
+
+    <p><l link="/documents/sujets-mathinfo/larrieu-devoir-maison-1.odt" text="Qq exercices récapitutatifs"/>
+    (<l link="/documents/sujets-mathinfo/larrieu-devoir-maison-1.pdf" text="pdf"/>)</p>
+
+  </div></div>
+
+  <div title="Des documents pour apprendre et se cultiver sur le sujet">
+    <div>Le poly de cours pour <l link="http://interstices.info/ingredients-algorithmes" text="découvrir les ingrédients des algorithmes"/>.</div>
+    <div>Les documents <l link="http://interstices.info/algo-mode-emploi" text="Algorithme mode d'emploi"/> et 
+      <l link="http://interstices.info/demandez-le-programme" text="Demandez le programme"/> offrent une introduction à l'élève ce sujet.</div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="jar" name="Create Runnable Jar for Project javascool-beta">
+
+  <target name="jar" depends="build">
+    <jar destfile="./dist/javascool-beta.jar" filesetmanifest="mergewithoutmain">
+      <manifest>
+        <attribute name="Main-Class" value="org.javascool.Core"/>
+        <attribute name="Class-Path" value="."/>
+      </manifest>
+      <fileset dir="./bin"/>
+      <zipfileset excludes="META-INF/*.SF" src="./../../work/lib/jarsigner.jar"/>
+      <zipfileset excludes="META-INF/*.SF" src="./../../work/lib/java2html.jar"/>
+      <zipfileset excludes="META-INF/*.SF" src="./../../work/lib/javac.jar"/>
+      <zipfileset excludes="META-INF/*.SF" src="./../../work/lib/javadoc.jar"/>
+      <zipfileset excludes="META-INF/*.SF" src="./../../work/lib/jvs2html.jar"/>
+      <zipfileset excludes="META-INF/*.SF" src="./../../work/lib/RSyntaxTextArea.jar"/>
+      <zipfileset excludes="META-INF/*.SF" src="./../../work/lib/saxon.jar"/>
+    </jar> 
+   <delete dir="bin"/>
+  </target>
+
+  <property name="classpath" value="./../../work/lib/jarsigner.jar:./../../work/lib/java2html.jar:./../../work/lib/javac.jar:./../../work/lib/javadoc.jar:./../../work/lib/jvs2html.jar:./../../work/lib/RSyntaxTextArea.jar:./../../work/lib/saxon.jar"/>
+
+  <target name="build">
+    <delete dir="bin"/>
+    <mkdir dir="bin"/>
+    <javac srcdir="./../../work/src"
+      destdir="./bin"
+      classpath="${classpath}"
+      debug="on"
+      />
+    <delete dir="./bin/org/javascool/gui"/>
+    <delete file="./bin/org/javascool/Core.class"/>
+    <delete file="./bin/org/javascool/About.class"/>
+    <javac srcdir="./src"
+      destdir="./bin"
+      classpath="${classpath}"
+      debug="on"
+      />
+    <copy todir="./bin">
+      <fileset dir="./../../work/src" excludes="**/*.java"/>
+      <fileset dir="./src" excludes="**/*.java"/>
+    </copy>
+  </target>
+
+  <target name="jrun" depends="jar">
+    <java jar="./dist/javascool-beta.jar" dir="./../../work" fork="true"/>
+  </target>
+
+</project>

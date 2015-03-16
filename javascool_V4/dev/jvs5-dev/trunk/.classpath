@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/javac.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/saxon.jar"/>
+	<classpathentry kind="lib" path="lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/autocomplete.jar"/>
+	<classpathentry kind="lib" path="lib/RSyntaxTextArea.jar" sourcepath="/RSyntaxTextArea/src"/>
+	<classpathentry kind="lib" path="lib/ApacheCommonsCodec/commons-codec-1.6.jar" sourcepath="lib/ApacheCommonsCodec/commons-codec-1.6-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/Java&apos;s Cool 4.5/lib/ApacheCommonsCodec/commons-codec-1.6-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

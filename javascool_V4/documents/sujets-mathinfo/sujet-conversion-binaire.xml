@@ -1,0 +1,120 @@
+<div class="sujet" title="Un tutoriel sur la conversion binaire/décimale"> 
+  
+  <div class="objectif">
+    Le but de ce tutoriel est d'expliquer comment sont codés les nombres en binaire.    
+  </div>
+
+  <div class="intros">
+    <div title="Décrire des nombres en binaire"> (voir le texte "<l link="http://interstices.info/reflet-numerique" text="tout a un reflet numérique"/>" pour une introduction complète)
+     Le tableau suivant donne les 10 premiers nombres en base 10 dans la colonne du milieu et leur représentation binaire dans la colonne de droite :
+    <div class="center"><l class="icon" icon="algo-n-1b.jpg"/></div>
+     Si nous observons bien ce codage, nous constatons qu'il est le résultat d'un calcul, montré dans la colonne de gauche. 
+       Le codage binaire d'un nombre (que nous, humains, écrivons quasiment toujours en base 10, en utilisant 10 chiffres), est ce même nombre, mais <i>écrit en base 2</i>,
+       avec 2 chiffres <i>0</i> et <i>1</i>.
+   </div>
+   <div title="Du codage binaire au nombre entier positif.">Voici le calcul qui permet de retrouver un nombre à partir de son code binaire : 
+     additionner les bits, chacun multiplié par la puissance de deux qui lui correspond, comme ci-dessous, donne le nombre en base 10.
+     retrouver le nombre 9 à partir de son code binaire:
+       <div class="center"><l class="icon" icon="algo-n-2bb.jpg"/></div>
+       <div class="ul">
+         <div>À la première ligne, nous avons multiplié respectivement par 1, 2, 4, 8 de droite à gauche les bits qui représentent 9.</div>
+         <div>À la seconde ligne, nous nous sommes aperçus que 1, 2, 4, 8 sont en fait les puissances de 2 : 2<S>0</S>,2<S>1</S>,2<S>2</S> ..</div>
+         <div>À la troisième ligne, nous factorisons 2 autant que possible ; cette écriture avec ses parenthèses bien placées nous montre qu'il suffit de multiplier par deux puis d'additionner les bits de gauche à droite pour trouver le nombre en base 10.</div>
+       </div>Voilà donc un calcul, une méthode mécanique, bref un <i>algorithme</i>, qui permet de passer du codage binaire au nombre dans sa représentation usuelle.
+     </div>
+     <div title ="Du nombre entier positif à son codage binaire">
+       Réciproquement, il existe un calcul pour obtenir le code binaire de n'importe quel nombre entier. 
+       Si nous notons 9 % 2 = 1 le reste de la division par 2 de 9 ou 4 % 2 = 0 le reste de la division de 4 par 2, etc., alors le calcul suivant, 
+       où nous calculons successivement le reste de la division par deux puis divisons par deux nous donne... le codage binaire du nombre 9 :
+       <div class="center"><l class="icon" icon="algo-n-3b.jpg"/></div>
+     </div>
+     <div title="Calculer directement sur les nombres binaires">
+       Nous pouvons donc représenter des nombres entiers positifs par la suite de bits de leur représentation binaire. 
+       Ce codage est très précieux, car il permet de faire directement des opérations sur ces nombres. 
+       Par exemple, additionner deux entiers positifs revient à additionner leur représentation binaire : on obtient directement le codage binaire du résultat. De même pour toutes les autres opérations numériques, pour comparer ces entiers entre eux, etc.
+       <div>Donc toutes les valeurs numériques sont non seulement stockées en binaire, mais aussi manipulées en binaire dans l'ordinateur.</div>
+     </div>
+     <div title="Représenter des nombres entiers négatifs et positifsde toute taille et des nombres décimaux">Tout ceci marche aussi pour des nombres plus grands, 
+       plus compliqués et d'autres objets numériques (images, sons, ..)
+       comme cela vous est expliqué dans le texte "<l link="http://interstices.info/reflet-numerique" text="tout a un reflet numérique"/>" à notre disposition.
+     </div>
+     <div class="margin">Une <l link="dageville-exos-base-deux.html" text="activité sans ordinateur"/> est disponible ici.</div>
+   </div>
+
+  <div class="works">
+    <div title="Ecrire et programmer l'algorithme de conversion binaire -&gt; décimal"> <div class="ul">
+      <div>A partir de la description du passage du codage binaire au nombre entier positif donnée ci-dessus, compléter l'algorithme suivant, écrit en "pseudo-code":
+        <div class="code">
+          <p><r>Entrée:</r> b[0],b[1],b[2],b[3] les quatres bits du nombre à convertir</p>
+          <p><r>Sortie:</r> n le nombre convertir en décimal.</p>
+          <p><r>Algorithme:</r></p>
+          <p><T/>Initialiser n = 0;</p>
+          <p><T/>Pour i = 0 à 3 faire:</p>
+          <p><T/><T/>n = [ah là: c'est à vous de compléter !!!]</p>
+          <p><r>Résultat:</r> Le nombre n contient la valeur décimale.</p>
+        </div>
+      </div>
+      <div>Traduire maintenant l'algorithme en programme à partir de l'exemple suivant:
+        <div class="code">
+          <m>// Tableaux des bits du nombre à convertir en décimal</m>
+          <p><r>int</r> bits[] = {1, 0, 1, 0};</p>
+          <m>// Valeur du nombre en décimal</m>
+          <p><r>int</r> r;</p>
+          <m>A vous d'écrire le code !!!</m>
+          <p><r>echo</r>("Le nombre décimal est: "+n);</p>
+        </div> et essayer avec d'autres valeurs de <c>bits[]</c>. 
+        <div>Attention à bien faire la calcul de "droite à gauche", en commençant par le bit de poids faible et en finissant par le bit de poids fort.
+          Ici le nombre <c>1, 0, 1, 0</c> doit donner <c>8 + 2 = 10</c> mais si nous considérons les bits à l'envers 
+         (c'est à dire comme si c'était <c>0, 1, 0, 1</c> cela va donner . . un autre nombre).</div>
+      </div>
+    </div></div>
+    <div title="Ecrire et programmer l'algorithme de conversion décimal ->&gt; binaire"> 
+      <div>A partir de la description du passage du nombre entier positif au codage binaire, écrire <div class="ul">
+        <div>L'algorithme de division en pseudo-code.</div>
+        <div>Un programme qui utilisera, par exemple, l'instruction:
+          <div class="code">
+            <p><T/><r>echo</r>("Digit numéro "+i+" = "+(n % 2));</p>
+          </div>
+          pour donner le digit numéro <c>i</c> (où <c>i</c> est un entier à définir) du nombre décimal.
+        </div>
+        <div>Reprendre le même programme mais cette fois ci en utilisant un tableau, pour stocker les bits calculés, puis ajouter le code
+          <div class="code">
+            <p><T/><r>for</r>(<r>int</r>i = 0; i &lt; bits.<r>length</r>; i++) {</p>
+            <p><T/><T/><r>echo</r>("Digit numéro "+i+" = "+bits[i]);</p>
+            <p><T/>}</p>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div title="Calculer directement sur les nombres binaires">
+      Nous allons considérer deux nombres binaires:
+        <div class="code">
+          <m>// Tableaux des bits du nombre à convertir en décimal</m>
+          <p><r>int</r> bits1[] = {1, 0, 1, 0};</p>
+          <p><r>int</r> bits2[] = {0, 1, 0, 0};</p>
+          <m>// Tableaux des bits du résultat</m>
+          <p><r>int</r> bits0[] = new int[4];</p>
+        </div>
+      et à nous d'écrire l'algorithme qui permette de les additionner: <div class="ul">
+        <div>en binaire sans les reconvertir en décimal,</div>
+        <div>en utilisant la boucle:
+          <div class="code">
+            <p><T/><r>for</r>(<r>int</r>i = 3; i >= 0; i--) {</p>
+            <m>// A compléter</m>
+            <p><T/>}</p>
+          </div>
+          pour bien calculer de droite à gauche,</div>
+        <div>en tenant bien compte de la retenue,</div>
+        <div>en mettant le résultat dans le tableau <c>bits0</c>.</div>
+        <div>en affichant un message d'erreur si le résultat est plus grand que 15 car . . 4 bits ne suffisent plus pour coder le résultat.</div>
+      </div>
+      <div>Si le résultat est plus grand que 15, il y a un débordement (un <i>overflow</i>) et le calcul devient . . faux. Dans ce cas notre programme "hurle": il émet une erreur.
+      Il se passe exactement la même chose dans la calculette ou dans l'ordinateur: si le nombre est trop grand (plus de environ 2 milliards pour les nombres entiers et plus de
+      environ <c>10<S>78</S></c> pour les nombres décimaux) une erreur est générée.</div>
+    </div>
+  </div>
+
+  <div class="notes">    <div title="A propos de ce tutoriel" id="1"> Ce tutoriel est une idée originale de Laurent Mongiat, Professeur de Physique en 2nd Mesures Physiques et Informatique au Lycée 
+    <l l="http://www.ac-nice.fr/lycvalbonne" n="Régional de Valbonne"/>.</div>
+  </div>
+</div>

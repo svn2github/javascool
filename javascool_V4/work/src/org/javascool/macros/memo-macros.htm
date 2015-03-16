@@ -1,0 +1,274 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Memorandum des constructions et instructions</title>
+   </head>
+   <body>
+      <h1>Memorandum des constructions et instructions.</h1>
+      
+      <div align="right" class="margin">Dominique Larrieu, lyc&eacute;e Simone Veil, Valbonne</div>
+        
+      <div>
+         <h2>Programme principal.</h2>Il se note <b><font color="#990000"><b>void main</b></font>{ }</b> avec les instructions d&eacute;finies entre <b>{ }</b>.
+      </div>
+        
+      <div>
+         <h2>Type de donn&eacute;es utilis&eacute;es.</h2>
+         <ul class="ul">
+                
+            <li><font color="#990000"><b>String</b></font> Cha&icirc;ne de caract&egrave;res (ex: <b><font color="#990000"><b>String</b></font> nom = <font color="#008000">"Dupond"</font>;</b>).
+            </li>
+                
+            <li><font color="#990000"><b>int</b></font> Entier positif ou n&eacute;gatif, de environ -2 &agrave; +2 milliards (ex: <b><font color="#990000"><b>int</b></font> n = 8;</b>).
+            </li>
+                
+            <li><font color="#990000"><b>double</b></font> Nombre d&eacute;cimal, comme sur une calculette (ex:<b><font color="#990000"><b>double</b></font> pi = 3.1416;</b>).
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                  
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Les nombres d&eacute;cimaux se notent avec un "." point et non une virgule !</font></tt></p>
+                                  
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;Les nombres en notation scientifique (par exemple 6.023 1023) se note avec un "e" (pour exposant) : ici <tt>6.023e23</tt></font></tt></p>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </li>
+                
+            <li><font color="#990000"><b>boolean</b></font> Valeur vraie ou fausse, utilis&eacute;e dans les tests (ex:<b><font color="#990000"><b>boolean</b></font> b = x &gt; 0;</b>).
+            </li>
+              
+         </ul>
+      </div>
+        
+      <div>
+         <h2>Quelques fonctions utilis&eacute;es..</h2>
+         <ul class="ul">
+                
+            <li><b>sleep(1000);</b> Arr&ecirc;te l'ex&eacute;cution du programme pendant 1000 milli-secondes.
+            </li>
+                
+            <li><b><font color="#990000"><b>double</b></font> x = random();</b> Renvoie dans la variable <b>x</b> un nombre al&eacute;atoire d&eacute;cimal compris entre 0 et 1.
+            </li>
+                
+            <li><b><font color="#990000"><b>int</b></font> n = random(1, 6);</b> Renvoie dans la variable <b>n</b> un nombre al&eacute;atoire entier entre 1 et 6, 6 exclu.
+            </li>
+                
+            <li><b><font color="#990000"><b>boolean</b></font> y = equal("Dupond", "Dupont");</b> Compare les deux cha&icirc;nes de carat&egrave;res &laquo;&nbsp;Dupond&nbsp;&raquo; et &laquo;&nbsp;Dupont&nbsp;&raquo; et renvoie dans la variable <b>y</b> la valeur <b>false</b>.
+            </li>
+                
+            <li><b><font color="#990000"><b>double</b></font> z = pow(x, 2);</b> Renvoie dans la variable <b>y</b> le carr&eacute; <b>x&sup2;</b>.
+            </li>
+                
+            <li><b><font color="#990000"><b>double</b></font> x = sqrt(x);</b> Renvoie dans la variable <b>x</b> la racine de <b>x</b>.
+            </li>
+              
+         </ul>
+      </div>
+        
+      <div>
+         <h2>Fonctions de lecture/&eacute;criture:.</h2>
+         <ul class="ul">
+                
+            <li><b>clear();</b> Efface l&#8217;affichage.
+            </li>
+                
+            <li><b><font color="#990000"><b>String</b></font> prenom = readString();</b> Lit une cha&icirc;ne de carat&egrave;res dans la ligne d'entr&eacute;e au clavier.
+            </li>
+                
+            <li><b><font color="#990000"><b>int</b></font> age = readInteger();</b> Lit un nombre entier dans la ligne d'entr&eacute;e au clavier.
+            </li>
+                
+            <li><b><font color="#990000"><b>double</b></font> taille = readDouble();</b> Lit un nombre d&eacute;cimal dans la ligne d'entr&eacute;e au clavier.
+            </li>
+                
+            <li><b>println("Oh");</b> Ecrit &laquo;Oh&raquo; dans la fen&ecirc;tre de sortie.
+            </li>
+                
+            <li><b>println("Oh," + age + " ans , est un bel &acirc;ge !");</b> Ecrit &laquo;&nbsp;Oh, 20 ans, est un bel &acirc;ge&nbsp;!&nbsp;&raquo; (quand age=20).
+            </li>
+              
+         </ul>
+      </div>
+        
+      <div>
+         <h2>Bloc de s&eacute;quences d'instructions.</h2> Un bloc se note entre <b>{ }</b> et englobe un ensemble de d&eacute;clarations et d'instructions s&eacute;par&eacute;es par un <b>;</b>.
+      </div>
+        
+      <div>
+         <h2>Op&eacute;rateurs.</h2>
+         <p>
+            <table align="center" width="90%" cellpadding="5px" bgcolor="#eeeeee" class="table">
+                   
+               <tr>
+                  <td valign="top"><tt>=</tt></td>
+                  <td valign="top">Affectation d'une valeur &agrave; une variable (ex: <b>x = 0;</b>)
+                  </td>
+               </tr>
+                   
+               <tr>
+                  <td valign="top"><tt>||</tt> <tt>&amp;&amp;</tt> <tt>!</tt></td>
+                  <td valign="top">Op&eacute;rateur logique OU, ET et NON</td>
+               </tr>
+                   
+               <tr>
+                  <td valign="top"><tt>==</tt> <tt>!=</tt> <tt>&lt;=</tt> <tt>&lt;</tt> <tt>&gt;=</tt> <tt>&gt;</tt> 
+                  </td>
+                  <td valign="top">Op&eacute;rateur &eacute;galit&eacute;, diff&eacute;rence et comparaison num&eacute;rique</td>
+               </tr>
+                   
+               <tr>
+                  <td valign="top"><tt>+</tt> <tt>-</tt> <tt>*</tt> <tt>/</tt> <tt>%</tt> 
+                  </td>
+                  <td valign="top">Addition, soustraction, multiplication, division, reste (appel&eacute; aussi modulo).</td>
+               </tr>
+                 
+            </table><br></p>
+      </div>
+        
+      <div>
+         <h2>Instruction conditionnelle.</h2>
+             
+         <div><b><font color="#990000"><b>if</b></font> (expressionBooleenne) { BlocD'InstructionsSiVrai } <font color="#990000"><b>else</b></font> { BlocD'InstructionsSiFaux }</b></div>
+             
+         <div>
+            <h3>Exemple:.</h3>
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                               
+                           <div><font color="#990000"><b>if</b></font>(temp&eacute;rature&nbsp;&lt;&nbsp;15) {
+                           </div>
+                               
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"allumer chauffage"</font>);
+                           </div>
+                               
+                           <div>}&nbsp;<font color="#990000"><b>else</b></font>&nbsp;{
+                           </div>
+                               
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"ne rien faire"</font>);
+                           </div>
+                               
+                           <div>}</div>
+                             
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </div>
+        
+      <div>
+         <h2>Boucle.</h2>
+             
+         <div><b><font color="#990000"><b>while</b></font> (expressionBool&eacute;enne) { BlocD'Instructions }</b></div>
+             
+         <div>
+            <h3>Exemple:.</h3>
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                            &nbsp;     
+                           <div><font color="#990000"><b>while</b></font>( n &lt; 10) {
+                           </div>
+                               &nbsp;&nbsp;&nbsp;
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>println</b></font>(<font color="#008000">"Hello World !"</font>);
+                           </div>
+                               &nbsp;&nbsp;&nbsp;
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              n = n + 1;
+                           </div>
+                           &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
+                           <div>}</div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+            
+         <div><b>Attention:</b> La boucle while est "prot&eacute;g&eacute;e" par une petite minuterie de 1 milli-seconde, 
+               qui permet au programme de ne pas &ecirc;tre bloqu&eacute; par une boucle infinie: 
+               la construction &eacute;quivalente suivante pour ne pas avoir cette minuterie: 
+            <div><b><font color="#990000"><b>for</b></font> (;expressionBool&eacute;enne;) { BlocD'Instructions }</b></div>
+             
+         </div>
+      </div>
+        
+      <div>
+         <h2>Compteur.</h2>
+             
+         <div><b><font color="#990000"><b>for</b></font> (<font color="#990000"><b>int</b></font> n = 0; n &lt; N; n++) { BlocD'Instructions }</b></div>
+             
+         <div>permet de faire une boucle o&ugrave; la variable <tt>n</tt> va de 0 &agrave; <tt>N</tt> exclus.
+               
+         </div>
+      </div>
+         
+      <div>
+         <h2>D&eacute;claration de fonction.</h2>
+              
+         <div><b>TypeDuResultat NomDeLaFonction (TypeParametre1 NomParametre1, ...) { BlocD'Instructions }</b></div> 
+              
+         <div>
+            <h3>Exemple:.</h3>
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                  
+                           <div><font color="#990000"><b>int</b></font> max(int x, int y) {
+                           </div>
+                                  
+                           <div><font color="#990000"><b>if</b></font> (x &gt; y) {
+                           </div>
+                                &nbsp;&nbsp;
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>return</b></font> x;
+                           </div> 
+                                  
+                           <div>}&nbsp;<font color="#990000"><b>else</b></font>&nbsp;{
+                           </div>     &nbsp;
+                                &nbsp;&nbsp;
+                           <div>
+                              &nbsp;&nbsp;&nbsp;
+                              <font color="#990000"><b>return</b></font> y;
+                           </div> 
+                                  
+                           <div>} }</div>
+                              
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </div>
+      
+   </body>
+</html>

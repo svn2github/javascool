@@ -1,0 +1,37 @@
+// Exemple proposé par Vincent Mangin <vincent.mangin@gmail.com>
+
+void dessiner(double taille, int rang) {
+   if (rang == 0) {
+      forward(taille);
+   } else {
+      dessiner((taille / 3.0), rang - 1);
+      rightward(60.0);
+      dessiner(taille / 3.0, rang - 1);
+      leftward(120.0);
+      dessiner(taille / 3.0, rang - 1);
+      rightward(60.0);
+      dessiner(taille / 3.0, rang - 1);
+   }
+}
+
+public static double angle = 0.0;
+
+void main() {
+   clear_all();
+   pen_up();
+   hide_turtle();
+   set_background(9);
+   set_color(2);
+   set_position(10, 150);
+   set_heading(0);
+   pen_down();
+   for (int etape = 0; etape < 6; etape ++) {
+      clear_all();
+      for (int i = 0; i < 3; i ++) {
+         dessiner(400.0, etape);
+         leftward(120);
+      }
+      sleep(200);
+   }
+}
+

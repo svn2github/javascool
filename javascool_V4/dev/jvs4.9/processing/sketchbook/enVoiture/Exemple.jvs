@@ -1,0 +1,52 @@
+// Programme exemple d'usage de la proglet
+
+// Génération d'un parterre de cinq spots Nord Sud Est Ouest Centre
+String spots[] = { "Nord", "Sud", "Est", "Ouest", "Centre" };
+
+void build() {
+  addSpot("Nord", 0x000000, "B", 0, 1000, 20, 20, 20);
+  addSpot("Est", 0xff00ff, "P", 1000, 0, 20, 10, 20);
+  addSpot("Ouest", 0xffff00, "O", -1000, 0, 20, 20, 20);
+  addSpot("Sud", 0x00ffff, "C", 0, 1000, 20, 30, 20);
+  addSpot("Centre", 0xffffff, "C", 0, 0, 20, 10, 20);
+  addRoad("Nord", "Est");
+  addRoad("Sud", "Est");
+  addRoad("Nord", "Ouest");
+  addRoad("Sud", "Ouest");
+  addRoad("Sud", "Centre");
+  addRoad("Nord", "Centre");
+}
+void unbuild() {
+  removeSpot("Nord");
+  removeSpot("Sud");
+  removeSpot("Est");
+  removeSpot("Ouest");
+  removeSpot("Centre");
+}
+// Affichage des connections
+
+void dump(String what) {
+  println("Etat du graphe " + what);
+  for(String spot1 : spots)
+    for(String spot2 : spots)
+      if(isRoad(spot1, spot2)) {
+        println("Les spots " + spot1 + " et " + spot2 + " sont connectés");
+      }
+}
+void main() {
+  unbuild();
+  sleep(2000);
+  // Parterre initial
+  build();
+  dump("initial");
+  println("Le spot le plus prêt de (10, 10) est le " + getClosestSpot(10, 10));
+  println("Le spot le plus prêt de (50, 50) est le " + getClosestSpot(50, 50));
+  sleep(3000);
+  // On détruit un spot et un lien
+  removeSpot("Centre");
+  removeRoad("Nord", "Ouest");
+  dump("amputé");
+  // On nettoie avant de finir
+  sleep(5000);
+  unbuild();
+}

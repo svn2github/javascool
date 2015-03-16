@@ -1,0 +1,8 @@
+
+void main() {
+	// donnees (peuvent etre changees)
+	int [] effectifs = {2, 1, 10, 5};
+	String [] legendes = {"trimestre 1", "trimestre 2", "trimestre 3", "trimestre 4"};
+	// utilisation d'une primitive de la proglet abcdStat pour dessiner le diagramme en barres
+	barres(effectifs, legendes);
+} 

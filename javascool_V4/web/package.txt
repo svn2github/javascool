@@ -1,0 +1,7 @@
+= Bienvenue dans la liasse SVN des fichiers du site web de JavaS'Cool =
+
+Description de la liasse:
+* ''pages''     : contient les pages du sites organisées selon son arborescence;
+* ''index.php'' : contient le moteur PHP du site;
+* ''images''    : contient tous les fichiers image du site;
+* ''includes''  : contient les scripts php/sh liés au site.

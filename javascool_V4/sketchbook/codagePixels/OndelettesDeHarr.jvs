@@ -1,0 +1,121 @@
+//
+// Compression d'image par Ondelette de Haar, programmée par gregory.viateau@ac-bordeaux.fr,
+// utilise la proglet codagePixels.
+// Merci à Charles Dossal qui m'a gentillement reçu dans son bureau pour me faire un cours
+// sur la compression d'images et au groupe javascool@googlegroups.com qui m'a gentillement expliqué par mail
+// le principe des "copies" de tableaux par référence qui me perturbait !
+//
+
+
+// Retourne l'image courante sous forme de tableau monochrome
+int[][] getImageArray() {
+  int width = getWidth(), height = getHeight(), image[][] = new int[width][height];
+  for(int y = 0; y < height; y++)
+    for(int x = 0; x < width; x++)
+      image[x][y] = getPixel(x, y);
+  return image;
+}
+
+// Copie le tableau monochrome dans l'image courante
+void setImageArray(int[][] image) {
+  int width = image.length, height = image[0].length;
+  reset(width, height, false);
+  for(int y = 0; y < height; y++)
+    for(int x = 0; x < width; x++)
+      setPixel(x, y, image[x][y]);
+}
+
+// Fonction Haar, s'exécute de manière récursive
+int[][] transformeeHaar(int[][] table, int n) {
+  if (n>1) {
+  int table1[][] = new int[n][n];
+  // Opérations sur les lignes
+  for(int x = 0;x < n; x++)
+    for (int y = 0; y < n/2; y++) {
+    	 table1[x][y] = table[x][2*y]+table[x][2*y+1];
+    	 table1[x][n/2+y] = table[x][2*y]-table[x][2*y+1]; 
+    }
+  // Opérations sur les colonnes avec division par 2
+  for(int y = 0;y < n; y++)
+    for (int x = 0; x < n/2; x++) {
+    	 table[x][y] = (table1[2*x][y]+table1[2*x+1][y])/2;
+    	 table[n/2+x][y] = (table1[2*x][y]-table1[2*x+1][y])/2;
+    }
+  // Réapplique la fonction en modifiant uniquement le quart supérieur gauche du tableau
+    return transformeeHaar(table,n/2);
+  }
+  return table;
+}
+
+//Lise à zéro des "petits" nombres d'un tableau
+int[][] miseazero(int[][] table, int seuil) {
+  int width = table.length;
+  for(int x = 0; x < width; x++)
+    for(int y = 0; y < width; y++) {
+    	if ((table[x][y] < seuil)&&(table[x][y] > -seuil)) {
+    		table[x][y] = 0;
+    	}
+    }
+    return table;
+}
+
+//Calcul du pourcentage de zéro dans un tableau
+int pourcentagezero (int[][] table) {
+	int width = table.length;
+	int p = 0;
+  for(int x = 0; x < width; x++)
+    for(int y = 0; y < width; y++) {
+    	if (table[x][y]== 0) {
+    		p = p+1;
+    	}
+   }
+  return p*100/(width*width);
+}
+
+// Fonction Haarback, reconstitue l'image de départ
+int[][] Haarback(int[][] table, int n) {
+  if (n<=table.length) {
+  int table1[][] = new int[n][n];
+  // Opérations sur les colonnes 
+  for(int y = 0;y < n; y++)
+    for (int x = 0; x < n/2; x++) {
+    	 table1[2*x][y] = table[x][y]+table[n/2+x][y];
+    	 table1[2*x+1][y] = table[x][y]-table[n/2+x][y];
+    }
+  // Opérations sur les lignes avec division par 2
+  for(int x = 0;x < n; x++)
+    for (int y = 0; y < n/2; y++) {
+    	 table[x][2*y] = (table1[x][y]+table1[x][n/2+y])/2;
+    	 table[x][2*y+1] = (table1[x][y]-table1[x][n/2+y])/2;
+    }
+ // Réapplique la fonction en doublant la largeur de la zone à modifier
+    return Haarback(table,n*2);
+  }
+  return table;
+}
+
+void main() {
+  // Initialisation
+  // charge une image qui fait 512x512 (prendre une image carrée de 2^n de côté)
+  load("http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/OndeletteDeHarrImage1.jpg",false,false);
+  // voir aussi : http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/OndeletteDeHarrImage2.jpg
+  // convertit l'image en tableau monochrome
+  int tableau[][] = getImageArray();  
+  setImageArray(tableau);
+  sleep(3000);
+    // demande le seuil de compression (plus il est haut, plus l'image est compressée)
+  println("Entrer le seuil choisi, un nombre entre 5 et 50 par exemple.");
+  int seuil = readInteger();
+    // calcule la transformée de Haar
+  tableau = transformeeHaar(tableau,getWidth());   
+  setImageArray(tableau);
+  sleep(3000);
+  tableau = miseazero(tableau,seuil);
+  // Calcul le pourcentage de 0 dans la transformée
+  int p = pourcentagezero(tableau);
+  println("Le pourcentage de zéro est : "+p+" %");
+  // reconstitue l'image
+  tableau = Haarback(tableau,2);
+  setImageArray(tableau);
+  sleep(3000);
+}

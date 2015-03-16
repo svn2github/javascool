@@ -1,0 +1,53 @@
+//
+// Voici quelques routines qui permettent de traiter les images sous forme de tableau
+// Il faut utiliser reset(width, height, false, false) ou load(name, false, false) pour une image non centrée et non zoomée.
+//
+
+// Retourne l'image courante sous forme de tableau monochrome
+int[][] getImageArray() {
+  int width = getWidth(), height = getHeight(), image[][] = new int[width][height];
+  for(int y = 0; y < height; y++)
+    for(int x = 0; x < width; x++)
+      image[x][y] = getPixel(x, y);
+  return image;
+}
+// Retourne l'image courante sous forme de tableau couleur image[x][y][RR, GG, BB]
+int[][][] getImageColorArray() {
+  int width = getWidth(), height = getHeight(), image[][][] = new int[width][height][3];
+  for(int y = 0; y < height; y++)
+    for(int x = 0; x < width; x++)
+      image[x][y] = getPixelColor(x, y);
+  return image;
+}
+// Copie le tableau monochrome dans l'image courante
+void setImageArray(int[][] image) {
+  int width = image.length, height = image[0].length;
+  reset(width, height, false);
+  for(int y = 0; y < height; y++)
+    for(int x = 0; x < width; x++)
+      setPixel(x, y, image[x][y]);
+}
+// Copie le tableau couleur image[x][y][RR, GG, BB] dans l'image courante
+void setImageColorArray(int[][][] image) {
+  int width = image.length, height = image[0].length;
+  reset(width, height, false);
+  for(int y = 0; y < height; y++)
+    for(int x = 0; x < width; x++)
+      setPixel(x, y, image[x][y][0], image[x][y][1], image[x][y][2]);
+}
+// Redimensionne une image
+int[][] resizeimage(int[][] image0, int width, int height) {
+  int width0 = image0.length, height0 = image0[0].length;
+  int[][] image = new int[width][height];
+  for(int y = 0; y < height; y++)
+    for(int x = 0; x < width; x++) {
+      // Interpolation du pixel en prenant le plus proche voisin
+      int x0 = (x * width0) / width, y0 = (y * height0) / height;
+      image[x][y] = image0[x0][y0];
+    }
+  return image;
+}
+// Utilisation de sbriques precedentes
+void main() {
+  println("OK !!");
+}

@@ -1,0 +1,151 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="class" content="sujet">
+      <title>Un tutoriel sur les signaux sonores (unplug)</title>
+   </head>
+   <body>
+      <h1>Un tutoriel sur les signaux sonores (unplug).</h1> 
+      
+      <div>
+         <h2>Description.</h2>
+            
+         <div>Cette applete permet de visualiser l'&eacute;volution temporelle et le contenu fr&eacute;quentiel des graves aux aigus (le spectre) d'un
+            son, 
+            	d'une parole, d'un extrait musical ou d'un signal sonore num&eacute;rique.
+         </div>
+           	
+         <div>L'analyse s'effectue en temps r&eacute;el. 
+            	D&egrave;s l'ouverture de l'application on peut visualiser les sons &eacute;mis par soi-m&ecirc;me ou dans l'environnement gr&acirc;ce &agrave; la captation
+            par microphone. 
+            	L'application permet &eacute;galement de g&eacute;n&eacute;rer des signaux num&eacute;riques (sinuso&iuml;de, signaux carr&eacute;s et scie, bruit), pour en observer
+            le spectre.
+              	Finalement on peut lancer des enregistrements (musicaux ou autres), et en visualiser les repr&eacute;sentations temporelles et
+            fr&eacute;quentielles. 
+         </div>
+           
+      </div>
+        
+      <div align="center" class="center"><a href="http://www.openprocessing.org/visuals/?visualID=16032" class="icon"><img src="ExplorationSonore_xml.png" alt=""></a></div>  
+        
+      <h2>Objectif.</h2>
+      <div class="objectif">
+             Le but de ce tutoriel est d'exp&eacute;rimenter avec des sons. Le son est une somme de signaux p&eacute;riodiques, des sinusoides.
+             Nous allons les observer et en manipuler. Il suffit d'utiliser l'interface &agrave; partir des boutons.
+            
+      </div>
+        
+      <h2>Introduction.</h2>
+      <div id="intros">
+         <ol>
+            <li>
+               <h3>La notion de signal p&eacute;riodique.</h3> Une note est une vibration de l'air 
+                   comme <a href="http://javascool.gforge.inria.fr/documents/sketchbook/exploSonore/OndeSonore.pdf">d&eacute;taill&eacute; ici</a> (bien lire le document avant de commencer).
+                   Un son se mesure en Hertz (Hz), et correspond au nombre de battements de la vibration par seconde. 
+                   Les sons les plus graves que l'oreille humaine puisse entendre correspondent &agrave; une vibration de 20Hz (20 battements par
+               seconde), 
+                   tandis que les plus aigus sont de 20 000Hz. Les ultrasons, litt&eacute;ralement "au del&agrave; du son", correspondent &agrave; des sons que
+               notre oreille ne peut percevoir 
+                   mais qui peuvent &ecirc;tre capt&eacute;s par des animaux tels que les chiens ou les chauve-souris.
+                   
+               <div>La voix humaine vibre principalement entre 100 et 3000Hz.</div> 
+                   
+               <div align="right" class="margin">Voir aussi un document sur la <a href="http://javascool.gforge.inria.fr/documents/sketchbook/exploSonore/Numeriser-un-son.pdf">num&eacute;risation du son</a>.
+               </div>
+                   
+            </li>
+         </ol>
+      </div>
+        
+      <h2>Travail propos&eacute;.</h2>
+      <div id="works">
+         <ol>
+            <li>
+               <h3>Observer la forme des sons.</h3>
+                     La fen&ecirc;tre qui s'affiche s'anime en fonction des sons/bruits qu'elle capture gr&acirc;ce au microphone de l'ordinateur. 
+                     Les sons sont retranscrits en terme d'amplitude en fonction du temps (partie haute de l'interface) mais aussi analys&eacute;s
+               
+                     en terme de contenu fr&eacute;quentiel, autrement dit, le syst&egrave;me retranscrit la richesse des sons en terme de fr&eacute;quences,
+               ici contenus entre 20 et 8000Hz. 
+                     On appelle aussi le contenu fr&eacute;quentiel, le spectre des fr&eacute;quences. 
+               <ul class="ul">
+                        
+                  <li>Parler, siffler, &eacute;metter un son en fermant la bouche, et observer le contenu temporel et fr&eacute;quentiel qui s'affichent. 
+                           Noter les diff&eacute;rences. A quoi cela est d&ucirc; &agrave; votre avis? R&eacute;fl&eacute;chir sur la notion de source sonore.
+                  </li>
+                        
+                  <li>L'interface permet &eacute;galement de g&eacute;n&eacute;rer des signaux num&eacute;riques (sinuso&iuml;de, signaux carr&eacute;s et scie, bruit). Observer le signal
+                     temporel et 
+                           le spectre qui s'affichent. Les comparer.
+                  </li>
+                    	  
+                  <li>Enfin, l'interface permet de jouer des enregistrements (musicaux ou autres). 
+                       	  Comparer les repr&eacute;sentations temporelles et fr&eacute;quentielles des enregistrements entre eux, puis par rapport aux signaux
+                     num&eacute;riques. 
+                       	  Quelles sont les diff&eacute;rences des signaux (fr&eacute;quence(s), cadence, etc..)?
+                  </li>
+                      
+               </ul>
+            </li>
+            <li>
+               <h3>Faire un audiogramme.</h3>
+                     
+               <div>Nous allons &eacute;valuer l'<a href="http://fr.wikipedia.org/wiki/Audiogramme">audiogramme</a> humain c'est &agrave; dire notre seuil de d&eacute;tection d'un son selon sa fr&eacute;quence.
+               </div>
+                     
+               <ul class="ul">
+                        
+                  <li>Se mettre &agrave; deux: le <i>sujet</i> dont on va mesurer l'audiogramme et l'<i>exp&eacute;rimentateur</i> qui va faire les mesures.
+                  </li>
+                        Se mettre dans un coin calme (le groupe devra faire silence le temps des mesures) et utiliser un casque audio.
+                        Le sujet &eacute;coute les sons et l&egrave;ve la main quand il d&eacute;tecte un son audible, baisse la main quand il n'entend plus rien.
+                        L'exp&eacute;rimentateur va utiliser l'interface pour propos&eacute; plusieurs sons. 
+                        Pour les fr&eacute;quences d'environ 100Hz, 250Hz, 500Hz, 1000Hz, 2000Hz, 4000Hz, 8000Hz, avec un sinuso&iuml;de, partir de l'amplitude
+                  la plus basse et monter doucement jusqu'&agrave; ce que le sujet l&egrave;ve la main, noter le niveau; refaire le test 4-5 fois pour chaque
+                  fr&eacute;quence.
+                        Porter les r&eacute;sultats sur une courbe. Comparer &agrave; des exemples d'audiogramme de personnes jeunes ou ag&eacute;es &agrave; trouver en
+                  
+                        utilisant <a href="http://google.fr">google</a> . Quelles sont les fr&eacute;quences que l'on entend mal en vieillissant ?
+                        
+                  <li>Avez vous ressenti des sensations diff&eacute;rentes selon les fr&eacute;quences per&ccedil;ues? Cela est relatif &agrave; la <a href="http://fr.wikipedia.org/wiki/Psychoacoustique">psycho-acoustique</a>:
+                           certaines fr&eacute;quences nous semblent plus d&eacute;sagr&eacute;ables que d'autres, en particulier les sons tr&egrave;s aigus.
+                  </li>
+                        
+                  <li>Il faut savoir que si on est expos&eacute; &agrave; des sons trop intenses . . on d&eacute;grade <i>d&eacute;finitivement</i> son syst&egrave;me auditif !!! 
+                           Les musiciens des groupes de Rock, par exemple, utilisent des "boules quiez" pour att&eacute;nuer les sons quand ils r&eacute;p&egrave;tent.
+                     
+                           Par ailleurs, les jeunes des pays scandinaves glissent souvent des att&eacute;nuateurs sonores dans leurs oreilles lorsqu'ils
+                     assistent &agrave; des concerts...sans 
+                           perdre pour autant le plaisir de l'&eacute;v&eacute;nement! Et d'aileurs, une petite question: quelles sont fr&eacute;quences les plus att&eacute;nu&eacute;es
+                     par les boules quiez..?
+                  </li>
+                      
+               </ul>
+            </li>
+            <li>
+               <h3>Tester les r&eacute;verb&eacute;rations des sons.</h3>
+                     
+               <div>Nous allons &eacute;valuer comment se r&eacute;verb&egrave;re le son selon l'environnement.</div>
+                     
+               <div>Avant l'activit&eacute;, trouver une boite en carton, des cartons &agrave; oeufs ou quelque chose qui ressemble &agrave; du coton, une plaque m&eacute;tallique
+                  ou de plexiglas, etc.. 
+                        bref des mat&eacute;riaux qui r&eacute;verb&egrave;rent le son diff&eacute;remment.
+               </div>
+                     
+               <div>En ins&eacute;rant le haut parleur de l'ordinateur dans ces differents volumes (boite en carton avec coton, salle d'eau avec carrelage,
+                  etc..) jouer des sons/musiques et 
+                        &eacute;couter les diff&eacute;rents rendus. Utiliser ensuite l'interface pour observer les diff&eacute;rentes fr&eacute;quences du son selon le
+                  milieu o&ugrave; il se propage.
+               </div>
+                   
+            </li>
+         </ol>
+      </div>
+      
+   </body>
+</html>

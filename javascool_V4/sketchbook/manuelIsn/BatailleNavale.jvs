@@ -1,0 +1,21 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void main() {
+  int a;
+  int b;
+  int x;
+  int y;
+  a = 4;
+  b = 7;
+  println("À vous de jouer");
+  x = readInt();
+  y = readInt();
+  if((x == a) && (y == b)) {
+    println("Coulé");
+  } else {
+    if((x == a) || (y == b)) {
+      println("En vue");
+    } else {
+      println("À l'eau");
+    }
+  }
+}

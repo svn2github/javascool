@@ -1,0 +1,33 @@
+<!-- Commandes de gestion/maintenance du projet -->
+<project default="usage">
+
+  <target name="usage"><echo level="info">
+    ant svn 	synchronize les fichiers avec le svn
+    ant jrun	compile et demarre Java's cool sans les proglets
+    ant prun	compile et demarre Java's cool avec les proglets
+    ant web	construit et publie tout le site web 
+    ant clean   nettoie les fichiers temporaires
+  </echo></target>
+
+  <target name="svn">
+    <ant dir="./work" target="svn"/>
+  </target>
+
+  <target name="jrun">
+    <ant dir="./work" target="jrun"/>
+  </target>
+
+  <target name="prun">
+    <ant dir="./work" target="prun"/>
+  </target>
+
+  <target name="web">
+    <ant dir="./web" target="build"/>
+    <ant dir="./web" target="publish"/>
+  </target>
+
+  <target name="clean">
+    <ant dir="./work" target="clean"/>
+  </target>
+
+</project>

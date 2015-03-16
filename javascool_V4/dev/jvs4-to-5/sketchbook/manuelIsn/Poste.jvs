@@ -1,0 +1,48 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void main() {
+  String type;
+  int poids;
+  type = readString();
+  poids = readInt();
+  if(stringEqual(type, "verte")) {
+    if(poids <= 20) {
+      println(0.57);
+    } else {
+      if(poids <= 50) {
+        println(0.95);
+      } else {
+        if(poids <= 100) {
+          println(1.40);
+        }
+      }
+    }
+  } else {
+    if(stringEqual(type, "prioritaire")) {
+      if(poids <= 20) {
+        println(0.60);
+      } else {
+        if(poids <= 50) {
+          println(1.00);
+        } else {
+          if(poids <= 100) {
+            println(1.45);
+          }
+        }
+      }
+    } else {
+      if(stringEqual(type, "ecopli")) {
+        if(poids <= 20) {
+          println(0.55);
+        } else {
+          if(poids <= 50) {
+            println(0.78);
+          } else {
+            if(poids <= 100) {
+              println(1.00);
+            }
+          }
+        }
+      }
+    }
+  }
+}

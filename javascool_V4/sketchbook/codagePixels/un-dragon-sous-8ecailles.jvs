@@ -1,0 +1,105 @@
+// Ce programme dessine un dragon(17) sous 8 écailles
+//  co-créé avec des élèves ISN, a.b.s. http://www.di.ens.fr/~jv
+
+// (A) L'entier naturel n (n:N, n>=0) s'ecrit en binaire sur l bits par:
+// n=n_0+2n_1+...+2^ln_l. 
+// Interpreter ce  binaire en base complexe b=i-1 donne
+// x+iy=n0+b*n1+...+b^l*nl - un entier de Gauss x,y : Z.
+// La correspondence entre
+// n =n0+b*n1+...+b^l*nl : entier naturel N, et
+// x+iy=n0+b*n1+...+b^l*nl : entier de Gauss x,y : Z
+// est biunivoque entre N et (Z,Z).
+// (B) Le dragon p contient les  entiers de Gauss d'index n<2^p.
+// (C) L'animation montre l'impact des ecailles/texture sur le dragon.
+// (D) Consulter Knuth V2 et Euler pb 220 pour en savoir plus. 
+//
+// Nombre d'animations - une par type d'ecailles
+int ecailles = 8;
+
+// On visualise le dragon 2^17 sous 8 ecailles.
+void main() {
+   reset(256, 256);
+   for (int ec = 0; ec < ecailles; ec ++) {
+      dragon(17, ec);
+      grosDodo();
+   }
+}
+
+// Habille le dragon  p de l'ecaille ec
+void dragon(int p, int ec) {
+   for (int j = 0; j < power(p); j ++) {
+      draw(j, ec);
+      // ralentir l'affichage
+       petitDodo(j);
+   }
+}
+
+// Affiche le pixel n en position x,y avec la couleur cn
+void draw(int n, int cc) {
+   int maxp = power(24);
+   int[] xy = N2C(n);
+   // (x,y) tels que bin(x+iy)=bin(n)
+    int x = xy[0],y = xy[1];
+   int p16 = power(16), p24 = power(24), xyn = x * y * n;
+   int[] gris = new int[ecailles];
+   gris[0] = n;
+   // Index distance to center
+    gris[1] = (x * x + y * y);
+   // Euclidian distance to center
+    gris[2] = (abs(x) + abs(y)) *4;
+   // Manhattan distance to center
+    gris[3] = (x + y) *16;
+   // not a distance r
+    gris[4] = (x * x + y * y) *2;
+   // Euclidian distance to center
+    gris[5] = ((x *3 + y * y /1))*2;
+   // Twisted distance to center 
+    gris[6] = ((x * n + y * y * 32));
+   // Twisted distance to center
+    gris[7] = (maxp - n -1 + x + y)*(n+1);
+    int cn = abs(gris[cc]) % maxp;
+   int red = cn %256, green = ((cn - red) /256) %256, blue = (cn - (cn % (256 * 256))) / (256 *256);
+   if (n <9) setPixel(0, 0, 10 + n);
+   // rend le centre visible
+    else setPixel(x, y, red, green, blue);
+}
+
+int[] N2C(int n) {
+   // Convertit une suite binaire en entier de Gauss
+    int n0 = n &1;
+   // Parite de n : n0=0 si n=2n', n0=1 sinon,
+    int cr,ci;
+   if (n <2) {
+      cr = n0;
+      ci =0;
+   } else {
+      int[] c2 = N2C((n - n0) /2);
+      int dr = c2[0],di = c2[1];
+      cr = n0 - dr - di;
+      ci = dr - di;
+   }
+   // La sortie est un point du plan - i.e. une paire d'entiers.
+    int no[] = new int[2];
+   no[0] = cr;
+   no[1] = ci;
+   return (no);
+}
+
+void petitDodo(int n) {
+   // Roupiller 1 pixel sur 16 dans l'affichage
+    if (0 == n %16) sleep(1);
+   // ce serait un bon endroit pour inserer une image sub-liminale...
+    // mais c'est INTERDIT dans la plupart des pays. 
+}
+
+void grosDodo() {
+   // Roupiller solidement entre les animations
+    sleep(1500);
+}
+
+int power(int p) {
+   // 2 puissance n
+    int pp = (p ==0) ? 1 : 2 * power(p -1);
+   return  pp;
+}
+

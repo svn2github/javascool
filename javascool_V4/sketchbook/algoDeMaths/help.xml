@@ -1,0 +1,51 @@
+<div title="La «proglet» algoDeMaths">
+ <p class="margin">
+   <p><l link="http://javascool.gforge.inria.fr/v4/documents/sujets-mathinfo/index.htm" text="cliquer sur le lien"/> pour accéder aux exercices.</p>
+  </p>
+  <p>
+    Cette proglet permet d'afficher des tracés de couleurs différentes.
+    <div>Pour tracer un des points de la courbe (qui sont <l class="newtab" link="aboutSetPoint.htm" text="reliés entre-eux pour le tracé"/>): <div class="code">
+      <p><r>setPoint</r>(x, y, c);</p>
+    </div><div class="ul">
+    <div>où <b>x</b> est un <r>double</r>, entre <b>[-1, +1]</b>, abscisse du point de la courbe;</div>
+    <div>où <b>y</b> est un <r>double</r>, entre <b>[-1, +1]</b>, ordonnée du point de la courbe;</div>
+    <div>où <b>c</b> est un <r>int</r> qui est le numéro de la courbe: 
+      <c>0 (noir), 1 (brun), 2 (rouge), 3 (orange), 4 (jaune), 5 (vert), 6 (bleu), 7 (violet), 8 (gris), 9 (blanc).</c></div>
+    </div>tandis que la fonction: <div class="code">
+      <p><r>reset</r>()</p>
+    </div> permet d'effacer la courbe. Le système de coordonnée est donc de la forme:
+     <div class="center"><l class="icon" icon="scope.png"/></div>
+     <div>Il est aussi possible de changer l'échelle horizontale et verticale en utilisant la fonction: <div class="code">
+      <p><r>reset</r>(largeur, hauteur)</p>
+    </div> où le tracé se fait alors avec les abcisses entre <b>[-largeur, largeur]</b> et les ordonnées entre les valeurs <b>[-hauteur, hauteur]</b>.</div>
+   </div>
+   <div>Pour ajouter une étiquette <v>s</v> de couleur <c>c</c> au point <b>x, y</b>:<div class="code">
+   <p><r>addString</r>(x, y, <v>s</v>, c);</p>
+   </div></div>
+   <div>Pour ajouter une ligne de couleur <c>c</c> du point <b>x1, y1</b> au point <b>x2, y2</b> :<div class="code">
+   <p><r>addLine</r>(x1, y1, x2, y2, c);</p>
+   </div></div>
+   <div>Pour ajouter un cercle de couleur <c>c</c> de centre <b>x, y</b> et de rayon <b>r</b> :<div class="code">
+   <p><r>addCircle</r>(x, y, r, c);</p>
+   </div></div>
+   <div>Par ailleurs les valeurs du réticule peuvent être relues avec les fonctions: <div class="code">
+      <p><r>double</r> x = <r>getX()</r>;</p>
+      <p><r>double</r> y = <r>getY()</r>;</p>
+    </div> qui renvoie les valeurs horizontale et verticale du réticule. Le réticule est défini par les boutons en bas de l'écran ou en cliquant.
+    <div><b>Note</b> : quand on clique sur la fenêtre de tracé, manipule les glissoirs de <b>X</b> et <b>Y</b>, ou entre une valeur numérique au clavier, 
+    la fonction <r>main</r> est relancée pour mettre à jour le calcul avec ces nouvelles valeurs.</div>
+   </div>
+   <div>Un <l class="editor" link="Exemple.jvs" text="exemple"/> d'utilisation,  où se tracent une sinusoïde bleue et une exponentielle violette, selon le programme suivant:
+   <div class="code">
+     <p><r>reset</r>();</p>
+     <p><r>for</r>(<r>double</r> x = -1; x &lt;= 1; x += 0.001) {</p>
+     <p><T/><r>setPoint</r>(x, 0.5 * <r>Math.sin</r>(10 * x) + 0.5, 6);</p>
+     <p><T/><r>setPoint</r>(x, -<r>Math.exp</r>(-(x + 1)), 7);</p>
+     <p>}</p>
+   </div></div>
+   <div>Un autre <l class="editor" link="JeuSimon.jvs" text="exemple"/> permet de montrer les fonctionnalités avancées (réaction à un clic utilisateur avec un <l link="aboutRunnable.htm" text="Runnable"/>).</div>
+  </p>
+  <p> Un autre <l class="editor" link="Triangle_de_sierpinsky.jvs" text="exemple de programme"/> permet de tracer des fractals.</p>
+  <p> Un autre <l class="editor" link="JeuDeMorpion.jvs" text="exemple de programme"/> implémente un jeu de morpion . . à améliorer au niveau du jeu de l'ordinateut !.</p>
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=algoDeMaths&amp;helpFile=api/org/javascool/proglets/algoDeMaths/package-summary.html" text="ici"/></p>
+</div>

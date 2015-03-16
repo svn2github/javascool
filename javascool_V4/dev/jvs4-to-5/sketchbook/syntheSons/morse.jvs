@@ -1,0 +1,21 @@
+
+// Définition de de code morse
+import org.javascool.proglets.syntheSons.NotesSoundBit;
+
+NotesSoundBit trait = new NotesSoundBit(), point = new NotesSoundBit();
+{
+   trait.reset("3 a h");
+   point.reset("2 e h");
+}
+
+void main() {
+   println("trait..");
+   trait.play();
+   println("point..");
+   point.play();
+   println("point..");
+   point.play();
+   println("trait..");
+   trait.play();
+}
+

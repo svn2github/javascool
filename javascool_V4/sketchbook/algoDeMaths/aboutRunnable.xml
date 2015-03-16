@@ -1,0 +1,34 @@
+<div title="A propos de la déclaration de Runnable">
+  <div>Lorsque l'on clique avec la souris ou entre un caractère au clavier, il faut que le logiciel réagisse à cet événement et pour cela il faut le «prévenir». C'est le principe d'un "runnable" : c'est un objet qui contient une fonction qui est appelée lorsque l'événement survient.</div>
+  <div>Par exemple la méthode <c>void main()</c> est appelée lorsque l'événement «Exécuter» le programme survient. Dans ce cas, ce n'est pas votre "logiciel qui appelle le main" (!), mais bien le main qui est appelé pour lancer votre logiciel.</div>
+  <div>De même quand, un événement externe survient on peut souhaiter que soit appelé un bout de code qui réagisse à cet événement, cela se définit en déclarant «affecte comme runnable (appel à <c>setRunnable()</c> un nouvel objet de type «Runnable» (construction <c>new Runnable() {</c> ) qui contient la fonction <c>run()</c> qui sera appelée lors de l'événement» ce qui s'écrit en Java: <div class="code">
+  <p>setRunnable(new Runnable() { public void run() {</p>
+  <m></m>
+  <m>Ici se met le bout de code qui va être appelé lors de l'occurrence de l'événement.</m>
+  <m></m>
+  <p>}}); /* Ici on ferme les crochets et la parenthèse. */</p>
+</div></div>
+<div>On a donc maintenant le logiciel décomposé en plus d'une partie : le programme principal qui fait fonctionner le programme et un ou des bouts de codes qui gèrent les événements.</div>
+<div>Remarques:<div class="ul">
+<p>Nous pouvons toujours éviter cette construction en créant une boucle infinie dans le programme principal qui regarde si la position de la souris a changé ou un nouveau caractère est arrivé . . mais c'est une méthode plus lourde et surtout moins fiable : si la boucle ne va pas assez vite elle peut par exemple perdre des événements, et si elle va vite alors elle consomme tout le temps du processeur à tester si un nouvel événement est arrivé.</p>
+<p>Ce principe est très général et tous les langages permettent de définir des "callbacks" c'est à dire des fonctions à appeler lors d'événements.Au niveau de la machine elle-même les mécanismes électroniques du clavier ou de la souris envoient des signaux électriques qui génèrent des «interruptions» à chaque événement. Ces interruptions sont prises en charge par des pilotes logiciels qui interagissent avec Java. Les événements que l'on récupère sont les reflets de haut niveau de ces éléments matériels.</p>
+<p>Au niveau de l'interface graphique java on parle d'«écouteur» (listener) basé sur le même principe mais avec deux ingrédients de plus: il n'y a pas qu'un seul run() mais plusieurs selon le type d'événement (par exemple souris qui entre dans la fenêtre ou en sort, clic enfoncé ou relevé, etc..) et la fonction appelée reçoit directement en argument toutes les informations relatives à l'événement (ex: position de la souris, etc.).</p>
+</div></div>
+<div>Bref ce qui est proposé au niveau de javascool c'est le mécanisme Java minimal qui permet d'implémenter ce mécanisme de code réactif à un événement.</div>
+<div title="Arrêter le runnable">
+  <p>Comme le runnable est un code qui tourne, indépendemment du  <c>void main()</c> il est complètement naturel (mais pas forcément souhaitable !) qu'il continue d'être actif (c'est à dire recevoir des événements <i>après</i> la fin de l'exécution du programme). Pour l'arrêter il faut utiliser la commande:
+ <div class="code">
+   <p>setRunnable(<r>null</r>);</p>
+ </div> qui redéfinit le runnable comme <r>null</r>, donc sans effet.</p>
+</div>
+<div title="Un exemple minimal de code">
+ <div class="code">
+   <p><r>void main</r>() {</p>
+   <m>Définition d'un runnable</m>
+   <p><T/><r>setRunnable</r>(<r>new Runnable</r>() { <r>public void run</r>() {</p>
+   <p><T/><T/>println(<v>Oh on a cliqué dans l'image en (</v> + getX() + <v>, </v> + getY() +<v>)</v>);</p>
+   <p><T/>}});</p>
+   <p>}</p>
+ </div> (merci à François Passebon).
+</div>
+</div>

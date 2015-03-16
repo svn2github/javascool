@@ -1,0 +1,146 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>A propos de la d&eacute;claration de Runnable</title>
+   </head>
+   <body>
+      <h1>A propos de la d&eacute;claration de Runnable.</h1>
+      
+      <div>Lorsque l'on clique avec la souris ou entre un caract&egrave;re au clavier, il faut que le logiciel r&eacute;agisse &agrave; cet &eacute;v&eacute;nement et pour
+         cela il faut le &laquo;pr&eacute;venir&raquo;. C'est le principe d'un "runnable" : c'est un objet qui contient une fonction qui est appel&eacute;e lorsque
+         l'&eacute;v&eacute;nement survient.
+      </div>
+        
+      <div>Par exemple la m&eacute;thode <tt>void main()</tt> est appel&eacute;e lorsque l'&eacute;v&eacute;nement &laquo;Ex&eacute;cuter&raquo; le programme survient. Dans ce cas, ce n'est pas votre "logiciel qui appelle le
+         main" (!), mais bien le main qui est appel&eacute; pour lancer votre logiciel.
+      </div>
+        
+      <div>De m&ecirc;me quand, un &eacute;v&eacute;nement externe survient on peut souhaiter que soit appel&eacute; un bout de code qui r&eacute;agisse &agrave; cet &eacute;v&eacute;nement,
+         cela se d&eacute;finit en d&eacute;clarant &laquo;affecte comme runnable (appel &agrave; <tt>setRunnable()</tt> un nouvel objet de type &laquo;Runnable&raquo; (construction <tt>new Runnable() {</tt> ) qui contient la fonction <tt>run()</tt> qui sera appel&eacute;e lors de l'&eacute;v&eacute;nement&raquo; ce qui s'&eacute;crit en Java: 
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                          
+                        <div>setRunnable(new Runnable() { public void run() {</div>
+                          
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;</font></tt></p>
+                          
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Ici se met le bout de code qui va &ecirc;tre appel&eacute; lors de l'occurrence de l'&eacute;v&eacute;nement.</font></tt></p>
+                          
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;</font></tt></p>
+                          
+                        <div>}}); /* Ici on ferme les crochets et la parenth&egrave;se. */</div>
+                        
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      
+      <div>On a donc maintenant le logiciel d&eacute;compos&eacute; en plus d'une partie : le programme principal qui fait fonctionner le programme
+         et un ou des bouts de codes qui g&egrave;rent les &eacute;v&eacute;nements.
+      </div>
+      
+      <div>Remarques:
+         <ul class="ul">
+            
+            <li>Nous pouvons toujours &eacute;viter cette construction en cr&eacute;ant une boucle infinie dans le programme principal qui regarde si la
+               position de la souris a chang&eacute; ou un nouveau caract&egrave;re est arriv&eacute; . . mais c'est une m&eacute;thode plus lourde et surtout moins
+               fiable : si la boucle ne va pas assez vite elle peut par exemple perdre des &eacute;v&eacute;nements, et si elle va vite alors elle consomme
+               tout le temps du processeur &agrave; tester si un nouvel &eacute;v&eacute;nement est arriv&eacute;.
+            </li>
+            
+            <li>Ce principe est tr&egrave;s g&eacute;n&eacute;ral et tous les langages permettent de d&eacute;finir des "callbacks" c'est &agrave; dire des fonctions &agrave; appeler
+               lors d'&eacute;v&eacute;nements.Au niveau de la machine elle-m&ecirc;me les m&eacute;canismes &eacute;lectroniques du clavier ou de la souris envoient des signaux
+               &eacute;lectriques qui g&eacute;n&egrave;rent des &laquo;interruptions&raquo; &agrave; chaque &eacute;v&eacute;nement. Ces interruptions sont prises en charge par des pilotes logiciels
+               qui interagissent avec Java. Les &eacute;v&eacute;nements que l'on r&eacute;cup&egrave;re sont les reflets de haut niveau de ces &eacute;l&eacute;ments mat&eacute;riels.
+            </li>
+            
+            <li>Au niveau de l'interface graphique java on parle d'&laquo;&eacute;couteur&raquo; (listener) bas&eacute; sur le m&ecirc;me principe mais avec deux ingr&eacute;dients
+               de plus: il n'y a pas qu'un seul run() mais plusieurs selon le type d'&eacute;v&eacute;nement (par exemple souris qui entre dans la fen&ecirc;tre
+               ou en sort, clic enfonc&eacute; ou relev&eacute;, etc..) et la fonction appel&eacute;e re&ccedil;oit directement en argument toutes les informations relatives
+               &agrave; l'&eacute;v&eacute;nement (ex: position de la souris, etc.).
+            </li>
+            
+         </ul>
+      </div>
+      
+      <div>Bref ce qui est propos&eacute; au niveau de javascool c'est le m&eacute;canisme Java minimal qui permet d'impl&eacute;menter ce m&eacute;canisme de code
+         r&eacute;actif &agrave; un &eacute;v&eacute;nement.
+      </div>
+      
+      <div>
+         <h2>Arr&ecirc;ter le runnable.</h2>
+           
+         <div>Comme le runnable est un code qui tourne, ind&eacute;pendemment du  <tt>void main()</tt> il est compl&egrave;tement naturel (mais pas forc&eacute;ment souhaitable !) qu'il continue d'&ecirc;tre actif (c'est &agrave; dire recevoir des &eacute;v&eacute;nements
+            <i>apr&egrave;s</i> la fin de l'ex&eacute;cution du programme). Pour l'arr&ecirc;ter il faut utiliser la commande:
+             
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                              
+                           <div>setRunnable(<font color="#990000"><b>null</b></font>);
+                           </div>
+                            
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div> qui red&eacute;finit le runnable comme <font color="#990000"><b>null</b></font>, donc sans effet.
+         </div>
+         
+      </div>
+      
+      <div>
+         <h2>Un exemple minimal de code.</h2>
+          
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                           
+                        <div><font color="#990000"><b>void main</b></font>() {
+                        </div>
+                           
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;finition d'un runnable</font></tt></p>
+                           
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           <font color="#990000"><b>setRunnable</b></font>(<font color="#990000"><b>new Runnable</b></font>() { <font color="#990000"><b>public void run</b></font>() {
+                        </div>
+                           
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           println(<font color="#008000">"Oh on a cliqu&eacute; dans l'image en ("</font> + getX() + <font color="#008000">", "</font> + getX() +<font color="#008000">")"</font>);
+                        </div>
+                           
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           }});
+                        </div>
+                           
+                        <div>}</div>
+                         
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> (merci &agrave; Fran&ccedil;ois Passebon).
+         
+      </div>
+      
+   </body>
+</html>

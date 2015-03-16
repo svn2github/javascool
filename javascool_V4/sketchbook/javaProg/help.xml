@@ -1,0 +1,46 @@
+<div title="La «proglet» javaProg">
+    Cette proglet permet de simuler la programmation de toutes sortes d'applets en utilisant la syntaxe Java ordinaire.
+
+  <p>On peut utiliser toute l'<l link="http://java.sun.com/javase/6/docs/api/overview-summary.html" text="API Java"/> et 
+  l'<l link="http://javascool.gforge.inria.fr/index.php?page=api" text="API JavaScool"/>. 
+  <p>On utilisera en particulier les classes de l'<l link="http://java.sun.com/javase/6/docs/api/javax/swing/package-summary.html" text="API Swing"/>, 
+  dont on trouve facilement des <l link="http://download.oracle.com/javase/tutorial/ui/features/components.html" text="exemples illustrés"/> 
+  et un <l link="http://java.sun.com/docs/books/tutorial/uiswing" text="tutoriel complet"/>.</p></p>
+
+  <p>Voici d;autres liens pour s'initier aux «Swing» (interfaces graphiques) Java: <div class="ul">
+    <div><l link="http://baptiste-wicht.developpez.com/tutoriels/java/swing/debutant" text="sur developpez.com (B. Wicth)"/></div>
+    <div><l link="http://www.siteduzero.com/tutoriel-3-10601-apprenez-a-programmer-en-java.html" text="sur le site du zero"/></div>
+  </div></p>
+
+  <div>Plus précisément la fonction <r>getPane</r> renvoie le panneau Java dans lequel l'interface graphique sera défini, par exemple avec la construction:
+    <div class="code">
+      <p><r>JLayeredPane</r> pane = <r>getPane()</r>;</p>
+    </div>
+    qui donne à la variable <c>pane</c> la valeur du <l link="http://download.oracle.com/javase/6/docs/api/javax/swing/JLayeredPane.html" text="JLayeredPane"/> 
+    où se feront les dessins.</div>
+
+    <div>Ne pas oublier d'ajouter les imports des classes Java utilisées par exemple en écrivant:
+     <div class="code">
+       <p><r>import javax.swing.*;</r></p>
+    </div>
+    au début du fichier.</div>
+
+  <div>Un exemple d'utilisation est proposé en démonstration, 
+  à partir d'un <l class="editor" link="fleurEnRythme.jvs" text="code Jvs"/> réalisé avec deux lycéens du 
+  <l link="http://www.civfrance.com" text="Lycée International de Valbonne"/>.</div>
+
+  <div>Un autre exemple d'utilisation est proposé en démonstration, 
+  à partir d'un <l class="editor" link="elephantEnFolie.jvs" text="code Jvs"/> réalisé avec trois lycéennes du 
+  <l link="http://www.civfrance.com" text="Lycée International de Valbonne"/>.</div>
+
+   <div>Un autre exemple d'utilisation est proposé en démonstration, 
+  à partir d'un <l class="editor" link="pianoJoue.jvs" text="code Jvs"/> réalisé par un enseignant (petit piano mono-phonique).</div>
+
+   <div>Un autre exemple d'utilisation est proposé en démonstration, 
+  à partir d'un <l class="editor" link="HeureEnBinaire.jvs" text="code Jvs"/> réalisé à partir d'une idée originale de Gilles Dowek (horloge binaire).</div>
+
+   <div>Un autre exemple d'utilisation de liens réseau avec des socket proposé en démonstration, 
+   à partir d'un <l class="editor" link="SocketDemo.jvs" text="code Jvs"/> réalise un test des ouvertures/fermetures de sockets.</div>
+
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=javaProg&amp;helpFile=api/org/javascool/proglets/javaProg/package-summary.html" text="ici"/></p>
+</div>

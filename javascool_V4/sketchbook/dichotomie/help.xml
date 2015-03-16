@@ -1,0 +1,39 @@
+<div title="La «proglet» dichotomie">
+  <p class="margin">
+    <p>Cliquer <l class="newtab" link="exercice.htm" text="ici"/> pour faire l'activité.</p>
+    <p>Cliquer <l class="newtab" link="tutoriel.htm" text="ici"/> pour lire le tutoriel.</p>
+  </p>
+  <p>
+    Cette proglet permet d'apprendre la notion algorithmique de « recherche dichotomie ». 
+    La proglet affiche un livre avec tous les drapeaux du monde 
+    (répertoriés grâce à <l link="http://fr.wikipedia.org/wiki/Galerie_des_drapeaux_des_pays_du_monde" text="wikipedia"/>)
+    et permet d'ouvrir le livre à une page donnée pour comparer le nom de pays avec le nom du pays recherché. 
+    <div>Plus précisément la fonction <r>compare</r> ouvre le livre à une page et compare un nom au nom affiché sur cette page: <div class="code">
+      <p><r>int</r> résultat = <r>compare</r>(nom, page);</p>
+    </div><div class="ul">
+    <div>où <b>nom</b> est un <r>String</r> dont la valeur est le nom du pays recherché;</div>
+    <div>où <b>page</b> est un <r>int</r>, le numéro de la page de 0 à 192 (il y a 193 pays);</div>
+    <div>le <b>résultat</b> étant:<div class="ul">
+        <div><c>un nombre négatif</c> si le nom se situe avant celui de la page,</div>
+        <div><c>un nombre positif</c> si le nom se situe après celui de la page,</div>
+        <div><c>0</c> si il correspond à celui de la page.</div>
+      </div></div>
+    </div> tandis que la fonction: <div class="code">
+      <p><r>int</r> l = <r>length</r>();</p>
+    </div> renvoie le nombre de pages, ici 193.</div>
+    <div>Un exemple d'utilisation: lors de la démonstration, 
+    le livre va se feuilleter rapidement puis s'ouvrir quelques fractions de
+    secondes à une vingtaine de pages au hasard, selon le programme suivant:
+    <div class="code">
+      <p><r>for</r>(<r>int</r> i = 0; i &lt; 26; i++) {</p>
+      <p><r>int</r> page = <r>random</r>(0, <r>length</r>());</p>
+      <p><T/><r>compare</r>(<v>rien</v>, page);</p>
+      <p><T/><r>sleep</r>(400);</p>
+      <p>}</p>
+    </div></div>
+    <div>En appuyant sur les touches <c>&lt;-</c> et <c>-&gt;</c> nous pouvons tourner manuellement les pages à gauche ou à droite.</div>
+  </p>
+  <div>Essaye ensuite de jouer à ce <l class="editor" link="LeJeuDeDevinette.jvs" text="jeu de devinette"/> . . facile à gagner, désormais !</div>
+  <div>Avec cette version du <l class="editor" link="LeJeuDeDevinette2.jvs" text="jeu de devinette"/> tu peux aussi faire jouer l'ordinateur !</div>
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=dichotomie&amp;helpFile=api/org/javascool/proglets/dichotomie/package-summary.html" text="ici"/></p>
+</div>

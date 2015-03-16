@@ -1,0 +1,199 @@
+ <div id="toc" class="toc"><div id="toctitle"><h2>Sommaire</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#A_propos_de_l.27enseignement_de_l.27informatique."><span class="tocnumber">1</span> <span class="toctext">A propos de l'enseignement de l'informatique.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Quels_sont_les_liens_avec_les_cours_sur_les_sciences_informatiques_.3F."><span class="tocnumber">1.1</span> <span class="toctext">Quels sont les liens avec les cours sur les sciences informatiques&#160;?.</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Y_a-t-il_un_manuel_avec_toutes_les_constructions_et_instructions_.3F."><span class="tocnumber">1.2</span> <span class="toctext">Y a-t-il un manuel avec toutes les constructions et instructions&#160;?.</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Peut-on_consulter_un_.60.60vrai.C2.B4.C2.B4_cours_d.27algorithmique_.3F."><span class="tocnumber">1.3</span> <span class="toctext">Peut-on consulter un ``vrai´´ cours d'algorithmique&#160;?.</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Dans_quel_cadre_p.C3.A9dagogique_se_positionne_JavaSccol_.3F"><span class="tocnumber">1.4</span> <span class="toctext">Dans quel cadre pédagogique se positionne JavaSccol&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Mais_._.est-il_besoin_de_savoir_programmer_pour_comprendre_les_fondements_de_l.27informatique_.3F"><span class="tocnumber">1.5</span> <span class="toctext">Mais . .est-il besoin de savoir programmer pour comprendre les fondements de l'informatique &#160;?</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Quels_est_le_lien_de_JavaScool_avec_les_programmes_officiels_.3F"><span class="tocnumber">1.6</span> <span class="toctext">Quels est le lien de JavaScool avec les programmes officiels&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Je_suis_professeur_et_j.27ai_plusieurs_id.C3.A9es_de_sujets.2C_comment_aider_et_se_faire_aider_.3F"><span class="tocnumber">1.7</span> <span class="toctext">Je suis professeur et j'ai plusieurs idées de sujets, comment aider et se faire aider&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Mais_pourquoi_apprendre_des_choses_aussi_.C2.ABd.C3.A9bilisantes.C2.BB_qu.27imprimer_.C2.ABHello_World.C2.BB_.3F_Pourquoi_ne_pas_attaquer_des_sujets_math.C3.A9matiquement_plus_profonds_.21"><span class="tocnumber">1.8</span> <span class="toctext">Mais pourquoi apprendre des choses aussi «débilisantes» qu'imprimer «Hello World»&#160;? Pourquoi ne pas attaquer des sujets mathématiquement plus profonds&#160;!</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#Et_au_del.C3.A0_de_JavaScool_.3F."><span class="tocnumber">2</span> <span class="toctext">Et au delà de JavaScool&#160;?.</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#A_propos_de_l.27utilisation_de_JavaScool."><span class="tocnumber">3</span> <span class="toctext">A propos de l'utilisation de JavaScool.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-12"><a href="#Pourquoi_le_peu_p.C3.A9dagogique_cha.C3.AEne1.equals.28cha.C3.AEne2.29_pour_l.27.C3.A9galit.C3.A9_de_deux_cha.C3.AEnes_.3F"><span class="tocnumber">3.1</span> <span class="toctext">Pourquoi le peu pédagogique chaîne1.equals(chaîne2) pour l'égalité de deux chaînes&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#Quelle_version_de_Java_faut_il_.3F_Faut_il_autre_chose_.3F"><span class="tocnumber">3.2</span> <span class="toctext">Quelle version de Java faut il&#160;? Faut il autre chose&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#Comment_passer_d.27un_programme_Java_.C3.A0_un_programme_JavaScool"><span class="tocnumber">3.3</span> <span class="toctext">Comment passer d'un programme Java à un programme JavaScool</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#Comment_passer_d.27un_programme_JavaScool_.C3.A0_un_programme_Java_externe"><span class="tocnumber">3.4</span> <span class="toctext">Comment passer d'un programme JavaScool à un programme Java externe</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="#Quels_sont_les_autres_outils_d.27initiation_.C3.A0_la_programmation_.3F"><span class="tocnumber">3.5</span> <span class="toctext">Quels sont les autres outils d'initiation à la programmation&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="#Pourquoi_JavaScool_n.27a_pas_de_lanceurs_.exe_ou_.app_etc.._.3F"><span class="tocnumber">3.6</span> <span class="toctext">Pourquoi JavaScool n'a pas de lanceurs .exe ou .app etc..&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="#Pourquoi_ne_pas_int.C3.A9grer_JavaScool_sous_Eclipse.2C_NetBeans.2C_Processing_ou_utiliser_JavaWebStart_.3F"><span class="tocnumber">3.7</span> <span class="toctext">Pourquoi ne pas intégrer JavaScool sous Eclipse, NetBeans, Processing ou utiliser JavaWebStart&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="#Pourquoi_ne_pas_utiliser_algobox_ou_la_calculette.2C_plut.C3.B4t_que_JavaScool_.3F"><span class="tocnumber">3.8</span> <span class="toctext">Pourquoi ne pas utiliser algobox ou la calculette, plutôt que JavaScool&#160;?</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+  
+<p>Vous nous avez posé des questions à propos de <tt><a rel="nofollow" class="external text" href="/v4//" class="internal">Java'sCool</a></tt>, les voici avec nos meilleures réponses:
+</p>
+<h2><span class="mw-headline" id="A_propos_de_l.27enseignement_de_l.27informatique.">A propos de l'enseignement de l'informatique.</span></h2>
+<h3><span class="mw-headline" id="Quels_sont_les_liens_avec_les_cours_sur_les_sciences_informatiques_.3F.">Quels sont les liens avec les cours sur les sciences informatiques&#160;?.</span></h3>
+<p>Ils sont multiples: <a rel="nofollow" class="external text" href="http://fr.wikipedia.org/wiki/Gérard_Berry">Gérard Berry</a> avec <a rel="nofollow" class="external text" href="http://www-roc.inria.fr/who/Gilles.Dowek">Gilles Dowek</a> sont des initiateurs (et de bienveillants conseillers) des contenus disponibles sur <a rel="nofollow" class="external text" href="http://www.canal-u.tv/producteurs/fuscia/%28onglet%29/collections/%28id%29/217136">CanalU/fuscia</a>, tout particulièrement sur ce qu'est l' <a rel="nofollow" class="external text" href="http://interstices.info/reflet-numerique">information</a> et sur les ingrédients des <a rel="nofollow" class="external text" href="http://interstices.info/ingredients-algorithmes">algorithmes</a>. 
+</p><p>Le cours au <a rel="nofollow" class="external text" href="http://www.college-de-france.fr/default/EN/all/inn_tec2007">Collège de France</a> ( <a rel="nofollow" class="external text" href="http://www.college-de-france.fr/default/EN/all/inn_tec2007/lecon_inaugurale_.htm">vidéo</a>, <a rel="nofollow" class="external text" href="http://www.college-de-france.fr/audio/berry/berry-20080117.mp3">audio</a> <a rel="nofollow" class="external text" href="http://www.college-de-france.fr/media/inn_tec2007/UPL13472_Le_on_inaugurale_G_rard_Berry.pdf">support visuel </a>) reste une très belle introduction.
+</p>
+<h3><span class="mw-headline" id="Y_a-t-il_un_manuel_avec_toutes_les_constructions_et_instructions_.3F.">Y a-t-il un manuel avec toutes les constructions et instructions&#160;?.</span></h3>
+<p>Bien entenu ce ``manuel´´ existe à la fois:
+</p>
+<ul><li> Pour ce qui est utilisé dans le cadre de <tt><a rel="nofollow" class="external text" href="/v4//" class="internal">Java'sCool</a></tt> il est donné dans la documentation intérieure au logiciel.</li></ul>
+<ul><li> Au niveau du langage Java, par exemple <a rel="nofollow" class="external text" href="http://www.eteks.com/coursjava/tdm.html">celui-ci</a>, pour se limiter à un document francophone, il explique:
+<ul><li> les <a rel="nofollow" class="external text" href="http://www.eteks.com/coursjava/notionsbase.html#TypesBase">types de base</a></li>
+<li> les <a rel="nofollow" class="external text" href="http://www.eteks.com/coursjava/instructions.html">instructions et opérateurs</a></li>
+<li> les <a rel="nofollow" class="external text" href="http://www.eteks.com/coursjava/objetstab.html#Tableaux">tableaux</a> (qui ne sont pas abordés ici)  mais cela va bien au delà du programme de 2nd sur ces sujets&#160;!</li></ul></li></ul>
+<ul><li> Au niveau des fonctions proposées dans les excercices se sont . . tous les <a rel="nofollow" class="external text" href="http://java.sun.com/javase/6/docs/api/overview-summary.html">objets Java</a> qui peuvent être utilisés (!) en plus des fonctions définies pour chaque proglet.</li></ul>
+<ul><li> Et un peu d'humour&#160;: <a rel="nofollow" class="external text" href="http://www.datamation.com/news/tech-comics-geeks-and-the-manual-1.html">geeks and the manual</a></li></ul>
+<h3><span class="mw-headline" id="Peut-on_consulter_un_.60.60vrai.C2.B4.C2.B4_cours_d.27algorithmique_.3F.">Peut-on consulter un ``vrai´´ cours d'algorithmique&#160;?.</span></h3>
+<ul><li> Il y un cours de science informatique  avec des chapitres selon les grands domaines de l'algorithmique: calcul numérique, manipulation de graphes, optimisation et recherche opérationnelle, automatique et contrôle de système, mesures et statistiques, etc.. Ce sont les <i>fondements de la programmation</i>
+<ul><li> <a rel="nofollow" class="external text" href="http://wiki.inria.fr/sciencinfolycee/Introduction_%C3%A0_la_Science_Informatique">Introduction à la science informatique</a></li></ul></li></ul>
+<ul><li> De très bons cours existent en ligne, pour se limiter à quelques documents francophones:
+<ul><li> les documents d')i(nterstices sur <a rel="nofollow" class="external text" href="http://interstices.info/jcms/c_5389/algorithmes">les algorithmes</a> avec une bonne <a rel="nofollow" class="external text" href="http://interstices.info/algo">introduction</a> et une <a rel="nofollow" class="external text" href="http://interstices.info/algo-mode-emploi">discussion</a> sur la théorie, ainsi qu'une description des <a rel="nofollow" class="external text" href="http://interstices.info/ingredients-algorithmes">ingrédients des algorithmes</a>.</li>
+<li> Le <a rel="nofollow" class="external text" href="http://www.pise.info/algo/codage.htm">cours</a> de l'université Paris VII, orienté ``programmation´´.</li></ul></li></ul>
+<ul><li> Surtout nous avons un <a rel="nofollow" class="external text" href="http://science-info-lycee.fr">SIL:O</a> de ressources en lignes à disposition.</li></ul>
+<h3><span class="mw-headline" id="Dans_quel_cadre_p.C3.A9dagogique_se_positionne_JavaSccol_.3F">Dans quel cadre pédagogique se positionne JavaSccol&#160;?</span></h3>
+<ul><li> Quelques notes de <a class="internal" href="?page=home&action=faq-cadrage" title="JavaScool:Cadrage">réflexions</a> sur ce sujet ont été proposées.</li></ul>
+<h3><span class="mw-headline" id="Mais_._.est-il_besoin_de_savoir_programmer_pour_comprendre_les_fondements_de_l.27informatique_.3F">Mais . .est-il besoin de savoir programmer pour comprendre les fondements de l'informatique &#160;?</span></h3>
+<ul><li> Cet <a rel="nofollow" class="external text" href="http://www.epi.asso.fr/revue/articles/a1012b.htm">article collectif</a> essaye d'y répondre.</li></ul>
+<ul><li> Et un peu d'humour&#160;: <a rel="nofollow" class="external text" href="http://www.datamation.com/cnews/article.php/3832671/Tech-Comics-The-Art-of-Programming.htm">The Art of Programming</a></li></ul>
+<h3><span class="mw-headline" id="Quels_est_le_lien_de_JavaScool_avec_les_programmes_officiels_.3F">Quels est le lien de JavaScool avec les programmes officiels&#160;?</span></h3>
+<ul><li> Les éléments d'analyse sont <a class="internal" href="?page=home&action=faq-infolycee" title="JavaScool:InfoAuLycee">détaillés ici</a>.</li></ul>
+<h3><span class="mw-headline" id="Je_suis_professeur_et_j.27ai_plusieurs_id.C3.A9es_de_sujets.2C_comment_aider_et_se_faire_aider_.3F">Je suis professeur et j'ai plusieurs idées de sujets, comment aider et se faire aider&#160;?</span></h3>
+<p>Facilement&#160;! Plus de 20% de nos contenus ont été crées ou initiés par des professeurs des lycées.
+Toutes les informations et éléments sont <a rel="nofollow" class="external text" href="/v4///?page=run&amp;action=licence" class="internal">librement utilisables</a>, tandis que la méthodes est simple: il suffit de nous <a rel="nofollow" class="external text" href="/v4//?page=contact" class="internal">contacter</a>.
+</p>
+<h3><span class="mw-headline" id="Mais_pourquoi_apprendre_des_choses_aussi_.C2.ABd.C3.A9bilisantes.C2.BB_qu.27imprimer_.C2.ABHello_World.C2.BB_.3F_Pourquoi_ne_pas_attaquer_des_sujets_math.C3.A9matiquement_plus_profonds_.21">Mais pourquoi apprendre des choses aussi «débilisantes» qu'imprimer «Hello World»&#160;? Pourquoi ne pas attaquer des sujets mathématiquement plus profonds&#160;!</span></h3>
+<p>C'est une vraie question, et il y a quatre réponse à cette question:
+</p>
+<ol><li> <i>Pas si débilisant que ça:</i> les points clé du cours ont été proposés par un professeur d'informatique à l'Ecole Polytechnique et un membre de l'Académie des Sciences (il faut évidemment dépasser la leçon 1 pour le mesurer). Dès la leçon 2 du parcours de formation des mécanismes d'abstraction non triviaux sont abordés <i>par l'exemple</i>, en expérimentant d'abord ces mécanismes, pour permettre à l'enseignant d'en expliciter le fondement.</li>
+<li> <i>Pour <b>tou(te)s</b> les élèves de 2nd:</i> cet apprentissage ne cible pas <i>uniquement</i> les jeunes qui iront vers les sections scientifiques, mais vise bien <i>tou(te)s</i> les futurs citoyens qui vont devoir maîtriser, sans subir, la société numérique où nous vivons aujourd'hui. En profitant ici du fait que les fondement de l'informatique s'appréhendent par des mécanismes de pensée qui ne se limitent pas aux maths enseignées de la 2nd à la terminale.</li>
+<li> <i>Ces sujets mathématiques existent:</i> Tous les enseignants de mathématiques disposent <i>aussi</i> d'exercices de programmation liés au programme de 2nd. Cela requière évidemment les bases de programmation de type «Hello World», pour que l'élève maîtrise les mécanismes algorithmiques fondamentaux avant. Au delà du programme, il faut aussi mentionner des mathématiques passionnantes, spécifiques de l'informatique, ébauchées <a rel="nofollow" class="external text" href="http://www.loria.fr/%7Evthierry/cours/information-theories.pdf">ici</a> et détaillées dans l'excellent livre <i>Information, complexité et hasard</i> de Jean-Paul Delahaye.</li>
+<li> <i>Et surtout, il y a effectivement une limite à l'exercice</i> d'apprendre l'informatique en mathématique ou physique/chimie alors que c'est de fait une <a rel="nofollow" class="external text" href="http://www.epi.asso.fr/revue/articles/a0809d.htm">discipline à part entière</a>.</li></ol>
+<h2><span class="mw-headline" id="Et_au_del.C3.A0_de_JavaScool_.3F.">Et au delà de JavaScool&#160;?.</span></h2>
+<p>Nous avons référencé à la fois d'autres <a class="internal" href="?page=home&action=faq-ailleurs" title="JavaScool:Ailleurs">outils logiciels</a> pour apprendre l'informatique et aussi d'autres <a class="internal" href="?page=home&action=faq-autres" title="JavaScool:AutresInitiatives">initiatives périscolaires</a> qui peuvent fournir des ressources au niveau de l'enseignement.
+</p><p>Tout est évidemment recensé dans le <a rel="nofollow" class="external text" href="http://science-info-lycee.fr">«SIL:O!»</a> sur sciences-info-lycee.fr.
+</p>
+<h2><span class="mw-headline" id="A_propos_de_l.27utilisation_de_JavaScool.">A propos de l'utilisation de JavaScool.</span></h2>
+<h3><span class="mw-headline" id="Pourquoi_le_peu_p.C3.A9dagogique_cha.C3.AEne1.equals.28cha.C3.AEne2.29_pour_l.27.C3.A9galit.C3.A9_de_deux_cha.C3.AEnes_.3F">Pourquoi le peu pédagogique chaîne1.equals(chaîne2) pour l'égalité de deux chaînes&#160;?</span></h3>
+<ul><li> Le «==» ne pourrait-il pas être remplacé par equal lors de la traduction de JVS en Java&#160;?</li></ul>
+<ul><li> Non car cela reviendrait à la sématique du langage puisque <tt>s1 == s2</tt> signifie les deux chaînes sont <i>égales et au même endroit de la mémoire</i>; on aurait alors une sémantique divergente par rapport au java et par rapport aux autres objets</li></ul>
+<ul><li> Il a a aussi été proposé <tt>s1 === s2</tt> mais cela va à l'encontre de son sens dans d'autres langages</li></ul>
+<h3><span class="mw-headline" id="Quelle_version_de_Java_faut_il_.3F_Faut_il_autre_chose_.3F">Quelle version de Java faut il&#160;? Faut il autre chose&#160;?</span></h3>
+<ul><li> Une version "récente" de Java (en 1.6). Java est presque toujours installé par défaut.</li></ul>
+<ul><li> Il ne faut rien de plus . . 
+<ul><li>  Sauf pour le 3D pour de la  proglet «EnVoiture» (qui utilise OpenGL) il faut copier les librairies dynamiques <a rel="nofollow" class="external text" href="/v4//documents/sketchbook/enVoiture/opengl-windows.zip" class="internal">disponibles ici</a> dans le répertoire Java de la machine, c'est à dire, normalement Program Files/java/jre6/bin. Se faire aider du responsable informatique si besoin.</li></ul></li></ul>
+<p>Avec de trop anciennes versions de Java l'application ne marche pas. Dans tous les cas, il faut vraiment upgrader le système car beaucoup d'applets du web ne marchent sûrement pas non plus.
+</p>
+<h3><span class="mw-headline" id="Comment_passer_d.27un_programme_Java_.C3.A0_un_programme_JavaScool">Comment passer d'un programme Java à un programme JavaScool</span></h3>
+<p>C'est très facile il faut:
+</p>
+<ul><li> Mettre tous les éléments de votre projet Java dans un seul fichier</li>
+<li> Sortir la méthode <i>public static void main(String[] args)</i> et utiliser une simple méthode <i>void main() { }</i></li>
+<li> Noter qu'il n'y a pas besoin d'encapsuler le code dans une classe au niveau de JavaScool</li></ul>
+<p>Par exemple d'un fichier <i>Main.java</i> et <i>Classe.java</i> avec&#160;:<pre>
+class Main {
+ public static void main(String[] args) {
+  new Classe().run();
+ }
+}</pre> dans l'un et dans l'autre&#160;:<pre>
+public class Classe {
+ public void run() {
+  System.out.println("Ma class runs, c'est la classe !");
+ }
+}</pre> il faut mettre dans le fichier JavaScool&#160;:<pre>
+void main() {
+ new Classe().run();
+}
+public class Classe {
+ public void run() {
+  System.out.println("Ma class runs, c'est la classe !");
+ }
+}</pre>
+</p>
+<h3><span class="mw-headline" id="Comment_passer_d.27un_programme_JavaScool_.C3.A0_un_programme_Java_externe">Comment passer d'un programme JavaScool à un programme Java externe</span></h3>
+<p>C'est très facile il faut:
+</p>
+<ul><li> Copier le contenu du fichier JavaScool dans un fichier de nom, disons, <i>Main.java</i></li>
+<li> Renommer la méthode <i>void main() { }</i> en <i>public static void main(String[] args)</i></li>
+<li> Ajouter tous les import static listés ci dessous</li>
+<li> Mettre le Jar <i>javascool-proglets.jar</i> dans le CLASS-PATH</li>
+<li> Utiliser un autre outil de développement Java</li></ul>
+<p>Par exemple d'un fichier <i>main.jvs</i>:<pre>
+void main() {
+ println("Hello world");
+}</pre> il faut créer un <i>Main.java</i>&#160;:<pre>
+import static java.lang.Math.*;
+import static org.javascool.macros.Macros.*;
+import static org.javascool.macros.Stdin.*;
+import static org.javascool.macros.Stdout.*;
+public class Main {
+public static void main(String[] args) {
+  println("Hello world"); 
+  
+ }
+}</pre>puis utiliser les commandes<pre>
+javac -cp javascool-proglets.jar Main.java
+java -cp .:javascool-proglets.jar Main</pre>
+et le tour est joué.
+</p><p>Pour utiliser une proglet, c'est un peu plus compliqué, prenons l'exemple de <i>codagePixels</i>:<pre>
+import static java.lang.Math.*;
+import static org.javascool.macros.Macros.*;
+import static org.javascool.macros.Stdin.*;
+import static org.javascool.macros.Stdout.*;
+import static org.javascool.proglets.codagePixels.Functions.*;
+public class Main {
+public static void main(String[] args) {
+  // Commande qui permet d'ouvrir la proglet
+  new org.javascool.widgets.MainFrame().reset("codagePixels", 600, 800, 
+   org.javascool.core.ProgletEngine.getInstance().
+     setProglet("codagePixels").getProgletPane());
+  // Ici vient le code d'utilisation
+}</pre>
+</p><p>Les entrées se font dans les "popup" et les sorties à la console. On peut aussi accéder à la console "graphique" via: <pre>javax.swing.JPanel jconsole = org.javascool.widgets.Console.getInstance();</pre> mais il faut alors reconstruire une interface graphique à façon.
+</p>
+<h3><span class="mw-headline" id="Quels_sont_les_autres_outils_d.27initiation_.C3.A0_la_programmation_.3F">Quels sont les autres outils d'initiation à la programmation&#160;?</span></h3>
+<p>Bien entendu, <a rel="nofollow" class="external text" href="/v4/" class="internal"><tt>JavaScool</tt></a> n'est pas le seul outil proposé pour les professeur(e)s des lycées au niveau de l'enseignement de l'algorithmique, donc de <i>l'informatique</i> au lycée. Voici quelques autres très <a class="internal" href="?page=home&action=faq-ailleurs" title="JavaScool:Ailleurs">beaux exemples d'outils</a> au bout de ce clic.
+</p>
+<h3><span class="mw-headline" id="Pourquoi_JavaScool_n.27a_pas_de_lanceurs_.exe_ou_.app_etc.._.3F">Pourquoi JavaScool n'a pas de lanceurs .exe ou .app etc..&#160;?</span></h3>
+<p>Parce qu'il n'y a pas besoin&#160;!!! En se limitant à un fichier .jar on garanti de 
+</p>
+<ol><li> pouvoir tourner sur quasiment toutes les machines dès que java est installé</li>
+<li> ne pas <i>pertuber</i> l'installation de l'ordinateur qui est utilisé pour javascool
+<ul><li> donc pas d'installation de logiciel qui réclame des droits administrateurs</li>
+<li> la possibilité de profiter de la dernière version de javascool en un clic</li>
+<li> etc..</li></ul></li></ol>
+<h3><span class="mw-headline" id="Pourquoi_ne_pas_int.C3.A9grer_JavaScool_sous_Eclipse.2C_NetBeans.2C_Processing_ou_utiliser_JavaWebStart_.3F">Pourquoi ne pas intégrer JavaScool sous Eclipse, NetBeans, Processing ou utiliser JavaWebStart&#160;?</span></h3>
+<p>Voici notre contrainte d'utilisation:
+</p>
+<ul><li> il faut que le professeur entre dans sa salle de classe sur les ordinateurs «tels qu'il sont» (il n'y a pas forcément quelqu'un pour installer quoi que ce soit, il ne faut donc que compter sur le run-time Java standard);</li>
+<li> il faut que l'outil se lance en un clic sur les 30 ordis&#160;!!!! Sinon le temps de travail est mort;</li>
+<li> Il faut aussi que ça marche hors réseau (qu'il soit en panne, ou coupé pour des raisons scolaire, ou absent), donc passer facilement sur cle USB</li></ul>
+<p>Alors:
+</p>
+<ol><li> Si la version 1 était sous Eclipse (c'était un plugin Eclipse) cette solution a été mise de côté pour éviter à la fois les problèmes d'installation et la baisse de performances sur des machines trop anciennes, mais il est envisagé de "remonter" cette intégration.</li>
+<li> Un de nos développeur prépare une solutions sous NetBeans (conscient que propriété d'Oracle, les portes pourrait se fermer) tandis que <a rel="nofollow" class="external free" href="http://javafx.com">http://javafx.com</a> est à une autre possibilité.</li>
+<li> Nous avons investi dans <a rel="nofollow" class="external free" href="http://www.processing.org">http://www.processing.org</a> car son aspect modulaire le rend complètement intégrable et avons rendu JavaScool interopérable avec cette techno.</li>
+<li> Finalement nous n'avons pas déployé JavaWebStart car nos jar restent de taille raisonnable, et surtout des barrières de sécurité rendent l'implémentation trop fragile.</li></ol>
+<h3><span class="mw-headline" id="Pourquoi_ne_pas_utiliser_algobox_ou_la_calculette.2C_plut.C3.B4t_que_JavaScool_.3F">Pourquoi ne pas utiliser algobox ou la calculette, plutôt que JavaScool&#160;?</span></h3>
+<p>A l’aide d'un mini-langage algorithmique en français et d'une interface simple et ergonomique, le logiciel <a rel="nofollow" class="external text" href="http://www.xm1math.net/algobox">algobox</a> permet de concevoir et de tester facilement les algorithmes que l'on peut rencontrer dans l’enseignement des mathématiques au secondaire. Il est plus facile à prendre en main que JavaScool car il évite de se soucier de la syntaxe et permet, comme <a rel="nofollow" class="external text" href="http://scratch.mit.edu/">Scratch</a>, d'insérer les instructions à la main sans les taper. Il est de plus très bien adapté aux algorithmes de mathématiques de secondes, avec beaucoup d'exercices prêts à être utilisés. Les auteurs d'algobox expliquent qu'il a été conçu pour appréhender de suite les structures logiques algorithmiques fondamentales, en choisissant d'introduire un nouveau pseudo-code et mini-langage algorithmique. Et c'est un logiciel libre, multi-plateformes, ce qui est précieux. En revanche, il a trois inconvénients:
+</p>
+<ul><li> Du fait qu'il ne confronte pas l'élève à écrire du code, il ne permet pas d'appréhender la <i>syntaxe</i> des structures abstraites qui forment les ingrédients des algorithmes. C'est une simplification, donc une limitation pédagogique, au sens où en utilisant un éditeur graphique l'élève est moins incité à s'approprier les abstractions à apprendre, mais peut plus avancer, par exemple en «tâtonnant»: n'oublions pas que le but n'est pas ``d'apprendre à programmer´´ mais bien de commencer à apprendre des abstractions informatique en programmant.</li>
+<li> Il reste limité à des interactions de type console (lire/écrire une valeur) et l'affichage de courbe et ne permet pas de manipuler des objets numériques (ex: image de pixels) plus riches que des valeurs numériques.</li>
+<li> Ici, algobox «réinvente» un nouveau langage, et une interaction spécifique avec le système, ce qui va nécessiter de la part de l'élève un apprentissage provisoire supplémentaire qui ne sera pas directement pérennisable, contrairement aux outils qui adhèrent à une syntaxe existante.</li></ul>
+<p>Plus généralement, pour certains enseignants, la plus value de ces outils, tels que JavaScool ou Algobox par rapport aux calculettes programmables n'est pas certain. Si l'enseignant veut se limiter aux exercices proposés au niveau du <a rel="nofollow" class="external text" href="/v4//documents/Algo_Doc_Ress.pdf" class="internal">programme de seconde</a>, ils peuvent tout aussi bien être réalisés sur une calculette. Mais en acceptant cette fois ci de voir les structures algorithmiques fondamentales implémentées sous forme bien moins visible. Mais l'investissement pour apprendre à manipuler le langage de la calculette sera réutilisable ensuite, de même que JavaScool ouvre sur les langages impératifs usuels (C, PHP, Java, ..).
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.036 seconds
+Real time usage: 0.034 seconds
+Preprocessor visited node count: 147/1000000
+Preprocessor generated node count: 240/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:92-1!*!0!!fr!*!* and timestamp 20150313130632 and revision id 15706
+ -->

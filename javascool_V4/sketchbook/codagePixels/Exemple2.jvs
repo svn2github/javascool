@@ -1,0 +1,18 @@
+void main() {
+  String where = "http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/";
+  load(where + "image_j.pbm");
+  sleep(2000);
+  load(where + "image_feep.pgm");
+  sleep(2000);
+  save("image_feep.pbm");
+  load("image_feep.pbm");
+  sleep(2000);
+  save("image_feep.ppm");
+  load("image_feep.ppm");
+  sleep(2000);
+  load("image_rgb.ppm");
+  sleep(2000);
+  save(where + "image_rgb.pgm");
+  load("image_rgb.pgm");
+  println("done !");
+}

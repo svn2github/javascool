@@ -1,0 +1,67 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Rubik proglet help</title>
+      <meta name="author" content="Julien Cervelle">
+      <meta name="tags" content="help rubik's-cube functions">
+   </head>
+   <body>
+      <h1>Rubik proglet help.</h1>
+      
+      <div>This proglet allows to learn bottom-up algorithm design: from basic tasks (turn one face of the cube), 
+         the student has to build more complex function to allows to solve easily the rubik's 2x2 cube.
+      </div>
+      
+      <div>The availables functions are divided into two categories. The first one turn one of the six face of the cube, clockwise or
+         anticlockwise. The second category changes the view of the cube,
+         as do the buttons above the view window
+      </div>
+      
+      <div>Note that the difference between button and programatic actions is that pushing a button causes immediate turn of the cube
+         while programmed actions are
+         performed in the order the functions are called
+      </div>
+      
+      <div>Note also that when a face (for instance front face) is programmed to be turned, moving the view with a button (for instance
+         clicking the down arrow button)
+         do not change the face programmed to be turned (if the front face was programmed to be turned, after the click, the new place
+         of the front face i.e. the bottom face will turned).
+      </div>
+      
+      
+      <ul>
+          
+         
+         <li><tt>left()</tt>, <tt>right()</tt>, <tt>up()</tt>, <tt>down()</tt>, <tt>back()</tt> and <tt>front()</tt>
+             functions rotate the corresponding face clockwise;
+         </li>
+          
+         
+         <li><tt>antileft()</tt>, <tt>antiright()</tt>, <tt>antiup()</tt>, <tt>antidown()</tt>, <tt>antiback()</tt> and
+             <tt>antifront()</tt> functions rotate the corresponding face anti-clockwise;
+         </li>
+          
+         
+         <li><tt>moveup()</tt>, <tt>movedown()</tt>, <tt>moveleft()</tt> and <tt>moveright()</tt> functions move the view of the cube rotating
+             it in the direction of the function name. For instance, <tt>moveup()</tt> turns the cube upward in order to view the down face;
+         </li>
+          
+         
+         <li><tt>rotate()</tt> and <tt>antirotate</tt> functions rotate the cube clockwise or anti-clockwise;
+         </li>
+          
+         
+         <li><tt>randomturn()</tt> rotates a random face. The function can be used to scramble the cube.
+         </li>
+         
+      </ul>
+      
+      <div>All these functions are available through completion.</div>
+      
+   </body>
+</html>

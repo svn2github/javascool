@@ -1,0 +1,131 @@
+/*
+ * On définit quelques variables globales. Radius correspond
+ * au rayon d'une molécule, gravity correspond à la valeur
+ * de la gravité entre deux molécules. Plus il y a de molécules
+ * plus cette valeur doit étre faible pour que la gravité
+ * ne soit pas trop forte.
+ * Attention ! Si cette valeur est trop grande, les molécules
+ * se déplacent trop vite, ce qui provoque des erreurs
+ * d'imprécision.
+ * On définit également un groupe qui contiendra toutes les
+ * molécules.
+ */
+Group mols;
+double radius = 10;
+double gravity = 1.5;
+
+/*
+ * Cette fonction est exécutée sur chaque molécule à chaque
+ * mise à jour de la simulation et applique dessus une
+ * force de gravité.
+ */
+void seRegrouper(Oval mol) {
+  /*
+   * Le vecteur somme défini ci-dessus contiendra la valeur
+   * finale du vecteur force appliqué sur la molécule
+   * et donc son vecteur déplacement
+   */
+  double sommeX = 0;
+  double sommeY = 0;
+  /*
+   * On parcourt toutes les autres molécules car la molécule
+   * courante doit être attirée par toutes les autres molécules
+   */
+  for(Oval otherMol in mols)
+    /*
+     * Une molécule ne s'attire pas elle-méme
+     */
+    if(!otherMol.equals(mol)) {
+      /*
+       * Le vecteur delta défini ci-dessus est le vecteur
+       * qui va de la molécule courant à la molécule en
+       * cours de traitement (de mol vers otherMol)
+       */
+
+      double vecX = otherMol.getX() - mol.getX();
+      double vecY = otherMol.getY() - mol.getY();
+
+      /*
+       * On calcule l'intensité de la force d'attaction
+       * qu'exerce autreMol sur mol (gravité/distance^2)
+       * On fait ici abstraction de la masse puisque chaque
+       * molécule a la même masse
+       */
+      double force = gravity / Math.sqrt(vecX * vecX + vecY * vecY);
+
+      /*
+       * On calcule la norme, c'est-à-dire la longeur du vecteur vec
+       */
+      double vecNorm = Math.sqrt(vecX * vecX + vecY * vecY);
+
+      /*
+       * On divise vec par sa norme, on appelle cette opération
+       * la normalisation : le vecteur résultant a la même
+       * direction et le même sens que le vecteur original, mais
+       * sa norme vaut 1
+       */
+      vecX /= vecNorm;
+      vecY /= vecNorm;
+
+      /*
+       * On multiplie ce vecteur normalisé par la force qu'exerce
+       * otherMol sur mol. Cela produit un vecteur qui, placé
+       * sur mol pointe vers autreMol mais a une norme égale à
+       * la force qu'autreMol applique sur mol.
+       */
+      vecX *= force;
+      vecY *= force;
+
+      /*
+       * On ajoute ce vecteur au vecteur somme
+       */
+      sommeX = sommeX + vecX;
+      sommeY = sommeY + vecY;
+    }
+  /*
+   * On déplace la molécule de la somme des vecteurs force
+   */
+  mol.position(mol.getX() + sommeX, mol.getY() + sommeY);
+  /*
+   * On va à présent parcourir toutes les autres molécules à nouveau pour vérifier
+   * qu'aucune d'entre elles ne recouvre partiellement mol.
+   */
+  for(Oval otherMol in mols)
+    if(otherMol != mol) {
+      /*
+       * On calcule la distance entre les deux cercles et si cette distance est
+       * supérieure au diamètre d'un cercle alors on fait reculer les deux
+       * cercles de façon à ce qu'ils soient placés à leur point de contact
+       */
+      double ax = mol.getX();
+      double ay = mol.getY();
+      double bx = otherMol.getX();
+      double by = otherMol.getY();
+      double vecABX = bx - ax;
+      double vecABY = by - ay;
+      double normAB = (double) Math.sqrt(vecABX * vecABX + vecABY * vecABY);
+      if(normAB < 2 * radius) {
+        double overlap = 2 * radius - normAB;
+        vecABX /= normAB;
+        vecABY /= normAB;
+        vecABX *= overlap / 2;
+        vecABY *= overlap / 2;
+        otherMol.position(otherMol.getX() + vecABX, otherMol.getY() + vecABY);
+        mol.position(mol.getX() - vecABX, mol.getY() - vecABY);
+      }
+    }
+}
+void main() {
+  mols = new Group();
+  /*
+   * On crée 100 molécules placées aléatoirement en carré
+   */
+  for(int i = 0; i < 100; i++) {
+    Oval mol = new Oval(Math.random() *1000, Math.random() *1000, 2 *radius, 2 *radius);
+    mols.add(mol);
+  }
+  mols.onFrame("seRegrouper", true);
+  while(true) {
+    ;
+  }
+}

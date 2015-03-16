@@ -1,0 +1,417 @@
+<div>
+  <h2>Quelques idées de TPE:</h2>
+  <h3 align="right">une 60taine d'idées avec leurs références dont une 15zaine d'idées détaillées.</h3>
+  <div align="right">
+  Ce document est publié sous licence <a href="http://interstices.info/display.jsp?id=c_13475">Creative Commons</a> <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/legalcode"><img align="middle" border="0" src="http://interstices.info/images/custom/puces/cdr_bouton.gif" width="99" height="33"/></a>.</div>
+
+  <br /><div align="right">Version <a href="/documents/quelques-t-p-e/quelques-t-p-e.pdf ">PDF</a></div>
+
+  <div><big>Comment ça marche ?</big> Facile ! Regarder, choisir, et si une idée plaît: n'hésitez pas à <a href="mailto:science-participative@sophia.inria.fr?subject=A_propos_de_TPEs">nous contacter</a>, nous sommes des chercheurs et des enseignants qui allons essayer de vous conseiller. Si vous êtes un élève de la CASA, c'est encore plus simple, votre professeur participe à ce projet, allez lui en parler !
+   <!--div>Vous pouvez aussi obtenir des renseignements précieux sur le <a href="http://www.sciences-t-p-e.ens-cachan.fr">site de l'ENS</a></div--></div>
+   <div align="right"><a href="/documents/quelques-t-p-e/affiche_finale_inria.pdf"><img src="/documents/quelques-t-p-e/logo_finale_inria.jpg" width="100"/></a></div>
+
+<tpes>
+
+  <tpe id="ciel-tete" title="Le ciel peut-il nous tomber sur la tête ?" icon="/documents/quelques-t-p-e/meteorcrater.gif" theme="A">
+    Pourquoi il y a-t-il moins de cratères d'impact sur Terre que sur la Lune ? Qu'est-ce qui provoque ces cratères ? Quelle est la fréquence des collisions ? 
+    Peut-on les prévoir ? A quand la prochaine ? Quelles furent les plus grandes de notre histoire et pré-histoire ?
+    <div>Une recherche documentaire, mais aussi, dans la région niçoise, la chance de pourvoir aller <a href="http://www.astrorama.net">in situ</a>
+    visiter un vrai <a href="http://www.obs-nice.fr">site scientifique</a> pour y confronter votre réalisation. Et participer à une observation astronomique réelle.</div>
+    <link l="http://www.imcce.fr"/>
+    <link l="http://neo.jpl.nasa.gov"/>
+    <link l="http://cfa-www.harvard.edu/iau/mpc.html"/>
+    <link l="http://www.oca.eu"/>
+    <link l="http://www.astrorama.net"/>
+  </tpe>
+
+  <tpe id="globalisation" title="Quels sont les effets de la globalisation ?" icon="http://svt.ac-dijon.fr/schemassvt/IMG/gif/globe1.gif" theme="A">
+    La Globalisation représente l'extension de l'économie de marché à toute forme de production et d'échange de biens et services. 
+    La France a la particularité d'être le pays où une grande majorité de la population craint et critique cette intégration globale des marchés. 
+    <div>Quels sont les risques ? Quelles sont les opportunités ? Quels sont les enjeux pour la France et pour l'Europe ?</div>
+    <link l="http://www1.worldbank.org/economicpolicy/globalization"/>
+    <link l="http://www.gs.com/insight/research/reports/99.pdf" n="Goldman Sachs, October 2003: Dreaming With BRICs: The Path to 2050 [voir outil traduction]"/>
+    <link l="http://www.columbia.edu/cu/news/vforum/03/globalization_inequality/index.html" n="Top Minds Weigh in on the Current Climate of Globalization (G. Soros, J. Sachs, J. Stiglitz) [voir outil traduction]"/>
+      <link l="http://www.itcilo.it/actrav/actrav-english/telearn/global/ilo/globe/new_page.htm" n="ILO report on Globalization"/>
+    <link l="http://www.ocde.org" n="OCDE à Paris"/>
+    <link l="http://www.europa.eu/index_fr.htm" n="Union Européenne à Bruxelles"/>
+    <link l="http://www.imf.org" n="FMI à Washington"/>
+  </tpe>
+
+  <tpe id="crise-financiere" title="D'où viennent les crises financières ?" icon="http://upload.wikimedia.org/wikipedia/commons/thumb/4/40/RVS_Handelsraum.jpg/220px-RVS_Handelsraum.jpg" theme="A">
+    Les crises financières ne sont pas un phénomène nouveau. 
+    La fameuse <a href="http://fr.wikipedia.org/wiki/Tulipomanie">crise des tulipes au 17ème siècle</a> en est le parfait exemple. 
+    <div>Quelles sont les origines de ces crises financières, leurs mécanismes et conséquences ? En quoi la crise immobilière des "subprime" aux Etats-Unis en est-elle une nouvelle illustration ?</div>
+    <div>Ouvrages utiles :
+      <div>"Brève histoire de l'euphorie financière", de John Kenneth Galbraith, éd. Seuil (à trouver en bibliothèque car épuisé chez l'éditeur)</div>
+      <div>"Histoire mondiale de la spéculation financière", de Charles Kindleberger.</div>
+    </div>
+    <link l="http://www.fimarkets.com/pages/marches_financiers.htm" n="Description du fonctionnement des marchés financiers et de ses acteurs"/>
+    <link l="http://www.wto.org/french/res_f/booksp_f/special_study_3_f.pdf" n="Commerce, finance et crises financières (Organisation Mondiale du Commerce)"/>
+    <link l="http://www.medef.fr/main/core.php?pag_id=449" n="Booms and busts, manias, panics and crashes : l'incertitude financière, débat animé par Jean-Luc Decornoy, MEDEF Université d'été 2002"/>
+    <link l="http://archives.lemonde.fr/web/chat/0,46-0@2-3234,55-942719,0.html" n="Une crise financière est-elle inéluctable ? LEMONDE.FR | 07.08.07 | 16h23"/>
+    <link l="http://www.lemonde.fr/web/article/0,1-0@2-3232,36-946455,0.html" n="Les leçons de la crise financière, par Pierre-Antoine Delhommais LE MONDE | 22.08.07 | 14h30"/>
+    <link l="http://www.lemonde.fr/web/article/0,1-0@2-3232,36-952864,0.html" n="Crise financière ou scandale bancaire ?, par Eric Le Boucher LE MONDE | 08.09.07 | 15h20"/>
+    <!--link l="http://www.lecho.be/actualite/economie_et_finance/article.asp?Id=3123581" n="La crise des crédits 'subprime': quelques repères et termes techniques, L'Echo 15:21 - 10/08/2007"/-->
+  </tpe>
+
+  <tpe id="climat" title="Réchauffement climatique, quelles sont les vraies prédictions ?" icon="/documents/quelques-t-p-e/kweather.png" theme="A">
+    Le climat change: personne ne peut le nier. Certains disent même que c'est trop tard ! D'autres que c'est exagéré . . Mais surtout : que faire ?
+    <div>Analyser les résultats proposés sur le web. Dans quelle mesure les associations très militantes exagèrent ou . . pas ?</div>
+    <div>Au niveau scientifique pourquoi il y a t'il un lien entre Co2 et température ? Quelles sont les leviers de ce réchauffement ?</div>
+    <div>Quelles sont les conséquences attendues au niveau de la planète ? Quel impact pour les habitants ?</div>
+    <div>Pourquoi personne ne relie la crise climatique avec l'explosion du nombre d'habitants sur la terre ?</div>
+    <div>Quelles solutions concrètes sont finalement proposées ? Comment prédire leur effet ?</div>
+    <link l="http://interstices.info/display.jsp?id=c_19179"/>
+    <link l="http://www.cnrs.fr/cw/dossiers/dosclim/index.htm"/>
+    <link l="http://www.criseclimatique.fr"/>
+    <link l="http://www2.cnrs.fr/presse/communique/696.htm"/>
+    <link l="http://www.cnrs.fr/cw/dossiers/dosclim/index.htm"/>
+  </tpe>
+
+  <tpe id="a-voter" title="Les machines à voter en question." icon="/documents/quelques-t-p-e/voting_machine.png" theme="B"> 
+    Vote électronique: plus de bulletin papier, on appuie sur un bouton ! Que gagne t'on ? Quel danger ? Les gens ont ils raison de s'inquiéter ?
+    <div>Combien coûte un vote ? En temps et en argent ? Qu'en pensent les responsables politiques de Valbonne et Antibes où on vote électroniquement ?</div>
+    <div>Une enquête auprès des habitants, manitenant qu'il ont voté: qu'en pensent ils ? Comment rendre la machine facilement utilisable par tous ? Amusante pour donner envie d'aller voter ?</div>
+    <div>Fabriquer une machine à voter (un petit programme) et regarder comment garantir que le vote est ok: quel est l'intérêt du logiciel libre ici ?</div>
+    <div>Pourrait-on voter de son domicile pour donner son avis sur certaines décisions ? Quel risques d'une telle démocratie "directe" ?</div>
+    <link l="http://interstices.info/display.jsp?id=c_22450"/>
+  </tpe>
+
+  <tpe id="a-voter" title="Pourquoi les étoiles sont-elles de couleurs différentes ?" icon="/documents/quelques-t-p-e/mochejska.jpg" theme="A">
+    Que nous apprend la couleur des étoiles ? Comment mesure-t'on la couleur des étoiles ? 
+    Comment les astronomes arrivent-ils à reconstituer l'évolution des étoiles ? Quel est l'avenir du Soleil ?
+    <link l="http://www.oca.eu"/>
+    <link l="http://www.obspm.fr/"/>
+    <!--link l="http://www.esa.int/esaED/index.html"/-->
+    <link l="http://hubblesite.org/newscenter/"/>
+  </tpe>
+
+  <tpe id="rubix-cube" title="En combien de coup peut-on résoudre le casse-tête du cube de rubix ?" icon="http://trucsmaths.free.fr/images/rubikcub.gif" theme="A">
+    Comment programmer un ordinateur pour trouver la solution ? Quel est le nombre de coups maximal ? Quel est le nombre de coup moyens ? Et les personnes "de la rue"
+    en combien de coup résolvent-ils un rubix cube 2x2x2 ? A partir de quel âge les enfants y arrivent-ils ? Y a t'il des règles "automatiques" ? Finalement
+    doiton être intelligent pour y arriver ?
+    <link l="http://fr.wikipedia.org/wiki/Cube_de_Rubik"/>
+    <link l="http://trucsmaths.free.fr/rubik.htm"/>
+  </tpe>
+
+  <tpe id="solaire" title="Que peut-on faire avec l'énergie solaire ?" icon="http://system.solaire.free.fr/soleil10.jpg" theme="D">
+    Quelles sont les utilisations de l'énergie solaire ? Dans quel cas est-ce rentable ? Peut-on directement faire marcher un véhicule avec de l'énergie solaire ?
+    Comment équiper notre vie quotidienne avec des capteurs solaires ?
+    <link l="http://fr.wikipedia.org/wiki/%C3%89nergie_solaire"/>
+    <link l="http://www.actu-environnement.com/ae/news/1194.php4"/>
+    <link l="http://perso.orange.fr/f5zv/SOLAIRE/SM2/SM2.html"/>
+    <link l="http://gadgets.branchez-vous.com/archives/2005/04/solar_style_a_s.html"/>
+    <link l="http://www.avem.fr"/>
+  </tpe>
+
+  <tpe id="ciel-bleu" title="Pourquoi le ciel est bleu ?" icon="http://lespetiteschoses.viabloga.com/images/ciel_bleu.jpg" theme="A">
+    Une question simple ? Pas sûr, les réponses que l'on trouve sur le web se contredisent parfois ! Comment savoir ce qui est vraiment vrai ?
+    <div>Analyser les réponses internet, les vraies les fausses, les confronter à l'avis d'un physicien de l'université de Nice.</div>
+    <div>Et puis . . maintenant que vous avez compris . . comment expliquer à quelqu'un selon son niveau scolaire, sa culture pourquoi le ciel est bien bleu ?</div>
+    <div>Un peu de pratique ? Essayons de simuler la vibration des molécules d'azote (avec les tailles, dimensions, ..) avec le chercheur, 
+    regarder quel serait la couleur du ciel si un autre gaz "inerte" remplçait l'azote, etc..</div>
+    <link l="http://lespetiteschoses.viabloga.com/news/pourquoi-le-ciel-est-bleu"/>
+    <!--link l="http://eureka.povlab.org/fiche.php?qid=1"/-->
+    <link l="http://www.meteo.org/phenomen/cielbleu.htm"/>
+  </tpe>
+
+  <tpe id="google" title="Comment se faire prendre en faisant sont TPE en 20mn grace a google ?" icon="http://www.esseclive.com/partage/articles/chezmomo_plagiat.jpg" theme="B"> 
+    Le sujet du TPE c'est . . le TPE ! Comment ressayer de écupérer un TPE tout prêt sur internet, sans se fatiguer ? Pourquoi voir toutes les chances de se faire prendre ?
+    <div>Les professeurs connaissent bien ces sites où on peut prendre un TPE tout fait . . voir même . . l'acheter ! Quels sont ces sites ?</div>
+    <div>Et comment détecter un texte de TPE ou non "copié-collé" à partir de google ? Et si le contenu était erronné ?</div>
+    <div>Quel credit accorder a google en fait ? Ou a des contenus comme dans <a href="http://fr.wikipedia.org/wiki/Accueil">wikipedia</a>?</div>
+    <div>Plus généralement, comment s'assurer que l'information est valide ?</div>
+    <link l="http://interstices.info/display.jsp?id=c_21839"/>
+  </tpe>
+
+  <tpe id="marche" title="Restaurer la marche grâce à une puce" icon="http://www-sop.inria.fr/demar/images/512.jpg" theme="C"> 
+    Informatique, biologie et mathématiques: les trois ensemble permettent de . . faire marcher certains parallitiques ? Est-ce si facile ?
+    <div>Comment un tel interface muscle-électronique fonctionne t'il ? Grâce à quelles connaissances biologiques ? Grâce à quels calculs ?</div>
+    <div>Quel rapport avec les robots marcheurs ? Que comprend t'on de la marche humaine aujourd'hui ?</div>
+    <div>Finalement qu'est ce qui est possible et qu'est ce qui restera impossible pour les patients ? Quel espoir et quelles déceptions ?</div>
+    <div>Au centre héliomarin de Vallauris comment un tel outil pourrait-être utilisé ? A Montpellier où en sont les essais ?</div>
+    <div>Combien ça coûte à la société ? Qui y aura accès ?</div>
+    <link l="http://interstices.info/display.jsp?id=c_19186"/>
+    <link l="http://www.cnrs.fr/cw/dossiers/doshand/index.html"/>
+    <link l="http://interstices.info/display.jsp?id=c_5688"/>
+  </tpe>
+
+  <tpe id="portable-nocif" title="Les téléphones portables sont ils nocifs pour nos tissus ?" icon="http://science-citoyen.u-strasbg.fr/dossiers/ondes/images/pic3.gif" theme="C">
+    On a beaucoup parlé des effets nocifs des téléphones portables: les consommateurs s'inquiètent, les opérateurs rassurent . . que disent les scientifiques ?
+    <div>Que sait-on et ne sait on pas aujoud'hui ? Sur les effets thermiques ? Les effets électro-magnétiques ? Quel nocivité des antennes ?</div>
+    <div>Le public a t'il vraiment tous les éléments ou y a t'il des choses "cachées" ? Les opérateurs donnent ils des informations exactes ? partielles ?</div>
+    <div>Pourra t'on tout savoir ? Vivre dans un monde où tout les principes de précaution s'appliquent ?</div>
+    <link l="http://www-sop.inria.fr/caiman/personnel/Stephane.Lanteri/headexp/headexp-doc.pdf" n="rapport technique"/> 
+    <link l="http://www-sop.inria.fr/caiman/personnel/Stephane.Lanteri/talks/Telius_12-06-2006.pdf" n="Realistic numerical modelling of head tissues exposure to electromagnetic waves from mobile phones (à traduire avec un outil automatique !)"/> 
+  </tpe>
+
+  <tpe id="hoax" title="Poutine rend Sarkozy ivre ! Les députés se votent une rente à vie !" icon="http://www.poster.net/disney-walt/disney-walt-donald-duck-2800551.jpg" theme="C">
+    Hoax ! Des vraies fausses et de fausses vraies informations circulent sur le web: les plus folles ! Les plus méchantes . . et parfois les plus vraies aussi ! Qu'en est-il ?
+    <div>L'exemple de la "rente à vie": le <a href="http://www.lecanardenchaine.fr">Canard Enchaîné</a> lance la nouvelle le 7 février 2007, les militants hurlent, même des <a href="http://www.lefigaro.fr/election-presidentielle-2007/20070403.WWW000000250_assurance_chomage_le_regime_special_des_deputes.html">hommes politiques en parle dans des journaux de tout bord</a> et . . pourtant c'est un <a href="http://www.hoaxbuster.com">"hoax"</a> issu d'une vérité.</div>
+    <div>Autour du tragique évenement du 11 septembre quelles <a href="http://www.hoaxbuster.com/hoaxliste/hoax.php?idArticle=2338">rumeurs inouïes</a> sont nées et pour 
+    quel motif <a href="http://www.hoaxbuster.com/interviews/detail.php?idInterview=3190">par exemple</a> ? Quels autres exemples avez vous ? (ex: le "massacre" de Timisoara, les Bonsai Kitten, les enfants malades à sauver, ..)</div>
+    <div>A l'inverse (ex: <a href="http://fr.wikipedia.org/wiki/Manifestations_de_la_place_Tian'anmen">Tian'anmen</a>) comment faire connaître la vérité permet de 
+    <a href="http://www.amnesty.fr/index.php/amnesty/qui_sommes_nous/amnesty_ca_marche">sauver des vies </a> ?</div>
+    <div>Comment s'assurer de la vérité des informations choc ? Comment le web change t'il les choses ? Qui détient le pouvoir d'informer ? Quels contre-pouvoirs possibles ?</div>
+    <div>Un expérience: et si vpus propagiez une rumeur au lycée ou sur internet pour étudier comment elle prend corps et se propage ? 
+    (Attention on peut tout faire . . mais pas n'importe quoi ! Agissez de manière responsable . . .)</div>
+    <link l="http://www.hoaxbuster.com"/>
+  </tpe>
+  
+  <tpe id="zetetique" title="Quel est le point commun entre l'astrologie, les ovnis et les pouvoirs surnaturels ? La zététique !" icon="http://alaincuniot.pbwiki.com/f/Z%C3%A9t%C3%A9tique.png" theme="B">
+    Quelle est l'attitude à adopter devant un phénomène "paranormal" ? Comment l'examiner ? Quelle est la méthode à utiliser ?
+    <div>Plus de la moitié des français croient au "para-normal" : pourquoi un tel besoin ? Qui en profite ?</div>
+    <div>L'exemple médical: l'effet placebo. Qu'est ce exactement ? Qui a étudié le phénomène ? Que proposer concrètement ?</div>
+    <div>L'exemple de l'<a href="http://geraldcusin.free.fr/spip.php?article46">effet de la lune</a>. Qu'est ce qui été vraiment prouvé ?</div>
+    <div>L'exemple des expériences de mort imminente. Quel ressentent les gens ? Comment en faire une étude approfondie ? Que reste t'il de vrai ?</div>
+    <link l="http://www.unice.fr/zetetique"/>
+  </tpe>
+
+  <tpe id="bourse" title="Comment gagner à la bourse ou au loto en misant le moins ?" icon="http://money.unblog.fr/files/2007/05/euromillions.jpg" theme="B">
+    Quelles sont les chances de gagner au loto ? Quelle est la différence aveec jouer en bourse ? Peut on finalement gagner de l'argent sans travailler ?
+    <div>Choisir un des <a href="http://www.fdjeux.com">jeux de chances</a> officiels et calculer combien de personnes jouent et payent et combien est gagné ?</div>
+    <div>La notion de <a href="http://fr.wikipedia.org/wiki/Martingale">martingale</a> permet-elle de gagner ? Alors : comment gagner ?</div>
+    <div>A qui ces jeux rapportent ? Combien ? Pourquoi avoir envie de jouer ainsi ? Effectuer un sondage auprès de clients d'un tabac: quelle est leur croyance ?</div>
+    <div>Que signifie jouer en bourse ? Quels sont les <a href="http://fr.wikipedia.org/wiki/Math%C3%A9matiques_financi%C3%A8res">outils</a> pour prévoir comment gagner ?</div>
+  </tpe>
+
+  <tpe title="Les algorithmes de tri: le plus bel exemple d'algorithme" icon="http://interstices.info/upload/ingredients/ingredients2.jpg" theme="A">
+    Où on regarde comment trier au plus vite un tableau de données: pour 1 million de mots on peut aller 50000 fois plus vite !
+    <div>Programmer une méthode de tri "triviale" puis une méthode de tri "rapide". Appliquer au lexique des mots du français: que gange t'on ?</div>
+    <div>A quoi peut servir les méthodes de tri ? Que gagne t'on en vitesse quand on recherche une information ?</div>
+    <div>Comment google peut il trier toutes ces informatons ?</div>
+    <link l="http://interstices.info/display.jsp?id=c_6973"/>
+  </tpe>
+
+  <tpe title="La fusion thermonucléaire : une solution au problème énergétique ?" icon="http://www.sckcen.be/fusionweb/images/fusion17b.jpg" theme="B">
+    Dans 50 ou 100 ans les énergies fossiles (pétrole, gaz, ..) seront de plus rares: que deviendra la société de nos enfants ?
+    <div>Discuter si la "fusion" est une solution possible ? Solution miracle ? Quelles limites ? Quels dangers ?</div>
+    <div>Le problème de l'énergie n'est ce pas la . . consommation ? Quelle sera-t'elle dans le monde de demain ? Compte-tenu de l'évolution du monde ?</div>
+    <div>Economiser l'énergie, les transports ? Comment réorganiser la société pour réduire fortement cette consommation ? L'informatique y aiderait-elle ?</div>
+    <link l="http://interstices.info/display.jsp?id=c_5818"/>
+    <link l="http://fr.wikipedia.org/wiki/International_Thermonuclear_Experimental_Reactor"/>
+    <link l="http://reacteur.iter.free.fr"/>
+  </tpe>
+
+  <tpe id="vehicule" title="Quelle future place pour la voiture en ville ?" icon="http://www.batscap.com/supercapacite/images/Tramway.jpg" theme="B">
+    Un premier essai de véhicule automatique a eu lieu en juin 2004 à Antibes - Juan les Pins: trois ans après que se passe t'il ?
+    <div>Aller enquêter auprès de la mairie d'Antibes et des habitants: s'en souviennent-ils ? Qu'en pensent-ils ?</div>
+    <div>Transport en communs ? Taxi au prix du bus ? Recréer des centre-ville faciles / Comment résoudre le problème du transport en ville ?</div>
+    <div>Quelle solutions techniqques proposer ? L'ordinateur peut-il aider ? Peut-on inventer de nouveaux véhicules ?</div>
+    <div>La société <a href="http://www.vulog.com">VULog</a> a crée un produit et des emplois à partir de cette idée: une enquête s'impose !</div>
+    <link l="http://interstices.info/display.jsp?id=c_9935"/>
+    <link l="http://interstices.info/display.jsp?id=c_9550"/>
+    <link l="http://www.avem.fr"/>
+  </tpe>
+
+  <tpe id="opensource" title="Le logiciel libre et ouvert : révolution ou évolution ?" icon="http://interstices.info/upload/libre-dvpt/img_gnou.jpg" theme="B">
+    Que veux dire logiciel libre ? Comment gagner de l'argent en faisant un logiciel . . gratuit ? Comment se mettre à plusieurs pour faire mieux ?
+    <div>Logiciel libre et logiciel ouvert: des notions précises qui correspondent à des centaines d'années-homme de travail partagé: à définir précisément.</div>
+    <div>Les grands logiciels libres LiNuX, OpenOffice, Mozilla/Firefox, Apache, logiciels GNU: comment ça marche ? Pourquoi avoir choisi cette solution ?</div>
+    <div>Quel <a href="http://www.jcheritier.net/memoire">modèle économique viable</a> pour un logiciel libre ? Comment créer des services au dessus du logiciel partagé ?</div>
+    <div>Et vous : quelle société internet monteriez vous autour du logiciel libre ?</div>
+    <link l="http://interstices.info/display.jsp?id=c_14658"/>
+    <link l="http://fr.wikipedia.org/wiki/Logiciel_libre"/>
+    <link l="http://interstices.info/display.jsp?id=c_19215"/>
+  </tpe>
+  
+  <tpe id="pairapair" title="Tout est il vraiment gratuit avec le peer-to-peer ?" icon="http://interstices.info/upload/p2p/p2p.jpg" theme="B">
+    Et hop vie le pair à pair: je récupère un tous les films gratuits ! Je les partage et je les copie ? Tiens je pourrais même les revendre aussi ? Pourquoi la police est ici ?
+    <div>Comment marche les réseaux pair à pair ? Pourquoi sont-ils plus robustes que les structure en étoile (un serveur et des clients) ? A quoi peuvent-ils servir ?</div>
+    <div>Le pair à pair a été beaucoup utilisé pour . . voler des contenus intelectuels (films, musique, ..) mais qui est volé ? Que dit la loi ?</div>
+    <div>Y a t'il d'autres moyens de partager des contenus sans se voler ni se faire voler ? Que proposent certains artistes ?</div>
+    <div>Pour garantir la liberté d'expression, partager les informations publiques, protéger les données, etc.. quelles sont les utlisations "nobles" du pair à pair ?</div>
+    <link l="http://interstices.info/display.jsp?id=c_8622"/>
+    <link l="http://interstices.info/display.jsp?id=c_2209"/>
+  </tpe>
+
+  <tpe id="enigma" title="La Seconde Guerre Mondiale a été gagnée par . . un calcul d'ordinateur" icon="http://interstices.info/upload/enigma/enigma.jpg" theme="B">
+    Certains disent que c'est grâce à un anglais, d'autres grâce à des polonais . . mais en pleine guerre un calcul mathématique a tout bouleverser . . on regarde ce qui s'est passé ?
+    <div>La machine enigma : comment marche t'elle ? A quoi était-elle utilisée ? Quel sont les machines qui servaient à crypter avant les ordinateurs ?</div>
+    <div>Pourquoi certains disent grâce à un anglais, d'autres grâce à des polonais ? Auraient-ils tous les deux raisons ? L'histoire a t'elle réellement changé ?</div>
+    <div>Que se passerait-il avec un ordinateur aujourd'hui ? Comment crypter l'information actuellement ? Comment marche le mécanisme clé publique/privée ?</div>
+    <link l="http://interstices.info/display.jsp?id=c_20465"/>
+    <link l="http://interstices.info/display.jsp?id=c_9752"/>
+    <link l="http://fr.wikipedia.org/wiki/Cryptographie_asym%C3%A9trique"/>
+  </tpe>
+
+  <tpe id="lune" title="Pourquoi la Lune s'éloigne-t-elle de la Terre ?" icon="/documents/quelques-t-p-e/laser-lune.jpg" theme="A">
+    La distance Terre-lune augmente de 3 cm par an. Des mesures sont faites depuis les années 1970 à l'observatoire de Calern (OCA). 
+    <div>L'éloignement est dû au ralentissement de la Terre. Pourquoi la Terre tourne-t-elle de moins en moins vite ? comment peut-on mesurer ce ralentissement ?
+    Quelles conséquences pratiques en découlent ?</div>
+    <div>Une recherche documentaire, mais aussi, dans la région niçoise, la chance de pourvoir aller <a href="http://www.astrorama.net">in situ</a>
+    visiter un vrai <a href="http://www.obs-nice.fr">site scientifique</a> pour y confronter votre réalisation. Et participer à une observation astronomique réelle.</div>
+    <link l="http://www.oca.eu"/>
+    <link l="http://www.astrorama.net"/>
+    <link l="http://www.inconstantmoon.com"/>
+  </tpe>
+
+  <autres-t-p-es/>
+
+  <tpe id="depollution" title="Pour ne jamais manquer d'eau: la modélisation des procédés biologiques de dépollution" icon="http://www.cnrs.fr/cw/dossiers/doseau/imgArt/AAcycleEauReservoir/01a10505z.jpg" theme="C">
+    <!-- Avec l'explosion démographique et le réchauffement climatique manquer d'eau . . -->
+    <link l="http://interstices.info/display.jsp?id=c_18128"/>
+    <link l="http://www.cnrs.fr/cw/dossiers/doseau/accueil.html"/>
+    <linl l="http://www.hygeiaweb.gr/home.html"/>
+  </tpe>
+
+  <tpe id="sourd" title="Comment aider les sourds qui communiquent par la langue des signes à partager le monde des entendants et réciproquement ?" icon="/documents/quelques-t-p-e/lgsigne.png" theme="C">
+    <link l="http://interstices.info/display.jsp?id=c_7039"/>
+  </tpe>
+
+  <tpe id="zero" title="Quelle est l'histoire du zéro?" icon="/documents/quelques-t-p-e/zero.jpg" theme="A">
+    <link l="http://villemin.gerard.free.fr/Wwwgvmm/Nombre/ZerHisto.htm"/>
+  </tpe>
+
+  <tpe id="geomanip" title="Le plus grand voyage de tous les temps: celui des continents !" icon="http://dinosaureplanto.online.fr/images/trias.gif" theme="A">
+    <link l="http://www.cnrs.fr/cw/dossiers/dosgeol/accueil.html"/>
+  </tpe>
+
+  <tpe id="simul" title="La simulation par ordinateur change-t-elle les sciences ?"  icon="http://interstices.info/upload/calculer-penser/penser-calculer-4.jpg" theme="D">
+    <link l="http://interstices.info/display.jsp?id=c_19121"/>
+  </tpe>
+
+  <tpe id="grille" title="Quand tous les ordinateurs se mettent en grille pour les plus grands calculs de tous les temps" icon="http://cri.univ-lille1.fr/digitalAssets/0/472_new-grid5000.jpg" theme="D">
+    <link l="http://interstices.info/display.jsp?id=c_12882"/>
+  </tpe>
+
+  <tpe id="nano" title="A la conquête de l'infiniment petit: nano-technologie et santé"  icon="http://www.cnrs.fr/cw/dossiers/dosnano/decouv/01/01_0/img/nanotube_gde.jpg" theme="C">
+    <link l="http://www.cnrs.fr/cw/dossiers/dosnano/accueil.htm"/>
+  </tpe>
+
+  <tpe id="robot" title="Faire le portrait robot de quelques robots"  icon="http://www.cnrs.fr/cw/dossiers/dosrob/images/decouvrir/cieux01.jpg" theme="D">
+    <link l="http://www.cnrs.fr/cw/dossiers/dosrob/accueil/index.html"/>
+  </tpe>
+
+  <tpe id="artechno" title="Les techniques d'investigation scientifique au service des œuvres d'art" icon="http://www.cnrs.fr/cw/dossiers/dosart/imgArt/cana/ciel_gde.jpg" theme="B">
+    <link l="http://www.cnrs.fr/cw/dossiers/dosart/accueil.html"/>
+  </tpe>
+
+  <tpe id="complexite" title="Ce que ne pourra jamais faire un ordinateur" icon="http://physics.kenyon.edu/coolphys/thrmcmp/turing.jpg" theme="D">
+    <link l="http://interstices.info/display.jsp?id=c_5723"/>
+    <link l="http://interstices.info/display.jsp?id=c_21832"/>
+  </tpe>
+
+  <tpe id="cerveau" title="Le cerveau est-il un bon modèle de réseau de neurones ?"  icon="http://www-connex.lip6.fr/icones/neurone-2" theme="C">
+    <link l="http://www.inln.cnrs.fr/IMG/pdf/VRN-4.pdf"/>
+  </tpe>
+
+  <tpe id="beaute" title="Chimie et beauté: comment la chimie participe au bien-être de l'homme et à son apparence" icon="/documents/quelques-t-p-e/chemistry.png" theme="C">
+    <link l="http://www.cnrs.fr/cw/dossiers/doschim/accueil.html"/>
+    <link l="http://interstices.info/display.jsp?id=c_16864"/>
+  </tpe>
+
+  <tpe id="evolution" title="Et Dieu créa la fabuleuse histoire de l'évolution du monde vivant" icon="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Maggia_lacerta_sicula_fg06.jpg/250px-Maggia_lacerta_sicula_fg06.jpg" theme="C">
+    <link l="http://www.cnrs.fr/cw/dossiers/dosevol/accueil.html"/>
+    <link l="http://fr.wikipedia.org/wiki/Cr%C3%A9ationnisme"/>
+  </tpe>
+
+  <tpe id="bioinfo" title="La bioinformatique cherche à faire progresser les connaissances sur le fonctionnement des organismes vivants" icon="http://www.debriefing.org/images/souris_attaquee_par_virus.jpg" theme="C">
+    <link l="http://interstices.info/display.jsp?id=c_6474"/>
+  </tpe>
+
+  <tpe id="bigbang" title="Dis-moi c'est quoi en fait le big bang ?" icon="http://www.aquila.free.fr/big-bang.jpg" theme="A">
+    <link l="http://www.cnrs.fr/cw/dossiers/dosbig/accueil.htm"/>
+  </tpe>
+
+  <tpe id="sudoku" title="En quoi le jeu du Sudoku est-il lié aux recherches en informatique ?" icon="http://jonathan.touboul.free.fr/IMG/arton41.gif" theme="D">
+    <link l="http://interstices.info/display.jsp?id=c_16912"/>
+  </tpe>
+
+  <tpe id="flotter" title="Peut-on faire flotter n'importe quoi ? (notamment un bateau en béton)" icon="http://www.cryptomundo.com/wp-content/elephant1.jpg" theme="A">
+    <link l="http://fr.wikipedia.org/wiki/Pouss%C3%A9e_d'Archim%C3%A8de"/>
+    <!--link l="http://infocom.u-strasbg.fr/~canoe/index.html"/-->
+  </tpe>
+
+  <tpe id="guitare" title="Comment simuler et comprendre la guitare acoustique" icon="http://www.simonandpatrick.com/gtrwoodced.jpg" theme="A">
+    <link l="http://interstices.info/display.jsp?id=c_19174"/>
+    <link l="http://interstices.info/display.jsp?id=c_6167"/>
+  </tpe>
+
+  <tpe id="cellule" title="Et si on voyageait une cellule animale ?" icon="http://www.chimie-sup.fr/OGM_fichiers/image006.jpg" theme="C">
+    <link l="http://www.cnrs.fr/cw/dossiers/doscel/accueil2.htm"/>
+  </tpe>
+
+  <tpe id="chemin" title="Comment l'ordinateur trouve le plus court chemin mieux que nous" icon="http://interstices.info/upload/sans-fil/fig04b.gif" theme="D">
+    <link l="http://interstices.info/display.jsp?id=c_15578"/>
+  </tpe>
+
+  <tpe id="cd" title="Comment encoder au mieux un CD ? (les formats, le principe, le son ...)" icon="http://cdn4.iconfinder.com/data/icons/Web_icons/PNG/128/music.png" theme="D">
+    <!--link l="http://www.zdnet.fr/produits/logiciels/audio_video/0,39049729,39161987,00.htm"/-->
+    <link l="http://www.ogg-stream.info/Ogg_Vorbis.html"/>
+  </tpe>
+
+  <tpe id="avion-papier" title="Peut-on faire voler de grands avions en papier . . sans rien casser ?" icon="http://letawny.free.fr/blog/images/park.jpg" theme="A">
+    <link l="http://www.ac-nancy-metz.fr/cinemav/imageaile/papier.htm"/>
+    Quel choix de modèle ? Comment le simuler ?
+  </tpe>
+
+  <tpe id="alternatif" title="Pourquoi utilise t'on du courant alternatif ?" icon="http://f6bon.albert.free.fr/dds1mhz.jpg" theme="A">
+    <link l="http://www.e-scio.net/comment/alternatif.php3"/>
+    <link l="http://bdp.ge.ch/webphys/recherche/download.php?id=392"/>
+  </tpe>
+
+  <tpe id="stereo" title="De la deuxième à la troisième dimension: la vision 3D" icon="http://interstices.info/upload/2d3d/tete.jpg" theme="A">
+    <link l="http://interstices.info/display.jsp?id=c_9564"/>
+    <link l="http://www.autodesk.fr"/>
+  </tpe>
+
+  <tpe id="neuroimagerie" title="Opérer le cerveau grâce à l'ordinateur" icon="http://www.chirurgie-face.com/images/crane.png" theme="C">
+    <link l="http://interstices.info/display.jsp?id=c_16870"/>
+    <link l="http://interstices.info/display.jsp?id=c_17682"/>
+    <link l="http://interstices.info/display.jsp?id=c_12343"/>
+  </tpe>
+
+  <tpe id="estimation" title="Pourquoi ne pas confier au hasard ce qui est trop compliqué à estimer ?" icon="http://bleucieletbleumarine.free.fr/img/casino.jpg" theme="D">
+    <link l="http://interstices.info/display.jsp?id=c_14161"/>
+  </tpe>
+  
+  <tpe id="temps" title="Informatique et temps: là où le temps sous-tend tant et tant" icon="http://interstices.info/upload/temps/sablier.jpg" theme="D">
+    <link l="http://interstices.info/display.jsp?id=c_18488"/>
+  </tpe>
+
+  <tpe id="foret" title="Traitement d'images pour l'évaluation des ressources forestières" icon="http://enforet.wallonie.be/apps/spip2_wolwin/IMG/jpg/Site_Foret_003_allegee.jpg" theme="A">
+    <link l="http://interstices.info/display.jsp?id=c_19212"/>
+  </tpe>
+
+  <tpe id="ayache" title="Des outils informatiques pour la médecine" icon="http://www.inria.fr/multimedia/presse/rv/images/05-INRIA-EPIDAURE.jpg" theme="C">
+    <link l="http://interstices.info/display.jsp?id=c_6522"/>
+    <link l="http://interstices.info/display.jsp?id=c_12239"/>
+    <link l="http://interstices.info/display.jsp?id=c_27573"/>
+  </tpe>
+
+  <tpe id="plantes-virtuelles" title="Créer des plantes virtuelles pour comprendre, simuler, tester" icon="http://interstices.info/upload/plantes/Fig1-1-grd.jpg" theme="C">
+    <link l="http://interstices.info/display.jsp?id=c_10928"/>
+  </tpe>
+
+  <tpe id="surface" title="Reconstruire des surfaces pour l'imagerie" icon="http://www.paysage.fr/images/imagedossier/0037bouttiaua.jpg" theme="A">
+    <link l="http://interstices.info/display.jsp?id=c_12845"/>
+  </tpe>
+
+  <tpe id="catarate" title="Simulation de l'opération de la cataracte" icon="http://interstices.info/upload/cataracte/cataracte.jpg" theme="C">
+    <link l="http://interstices.info/display.jsp?id=c_21525"/>
+  </tpe>
+
+  <tpe id="categorisation" title="Reconnaître un animal : notre cerveau est plus rapide que nous !" icon="http://www.lesaboteur.com/race-cheval/imgs-races/ombre-chinoise.gif" theme="C">
+    <link l="http://interstices.info/display.jsp?id=c_14155"/>
+  </tpe>
+
+  <tpe id="trajectoire" title="Pour sortir d'un labyrinthe ou aller réparer un cœur humain il faut calculer une trajectoire." icon="http://www.enseignement.polytechnique.fr/profs/informatique/Laurent.Viennot/info1B/2003-2004/TD4/labyrinthe.gif" theme="C">
+    <link l="http://interstices.info/display.jsp?id=c_14151"/>
+  </tpe>
+
+  <tpe id="geometrie" title="Manipuler les objets géométriques dans un ordinateur" icon="http://interstices.info/upload/compression-m/tete-david.gif" theme="D">
+    <link l="http://interstices.info/display.jsp?id=c_8841"/> 
+  </tpe>
+
+  <tpe id="ptimonde" title="Lorsqu'on le met en réseau le monde est bien petit !" icon="http://interstices.info/upload/petits-mondes/Milgram.gif" theme="D">
+    <link l="http://interstices.info/display.jsp?id=c_15920"/> 
+  </tpe>
+
+  <tpe id="bio-techno" title="Bio-technologie : prothèses humaines" icon="http://www.fast2reply.com/dailyfast/images/terminator-2.jpg" theme="D">
+    <link l="http://fr.wikipedia.org/wiki/Biotechnologie"/>
+    <!--link l="http://www.genopole.org/html/fr/comprendre/tout_savoir/biotechs/index.htm"/-->
+  </tpe>
+
+</tpes></div>
+

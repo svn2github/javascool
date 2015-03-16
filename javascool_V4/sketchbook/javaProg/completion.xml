@@ -1,0 +1,15 @@
+<keywords>
+  <keyword 
+    name="getPane"
+    title="Renvoie le panneau d'affichage de la proglet.">
+    <code>JLayeredPane pane = getPane();</code>
+    <doc>Renvoie le panneau d'affichage de la proglet pour y dessiner et manipuler des objets 2D.</doc>
+  </keyword>
+  <keyword 
+    name="Crée et montre une icône sur le display"
+    offset="23"
+    title="showIcon">
+    <code>JLabel icon = showIcon("fichierdelimage", x, y, p);</code>
+    <doc>Crée une icône à partir de l'image stockée dans le fichier précisé, pour la positionner en (x,y) et à la profondeur p.</doc>
+  </keyword>
+</keywords>

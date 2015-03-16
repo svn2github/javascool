@@ -1,0 +1,25 @@
+<div title="La «proglet» analogNumerique">
+ <p class="margin">
+    <p>Cliquer <l class="newtab" link="exercice.htm" text="ici"/> pour faire l'activité.</p>
+    <p>Cliquer <l link="http://javascool.gforge.inria.fr?page=proglets&amp;action=show&amp;id=dichotomie&amp;helpFile=./tutoriel.htm" text="ici"/> pour lire le tutoriel.</p>
+  </p>
+  <p>
+    <p>Cette proglet permet de programmer un <l link="http://fr.wikipedia.org/wiki/Convertisseur_analogique-numérique" text="convertisseur analogique-numérique"/>, pour comprendre le mécanisme de recherche dichotomique.</p>
+
+    <div>Plus précisément la fonction <r>output</r> simule la sortie d'une valeur pour la comparaison
+    <div class="code">
+      <p><r>output</r>(tension);</p>
+    </div>
+    cette <b>tension</b> est un <r>int</r> varie entre 0 et 1.023 volts et est donnée en milli-volts,
+    et la fonction <r>compare</r> compare cette tension à la tension inconnue avec la fonction:
+    <div class="code">
+      <p><r>compare</r>();</p>
+    </div>
+     qui renvoie -1 si la tension inconnue est plus petite et 1 si elle plus grande ou égale.
+    </div>
+
+    <div>Les résultats de la conversion analogique-numérique s'afficheront avec un algorithme dichotomique . . 
+    qui doit être trouvé en <l class="newtab" link="exercice.htm" text="exercice"/> !</div>
+  </p>
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=analogNumerique&amp;helpFile=api/org/javascool/proglets/analogNumerique/package-summary.html" text="ici"/></p>
+</div>

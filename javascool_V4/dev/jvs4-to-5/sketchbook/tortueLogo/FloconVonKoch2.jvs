@@ -1,0 +1,35 @@
+// Exemple proposé par Jean-Francois Kentzel <Jean-Franc.Kentzel@ac-toulouse.fr>
+
+void segment(double l, int n) {
+   if (n == 0) {
+      forward(l);
+   } else {
+      segment(l / 3, n - 1);
+      leftward(60);
+      segment(l / 3, n - 1);
+      rightward(120);
+      segment(l / 3, n - 1);
+      leftward(60);
+      segment(l / 3, n - 1);
+   }
+}
+
+void flocon(double l, int n) {
+   segment(l, n);
+   rightward(120);
+   segment(l, n);
+   rightward(120);
+   segment(l, n);
+}
+
+void main() {
+   hide_turtle();
+   set_position(256, 256);
+   clear_all();
+   set_background(5);
+   set_color(0);
+   int n = 10; // readInteger("donnez n=le nombre d'étapes");
+   double l = 200;   // readDouble("donnez l=le côté initial");
+   flocon(l, n);
+}
+

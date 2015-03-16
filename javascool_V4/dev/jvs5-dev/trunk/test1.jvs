@@ -1,0 +1,18 @@
+
+void main(){
+	boolean test = readBoolean("Voulez vous bien me laisser tranquille");
+	if(test){
+		println("Vous êtes gentil !");
+	} else {
+		println("Dans ce cas ce sera une boucle sans fin :-D (dans 2s)");
+		sleep(2000);
+		while(true){
+			sleep(10);
+			embetterUtilisateur();
+		}
+	}
+}
+
+void embetterUtilisateur(){
+	println("Je t'embête, et c'est bien pour cela que j'existe");
+}

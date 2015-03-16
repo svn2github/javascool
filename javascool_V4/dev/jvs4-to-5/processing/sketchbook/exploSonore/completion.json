@@ -1,0 +1,26 @@
+[
+{
+ "tag" : "keyword"
+, "title" : "Joue un signal."
+, "name" : "playSignal"
+, "offset" : "11"
+, "code" : "playSignal(canal, \\\"sinus\\\", frequence, amplitude);"
+, "doc" : "Joue un signal sur le canal 1, 2 ou 3 ; de type \\\"sinus\\\", \\\"carré\\\", \\\"scie\\\" ou \\\"bruit\\\" ; de fréquence donnée en Herz et d'amplitude donnée entre 0 et 1"
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Joue un enregistrement."
+, "name" : "playRecord"
+, "offset" : "12"
+, "code" : "playRecord(\\\"sound-file\\\", frequence);"
+, "doc" : "Joue un enregistrement sonore dans un fichier de nom \\\"sound-file\\\", avec une fréquence de coupure données en Herz."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Arrête l'émission sonore."
+, "name" : "playStop"
+, "code" : "playStop();"
+, "doc" : "Arrête toute émission sonore."
+}
+]
+

@@ -1,0 +1,17 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+int a, b;
+
+void echange(int x, int y) {
+  int z;
+  z = x;
+  x = y;
+  y = z;
+}
+void main() {
+  a = 4;
+  b = 7;
+  echange(a, b);
+  print(a);
+  print("   ");
+  println(b);
+}

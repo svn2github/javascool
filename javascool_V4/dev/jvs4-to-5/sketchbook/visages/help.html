@@ -1,0 +1,119 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>La &laquo;proglet&raquo; Visages</title>
+   </head>
+   <body>
+      <h1>La &laquo;proglet&raquo; Visages.</h1>
+      
+      
+      <table width="100%" border="0" cellspacing="1" cellpadding="0">
+          
+         
+         <tr>
+                
+            
+            <td><a href="http://newtab?travail.html">Travail &agrave; r&eacute;aliser</a>  
+            </td>
+              
+         </tr>
+           
+         
+         <tr>
+                  
+            
+            <td><a href="http://newtab?methodes.html">Description des fonctions disponibles</a> 
+            </td>
+                
+         </tr>
+         
+      </table>
+      
+      
+      <h2>Objectif.</h2>
+      <div class="objectif">
+         
+         <div>Cette proglet est destin&eacute;e &agrave; construire des programmes permettant de reconna&icirc;tre des visages.</div>
+         
+         <div> Un processus de reconnaissance de visage  est la m&eacute;thode d'analyse en composantes principales(ACP).</div>
+         
+      </div>
+      
+      <h2>Introduction.</h2>
+      <div id="intros">
+         <ol>
+            <li>
+               <h3>Le principe de la m&eacute;thode ACP.</h3>
+               On consid&egrave;re que les visages de r&eacute;f&eacute;rence sont des visages de personnes &agrave; reconna&icirc;tre. 
+               Le but est de reconna&icirc;tre si un visage inconnu  est l'un de ces visages.
+               L'homme est capable de reconna&icirc;tre un visage avec quelques d&eacute;tails cl&eacute;s, sans voir le visage dans sa totalit&eacute;.
+               <BR> 
+               Cette m&eacute;thode essaie de reproduire cette capacit&eacute; en d&eacute;composant les visages de r&eacute;f&eacute;rence selon des visages th&eacute;oriques appel&eacute;s
+               visage propres(eigenfaces en anglais).
+               On consid&egrave;re que tout visage peut se d&eacute;composer selon ces visages propres qui sont donc des visages de base.  Si les composantes
+               principales du visage inconnu sont proches des composantes 
+               de l'un des visages de r&eacute;f&eacute;rence alors on pourra consid&eacute;rer que le visage inconnu est identique &agrave; ce  visage de r&eacute;f&eacute;rence.
+               
+               
+               
+            </li>
+            <li>
+               <h3>Les visages de r&eacute;f&eacute;rence.</h3>
+               Ils se trouvent dans le dossier de travail de la proglet. Il y en a 15 nomm&eacute;s "visage1.jpg" jusqu'&agrave; "visage15.jpg"
+                Ils proviennent  du  site de l'universit&eacute; de Yales et ont &eacute;t&eacute; recadr&eacute;e pour &ecirc;tre adapt&eacute;e &agrave; la reconnaissance 
+               de visages par le m&eacute;thode d'analyse en composantes principales.
+               
+            </li>
+            <li>
+               <h3>Les outils math&eacute;matiques.</h3>
+               La m&eacute;thode repose sur une &eacute;tude statistique des pixels de chaque image de r&eacute;f&eacute;rence. Les visages propres sont en r&eacute;alit&eacute; 
+               des "directions" privil&eacute;gi&eacute;es sur lesquelles sont regroup&eacute;s les pixels des images de r&eacute;f&eacute;rence.
+               
+               
+               
+               
+               
+               
+               <div class="left"><img src="non_corellees.png" alt="">  Donn&eacute;es brutes non corell&eacute;es.
+               </div>
+               
+               <div class="left"><img src="principale1.png" alt=""> Les m&ecirc;mes donn&eacute;es class&eacute;es selon une direction principale apr&egrave;s &eacute;tude statistique.
+               </div>
+               
+               <div class="left"><img src="principale2.png" alt=""> Les m&ecirc;mes donn&eacute;es class&eacute;es selon une autre direction principale apr&egrave;s &eacute;tude statistique.
+               </div>
+               Images provenant du site <a href="http://fr.wikipedia.org/wiki/Valeur_propre,_vecteur_propre_et_espace_propre">wikip&eacute;dia</a>
+               <BR>
+               La proglet utilise donc les tableau &agrave; une colonne et n lignes encore appel&eacute;s vecteurs et des tableaux &agrave; p colonnes et n lignes
+               encore appel&eacute;s 
+               <a href="http://fr.wikipedia.org/wiki/Matrice_%28math%C3%A9matiques%29">matrices</a>.
+               Elle est munie de fonctions ou <a href="http://newtab?methodes.html">m&eacute;thodes</a> qui permettent de r&eacute;aliser les diff&eacute;rentes
+                op&eacute;rations entre les vecteurs ou entre les matrices.
+               
+               
+               
+            </li>
+         </ol>
+      </div>
+      
+      <h2>Travail propos&eacute;.</h2>
+      <div id="works">
+         <ol>
+            <li>
+               Le <a href="http://newtab?travail.html">travail &agrave; r&eacute;aliser</a> sera de concevoir un programme de reconnaissance de visages utilisant les diverses <a href="http://newtab?methodes.xml">m&eacute;thodes</a> 
+               mises &agrave; disposition dans la proglet. 
+               
+            </li>
+         </ol>
+      </div>
+      
+      
+      
+      
+   </body>
+</html>

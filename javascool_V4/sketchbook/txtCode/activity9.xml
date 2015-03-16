@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div title="Réalisation d'un mini CHAT ">
+
+
+
+<div title="Présentation:">
+
+<p> On propose ici de réaliser un programme de type chat à l'aide d'une implémentation type client/serveur utilisant les sockets.</p>
+
+</div>
+
+<div title="Proglet exemple (version serveur et version client)">
+    <p>Voici un exemple minimal qui permet d'envoyer des messages entre deux postes. Attention, dans cet exemple, il faut lancer la version serveur en premier, puis la version client. Ici les deux proglets peuvent être lancés sur la même machine.Dans ce cas, il vous faut lancer deux fois la proglet txtCode sur l'ordinateur en chargeant dans l'une la version serveur ci-dessous et dans l'autre la version client.</p>
+    
+         <div class="center"><l class="icon" icon="chat.png"/></div>
+    
+<div title="Code source des programmes de test">
+    <div title="Version serveur">
+    <div class="code">
+      <p><r>void</r> main() {</p>
+      <p><T/>int i,j;</p>
+      <p><T/>String str;</p>      
+      <p><T/> ....</p>
+      <p><T/>openSocketServer(6000);</p>
+      <p><T/>str=getMessageViaSocketServer();</p>
+      <p><T/>.... écriture dans le fichier de reception </p>    
+      <p><T/>closeSocketServer();</p> 
+      <p><T/> ....</p>       
+      <p>}</p>
+    </div>
+    </div>
+    
+    <div title="Version client">
+    <div class="code">
+      <p><r>void</r> main() {</p>
+      <p><T/>int i,j;</p>
+      <p><T/>String str;</p>       
+      <p><T/>openSocketClient("127.0.0.1",6000);</p> 
+      <p><T/> ....</p>
+      <p><T/>sendMessageViaSocketClient(str);</p>
+        <p><T/> ....</p>
+      <p><T/>closeSocketClient(); </p>    
+      <p>}</p>
+    </div>    
+    </div>
+</div>    
+
+<div title="Principes de fonctionnement">
+    <div class="ul">    
+<p>Une fois lancé, le proglet serveur ouvre un socket sur le port 6000 (<c>openSocketServer</c>) puis il se met en attente d'un bloc de caratère envoyé par le proglet client (<c>getMessageViaSocketServer()</c>).Il ne faut pas oublier de fermer le socket server (<c>closeSocketServer()</c>) pour libérer le port 6000 pour une future utilisation.</p>
+<p>Une fois lancé, le proglet client essaye d'ouvrir un socket (<c>openSocketClient</c>) communiquant via le port 6000 avec le serveur spécifié, ici localhost/127.0.0.1 .Puis il envoie une partie du fichier (<c>sendMessageViaSocketClient("3,3")</c>). Il ne faut pas oublier de fermer le socket Client (<c>closeSocketClient()</c>) pour libérer le port ouvert par le client pour une future utilisation.</p>
+<p>Rappel : la fonction  <c>readString()</c> (Cf mémo) lit une chaîne de caratères dans la ligne d'entrée au clavier.</p>
+</div>
+</div>
+
+<div title="remarques:"> 
+    <div class="ul">
+    <p>Le port utilisé pour accéder au serveur est le port 6000. (A changer si ce port est déjà utilisé).</p>
+    <p> Dans cet exemple minimal aucun test n'est fait pour vérifier que les ouvertures de sockets ce sont bien passées, etc. Tests qui seront bien sûr à faire dans la version finale du jeu.</p>
+    <p>En cas de problèmes éventuels de droits/Firewall sur le réseau, on peut très bien utiliser cette application client/serveur sur un même poste (au moins pour les développements) en utilisant l'adresse de serveur localhost (127.0.0.1). On peut aussi raccorder les deux postes à l'aide d'un câble croisé ou d'un mini-switch.</p>
+    </div>
+</div>    
+
+</div>    
+    
+<div title="Liste des fonctions à disposition"> 
+
+<div title="Gestion de la communication réseau via les sockets">
+<p>Au niveau communication TCP/IP on dispose d'une fonction d'initialisation du port (via une "socket"), d'une fonction de lecture, d'une fonction d'écriture et enfin d'une fonction de libération de la connection. Chacune de ses fonctions est déclinée en version serveur et en  version client.</p>
+
+<div class="code"><p><r>openSocketServer</r>(int numport)</p></div>
+<p>Initialisation du socket server, il écoute sur le port spécifié.Cette fonction tourne true si tout c'est bien passé false dans le cas contraire.</p>
+
+<div class="code"><p><r>getMessageViaSocketServer</r>()</p></div>
+<p>Retourne un message (type String) lu sur le socket server. Message en provenance du client.</p>
+
+<div class="code"><p><r>sendMessageViaSocketServer</r>(String text)</p></div>
+<p>Permet d'écrire un message sur le socket server. Message à destination du client.</p>
+
+
+<div class="code"><p><r>closeSocketServer</r>()</p></div>
+<p>Fermeture du socket server. Cette fonction retourne true si tout c'est bien passé false dans le cas contraire.</p>
+     
+<div class="code"><p><r>openSocketClient</r>(String serverName, int numport)</p></div>
+<p>Initialisation socket client vers server spécifié (Nom et numéro de port)
+Cette fonction retourne true si tout c'est bien passé false dans le cas contraire.</p>
+
+<div class="code"><p><r>sendMessageViaSocketClient</r>(String text)</p></div>
+<p>Permet d'envoyer un message via le socket client vers le serveur.</p>
+
+
+<div class="code"><p><r>getMessageViaSocketClient</r>()</p></div>
+<p>Retourne un message (type String) lu sur le socket client, message en provenance du serveur.</p>
+
+<div class="code"><p><r>closeSocketClient</r>()</p></div>
+<p>Fermeture du socket client. Cette fonction retourne true si tout c'est bien passé false dans le cas contraire.</p>
+</div>
+
+</div>
+</div>

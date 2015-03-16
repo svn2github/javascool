@@ -1,0 +1,66 @@
+// Ce programme est proposé par Philippe Lucaud <philucpro@yahoo.fr>, professeur de mathématiques au lycée Audiberti d'Antibes, classe de 2nd option informatique
+
+void main() {
+  int I = 0;
+  println("Soient A, B, C trois points de coordonnées connues. Ce programme va vous permettre de calculer les coordonnées du point D tel que ABCD soit un parallélogramme et de le placer dans un repère.");
+  sleep(2000);
+  clear();
+  println("Entrez les coordonnées du point A :");
+  println("XA = ");
+  double XA = readDouble();
+  println("YA = ");
+  double YA = readDouble();
+  sleep(500);
+  clear();
+  println("Entrez les coordonnées du point B :");
+  println("XB = ");
+  double XB = readDouble();
+  println("YB = ");
+  double YB = readDouble();
+  sleep(500);
+  clear();
+  println("Entrez les coordonnées du point C :");
+  println("XC = ");
+  double XC = readDouble();
+  println("YC = ");
+  double YC = readDouble();
+  sleep(500);
+  clear();
+  // Calcul des coordonnées du quatrième point
+  double XI = (XA + XC) / 2;
+  double YI = (YA + YC) / 2;
+  double XD = 2 * XI - XB;
+  double YD = 2 * YI - YB;
+  println("Les coordonnées du point D sont : ( " + XD + " ; " + YD + " )");
+  // Tracé du parallélogramme
+  reset(15, 10);
+  addString(XA, YA, "A", 5);
+  addString(XB, YB, "B", 5);
+  addString(XC, YC, "C", 5);
+  addString(XD, YD, "D", 5);
+  addLine(XA, YA, XB, YB, 6);
+  addLine(XB, YB, XC, YC, 6);
+  addLine(XC, YC, XD, YD, 6);
+  addLine(XD, YD, XA, YA, 6);
+  // Calcul des longueurs
+  double AB2 = Math.pow(XB - XA, 2) + Math.pow(YB - YA, 2);
+  double AD2 = Math.pow(XD - XA, 2) + Math.pow(YD - YA, 2);
+  double DB2 = Math.pow(XB - XD, 2) + Math.pow(YB - YD, 2);
+  // Nature du parallélogramme
+  if(AB2 == AD2) {
+    println("ABCD est un Losange");
+    sleep(1500);
+    I = I + 1;
+  }
+  if(AB2 + AD2 == DB2) {
+    println("ABCD est un rectangle");
+    sleep(1500);
+    I = I + 1;
+    if(I == 2) {
+      clear();
+      println("Donc ABCD est un carré!");
+    }
+  } else {
+    println("Ce parallélogramme est quelconque");
+  }
+}

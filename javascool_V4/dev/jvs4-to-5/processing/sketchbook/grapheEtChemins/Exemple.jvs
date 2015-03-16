@@ -1,0 +1,53 @@
+// Programme exemple d'usage de la proglet
+
+// Génération d'un parterre de cinq nodes Nord Sud Est Ouest Centre
+String nodes[] = { "Nord", "Sud", "Est", "Ouest", "Centre" };
+
+void build() {
+  int x0 = 450, y0 = 250;
+  addNode("Nord", x0, y0 - 100);
+  addNode("Est", x0 + 300, y0);
+  addNode("Ouest", x0 - 300, y0);
+  addNode("Sud", x0, y0 + 100);
+  addNode("Centre", x0, y0);
+  addLink("Nord", "Est", 1);
+  addLink("Sud", "Est", 2);
+  addLink("Nord", "Ouest", 3);
+  addLink("Sud", "Ouest", 4);
+  addLink("Sud", "Centre", 5);
+  addLink("Nord", "Centre", 6);
+}
+void unbuild() {
+  removeNode("Nord");
+  removeNode("Sud");
+  removeNode("Est");
+  removeNode("Ouest");
+  removeNode("Centre");
+}
+// Affichage des connections
+
+void dump(String what) {
+  println("Etat du graphe " + what);
+  for(String node1 : nodes)
+    for(String node2 : nodes)
+      if(isLink(node1, node2)) {
+        println("Les nodes " + node1 + " et " + node2 + " sont connectés avec un poids de " + getLink(node1, node2));
+      }
+}
+void main() {
+  unbuild();
+  sleep(1500);
+  // Parterre initial
+  build();
+  dump("initial");
+  println("Le node le plus prêt de (10, 10) est le " + getClosestNode(10, 10));
+  println("Le node le plus prêt de (50, 50) est le " + getClosestNode(50, 50));
+  sleep(1500);
+  // On détruit un node et un lien
+  removeNode("Centre");
+  removeLink("Nord", "Ouest");
+  dump("amputé");
+  // On nettoie avant de finir
+  sleep(1500);
+  unbuild();
+}

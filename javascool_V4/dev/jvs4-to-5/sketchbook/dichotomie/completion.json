@@ -1,0 +1,19 @@
+[
+{
+ "tag" : "keyword"
+, "title" : "Compare un nom à celui affiché sur une page"
+, "name" : "compare"
+, "offset" : "4"
+, "code" : "int r = compare(name, index);"
+, "doc" : "Ouvre le livre à une page d'index 0 à length()-1 et compare le nom à celui affiché sur cette page.	      La variable r vaut -1 si le nom se situe avant celui de la page, +1 si le nom se situe après celui de la page, 0 si il correspond à celui de la page."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Renvoie le nombre de page du livre"
+, "name" : "length"
+, "offset" : "4"
+, "code" : "int l = length();"
+, "doc" : "Renvoie le nombre de page du livre dans la variable l."
+}
+]
+

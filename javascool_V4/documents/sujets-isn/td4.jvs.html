@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">verifierVille</font><font color="#000000">(</font><font color="#000000">String&nbsp;s</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">assertion</font><font color="#000000">(</font><font color="#000000">latitudes.containsKey</font><font color="#000000">(</font><font color="#000000">s</font><font color="#000000">)</font><font color="#000000">,&nbsp;s&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;n'est&nbsp;pas&nbsp;une&nbsp;ville&nbsp;connue&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Affiche&nbsp;une&nbsp;ville&nbsp;de&nbsp;nom&nbsp;s</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">afficheVille</font><font color="#000000">(</font><font color="#000000">String&nbsp;s</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">verifierVille</font><font color="#000000">(</font><font color="#000000">s</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">latitude&nbsp;=&nbsp;latitudes.get</font><font color="#000000">(</font><font color="#000000">s</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">longitude&nbsp;=&nbsp;longitudes.get</font><font color="#000000">(</font><font color="#000000">s</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">affichePointSurCarte</font><font color="#000000">(</font><font color="#000000">longitude,&nbsp;latitude</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Affiche&nbsp;une&nbsp;ville&nbsp;de&nbsp;nom&nbsp;s&nbsp;en&nbsp;indiquant&nbsp;le&nbsp;numÂŽro&nbsp;num</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">afficheVilleAvecNumero</font><font color="#000000">(</font><font color="#000000">String&nbsp;s,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">num</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">verifierVille</font><font color="#000000">(</font><font color="#000000">s</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">latitude&nbsp;=&nbsp;latitudes.get</font><font color="#000000">(</font><font color="#000000">s</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>double&nbsp;</b></font><font color="#000000">longitude&nbsp;=&nbsp;longitudes.get</font><font color="#000000">(</font><font color="#000000">s</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">affichePointSurCarte</font><font color="#000000">(</font><font color="#000000">longitude,&nbsp;latitude,&nbsp;num</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Affiche&nbsp;toutes&nbsp;les&nbsp;villes</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">afficheToutesVilles</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;ville&nbsp;:&nbsp;latitudes.keySet</font><font color="#000000">())</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">afficheVille</font><font color="#000000">(</font><font color="#000000">ville</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Affiche&nbsp;une&nbsp;route&nbsp;directe&nbsp;entre&nbsp;deux&nbsp;villes</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">afficheRouteDirecte</font><font color="#000000">(</font><font color="#000000">String&nbsp;ville1,&nbsp;String&nbsp;ville2,&nbsp;IntensiteRoute&nbsp;intensite</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">verifierVille</font><font color="#000000">(</font><font color="#000000">ville1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">verifierVille</font><font color="#000000">(</font><font color="#000000">ville2</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">afficheRouteSurCarte</font><font color="#000000">(</font><font color="#000000">longitudes.get</font><font color="#000000">(</font><font color="#000000">ville1</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">latitudes.get</font><font color="#000000">(</font><font color="#000000">ville1</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">longitudes.get</font><font color="#000000">(</font><font color="#000000">ville2</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">latitudes.get</font><font color="#000000">(</font><font color="#000000">ville2</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">intensite</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Affiche&nbsp;toutes&nbsp;les&nbsp;routes&nbsp;directes</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">afficheToutesRoutesDirectes</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;depart&nbsp;:&nbsp;voisins.keySet</font><font color="#000000">())</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;arrivee&nbsp;:&nbsp;voisins.get</font><font color="#000000">(</font><font color="#000000">depart</font><font color="#000000">))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Pour&nbsp;Ã¯Â¿Â½viter&nbsp;de&nbsp;tracer&nbsp;deux&nbsp;fois&nbsp;la&nbsp;mÂme&nbsp;route</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">depart.compareTo</font><font color="#000000">(</font><font color="#000000">arrivee</font><font color="#000000">)&nbsp;</font><font color="#000000">&gt;&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">afficheRouteDirecte</font><font color="#000000">(</font><font color="#000000">depart,&nbsp;arrivee,&nbsp;LEGER</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Calcule&nbsp;la&nbsp;distance&nbsp;entre&nbsp;deux&nbsp;villes</font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">distance</font><font color="#000000">(</font><font color="#000000">String&nbsp;ville1,&nbsp;String&nbsp;ville2</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">verifierVille</font><font color="#000000">(</font><font color="#000000">ville1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">verifierVille</font><font color="#000000">(</font><font color="#000000">ville2</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">voisins.get</font><font color="#000000">(</font><font color="#000000">ville1</font><font color="#000000">)</font><font color="#000000">.contains</font><font color="#000000">(</font><font color="#000000">ville2</font><font color="#000000">))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">distanceEuclidienne</font><font color="#000000">(</font><font color="#000000">longitudes.get</font><font color="#000000">(</font><font color="#000000">ville1</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">latitudes.get</font><font color="#000000">(</font><font color="#000000">ville1</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">longitudes.get</font><font color="#000000">(</font><font color="#000000">ville2</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">latitudes.get</font><font color="#000000">(</font><font color="#000000">ville2</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>else</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">maxInteger;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;afficher&nbsp;un&nbsp;chemin&nbsp;sur&nbsp;la&nbsp;carte</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">afficherChemin</font><font color="#000000">(</font><font color="#000000">List&lt;String&gt;&nbsp;chemin</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">longueur&nbsp;=&nbsp;chemin.size</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">j&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;&nbsp;j&nbsp;&lt;&nbsp;longueur;&nbsp;j++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">afficheRouteDirecte</font><font color="#000000">(</font><font color="#000000">chemin.get</font><font color="#000000">(</font><font color="#000000">j&nbsp;-&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">chemin.get</font><font color="#000000">(</font><font color="#000000">j</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">MOYEN</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;afficher&nbsp;un&nbsp;chemin&nbsp;avec&nbsp;les&nbsp;numÂŽros&nbsp;d'ordre&nbsp;de&nbsp;passage</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">afficherCheminAvecNumeros</font><font color="#000000">(</font><font color="#000000">List&lt;String&gt;&nbsp;chemin</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">longueur&nbsp;=&nbsp;chemin.size</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">afficheVilleAvecNumero</font><font color="#000000">(</font><font color="#000000">chemin.get</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">,&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">j&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;&nbsp;j&nbsp;&lt;&nbsp;longueur;&nbsp;j++</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">afficheRouteDirecte</font><font color="#000000">(</font><font color="#000000">chemin.get</font><font color="#000000">(</font><font color="#000000">j&nbsp;-&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">chemin.get</font><font color="#000000">(</font><font color="#000000">j</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">MOYEN</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">afficheVilleAvecNumero</font><font color="#000000">(</font><font color="#000000">chemin.get</font><font color="#000000">(</font><font color="#000000">j</font><font color="#000000">)</font><font color="#000000">,&nbsp;j&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Calculer&nbsp;la&nbsp;longueur&nbsp;d'un&nbsp;chemin.</font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">longueurChemin</font><font color="#000000">(</font><font color="#000000">List&lt;String&gt;&nbsp;chemin</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">cardinal&nbsp;=&nbsp;chemin.size</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">longueur&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">j&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;&nbsp;j&nbsp;&lt;&nbsp;cardinal;&nbsp;j++</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">dist&nbsp;=&nbsp;distance</font><font color="#000000">(</font><font color="#000000">chemin.get</font><font color="#000000">(</font><font color="#000000">j&nbsp;-&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">,&nbsp;chemin.get</font><font color="#000000">(</font><font color="#000000">j</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">assertion</font><font color="#000000">(</font><font color="#000000">dist&nbsp;&lt;&nbsp;maxInteger,&nbsp;</font><font color="#2a00ff">&#34;Le&nbsp;chemin&nbsp;passe&nbsp;par&nbsp;une&nbsp;route&nbsp;inexistante&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">longueur&nbsp;+=&nbsp;dist;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">longueur;</font><br />
+<font color="#000000">}</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">main</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">afficherCheminAvecNumeros</font><font color="#000000">(</font><font color="#000000">plusCourtCheminGogleMap</font><font color="#000000">(</font><font color="#2a00ff">&#34;Brest&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Nice&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

@@ -1,0 +1,201 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>La &laquo;proglet&raquo; codagePixels</title>
+   </head>
+   <body>
+      <h1>La &laquo;proglet&raquo; codagePixels.</h1>
+      
+      <div align="right" class="margin">
+             
+         <div>Cliquer <a href="http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/activites-codagePixels.pdf">ici</a> pour acc&eacute;der &agrave; une activit&eacute; d'initiation &agrave; la proglet.
+         </div>
+             
+         <div>Cliquer <a href="http://newtab?exercice.html">ici</a> pour faire l'activit&eacute;.
+         </div>
+             
+         <div>Cliquer <a href="http://newtab?tutoriel.html">ici</a> pour lire le tutoriel.
+         </div>
+           
+      </div>
+       
+      <div>
+             Cette proglet permet de manipuler une petite image de r&eacute;solution variable, dont les coordonn&eacute;es se d&eacute;finissent ainsi:
+              
+         <div align="center" class="center"><img src="smiley.png" alt="" class="icon"></div>
+              c'est &agrave; dire que l'abscisse (la position horizontale ou largeur, width en anglais) va de <tt>-width</tt> &agrave; <tt>+width</tt> (de gauche &agrave; droite)
+              et l'ordonn&eacute;e (la position verticale ou hauteur, height en anglais) va de <tt>-height</tt> &agrave; <tt>+height</tt> (de bas en haut).
+              
+         <div>La fonction:
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                  
+                           <div><font color="#990000"><b>reset</b></font>(width, height);
+                           </div>
+                                
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>o&ugrave; <b>width</b> et <b>height</b> sont des <font color="#990000"><b>int</b></font> permet d'afficher une nouvelle image de largeur et hauteur donn&eacute;es tandis que la fonction
+                  
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                  
+                           <div><font color="#990000"><b>load</b></font>(image);
+                           </div>
+                                
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>o&ugrave; <b>image</b> est le lien &laquo;url&raquo; de l'image, permet d'afficher image disponible sur internet (attention sa taille doit rester modeste inf&eacute;rieur
+            &agrave; 500<sup>2</sup>)
+                 tandis que
+                  
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                   
+                           <div><font color="#990000"><b>int</b></font> width = <font color="#990000"><b>getWidth</b></font>();
+                           </div>
+                                   
+                           <div><font color="#990000"><b>int</b></font> height = <font color="#990000"><b>getHeight</b></font>();
+                           </div>
+                                
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div> renvoient la largeur (width) et hauteur (height) de l'image qui a &eacute;t&eacute; charg&eacute;e.
+                 
+         </div>
+              
+         <div>Pour d&eacute;finir un point de couleur dans cette image la fonction <font color="#990000"><b>setPixel</b></font>: 
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                  
+                           <div><font color="#990000"><b>setPixel</b></font>(x, y, color);
+                           </div>
+                                 
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            <ul class="ul">
+                       
+               <li>o&ugrave; <b>x</b> est un <font color="#990000"><b>int</b></font>, entre <b>[-width, +width]</b>, abscisse du point;
+               </li>
+                       
+               <li>o&ugrave; <b>y</b> est un <font color="#990000"><b>int</b></font>, entre <b>[-height, +height]</b>, ordonn&eacute;e du point;
+               </li>
+                       
+               <li>o&ugrave; <b>color</b> est un <font color="#990000"><b>String</b></font> qui donne la couleur du point, ses valeurs &eacute;tant
+                          <font color="#008000">"black"</font>, <font color="#008000">"blue"</font>, <font color="#008000">"cyan"</font>, <font color="#008000">"gray"</font>, <font color="#008000">"green"</font>, <font color="#008000">"magenta"</font>, <font color="#008000">"orange"</font>, <font color="#008000">"pink"</font>, <font color="#008000">"red"</font>, <font color="#008000">"white"</font>, <font color="#008000">"yellow"</font>.
+               </li>
+                     
+            </ul>permettre d'&eacute;crire un pixel couleur dans cette image.
+                
+         </div>
+             
+         <div>Pour d&eacute;finir lire/&eacute;crire un point monochrome les fonctions <font color="#990000"><b>setPixel/getPixel</b></font>: 
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                                 
+                           <div><font color="#990000"><b>int</b></font> valeur = <font color="#990000"><b>getPixel</b></font>(x, y);
+                           </div>
+                                 
+                           <div><font color="#990000"><b>setPixel</b></font>(x, y, valeur);
+                           </div>
+                                
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            <ul class="ul">
+                      
+               <li>o&ugrave; <b>x</b> est un <font color="#990000"><b>int</b></font>, entre <b>[-width, +width]</b>, abscisse du point;
+               </li>
+                      
+               <li>o&ugrave; <b>y</b> est un <font color="#990000"><b>int</b></font>, entre <b>[-height, +height]</b>, ordonn&eacute;e du point;
+               </li>
+                      
+               <li>o&ugrave; <b>valeur</b> est un entier entre <tt>0</tt> (pour le "noir") et <tt>255</tt> (pour le "blanc"),
+                         toutes les valeurs entre <tt>0</tt> et <tt>255</tt> d&eacute;finissant les valeurs de gris,
+               </li>
+                    
+            </ul>permettre de lire/&eacute;crire un pixel monochrome dans cette image.
+                
+         </div>
+             
+         <div>Un <a href="http://editor?Demo.jvs">exemple</a> d'utilisation: lors de la d&eacute;monstration, le signe de la paix va s'afficher:
+                  
+            <div align="center" class="center"><img src="smiley2.jpg" alt="" class="icon"></div>
+                  ceci, &agrave; diff&eacute;rentes r&eacute;solutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne r&eacute;solution il sera tr&egrave;s lisible, puis
+            petit &agrave; petit il se r&eacute;duira &agrave; quelques pixels.
+                
+         </div>
+           
+      </div>
+        
+      <div>Voici un autre exemple de <a href="http://editor?PurHasard.jvs">petit programme</a>, et <a href="http://editor?Exemple1.jvs">celui</a> permettant de d&eacute;marrer l'exercice.
+      </div>
+        
+      <div>Voici deux exemples de programmes &eacute;l&egrave;ves de trac&eacute; d'une <a href="http://editor?un-chinois-qui-court.jvs">petite animation</a> et d'une <a href="http://editor?allumons-les-fenetres.jvs">autre animation</a>.
+      </div>
+        
+      <div>Voici aussi deux exemples de trac&eacute;s de fractals de <a href="http://editor?JFKMandel.jvs">Mandelbrot</a> et de <a href="http://editor?JFKJulia.jvs">Julia</a></div>
+        
+      <div>Voici un exemple de programme qui <a href="http://editor?DeuxImages.jvs">superpose deux images</a>.
+      </div>
+        
+      <div>Voici un bel exemple de programme sur les <a href="http://editor?OndelettesDeHarr.jvs">ondelettes de Harr</a>.
+      </div>
+      
+      
+      
+      <div>Cette &laquo;proglet&raquo; est un composant logiciel ouvert dont documentation et code-source sont disponibles <a href="http://javascool.github.com/wproglets/javascool-proglet-codagePixels-html/api/org/javascool/proglets/codagePixels/package-summary.html">ici</a></div>
+      
+      
+      
+      <h2>Remarques.</h2>
+      <div id="notes">
+         <ol>
+            <li><b>Coordonn&eacute;es non centr&eacute;es:</b> On utilise ici des coordonn&eacute;es centr&eacute;es, mais il est aussi possible d'utiliser des coordonn&eacute;es "brutes" <tt>[0, width[ x [0, height[</tt> 
+                 (de gauche &agrave; droite et de bas en haut) avec cette proglet, comme <a href="http://javascool.github.com/wproglets/javascool-proglet-codagePixels-html/api/org/javascool/proglets/codagePixels/Functions.html#reset(int, int, boolean)">document&eacute; ici</a></li>
+            <li><b>Images couleurs:</b> Il est aussi possible d'utiliser des pixels couleurs en sp&eacute;cifiant les valeurs rouge-vert-bleue &eacute;crites avec <tt><a href="http://javascool.github.com/wproglets/javascool-proglet-codagePixels-html/api/org/javascool/proglets/codagePixels/Functions.html#set(int, int, int, int, int)">setPixel(x, y, red, green, blue)</a></tt> (ou par leur <tt><a href="http://javascool.github.com/wproglets/javascool-proglet-codagePixels-html/api/org/javascool/proglets/codagePixels/Functions.html#set(int, int, String)">nom</a></tt>) et lues avec <tt><a href="http://javascool.github.com/wproglets/javascool-proglet-codagePixels-html/api/org/javascool/proglets/codagePixels/Functions.html#getPixelColor(int, int)">int rgb[] = getPixelColor(x, y)</a></tt> (la valeur rouge est <tt>rgb[0]</tt>, bleue <tt>rgb[1]</tt>, et verte <tt>rgb[2]</tt>).
+            </li>
+            <li><b>Manipulation d'images sous forme de tableau</b> Voici disponibles <a href="http://editor?MoreImage.jvs">quelques routines</a> exemples pour aller plus loin: redimensionner une image, la manipuler en tableau, etc...
+            </li>
+            <li><b>Sauvegarde d'images:</b> Il est aussi possible de sauvegarder une image dans un fichier, avec <a href="http://javascool.github.com/wproglets/javascool-proglet-codagePixels-html/api/org/javascool/proglets/codagePixels/Functions.html#save(java.lang.String)">save(String)</a>.
+            </li>
+            <li><b>Format ASCII:</b> Il est aussi possible de charger/sauvegarder des images en format ASCII <a href="http://fr.wikipedia.org/wiki/Portable_pixmap">PBM, PGM ou PPM</a> pour en analyser le codage (voir <a href="http://editor?Exemple2.jvs">ici</a>).
+            </li>
+            <li><b>D&eacute;tection de clic</b>: On peut d&eacute;tecter un clic utilisateur avec un <a href="http://javascool.gforge.inria.fr?page=proglets&amp;action=show&amp;id=algoDeMaths&amp;helpFile=./aboutRunnable.html">Runnable</a> et r&eacute;cup&eacute;rer la position dans l'image avec les fonctions <a href="http://javascool.github.com/wproglets/javascool-proglet-codagePixels-html/api/org/javascool/proglets/codagePixels/Functions.html#getX()">getX()</a> et <a href="http://javascool.github.com/wproglets/javascool-proglet-codagePixels-html/api/org/javascool/proglets/codagePixels/Functions.html#getY()">getY()</a>.
+            </li>
+         </ol>
+      </div>
+      
+   </body>
+</html>

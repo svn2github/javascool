@@ -1,0 +1,33 @@
+
+// Fréquence de coupure du filtre 
+ double fc =200; // en Hz
+double x1 = 0;
+// Fonction de filtrage passe-bas
+double passeBas(double x) {
+   x1 += fc/44100 * (x - x1);
+   return  x1;
+}
+
+
+// fonction distorsion
+double disto(double x){	 
+	if(x>0.3) {x =0.3;}
+	if(x<-0.3){x =-0.3;}
+	return x;
+}
+
+double tabx[] = new double [10000000] ;
+int i=0;
+// fonction reverbération
+double reverb(double x){	 
+	if(i>=50000) {tabx[i]=x; x = 0.6 * tabx[i] + 0.3*tabx[i-50000]; }
+	if(i<10000000-1){i=i+1;}
+	return x;
+}
+
+// programme principal
+void main() {
+   @tone: reverb(0.6*sns(t)+0.3*sns(2*t)+0.2*sns(3*t));
+	setNotes(" 2 c2 d2 e2 f2 g2 a2 b2 | c3 d3 e3 f3 g3 a3 b3 | c4 d4 e4 f4 g4 a4 b4 ");
+	play();
+}

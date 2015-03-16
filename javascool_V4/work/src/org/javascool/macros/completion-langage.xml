@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<keywords title="Constructions du langage">
+    <keyword name="void main" title="Programme principal">
+      <doc>Construction qui définit le programme principal.</doc>
+      <code>void main() {
+
+}</code>
+    </keyword>
+    <keyword name="if" title="Instruction conditionnelle">
+        <doc>Vérifie la condition et si elle est vraie, exécute le bloc d'instructions.</doc>
+        <code>  if(true) {
+    // CodeSiOui
+  }</code>
+    </keyword>
+    <keyword name="if/else" title="Instruction conditionnelle avec alternative">
+        <doc>Vérifie la condition et si elle est vraie, exécute le 1er bloc d'instructions. Si elle est fause, exécute le 2ème bloc</doc>
+        <code>  if(true) {
+    // CodeSiOui
+  } else {
+    // CodeSiNon
+  }</code>
+    </keyword>
+    <keyword name="while" title="Boucle sur un bloc d'instruction, selon une condition">
+        <doc>Tant que la condition est vraie, exécute le bloc d'instructions.</doc>
+        <code>  while(/*condition*/) {
+    // Code
+  }</code>
+    </keyword>
+    <keyword name="for" title="Boucle sur un bloc d'instruction, avec un compteur">
+        <doc>Tant que la valeur de i est plus petite que la valeur de n, exécute le bloc d'instructions. Le code s'exécute donc n fois.</doc>
+        <code>   for(int i = 0; i &lt; n; i++) {
+    // Code
+  }</code>
+    </keyword>
+</keywords>
+

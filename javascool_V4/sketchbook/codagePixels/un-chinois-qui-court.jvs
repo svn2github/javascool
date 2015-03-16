@@ -1,0 +1,302 @@
+// Proglet codagePixels, Kenny Cuoq <kenny.cuoq@gmail.com> élève de 2nd MPS au CIV, a.b.s. Claudine Noblet, professeure
+
+
+// Tracé d'un trait vertical de hauteur n en (x, y)
+void barre(int x, int y, int n) {
+  for (int i = 0; i < n; i++) {
+    setPixel(x, y + i, "black");
+  }
+}
+
+// Tracé des membres et des éléments du visage
+
+void jambegauche1() {
+  barre(-1, -38, 5);
+  for(int x = -3; x <= -2; x++) {
+    double y15 = -1 * x - 41 ;
+    int y16 = (int) y15;
+    setPixel(x, y16, "black");
+  }
+}
+
+void jambegauche2() {
+  barre(-1, -41, 7);
+}
+
+void jambedroite1() {
+  barre(1, -41, 7);
+}
+
+void jambedroite2() {
+  barre(1, -38, 5);
+  for(int x = 2; x <= 3; x++) {
+    double y15 = x - 41 ;
+    int y16 = (int) y15;
+    setPixel(x, y16, "black");
+  }
+}
+
+void brasgauche1() {
+  for(int x = -10; x <= -3; x++) {
+    double y15 = x - 13 ;
+    int y16 = (int) y15;
+    setPixel(x, y16, "black");
+  }
+}
+
+void brasgauche2() {
+  for(int x = -7; x <= -3; x++) {
+    double y15 = x - 13 ;
+    int y16 = (int) y15;
+    setPixel(x, y16, "black");
+  }
+  for(int x = -7; x <= -2; x++) {
+    double y15 = -0.4 * x - 22 ;
+    int y16 = (int) y15;
+    setPixel(x, y16, "black");
+  }
+}
+
+void brasdroit1() {
+  for(int x = 3; x<=10; x++) {
+    double y15 = -x - 13 ;
+    int y16 = (int) y15;
+    setPixel(x, y16, "black");
+  }
+}
+
+void brasdroit2() {
+  for(int x = 3; x <= 6; x++) {
+    double y15 = -x - 13 ;
+    int y16 = (int) y15;
+    setPixel(x, y16, "black");
+  }
+  for(int x = 2; x <= 7; x++) {
+    double y15 = 0.4 * x - 22 ;
+    int y16 = (int) y15;
+    setPixel(x, y16, "black");
+  }
+}
+
+void corps1(int x, int y, int n) {
+  for(int i = 0; i < n; i++) {
+    setPixel(x, y + i,  "white");
+  }
+}
+
+void corps2(int x, int y, int n) {
+  for(int i = 0; i < n; i++) {
+    setPixel(x, y + i,  "black");
+  }
+}
+
+void corps3() {
+  for(int i = -3; i < 3; i++) {
+    setPixel(i, -16, "black");	
+  }
+}
+
+void corps4() {
+  for(int i = -3; i < 3; i++) {
+    setPixel(i, -34, "black");	
+  }
+}
+
+void corpsfinal() {
+  corps1(0, -33, 17);
+  corps1(1, -33,17);
+  corps1( -1, -33, 17);
+  corps1(-2, -33, 17);
+  corps1(2, -33, 17);
+  corps2(3, -34, 19);
+  corps2(-3, -34, 19);
+  corps3();
+  corps4();
+  setPixel(-1, -20, "black");
+  setPixel(1, -20, "black");
+  setPixel(0, -28, "black");
+}
+
+void chapeau() {
+  for(int x= -18; x<= 0; x++) {
+    double y9 = 0.55 * x +27;
+    int y10 = (int) y9;
+    setPixel(x, y10, "black");
+  }
+
+  for(int x = 0; x <= 18; x++) {
+    double y11 = -0.55*x + 27;
+    int y12 = (int) y11;
+    setPixel(x, y12, "black");
+  }
+
+  for(int x= -18; x <= 18; x++) {
+    double y13 = 0.02 * x * x + 11;
+    int y14 = (int) y13;
+    setPixel(x, y14, "black");
+  }
+}
+
+void visage() {
+  for(int x = -15; x <= 15; x++) {
+    double y7 = 0.13 * x * x - 15;
+    int y8 = (int) y7;
+    setPixel(x, y8, "black");
+  }
+  for(int x = -15; x <= -7; x++) {
+    double y7 = 0.13 * x * x - 14;
+    int y8 = (int) y7;
+    setPixel(x, y8, "black");
+  }
+  for(int x = 7; x <= 15; x++) {
+    double y7 = 0.13 * x * x - 14;
+    int y8 = (int) y7;
+    setPixel(x, y8, "black");
+  }
+  setPixel(6, -9, "black");
+  setPixel(-6, -9, "black");
+  setPixel(12, 2, "black");
+  setPixel(-12, 2, "black");
+  setPixel(13, 5, "black");
+  setPixel(-13, 5, "black");
+  setPixel(14, 8, "black");
+  setPixel(-14, 8, "black");
+  setPixel(14, 9, "black");
+  setPixel(-14, 9, "black");
+  setPixel(15, 12,"black");
+  setPixel(-15, 12, "black");
+  setPixel(15, 13, "black");
+  setPixel(-15, 13, "black");
+}
+
+void yeux() {
+  for(int i = -2; i > -8; i--) {
+    setPixel(0, i, "black");
+  }
+  for(int i = -2; i > -8; i--) {
+    setPixel(3, i, "black");
+  }
+  for(int i = -2; i > -8; i--) {
+    setPixel(-3, i, "black");
+  }
+  for(int x = 3; x <= 10; x++) {
+    double y1 = 0.4 * x + 6;
+    int y2 = (int) y1;
+    setPixel(x, y2, "black");
+  }
+  for(int x = -10; x <= -3; x++) {
+    double y5 = -0.4 * x + 6;
+    int y6 = (int) y5;
+    setPixel(x, y6, "black");
+  }
+}
+
+void yeux2() {
+  for(int i = -2; i >- 8; i--) {
+    setPixel(0, i, "black");
+  }
+  for(int i = -2; i >- 8; i--) {
+    setPixel(3, i, "black");
+  }
+  for(int i = -2; i >- 8; i--) {
+    setPixel(-3, i, "black");
+  }
+  for(int x = 3; x <= 10; x++) {
+    double y1 = 0.2 * x + 6;
+    int y2 = (int) y1;
+    setPixel(x, y2, "black");
+  }
+  for(int x = -10; x <= -3; x++) {
+    double y5 = -0.2 * x + 6;
+    int y6 = (int) y5;
+    setPixel(x, y6, "black");
+  }
+}
+
+void nez() {
+  setPixel(1, 3, "black");
+  setPixel(-1, 3, "black");
+}
+
+void bouche() {
+  setPixel(-1, -2, "black");
+  setPixel(0, -2, "black");
+  setPixel(1, -2, "black");
+  setPixel(2, -2, "black");
+  setPixel(-2, -2, "black");
+  setPixel(3, -2, "black");
+  setPixel(-3, -2, "black");
+  setPixel(4, -2, "black");
+  setPixel(-4, -2, "black");
+  setPixel(5, -2, "black");
+  setPixel(-5, -2, "black");
+  setPixel(6, -1, "black");
+  setPixel(-6, -1, "black");
+  setPixel(7, 0, "black");
+  setPixel(-7, 0, "black");
+  setPixel(8, 1, "black");
+  setPixel(-8, 1, "black");
+}
+
+void bouche2() {
+  setPixel(-1, -2, "black");
+  setPixel(0, -2, "black");
+  setPixel(1, -2, "black");
+  setPixel(2, -2, "black");
+  setPixel(-2, -2, "black");
+  setPixel(3, -2, "black");
+  setPixel(-3, -2, "black");
+  setPixel(4, -2, "black");
+  setPixel(-4, -2, "black");
+  setPixel(5, -2, "black");
+  setPixel(-5, -2, "black");
+  setPixel(6, -1, "black");
+  setPixel(-6, -1, "black");
+  setPixel(7, 0, "black");
+  setPixel(-7, 0, "black");
+  setPixel(8, 1, "black");
+  setPixel(-8, 1, "black");
+}
+
+void dents() {
+  setPixel(-1, -8, "black");
+  setPixel(-2, -8, "black");
+  setPixel(-3, -8, "black");
+  setPixel(1, -8, "black");
+  setPixel(2, -8, "black");
+  setPixel(3, -8, "black");
+  setPixel(0, -8, "black");
+}
+
+// Tracé du bonhomme dans les deux positions
+void main() {
+  for(int i = 0; i < 20; i++) {
+    reset(50, 50);
+    chapeau();
+    visage();
+    yeux();
+    nez();
+    bouche();
+    dents();
+    brasgauche1();
+    brasdroit2();
+    jambedroite1();
+    jambegauche1();
+    corpsfinal();
+    sleep(200);
+    reset(50, 50);
+    chapeau();
+    visage();
+    yeux2();
+    nez();
+    bouche2();
+    dents();
+    brasdroit1();
+    brasgauche2();
+    jambegauche2();
+    jambedroite2();
+    corpsfinal();
+    sleep(200);
+  }
+}
+

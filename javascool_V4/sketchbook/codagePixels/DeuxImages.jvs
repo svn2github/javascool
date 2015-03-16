@@ -1,0 +1,30 @@
+//
+// Exemple qui affiche une image sur une autre
+//
+
+import java.awt.image.BufferedImage;
+import org.javascool.tools.image.ImageUtils;
+
+void main() {
+   // On crée un surface de 400 x 400 pixels avec le (0, 0) en haut à gauche
+  reset(400, 400, false, false);
+  // On la remplit au hasard
+  for(int i = 0; i < getWidth(); i++)
+    for(int j = 0; j < getHeight(); j++)
+      setPixel(i, j, random() < 0.5 ? 128 : 255);
+  // Charge une icone qui a de la transparence
+  BufferedImage icon = ImageUtils.loadImage("org/javascool/widgets/icons/logo.png");
+  //  . . chaque pixel est codé en #AARRGGBB (transparence, rouge, vert, bleu)
+  //      sur quatre octet mis bout à bout sur un mot de 4 x 8 = 32 bits 
+  // On l'affiche au dessus de l'image en (i0, j0) coin en haut à gauche
+  int i0 = 50, j0 = 60;
+  for(int i = 0 ; i < icon.getWidth(); i++)
+    for(int j = 0; j < icon.getHeight(); j++) 
+      if (0 < (0xFF & (icon.getRGB(i, j) >> 24))) // Octet AA de ##AARRGGBB
+        setPixel(i0 + i, j0 + j, 
+      	0xFF & (icon.getRGB(i, j) >> 16),       // Octet RR de #AARRGGBB
+      	0xFF & (icon.getRGB(i, j) >> 8),        // Octet GG de #AARRGGBB
+      	0xFF & (icon.getRGB(i, j) >> 0));       // Octet BB de #AARRGGBB
+  // l'opérateur xx >> 8 permet de décaler de de 8 bits à droite pour récupérer le 2eme octet, etc..    	
+  // l'opérateur 0XFF && xx permet de ne garder que l'octet de droit en mettant à zéro les autres octets
+}

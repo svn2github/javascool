@@ -1,0 +1,23 @@
+void main() {
+	double note; 
+	String avis; 	// variable introduite pour une meilleure traduction
+	note = readDouble("entrer la note : "); 
+	if (note<10) {
+		avis = "refus";	
+		// car println("refus") serait ignore par le traducteur
+	}
+	else {
+		avis = "admis";	
+		// car println("admis") serait ignore par le traducteur
+	}
+	println("la decision est : " + avis); 
+} 
+
+// ------------------------------------------------------------------------
+// Autres contraintes (traduction, reformulation ou transformation 1-n):
+// - une seule instruction par ligne
+// - accolades pour un if (for ou while), meme quand une seule instruction
+// - accolade fermante sur une ligne separee
+// - fonction : accolade ouvrante sur la ligne de declaration
+// - ...
+// ------------------------------------------------------------------------

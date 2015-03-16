@@ -1,0 +1,30 @@
+VARIABLES
+  prixUnitaire EST_DU_TYPE NOMBRE
+  quantite EST_DU_TYPE NOMBRE
+  prixTotal EST_DU_TYPE NOMBRE
+  remise EST_DU_TYPE NOMBRE
+DEBUT_ALGORITHME
+  AFFICHER "prix unitaire de l'article en euros?"
+  LIRE prixUnitaire
+  AFFICHER "quantite achetee ?"
+  LIRE quantite
+  SI (quantite==1) ALORS
+    DEBUT_SI
+    remise PREND_LA_VALEUR 0
+    FIN_SI
+    SINON
+      DEBUT_SINON
+      SI (quantite<=3) ALORS
+        DEBUT_SI
+        remise PREND_LA_VALEUR 0.1
+        FIN_SI
+        SINON
+          DEBUT_SINON
+          remise PREND_LA_VALEUR 0.2
+          FIN_SINON
+      FIN_SINON
+  prixTotal PREND_LA_VALEUR quantite*prixUnitaire*(1-remise)
+  AFFICHER "le prix total vaut "
+  AFFICHER prixTotal
+  AFFICHER " euros"
+FIN_ALGORITHME

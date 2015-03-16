@@ -1,0 +1,62 @@
+<div title="La «proglet» Visages">
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+  <tr>
+    <td><l class="newtab" link="travail.htm" text="Travail à réaliser" />  </td>
+  </tr>
+  <tr>
+      <td><l class="newtab" link="methodes.htm" text="Description des fonctions disponibles" /> </td>
+    </tr>
+</table>
+
+<div class="objectif">
+<div>Cette proglet est destinée à construire des programmes permettant de reconnaître des visages.</div>
+<div> Un processus de reconnaissance de visage  est la méthode d'analyse en composantes principales(ACP).</div>
+</div>
+<div class="intros">
+<div title="Le principe de la méthode ACP">
+On considère que les visages de référence sont des visages de personnes à reconnaître. 
+Le but est de reconnaître si un visage inconnu  est l'un de ces visages.
+L'homme est capable de reconnaître un visage avec quelques détails clés, sans voir le visage dans sa totalité.<BR> </BR>
+Cette méthode essaie de reproduire cette capacité en décomposant les visages de référence selon des visages théoriques appelés visage propres(eigenfaces en anglais).
+On considère que tout visage peut se décomposer selon ces visages propres qui sont donc des visages de base.  Si les composantes principales du visage inconnu sont proches des composantes 
+de l'un des visages de référence alors on pourra considérer que le visage inconnu est identique à ce  visage de référence.
+
+
+</div>
+
+<div title="Les visages de référence">
+Ils se trouvent dans le dossier de travail de la proglet. Il y en a 15 nommés "visage1.jpg" jusqu'à "visage15.jpg"
+ Ils proviennent  du  site de l'université de Yales et ont été recadrée pour être adaptée à la reconnaissance 
+de visages par le méthode d'analyse en composantes principales.
+</div>
+<div title="Les outils mathématiques">
+La méthode repose sur une étude statistique des pixels de chaque image de référence. Les visages propres sont en réalité 
+des "directions" privilégiées sur lesquelles sont regroupés les pixels des images de référence.
+
+
+
+
+
+<div class="left" ><l icon="non_corellees.png"  />  Données brutes non corellées.</div>
+<div class="left" ><l icon="principale1.png" /> Les mêmes données classées selon une direction principale après étude statistique.</div>
+<div class="left" ><l icon="principale2.png" /> Les mêmes données classées selon une autre direction principale après étude statistique.</div>
+Images provenant du site <l link="http://fr.wikipedia.org/wiki/Valeur_propre,_vecteur_propre_et_espace_propre" text="wikipédia" /><BR></BR>
+La proglet utilise donc les tableau à une colonne et n lignes encore appelés vecteurs et des tableaux à p colonnes et n lignes encore appelés 
+<l link="http://fr.wikipedia.org/wiki/Matrice_%28math%C3%A9matiques%29" text="matrices" />.
+Elle est munie de fonctions ou <l class="newtab" link="methodes.htm" text="méthodes" /> qui permettent de réaliser les différentes
+ opérations entre les vecteurs ou entre les matrices.
+
+
+</div>
+</div>
+<div class="works" >
+<div>
+Le <l class="newtab" link="travail.htm" text="travail à réaliser" /> sera de concevoir un programme de reconnaissance de visages utilisant les diverses <l class="newtab" link="methodes.xml" text="méthodes" /> 
+mises à disposition dans la proglet. 
+</div>
+</div>
+
+
+
+</div>
+

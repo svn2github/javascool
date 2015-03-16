@@ -1,0 +1,100 @@
+<p>Cette page a pour but d'expliquer comment créer une proglet avec  <a rel="nofollow" class="external text" href="http://processing.org">processing</a>, consulter aussi à la <a rel="nofollow" class="external text" href="http://javascool.github.com/doc/developper/index.html">documentation générale</a> sur la création de proglet pour voir les principes généraux.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Sommaire</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Principe_g.C3.A9n.C3.A9ral"><span class="tocnumber">1</span> <span class="toctext">Principe général</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Lancer_processing"><span class="tocnumber">2</span> <span class="toctext">Lancer processing</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Le_fichier_de_description_de_la_proglet"><span class="tocnumber">3</span> <span class="toctext">Le fichier de description de la proglet</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Le_fichier_.3Cname.3EFunctions.java"><span class="tocnumber">4</span> <span class="toctext">Le fichier &lt;name&gt;Functions.java</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Le_fichier_Translator.java"><span class="tocnumber">5</span> <span class="toctext">Le fichier Translator.java</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#La_m.C3.A9thode_pas_.C3.A0_pas"><span class="tocnumber">6</span> <span class="toctext">La méthode pas à pas</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Processing_et_Svn"><span class="tocnumber">7</span> <span class="toctext">Processing et Svn</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Discussion"><span class="tocnumber">8</span> <span class="toctext">Discussion</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Principe_g.C3.A9n.C3.A9ral">Principe général</span></h2>
+<p>Tous les fichiers sont définis comme pour une standard, sauf&#160;:
+</p>
+<ul><li> <tt>Panel.java</tt> puisque l'objet graphique vient de processing.</li>
+<li> <tt>&lt;name&gt;Functions.java</tt> au lieu de <tt>Functions.java</tt> come expliqué ci dessous.</li></ul>
+<h2><span class="mw-headline" id="Lancer_processing">Lancer processing</span></h2>
+<p>Il faut que la jarre <tt>javascool*.jar</tt> soit dans le class-path de processing pour qu'il puisse compiler les classes liées à javascool.
+</p>
+<h2><span class="mw-headline" id="Le_fichier_de_description_de_la_proglet">Le fichier de description de la proglet</span></h2>
+<p>Par rapport à un fichier standard il comporte en plus:
+</p>
+<ol><li> la mention <tt>"processing"&#160;: "true"</tt></li>
+<li> les largeur <tt>width</tt> et hauteur <tt>height</tt>, qui <i>doivent</i> être spécifiées.</li></ol>
+<h2><span class="mw-headline" id="Le_fichier_.3Cname.3EFunctions.java">Le fichier &lt;name&gt;Functions.java</span></h2>
+<p>Plusieurs choses diffère dans ce cas: 
+</p>
+<ul><li> La classe doit se nommer <tt>&lt;name&gt;Functions.java</tt> ou <tt>&lt;name&gt;</tt> est le nom de la proglet.</li>
+<li> La classe ne doit pas être déclarée dans un package</li>
+<li> La fonction qui renvoie l'instance de la proglet ne renvoie un objet de nom <tt>sampleCode</tt> si sampleCode est le nom de la proglet.</li></ul>
+<p>Pour comprendre cela il faut noter que, avec processing:
+</p>
+<ul><li> une applete de nom <tt>sampleCode</tt> génère une classe (sans package) de nom <tt>sampleCode</tt> (qui étend la classe <tt>Applet</tt>), donc:
+<ul><li> il faut bien récupérer ici un objet de ce nom</li>
+<li> il faut définir la classe sans package pour qu'elle accède à l'applete sans package</li>
+<li> il faut lui donner un nom qui soit différent pour chaque proglet.</li></ul></li></ul>
+<p>Voici un exemple de header d'un fichier <tt>&lt;name&gt;Functions.java</tt>:
+</p>
+<pre>
+public class sampleCodeFunctions {
+  /** Renvoie l'instance de la proglet. */
+  private static sampleCode getPane() {
+    return org.javascool.macros.Macros.getProgletPane();
+  }
+  /** ../.. */
+}
+</pre>
+<h2><span class="mw-headline" id="Le_fichier_Translator.java">Le fichier Translator.java</span></h2>
+<p>Il n'est pas possible de faire un import java des fonctions processing car elles ne sont pas dans un package. Il faut donc définir l'ajout de préfixe aux méthodes statiques par translation du code, comme ici dans l'exemple de la proglet <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=exploSonore" class="internal">exploSonore</a>.
+</p>
+<pre>
+package org.javascool.proglets.exploSonore;
+public class Translator extends org.javascool.core.Translator {
+  @Override
+  public String translate(String code) {
+    return code.replaceAll(&quot;\\s(playSignal|playRecord|playStop)\\(&quot;, &quot; exploSonoreFunctions.$1(&quot;);
+  }
+}
+</pre>
+<h2><span class="mw-headline" id="La_m.C3.A9thode_pas_.C3.A0_pas">La méthode pas à pas</span></h2>
+<ol><li> S'assurer que le répertoire «sketchbook» de processing est bien le même que celui des proglets.
+<ul><li> Voir la [JavaScool:DocJavaScoolBuilder mise en place du «sketchbook» ] pour plus de détails</li>
+<li> C'est dans <tt>File -&gt; Preferences -&gt; Sketchbook location</tt> que cette option est donnée.</li>
+<li> Voir les éléments de <a href="https://wiki.inria.fr/sciencinfolycee/JavaScool:ProcessingLinux" title="JavaScool:ProcessingLinux">documentation pour Linux</a> si besoin</li></ul></li>
+<li> Lancer processing et travailler au développement de l'applete
+<ul><li> Exporter le travail sous forme d'applete</li>
+<li> C'est dans <tt>File -&gt; Export</tt> qui effectue cette action</li></ul></li>
+<li> Dans le même répertoire générer les fichiers usuel pour définir une proglet.
+<ul><li> puis construire la proglet comme pour une proglet standard</li></ul></li></ol>
+<ul><li> Note: éviter de mettre dans le répertoire des fichiers inutiles ou trop volumineux car tous les fichiers sont intégrés à la jarre Java finale.</li></ul>
+<h2><span class="mw-headline" id="Processing_et_Svn">Processing et Svn</span></h2>
+<p>Si vos fichiers sont contrôlés par un système de versionning comme <a rel="nofollow" class="external text" href="http://subversion.tigris.org">subversion</a> (dit «svn») une difficulté survient: processing détruit les fichiers <tt>.svn</tt> qui permettent d'administrer l'archive (donc plus rien ne marche côté svn)&#160;! La soluce:
+</p>
+<ol><li> Avant d'exporter l'applete sauver le dossier caché <tt>applet/.svn</tt> par exemple sur le bureau</li>
+<li> Après l'export le remettre en place ou ne pas inclure le dossier applet dans le svn.</li></ol>
+<h2><span class="mw-headline" id="Discussion">Discussion</span></h2>
+<ul><li> Utiliser <a rel="nofollow" class="external text" href="http://processing.org">processing</a> permet de 
+<ul><li> programmer facilement des proglets multimédia (son, 3D, vidéos, ..) et de profiter d'un très large panel existant;</li>
+<li> de déplacer la vision de "programmeur" à "créateur d'objets numériques" qui est le fondement de la démarche de <a rel="nofollow" class="external text" href="http://processing.org">processing</a>;</li>
+<li> celà établi aussi que la plateforme Javas'Cool est techniquement et dans son principe "ouverte" et s'interopère avec d'autres plateformes de développement.</li></ul></li></ul>
+<ul><li> Cette démarche dans Javas'Cool est due à  <a rel="nofollow" class="external text" href="http://www-sop.inria.fr/members/Cecile.Picard">Cécile Picard-Limpens</a> qui a créé les premières <a class="internal" href="?page=resources&action=link-processing" title="JavaScool:ProgletsProcessing">«proglets» et «educlets»</a></li></ul>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.016 seconds
+Real time usage: 0.015 seconds
+Preprocessor visited node count: 49/1000000
+Preprocessor generated node count: 76/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:891-1!*!0!!fr!*!* and timestamp 20150313130629 and revision id 14445
+ -->

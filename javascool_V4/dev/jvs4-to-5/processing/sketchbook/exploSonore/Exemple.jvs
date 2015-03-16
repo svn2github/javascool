@@ -1,0 +1,27 @@
+// Programme exemple d'usage de la proglet
+
+void main() {
+  // Lancement d'un signal prédéfini
+  playSignal(1, "sinus", 500, 1);
+  // une seconde d'attente
+  sleep(2000);
+  // Lancement d'un autre signal prédéfini, sur un autre canal
+  playSignal(2, "carré", 1500, 0.333);
+  // une seconde d'attente
+  sleep(2000);
+  // Lancement d'un 3eme signal prédéfini, sur le 3eme canal
+  playSignal(3, "scie", 2500, 0.2);
+  // une seconde d'attente
+  sleep(2000);
+  // et on arrete tout
+  playStop();
+  // une seconde d'attente
+  sleep(3000);
+  // Et on joue un sone prédéfini en étouffant le son
+  // - Attention à ce que le chemin vers le fichier soit bien accessible.
+  playRecord("org/javascool/proglets/exploSonore/Ahmed_Ex2.wav", 400);
+  // deux secondes d'attente
+  sleep(4000);
+  // et on arrete tout
+  playStop();
+}

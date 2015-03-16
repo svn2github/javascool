@@ -1,0 +1,459 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Proglet Tic-Tac-Toe version r&eacute;seau</title>
+   </head>
+   <body>
+      <h1>Proglet Tic-Tac-Toe version r&eacute;seau.</h1>
+      
+      <div align="right" class="margin"> Auteur : Christophe B&eacute;asse </div>
+      <div></div>
+      
+        
+      <div><a href="activity7.html">...</a></div>
+      
+      
+      <div>
+         <h2>Pr&eacute;sentation: jeu du Tic-Tac-Toe et primitives r&eacute;seau.</h2>
+         
+         
+         <div> On propose ici de r&eacute;aliser le jeu du "TicTacToe" (version anglaise du morpion qui se joue sur une grille de 3x3 cases) en
+            version r&eacute;seau &agrave; l'aide d'une impl&eacute;mentation type client/serveur utilisant les sockets. On dispose de deux postes (1 poste
+            ou le jeu tourne en mode serveur et 1 autre poste ou le jeu tourne en mode client. Dans le film WarGames (1984), le jeu de
+            Tic-Tac-Toe est utilis&eacute; pour apprendre &agrave; un ordinateur pris de folie destructrice qu'il existe des jeux auxquels on ne peut
+            pas toujours gagner.
+         </div>
+         
+         
+      </div>
+      
+      
+      <div>
+         <h2>Proglet exemple (version serveur et version client).</h2>
+             
+         <div>Voici un exemple minimal qui permet de tester cette proglet.
+                Attention, il faut lancer la version serveur en premier, puis la version client. Ici les deux proglets peuvent &ecirc;tre lanc&eacute;s
+            sur la m&ecirc;me machine.Dans ce cas, il vous faut lancer deux fois la proglet ticTacToe sur l'ordinateur en chargeant dans l'une
+            la version serveur ci-dessous et dans l'autre la version client.
+         </div>
+             
+                  
+         <div align="center" class="center"><img src="jeu.png" alt="" class="icon"></div>
+         
+         
+         <div>
+            <h3>Code source des programmes de test.</h3>
+                
+            <div>
+               <h4>Version serveur.</h4>
+                   
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>void</b></font> main() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 openSocketServer(6000);
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>String</b></font> str = getMessageViaSocketServer();
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> i = Integer.parseInt(str.substring(0,1));
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> j = Integer.parseInt(str.substring(2,3));
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 setGrille(i,j,'O');
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 sendMessageViaSocketServer("1,3");
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 setGrille(1,3,'X');
+                              </div>      
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 closeSocketServer();
+                              </div>  
+                                    
+                              <div>}</div>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+                   
+            </div>
+                
+                
+            <div>
+               <h4>Version client.</h4>
+                   
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>void</b></font> main() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 openSocketClient("127.0.0.1",6000);
+                              </div> 
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 setGrille(3,3,'O');
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 sendMessageViaSocketClient("3,3");
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>String</b></font> str = getMessageViaSocketClient();
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> i = Integer.parseInt(str.substring(0,1));
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>int</b></font> j = Integer.parseInt(str.substring(2,3));
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 setGrille(i,j,'X');
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 closeSocketClient(); 
+                              </div>    
+                                    
+                              <div>}</div>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>    
+                   
+            </div>
+            
+         </div>    
+         
+         
+         
+         <div>
+            <h3>Principes de fonctionnement.</h3>
+                
+            <ul class="ul">    
+               
+               <li>Une fois lanc&eacute;, le proglet serveur ouvre un socket sur le port 6000 (<tt>openSocketServer</tt>) puis il se met en attente d'un coup envoy&eacute; par le proglet client (<tt>getMessageViaSocketServer()</tt>). Il r&eacute;cup&egrave;re les coordonn&eacute;es de la case choisie (<tt>Integer.parseInt</tt>) met &agrave; jour la grille en cons&eacute;quence (<tt>setGrille(i,j,'O')</tt>) puis joue &agrave; son tour en envoyant les coordonn&eacute;es de la case choisie au client (<tt>sendMessageViaSocketServer("1,3")</tt>) tout en mettant &agrave; jour sa propre grille (<tt>setGrille(1,3,'X')</tt>). Il ne faut pas oublier de fermer le socket server (<tt>closeSocketServer()</tt>) pour lib&eacute;rer le port 6000 pour une future utilisation.
+               </li>
+               
+               <li>Une fois lanc&eacute;, le proglet client essaye d'ouvrir un socket (<tt>openSocketClient</tt>) communiquant via le port 6000 avec le serveur sp&eacute;cifi&eacute;, ici localhost/127.0.0.1 .Puis il envoie le premier coup par le proglet
+                  client (<tt>sendMessageViaSocketClient("3,3")</tt>) tout en mettant &agrave; jour sa propre grille (<tt>setGrille(3,3,'O')</tt>).Puis, il se met en attente d'un coup envoy&eacute; par le proglet Server (<tt>getMessageViaSocketClient()</tt>). Il r&eacute;cup&egrave;re les coordonn&eacute;es de la case choisie (<tt>Integer.parseInt</tt>) met &agrave; jour la grille en cons&eacute;quence (<tt>setGrille(i,j,'X')</tt>). Il ne faut pas oublier de fermer le socket Client (<tt>closeSocketClient()</tt>) pour lib&eacute;rer le port ouvert par le client pour une future utilisation.
+               </li>
+               
+            </ul>
+            
+         </div>
+         
+           
+         
+         <div>
+            <h3>remarques:.</h3> 
+                
+            <ul class="ul">
+                   
+               <li>Le port utilis&eacute; pour acc&eacute;der au serveur est le port 6000. (A changer si ce port est d&eacute;j&agrave; utilis&eacute;).</li>
+                   
+               <li>Le format d'un coup est une cha&icirc;ne de 3 caract&egrave;res correspondant aux coordonn&eacute;es de la case choisie "numligne,numcolonne"
+                   , par exemple "3,3".
+               </li>
+                   
+               <li>Au niveau de la grille du jeu, la marque utilis&eacute;e par le joueur/serveur est une croix 'X' alors que la marque utilis&eacute;e par
+                  le joueur/client est un  rond 'O'.
+               </li>
+                   
+               <li> Dans cet exemple minimal aucun test n'est fait pour v&eacute;rifier que les ouvertures de sockets ce sont bien pass&eacute;es, etc. Tests
+                  qui seront bien s&ucirc;r &agrave; faire dans la version finale du jeu.
+               </li>
+                   
+               <li>Dans cet exemple le client joue en premier le coup (3,3) auquel le serveur r&eacute;pond par le coup (1,3).</li>
+                   
+               <li>En cas de probl&egrave;mes &eacute;ventuels de droits/Firewall sur le r&eacute;seau, on peut tr&egrave;s bien utiliser cette application client/serveur
+                  sur un m&ecirc;me poste (au moins pour les d&eacute;veloppements) en utilisant l'adresse de serveur localhost (127.0.0.1). On peut aussi
+                  raccorder les deux postes &agrave; l'aide d'un c&acirc;ble crois&eacute; ou d'un mini-switch.
+               </li>
+                   
+            </ul>
+            
+         </div>    
+         
+         
+      </div>    
+          
+      
+      <div>
+         <h2>Variantes au niveau de la mise en oeuvre.</h2>On peut pr&eacute;voir deux versions:
+         <ul class="ul">
+                
+            <li>Une version, comme celle pr&eacute;sent&eacute; ici du type [1 client / 1 serveur] ou un joueur active la version serveur sur un poste et
+               ou le deuxi&egrave;me active la version client.
+            </li>
+                
+            <li>Une version type [2 clients / 1 serveur]. Le serveur tournant sur un poste d&eacute;di&eacute; sert &agrave; mettre en relation au d&eacute;but du jeu
+               les deux versions clientes (voir le proglet Client/Serveur.
+            </li>
+              
+         </ul>
+           
+         
+         
+      </div>
+        
+        
+      
+      <div>
+         <h2>Liste des fonctions &agrave; disposition.</h2> 
+         
+         <div>
+            <h3>Gestion de la grille de jeu.</h3>
+            
+            <div>Pour la gestion de la grille de jeu (taille 3x3) propos&eacute;e au niveau de la console "graphique" vous disposez des fonctions
+               suivantes :
+            </div>
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>setGrille</b></font>(int i , int j ,char mark)
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Permet de positionner une marque (caract&egrave;re 'X' ou 'O') sur la grille &agrave; la position sp&eacute;cifi&eacute;e (coordonn&eacute;es comprises entre
+               1 et 3). La marque ronde 'O' est Bleu, la croix 'X' est verte
+            </div>
+            
+            <div> Exemple : setGrille(1,2,'X')</div>
+            
+            <div></div>
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>getGrille</b></font>(int i , int j )
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Cette fonction retourne la marque (caract&egrave;re 'X' ou 'O' ou '.') (type char) pr&eacute;sente sur la grille &agrave; la position sp&eacute;cifi&eacute;e
+               (coordonn&eacute;es comprises entre 1 et 3).
+            </div>
+            
+            <div>exemple : char mark = getGrille(3,3);</div>
+            
+         </div>
+         
+         
+         <div>
+            <h3>Gestion de la communication r&eacute;seau via les sockets.</h3>
+            
+            <div>Au niveau communication TCP/IP on dispose d'une fonction d'initialisation du port (via une "socket"), d'une fonction de lecture,
+               d'une fonction d'&eacute;criture et enfin d'une fonction de lib&eacute;ration de la connection. Chacune de ses fonctions est d&eacute;clin&eacute;e en
+               version serveur et en  version client.
+            </div>
+                
+            
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>openSocketServer</b></font>(int numport)
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Initialisation du socket server, il &eacute;coute sur le port sp&eacute;cifi&eacute;.Cette fonction tourne true si tout c'est bien pass&eacute; false
+               dans le cas contraire.
+            </div>
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>getMessageViaSocketServer</b></font>()
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Retourne un message (type String) lu sur le socket server. Message en provenance du client.</div>
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>sendMessageViaSocketServer</b></font>(String text)
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Permet d'&eacute;crire un message sur le socket server. Message &agrave; destination du client.</div>
+            
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>closeSocketServer</b></font>()
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Fermeture du socket server. Cette fonction retourne true si tout c'est bien pass&eacute; false dans le cas contraire.</div>
+                 
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>openSocketClient</b></font>(String serverName, int numport)
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Initialisation socket client vers server sp&eacute;cifi&eacute; (Nom et num&eacute;ro de port)
+               Cette fonction retourne true si tout c'est bien pass&eacute; false dans le cas contraire.
+            </div>
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>sendMessageViaSocketClient</b></font>(String text)
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Permet d'envoyer un message via le socket client vers le serveur.</div>
+            
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>getMessageViaSocketClient</b></font>()
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Retourne un message (type String) lu sur le socket client, message en provenance du serveur.</div>
+            
+            
+            <div class="code">
+               <table witdh="90%" border="1" align="center">
+                  <tr>
+                     <td>
+                        <div class="code">
+                           <div><font color="#990000"><b>closeSocketClient</b></font>()
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            
+            <div>Fermeture du socket client. Cette fonction retourne true si tout c'est bien pass&eacute; false dans le cas contraire.</div>
+                
+            
+         </div>
+         
+      </div>
+      
+      
+      
+   </body>
+</html>

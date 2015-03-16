@@ -1,0 +1,63 @@
+<div class="sujet" title="Une activité sur l'algorithme du plus court chemin">
+  
+  <div class="objectif">
+    Le but de ce tutoriel est de comprendre l'algorithme du plus court chemin.
+  </div>
+
+  <div title="Apprendre à manipuler des tables associatives">
+    <p>Un dictionnaire ou un répertoire téléphonique est une structure de donnée où une clé (le mot dont on cherche une définition ou le nom de la personne dont on cherche le numéro de télephone) est associée à une valeur. Celà diffère d'un tableau qui est uniquement indexé par des nombres entiers 0, 1, etc.</p>
+    <p>Il existe un objet Java, la <c>HashMap</c> qui implémente un tel container et il se manipule assez facilement:
+    <div class="code">
+      <m>Déclaration de la structure de table associative</m>
+      <p><r>import java.util.HashMap;</r></p>
+      <p>../..</p>
+      <p>{</p>
+      <m>Ici on construit une table (vide) qui associe à des String une valeur entière.</m>
+      <p><T/><r>HashMap&lt;String,Integer></r> ages = <r>new</r> <r>HashMap&lt;String,Integer></r>();</p>
+      <m>Ici on ajoute deux valeurs dans cette table.</m>
+      <p><T/>ages.put("Toto", 12);</p>
+      <p><T/>ages.put("Tata", 23);</p>
+      <m>Ici on récupère une des valeurs (présentement 23).</m>
+      <p><T/><r>int</r> a = ages.get("Tata");</p>
+      <m>Ici on teste si une valeur existe parmi les clés de la table (présentement true pour b et false pour d).</m>
+      <p><T/><r>boolean</r> b = ages.keySet().contains("Tata"), d = ages.keySet().contains("Titi");</p>
+      <m>Ici on énumère toutes les clés de la table et imprime les valeurs correspondantets.</m>
+      <p><T/><r>for</r> (<r>String</r> n : ages.keySet())</p>
+      <p><T/><T/><t/><r>println</r>(<v>Salut </v> + n + <v>, tu as </v> + ages.get(n) + <v> ans</v>);</p>
+      <p>}</p>
+    </div></p>
+    <p>On utilise donc les fonctions: <div class="ul">
+      <p><c>table.put(key, value)</c> pour écrire une valeur.</p>
+      <p><c>table.get(key)</c> pour lire une valeur.</p>
+      <p><c>table.keySet()</c> pour récupérer l'ensemble des clés (c'est un objet Java <c>Set()</c>)</p>
+      <p><c>set.contains(key)</c> pour tester si un ensemble contient une clé.</p>
+    </div></p>
+    <p><i>À faire:</i> En construisant une table des âges ou tout autre petite table de donnée se familiariser avec ces fonctions.</p>
+  </div>
+
+  <div title="Présentation de l'algorithem">
+    <p>L'algorithme de Roy-Warshall-Floyd est un algorithme très efficace pour calculer le plus court chemin entre toutes les paires de sommets d'un graphe. Calculant tous les plus courts chemins, cet algorithme détermine aussi s'il existe un chemin entre deux sommets ou non.</p>
+    <p>Plus précisément, cet algorithme calcule deux tableaux : un tableau L tel que L[x][y] soit la longueur du plus court chemin qui relie le sommet x et le sommet y et un tableau R tel que R[x][y] soit le premier successeur du sommet x qui permet de connaitre le plus court chemin menant vers le sommet y..</p>
+    <p>Au départ, on initialise le tableau L pour les chemins de longueur 0, L[x][x] prend la valeur 0 et pour les chemins de longueur 1 L[x][y] prend la valeur 1 s'il y a une arrête entre x et y et la valeur ∞ sinon. On initialise de même le tableau R : R[x][x]prend la valeur x, et R[x][y] prend la valeur y.</p>
+    <p>Ensuite on imbrique trois boucles : Pour tous les sommets intermédiaires z, Pour tous les sommets de départ x, Pour tous les sommets d'arrivée y, Si L[x][z] + L[z][y] &lt; L[x][y] (c'est à dire si aller de x à y en passant par z est plus court que le plus court chemin connu) on remplace L[x][y] par L[x][z] + L[z][y] et  R[x][y] par la valeur de  R[x][z].On a donc stocké dans R[x][y] la valeur du successeur de x qui permet de connaitre, à ce stade, le plus court chemin vers le sommet y.</p>
+    <div title="Etude de l'algorithme"><div class="ul">
+      <p>On pourra montrer que après avoir effectué les tours de la boucle la plus externe correspondant aux sommets z1, …, zk, la case L[x][y] du tableau L contient la longueur du plus court chemin qui passe par z1, …, zk mais pas par les autres sommets du graphe et qui relie x à y.</p>
+      <p>On pourra montrer que R[x][y] permet récursivement de calculer l'intégralité du court de chemin entre deux sommets et programmer la fonction qui donne le sommet suivant sur un tel plus court chemin.</p>
+      <p>Quel est le nombre d'opérations effectuées par cet algorithme en fonction du nombre de sommets du graphe ?</p>
+    </div></div>
+  </div>
+
+  <div title="À vous : compléter l'algorithme de calcul du plus court chemin">
+    En utilisant la description de l'algorithme de Roy-Floyd-Warshall donné dans 
+    <l link="http://javascool.gforge.inria.fr/documents/sketchbook/gogleMaps/presentation-des-graphes.pdf" text=" ce document"/>
+    utiliser le code proposé ici <l class="editor" link="Roy_Floyd_Warshall.jvs" text="ici"/> 
+    pour 
+    <div class="ul">
+      <p>compléter l'implémentation l'algorithme de calcul du plus court chemin proposé;</p>
+      <p>expliquer en détail comment marche la routine <c>getPathNextNode()</c>;</p>
+      <p>ajouter une routine qui imprime et affiche l'itinéraire d'une ville de départ à une ville d'arrivée.</p>
+    </div>
+    <p>Pour débugger le code, on pourra enrichir la routine <c>test()</c> de détails sur où l'algorithme a échoué.</p>
+  </div>
+</div>
+

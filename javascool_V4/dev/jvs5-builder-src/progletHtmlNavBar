@@ -1,0 +1,23 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="@base-url/help.html" style="margin: 0; margin-right: 30px; margin-top: 3px; padding:0;">
+        <img alt="logo" src="@base-url/@icon" style="height: 35px; padding: 0; margin: 0;"/>&nbsp;<b>Java'sCool «@name»</b>
+      </a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><a href="@base-url/help.html">Documentation</a></li>
+          <li><a href="@base-url/_applet.html">Démonstration</a></li>
+          <li><a href="@base-url/api/org/javascool/proglets/@name/package-summary.html">Implémentation</a></li>
+          <li><a href="mailto:@email?subject=À propos de Java'sCool «@name»">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="main"><b><img align="left" src="@icon" alt="icon"/>&nbsp;Java's Cool proglet «@name»</b><br/><div align="center">@title<div><div align="right"><i>@author</i></div></div>
+<div class="container">

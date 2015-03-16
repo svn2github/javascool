@@ -1,0 +1,38 @@
+<p><br />
+</p>
+<div id="javascool">Java's Cool (alias Javascool) est un logiciel conçu pour l'apprentissage des bases de la programmation. Il a été conçu à la demande de professeurs de lycées et de <a target="_blank" href="http://www.fuscia.info">fuscia</a> avec <a target="_blank" href="http://www.unisciel.fr">UNICIEL</a>. Il permet de manipuler un Macro-Langage de programmation, basé sur le langage Java. Pour plus de détails  . . <a rel="nofollow" class="external text" href="/v4/?page=run" class="internal">essayez le</a>&#160;! 
+<p>Créé pour apprendre aux personnes qui savent juste allumer leur ordinateur à programmer, par exemple des jeux (en 2D) ou des minis-logiciels, son interface est simple ainsi que son langage dit de "balisage". 
+</p>
+Ce programme est écrit en Java, il est donc compatible avec tous les systèmes.</div>
+<div align="right">Un <a rel="nofollow" class="external text" href="http://public.iutenligne.net/informatique/algorithme-et-programmation/raffinat/algo/general/index.html">cours en ligne</a> sur javascool.</div>
+<div align="right">Un <a rel="nofollow" class="external text" href="/v4//documents/crespin-etal.pdf" class="internal">ouvrage</a> sur javascool.</div>
+<div align="right">Le <a rel="nofollow" class="external text" href="/v4//documents/poster-atelier-js-proglet.pdf" class="internal">poster</a> et les <a rel="nofollow" class="external text" href="/v4//documents/about-javascool.pdf" class="internal">slides</a> de présentation</div>
+<hr />
+<p><b>Qu'est ce que c'est&#160;?</b> Un recueil de ressources (documents et logiciels) pour aider les professeur(e)s des lycées et du début du supérieur au niveau de l'enseignement de l'algorithmique, donc des sciences informatiques. 
+La démarche est expliquée dans le <a href="https://wiki.inria.fr/sciencinfolycee/JavaScool:Manifeste" title="JavaScool:Manifeste">manifeste</a>.
+</p><p>On y trouve un parcours de formation, pour s'approprier les cinq ingrédients des algorithmes.
+On peut s'initier à la programmation de manière ludique, puisque les petits programmes créés (dits «proglets») animent un élément visuel ou sonore.
+On peut donc mieux comprendre ces objets numériques à travers une démarche expérimentale concrète, qui mène à la compréhension des notions abstraites des sciences de l'information.
+Des textes de base sur ce qu'est l'information, comment sont codés les objets numériques et sur les ingrédients des algorithmes, sont référencés.
+</p><p>Parmi ces éléments, <a rel="nofollow" class="external text" href="http://web.univ-pau.fr/~raffinat/plurialgo">PluriAlgo</a>, une des proglets du parcours de formation, facilite l'écriture d'algorithmes en Javascool et dans plusieurs autres langages.
+</p><p>Ces éléments, ont été conçus par des <a class="internal" href="?page=contact&action=credits" title="JavaScool:Crédits" class="mw-redirect">chercheurs et des enseignants</a> du supérieur et des lycées, et sont utilisés "pour de vrai" en classe&#160;: c'est ce qui fait leur valeur.
+</p><p>Logiciels et documents sont soumis à un <a rel="nofollow" class="external text" href="/v4//index.php?page=run&amp;action=licence" class="internal">couple de licences</a> qui les rend utilisables par tous. 
+</p>
+<hr />
+<p><b>Pour qui est-ce&#160;?</b>  Pour les enseignants, les clubs de maths ou les autres initiatives périscolaires de découverte scientifique, ainsi que pour faire des <a class="internal" href="?page=resources&action=link-tpe-accueil" title="JavaScool:TPE-Accueil">TPE</a>. 
+Et pour les curieux, avec quelqu'un de son entourage qui sait programmer (afin de ne pas être bloqué sur des détails de syntaxe ou d'implémentation), pour s'initier à la programmation&#160;: vous allez vite épater ceux qui pensent être les seuls à savoir programmer&#160;!
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.008 seconds
+Real time usage: 0.009 seconds
+Preprocessor visited node count: 11/1000000
+Preprocessor generated node count: 52/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:36-1!*!0!*!*!*!* and timestamp 20150313130633 and revision id 15756
+ -->

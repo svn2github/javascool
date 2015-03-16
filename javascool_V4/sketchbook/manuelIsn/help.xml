@@ -1,0 +1,136 @@
+<div title="La «proglet» manuelIsn">
+  <div>
+    <p>
+      Cette proglet permet de faire en javascool les exercices du <l link="https://wiki.inria.fr/sciencinfolycee/Informatique_et_Sciences_du_Num%C3%A9rique_-_Sp%C3%A9cialit%C3%A9_ISN_en_Terminale_S" text="manuel ISN"/> de Dowek et. al.
+  </p>
+  <p>
+    Sur cette page se trouvent la plupart des versions javascool des programmes du livre «Informatique et sciences du numérique - Spécialité ISN en terminale S», voir la page de <l link="https://who.rocq.inria.fr/Gilles.Dowek/Isn" text="ressources du manuel"/> pour plus d'informations, des exemples dans d'autres langages etc.
+  Tous ces sources sont aussi disponibles dans ce <l link="http://javascool.gforge.inria.fr/proglets/manuelIsn/IsnJvsExamples.zip" text="fichier zip"/>.
+  </p>
+</div><div title="Chapitre 1">
+
+<div><l class="editor" link="./BatailleNavale.jvs" text="BatailleNavale"/></div>
+
+<div><l class="editor" link="./Taxes.jvs" text="Taxes"/></div>
+
+<div><l class="editor" link="./TauxQuelconque.jvs" text="TauxQuelconque"/></div>
+
+<div><l class="editor" link="./Fraction.jvs" text="Fraction"/></div>
+
+<div><l class="editor" link="./FractionAdd.jvs" text="FractionAdd"/></div>
+
+<div><l class="editor" link="./SecondDegre.jvs" text="SecondDegre"/></div>
+
+<div><l class="editor" link="./Poste.jvs" text="Poste"/></div>
+
+</div><div title="Chapitre 2">
+
+<div><l class="editor" link="./Temperature.jvs" text="Temperature"/></div>
+
+<div><l class="editor" link="./Calendrier.jvs" text="Calendrier"/></div>
+
+<div><l class="editor" link="./Elog.jvs" text="Elog"/></div>
+
+<div><l class="editor" link="./Oui.jvs" text="Oui"/></div>
+
+<div><l class="editor" link="./SecondDegreTest.jvs" text="SecondDegreTest"/></div>
+
+</div><div title="Chapitre 3">
+
+<div><l class="editor" link="./MesurePrincipale.jvs" text="MesurePrincipale"/></div>
+
+<div><l class="editor" link="./RacineDeDeux.jvs" text="RacineDeDeux"/></div>
+
+<div><l class="editor" link="./Factorielle.jvs" text="Factorielle"/></div>
+
+<div><l class="editor" link="./Repertoire.jvs" text="Repertoire"/></div>
+
+<div><l class="editor" link="./CalculFormel.jvs" text="CalculFormel"/></div>
+
+<div><l class="editor" link="./Initiales.jvs" text="Initiales"/></div>
+
+<div><l class="editor" link="./Terminaison.jvs" text="Terminaison"/></div>
+
+</div><div title="Chapitre 4">
+
+<div><l class="editor" link="./Horaire.jvs" text="Horaire"/></div>
+
+<div><l class="editor" link="./Horaire2.jvs" text="Horaire2"/></div>
+
+<div><l class="editor" link="./NombreDea.jvs" text="NombreDea"/></div>
+
+<div><l class="editor" link="./DivisionDecimale.jvs" text="DivisionDecimale"/></div>
+
+<div><l class="editor" link="./Reinitialise.jvs" text="Reinitialise"/></div>
+
+<div><l class="editor" link="./Globale.jvs" text="Globale"/></div>
+
+<div><l class="editor" link="./Generateur.jvs" text="Generateur"/></div>
+
+<div><l class="editor" link="./Pseudo.jvs" text="Pseudo"/></div>
+
+<div><l class="editor" link="./Portee.jvs" text="Portee"/></div>
+
+<div><l class="editor" link="./RepertoireFonctions.jvs" text="RepertoireFonctions"/></div>
+
+<div><l class="editor" link="./Echange.jvs" text="Echange"/></div>
+
+<div><l class="editor" link="./ParValeur.jvs" text="ParValeur"/></div>
+
+<div><l class="editor" link="./EchangeTableaux.jvs" text="EchangeTableaux"/></div>
+
+</div><div title="Chapitre 5">
+
+<div><l class="editor" link="./Horaire3.jvs" text="Horaire3"/></div>
+
+<div><l class="editor" link="./Puissance.jvs" text="Puissance"/></div>
+
+<div><l class="editor" link="./Quotient.jvs" text="Quotient"/></div>
+
+<div><l class="editor" link="./DessinRecursif.jvs" text="DessinRecursif"/></div>
+
+</div><div title="Chapitre 11">
+
+<div><l class="editor" link="./RepertoireFichier.jvs" text="RepertoireFichier"/>(<l link="https://who.rocq.inria.fr/Gilles.Dowek/Isn/repertoire.txt" text="repertoire.txt"/>)</div>
+
+</div><div title="Chapitre 12">
+
+<div><l class="editor" link="./Alea.jvs" text="Alea"/></div>
+
+</div><div title="Chapitre 18">
+
+<div><l class="editor" link="./Addition.jvs" text="Addition"/></div>
+
+</div><div title="Chapitre 19">
+
+<div><l class="editor" link="./CarreRouge.jvs" text="CarreRouge"/></div>
+
+<div><l class="editor" link="./Cube.jvs" text="Cube"/></div>
+
+<div><l class="editor" link="./Botticelli.jvs" text="Botticelli"/></div>
+
+<div><l class="editor" link="./BotticelliFichier.jvs" text="BotticelliFichier"/></div>
+
+<div><l class="editor" link="./Contraste.jvs" text="Contraste"/> (<l link="https://who.rocq.inria.fr/Gilles.Dowek/Isn/joconde.ppm" text="joconde.ppm"/>)</div>
+
+<div><l class="editor" link="./FusionImages.jvs" text="FusionImages"/> (<l link="https://who.rocq.inria.fr/Gilles.Dowek/Isn/maison1.pgm" text="maison1.pgm"/>, <l link="https://who.rocq.inria.fr/Gilles.Dowek/Isn/maison2.pgm" text="maison2.pgm"/>)</div>
+
+</div><div title="Chapitre 20">
+
+<div><l class="editor" link="./RepertoireDichotomie.jvs" text="RepertoireDichotomie"/></div>
+
+<div><l class="editor" link="./ZeroDUneFonction.jvs" text="ZeroDUneFonction"/></div>
+
+</div><div title="Chapitre 21">
+
+<div><l class="editor" link="./TriSelection.jvs" text="TriSelection"/></div>
+
+<div><l class="editor" link="./TriFusion.jvs" text="TriFusion"/></div>
+
+<div><l class="editor" link="./TriFusionRecursif.jvs" text="TriFusionRecursif"/></div>
+
+</div><div title="Coquilles"> La liste des coquilles connues est <a href = "coquilles.html">ici</a>. Aidez vous à les éliminer en envoyant une courrier à <tt>gilles.dowek</tt> at <tt>inria.fr</tt>.</div>
+
+<div title="Mécanisme d'utilisation des routines Isn en javascool"> <p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=manuelIsn&amp;helpFile=api/org/javascool/proglets/manuelIsn/package-summary.html" text="ici"/>. La <l link="http://javascool.gforge.inria.fr/proglets/manuelIsn/java2jvs/Java2Jvs.java.txt" text="routine de conversion"/> de Java en Jvs est simplissime.</p></div>
+
+</div>

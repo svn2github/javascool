@@ -1,0 +1,345 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="class" content="sujet">
+      <title>Un tutoriel sur la conversion binaire/d&eacute;cimale</title>
+   </head>
+   <body>
+      <h1>Un tutoriel sur la conversion binaire/d&eacute;cimale.</h1> 
+      
+      
+      <h2>Objectif.</h2>
+      <div class="objectif">
+         Le but de ce tutoriel est d'expliquer comment sont cod&eacute;s les nombres en binaire.    
+           
+      </div>
+      
+        
+      <h2>Introduction.</h2>
+      <div id="intros">
+         <ol>
+            <li>
+               <h3>D&eacute;crire des nombres en binaire.</h3> (voir le texte "<a href="http://interstices.info/reflet-numerique">tout a un reflet num&eacute;rique</a>" pour une introduction compl&egrave;te)
+               Le tableau suivant donne les 10 premiers nombres en base 10 dans la colonne du milieu et leur repr&eacute;sentation binaire dans
+               la colonne de droite :
+                   
+               <div align="center" class="center"><img src="algo-n-1b.jpg" alt="" class="icon"></div>
+                    Si nous observons bien ce codage, nous constatons qu'il est le r&eacute;sultat d'un calcul, montr&eacute; dans la colonne de gauche.
+               
+                      Le codage binaire d'un nombre (que nous, humains, &eacute;crivons quasiment toujours en base 10, en utilisant 10 chiffres),
+               est ce m&ecirc;me nombre, mais <i>&eacute;crit en base 2</i>,
+                      avec 2 chiffres <i>0</i> et <i>1</i>.
+                  
+            </li>
+            <li>
+               <h3>Du codage binaire au nombre entier positif..</h3>Voici le calcul qui permet de retrouver un nombre &agrave; partir de son code binaire : 
+                    additionner les bits, chacun multipli&eacute; par la puissance de deux qui lui correspond, comme ci-dessous, donne le nombre
+               en base 10.
+                    retrouver le nombre 9 &agrave; partir de son code binaire:
+                      
+               <div align="center" class="center"><img src="algo-n-2bb.jpg" alt="" class="icon"></div>
+                      
+               <ul class="ul">
+                           
+                  <li>&Agrave; la premi&egrave;re ligne, nous avons multipli&eacute; respectivement par 1, 2, 4, 8 de droite &agrave; gauche les bits qui repr&eacute;sentent 9.</li>
+                           
+                  <li>&Agrave; la seconde ligne, nous nous sommes aper&ccedil;us que 1, 2, 4, 8 sont en fait les puissances de 2 : 2<sup>0</sup>,2<sup>1</sup>,2<sup>2</sup> ..
+                  </li>
+                           
+                  <li>&Agrave; la troisi&egrave;me ligne, nous factorisons 2 autant que possible ; cette &eacute;criture avec ses parenth&egrave;ses bien plac&eacute;es nous montre
+                     qu'il suffit de multiplier par deux puis d'additionner les bits de gauche &agrave; droite pour trouver le nombre en base 10.
+                  </li>
+                         
+               </ul>Voil&agrave; donc un calcul, une m&eacute;thode m&eacute;canique, bref un <i>algorithme</i>, qui permet de passer du codage binaire au nombre dans sa repr&eacute;sentation usuelle.
+                    
+            </li>
+            <li>
+               <h3>Du nombre entier positif &agrave; son codage binaire.</h3>
+                      R&eacute;ciproquement, il existe un calcul pour obtenir le code binaire de n'importe quel nombre entier. 
+                      Si nous notons 9 % 2 = 1 le reste de la division par 2 de 9 ou 4 % 2 = 0 le reste de la division de 4 par 2, etc.,
+               alors le calcul suivant, 
+                      o&ugrave; nous calculons successivement le reste de la division par deux puis divisons par deux nous donne... le codage binaire
+               du nombre 9 :
+                      
+               <div align="center" class="center"><img src="algo-n-3b.jpg" alt="" class="icon"></div>
+                    
+            </li>
+            <li>
+               <h3>Calculer directement sur les nombres binaires.</h3>
+                      Nous pouvons donc repr&eacute;senter des nombres entiers positifs par la suite de bits de leur repr&eacute;sentation binaire. 
+                      Ce codage est tr&egrave;s pr&eacute;cieux, car il permet de faire directement des op&eacute;rations sur ces nombres. 
+                      Par exemple, additionner deux entiers positifs revient &agrave; additionner leur repr&eacute;sentation binaire : on obtient directement
+               le codage binaire du r&eacute;sultat. De m&ecirc;me pour toutes les autres op&eacute;rations num&eacute;riques, pour comparer ces entiers entre eux,
+               etc.
+                      
+               <div>Donc toutes les valeurs num&eacute;riques sont non seulement stock&eacute;es en binaire, mais aussi manipul&eacute;es en binaire dans l'ordinateur.</div>
+                    
+            </li>
+            <li>
+               <h3>Repr&eacute;senter des nombres entiers n&eacute;gatifs et positifsde toute taille et des nombres d&eacute;cimaux.</h3>Tout ceci marche aussi pour des nombres plus grands, 
+                      plus compliqu&eacute;s et d'autres objets num&eacute;riques (images, sons, ..)
+                      comme cela vous est expliqu&eacute; dans le texte "<a href="http://interstices.info/reflet-numerique">tout a un reflet num&eacute;rique</a>" &agrave; notre disposition.
+                    
+            </li>
+            <li class="margin">Une <a href="dageville-exos-base-deux.html">activit&eacute; sans ordinateur</a> est disponible ici.
+            </li>
+         </ol>
+      </div>
+      
+        
+      <h2>Travail propos&eacute;.</h2>
+      <div id="works">
+         <ol>
+            <li>
+               <h3>Ecrire et programmer l'algorithme de conversion binaire -&gt; d&eacute;cimal.</h3> 
+               <ul class="ul">
+                        
+                  <li>A partir de la description du passage du codage binaire au nombre entier positif donn&eacute;e ci-dessus, compl&eacute;ter l'algorithme
+                     suivant, &eacute;crit en "pseudo-code":
+                             
+                     <div class="code">
+                        <table witdh="90%" border="1" align="center">
+                           <tr>
+                              <td>
+                                 <div class="code">
+                                              
+                                    <div><font color="#990000"><b>Entr&eacute;e:</b></font> b[0],b[1],b[2],b[3] les quatres bits du nombre &agrave; convertir
+                                    </div>
+                                              
+                                    <div><font color="#990000"><b>Sortie:</b></font> n le nombre convertir en d&eacute;cimal.
+                                    </div>
+                                              
+                                    <div><font color="#990000"><b>Algorithme:</b></font></div>
+                                              
+                                    <div>
+                                       &nbsp;&nbsp;&nbsp;
+                                       Initialiser n = 0;
+                                    </div>
+                                              
+                                    <div>
+                                       &nbsp;&nbsp;&nbsp;
+                                       Pour i = 0 &agrave; 3 faire:
+                                    </div>
+                                              
+                                    <div>
+                                       &nbsp;&nbsp;&nbsp;
+                                       
+                                       &nbsp;&nbsp;&nbsp;
+                                       n = [ah l&agrave;: c'est &agrave; vous de compl&eacute;ter !!!]
+                                    </div>
+                                              
+                                    <div><font color="#990000"><b>R&eacute;sultat:</b></font> Le nombre n contient la valeur d&eacute;cimale.
+                                    </div>
+                                            
+                                 </div>
+                              </td>
+                           </tr>
+                        </table>
+                     </div>
+                           
+                  </li>
+                        
+                  <li>Traduire maintenant l'algorithme en programme &agrave; partir de l'exemple suivant:
+                             
+                     <div class="code">
+                        <table witdh="90%" border="1" align="center">
+                           <tr>
+                              <td>
+                                 <div class="code">
+                                              
+                                    <p><tt><font color="#202080"><big>//</big>&nbsp;// Tableaux des bits du nombre &agrave; convertir en d&eacute;cimal</font></tt></p>
+                                              
+                                    <div><font color="#990000"><b>int</b></font> bits[] = {1, 0, 1, 0};
+                                    </div>
+                                              
+                                    <p><tt><font color="#202080"><big>//</big>&nbsp;// Valeur du nombre en d&eacute;cimal</font></tt></p>
+                                              
+                                    <div><font color="#990000"><b>int</b></font> r;
+                                    </div>
+                                              
+                                    <p><tt><font color="#202080"><big>//</big>&nbsp;A vous d'&eacute;crire le code !!!</font></tt></p>
+                                              
+                                    <div><font color="#990000"><b>echo</b></font>("Le nombre d&eacute;cimal est: "+n);
+                                    </div>
+                                            
+                                 </div>
+                              </td>
+                           </tr>
+                        </table>
+                     </div> et essayer avec d'autres valeurs de <tt>bits[]</tt>. 
+                             
+                     <div>Attention &agrave; bien faire la calcul de "droite &agrave; gauche", en commen&ccedil;ant par le bit de poids faible et en finissant par le bit
+                        de poids fort.
+                                  Ici le nombre <tt>1, 0, 1, 0</tt> doit donner <tt>8 + 2 = 10</tt> mais si nous consid&eacute;rons les bits &agrave; l'envers 
+                                 (c'est &agrave; dire comme si c'&eacute;tait <tt>0, 1, 0, 1</tt> cela va donner . . un autre nombre).
+                     </div>
+                           
+                  </li>
+                      
+               </ul>
+            </li>
+            <li>
+               <h3>Ecrire et programmer l'algorithme de conversion d&eacute;cimal -&gt;&gt; binaire.</h3> 
+                     
+               <div>A partir de la description du passage du nombre entier positif au codage binaire, &eacute;crire 
+                  <ul class="ul">
+                             
+                     <li>L'algorithme de division en pseudo-code.</li>
+                             
+                     <li>Un programme qui utilisera, par exemple, l'instruction:
+                                  
+                        <div class="code">
+                           <table witdh="90%" border="1" align="center">
+                              <tr>
+                                 <td>
+                                    <div class="code">
+                                                   
+                                       <div>
+                                          &nbsp;&nbsp;&nbsp;
+                                          <font color="#990000"><b>echo</b></font>("Digit num&eacute;ro "+i+" = "+(n % 2));
+                                       </div>
+                                                 
+                                    </div>
+                                 </td>
+                              </tr>
+                           </table>
+                        </div>
+                                  pour donner le digit num&eacute;ro <tt>i</tt> (o&ugrave; <tt>i</tt> est un entier &agrave; d&eacute;finir) du nombre d&eacute;cimal.
+                                
+                     </li>
+                             
+                     <li>Reprendre le m&ecirc;me programme mais cette fois ci en utilisant un tableau, pour stocker les bits calcul&eacute;s, puis ajouter le code
+                                  
+                        <div class="code">
+                           <table witdh="90%" border="1" align="center">
+                              <tr>
+                                 <td>
+                                    <div class="code">
+                                                   
+                                       <div>
+                                          &nbsp;&nbsp;&nbsp;
+                                          <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font>i = 0; i &lt; bits.<font color="#990000"><b>length</b></font>; i++) {
+                                       </div>
+                                                   
+                                       <div>
+                                          &nbsp;&nbsp;&nbsp;
+                                          
+                                          &nbsp;&nbsp;&nbsp;
+                                          <font color="#990000"><b>echo</b></font>("Digit num&eacute;ro "+i+" = "+bits[i]);
+                                       </div>
+                                                   
+                                       <div>
+                                          &nbsp;&nbsp;&nbsp;
+                                          }
+                                       </div>
+                                                 
+                                    </div>
+                                 </td>
+                              </tr>
+                           </table>
+                        </div>
+                                
+                     </li>
+                           
+                  </ul>
+               </div>
+                   
+            </li>
+            <li>
+               <h3>Calculer directement sur les nombres binaires.</h3>
+                     Nous allons consid&eacute;rer deux nombres binaires:
+                       
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                        
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;// Tableaux des bits du nombre &agrave; convertir en d&eacute;cimal</font></tt></p>
+                                        
+                              <div><font color="#990000"><b>int</b></font> bits1[] = {1, 0, 1, 0};
+                              </div>
+                                        
+                              <div><font color="#990000"><b>int</b></font> bits2[] = {0, 1, 0, 0};
+                              </div>
+                                        
+                              <p><tt><font color="#202080"><big>//</big>&nbsp;// Tableaux des bits du r&eacute;sultat</font></tt></p>
+                                        
+                              <div><font color="#990000"><b>int</b></font> bits0[] = new int[4];
+                              </div>
+                                      
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+                     et &agrave; nous d'&eacute;crire l'algorithme qui permette de les additionner: 
+               <ul class="ul">
+                          
+                  <li>en binaire sans les reconvertir en d&eacute;cimal,</li>
+                          
+                  <li>en utilisant la boucle:
+                               
+                     <div class="code">
+                        <table witdh="90%" border="1" align="center">
+                           <tr>
+                              <td>
+                                 <div class="code">
+                                                
+                                    <div>
+                                       &nbsp;&nbsp;&nbsp;
+                                       <font color="#990000"><b>for</b></font>(<font color="#990000"><b>int</b></font>i = 3; i &gt;= 0; i--) {
+                                    </div>
+                                                
+                                    <p><tt><font color="#202080"><big>//</big>&nbsp;// A compl&eacute;ter</font></tt></p>
+                                                
+                                    <div>
+                                       &nbsp;&nbsp;&nbsp;
+                                       }
+                                    </div>
+                                              
+                                 </div>
+                              </td>
+                           </tr>
+                        </table>
+                     </div>
+                               pour bien calculer de droite &agrave; gauche,
+                  </li>
+                          
+                  <li>en tenant bien compte de la retenue,</li>
+                          
+                  <li>en mettant le r&eacute;sultat dans le tableau <tt>bits0</tt>.
+                  </li>
+                          
+                  <li>en affichant un message d'erreur si le r&eacute;sultat est plus grand que 15 car . . 4 bits ne suffisent plus pour coder le r&eacute;sultat.</li>
+                        
+               </ul>
+                     
+               <div>Si le r&eacute;sultat est plus grand que 15, il y a un d&eacute;bordement (un <i>overflow</i>) et le calcul devient . . faux. Dans ce cas notre programme "hurle": il &eacute;met une erreur.
+                        Il se passe exactement la m&ecirc;me chose dans la calculette ou dans l'ordinateur: si le nombre est trop grand (plus de environ
+                  2 milliards pour les nombres entiers et plus de
+                        environ <tt>10<sup>78</sup></tt> pour les nombres d&eacute;cimaux) une erreur est g&eacute;n&eacute;r&eacute;e.
+               </div>
+                   
+            </li>
+         </ol>
+      </div>
+      
+        
+      <h2>Remarques.</h2>
+      <div id="notes">
+         <ol>
+            <li id="1"><a name="1"></a><h3>A propos de ce tutoriel.</h3> Ce tutoriel est une id&eacute;e originale de Laurent Mongiat, Professeur de Physique en 2nd Mesures Physiques et Informatique au
+               Lyc&eacute;e 
+                   .
+            </li>
+         </ol>
+      </div>
+      
+   </body>
+</html>

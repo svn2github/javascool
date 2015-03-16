@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">main</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">List&lt;String&gt;&nbsp;la_marseillaise&nbsp;=&nbsp;lireGrandTexte</font><font color="#000000">(</font><font color="#2a00ff">&#34;La_Marseillaise.txt&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">List&lt;String&gt;&nbsp;les_miserables&nbsp;=&nbsp;lireGrandTexte</font><font color="#000000">(</font><font color="#2a00ff">&#34;Les_Miserables.txt&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Fichiers&nbsp;charg&eacute;s&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">afficheLaMarseillaise</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Le&nbsp;nombre&nbsp;de&nbsp;mots&nbsp;dans&nbsp;Les&nbsp;Mis&eacute;rables&nbsp;est&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;nombreDeMots</font><font color="#000000">(</font><font color="#000000">les_miserables</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Le&nbsp;nombre&nbsp;de&nbsp;pages&nbsp;dans&nbsp;Les&nbsp;Mis&eacute;rables&nbsp;est&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;nombreDePages</font><font color="#000000">(</font><font color="#000000">les_miserables</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Table&nbsp;des&nbsp;fr&eacute;quence&nbsp;de&nbsp;La&nbsp;Marseillaise&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#000000">tableDesFrequences</font><font color="#000000">(</font><font color="#000000">la_marseillaise</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Le&nbsp;nombre&nbsp;de&nbsp;mots&nbsp;distincts&nbsp;dans&nbsp;Les&nbsp;Mis&eacute;rables&nbsp;est&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;nombreDeMotsDistincts</font><font color="#000000">(</font><font color="#000000">les_miserables</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Portrait&nbsp;de&nbsp;Cosette&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">portraitDeCosette</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Les&nbsp;30&nbsp;mots&nbsp;les&nbsp;plus&nbsp;fr&eacute;quents&nbsp;des&nbsp;Mis&eacute;rables&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">lesPlusFrequents</font><font color="#000000">(</font><font color="#000000">les_miserables,&nbsp;</font><font color="#990000">30</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#2a00ff">&#34;Index&nbsp;des&nbsp;30&nbsp;mots&nbsp;les&nbsp;plus&nbsp;fr&eacute;quents&nbsp;des&nbsp;Mis&eacute;rables&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">premiersIndex</font><font color="#000000">(</font><font color="#000000">les_miserables,&nbsp;</font><font color="#990000">30</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Affiche&nbsp;le&nbsp;texte&nbsp;de&nbsp;la&nbsp;Marseillaise&nbsp;mots&nbsp;par&nbsp;mots</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">afficheLaMarseillaise</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">List&lt;String&gt;&nbsp;la_marseillaise&nbsp;=&nbsp;lireGrandTexte</font><font color="#000000">(</font><font color="#2a00ff">&#34;La_Marseillaise.txt&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;s&nbsp;:&nbsp;la_marseillaise</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#000000">s</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Compte&nbsp;le&nbsp;nombre&nbsp;de&nbsp;mots&nbsp;(comme&nbsp;liste.size())</font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">nombreDeMots</font><font color="#000000">(</font><font color="#000000">List&lt;String&gt;&nbsp;liste</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">res&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;s&nbsp;:&nbsp;liste</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">res++;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">res;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Compte&nbsp;le&nbsp;nombre&nbsp;de&nbsp;pages</font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">nombreDePages</font><font color="#000000">(</font><font color="#000000">List&lt;String&gt;&nbsp;liste</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">res&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;s&nbsp;:&nbsp;liste</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">equal</font><font color="#000000">(</font><font color="#000000">s,&nbsp;</font><font color="#2a00ff">&#34;&lt;NOUVELLE&nbsp;PAGE&gt;&#34;</font><font color="#000000">))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">res++;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">res;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Calcule&nbsp;la&nbsp;table&nbsp;du&nbsp;nombre&nbsp;d'occurrences&nbsp;de&nbsp;chaque&nbsp;mot</font><br />
+<font color="#000000">Map&lt;String,&nbsp;Integer&gt;&nbsp;tableDesFrequences</font><font color="#000000">(</font><font color="#000000">List&lt;String&gt;&nbsp;liste</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Map&lt;String,&nbsp;Integer&gt;&nbsp;table&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">HashMap&lt;String,&nbsp;Integer&gt;</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;mot&nbsp;:&nbsp;liste</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">table.containsKey</font><font color="#000000">(</font><font color="#000000">mot</font><font color="#000000">))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">table.put</font><font color="#000000">(</font><font color="#000000">mot,&nbsp;table.get</font><font color="#000000">(</font><font color="#000000">mot</font><font color="#000000">)&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">table.put</font><font color="#000000">(</font><font color="#000000">mot,&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">table;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Compte&nbsp;le&nbsp;nombre&nbsp;de&nbsp;mots&nbsp;distincts</font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">nombreDeMotsDistincts</font><font color="#000000">(</font><font color="#000000">List&lt;String&gt;&nbsp;liste</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Map&lt;String,&nbsp;Integer&gt;&nbsp;table&nbsp;=&nbsp;tableDesFrequences</font><font color="#000000">(</font><font color="#000000">liste</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">table.keySet</font><font color="#000000">()</font><font color="#000000">.size</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Fonction&nbsp;auxiliaire&nbsp;pour&nbsp;calculer&nbsp;l'indice&nbsp;de&nbsp;la&nbsp;premiere</font><br />
+<font color="#3f7f5f">//&nbsp;occurence&nbsp;d'un&nbsp;mot</font><br />
+<font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">premiereOccurrence</font><font color="#000000">(</font><font color="#000000">String&nbsp;mot0,&nbsp;List&lt;String&gt;&nbsp;liste</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;mot&nbsp;:&nbsp;liste</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">equal</font><font color="#000000">(</font><font color="#000000">mot,&nbsp;mot0</font><font color="#000000">))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">i;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">i++;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">assertion</font><font color="#000000">(</font><font color="#000000">false,&nbsp;</font><font color="#2a00ff">&#34;le&nbsp;mot&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;mot0&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;n'est&nbsp;pas&nbsp;dans&nbsp;la&nbsp;liste&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">-</font><font color="#990000">1</font><font color="#000000">;&nbsp;</font><font color="#3f7f5f">//&nbsp;impossible</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Recherche&nbsp;du&nbsp;mot&nbsp;&#34;cosette&#34;&nbsp;puis&nbsp;affichage&nbsp;des&nbsp;100&nbsp;mots</font><br />
+<font color="#3f7f5f">//&nbsp;qui&nbsp;suivent</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">portraitDeCosette</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">List&lt;String&gt;&nbsp;les_miserables&nbsp;=&nbsp;lireGrandTexte</font><font color="#000000">(</font><font color="#2a00ff">&#34;Les_Miserables.txt&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;premiereOccurrence</font><font color="#000000">(</font><font color="#2a00ff">&#34;cosette&#34;</font><font color="#000000">,&nbsp;les_miserables</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">j&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;&nbsp;j&nbsp;&lt;=&nbsp;</font><font color="#990000">100</font><font color="#000000">;&nbsp;j++</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#000000">les_miserables.get</font><font color="#000000">(</font><font color="#000000">i&nbsp;+&nbsp;j</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Tri&nbsp;d'une&nbsp;table&nbsp;de&nbsp;frequence&nbsp;pour&nbsp;afficher&nbsp;les&nbsp;N&nbsp;plus&nbsp;frequents</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">lesPlusFrequents</font><font color="#000000">(</font><font color="#000000">List&lt;String&gt;&nbsp;liste,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">N</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Map&lt;String,&nbsp;Integer&gt;&nbsp;table&nbsp;=&nbsp;tableDesFrequences</font><font color="#000000">(</font><font color="#000000">liste</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Map&lt;String,&nbsp;Integer&gt;&nbsp;tableTriee&nbsp;=&nbsp;trierMapParValeursDecroissantes</font><font color="#000000">(</font><font color="#000000">table</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;s&nbsp;:&nbsp;tableTriee.keySet</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">i&nbsp;&gt;=&nbsp;N</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">((</font><font color="#000000">s.length</font><font color="#000000">()&nbsp;</font><font color="#000000">&gt;=&nbsp;</font><font color="#990000">4</font><font color="#000000">)&nbsp;</font><font color="#000000">&amp;&amp;&nbsp;!equal</font><font color="#000000">(</font><font color="#000000">s,&nbsp;</font><font color="#2a00ff">&#34;&lt;NOUVELLE&nbsp;PAGE&gt;&#34;</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#000000">s&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;:&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;table.get</font><font color="#000000">(</font><font color="#000000">s</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">i++;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font><br />
+<font color="#3f7f5f">//&nbsp;Construction&nbsp;de&nbsp;l'index</font><br />
+<font color="#000000">Map&nbsp;&lt;&nbsp;String,&nbsp;List&nbsp;&lt;&nbsp;Integer&nbsp;&gt;&gt;&nbsp;tableIndex</font><font color="#000000">(</font><font color="#000000">List&lt;String&gt;&nbsp;liste</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Map&nbsp;&lt;&nbsp;String,&nbsp;List&nbsp;&lt;&nbsp;Integer&nbsp;&gt;&gt;&nbsp;table&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">HashMap&nbsp;&lt;&nbsp;String,&nbsp;List&nbsp;&lt;&nbsp;Integer&nbsp;&gt;&gt;&nbsp;</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">page&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;mot&nbsp;:&nbsp;liste</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">equal</font><font color="#000000">(</font><font color="#000000">mot,&nbsp;</font><font color="#2a00ff">&#34;&lt;NOUVELLE&nbsp;PAGE&gt;&#34;</font><font color="#000000">))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">page++;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;if</b></font><font color="#000000">(</font><font color="#000000">table.containsKey</font><font color="#000000">(</font><font color="#000000">mot</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">List&lt;Integer&gt;&nbsp;indexes&nbsp;=&nbsp;table.get</font><font color="#000000">(</font><font color="#000000">mot</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Le&nbsp;test&nbsp;d'occurence&nbsp;serait&nbsp;inutile&nbsp;avec&nbsp;une&nbsp;structure&nbsp;Set&lt;String&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">!indexes.contains</font><font color="#000000">(</font><font color="#000000">page</font><font color="#000000">))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">indexes.add</font><font color="#000000">(</font><font color="#000000">page</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">List&lt;Integer&gt;&nbsp;indexes&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ArrayList&lt;Integer&gt;</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">indexes.add</font><font color="#000000">(</font><font color="#000000">page</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">table.put</font><font color="#000000">(</font><font color="#000000">mot,&nbsp;indexes</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">table;</font><br />
+<font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f7f5f">//&nbsp;Construction&nbsp;de&nbsp;l'index&nbsp;puis&nbsp;affichage</font><br />
+<font color="#3f7f5f">//&nbsp;des&nbsp;entrÃ‚ÂŽes&nbsp;des&nbsp;N&nbsp;mots&nbsp;les&nbsp;plus&nbsp;frÃ‚ÂŽquents</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">premiersIndex</font><font color="#000000">(</font><font color="#000000">List&lt;String&gt;&nbsp;liste,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">N</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Map&lt;String,&nbsp;Integer&gt;&nbsp;table&nbsp;=&nbsp;tableDesFrequences</font><font color="#000000">(</font><font color="#000000">liste</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Map&lt;String,&nbsp;Integer&gt;&nbsp;tableTriee&nbsp;=&nbsp;trierMapParValeursDecroissantes</font><font color="#000000">(</font><font color="#000000">table</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">Map&nbsp;&lt;&nbsp;String,&nbsp;List&nbsp;&lt;&nbsp;Integer&nbsp;&gt;&gt;&nbsp;index&nbsp;=&nbsp;tableIndex</font><font color="#000000">(</font><font color="#000000">liste</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#000000">String&nbsp;s&nbsp;:&nbsp;tableTriee.keySet</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">(</font><font color="#000000">i&nbsp;&gt;=&nbsp;N</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>break</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if</b></font><font color="#000000">((</font><font color="#000000">s.length</font><font color="#000000">()&nbsp;</font><font color="#000000">&gt;=&nbsp;</font><font color="#990000">4</font><font color="#000000">)&nbsp;</font><font color="#000000">&amp;&amp;&nbsp;!equal</font><font color="#000000">(</font><font color="#000000">s,&nbsp;</font><font color="#2a00ff">&#34;&lt;NOUVELLE&nbsp;PAGE&gt;&#34;</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">echo</font><font color="#000000">(</font><font color="#000000">s&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;:&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;index.get</font><font color="#000000">(</font><font color="#000000">s</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">i++;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

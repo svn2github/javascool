@@ -1,0 +1,61 @@
+double calculer_prixTotal(double prixUnitaire, int quantite) { 
+	double remise; 
+	double prixTotal; 
+	prixTotal = quantite * prixUnitaire; 
+	if (quantite == 1) {
+		remise = 0; 
+	}
+	else if (quantite <= 3) {
+		remise = 0.1; 
+	}
+	else {
+		remise = 0.2; 
+	}
+	prixTotal = prixTotal - remise * prixTotal; 
+	return prixTotal;
+} 
+void main() {
+	FORM formu = new FORM();
+} 
+// ---------------------------------------
+// formulaire
+// ---------------------------------------
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+class FORM implements ActionListener {
+	JTextField zone_prixUnitaire; 
+	JTextField zone_quantite; 
+	JButton bouton_ok, bouton_quitter;
+	JFrame fen;
+	JPanel p;
+	FORM() { // creation + affichage du formulaire
+		fen = new JFrame("Formulaire de saisie");
+		p=new JPanel(new GridLayout(3,2));
+		fen.add(p);
+		p.add(new JLabel("prixUnitaire"));
+		zone_prixUnitaire=new JTextField(); p.add(zone_prixUnitaire);
+		p.add(new JLabel("quantite"));
+		zone_quantite=new JTextField(); p.add(zone_quantite);
+		bouton_ok=new JButton("calculer"); p.add(bouton_ok);
+		bouton_ok.addActionListener(this);
+		bouton_quitter=new JButton("quitter"); p.add(bouton_quitter);
+		bouton_quitter.addActionListener(this);
+		fen.pack();
+		fen.setVisible(true);
+	}
+	public void actionPerformed(ActionEvent e) { // actions associees aux boutons
+		double prixUnitaire; 
+		int quantite; 
+		double prixTotal; 
+		if (e.getSource()==bouton_ok) { // recuperation des entrees + calculs + affichage des sorties
+			prixUnitaire = Double.parseDouble( zone_prixUnitaire.getText() ); 
+			quantite = Integer.parseInt( zone_quantite.getText() ); 
+			prixTotal = calculer_prixTotal(prixUnitaire, quantite);
+			println( "prixTotal : " + prixTotal ); 
+		}
+		if (e.getSource()==bouton_quitter) {
+			fen.dispose();
+		}
+	}
+}

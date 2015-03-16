@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f5fbf">/**&nbsp;Calcul&nbsp;de&nbsp;PI&nbsp;au&nbsp;&laquo;compte-goutte&raquo;.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Ref:&nbsp;http://www.pi314.net/fr/goutte.php</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Cette&nbsp;classe&nbsp;utilise&nbsp;l'objet&nbsp;num&eacute;rique:</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;&nbsp;http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f7f9f">&lt;p&gt;&nbsp;</font><font color="#3f5fbf">On&nbsp;ne&nbsp;peut&nbsp;pas&nbsp;calculer&nbsp;au&nbsp;del&agrave;&nbsp;de&nbsp;la&nbsp;pr&eacute;cision&nbsp;de&nbsp;32&nbsp;bits&nbsp;des&nbsp;entiers&nbsp;ou&nbsp;de&nbsp;48&nbsp;bits&nbsp;de&nbsp;mantisse&nbsp;des&nbsp;nombres&nbsp;flottants&nbsp;sur&nbsp;64&nbsp;bots.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Mais&nbsp;il&nbsp;y&nbsp;a&nbsp;bien&nbsp;s&ucirc;r&nbsp;un&nbsp;objet&nbsp;qui&nbsp;permet&nbsp;de&nbsp;calculer&nbsp;a&nbsp;n'importe&nbsp;quelle&nbsp;pr&eacute;cision&nbsp;c'est&nbsp;un&nbsp;BigDecimal.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Moralement&nbsp;c'est&nbsp;une&nbsp;chaine&nbsp;de&nbsp;bits&nbsp;de&nbsp;longueur&nbsp;variable,&nbsp;mais&nbsp;toutes&nbsp;les&nbsp;manipulations&nbsp;sont&nbsp;transparentes.&nbsp;</font><font color="#7f7f9f">&lt;/p&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f7f9f">&lt;p&gt;</font><font color="#3f5fbf">Du&nbsp;coup&nbsp;il&nbsp;faut&nbsp;d&eacute;clarer&nbsp;ces&nbsp;nombres&nbsp;comme&nbsp;des&nbsp;objets&nbsp;du&nbsp;langage&nbsp;(donc&nbsp;avec&nbsp;la&nbsp;construction&nbsp;new)&nbsp;et&nbsp;utiliser&nbsp;des&nbsp;appels&nbsp;de&nbsp;fonctions&nbsp;pour&nbsp;faire&nbsp;les&nbsp;op&eacute;rations.&nbsp;Le&nbsp;point&nbsp;d&eacute;licat&nbsp;est&nbsp;la&nbsp;division&nbsp;c'est&nbsp;un&nbsp;calcul&nbsp;qui&nbsp;modifie&nbsp;la&nbsp;pr&eacute;cision&nbsp;du&nbsp;calcul:&nbsp;il&nbsp;faut&nbsp;savoir&nbsp;combien&nbsp;de&nbsp;d&eacute;cimales&nbsp;garder&nbsp;et&nbsp;comment&nbsp;tronquer&nbsp;le&nbsp;r&eacute;sultat.</font><font color="#7f7f9f">&lt;/p&gt;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.math.BigDecimal;</font><br />
+<font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">main</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">NombreDecimales&nbsp;=&nbsp;</font><font color="#990000">100</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Formule&nbsp;empirique&nbsp;qui&nbsp;relie&nbsp;le&nbsp;nombre&nbsp;de&nbsp;d&eacute;cimales&nbsp;&agrave;&nbsp;l'ordre&nbsp;de&nbsp;la&nbsp;s&eacute;rie&nbsp;d'Horner.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">TailleSuite&nbsp;=&nbsp;</font><font color="#990000">1&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>int</b></font><font color="#000000">)&nbsp;</font><font color="#000000">Math.floor</font><font color="#000000">(</font><font color="#000000">NombreDecimales&nbsp;*&nbsp;</font><font color="#990000">3.32</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;D&eacute;claration&nbsp;et&nbsp;initialisation&nbsp;des&nbsp;variables&nbsp;utilis&eacute;es.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigDecimal&nbsp;Numerateur&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigDecimal</font><font color="#000000">(</font><font color="#000000">TailleSuite</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigDecimal&nbsp;Denominateur&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigDecimal</font><font color="#000000">(</font><font color="#990000">2&nbsp;</font><font color="#000000">*TailleSuite&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">BigDecimal&nbsp;Pi&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigDecimal</font><font color="#000000">(</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Calcul&nbsp;it&eacute;ratif&nbsp;de&nbsp;droite&nbsp;&agrave;&nbsp;gauche&nbsp;de&nbsp;la&nbsp;formule&nbsp;d'Horner</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Ref:&nbsp;http://www.pi314.net/mathematiciens/goutte/goutte2.gif</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>for</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">n&nbsp;=&nbsp;TailleSuite;&nbsp;n&nbsp;&gt;&nbsp;</font><font color="#990000">0</font><font color="#000000">;&nbsp;n--</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Pi&nbsp;=&nbsp;Numerateur.divide</font><font color="#000000">(</font><font color="#000000">Denominateur,&nbsp;NombreDecimales,&nbsp;java.math.RoundingMode.HALF_EVEN</font><font color="#000000">)</font><font color="#000000">.multiply</font><font color="#000000">(</font><font color="#000000">Pi</font><font color="#000000">)</font><font color="#000000">.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigDecimal</font><font color="#000000">(</font><font color="#990000">2</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Numerateur&nbsp;=&nbsp;Numerateur.subtract</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigDecimal</font><font color="#000000">(</font><font color="#990000">1</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Denominateur&nbsp;=&nbsp;Denominateur.subtract</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">BigDecimal</font><font color="#000000">(</font><font color="#990000">2</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Impression&nbsp;du&nbsp;r&eacute;sultat.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">println</font><font color="#000000">(</font><font color="#2a00ff">&#34;pi&nbsp;=&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;Pi</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

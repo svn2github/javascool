@@ -1,0 +1,390 @@
+<div title="Atelier de programmation 2">
+
+<div>
+Ce premier atelier vous propose 3 niveaux d'activités de difficulté croissante. Choisissez un niveau
+en fonction de votre familiarité avec la programmation.
+</div>
+
+<div title="Premiers pas en programmation">
+  Nous allons programmer un système expert rudimentaire qui dialoguera
+  avec l'utilisateur et adaptera son discours aux réponses de
+  l'utilisateur. Voici un exemple de conversation entre le système et
+  l'utilisateur. Dans l'exemple suivant, chaque entrée de
+  l'utilisateur est précédée du texte <r>[Entrée :]</r>.
+  
+  <div class="code">
+<p>Bonjour ! Quel est votre nom ?</p>
+<p>[Entrée :] Haddock</p>
+<p>C'est noté. Et votre prénom ?</p>
+<p>[Entrée :] Archibald</p>
+<p>Êtes-vous un homme ou une femme ?</p>
+<p>[Entrée :] homme</p>
+<p>Désolé, je n'ai pas compris votre réponse. Êtes-vous un homme ou une femme ?</p>
+<p>[Entrée :] un homme</p>
+<p>Parfait. Je suis enchanté de faire votre connaissance M. Archibald Haddock.</p>
+<p></p>
+<p>Est-ce indiscret de vous demander votre âge ?</p>
+<p>[Entrée :] non</p>
+<p>Dans ce cas, quel âge avez-vous M. Haddock ?</p>
+<p>[Entrée :] 45</p>
+<p>Félicitations vous êtes dans la force de l'âge !</p>
+<p></p>
+<p>Savez-vous que je suis excellent en calcul mental ? </p>
+<p>Proposez-moi un grand nombre s'il vous plaît.</p>
+<p>[Entrée:] 3</p>
+<p>Ah, c'est bien petit 3 ! Ne pouvez-vous pas me proposer </p>
+<p>un nombre un peu plus grand ?</p>
+<p>[Entrée:] 337</p>
+<p>C'est mieux. </p>
+<p>Je le note. Proposez-moi un autre grand nombre s'il vous plaît.</p>
+<p>[Entrée:] 3456</p>
+<p>C'est noté. Et bien... 337 fois 3456 font 1164672 ! </p>
+<p>Je vous sens impressionné...</p>
+<p></p>
+<p>Je suis aussi capable de compter très vite ! </p>
+<p>Jusqu'à combien voulez-vous que je compte ? </p>
+<p>[Entrée:] 14</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p></p>
+<p>Merci pour ce bon moment. A bientôt Archibald.</p>
+</div>
+
+<div>
+  Proposez un programme Javascool permettant d'obtenir ce type de
+  conversation en tenant compte des différentes réponses de
+  l'utilisateur (sexe, âge, etc.), et en validant le format des
+  réponses données. Par exemple, lorsqu'on attend une réponse oui ou
+  non, toute autre réponse doit être refusée.
+</div>
+
+<div>
+  Attention! Pour tester l'égalité de deux chaînes, il ne faut pas
+  utiliser l'opération <r>==</r>. En effet, celle-ci teste
+  \emph{l'identité} des deux chaînes et non le fait qu'elles soient
+  formées des mêmes caractères. Il faut utiliser une fonction appelée
+  <r>equal</r>.
+
+  <div class="code">
+    <p>String s = readString();</p>
+    <p>if (equal(s, "Haddock")) ...</p>
+  </div>
+</div>
+
+<div>
+  Pour le produit de deux nombres, ne peut-on pas pousser le système à
+  la faute en lui proposant des nombres trop grands à multiplier?
+  Comment filtrer les entrées de l'utilisateur pour remédier à ce
+  problème?
+</div>
+
+</div>
+
+<div title="Premiers pas en programmation des tableaux">
+
+<div>
+Nous nous intéressons maintenant à la manipulation des anagrammes de
+mots. Étant donné une collection de mots donnée sous forme d'un
+tableaux de chaînes de caractères, nous laissons l'utilisateur
+proposer un mot et nous l'informons des différents anagrammes de ce
+mot qui sont présents dans la collection.
+</div>
+
+<div>
+Supposons que le tableau initial soit le suivant :
+<div class="code">
+<p>String[] choixAnagrammes = </p>
+<p>  { "marion", "aimer", "badinage", "niche", "aspirine", "chine", </p>
+<p>     "aspirine", "aube", "baignade", "chien", "manoir", "beau", </p>
+<p>     "romain", "imaginer", "parisien", "migraine", "marie" } </p>
+</div>
+Il vous
+    sera nécessaire de recopier cette déclaration de tableau dans votre programme pour faire
+    l'exercice. 
+</div>
+
+<div>
+L'utilisateur est invité à saisir un mot.
+<div class="code">
+<p>Proposez-moi un mot !</p>
+<p>[Entrée :] beau</p>
+<p>aube est un anagramme de beau</p>
+<p>beau est un anagramme de beau</p>
+<p>nombre d'anagrammes : 2 </p>
+</div>
+
+<div>
+Afin de réaliser un tel programme, nous allons devoir tester si un mot est un anagramme d'un autre. 
+Pour ce faire, nous vous proposons de manipuler les chaînes de caractères comme des tableaux de
+caractères. La fonction 
+<div class="code">
+<p>char[] chaineVersLettres(String s)</p>
+</div>
+vous permet d'obtenir le tableau de caractères correspondant à une
+chaîne de caractère.  Le type <r>char</r> est un type Java primitif
+qui représente les caractères. Contrairement aux chaînes, on peut
+utiliser les opérateurs de comparaisons arithmétiques usuels pour
+comparer deux caractères selon leur position dans l'alphabet.
+</div>
+
+<div>
+Nous vous proposons une deuxième fonction
+<div class="code">
+String lettresVersChaine(char[] t)
+</div>
+qui permet de reformer une chaîne à partir d'un tableau de caractères
+pour pouvoir l'imprimer.
+</div>
+
+<div>
+Pour tester si un mot est un anagramme d'un autre nous allons
+<i>trier</i> chacun des deux mots en utilisant l'ordre alphabétique
+puis vérifier si nous obtenons la même séquence de lettres.  Par
+exemple, si nous trions <r>"beau"</r> et <r>"aube"</r> nous
+obtenons dans les deux cas <r>"abeu"</r> ce qui nous assure que ce
+sont des anagrammes.
+</div>
+
+<div>
+Dans un premier temps, nous vous proposons d'utiliser les fonctions de
+la bibliothèque standard de Java pour faire ce tri. On peut par
+exemple utiliser:
+<div class="code">
+void java.utils.Arrays.sort(char[] t)
+</div>
+
+
+Le programme suivant affiche <r>"abeu"</r>.
+  <div class="code">
+<p>char[] t = chaineVersLettres("beau");</p>
+<p>java.util.Arrays.sort(t);</p>
+<p>echo(lettresVersChaine(t));</p>
+  </div>
+
+<div class="ol">
+<div>
+  Écrire une fonction
+<div class="code">
+<p>String normalise(String s)</p>
+</div>
+qui prend en entrée une chaîne <r>s</r> et renvoie une nouvelle
+chaîne obtenue en triant par ordre alphabétique les lettres de
+<r>s</r>.
+</div>
+
+<div>
+  Écrire une fonction
+<div class="code">
+<p>boolean testAnagramme(String s1, String s2)</p>
+</div>
+  qui teste si deux chaîne <r>s1</r> et <r>s2</r> sont anagrammes
+  l'une de l'autre grâce à un tri.
+</div>
+
+<div>
+  Proposer un programme pour interagir avec l'utilisateur selon le
+  scénario proposé plus haut.
+</div>
+
+<div>
+Nous allons maintenant tenter d'écrire notre propre fonction de tri.
+<div class="code">
+<p>void triSelection(char[] t)</p>
+</div>
+
+  Écrire tout d'abord une fonction
+<div class="code">
+<p>void permute(char[] t, int i, int j)</p>
+</div>
+  qui échange les caractères à la position <r>i</r> et <r>j</r>
+  dans le tableau <r>t</r>. On suppose que <r>i</r> et <r>j</r>
+  sont des indices valides dans <r>t</r>.
+</div>
+
+
+<div>
+  Écrire une fonction
+<div class="code">
+<p>int indexMin(char[] t, int i)</p>
+</div>
+  qui calcule l'indice de la plus petite lettre (pour l'ordre
+  alphabétique) de <r>t</r>, entre les indices <r>i</r> et
+  <r>t.length-1</r>.
+</div>
+
+
+<div>
+  Écrire une fonction
+<div class="code">
+<p>void triSelection(char[] t) </p>
+</div>
+  qui échange les lettres du tableau <r>t</r> pour les mettre dans
+  l'ordre alphabétique.
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div title="Réapprendre à compter comme à l'école">
+
+<div>
+  Dans cette activité, nous vous proposons de réapprendre à compter en
+  expliquant à l'ordinateur comment poser et résoudre les opérations
+  arithmétiques élémentaires: addition, multiplication, soustraction,
+  division. Nous allons pour cela manipuler les nombres comme des
+  tableaux de chiffres décimaux. Dans un deuxième temps nous vous
+  proposons d'adapter ces programmes à l'arithmétique binaire en
+  manipulant cette fois des tableaux de bits.
+</div>
+
+<div>
+  Nous manipulerons pour cette activité le type <r>Chiffre</r> suivant.
+  <div class="code">
+    <p>  enum Chiffre { ZERO, UN, DEUX, TROIS, QUATRE, CINQ, SIX, SEPT, HUIT, NEUF }</p>
+  </div>
+  Un nombre sera manipulé sous la forme d'un tableau de valeurs de type
+  <r>Chiffre</r>.
+</div>
+
+<div>
+Pour résoudre les opérations arithmétiques élémentaires, il faut
+connaître ses tables d'addition et de multiplication.  Ces tables vous
+sont fournis sous la forme du type <r>NombreA2Chiffres</r> qui
+encapsule un chiffre des dizaines et un chiffre des unités. Ce type
+abstrait est munis des opérations suivantes:
+<div class="ul">
+<div> <r>Chiffre unite(NombreA2Chiffres n)</r> renvoie le chiffe des
+  unités d'un nombre <r>n</r>.</div>
+
+<div> <r>Chiffre dizaine(NombreA2Chiffres n)</r> renvoie le chiffe des
+  dizaines d'un nombre <r>n</r>.</div>
+
+<div> <r>NombreA2Chiffres nombre(Chiffre dizaine, Chiffre unite)</r> fabrique
+  un nombre à partir d'un chiffre <r>dizaine</r> des dizaines et <r>unite</r>
+  des unités.</div>
+
+<div> <r>NombreA2Chiffres plus(NombreA2Chiffres x, NombreA2Chiffres y)</r>
+  renvoie le nombre obtenu en faisant la somme des deux nombres <r>x</r>
+  et <r>y</r>.</div>
+
+<div> <r>NombreA2Chiffres moins(NombreA2Chiffres x, NombreA2Chiffres y)</r> 
+  renvoie le nombre obtenu en faisant la différence des deux
+  nombres <r>x</r> et <r>y</r> si <r>x</r> est plus grand que <r>y</r> et renvoie une
+  erreur sinon.</div>
+
+<div> <r>NombreA2Chiffres plus(NombreA2Chiffres x, NombreA2Chiffres y)</r>
+  renvoie le nombre obtenu en faisant le produit des deux nombres
+  <r>x</r> et <r>y</r>.</div>
+</div>
+
+Ces trois dernières opérations ignorent le chiffre des centaines.
+</div>
+
+<div>
+Les valeurs de types <r>Chiffre</r> et <r>NombreA2Chiffres</r> peuvent être
+affichées avec les fonctions <r>println</r> et <r>echo</r> habituelles sous
+Javascool. 
+</div>
+
+<div>
+Nous fournissons de plus une fonction
+<div class="code">
+<p>  String nombreVersChaine(Chiffre[] nombre)</p>
+</div>
+qui permet d'afficher un nombre représenté par un tableau de chiffre.
+</div>
+
+<div>Exemple:
+<r>echo(plus(nb(UN,TROIS),nb(DEUX,QUATRE)));</r> provoque l'affichage
+<r>37</r>
+</div>
+
+<div>Exemple:
+  Le tableau <r>nombre</r> suivant peut être affiché avec les
+  instructions:
+<div class="code">
+<p>Chiffre[] nombre = { ZERO, TROIS, HUIT };</p>
+<p>System.out.println(nombreVersChaine(nombre));</p>
+</div>
+pour produire l'affichage <r>038</r>.
+</div>
+
+<div class="ol">
+<div>
+  Écrire une fonction
+<div class="code">
+Chiffre[] addition(int taille, Chiffre[] n1, Chiffre[] n2)
+</div>
+qui construit le tableau de chiffre résultant de l'addition des
+nombres <r>n1</r> et <r>n2</r>, ces nombres étant représentés par des tableaux
+de taille <r>taille</r>. Le résultat de l'addition devra être exprimé dans
+un tableau de même taille et une erreur devra être lancée si cela n'est
+pas possible.
+
+Pour réaliser un test et lancer une erreur en cas d'échec, javascool propose une fonction particulière
+<div class="code">
+void assertion(boolean test, String message) 
+</div>
+Si l'argument <r>test</r> est vraie, l'exécution continue sans afficher de
+message particulier, sinon toute l'exécution courante se termine avec
+le message d'erreur proposé en argument.
+</div>
+
+<div>
+  Écrire une fonction
+<div class="code">
+Chiffre[] multiplication(int taille, Chiffre[] n1, Chiffre[] n2)
+</div>
+qui calcule le tableau de chiffre résultant de la multiplication des
+nombres <r>n1</r> et <r>n2</r>. Ces nombres sont représentés par des tableaux
+de taille <r>taille</r>. Le résultat de la multiplication devra être exprimé
+dans un tableau de même taille et une erreur devra être lancée si cela
+n'est pas possible.
+</div>
+
+<div>
+  Écrire une fonction
+<div class="code">
+Chiffre[] soustraction(int taille, Chiffre[] n1, Chiffre[] n2)
+</div>
+  qui calcule le tableau de chiffre résultant de la soustraction des
+  nombres <r>n1</r> et <r>n2</r>. Ces nombres sont représentés par des
+  tableaux de taille <r>taille</r>. Le résultat de la soustraction devra
+  être exprimé dans un tableau de même taille et une erreur devra être
+  lancée si <r>n1</r> n'est pas supérieur ou égal à <r>n2</r>.
+
+Pour cette fonction, il sera utile d'utiliser la fonction
+<div class="code">
+boolean estPlusPetit(NombreA2Chiffres x, NombreA2Chiffres y) 
+</div>
+pour tester si un nombre à deux chiffres <r>x</r> est inférieur ou égal à un autre
+nombre à deux chiffres <r>y</r>.
+</div>
+
+<div>[Pour les programmeurs Java]
+  Reprendre les questions précédentes en manipulant cette fois des
+  tableaux de bits. Un bit pourra être représenté par un simple
+  booléen.
+</div>
+
+</div>
+
+</div>
+
+
+</div>

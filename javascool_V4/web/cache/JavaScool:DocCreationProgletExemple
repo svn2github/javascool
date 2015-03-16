@@ -1,0 +1,107 @@
+<p>Cette page a pour but d'expliquer comment créer une proglet concrètement. Elle présente une proglet d'exemple, affichant simplement un label, et permettant à l'utilisateur d'interagir avec ce dernier.
+</p>
+<ul><li> Le code est commenté et disponible en <a rel="nofollow" class="external text" href="/v4//documents/javadoc/javascool-proglet-sampleCode.jar" class="internal">sauvegardant sur le disque</a> une archive zip, qui peut aussi être exécutée en <a rel="nofollow" class="external text" href="/v4//documents/javadoc/javascool-proglet-sampleCode.jar" class="internal">l'ouvrant avec Java</a>.</li></ul>
+<ul><li> L'outil de création/complilation de proglets, le <a class="internal" href="?page=developers&action=doc-javascoolbuilder" title="JavaScool:DocJavaScoolBuilder">Javascoolbuilder</a> permet de proposer un modèle de fichier du type ci dessous</li></ul>
+<ul><li> La description de la <a class="internal" href="?page=developers&action=spec-proglets" title="JavaScool:DocCreationProglet">spécification</a> des proglets donne une description complète des fonctionnalités mises à disposition (en particulier la possibilité de définir des sous-langages et de la complétion automatique dans l'éditeur) non détaillées ici dans un soucis de simplicté.</li></ul>
+<ul><li> <b>proglets processing</b>: Pour créer des proglets avec <a rel="nofollow" class="external text" href="http://processing.org">processing</a> se référer aussi à la <a class="internal" href="?page=developers&action=doc-processing" title="JavaScool:ProgletProcessing">documentation spécifique</a>.</li></ul>
+<ul><li> <b>utiliser netbeans</b>: Pour créer des proglets avec <a rel="nofollow" class="external text" href="http://fr.netbeans.org">netbeans</a> se référer aussi à la <a class="internal" href="?page=developers&action=using-netbeans" title="JavaScool:UsingNetbeans">documentation spécifique</a>.</li></ul>
+<ul><li> Dans tous les cas quelqu'un qui crée un proglet le fait avec l'aide de l'équipe de Java's Cool&#160;: 
+<ul><li> ne pas hésiter à <a rel="nofollow" class="external text" href="/v4//?page=contact" class="internal">nous contacter</a>.</li></ul></li></ul>
+<h1><span class="mw-headline" id="proglet.pml">proglet.pml</span></h1>
+<p>Ce fichier donne la description de la proglet, le nom de son icône et les auteurs
+</p>
+<pre>
+ title=&quot;Exemple de «proglet»&quot;
+ author=&quot;Guillaume Matheron &lt;guillaume.quest@gmail.com&gt;&quot;
+ icon=&quot;sample.png&quot;
+</pre>
+<p>Note: <a rel="nofollow" class="external free" href="http://www.iconfinder.com">http://www.iconfinder.com</a> est un excellent outil pour trouver des icones, ici de 128x128.
+</p>
+<h1><span class="mw-headline" id="sample.png">sample.png</span></h1>
+<p>Cette image est le logo de la proglet. Elle peut avoir n'importe quel nom mais celui-ci doit être mentionné dans le fichier proglet.pml
+</p><p>Note&#160;: il est quasi-indispensable que cette image soit au format png transparent. Sans cela il est très difficile de l'intégrer sur le site sans affecter son design.
+</p><p>Note: la taille maximale de cette image est de <tt>128x128</tt> pour respecter le design.
+</p>
+<h1><span class="mw-headline" id="help.xml">help.xml</span></h1>
+<p>Ce fichier définit la documentation pour l'utilisateur. Le fichier est écrit en XML.
+L'aide quant à comment rédiger ce fichier est <a class="internal" href="?page=developers&action=spec-hml" title="JavaScool:DocumentsHml">disponible ici</a>.
+</p><p>Il est possible, de créer plusieurs fichiers d'aide XML, mais ils seront tous convertis au format HTML, dans un fichier d'extension <b>.htm</b>. Toutes les pages d'aide peuvent être liées les unes aux autres, en utilisant l'extension .<b>htm</b>.
+</p><p>Note&#160;: le nom du fichier help.xml est fixé par les spécifications d'une proglet.
+</p>
+<h1><span class="mw-headline" id="Panel.java">Panel.java</span></h1>
+<p>C'est le fichier qui contient la description de l'objet graphique qui incarne la proglet.
+Cette classe Java implémente le code à exécuterau lancement de la proglet (initialisation des variables, lancer des tâches, etc..).
+</p><p>La classe Panel doit hériter d'un composant graphique tel que <tt>javax.swing.JPanel</tt>.
+</p><p>Note: le nom Panel.java est fixé par les spécifications
+</p><p>Dans notre exemple les éléments clés sont:
+</p>
+<pre>
+package org.javascool.proglets.sampleCode;
+import javax.swing.JLabel;
+
+public class Panel extends javax.swing.JPanel {
+  // Construction de la proglet
+  public Panel() {
+    // On crée un label
+    label = new JLabel(&quot;&quot;);
+    // Et on l'ajoute au panel
+    add(label);
+  }
+  // Ce label sera utilisé par la routine Functions.setMessage()
+  JLabel label;
+}
+</pre>
+<ol><li> La proglet de nom <tt>sampleCode</tt> est définie dans un package de nom <tt>org.javascool.proglets.sampleCode</tt>.</li>
+<li> La classe se nomme bien <tt>Panel.java</tt> et hérite de <tt>javax.swing.JPanel</tt></li>
+<li> Dans le fichier source il y a aussi une méthode <tt>run()</tt> qui permet de lancer une démo de la proglet (elle n'est pas recopiée ici):</li></ol>
+<pre>
+  public void run() {
+  }
+</pre>
+<p>Note: ce n'est plus start() mais <tt>run()</tt> qu'il faut utiliser.
+</p><p>Note: La plateforme JavaScool propose: 
+</p>
+<ul><li> Des <a rel="nofollow" class="external text" href="/v4//?page=api:/org/javascool/widgets/package-summary.html" class="internal">widgets</a> pour aider à créer des interfaces graphiques.</li>
+<li> Des <a rel="nofollow" class="external text" href="/v4//?page=api:/org/javascool/macros/package-summary.html" class="internal">macros</a> et des <a rel="nofollow" class="external text" href="/v4//?page=api:/org/javascool/tools/package-summary.html" class="internal">tools</a> disposer de fonctions utilitaires facilitant l'implémentation.</li>
+<li> Un mécanisme d'<a rel="nofollow" class="external text" href="/v4//index.php?page=api&amp;api=org/javascool/macros/Macros.html#assertion%28boolean,%20java.lang.String,%20java.lang.Object%29" class="internal">assertion</a> aide à débugger le code.</li></ul>
+<h1><span class="mw-headline" id="Functions.java">Functions.java</span></h1>
+<p>Ce fichier définit les fonctions directement accessibles depuis Java's Cool, et qui permettent donc d'interagir avec la proglet. 
+</p><p>Note: le nom Functions.java est fixé par les spécifications.
+</p><p>Dans cet exemple, nous définissons la méthode <tt>setMessage(String)</tt> qui permet de changer le texte affiché. 
+</p>
+<pre>
+package org.javascool.proglets.sampleCode;
+import static org.javascool.macros.Macros.*;
+
+public class Functions {
+  /** Renvoie l'instance de la proglet. */
+  private static Panel getPane() {
+    return getProgletPane();
+  }
+  /** Permet de changer le message affiché sur le panel de la proglet */
+  public static void setMessage(String text) {
+    getPane().label.setText(text);
+  }
+}
+</pre>
+<ol><li> La proglet de nom <tt>sampleCode</tt> est définie dans un package de nom <tt>org.javascool.proglets.sampleCode</tt>.</li>
+<li> La classe se nomme bien <tt>Functions.java</tt> et la fonction <tt>setMessage(String)</tt> est bien publique et statique.</li>
+<li> La construction 
+<ul><li> <tt>private static Panel getPane() { return org.javascool.macros.Macros.getProgletPane(); }</tt></li>
+<li> permet de renvoyer l'instance de classe <tt>org.javascool.proglets.sampleCode.Panel</tt> que la plateforme JavaScool utilise afin d'y accéder. </li></ul></li>
+<li> La classe <tt>org.javascool.macros.Macros</tt> contient des fonctions utiles pour définir des proglets.</li></ol>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.016 seconds
+Real time usage: 0.016 seconds
+Preprocessor visited node count: 49/1000000
+Preprocessor generated node count: 104/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:862-1!*!0!!*!*!* and timestamp 20150313130628 and revision id 14831
+ -->

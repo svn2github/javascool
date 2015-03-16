@@ -1,0 +1,65 @@
+<keywords>
+  <keyword 
+    name="addNode"
+    offset="8"
+    title="Ajoute ou modifie un noeud du graphe">
+    <code>addNode("name", x, y);</code>
+    <doc>Ajoute ou modifie les coordonnées (x, y) d'un noeud de nom "name" du graphe.</doc>
+  </keyword>
+  <keyword 
+    name="getClosestNode"
+    offset="7"
+    title="Renvoie le noeud le plus proche d'une position">
+    <code>String name = getClosestNode(x, y);</code>
+    <doc>Renvoie le nom du noeud le plus proche des coordonnées (x, y) ou null si il n'y a pas de noeud.</doc>
+  </keyword>
+  <keyword 
+    name="removeNode"
+    offset="11"
+    title="Détruit un noeud du graphe">
+    <code>removeNode("name");</code>
+    <doc>Détruit le noeud de nom "name" si il existe.</doc>
+  </keyword>
+  <keyword 
+    name="getAllNodes"
+    offset="7"
+    title="Donne la liste de tous les noeuds du graphe.">
+    <code>String nodes[] = getAllNodes();</code>
+    <doc>Donne la liste de tous les noms de noeud du graphe.</doc>
+  </keyword>
+ <keyword 
+    name="getLinkedNodes"
+    offset="7"
+    title="Donne la liste des noeuds en lien avec un noeud donné.">
+    <code>String nodes[] = getLinkedNodes("name");</code>
+    <doc>Donne la liste des noeuds en lien avec le noeud de nom "name".</doc>
+  </keyword>
+  <keyword 
+    name="addLink"
+    offset="9"
+    title="Ajoute ou modifie un lien du graphe">
+    <code>addLink("nameA", "nameB", poids);</code>
+    <doc>Ajoute ou modifie le poids entre deux noeuds de nom "nameA" et "nameB" du graphe.</doc>
+  </keyword>
+  <keyword 
+    name="removeLink"
+    offset="12"
+    title="Détruit un lien du graphe">
+    <code>removeLink("nameA", "nameB");</code>
+    <doc>Détruit le lien entre deux noeuds de nom "nameA" et "nameB" du graphe.</doc>
+  </keyword>
+  <keyword 
+    name="isLink"
+    offset="8"
+    title="Teste si un lien existe">
+    <code>boolean c = isLink("nameA", "nameB");</code>
+    <doc>Renvoie true ou false selon qu'un lien existe ou pas entre deux noeuds de nom "nameA" et "nameB" du graphe.</doc>
+  </keyword>
+  <keyword 
+    name="getLink"
+    offset="7"
+    title="Donne le poids d'un lien entre deux noeuds">
+    <code>double p = getLink("nameA", "nameB");</code>
+    <doc>Renvoie le poids p du lien entre deux noeuds de nom "nameA" et "nameB" du graphe, ou 0 si le lien n'existe pas.</doc>
+  </keyword>
+</keywords>

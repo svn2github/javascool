@@ -1,0 +1,12 @@
+a { padding: 0; margin: 0; text-decoration: none; color: #000033; } 
+.questionBackground{position:absolute; top:0; left:0; opacity:0.7; /* moz-opacity:0.7; filter:alpha(opacity=70); */ background:white;}
+.questionWindow{border:solid 4px #5a50bf; background:white; width:400px; min-height:170px; position:absolute; top:200px; }
+.questionWinTitleBar{background:#5a50bF; padding-bottom:2px;}
+.questionWinTitle{background:white; color:#5a50bF; font-weight: bold;}
+.questionText{padding:4px; font-weight:bold; }
+.questionAnswer{padding:8px 32px;}
+.questionAnswers a:hover{color:black}
+.questionResult{ text-align:center; color:#CC3333; font-weight:bold; padding:8px 0;}
+.questionSoluce{ text-align:center; color:#000000; font-weight:bold; padding:8px 0;}
+.questionWinClock{ margin:8px; }
+.questionWinClose{ left:50px; }

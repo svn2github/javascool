@@ -1,0 +1,12 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void main() {
+  String nom;
+  int i;
+  nom = readString();
+  print(stringNth(nom, 0));
+  for(i = 0; i <= stringLength(nom) - 2; i = i + 1)
+    if(stringEqual(" ", stringNth(nom, i))) {
+      print(stringNth(nom, i + 1));
+    }
+  println();
+}

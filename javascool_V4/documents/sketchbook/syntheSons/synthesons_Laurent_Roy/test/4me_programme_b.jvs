@@ -1,0 +1,15 @@
+
+void main() {
+   @tone: sns(t);
+   String Mesures ="";
+   for (int i=0;i<10;i++) {
+	for (int j=0;j<8;j++){
+		if (j<2 || j>=6) Mesures = Mesures + "c3 c4 c3 c4 ";
+		if (j>=2 && j<4) Mesures = Mesures + "e3 e4 e3 e4 ";
+	   	if (j>=4 && j<6) Mesures = Mesures + "d3 d4 d3 d4 ";
+	}
+   }
+	println(Mesures);
+	setNotes(Mesures);
+	play();
+}

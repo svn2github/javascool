@@ -1,0 +1,13 @@
+void main() {
+  // On choisit un nombre
+  int N = readInteger("Choisir un nombre");
+  // . . et fait "tourner" le générateur aléatoire pour que le résultat change à chaque appel
+  for(int n = 0; n < N; n++)
+    random();
+  // On crée un surface de 201 x 201 pixels remplie au hasard
+  reset(100, 100);
+  for(int i = -getWidth(); i <= getWidth(); i++)
+    for(int j = -getHeight(); j <= getHeight(); j++)
+      setPixel(i, j, random() < 0.5 ? 0 : 255);
+  // Et voilà que ce "brouillard" contient des «motifs» !!
+}

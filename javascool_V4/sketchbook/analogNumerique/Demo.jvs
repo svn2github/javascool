@@ -1,0 +1,20 @@
+// Démo de la proglet.
+void main() {
+  // Méthode dichotomique
+  int min = 0, max = 1024;
+  while(min < max - 1) {
+    echo("La valeur est comprise entre " + (min) + " et " + (max - 1));
+    int milieu = (min + max) / 2;
+    output(milieu);
+    if(compare() == 1) {
+      min = milieu;
+    } else {
+      max = milieu;
+    }
+    sleep(1000);
+  }
+  output(min);
+  compare();
+  println("La valeur vaut " + min);
+}
+

@@ -1,0 +1,140 @@
+<div class="sujet" title="Comprendre quelques opérations de manipulation d'images">
+  
+  <div class="objectif">
+    Le but de ce tutoriel est de comprendre comment un code manipule une image pixellique.
+  </div>
+  
+  <div class="intros">
+     <div>
+       Une image est un tableau à deux dimensions de points lumineux, c'est à dire de «pixels». 
+       Chaque pixel a une valeur entre <c>0</c> (pour le "noir") et <c>255</c> (pour le "blanc").
+       Bien lire le document sur l'<l link="http://interstices.info/reflet-numerique" text="information"/> en particulier la section "Décrire tous les dessins du monde".
+     </div>
+  </div>
+  <div class="works">
+    <div title="Découvrir un code qui modifie chaque pixel de l'image">
+      Considérons le code suivant : <div class="code">
+        <m>Fonction appliquée à chaque pixel</m>
+        <p><r>int</r> f(<r>int</r> x) {</p>
+        <p><T/><r>return</r> 255 - x;</p>
+        <p>}</p>
+        <m>Boucle sur tous les pixels</m>
+        <p><r>void</r> filtre() {</p>
+        <p><T/><r>for</r>(<r>int</r> j = -<r>getHeight</r>(); j &lt;= <r>getHeight</r>(); j = j + 1) {</p>
+        <p><T/><T/><r>for</r>(<r>int</r> i = -<r>getWidth</r>(); i &lt;= <r>getWidth</r>(); i = i + 1) {</p>
+        <p><T/><T/><T/><r>setPixel</r>(i, j, f(<r>getPixel</r>(i, j)));</p>
+        <p><T/><T/>}</p>
+        <p><T/>}</p>
+        <p>}</p>
+        <p/>
+        <p><r>void main</r>() {</p>
+        <p><T/><r>load</r>("http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/doisneaubuffon.jpg");</p>
+        <p>}</p>
+      </div><div class="ul">
+        <div>Le programme principal <r>main</r> charge une belle photo noir et blanc de <l link="http://fr.wikipedia.org/wiki/Doisneau" text="Doisneau"/>.</div>
+        <div>Les deux premières lignes de la fonction <b>filtre</b> bouclent sur tous les pixels en vertical et en horizontal.</div>
+        <div>Expliquez en quelques mots le rôle des variables <b>i</b> et <b>j</b>.</div>
+        <div>Que fait la construction <b><r>setPixel</r>(i, j, f(<r>getPixel</r>(i, j)));</b> pour un pixel de coordonnée (<b>i, j</b>) ?.</div>
+        <div>Essayez ce code, puis le code en ajoutant la fonction <b>filtre();</b> après <b><r>load</r>()</b> dans le programme principal : que se passe t'il ?</div>
+        <div>Expliquez en quelques mots ce phénomène d'«inversion vidéo».</div>
+        <div>A la place de la construction <b><r>return</r> 255 - x;</b>, mettre la construction <b><r>return</r>x;</b>: que se passe t'il et pourquoi ?</div>
+        <div>Augmenter ou baisser la <i>luminosité</i> d'une image revient à ajouter ou soustraire une valeur constante à la valeur de chaque pixel : 
+        essayez en modifiant la fonction <b>f()</b>.</div>
+        <div>Que se passe t'il si on choisit <b><r>return</r> x + 255;</b> et pourquoi ?.</div>
+        <div>Que se passe t'il si on choisit <b><r>return</r> x - 255;</b> et pourquoi ?.</div>
+        <div>Augmenter ou baisser le <i>contraste</i> d'une image revient à multiplier ou diviser par un gain constant la valeur de chaque pixel : 
+        essayez en modifiant la fonction <b>f()</b>.</div>
+        <div>Que se passe t'il si on choisit <b><r>return</r> 0.5 * x;</b> et pourquoi ?.</div>
+        <div>Que se passe t'il si on choisit <b><r>return</r> 0 * x;</b> et pourquoi ?.</div>
+        <div>Que se passe t'il si on choisit <b><r>return</r> 100 * (x - 128);</b> et pourquoi ?.</div>
+      </div>
+    </div>
+    <div title="Ajouter deux images : l'effet de calque"> 
+      Cette partie se fera sans rien programmer. 
+      Considérons les deux images issues d'une célèbre <l link="http://www.ri.cmu.edu/publication_view.html?pub_id=3904" text="base de donnée"/>,
+      mise à disposition de la communauté scientifique internationale pour étudier les logiciels de traitement des séquences d'images contenant des mouvements humains.<div class="ul">
+        <div>Si l'on considère les deux images suivantes:
+        <div class="center"><div class="table"><div><div><l class="icon" icon="cmu-jump1.jpg"/></div><div><l class="icon" icon="cmu-jump3.jpg"/></div></div></div></div>
+        que se passera t'il si on ``additionne´´ ces deux images ? 
+        C'est à dire si l'on construit une nouvelle image dont la valeur de chaque pixel est la somme des valeurs des pixels de chaque image ? Expliquer en une phrase.</div>
+        <div>Si chaque image était dessinée sur une feuille de papier calque, à quoi correspondrait la valeur ``transparente´´ par rapport à la couleur de ces images ?</div>
+        <div>Quelle est la différence entre poser une image dessinée sur un calque et ajouter la valeur des pixels comme proposé ici ?</div>
+        <div>Ecrire en langage naturel (avec vos mots à vous, sans vous soucier de le programmer) un algorithme qui simule le fait de poser une image dessinée sur un calque sur une autre.</div>
+      </div>
+    </div>
+    <div title="Soustraire deux images : détecter des changements">
+      Cette partie se fera sans rien programmer, comme la précédente. <div class="ul">
+        <div>Si l'on considère les deux images suivantes (cliquer sur l'image de gauche pour visualiser la séquence):
+        <div class="center"><div class="table"><div><div><l link="http://javascool.gforge.inria.fr/proglets/codagePixels/13_11.avi" icon="cmu-jump1.jpg" text=""/></div><div><l class="icon" icon="cmu-jump2.jpg"/></div></div></div></div>
+        que s'est il passé entre les deux images ? Si l'on ``soustrait´´ les deux images de manière similaire à ce qui a été fait pour les ``additionner´´ que va t'il se passer,
+        pour les pixels correspondants à des points immobiles entre les deux images ? Et les pixels correspondants à des points en mouvement ? 
+        Expliquer en deux/trois phrases.</div>
+        <div>A quoi correspondent les valeurs positives si l'on soustrait les pixels de l'image de gauche à ceux de l'image de droite ? Et les valeurs négatives ?</div>
+        <div>Utiliser l'idée de soustraire deux images pour décrire en quelques lignes un système qui permette de détecter les mouvements d'un objet avec une caméra.</div>
+      </div>
+    </div>
+    <div title="Découvrir un code qui filtre les pixels de l'image">
+      Considérons le code suivant : <div class="code">
+        <m>Fonction appliquée à chaque pixel</m>
+        <p><r>int</r> filtrePixel(<r>int</r> i, <r>int</r> j) {</p>
+        <p><T/><r>return</r> (<r>getPixel</r>(i, j) + <r>getPixel</r>(i + 1, j)+ <r>getPixel</r>(i, j + 1)+ <r>getPixel</r>(i - 1, j)+ <r>getPixel</r>(i, j - 1)) / 5;</p>
+        <p>}</p>
+        <m>Boucle sur tous les pixels</m>
+        <p><r>void</r> filtre() {</p>
+        <p><T/><r>for</r>(<r>int</r> j = -<r>getHeight</r>() + 1; j &lt;= <r>getHeight</r>() - 1; j = j + 1) {</p>
+        <p><T/><T/><r>for</r>(<r>int</r> i = -<r>getWidth</r>() + 1; i &lt;= <r>getWidth</r>() - 1; i = i + 1) {</p>
+        <p><T/><T/><T/>setPixel(i, j, filtrePixel(i, j));</p>
+        <p><T/><T/>}</p>
+        <p><T/>}</p>
+        <p>}</p>
+        <p/>
+        <p><r>void main</r>() {</p>
+        <p><T/><r>load</r>("http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/doisneaubuffon.jpg");</p>
+        <p><T/><r>for</r>(<r>int</r> n = 0; n &lt; 5; n = n + 1) {</p>
+        <p><T/><T/>filtre();</p>
+        <p><T/>}</p>
+        <p>}</p>
+      </div><div class="ul">
+        <div>Le programme principal <r>main</r> charge la photo et appelle la nouvelle fonction <b>filtre</b> cinq fois de suite (pour <b>n = 0</b> et <b>n = 1</b>).</div>
+        <div>La nouvelle fonction <b>filtre</b> appelle la fonction <b>filtrePixel</b> sur chaque pixel.</div>
+        <div>Expliquez ce que fait cette fonction <b>filtrePixel</b> : entre quelles 5 valeurs calcule t'elle la moyenne (faire un dessin) ?</div>
+        <div>Essayez le code : que se passe t'il visuellement ? Pourquoi ce filtre a t'il un tel effet ?</div>
+        <div>Essayez le code en appliquant non pas le filtre <c>5</c> mais <c>10</c> fois, puis  <c>20</c> fois, dans le programme principal : que se passe t'il ?</div>
+        <div>Essayez aussi avec d'autres images de votre choix vues sur internet.</div>
+      </div>
+    </div>
+    <div title="D'autres filtres d'images">
+      Considérons le code suivant, avec une autre fonction de filtre : <div class="code">
+        <m>Fonction appliquée à chaque pixel</m>
+        <p><r>int</r> filtrePixel(<r>int</r> i, <r>int</r> j) {</p>
+        <p><T/><r>return</r> 128 + (<r>getPixel</r>(i, j) - <r>getPixel</r>(i + 1, j));</p>
+        <p>}</p>
+        <m>Boucle sur tous les pixels</m>
+        <p><r>void</r> filtre() {</p>
+        <p><T/><r>for</r>(<r>int</r> j = -<r>getHeight</r>() + 1; j &lt;= <r>getHeight</r>() - 1; j = j + 1) {</p>
+        <p><T/><T/><r>for</r>(<r>int</r> i = -<r>getWidth</r>() + 1; i &lt;= <r>getWidth</r>() - 1; i = i + 1) {</p>
+        <p><T/><T/><T/>setPixel(i, j, filtrePixel(i, j));</p>
+        <p><T/><T/>}</p>
+        <p><T/>}</p>
+        <p>}</p>
+        <p/>
+        <p><r>void main</r>() {</p>
+        <p><T/><r>load</r>("http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/doisneaubuffon.jpg");</p>
+        <p><T/>filtre();</p>
+        <p>}</p>
+      </div><div class="ul">
+       <div>Que se passe t'il dans ce cas ? Décrivez ce que vous observez.</div>
+       <div>Pourquoi avoir ajouté <c>128</c> ? Essayez avec les expressions <b><r>return</r> (<r>getPixel</r>(i, j) - <r>getPixel</r>(i + 1, j));</b> 
+       puis <b><r>return</r> -(<r>getPixel</r>(i, j) - <r>getPixel</r>(i + 1, j));</b> pour bien comprendre ce qui se passe.</div>
+       <div>En faisant la différence entre deux pixels horizontaux <b><r>getPixel</r>(i, j) - <r>getPixel</r>(i + 1, j)</b> 
+       va t'on plutôt détecter les contours verticaux ou horizontaux de l'image ? Expliquer.</div>
+       <div>Essayez la construction <b><r>return</r> (<r>getPixel</r>(i, j) - <r>getPixel</r>(i + 1, j) - <r>getPixel</r>(i, j + 1));</b> et commentez le résultat.</div>
+       <div>Deux questions très subtiles, pour les «cracks» : <div class="ul">
+         <div>Avez vous remarqué que la boucle de la fonction <b>filtre()</b> n'a pas les mêmes bornes d'itération pour ces filtres 
+         que lors du 1er cas où on tranformait juste l'intensité d'un pixel ? Sauriez-vous dire pourqoi ?</div>
+         <div>Que se passerait-il si on utilisait <b><r>return</r> 128 + (<r>getPixel</r>(i, j) - <r>getPixel</r>(i - 1, j));</b> : essayez et tentez d'expliquer pourquoi.</div>
+       </div></div>
+      </div>
+    </div>
+   </div>
+ </div>

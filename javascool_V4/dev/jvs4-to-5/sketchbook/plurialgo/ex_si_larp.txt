@@ -1,0 +1,19 @@
+DEBUT
+	\\ saisie des entrees
+	ECRIRE "Quel est le prix unitaire de l'article en euros ?"
+	LIRE prixUnitaire
+	ECRIRE "Quelle est la quantite achetee ?"
+	LIRE quantite
+	\\ calcul du prix total
+	prixTotal =  quantite * prixUnitaire
+	SI  (quantite = 1) ALORS
+		remise =  0
+	SINON SI  (quantite <= 3) ALORS
+		remise =  0.1
+	SINON
+		remise =  0.2
+	FINSI
+	\\ affichage de la sortie
+	prixTotal = prixTotal - remise * prixTotal
+	ECRIRE "le prix total vaut ", prixTotal, " euros"
+FIN

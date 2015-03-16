@@ -1,0 +1,12 @@
+{
+  "icon" : "logo.png"
+, "author" : "Cécile Picard-Limpens"
+, "title" : "Permet de manipuler les concepts liés à l'encryptage/décryptage par clés publique et privée."
+, "height" : "650"
+, "email" : "ccl.picard@gmail.com"
+, "name" : "cryptageRSA"
+, "source_url" : "http://www.openprocessing.org/portal/?userID=8553"
+, "width" : "900"
+, "processing" : "true"
+}
+

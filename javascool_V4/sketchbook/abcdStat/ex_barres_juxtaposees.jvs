@@ -1,0 +1,10 @@
+
+void main() {
+	// Jeu de donnees
+	String [] bac = {"ES", "S", "STT", "S", "S", "ES", "ES", "S", "STT", "S"};
+	String [] sexe = {"F", "H", "H", "H", "F", "H", "F", "F", "F", "F"};
+	// Graphique
+	barresJuxtaposees(sexe, bac);
+		// A comparer avec : barresJuxtaposees(bac, sexe);
+		// rq : l'effectif d'une barre peut etre connu en cliquant sur son bord superieur
+}

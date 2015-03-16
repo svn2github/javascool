@@ -1,0 +1,115 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="class" content="sujet">
+      <title>Travail &agrave; r&eacute;aliser</title>
+   </head>
+   <body>
+      <h1>Travail &agrave; r&eacute;aliser.</h1>
+      
+      <h2>Objectif.</h2>
+      <div class="objectif">
+         Il faut concevoir un programme de reconnaissance de visages utilisant les diverses <a href="http://newtab?methodes.html">Description des fonctions disponibles</a> 
+         mises &agrave; disposition dans la proglet. 
+         
+      </div>
+      
+      <div>
+         <h2>Indications.</h2>
+         
+         <div>
+            La premi&egrave;re &eacute;tape consistera &agrave; transformer chaque image de visages de r&eacute;f&eacute;rence de 50 sur 50 pixels en un vecteur image de
+            dimension 50x50 = 2500. 
+            <BR>
+            
+            
+            
+            <div align="center" class="center"><img src="vecteur-image.png" alt="">  
+            </div>
+            
+            
+            On regroupera ensuite tous ces vecteur dans un tableau de 15 colonnes et 2500 lignes. Ce tableau est appel&eacute; matrice en math&eacute;matiques.
+            
+            <div align="center" class="center"><img src="matrice-image.png" alt="">  
+            </div>
+            
+            
+            
+            
+            
+         </div>
+         <BR>
+         Il faut ensuite retrancher &agrave; chacun de ces vecteurs-images le visage moyen calcul&eacute; sur les 15 visages de r&eacute;f&eacute;rence.
+         On obtient ainsi des vecteurs-images normalis&eacute;s qui  d&eacute;pendent moins de la luminosit&eacute; de l'image et de son contraste.
+         <BR>
+         Soit U la matrice consitu&eacute;e par ces vecteurs normalis&eacute;s.
+         
+         <div align="center" class="center"><img src="vecteur-image-normalisee.png" alt="">  
+         </div>
+         
+         
+         <BR>
+         On peut alors d&eacute;terminer la matrice de covariance produit de U par sa transpos&eacute;e 
+         <sup>T</sup>U et divis&eacute; par le nombre d'images : C =  (U x 
+         <sup>T</sup>U)/15.
+         <BR>
+         Cette matrice poss&egrave;de 2500 lignes et 2500 colonnes
+         
+         <BR>
+         
+         <BR>
+         
+         <div>La seconde &eacute;tape consiste &agrave; extraire les visages propres ou  <a href="http://fr.wikipedia.org/wiki/Valeur_propre,_vecteur_propre_et_espace_propre">vecteurs propres</a> &agrave; partir de cette matrice C.
+         </div>
+         <BR>
+         
+         <BR>
+         
+         <div>La trois&egrave;me &eacute;tape sera la d&eacute;termination des composantes principales c
+            <sub>p</sub> des visages de r&eacute;f&eacute;rence sur les k visages propres ainsi obtenus.
+            
+            <div align="center" class="center"><img src="produit_scalaire.png" alt="">  
+            </div>
+            <BR>
+            Pour cela il faut calculer le produit scalaire de chaque image de r&eacute;f&eacute;rence avec chaque visage propre.
+            <BR>
+            Chaque produit scalaire est la projection de l'image sur le visage propre. 
+            
+            <div align="center" class="center"><img src="formule_ps.png" alt="">  
+            </div>
+            Il y a donc autant de composantes principales que d'images propres pour une image iniriale.
+            <BR>
+            On les enregistre ensuite dans un fichier texte.
+         </div>
+         <BR>
+         
+         <BR>
+         
+         <div>Enfin la quatri&egrave;me &eacute;tape consistera &agrave; tester la m&eacute;thode en d&eacute;terminant si le programme est capable de reconna&icirc;tre un visage.
+            <BR>
+            Pour cela on calcule   les composantes principales de l'image  &agrave; reconna&icirc;tre.
+            <BR>
+            On calcule les distance Euclidienne  entre l'image &agrave; reconna&icirc;tre et chacun des visages de r&eacute;f&eacute;rence.
+            <BR>
+            <BR>
+            
+            <div align="center" class="center"><img src="distance_eucl.png" alt="">  
+            </div>
+            <BR>
+            La plus petite distance donnera le visage le plus ressemblant au visage &agrave; reconna&icirc;tre.
+            
+            
+            <BR>
+            
+            
+         </div>
+         
+      </div>
+      
+   </body>
+</html>

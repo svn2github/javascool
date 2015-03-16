@@ -1,0 +1,33 @@
+<div title="Découvrir les ingrédients des algorithmes">
+
+  <div title="Un parcours pour s'initier à la programmation">
+    Ce parcours permet de s'approprier les cinq ingrédients des algorithmes.
+   <div class="table">
+     <p><p><b>Utiliser des <l class="newtab" link="tutoriel.htm" text="séquences d'instructions"/>.</b></p></p>
+     <p><p><b>Apprendre à se servir de <l class="newtab" link="variables.htm" text="variables"/>.</b></p></p>
+     <p><p><b>Découvrir l'instruction <l class="newtab" link="condition.htm" text="conditionnelle"/>.</b></p></p>
+     <p><p><b>Se familiariser avec les <l class="newtab" link="fonctions.htm" text="fonctions"/>.</b></p></p>
+     <p><p><b>Programmer avec des <l class="newtab" link="boucles.htm" text="boucles"/>.</b></p></p>
+   </div>
+  </div>
+
+  <div title="La différence entre une machine à café et un ordinateur">
+    Nous savons qu'un ordinateur peut effectuer des opérations très variées sur des types de données très variées,
+    c'est une machine complètement polyvalente : tous les automatismes peuvent être programmés sur un ordinateur, 
+    . . à l'inverse des machines à café ou des machines à laver, qui servent à une seule chose.
+    Mais si la machine à café peut "mécaniquement" faire le café dès sa sortie de l'usine, 
+    un ordinateur ne sait quasiment rien faire.  Un ordinateur doit "être programmé" pour retoucher une photo, la mettre sur un blog ou un site web, ...
+    C'est pour cela que les ordinateurs ont besoin de programmes. 
+    <div>Ce qui est vraiment remarquable c'est que tous les programmes du monde peuvent s'écrire à partir de cinq ingrédients et nous allons découvrir ces ingrédients, 
+    ici, à partir d'un exemple très concret. Nous saurons alors programmer tous les algorithmes du monde.</div>
+  </div>
+
+  <div id="1" title="Des documents (sur le web) pour apprendre et se cultiver sur le sujet"><div class="ul">
+    <div>Le poly de cours pour <l link="http://interstices.info/ingredients-algorithmes" text="découvrir les ingrédients des algorithmes"/>
+    avec un <l class="editor" link="LaRecetteDAriane.jvs" text="exemple de programme"/> qui s'amuse à détourner la métaphore des "ingrédients des algoritmes"</div>
+    <div>Un petit <l link="http://www-sop.inria.fr/science-participative/film" text="film condensé d'histoire de l'informatique"/> permet de se cultiver sur le domaine, il est doté d'un <l link="http://www-sop.inria.fr/science-participative/film/livret.pdf" text="livret"/>.</div>
+    <div>Les documents <l link="http://interstices.info/algo-mode-emploi" text="Algorithme mode d'emploi"/> et 
+      <l link="http://interstices.info/demandez-le-programme" text="Demandez le programme"/> offrent une introduction à l'élève ce sujet.</div>
+      <div>Voici deux autres exemples de  <l class="editor" link="jeu-de-l-oie.jvs" text="jeu de l'oie"/> et de <l class="editor" link="bataille-navale.jvs" text="bataille navale"/>.</div>
+  </div></div>
+</div>

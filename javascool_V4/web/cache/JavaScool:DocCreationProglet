@@ -1,0 +1,69 @@
+<p><br /> 
+</p>
+<h2><span class="mw-headline" id="Sp.C3.A9cification_d.27une_.C2.ABproglet.C2.BB">Spécification d'une «proglet»</span></h2>
+<dl><dd> On précise les éléments permettant de définir une proglet, y compris <a class="internal" href="?page=developers&action=doc-processing" title="JavaScool:ProgletProcessing">avec processing</a>.</dd></dl>
+<ul><li> Tous les fichiers nécessaires au fonctionnement de la proglet sont placés dans un <i>dossier</i>.</li></ul>
+<ul><li> Le nom du dossier correspond à l'<i>identificateur</i> de la proglet. <div class="spec"> L'identificateur (<tt>id</tt>) de chaque proglet doit être unique. Regarder sur <a rel="nofollow" class="external text" href="/v4//?page=proglets" class="internal">la table des proglets</a> les noms existants.</li></ul>
+<div class="spec"> Le nom doit avoir au plus seize lettres minuscules ou majuscules; pas de chiffre ou de symbole. Il ne doit contenir que des lettres faire au moins quatre caractères et démarrer par une minuscule. Il doit être de la forme «<tt>algoDeMaths</tt>» pour «algo de maths» c'est à dire, sans espace, commencer par une minucule et les autres mots par une majuscule. </div> 
+<p><br />
+On respecte ici la convention de nommage des packages Java. 
+</p>
+<ul><li> Les fichiers standards de la proglet:
+<ul><li> <tt>proglet.pml</tt>&#160;: le descripteur de la proglet.</li>
+<li> <tt>help.xml</tt>&#160;: le fichier de documentation de la proglet.</li>
+<li> <tt>Functions.java</tt>&#160;: qui définit les fonctions proposées à l'élève (<i>optionnel</i>).</li>
+<li> <tt>Panel.java</tt>&#160;: qui implémente l'applet graphique de la proglet (<i>optionnel</i>).</li>
+<li> <tt>completion.xml</tt>&#160;: qui définit les complétions automatiques proposées dans l'éditeur (<i>optionnel</i>).</li>
+<li> <tt>Translator.java</tt>&#160;: qui implémente la traduction de Jvs en Java spécifique de cette proglet (<i>optionnel</i>).</li></ul></li></ul>
+<hr />
+<div class="spec"><tt>proglet.pml</tt> est un fichier texte de trois lignes données sous la forme:
+<div><tt>title = "Description en 1 à 2 lignes de la proglet"</tt></div>
+<div><tt>author = "Prenom Nom &lt;email@serveur&gt;, Prenom Nom &lt;email@serveur&gt;, .."</tt></div>
+<div><tt>icon = "Le nom de fichier de l'image qui décrit la proglet" (<i>optionnel</i>)</tt></div>
+</div>
+<hr />
+<div class="spec"><tt>help.xml</tt> est un fichier en XML dont les balises sont <a class="internal" href="?page=developers&action=doc-hml" title="JavaScool:DocFormatHml">définies ici</a> avec une <a class="internal" href="?page=developers&action=spec-hml" title="JavaScool:DocumentsHml">documentation utilisateur</a>.
+<div>Il contient des liens vers les autres pages, il peut inclure une vidéo externe au site, qui montre le fonctionnement de la proglet, etc.. 
+</div>
+</div>
+<hr />
+<div class="spec"><tt>Functions.java</tt> est une classe publique sans parent, qui contient uniquement les fonctions et constantes statiques et publiques, destinées à l'utilisateur. Elle est documentée en français (or in English, but not in Frenglish), à destination de l'élève. Tous les identificateurs utilisés dans cette classes deviennent des mots réservés. Il ne faut rien mettre d'autre dans cette classe.
+<ul><li> Un mécanisme d'<a rel="nofollow" class="external text" href="/v4//index.php?page=api&amp;api=org/javascool/macros/Macros.html#assertion%28boolean,%20java.lang.String,%20java.lang.Object%29" class="internal">assertion</a> aide à débugger le code.</li></ul>
+</div>
+<hr />
+<div class="spec"><tt>Panel.java</tt> est une classe publique doit être une instance de <tt>java.awt.Component</tt> (donc un <tt>JPanel</tt>, une <tt>Applet</tt>, etc..).
+<ul><li> Elle peut implémenter la méthode <tt>start()</tt>, optionelle, appelée pour lancer une <i>démonstration</i> du fonctionnement de la proglet. </li>
+<li> Un mécanisme d'<a rel="nofollow" class="external text" href="/v4//index.php?page=api&amp;api=org/javascool/macros/Macros.html#assertion%28boolean,%20java.lang.String,%20java.lang.Object%29" class="internal">assertion</a> aide à débugger le code.</li></ul>
+</div>
+<hr />
+<div class="spec"><tt>completion.xml</tt> est un fichier en XML dont les balises sont <a class="internal" href="?page=developers&action=doc-completion" title="JavaScool:EditorCompletion">définies ici</a> et qui permet de définir le mécanisme de complétion de pour les appels definis dans <tt>Functions.java</tt>.
+</div>
+<hr />
+<div class="spec"><tt>Translator.java</tt> est une classe publique qui a pour parent <tt>org.javascool.core.Translator</tt> et permet de définir des variantes du langage pour la proglet: se référer à la <a rel="nofollow" class="external text" href="/v4//?page=api:/org/javascool/core/Translator.html" class="internal">documentation</a>. 
+<ul><li> La traduction de Java simplifié (dit Jvs) en Java se fait à l'aide d'expression régulières appliquées sur tout le texte source.</li>
+<li> La classe permet de spécifier des import Java spécifique de la proglet.</li></ul>
+</div>
+<hr />
+<ul><li> Les autres fichiers d'une proglet:
+<ul><li> Des fichiers de resources nécessaires au fonctionnement de la proglet, comme par exemple des images, des sons, etc.</li>
+<li> Des classes java nécessaires au fonctionnement interne de la proglet.</li>
+<li> Des classes java accessibles à l'élève. Par exemple, on pourrait ajouter une classe 'Image' qui faciliterait l'usage d'images dans Java's Cool</li>
+<li> Des fichiers .jvs qui servent d'exemple à l'élève. Ces fichiers peuvent être ouverts automatiquement par un <a href="https://wiki.inria.fr/sciencinfolycee/JavaScool:DocumentsHml#Ouvrir_un_fichier_source_dans_l.27.C3.A9diteur" title="JavaScool:DocumentsHml">lien</a> inclus dans l'aide de la proglet (fichier <tt>help.xml</tt>).</li>
+<li> Des fichiers <tt>.XML</tt> qui seront ouverts par des <a href="https://wiki.inria.fr/sciencinfolycee/JavaScool:DocumentsHml#Ouvrir_une_2.C3.A8me_page_de_documentation" title="JavaScool:DocumentsHml">liens</a>. 
+<ul><li> Les noms de ces fichiers sont utilisés en comme titre des pages, mais ils ne doivent pas contenir d'accents à cause des problèmes inter-plateforme: choisir des noms tels que exercice.xml, tutoriel.xml, description.xml, etc...</li></ul></li>
+<li> Des fichiers JAR contenant des classes Java externes (des extensions) qui sont utilisés par les classes Java de la proglet.</div></li></ul></li></ul>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.016 seconds
+Real time usage: 0.015 seconds
+Preprocessor visited node count: 11/1000000
+Preprocessor generated node count: 24/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:861-1!*!0!*!*!*!* and timestamp 20150313130630 and revision id 14434
+ -->

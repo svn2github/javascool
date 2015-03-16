@@ -1,0 +1,2 @@
+Alfred	homme	1.85	78
+Berthe	femme	1.70	57

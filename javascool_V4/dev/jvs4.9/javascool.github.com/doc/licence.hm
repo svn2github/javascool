@@ -1,0 +1,36 @@
+<h3>Licences appliquées à JavaScool</h3>
+<table border="10" cellspacing="20" cellpadding="10" align="center" width="90%"><tr><td>
+
+Tout le code source de <tt>Java's Cool</tt> et de ses variantes logicielles est distribué sous la licence <a href="http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html">CeCILL V2</a> (Compatible GNU GPL)
+
+</td><td align="center">
+
+<a href="http://www.cecill.info/licences/Licence_CeCILL_V2-fr.html"><img width="100" src="http://javascool.gforge.inria.fr/documents/javadoc/logo_cecill.png" class="imagelink" alt="Logo CeCILL"/></a></p>
+
+</td></tr><tr><td>
+
+Tous les documents attenants sont sous licence <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/fr/">Creative Commons</a> Paternité - Pas d'Utilisation Commerciale - Partage des Conditions Initiales à l'Identique 2.0 France
+
+</td><td align="center">
+
+<a href="http://creativecommons.org/licenses/by-nc-sa/2.0/fr/"><img alt="Contrat Creative Commons BY-NC-SA" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/2.0/fr/88x31.png" class="imagelink"/></a>
+
+</td></tr></table>
+
+(<i>The source code of all <tt>Java's Cool</tt> components are distributed under the CeCiLL license.This License is a Free Open Source Software license. It is close in its terms to the LGPL license. Such CeCill licenses have been created under the supervision of French computer science major institutions. They comply to European regulation rules. Documents are distributed under the Creative-Commons standard license.</i>)
+
+<hr/>
+
+<div>Très concrètement vous êtes libre&nbsp;:<ul>
+ <li>de reproduire, distribuer et communiquer cette création au public</li>
+ <li>de modifier cette création</li>
+</ul>Sous les conditions suivantes&nbsp;:<ul>
+ <li><i>Paternité</i> — Vous devez citer le nom de l'auteur original de la manière indiquée par l'auteur de l'oeuvre ou le titulaire des droits qui vous confère cette autorisation (mais pas d'une manière qui suggérerait qu'ils vous soutiennent ou approuvent votre utilisation de l'oeuvre).
+</li>
+  <li><i>Pas d'Utilisation Commerciale</i> — Vous n'avez pas le droit d'utiliser cette création à des fins commerciales.</li>
+  <li><i>Partage des Conditions Initiales à l'Identique</i> — Si vous modifiez, transformez ou adaptez cette création, vous n'avez le droit de distribuer la création qui en résulte que sous un contrat identique à celui-ci.</li>
+</ul>
+
+<hr/>
+
+<div><i>Note :</i> La licence CeCILL est une licence de logiciel libre, conforme au droit français et à la législation européenne, élaborée par le CEA, le CNRS et l'INRIA, qui affirme ici une vision pragmatique du logiciel libre et ouvert, comme le .  Cette licence définit les principes d'utilisation et de diffusion de logiciels libres comme <tt>Java's Cool</tt>, elle est proche de la <a href="http://fr.wikipedia.org/wiki/Licence_publique_générale_GNU" class="external text" rel="nofollow">GNU-GPL</a>. Cette licence permet de diffuser nos éléments et tous les eléments issus de nos éléments sous licence de logiciel libre.</div>

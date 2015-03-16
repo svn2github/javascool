@@ -1,0 +1,20 @@
+<keywords>
+  <keyword 
+    name="createKeys"
+    title="Crée une clé privée et le couple de clé publiques">
+    <code>BigInteger keys = createKeys();</code>
+    <doc>Crée une clé privée D et le couple de clé publiques (E, N). Retourne un tableau de 3 entiers avec les clés keys[] = {D, E, N};</doc>
+  </keyword>
+  <keyword 
+    name="encrypt"
+    title="Encrypte un message à l'aide de clés">
+    <code>BigInteger crypt = encrypt("message", E, N);</code>
+    <doc>Renvoie le message encrypté sous forme d'une suite de chiffres, en utilisant le couple de clés publiques (E, N).</doc>
+  </keyword>
+  <keyword 
+    name="decrypt"
+    title="Décrypte un message à l'aide de clés">
+    <code>String message = decrypt(crypt, keys);</code>
+    <doc>Renvoie le message décrypté à partir de son crypt sous forme d'une suite de chiffres, en utilisant le triplet de clés privée/publiques keys.</doc>
+  </keyword>
+</keywords>

@@ -1,0 +1,239 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>La &laquo;proglet&raquo; enVoiture</title>
+   </head>
+   <body>
+      <h1>La &laquo;proglet&raquo; enVoiture.</h1>
+      
+      <div>ATTENTION: CETTE PROGLET EST EN COURS DE VALIDATION NE PAS UTILISER !!!</div>
+        
+      <div align="right" class="margin">
+             
+         <div>Cliquer <a href="http://newtab?exercice.html">ici</a> pour faire l'activit&eacute;.
+         </div>
+             
+         <div>Cliquer <a href="http://newtab?tutoriel.html">ici</a> pour lire le tutoriel.
+         </div>
+           
+      </div>
+        
+      <div>Cette proglet vise &agrave; s&#8217;approprier les diff&eacute;rents &eacute;l&eacute;ments caract&eacute;ristiques d&#8217;un graphe, 
+           en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin.
+      </div>
+        
+      <div>Il s'agit de la premi&egrave;re partie du tutoriel sur les graphes. De nature introductive, 
+         	elle se limite essentiellement &agrave; un cas concret de parcours d'une voiture entre des villes, ici appel&eacute;es "spots". 
+         	On veut faire passer l'id&eacute;e ici que l'application se retrouve dans de nombreuses situations du quotidien.
+      </div>
+        
+      <div>Un graphe est un ensemble de points, dont certaines paires sont directement reli&eacute;es par un lien. 
+           Ces liens peuvent &ecirc;tre orient&eacute;s, d'un point vers un autre ou vice versa. 
+           Dans le cas contraire, les liens sont sym&eacute;triques, et le graphe est non-orient&eacute;. 
+           
+         <div>G&eacute;n&eacute;ralement, les points sont appel&eacute;s les sommets ou les n&#339;uds. Les liens sont appel&eacute;s ar&ecirc;tes dans les graphes non-orient&eacute;
+            
+              et arcs dans un graphe orient&eacute;. (<a href="http://fr.wikipedia.org/wiki/Th%C3%A9orie_des_graphes">Wikipedia</a>)
+         </div>
+           
+      </div>
+        
+      <div>Pour construire et manipuler un graphe, ici un ensemble de villes d&eacute;nomm&eacute;es "spots", il faut utiliser la construction javascool.
+         
+           Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: 
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Ajouter ou modifier un spot:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>addSpot</b></font>(<font color="#990000"><b>String</b></font> n, <font color="#990000"><b>int</b></font> col, <font color="#990000"><b>String</b></font> f, <font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y, <font color="#990000"><b>float</b></font> d1, <font color="#990000"><b>float</b></font> d2, <font color="#990000"><b>float</b></font> h)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>n</tt> est le nom du spot.
+            </li>
+                  
+            <li><tt>col</tt> est la couleur du spot: le codage est <tt>0xRRVVBB</tt> o&ugrave; <tt>RR</tt>, <tt>VV</tt>, <tt>BB</tt> sont les intensit&eacute;s rouge, verte et bleue, cod&eacute;es en h&eacute;xad&eacute;cimal de <tt>00</tt> &agrave; <tt>FF</tt>.
+            </li>
+                  
+            <li><tt>f</tt> est la forme du spot: "B" = Box, "P" = Pentagone, "O" = Octogone, "C" = Cylindre.
+            </li>
+                  
+            <li><tt>x</tt> est l'abscisse du spot entre -1000 et 1000.
+            </li>
+                  
+            <li><tt>y</tt> est l'ordonn&eacute;e du spot entre -1000 et 1000.
+            </li>
+                  
+            <li><tt>d1</tt> est la dimension1 &agrave; la base du spot, typiquement 10 &agrave; 100.
+            </li>
+                  
+            <li><tt>d2</tt> est la dimension2 au sommet du spot, typiquement 10 &agrave; 100.
+            </li>
+                  
+            <li><tt>h</tt> est la hauteur du spot, typiquement 10 &agrave; 100.
+            </li>
+                
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir un spot &agrave; partir d'une position 2D:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>String</b></font> n = <font color="#990000"><b>getClosestSpot</b></font>(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>x</tt> est l'abscisse de la position entre -1000 et 1000.
+            </li>
+                  
+            <li><tt>y</tt> est l'ordonn&eacute;e de la position entre -1000 et 1000.
+            </li>
+                  
+            <li><tt>n</tt> est le nom du spot, qui est renvoy&eacute;.
+            </li>
+                  
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;truire un spot:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>removeSpot</b></font>(<font color="#990000"><b>String</b></font> n)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>n</tt> est le nom du spot.
+            </li>
+                  
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Ajouter ou modifier un lien existant entre deux spots:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>addLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>nA</tt> est le nom du premier spot.
+            </li>
+                  
+            <li><tt>nB</tt> est le nom du second spot.
+            </li>
+                  
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;truire un lien existant entre deux spots:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>removeLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>nA</tt> est le nom du premier spot du lien &agrave; d&eacute;truire.
+            </li>
+                  
+            <li><tt>nB</tt> est le nom du second spot du lien &agrave; d&eacute;truire.
+            </li>
+                  
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Questionner si deux spots sont li&eacute;s:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>boolean</b></font> a = <font color="#990000"><b>isLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>nA</tt> est le nom du premier spot du lien consid&eacute;r&eacute;.
+            </li>
+                  
+            <li><tt>nB</tt> est le nom du second spot du lien consid&eacute;r&eacute;.
+            </li>
+                  
+            <li><tt>a</tt> est la r&eacute;ponse &agrave; la question "Les spots nA et nB sont-ils en lien?", soit "vrai" soit "faux", qui est renvoy&eacute;e.
+            </li>
+                  
+         </ul>
+           
+      </div>      
+         
+      <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fen&ecirc;tre d'interaction.</div>
+         
+      <div>Un exemple de programme d'utilisation est <a href="http://editor?Exemple.jvs">disponible ici</a>.
+      </div>
+         
+      <div>
+         <h2>Utilisation du 3D.</h2>Attention, sous <i>windows</i>, pour utiliser cette proglet (qui utilise OpenGL)
+             il faut copier les librairies dynamiques <a href="http://javascool.gforge.inria.fr/documents/sketchbook/enVoiture/opengl-windows.zip">disponibles ici</a>
+             dans le r&eacute;pertoire <i>Java</i> de la machine, c'est &agrave; dire, normalement <tt>c:\Program Files\Java\jre6(ou &eacute;quivalent)\bin</tt>. Se faire aider du responsable informatique si besoin.
+         
+      </div>
+      
+      <div>Cette &laquo;proglet&raquo; est un composant logiciel ouvert dont documentation et code-source sont disponibles <a href="http://www.openprocessing.org/portal/?userID=8553">ici</a></div>
+      
+      
+   </body>
+</html>

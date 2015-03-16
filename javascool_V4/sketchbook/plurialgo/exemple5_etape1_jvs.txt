@@ -1,0 +1,27 @@
+void main() {
+	int i1; 
+	String nom; 
+	double [] notes = new double[5]; 
+	double noteFinale; 
+	double som; 
+	double mini; 
+	double maxi; 
+	nom = readString( "nom : " ); 
+	for(i1=0; i1<5; i1++) {
+		notes[i1] = readDouble( "notes[" + (i1) + "] : " ); 
+	}
+	som = 0; 
+	mini = 1000; 
+	maxi = -1000; 
+	for(i1=0; i1<=4; i1=i1+1) {
+		som = som + notes[i1]; 
+		if (notes[i1] < mini) {
+			mini = notes[i1]; 
+		}
+		if (notes[i1] > maxi) {
+			maxi = notes[i1]; 
+		}
+	}
+	noteFinale = som - mini - maxi;
+	println( "noteFinale : " + noteFinale ); 
+} 

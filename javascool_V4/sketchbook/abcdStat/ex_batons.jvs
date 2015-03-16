@@ -1,0 +1,8 @@
+
+void main() {
+	// jeu de donnees
+	int [] donnees = {12, 10, 11, 11, 12, 13, 11, 11, 11, 10};
+	// diagramme en batons 
+	batons(donnees);
+		// rq : l'effectif d'un baton peut etre connu en cliquant sur son bord superieur
+} 

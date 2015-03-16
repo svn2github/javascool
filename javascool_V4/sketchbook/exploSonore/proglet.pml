@@ -1,0 +1,7 @@
+title="Permet de visualiser l'évolution temporelle et le contenu fréquentiel (le spectre) d'un son."
+author="Cécile Picard-Limpens <ccl.picard@gmail.com>"
+processing = "true"
+icon="logo.png"
+width="800"
+height="600"
+source_url="http://www.openprocessing.org/portal/?userID=8553"

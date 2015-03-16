@@ -1,0 +1,9 @@
+[
+  {
+    "name"  : "nom de la complétion",
+    "title" : "description en ligne",
+    "code"  : "texte source de la complétion",
+    "doc"   : "Texte qui documente la fonction de l'on complète"
+  } 
+  // , autres keyword 
+]

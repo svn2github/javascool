@@ -1,0 +1,154 @@
+<h2><span class="mw-headline" id="Les_.C2.ABeduclets.C2.BB_et_.C2.ABproglets.C2.BB_de_C.C3.A9cile_Picard-Limpens_dans_JavaScool.">Les «educlets» et «proglets» de <a rel="nofollow" class="external text" href="http://www-sop.inria.fr/members/Cecile.Picard">Cécile Picard-Limpens</a> dans <a rel="nofollow" class="external text" href="/v4/" class="internal">JavaScool</a>.</span></h2>
+<div>Une «proglet» permet de manipuler un objet numérique et de le faire fonctionner avec des algorithmes.</div>
+<div>Une «educlet» permet de manipuler un objet numérique et de le faire fonctionner à travers une interface graphique.</div>
+<div>English version on <b><a rel="nofollow" class="external text" href="http://www.openprocessing.org/portal/?userID=8553">fuscia@openprocessing.org</a></b></div>
+<table class="table" width="90%" cellpadding="5px" align="center">
+
+<tr>
+<td>
+<p>«Exploration sonore» <br />
+<a href="/v4//documents/sketchbook/exploSonore/exploSonore.mov" class="internal">
+<img width="400" alt="video" src="http://javascool.gforge.inria.fr/documents/sketchbook/exploSonore/ExplorationSonore_xml.png"/>
+</a>
+</p>
+</td>
+<td>
+<ul><li> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=exploSonore" class="internal">«proglets»</a></li>
+<li> <a rel="nofollow" class="external text" href="http://www.openprocessing.org/visuals/?visualID=16032">«educlet»</a></li>
+<li> <a rel="nofollow" class="external text" href="/v4//documents/sketchbook/exploSonore/activites-unplug.htm" class="internal">«activité»</a></li>
+<li> <a rel="nofollow" class="external text" href="http://vimeo.com/17929355">«démonstration»</a></li></ul>
+</td>
+<td>
+<p>Permet de visualiser l'évolution temporelle et le contenu fréquentiel (le spectre) d'un son.
+</p>
+</td></tr>
+<tr>
+<td>
+<p>«Cryptage RSA» <br />
+<a href="/v4//documents/sketchbook/cryptageRSA/cryptageRSA.mov" class="internal">
+<img width="400" alt="video" src="http://javascool.gforge.inria.fr/documents/sketchbook/cryptageRSA/CryptageRSA_xml.png"/>
+</a>
+</p>
+</td>
+<td>
+<ul><li> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=cryptageRSA" class="internal">«proglets»</a></li>
+<li> <a rel="nofollow" class="external text" href="http://www.openprocessing.org/visuals/?visualID=16149">«educlet»</a></li>
+<li> <a rel="nofollow" class="external text" href="/v4//documents/sketchbook/exploSonore/activites-unplug.htm" class="internal">«activité»</a></li>
+<li> <a rel="nofollow" class="external text" href="/v4//documents/sketchbook/cryptageRSA/cryptageRSA.mov" class="internal">«démonstration»</a></li></ul>
+</td>
+<td>
+<p>Permet de manipuler les concepts liés à l'encryptage/décryptage par clés publique et privée.
+</p>
+</td></tr>
+<tr>
+<td>
+<p>«En Voiture» <br />
+<a href="/v4//documents/sketchbook/enVoiture/enVoiture.mov" class="internal">
+<img width="400" alt="video" src="http://javascool.gforge.inria.fr/documents/sketchbook/enVoiture/EnVoiture_xml.png"/>
+</a>
+</p>
+</td>
+<td>
+<ul><li> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=enVoiture" class="internal">«proglets»</a></li>
+<li> <a rel="nofollow" class="external text" href="http://www.openprocessing.org/visuals/?visualID=16153">«educlet»</a></li>
+<li> <a rel="nofollow" class="external text" href="/v4//documents/sketchbook/enVoiture/activites-unplug.htm" class="internal">«activité»</a></li>
+<li> <a rel="nofollow" class="external text" href="/v4//documents/sketchbook/enVoiture/enVoiture.mov" class="internal">«démonstration»</a></li></ul>
+</td>
+<td>
+<p>Vise à s’approprier les différents éléments caractéristiques d’un graphe, en vue de saisir les algorithmes qui en font usage 1/2.
+</p>
+</td></tr>
+<tr>
+<td>
+<p>«Un graphe des chemins» <br />
+<a href="/v4//documents/sketchbook/grapheEtChemins/grapheEtChemins.mov" class="internal">
+<img width="400" alt="video" src="http://javascool.gforge.inria.fr/documents/sketchbook/grapheEtChemins/UnGrapheDesChemins_xml.png"/>
+</a>
+</p>
+</td>
+<td>
+<ul><li> <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=grapheEtChemins" class="internal">«proglets»</a></li>
+<li> <a rel="nofollow" class="external text" href="http://www.openprocessing.org/visuals/?visualID=16148">«educlet»</a></li>
+<li> <a rel="nofollow" class="external text" href="/v4//documents/sketchbook/grapheEtChemins/activites-unplug.htm" class="internal">«activité»</a></li>
+<li> [<a rel="nofollow" class="external text" href="http://vimeo.com/17929441">«démonstration»</a></li></ul>
+</td>
+<td>
+<p>Vise à s’approprier les différents éléments caractéristiques d’un graphe, en vue de saisir les algorithmes qui en font usage 2/2.
+</p>
+</td></tr>
+<tr>
+<td>
+<p>«Boite à Musique» <br />
+<a href="/v4//documents/sketchbook/BoiteAMusique/BoiteAMusique.mov" class="internal">
+<img width="400" alt="video" src="http://javascool.gforge.inria.fr/documents/sketchbook/BoiteAMusique/BoiteAMusique_xml.png"/>
+</a>
+</p>
+</td>
+<td>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.openprocessing.org/visuals/?visualID=16253">«educlet»</a></li>
+<li> <a rel="nofollow" class="external text" href="/v4//documents/sketchbook/BoiteAMusique/activites-unplug.htm" class="internal">«activité»</a></li>
+<li> [<a rel="nofollow" class="external text" href="http://vimeo.com/17928229">«démonstration»</a></li></ul>
+</td>
+<td>
+<p>Permet de se familiariser à la notion de composition sonore et l'assemblage de sons.
+</p>
+</td></tr>
+<tr>
+<td>
+<p>«Analyseur» <br />
+<img width="400" alt="video" src="http://javascool.gforge.inria.fr/documents/sketchbook/Analyseur/Analyseur_xml.png"/>
+
+</p>
+</td>
+<td>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.openprocessing.org/visuals/?visualID=16155">«educlet»</a></li>
+<li> <a rel="nofollow" class="external text" href="/v4//documents/sketchbook/Analyseur/activites-unplug.htm" class="internal">«activité»</a></li></ul>
+</td>
+<td>
+<p>Permet de visualiser le contenu fréquentiel des graves aux aigus (le spectre) d'un son produit dans l'environnement.
+</p>
+</td></tr>
+<tr>
+<td>
+<p>«Vaguelettes ajustables» <br />
+<img width="400" alt="video" src="http://javascool.gforge.inria.fr/documents/sketchbook/VaguelettesAjustables/VaguelettesAjustables_xml.png"/>
+
+</p>
+</td>
+<td>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.openprocessing.org/visuals/?visualID=16159">«educlet»</a></li>
+<li> <a rel="nofollow" class="external text" href="/v4//documents/sketchbook/VaguelettesAjustables/activites-unplug.htm" class="internal">«activité»</a></li></ul>
+</td>
+<td>
+<p>Permet d'illustrer ce qu'est une onde, comment elle naît et se propage.
+</p>
+</td></tr>
+<tr>
+<td>
+<p>«Magnetophone»  <br />
+<img width="400" alt="video" src="http://javascool.gforge.inria.fr/documents/sketchbook/Magnetophone/Magnetophone_xml.png"/>
+
+</p>
+</td>
+<td>
+<ul><li> <a rel="nofollow" class="external text" href="/v4//documents/sketchbook/Magnetophone/activites-unplug.htm" class="internal">«activité»</a></li></ul>
+</td>
+<td>
+<p>Permet d'enregistrer ses propres sons. 
+</p>
+</td></tr></table>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.012 seconds
+Real time usage: 0.015 seconds
+Preprocessor visited node count: 27/1000000
+Preprocessor generated node count: 168/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:867-1!*!*!*!*!*!* and timestamp 20150313130634 and revision id 5858
+ -->

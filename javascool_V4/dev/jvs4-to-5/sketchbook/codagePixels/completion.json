@@ -1,0 +1,57 @@
+[
+{
+ "tag" : "keyword"
+, "title" : "Initialise l'image"
+, "name" : "reset"
+, "offset" : "6"
+, "code" : "reset(width, height);"
+, "doc" : "Initialise une image de pixels de largeur {-width, width} et de hauteur {-height, height}	La taille de l'image ne doit pas être trop importante (pas plus de 500^2)."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Charge une image"
+, "name" : "load"
+, "offset" : "6"
+, "code" : "load(\\\"fichierdelimage\\\");"
+, "doc" : "Initialise une image en chargeant ses pixels à partir d'un fichier.	La taille de l'image ne doit pas être trop importante (pas plus de 500^2)."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Renvoie la demi-largeur de l'image"
+, "name" : "getWidth"
+, "code" : "int width = getWidth();"
+, "doc" : "L'image est de taille {-width, width} x {-height, height}."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Renvoie la demi-hauteur de l'image"
+, "name" : "getHeight"
+, "code" : "int height = getHeight();"
+, "doc" : "L'image est de taille {-width, width} x {-height, height}."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Renvoie la valeur d'un pixel"
+, "name" : "getPixel"
+, "offset" : "4"
+, "code" : "int v = getPixel(x, y);"
+, "doc" : "Renvoie la valeur de l'intensité du pixel de coordonnées (x,y) entre 0 pour noir et 255 pour blanc."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Change la valeur d'un pixel"
+, "name" : "setPixel"
+, "offset" : "9"
+, "code" : "setPixel(x, y, valeur);"
+, "doc" : "Change la valeur du pixel de coordonnées (x,y) entre 0 pour noir et 255 pour blanc, les valeurs intermédiaires étant grisées."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Change la couleur d'un pixel"
+, "name" : "setPixel"
+, "offset" : "9"
+, "code" : "setPixel(x, y, color);"
+, "doc" : "Change la couleur du pixel de coordonnées (x,y) à la valeur color.	Color vaut \\\"black\\\" (default), \\\"blue\\\", \\\"cyan\\\", \\\"gray\\\", \\\"green\\\", \\\"magenta\\\", \\\"orange\\\", \\\"pink\\\", \\\"red\\\", \\\"white\\\", \\\"yellow\\\"."
+}
+]
+

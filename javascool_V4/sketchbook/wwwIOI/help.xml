@@ -1,0 +1,27 @@
+<div title="Accès au serveur IOI d'apprentissage de JavaScool">
+
+  <p>Il est aussi possible de faire les exercices <l link="http://javascool.gforge.inria.fr" text="Java's Cool"/> sur le site partenaire <l l ="http://www.france-ioi.org" text="IOI"/>.</p>
+
+  <div class="center">Il suffit de cliquer <l link="http://www.france-ioi.org/algo/chapters.php?sLangProg=JavaScool" text="ICI"/>.</div>
+
+  <div title="Remarques"><div class="ul">
+
+  <p>Vous pouvez continuer d'utiliser l'éditeur Javascool en local pour sauvegarder votre travail ou tester si la compilation se fait bien, mais il faut bien entendu copier-coller le code pour le tester en ligne.</p>
+
+  <p>Complémentarité des deux outils<div class="ul">
+
+    <p>Utiliser le serveur <l l ="http://www.france-ioi.org" text="IOI"/> permet d'accéder à de nouveaux exercices, de bénéficier du mécanisme d'auto-correction collégial, et de passer d'un langage à l'autre.</p>
+
+    <p>Utiliser <l link="http://javascool.gforge.inria.fr" text="Java's Cool"/> permet de travailler en local et d'accéder aux «proglets».</p>
+
+  </div>On est donc bien devant deux outils complémentaires, inter-opérables ici.</p>
+
+
+  <p>Nous sommes en phase d'expérimentation préliminiare: vos <l link="mailto:javascool@googlegroups.com?subject=A propos du IOI et JVS" text="retours"/> nous serons très précieux pour voir comment avancer au mieux !</p>
+
+
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=wwwIOI&amp;helpFile=api/org/javascool/proglets/wwwIOI/package-summary.html" text="ici"/></p>
+
+</div></div>
+</div>
+

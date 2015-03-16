@@ -1,0 +1,137 @@
+<div class="sujet" title="Détection de formes simples dans une image">
+  
+<div title="Objectifs">
+Votre mission si vous l'acceptez consiste à écrire un programme permettant de détecter la position et la taille d'une forme simple (rectangle ou rond) dans une image. Les formes sont pleines comme dans l'exemple ci-dessous.(Cf Demo)<p></p>
+
+     <div class="center"><l class="icon" icon="detect1.png"/></div><p></p>
+     
+</div>
+
+<div title="Première mission">     
+<p>Le proglet detectionForme vous propose une fonction <b>createRandomShapeImage(s)</b> permettant de générer automatiquement la forme à détecter dans une image de taille 400x400.</p>
+<p> Votre première mission consiste à être capable de détecter un simple carré plein dans l'image. Il est important de noter que le fond de l'image ne comporte aucun bruit parasites ou autres formes géométriques. Seulement et uniquement un carré.</p>   
+<p> Voici la structure que doit avoir votre programme :</p>
+     <div class="code">
+        <p><r>void</r> main(){</p>
+        <m>Creation de l'image de travail n°1 avec la forme a detecter</m>        
+        <p>createRandomShapeImage(2);</p>
+        <p><T/>	showImage(1); </p>
+        <p></p>        
+        <m>ICI l'appel à vos fonctions de detection</m> 
+        <p></p>        
+        <p>checkRandomShape(typeShape,posxShape,posyShape,taille,angle);</p>              
+        <p>}</p>                
+        </div><p></p>
+ 
+<p>Une fois votre fonction de détection terminée vous pouvez faire appel à la fonction <b>checkRandomShape</b> pour tester vos résultats de détection</p>   
+
+  <div class="code" align="left"> <p><r>checkRandomShape</r>(typeShape,posxShape,posyShape,taille,angle);</p></div><p></p>
+<p><b>typeShape</b> type de forme détectée <b>String</b> ("point" ou "square" ou "circle")</p> 
+<p><b>posxShape</b> abscisse du coin haut gauche du carré englobant de la forme</p> 
+<p><b>posyShape</b> ordonnée du coin haut gauche du carré englobant de la forme</p> 
+<p><b>taillelargeur</b> du carré englobant (Valeur de 1 attendue pour la détection du point)</p>
+<p><b>angle</b>  angle de la rotation subit par la forme (Valeur de 0 attendue pour la détection du point)</p><p></p>
+
+<p><u>Remarque :</u></p>  
+<p>L'appel à createRandomShapeImage(2) avec la valeur 2 en paramètre permet de générer une forme carré pleine dans l'image.</p> 
+</div>
+
+  <div title="Missions suivantes">
+<p>Une fois que vous aurez développé la fonction permettant de détecter le carré dans l'image, vous pourrez vous pencher sur les autres cas, générés là encore à l'aide de la fonction createRandomShape(s), où <b>s</b> de type <r>int</r> permet de sélectionner le scénario voulu suivant les valeurs : "</p><p></p>   
+
+<p>- <b>(1)</b> : détection d'un pixel.</p>
+<p>- <b>(2)</b> : détection d'un carré.</p>
+<p>- <b>(3)</b> : détection d'un cercle.</p>
+<p>- <b>(4)</b> : détection cercle ou carré.</p>
+<p>- <b>(5)</b> : détection d'un carré + rotation.</p>
+<p>- <b>(6)</b> : détection d'un carré + rotation + bruit léger.</p>
+<p>- <b>(7)</b> : détection d'un cercle + bruit léger.</p>                            
+<p>- <b>(8)</b> : détection carré ou cercle + rotation.</p>
+<p>- <b>(9)</b> : détection carré ou cercle + rotation + bruit.</p> 
+<p>- <b>(10)</b> : détection d'un carré + rotation + bruit fort.</p>
+<p>- <b>(11)</b> : détection d'un cercle + bruit fort.</p>                            
+<p>- <b>(12)</b> : détection carré ou cercle + rotation + bruit fort.</p>   
+</div>
+
+
+
+<div title="Un exemple de détection">     
+<p>Le programme ci-dessous fait appel à la fonction createRandomShapeImage(1); qui créé une image blanche de 400x400 avec un unique pixel noir. Le but est de détecter la position de ce pixel et de l'entourer avec un cercle vert.</p>   
+
+<p> Voici une première solution possible :</p><p></p>
+     <div class="code">
+        <p>import java.awt.Color;</p>     
+        <p><r>void</r> main(){</p>
+        <p></p>
+        <m>attention l'image fait 400x400</m> 
+        <p><r>int</r>  posx = 0;</p>
+        <p><r>int</r>  posy = 0;</p>
+        <p><r>boolean</r> find = false;</p>                                       
+        <m>Creation de l'image de travail n°1 avec le point a detecter</m>        
+        <p><T/>createRandomShapeImage(1);</p>
+
+        <p><T/>showImage(1); </p>
+        <p><T/>sleep(800); </p>               
+
+        <p><T/>for (int x=0; ((x &lt; 400) &amp;&amp; (!find)); x++)</p>  
+        <p><T/><T/>for (int y=0; ((y &lt; 400) &amp;&amp; (!find)); y++)</p>                
+        <p><T/><T/><T/>if (isPixelColor(1,x,y,Color.black)) {</p>    
+        <p><T/><T/><T/><T/>posx = x;</p> 
+        <p><T/><T/><T/><T/>posy = y;</p>
+        <p><T/><T/><T/><T/>find = true;</p>  
+        <p><T/><T/><T/>}</p> 
+        <p><T/>System.out.println("posx : "+posx);</p>    
+        <p><T/>System.out.println("posy : "+posy);</p>    
+        <p><T/>drawRect(1,posx-3,posy-3,6,6,Color.green);</p>                                          
+        <p><T/>	showImage(1); </p>
+        checkRandomShape("point",posx,posy,1,0);
+        <p></p> 
+        <p>}</p>                
+        </div>
+  <p>Cliquez ici pour tester ce programme <l class="editor" link="detect2.jvs" text="exemple"/></p>  
+<p></p>    
+
+<p> Voici une autre solution possible utilisant les fonctions pixMap </p>
+<p> et utilisant une image de travail n°2 et la fonction showPipImage().</p><p></p>
+     <div class="code">
+        <p>import java.awt.Color;</p>     
+        <p><r>void</r> main(){</p>
+        <p></p>
+        <m>attention l'image fait 400x400</m> 
+        <p><r>int</r> [][] pixMap= new int[400][400];</p>
+        <p><r>int</r> CodeBlack = codeCouleur(Color.black);</p> 
+        <p><r>int</r>  posx = 0;</p>
+        <p><r>int</r>  posy = 0;</p>
+        <p><r>boolean</r> find = false;</p>                                       
+        <m>Creation de l'image de travail n°1 avec le point a detecter</m>        
+        <p><T/>createRandomShapeImage(1);</p>
+
+        <p><T/>showImage(1); </p>
+        <p><T/>sleep(800); </p>    
+        <p><T/>loadImageToPixMap(1,pixMap);</p>            
+
+        <p><T/>for (int x=0; ((x &lt; 400) &amp;&amp; (!find)); x++)</p>  
+        <p><T/><T/>for (int y=0; ((y &lt; 400) &amp;&amp; (!find)); y++)</p>    
+                    
+        <p><T/><T/><T/>if (pixMap[x][y]==CodeBlack) {</p>    
+        <p><T/><T/><T/><T/>posx = x;</p> 
+        <p><T/><T/><T/><T/>posy = y;</p>
+        <p><T/><T/><T/><T/>find = true;</p>  
+        <p><T/><T/><T/>}</p> 
+        <p><T/>System.out.println("posx : "+posx);</p>    
+        <p><T/>System.out.println("posy : "+posy);</p>    
+        <p><T/>drawRect(1,posx-3,posy-3,6,6,Color.green);</p>                                          
+        <p><T/>showImage(1); </p>        
+        <p><T/>checkRandomShape("point",posx,posy,1,0);</p>        
+        <m>On fait une copie de travail</m>
+        <p><T/>copyImage(1,2); </p>
+        <p><T/>drawRect(2,posx-3,posy-3,6,6,Color.green); </p>
+        <p><T/>showImage(2);</p>
+        <p><T/>sleep(800); </p> 
+        <p><T/>showPipImage(); </p>                        
+        <p></p> 
+        <p>}</p>                
+        </div>
+  <p>Cliquez ici pour tester ce programme <l class="editor" link="detect.jvs" text="exemple"/></p>        
+</div>        
+</div>

@@ -1,0 +1,52 @@
+<div class="sujet" title="Travail à réaliser">
+<div class="objectif">
+Il faut concevoir un programme de reconnaissance de visages utilisant les diverses <l class="newtab" link="methodes.htm" text="Description des fonctions disponibles" /> 
+mises à disposition dans la proglet. 
+</div>
+<div  title="Indications">
+<div>
+La première étape consistera à transformer chaque image de visages de référence de 50 sur 50 pixels en un vecteur image de dimension 50x50 = 2500. <BR></BR>
+
+
+<div class="center" ><l icon="vecteur-image.png"  />  </div>
+
+
+On regroupera ensuite tous ces vecteur dans un tableau de 15 colonnes et 2500 lignes. Ce tableau est appelé matrice en mathématiques.
+<div class="center" ><l icon="matrice-image.png"  />  </div>
+
+
+
+
+</div><BR></BR>
+Il faut ensuite retrancher à chacun de ces vecteurs-images le visage moyen calculé sur les 15 visages de référence.
+On obtient ainsi des vecteurs-images normalisés qui  dépendent moins de la luminosité de l'image et de son contraste.<BR></BR>
+Soit U la matrice consituée par ces vecteurs normalisés.
+<div class="center" ><l icon="vecteur-image-normalisee.png"  />  </div>
+
+<BR></BR>
+On peut alors déterminer la matrice de covariance produit de U par sa transposée <sup>T</sup>U et divisé par le nombre d'images : C =  (U x <sup>T</sup>U)/15.<BR></BR>
+Cette matrice possède 2500 lignes et 2500 colonnes
+<BR></BR>
+<BR></BR>
+<div>La seconde étape consiste à extraire les visages propres ou  <l link="http://fr.wikipedia.org/wiki/Valeur_propre,_vecteur_propre_et_espace_propre" text="vecteurs propres"/> à partir de cette matrice C.</div><BR></BR>
+<BR></BR>
+<div>La troisème étape sera la détermination des composantes principales c<sub>p</sub> des visages de référence sur les k visages propres ainsi obtenus.
+<div class="center" ><l icon="produit_scalaire.png"  />  </div><BR></BR>
+Pour cela il faut calculer le produit scalaire de chaque image de référence avec chaque visage propre.<BR></BR>
+Chaque produit scalaire est la projection de l'image sur le visage propre. 
+<div class="center" ><l icon="formule_ps.png"  />  </div>
+Il y a donc autant de composantes principales que d'images propres pour une image iniriale.<BR></BR>
+On les enregistre ensuite dans un fichier texte.</div><BR></BR>
+<BR></BR>
+<div>Enfin la quatrième étape consistera à tester la méthode en déterminant si le programme est capable de reconnaître un visage.<BR></BR>
+Pour cela on calcule   les composantes principales de l'image  à reconnaître.<BR></BR>
+On calcule les distance Euclidienne  entre l'image à reconnaître et chacun des visages de référence.<BR></BR><BR></BR>
+<div class="center" ><l icon="distance_eucl.png"  />  </div><BR></BR>
+La plus petite distance donnera le visage le plus ressemblant au visage à reconnaître.
+
+<BR></BR>
+
+</div>
+</div>
+</div>
+		

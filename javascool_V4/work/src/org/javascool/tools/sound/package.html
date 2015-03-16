@@ -1,0 +1,58 @@
+<body>Ce package contient des petits utilitaires de base pour JavaS'Cool, réutilisables pour d'autres applications.
+
+On ne peut pas importer une proglet dans une autre, on peut utiliser ces routines dans toutes les proglets, par exemple: <ul>
+
+<li>Pour jouer un son: <pre>org.javascool.tools.sound.FileSoundBit.play("LE NOM EXACT DU FICHIER OU DE L URL DU SON");</pre></li>
+
+<li>Pour créér des notes de musiques à sa guise avec <a href="http://javascool.gforge.inria.fr/?page=proglets&action=show&id=syntheSons&helpFile=api/org/javascool/proglets/syntheSons/../../../../org/javascool/proglets/syntheSons/NotesSoundBit.html">NotesSoundBits</a>:<pre>// On importe la classe à utiliser
+import org.javascool.proglets.syntheSons.NotesSoundBit;
+
+// Ici on créé une classe avec une méthode qui redéfinit la forme du son
+
+class MonNotesSoundBit extends NotesSoundBit {
+   public double get(char c, double t) {
+      return  0.5 * org.javascool.proglets.syntheSons.Functions.tri(t) + 
+              0.1 * org.javascool.proglets.syntheSons.Functions.sqr(t / 3) + 
+              0.1 * org.javascool.proglets.syntheSons.Functions.tri(t / 3) + 
+              0.2 * cos(t);
+   }
+}
+
+void main() {
+   // On crée l'objet son
+   MonNotesSoundBit sound = new MonNotesSoundBit();
+   // et on peut definir des notes et les jouer
+   sound.reset("2 e5 | 1 b c5 | 2 d5 | 1 c5 b | 2 a | 1 a c5 | 2 e5 | 1 d5 c5 | 2 b | 1 b c5 | 2 d5 e5 c5 a a |");
+   sound.play();
+}</pre></li>
+
+<li>Pour jouer des sons quand on clique sur une touche du clavier avec <a href="http://javascool.gforge.inria.fr/?page=proglets&action=show&id=syntheSons&helpFile=api/org/javascool/proglets/syntheSons/../../../../org/javascool/proglets/syntheSons/NotesSoundBit.html">NotesSoundBits</a>:<pre>// On importe la classe à utiliser
+import org.javascool.proglets.syntheSons.NotesSoundBit;
+
+// Ici on crée un objet global qui sera utilisé pur faire la note sonore
+
+NotesSoundBit notes = new NotesSoundBit();
+
+void main() {
+   setKeyListener(new Runnable() {
+      public void run() {
+          // Ici À chaque touche de clavier on indique la touche enfoncée
+          echo("Ô : la touche '" + getLastKey() + "' a été détectée");
+          // et si c'est une des 7 notes de base on la joue
+          switch(getLastKey()) {
+            case 'a':
+            case 'b':
+            case 'c':
+            case 'd':
+            case 'e':
+            case 'f':
+            case 'g':
+              notes.reset("4 "+getLastKey());
+              notes.play();
+            break;
+          }
+      }});
+}</pre></li>
+
+</ul>
+</body>

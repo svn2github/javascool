@@ -1,0 +1,136 @@
+[
+{
+ "tag" : "keyword"
+, "title" : "Clockwise left face turn"
+, "name" : "left"
+, "code" : "left();"
+, "doc" : "Calls the function which turns the left face clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Anti-clockwise left face turn"
+, "name" : "antileft"
+, "code" : "antileft();"
+, "doc" : "Calls the function which turns the left face anti-clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Clockwise right face turn"
+, "name" : "right"
+, "code" : "right();"
+, "doc" : "Calls the function which turns the right face clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Anti-clockwise right face turn"
+, "name" : "antiright"
+, "code" : "antiright();"
+, "doc" : "Calls the function which turns the right face anti-clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Clockwise down face turn"
+, "name" : "down"
+, "code" : "down();"
+, "doc" : "Calls the function which turns the down face clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Anti-clockwise down face turn"
+, "name" : "antidown"
+, "code" : "antidown();"
+, "doc" : "Calls the function which turns the down face anti-clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Clockwise upper face turn"
+, "name" : "up"
+, "code" : "up();"
+, "doc" : "Calls the function which turns the upper face clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Anti-clockwise upper face turn"
+, "name" : "antiup"
+, "code" : "antiup();"
+, "doc" : "Calls the function which turns the upper face anti-clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Clockwise back face turn"
+, "name" : "back"
+, "code" : "back();"
+, "doc" : "Calls the function which turns the back face clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Anti-clockwise back face turn"
+, "name" : "antiback"
+, "code" : "antiback();"
+, "doc" : "Calls the function which turns the back face anti-clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Clockwise front face turn"
+, "name" : "front"
+, "code" : "front();"
+, "doc" : "Calls the function which turns the front face clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Anti-clockwise front face turn"
+, "name" : "antifront"
+, "code" : "antifront();"
+, "doc" : "Calls the function which turns the front face anti-clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Random turn"
+, "name" : "randomturn"
+, "code" : "randomturn();"
+, "doc" : "Turns a random face of the cube."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Downward move of  the cube"
+, "name" : "movedown"
+, "code" : "movedown();"
+, "doc" : "Turn the view of the cube to display its upper face."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Upward move of the cube"
+, "name" : "moveup"
+, "code" : "moveup();"
+, "doc" : "Turn the view of the cube to display its down face."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Leftward move of the cube"
+, "name" : "moveleft"
+, "code" : "moveleft();"
+, "doc" : "Turn the view of the cube to display its right face."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Rightward move of the cube"
+, "name" : "moveright"
+, "code" : "moveright();"
+, "doc" : "Turn the view of the cube to display its left face."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Clockwise rotation of the cube"
+, "name" : "rotate"
+, "code" : "rotate();"
+, "doc" : "Rotate the view of the cube clockwise."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Anti-clockwise rotation of the cube"
+, "name" : "antirotate"
+, "code" : "antirotate();"
+, "doc" : "Rotate the view of the cube anti-clockwise."
+}
+]
+

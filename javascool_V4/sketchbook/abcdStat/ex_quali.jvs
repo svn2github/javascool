@@ -1,0 +1,10 @@
+
+void main() {
+	// jeu de donnees
+	String [] modalites = {"ES", "S", "STT"};
+	int [] effectifs = {4, 5, 2};
+	// graphique
+	barres(effectifs, modalites);
+		// ou : camembert(effectifs, modalites);
+		// ou : anneaux(effectifs, modalites);
+} 

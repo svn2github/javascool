@@ -1,0 +1,8 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void main() {
+  int x, y;
+  initDrawing("Carré rouge", 10, 10, 400, 400);
+  for(x = 100; x <= 250; x = x + 1)
+    for(y = 50; y <= 200; y = y + 1)
+      drawPixel(x, y, 255, 0, 0);
+}

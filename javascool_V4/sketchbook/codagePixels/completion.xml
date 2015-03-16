@@ -1,0 +1,52 @@
+<keywords>
+  <keyword 
+    name="reset"
+    offset="6"
+    title="Initialise l'image">
+    <code>reset(width, height);</code>
+    <doc>Initialise une image de pixels de largeur {-width, width} et de hauteur {-height, height}
+La taille de l'image ne doit pas être trop importante (pas plus de 500^2).</doc>
+  </keyword>
+  <keyword 
+    name="load"
+    offset="6"
+    title="Charge une image">
+    <code>load("fichierdelimage");</code>
+    <doc>Initialise une image en chargeant ses pixels à partir d'un fichier.
+La taille de l'image ne doit pas être trop importante (pas plus de 500^2).</doc>
+  </keyword>
+  <keyword 
+    name="getWidth"
+    title="Renvoie la demi-largeur de l'image">
+    <code>int width = getWidth();</code>
+    <doc>L'image est de taille {-width, width} x {-height, height}.</doc>
+  </keyword>
+  <keyword 
+    name="getHeight"
+    title="Renvoie la demi-hauteur de l'image">
+    <code>int height = getHeight();</code>
+    <doc>L'image est de taille {-width, width} x {-height, height}.</doc>
+  </keyword>
+  <keyword 
+    name="getPixel"
+    offset="4"
+    title="Renvoie la valeur d'un pixel">
+    <code>int v = getPixel(x, y);</code>
+    <doc>Renvoie la valeur de l'intensité du pixel de coordonnées (x,y) entre 0 pour noir et 255 pour blanc.</doc>
+  </keyword>
+ <keyword 
+    name="setPixel"
+    offset="9"
+    title="Change la valeur d'un pixel">
+    <code>setPixel(x, y, valeur);</code>
+    <doc>Change la valeur du pixel de coordonnées (x,y) entre 0 pour noir et 255 pour blanc, les valeurs intermédiaires étant grisées.</doc>
+  </keyword>
+  <keyword 
+    name="setPixel"
+    offset="9"
+    title="Change la couleur d'un pixel">
+    <code>setPixel(x, y, color);</code>
+    <doc>Change la couleur du pixel de coordonnées (x,y) à la valeur color.
+Color vaut "black" (default), "blue", "cyan", "gray", "green", "magenta", "orange", "pink", "red", "white", "yellow".</doc>
+  </keyword>
+</keywords>

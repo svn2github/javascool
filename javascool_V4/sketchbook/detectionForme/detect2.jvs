@@ -1,0 +1,24 @@
+import java.awt.Color;
+
+void main(){
+ // attention l'image fait 400x400
+ int posx = 0;
+ int posy = 0;
+ boolean find = false;
+ 	
+ createRandomShapeImage(1);
+ showImage(1);
+ sleep(800);
+
+ for (int x=0; ((x < 400) && (!find)); x++)
+   for (int y=0; ((y < 400) && (!find)); y++)
+      if (isPixelColor(1,x,y,Color.black)) {
+          posx = x;
+          posy = y;
+          find = true;
+      } 
+ System.out.println("posx : "+posx);
+ System.out.println("posy : "+posy); 
+ drawRect(1,posx-3,posy-3,6,6,Color.green);   
+ showImage(1);         
+}

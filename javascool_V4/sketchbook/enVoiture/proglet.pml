@@ -1,0 +1,7 @@
+title="Pour s’approprier sur un exemple 3D les différents éléments caractéristiques d’un graphe, en vue de saisir les algorithmes qui en font usage."
+author="Cécile Picard-Limpens <ccl.picard@gmail.com>"
+processing = "true"
+icon="logo.png"
+width="900"
+height="500"
+source_url="http://www.openprocessing.org/portal/?userID=8553"

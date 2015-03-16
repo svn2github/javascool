@@ -1,0 +1,25 @@
+double calculer_prixTotal(double prixUnitaire, int quantite) { 
+	double remise; 
+	double prixTotal; 
+	prixTotal = quantite * prixUnitaire;
+	if (quantite == 1) {
+		remise = 0; 
+	}
+	else if (quantite <= 3) {
+		remise = 0.1; 
+	}
+	else {
+		remise = 0.2; 
+	}
+	prixTotal = prixTotal - remise * prixTotal; 
+	return prixTotal;
+} 
+void main() {
+	int quantite; 
+	double prixUnitaire; 
+	double prixTotal; 
+	quantite = readInt( "quantite : " ); 
+	prixUnitaire = readDouble( "prixUnitaire : " ); 
+	prixTotal = calculer_prixTotal(prixUnitaire, quantite); 
+	println( "prixTotal : " + prixTotal ); 
+} 

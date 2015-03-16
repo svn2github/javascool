@@ -1,0 +1,25 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void TirerUnTrait() {
+  println();
+  println("-----------------------------------------------");
+  println();
+}
+void main() {
+  print("Le vol en direction de ");
+  print("Tokyo");
+  print(" décolera à ");
+  print("9h00");
+  TirerUnTrait();
+
+  print("Le vol en direction de ");
+  print("Sydney");
+  print(" décolera à ");
+  print("9h30");
+  TirerUnTrait();
+
+  print("Le vol en direction de ");
+  print("Toulouse");
+  print(" décolera à ");
+  print("9h45");
+  TirerUnTrait();
+}

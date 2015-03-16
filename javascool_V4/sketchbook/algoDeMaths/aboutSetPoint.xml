@@ -1,0 +1,4 @@
+<div title="A propos de l'action de setPoint">
+ Il faut noter que la fonction  <div class="code"><p><r>setPoint</r>(x, y, c);</p></div> ne trace pas "un" point mais les . . points de la courbe qui sont donc reliés entre-eux pour le tracé. 
+Le <l class="editor" link="aboutSetPoint.jvs" text="petit code"/> suivant (qui utilise un <l link="aboutRunnable.htm" text="Runnable"/>) permet d'expérimenter ce qui se passe : à chaque clic il trace un nouveau point de la courbe rouge qu'il relie au précédent.
+</div>

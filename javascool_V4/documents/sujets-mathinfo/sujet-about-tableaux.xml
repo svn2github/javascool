@@ -1,0 +1,99 @@
+<div class="sujet" title="Un tutoriel sur les tableaux"> 
+  <div class="objectif">
+    Le but de ce tutoriel est d'apprendre à utiliser et manipuler les structures de données que sont les tableaux.
+  </div>
+
+  <div class="intros">
+    <div title="La notion de tableau"> Un tableau constitue la manière la plus efficace pour stocker et accéder aléatoirement à une séquence de données.
+      Chaque donnée est référencée par un <i>index</i> compté <i>à partir de zéro</i>, par exemple, en écrivant:
+      <div class="code">
+        <p><r>String</r> names = {<v>Alice</v>, <v>Bob</v>, <v>Samia</v>, <v>Zheng-You</v>};</p>
+      </div>
+      nous avons créé une collection de quatre jolis<l class="note" link="2"/> prénoms, et la variable <c>noms[0]</c> a pris la valeur <v>Alice</v> et, 
+      par exemple, <c>noms[2]</c> a pris la valeur <c><v>Samia</v></c>. On peut lire une valeur d'un tableau, par exemple:
+      <div class="code">
+        <p><r>String</r> him = noms[3];</p>
+      </div>
+      donne la valeur <v>Zheng-You</v> à la variable de nom <c>him</c>. On peut aussi changer la valeur d'un tableau, par exemple:
+      <div class="code">
+        <p>noms[2] = <v>Samiha</v>;</p>
+      </div>
+      changera la valeur de la <i>3ème</i> valeurs du tableau, celle d'index <i>2</i>.
+    </div>
+    <div title ="La taille du tableau" class="ul">
+      <p>La taille<l class="note" link="1"/> d'un tableau est fixée lors de la création et ne peut plus être changé pendant toute la durée de sa vie.</p>
+      <p>La taille d'un tableau est donnée par la variable <c>noms.<r>length</r></c> (dans notre cas elle vaut <c>4</c>).</p>
+      <p>Si on tente d'accéder à une case du tableau qui n'existe pas (par exemple <c>noms[-1]</c> ou <c>noms[4]</c>),
+      alors une erreur est générée lors de l'exécution du programme.</p>
+      <p>Note:Il y a d'autres structures de données (des "piles", des "tables", etc..) de taille variable, . . mais c'est une autre histoire.
+      Ces autres structures qui peuvent d'ailleurs être indéxées par autre chose que des entiers positifs: des mots, des objets numériques, etc..</p>
+    </div>
+  </div>
+
+  <div class="works">
+    <div title="Manipuler un tableau de valeurs numériques"> La construction suivante va vous permettre de créer<l class="note" link="3"/> un tableau de dix nombres entiers:
+      <div class="code">
+        <p><r>int</r> squares[] = <r>new</r> <r>int</r>[10];</p>
+      </div>
+      C'est la commande <r>new</r> qui permet de construire ce tableau.
+      La construction de remplir les valeurs avec des <c>1</c>:
+     <div class="code">
+       <p><r>for</r>(<r>int</r> i = 0; i &lt;squares.<r>length</r>; i++) {</p>
+       <p><T/>squares[i] = 1;</p>
+       <p>}</p>
+     </div>
+     et cette construction d'imprimer toutes les valeurs du tableau:
+     <div class="code">
+       <p><r>for</r>(<r>int</r> i = 0; i &lt;squares.<r>length</r>; i++) {</p>
+       <p><T/>println(<v>squares[</v>+i+<v>] = </v>+squares[i]);</p>
+       <p>}</p>
+     </div>
+     Mettez ces trois blocs bout à bout et observer.
+     <p>Modifier le code pour .. non pas imprimer des <c>1</c> mais imprimer les dix premiers carrés : <c>0, 1, 4, 9, ..</c>.</p>
+    </div>
+    <div title="Trouver l'erreur !!"> Le morceau de programme suivant est-il correct ? expliquez pourquoi.
+      <div class="code">    
+        <p><r>int</r> tab[] = <r>new</r> <r>int</r>[5];</p>
+        <p>tab[0] = 5;</p>
+        <p>tab[1] = 9;</p>
+        <p>tab[2] = "trois";</p>
+        <p>tab[3] = 59;</p>
+      </div>
+      Note aussi que l'élément <c>tab[4]</c> n'a pas été initialisé . . c'est à dire que personne n'a donné de valeur à cette case du tableau. 
+      <p>Faire un petit code pour vérifier à quelle valeur Java initialise les valeurs des tableaux par défaut. Lancer le code plusieurs fois, pour expérimenter.</p>
+    </div>
+    <div title="Appliquer une fonction à un tableau"> Créer la fonction:
+      <div class="code">
+        <p><r>void</r> double_les_elements(<r>int</r> tab[]) {</p>
+        <p><T/>../..</p>
+        <p>}</p>
+      </div>
+      qui prend un tableau et multiplie par deux tous ces éléments. Ecrire un petit code qui illustre cette fonction.
+      <p>Nous notons ici que la <i>référence</i> du tableau est passé à la fonction <c>incremente</c> qui peut donc le modifier. 
+      Le tableau n'est donc pas recopié avant d'être passé à la fonction.</p>
+    </div>
+    <div title="Tableaux à plusieurs dimensions"> Ecrite un algorithme qui remplisse ce tableau à deux dimensions:
+      <div class="code">
+        <p><r>int</r> table[][] = <r>new</r> <r>int</r>[11][11];</p>
+      </div>
+      avec la table de multiplication, c'est à dire de manière à ce que <c>table[i][j]</c> soit le produit de <c>i</c> par <c>j</c> et écrire le résultat sous forme de table.
+      <p>On voit ici qu'il est très facile de passer à des tableaux de dimensions quelconques.</p>
+    </div> 
+    <div title="Aller plus loin: un exemple de jeu avec des tableaux."> 
+       Prendre connaissance du <l link="JeuDePendu.htm" text="petit programme"/> ,
+       proposé par des lycéens, qui permet de jouer <l link="http://fr.wikipedia.org/wiki/Le_pendu_%28jeu%29" text="jeu du pendu"/> et s'en inspirer pour créer un autre 
+       <l link="http://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Jeu_de_papier_et_crayon" text="jeu de crayon"/>
+       comme le <l link="http://fr.wikipedia.org/wiki/Mastermind" text="mastermind"/> . !
+     </div>
+  </div>
+  <div class="notes">
+    <div title="Tableau et références" id="1"> Dans la mémoire de l'ordinateur, le tableau mémorise juste les références des données ou des objets qui le composent.
+    Les données ne sont donc pas "recopiées dans le tableau".</div>
+    <div title="Prénoms et significations" id="2"> Tandis que <c>Samia</c> signifie "la noble" , <c>Samiha</c> signifie "la généreuse": 
+      plusieurs langues dont l'<l link="http://www.djamila.be/Documents/prenoms.htm" text="arabe"/> et le chinois (<c>Zheng-You</c> signifie "l'ami fidèle")
+      permettent d'associer une belle qualité morale à un prénom.</div>
+    <div title ="Créer et détruire les objets en mémoire" id ="3">Il faut créer un tableau avant de pouvoir l'utiliser, 
+      mais en Java pas besoin de se soucier de le détruire quand on ne s'en sert plus: ce sera détecté et géré automatiquement. 
+      D'autres langages comme le <c>C/C++</c> obligent à explicitement détruire les objets qui ne servent plus.</div>
+  </div>
+</div>

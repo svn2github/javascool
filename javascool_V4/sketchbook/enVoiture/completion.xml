@@ -1,0 +1,44 @@
+<keywords>
+  <keyword 
+    name="addSpot"
+    offset="9"
+    title="Ajoute ou modifie un noeud du graphe">
+    <code>addSpot("name", x, y);</code>
+    <doc>Ajoute ou modifie les coordonnées (x, y) d'un noeud de nom "name" du graphe.</doc>
+  </keyword>
+  <keyword 
+    name="getClosestSpot"
+    offset="7"
+    title="Renvoie le noeud le plus proche d'une position">
+    <code>String name = getClosestSpot(x, y);</code>
+    <doc>Renvoie le nom du noeud le plus proche des coordonnées (x, y) ou null si il n'y a pas de noeud.</doc>
+  </keyword>
+  <keyword 
+    name="removeSpot"
+    offset="12"
+    title="Détruit un noeud du graphe">
+    <code>removeSpot("name");</code>
+    <doc>Détruit le noeud de nom "name" si il existe.</doc>
+  </keyword>
+  <keyword 
+    name="addRoad"
+    offset="9"
+    title="Ajoute ou modifie un lien du graphe">
+    <code>addRoad("nameA", "nameB", poids);</code>
+    <doc>Ajoute ou modifie le poids entre deux noeuds de nom "nameA" et "nameB" du graphe.</doc>
+  </keyword>
+  <keyword 
+    name="removeRoad"
+    offset="12"
+    title="Détruit un lien du graphe">
+    <code>removeRoad("nameA", "nameB");</code>
+    <doc>Détruit le lien entre deux noeuds de nom "nameA" et "nameB" du graphe.</doc>
+  </keyword>
+  <keyword 
+    name="isRoad"
+    offset="8"
+    title="Teste si un lien existe">
+    <code>boolean c = isRoad("nameA", "nameB");</code>
+    <doc>Renvoie true ou false selon qu'un lien existe ou pas entre deux noeuds de nom "nameA" et "nameB" du graphe.</doc>
+  </keyword>
+</keywords>

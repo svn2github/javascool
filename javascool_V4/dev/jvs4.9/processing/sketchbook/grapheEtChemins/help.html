@@ -1,0 +1,284 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>La &laquo;proglet&raquo; grapheEtChemins</title>
+   </head>
+   <body>
+      <h1>La &laquo;proglet&raquo; grapheEtChemins.</h1>
+      
+      <div align="right" class="margin">
+            
+         <div>Cliquer <a href="http://newtab?exercice.html">ici</a> pour faire l'activit&eacute;.
+         </div>
+             
+         <div>Cliquer <a href="http://newtab?tutoriel.html">ici</a> pour lire le tutoriel.
+         </div>
+           
+      </div>
+        
+      <div>Cette proglet permet de s&#8217;approprier les diff&eacute;rents &eacute;l&eacute;ments caract&eacute;ristiques d&#8217;un graphe, 
+         en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin.
+      </div>
+        
+      <div>Un graphe est un ensemble de points, dont certaines paires sont directement reli&eacute;es par un lien. 
+         Ces liens peuvent &ecirc;tre orient&eacute;s, d'un point vers un autre ou vice versa. 
+           Dans le cas contraire, les liens sont sym&eacute;triques, et le graphe est non-orient&eacute;. 
+           G&eacute;n&eacute;ralement, les points sont appel&eacute;s les sommets ou les n&#339;uds. Les liens sont appel&eacute;s ar&ecirc;tes dans les graphes non-orient&eacute;
+         
+           et arcs dans un graphe orient&eacute;. (<a href="http://fr.wikipedia.org/wiki/Th%C3%A9orie_des_graphes">Wikipedia</a>)
+           
+      </div>
+        
+      <div>Pour construire et manipuler un graphe, il faut utiliser la construction javascool. 
+           Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: 
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Ajouter ou modifier un noeud existant au graphe:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>addNode</b></font>(<font color="#990000"><b>String</b></font> n, <font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>n</tt> est le nom du noeud.
+            </li>
+                  
+            <li><tt>x</tt> est l'abscisse du noeud (entre 0 et 900).
+            </li>
+                  
+            <li><tt>y</tt> est l'ordonn&eacute;e du noeud (entre 0 et 500).
+            </li>
+                
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir un noeud &agrave; partir d'une position:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>String</b></font> n =<font color="#990000"><b>getClosestNode</b></font>(<font color="#990000"><b>int</b></font> x, <font color="#990000"><b>int</b></font> y)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>x</tt> est l'abscisse de la position (entre 0 et 900).
+            </li>
+                  
+            <li><tt>y</tt> est l'ordonn&eacute;e de la position (entre 0 et 500).
+            </li>
+                  
+            <li><tt>n</tt> est le nom du noeud, qui est renvoy&eacute;.
+            </li>
+                  
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;truire un noeud:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>removeNode</b></font>(<font color="#990000"><b>String</b></font> n)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>n</tt> est le nom du noeud.
+            </li>
+                  
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir la liste de tous les noeuds:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>String[]</b></font> Listn_ = <font color="#990000"><b>getAllNodes</b></font>()
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>Listn_</tt> est le tableau des noms de tous les noeuds, qui est renvoy&eacute;.
+            </li>
+                  
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                          	
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir la liste des noeuds en lien avec un noeud sp&eacute;cifique:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>String[]</b></font> Listn_ = <font color="#990000"><b>getNodes</b></font>(<font color="#990000"><b>String</b></font> n)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>n</tt> est le nom du noeud sp&eacute;cifique.
+            </li>
+                  
+            <li><tt>Listn_</tt> est le tableau des noms des noeuds en lien avec le noeud sp&eacute;cifique n, qui est renvoy&eacute;.
+            </li>
+                  
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                            
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Ajouter ou modifier un lien existant entre deux noeuds:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>addLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB, <font color="#990000"><b>double</b></font> p)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>nA</tt> est le nom du premier noeud.
+            </li>
+                  
+            <li><tt>nB</tt> est le nom du second noeud.
+            </li>
+                  
+            <li><tt>p</tt> est le poids du lien.
+            </li>
+                  
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                              
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;D&eacute;truire un lien existant entre deux noeuds:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>removeLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>nA</tt> est le nom du premier noeud du lien &agrave; d&eacute;truire.
+            </li>
+                  
+            <li><tt>nB</tt> est le nom du second noeud du lien &agrave; d&eacute;truire.
+            </li>
+                  
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                              
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Questionner si deux noeuds sont li&eacute;s:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>boolean</b></font> a = <font color="#990000"><b>isLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>nA</tt> est le nom du premier noeud du lien consid&eacute;r&eacute;.
+            </li>
+                  
+            <li><tt>nB</tt> est le nom du second noeud du lien consid&eacute;r&eacute;.
+            </li>
+                  
+            <li><tt>a</tt> est la r&eacute;ponse &agrave; la question "Les noeuds nA et nB sont-ils en lien?", soit "vrai" soit "faux", qui est renvoy&eacute;e.
+            </li>
+                  
+         </ul>
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                              
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Obtenir le poids d'un lien entre deux noeud:</font></tt></p>
+                            
+                        <div><font color="#990000"><b>double</b></font> p = <font color="#990000"><b>getLink</b></font>(<font color="#990000"><b>String</b></font> nA, <font color="#990000"><b>String</b></font> nB)
+                        </div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>o&ugrave;: 
+         <ul class="ul">
+                  
+            <li><tt>nA</tt> est le nom du premier noeud du lien consid&eacute;r&eacute;.
+            </li>
+                  
+            <li><tt>nB</tt> est le nom du second noeud du lien consid&eacute;r&eacute;.
+            </li>
+                  
+            <li><tt>p</tt> est le poids du lien entre les neouds nA et nB, qui est renvoy&eacute;.
+            </li>
+                  
+         </ul>
+           
+      </div>
+        
+      <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fen&ecirc;tre d'interaction.</div>
+        
+      <div>Un exemple de programme d'utilisation est <a href="http://editor?Exemple.jvs">disponible ici</a>.
+      </div>
+      
+      <div>Cette &laquo;proglet&raquo; est un composant logiciel ouvert dont documentation et code-source sont disponibles <a href="http://www.openprocessing.org/portal/?userID=8553">ici</a></div>
+      
+   </body>
+</html>

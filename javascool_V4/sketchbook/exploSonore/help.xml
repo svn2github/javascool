@@ -1,0 +1,35 @@
+<div title="La «proglet» exploSonore">
+  <p class="margin">
+    <p>Cliquer <l class="newtab" link="exercice.htm" text="ici"/> pour faire l'activité.</p>
+    <p>Cliquer <l class="newtab" link="tutoriel.htm" text="ici"/> pour lire le tutoriel.</p>
+  </p>
+  <p>Cette proglet permet de visualiser l'évolution temporelle et le contenu fréquentiel des graves aux aigues (le spectre) d'un son, 
+  d'une parole, d'un extrait musical ou d'un signal sonore numérique.</p>
+  <p>L'analyse s'effectue en temps réel. 
+  Dès l'ouverture de l'application on peut visualiser les sons émis par soi-même ou dans l'environnement grâce à la captation par microphone. 
+  L'application permet également de générer des signaux numériques (sinusoïde, signaux carrés et scie, bruit), pour en observer le spectre.
+  Finalement on peut lancer des enregistrements (musicaux ou autres), et en visualiser les représentations temporelles et fréquentielles.</p>
+  <p>Toutes ces fonctions sont accessibles par l'interface, ou par des fonctions programmable: <div class="code">
+    <m>Lancer un signal prédéfini:</m>
+    <p><r>playSignal</r>(<r>int</r> canal, <r>String</r> type, <r>double</r> frequence, <r>double</r> amplitude)</p>
+    </div>où: <div class="ul">
+      <p><c>canal</c> est le numéro du canal à choisir parmi: 1, 2 ou 3.</p>
+      <p><c>type</c> est le type de signal à choisir parmi: "sinus" (sinusoïde), "carré" (signal carré), "scie" (signal en dent de scie), "bruit" (bruit, ici bruit blanc);</p>
+      <p><c>frequence</c> est la fréquence en Hz, à choisir entre 100 et 8000.</p>
+      <p><c>amplitude</c> est l'amplitude, à choisir entre 0 (silence) et 1 (100% du volume sonore).</p>
+    </div><div class="code">
+    <m>Lancer un signal enregistré:</m>
+    <p><r>playRecord</r>(<r>String</r> location, <r>double</r> frequence)</p>
+    </div>où: <div class="ul">
+      <p><c>location</c> désigne le chemin de l'enregistrement sonore (par exemple: <c>./Ahmed_Ex2.wav</c>).</p>
+      <p><c>frequence</c> est la fréquence de coupure en Hz, qui élimine les aigues, à choisir entre 100 et 8000.</p>
+    </div>Si l'argument <c>location</c> n'est pas spécifié un sélecteur de fichier s'ouvre.<div class="code">
+    <m>Arrêter une émission sonore:</m>
+    <p><r>playStop</r>()</p>
+  </div>arrêtera l'émission sonore et remettra la visualisation des sons captés par le microphone.
+  </p>
+   <div>Un exemple d'utilisation se fait lors du lancement de la proglet avec une fenêtre d'interaction.</div>
+   <div>Un exemple de programme d'utilisation est <l class="editor" link="Exemple.jvs" text="disponible ici"/>.</div>
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://www.openprocessing.org/portal/?userID=8553" text="ici"/></p>
+
+ </div>

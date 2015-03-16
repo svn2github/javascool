@@ -1,0 +1,109 @@
+ <div id="toc" class="toc"><div id="toctitle"><h2>Sommaire</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Plus_d.27aide_SVP_.21"><span class="tocnumber">1</span> <span class="toctext">Plus d'aide SVP&#160;!</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Peut-on_utiliser_un_debugger_avec_point_d.27arr.C3.AAt_et_affichage_de_valeurs_de_variables_.3F"><span class="tocnumber">1.1</span> <span class="toctext">Peut-on utiliser un debugger avec point d'arrêt et affichage de valeurs de variables&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Je_n.27arrive_pas_.C3.A0_utiliser_mes_fonctions_d.C3.A9finies_dans_Functions_depuis_Java.27s_Cool"><span class="tocnumber">1.2</span> <span class="toctext">Je n'arrive pas à utiliser mes fonctions définies dans Functions depuis Java's Cool</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Ai-je_acc.C3.A8s_.C3.A0_des_fonctions_de_facilit.C3.A9_pour_.C3.A9crire_dans_la_console.2C_demander_un_nombre_.C3.A0_l.27utilisateur.2C_etc._.3F"><span class="tocnumber">1.3</span> <span class="toctext">Ai-je accès à des fonctions de facilité pour écrire dans la console, demander un nombre à l'utilisateur, etc.&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Comment_prendre_le_contr.C3.B4le_.C3.A0_distance_des_Javascool_de_mes_.C3.A9l.C3.A8ves_ou_regarder_leur_travail_en_cours_.3F"><span class="tocnumber">1.4</span> <span class="toctext">Comment prendre le contrôle à distance des Javascool de mes élèves ou regarder leur travail en cours&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Tiens_.21_Comment_se_fait_il_que_le_site_Java.27sCool_a_ses_pages_web_sur_un_.22autre.22_wiki_.3F"><span class="tocnumber">1.5</span> <span class="toctext">Tiens&#160;! Comment se fait il que le site Java'sCool a ses pages web sur un "autre" wiki&#160;?</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#En_savoir_plus_sur_le_d.C3.A9veloppement_de_JVS4"><span class="tocnumber">2</span> <span class="toctext">En savoir plus sur le développement de JVS4</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="#Quels_sont_les_bugs_et_issues_en_cours_de_traitement_.3F"><span class="tocnumber">2.1</span> <span class="toctext">Quels sont les bugs et issues en cours de traitement&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Quels_sont_les_am.C3.A9liorations_demand.C3.A9es_par_les_utilisateurs_.3F"><span class="tocnumber">2.2</span> <span class="toctext">Quels sont les améliorations demandées par les utilisateurs&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#Quelles_sont_les_proglets_en_cours_de_d.C3.A9veloppement_.3F"><span class="tocnumber">2.3</span> <span class="toctext">Quelles sont les proglets en cours de développement&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Quelles_sont_les_proglets_en_projet_.3F"><span class="tocnumber">2.4</span> <span class="toctext">Quelles sont les proglets en projet&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#Quels_sont_les_.C3.A9l.C3.A9ments_plus_technique_ou_gard.C3.A9s_en_r.C3.A9serve_pour_la_mise_.C3.A0_jour_.C3.A0_l.27.C3.A9t.C3.A9_2012_.3F"><span class="tocnumber">2.5</span> <span class="toctext">Quels sont les éléments plus technique ou gardés en réserve pour la mise à jour à l'été 2012&#160;?</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Plus_d.27aide_SVP_.21">Plus d'aide SVP&#160;!</span></h1>
+<h2><span class="mw-headline" id="Peut-on_utiliser_un_debugger_avec_point_d.27arr.C3.AAt_et_affichage_de_valeurs_de_variables_.3F">Peut-on utiliser un debugger avec point d'arrêt et affichage de valeurs de variables&#160;?</span></h2>
+<p>Non pas directement. Mais Java offre de fait les outils pour cela et la notion d'<a rel="nofollow" class="external text" href="/v4//index.php?page=api&amp;api=org/javascool/macros/Macros.html#assertion%28boolean,%20java.lang.String,%20java.lang.Object%29" class="internal">assertion</a> permet de vérifier une assertion et arrêter le code si elle est fausse. Le diagnoctic peut donner les détails souhaités.
+</p>
+<h2><span class="mw-headline" id="Je_n.27arrive_pas_.C3.A0_utiliser_mes_fonctions_d.C3.A9finies_dans_Functions_depuis_Java.27s_Cool">Je n'arrive pas à utiliser mes fonctions définies dans Functions depuis Java's Cool</span></h2>
+<p>Vérifiez que la classe Functions est publique et que toutes les méthodes la composant sont publiques et statiques.
+</p>
+<h2><span class="mw-headline" id="Ai-je_acc.C3.A8s_.C3.A0_des_fonctions_de_facilit.C3.A9_pour_.C3.A9crire_dans_la_console.2C_demander_un_nombre_.C3.A0_l.27utilisateur.2C_etc._.3F">Ai-je accès à des fonctions de facilité pour écrire dans la console, demander un nombre à l'utilisateur, etc.&#160;?</span></h2>
+<ul><li> Oui, toutes les fonctions de Macros sont accessibles à la fois depuis Java's Cool et depuis le code des classes de la proglet. Pour les utiliser, vous devrez ajouter la ligne&#160;:</li></ul>
+<dl><dd> import static org.javascool.macros.Macros.*;</dd></dl>
+<p>au début du programme.
+</p>
+<ul><li> L'élève peut aussi appeler ces fonctions directement depuis Java's Cool sans sans préfixe, l'import fait par défaut.</li></ul>
+<h2><span class="mw-headline" id="Comment_prendre_le_contr.C3.B4le_.C3.A0_distance_des_Javascool_de_mes_.C3.A9l.C3.A8ves_ou_regarder_leur_travail_en_cours_.3F">Comment prendre le contrôle à distance des Javascool de mes élèves ou regarder leur travail en cours&#160;?</span></h2>
+<ul><li> La réponse est <a rel="nofollow" class="external free" href="http://italc.sourceforge.net">http://italc.sourceforge.net</a>, logiciel libre qui s'installe et offre ces fonctionnalités pour Javascool . . et les autres logiciels</li></ul>
+<h2><span class="mw-headline" id="Tiens_.21_Comment_se_fait_il_que_le_site_Java.27sCool_a_ses_pages_web_sur_un_.22autre.22_wiki_.3F">Tiens&#160;! Comment se fait il que le site Java'sCool a ses pages web sur un "autre" wiki&#160;?</span></h2>
+<ul><li> La documentation de Java'sCool n'est pas que technique: elle est aussi didactique: elle est donc partagée comme une ressource sur une plateforme de ressources</li>
+<li> Java'sCool est une plateforme ouverte: les gens doivent pouvoir utiliser ce qu'il y a dans Java'sCool en dehors de Java'sCool </li></ul>
+<p>Voilà pourquoi les contenus textuels sont le wiki du <a rel="nofollow" class="external text" href="http://science-info-lycee.fr">«SIL:O!»</a> afin d'être éditables/disponibles dans tous les cas.
+</p><p>Techniquement, c'est grâce à la plateforme <a class="external text" href="http://www.mediawiki.org/wiki/MediaWiki/fr">médiawiki</a> que cette syndication est possible comme <a class="internal" href="?page=developers&action=syndication-wiki" title="JavaScool:SyndicationWiki">détaillé ici</a>.
+</p><p><br />
+</p>
+<h1><span class="mw-headline" id="En_savoir_plus_sur_le_d.C3.A9veloppement_de_JVS4">En savoir plus sur le développement de JVS4</span></h1>
+<h2><span class="mw-headline" id="Quels_sont_les_bugs_et_issues_en_cours_de_traitement_.3F">Quels sont les bugs et issues en cours de traitement&#160;?</span></h2>
+<p>Tout est détaillé à travers le  <a rel="nofollow" class="external text" href="http://code.google.com/p/javascool/issues/list">service de gestion des issues</a>.
+</p>
+<h2><span class="mw-headline" id="Quels_sont_les_am.C3.A9liorations_demand.C3.A9es_par_les_utilisateurs_.3F">Quels sont les améliorations demandées par les utilisateurs&#160;?</span></h2>
+<p>Pour la sortie de JVS4-RC3 en <s>janvier 2012</s> mai 2012 (!) nous allons intégrer les demandes suivantes:
+</p>
+<ul><li> Améliorer de l'éditeur JVS (il va profiter d'un développement connexe de PV et GM):
+<ul><li> Ajouter une fonction CRTL+F de search/replace à cet éditeur</li>
+<li> Corriger le fait que la <a rel="nofollow" class="external text" href="http://code.google.com/p/javascool/issues/detail?id=90">Complétion automatique parte en vrille sous linux</a></li>
+<li> Corriger une <a rel="nofollow" class="external text" href="http://code.google.com/p/javascool/issues/detail?id=88">Erreur dans la gestion des onglets de l'éditeur</a> </li></ul></li></ul>
+<ul><li> Offrir du panneau de lancement de javascool un outil pour lancer les proglets en ligne a travers leur propre jarre de façon à ne pas alourdir javascool-proglet.jar
+<ul><li> L'idée est d'avoir toutes les proglets en panneau mais si on clique sur une "non locale" cela télécharge et lance une autre jarre</li>
+<li> Il faut donc ajouter une ligne à proglet.pml pour spécifier cette fonctionnalité</li>
+<li> Il faut distinguer les applets externes/internes à l'affichage</li></ul></li></ul>
+<ul><li> Offrir au delà du `HtmlDisplay` HTML3 et un bon browser HTML4 pour les proglets IOI
+<ul><li> <a rel="nofollow" class="external free" href="http://en.wikipedia.org/wiki/Lobo_(web_browser)">http://en.wikipedia.org/wiki/Lobo_(web_browser)</a></li></ul></li></ul>
+<h2><span class="mw-headline" id="Quelles_sont_les_proglets_en_cours_de_d.C3.A9veloppement_.3F">Quelles sont les proglets en cours de développement&#160;?</span></h2>
+<ul><li> On lance le projet de rendre javascool interopérable avec <a rel="nofollow" class="external free" href="http://www.france-ioi.org">http://www.france-ioi.org</a> pour mutualiser nos ressources
+<ul><li> la complémentarité serait que javascool offre une version offline de IOI, au moins pour java et cie</li></ul></li></ul>
+<ul><li> Une proglet Java3D est disponible et sera mise en ligne quand on aura la fonctionnalité de proglet externes</li></ul>
+<ul><li> La version jvsv4 de la proglet <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=enVoiture" class="internal">enVoiture</a> est à intégrer comme proglet externe.</li></ul>
+<ul><li> L'interface USB/robotique: va offrir la possibilité de piloter un robot à partir de Javascool (voir partenariat <a rel="nofollow" class="external free" href="http://www.pobot.org">http://www.pobot.org</a>).</li></ul>
+<h2><span class="mw-headline" id="Quelles_sont_les_proglets_en_projet_.3F">Quelles sont les proglets en projet&#160;?</span></h2>
+<ul><li> La proglet <a rel="nofollow" class="external text" href="/v4//index.php?page=proglets&amp;action=show&amp;id=jeux2D" class="internal">jeux2D</a></li></ul>
+<ul><li> Des «educlets» de simulation de phénomènes physiques pour montrer d'autres aspects numériques au delà de l'agorithmique de base</li></ul>
+<p>Autres idées en réserve:
+</p>
+<ul><li> Un AlgoEditor pour editer graphique les algorithmes les plus simples (à partir du AlgoEditor et about-algo-editor de la v3)</li></ul>
+<ul><li> Une proglet qui définisse un prélangage Jvs ultra-simplifié: un mode Java Beginner quoi</li></ul>
+<h2><span class="mw-headline" id="Quels_sont_les_.C3.A9l.C3.A9ments_plus_technique_ou_gard.C3.A9s_en_r.C3.A9serve_pour_la_mise_.C3.A0_jour_.C3.A0_l.27.C3.A9t.C3.A9_2012_.3F">Quels sont les éléments plus technique ou gardés en réserve pour la mise à jour à l'été 2012&#160;?</span></h2>
+<ul><li> Javas'Cool Core
+<ul><li> Ajouter la possibilité de save-as .jvs / .java / .jar, donc pouvoir lancer des programmes jvs en jar avec la proglet qui va avec et un html pour le lancement en applet</li>
+<li> Rendre possible la cŕeation de plusieurs instances de consoles qui visualisent toutes System.out.println et Macros.stdout.prinln (appliquer à commSerie et ProgletsBuilderPanel)</li>
+<li> Permettre d'identifier automatiquement à quelle proglet se réfère un fichier source (ex: on ajoute @proglet:nom-de-la-proglet comme assersion de compilation)</li></ul></li>
+<li> Javas'Cool Builder
+<ul><li> Voir comment gérer le fait que les noms de fichiers de docs ne peuvent avoir d'accent bien que utilises comme titre des pages de docs ouvertes en "newtab"</li>
+<li> Créer une doc pour l'usage des proglets sous netbeans et/ou proposer un plugin netbeans</li>
+<li> Intégrer un installateur des .dll/.so/.jnilib dans le buidler pour les proglets à extensions.</li>
+<li> Rendre disponible `TextFileEditor` &amp; `TextFilesEditor` (avec boutons et interface) en widgets pour reutilisation en dehors de org.javascool.gui</li></ul></li>
+<li> Javas'Cool Web
+<ul><li> Proposer un mécanisme XML/XSLT pour produire les pages du site et gérer les liens</li></ul></li>
+<li> Javas'Cool Platform 
+<ul><li> Passer à la compilation en java 1.7</li>
+<li> Passer en javadoc 1.7 pour y gagner en présentation</li>
+<li> Améliorer l'usage de ant avec ant1.8 dans lib/ant et eviter les messages inutiles en sortie</li>
+<li> Déployer dans svn:work/lib la construction de autocomplete.jar</li>
+<li> Voir à se libérer de <a rel="nofollow" class="external free" href="https://gforge.inria.fr/projects/javascool">https://gforge.inria.fr/projects/javascool</a> pour le site web</li>
+<li> Créer des <a rel="nofollow" class="external text" href="http://code.google.com/p/javascool/issues/list">issues</a> directement à partir d'une <a rel="nofollow" class="external text" href="http://groups.google.com/group/javascool/pendmsg">alerte</a> de javascool</li></ul></li></ul>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.016 seconds
+Real time usage: 0.017 seconds
+Preprocessor visited node count: 47/1000000
+Preprocessor generated node count: 52/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:860-1!*!0!!fr!*!* and timestamp 20150313130629 and revision id 15844
+ -->

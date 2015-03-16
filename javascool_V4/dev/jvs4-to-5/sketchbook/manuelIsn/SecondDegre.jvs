@@ -1,0 +1,21 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void main() {
+  double a, b, c, delta;
+  a = readDouble();
+  b = readDouble();
+  c = readDouble();
+  delta = b * b - 4 * a * c;
+  if(delta < 0.0) {
+    println("Pas de solution");
+  } else {
+    if(delta == 0.0) {
+      print("Une solution : ");
+      println(-b / (2 * a));
+    } else {
+      print("Deux solutions : ");
+      print((-b - Math.sqrt(delta)) / (2 * a));
+      print(" et ");
+      println((-b + Math.sqrt(delta)) / (2 * a));
+    }
+  }
+}

@@ -1,0 +1,97 @@
+<div title="La «proglet» gogleMap">
+  <p class="margin">
+    <p>Cliquer <l class="newtab" link="exercice.htm" text="ici"/> pour faire une activité sur l'algorithme du plus court chemin.</p>
+    <p>Cliquer <l link="http://javascool.gforge.inria.fr/documents/sketchbook/gogleMaps/presentation-des-graphes.pdf" text="ici"/> pour lire le tutoriel.</p>
+  </p>
+  <p>
+    Cette proglet permet d'afficher des
+villes et des routes sur une carte de France à partir de coordonnées
+géographiques (longitude,latitude). La proglet fournie aussi une base
+de donnée constituée des coordonnées géographiques des grandes villes
+françaises et de certaines routes entre ces villes. Pour simplifier,
+ces routes sont de simples lignes droites. Un calcul de plus court
+chemin dans ce réseau de routes est aussi fourni.
+  </p>
+
+  <div title="Affichage sur la carte">
+    La carte de France de la proglet peut être modifiée à l'aides des fonctionnalités suivantes.
+    <div class="code">
+     <m>Efface la carte pour faire disparaître les routes et les symboles désignant les villes.</m>
+     <p><r>void</r> <r>effaceCarte</r>()</p>
+     <p></p>
+     <m>Met en évidence un point de la carte désigné par ses coordonnées géographiques (longitude,latitude).</m>
+     <p><r>void</r> <r>affichePointSurCarte</r>(<r>double</r> <b>longitude</b>, <r>double</r> <b>latitude</b>)</p>
+     <p></p>
+     <m>Met en évidence un point de la carte désigné par ses coordonnées géographiques (<b>longitude</b>,<b>latitude</b>) en numérotant ce point avec le nombre <b>index</b>.</m>
+     <p><r>void</r> <r>affichePointSurCarte</r>(<r>double</r> <b>longitude</b>, <r>double</r> <b>latitude</b>, <r>int</r> <b>index</b>)</p>
+     <p></p>
+     <m>Trace une ligne droite entre un point de coordonnées géographiques (<b>longitude1</b>,<b>latitude1</b>) et un autre de coordonnées géographiques (<b>longitude2</b>,<b>latitude2</b>).</m> 
+     <p><r>void</r> <r>afficheRouteSurCarte</r>(<r>double</r> <b>longitude1</b>, <r>double</r> <b>latitude1</b>, <r>double</r> <b>longitude2</b>, <r>double</r> <b>latitude2</b>)</p>
+     <p></p>
+     <m>Trace une ligne droite entre un point de coordonnées géographiques (<b>longitude1</b>,<b>latitude1</b>) et un autre de coordonnées géographiques (<b>longitude2</b>,<b>latitude2</b>) en prenant une couleur d'intensité <b>intensite</b>.</m>
+     <p><r>void</r> <r>afficheRouteSurCarte</r>(<r>double</r> <b>longitude1</b>, <r>double</r> <b>latitude1</b>, <r>double</r> <b>longitude2</b>, <r>double</r> <b>latitude2</b>, <r>IntensiteRoute</r> <b>intensite</b>)</p>
+     <p></p>
+  }
+    </div>
+    Pour l'affichage des routes, il est possible de préciser l'intensité d'affichage pour réaliser des effets de transparence. Une intensité est une valeur de type
+    <r>IntensiteRoute</r> à choisir parmis <r>{ LEGER, MOYEN, FORT }</r>.
+  </div>
+  
+  <div title="Données géographiques">
+    La proglet fournie une base de coordonnées géographiques pour les grandes villes de France grâce aux tables suivantes.
+    <div class="code">
+      <m>Table des latitudes associée à chaque nom de ville.</m>
+      <p><r>Map&lt;String,Double></r> <b>latitudes</b>;</p>
+      <m>Table des longitudes associée à chaque nom de ville.</m>
+      <p><r>Map&lt;String,Double></r> <b>longitudes</b>;</p>
+    </div>
+    Nous associons ainsi chaque nom de ville de la base de donnée à une latitude (un nombre au format <r>Double</r>) ainsi qu'à une longitude. 
+    Par exemple, l'expression <b>latitudes</b>.<r>get</r>("Paris") renvoie la latitude de Paris et  <b>longitudes</b>.<r>get</r>("Paris") sa longitude.
+    L'ensemble des villes répertoriées peut être obtenu par l'expression <b>latitudes</b>.<r>keySet</r>() de type <r>Set&lt;String></r>. 
+    
+<div>Exemple:
+    <div class="code">
+      <p><r>echo</r>(<b>latitudes</b>.<r>keySet</r>());</p>
+    </div>
+    provoque l'affichage suivant:
+    <div class="code">
+[Troyes, Lens, Nantes, La Rochelle, Angoulême, Le Havre, Bayonne, Saint-Nazaire, Amiens, Brest, Béthune, Montbéliard, Nîmes, Grenoble, Chambéry, Dijon, Tours, Nice, Lille, Strasbourg, Toulouse, Paris, Annecy, Avigon, Caen, Montpellier, Rennes, Perpignan, Valence, Besançon, Saint-Etienne, Thionville, Orléans, Clermont-Ferrand, Annemasse, Reims, Toulon, Dunkerque, Valenciennes, Metz, Limoges, Calais, Bordeaux, Lorient, Lyon, Angers, Marseille, Pau, Le Mans, Poitiers, Nancy, Rouen, Mulhouse] 
+    </div>
+    Nous associons ainsi chaque nom de ville de la base de donnée à une latitude (un nombre au format <r>Double</r>) ainsi qu'à une longitude. 
+    Par exemple, l'expression <b>latitudes</b>.<r>get</r>("Paris") renvoie la latitude de Paris et  <b>longitudes</b>.<r>get</r>("Paris") sa longitude.
+    L'ensemble des villes répertoriées peux être obtenu par l'expression <b>latitudes</b>.<r>keySet</r>() de type <r>Set&lt;String></r>. 
+</div>
+    
+
+
+<div>
+    Les routes entre villes sont données par une table.
+    <div class="code">
+      <m>Table des voisins de chaque ville.</m>
+      <p><r>Map&lt;String,List&lt;String>></r> <b>voisins</b>;</p>
+    </div>
+    Chaque ville se voit ainsi associer une liste de voisins. Par exemple, la ville
+    de Bordeaux est reliée dans notre réseau à Angoulême, Bayonne et Toulouse. Ceci se vérifie
+    avec la commande
+    <div class="code">
+       echo(voisins.get("Bordeaux"));
+    </div>
+    qui provoque l'affichage suivant.
+    <div class="code">
+       [Angoulême, Bayonne, Toulouse]
+    </div>
+</div>
+</div>
+
+  <div title="Manipulations géographiques">
+    La proglet fournit enfin deux fonctions qui peuvent s'avérer utiles pour des calculs d'itinéraires.
+    <div class="code">
+      <m>Calcule la distance (en km) sur la sphère terrestre entre un point de coordonnées géographiques (<b>longitude1</b>,<b>latitude1</b>) et un autre de coordonnées géographiques (<b>longitude2</b>,<b>latitude2</b>).</m> 
+      <p><r>int</r> <r>distanceEuclidienne</r>(<r>double</r> <b>longitude1</b>, <r>double</r> <b>latitude1</b>, <r>double</r> <b>longitude2</b>, <r>double</r> <b>latitude2</b>)</p>
+      <m>Calcule un chemin sous forme d'une liste de noms de ville afin de relier la ville de nom <b>depart</b> à celle de nom <b>arrivee</b> en suivant uniquement des routes de la table
+<b>voisins</b> de la proglet.</m>
+      <p><r>List&lt;String></r> <r>plusCourtCheminGogleMap</r>(<r>Map&lt;String,List&lt;String>></r> voisinages, <r>String</r> <b>depart</b>, <r>String</r> <b>arrivee</b>)</p>
+    </div>
+  </div>
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=gogleMaps&amp;helpFile=api/org/javascool/proglets/gogleMaps/package-summary.html" text="ici"/></p>
+</div>

@@ -1,0 +1,993 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>La &laquo;proglet&raquo; d&eacute;tectionForme</title>
+   </head>
+   <body>
+      <h1>La &laquo;proglet&raquo; d&eacute;tectionForme.</h1>
+      
+      <div>Auteur :  Christophe B&eacute;asse</div>
+      <div></div>
+         
+      <div align="right" class="margin">
+             
+         <div>Cliquer <a href="http://newtab?activite.html">ici</a> pour faire l'activit&eacute;.
+         </div>
+             
+         <div>Cliquer <a href="http://newtab?tutoriel.html">ici</a> pour lire le tutoriel.
+         </div>
+           
+      </div>
+      
+      
+      <div>
+         <h2>Structure des images.</h2>
+         
+         <div>Cette proglet permet de manipuler de petites images (taille maxi 500x500). Et propose un ensemble de fonctions permettant
+            de r&eacute;aliser un programme de d&eacute;tection de formes sur l'image (voir la d&eacute;mo ainsi que le lien activit&eacute; propos&eacute; ci-dessus) 
+         </div>
+         
+         
+         <div>Les coordonn&eacute;es des pixels dans l'image se d&eacute;finissent ainsi:</div>
+              
+         <div align="center" class="center"><img src="repere.png" alt="" class="icon"></div>
+              
+         
+         <div><b>Abscisse</b> (position horizontale : axe orient&eacute; de gauche &agrave; droite) 
+         </div>
+         
+         <div>Les valeurs vont de <b>0</b> &agrave; <b>width</b> (width : largeur en anglais).
+         </div>
+         <div></div> 
+          
+         
+         <div><b>Ordonn&eacute;e</b> (position verticale : axe orient&eacute; de bas en haut !) 
+         </div>
+         
+         <div>Les valeurs vont de <b>0</b> &agrave; <b>height</b> (height : hauteur en anglais).
+         </div>
+         <div></div>
+         
+         
+         <div>Vous avez &agrave; votre disposition <b>4</b> images de travail identifi&eacute;es 
+         </div>
+         
+         <div>par les num&eacute;ros <b>1,2,3 et 4</b>.
+         </div>  
+           
+         
+      </div>
+           
+      
+      <div>
+         <h2>Les fonctions de cr&eacute;ation d'images.</h2>
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>createImage</b></font>(num, width, height);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           o&ugrave; <b>width</b> et <b>height</b> sont des <font color="#990000"><b>int</b></font> permet de d&eacute;finir les dimensions de l'image de travail <b>[1,2,3 ou 4]</b>.
+         <div></div>
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>loadImage</b></font>(num,Location);
+                        </div> 
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+         
+         <div>  permet de charger l'image de travail <b>[1,2,3 ou 4]</b> avec le fichier image indiqu&eacute; suivant le format suivant :
+         </div> 
+         
+         <div><b>http://path-name</b> pour aller chercher le contenu sur un site web
+         </div>
+         
+         <div><b>file://path-name</b> pour le charger du syst&egrave;me de fichier local
+         </div>
+         
+         <div> Par exemple <b>loadImage(2,"file://./logo.png");</b> charge l'image logo.png qui se trouve dans le r&eacute;pertoire courant dans l'image num&eacute;ro 2.
+         </div>
+         <div></div>
+                     
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>disposeImage</b></font>();
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           permet de "lib&eacute;rer" toutes les images de travail, il faut les recr&eacute;er (createImage, loadImage...) pour pouvoir les utiliser
+         &agrave; nouveau.
+         <div></div> 
+         <div></div>   
+              
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>disposeImage</b></font>(num);
+                        </div> 
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           permet de "lib&eacute;rer" l'image de travail <b>[1,2,3 ou 4]</b>, il faut la recr&eacute;er (createImage, loadImage...) pour pouvoir l'utiliser &agrave; nouveau.
+         <div></div>    
+              
+         
+      </div> 
+      
+      
+      <div>
+         <h2>Les fonctions de sauvegarde d'images.</h2>
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>saveImage</b></font>(num,Location);
+                        </div> 
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+         
+         <div>  permet de sauvegarder l'image de travail num <b>[1,2,3 ou 4]</b> dans le fichier image indiqu&eacute; suivant le format suivant :
+         </div> 
+         
+         <div><b>http://path-name</b> pour aller chercher le contenu sur un site web
+         </div>
+         
+         <div><b>file://path-name</b> pour le charger du syst&egrave;me de fichier local
+         </div>
+         
+         <div> Par exemple <b>saveImage(3,"file://./logo.png");</b> sauvegarde l'imade de travail num&eacute;ro 3 sous le nom logo.png dans le r&eacute;pertoire courant.
+         </div>  
+              
+         
+      </div> 
+      
+      
+      
+      <div>
+         <h2>Les fonctions de visualisation des images.</h2>
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>showImage</b></font>(num);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+            permet de visualiser dans la zone image du proglet (onglet "Proglet detectionForme") l'image de travail sp&eacute;cifi&eacute;e : <b>[1,2,3 ou 4]</b>.
+         <div></div>
+            
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>showPipImage</b></font>();
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+            
+         <div>permet de visualiser les 4 images de travail dans la zone image du proglet (onglet "Proglet detectionForme").Utile pour voir
+            les diff&eacute;rentes &eacute;tapes d'un traitement. 
+         </div>
+         <div> Remarque : Les images non initialis&eacute;es sont ignor&eacute;es.</div>
+         <div> L'image ci-dessous vous donne le r&eacute;sultat d'un tel affichage</div>
+         <div></div>      
+              
+         <div align="center" class="center"><img src="pip.png" alt="" class="icon"></div>     
+         
+      </div>
+      
+      
+      <div>
+         <h2>Les fonctions d'informations sur les images.</h2>  
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>getImageWidth</b></font>(num);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Retourne la largeur (type <font color="#990000"><b>int</b></font>) de l'image de travail num 
+         <div></div>  
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>getImageHeight</b></font>(num);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Retourne la hauteur (type <font color="#990000"><b>int</b></font>) de l'image de travail num 
+         <div></div>  
+         
+      </div>
+        
+      
+      <div>
+         <h2>Les fonctions sur les pixels (niveau I).</h2>
+         
+         <div>La couleur de chaque pixel de l'image peut &ecirc;tre cod&eacute; avec l'une des couleurs suivantes :</div>
+         
+         <div><b>black, blue, cyan, darkGray, gray, green, lightGray</b></div>
+         
+         <div><b>magenta, orange, pink, red, white, yellow</b></div>
+         <div></div> 
+         
+         <div> Pour utiliser ces couleurs vous pouvez faire r&eacute;f&eacute;rence &agrave; la constante Color (Color.black, Color.green, etc). Pour cela vous
+            devez ajouter au debut de votre fichier
+         </div>
+         <div> <b> import java.awt.Color; </b></div>
+         
+         
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>clearImage</b></font>(num);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Permet de remettre &agrave; la couleur "blanc" tous les pixels de l'image de travail <b>num</b>.
+         <div></div>
+         
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>setPixel</b></font>(num, x, y, c);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Initialise le pixel de coordonn&eacute;es x,y (de type <font color="#990000"><b>int</b></font>) de l'image de travail num &agrave; la couleur <b>c</b> sp&eacute;cifi&eacute;e (type <font color="#990000"><b>Color</b></font>).
+           
+         <div> (exemple Color.black)</div>
+         <div></div> 
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>isPixelColor</b></font>(num, x, y, c);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Fonction bool&eacute;enne renvoyant vrai ou faux suivant que le pixel de coordonn&eacute;es x,y de type <font color="#990000"><b>int</b></font> de l'image de travail num a pour couleur la valeur sp&eacute;cifi&eacute;e par le param&egrave;tre <b>c</b> de type <font color="#990000"><b>Color</b></font>.
+         <div></div>  
+           
+         
+      </div> 
+      
+        
+      
+      <div>
+         <h2>Les fonctions sur les pixels (niveau II).</h2>
+         
+         
+         <div> La couleur d'un pixel est repr&eacute;sent&eacute;e par un entier sur 4 octets ( soit 32 bits) tel que :</div>
+          
+         
+         <div>  AAAAAAAA RRRRRRRR GGGGGGGG BBBBBBBB </div>
+         
+         <div>  A: Alpha  R: Red   G: Green   B: Blue </div>
+         
+         <div></div>
+         <div> Par exemple : </div>
+         
+         <div> 00000000 00000000 11111111 00000000</div>
+         
+         <div>Correspond &agrave; la couleur Vert fonc&eacute;e</div>
+         <div></div>
+         
+         
+         <div>Red, Green et Blue correspondent aux composantes couleurs.</div>
+         
+         <div>Alpha correspond &agrave; la transparence.</div>
+         
+         <div>Une valeur de alpha &eacute;gale &agrave;  0xff (=255) correspond &agrave; une opacit&eacute; totale.</div>
+         
+         <div>Une valeur de alpha &eacute;gale &agrave;  0 correspond &agrave; une transparence totale.</div>
+           
+         
+         <div>Pour mettre la composante alpha &agrave; z&eacute;ro</div>
+         
+         <div> codeCouleur = codeCouleur  &amp; 0x00ffffff; </div>
+         
+         
+         <div>Pour fixer une couleur </div>
+         
+         <div>   codeCouleur = (alpha &lt;&lt; 24) | (red &lt;&lt; 16) | (green &lt;&lt; 8) | blue;</div>  
+         
+         <div></div>
+         
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>setPixel</b></font>(num, x, y, c);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Initialise le pixel de coordonn&eacute;es x,y (de type <font color="#990000"><b>int</b></font>) de l'image de travail num &agrave; la couleur <b>c</b> sp&eacute;cifi&eacute;e (type <font color="#990000"><b>int</b></font>).
+         <div></div> 
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>getPixelColor</b></font>(num, x, y);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Renvoie au format <font color="#990000"><b>int</b></font> la couleur du  pixel de coordonn&eacute;es x,y (de type <font color="#990000"><b>int</b></font>) de l'image de travail num.
+         <div></div>
+         
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>codeCouleur</b></font>(Color);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Renvoie le code en <font color="#990000"><b>int</b></font> de la couleur sp&eacute;cifi&eacute;e.
+         <div></div>
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>isPixelColor</b></font>(num, x, y, c);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Fonction bool&eacute;enne renvoyant vrai ou faux suivant que le pixel de coordonn&eacute;es x,y de type <font color="#990000"><b>int</b></font> de l'image de travail num a pour couleur la valeur sp&eacute;cifi&eacute;e par le param&egrave;tre <b>c</b> de type <font color="#990000"><b>int</b></font>.
+         <div></div>  
+         
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>getAlpha</b></font>(code);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Renvoie au format <font color="#990000"><b>int</b></font> la valeur de la composante Alpha comprise entre 0 et 255 de la couleur sp&eacute;cifi&eacute;e (de type <font color="#990000"><b>int</b></font>).
+         <div></div>
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>getRed</b></font>(code);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Renvoie au format <font color="#990000"><b>int</b></font> la valeur de la composante Red comprise entre 0 et 255 de la couleur sp&eacute;cifi&eacute;e (de type <font color="#990000"><b>int</b></font>).
+         <div></div>
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>getGreen</b></font>(code);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Renvoie au format <font color="#990000"><b>int</b></font> la valeur de la composante Green comprise entre 0 et 255 de la couleur sp&eacute;cifi&eacute;e (de type <font color="#990000"><b>int</b></font>).
+         <div></div>
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>getBlue</b></font>(code);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Renvoie au format <font color="#990000"><b>int</b></font> la valeur de la composante Blue comprise entre 0 et 255 de la couleur sp&eacute;cifi&eacute;e (de type <font color="#990000"><b>int</b></font>).
+         <div></div>   
+           
+         
+      </div>
+      
+      
+      <div>
+         <h2>Les fonctions de trac&eacute;s g&eacute;om&eacute;triques.</h2>     
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>drawSegment</b></font>(num, x1, y1, x2, y2, c);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Trace un segment d'extr&eacute;mit&eacute;es (x1,y1) et (x2,y2) (type <font color="#990000"><b>int</b></font>) dans l'image de travail num en utilisant une couleur de trac&eacute; <b>c</b> de type <font color="#990000"><b>Color</b></font>.
+         <div></div>   
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>drawRect</b></font>(num, x, y, w, h, c);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Trace un rectangle de position et de dimensions sp&eacute;cifi&eacute;es (<b>x,y,w,h</b> de type <font color="#990000"><b>int</b></font>) dans l'image de travail num en utilisant une couleur de trac&eacute; <b>c</b> de type <font color="#990000"><b>Color</b></font>.
+         <div></div> 
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>drawFillRect</b></font>(num, x, y, w, h, c);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           M&ecirc;me fonction que pr&eacute;c&eacute;demment, mais le rectangle est rempli.
+         <div></div>       
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>drawOval</b></font>(num, x, y, w, h, c);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Trace un ovale de position et de dimensions sp&eacute;cifi&eacute;es (<b>x,y,w,h</b> de type <font color="#990000"><b>int</b></font>) dans l'image de travail num en utilisant une couleur de trac&eacute; <b>c</b> de type <font color="#990000"><b>Color</b></font>.
+           
+         <div> La taille de l'oval est d&eacute;finie par les dimensions du rectangle englobant</div>
+         <div></div> 
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>drawFillOval</b></font>(num, x, y, w, h, c);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           M&ecirc;me fonction que pr&eacute;c&eacute;demment, mais l'ovale est rempli.
+         <div></div> 
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>drawString</b></font>(num, Str, x, y, c);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Ecrit la cha&icirc;ne str (type <font color="#990000"><b>String</b></font>) &agrave; la position x,y (type <font color="#990000"><b>int</b></font>) dans l'image de travail num en utilisant une couleur de trac&eacute; <b>c</b> de type <font color="#990000"><b>Color</b></font>.
+         <div></div>  
+           
+         
+      </div> 
+          
+      
+      <div>
+         <h2>Les fonctions de manipulations avanc&eacute;es.</h2>  
+             
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>ConvolveImage</b></font>(num,mask);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Effectue une convolution de l'image <b>num</b> avec le masque sp&eacute;cifi&eacute;
+          
+         <div>Il peut &ecirc;tre utile de recopier pr&eacute;alablement l'image &agrave; l'aide de la fonction <b>copyImage(num1,num2,borderwidth)</b></div>  
+         <div></div>  
+           
+         <div>Le masque doit &ecirc;tre du type :</div>
+           
+         <div>     float[ ] masque = {</div>
+         	
+         <div>	                      0.1f, 0.1f, 0.1f,</div>
+         	
+         <div>                       0.1f, 0.2f, 0.1f,</div>
+         	
+         <div>                        0.1f, 0.1f, 0.1f};</div>
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>resizeImage</b></font>(num, w, h);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Redimensionne l'image de travail <b>num</b> aux dimensions sp&eacute;cifi&eacute;es (<b>w,h</b> de type <font color="#990000"><b>int</b></font>).
+         <div></div>
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>resizeImageWithHint</b></font>(num, w, h);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           M&ecirc;me fonction que pr&eacute;c&eacute;demment mais en utilisant un algorithme donnant de meilleurs r&eacute;sultats (mais plus long &agrave; l'execution)
+         <div></div>  
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>rotateImage</b></font>(num, angle);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Fait subir une rotation &agrave; l'image de travail <b>num</b> suivant l'angle sp&eacute;cifi&eacute; (type <font color="#990000"><b>int</b></font>).
+           
+         <div>Il peut &ecirc;tre utile de recopier pr&eacute;alablement l'image &agrave; l'aide de la fonction <b>copyImage(num1,num2,borderwidth)</b> de mani&egrave;re &agrave; &eacute;viter la perte d'une partie importante de l'image
+         </div>
+         <div></div>                  
+              
+         
+      </div> 
+      
+      
+      <div>
+         <h2>Les fonctions de copie d'images.</h2>
+                
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>copyImage</b></font>(num1, num2);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Cette fonction permet de faire une copie de l'image de travail num1 vers l'image de travail num2.
+         <div></div> 
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>copyImage</b></font>(num1, num2, x, y, w, h);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Cette fonction permet de faire une copie d'une partie de l'image de travail num1 vers l'image de travail num2.
+           
+         <div> La partie rectangulaire de l'image est d&eacute;finie par les coordonn&eacute;es <b>x</b> et <b>y</b>  (de type <font color="#990000"><b>int</b></font>)de son coin sup&eacute;rieur gauche et par sa largeur <b>w</b> et sa longueur <b>h</b> (de type <font color="#990000"><b>int</b></font>)
+         </div>
+         <div></div> 
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>copyImage</b></font>(num1, num2, borderWidth);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Cette fonction permet de faire une copie de l'image de travail num1 vers l'image de travail num2. En ajoutant une bordure
+         suppl&eacute;mentaire de largeur <b> borderWidth</b> (de type <font color="#990000"><b>int</b></font>). Utile avant de faire appel &agrave; la fonction de rotation d'une image
+         <div></div>             
+              
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>cutImage</b></font>(num1, num2, x, y, w, h);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           Cette fonction permet de pr&eacute;lever (rogner) une partie de l'image de travail num1 et de la recopier vers l'image de travail
+         num2.
+           
+         <div> La partie rectangulaire de l'image est d&eacute;finie par les coordonn&eacute;es <b>x</b> et <b>y</b>  (de type <font color="#990000"><b>int</b></font>)de son coin sup&eacute;rieur gauche et par sa largeur <b>w</b> et sa longueur <b>h</b> (de type <font color="#990000"><b>int</b></font>)
+         </div>
+         <div></div>   
+           
+         
+      </div> 
+      
+      
+      <div>
+         <h2>Travailler sur les images &agrave; partir d'un tableau.</h2>
+         
+         
+         <div> Ce proglet vous permet de travailler directement sur des tableaux d'entiers d&eacute;finis de la fa&ccedil;on suivante : </div>    
+         <div><b>int [][] pixMap= new int[200][200];</b></div> 
+         <div></div>
+               
+            
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>createImageFromPixMap</b></font>(num,pixmap, width, height);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+            
+         <div>o&ugrave; <b>width</b> et <b>height</b> sont des <font color="#990000"><b>int</b></font> permet de charger l'image de travail <b>[1,2,3 ou 4]</b> depuis un tableau de pixels .
+         </div>
+            
+         <div> Le tableau pixMap correspond &agrave; un tableau d&eacute;fini de la fa&ccedil;on suivante :</div>
+            
+         <div><b>int [][] pixMap= new int[200][200];</b></div> 
+         <div></div>
+            
+            
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>loadImageToPixMap</b></font>(num,pixmap);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+            
+         <div>permet de charger le tableau de pixels &agrave; partir de l'image de travail <b>[1,2,3 ou 4]</b></div>
+            
+         <div>La taille de l'image (width et height) doit &ecirc;tre r&eacute;cup&eacute;r&eacute;e &agrave; partir des fonctions <b>getImageWidth(num)</b> et <b> getImageHeight(num)</b></div>
+            
+         <div> Le tableau pixMap correspond &agrave; un tableau d&eacute;fini de la fa&ccedil;on suivante :</div>
+            
+         <div><b>int [][] pixMap= new int[200][200];</b></div> 
+         <div></div>   
+                
+         
+         <div> Voici ci-dessous un exemple d'utilisation : </div>
+         
+             
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                              
+                        <div><font color="#990000"><b>void</b></font> main(){
+                        </div>    
+                              
+                        <div><font color="#990000"><b>int</b></font> [][] pixMap= new int[200][200];
+                        </div>
+                              
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           for (int x=0; x &lt; 200; x++)
+                        </div>
+                              
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                             for (int y=0; y &lt; 200; y++)
+                        </div>      
+                              
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                               pixMap[x][y]=x*y;
+                        </div>
+                              
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           createImageFromPixMap(1,pixMap,200,200);
+                        </div>
+                              
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           showImage(1);  
+                        </div> 
+                              
+                        <div>}</div>
+                            
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>  
+              
+         
+      </div>
+      
+      
+      <div>
+         <h2>Fonctions &eacute;l&eacute;mentaires de lecture/Ecriture.</h2>  
+         
+         <div>Avant toute op&eacute;ration sur le fichier il faut commencer par l'ouvrir en lecture (<tt>openFileReader</tt>) La fonction (<tt>readNextCode()</tt>) permet de r&eacute;cup&eacute;rer les codes du fichiers un par un. Elle retourne le code (type int) du code lu ou la valeur (-1) si la
+            fin du fichier est atteinte. Enfin il est important de ne pas oublier de fermer le fichier (<tt>closeFileReader</tt>) pour lib&eacute;rer les ressources r&eacute;serv&eacute;es lors de son traitement. 
+         </div>
+         
+      </div>
+      
+      
+      <div>
+         <h2>Les fonctions de lecture de fichier.</h2>
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>openFileReader</b></font>(String nomFichier)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  ouverture du fichier en lecture.</div>
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>readNextCode</b></font>()
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Renvoie le prochain code (1 octet de type int) lu dans le fichier et -1 si on est arriv&eacute; en fin de fichier.</div> 
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>closeFileReader</b></font>()
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  fermeture du fichier.</div>     
+         
+      </div> 
+      
+      
+      <div>
+         <h2>Les fonctions d'&eacute;criture de fichier.</h2>
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>openFileWriter</b></font>(String nomFichier)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  ouverture du fichier en &eacute;criture.</div>
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>writeNextCode</b></font>(int code)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Ecris dans le fichier le code suivant (1 octet).</div> 
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>closeFileWriter</b></font>()
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  fermeture du fichier.</div>     
+         
+      </div>
+           
+      
+      
+   </body>
+</html>

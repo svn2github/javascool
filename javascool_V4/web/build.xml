@@ -1,0 +1,133 @@
+<!-- Construction des éléments de site web -->
+<!-- Notice: Pour accéder à la gforge.inria.fr, si le login distant n'est pas le même que le login local, il faut le définir dans la variable d'environnement GFORGEUSER -->
+<project default="usage">
+
+  <property environment="env"/>
+
+  <target name="usage"><echo level="info">
+    ant build          construit les repertoires ./(api|documents|proglets) du site
+    ant clean          nettoie les liens temporaires ./(api|documents|proglets) pour le site
+    ant publish        publie les fichiers du site sur http://javascool.gforge.inria.fr
+    ant local          affiche une version locale du site (lance apache et ouvre firefox)
+    ant lcheck         teste et liste les liens cassés sur le site
+    ant xterm          ouvre une fenêtre pour aller gérer manuellement les fichiers sur le site
+  </echo></target>
+
+  <target name="build" depends="clean">
+    <exec os="Linux" executable="ln">
+      <arg line="-s ../documents ./documents"/>
+    </exec>
+    <ant dir="../work" target="javadoc"/> 
+    <exec os="Linux" executable="ln">
+      <arg line="-s  ../work/dist/javadoc ./api"/>
+    </exec>
+    <ant dir="../work" target="webproglets"/> 
+    <exec os="Linux" executable="ln">
+      <arg line="-s  ../work/dist/proglets/jar/org/javascool/proglets ./proglets"/>
+    </exec>
+    <exec os="Linux" executable="php">
+      <arg line="includes/wiki_save_contents.php"/>
+    </exec>
+    <ant dir="../work" target="javascool-proglets.jar"/> 
+   </target>
+
+  <target name="clean">
+    <exec os="Linux" executable="rm">
+      <arg line="-f ./api ./documents ./proglets"/> 
+    </exec>
+    <exec os="Linux" executable="rm">
+      <arg line="-rf ./.http.root ./.http.cache"/> 
+    </exec>
+  </target>
+
+  <target name="publish" depends="rsync.user.name">
+    <echo level="info" message="Publishing on ${env.GFORGEUSER}@scm.gforge.inria.fr"/>
+    <exec os="Linux" executable="rsync">
+      <arg line="--rsh='ssh -C' -rl --delete-excluded --exclude .svn/ pages cache images includes favicon.ico ${env.GFORGEUSER}@scm.gforge.inria.fr:/home/groups/javascool/htdocs/v4"/>
+    </exec>
+    <echo level="info" message="pages done .."/>
+    <exec os="Linux" executable="rsync">
+      <arg line="--rsh='ssh -C' -rL --delete-excluded --exclude .svn/ ./api ${env.GFORGEUSER}@scm.gforge.inria.fr:/home/groups/javascool/htdocs/v4/"/>
+    </exec>
+    <echo level="info" message="api done .."/>
+    <exec os="Linux" executable="rsync">
+      <arg line="--rsh='ssh -C' -rL --delete-excluded --exclude .svn/ ./proglets ${env.GFORGEUSER}@scm.gforge.inria.fr:/home/groups/javascool/htdocs/v4/"/>
+    </exec>
+    <echo level="info" message="proglets done .."/>
+    <exec os="Linux" executable="rsync">
+      <arg line="--rsh='ssh -C' -rl --delete-excluded --exclude .svn/ ../documents ${env.GFORGEUSER}@scm.gforge.inria.fr:/home/groups/javascool/htdocs/v4"/>
+    </exec>
+    <echo level="info" message="documents done .."/>
+    <exec os="Linux" executable="rsync">
+      <arg line="--rsh='ssh -C' -rl ../work/lib/javascool.bat ../work/dist/javascool-proglets.jar ../work/dist/javascool-builder.jar ${env.GFORGEUSER}@scm.gforge.inria.fr:/home/groups/javascool/htdocs/v4"/>
+    </exec>
+    <echo level="info" message="jars done .."/>
+    <exec os="Linux" executable="rsync">
+      <arg line="--rsh='ssh -C' -rl .htaccess ${env.GFORGEUSER}@scm.gforge.inria.fr:/home/groups/javascool/htdocs"/>
+    </exec>
+    <!-- rsync de index.php en deux temps pour patcher un problème de droit sur le site -->
+    <exec os="Linux" executable="rsync">
+      <arg line="--rsh='ssh -C' index.php ${env.GFORGEUSER}@scm.gforge.inria.fr:/home/groups/javascool/htdocs/v4/.htindex.php"/>
+    </exec>
+    <exec os="Linux" executable="ssh">
+      <arg value="${env.GFORGEUSER}@scm.gforge.inria.fr"/>
+      <arg value="sh -c 'cd /home/groups/javascool/htdocs/v4 ; cat .htindex.php &gt; index.php ; rm .htindex.php'"/>
+    </exec>
+    <echo level="info" message="index done .."/>
+    <exec os="Linux" executable="ssh">
+      <arg value="${env.GFORGEUSER}@scm.gforge.inria.fr"/>
+      <arg value="sh -c 'cd /home/groups/javascool/htdocs ; chgrp -fR javascool . ; chmod -fR ug+wr .'"/>
+    </exec>
+    <echo level="info" message="chmod done .."/>
+    <exec os="Linux" executable="firefox">
+      <arg value="http://javascool.gforge.inria.fr/v4"/>
+    </exec>
+    <exec os="Linux" executable="ssh">
+      <arg value="${env.GFORGEUSER}@scm.gforge.inria.fr"/>
+      <arg value="sh -c 'cd /home/groups/javascool/htdocs ; rm .http.cache/*'"/>
+    </exec>
+  </target>
+
+  <target name="publish-jar" depends="rsync.user.name">
+    <exec os="Linux" executable="rsync">
+      <arg line="--rsh='ssh -C' -rl .htaccess ../work/dist/javascool-proglets.jar ${env.GFORGEUSER}@scm.gforge.inria.fr:/home/groups/javascool/htdocs/v4"/>
+    </exec>
+    <!--exec os="Linux" executable="firefox">
+      <arg value="http://javascool.gforge.inria.fr/javascool-proglets.jar"/>
+    </exec-->
+  </target>
+
+  <target name="rsync.user.name" unless="env.GFORGEUSER">
+    <property name="env.GFORGEUSER" value="${user.name}"/>
+  </target>
+
+  <!--target name="cache">
+    <exec os="Linux" executable="wget">
+      <arg line="-q -O - http://javascool.gforge.inria.fr/v4?kezako=niquelekacheux"/>
+    </exec>
+  </target-->
+
+  <target name="local" depends="build">
+    <exec os="Linux" executable="./includes/start-local-web.sh"/>
+    <exec os="Linux" executable="firefox">
+      <arg value="http://127.0.0.1:1234"/>
+    </exec>
+  </target>
+
+  <target name ="lcheck" depends="build,publish">
+    <ant dir="../work" target="javascool-base.jar"/>
+    <echo>LINKCHECK: http://javascool.gforge.inria.fr > broken-links.log . . </echo>
+    <java classpath="../work/dist/javascool-base.jar" classname="org.javascool.builder.LinkCheck" output="broken-links.log">
+      <arg line="-recursive http://javascool.gforge.inria.fr"/>
+    </java>
+  </target>
+
+  <target name="xterm" depends="rsync.user.name">
+    <echo level="info" message="Connecting on ${env.GFORGEUSER}@scm.gforge.inria.fr"/>
+    <exec os="Linux" executable="gnome-terminal">
+      <arg value="-e"/>
+      <arg value="ssh ${env.GFORGEUSER}@scm.gforge.inria.fr 'cd /home/groups/javascool/htdocs ; bash -i'"/>
+    </exec>
+  </target>
+
+</project>

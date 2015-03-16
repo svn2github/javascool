@@ -1,0 +1,93 @@
+
+void main() {
+	FORM formu = new FORM();
+} 
+// ---------------------------------------
+// formulaire
+// ---------------------------------------
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+class FORM implements ActionListener {
+	JTextField zone_n; 
+	JTextField[] zone_nom; JPanel p_nom; 
+	JTextField[] zone_sexe; JPanel p_sexe; 
+	JTextField[] zone_taille; JPanel p_taille; 
+	JTextField[] zone_poids; JPanel p_poids; 
+	JButton bouton_ok, bouton_quitter;
+	JFrame fen;
+	JPanel p;
+	FORM() { // creation + affichage du formulaire
+		fen = new JFrame("Formulaire de saisie");
+		p=new JPanel(new GridLayout(6,2));
+		fen.add(p);
+		p.add(new JLabel("n"));
+		zone_n=new JTextField(); p.add(zone_n);
+		p.add(new JLabel("nom"));
+		p_nom=new JPanel(new GridLayout(1, 10)); p.add(p_nom); 
+		zone_nom=new JTextField [10]; 
+		for(int i1=0; i1<10; i1++) {
+			zone_nom[i1]=new JTextField(); p_nom.add(zone_nom[i1]);
+		}
+		p.add(new JLabel("sexe"));
+		p_sexe=new JPanel(new GridLayout(1, 10)); p.add(p_sexe); 
+		zone_sexe=new JTextField [10]; 
+		for(int i1=0; i1<10; i1++) {
+			zone_sexe[i1]=new JTextField(); p_sexe.add(zone_sexe[i1]);
+		}
+		p.add(new JLabel("taille"));
+		p_taille=new JPanel(new GridLayout(1, 10)); p.add(p_taille); 
+		zone_taille=new JTextField [10]; 
+		for(int i1=0; i1<10; i1++) {
+			zone_taille[i1]=new JTextField(); p_taille.add(zone_taille[i1]);
+		}
+		p.add(new JLabel("poids"));
+		p_poids=new JPanel(new GridLayout(1, 10)); p.add(p_poids); 
+		zone_poids=new JTextField [10]; 
+		for(int i1=0; i1<10; i1++) {
+			zone_poids[i1]=new JTextField(); p_poids.add(zone_poids[i1]);
+		}
+		bouton_ok=new JButton("calculer"); p.add(bouton_ok);
+		bouton_ok.addActionListener(this);
+		bouton_quitter=new JButton("quitter"); p.add(bouton_quitter);
+		bouton_quitter.addActionListener(this);
+		fen.pack();
+		fen.setVisible(true);
+	}
+	public void actionPerformed(ActionEvent e) { // actions associees aux boutons
+		int i1; 
+		int n; 
+		String [] nom = new String[10]; 
+		String [] sexe = new String[10]; 
+		double [] taille = new double[10]; 
+		double [] poids = new double[10]; 
+		double [] imc = new double[10]; 
+		if (e.getSource()==bouton_ok) {  
+			// recuperation des entrees
+			n = Integer.parseInt( zone_n.getText() ); 
+			for(i1=0; i1<n; i1++) {
+				nom[i1] = zone_nom[i1].getText(); 
+			}
+			for(i1=0; i1<n; i1++) {
+				sexe[i1] = zone_sexe[i1].getText(); 
+			}
+			for(i1=0; i1<n; i1++) {
+				taille[i1] = Double.parseDouble( zone_taille[i1].getText() ); 
+			}
+			for(i1=0; i1<n; i1++) {
+				poids[i1] = Double.parseDouble( zone_poids[i1].getText() ); 
+			}
+			// calcul des IMCs
+			for(i1=0; i1<n; i1++) {
+				imc[i1] = poids[i1]/(taille[i1]*taille[i1]); 
+			}
+			// affichage des IMCs
+			for(i1=0; i1<n; i1++) {
+				println( nom[i1] + " : " + imc[i1] ); 
+			}
+		}
+		if (e.getSource()==bouton_quitter) {
+			fen.dispose();
+		}
+	}
+}

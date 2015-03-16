@@ -1,0 +1,16 @@
+double calculer_prixTotal(double prixUnitaire, int quantite) { 
+	double prixTotal; 
+	prixTotal = quantite * prixUnitaire; 
+	return prixTotal;
+} 
+void main() {
+	int quantite; 
+	double prixUnitaire; 
+	double prixTotal;
+	String nom;	
+	nom = readString("Quel est le nom de l'article ?");
+	prixUnitaire = readDouble("Quel est son prix unitaire en euros ?"); 
+	quantite = readInt("Quelle est la quantite achetee ?"); 
+	prixTotal = calculer_prixTotal(prixUnitaire, quantite); 
+	println( "prixTotal : " + prixTotal ); 
+} 

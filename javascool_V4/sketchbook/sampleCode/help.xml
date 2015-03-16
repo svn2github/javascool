@@ -1,0 +1,10 @@
+<div title="Proglet exemple">
+ Voici le programme minimal qui permet de tester cette proglet:
+  <code>
+    void main() {
+      setMessage("Hello World!");
+    }
+  </code>
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=sampleCode&amp;helpFile=api/org/javascool/proglets/sampleCode/package-summary.html" text="ici"/></p>
+</div>
+

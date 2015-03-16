@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<keywords title="Entrée de valeurs">
+    <keyword name="readString" offset="7" title="Stocke une chaîne de caractères dans une variable">
+        <doc>Crée une variable s qui va contenir une chaîne de caractères demandé à l'utilisateur.
+Il peut prendre un paramètre "question" de type String qui décrit la valeur à entrer (optionel).</doc>
+        <code>String s = readString("question");</code>
+    </keyword>
+    <keyword name="readInteger" offset="4" title="Stocke un entier dans une variable">
+        <doc>Crée une variable n qui va contenir un int demandé à l'utilisateur.
+Il peut prendre un paramètre "question" de type String qui décrit la valeur à entrer (optionel).</doc>
+        <code>int n = readInteger("question");</code>
+    </keyword>
+    <keyword name="readDecimal" offset="7" title="Stocke un nombre décimal dans une variable">
+        <doc>Crée une variable x qui va contenir un double demandé à l'utilisateur.
+Il peut prendre un paramètre "question" de type String qui décrit la valeur à entrer (optionel).</doc>
+        <code>double x = readDecimal("question");</code>
+    </keyword>
+    <keyword name="readBoolean" offset="8" title="Stocke un booléen dans une variable">
+        <doc>Crée une variable b qui va contenir un booléen demandé à l'utilisateur, dans une fenêtre 'oui' ou 'non'.
+Il peut prendre un paramètre "question" de type String qui décrit la valeur à entrer (optionel).</doc>
+        <code>boolean b = readBoolean("question");</code>
+    </keyword>
+</keywords>

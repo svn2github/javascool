@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<keywords title="Écriture en console">
+    <keyword name="println" title="Affiche du texte dans la console">
+        <doc>Affiche dans la console une chaîne de caractères ou la représentation textuelle d'un objet sur la console avec un retour à la ligne.</doc>
+        <code>println("");</code>
+    </keyword>
+    <keyword name="print" title="Affiche du texte dans la console">
+        <doc>Affiche dans la console une chaîne de caractères ou la représentation textuelle d'un objet sur la console sans retour à la ligne.</doc>
+        <code>print("");</code>
+    </keyword>
+</keywords>

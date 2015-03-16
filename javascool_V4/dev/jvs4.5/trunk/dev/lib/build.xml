@@ -1,0 +1,44 @@
+<project name="javac" basedir="." default="all">
+  <target name="all" depends="javac.jar,javadoc.jar,jarsigner.jar,jvs2html.jar"/>
+
+  <property name="jdk.dir" value="/usr/java/jdk1.6.0_22"/>
+  <!--property name="jdk.dir" value="/usr/java/jdk1.7.0_02"/-->
+  <property name="build.dir" value="../../build/lib"/>
+
+  <!-- Construction de la library javac.jar où le compilateur java est extrait du tools.jar standard -->
+  <target name="javac.jar"> 
+    <delete file="./javac.jar"/>
+    <mkdir dir="${build.dir}"/>
+    <unzip dest="${build.dir}" src="${jdk.dir}/lib/tools.jar"/>
+    <jar destfile="./javac.jar" basedir="${build.dir}" includes="com/sun/tools/javac/**,sun/tools/java/**,com/sun/source/tree/**,com/sun/source/util/**"/>
+    <delete dir="${build.dir}"/>
+  </target>
+  <!-- Construction de la library javadoc.jar où javadoc est extrait du tools.jar standard -->
+  <target name="javadoc.jar"> 
+    <delete file="javadoc.jar"/>
+    <mkdir dir="${build.dir}"/>
+    <unzip dest="${build.dir}" src="${jdk.dir}/lib/tools.jar"/>
+    <jar destfile="./javadoc.jar" basedir="${build.dir}" includes="com/sun/tools/javadoc/**,com/sun/javadoc/**,com/sun/tools/doclets/**"/>
+    <delete dir="${build.dir}"/>
+  </target>
+  <!-- Construction de la library jarsigner.jar où jarsigner est extrait du tools.jar standard -->
+  <target name="jarsigner.jar"> 
+    <delete file="jarsigner.jar"/>
+    <mkdir dir="${build.dir}"/>
+    <unzip dest="${build.dir}" src="${jdk.dir}/lib/tools.jar"/>
+    <jar destfile="./jarsigner.jar" basedir="${build.dir}" includes="com/sun/tools/jarsigner/**,com/sun/jarsigner/**,sun/security/tools/**"/>
+    <delete dir="${build.dir}"/>
+  </target>
+  <!-- Construction de la library java2html patchée par  Philippe Vienne <philoumailabo@gmail.com> et renommée ici java2html -->
+  <target name="jvs2html.jar">   
+    <mkdir dir="${build.dir}"/>
+    <javac classpath="jvs2html/lang3.jar" srcdir="jvs2html/src" destdir="${build.dir}"/>
+    <jar destfile="jvs2html.jar" basedir="${build.dir}">
+      <zipfileset includes="**/*.class" src="jvs2html/lang3.jar"/>
+      <manifest>
+        <attribute name="Main-Class" value="de.java2html.Java2HtmlApplication"/>
+      </manifest>
+    </jar>
+    <delete dir="${build.dir}"/>
+  </target>
+</project>

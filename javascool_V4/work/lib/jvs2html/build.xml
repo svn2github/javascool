@@ -1,0 +1,16 @@
+<!-- Construction de la library java2html patchée par  Philippe Vienne <philoumailabo@gmail.com> et renommée ici java2html -->
+<project name="jvs2html" basedir="." default="../jvs2html.jar">
+  <property name="build.dir" value="../../../build/jvs2html"/>
+  <target name="../jvs2html.jar">   
+    <mkdir dir="${build.dir}"/>
+    <javac classpath="./lang3.jar" srcdir="src" destdir="${build.dir}"/>
+    <jar destfile="../jvs2html.jar" basedir="${build.dir}">
+      <zipfileset includes="**/*.class" src="./lang3.jar"/>
+      <manifest>
+        <attribute name="Main-Class" value="de.java2html.Java2HtmlApplication"/>
+      </manifest>
+    </jar>
+    <delete dir="${build.dir}"/>
+  </target>
+</project>
+

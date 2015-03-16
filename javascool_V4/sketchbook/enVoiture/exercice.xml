@@ -1,0 +1,83 @@
+<div class="sujet" title="Un tutoriel sur les graphes (1ère partie)"> 
+  <div class="objectif">
+    Le but de s’approprier les différents éléments caractéristiques d’un graphe, 
+    en vue de saisir les algorithmes qui en font usage, comme par exemple, l'algorithme du plus court chemin. 
+    La première partie de ce tutoriel est introductive à la notion de graphe, 
+	se limitant essentiellement à un cas concret de parcours d'une voiture entre des villes. 
+	On veut faire passer l'idée ici que l'application se retrouve dans de nombreuses situations du quotidien.
+  </div>
+  <div class="intros">
+    <p>Un graphe est un ensemble de points dont certaines paires sont directement reliées par un lien.</p>
+    <p>Ces liens peuvent être orientés, d'un point vers un autre ou vice versa. Dans le cas contraire, les liens sont symétriques, et le graphe est non-orienté.</p>
+    <p>Généralement, les points sont appelés les sommets ou les nœuds. Les liens sont appelés arêtes dans les graphes non-orienté 
+    et arcs dans un graphe orienté.</p>
+    <p>Dans le cas concret d'une carte de villes, les noeuds ou sommets sont représentés par les villes, 
+    et les liens correspondent aux routes construites pour les relier.</p>
+    <p>Lorsqu'un chemin existe entre deux noeuds ou sommets dans un graphe, on se pose rapidement la question non seulement de trouver un tel chemin, 
+    mais également le plus court chemin possible entre ces deux sommets. 
+    Notre oeil est d'ailleurs particulièrement efficace dans cette tâche, tant que le graphe est de taille raisonnable... 
+    Mais dès que le graphe comporte plusieurs dizaines de sommets et d'arêtes, 
+    trouver le plus court chemin entre deux points devient vite un casse-tête: 
+    avez vous déjà eu l'expérience de trouver l'itinéraire le plus rusé entre 2 stations de métro de Paris passant par le minimum de stations??
+   (sans demander au site de la RATP de calculer votre itinéraire, bien entendu!)</p>
+   </div>
+
+  <div class="works">
+    <div title="Utiliser l'interface, les différentes commandes">
+      <p>Dans un premier temps, manipuler l'interface qui présente une voiture dans un environnement 3D. <div class="ul">
+        <p>L'environnement contient des "stations" (spots) que la voiture visite dans son parcours.</p>
+        <p>La vue 3D est complétée par une représentation 2D (type aérienne) de l'environnement, l'ensemble des "stations" (spots) 
+        et le vehicule. Les mouvements du véhicule sont donc repérable par la position du point rouge.</p>
+      </div>
+      <p>Pour accéder aux informations pour la manipulation de l'interface, taper 'i'.</p><div class="ul">
+      	<p>Les 4 différentes flèches permettent la navigation de la voiture, le point de vue de la caméra peut être ajusté par '+/-'
+      	pour zoomer/dézoomer.</p>
+      	<p>Dans cet environnement, peuvent être ajoutés des "stations" (spots), soit par touche 'a' pour les générer toutes en une seule fois et de manière aléatoire, 
+        soit par clic droit et la station apparaitra à la position courante de la voiture. Les stations apparaissent dans les deux représentations.</p>
+      	<p>Pour ajouter/supprimer un lien entre deux noeuds, assimilable à une route entre deux stations, clic centre et maintenir le clic alors que la voiture
+      	effectue le trajet entre les deux stations.</p>
+      	<p>Vous pouvez jouer à trouver le plus court chemin entre deux stations tirées au hasard, avec une escale (taper 'p'), ou deux escales (taper 'q').
+      	Les deux stations tirées au hasard apparaissent en rouge, la voiture relie les stations, clic centre maintenu, et mémorise la distance parcourue.
+      	Si la distance parcourue est optimum, un 'BRAVO!' s'inscrira sur la visualisation.</p>
+      </div>A vous d'essayer toutes ces possibilités.
+     </p>
+   </div>
+  <div title="Introduire la notion de plus court chemin (sans programmation)">
+    <p>En fixant une station de départ et une station d'arrivée, l'objectif de la voiture est de minimiser la distance parcourue (et oui, l'impact carbone..).</p>
+    <p> En tapant 'p', notre programme tire au hasard deux villes, une ville de départ 
+    et une ville d'arrivée (notées respectivement V_Dep et V_Arr), et calcule implicitement (sans le divulguer) la ville intermédiaire (notée V_interm1) qui
+    minimise la distance parcourue. Le joueur doit trouver V_interm1, sachant V_Dep et V_Arr allumées en rouge sur la visualisation. </p>
+    <p>Chercher par déduction le plus court chemin entre les villes de départ et d'arrivée (respectivement V_Dep et V_Arr): <div class="ul">
+      <p>Ballader la voiture entre V_Dep et V_Arr de station en station, et par un 'clic centre + relâche' somme la distance parcourue ('d' remet à zéro la distance parcourue).</p>
+      <p>Si cette distance parcourue égale celle calculée (implicitement) par notre algorithme, la réussite du joueur est indiquée par un "BRAVO!!" qui s'inscrit sur la visualisation.</p>
+    </div></p>
+    <p>Cette manipulation repose sur le lemme de Koenig: Un plus court chemin entre 2 sommets est élémentaire, premier algorithme
+     pour trouver le plus court chemin. Le lemme de Koenig se traduit par: étant donné que le nombre de chemins élémentaires entre deux 
+     villes est fini, nous pouvons tous les énumérer en calculant leur longueur et retenir le plus court. 
+     Cet algorithme est correct mais révèle un grave défaut : son temps d'exécution. 
+     Si le nombre de chemins élémentaires est bien fini, il n'en demeure pas moins très grand, de l'ordre du factoriel de n
+     (<c>n! = n (n-1) (n-2) . . 1</c>) sur un graphe d'ordre <c>n</c>, c'est à dire à <c>n</c> sommets. Pour estimation: sur un graphe de seulement 20 sommets, en supposant que trouver un chemin et calculer sa longueur puissent
+     se faire en une seule opération, sur un ordinateur pouvant effectuer 1 milliard d'opérations par seconde, il nous faudra patienter 77 ans pour obtenir
+     le meilleur trajet..</p>
+  </div>
+  <div title="Expérimenter une solution sous-optimale (sans programmation)">
+    <p>Pour éviter d'explorer tous les chemins élémentaires du graphe, la manipulation de l'interface aboutira à la seconde propriété, fondamentale: la sous-optimalité.</p>
+    <p>Il s'agit simplement de remarquer qu'être un plus court chemin, ça s'hérite : le "bout" d'un plus court chemin est encore
+      un plus court chemin entre ses extrémités. Autrement dit, si le trajet le plus rapide entre deux villes passe par 2 villes intermédiaires <c>x</c> et <c>y</c>, ce trajet emprunte nécessairement le plus
+      court chemin entre <c>x</c> et <c>y</c>.</p>
+    <p>Afin de dépeindre cette propriété, on propose de continuer l'exploration précédente: <div class="ul">
+    <p>Rajouter une ville dans votre parcours de telle manière à toujours limiter la distance parcourue entre la ville de départ
+     et celle d'arrivée. Ceci se traduit par chercher la ville intermédiaire (notée <c>V_interm21</c>) pour le parcours <c>V_Dep/V_interm1</c>,
+      puis la ville intermédiaire (notée <c>V_interm22</c>) pour le parcours <c>V_interm1</c>/<c>V_Arr</c>, puis de comparer les parcours:
+      <p class="center"><c>V_Dep - V_interm21 - V_interm1 - V_Arr</c> </p>
+      <p class="center"><c>V_Dep - V_interm1 - V_interm22 - V_Arr</c></p></p>
+      <p>On gardera le parcours le plus court.</p>
+    </div></p>
+    </div>
+  </div>
+  <div title="Pour se détendre . . programmer soi-même la voiture et les villes">
+    A partir des <l link="help.htm" text="fonctions"/> proposées à vous de programmer (juste pour le fun et pour s'entrainer à programmer) un petit voyage de la voiture 
+  à travers un paysage que vous aurez créé. Pour "temporiser" la fonction: <c><r>sleep</r>(delay_en_millisecondes)</c> va introduire un délai.
+    <p>Regarder l'exécution et observer selon l'ordinateur si l'animation est freinée par vos délais ou par . . le calcul de l'image 3D</p>
+  </div>
+</div>

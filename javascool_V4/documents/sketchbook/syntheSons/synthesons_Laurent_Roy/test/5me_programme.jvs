@@ -1,0 +1,42 @@
+
+// On crée un premier type d'instrument
+ class flutePan extends NotesSoundBit {
+   public double get(char c, double t) {
+      return  0.6*sns(t)+0.3*sns(3*t)+0.1*sns(5*t);
+   }
+}
+// On crée un second type d'instrument
+class Harmonium extends NotesSoundBit {
+   public double get(char c, double t) {
+      return  0.6*sns(t)+0.3*sns(2*t)+0.2*sns(4*t)+0.2*sns(8*t);
+   }
+}
+// On crée un instrument de chaque type
+flutePan instrument1 = new flutePan();
+Harmonium instrument2 = new Harmonium();
+
+// Le chef d'orchestre fait jouer les deux instruments ensemble.
+SoundBit orchestre = new SoundBit() {
+   public double get(char c, double t) {
+      return 0.1 * instrument1.sound.get(c, t) + 0.2 * instrument2.sound.get(c, t);
+   }
+};
+
+
+void main() {
+   String Mesures ="";
+   for (int i=0; i<10; i++){
+		Mesures = Mesures + "c3 c4 c3 c4 ";
+   		Mesures = Mesures + "c3 c4 c3 c4 ";
+   		Mesures = Mesures + "e3 e4 e3 e4 ";
+   		Mesures = Mesures + "e3 e4 e3 e4 ";
+   		Mesures = Mesures + "d3 d4 d3 d4 ";
+   		Mesures = Mesures + "d3 d4 d3 d4 ";
+   		Mesures = Mesures + "c3 c4 c3 c4 ";
+   		Mesures = Mesures + "c3 c4 c3 c4 ";
+}
+  instrument2.reset(Mesures);
+  instrument1.reset("2 e5 | 1 b c5 | 2 d5 | 1 c5 b | 2 a | 1 a c5 | 2 e5 | 1 d5 c5 | 2 b | 1 b c5 | 2 d5 e5 c5 a a |");
+   orchestre.setLength(10); 
+  orchestre.play();
+}

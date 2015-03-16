@@ -1,0 +1,73 @@
+import javax.swing.JLayeredPane;
+import javax.swing.BoxLayout;
+import javax.swing.Box;
+import javax.swing.JLabel;
+import java.awt.Font;
+
+import java.util.Calendar;
+
+/** Définit un composant qui affiche un point lumineux de couleur. */
+class Led extends JLabel {
+  Led() {
+    setVerticalTextPosition(TOP);
+    setHorizontalTextPosition(CENTER);
+    setFont(new Font("Arial", Font.PLAIN, 18));
+    setColor("blue");
+  }
+
+  /** Définit la couleur.
+   * @param couleur La couleur "Red", "Green" (valeur par défaut) ou "Blue"
+   */
+  public void setColor(String color) {
+    String icon = "org/javascool/widgets/icons/" + (
+      color.toLowerCase().charAt(0) == 'r' ? "ledred.png" :
+      color.toLowerCase().charAt(0) == 'b' ? "ledblue.png" :
+      "ledgreen.png");
+    setIcon(org.javascool.macros.Macros.getIcon(icon));
+  }
+}
+
+/** Affiche l'heure courante. */
+void setTime() {
+  Calendar now = Calendar.getInstance();
+  setTime(now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE));
+}
+/** Affiche l'heure courante. */
+void setTime(int heure, int minute) {
+  for(int k = 0; k < 5; k++)
+    heures[k].setColor((heure >> k) % 2 == 0 ? "b" : "r");
+  for(int k = 0; k < 6; k++)
+    minutes[k].setColor((minute >> k) % 2 == 0 ? "b" : "r");
+}
+Led heures[] = new Led[5], minutes[] = new Led[6];
+
+void main() {
+  // Définit l'affichage de l'horloge digitale
+  JLayeredPane pane = getPane();
+  pane.removeAll();
+  pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));
+  Box hBox = Box.createHorizontalBox();
+  JLabel h = new JLabel("Heure");
+  h.setFont(new Font("Arial", Font.PLAIN, 18));
+  hBox.add(h);
+  hBox.add(Box.createHorizontalStrut(85));
+  for(int n = 16, k = 4; n > 0; n /= 2, k--) {
+    hBox.add(heures[k] = new Led());
+    heures[k].setText("" + n);
+  }
+  pane.add(hBox);
+  Box mBox = Box.createHorizontalBox();
+  JLabel m = new JLabel("Minute");
+  m.setFont(new Font("Arial", Font.PLAIN, 18));
+  mBox.add(m);
+  for(int n = 32, k = 5; n > 0; n /= 2, k--) {
+    mBox.add(minutes[k] = new Led());
+    minutes[k].setText("" + n);
+  }
+  pane.add(mBox);
+  pane.add(Box.createVerticalGlue());
+  // Affiche choisie puis l'heure courante
+  setTime(readInteger("heure"), readInteger("minute"));
+  sleep(3000);
+  setTime();
+}

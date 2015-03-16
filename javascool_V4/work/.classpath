@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/jarsigner.jar"/>
+	<classpathentry kind="lib" path="lib/java2html.jar"/>
+	<classpathentry kind="lib" path="lib/javac.jar"/>
+	<classpathentry kind="lib" path="lib/javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/jvs2html.jar"/>
+	<classpathentry kind="lib" path="lib/saxon.jar"/>
+	<classpathentry kind="lib" path="lib/autocomplete.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/RSyntaxTextArea.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

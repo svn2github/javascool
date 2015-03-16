@@ -1,0 +1,10 @@
+[
+{
+ "tag" : "keyword"
+, "title" : "Initialise l'image"
+, "name" : "reset"
+, "code" : "createImage(num,width, height);"
+, "doc" : "Initialise l'image de travail num aux dimension width,height."
+}
+]
+

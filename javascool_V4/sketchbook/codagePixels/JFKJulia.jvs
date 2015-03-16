@@ -1,0 +1,33 @@
+
+// Code inspiré par Jean-Francois Kentzel <Jean-Franc.Kentzel@ac-toulouse.fr>
+// Tracé de l'ensemble de Julia
+ void main() {
+   // Taille de la fenêtre de l'image (N_x, N_y) en pixels
+    int N_x = 256, N_y = 256;
+   // Profondeur du tracé
+    int N_p = 550;
+   // Taille de la fenêtre mathématique du tracé
+    double x_min = -2, x_max = 2, y_min = -2, y_max = 2;
+   // On boucle sur tous les pixels de la fenêtre
+    reset(N_x, N_y);
+   for (int j = - N_y; j <= N_y; j ++) {
+      for (int i = - N_x; i <= N_x; i ++) {
+         // Calcul du point de départ
+          double z_x = x_min + (x_max - x_min) * (i + N_x) / (2 * N_x), z_y = y_min + (y_max - y_min) * (j + N_y) / (2 * N_y);
+         // On s'enfonce dans le fractal jusqu'au point à tracé, défini par la sortie du disque de convergence
+          int k = 0;
+         for (k = 0; z_x * z_x + z_y * z_y < 4 && k < N_p; k ++) {
+            // Constante ajoutée à chaque pas
+             double c_x = -0.77, c_y = 0.1;
+            // Calcul du point suivant à tracer
+             double u_x = z_x * z_x - z_y * z_y + c_x, u_y = 2 * z_x * z_y + c_y;
+            z_x = u_x; z_y = u_y;
+         }
+         // On choisit les couleurs un peu au hasard pour faire joli . . 
+          int red = (15000 - 10 * k) % 255, green = (100000 - 15 * k) % 255, blue = 15 * k % 255;
+         // On trace si l'échelle n'est pas trop petite
+          if (k < N_p) setPixel(i, j, red, green, blue);
+      }
+   }
+}
+

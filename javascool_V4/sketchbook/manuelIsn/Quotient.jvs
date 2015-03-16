@@ -1,0 +1,11 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+int quotient(int dividende, int diviseur) {
+  if(dividende < diviseur) {
+    return 0;
+  } else {
+    return 1 + quotient(dividende - diviseur, diviseur);
+  }
+}
+void main() {
+  println(quotient(17, 3));
+}

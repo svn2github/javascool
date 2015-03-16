@@ -1,0 +1,67 @@
+// Un programme proposé par les élèves du Pr. Claudine Noblet du Lycée International de Valbonne
+// Marie Lim et Oksana Riou
+// qui permet de . . gagner vite quand on connait la dichotomie !!
+void main() {
+  boolean s = readBoolean("Tu veux jouer avec moi ?");
+  while(s) {
+    println("J'ai deux jeux.");
+    println("Le jeu 1 : C'est moi qui pense à un chiffre et c'est toi qui dois le trouver.");
+    println("Le jeu 2 : C'est le contraire.");
+    int choix = readInteger("Tape 1 si tu veux jouer au premier jeu et 2 si tu veux jouer à l'autre.");
+    if(choix == 1) {
+      println("Ok ! Donc j'vais penser à un nombre entre 1 et 100.");
+      int n = random(1, 100);
+      int e = readInteger("Propose un nombre");
+      if(!((0 <= e) && (e <= 100))) {
+        println("Euh : c'est un nombre entre 1 et 100 qu'il faut deviner !");
+      }
+      int compt = 1;
+      while(e != n) {
+        if(e > n) {
+          println("C'est moins.");
+        } else {
+          println("C'est plus.");
+        }
+        compt = compt + 1;
+        e = readInteger();
+      }
+      println("Oui. ... Au bout de " + compt + " fois");
+    } else if(choix == 2) {
+      println("Ok !");
+      println("Le jeu, c'est tu penses à un nombre entre 1 et 100.");
+      println("Je vais te faire des propositions,");
+      println("Et tu me répondras + si je suis trop bas,");
+      println("Et - si je suis trop haut,");
+      println("Et enfin, = si j'ai trouvé");
+
+      println("C'est bon, t'as  choisi ?");
+      boolean r = readBoolean();
+      int max = 100;
+      int min = 1;
+      int compt = 0;
+      String reponse = "";
+      while(!equal(reponse, "=")) {
+        int moy = (max + min) / 2;
+        println("Je propose " + moy);
+        reponse = readString("Est-ce plus '+', moins '-', ou exact '=' ?");
+        if(equal(reponse, "+")) {
+          min = moy;
+        } else if(equal(reponse, "-")) {
+          max = moy;
+        } else if(!equal(reponse, "=")) {
+          println("Euh : lis bien ma question ! Et réponds '+', '-' ou '=' ..");
+        }
+        if((min == max) && !equal(reponse, "=")) {
+          println("Ah ben ça alors !!! Impossible : tu as triché, donc on arrête (non mais !) ..");
+          break;
+        }
+        compt = compt + 1;
+      }
+      println("Ouais ! Et seulement au bout de " + compt + " fois !");
+    } else {
+      println("Euh : lis bien ma question ! Et réponds '1' ou '2' ..");
+    }
+    s = readBoolean("Est-ce que tu veux rejouer avec moi ?");
+    println("Ok !");
+  }
+}

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div title="Proglet txtCode">
+<p align="right">Auteur :  Christophe Béasse</p><p></p>
+
+<div title="Présentation: Manipulation de fichiers texte">
+<p> Cette proglet doit vous permettre de réaliser un certain nombre de manipulations sur des fichiers de type texte. Vous trouverez ci-dessous une liste non exhaustive de différentes activitées proposées. Elles sont indépendantes et peuvent être réalisées séparément :</p>
+<div class="ul">
+	<div><div>Conversion des minuscules en majuscules. [ <l class="newtab" link="activity1.htm" text="voir l'activité"/> ]</div>
+	</div><div><div>Comptage du nombre de caractères,
+	mots, phrases  [ <l class="newtab" link="activity2.htm" text="voir l'activité"/> ]</div>
+	</div><div><div>Cryptage par décalage  [ <l class="newtab" link="activity3.htm" text="voir l'activité"/> ]</div>	
+	</div><div><div>Cryptage à l'aide de la
+	table de Vigenère.[ <l class="newtab" link="activity4.htm" text="voir l'activité"/> ]</div>
+	</div><div><div>Cryptanalyse du fichier en vue de
+	casser le code.  [ <l class="newtab" link="activity5.htm" text="voir l'activité"/> ]</div>
+	</div><div><div>Compression du fichier.[ <l class="newtab" link="activity6.htm" text="voir l'activité"/> ]</div>	
+	</div><div><div>Affichage d'un dump du fichier.  [ <l class="newtab" link="activity7.htm" text="voir l'activité"/> ]</div>
+	</div><div><div>Transfert d'un fichier sur le réseau. [ <l class="newtab" link="activity8.htm" text="voir l'activité"/> ]</div>	
+	</div><div><div>Réalisation d'une mini application de type "chat". [ <l class="newtab" link="activity9.htm" text="voir l'activité"/> ]</div>
+</div></div>
+
+</div>
+
+<div title="Parcours des caractères du fichier">
+    <p>La pluspart des traitements que vous aurez à éffetuer nécessitent un parcours des caractères stockés dans le fichier. Vous trouverez ci-dessous un exemple de structure itérative permettant de réaliser cette énumération.</p>
+    
+<div title="Code source ">
+    <div title="Lecture des caractères du fichier">
+    <div class="code">
+      <p><r>void</r> main() {</p>
+      <p><T/>int c;</p>      
+      <p><T/>openFileReader("nomDuFichier.txt");</p>
+      <p><T/>c = readNextCode();</p>        
+      <p><T/><r>while</r> (c  != -1) {</p>      
+      <p><T/><T/>afficheCodeAuFormatCar(c);</p>          
+      <p><T/><T/>c = readNextCode();</p>        
+      <p><T/>} // End While  </p>
+      <p><T/>closeFileReader();</p>           
+      <p>}</p>
+    </div>
+    </div>
+</div>    
+    
+
+</div>
+
+<div title="Principes de fonctionnement">  
+<p>Avant toute opération sur le fichier il faut commencer par l'ouvrir en lecture (<c>openFileReader</c>) La fonction (<c>readNextCode()</c>) permet de récupérer les caratères du fichiers un par un. Elle retourne le code (type int) du caractère lu ou la valeur (-1) si la fin du fichier est atteinte. Enfin il est important de ne pas oublier de fermer le fichier (<c>closeFileReader</c>) pour libérer les ressources réservées lors de son traitement. </p>
+</div>
+
+<div title="Les fonctions de lecture de fichier">
+  <div class="code" align="left"> <p><r>openFileReader</r>(String nomFichier)</p></div> <p>  ouverture du fichier en lecture.</p>
+  <div class="code" align="left"> <p><r>readNextCode</r>()</p></div> <p>  Renvoie le code du prochain caratère lu dans le fichier et -1 si on est arrivé en fin de fichier.</p> 
+  <div class="code" align="left"> <p><r>closeFileReader</r>()</p></div> <p>  fermeture du fichier.</p>     
+</div> 
+
+<div title="Les fonctions d'écriture de fichier">
+  <div class="code" align="left"> <p><r>openFileWriter</r>(String nomFichier)</p></div> <p>  ouverture du fichier en écriture.</p>
+  <div class="code" align="left"> <p><r>writeNextCode</r>(int code)</p></div> <p>  Ecris dans le fichier le code du caractère suivant.</p> 
+  <div class="code" align="left"> <p><r>closeFileWriter</r>()</p></div> <p>  fermeture du fichier.</p>     
+</div>
+
+<div title="Fonction de dump du fichier">
+  <div class="code" align="left"> <p><r>filedump</r>(String nomFichier)</p></div> <p>  affichage d'un dump du fichier spécifié</p>    
+</div>
+
+<div title="Les fonctions d'affichage">
+
+  <div class="code" align="left"> <p><r>afficheCodeAuFormatHex</r>(int code)</p></div> <p>  Fonction permettant d'afficher le code spécifié au format hexadécimal</p> 
+  
+  <div class="code" align="left"> <p><r>afficheCodeAuFormatDec</r>(int code)</p></div> <p>  Fonction permettant d'afficher le code spécifié au format décimal.</p> 
+  
+  <div class="code" align="left"> <p><r>afficheCodeAuFormatBin</r>(int code)</p></div> <p>  Fonction permettant d'afficher le code spécifié au format binaire.</p>     
+  
+  <div class="code" align="left"> <p><r>afficheCodeAuFormatCar</r>(int code)</p></div> <p>  Fonction permettant d'afficher le caractère ASCII correspondant au code spécifié.</p> 
+  
+  <div class="code" align="left"> <p><r>affiche</r>(String str)</p></div> <p>  Fonction permettant d'afficher la chaîne spécifiée. Vous pouvez utiliser le caractère '\n' en fin de chaîne pour générer un saut de ligne.</p>
+  
+  <div class="code" align="left"> <p><r>affiche</r>(char c)</p></div> <p>  Fonction permettant d'afficher le caractère spécifié</p>  
+  
+  <div class="code" align="left"> <p><r>affiche</r>(int n)</p></div> <p>  Fonction permettant d'afficher la valeur spécifiée</p>  
+  
+  <div class="code" align="left"> <p><r>sautDeLigne</r>()</p></div> <p>  Fonction permettant de passer à la ligne suivante sur la console</p>  
+  
+  <div class="code" align="left"> <p><r>resetConsole</r>()</p></div> <p>  Fonction permettant d'effacer le contenu de la console.</p>     
+</div>
+
+</div>
+

@@ -1,0 +1,33 @@
+<div title="Communication par port série RS232">
+
+  <p>Cette proglet permettra la mise en œuvre d'une interface utilisant une <l link="http://fr.wikipedia.org/wiki/RS-232" text="liaison série de type RS232"/> dans le cadre de travaux pratiques puis de projet.</p>
+
+    <p>Voir le  <l link="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/Fiche-ressource_communicationRS232.odt" text="document pédagogique"/> (<l link="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/Fiche-ressource_communicationRS232.pdf" text="pdf"/>) pour plus son utilisation</p>
+
+   <div title="Documentation technique"><div class="ul">
+
+  <p>Toutes les instructions disponibles sont documentées <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=commSerie&amp;helpFile=api/org/javascool/proglets/commSerie/SerialInterface.html" text="ici"/></p>
+
+  <p> Les primitives utilisateurs disponibles sont documentées <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=commSerie&amp;helpFile=api/org/javascool/proglets/commSerie/Functions.html" text="ici"/></p>
+
+  <p>Une interface de contrôle est disponible <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=commSerie&amp;helpFile=api/org/javascool/proglets/commSerie/SerialInterfacePanel.html" text="ici"/></p>
+
+  <p>Un premier exemple <l class="editor" link="terminalSerie.jvs" text="programme exemple"/> propose un panneau de contrôle (choix du port COM, configuration du débit ...ouvrir /fermer le port) et un panneau de dialogue (émission et réception de chaînes de caractères avec traduction en ASCII). Ne pas oublier de fermer le port COM avant de quitter sinon cela nécessite de relancer la Proglet commSerie. Ce programme permet d'établir une communication en RS232 entre deux ordinateurs mais aussi, par exemple, de communiquer avec un GPS, un vidéoprojecteur, un lecteur de carte RFID ... autant d'idées de projets.</p>
+
+  <p>Un deuxième <l class="editor" link="Exemple.jvs" text="programme de text"/> permet de tester l'écriture sur le port série ou de simuler une lecture (à défaut de pouvoir connecter un autre terminal ...).</p>
+
+</div></div>
+
+  <div title="Installation d'une interface série RS2323C"><div class="ul">
+    <p>Sous windows : installer le fichier <l link="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/lib/rxtxSerial.dll" text="rxtxSerial.dll"/> dans le répertoire <i>Java</i> de la machine, c'est à dire, normalement <c>c:\Program Files\Java\jre6(ou équivalent)\bin</c>.</p>
+    <p>Sous LinuX 32bits : installer le fichier <l link="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/lib/librxtxSerial.so" text="librxtxSerial.so"/> 
+    dans le répertoire <i>Java</i> de la machine, c'est à dire, normalement <c>. /usr/local/java/default(ou équivalent)/lib/i386</c>.</p>
+    <p>Sous LinuX 64bits : installer le fichier <l link="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/lib/amd64/librxtxSerial.so" text="librxtxSerial.so"/> 
+    dans le répertoire <i>Java</i> de la machine, c'est à dire, normalement <c>. /usr/local/java/default(ou équivalent)/lib/amd64</c>.</p>
+    <p>Sous MacOS : installer le fichier <l link="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/lib/librxtxSerial.jnilib" text="librxtxSerial.jnilib"/> dans le répertoire <i>Java</i> de la machine, comme en LinuX.</p>
+  </div> Se faire aider du responsable informatique si besoin. L'utilisation de <l link="http://www.jcontrol.org" text="RXTX"/> neccéssite aussi une jarre Java <c>RXTXcomm.jar</c> qui est intégrée à Javasccool.</div>
+
+
+  <div title="Test d'une interface série RS2323C">Le <l link="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/terminalSerie.jar" text="programme java"/> construit à partir de cette proglet permet de tester de manière autonome l'installation précédente et l'interface.</div>
+
+</div>

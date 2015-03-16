@@ -1,0 +1,137 @@
+ <div id="toc" class="toc"><div id="toctitle"><h2>Sommaire</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Structure_d.27une_documentation_de_.C2.ABproglet.C2.BB"><span class="tocnumber">1</span> <span class="toctext">Structure d'une documentation de «proglet»</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#R.C3.A9f.C3.A9rencer_les_notes_de_bas_de_page"><span class="tocnumber">1.1</span> <span class="toctext">Référencer les notes de bas de page</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Ins.C3.A9rer_une_image"><span class="tocnumber">1.2</span> <span class="toctext">Insérer une image</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#Ins.C3.A9rer_dans_la_documentation_des_morceaux_de_codes_.C3.A0_r.C3.A9utiliser"><span class="tocnumber">2</span> <span class="toctext">Insérer dans la documentation des morceaux de codes à réutiliser</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Interagir_avec_la_plateforme_Java.27s_Cool_au_niveau_de_la_documentation"><span class="tocnumber">3</span> <span class="toctext">Interagir  avec la plateforme Java's Cool au niveau de la documentation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Ouvrir_une_2.C3.A8me_page_de_documentation"><span class="tocnumber">3.1</span> <span class="toctext">Ouvrir une 2ème page de documentation</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Ouvrir_un_fichier_source_dans_l.27.C3.A9diteur"><span class="tocnumber">3.2</span> <span class="toctext">Ouvrir un fichier source dans l'éditeur</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Ouvrir_des_liens_externes_.C3.A0_Java.27s_Cool"><span class="tocnumber">3.3</span> <span class="toctext">Ouvrir des liens externes à Java's Cool</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="label1"><b>Rédiger les documents des «proglets» en HTML minimal</b></div>
+<p>Afin que la documentation des «proglets» soit homogène, facile à maintenir et surtout que le lecteur se retrouve d'une «proglet» à une autre, les pages sont écrites en utilisant un sous ensemble minimal d'HTML le <a class="internal" href="?page=developers&action=doc-hml" title="JavaScool:DocFormatHml">format HML</a> en syntaxe XML, en clair: un document <a href="https://wiki.inria.fr/sciencinfolycee/JavaScool:DocFormatHml#Structurer_le_texte_en_divisions." title="JavaScool:DocFormatHml">structuré en division</a>, le texte étant <a href="https://wiki.inria.fr/sciencinfolycee/JavaScool:DocFormatHml#Enrichir_le_texte_en_modifiant_son_aspect." title="JavaScool:DocFormatHml"> enrichi pour qualifier son contenu</a>, tout en <a href="https://wiki.inria.fr/sciencinfolycee/JavaScool:DocFormatHml#Cr.C3.A9er_de_l.27.C2.ABhyper-texte.C2.BB_en_ajoutant_des_objets_et_des_liens." title="JavaScool:DocFormatHml">intégrant des liens hyper-texte</a>.
+</p><p>Il est donc <b>recommandé d'écrire ces documentations en XML en code source</b> en utilisant les <a class="internal" href="?page=developers&action=doc-hml" title="JavaScool:DocFormatHml">format HML</a> détaillé ici. Ce sont des fichiers sources d'extension <b>.xml</b> qui sont traduits automatiquement en HTML dans des fichiers d'extension <b>.htm</b>.
+</p>
+<h2><span class="mw-headline" id="Structure_d.27une_documentation_de_.C2.ABproglet.C2.BB">Structure d'une documentation de «proglet»</span></h2>
+<p>Typiquement une documentation précise les <i>objectifs</i> de l'activité, donne des éléments <i>introductifs</i> pour faire connaître le contexte, rappeler les prérequis, puis propose un <i>travail</i> de programmation qui va permettre de vérifier que les concepts sont compris, les éléments complémentaires étant données en <i>note</i> à la fin du document.
+</p><p>Celà s'implémente à travers le squelette suivant:
+</p>
+<pre>
+&lt;div title=&quot;La «proglet» @name&quot;&gt;
+  &lt;div class=&quot;objectif&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;intros&quot;&gt;
+    &lt;div title=&quot;item 1&quot;&gt;
+    &lt;/div&gt;
+  etc..
+  &lt;/div&gt;
+  &lt;div class=&quot;works&quot;&gt;
+    &lt;div title=&quot;item 1&quot;&gt;
+    &lt;/div&gt;
+  etc..
+  &lt;/div&gt;
+  &lt;div class=&quot;notes&quot;&gt;
+    &lt;div title=&quot;item 1&quot;&gt;
+    &lt;/div&gt;
+  etc..
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<h3><span class="mw-headline" id="R.C3.A9f.C3.A9rencer_les_notes_de_bas_de_page">Référencer les notes de bas de page</span></h3>
+<p>La section des notes, en fin de document numérote les notes de <tt>1, 2, ...</tt> et il est possible de les référencer dans le texte avec une construction de la forme:
+</p>
+<div>
+<p><font color="#990000"><b>&lt;l</b></font>
+<font color="#505000">class</font><font color="#990000"><b>=</b></font><font color="#008000">"note"</font>
+<font color="#505000">link</font><font color="#990000"><b>=</b></font><font color="#008000">"1, 2, .."</font>
+<font color="#990000"><b>&lt;/&gt;</b></font>
+</p>
+</div>
+<h3><span class="mw-headline" id="Ins.C3.A9rer_une_image">Insérer une image</span></h3>
+<p>Une construction de la forme:
+</p>
+<div>
+<p><font color="#990000"><b>&lt;div</b></font>
+<font color="#505000">class</font><font color="#990000"><b>=</b></font><font color="#008000">"center"</font>
+<font color="#990000"><b>&gt;</b></font>
+<font color="#990000"><b>&lt;l</b></font>
+<font color="#505000">icon</font><font color="#990000"><b>=</b></font><font color="#008000">"nom-du-fichier-image"</font>
+<font color="#990000"><b>/&gt;</b></font>
+<font color="#990000"><b>&lt;/div</b></font>
+</p>
+</div>
+<p>permet d'insérer une image dans le texte, en la centrant dans la page. Tous ces fichiers doivent être dans le répertoire de la proglet. On peut ajouter un lien avec l'attribut <font color="#505000">link</font>, un titre à l'image avec l'attribut <font color="#505000">text</font>, comme le permet le  <a href="https://wiki.inria.fr/sciencinfolycee/JavaScool:DocFormatHml#Cr.C3.A9er_de_l.27.C2.ABhyper-texte.C2.BB_en_ajoutant_des_objets_et_des_liens." title="JavaScool:DocFormatHml">format HML</a>.
+</p>
+<h2><span class="mw-headline" id="Ins.C3.A9rer_dans_la_documentation_des_morceaux_de_codes_.C3.A0_r.C3.A9utiliser">Insérer dans la documentation des morceaux de codes à réutiliser</span></h2>
+<p>Pour permettre à l'apprenant d'apprendre par l'exemple et d'obtenir rapidement un premier résultat à partir duquel il va réfléchir et aller plus loin, il est conseiller de proposer des bouts de codes exemples qui seront naturellement copiés/collés pour initier le travail.
+</p><p>La balise <tt>&lt;code&gt;</tt>permet de spécifier ces exemples qui seront présentés en couleur à l'utilisateur:
+<br />&lt;code&gt;
+<br />&#160;&#160;&#160;&#160;<b><font color="#000099">void</font></b> <b>main()</b> <b><font color="#990000">{</font></b>
+<br />&#160;&#160;&#160;&#160;<b><font color="#990000">}</font></b>
+<br />&lt;/code&gt;
+</p>
+<h2><span class="mw-headline" id="Interagir_avec_la_plateforme_Java.27s_Cool_au_niveau_de_la_documentation">Interagir  avec la plateforme Java's Cool au niveau de la documentation</span></h2>
+<h3><span class="mw-headline" id="Ouvrir_une_2.C3.A8me_page_de_documentation">Ouvrir une 2ème page de documentation</span></h3>
+<p>Il est évidemment préférable de scinder un grand document en plusieurs pages: afficher l'énoncé de l'exercice dans une page, la documentation de l'exemple dans une autre, un texte complémentaire dans un 3ème etc..
+</p><p>Dans ce cas on rédige plusieurs pages HML et on peut les lier par un lien de la forme:
+</p>
+<div class="code">
+<p><font color="#990000"><b>&lt;l</b></font>
+<font color="#505000">class</font><font color="#990000"><b>=</b></font><font color="#008000">"newtab"</font>
+<font color="#505000">link</font><font color="#990000"><b>=</b></font><font color="#008000">"nom-du-2eme-document.<b>htm</b>"</font>
+<font color="#505000">text</font><font color="#990000"><b>=</b></font><font color="#008000">"description-du-lien"</font>
+<font color="#990000"><b>&lt;/&gt;</b></font>
+</p>
+</div>
+<p>Bien noter que si le document initial est d'extension <b>.xml</b> c'est bien le document traduit en HTML d'extension <b>.html</b> qu'il faut lier. Tous ces fichiers doivent être dans le répertoire de la proglet.
+</p><p>Attention: le nom du fichier (tutoriel.xml, exercice.xml, en_savoir_plus.xml, etc..) sera utilisé comme titre mais il ne <i>doit pas</i> contenir d'accents.
+</p><p>Sans le paramètre <tt>class="newtab"</tt> le 2eme document remplace le 1er.
+</p>
+<h3><span class="mw-headline" id="Ouvrir_un_fichier_source_dans_l.27.C3.A9diteur">Ouvrir un fichier source dans l'éditeur</span></h3>
+<p>Il est possible d'ouvrir un fichier dans l'éditeur pour permettre à l'éleve de travailler dessus en utilisant un lien de la forme: 
+</p>
+<div>
+<p><font color="#990000"><b>&lt;l</b></font>
+<font color="#505000">class</font><font color="#990000"><b>=</b></font><font color="#008000">"editor"</font>
+<font color="#505000">link</font><font color="#990000"><b>=</b></font><font color="#008000">"nom-du-2eme-document.<b>jvs</b>"</font>
+<font color="#505000">text</font><font color="#990000"><b>=</b></font><font color="#008000">"description-du-lien"</font>
+<font color="#990000"><b>&lt;/&gt;</b></font>
+</p>
+</div>
+<p>Bien noter que si le document est d'extension <b>.jvs</b> puisque c'est un document en Java simplifier comme utilisé sur la plateforme Java's Cool. Tous ces fichiers doivent être dans le répertoire de la proglet.
+</p>
+<h3><span class="mw-headline" id="Ouvrir_des_liens_externes_.C3.A0_Java.27s_Cool">Ouvrir des liens externes à Java's Cool</span></h3>
+<p>Bien entendu il est possibles d'ouvrir tous les liens du Web avec une construction de la forme: 
+</p>
+<div>
+<p><font color="#990000"><b>&lt;l</b></font>
+<font color="#505000">link</font><font color="#990000"><b>=</b></font><font color="#008000">"nom-du-2eme-document.<b>jvs</b>"</font>
+<font color="#505000">text</font><font color="#990000"><b>=</b></font><font color="#008000">"description-du-lien"</font>
+<font color="#990000"><b>&lt;/&gt;</b></font>
+</p>
+</div>
+<p>dans c'est le navigateur du système de l'utilisateur qui sera sollicité.
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.036 seconds
+Real time usage: 0.032 seconds
+Preprocessor visited node count: 192/1000000
+Preprocessor generated node count: 408/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:868-1!*!0!!fr!*!* and timestamp 20150313130630 and revision id 5698
+ -->

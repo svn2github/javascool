@@ -1,0 +1,372 @@
+body
+{
+	background-color: #ffffff;
+	margin-left: 0pt;
+	margin-top: 0pt;
+	margin-right: 0pt;
+	font-size: small;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #333;
+}
+
+h1
+{
+	font-size: large; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+	color: #333333; 
+	font-weight: bold;
+}
+
+h2
+{
+	font-size: large;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #666666;
+}
+
+h3
+{
+	font-size: large; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+	color: #993333; 
+	font-weight: normal;
+}
+
+a.toc-chapter
+{	
+	text-decoration: none; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: x-small; 
+	font-weight: bold; 
+	color: #000000;
+	vertical-align: middle;
+}
+
+a.toc-chapter:hover
+{	
+	text-decoration: none; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: x-small; 
+	font-weight: bold; 
+	color: #1a2cb5; 
+	vertical-align: middle;
+}
+
+a.toc-chapter-selected
+{
+	text-decoration: none; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: x-small; 
+	font-weight: normal;  
+	color: #333333;
+	vertical-align: middle;
+}
+
+a.minitoc-chapter
+{
+	text-decoration: none; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: x-small; 
+	font-weight: bold;  
+	color: #333333;
+}
+
+a.toc-section
+{	
+	text-decoration: none; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;  
+	font-size: xx-small; 
+	color: #000000;
+	vertical-align: middle;
+}
+a.toc-section:hover
+{
+	text-decoration: none; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: xx-small; 
+	font-weight: bold; 
+	color: #1a2cb5;
+	vertical-align: middle;
+}
+a.toc-section-selected
+{
+	text-decoration: none; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: xx-small; 
+	font-weight: bold; 
+	color: #333333;
+	vertical-align: middle;
+}
+
+a.minitoc-section
+{
+	text-decoration: none; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: xx-small; 
+	font-weight: bold; 
+	color: #000000;
+}
+
+a.toc-subsection
+{	
+	text-decoration: none; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: xx-small; 
+	color: #666666; 
+	vertical-align: middle;
+}
+a.toc-subsection:hover
+{	
+	text-decoration: none; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: xx-small; 
+	color: #1a2cb5; 
+	vertical-align: middle;
+}
+a.toc-subsection-selected
+{
+	text-decoration: none; 
+	font-size: xx-small; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	color: #333333;
+	vertical-align: middle;
+}
+
+a.minitoc-subsection
+{	
+	text-decoration: none; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: xx-small; 
+	color: #666666; 
+}
+
+h4
+{
+	font-size: large; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+	color: #993333; 
+	font-weight: normal;
+}
+h5
+{
+	font-size: medium; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+	color: #666666; 
+	font-weight: normal;
+}
+h6
+{
+	font-size: small; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+	color: #993333;  
+	font-weight:normal;
+}
+
+a.interne:hover
+{  
+	font-size: medium; 
+	color: #333333; 
+	text-decoration: underline;
+}
+a.interne
+{  
+	font-size: medium; 
+	color: #862631; 
+	text-decoration: underline;
+}
+a.interne:visited
+{  
+	font-size: medium; 
+	color: #666666; 
+	text-decoration: underline;
+}
+
+a.externe:hover
+{  
+	font-size: medium; 
+	color: #333333; 
+	text-decoration: underline;
+}
+a.externe
+{  
+	font-size: medium; 
+	color: #862631;
+	text-decoration: underline;
+}
+a.externe:visited
+{ 
+	font-size: medium; 
+	color: #666666; 
+	text-decoration: underline;
+}
+
+/* couleurs */
+
+.BGcouleurA { background-color: #FFE7B3;}
+.BGcouleurD { background-color: #FFCC00;}
+.BGcouleurB { background-color: #FFC244;}
+.BGcouleurF { background-color: #666666;}
+.BGcouleurG { background-color: #CCCCCC;}
+.BGcouleurE {
+	background-color: #862631;
+	color: #CCC;
+} /* bordeau */
+.BGcouleurC { background-color: #ff8c00;}
+.BGcouleurG { background-color: silver;}
+
+.couleurB { color: #FFCC00;} /* jaunes tres fonce */
+.couleurE { color: #333333;} /* gris */
+.couleurF { color: #666666;}
+.couleurH { color: #862631;} /* bordeau */
+.couleurI { color: #ff8c00;}
+.couleurJ {color: #F00;} /* rouge */
+.couleurJGRAS {color: #F00;	font-weight: bold;} /* rouge */
+
+.texte
+{
+	font-size: small;
+	font-family: Verdana, Geneva, sans-serif;
+	text-align: justify;
+	color: #333;
+}
+
+.legende
+{
+	font-style: italic;
+	font-size: small;
+	text-align: center;
+}
+
+
+.important
+{
+	font-size: larger;
+	font-weight: bolder;
+	color: #000;
+}
+
+.remarque
+{
+	font-size: small;
+	padding: 5px;
+	border: 1px solid #800000;
+	margin-left: 50px;
+	margin-right: 50px;
+	color: 800000;
+}
+
+.citation
+{
+	font-size: small;
+	font-style: italic;
+	padding: 5px;
+	border: 1px solid #FFC244;
+	margin-left: 50px;
+	margin-right: 50px;
+	color: #800000;
+}
+
+.titrecitation
+{
+	font-size: small;
+	background-color: #FFE7B3;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding: 2px;
+	color: #800000;
+}
+
+.exemple
+{
+	font-size: small;
+	color: #000000;
+	font-style: italic;
+	font-family: Courier New;
+}
+
+.exemplefondgris
+{
+	font-size: medium;
+	padding: 5px;
+	margin-left: 30px;
+	margin-right: 30px;
+	color: #000;
+	background-color: #eeeeee;
+	font-family: "Courier New", Courier, monospace;
+	font-style: italic;
+
+}
+
+
+.exercice
+{
+	font-size: small;
+	background-color: #FFE7B3;
+	padding: 5px;
+	border: 1px solid #800000; 
+	margin-left: 50px;
+	margin-right: 50px;
+	color: #800000;
+}
+
+.definition
+{
+	font-size: small;
+	background-color: #FFCC00;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding: 2px;
+	color: #800000;
+}
+
+.listing
+{
+	font-size: medium;
+	padding: 5px;
+	border: 1px #000000 solid;
+	background-color: #eeeeee;
+	margin-left: 50px; 
+	margin-right: 50px;
+}
+
+.listingnoir
+{
+	font-size: medium;
+	padding: 5px;
+	border: 1px #000000 solid;
+	background-color: #eeeeee;
+	margin-left: 50px; 
+	margin-right: 50px;
+	color:#000;
+	font-weight:bold
+}
+
+
+
+tt {font-size: 120%;}
+code {font-size: 120%;}
+
+acronym
+{
+	cursor: help;
+	border-bottom: 1px dotted #862631;
+}
+
+span.citation
+{
+	font-style: italic;
+    font-size: none;
+    padding: none;
+    border: none;
+    margin-left: 0px;
+
+    margin-right: 0px;
+	color: #800000;
+}

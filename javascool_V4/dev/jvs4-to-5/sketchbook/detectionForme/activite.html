@@ -1,0 +1,514 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="class" content="sujet">
+      <title>D&eacute;tection de formes simples dans une image</title>
+   </head>
+   <body>
+      <h1>D&eacute;tection de formes simples dans une image.</h1>
+      
+      
+      <div>
+         <h2>Objectifs.</h2>
+         Votre mission si vous l'acceptez consiste &agrave; &eacute;crire un programme permettant de d&eacute;tecter la position et la taille d'une forme
+         simple (rectangle ou rond) dans une image. Les formes sont pleines comme dans l'exemple ci-dessous.(Cf Demo)
+         <div></div>
+         
+              
+         <div align="center" class="center"><img src="detect1.png" alt="" class="icon"></div>
+         <div></div>
+              
+         
+      </div>
+      
+      
+      <div>
+         <h2>Premi&egrave;re mission.</h2>     
+         
+         <div>Le proglet detectionForme vous propose une fonction <b>createRandomShapeImage(s)</b> permettant de g&eacute;n&eacute;rer automatiquement la forme &agrave; d&eacute;tecter dans une image de taille 400x400.
+         </div>
+         
+         <div> Votre premi&egrave;re mission consiste &agrave; &ecirc;tre capable de d&eacute;tecter un simple carr&eacute; plein dans l'image. Il est important de noter
+            que le fond de l'image ne comporte aucun bruit parasites ou autres formes g&eacute;om&eacute;triques. Seulement et uniquement un carr&eacute;.
+         </div>   
+         
+         <div> Voici la structure que doit avoir votre programme :</div>
+              
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                                
+                        <div><font color="#990000"><b>void</b></font> main(){
+                        </div>
+                                
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Creation de l'image de travail n&deg;1 avec la forme a detecter</font></tt></p>        
+                                
+                        <div>createRandomShapeImage(2);</div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           	showImage(1); 
+                        </div>
+                                
+                        <div></div>        
+                                
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;ICI l'appel &agrave; vos fonctions de detection</font></tt></p> 
+                                
+                        <div></div>        
+                                
+                        <div>checkRandomShape(typeShape,posxShape,posyShape,taille,angle);</div>              
+                                
+                        <div>}</div>                
+                                
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+         <div></div>
+          
+         
+         <div>Une fois votre fonction de d&eacute;tection termin&eacute;e vous pouvez faire appel &agrave; la fonction <b>checkRandomShape</b> pour tester vos r&eacute;sultats de d&eacute;tection
+         </div>   
+         
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>checkRandomShape</b></font>(typeShape,posxShape,posyShape,taille,angle);
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+         <div></div>
+         
+         <div><b>typeShape</b> type de forme d&eacute;tect&eacute;e <b>String</b> ("point" ou "square" ou "circle")
+         </div> 
+         
+         <div><b>posxShape</b> abscisse du coin haut gauche du carr&eacute; englobant de la forme
+         </div> 
+         
+         <div><b>posyShape</b> ordonn&eacute;e du coin haut gauche du carr&eacute; englobant de la forme
+         </div> 
+         
+         <div><b>taillelargeur</b> du carr&eacute; englobant (Valeur de 1 attendue pour la d&eacute;tection du point)
+         </div>
+         
+         <div><b>angle</b>  angle de la rotation subit par la forme (Valeur de 0 attendue pour la d&eacute;tection du point)
+         </div>
+         <div></div>
+         
+         
+         <div>
+            <u>Remarque :</u></div>  
+         
+         <div>L'appel &agrave; createRandomShapeImage(2) avec la valeur 2 en param&egrave;tre permet de g&eacute;n&eacute;rer une forme carr&eacute; pleine dans l'image.</div> 
+         
+      </div>
+      
+        
+      <div>
+         <h2>Missions suivantes.</h2>
+         
+         <div>Une fois que vous aurez d&eacute;velopp&eacute; la fonction permettant de d&eacute;tecter le carr&eacute; dans l'image, vous pourrez vous pencher sur
+            les autres cas, g&eacute;n&eacute;r&eacute;s l&agrave; encore &agrave; l'aide de la fonction createRandomShape(s), o&ugrave; <b>s</b> de type <font color="#990000"><b>int</b></font> permet de s&eacute;lectionner le sc&eacute;nario voulu suivant les valeurs : "
+         </div>
+         <div></div>   
+         
+         
+         <div>- <b>(1)</b> : d&eacute;tection d'un pixel.
+         </div>
+         
+         <div>- <b>(2)</b> : d&eacute;tection d'un carr&eacute;.
+         </div>
+         
+         <div>- <b>(3)</b> : d&eacute;tection d'un cercle.
+         </div>
+         
+         <div>- <b>(4)</b> : d&eacute;tection cercle ou carr&eacute;.
+         </div>
+         
+         <div>- <b>(5)</b> : d&eacute;tection d'un carr&eacute; + rotation.
+         </div>
+         
+         <div>- <b>(6)</b> : d&eacute;tection d'un carr&eacute; + rotation + bruit l&eacute;ger.
+         </div>
+         
+         <div>- <b>(7)</b> : d&eacute;tection d'un cercle + bruit l&eacute;ger.
+         </div>                            
+         
+         <div>- <b>(8)</b> : d&eacute;tection carr&eacute; ou cercle + rotation.
+         </div>
+         
+         <div>- <b>(9)</b> : d&eacute;tection carr&eacute; ou cercle + rotation + bruit.
+         </div> 
+         
+         <div>- <b>(10)</b> : d&eacute;tection d'un carr&eacute; + rotation + bruit fort.
+         </div>
+         
+         <div>- <b>(11)</b> : d&eacute;tection d'un cercle + bruit fort.
+         </div>                            
+         
+         <div>- <b>(12)</b> : d&eacute;tection carr&eacute; ou cercle + rotation + bruit fort.
+         </div>   
+         
+      </div>
+      
+      
+      
+      
+      <div>
+         <h2>Un exemple de d&eacute;tection.</h2>     
+         
+         <div>Le programme ci-dessous fait appel &agrave; la fonction createRandomShapeImage(1); qui cr&eacute;&eacute; une image blanche de 400x400 avec un
+            unique pixel noir. Le but est de d&eacute;tecter la position de ce pixel et de l'entourer avec un cercle vert.
+         </div>   
+         
+         
+         <div> Voici une premi&egrave;re solution possible :</div>
+         <div></div>
+              
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                                
+                        <div>import java.awt.Color;</div>     
+                                
+                        <div><font color="#990000"><b>void</b></font> main(){
+                        </div>
+                                
+                        <div></div>
+                                
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;attention l'image fait 400x400</font></tt></p> 
+                                
+                        <div><font color="#990000"><b>int</b></font>  posx = 0;
+                        </div>
+                                
+                        <div><font color="#990000"><b>int</b></font>  posy = 0;
+                        </div>
+                                
+                        <div><font color="#990000"><b>boolean</b></font> find = false;
+                        </div>                                       
+                                
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Creation de l'image de travail n&deg;1 avec le point a detecter</font></tt></p>        
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           createRandomShapeImage(1);
+                        </div>
+                        
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           showImage(1); 
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           sleep(800); 
+                        </div>               
+                        
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           for (int x=0; ((x &lt; 400) &amp;&amp; (!find)); x++)
+                        </div>  
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           for (int y=0; ((y &lt; 400) &amp;&amp; (!find)); y++)
+                        </div>                
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           if (isPixelColor(1,x,y,Color.black)) {
+                        </div>    
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           posx = x;
+                        </div> 
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           posy = y;
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           find = true;
+                        </div>  
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           }
+                        </div> 
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           System.out.println("posx : "+posx);
+                        </div>    
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           System.out.println("posy : "+posy);
+                        </div>    
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           drawRect(1,posx-3,posy-3,6,6,Color.green);
+                        </div>                                          
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           	showImage(1); 
+                        </div>
+                                checkRandomShape("point",posx,posy,1,0);
+                                
+                        <div></div> 
+                                
+                        <div>}</div>                
+                                
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           
+         <div>Cliquez ici pour tester ce programme <a href="http://editor?detect2.jvs">exemple</a></div>  
+         
+         <div></div>    
+         
+         
+         <div> Voici une autre solution possible utilisant les fonctions pixMap </div>
+         
+         <div> et utilisant une image de travail n&deg;2 et la fonction showPipImage().</div>
+         <div></div>
+              
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code">
+                                
+                        <div>import java.awt.Color;</div>     
+                                
+                        <div><font color="#990000"><b>void</b></font> main(){
+                        </div>
+                                
+                        <div></div>
+                                
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;attention l'image fait 400x400</font></tt></p> 
+                                
+                        <div><font color="#990000"><b>int</b></font> [][] pixMap= new int[400][400];
+                        </div>
+                                
+                        <div><font color="#990000"><b>int</b></font> CodeBlack = codeCouleur(Color.black);
+                        </div> 
+                                
+                        <div><font color="#990000"><b>int</b></font>  posx = 0;
+                        </div>
+                                
+                        <div><font color="#990000"><b>int</b></font>  posy = 0;
+                        </div>
+                                
+                        <div><font color="#990000"><b>boolean</b></font> find = false;
+                        </div>                                       
+                                
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;Creation de l'image de travail n&deg;1 avec le point a detecter</font></tt></p>        
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           createRandomShapeImage(1);
+                        </div>
+                        
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           showImage(1); 
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           sleep(800); 
+                        </div>    
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           loadImageToPixMap(1,pixMap);
+                        </div>            
+                        
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           for (int x=0; ((x &lt; 400) &amp;&amp; (!find)); x++)
+                        </div>  
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           for (int y=0; ((y &lt; 400) &amp;&amp; (!find)); y++)
+                        </div>    
+                                            
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           if (pixMap[x][y]==CodeBlack) {
+                        </div>    
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           posx = x;
+                        </div> 
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           posy = y;
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           find = true;
+                        </div>  
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           
+                           &nbsp;&nbsp;&nbsp;
+                           }
+                        </div> 
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           System.out.println("posx : "+posx);
+                        </div>    
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           System.out.println("posy : "+posy);
+                        </div>    
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           drawRect(1,posx-3,posy-3,6,6,Color.green);
+                        </div>                                          
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           showImage(1); 
+                        </div>        
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           checkRandomShape("point",posx,posy,1,0);
+                        </div>        
+                                
+                        <p><tt><font color="#202080"><big>//</big>&nbsp;On fait une copie de travail</font></tt></p>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           copyImage(1,2); 
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           drawRect(2,posx-3,posy-3,6,6,Color.green); 
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           showImage(2);
+                        </div>
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           sleep(800); 
+                        </div> 
+                                
+                        <div>
+                           &nbsp;&nbsp;&nbsp;
+                           showPipImage(); 
+                        </div>                        
+                                
+                        <div></div> 
+                                
+                        <div>}</div>                
+                                
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+           
+         <div>Cliquez ici pour tester ce programme <a href="http://editor?detect.jvs">exemple</a></div>        
+         
+      </div>        
+      
+   </body>
+</html>

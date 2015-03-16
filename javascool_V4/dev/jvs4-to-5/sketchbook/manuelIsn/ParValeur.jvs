@@ -1,0 +1,22 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+int i;
+
+int h(int j) {
+  int k;
+  j = j + 1;
+  println(i);
+  println(j);
+  k = j + i;
+  i = 5;
+  return k;
+}
+void main() {
+  int m, n;
+  m = 1;
+  i = 10;
+  println(m);
+  n = h(m);
+  println(m);
+  println(n);
+  println(i);
+}

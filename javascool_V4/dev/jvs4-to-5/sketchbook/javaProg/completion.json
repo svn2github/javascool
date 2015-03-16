@@ -1,0 +1,18 @@
+[
+{
+ "tag" : "keyword"
+, "title" : "Renvoie le panneau d'affichage de la proglet."
+, "name" : "getPane"
+, "code" : "JLayeredPane pane = getPane();"
+, "doc" : "Renvoie le panneau d'affichage de la proglet pour y dessiner et manipuler des objets 2D."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "showIcon"
+, "name" : "Crée et montre une icône sur le display"
+, "offset" : "23"
+, "code" : "JLabel icon = showIcon(\\\"fichierdelimage\\\", x, y, p);"
+, "doc" : "Crée une icône à partir de l'image stockée dans le fichier précisé, pour la positionner en (x,y) et à la profondeur p."
+}
+]
+

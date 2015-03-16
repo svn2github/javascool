@@ -1,0 +1,436 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Proglet txtCode</title>
+   </head>
+   <body>
+      <h1>Proglet txtCode.</h1>
+      
+      <div>Auteur :  Christophe B&eacute;asse</div>
+      <div></div>
+      
+      
+      <div>
+         <h2>Pr&eacute;sentation: Manipulation de fichiers texte.</h2>
+         
+         <div> Cette proglet doit vous permettre de r&eacute;aliser un certain nombre de manipulations sur des fichiers de type texte. Vous trouverez
+            ci-dessous une liste non exhaustive de diff&eacute;rentes activit&eacute;es propos&eacute;es. Elles sont ind&eacute;pendantes et peuvent &ecirc;tre r&eacute;alis&eacute;es
+            s&eacute;par&eacute;ment :
+         </div>
+         
+         <ul class="ul">
+            	
+            <li>
+               <div>Conversion des minuscules en majuscules. [ <a href="http://newtab?activity1.html">voir l'activit&eacute;</a> ]
+               </div>
+               	
+            </li>
+            <li>
+               <div>Comptage du nombre de caract&egrave;res,
+                  	mots, phrases  [ <a href="http://newtab?activity2.html">voir l'activit&eacute;</a> ]
+               </div>
+               	
+            </li>
+            <li>
+               <div>Cryptage par d&eacute;calage  [ <a href="http://newtab?activity3.html">voir l'activit&eacute;</a> ]
+               </div>	
+               	
+            </li>
+            <li>
+               <div>Cryptage &agrave; l'aide de la
+                  	table de Vigen&egrave;re.[ <a href="http://newtab?activity4.html">voir l'activit&eacute;</a> ]
+               </div>
+               	
+            </li>
+            <li>
+               <div>Cryptanalyse du fichier en vue de
+                  	casser le code.  [ <a href="http://newtab?activity5.html">voir l'activit&eacute;</a> ]
+               </div>
+               	
+            </li>
+            <li>
+               <div>Compression du fichier.[ <a href="http://newtab?activity6.html">voir l'activit&eacute;</a> ]
+               </div>	
+               	
+            </li>
+            <li>
+               <div>Affichage d'un dump du fichier.  [ <a href="http://newtab?activity7.html">voir l'activit&eacute;</a> ]
+               </div>
+               	
+            </li>
+            <li>
+               <div>Transfert d'un fichier sur le r&eacute;seau. [ <a href="http://newtab?activity8.html">voir l'activit&eacute;</a> ]
+               </div>	
+               	
+            </li>
+            <li>
+               <div>R&eacute;alisation d'une mini application de type "chat". [ <a href="http://newtab?activity9.html">voir l'activit&eacute;</a> ]
+               </div>
+               
+            </li>
+         </ul>
+         
+         
+      </div>
+      
+      
+      <div>
+         <h2>Parcours des caract&egrave;res du fichier.</h2>
+             
+         <div>La pluspart des traitements que vous aurez &agrave; &eacute;ffetuer n&eacute;cessitent un parcours des caract&egrave;res stock&eacute;s dans le fichier. Vous
+            trouverez ci-dessous un exemple de structure it&eacute;rative permettant de r&eacute;aliser cette &eacute;num&eacute;ration.
+         </div>
+             
+         
+         <div>
+            <h3>Code source .</h3>
+                
+            <div>
+               <h4>Lecture des caract&egrave;res du fichier.</h4>
+                   
+               <div class="code">
+                  <table witdh="90%" border="1" align="center">
+                     <tr>
+                        <td>
+                           <div class="code">
+                                    
+                              <div><font color="#990000"><b>void</b></font> main() {
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 int c;
+                              </div>      
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 openFileReader("nomDuFichier.txt");
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 c = readNextCode();
+                              </div>        
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 <font color="#990000"><b>while</b></font> (c  != -1) {
+                              </div>      
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 afficheCodeAuFormatCar(c);
+                              </div>          
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 &nbsp;&nbsp;&nbsp;
+                                 c = readNextCode();
+                              </div>        
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 } // End While  
+                              </div>
+                                    
+                              <div>
+                                 &nbsp;&nbsp;&nbsp;
+                                 closeFileReader();
+                              </div>           
+                                    
+                              <div>}</div>
+                                  
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+                   
+            </div>
+            
+         </div>    
+             
+         
+         
+      </div>
+      
+      
+      <div>
+         <h2>Principes de fonctionnement.</h2>  
+         
+         <div>Avant toute op&eacute;ration sur le fichier il faut commencer par l'ouvrir en lecture (<tt>openFileReader</tt>) La fonction (<tt>readNextCode()</tt>) permet de r&eacute;cup&eacute;rer les carat&egrave;res du fichiers un par un. Elle retourne le code (type int) du caract&egrave;re lu ou la valeur (-1)
+            si la fin du fichier est atteinte. Enfin il est important de ne pas oublier de fermer le fichier (<tt>closeFileReader</tt>) pour lib&eacute;rer les ressources r&eacute;serv&eacute;es lors de son traitement. 
+         </div>
+         
+      </div>
+      
+      
+      <div>
+         <h2>Les fonctions de lecture de fichier.</h2>
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>openFileReader</b></font>(String nomFichier)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  ouverture du fichier en lecture.</div>
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>readNextCode</b></font>()
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Renvoie le code du prochain carat&egrave;re lu dans le fichier et -1 si on est arriv&eacute; en fin de fichier.</div> 
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>closeFileReader</b></font>()
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  fermeture du fichier.</div>     
+         
+      </div> 
+      
+      
+      <div>
+         <h2>Les fonctions d'&eacute;criture de fichier.</h2>
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>openFileWriter</b></font>(String nomFichier)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  ouverture du fichier en &eacute;criture.</div>
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>writeNextCode</b></font>(int code)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Ecris dans le fichier le code du caract&egrave;re suivant.</div> 
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>closeFileWriter</b></font>()
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  fermeture du fichier.</div>     
+         
+      </div>
+      
+      
+      <div>
+         <h2>Fonction de dump du fichier.</h2>
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>filedump</b></font>(String nomFichier)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  affichage d'un dump du fichier sp&eacute;cifi&eacute;</div>    
+         
+      </div>
+      
+      
+      <div>
+         <h2>Les fonctions d'affichage.</h2>
+         
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>afficheCodeAuFormatHex</b></font>(int code)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Fonction permettant d'afficher le code sp&eacute;cifi&eacute; au format hexad&eacute;cimal</div> 
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>afficheCodeAuFormatDec</b></font>(int code)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Fonction permettant d'afficher le code sp&eacute;cifi&eacute; au format d&eacute;cimal.</div> 
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>afficheCodeAuFormatBin</b></font>(int code)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Fonction permettant d'afficher le code sp&eacute;cifi&eacute; au format binaire.</div>     
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>afficheCodeAuFormatCar</b></font>(int code)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Fonction permettant d'afficher le caract&egrave;re ASCII correspondant au code sp&eacute;cifi&eacute;.</div> 
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>affiche</b></font>(String str)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Fonction permettant d'afficher la cha&icirc;ne sp&eacute;cifi&eacute;e. Vous pouvez utiliser le caract&egrave;re '\n' en fin de cha&icirc;ne pour g&eacute;n&eacute;rer
+            un saut de ligne.
+         </div>
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>affiche</b></font>(char c)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Fonction permettant d'afficher le caract&egrave;re sp&eacute;cifi&eacute;</div>  
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>affiche</b></font>(int n)
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Fonction permettant d'afficher la valeur sp&eacute;cifi&eacute;e</div>  
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>sautDeLigne</b></font>()
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Fonction permettant de passer &agrave; la ligne suivante sur la console</div>  
+           
+           
+         <div class="code">
+            <table witdh="90%" border="1" align="center">
+               <tr>
+                  <td>
+                     <div class="code"> 
+                        <div><font color="#990000"><b>resetConsole</b></font>()
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div> 
+         <div>  Fonction permettant d'effacer le contenu de la console.</div>     
+         
+      </div>
+      
+      
+   </body>
+</html>

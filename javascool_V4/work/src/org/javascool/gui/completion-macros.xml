@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<keywords>
+    <!-- 
+#####################
+    Stdin 
+#####################
+    -->
+    <!-- ReadString -->
+    <keyword name="readString" title="Stocke une chaîne de caractères dans une variable">
+        <doc>Crée une variable s qui va contenir une chaîne de caractères demandé à l'utilisateur.
+Il peut prendre un paramètre "question" de type String qui décrit la valeur à entrer (optionel).</doc>
+        <code>String s = readString("question");</code>
+    </keyword>
+    <keyword name="readString" title="Demande à l'utilisateur une chaîne de caractères">
+        <doc>Lit une chaîne de caractère dans une fenêtre présentée à l'utilisateur.
+        </doc>
+        <code>readString()</code>
+    </keyword>
+    <!-- ReadInteger -->
+    <keyword name="readInteger" title="Stocke un entier dans une variable">
+        <doc>Crée une variable n qui va contenir un int demandé à l'utilisateur.
+Il peut prendre un paramètre "question" de type String qui décrit la valeur à entrer (optionel).</doc>
+        <code>int n = readInteger("question");</code>
+    </keyword>
+    <keyword name="readInteger" title="Demande un nombre entier à l'utilisateur">
+        <doc>Lit un nombre entier dans une fenêtre présentée à l'utilisateur.</doc>
+        <code>readInteger()</code>
+    </keyword>
+    <!-- ReadDecimal -->
+    <keyword name="readDecimal" title="Stocke un nombre décimal dans une variable">
+        <doc>Crée une variable x qui va contenir un double demandé à l'utilisateur.
+Il peut prendre un paramètre "question" de type String qui décrit la valeur à entrer (optionel).</doc>
+        <code>double x = readDecimal("question");</code>
+    </keyword>
+    <keyword name="readDecimal" title="Demande un nombre décimal à l'utilisateur">
+        <doc>Lit un nombre décimal dans une fenêtre présentée à l'utilisateur.</doc>
+        <code>readDecimal()</code>
+    </keyword>
+    <!-- ReadBoolean -->
+    <keyword name="readBoolean" title="Stocke un booléen dans une variable">
+        <doc>Crée une variable b qui va contenir un booléen demandé à l'utilisateur, dans une fenêtre 'oui' ou 'non'.
+Il peut prendre un paramètre "question" de type String qui décrit la valeur à entrer (optionel).</doc>
+        <code>boolean b = readBoolean("question");</code>
+    </keyword>
+    <keyword name="readBoolean" title="Demande un booléen à l'utilisateur">
+        <doc>Lit une valeur booléenne dans une fenêtre 'oui' ou 'non' présentée à l'utilisateur.</doc>
+        <code>readBoolean()</code>
+    </keyword>
+    <!-- 
+#####################
+    Stdin 
+#####################
+    -->
+    <keyword name="println" title="Affiche du texte dans la console">
+        <doc>Affiche dans la console une chaîne de caractères ou la représentation textuelle d'un objet sur la console avec un retour à la ligne.</doc>
+        <code>println("");</code>
+    </keyword>
+    <keyword name="print" title="Affiche du texte dans la console">
+        <doc>Affiche dans la console une chaîne de caractères ou la représentation textuelle d'un objet sur la console sans retour à la ligne.</doc>
+        <code>print("");</code>
+    </keyword>
+    <!-- 
+#####################
+    Macros
+#####################
+    -->
+    <keyword name="random" title="Génère un entier aléatoirement">
+        <doc>Renvoie un nombre entier aléatoire uniformément distribué entre deux valeurs entières (maximum inclus).
+        Ici: entre 0 et 100.</doc>
+        <code>random(0, 100);</code>
+    </keyword>
+    <keyword name="equal" title="Vérifie si deux Strings sont égales">
+        <doc>Renvoie true si deux chaînes de caratères sont égales, faux sinon.</doc>
+        <code>equal("","")</code>
+    </keyword>
+    <keyword name="sleep" title="Fait faire une pause au programme">
+        <doc>Temporise une durée fixée. Il prend un paramètre optionnel qui est la durée de pause en milli-secondes.
+        Ici: 1000 milli-secondes, docn 1 seconde.</doc>
+        <code>sleep(1000);</code>
+    </keyword>
+    <keyword name="assertion" title="Assert l'execution de Java's cool">
+        <doc>Vérifie une assertion et arrête le code si elle est fausse. Il prend un paramètre booléen obligatoire qui est la condition.
+Si elle est fausse, le programme s'arrête.</doc>
+        <code>assertion(true);</code>
+    </keyword>
+    <keyword name="getIcon" title="Charge une image">
+        <doc>Renvoie une icone stockée dans le JAR de l'application. Il prend un paramètre obligatoire qui est l'emplacement de l'icone.
+        Ici: une des icônes de JavaScool.</doc>
+        <code>getIcon("org/javascool/widget/icons/play.png");</code>
+    </keyword>
+    <keyword name="openUrl" title="Ouvre le navigateur du système">
+        <doc>Ouvre une URL (Universal Resource Location) dans un navigateur extérieur. Il prend un paramètre obligatoire qui est L'URL à afficher.</doc>
+        <code>openUrl("http://www.google.fr");</code>
+    </keyword>
+    <!-- 
+#####################
+    Java
+#####################
+    -->
+    <keyword name="if" title="Instruction conditionnelle">
+        <doc>Vérifie la condition et si elle est vraie, exécute le bloc d'instructions.</doc>
+        <code>  if(true) {
+    // CodeSiOui
+  }</code>
+    </keyword>
+    <keyword name="if/else" title="Instruction conditionnelle avec alternative">
+        <doc>Vérifie la condition et si elle est vraie, exécute le 1er bloc d'instructions. Si elle est fause, exécute le 2ème bloc</doc>
+        <code>  if(true) {
+    // CodeSiOui
+  } else {
+    // CodeSiNon
+  }</code>
+    </keyword>
+    <keyword name="while" title="Boucle sur un bloc d'instruction, selon une condition">
+        <doc>Tant que la condition est vraie, exécute le bloc d'instructions.</doc>
+        <code>  while(/*condition*/) {
+    // Code
+  }</code>
+    </keyword>
+    <keyword name="for" title="Boucle sur un bloc d'instruction, avec un compteur">
+        <doc>Tant que la valeur de i est plus petite que la valeur de n, exécute le bloc d'instructions. Le code s'exécute donc n fois.</doc>
+        <code>   for(int i = 0; i &lt; n; i++) {
+    // Code
+  }</code>
+    </keyword>
+</keywords>

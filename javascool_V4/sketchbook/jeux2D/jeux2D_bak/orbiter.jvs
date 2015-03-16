@@ -1,0 +1,112 @@
+// $jvs#proglet:default
+Group masses;
+Oval star;
+double starX = 325;
+double starY = 325;
+double g = 20;
+
+public void up(Oval mass) {
+  double force = 0;
+  double norm = 0, vecx = 0, vecy = 0;
+  double vx = mass.getProperty(Double, "vx");
+  double vy = mass.getProperty(Double, "vy");
+  double mass1 = mass.getProperty(Double, "mass");
+  double rad1 = mass.getProperty(Double, "radius");
+  for(Oval otherMass in masses)
+    if(mass != otherMass) {
+      double mass2 = otherMass.getProperty(Double, "mass");
+      double rad2 = otherMass.getProperty(Double, "radius");
+
+      vecx = otherMass.getX() + rad2 - mass.getX() - rad1;
+      vecy = otherMass.getY() + rad2 - mass.getY() - rad1;
+      norm = Math.sqrt(vecx * vecx + vecy * vecy);
+      if(norm < rad1 + rad2) {
+        if(mass1 > mass2) {
+          otherMass.delete();
+        } else {
+          mass.delete();
+        }
+      }
+      force = ((g * mass1 * mass2) / (norm * norm)) / mass1;
+      vecx /= norm;
+      vecy /= norm;
+      vecx *= force;
+      vecy *= force;
+      echo(force);
+      vx += vecx;
+      vy += vecy;
+      mass.setProperty("vx", vx);
+      mass.setProperty("vy", vy);
+      if(mass1 < 150) {
+        mass.position(mass.getX() + vx, mass.getY() + vy);
+      }
+      // new Oval(mass.getX()+5,mass.getY()+5,3,3);	//TRACE
+    }
+}
+double clicStartX = 0, clicStartY = 0;
+Line clicLine;
+Oval clicOval;
+
+void prepare() {
+  clicStartX = mouseX();
+  clicStartY = mouseY();
+  clicLine = new Line(mouseX(), mouseY(), mouseX(), mouseY());
+  clicOval = new Oval(mouseX() - 5, mouseY() - 5, 10, 10);
+}
+void newMass() {
+  clicLine.delete();
+  clicOval.delete();
+
+  double vx = (mouseX() - clicStartX) / 50;
+  double vy = (mouseY() - clicStartY) / 50;
+  double mass1 = 200.0;
+  double mass2 = 0.2;
+  double rad = 5;
+
+  Oval mass = new Oval(clicStartX - 5, clicStartY - 5, 10, 10);
+  mass.addProperty("vx", vx);
+  mass.addProperty("vy", vy);
+  mass.addProperty("mass", mass2);
+  mass.addProperty("radius", rad);
+  masses.add(mass);
+  mass.onFrame("up", true);
+}
+void drawVec() {
+  clicLine.scale(mouseX(), mouseY());
+}
+void main() {
+  masses = new Group();
+
+  double vx = 0;
+  double vy = 0;
+  double mass1 = 200.0;
+  double mass2 = 0.2;
+  double rad = 25;
+
+  vy = 0;
+  star = new Oval(500, 300, 50, 50);
+  star.addProperty("vx", vx);
+  star.addProperty("vy", vy);
+  star.addProperty("mass", mass1);
+  star.addProperty("radius", rad);
+  masses.add(star);
+
+  vx = 2;
+  vy = 0;
+  rad = 5;
+
+  Oval mass = new Oval(300, 50, 10, 10);
+  mass.addProperty("vx", vx);
+  mass.addProperty("vy", vy);
+  mass.addProperty("mass", mass2);
+  mass.addProperty("radius", rad);
+  masses.add(mass);
+
+  masses.onFrame("up", true);
+  onMousePressed("prepare");
+  onMouseReleased("newMass");
+  onMouseDown("drawVec");
+  while(true) {
+    ;
+  }
+}

@@ -1,0 +1,65 @@
+// Proglet abcdAlgo, Jeu de l'oie Viviane Cotte Lycée Auguste Renoir et Ophélie Corsini Lycée Simone Veil.
+
+void main() {
+   println("Nous allons jouer au jeu de l'oie");
+   println(" Le but de ce jeu est d'atteindre la case d'arrivée le plus vite possible ! ");
+   println(" Il y a des cases spéciales qui te ferons avancer ou reculer et même certaine perdre le jeu");
+   int n = 1;
+   println("1 est ta position");
+   while (n < 100 && ! (n == 24 || n == 40 || n == 16 || n == 45)) {
+      int x = readInteger(" Choisir un chiffre entre 1 et 6 ");
+      clear();
+      println("Tu as choisi " + x);
+      if (x < 1 || x > 6) {
+         println("Recommence imbécile");
+      }
+      else n = n + x;
+      println(n + " est ta nouvelle position ");
+      if (n == 9 || n == 19 || n == 29 || n == 39) {
+         println("La case " + n + " est spéciale, elle te fais avancer de 9 cases");
+         n = n + 9;
+         println(n + " est ta nouvelle position ");
+      }
+      if (n == 7) {
+         println("La case " + n + " est spéciale, elle te fais avancer jusqu'à la case 14 ");
+         n = n + 7;
+         println(n + " est ta nouvelle position");
+      }
+      if (n == 15) {
+         println("La case " + n + " est spéciale, elle te renvoit à la case 8");
+         n = n - 7;
+         println(n + " est ta nouvelle position");
+      }
+      if (n == 37) {
+         println("La case " + n + " est spéciale, elle te renvoit à la case 28");
+         n = n - 9;
+         println(n + " est ta nouvelle position");
+      }
+      if (n == 35) {
+         println("La case " + n + " est spéciale, elle te renvoit à la case 1");
+         n = n - 34;
+         println(n + " est ta nouvelle position");
+      }
+      if (n == 33 || n == 11 || n == 44 || n == 25 || n == 38) {
+         println("La case " + n + " est spéciale, elle te fais reculer de 4 cases");
+         n = n - 4;
+         println(n + " est ta nouvelle position");
+      }
+      if (n == 20 || n == 22 || n == 43) {
+         println("La case " + n + " est spéciale, elle te fait avancer de 3 cases");
+         n = n + 3;
+         println(n + " est ta nouvelle position");
+      }
+      if (n > 45) {
+         println(" Tu as dépassé la case d'arrivée, donc tu retourne en arrière");
+         n = 90 - n;
+         println(n + " est ta nouvelle position");
+      }
+   }
+   if (n == 16 || n == 24 || n == 40) {
+      println(n + " est une case qui te fait perdre le jeu" + " game over");
+      n = 0;
+   }
+   if (n == 45) println("Bravo, tu as gagné");
+}
+

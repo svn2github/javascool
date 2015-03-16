@@ -1,0 +1,58 @@
+<div title="La «proglet» syntheSons">
+  <p>
+    Cette proglet permet de générer une séquence de notes et d'en regarder le spectre de fréquence.
+  </p>
+
+   <div>Pour définir son propre son il faut utiliser la construction <l class="javascool"/>, par exemple:<div class="code">
+     <p><r>@tone:</r> sqr(t) + noi(t);</p>
+   </div>où <r>@tone:</r> est une « macro-instruction », suivie, sur la même ligne d'une expression de la variable <c>t</c> qui définit la forme du son, 
+   tandis que les fonctions suivantes sont prédéfinies:<div class="code">
+     <m>Sinusoide</m>
+     <p><r>double</r> <r>sin</r>(t)</p>
+     <m>Signal carré</m>
+     <p><r>double</r> <r>sqr</r>(t)</p>
+     <m>Signal triangulaire</m>
+     <p><r>double</r> <r>tri</r>(t)</p>
+     <m>Souffle aléatoire</m>
+     <p><r>double</r> <r>noi</r>(t)</p>
+   </div></div>
+
+   <div>Pour écouter le son ou la séquence de notes il faut utiliser la fonction:<div class="code">
+     <p><r>play</r>();</p>
+   </div></div>
+
+   <div>La visualisation du son s'effectue en montrant: <div class="ul">
+     <div>Les amplitudes des fréquences du son (tracé en rouge, l'unité est de <l link="http://fr.wikipedia.org/wiki/Décibel" text="décibel"/>, 
+     renormalisé pour offrir le meilleur tracé).
+     <div>Les fréquences sont tracées entre le <i>La</i> sous-grave (octave 0 à <c>27.5Hz</c>, à peine audible) et 
+     le <i>La</i> sur-aigu (octave 9 à <c>6400Hz</c>), 
+     tandis que le milieu de l'échelle est le <i>La</i> du diapason (octave 3 à <c>440Hz</c>).</div></div>
+     <div>Le début du signal (tracé en jaune), permet de voir sa forme et son aspect temporel. Les premières <c>11</c>ms (<c>0.011</c> secondes) sont tracées.</div>
+   </div></div>
+ 
+   <div>Pour définir une séquence de notes il faut utiliser la fonction:<div class="code">
+     <p><r>setNotes</r>(<v>séquence-de-note</v>);</p>
+   </div> où la syntaxe de <v>séquence-de-note</v> est définie dans la <l link="http://javascool.gforge.inria.fr/v4/index.php?page=api&amp;api=org/javascool/tools/sound/SoundBit.html" text="documentation"/> de la classe.</div>
+
+  <div>Un <l class="editor" link="Demo.jvs" text="exemple"/> d'utilisation: lors de la démonstration, 
+  les différents sons:<div class="code">
+     <p><r>@tone:</r> cos(t);</p>
+     <p><r>play</r>();</p>
+   </div>puis<div class="code">
+     <p><r>@tone:</r> 0.5 * sqr(t);</p>
+     <p><r>play</r>();</p>
+   </div>puis<div class="code">
+     <p><r>@tone:</r> 0.8 * tri(t) + 0.2 * noi(t);</p>
+     <p><r>play</r>();</p>
+   </div>puis<div class="code">
+     <p><r>@tone:</r> 0.3 * sqr(t/2) * sin(t) + 0.3 * sin(2 * t) + 0.3 * tri(3 * t);</p>
+     <p><r>play</r>();</p>
+   </div>sont présentés, puis le <l link="http://javascool.gforge.inria.fr/v4?page=proglets&amp;action=show&amp;id=syntheSons&amp;helpFile=api/org/javascool/proglets/syntheSons/NotesSoundBit.html" text="codage de partition"/> des 1ères notes de quelque chose qui ressemble à la «Lettre à Elise» de L.v.Beethoven est jouée et son spectre affiché et ensuite 
+   <div> . . à vous de jouer !</div></div>
+
+   <div>Voici aussi comment défini un <l class="editor" link="./morse.jvs" text="code en morse"/></div>
+
+   <div>Voici une activité complète sur le son <l link="http://javascool.gforge.inria.fr/v4/documents/sketchbook/syntheSons/synthesons_Laurent_Roy/synthesons_LRv3.ppt" text="présentation"/> et <l link="http://javascool.gforge.inria.fr/v4/documents/sketchbook/syntheSons/synthesons_Laurent_Roy.zip" text="fichiers de l'activité"/> grâce au collègue Laurent Roy.</div>
+
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=syntheSons&amp;helpFile=api/org/javascool/proglets/syntheSons/package-summary.html" text="ici"/></p>
+</div>

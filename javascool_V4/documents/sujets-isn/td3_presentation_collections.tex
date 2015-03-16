@@ -1,0 +1,135 @@
+%\documentclass[serif,mathserif,8pt,handout]{beamer}
+\documentclass[serif,mathserif,10pt,handout]{beamer}
+\usepackage{pxfonts}
+\usepackage{eulervm}
+\usepackage{alltt}
+\usepackage{color,latexsym,calc,array,amssymb,listings} 
+\usetheme{m2r}
+\usepackage[latin1]{inputenc}
+\usepackage{ulem}
+
+\definecolor{OliveGreen}    {cmyk}{0.64,0,0.95,0.40}
+
+\def\lstlanguagefiles{lstjava.sty}
+\lstloadlanguages{Java}
+\lstset{language=Java,commentstyle=\rm\color{red},basicstyle=\ttfamily\small\color{OliveGreen},keywordstyle=\bfseries\color{OliveGreen}}
+\lstset{escapeinside={(*@}{@*)}}
+
+
+\setlength{\parskip}{\baselineskip}
+
+
+\title[Les collections Java en 10 min]{Les collections Java en 10 minutes} 
+
+\author{David Pichardie}
+\date{Jeudi 17 Mars}
+\institute{}
+
+\beamerboxesdeclarecolorscheme{darkbox}{blue}{structure!50}
+\beamerboxesdeclarecolorscheme{bbox}{structure!75!black}{structure!75!black}
+
+\definecolor{Blue}{cmyk}{1, 0.5, 0, 0.3}
+%\newcommand{\notes}{\begin{frame}\frametitle{Notes} \mbox{} \end{frame}}
+\newcommand{\notes}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\frame[plain]{\titlepage}
+
+% \frame<0>[plain]{
+%   \begin{center}
+% \Large
+% \structure{\texttt{List<A>}}\visible<2->{~:~\structure{\texttt{List<String>}}}\visible<3->{, \structure{\texttt{List<Integer>}}}\visible<4->{, \sout{\structure{\texttt{List<int>}}}, ...}
+
+% ~
+
+% ~
+
+% \structure{\texttt{Map<A,B>}}\visible<5->{~:~\structure{\texttt{Map<String,Double>}}}\visible<6->{, \structure{\texttt{Map<String,List<String>>}}}
+
+% \end{center}
+% }
+
+
+
+\begin{frame}[fragile]{Comment manipuler une liste~~~~\visible<11->{/~~~~Comment manipuler une table}}
+
+\begin{columns}
+\column{.5\textwidth}    
+\pause
+Créer une liste vide\\
+~~~\lstinline|List<A> liste = new ArrayList<A>();|\\[1ex]
+\pause
+Lire le $i$ème élément\\
+~~~\lstinline|int i = ...; A a = liste.get(i);|\\[1ex]
+\pause
+Mettre à jour le $i$ème élément\\
+~~~\lstinline|int i = ...; A a = ...; liste.set(i,a);|\\[1ex]
+\pause
+Ajouter un élément en fin de liste\\
+~~~\lstinline|A a = ...; liste.add(a);|\\[1ex]
+\pause
+Ajouter un élément entre la position $i$ et $i+1$\\
+~~~\lstinline|int i = ...; A a = ...; liste.add(i,a);|\\[1ex]
+\pause
+Tester l'appartenance d'un élément\\
+~~~\lstinline|A a = ...; boolean test = liste.contains(a);|\\[1ex]
+\pause
+Obtenir la taille courante\\
+~~~\lstinline|int taille = liste.size();|\\[1ex]
+\pause
+Afficher une liste\\
+~~~\lstinline|echo(liste);|\\[1ex]
+\pause
+Itérer sur une liste\\
+~~~\lstinline|for (A x : liste)|\\
+~~~~~~\lstinline|{...traitement sur x...}|
+
+
+
+\column{.5\textwidth}    
+\pause
+\pause
+Créer une table vide\\
+~~~\lstinline|Map<A,B> table = new HashMap<A,B>();|\\[1ex]
+\pause
+Tester l'existence d'une entrée\\
+~~~\lstinline|A a = ...; boolean test = table.containsKey(a);|\\[1ex]
+\pause
+Lire une entrée\\
+~~~\lstinline|A a = ...; B b = table.get(a);|\\[1ex]
+\pause
+Mettre à jour une entrée (ou la créer)\\
+~~~\lstinline|A a = ...; B b = ...; table.put(a,b);|\\[1ex]
+\pause
+Obtenir la taille courante\\
+~~~\lstinline|int taille = table.size();|\\[1ex]
+\pause
+Itérer sur une table\\
+~~~\lstinline|for (A x : table.keySet())|\\
+~~~~~~\lstinline|{...traitement sur x et table.get(x)...}|
+\pause
+Afficher une table\\
+~~~\lstinline|echo(table);|\\[1ex]
+\pause
+Obtenir l'ensemble des clés\\
+~~~\lstinline|Set<A> dom = table.keySet()|\\
+
+~
+
+Remarque :  \lstinline|Set<A>| $\simeq$ \lstinline|List<A>| sans répétition
+\end{columns}
+
+
+\end{frame}
+\end{document}
+
+\frame[plain,fragile]{
+  \begin{lstlisting}
+    Map<A,B>
+  \end{lstlisting}
+}
+
+\end{document}

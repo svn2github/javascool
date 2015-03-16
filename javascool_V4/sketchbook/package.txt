@@ -1,0 +1,1 @@
+= Bienvenue dans la liasse SVN des fichiers de proglets Javas'Cool =

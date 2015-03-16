@@ -1,0 +1,69 @@
+<div title="La «proglet» codagePixels">
+   <p class="margin">
+    <p>Cliquer <l link="http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/activites-codagePixels.pdf" text="ici"/> pour accéder à une activité d'initiation à la proglet.</p>
+    <p>Cliquer <l class="newtab" link="exercice.htm" text="ici"/> pour faire l'activité.</p>
+    <p>Cliquer <l class="newtab" link="tutoriel.htm" text="ici"/> pour lire le tutoriel.</p>
+  </p>
+ <p>
+    Cette proglet permet de manipuler une petite image de résolution variable, dont les coordonnées se définissent ainsi:
+     <div class="center"><l class="icon" icon="smiley.png"/></div>
+     c'est à dire que l'abscisse (la position horizontale ou largeur, width en anglais) va de <c>-width</c> à <c>+width</c> (de gauche à droite)
+     et l'ordonnée (la position verticale ou hauteur, height en anglais) va de <c>-height</c> à <c>+height</c> (de bas en haut).
+     <div>La fonction:<div class="code">
+       <p><r>reset</r>(width, height);</p>
+     </div>où <b>width</b> et <b>height</b> sont des <r>int</r> permet d'afficher une nouvelle image de largeur et hauteur données tandis que la fonction
+      <div class="code">
+       <p><r>load</r>(image);</p>
+     </div>où <b>image</b> est le lien «url» de l'image, permet d'afficher image disponible sur internet (attention sa taille doit rester modeste inférieur à 500<S>2</S>)
+     tandis que
+      <div class="code">
+        <p><r>int</r> width = <r>getWidth</r>();</p>
+        <p><r>int</r> height = <r>getHeight</r>();</p>
+     </div> renvoient la largeur (width) et hauteur (height) de l'image qui a été chargée.
+     </div>
+     <div>Pour définir un point de couleur dans cette image la fonction <r>setPixel</r>: <div class="code">
+       <p><r>setPixel</r>(x, y, color);</p>
+      </div><div class="ul">
+        <div>où <b>x</b> est un <r>int</r>, entre <b>[-width, +width]</b>, abscisse du point;</div>
+        <div>où <b>y</b> est un <r>int</r>, entre <b>[-height, +height]</b>, ordonnée du point;</div>
+        <div>où <b>color</b> est un <r>String</r> qui donne la couleur du point, ses valeurs étant
+        <v>black</v>, <v>blue</v>, <v>cyan</v>, <v>gray</v>, <v>green</v>, <v>magenta</v>, <v>orange</v>, <v>pink</v>, <v>red</v>, <v>white</v>, <v>yellow</v>.</div>
+      </div>permettre d'écrire un pixel couleur dans cette image.
+    </div>
+    <div>Pour définir lire/écrire un point monochrome les fonctions <r>setPixel/getPixel</r>: <div class="code">
+      <p><r>int</r> valeur = <r>getPixel</r>(x, y);</p>
+      <p><r>setPixel</r>(x, y, valeur);</p>
+     </div><div class="ul">
+       <div>où <b>x</b> est un <r>int</r>, entre <b>[-width, +width]</b>, abscisse du point;</div>
+       <div>où <b>y</b> est un <r>int</r>, entre <b>[-height, +height]</b>, ordonnée du point;</div>
+       <div>où <b>valeur</b> est un entier entre <c>0</c> (pour le "noir") et <c>255</c> (pour le "blanc"),
+       toutes les valeurs entre <c>0</c> et <c>255</c> définissant les valeurs de gris,</div>
+     </div>permettre de lire/écrire un pixel monochrome dans cette image.
+    </div>
+    <div>Un <l class="editor" link="Demo.jvs" text="exemple"/> d'utilisation: lors de la démonstration, le signe de la paix va s'afficher:
+      <div class="center"><l class="icon" icon="smiley2.jpg"/></div>
+      ceci, à différentes résolutions 256, 128, 64, 32, 16, 8, 4, 2, 1. Avec une bonne résolution il sera très lisible, puis petit à petit il se réduira à quelques pixels.
+    </div>
+  </p>
+  <p>Voici un autre exemple de <l class="editor" link="PurHasard.jvs" text="petit programme"/>, et <l class="editor" link="Exemple1.jvs" text="celui"/> permettant de démarrer l'exercice.</p>
+  <p>Voici deux exemples de programmes élèves de tracé d'une <l class="editor" link="un-chinois-qui-court.jvs" text="petite animation"/> et d'une <l class="editor" link="allumons-les-fenetres.jvs" text="autre animation"/>.</p>
+  <p>Voici aussi deux exemples de tracés de fractals de <l class="editor" link="JFKMandel.jvs" text="Mandelbrot"/> et de <l class="editor" link="JFKJulia.jvs" text="Julia"/></p>
+  <p>Voici un exemple de programme qui <l class="editor" link="DeuxImages.jvs" text="superpose deux images"/>.</p>
+  <p>Voici un bel exemple de programme sur les <l class="editor" link="OndelettesDeHarr.jvs" text="ondelettes de Harr"/>.</p>
+  <p>Voici un autre bel exemple de programme de dessin d'<l class="editor" link="un-dragon-sous-8ecailles.jvs" text="undragon sous 8 écailles"/>.</p>
+
+
+<p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=codagePixels&amp;helpFile=api/org/javascool/proglets/codagePixels/package-summary.html" text="ici"/></p>
+
+
+<div class="notes">
+  <div><b>Image non zoomée:</b> On utilise ici un zoom automatiqus, mais il est aussi possible d'utiliser une taille "brute" et fixe, celle de l'image, comme <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=codagePixels&amp;helpFile=api/org/javascool/proglets/codagePixels/Functions.html#reset(int, int, boolean)" text="documenté ici"/></div>
+  <div><b>Coordonnées non centrées:</b> On utilise ici des coordonnées centrées, mais il est aussi possible d'utiliser des coordonnées "brutes" <c>[0, width[ x [0, height[</c> 
+  (de gauche à droite et de bas en haut) avec cette proglet, comme <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=codagePixels&amp;helpFile=api/org/javascool/proglets/codagePixels/Functions.html#reset(int, int, boolean)" text="documenté ici"/></div>
+  <div><b>Images couleurs:</b> Il est aussi possible d'utiliser des pixels couleurs en spécifiant les valeurs rouge-vert-bleue écrites avec <c><l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=codagePixels&amp;helpFile=api/org/javascool/proglets/codagePixels/Functions.html#set(int, int, int, int, int)" text="setPixel(x, y, red, green, blue)"/></c> (ou par leur <c><l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=codagePixels&amp;helpFile=api/org/javascool/proglets/codagePixels/Functions.html#set(int, int, String)" text="nom"/></c>) et lues avec <c><l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=codagePixels&amp;helpFile=api/org/javascool/proglets/codagePixels/Functions.html#getPixelColor(int, int)" text="int rgb[] = getPixelColor(x, y)"/></c> (la valeur rouge est <c>rgb[0]</c>, bleue <c>rgb[1]</c>, et verte <c>rgb[2]</c>).</div>
+  <div><b>Manipulation d'images sous forme de tableau</b> Voici disponibles <l class="editor" link="MoreImage.jvs" text="quelques routines"/> exemples pour aller plus loin: redimensionner une image, la manipuler en tableau, etc...</div>
+  <div><b>Sauvegarde d'images:</b> Il est aussi possible de sauvegarder une image dans un fichier, avec <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=codagePixels&amp;helpFile=api/org/javascool/proglets/codagePixels/Functions.html#save(java.lang.String)" text="save(String)"/>.</div>
+  <div><b>Format ASCII:</b> Il est aussi possible de charger/sauvegarder des images en format ASCII <l link="http://fr.wikipedia.org/wiki/Portable_pixmap" text ="PBM, PGM ou PPM"/> pour en analyser le codage (voir <l class="editor" link="Exemple2.jvs" text="ici"/>).</div>
+  <div><b>Détection de clic</b>: On peut détecter un clic utilisateur avec un <l link="http://javascool.gforge.inria.fr?page=proglets&amp;action=show&amp;id=algoDeMaths&amp;helpFile=./aboutRunnable.htm" text="Runnable"/> et récupérer la position dans l'image avec les fonctions <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=codagePixels&amp;helpFile=api/org/javascool/proglets/codagePixels/Functions.html#getX()" text="getX()"/> et <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=codagePixels&amp;helpFile=api/org/javascool/proglets/codagePixels/Functions.html#getY()" text="getY()"/>.</div>
+</div>
+</div>

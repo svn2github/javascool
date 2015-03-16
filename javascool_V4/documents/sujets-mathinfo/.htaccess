@@ -1,0 +1,5 @@
+Redirect permanent "/documents/sujets-mathinfo/dageville-exos-base-deux.html" "http://javascool.gforge.inria.fr/documents/sujets-mathinfo/Base_2_Codage_Entiers.pdf"
+Redirect permanent "/documents/sujets-mathinfo/lucaud-codage-binaire.pdf" "http://javascool.gforge.inria.fr/documents/sujets-mathinfo/Codage_Binaire.pdf"
+Redirect permanent "/documents/sujets-mathinfo/lucaud-codage-binaire.doc" "http://javascool.gforge.inria.fr/documents/sujets-mathinfo/Codage_Binaire.doc"
+Redirect permanent "/documents/sujets-mathinfo/larrieu-sujet-ascii.pdf" "http://javascool.gforge.inria.fr/documents/sujets-mathinfo/Codage_Texte.pdf"
+Redirect permanent "/documents/sujets-mathinfo/larrieu-sujet-ascii.odt" "http://javascool.gforge.inria.fr/documents/sujets-mathinfo/Codage_Texte.doc"

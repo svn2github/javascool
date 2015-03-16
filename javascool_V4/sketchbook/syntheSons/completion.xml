@@ -1,0 +1,15 @@
+<keywords>
+  <keyword 
+    name="setNotes"
+    offset="9"
+    title="Définit les notes à jouer dans cet interface">
+    <code>setNotes("notes . . ");</code>
+    <doc>Spécifie les notes à jouer selon une syntaxe simplifiée.</doc>
+  </keyword>
+  <keyword 
+    name="length"
+    title="Joue le son défini">
+    <code>play();</code>
+    <doc>Fait entendre le son à travers le système audio.</doc>
+  </keyword>
+</keywords>

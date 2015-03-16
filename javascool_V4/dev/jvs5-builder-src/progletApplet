@@ -1,0 +1,6 @@
+<center><applet width='560' height='620' codebase='.' code='org.javascool.core.ProgletApplet' archive='javascool.jar,@name.jar'>
+  <param name='proglet'  value='org.javascool.proglets.@name.Panel'/>
+  <param name='runnable' value='org.javascool.proglets.@name.Panel'/>
+  <param name='codebase_lookup' value='false'/>
+  <pre>Impossible de lancer @name : Java n'est pas installé ou mal configuré</pre>
+</applet></center>

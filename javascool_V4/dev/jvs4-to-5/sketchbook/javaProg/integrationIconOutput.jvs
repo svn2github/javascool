@@ -1,0 +1,145 @@
+
+//Import des fonctions boîtes de dialogue.
+import javax.swing.*;
+//Import des fonctions liées aux évènements sur panneaux de contrôles et espaces graphiques.
+import java.awt.event.*;
+//Import des fonctions panneaux
+import java.awt.*;
+
+// Import des fonctions et composant javascool
+import org.javascool.widgets.IconOutput;
+
+// Composant pour l'affichage pixelique d'une image
+IconOutput panel = new IconOutput();
+
+// Fichier image à afficher
+String image;
+
+void main() {
+  // Récupération du panneau graphique
+  JLayeredPane pane = getPane();
+  // Construction d'un panneau graphique pour interagir avec l'image
+  {
+    // Elimine les anciens éléments
+    pane.removeAll();
+    // Propose une disposition avec une barre de menu en haut
+    pane.setLayout(new BorderLayout());
+    // Barre de boutons en haut pour afficher l'image et ses transformées
+    {
+      JPanel menuBar = new JPanel();
+      // Ici on ajoute trois boutons dont :
+      //  - le label est défini dans le constructeur du bouton
+      //  - l'action associée est donnée par un écouteur d'événement 
+      //     qui appelle la fonction correspondante
+      // cette construction est dite "fonctionelle" et reste très locale à chaaque objet
+      menuBar.add(new JButton("Image") {{
+	addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) { 
+	      doImage();
+	    }});
+      }});
+      menuBar.add(new JButton("Inversion") {{
+	addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	      doInversion();
+	    }});
+      }});
+      menuBar.add(new JButton("Lissage") {{
+	addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	      doLissage();
+	    }});
+      }});
+      pane.add(menuBar, BorderLayout.NORTH);
+    }
+    // Ajout du panel de la proglet codagePixel
+    pane.add(panel, BorderLayout.CENTER);
+  }
+  // Dialogue introductif pour choisir l'image
+  {
+    int choix = JOptionPane.showConfirmDialog(pane, "Voulez-vous traiter une image ", "Confirmation", JOptionPane.YES_NO_OPTION);
+    if (choix == JOptionPane.YES_OPTION) {
+      image = JOptionPane.showInputDialog(pane, 
+					  "Entrer l'adresse de l'image :" +
+					  "Source Internet = http://mescritiques.be/IMG/arton433.jpg -" +
+					  "Source votre ordinateur  = file:///E:/_LFC/ISN/ch1-codage/img1-NB.bmp", "Saisie", JOptionPane.QUESTION_MESSAGE);
+    } else if (choix == JOptionPane.NO_OPTION) {
+      JOptionPane.showMessageDialog(pane, "Au revoir, à bientôt");
+      return;
+    }
+  }
+  // Chargement de l'image
+  {
+    doImage();
+    int w = panel.getDimension().width, h = panel.getDimension().height;
+    JOptionPane.showMessageDialog(pane, "L'adresse de l'image est : " + image + 
+				  " ses dimensions sont : " + " - Largeur = " + w + " - Hauteur = " + h + " ");
+  }
+}
+
+
+//-------------------------------------------------------------------- 
+// Affiche une image
+//------------------------------------------------------------------
+
+void doImage() {
+  try {
+    panel.reset(image);
+  } catch (Exception e) {   
+    JOptionPane.showMessageDialog(panel, "Impossible de charger l'image '"+image+"', erreur : "+e);
+  }
+}
+
+//-------------------------------------------------------------------- 
+// Inversion de l'image, boucle sur tous les pixels
+//------------------------------------------------------------------
+
+void doInversion() {
+  doImage();
+  int w = panel.getDimension().width, h = panel.getDimension().height;
+  for (int y = 0; y < h; y = y + 1) {
+    for (int x = 0; x < w; x = x + 1) {
+      // Valeur initiale du pixel
+      int Vi = panel.getIntensity(x, y);
+      // Valeur finale après transformation
+      int Vf = 255 - Vi;
+      panel.set(x, y, Vf);
+    }
+  }
+}
+
+//------------------------------------------------------------------
+// Boucle sur tous les pixels de l'image pour réaliser le lissage
+//------------------------------------------------------------------
+
+void doLissage() {
+  doImage();
+  int w = panel.getDimension().width, h = panel.getDimension().height;
+  for (int y = 1; y < h - 1; y = y + 1) {
+    for (int x = 1; x < w - 1; x = x + 1) {
+      int Vf = doLissage(x, y);
+      panel.set(x, y, Vf);
+    }
+  }
+  // Note: cette fonction :
+  // - laisse les bords non lissés et 
+  // - utilise les valeurs de gauche et du dessus déjà lissées pour lisser les suivantes
+  //     donc est un peu biaisée, mais cela reste négligeable
+}
+
+
+//------------------------------------------------------------------
+// Fonction de calcul de la valeur lissée d'un point
+//------------------------------------------------------------------
+
+int doLissage(int x, int y) {
+  double Vf = 0.0;
+  for (int j = -1; j <= 1; j = j + 1) {
+    for (int i = -1; i <= 1; i = i + 1) {
+      Vf = Vf + panel.getIntensity(x + i, y + j);
+    }
+  }
+  Vf = Vf / 9.0;
+  return (int) Vf;
+}
+

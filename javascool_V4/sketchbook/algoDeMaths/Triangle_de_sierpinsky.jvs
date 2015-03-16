@@ -1,0 +1,47 @@
+// Programme cree par Philippe Lucaud, Lycee Audiberti, Antibes
+// Trace du http://fr.wikipedia.org/wiki/Triangle_de_Sierpinski
+// Exercice: modifier ce logiciel pour tracer le tapis de Sierpinski
+// a partir de: http://fr.wikipedia.org/wiki/Tapis_de_Sierpi%C5%84ski
+// de maniere non recursive
+void main() {
+  // Calcul de trois nombres aleatoires compris entre 0 et 1
+  double a = Math.random(), b = Math.random(), c = Math.random();
+  // Calcul des coordonnees du Barycentre du systeme (A, a) (B, b) (C, c)
+  // avec A = (0, 0), B = (1, 0), C = (1/2, √3/2) (triangle equilateral)
+  double x_G = (b + c / 2) / (a + b + c);
+  double y_G = (sqrt(3) * c / 2) / (a + b + c);
+  clear();
+  int N = readInteger("Combien voulez-vous faire d'essais ? ");
+  // Trace du triangle equilateral (A, B, C)
+  reset(1.5, 1);
+  addLine(0, 0, 1, 0, 4);
+  addLine(1, 0, 0.5, sqrt(3) / 2, 6);
+  addLine(0.5, sqrt(3) / 2, 0, 0, 6);
+  // Trace des points du triangle de Sierpinsky
+  for(int n = 1; n <= N; n++) {
+    // Tirage aleatoire
+    int k = random(1, 4);
+    if(k == 1) {
+      double x_I = x_G / 2;
+      double y_I = y_G / 2;
+      addString(x_I, y_I, "", 5);
+      x_G = x_I;
+      y_G = y_I;
+    }
+    if(k == 2) {
+      double x_I = (x_G + 1) / 2;
+      double y_I = y_G / 2;
+      addString(x_I, y_I, "", 5);
+      x_G = x_I;
+      y_G = y_I;
+    }
+    if(k == 3) {
+      double x_I = (x_G + 0.5) / 2;
+      double y_I = (y_G + sqrt(3) / 2) / 2;
+      addString(x_I, y_I, "", 5);
+      x_G = x_I;
+      y_G = y_I;
+    }
+  }
+  println("done : aller voir le resultat dans la proglet !");
+}

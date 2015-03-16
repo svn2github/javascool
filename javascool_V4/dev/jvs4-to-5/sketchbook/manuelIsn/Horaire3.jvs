@@ -1,0 +1,18 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+void TirerUnTrait() {
+  println();
+  println("-----------------------------------------------");
+  println();
+}
+void annoncerUnVol(String v, String h) {
+  print("Le vol en direction de ");
+  print(v);
+  print(" décolera à ");
+  print(h);
+  TirerUnTrait();
+}
+void main() {
+  annoncerUnVol("Tokyo", "9h00");
+  annoncerUnVol("Sydney", "9h30");
+  annoncerUnVol("Toulouse", "9h45");
+}

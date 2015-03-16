@@ -1,0 +1,11 @@
+<div title="Comprendre quelques opérations de manipulation d'images">
+  Commençons par lire <l link="http://interstices.info/reflet-numerique" text="comment sont codées des images"/> .
+   
+  <div title="Ajouter deux images">. Ajouter deux images peut permettre de faire un effet de calque. Cela peut aussi permettre de comparer deux images.</div>
+
+
+  <div title="Les images comme des objets algébriques:"> Les mathématiciens voient donc sûrement ces tableaux bi-dimensionnels que sont les images comme des objets algébriques que l'on peut ajouter (effet de calque), multiplier par un scalaire, translater etc... Ce sont effectivement des vecteurs d'un espace vectoriel dont les composantes sont rangées en tableau. Ce ne sont pas des matrices car multiplier deux images (au sens de la multiplication des matrices des valeurs de pixels) correspond à une opération qui n'a pas de sens (hormis pour un artiste surréaliste !) en ce qui concerne les images. Nous sommes donc face à des objets algébriques dotées d'opérations riches de propriétés, mais différents des objets usuels de l'algèbre linéaire. Les théoriciens de la vision par ordinateur ont largement explorés ces aspects formels.</div>
+
+
+</div>
+

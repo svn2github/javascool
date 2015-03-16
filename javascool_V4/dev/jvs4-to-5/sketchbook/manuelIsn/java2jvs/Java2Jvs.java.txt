@@ -1,0 +1,35 @@
+/** Définit le mécanisme de traduction d'un code Java utilisant la classe Isn en Jvs.
+ * Voir la <a href="https://who.rocq.inria.fr/Gilles.Dowek/Isn">page Isn</a>.
+ */
+public class Java2Jvs { private Java2Jvs() {}
+
+  /** Traduit un texte Java en Jvs.
+   * @param javaText Le texte Java qui a été remis en page au préalable (espaces standards etc...)
+   * @return Le texte Jvs.
+   */
+  public static String translate(String javaText) {
+    // Elimine les mots clés obsolètes dans le contexte Jvs
+    javaText = javaText.replaceAll("(public|static)\\s", " ");
+    // Désencapsule la construction "class * {"
+    int i0 = javaText.indexOf("class"), i1 = i0 == -1 ? -1 : javaText.indexOf("{", i0), i2 = javaText.lastIndexOf("}");
+    if (i0 != -1 && i1 != -1 && i2 != -1) 
+      javaText = javaText.substring(0, i0) + javaText.substring(i1+1, i2);
+    // Modifie la syntaxe du void main()
+    javaText = javaText.replaceFirst("void\\smain\\([^\\)]*\\)", "void main()");
+    // Enlève le suffixe des fonctions Isn
+    javaText = javaText.replaceAll("Isn\\.([a-zA-Z]+)", "$1");
+    // Enlève le suufice du prinltn pour avoir un affichage bien géré
+    javaText = javaText.replaceAll("System.out.print", "print");
+    return javaText;
+  }
+
+  /** Lanceur de la conversion Java en Jvs.
+   * @param usage <tt>java Java2Jvs input-file [output-file]</tt>
+   */
+  public static void main(String[] usage) {
+    if(usage.length > 0)
+      org.javascool.tools.FileManager.save(usage.length > 1 ? usage[1] : "stdout:", translate(org.javascool.tools.FileManager.load(usage[0])));
+  }
+}
+
+  

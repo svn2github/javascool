@@ -1,0 +1,24 @@
+[
+{
+ "tag" : "keyword"
+, "title" : "Crée une clé privée et le couple de clé publiques"
+, "name" : "createKeys"
+, "code" : "BigInteger keys = createKeys();"
+, "doc" : "Crée une clé privée D et le couple de clé publiques (E, N). Retourne un tableau de 3 entiers avec les clés keys[] = {D, E, N};"
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Encrypte un message à l'aide de clés"
+, "name" : "encrypt"
+, "code" : "BigInteger crypt = encrypt(\\\"message\\\", E, N);"
+, "doc" : "Renvoie le message encrypté sous forme d'une suite de chiffres, en utilisant le couple de clés publiques (E, N)."
+}
+ , {
+ "tag" : "keyword"
+, "title" : "Décrypte un message à l'aide de clés"
+, "name" : "decrypt"
+, "code" : "String message = decrypt(crypt, keys);"
+, "doc" : "Renvoie le message décrypté à partir de son crypt sous forme d'une suite de chiffres, en utilisant le triplet de clés privée/publiques keys."
+}
+]
+

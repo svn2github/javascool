@@ -1,0 +1,23 @@
+
+Option Explicit
+' le programme principal doit se nommer main
+sub main()
+	Dim quantite as integer
+	Dim prixUnitaire as double
+	Dim prixTotal as double
+	Dim remise as double
+	' saisie des entrees
+	prixUnitaire = InputBox("Quel est le prix unitaire en euros ?") 
+	quantite = InputBox("Quelle est la quantite achetee ?") 
+	' calcul du prix total
+	if (quantite = 1) then 
+		remise = 0 
+	elseif ( (quantite=2)  or  (quantite=3) ) then 
+		remise = 0.1 
+	else 
+		remise = 0.2 
+	end if
+	prixTotal = quantite * prixUnitaire * (1-remise) 
+	' affichage de la sortie
+	MsgBox("Le prix total vaut " & prixTotal & " euros")
+end sub

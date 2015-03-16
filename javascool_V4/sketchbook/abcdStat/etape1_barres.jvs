@@ -1,0 +1,16 @@
+
+void main() {
+	// donnees
+	int [] effectifs = {2, 1, 10, 5};
+	String [] legendes = {"trimestre 1", "trimestre 2", "trimestre 3", "trimestre 4"};
+	int [] couleurs = {2, 4, 1, 3};		// couleurs de algoDeMath : 0 (noir), 1 (brun), 2 (rouge) ...  9 (blanc).
+	// on fixe l'échelle : abscisse entre -0.5 et 4.5, ordonnee entre -0.5 et 10.5
+	reset(-0.5, 4.5, -0.5, 10.5);
+	// diagramme en barres
+	for(int i=0; i<4; i=i+1) {
+		addBlock(i, 0, i+1, effectifs[i], couleurs[i]); 
+				// intervalle [i, i+1] en abscisse 
+				// intervalle [0, effectifs[i]] en ordonnee
+		addString(i+0.3, -0.25, legendes[i]); 
+	}
+} 

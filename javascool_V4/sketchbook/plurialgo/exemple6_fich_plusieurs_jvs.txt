@@ -1,0 +1,34 @@
+void main() {
+	int i1; 
+	int n_lig; 
+	String [] nom = new String[10]; 
+	String [] sexe = new String[10]; 
+	double [] taille = new double[10]; 
+	double [] poids = new double[10]; 
+	double [] imc = new double[10]; 
+	String nom_fich = "C:\\exemples\\fich\\enquete.txt";	// A adapter
+	n_lig=0; // numero de ligne
+	try {
+		java.io.BufferedReader f_in = new java.io.BufferedReader( new java.io.FileReader(nom_fich) );
+		String ligne; 
+		while ( (ligne=f_in.readLine()) != null) {
+			// analyse de la ligne lue
+			java.util.StringTokenizer tok=new java.util.StringTokenizer(ligne," \t");
+			nom[n_lig] = tok.nextToken(); 
+			sexe[n_lig] = tok.nextToken(); 
+			taille[n_lig] = Double.parseDouble( tok.nextToken() ); 
+			poids[n_lig] = Double.parseDouble( tok.nextToken() );
+			// calcul de l'IMC
+			imc[n_lig] = poids[n_lig]/(taille[n_lig]*taille[n_lig]); 
+			// incrementation du compteur de lignes
+			n_lig=n_lig+1;
+		}
+		f_in.close();
+	} catch (Exception ex) { 
+		System.out.println("probleme de lecture du fichier"); 
+	}
+	// affichage des IMCs
+	for(i1=0; i1<n_lig; i1++) {
+		println( nom[i1] + " : " + imc[i1] ); 
+	} 
+} 

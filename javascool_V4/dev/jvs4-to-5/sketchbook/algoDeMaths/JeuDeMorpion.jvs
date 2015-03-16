@@ -1,0 +1,187 @@
+//
+// Exemple de jeu de morpion, créé par luc.vincent@ac-bordeaux.fr
+//
+// note: utiliser la proglet algoDeMaths
+//
+
+// [1] Routines de dessin et de mesure du réticule
+
+// Dessin du plateau de jeu
+void dessinTable() {
+  addLine(-1, 0.5, 1, 0.5, 3);
+  addLine(-1, 0, 1, 0, 3);
+  addLine(-1, -0.5, 1, -0.5, 3);
+  addLine(-0.5, 1, -0.5, -1, 3);
+  addLine(0, 1, 0, -1, 3);
+  addLine(0.5, 1, 0.5, -1, 3);
+  // Icic on trace le réticule au bord de l'image pour pas pertuber le tracé
+  setReticule(-1, -1);
+}
+// Dessin du symbole {0, 1} tag0 ou tag1 aux coordonnées choisies {0,1,2,3} x {0,1,2,3}
+void tracerSymbole(int symbole, int abcisse, int ordonnee) {
+  double x = (abcisse + 1) * 0.5 - 1.25;
+  double y = (ordonnee + 1) * 0.5 - 1.25;
+  switch(symbole) {
+  // Dessin d'un tag0 : cercle
+  case 0:
+    addCircle(x, y, 0.1, 7);
+    break;
+  case 1:
+    // Dessin d'un tag1 : croix
+    addLine(x - 0.1, y - 0.1, x + 0.1, y + 0.1, 5);
+    addLine(x - 0.1, y + 0.1, x + 0.1, y - 0.1, 5);
+    break;
+  default:
+    throw new IllegalArgumentException("erreur d'index dans la routine tracerSymbole()");
+  }
+}
+// Retourne l'abscisse actuelle du réticule dans {0,1,2,3}
+int calculerAbcisse() {
+  return (int) ((getX() + 1) / 0.5);
+}
+// Retourne la coordonnée actuelle du réticule dans {0,1,2,3}
+int calculerOrdonnee() {
+  return (int) ((getY() + 1) / 0.5);
+}
+//
+// [2] Gestion de la table de jeu
+//
+
+// Table des états du jeu,
+// - la valeur 2 si la case est vide,
+// - 0 si la case est prise par l'ordinateur
+// - 1 si la case est prise par le joueur
+int[] /*ordonnée*/[] /*abscisse*/ table = new int[4][4];
+
+// Initialise la table du jeu
+void initTableJeu() {
+  for(int j = 0; j < table.length; j++)
+    for(int i = 0; i < table[0].length; i++)
+      table[j][i] = 2;
+}
+// Teste si la table est pleine
+boolean tableJeuPleine() {
+  for(int j = 0; j < table.length; j++)
+    for(int i = 0; i < table[0].length; i++)
+      if(table[j][i] == 2) {
+        return false;
+      }
+  return true;
+}
+// Recherche un état gagnant, et renvoie vrai si il est détecté
+boolean chercherGagnant(int i, int j) {
+  if((table[0][i] == table[1][i]) && (table[1][i] == table[2][i]) && (table[2][i] == table[3][i])) {
+    // La colonne i est gagnante
+    addLine(-0.75 + i * 0.5, -0.90, -0.75 + i * 0.5, 0.90, 2);
+    return true;
+  }
+  if((table[j][0] == table[j][1]) && (table[j][1] == table[j][2]) && (table[j][2] == table[j][3])) {
+    // La ligne j est gagnante
+    addLine(-0.90, -0.75 + j * 0.5, 0.90, -0.75 + j * 0.5, 2);
+    return true;
+  }
+  if(i == j) {
+    if((table[0][0] == table[1][1]) && (table[1][1] == table[2][2]) && (table[2][2] == table[3][3])) {
+      // La diagonale / est gagnante
+      addLine(-0.90, -0.90, 0.90, 0.90, 2);
+      return true;
+    }
+  }
+  if(i + j == 3) {
+    if((table[0][3] == table[1][2]) && (table[1][2] == table[2][1]) && (table[2][1] == table[3][0])) {
+      // La diagonale \ est gagnante
+      addLine(-0.90, 0.90, 0.90, -0.90, 2);
+      return true;
+    }
+  }
+  return false;
+}
+//
+// Gestion des coups des joueurs
+//
+
+// Indicateur de la fin de partie:
+// -1 si la partie est en cours,
+// 0 si l'ordinateur a gagné,
+// 1 si le joueur a gagné,
+// 2 si la partie est nulle.
+int finPartie = -1;
+
+// Génération d'un coup aléatoire
+int coupAleatoire() {
+  return (int) (4 * random());
+}
+// Jouer un coup pour l'ordinateur, renvoie vrai si le coup a été joué, faux sinon
+boolean coupOrdi() {
+  // Si la table est pleine le jeu est fini !
+  if(tableJeuPleine()) {
+    finPartie = 2;
+    return false;
+  }
+  // Ici le joueur est un crétin qui tire au hasard ces coups
+  // qui saura faire mieux ?
+  int abcisse = coupAleatoire();
+  int ordonnee = coupAleatoire();
+  // Mise à jour de la table et de l'état du jeu, et du graphique
+  if(table[ordonnee][abcisse] == 2) {
+    table[ordonnee][abcisse] = 0;
+    tracerSymbole(0, abcisse, ordonnee);
+    if(chercherGagnant(abcisse, ordonnee)) {
+      finPartie = 0;
+    }
+  } else {
+    coupOrdi();
+  }
+  return true;
+}
+// Jouer un coup pour le joueur, renvoie vrai si le coup est valide, faux sinon.
+boolean coupJoueur() {
+  // Lecture des coordonnées du clic
+  int abcisse = calculerAbcisse();
+  int ordonnee = calculerOrdonnee();
+  // Mise à jour de la table et de l'état du jeu, et du graphique
+  if(table[ordonnee][abcisse] == 2) {
+    table[ordonnee][abcisse] = 1;
+    tracerSymbole(1, abcisse, ordonnee);
+    if(chercherGagnant(abcisse, ordonnee)) {
+      finPartie = 1;
+    }
+    return true;
+  } else {
+    return false;
+  }
+}
+// Mise en place de l'écoute du réticule
+void initEcouteReticule() {
+  finPartie = -1;
+  // Ici on définit une routine qui sera appellée à chaque clic du joueur
+  setRunnable(new Runnable() {
+                // Cette function est appellée à chaque clic
+                public void run() {
+                  // A chaque clic le joueur joue puis l'ordinateur
+                  if(coupJoueur()) {
+                    coupOrdi();
+                  }
+                  setReticule(-1, -1);
+                }
+              }
+              );
+}
+void main() {
+  // Démarrage du jeu
+  reset();
+  dessinTable();
+  initTableJeu();
+  // L'ordinateur joue un premier coup
+  coupOrdi();
+  // On lance alors le dialogue avec le joueur
+  initEcouteReticule();
+  // On attend la fin du jeu
+  while(finPartie == -1) {
+    sleep(1000);
+  }
+  // On affiche le résultat et ferme le jeu
+  addString(-0.4, 0.2, "FIN DE PARTIE" + (finPartie == 0 ? " : PERDU !" : finPartie == 1 ? " : GAGNÉ !" : ""), 9);
+  setRunnable(null);
+  setReticule(-1, -1);
+}

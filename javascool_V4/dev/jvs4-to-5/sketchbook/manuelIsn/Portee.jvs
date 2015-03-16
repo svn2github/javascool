@@ -1,0 +1,15 @@
+//  Ces programmes sont sous licence CeCILL-B V1.
+int y, z;
+
+double v(double x) {
+  double u;
+  u = x * x;
+  z = (int) x;
+  return u;
+}
+void main() {
+  double t;
+  y = 4;
+  t = 1 / (double) y;
+  println(v(t));
+}
