@@ -33,7 +33,7 @@ import javax.sound.sampled.LineUnavailableException;
  *  println("Ok");
  *  // On écrit les 1ers échantillons de sons
  *  println("On rerejoue");
- *  for(int i = 0; i < 100; i++) {
+ *  for(int i = 0; i &lt; 100; i++) {
  *    // On ecrit les 100ers echantillons en ajoutant les caneaux gauche et droit
  *     print(" "+ input.get('l', i)+input.get('r', i)+"\n");
  *  }

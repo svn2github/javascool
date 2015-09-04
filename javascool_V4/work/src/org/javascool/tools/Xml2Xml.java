@@ -135,7 +135,7 @@ public class Xml2Xml {
            // Encapsule les constructions non XML
            replaceAll("(<(meta|img|hr|br|link)[^>]*[^>/]?)>", "$1/>");
   }
-  /** Lanceur de la transformation XML -XSLT-> XML.
+  /** Lanceur de la transformation XML -XSLT-&gt; XML.
    * @param usage <tt>java org.javascool.tools.Xml2Xml input-file XSL-file [output-file] [paramName paramValue]</tt>
    */
   public static void main(String[] usage) {

@@ -274,7 +274,8 @@ public class ProgletsBuilder {
       String args[] = new String[javaFiles.length + 3];
       args[0] = "-cp";
       args[1] = classPath;
-      args[2] = "-Xlint";
+      args[2] = "-Xlint"; 
+      //args[3] = "-nowarn";
       System.arraycopy(javaFiles, 0, args, 3, javaFiles.length);
       StringWriter out = new StringWriter();
       Class.forName("com.sun.tools.javac.Main").
@@ -298,7 +299,7 @@ public class ProgletsBuilder {
         // Construit l'appel à javadoc
         String argv = "-quiet\t-classpath\t" + classPath + "\t-d\t" + apiDir
                       + "\t-link\thttp://download.oracle.com/javase/6/docs/api"
-                      + "\t-public\t-author\t-windowtitle\tJava's Cool v4\t-doctitle\tJava's Cool v4\t-version\t-nodeprecated\t-nohelp\t-nonavbar\t-notree\t-charset\tutf-8";
+                      + "\t-public\t-author\t-windowtitle\tJava's Cool v4\t-doctitle\tJava's Cool v4\t-version\t-nodeprecated\t-nohelp\t-nonavbar\t-notree\t-charset\tutf-8\t-Xdoclint:all\t-Xdoclint:-missing";
         for(String f : files)
           argv += "\t" + f;
         // Lance javadoc

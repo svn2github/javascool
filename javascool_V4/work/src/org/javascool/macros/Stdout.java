@@ -82,7 +82,8 @@ public class Stdout {
   public static void println(String string) {
     Console.getInstance();
     System.out.println(string);
-    org.javascool.gui.Desktop.getInstance().focusOnConsolePanel();
+    if (org.javascool.gui.Desktop.hasInstance())
+      org.javascool.gui.Desktop.getInstance().focusOnConsolePanel();
   }
   /**
    * @see #echo(String)

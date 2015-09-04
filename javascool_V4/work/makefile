@@ -1,16 +1,16 @@
 
 # vthierry's ongoing tasks, . . .
 
-dft : tst1
+dft : www
 
-export JAVA_HOME=/usr/java/jdk1.6.0_25
+#export JAVA_HOME=/usr/java/jdk1.6.0_25
 #export JAVA_HOME=/usr/java/jdk1.7.0_71
-#export JAVA_HOME=/usr/java/jdk1.8.0_31
+export JAVA_HOME=/usr/java/jdk1.8.0_60
 
 export PATH := $(JAVA_HOME)/bin:$(PATH)
 
-export JRE_HOME=/usr/java/jre1.7.0_60
-#export JRE_HOME=/usr/java/jre1.8.0_31
+#export JRE_HOME=/usr/java/jre1.7.0_60
+export JRE_HOME=/usr/java/jre1.8.0_60
 
 www :
 	cd .. ; ant web

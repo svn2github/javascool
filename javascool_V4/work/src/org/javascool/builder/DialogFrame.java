@@ -167,7 +167,9 @@ public class DialogFrame {
     Component parent = getConsoleInstance().getToolBar();
     jCreatorMenu.show(jCreatorButton, 0, parent.getHeight());
   }  
-  /** Renvoie la console courante. */
+  /** Renvoie la console courante. 
+   * @return La console courante.
+   */
   private static Console getConsoleInstance() {
     return console;
   }

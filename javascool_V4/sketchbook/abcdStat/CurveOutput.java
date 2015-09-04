@@ -226,8 +226,9 @@ public class CurveOutput extends JPanel {
 	 * @param y Ordonnée du point dans [-Yscale+Yoffset..Yscale+Yoffset].
 	 * @param c Couleur de la courbe, dans {0, 9}. Le code des couleurs est le suivant:
 	 * <div id="colors"><b>Code des couleurs</b><table>
+	 * <caption>Code des couleurs</caption>
 	 * <tr><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
-	 * <tr><td>noir</td><td>marron</td><td>rouge</td><td>orange</td><td>jaune</td><td>vert</td><td>bleu</td><td>violet</td><td>gris</td><td>blanc</td></td>
+	 * <tr><td>noir</td><td>marron</td><td>rouge</td><td>orange</td><td>jaune</td><td>vert</td><td>bleu</td><td>violet</td><td>gris</td><td>blanc</td></tr>
 	 * </table></div>
 	 * @return L'objet graphique créé, utilisé pour détruire l'objet ensuite.
 	 */

@@ -1,0 +1,47 @@
+BODY {
+ color:black;
+ background-color:#ffffff; 
+}
+
+H1 { font-family: Arial, Helvetica, sans-serif; font-size: 20pt; font-style: normal; font-weight: normal; color: #000000; background: #FF9900; text-align: center; margin: 10pt 2.5%}
+H2 { font-family: Arial, Helvetica, sans-serif; font-size: 14pt; font-style: normal; font-weight: bold; color: #004080  }
+H3 { font-family: T, Helvetica, sans-serif; font-size: 12pt; font-style: normal; font-weight: bold; color: #000000; line-height: 16pt}
+
+.bouton {color: black; background-color: #CC33CC;text-align: center}
+.formu {color: black; background-color: #CC33CC; text-align: center}
+
+LI { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11pt }
+
+P { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11pt ;font-weight:normal}
+.command {font-family=verdana, arial; color=red	}
+.function{font-family=verdana, arial; color=blue}
+.partitle{font-family=verdana, arial; font-weight:bold}
+
+A:link {
+ color:#280099;
+}
+
+A:hover {
+ color:red;
+ text-decoration:underline overline;
+}
+
+A:visited {
+ color:#280099;
+}
+
+A:active {
+ color:red;
+ text-decoration:none;
+}
+
+.remarque
+{
+	font-size: 10pt;
+	padding: 5px;
+	border: 1px solid #800000;
+	margin-left: 50px;
+	margin-right: 50px;
+	color: 800000;
+}
+

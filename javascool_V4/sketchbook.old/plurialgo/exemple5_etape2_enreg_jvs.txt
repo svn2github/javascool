@@ -1,0 +1,44 @@
+
+class Skieur  {
+	// proprietes
+	String nom; 
+	double [] notes = new double[5]; 
+}
+
+void saisir_Skieur(Skieur  objet) { 
+	int i1; 
+	objet.nom = readString( "objet.nom : " ); 
+	for(i1=0; i1<5; i1++) {
+		objet.notes[i1] = readDouble( "objet.notes[" + (i1) + "] : " ); 
+	}
+} 
+
+double calculer_noteFinale(Skieur  objet) { 
+	int i1; 
+	double som; 
+	double mini; 
+	double maxi; 
+	double noteFinale;
+	som = 0; 
+	mini = 1000; 
+	maxi = -1000; 
+	for(i1=0; i1<=4; i1=i1+1) {
+		som = som + objet.notes[i1]; 
+		if (objet.notes[i1] < mini) {
+			mini = objet.notes[i1]; 
+		}
+		if (objet.notes[i1] > maxi) {
+			maxi = objet.notes[i1]; 
+		}
+	}
+	noteFinale = som - mini - maxi; 
+	return noteFinale;
+} 
+
+void main() {
+	Skieur  objet = new Skieur (); 
+	double noteFinale; 
+	saisir_Skieur(objet);
+	noteFinale = calculer_noteFinale(objet);
+	println( "noteFinale : " + noteFinale ); 
+} 

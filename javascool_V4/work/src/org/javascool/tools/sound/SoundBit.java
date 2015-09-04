@@ -31,7 +31,7 @@ public class SoundBit {
 
   /** Defines the sound function.
    * <div>One <tt>get()</tt> methods i to be overloaded to define your own sound.</div>
-   * <div>By contract this method is called for <tt>index = 0, 1, 2, ..</tt> in consecutive increasing order.</tt>
+   * <div>By contract this method is called for <tt>index = 0, 1, 2, ..</tt> in consecutive increasing order.</div>
    * @param channel Left 'l' or right 'r' channel.
    * @param index  Sound time index. The time in second writes: <tt>time = index / SAMPLING</tt>.
    * @return The sound value between -1.0 and 1.0 (maximal amplitude, linear scale).
@@ -41,7 +41,7 @@ public class SoundBit {
   }
   /** Defines the sound function.
    * <div>One <tt>get()</tt> methods i to be overloaded to define your own sound.</div>
-   * <div>By contract this method is called for <tt>index = 0, 1, 2, ..</tt> in consecutive increasing order.</tt>
+   * <div>By contract this method is called for <tt>index = 0, 1, 2, ..</tt> in consecutive increasing order.</div>
    * @param channel Left 'l' or right 'r' channel.
    * @param time  Sound time in second.
    * @return The sound value between -1.0 and 1.0 (maximal amplitude, linear scale).

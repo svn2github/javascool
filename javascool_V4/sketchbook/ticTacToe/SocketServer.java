@@ -19,7 +19,7 @@ import java.net.UnknownHostException;
  * @serial exclude
  * @deprecated
  * ATTENTION CETTE CLASSE EST DEPRECIEE : UTILISER org.javascool.tools.socket.SocketServer SVP.
- * @author Christophe Béasse <oceank2@gmail.com>
+ * @author Christophe Béasse 
  */
 @Deprecated
 public class SocketServer {

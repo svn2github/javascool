@@ -7,16 +7,16 @@ import javax.swing.SwingUtilities;
 import org.javascool.macros.Macros;
 
 /** Définit un dialogue en popup qui gère l'aspect modal/non-modal.
- * <p>Si le dialog est appelé de l'AWT il est non-modal (donc ne bloque pas l'AWT) sinon il est modal (il blqieu jusqu'à complétion du dialogue).
- * <p>Son utilisation typique se fait à travers une construction de la forme:<pre>
+ * <div>Si le dialog est appelé de l'AWT il est non-modal (donc ne bloque pas l'AWT) sinon il est modal (il bloque jusqu'à complétion du dialogue).</div>
+ * <div>Son utilisation typique se fait à travers une construction de la forme:<pre>
  * dialog = new NonModalDialog();
  * dialog.add(.. le composant du dialogue ..);
- * dialog.open(true);</pre></p>
- * <p>Lorsque le composant du dialogue reçoit la réponse il ferme le dialogue, par exemple:<pre>
+ * dialog.open(true);</pre></div>
+ * <div>Lorsque le composant du dialogue reçoit la réponse il ferme le dialogue, par exemple:<pre>
  *  public void actionPerformed(ActionEvent e) {
  *    ... report de la valeur fournie par l'utilisateur ...
  *    messageDialog.close();
- * }</pre></p>
+ * }</pre></div>
  */
 public class Dialog extends JDialog {
   // @bean
@@ -32,7 +32,7 @@ public class Dialog extends JDialog {
   }
   /** Ouvre le dialogue et entre en attente d'un retour de l'utilisateur.
    * @param modal Si true le dialogue est bloquant et attend la réponse de l'utilisateur, si false il est non-modal et renvoie la main AVANT que le dialogue soit complété.
-   * <p>Il ne faut pas appelé le dialogue en mode modal directement d'un gestionnaire d'événement (bouton, etc..) mais utiliser un Thread.</p>
+   * <div>Il ne faut pas appelé le dialogue en mode modal directement d'un gestionnaire d'événement (bouton, etc..) mais utiliser un Thread.</div>
    */
   public void open(boolean modal) {
     setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

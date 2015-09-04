@@ -61,24 +61,26 @@
     <unzip dest="./build/classes" src="./lib/RSyntaxTextArea.jar"/>
     <unzip dest="./build/classes" src="./lib/autocomplete.jar"/>
     <unzip dest="./build/classes" src="./lib/json.jar"/>
-    <unzip dest="./build/classes" src="./lib/javadoc.jar"/>
     <unzip dest="./build/classes" src="./lib/jarsigner.jar"/>    
     <if>
       <equals arg1="${ant.java.version}" arg2="1.8" />
       <then>   
         <echo message="using java ${ant.java.version}" />
         <unzip dest="./build/classes" src="./lib/javac8.jar"/>
+        <unzip dest="./build/classes" src="./lib/javadoc8.jar"/>
       </then>
       <elseif>
         <equals arg1="${ant.java.version}" arg2="1.7" />
         <then>   
           <echo message="using java ${ant.java.version}" />
           <unzip dest="./build/classes" src="./lib/javac7.jar"/>
+          <unzip dest="./build/classes" src="./lib/javadoc7.jar"/>
         </then>
       </elseif>
       <else>
         <echo message="using java  ${ant.java.version}" />
         <unzip dest="./build/classes" src="./lib/javac.jar"/>
+        <unzip dest="./build/classes" src="./lib/javadoc.jar"/>
       </else>
     </if>
     <unzip dest="./build/classes" src="./lib/jvs2html.jar"/>
@@ -105,13 +107,12 @@
 
   <property name="proglets.validated.7" value="abcdAlgos algoDeMaths analogNumerique codagePixels commSerie cryptageRSA detectionForme dichotomie exploSonore gogleMaps grapheEtChemins javaProg manuelIsn syntheSons ticTacToe tortueLogo txtCode visages wwwIOI"/>
 
+  <property name="proglets.validated.8" value="abcdAlgos algoDeMaths analogNumerique codagePixels commSerie cryptageRSA detectionForme dichotomie exploSonore gogleMaps grapheEtChemins javaProg manuelIsn syntheSons ticTacToe tortueLogo txtCode visages wwwIOI"/>
+
   <target name="javascool-proglets.jar" depends="javascool-builder.jar">
     <delete file="./dist/javascool-proglets.jar"/>
     <if>
-      <or>
-        <equals arg1="${ant.java.version}" arg2="1.7" />
-        <equals arg1="${ant.java.version}" arg2="1.8" />
-      </or>
+      <equals arg1="${ant.java.version}" arg2="1.7" />
       <then>   
         <java jar="./dist/javascool-builder.jar" dir="./../sketchbook" fork="true">
           <arg value="-q"/>
@@ -119,6 +120,16 @@
           <arg value="${proglets.validated.7}"/>
         </java>
       </then>
+      <elseif>
+        <equals arg1="${ant.java.version}" arg2="1.8" />
+        <then>   
+          <java jar="./dist/javascool-builder.jar" dir="./../sketchbook" fork="true">
+            <arg value="-q"/>
+            <arg value="-proglets"/>
+            <arg value="${proglets.validated.8}"/>
+          </java>
+        </then>
+      </elseif>
       <else>
         <java jar="./dist/javascool-builder.jar" dir="./../sketchbook" fork="true">
           <arg value="-q"/>
@@ -212,6 +223,7 @@
       charset="UTF-8"
       encoding="UTF-8"
       docencoding="UTF-8"
+      additionalparam="-Xdoclint:all -Xdoclint:-missing"
       >
         <link href="http://download.oracle.com/javase/6/docs/api"/>
         <link href="http://javadoc.fifesoft.com/rsyntaxtextarea"/>

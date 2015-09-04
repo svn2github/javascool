@@ -17,7 +17,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
 /** Définit un panneau graphique permettant de piloter une interface série.
- * <p><img src="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/screenshot.png" alt="screenshot"/></p>
+ * <p><img src="http://javascool.gforge.inria.fr/documents/sketchbook/commSerie/screenshot.png" alt="screenshot"></p>
  * @see <a href="SerialInterfacePanel.java.html">source code</a>
  * @serial exclude
  */

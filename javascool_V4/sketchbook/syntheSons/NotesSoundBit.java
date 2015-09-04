@@ -15,25 +15,25 @@ import org.javascool.tools.sound.SoundBit;
 /** Creates a monophonic ``piccolo´´ sound-bit from a note sequence.
  * <div>The sound-bit can be changed using the <tt><a href="#reset(java.lang.String)">reset</a>(notes)</tt> method.</div>
  * Notes <a name="notes"></a> Definition of note's sequence and note:<ul>
- * <li>The notes sequences is written as:<ul>
+ * <li>The notes sequences is written as:<div><ul>
  *   <li> a sequence of notes, separated with spaces;</li>
  *   <li> while note's duration is noted by an integer, from <tt>1</tt> to <tt>999</tt>, separated with spaces;
  *     <br>here, <tt>1</tt> stands for the minimal note duration (e.g. quaver),
  *     <br>the note duration being valid until a new duration is set;</li>
  *   <li> while note's intensity is written using the construct <tt>I<i>value</i></tt> where value is from <tt>0</tt> to <tt>0.999</tt>,
- *     e.g. <i>I0.5</tt> or <tt>I5</tt> (the <tt>0.</tt> number prefix can be omitted) refers to a half-scale intensity.</li>
+ *     e.g. <tt>I0.5</tt> or <tt>I5</tt> (the <tt>0.</tt> number prefix can be omitted) refers to a half-scale intensity.</li>
  *   <li>other pattern being ignored.</li>
- * </ul> e.g. <tt>e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g# 4 a</tt> is more or less the Elise'letter piano right-hand 1st notes.</li>
- * <li>Each note is written as <tt>A4</tt> for the middle-board <tt>A</tt> (<i>La</i>) at 440Hz. <ul>
- *   <li>The letter: <table witdh="900%">
- *     <tr><td width="10%"><tt>A</tt></td><td width="10%"><tt>B</tt></td><td width="10%"><tt>C</tt></td><td width="10%"><tt>D</tt></td><td width="10%"><tt>E</tt></td><td width="10%"><tt>F</tt></td><td width="10%"><tt>G</tt></td><td width="10%"><tt>H</tt></td></tr>
+ * </ul></div> e.g. <tt>e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g# 4 a</tt> is more or less the Elise'letter piano right-hand 1st notes.</li>
+ * <li>Each note is written as <tt>A4</tt> for the middle-board <tt>A</tt> (<i>La</i>) at 440Hz. <div><ul>
+ *   <li>The letter: <table>
+ *     <caption>Note codes</caption>
+ *     <tr><td style="width:10%;"><tt>A</tt></td><td style="width:10%;"><tt>B</tt></td><td style="width:10%;"><tt>C</tt></td><td style="width:10%;"><tt>D</tt></td><td style="width:10%;"><tt>E</tt></td><td style="width:10%;"><tt>F</tt></td><td style="width:10%;"><tt>G</tt></td><td style="width:10%;"><tt>H</tt></td></tr>
  *     <tr><td><i>La</i></td><td><i>Si</i></td><td><i>Do</i></td><td><i>Ré</i></td><td><i>Mi</i></td><td><i>Fa</i></td><td><i>Sol</i></td><td><i>silence</i></td></tr>
  *   </table> stands for the note name. The <tt>h</tt> stands for a ``halt´´, a silence.</li>
  *   <li>The digit, from <tt>0</tt> to <tt>8</tt> included, stands for the octave, default is <tt>4</tt>.</li>
  *   <li>The <tt>#</tt> or <tt>b</tt> suffix stands for the <i>sharp</i> or <i>flat</i> modulation respectively.</li>
- *  </ul> e.g., <tt>G1#</tt> is the 1st piano fingerboard G sharp. The notation is case insensitive.</li>
- * </ul>
- * <li>The <i>tempo</i>, i.e. the minimal note duration in second, is declared a the beginning of the note sequence using the <tt>T<i>value</i></tt> construct.
+ *  </ul></div> e.g., <tt>G1#</tt> is the 1st piano fingerboard G sharp. The notation is case insensitive.</li>
+ * <li>The <i>tempo</i>, i.e. the minimal note duration in second, is declared a the beginning of the note sequence using the <tt>T value</tt> construct.
  *   Default is <tt>0.25</tt>s, while this declarations is to be done once.</li>
  * </ul>
  *

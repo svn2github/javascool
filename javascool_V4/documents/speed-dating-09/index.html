@@ -2,6 +2,7 @@
 <head>
   <title>Video Quizz</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <base href="http://javascool.gforge.inria.fr/v4/documents/speed-dating-09/" />
 </head>
 <body>
 
@@ -10,9 +11,9 @@ pour vous proposer ces quizz-vidéo afin de découvrir quelques facettes des tra
 (rien d'exhaustif, ni d'institutionnel, ici: juste une manière vivante et collégiale de vous montrer que nous travaillons, ensemble, 
 pour développer les connaissances et les technologies de demain).</p>
 
-<script type="text/javascript" src="http://javascool.gforge.inria.fr/documents/speed-dating-09/popupquestion.js"></script>	
-<script type="text/javascript" src="http://javascool.gforge.inria.fr/documents/speed-dating-09/dataquestion.js"></script>	
-<link href="http://javascool.gforge.inria.fr/documents/speed-dating-09/popupquestion.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="./popupquestion.js"></script>	
+<script type="text/javascript" src="./dataquestion.js"></script>	
+<link href="./popupquestion.css" rel="stylesheet" type="text/css"/>
 
 <table align="center" witdh="90%"><tr>
 
@@ -24,7 +25,7 @@ pour développer les connaissances et les technologies de demain).</p>
      '<a href="'+data['url']+'">'+data['prenom']+' <b><i>'+data['nom']+'</i></b></a><br /><b>'+data['titre']+'</b><br />' +
      '<div align="center"><a href="javascript:quizzOpen(sdata['+i+']);"><img height="100" align="center" src="'+data['img']+'" alt="A vous de jouer"/></div>' +
      '<div align="center">(cliquer sur l\'imagette pour avoir le quizz,</div>' +
-     '<div align="right">ou accéder <i><a href="'+data['link']+'">directement</a></i> à la vidéo).</div>' +
+     '<div align="right">ou accéder <i><a target="_blank" href="'+data['link']+'">directement</a></i> à la vidéo).</div>' +
      (data['plus'].length > 0 && false /* get_search('mode') == 'plus' */ ? '<br /><div>En savoir plus: <br /><i>'+data['plus']+'</i></div>' : '');
   }
 

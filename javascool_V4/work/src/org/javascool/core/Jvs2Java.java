@@ -117,8 +117,8 @@ public class Jvs2Java extends Translator {
 	  jvsName = proglet.getName()+" démo";
 	String main = 
 	  "public static void main(String[] usage) {" + 
-	  "    new org.javascool.widgets.MainFrame().reset(\""+jvsName+"\", "+proglet.getDimension().width+", "+proglet.getDimension().height+", "+
-	  (proglet.getPane() != null ? "org.javascool.core.ProgletEngine.getInstance().setProglet(\""+proglet.getName()+"\").getProgletPane()" : "org.javascool.widgets.Console.newInstance()") +
+	  "    new org.javascool.widgets.MainFrame().reset(\""+jvsName+"\", "+(proglet.getDimension().width+200)+", "+(proglet.getDimension().height+100)+", "+
+	  (proglet.getPane() != null ? "org.javascool.core.ProgletEngine.getInstance().setProglet(\""+proglet.getName()+"\").getProgletPane()" : "org.javascool.widgets.Console.getInstance()") +
 	  ").setRunnable(new JvsToJavaTranslated"+uid+"());" +
 	  "}";
 	head.append(main);

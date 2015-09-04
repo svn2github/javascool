@@ -15,27 +15,27 @@ import org.json.JSONArray;
 
 /** Définit la syntaxe PML (Programmatic Markup Language) et son DOM (Data Object Model) Java.
  *
- * <p> Un contenu PML (pour «Programmatic Métadata Logicalstructure») et une structure-logique minimale (Parametric Minimal Logical-structure)
+ * <div> Un contenu PML (pour «Programmatic Métadata Logicalstructure») et une structure-logique minimale (Parametric Minimal Logical-structure)
  * qui permet de définir les paramètres d'un objet numérique (algorithme, web-service) ou d'interfacer entre des applications.
- * C'est une forme minimale de structure à-la XML.</p>
+ * C'est une forme minimale de structure à-la XML.</div>
  *
- * <p> Ses paramètres sont <ul>
+ * <div> Ces paramètres sont <ul>
  *   <li>Son <i>tag</i>, c'est à dire le nom qui définit son type.</li>
  *   <li>Des <i>attributs</i> c'est à dire des valeurs indexes par un nom.</li>
- *   <li>Des <i>éléments</i> c'est à dire des valeurs indexees par un entier non-négatif <tt>>= 0</tt>.</li>
- * </ul> Chaque valeur étant elle même un PML ou une chaîne de caractères. Rien de plus.</p>
+ *   <li>Des <i>éléments</i> c'est à dire des valeurs indexées par un entier non-négatif <tt>&lt;= 0</tt>.</li>
+ * </ul> Chaque valeur étant elle même un PML ou une chaîne de caractères. Rien de plus.</div>
  *
- * <p>La syntaxe est de la forme:
+ * <div>La syntaxe est de la forme:
  * <div style="margin-left: 40px"><tt>"{tag name = value .. element .. }"</tt></div> où <ul>
  * <li>Les PML sont encapsules avec des accolades <tt>{</tt> .. <tt>}</tt>.</li>
  * <li>Les String avec des espaces, <tt>{</tt> ou <tt>}</tt> sont encapsulés avec des double quotes <tt>'"'</tt> (en utilisant <tt>'\"'</tt> pour y échapper).</li>
- * </ul>Cette syntaxe est minimale, proche des langages à accolades (<tt>C/C++, PHP, Java</tt>), facile à lire ou éditer et surtout complètement standar.</p>
+ * </ul>Cette syntaxe est minimale, proche des langages à accolades (<tt>C/C++, PHP, Java</tt>), facile à lire ou éditer et surtout complètement standard.</div>
  *
- * <p>L'analyse syntaxique de PML est <i>tolérante</i> au sens où une valeur est toujours obtenue sans générer d'erreur de syntaxe,
+ * <div>L'analyse syntaxique de PML est <i>tolérante</i> au sens où une valeur est toujours obtenue sans générer d'erreur de syntaxe,
  * en utilisant des valeurs par défaut: <ul>
  *  <li> La construction <tt>"name = value .. "</tt> sans accolade sera vue comme une liste de valeur de tag <tt>null</tt>,</li>
  *  <li> Un attribut sans valeur recevra la valeur <tt>true</tt>,</li>
- * </ul> etc..</p>
+ * </ul> etc..</div>
  *
  * @see <a href="Pml.java.html">source code</a>
  * @serial exclude
@@ -65,7 +65,7 @@ public class Pml {
    * @param value La chaîne de syntaxe <tt>"{tag name = value .. element .. }"</tt>.
    * @param format Les formats possible sont: <div id="input-format"><ul>
    * <li>"PML" (valeur par défaut).</li>
-   * <li>"XML" pour utiliser les structure-logiques XML de la forme <tt>&lt;tag name = value .. > &lt;element .. &lt;/tag></tt>
+   * <li>"XML" pour utiliser les structure-logiques XML de la forme <tt>&lt;tag name = value .. &gt; &lt;element .. &lt;/tag&gt;</tt>
    * <li>"HTM" pour utiliser les structure-logiques HTML.</li>
    * <li>"JSON"pour utiliser les structure-logiques <a href="http://www.json.org">Json</a>.
    * </ul></div>
@@ -103,16 +103,16 @@ public class Pml {
     return this;
   }
   /** Initialise la PML à partir des arguments d'une ligne de commande.
-   * <p>La méthode s'utilise dans la construction: <pre>
+   * <div>La méthode s'utilise dans la construction: <pre>
    * public static void main(String usage[]) {
    *   Pml arguments = new Pml.reset(usage);
-   * ../..<pre></p>
-   * <p>Il respecte les conventions suivantes: <ul>
+   * ../..</pre></div>
+   * <div>Il respecte les conventions suivantes: <ul>
    * <li><tt>-name</tt> définit un paramètre à la valeur true (la syntaxe <tt>--name</tt> est aussi acceptée),</li>
    * <li><tt>-name value</tt> définit la valeur d'un paramètre,</li>
    * <li><tt>file</tt> ajoute un élément de type string,</li>
    * <li><tt>- file</tt> ajoute un élément de type string qui commence par un <tt>-</tt>.</li>
-   ***</ul> Par exemple: <tt>command -quiet -level 123 input1 input2</tt> definit la PML <tt>{usage quiet=true level=123 input1 inpu2}</tt>.</p>
+   ***</ul> Par exemple: <tt>command -quiet -level 123 input1 input2</tt> definit la PML <tt>{usage quiet=true level=123 input1 inpu2}</tt>.</div>
    * @param usage Les éléments de la ligne de commande.
    * @return Cet objet, permettant de définir la construction <tt>Pml pml= new Pml().reset(..)</tt>.
    */
@@ -139,7 +139,7 @@ public class Pml {
    * <li>"TXT" Retourne une chaîne 2D formattée.</li>
    * <li>"XML" Retourne une structure logique XML,
    * en réduisant les tag et attributs à des nom XML valides et en considérant les PML sans attribut ni élément comme des chaînes.<li>
-   * <li>"PHP" Retourne un élément de code PHP de la forme:<tt>&lt;php $tag = array("_tag" = getTag(), . . "name" => "value", . . , "element");?></tt>.</li>
+   * <li>"PHP" Retourne un élément de code PHP de la forme:<tt>&lt;php $tag = array("_tag" = getTag(), . . "name" =&gt; "value", . . , "element");?&gt;</tt>.</li>
    * <li>"JMF" Retourne un format de fichier de manifeste de JAR de la forme: <tt> name : value \n .. </tt> en omettant le tag et les éléments.</li>
    * <li>"JSON" Retourne un format de syntaxe <a href="http://www.json.org">Json</a>.
    * </ul></div>
@@ -753,7 +753,7 @@ public class Pml {
   private Pml parent = null;
 
   /** Teste si un paramètre de ce PML est défini.
-   * <p>Cet appel est formellement équivalent à <tt>getChild(name) != null</tt></p>
+   * <div>Cet appel est formellement équivalent à <tt>getChild(name) != null</tt></div>
    * @param name Le nom de l'attribut ou l'index de l'élément (sous forme de chaîne ou d'entier).
    * @return True si le paramètre est défini, false sinon.
    */
@@ -1018,7 +1018,7 @@ public class Pml {
     return set(Integer.toString(index), value);
   }
   /** Elimine la valeur d'un paramètre de ce PML.
-   * <p>Cet appel est formellement équivalent à <tt>set(name, null);</tt></p>
+   * <div>Cet appel est formellement équivalent à <tt>set(name, null);</tt></div>
    * @param name  Le nom de l'attribut ou l'index de l'élément (sous forme de chaîne ou d'entier).
    * @return Cet objet, permettant de définir la construction <tt>Pml pml= new Pml().del(..)</tt>.
    */
@@ -1032,7 +1032,7 @@ public class Pml {
     return set(Integer.toString(index), (Pml) null);
   }
   /** Ajoute un élément à ce PML.
-   * <p>Cet appel est formellement équivalent à <tt>set(getCount(), value);</tt></p>
+   * <div>Cet appel est formellement équivalent à <tt>set(getCount(), value);</tt></div>
    * @param value La valeur du paramètre (en tant que PML, entier, décimal ou entier).
    * @return Cet objet, permettant de définir la construction <tt>Pml pml= new Pml().add(..)</tt>.
    */
@@ -1103,8 +1103,8 @@ public class Pml {
     return data.size();
   }
   /** Définir un itérateur sur les attributs de ce PML.
-   * <p>- Les attributes sont énumérés avec une construction de la forme: <tt>for(String name : pml.attributes()) { Pml value = pml.getChild(name); .. }</tt>.</p>
-   * <p>- Les éléments sont énumérés avec une construction de la forme:  <tt>for(int n = 0; n &lt; pml.getCount(); n++) { Pml value = pml.getChild(n); .. }</tt>.</p>
+   * <div>- Les attributes sont énumérés avec une construction de la forme: <tt>for(String name : pml.attributes()) { Pml value = pml.getChild(name); .. }</tt>.</div>
+   * <div>- Les éléments sont énumérés avec une construction de la forme:  <tt>for(int n = 0; n &lt; pml.getCount(); n++) { Pml value = pml.getChild(n); .. }</tt>.</div>
    */
   public final Iterable<String> attributes() {
     return new Iterable<String>() {

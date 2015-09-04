@@ -33,13 +33,15 @@ public class ImageUtils {
   /** Charge une image locale ou distante.
    * <p>Reconnait les formats binaires ".png", ".jpg" et ".gif". Reconnait les fichiers ASCII au format <a href="http://fr.wikipedia.org/wiki/Portable_pixmap">".pbm", ".pgm" et ".ppm"</a> par leur extension.</p>
    *
-   * @param location Une URL (Universal Resource Location) de la forme: <div id="load-format"><table align="center">
+   * @param location Une URL (Universal Resource Location) de la forme: <div id="load-format"><table>
+   * <caption>URL (Universal Resource Location) prises en charge</caption>
    * <tr><td><tt>http:/<i>path-name</i></tt></td><td>pour aller chercher le contenu sur un site web</td></tr>
    * <tr><td><tt>http:/<i>path-name</i>?param_i=value_i&amp;..</tt></td><td>pour le récupérer sous forme de requête HTTP</td></tr>
    * <tr><td><tt>file:/<i>path-name</i></tt></td><td>pour le charger du système de fichier local ou en tant que ressource Java dans le CLASSPATH</td></tr>
    * <tr><td><tt>jar:/<i>jar-path-name</i>!/<i>jar-entry</i></tt></td><td>pour le charger d'une archive
    *  <div>(exemple:<tt>jar:http://javascool.gforge.inria.fr/javascool.jar!/META-INF/MANIFEST.MF</tt>)</div></td></tr>
    * </table></div>
+   * @return L'image chargée.
    *
    * @throws IllegalArgumentException Si l'URL est mal formée.
    * @throws RuntimeException Si une erreur d'entrée-sortie s'est produite.
@@ -61,7 +63,8 @@ public class ImageUtils {
   }
   /** Ecrit une image locale ou distante.
    *
-   * @param location @optional<"stdout:"> Une URL (Universal Resource Location) de la forme: <div id="save-format"><table>
+   * @param location Une URL (Universal Resource Location) de la forme: <div id="save-format"><table>
+   * <caption>URL (Universal Resource Location) prises en charge</caption>
    * <tr><td><tt>ftp:/<i>path-name</i></tt></td><td>pour sauver sur un site FTP.</td></tr>
    * <tr><td><tt>file:/<i>path-name</i></tt></td><td>pour sauver dans le système de fichier local (le <tt>file:</tt> est optionnel).</td></tr>
    * <tr><td><tt>mailto:<i>address</i>?subject=<i>subject</i></tt></td><td>pour envoyer un courriel avec le texte en contenu.</td></tr>

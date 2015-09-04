@@ -35,34 +35,21 @@ public class SoundBitPanel extends JPanel {
   public void reset(SoundBit sound, char channel) {
     // Calculates the spectrum magnitude and phase
     data = getData(sound, channel);
-    complex fft[] = getFFT(data);
-    mag = new double[hsize + 1];
-    for(int i = 0; i <= hsize; i++) {
-      double f = f0 * Math.pow(f1 / f0, i / (double) hsize);
-      int k = (int) Math.rint(fft.length * f / SoundBit.SAMPLING);
-      mag[i] = Math.sqrt(fft[k].x * fft[k].x + fft[k].y * fft[k].y);
-    }
-    // Smooths the spectrum magnitude and calculates the maximum
+    // Gets the smoothed spectrum magnitude and calculates the maximum
     double f_max = 0;
     mag_max = 0;
-    smag = new double[hsize + 1];
-    for(int i = 0, w = 5; i <= hsize; i++) {
-      double n = 0, v = 0;
-      for(int j = Math.max(0, i - w); j <= Math.min(hsize, i + w); j++) {
-        n++;
-        v += mag[j];
-      }
-      smag[i] = v / n;
+    mag = getFFTMagnitude(data, f0, f1, hsize, wsize);
+    for(int i = 0; i <= hsize; i++) {
       double f = f0 * Math.pow(f1 / f0, i / (double) hsize);
-      if(mag_max < smag[i]) {
+      if(mag_max < mag[i]) {
         f_max = f;
-        mag_max = smag[i];
+        mag_max = mag[i];
       }
     }
     label = sound.getName() + " (|fft| < " + ((int) mag_max) + ", f_max = " + ((int) f_max) + "Hz) ";
     repaint();
   }
-  int hsize = 16 * 31, vsize = 160, b = 0, m = 20, width = 2 * m + hsize, height = b + 4 * m + 3 * vsize, height2 = b + 2 * m + 2 * vsize;
+  int hsize = 16 * 31, wsize = 3, vsize = 160, b = 0, m = 20, width = 2 * m + hsize, height = b + 4 * m + 3 * vsize, height2 = b + 2 * m + 2 * vsize;
   double f0 = 440.0 / 16, f1 = 440.0 * 16;
 
   /** Routine interne de tracé, ne pas utiliser.
@@ -112,17 +99,18 @@ public class SoundBitPanel extends JPanel {
     g.drawString("Amplitudes du spectre", m + m / 2, b + 2 * m);
     g.drawString("Début du signal", m + m / 2, height2 + 2 * m);
   }
-  private double data[], mag[], mag_max, smag[];
+  private double data[], mag[], mag_max;
   private String label;
 
   /** Converts a mono/stereo 16bit stream to a data buffer.
    * @param sound The audio stream to convert.
    * @param channel Left 'l' or right 'r' channel.
    */
-  private static double[] getData(SoundBit sound, char channel) {
+  public static double[] getData(SoundBit sound, char channel) {
     AudioInputStream stream = sound.getStream();
     SoundBit.checkFormat(stream);
-    if(stream.getFrameLength() > (long) Integer.MAX_VALUE) { throw new IllegalArgumentException("Cannot convert huge audio stream to buffer");
+    if(stream.getFrameLength() > (long) Integer.MAX_VALUE) { 
+      throw new IllegalArgumentException("Cannot convert huge audio stream to buffer");
     }
     int length = (int) stream.getFrameLength();
     double data[] = new double[length];
@@ -137,6 +125,36 @@ public class SoundBitPanel extends JPanel {
     } catch(IOException e) { throw new RuntimeException(e + " when reading the audio stream " + sound.getName());
     }
     return data;
+  }
+  /** Renvoie le spectre de fréquence d'un signal. 
+   * @param data Les données en entrées.
+   * @param f0 La fréquence minimale.
+   * @param f1 La frequence maximale.
+   * @param hsize Le nombre fréquence.
+   * @param wsize La taille de la fenêtre de lissage, 0 pour éviter le lissage.
+   * @return Un tableau de taille <tt>hsize + 1</tt> des amplitudes à une fréquence donnée, en coordonnées logarithmique. 
+   * <p>La valeur d'indice <tt>i</tt> correspond à la fréquence <tt>f0 * Math.pow(f1 / f0, i / (double) hsize)</tt>.</p>
+   */
+  public static double[] getFFTMagnitude(double data[], double f0, double f1, int hsize, int wsize) {
+    complex fft[] = getFFT(data);
+    double mag[] = new double[hsize + 1];
+    for(int i = 0; i <= hsize; i++) {
+      double f = f0 * Math.pow(f1 / f0, i / (double) hsize);
+      int k = (int) Math.rint(fft.length * f / SoundBit.SAMPLING);
+      mag[i] = Math.sqrt(fft[k].x * fft[k].x + fft[k].y * fft[k].y);
+    }
+    // Smooths the spectrum magnitude and calculates the maximum
+    double smag[] = new double[hsize + 1];
+    wsize = Math.max(0, wsize);
+    for(int i = 0, w = wsize; i <= hsize; i++) {
+      double n = 0, v = 0;
+      for(int j = Math.max(0, i - w); j <= Math.min(hsize, i + w); j++) {
+        n++;
+        v += mag[j];
+      }
+      smag[i] = v / n;
+     }
+    return smag;
   }
   // Computes the FFT of a stream after http://www.cs.princeton.edu/introcs/97data/FFT.java.html
   private static complex[] getFFT(double data[]) {

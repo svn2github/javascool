@@ -35,6 +35,11 @@ public class Desktop {
   }
   private static Desktop desktop = null;
 
+  /** Renvoie vrai si une instance est crée. */
+  public static boolean hasInstance() {
+    return desktop != null;
+  }
+
   private Desktop() {}
   /** Renvoie la fenêtre racine de l'interface graphique. */
   public JFrame getFrame() {

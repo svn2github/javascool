@@ -1,0 +1,130 @@
+<div class="sujet" title="Comprendre quelques opérations de manipulation d'images">
+  
+  
+  <div class="objectif">
+Ce projet vous propose de compléter ce logiciel de dessin
+bien connu avec différentes fonctionnalités basiques comme le tracé de
+courbes, de lignes droites, de rectangles ou encore le remplissage de
+forme et la rotation d'images.
+
+    Le but de ce tutoriel est de comprendre comment un code dessine dans une image.
+  </div>
+  
+  <div class="intros">
+     <p>
+       Pour commencer, prendre connaissance des fonctionnalités attendues pour ce
+       logiciel en utilisant la proglet en mode démo (option à cocher en bas
+       à droite de l'onglet paintbrush). L'option <i>hexa code</i> vous montre que
+       cette image est en fait constituée de 32 pixels de large sur 32 pixels
+       de haut (soit 1024 pixels), chaque pixel contenant une couleur encodée
+       sous la forme d'un nombre entre 0 et 15. Dans ce mode, une couleur est
+       représentée par son numéro au format hexadécimal :
+       0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F.
+     </p>
+     <p>
+       Observez la mise à jour des codes numériques
+       de chaque pixel lors du remplissage d'une forme par exemple.
+     </p>
+     <p>
+       Passer ensuite en mode proglet, les fonctionnalités précédentes ne
+       fonctionnent plus ! Vous devez vous même programmer ces
+       fonctionnalités. Il faut pour cela recopier le squelette de
+       programme <l class="editor" link="Exemple.jvs" text="suivant"/>
+       et compléter chaque fonction.
+     </p>
+     <p>
+       Afin de modifier les pixels de l'image, vous disposez de deux actions possibles :
+       <div class="ul">
+	 <div><r>getPixel(x,y)</r> renvoie le code couleur du pixel de 
+	     coordonnées (<r>x</r>,<r>y</r>).</div>
+	 <div><r>setPixel(x,y,couleur)</r> modifie le pixel de coordonnées
+	     (<r>x</r>,<r>y</r>) avec la couleur de numéro
+	     <r>couleur</r>.</div>
+       </div>
+     </p>
+     <p>
+	 Chaque abscisse et chaque coordonnée doit varier dans l'intervalle
+	 [0,31]. Une erreur se déclenchera si vous utilisez ces fonctions
+	 hors de ces bornes.
+       <div class="center"><l class="icon" icon="pixels.png"/></div>
+     </p>
+
+  </div>
+  <div>On pourra partir du programme <l link="Exemple.jvs.html" text="exemple donné ici" />.</div>
+  <div class="works">
+     <div>
+       Compléter la fonction <r>affichePoint</r> qui est utilisée
+       par le logiciel en mode <i>Tracé</i> à chaque fois qu'il est
+       nécessaire de colorier un pixel.
+     </div>
+     <div>
+       Compléter la fonction <r>supprimePoint</r> qui est
+       utilisée par le logiciel en mode <i>Gomme</i> pour effacer une zone
+       carrée de 3 pixels sur 3 pixels. Effacer un pixel revient à le colorier 
+       avec la couleur de fond (ici le blanc).
+     </div>
+     <div>
+       Compléter la fonction <r>afficheRectangle</r> qui est
+       utilisée par le logiciel en mode <i>Rectangle</i>. L'utilisateur
+       désigne un premier point, déplace la souris vers un deuxième point
+       puis relâche le bouton de la souris. Ces deux points constituent les
+       extrémités de la diagonale du rectangle à tracer. Le logiciel fait
+       alors appel à la fonction <r>afficheRectangle</r> en donnant en
+       argument les coordonnées du premier point, les coordonnées du deuxième
+       point ainsi que la couleur demandée pour tracer les contours du
+       rectangle. 
+     </div>
+     <div>
+       Compléter la fonction <r>remplir</r> qui est utilisée par
+       le logiciel en mode <i>Remplir</i>. Les coordonnées données en
+       paramètres sont celles du pixel sélectionné par l'utilisateur avec son
+       curseur <i>pot de peinture</i>. Attention cette solution demande un
+       peu de réflexion pour éviter de faire boucler la procédure de
+       remplissage mais il existe une solution relativement simple et
+       concise (penser récursif...)!
+     </div>
+     <div>
+       Compléter la fonction <r>rotationGauche</r> qui est utilisée par le
+	   logiciel lorque l'utilisateur presse le bouton <i>Rotation gauche</i>.
+	    Dans un premier temps, il est conseillé d'employer un tableau
+    	intermédiaire de dimension 32x32.  Dans un deuxième temps, essayer
+    	de se passer d'un tableau intermédiaire en employant uniquement
+    	une variable intermédiaire (de type <r>int</r>) dans la boucle interne
+    	de votre programme.	  
+     </div>
+     <div>
+       Compléter la fonction <r>afficheLigne</r> qui est utilisée
+       par le logiciel en mode <i>Ligne</i>. L'utilisateur désigne un premier
+       point, déplace la souris vers un deuxième point puis relâche le bouton
+       de la souris. Ces deux points constituent les extrémités de la ligne à
+       tracer. Le logiciel fait alors appel à la fonction
+       <r>afficheLigne</r> en donnant en argument les coordonnées du
+       premier point, les coordonnées du deuxième point ainsi que la couleur
+       demandée pour tracer la ligne. Attention, cette fois
+       les lignes à tracer ne sont pas forcément horizontales ou
+       verticales. Comme le montre la figure ci-dessous, il faut savoir faire
+       des approximations pour <i>allumer</i> les pixels
+       les plus proches du segment idéal.
+       
+       <div class="center"><l class="icon" icon="ligne.png"/></div>
+
+       Pour réaliser des calculs avec davantage de précision, vous
+       pouvez manipuler provisoirement les coordonnées avec le
+       format <r>double</r>.
+
+       <div class="code">
+          <p><r>double</r> dx = (<r>double</r>) x;</p>
+       </div>
+       
+       Pour réaliser la conversion inverse (de <r>double</r>
+       vers <r>int</r>), il faut prendre la partie entière d'un nombre réel
+       avec la fonction Java <r>floor(double x)</r>.
+
+       <div class="code">
+         <p><r>int</r> x = (<r>int</r>) <r>floor</r>(x);</p>
+       </div>
+     </div>
+      </div>
+  </div>
+
+  

@@ -58,7 +58,7 @@ public class Htm2Hml extends JPanel {
     }
     return hml;
   }
-  /** Lanceur de la transformation [X]HTML -> HML.
+  /** Lanceur de la transformation [X]HTML -&gt; HML.
    * @param usage <tt>java org.javascool.builder.Htm2Hml input-file [output-file]</tt>
    */
   public static void main(String[] usage) {

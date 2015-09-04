@@ -39,7 +39,8 @@ public class FileManager {
 
   /** Lit un contenu textuel local ou distant en tenant compte de l'encodage local.
    *
-   * @param location Une URL (Universal Resource Location) de la forme: <div id="load-format"><table align="center">
+   * @param location Une URL (Universal Resource Location) de la forme: <div id="load-format"><table>
+   * <caption>URL (Universal Resource Location) prises en charge</caption>
    * <tr><td><tt>http:/<i>path-name</i></tt></td><td>pour aller chercher le contenu sur un site web</td></tr>
    * <tr><td><tt>http:/<i>path-name</i>?param_i=value_i&amp;..</tt></td><td>pour le récupérer sous forme de requête HTTP</td></tr>
    * <tr><td><tt>file:/<i>path-name</i></tt></td><td>pour le charger du système de fichier local ou en tant que ressource Java dans le CLASSPATH</td></tr>
@@ -125,6 +126,7 @@ public class FileManager {
   /** Ecrit un contenu textuel local ou distant en tenant compte de l'encodage local.
    *
    * @param location Une URL (Universal Resource Location) de la forme: <div id="save-format"><table>
+   * <caption>URL (Universal Resource Location) prises en charge</caption>
    * <tr><td><tt>http:/<i>path-name</i></tt></td><td>pour poster un fichier à une adresse Web</td></tr>
    * <tr><td><tt>file:/<i>path-name</i></tt></td><td>pour sauver dans le système de fichier local (le <tt>file:</tt> est optionnel).</td></tr>
    * <tr><td><tt>mailto:<i>address</i>?subject=<i>subject</i></tt></td><td>pour envoyer un courriel avec le texte en contenu.</td></tr>

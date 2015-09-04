@@ -1,0 +1,46 @@
+class Skieur  {
+	// proprietes
+	String nom; 
+	double [] notes = new double[5]; 
+	// methodes
+	void saisir() { 
+		int i1; 
+		this.nom = readString( "this.nom : " ); 
+		for(i1=0; i1<5; i1++) {
+			this.notes[i1] = readDouble( "this.notes[" + (i1) + "] : " ); 
+		}
+	} 
+	double calculer_noteFinale() { 
+		int i1; 
+		double som; 
+		double mini; 
+		double maxi; 
+		double noteFinale; 
+		som = 0; 
+		mini = 1000; 
+		maxi = -1000; 
+		for(i1=0; i1<=4; i1=i1+1) {
+			som = som + this.notes[i1]; 
+			if (this.notes[i1] < mini) {
+				mini = this.notes[i1]; 
+			}
+			if (this.notes[i1] > maxi) {
+				maxi = this.notes[i1]; 
+			}
+		}
+		noteFinale = som - mini - maxi; 
+		return noteFinale;
+	} 
+	// constructeurs
+	Skieur () { 
+		//  ajouter des instructions
+	} 
+}
+
+void main() {
+	Skieur  objet = new Skieur (); 
+	double noteFinale; 
+	objet.saisir();
+	noteFinale = objet.calculer_noteFinale();
+	println( "noteFinale : " + noteFinale ); 
+} 

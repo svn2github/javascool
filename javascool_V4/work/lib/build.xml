@@ -4,7 +4,7 @@
   <!--property name="jdk.dir" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64"/-->
   <property name="jdk.dir" value="/usr/java/jdk1.6.0_25"/>
   <property name="jdk7.dir" value="/usr/java/jdk1.7.0_07"/>
-  <property name="jdk8.dir" value="/usr/java/jdk1.8.0_31"/>
+  <property name="jdk8.dir" value="/usr/java/jdk1.8.0_60"/>
   <property name="build.dir" value="../../build/lib"/>
 
   <!-- Construction de la library javac.jar où le compilateur java est extrait du tools.jar standard -->
@@ -42,6 +42,13 @@
     <mkdir dir="${build.dir}"/>
     <unzip dest="${build.dir}" src="${jdk7.dir}/lib/tools.jar"/>
     <jar destfile="./javadoc7.jar" basedir="${build.dir}" includes="com/sun/tools/javadoc/**,com/sun/javadoc/**,com/sun/tools/doclets/**"/>
+    <delete dir="${build.dir}"/>
+  </target>
+  <target name="javadoc8.jar"> 
+  <delete file="./javadoc8.jar"/>
+    <mkdir dir="${build.dir}"/>
+    <unzip dest="${build.dir}" src="${jdk8.dir}/lib/tools.jar"/>
+    <jar destfile="./javadoc8.jar" basedir="${build.dir}" includes="com/sun/tools/javadoc/**,com/sun/javadoc/**,com/sun/tools/doclets/**,com/sun/source/doctree/**"/>
     <delete dir="${build.dir}"/>
   </target>
   <!-- Construction de la library jarsigner.jar où jarsigner est extrait du tools.jar standard -->

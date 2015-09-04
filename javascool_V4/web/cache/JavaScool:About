@@ -11,8 +11,8 @@ Depuis 2008 Java'sCool est un <a class="internal" href="?page=contact&action=cre
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.016 seconds
-Real time usage: 0.013 seconds
+CPU time usage: 0.012 seconds
+Real time usage: 0.012 seconds
 Preprocessor visited node count: 1/1000000
 Preprocessor generated node count: 4/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -21,5 +21,10 @@ Highest expansion depth: 1/40
 Expensive parser function count: 0/100
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:892-1!*!0!*!*!*!* and timestamp 20150313130632 and revision id 5859
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:892-1!*!0!*!*!*!* and timestamp 20150904121518 and revision id 5859
  -->

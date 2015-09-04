@@ -1,0 +1,18 @@
+
+// saisie des entrees
+prixUnitaire = Number(Input("Quel est le prix unitaire en euros ?")); 
+quantite = Number(Input("Quelle est la quantite achetee ?")); 
+// calcul du prix total
+if (quantite == 1) {
+	remise=0;
+}
+else if ( (quantite==2)  ||  (quantite==3) ) {
+	remise=0.1;
+}
+else {
+	remise=0.2;
+}
+prixTotal=quantite * prixUnitaire * (1-remise);
+// affichage de la sortie
+Println("Le prix total vaut " + prixTotal + " euros"); 
+

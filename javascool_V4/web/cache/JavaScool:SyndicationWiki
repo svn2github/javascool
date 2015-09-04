@@ -72,8 +72,8 @@ function wiki_get_contents_cache_clear() {
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.008 seconds
-Real time usage: 0.012 seconds
+CPU time usage: 0.024 seconds
+Real time usage: 0.023 seconds
 Preprocessor visited node count: 44/1000000
 Preprocessor generated node count: 116/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -82,5 +82,10 @@ Highest expansion depth: 2/40
 Expensive parser function count: 0/100
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:895-1!*!*!!fr!*!* and timestamp 20150313130628 and revision id 6004
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:895-1!*!*!!fr!*!* and timestamp 20150904121514 and revision id 6004
  -->

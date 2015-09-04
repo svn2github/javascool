@@ -12,7 +12,7 @@ var sdata = new Array(
   'mail':'philippe.audra@unice.fr',
   'url':'http://annuaire.unice.fr/index.php?pname=audra&base=ou%3Dpersonnel%2Cou%3Dpeople%2Cdc%3Dunice%2Cdc%3Dfr&action=list_persons&mode=standard&look=portail',
   'titre':'Hydrogéologie et environnement',
-  'img':'http://i3.ytimg.com/vi/JqnR1SR_Gig/1.jpg',
+    'img':'https://i.ytimg.com/vi/JqnR1SR_Gig/mqdefault.jpg',
   'plus':'De l\'eau douce dissimulée sous terre, un monde inexploré ? Des scientifiques spéléologues explorent les entrailles de notre sous sol et découvrent des rivières souterraines de toute beauté. Une goutte d\'eau dans la complexité du cycle de l\'eau mais un enjeu important pour les habitants des communes qui peuvent souffrir du manque d\'eau pendant la période estivale caractérisée par une diminution des précipitations.',
   'question':'De l\'eau douce dissimulée sous terre, un monde inexploré ?',
   'answers':new Array(
@@ -22,7 +22,7 @@ var sdata = new Array(
     'Oui et non, il y a de l\'eau douce dissimulée sous terre, mais elle est et restera inaccessible'
   ),
   'answer':2,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/a/u/0/JqnR1SR_Gig'
+  'link':'https://www.youtube.com/watch?v=JqnR1SR_Gig'
 },
   
 {
@@ -31,7 +31,7 @@ var sdata = new Array(
   'mail':'jean-claude.bermond@sophia.inria.fr',
   'url':'http://www-sop.inria.fr/members/Jean-Claude.Bermond',
   'titre':'Modéliser les échanges au sein des réseaux',
-  'img':'http://i2.ytimg.com/vi/mzR-diIWxNA/2.jpg',
+  'img':'https://i.ytimg.com/vi/mzR-diIWxNA/mqdefault.jpg',
   'plus':'Comment  faire se promener des écolières de sorte que jamais les écolières ne soient ensemble de jour en jour ? Un problème de maths qui permet aussi d\'optimiser les réseaux informatiques.<br/>Comment faire se promener des prisonniers en rang par 2,3,.., avec des rangs tous les jours différents pour que nul clan ne puisse se former (les prisonniers ne peuvent parler qu´à leurs voisins immédiats) ? <br/> Il existe un Théorème de Jean-Claude Bermond qui résoud, depuis 1990 et dans toute sa généralité, ce problème posé depuis 1905 ! Jean-Claude et ses collègues ont ramené ce problème à un problème de graphe: chaque sommet représente un prisonnier connecté à tous les autres, on cherche alors à factoriser ce graphe sous forme de chemins de longueur 2, 3, .. qui représentent les rangs à former. Le beau résultat montre comment énumérer toutes les solutions pour en proposer des différentes chaque jour. <br/> Ce résultat a de nombreuses applications dans les réseaux, lors de problèmes d´organisation etc... <br/> Voilà donc des maths bien . . vivantes.<br/><br/> À vous: essayez à la main avec 15 prisonniers à répartir dans des chambres 3 lits (attention ce n´est pas tout à fait le même problème) en ne les faisant jamais dormir avec les mêmes deux nuits de suite, les 7 jours de la semaine . . facile ? Mais . . si les chiffres sont différents . . que se passe t´il ? <br/> À vous: proposez des problèmes concrets de décomposition avec des liens comme ci dessous, qui puisse utiliser ce résultat . . <br/><br/>(*) Note: Si c´est un théorème ``de Bermond´´ (parmi d´autres) ce n´est pas parce que Jean-Claude l´a nommé ainsi. Le nom s´est imposer de lui-même. Il y a même dès 1970 un corolaire de Bermond . . qui apparaît dans la ``bible´´ de la théorie des graphes (Graphes et Hypergraphes, ch 10). de G. Berge. Et devinez quoi . .celui qui s´en souciait tellement qu´il ne le savait pas ou plus en 2009 . . c´était Jean-Claude lui même (probablement car tout le livre doit être au bout de son stylo) !!',
   'question':'Quel est le rapport entre des écolières et internet ?',
   'answers':new Array(
@@ -41,7 +41,7 @@ var sdata = new Array(
     'C\'est une erreur onomatopique: c\'est le Professeur Juan-Claudio Escolier de Bermonte qui est à l\'origine d\'internet'
   ),
   'answer':1,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/u/4/mzR-diIWxNA'
+  'link':'https://www.youtube.com/watch?v=mzR-diIWxNA'
 },
 
 {
@@ -50,7 +50,7 @@ var sdata = new Array(
   'mail':'bonizzi@i3s.unice.fr',
   'url':'http://www.i3s.unice.fr/~bonizzi',
   'titre':'Le défribilateur cardiaque du futur',
-  'img':'http://i3.ytimg.com/vi/BavI8HzUMls/1.jpg',
+  'img':'https://i.ytimg.com/vi/BavI8HzUMls/mqdefault.jpg',
   'plus':'Le présent projet vise à étudier, réaliser et évaluer les meilleures techniques de traitement du signal pour l\'extraction d\'activité cardiaque pathologique. En définitive, cette recherche devra contribuer à faire la lumière sur les phénomènes physiologiques associées à la production et la perpétuation de la fibrilation cardiaque.',
   'question':'Comment marchera le défibrilateur cardiaque du futur ?',
   'answers':new Array(
@@ -60,7 +60,7 @@ var sdata = new Array(
     'Exactement comme celui d\'aujourd\'hui: c\'est un objet industriel qu\'il ne faut pas prendre le risque de modifier, puisque lié à la vie'
   ),
   'answer':3,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/u/1/BavI8HzUMls'
+  'link':'https://www.youtube.com/watch?v=BavI8HzUMls'
 },
 
 {
@@ -68,7 +68,7 @@ var sdata = new Array(
   'nom':'Clerc',
   'mail':'maureen.clerc@sophia.inria.fr',
   'url':'http://www-sop.inria.fr/members/Maureen.Clerc/index.php',
-  'img':'http://i4.ytimg.com/vi/ka6h3Mb_ye4/1.jpg',
+  'img':'https://i.ytimg.com/vi/ka6h3Mb_ye4/mqdefault.jpg',
   'titre':'Interfacer cerveau et ordinateur',
   'plus':'Traiter les signaux électriques liés à l\'activité cérébrale et les traduire en commande pour des machines, c\'est le rôle des interfaces cerveau-ordinateur. On peut mesurer l\'activité cérébrale à l\'aide de systèmes électroencéphalographiques (ou EEG), qui utilisent des électrodes situées à la surface du crâne pour capter l\'activité électrique du cerveau. Lorsque l\'on imagine un mouvement, notre activité mentale va modifier l\'amplitude d’activités cérébrales qui peuvent être mesurées et utilisées. <br/> Voir <a href="http://interstices.info/openvibe">OpenViBE : un logiciel pour les interfaces cerveau-ordinateur</a> et <br/> <a href="http://interstices.info/observation-cerveau">Observation du cerveau par imagerie fonctionnelle</a>',
   'question':'Peut-on vraiment connecter notre cerveau à un ordinateur ?',
@@ -79,7 +79,7 @@ var sdata = new Array(
     'Oui, depuis des années, dans les applications militaires ultra-secrètes, mais ces recherches ne peuvent être rendues publiques'
    ),
   'answer':2,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/u/3/ka6h3Mb_ye4'
+  'link':'https://www.youtube.com/watch?v=ka6h3Mb_ye4'
 },
 
 {
@@ -88,7 +88,7 @@ var sdata = new Array(
   'mail':'cupo@ipmc.cnrs.fr',
   'url':'http://biologie.polytechnice.fr/cupo.html',
   'titre':'De la grippe A au génie biologique',
-  'img':'http://i2.ytimg.com/vi/1Xvl2zy7kqQ/1.jpg',
+  'img':'https://i.ytimg.com/vi/VmlkuxbPWlk/mqdefault.jpg',
   'plus':'Des outils pharmacologiques qui sont des anti-corps thérapeuthiques, des protéïnes naturelles donc acceptées par l\'organisme, qui ont pour but de neutraliser des virus: immunisation passive (à contrario de la vacination active, le vaccin).',
   'question':'Pourra-t\'on se prémunir de virus comme la grippe A (H1N1) autrement que par un vaccin ?',
   'answers':new Array(
@@ -98,7 +98,7 @@ var sdata = new Array(
     'En réalité, nous n\'en savons rien: l\'utilisation de l\'immunisation passive (anti-corps), ou active (vaccin) reste aléatoire, car uniquement le fruit de tâtonnements'
   ),
   'answer':1,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/u/0/VmlkuxbPWlk'
+  'link':'https://www.youtube.com/watch?v=VmlkuxbPWlk'
 },
 
 {
@@ -107,7 +107,7 @@ var sdata = new Array(
   'mail':'leucio-antonio.cutillo@eurecom.fr',
   'url':'http://www.eurecom.fr/people/cutillo.fr.htm',
   'titre':'Sécurité et vie privée dans les réseaux sociaux',
-  'img':'http://i3.ytimg.com/vi/RLlhwldc5sM/1.jpg',
+  'img':'https://i.ytimg.com/vi/fmGHJ23us0U/mqdefault.jpg',
   'plus':'Safebook: un réseau social en préservant la vie privée en ligne s\'appuyant sur la confiance de la vie réelle. La mise en réseau de services sociaux (SNS), soulèvent des problèmes de sécurité graves, en particulier à l\'égard de la vie privée de leurs utilisateurs. Plusieurs études ont montré la vulnérabilité de ces services en cas d\'infraction vie privée et l\'emprunt d\'identité, etc.. et pe stockage centralisé représente une faiblesse supplémentaire. Notre solution est la fourniture d\'un réseau social décentralisé et de moyens de cryptographie.',
   'question':'A quoi peut bien servir ``safebook´´ ?',
   'answers':new Array(
@@ -117,7 +117,7 @@ var sdata = new Array(
     'C\'est un logiciel de sécurité qui permet de détecter les contrevenants et les personnes suspectes du site facebook'
   ),
   'answer':1,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/a/u/2/fmGHJ23us0U'
+  'link':'https://www.youtube.com/watch?v=fmGHJ23us0U'
 },
 
 {
@@ -125,7 +125,7 @@ var sdata = new Array(
   'nom':'Deneire',
   'mail':'deneire@unice.fr',
   'url':'http://www.i3s.unice.fr/~deneire',
-  'img':'http://i4.ytimg.com/vi/cReiHtTNPGM/1.jpg',
+    'img':'https://i.ytimg.com/vi/cReiHtTNPGM/mqdefault.jpg',
   'titre':'Les scientifiques cachés à l\'intérieur d\'un téléphone',
   'plus':'Des ondes et des antennes, des mathématiques et des scientifiques à la pelle, et mêmes des biologistes, ce sont toutes nos sciences contemporaines qui se sont données rendez-vous dans nos téléphones portables.',
   'question':'Combien faut-il de scientifiques pour développer un téléphone portable ?',
@@ -136,7 +136,7 @@ var sdata = new Array(
     'Aucun: le téléphone portable est un objet créé par des ingénieurs, pas des scientifiques'
   ),
   'answer':2,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/u/13/cReiHtTNPGM'
+  'link':'https://www.youtube.com/watch?v=cReiHtTNPGM'
 },
 
 {
@@ -144,7 +144,7 @@ var sdata = new Array(
   'nom':'Dugelay',
   'mail':'jean-luc.dugelay@eurecom.fr',
   'url':'http://www.eurecom.fr/people/dugelay.fr.htm',
-  'img':'http://i4.ytimg.com/vi/GdPdpFnSn84/1.jpg',
+  'img':'https://i.ytimg.com/vi/GdPdpFnSn84/mqdefault.jpg',
   'titre':'Nouveaux modèles pour la biométrie.',
     'plus':'Le domaine des communications multimédia est en pleine révolution. L\'Internet et sa principale application, le Web, offrent de vastes quantités d’informations multimédias, audio et vidéo, animation et réalité virtuelle, etc.. Dans ce contexte, notre recherche actuelle est centrée sur la sécurité (tatouage et biométrie) et l\'analyse d\'image faciale pour l\'authentification de personne, en utilisant la 3D.',
   'question':'Que gagne-t\'on à utiliser une reconstruction 3D plutôt qu\'une photo 2D pour reconnaître un visage ?',
@@ -155,7 +155,7 @@ var sdata = new Array(
     'Il est impossible de reconnaître un visage en 2D car c\'est intrinsèquement une surface de l\'espace: seule la méthode 3D marche'
   ),
   'answer':2,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/a/u/1/GdPdpFnSn84'
+  'link':'https://www.youtube.com/watch?v=GdPdpFnSn84'
 },
 
 {
@@ -164,7 +164,7 @@ var sdata = new Array(
   'mail':'gourbesv@unice.fr',
   'url':'http://annuaire.unice.fr/index.php?pname=gourbesville&base=ou%3Dpersonnel%2Cou%3Dpeople%2Cdc%3Dunice%2Cdc%3Dfr&action=list_persons&mode=standard&look=portail',
   'titre':'Stratégie optimale face aux crues',
-  'img':'http://i3.ytimg.com/vi/RWTH0aEVmBQ/1.jpg',
+  'img':'https://i.ytimg.com/vi/RWTH0aEVmBQ/mqdefault.jpg',
   'plus':'Quelle stratégie aujourd\'hui face aux crues urbaines ? Les épisodes pluvieux orageux risquent à l\'avenir de devenir plus violents et plus fréquents. Afin d\'éviter des dommages aux populations et aux habitations, il est urgent de penser la ville autrement. Pour les urbanistes du futur, il s\'agit de modéliser l\'intrusion de l\'eau dans les rues et d\'optimiser son écoulement ainsi que son infiltration à travers des surfaces poreuses. La forme des bâtiments les plus exposés au risque de crue pourrait également faire l\'objet de travaux d\'aménagement pour faciliter le passage de l\'eau. ',
   'question':'Quelle stratégie aujourd\'hui face aux crues urbaines ?',
   'answers':new Array(
@@ -174,7 +174,7 @@ var sdata = new Array(
     'Le problème ne se pose hélas pas, avec la crise climatique, les inondations auront tendance à disparaître'
   ),
   'answer':1,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/u/3/RWTH0aEVmBQ'
+  'link':'https://www.youtube.com/watch?v=RWTH0aEVmBQ'
 },
 
 {
@@ -183,7 +183,7 @@ var sdata = new Array(
   'mail':'raymond.knopp@eurecom.fr,david.gesbert@eurecom.fr',
   'url':'http://www.eurecom.fr/cm.fr.htm',
   'titre':'Les communications sans fil du futur',
-  'img':'http://i4.ytimg.com/vi/ome_Kmc6r7A/1.jpg',
+  'img':'https://i.ytimg.com/vi/EiuDj9Ba3vA/mqdefault.jpg',
   'plus':'Réseaux sans-fil et périphériques mobiles sont de plus en plus capable de créer et partager du contenu. L\'exploitation de leurs données à travers ces dispositifs qui ne sont connectés par intermittence nécessite de nouvelles stratégies d\'adaptation, par exemple des communications d\'urgence lors de crises et réseaux dit «ad-hoc».',
   'question':'Quel est le lien entre réseau «ad-hoc» et catastrophe naturelle',
   'answers':new Array(
@@ -193,7 +193,7 @@ var sdata = new Array(
     'Lors d\'une catastrophe, les secours fonctionnent de la même manière qu\'un réseau «ad-hoc»'
   ),
   'answer':2,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/a/u/1/EiuDj9Ba3vA'
+  'link':'https://www.youtube.com/watch?v=EiuDj9Ba3vA'
 },
 
 {
@@ -202,7 +202,7 @@ var sdata = new Array(
   'mail':'gregoire.malandain@sophia.inria.fr',
   'url':'http://www-sop.inria.fr/members/Gregoire.Malandain',
   'titre':'Lorsque mathématiques et médecine cohabitent',
-  'img':'http://i3.ytimg.com/vi/FzpSgwOrpDo/1.jpg',
+  'img':'https://i.ytimg.com/vi/00uokiuVXi4/mqdefault.jpg',
   'plus':'Grâce aux images médicales, les médecins et les chirurgiens peuvent voir ce qui reste invisible à l\'œil nu. Et les modélisations informatiques, représentent les organes, leur fonctionnement mais aussi les fluides qui les parcourent ; elles aident au bilan diagnostique des pathologies et au contrôle de l\'efficacité des traitements. Elles permettent l\'analyse du comportement de l’organe dans son ensemble et parfois jusque dans des détails aussi fins que les interactions entre molécules.<br/><a href="http://interstices.info/expose-ayache">Le traitement numérique des images médicales</a>, <br/><a href="http://interstices.info/christian-barillot">Ce que pourraient voir les chirurgiens pendant une intervention </a>, <br/><a href="http://interstices.info/hepatique">Simulation de chirurgie hépatique</a>, <br/><a href="http://interstices.info/neurochirurgie2">La neurochirurgie assistée par l´information et la connaissance </a>, <br/><a href="http://interstices.info/simulation-cataracte">Simulation de l´opération de la cataracte </a>, <br/><a href="http://interstices.info/neuronavigation">Neuronavigation pour la stimulation magnétique transcranienne</a>.',
   'question':'Pourquoi les médecins utilisent t\'ils les mathématiciens ?',
   'answers':new Array(
@@ -212,7 +212,7 @@ var sdata = new Array(
     'C\'est une idée reçue tout à fait inexacte: la santé est un domaine bien trop sérieux pour être confié à un mathématicien (ou un informaticien)'
   ),
   'answer':3,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/u/3/FzpSgwOrpDo'
+  'link':'https://www.youtube.com/watch?v=00uokiuVXi4'
 },
 
 {
@@ -221,7 +221,7 @@ var sdata = new Array(
   'mail':'tigli@polytech.unice.fr',
   'url':'http://rainbow.i3s.unice.fr/~tigli',
   'titre':'Informatique ambiante et ubiquitaire: les objets intelligents',
-  'img':'http://i3.ytimg.com/vi/bv0hezyFpbc/1.jpg',
+  'img':'https://i.ytimg.com/vi/bv0hezyFpbc/mqdefault.jpg',
   'plus':'La miniaturisation des dispositifs informatiques et de télécommunication, le progrès des protocoles de communication, l\'incorporation de ces fonctions dans des objets usuels devenus communicants (téléphones, lunettes, montres, vêtements ; équipements ménagers, automobiles) sont les facteurs technologiques du secteur émergeant des nouvelles applications et services en Informatique Ambiante.',
   'question':'Va t\'on mettre des ordinateurs dans quelque stylo-bille et interrupteur électrique ?',
   'answers':new Array(
@@ -231,7 +231,7 @@ var sdata = new Array(
     'Oui: pour créer de nouveaux interfaces avec les ordinateurs et pour optimiser la consommation d\'énergie'
   ),
   'answer':4,
-  'link':'http://www.youtube.com/user/Scienceparticipative#p/a/u/0/bv0hezyFpbc'
+  'link':'https://www.youtube.com/watch?v=bv0hezyFpbc'
 }
 
 );

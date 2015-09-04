@@ -52,6 +52,8 @@
 
    <div>Voici aussi comment défini un <l class="editor" link="./morse.jvs" text="code en morse"/></div>
 
+   <div>Voici aussi un programmee exemple qui utilise <l class="editor" link="./entree-son.jvs" text="l'entrée de son"/> sur le microphone</div>
+
    <div>Voici une activité complète sur le son <l link="http://javascool.gforge.inria.fr/v4/documents/sketchbook/syntheSons/synthesons_Laurent_Roy/synthesons_LRv3.ppt" text="présentation"/> et <l link="http://javascool.gforge.inria.fr/v4/documents/sketchbook/syntheSons/synthesons_Laurent_Roy.zip" text="fichiers de l'activité"/> grâce au collègue Laurent Roy.</div>
 
 <p>Cette «proglet» est un composant logiciel ouvert dont documentation et code-source sont disponibles <l link="http://javascool.gforge.inria.fr/?page=proglets&amp;action=show&amp;id=syntheSons&amp;helpFile=api/org/javascool/proglets/syntheSons/package-summary.html" text="ici"/></p>
