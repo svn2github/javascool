@@ -1,0 +1,64 @@
+import org.javascool.tools.sound.InputSoundBit;
+import org.javascool.proglets.syntheSons.SoundBitPanel;
+
+void main() {
+  // Enregistre un son pendant 4 secondes
+  println("On enregistre dans une seconde..");
+  InputSoundBit input = new InputSoundBit();
+  // On lance l'enregistrement et patiente jusqu'à ce que ce soit fini
+  double duration = 4; // secondes;
+  {
+    sleep(1000);
+    input.reset(duration); // On enregistre pendant le nomdre de secondes
+    sleep((int)(100 + 1000 * duration)); // On patiente un peu plus que le nombre de milli-secondes
+  }
+  println("ok");
+  // On rejoue le son directement avec play
+  println("On rejoue");
+  input.play();
+  println("Ok");
+  // On va calculer l'offset et l'amplitude moyenne du signal pour le mettre à une échelle qui le rend visible
+  int length = (int) (duration * InputSoundBit.SAMPLING);
+  double min = 0, max = 0;
+  for(int i = 0; i < length; i++) {
+    double v = input.get('l', i)+input.get('r', i);
+    if (i == 0 || v < min) min = v;
+    if (i == 0 || v > max) max = v;
+  }
+  println("Le signal a "+length+" valeurs dans ["+min+", "+max+"]");
+  double offset = (min+max)/2, magnitude= (max-min)/2 > 0 ? (max-min)/2 : 1;
+  println("Son offset est "+offset+" et son apmlitude "+magnitude);
+  // On écrit les 1ers échantillons de sons
+  // L'enregistrement se fait à 44000 Hz par défaut
+  println("On rerejoue");
+  int debut = 44000;
+  for(int i = debut; i < debut+100; i++) {
+    // On ecrit les 100ers echantillons en ajoutant les caneaux gauche et droit
+    print(" "+ ((input.get('l', i)+input.get('r', i)) - offset)/magnitude+"\n");
+  }
+  println("\nOk");
+  // On display le spectre du canal gauche
+  ((SoundBitPanel) getProgletPane()).reset(input, 'l');
+  // On calcule la fréquence principale
+  {
+    double f0 = 440.0 / 16, f1 = 440.0 * 16;
+    int hsize = 16 * 31, wsize = 3;
+    double spectre[] = SoundBitPanel.getFFTMagnitude(SoundBitPanel.getData(input, 'l'), f0, f1, hsize, wsize);
+    double f_max = 0, mag_max = 0;
+    for(int i = 0; i <= hsize; i++) {
+      double f = f0 * Math.pow(f1 / f0, i / (double) hsize);
+      if(mag_max < spectre[i]) {
+        f_max = f;
+        mag_max = spectre[i];
+      }
+    }
+    println(" (|fft| < " + ((int) mag_max) + ", f_max = " + ((int) f_max) + "Hz) ");
+  }
+  // Sauve l'enregistrement
+  println("On sauve");
+  try {
+    input.save("my-input");
+  } catch(Exception e) {
+    println("Error: save failes " + e);
+  }
+}
