@@ -17,6 +17,8 @@
 Il suffit de le télécharger <b><a href="javascool-proglets.jar">ICI</a></b> ou , en choisissant l'option «Ouvrir» ou «Ouvrir avec Java».
 </td></tr><!--tr><td align="right">ou essayer la <b><a href="javascool-beta.jar">nouvelle release</a></b> (version beta)</td></tr--></table><br/></p>
 
+<p>Pour une version antérieure java 1.6 essayer <b><a href="javascool-proglets-6.jar">CETTE VERSION</a></b></p>
+
 <br/>
 
     <p>- Si le lancement échoue, vous devrez probablement <a href="http://www.java.com/fr/download">installer Java<a/>.</p>

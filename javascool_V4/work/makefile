@@ -9,8 +9,10 @@ export JAVA_HOME=/usr/java/jdk1.8.0_60
 
 export PATH := $(JAVA_HOME)/bin:$(PATH)
 
+#export JRE_HOME=/usr/java/jdk1.6.0_25/jre
 #export JRE_HOME=/usr/java/jre1.7.0_60
 export JRE_HOME=/usr/java/jre1.8.0_60
+
 
 www :
 	cd .. ; ant web
@@ -51,6 +53,10 @@ nbe :
 
 jdoc :
 	ant javadoc ; firefox ./dist/javadoc/overview-summary.html
+
+sos6 : # À utiliser avec la JDK 6
+	ant javascool-proglets.jar
+	rsync --rsh='ssh -C' -rl ../work/dist/javascool-proglets.jar scm.gforge.inria.fr:/home/groups/javascool/htdocs/v4/javascool-proglets-6.jar
 
 sos8 : # À utiliser avec la JDK 7 ou JDK 8
 	ant javascool-proglets.jar
