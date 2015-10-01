@@ -15,9 +15,9 @@
 
 <p>Pour lancer Java's Cool, rien à installer, hormis Java. <br/><table border="1"><tr><td>
 Il suffit de le télécharger <b><a href="javascool-proglets.jar">ICI</a></b> ou , en choisissant l'option «Ouvrir» ou «Ouvrir avec Java».
-</td></tr><!--tr><td align="right">ou essayer la <b><a href="javascool-beta.jar">nouvelle release</a></b> (version beta)</td></tr--></table><br/></p>
+</td></tr></table><br/></p>
 
-<p>Pour une version antérieure java 1.6 essayer <b><a href="javascool-proglets-6.jar">CETTE VERSION</a></b></p>
+    <p>Pour une version antérieure java 1.6 essayer la version <tt>javascool-proglets-6.jar</tt> disponible en <b><a href="http://javascool.gforge.inria.fr/v4/javascool-proglets-6.jar">cliquant ici</a></b></p>
 
 <br/>
 
@@ -25,7 +25,7 @@ Il suffit de le télécharger <b><a href="javascool-proglets.jar">ICI</a></b> ou
 
 <p>- Ci dessous, nous donnons des indications pour vous aider plus si besoin, sous <a href="#windows">windows</a>, <a href="#macos">Mac OS</a>, et <a href="#linux">Linux</a>.</p>
 <p>- Si vous avez des doutes sur l'installation java essayer ce <a href="http://javascool.gforge.inria.fr/documents/test-java/test.jar">programme minimal</a>, si il ne se lance pas c'est probablement un souci d'installation java, il y a de <a href="https://www.java.com/fr/download/help/troubleshoot_java.xml">l'aide ici</a.</p>
-<p>- Si votre système est trop ancien la <a href="http://javascool.gforge.inria.fr/v3">version 3</a> est encore disponible.</p>
+
 <p>- En cas d'échec <a href="?page=contact">contactez-nous</a> : nous vous aiderons.</p>
 
 <p>Pour en savoir plus sur l'utilisation de l'interface se reporter à sa <a href="?page=run&action=screenshot">description picturale</a>.
@@ -73,6 +73,4 @@ Il suffit de le télécharger <b><a href="javascool-proglets.jar">ICI</a></b> ou
 <p>- On peut aussi lancer, une fois le logiciel téléchargé, à partir d'une ligne de commande en tapant: <ul><li><tt><tt>java -jar javascool-proglets.jar</tt> .</li></ul></p>
     
 
-<hr/><div class="label2">Plus d'informations</div>
-    <?php echo wiki_get_contents('JavaScool:Lancement'); ?>
 </div>
