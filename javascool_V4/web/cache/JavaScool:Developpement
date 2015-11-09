@@ -23,7 +23,7 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.020 seconds
+CPU time usage: 0.016 seconds
 Real time usage: 0.019 seconds
 Preprocessor visited node count: 36/1000000
 Preprocessor generated node count: 68/1000000
@@ -38,5 +38,5 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:88-1!*!*!!*!*!* and timestamp 20150930122952 and revision id 15848
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:88-1!*!*!!*!*!* and timestamp 20151107135402 and revision id 15848
  -->

@@ -185,8 +185,8 @@ public static void main(String[] args) {
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.044 seconds
-Real time usage: 0.046 seconds
+CPU time usage: 0.036 seconds
+Real time usage: 0.037 seconds
 Preprocessor visited node count: 147/1000000
 Preprocessor generated node count: 240/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -200,5 +200,5 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:92-1!*!0!!fr!*!* and timestamp 20150930122955 and revision id 15706
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:92-1!*!0!!fr!*!* and timestamp 20151107135407 and revision id 15706
  -->
