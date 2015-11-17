@@ -25,7 +25,7 @@ Nous aidons à découvrir deux volets de cet indispensable savoir <a rel="nofoll
 <!-- 
 NewPP limit report
 CPU time usage: 0.012 seconds
-Real time usage: 0.011 seconds
+Real time usage: 0.012 seconds
 Preprocessor visited node count: 27/1000000
 Preprocessor generated node count: 32/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -39,5 +39,5 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:91-1!*!*!!*!*!* and timestamp 20151107135406 and revision id 15853
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:91-1!*!*!!*!*!* and timestamp 20151117165449 and revision id 15853
  -->
