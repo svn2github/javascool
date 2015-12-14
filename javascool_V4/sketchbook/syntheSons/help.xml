@@ -8,7 +8,7 @@
    </div>où <r>@tone:</r> est une « macro-instruction », suivie, sur la même ligne d'une expression de la variable <c>t</c> qui définit la forme du son, 
    tandis que les fonctions suivantes sont prédéfinies:<div class="code">
      <m>Sinusoide</m>
-     <p><r>double</r> <r>sin</r>(t)</p>
+     <p><r>double</r> <r>sns</r>(t)</p>
      <m>Signal carré</m>
      <p><r>double</r> <r>sqr</r>(t)</p>
      <m>Signal triangulaire</m>
@@ -16,6 +16,7 @@
      <m>Souffle aléatoire</m>
      <p><r>double</r> <r>noi</r>(t)</p>
    </div></div>
+
 
    <div>Pour écouter le son ou la séquence de notes il faut utiliser la fonction:<div class="code">
      <p><r>play</r>();</p>
@@ -26,7 +27,7 @@
      renormalisé pour offrir le meilleur tracé).
      <div>Les fréquences sont tracées entre le <i>La</i> sous-grave (octave 0 à <c>27.5Hz</c>, à peine audible) et 
      le <i>La</i> sur-aigu (octave 9 à <c>6400Hz</c>), 
-     tandis que le milieu de l'échelle est le <i>La</i> du diapason (octave 3 à <c>440Hz</c>).</div></div>
+     tandis que le milieu de l'échelle est le <i>La</i> du diapason (octave 4 à <c>440Hz</c>).</div></div>
      <div>Le début du signal (tracé en jaune), permet de voir sa forme et son aspect temporel. Les premières <c>11</c>ms (<c>0.011</c> secondes) sont tracées.</div>
    </div></div>
  
