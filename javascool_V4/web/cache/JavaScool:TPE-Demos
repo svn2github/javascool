@@ -41,7 +41,7 @@ Certains TPEs ou stages de lycéens ont donné lieu à des réalisations exposé
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.012 seconds
+CPU time usage: 0.008 seconds
 Real time usage: 0.012 seconds
 Preprocessor visited node count: 22/1000000
 Preprocessor generated node count: 144/1000000
@@ -56,5 +56,5 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:115-1!*!0!*!*!*!* and timestamp 20151117165452 and revision id 13343
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:115-1!*!0!*!*!*!* and timestamp 20151215145918 and revision id 13343
  -->
