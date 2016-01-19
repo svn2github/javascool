@@ -1,1 +1,12 @@
 
+void main() {
+  // Charge une image dans la proglet: attention il faut que l'ordinateur soit sur le réseau
+  load("http://javascool.gforge.inria.fr/documents/sketchbook/codagePixels/doisneaubuffon.jpg");
+  // On peut aussi utiliser : http://a395.idata.over-blog.com/630x470-000000/2/47/48/70/White---Black-flash/foggdfpn.jpg
+  // Propose de passer en inverse vidéo
+  if(readBoolean("On inverse ?")) {
+    for(int j = -getHeight(); j <= getHeight(); j = j + 1)
+      for(int i = -getWidth(); i <= getWidth(); i = i + 1)
+        setPixel(i, j, 255 - getPixel(i, j));
+  }
+}
