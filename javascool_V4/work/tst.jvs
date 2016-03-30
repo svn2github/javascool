@@ -1,6 +1,0 @@
-
-void main() {
-   include tst11;
-   println("And hello again!");
-}
-
