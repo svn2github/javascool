@@ -1,0 +1,48 @@
+
+import java.awt.image.BufferedImage;
+import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.*;
+import org.javascool.tools.image.ImageUtils;
+
+BufferedImage image = ImageUtils.loadImage("pacman.jpg");
+
+public static int ximage,yimage;
+
+void main() {
+   //JLayeredPane pane = getPane();
+   //pane.removeAll();
+   //showIcon(image); 
+
+   image.addKeyListener(new KeyListener()
+	{
+		@Override
+		public void keyPressed(KeyEvent e)
+		{	
+			int i = image.getWidth();
+			
+			Point p = image.getLocation();
+			switch (e.getKeyCode())
+			{
+				case KeyEvent.VK_RIGHT:
+					image.setLocation(p.x+10, p.y);
+					break;
+				case KeyEvent.VK_LEFT:
+					image.setLocation(p.x-10, p.y);
+					break;
+				case KeyEvent.VK_UP:
+					image.setLocation(p.x, p.y-10);
+					break;
+				case KeyEvent.VK_DOWN:
+					image.setLocation(p.x, p.y+10);
+					break;
+			}
+		}
+
+		public void keyReleased(KeyEvent e) {}
+		public void keyTyped(KeyEvent e) {}
+		
+	});
+}
+
