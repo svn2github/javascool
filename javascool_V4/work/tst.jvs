@@ -1,48 +1,14 @@
 
-import java.awt.image.BufferedImage;
-import java.awt.Point;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import javax.swing.*;
-import org.javascool.tools.image.ImageUtils;
-
-BufferedImage image = ImageUtils.loadImage("pacman.jpg");
-
-public static int ximage,yimage;
+import org.javascool.tools.sound. *;
+import org.javascool.proglets.syntheSons.NotesSoundBit;
 
 void main() {
-   //JLayeredPane pane = getPane();
-   //pane.removeAll();
-   //showIcon(image); 
-
-   image.addKeyListener(new KeyListener()
-	{
-		@Override
-		public void keyPressed(KeyEvent e)
-		{	
-			int i = image.getWidth();
-			
-			Point p = image.getLocation();
-			switch (e.getKeyCode())
-			{
-				case KeyEvent.VK_RIGHT:
-					image.setLocation(p.x+10, p.y);
-					break;
-				case KeyEvent.VK_LEFT:
-					image.setLocation(p.x-10, p.y);
-					break;
-				case KeyEvent.VK_UP:
-					image.setLocation(p.x, p.y-10);
-					break;
-				case KeyEvent.VK_DOWN:
-					image.setLocation(p.x, p.y+10);
-					break;
-			}
-		}
-
-		public void keyReleased(KeyEvent e) {}
-		public void keyTyped(KeyEvent e) {}
-		
-	});
+   // Son 1 : des notes de musiques
+    SoundBit sound1 = new NotesSoundBit().reset("e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g");
+   // Son2 : une deuxième voix
+    SoundBit sound2 = new NotesSoundBit().reset("8 e4 4 a3 | 8 c | 4 e4");
+   // Lancement dans deux Thread separes pour les avoir en parallèle
+   new Thread(new Runnable() { public void run() { sound1.play(); }}).start();
+   new Thread(new Runnable() { public void run() { sound2.play(); }}).start();
 }
 
