@@ -19,7 +19,7 @@ Il suffit de le télécharger <b><a href="javascool-proglets.jar">ICI</a></b> ou
 
     <p>Pour une version antérieure java 1.6 essayer la version <tt>javascool-proglets-6.jar</tt> disponible en <b><a href="http://javascool.gforge.inria.fr/v4/javascool-proglets-6.jar">cliquant ici</a></b></p>
 
-    <p>ATTENTION: Javascool ne marche pas [encore] sous Windows10, désolé, nous sommes sur le problème.</p>
+    <p>ATTENTION: sous Windows10, télécharger la nouvelle version de java (au moins 8 update 91) et télécharger JarFix que vous pourrez retrouver <a href="http://johann.loefflmann.net/en/software/jarfix/index.html#Download">via ce lien</a> puis exécuter <tt>javascool-proglets.jar</tt> en faisant clic droit --> "ouvrir avec..." et ouvrir avec <tt>Javaw.exe</tt> (un immense merci à Rémy Chardon pour cette solution).</p>
 
 <br/>
 
