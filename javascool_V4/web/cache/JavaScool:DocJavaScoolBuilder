@@ -34,7 +34,7 @@ Si vous recevez des erreurs, elles s'afficheront dans le fenêtre de javascoolbu
 <!-- 
 NewPP limit report
 CPU time usage: 0.012 seconds
-Real time usage: 0.012 seconds
+Real time usage: 0.013 seconds
 Preprocessor visited node count: 21/1000000
 Preprocessor generated node count: 38/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -48,5 +48,5 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:857-1!*!0!!*!*!* and timestamp 20160506093827 and revision id 5993
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:857-1!*!0!!*!*!* and timestamp 20160518164233 and revision id 5993
  -->
