@@ -1,14 +1,11 @@
 
-import org.javascool.tools.sound. *;
-import org.javascool.proglets.syntheSons.NotesSoundBit;
+import java.awt.image.BufferedImage;
 
 void main() {
-   // Son 1 : des notes de musiques
-    SoundBit sound1 = new NotesSoundBit().reset("e5 e5b e5 e5b e5 e5b e5 b d5 c5 4 a | 1 h c e a 4 b | 1 h e g g");
-   // Son2 : une deuxième voix
-    SoundBit sound2 = new NotesSoundBit().reset("8 e4 4 a3 | 8 c | 4 e4");
-   // Lancement dans deux Thread separes pour les avoir en parallèle
-   new Thread(new Runnable() { public void run() { sound1.play(); }}).start();
-   new Thread(new Runnable() { public void run() { sound2.play(); }}).start();
+   //Compile
+    BufferedImage myPicture = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
+   //Ne compile pas
+    BufferedImage myPicture2;
+   myPicture2 = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
 }
 
