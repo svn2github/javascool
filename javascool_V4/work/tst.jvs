@@ -1,11 +1,22 @@
 
-import java.awt.image.BufferedImage;
+import javax.swing. *;
 
 void main() {
-   //Compile
-    BufferedImage myPicture = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
-   //Ne compile pas
-    BufferedImage myPicture2;
-   myPicture2 = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
+   JLayeredPane pane = getPane();
+   pane.removeAll();
+   int largeur = pane.getWidth();
+   echo(largeur);
+   int hauteur = pane.getHeight();
+   echo(hauteur);
+   //showIcon("/home/vthierry/Desktop/image-equipe.png", 100, 100, 1);
+    JLabel texte = showText("Ceci est un ara.                              ", 0, 200, 0);
+   sleep(2000);
+   texte.setLocation(200, 100);
+   sleep(2000);
+   texte.setText("OUI,OUI,C'EST BIEN UN ARA!");
+   sleep(2000);
+   texte.setVisible(false);
+   sleep(2000);
+   texte.setVisible(true);
 }
 
