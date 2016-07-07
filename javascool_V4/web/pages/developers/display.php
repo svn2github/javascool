@@ -7,7 +7,7 @@
 	array(
 	    array("Faire une proglet","?page=developers&action=doc-proglets"),
 	    array("Comment ça marche","?page=developers&action=spec-proglets"),
-	    array("API","?page=api")
+	    array("API","http://javascool.gforge.inria.fr/v4/api/overview-summary.html")
 	)
     );
 ?>
