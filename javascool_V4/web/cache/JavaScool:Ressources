@@ -49,8 +49,8 @@ src="http://javascool.gforge.inria.fr/documents/javadoc/logo_interstices.jpg"/><
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.008 seconds
-Real time usage: 0.011 seconds
+CPU time usage: 0.020 seconds
+Real time usage: 0.022 seconds
 Preprocessor visited node count: 27/1000000
 Preprocessor generated node count: 168/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -64,5 +64,5 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:96-1!*!0!*!*!*!* and timestamp 20160518164239 and revision id 6417
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:96-1!*!0!*!*!*!* and timestamp 20160708080326 and revision id 6417
  -->
