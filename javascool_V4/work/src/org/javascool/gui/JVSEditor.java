@@ -143,7 +143,7 @@ class JVSEditor extends JPanel {
    */
   public String getText() {
     String text = TextPane.getText();
-    if (text.charAt(0) != '\n') {
+    if (text.length() > 0 && text.charAt(0) != '\n') {
       text = "\n" + text;
       TextPane.setText(text);
     }
