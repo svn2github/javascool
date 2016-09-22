@@ -18,29 +18,29 @@ Le mécanisme suivant permet de mettre en forme les liens: <pre>
 function wiki_get_contents_load($name) {
   global $wiki_get_contents_redirections;
   // Recuperation de la page sur le wiki
-  $href = &quot;http://wiki.inria.fr/sciencinfolycee/$name?printable=yes&amp;action=render&quot;;
+  $href = "http://wiki.inria.fr/sciencinfolycee/$name?printable=yes&amp;action=render";
   $text = file_get_contents($href);  
   // Remplace tous les liens entre pages par des pages vues du site
   foreach($wiki_get_contents_redirections as $wiki =&gt; $php) 
-    $text = ereg_replace(&quot;href=\&quot;http://wiki.inria.fr/sciencinfolycee/$wiki\&quot;&quot;,
-                         &quot;class=\&quot;internal\&quot; href=\&quot;$php\&quot;&quot;, $text);
+    $text = ereg_replace("href=\"http://wiki.inria.fr/sciencinfolycee/$wiki\"",
+                         "class=\"internal\" href=\"$php\"", $text);
   // Remplace tous les liens wikis locaux pas des liens distants
-  $text = ereg_replace('src=&quot;/wikis/sciencinfolycee', 
-                       'src=&quot;http://wiki.inria.fr/wikis/sciencinfolycee', $text);
+  $text = ereg_replace('src="http://wiki.inria.fr/wikis/sciencinfolycee', 
+                       'src="http://wiki.inria.fr/wikis/sciencinfolycee', $text);
   // Qualifie proprement les liens internes issus du wiki
-  $text = ereg_replace(&quot;href=\&quot;http://javascool.gforge.inria.fr/([^\&quot;]*)\&quot; *class=\&quot;external text\&quot;&quot;, 
-                       &quot;href=\&quot;\\1\&quot; class=\&quot;internal\&quot;&quot;, $text);
+  $text = ereg_replace("href=\"http://javascool.gforge.inria.fr/([^\"]*)\" *class=\"external text\"", 
+                       "href=\"\\1\" class=\"internal\"", $text);
   // Elimine la table de méta-donnée
-  $text = ereg_replace('&lt;table class=&quot;wikitable&quot;&gt;.*&lt;/table&gt;', '', $text);
+  $text = ereg_replace('&lt;table class="wikitable"&gt;.*&lt;/table&gt;', '', $text);
   // Détecte les erreurs
-  if (ereg(&quot;&lt;title&gt;(Erreur|Connexion nécessaire)&quot;, $text))
-    $text = &quot;Erreur: la page wiki $name est en erreur.\n&quot;;
+  if (ereg("&lt;title&gt;(Erreur|Connexion nécessaire)", $text))
+    $text = "Erreur: la page wiki $name est en erreur.\n";
   return $text;
 }
 </pre>
 tandis que la table: <pre>
 $wiki_get_contents_redirections = 
-  array(&quot;JavaScool:Accueil&quot; =&gt; &quot;?page=home&quot;,
+  array("JavaScool:Accueil" =&gt; "?page=home",
         etc... );
 </pre>
 <p>donen la correspondance entre la page wiki et celle du site.
@@ -65,15 +65,19 @@ function wiki_get_contents_cache_load($name) {
 <pre>
 function wiki_get_contents_cache_clear() {
   if(isset($_GET['kezako']) &amp;&amp; $_GET['kezako'] == 'niquelekacheux') { 
-    passthru(&quot;rm -rf .http.cache&quot;); exit; 
+    passthru("rm -rf .http.cache"); exit; 
   }
 }
 </pre>
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.028 seconds
-Real time usage: 0.107 seconds
+Cached time: 20160921075512
+Cache expiry: 86400
+Dynamic content: false
+[SMW] In‐text annotation parser time: 0.001 seconds
+CPU time usage: 0.020 seconds
+Real time usage: 0.023 seconds
 Preprocessor visited node count: 44/1000000
 Preprocessor generated node count: 116/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -87,5 +91,5 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:895-1!*!*!!fr!*!* and timestamp 20160708080314 and revision id 6004
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:895-1!*!*!!fr!*!* and timestamp 20160921075512 and revision id 6004
  -->

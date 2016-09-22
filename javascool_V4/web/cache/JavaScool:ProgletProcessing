@@ -57,7 +57,7 @@ package org.javascool.proglets.exploSonore;
 public class Translator extends org.javascool.core.Translator {
   @Override
   public String translate(String code) {
-    return code.replaceAll(&quot;\\s(playSignal|playRecord|playStop)\\(&quot;, &quot; exploSonoreFunctions.$1(&quot;);
+    return code.replaceAll("\\s(playSignal|playRecord|playStop)\\(", " exploSonoreFunctions.$1(");
   }
 }
 </pre>
@@ -86,8 +86,12 @@ public class Translator extends org.javascool.core.Translator {
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.020 seconds
-Real time usage: 0.029 seconds
+Cached time: 20160921075513
+Cache expiry: 86400
+Dynamic content: false
+[SMW] In‐text annotation parser time: 0.001 seconds
+CPU time usage: 0.012 seconds
+Real time usage: 0.016 seconds
 Preprocessor visited node count: 49/1000000
 Preprocessor generated node count: 76/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -101,5 +105,5 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:891-1!*!0!!fr!*!* and timestamp 20160708080316 and revision id 14445
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:891-1!*!0!!fr!*!* and timestamp 20160921075513 and revision id 14445
  -->
