@@ -38,7 +38,7 @@ public class Core {
     if (!System.getProperty("os.name").toLowerCase().startsWith("mac"))
       UIManager.put("FileChooser.readOnly", Boolean.TRUE);
     System.err.println("" + About.title + " is starting ...");
-    ErrorCatcher.checkJavaVersion(6);
+    //ErrorCatcher.checkJavaVersion(6);
     setUncaughtExceptionAlert();
     // Lance le panneau général ou une proglet directement
     Desktop.getInstance().getFrame();

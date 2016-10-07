@@ -30,12 +30,12 @@
 
 <!-- 
 NewPP limit report
-Cached time: 20160921075518
+Cached time: 20161006121010
 Cache expiry: 86400
 Dynamic content: false
-[SMW] In‐text annotation parser time: 0.001 seconds
-CPU time usage: 0.016 seconds
-Real time usage: 0.013 seconds
+[SMW] In‐text annotation parser time: 0.000 seconds
+CPU time usage: 0.008 seconds
+Real time usage: 0.011 seconds
 Preprocessor visited node count: 3/1000000
 Preprocessor generated node count: 8/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -49,5 +49,5 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:109-1!*!0!*!fr!*!* and timestamp 20160921075518 and revision id 15936
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:109-1!*!0!*!fr!*!* and timestamp 20161006121010 and revision id 15936
  -->

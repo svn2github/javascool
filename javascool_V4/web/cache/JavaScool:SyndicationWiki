@@ -72,12 +72,12 @@ function wiki_get_contents_cache_clear() {
 
 <!-- 
 NewPP limit report
-Cached time: 20160921075512
+Cached time: 20161006121003
 Cache expiry: 86400
 Dynamic content: false
 [SMW] In‐text annotation parser time: 0.001 seconds
-CPU time usage: 0.020 seconds
-Real time usage: 0.023 seconds
+CPU time usage: 0.024 seconds
+Real time usage: 0.059 seconds
 Preprocessor visited node count: 44/1000000
 Preprocessor generated node count: 116/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -91,5 +91,5 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:895-1!*!*!!fr!*!* and timestamp 20160921075512 and revision id 6004
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:895-1!*!*!!fr!*!* and timestamp 20161006121003 and revision id 6004
  -->
