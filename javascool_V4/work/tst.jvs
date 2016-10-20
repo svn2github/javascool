@@ -1,22 +1,6 @@
 
-import javax.swing. *;
-
 void main() {
-   JLayeredPane pane = getPane();
-   pane.removeAll();
-   int largeur = pane.getWidth();
-   echo(largeur);
-   int hauteur = pane.getHeight();
-   echo(hauteur);
-   //showIcon("/home/vthierry/Desktop/image-equipe.png", 100, 100, 1);
-    JLabel texte = showText("Ceci est un ara.                              ", 0, 200, 0);
-   sleep(2000);
-   texte.setLocation(200, 100);
-   sleep(2000);
-   texte.setText("OUI,OUI,C'EST BIEN UN ARA!");
-   sleep(2000);
-   texte.setVisible(false);
-   sleep(2000);
-   texte.setVisible(true);
+   //load("file:///home/vthierry/Desktop/IMG_20161002_190934-2.jpg");
+    load("/run/user/19019/gvfs/mtp\\:host\\=%5Busb%3A003%2C009%5D/Phone/Pictures/Instagram/IMG_20161002_190934-2.jpg");
 }
 
