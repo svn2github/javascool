@@ -88,7 +88,7 @@
 <p> Exemple : setGrille(1,2,'X')</p>
 <p></p>
 <div class="code"><p><r>getGrille</r>(int i , int j )</p></div>
-<p>Cette fonction retourne la marque (caractère 'X' ou 'O' ou '.') (type char) présente sur la grille à la position spécifiée (coordonnées comprises entre 1 et 3).</p>
+<p>Cette fonction retourne la marque (caractère 'X' ou 'O' ou ' ') (type char) présente sur la grille à la position spécifiée (coordonnées comprises entre 1 et 3).</p>
 <p>exemple : char mark = getGrille(3,3);</p>
 </div>
 
@@ -98,7 +98,7 @@
 
 
 <div class="code"><p><r>openSocketServer</r>(int numport)</p></div>
-<p>Initialisation du socket server, il écoute sur le port spécifié.Cette fonction tourne true si tout c'est bien passé false dans le cas contraire.</p>
+<p>Initialisation du socket server, il écoute sur le port spécifié.</p>
 
 <div class="code"><p><r>getMessageViaSocketServer</r>()</p></div>
 <p>Retourne un message (type String) lu sur le socket server. Message en provenance du client.</p>

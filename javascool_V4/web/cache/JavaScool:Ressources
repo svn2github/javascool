@@ -49,12 +49,12 @@ src="http://javascool.gforge.inria.fr/documents/javadoc/logo_interstices.jpg"/><
 
 <!-- 
 NewPP limit report
-Cached time: 20161006121011
+Cached time: 20161114071637
 Cache expiry: 86400
 Dynamic content: false
-[SMW] In‐text annotation parser time: 0.001 seconds
-CPU time usage: 0.016 seconds
-Real time usage: 0.021 seconds
+[SMW] In‐text annotation parser time: 0.000 seconds
+CPU time usage: 0.012 seconds
+Real time usage: 0.013 seconds
 Preprocessor visited node count: 27/1000000
 Preprocessor generated node count: 168/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -68,5 +68,5 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:96-1!*!0!*!fr!*!* and timestamp 20161006121011 and revision id 6417
+<!-- Saved in parser cache with key wiki_sciencinfolycee:pcache:idhash:96-1!*!0!*!fr!*!* and timestamp 20161114071637 and revision id 6417
  -->
