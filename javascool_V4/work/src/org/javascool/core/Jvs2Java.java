@@ -82,7 +82,7 @@ public class Jvs2Java extends Translator {
                 body.append(iline);
               }
           } catch(Exception e) {
-            body.append(" - Impossible de lire correctement le fichier inclut !!");
+            body.append(" - Impossible de lire correctement le fichier inclut : erreur = "+e.getMessage());
           }
           body.append("\n");
         } else {
