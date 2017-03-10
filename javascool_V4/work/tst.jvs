@@ -1,6 +1,1 @@
 
-void main() {
-   //load("file:///home/vthierry/Desktop/IMG_20161002_190934-2.jpg");
-    load("/run/user/19019/gvfs/mtp\\:host\\=%5Busb%3A003%2C009%5D/Phone/Pictures/Instagram/IMG_20161002_190934-2.jpg");
-}
-
