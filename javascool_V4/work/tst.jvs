@@ -1,1 +1,37 @@
 
+int xJoueur =-10;
+
+int yJoueur =-10;
+
+void trace() {
+   setPixel(xJoueur, yJoueur, "white");
+   while (getPixel(xJoueur +1, yJoueur) != 0) {
+      xJoueur = xJoueur +1;
+      setPixel(xJoueur, yJoueur, "red");
+      sleep(100);
+      setPixel(xJoueur, yJoueur, "white");
+   }
+   setPixel(xJoueur, yJoueur, "red");
+}
+
+void Action_clavier() {
+   setKeyListener(new Runnable() {
+      public void run() {
+         if (equal(getLastKey(), "Right")) {
+            new Thread(new Runnable() {
+               public void run() {
+                  trace();}
+            }
+           ).start();}
+      }
+   }
+  );
+}
+
+void main() {
+   reset(10, 10);
+   setPixel(5, -10, "black");
+   setPixel(xJoueur, yJoueur, "red");
+   Action_clavier();
+}
+
