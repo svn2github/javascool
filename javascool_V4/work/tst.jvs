@@ -1,37 +1,207 @@
 
-int xJoueur =-10;
+//importation de la bibliotheque java
+import javax.swing. *;
 
-int yJoueur =-10;
+//Declaration des variables
 
-void trace() {
-   setPixel(xJoueur, yJoueur, "white");
-   while (getPixel(xJoueur +1, yJoueur) != 0) {
-      xJoueur = xJoueur +1;
-      setPixel(xJoueur, yJoueur, "red");
-      sleep(100);
-      setPixel(xJoueur, yJoueur, "white");
-   }
-   setPixel(xJoueur, yJoueur, "red");
+String J1;
+String J2;
+String J3;
+String c1;
+String c2;
+String c3;
+
+//Boite de dialogue menu--------------------------------------------------------------------
+void main(){
+	
+	//Déclaration des varibles
+	double B;//B:réel
+	double C;//C:réel
+	
+	//Message de bienvenue
+		
+		JOptionPane.showMessageDialog(getPane(), "Bienvenue ! \nBonne partie sur Pacman tour par tour!" );	
+	
+	//Boite de dialogue 1
+		
+		int choix = 0;		// Initialiser le choix à 0
+			int confirm = 2;	// Initialiser la confirmation à 2
+				String[] mode = {"Paramètres","Règles du jeu","Lancer la partie"};
+				
+	// Tableau de chaine de caractère pour le menu
+		
+		JOptionPane jopchoix = new JOptionPane(), jopconfirm = new JOptionPane();
+		
+	// Création de deux boites de dialogue
+	
+		while (confirm != 0)		// Tant que l'utilisateur n'est pas prêt
+	{
+		choix = jopchoix.showOptionDialog(null, 
+		"Que voulez vous faire?", 
+		"Bienvenue", 
+		JOptionPane.YES_NO_OPTION, 
+		JOptionPane.QUESTION_MESSAGE,
+		null,mode,mode[2]);
+	
+	// Demande du choix de l'action a faire
+		
+		if (choix == -1)	//Si on clique sur la croix on ferme la boite de dialogue
+		{
+			break;			// Sortie de la boucle donc arrêt du programme
+		}		
+
+		if (choix == 1)	// Si choix = 1 cad regles
+		{
+    			println("Direction les règles du jeu");			// Appel de la fonction regle
+    			JOptionPane.showMessageDialog(getPane(), "Regles du jeu \nAlors voila le but \nVoila les regles \nOn vous présente les gris gris!" );	
+    										//Sortir de la boucle avec croix. Retour menu
+    				}
+    			if (choix == 0)	// Si choix = 1 cad paramètres--lancer le programme parametres
+		{
+    			println("Direction les paramètres");			// Appel paramètres
+    			
+//Programme paramètres----------------------------------------------------------------------------------
+
+// On definit un pseudo pour chaque joueur.
+	String J1 = JOptionPane.showInputDialog(getPane(), "Pacman, rentrez votre pseudo",
+		"Joueur 1", JOptionPane.QUESTION_MESSAGE);
+	String J2 = JOptionPane.showInputDialog(getPane(), "Fantome 1,rentrez votre pseudo",
+		"Joueur 2", JOptionPane.QUESTION_MESSAGE);
+		
+// les joueurs ne peuvent pas avoir les memes pseudos-----------------------------------------
+while (J1==J2){
+    		println("Impossible");			//Message d'alerte
+    		
+    		JOptionPane.showMessageDialog(getPane(), "Vous devez: \nChoisir votre propre pseudo\nSoyez original pour une fois!" );	
+    			 J2 = JOptionPane.showInputDialog(getPane(), "Fantome 1,rentrez votre pseudo",
+		"Joueur 2", JOptionPane.QUESTION_MESSAGE);
+									
+  	//Sortir de la boucle avec croix. Retour menu
+    				}
+		
+			J3 = JOptionPane.showInputDialog(getPane(), "Fantome 2,rentrez votre pseudo",
+	"Joueur 3", JOptionPane.QUESTION_MESSAGE);
+	
+// les joueurs ne peuvent pas avoir les memes pseudos-----------------------------------------
+while (J2==J3 && J3==J1 ){
+    		println("Impossible");			//Message d'alerte
+    		
+    		JOptionPane.showMessageDialog(getPane(), "Vous devez: \nChoisir votre propre pseudo\nSoyez original pour une fois!" );	
+    					String J3 = JOptionPane.showInputDialog(getPane(), "Fantome 2,rentrez votre pseudo",
+	"Joueur 3", JOptionPane.QUESTION_MESSAGE);						
+    	//Sortir de la boucle avec croix. Retour menu
+    				}
+println("Pac Man");
+println("-----------------------------------");
+println("");
+println("Joueurs: "+J1+" , "+J2+" et "+J3+".");
+println("");
+println("-----------------------------------");
+JOptionPane.showMessageDialog(getPane(), J1+", "+J2+" et "+J3+", bienvenue!");
+
+// Initiatilisation d'une couleur parmi les celles disponibles-----------------------------------------
+	// Couleurs disponibles ... 
+		String[] couleurs = { "jaune", "orange", "bleu", "vert",};
+JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
+String c1 = (String)jop.showInputDialog(null, J1+", choisissez une couleur dans cette liste.\n",
+"Choix de la couleur", JOptionPane.QUESTION_MESSAGE, null, couleurs, couleurs[0]);	
+
+								//Sortir de la boucle avec croix. Retour menu	
+
+JOptionPane jop3 = new JOptionPane(), jop4 = new JOptionPane();
+String c2 = (String)jop3.showInputDialog(null, J2+", choisissez une couleur dans cette liste.\n",
+"Choix de la couleur", JOptionPane.QUESTION_MESSAGE, null, couleurs, couleurs[0]);
+
+								//Sortir de la boucle avec croix. Retour menu
+
+JOptionPane jop5 = new JOptionPane(), jop6 = new JOptionPane();
+String c3 = (String)jop5.showInputDialog(null, J3+", choisissez une couleur dans cette liste.\n",
+"Choix de la couleur", JOptionPane.QUESTION_MESSAGE, null, couleurs, couleurs[0]);
+								
+								//Sortir de la boucle avec croix. Retour menu
+								
+//Affichage choix couleur
+JOptionPane.showMessageDialog(getPane(), "Donc, "+J1+" vous serez "+c1+" , "+J2+" vous serez "+c2+" et "+J3+" vous serez "+c3+"");
+								
+								//Sortir de la boucle avec croix. Retour menu
+	
+		}	
+		
+		if ( choix == 2 )			//Lancer le jeu
+		{		
+			//Verification des parametres
+	readString ()
+			
+	if (c1 == null || c2==null || c3==null || J1==null || J3==null)	// Si paramètre(s) non défini(s)
+		{
+    			println("Vous avez oublier de définir un des parametres");			//Message d'alerte
+    			
+    			JOptionPane.showMessageDialog(getPane(), "Vous avez oublier de définir un parametre \nVous pouvez: \nSoit retourner aux parametres \nSoit lancer la partie avec les parametres par defaut" );	
+    										
+    										//Sortir de la boucle avec croix. Retour menu
+int ha = 0;		// Initialiser le choix à 0
+			int confirmation = 1;	// Initialiser la confirmation à 2
+				String[] para = {"Paramètres","Lancer la partie"};
+	// Tableau de chaine de caractère pour le menu
+		
+		JOptionPane joppara = new JOptionPane(), jopconfirmation = new JOptionPane();
+	// Création de boites de dialogue
+	
+		while (confirmation != 0)		// Tant que l'utilisateur n'est pas prêt
+	{
+		ha = joppara.showOptionDialog(null, 
+		"Que voulez vous faire?", 
+		"Probleme paramètres", 
+		JOptionPane.YES_NO_OPTION, 
+		JOptionPane.QUESTION_MESSAGE,
+		null,para,para[1]);
+		
+		// Demande du choix de l'action a faire
+		
+		if (ha == -1)	//Si on clique sur la croix on ferme la boite de dialogue
+		{
+			break;			// Sortie de la boucle donc arrêt du programme
+		}		
+
+		if (ha == 1)	// Si ha = 1 cad Lancer la partie
+		{
+    			println("Direction les règles du jeu");			// Lancer la partie
+    				confirmation = jopconfirm.showConfirmDialog(null, 
+			"Vous avez choisi de " + para[ha] + ". \nEtes-vous prêts?", 
+			"Bienvenue", 
+			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    										//Sortir de la boucle avec croix. Retour menu
+    				}
+    			if (ha == 0)	// Si ha = 0 cad paramètres
+		{	confirmation = jopconfirm.showConfirmDialog(null, 
+			"Vous avez choisi de " + para[ha] + ". \nVous jouerez donc avec les parametres par défaut \nEtes-vous prêts?", 
+			"Par défaut", 
+			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			}
+
+
+
+		J1 = "Pacman" ;
+		J2 = "Fantomas" ;
+		J3 = "Casper" ;
+		c1 = "jaune" ;
+		c2 = "vert" ;
+		c3 = "orange" ;
+		}
+	
+   
+			// Demande de la confirmation
+			confirm = jopconfirm.showConfirmDialog(null, 
+			"Vous avez choisi de " + mode[choix] + ". \nEtes-vous prêts?", 
+			"Bienvenue", 
+			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
 }
-
-void Action_clavier() {
-   setKeyListener(new Runnable() {
-      public void run() {
-         if (equal(getLastKey(), "Right")) {
-            new Thread(new Runnable() {
-               public void run() {
-                  trace();}
-            }
-           ).start();}
-      }
-   }
-  );
-}
-
-void main() {
-   reset(10, 10);
-   setPixel(5, -10, "black");
-   setPixel(xJoueur, yJoueur, "red");
-   Action_clavier();
-}
-
+		}}}
+		
+		//Problemes
+//		definir nombres de joueurs
+//		interdire les memes pseudos
+//		interdire les memes couleurs
+//		lorsque parametres pas defini, accès retour parametres
+// 		Retour parametre
