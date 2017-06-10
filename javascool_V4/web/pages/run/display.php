@@ -21,7 +21,7 @@ Il suffit de le télécharger <b><a href="javascool-proglets.jar">ICI</a></b> ou
 
     <p>ATTENTION: sous Windows10, télécharger la nouvelle version de java (au moins 8 update 91) et télécharger JarFix que vous pourrez retrouver <a href="http://johann.loefflmann.net/en/software/jarfix/index.html#Download">via ce lien</a> puis exécuter <tt>javascool-proglets.jar</tt> en faisant clic droit --> "ouvrir avec..." et ouvrir avec <tt>Javaw.exe</tt> (un immense merci à Rémy Chardon pour cette solution).</p>
 
-    <p>Sous <tt>Debian GNU/Linux</tt> grâce au collègue Grégory David de l'académie de Nantes, <a href="http://javascool.gforge.inria.fr/documents/distrib/javascool_4-1_all.deb">voici un package</a>, signé avec la clef GPG <i>C19D461EBAB9A976734E580560F89C804437F8A1</i>.</p>
+    <p>Sous <tt>Debian GNU/Linux</tt> grâce au collègue Grégory David de l'académie de Nantes, <a href="http://javascool.gforge.inria.fr/documents/distrib/javascool_4-2_all.deb">voici un package</a> (version 4.2), signé avec la clef GPG <i>C19D461EBAB9A976734E580560F89C804437F8A1</i>.</p>
     
 <br/>
 
