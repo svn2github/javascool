@@ -226,8 +226,11 @@ class JVSEditor extends JPanel {
    */
   public static CompletionProvider createCodeCompletionProvider() {
     DefaultCompletionProvider cp = new DefaultCompletionProvider();
-    if(!ProgletEngine.getInstance().getProglet().getCompletion().equals("")) {
-      JvsXMLCompletion.readCompletionToProvider(ProgletEngine.getInstance().getProglet().getCompletion(), cp);
+    try {
+      if(!ProgletEngine.getInstance().getProglet().getCompletion().equals("")) {
+	JvsXMLCompletion.readCompletionToProvider(ProgletEngine.getInstance().getProglet().getCompletion(), cp);
+      }
+    } catch(Exception e) {
     }
     JvsXMLCompletion.readCompletionToProvider("org/javascool/gui/completion-macros.xml", cp);
     LanguageAwareCompletionProvider lacp = new LanguageAwareCompletionProvider(cp);
