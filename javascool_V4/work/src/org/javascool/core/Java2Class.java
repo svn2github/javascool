@@ -204,7 +204,7 @@ public class Java2Class {
       if(!(o instanceof Runnable)) { throw new IllegalArgumentException("Erreur: la classe de " + javaClass + " n'est pas un Runnable");
       }
       return (Runnable) o;
-    } catch(Throwable e) { throw new RuntimeException("Erreur: impossible de charger la classe de : " + path);
+    } catch(Throwable e) { throw new RuntimeException("Erreur: impossible de charger la classe de : " + path + " voici l'erreur: "+e);
     }
   }
 }
